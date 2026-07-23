@@ -1,0 +1,17 @@
+# dotclaude config repo — whitelist approach.
+# Ignore everything at top level, then re-include only durable config.
+# Explicitly NEVER tracked: .credentials.json (OAuth tokens), token-dashboard.db,
+# caches, session state, and nested repos (skills/, global-memory/, claude-memory-compiler/).
+/*
+
+!/.gitignore
+!/CLAUDE.md
+!/settings.json
+!/settings.local.json
+!/keybindings.json
+!/statusline-command.py
+!/package.json
+!/agents/
+!/hooks/
+!/skills-archive/
+!/skills-audit/

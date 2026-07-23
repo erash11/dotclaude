@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Bash(claude:*)",
+      "Bash(npm:*)",
+      "Bash(bash --version)",
+      "Bash(powershell --version)",
+      "Bash(powershell -Command '$PSVersionTable.PSVersion')",
+      "Bash(winget install:*)",
+      "Bash(cmd /c \"winget install Microsoft.PowerShell\")",
+      "Bash(graphify install:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(python -c ':*)",
+      "Bash(mkdir -p graphify-out)",
+      "Bash(rm -f .graphify_detect.json .graphify_extract.json .graphify_ast.json .graphify_semantic.json .graphify_analysis.json .graphify_labels.json .graphify_chunk*.json .graphify_python .graphify_uncached.txt .graphify_cached.json .graphify_chunk*_result.json)",
+      "Bash(python -c \"import sys; print\\(sys.stdin.read\\(\\).encode\\('ascii','replace'\\).decode\\('ascii'\\)\\)\")",
+      "Bash(xargs grep:*)",
+      "Bash(awk '{print $2}')"
+    ]
+  },
+  "enabledPlugins": {
+    "github@claude-plugins-official": false
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/hook.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Checking UI changes"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Impeccable design detector: runs after Edit/Write/MultiEdit on UI files and surfaces findings as system reminders."
+}
