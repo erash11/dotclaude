@@ -64,7 +64,10 @@ const LOCK_STALE_MS = 30000;
 // after this many CONSECUTIVE timeouts; the count lives in a state file and any
 // clean run resets it. Non-timeout failures still escalate immediately.
 const TIMEOUT_STREAK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-timeout-streak');
-const TIMEOUT_STREAK_THRESHOLD = 3;
+// Raised 3 -> 6 on 2026-07-24: the nightly KeystoneOS-DailyBackup task now runs
+// an uncapped full reindex and resets this counter, so heavy-day backlogs are
+// guaranteed to clear overnight. Alarm only if even the nightly isn't keeping up.
+const TIMEOUT_STREAK_THRESHOLD = 6;
 
 function logErr(msg) {
   try { fs.appendFileSync(ERR_LOG, `[${new Date().toISOString()}] memsearch-sync: ${msg}\n`); }

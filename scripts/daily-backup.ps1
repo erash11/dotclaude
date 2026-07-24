@@ -118,7 +118,35 @@ Get-ChildItem "$U\Desktop\DEV" -Directory |
     Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
     ForEach-Object { Snapshot $_.FullName "$B\$($_.Name)" @('.playwright-mcp') }
 
-# --- 2c. Mirror the recovery guide to the cloud backup root ---
+# --- 2c. Full memsearch reindex (no session-time cap) ---
+# The SessionEnd hook indexes incrementally under a 45s cap - enough for normal
+# session deltas, never for heavy days (a 41-chunk backlog on 7/24 needed >10 min
+# at ONNX embedding speed). This nightly pass absorbs any backlog and resets the
+# hook's consecutive-timeout alarm so mornings start clean.
+$msExe = "$U\AppData\Roaming\Python\Python314\Scripts\memsearch.exe"
+if (-not (Test-Path $msExe)) { $msExe = (Get-Command memsearch -ErrorAction SilentlyContinue).Source }
+if ($msExe -and -not $DryRun) {
+    $msFail = $false
+    $msPaths = @(
+        "$U\.claude\global-memory\transcripts",
+        "$U\.claude\projects\C--Users-eric-rash\memory",
+        "$U\.claude\claude-memory-compiler\daily",
+        "$U\.claude\claude-memory-compiler\knowledge",
+        "$U\Desktop\SecondBrain\Knowledge\library"
+    )
+    foreach ($mp in $msPaths) {
+        if (-not (Test-Path $mp)) { continue }
+        $r = & $msExe index $mp 2>&1 | Select-Object -Last 1
+        Log "INDEX $(Split-Path $mp -Leaf): $r"
+        if ($LASTEXITCODE -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:$(Split-Path $mp -Leaf)") }
+    }
+    if (-not $msFail) {
+        Remove-Item "$U\.claude\global-memory\transcripts\.memsearch-timeout-streak" -Force -ErrorAction SilentlyContinue
+        Log "INDEX complete - hook timeout-streak counter reset"
+    }
+} elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch.exe not found" }
+
+# --- 2d. Mirror the recovery guide to the cloud backup root ---
 if ((Test-Path 'G:\My Drive') -and (Test-Path "$U\.claude\RESTORE.md") -and -not $DryRun) {
     New-Item -ItemType Directory -Force -Path 'G:\My Drive\Backups' | Out-Null
     Copy-Item "$U\.claude\RESTORE.md" 'G:\My Drive\Backups\RESTORE.md' -Force
