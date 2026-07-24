@@ -96,8 +96,15 @@ Sync-Repo "$U\.claude\global-memory"    'main'
 Sync-Repo "$U\.claude"                  'main'
 Sync-Repo "$U\.claude\skills"           'main'
 
-# --- 2a. Personal-context snapshots -> personal OneDrive ---
-$P = "$U\OneDrive\Backups\Machine"
+# --- 2a. Personal-context snapshots -> personal Google Drive (gmail) ---
+# NOT OneDrive: the personal OneDrive account is not signed in on this machine
+# (discovered 2026-07-23 — that folder is a dead local dir), and Google is the
+# durable personal identity that survives any institutional change.
+$P = 'G:\My Drive\Backups\Machine'
+if (-not (Test-Path 'G:\My Drive')) {
+    $Errors.Add('backup-target-offline:GoogleDrive')
+    Log "TARGET G:\My Drive NOT MOUNTED - is Google Drive for Desktop running? Skipping personal snapshots."
+}
 Snapshot "$U\.claude\projects"  "$P\claude-projects"  @('worktrees')
 Snapshot "$U\.codex\memories"   "$P\codex\memories"   @()
 Snapshot "$U\.codex\sessions"   "$P\codex\sessions"   @()
@@ -110,6 +117,13 @@ $B = "$U\OneDrive - Baylor University\Backups\DEV-NonRepo"
 Get-ChildItem "$U\Desktop\DEV" -Directory |
     Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
     ForEach-Object { Snapshot $_.FullName "$B\$($_.Name)" @('.playwright-mcp') }
+
+# --- 2c. Mirror the recovery guide to the cloud backup root ---
+if ((Test-Path 'G:\My Drive') -and (Test-Path "$U\.claude\RESTORE.md") -and -not $DryRun) {
+    New-Item -ItemType Directory -Force -Path 'G:\My Drive\Backups' | Out-Null
+    Copy-Item "$U\.claude\RESTORE.md" 'G:\My Drive\Backups\RESTORE.md' -Force
+    Log "RESTORE.md mirrored to G:\My Drive\Backups\"
+}
 
 # --- 3. State + escalation ---
 $status = if ($Errors.Count -eq 0) { 'OK' } else { 'ERROR' }
