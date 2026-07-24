@@ -5,6 +5,7 @@
 /*
 
 !/.gitignore
+!/RESTORE.md
 !/CLAUDE.md
 !/settings.json
 !/settings.local.json
@@ -15,3 +16,5 @@
 !/hooks/
 !/skills-archive/
 !/skills-audit/
+!/scripts/
+scripts/logs/
