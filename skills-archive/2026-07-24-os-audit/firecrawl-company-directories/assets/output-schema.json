@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "firecrawl-company-directories output",
+  "type": "object",
+  "required": ["source", "extractedAt", "companies"],
+  "properties": {
+    "source": { "type": "string" },
+    "filters": { "type": "object" },
+    "extractedAt": { "type": "string", "format": "date-time" },
+    "totalResults": { "type": "integer" },
+    "companies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "description": { "type": "string" },
+          "industry": { "type": "string" },
+          "stage": { "type": "string" },
+          "founded": { "type": "string" },
+          "location": { "type": "string" },
+          "teamSize": { "type": "string" },
+          "funding": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "profileUrl": { "type": "string" },
+          "websiteUrl": { "type": "string" }
+        }
+      }
+    }
+  }
+}

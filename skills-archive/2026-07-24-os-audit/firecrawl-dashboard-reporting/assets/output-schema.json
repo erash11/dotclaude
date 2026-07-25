@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "firecrawl-dashboard-reporting output",
+  "type": "object",
+  "required": ["reportedAt", "dashboards", "metrics", "summary"],
+  "properties": {
+    "reportedAt": { "type": "string", "format": "date-time" },
+    "dateRange": { "type": "string" },
+    "dashboards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "platform": { "type": "string" },
+          "url": { "type": "string" },
+          "caveats": { "type": "string" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["metric", "value"],
+        "properties": {
+          "platform": { "type": "string" },
+          "metric": { "type": "string" },
+          "value": { "type": ["string", "number"] },
+          "unit": { "type": "string" },
+          "change": { "type": "string" },
+          "period": { "type": "string" },
+          "sourceUrl": { "type": "string" }
+        }
+      }
+    },
+    "tables": { "type": "array", "items": { "type": "object" } },
+    "exports": { "type": "array", "items": { "type": "string" } },
+    "summary": { "type": "string" }
+  }
+}

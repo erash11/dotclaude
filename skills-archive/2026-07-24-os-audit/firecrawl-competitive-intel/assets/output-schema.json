@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "firecrawl-competitive-intel output",
+  "type": "object",
+  "required": ["generatedAt", "competitors", "sources"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "competitors": { "type": "array", "items": { "type": "string" } },
+    "pricing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor": { "type": "string" },
+          "plan": { "type": "string" },
+          "price": { "type": "string" },
+          "limits": { "type": "string" },
+          "sourceUrl": { "type": "string" }
+        }
+      }
+    },
+    "recentChanges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor": { "type": "string" },
+          "change": { "type": "string" },
+          "date": { "type": "string" },
+          "sourceUrl": { "type": "string" }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor": { "type": "string" },
+          "feature": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "sources": { "type": "array", "items": { "type": "string" } }
+  }
+}

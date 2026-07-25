@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "firecrawl-knowledge-ingest output",
+  "type": "object",
+  "required": ["source", "url", "extractedAt", "sections"],
+  "properties": {
+    "source": { "type": "string" },
+    "url": { "type": "string" },
+    "extractedAt": { "type": "string", "format": "date-time" },
+    "totalArticles": { "type": "integer" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "url"],
+              "properties": {
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "section": { "type": "string" },
+                "content": { "type": "string" },
+                "metadata": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
