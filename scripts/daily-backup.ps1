@@ -127,13 +127,35 @@ $msExe = "$U\AppData\Roaming\Python\Python314\Scripts\memsearch.exe"
 if (-not (Test-Path $msExe)) { $msExe = (Get-Command memsearch -ErrorAction SilentlyContinue).Source }
 if ($msExe -and -not $DryRun) {
     $msFail = $false
-    $msPaths = @(
+    # Single source of truth: KeystoneOS declares the index set in
+    # data\memory-index-paths.json (AGENTS.md routes "Memory index path templates"
+    # there). This list used to be hardcoded here and had silently diverged from
+    # that file - three declared paths (KeystoneOS project memory, Inbox\meetings,
+    # .codex\memories) were never actually indexed by this nightly pass, so the
+    # registry described an index that did not exist. Read it instead.
+    $msPathsFallback = @(
         "$U\.claude\global-memory\transcripts",
         "$U\.claude\projects\C--Users-eric-rash\memory",
         "$U\.claude\claude-memory-compiler\daily",
         "$U\.claude\claude-memory-compiler\knowledge",
-        "$U\Desktop\SecondBrain\Knowledge\library"
+        "$U\Desktop\SecondBrain\Knowledge"
     )
+    $msConfig = "$U\Desktop\DEV\KeystoneOS\data\memory-index-paths.json"
+    $msPaths = $null
+    if (Test-Path -LiteralPath $msConfig) {
+        try {
+            $declared = (Get-Content -Raw -LiteralPath $msConfig | ConvertFrom-Json).paths
+            if ($declared -and $declared.Count -ge 1) {
+                $msPaths = @($declared | ForEach-Object { ($_ -replace '\{HOME\}', $U) -replace '/', '\' })
+                Log "INDEX path set: $($msPaths.Count) paths from memory-index-paths.json"
+            }
+        } catch { Log "INDEX config unreadable ($($_.Exception.Message)) - using built-in fallback list" }
+    }
+    if (-not $msPaths) {
+        $msPaths = $msPathsFallback
+        $Errors.Add('memsearch-index-config-missing')
+        Log "INDEX path set: built-in fallback ($($msPaths.Count) paths) - memory-index-paths.json not usable"
+    }
     foreach ($mp in $msPaths) {
         if (-not (Test-Path $mp)) { continue }
         $r = & $msExe index $mp 2>&1 | Select-Object -Last 1
