@@ -138,7 +138,7 @@
       "C:\\Users\\eric_rash\\Desktop\\DEV"
     ]
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -301,7 +301,7 @@
       "autoUpdate": true
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
