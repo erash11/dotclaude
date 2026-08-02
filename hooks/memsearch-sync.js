@@ -54,10 +54,10 @@ const INDEX_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcrip
 // block the full timeout waiting on memsearch's own lock and then time out. The
 // lock is acquired ATOMICALLY (open 'wx') so only one winner indexes per cluster;
 // late arrivals see EEXIST and skip immediately — that run covers their new
-// content too. A lock older than LOCK_STALE_MS is treated as abandoned (a prior
-// run was hard-killed before cleanup) and taken over.
+// content too. The owner PID is checked before a lock is reclaimed. Age is only
+// a fallback for locks written by an older version that did not record a PID.
 const LOCK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-index.lock');
-const LOCK_STALE_MS = 30000;
+const LOCK_STALE_MS = 5 * 60 * 1000;
 // A single ETIMEDOUT is self-healing (the next session's incremental index
 // catches up) and usually just means session-end contention — three fired on
 // 2026-07-08 alone while the index stayed healthy. Only escalate to .errors.log
@@ -77,6 +77,16 @@ function logErr(msg) {
 const existing = PATHS.filter(p => fs.existsSync(p));
 if (existing.length === 0) process.exit(0);
 
+function isProcessAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (e) {
+    return e && e.code === 'EPERM';
+  }
+}
+
 // --- Acquire the lock atomically. Only one process wins per cluster. ---
 let haveLock = false;
 try {
@@ -85,13 +95,25 @@ try {
   fs.closeSync(fd);
   haveLock = true;
 } catch (e) {
-  // Lock exists. If it's fresh, another run owns this cluster — skip. If it's
-  // stale, the owner died before cleanup; reclaim it.
+  // Lock exists. If its owner is alive, skip regardless of age. Only reclaim a
+  // dead owner (or an old lock with no readable owner PID).
+  let ownerPid = null;
+  try {
+    ownerPid = Number.parseInt(fs.readFileSync(LOCK_FILE, 'utf8').trim(), 10);
+  } catch (_) {}
+  if (isProcessAlive(ownerPid)) process.exit(0);
+
   let stale = false;
   try { stale = (Date.now() - fs.statSync(LOCK_FILE).mtimeMs) >= LOCK_STALE_MS; }
   catch (_) { stale = true; } // lock vanished between open and stat — race; treat as reclaimable
   if (!stale) process.exit(0);
-  try { fs.writeFileSync(LOCK_FILE, String(process.pid)); haveLock = true; }
+  try {
+    fs.unlinkSync(LOCK_FILE);
+    const fd = fs.openSync(LOCK_FILE, 'wx');
+    fs.writeSync(fd, String(process.pid));
+    fs.closeSync(fd);
+    haveLock = true;
+  }
   catch (_) { process.exit(0); }
 }
 
@@ -101,7 +123,9 @@ function releaseLock() {
 
 try {
   const res = spawnSync('memsearch', ['index', ...existing], {
-    shell: true,
+    // Avoid an intermediate cmd.exe. On timeout, the direct child is killed
+    // instead of leaving an orphaned Python indexer behind.
+    shell: false,
     windowsHide: true,
     encoding: 'utf8',
     timeout: 45000,

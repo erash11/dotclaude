@@ -156,13 +156,58 @@ if ($msExe -and -not $DryRun) {
         $Errors.Add('memsearch-index-config-missing')
         Log "INDEX path set: built-in fallback ($($msPaths.Count) paths) - memory-index-paths.json not usable"
     }
-    foreach ($mp in $msPaths) {
-        if (-not (Test-Path $mp)) { continue }
-        $r = & $msExe index $mp 2>&1 | Select-Object -Last 1
-        Log "INDEX $(Split-Path $mp -Leaf): $r"
-        if ($LASTEXITCODE -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:$(Split-Path $mp -Leaf)") }
+    # The backup's full reindex shares the SessionEnd hook's lock. Without this,
+    # the nightly pass can run beside Claude/Codex hooks and multiply the Python
+    # embedding workers. Reclaim only a dead owner; indexers can exceed 30s.
+    $indexLockFile = "$U\.claude\global-memory\transcripts\.memsearch-index.lock"
+    $indexLockStaleMs = 5 * 60 * 1000
+    $haveIndexLock = $false
+    try {
+        $lockStream = [System.IO.File]::Open($indexLockFile, [System.IO.FileMode]::CreateNew)
+        $lockStream.Close()
+        [System.IO.File]::WriteAllText($indexLockFile, [string]$PID)
+        $haveIndexLock = $true
     }
-    if (-not $msFail) {
+    catch {
+        $ownerAlive = $false
+        try {
+            $ownerPid = [int](Get-Content -Raw -LiteralPath $indexLockFile)
+            $null = Get-Process -Id $ownerPid -ErrorAction Stop
+            $ownerAlive = $true
+        } catch {}
+        if (-not $ownerAlive) {
+            $lockStale = $false
+            try { $lockStale = (((Get-Date) - (Get-Item -LiteralPath $indexLockFile).LastWriteTime).TotalMilliseconds -ge $indexLockStaleMs) }
+            catch { $lockStale = $true }
+            if ($lockStale) {
+                try {
+                    Remove-Item -LiteralPath $indexLockFile -Force -ErrorAction Stop
+                    $lockStream = [System.IO.File]::Open($indexLockFile, [System.IO.FileMode]::CreateNew)
+                    $lockStream.Close()
+                    [System.IO.File]::WriteAllText($indexLockFile, [string]$PID)
+                    $haveIndexLock = $true
+                } catch {}
+            }
+        }
+    }
+
+    if (-not $haveIndexLock) {
+        Log "INDEX skipped - another index run is active; next hook/nightly pass will catch up"
+    }
+    else {
+        try {
+            $existingPaths = @($msPaths | Where-Object { Test-Path $_ })
+            if ($existingPaths.Count -gt 0) {
+                $r = & $msExe index $existingPaths 2>&1 | Select-Object -Last 1
+                Log "INDEX full set: $r"
+                if ($LASTEXITCODE -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:full-set") }
+            }
+        }
+        finally {
+            Remove-Item -LiteralPath $indexLockFile -Force -ErrorAction SilentlyContinue
+        }
+    }
+    if (-not $msFail -and $haveIndexLock) {
         Remove-Item "$U\.claude\global-memory\transcripts\.memsearch-timeout-streak" -Force -ErrorAction SilentlyContinue
         Log "INDEX complete - hook timeout-streak counter reset"
     }
