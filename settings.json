@@ -138,7 +138,7 @@
       "C:\\Users\\eric_rash\\Desktop\\DEV"
     ]
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -208,6 +208,7 @@
           {
             "type": "command",
             "command": "node \"C:/Users/eric_rash/.claude/hooks/transcript-capture.js\"",
+            "shell": "powershell",
             "timeout": 5
           }
         ]
@@ -301,7 +302,7 @@
       "autoUpdate": true
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,

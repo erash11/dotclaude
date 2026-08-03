@@ -29,7 +29,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\" ] || node \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\"",
+            "command": "if (Test-Path 'C:/Users/eric_rash/.claude/skills/impeccable/scripts/hook.mjs') { node 'C:/Users/eric_rash/.claude/skills/impeccable/scripts/hook.mjs' }",
+            "shell": "powershell",
             "timeout": 5,
             "statusMessage": "Checking UI changes"
           }
@@ -41,7 +42,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\" ] || node \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\"",
+            "command": "if (Test-Path 'C:/Users/eric_rash/.claude/skills/impeccable/scripts/hook.mjs') { node 'C:/Users/eric_rash/.claude/skills/impeccable/scripts/hook.mjs' }",
+            "shell": "powershell",
             "timeout": 30,
             "statusMessage": "Design deep pass"
           }
