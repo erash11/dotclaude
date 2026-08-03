@@ -46,7 +46,12 @@ mirror clones of all 19 repositories.
 
 Do these while you still have access. Checked off, they make the rest recoverable.
 
-- [ ] `D:\AssistantBackup` is present and its `MANIFEST/verify.log` ends in `VERDICT: PASS`
+- [ ] `D:\AssistantBackup` is present and its `MANIFEST/verify.log` ends in `VERDICT: PASS`.
+      If it does not, or the log is older than your last working day, re-run it:
+      `pwsh -NoProfile -File ~\.claude\scripts\verify-backup.ps1` (~15 min for ~9 GB).
+      `MISMATCH` means the SSD copy differs from a source that still exists — investigate
+      before trusting the drive. `SOURCE-GONE` is expected and harmless: the SSD is
+      additive, so it keeps files you deleted upstream. That is deliberate, not drift.
 - [ ] Every credential in Step 8's table exists in your password manager
 - [ ] `gh auth status` shows `erash11`; you can log in from another device
 - [ ] Google Drive has finished syncing (no pending-upload badge)
