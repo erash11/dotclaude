@@ -28,16 +28,31 @@ Bookmark #1 on your phone. If you can reach either copy, you can recover everyth
 | Codex memory, sessions, agents | `~\.codex` | Google Drive `Backups/Machine/codex` | YES |
 | Gemini/Antigravity state | `~\.gemini` | Google Drive `Backups/Machine/gemini` | YES |
 | Memory compiler + local patches | `~\.claude\claude-memory-compiler` | GitHub fork `erash11/claude-memory-compiler` | YES |
-| Non-repo DEV work folders (Football, SpecialRequests, …) | `Desktop\DEV` | **Baylor** OneDrive `Backups/DEV-NonRepo` | **NO — institutional data stays with Baylor** |
+| Non-repo DEV work folders (Football, SpecialRequests, …) | `Desktop\DEV` | **SSD** `D:\AssistantBackup\DEV-nonrepo` + Baylor OneDrive | YES — SSD copy since 2026-08-03 |
+| **Gitignored data inside git repos** (`forceplate.db`, `.rds`, outputs) | `Desktop\DEV\<repo>` | **SSD** `D:\AssistantBackup\DEV-repo-data` | YES — **was backed up NOWHERE before 2026-08-03** |
+| **Uncommitted edits to tracked files** | `Desktop\DEV\<repo>` | **SSD** `D:\AssistantBackup\DEV-working-tree` | YES — added 2026-08-03 |
 | Baylor work drive | Baylor OneDrive `00_Primary_Storage_Drive` | Baylor's problem | NO |
 
-The split is deliberate: everything personal or career-durable lives under your personal
-GitHub and personal Google account. Institutional/athlete data stays on Baylor storage.
+**Read the two bold rows above.** Pushing a repo backs up only its *tracked* files.
+`ForcePlate_DecisionSystem` publishes 7 MB to GitHub against 1,709 MB on disk — the
+database it runs on is gitignored. "All repos pushed clean" is true and says nothing about
+whether your data survives. Coverage is declared in `~\.claude\scripts\backup-manifest.json`,
+not inferred from whether a folder happens to be a git repo.
 
-**Daily automation:** scheduled task `KeystoneOS-DailyBackup` (6:15 AM) auto-commits and
-pushes the memory repos, snapshots the non-git stores to the clouds above, and refreshes
-this document's Google Drive mirror. The weekly stack doctor (Mondays) alarms if backups
-go stale. Failures surface at the start of every Claude session.
+The personal/institutional split is recorded per path in that manifest as a `class` tag. As
+of 2026-08-03 both classes are mirrored to the SSD by explicit decision; the tag exists so
+institutional data stays identifiable and purgeable rather than blended in.
+
+**Daily automation:** scheduled task `KeystoneOS-DailyBackup` (00:30) auto-commits and
+pushes the memory repos, captures what git cannot carry to the SSD, snapshots the non-git
+stores to the clouds above, and refreshes this document's Google Drive mirror. Each
+destination gets a run-specific receipt read back after writing, so a run that copied
+nothing cannot report success. The weekly stack doctor (Mondays) alarms if backups go
+stale. Failures surface at the start of every Claude session.
+
+**If the SSD is detached** the run warns (`backup-target-offline:SSD`) and continues —
+your cloud backups still happen, but nothing gitignored is captured that night. Reattach
+and the next run catches up.
 
 ## Accounts you need (before you start)
 
@@ -138,12 +153,23 @@ Everything cloud-side is platform-neutral (GitHub + Google Drive). The translati
 | `G:\My Drive` | `~/Library/CloudStorage/GoogleDrive-<gmail>/My Drive` |
 | Baylor OneDrive | `~/Library/CloudStorage/OneDrive-BaylorUniversity` |
 
+**For a planned move to a Mac, follow `MIGRATION-MACOS.md` instead of this section.** It
+is the ordered, executable procedure with pinned versions, the `DEV-repo-data` overlay
+step, credential inventory, and launchd conversions. This section remains only as the
+emergency summary.
+
 Steps: same order as Scenario A — tools, `~/.claude` from the dotclaude repo, snapshots
-from Google Drive, repos from GitHub, venvs, then scheduling. The one real port is
-`daily-backup.ps1` (robocopy + Register-ScheduledTask are Windows-only): ask Claude to
-"port daily-backup.ps1 to Mac per RESTORE.md" — it's a mechanical rsync + cron rewrite.
-Paths inside `~\.claude\settings.json` and hooks reference `C:\Users\eric_rash` and will
-need the same find/replace; Claude can sweep them in one pass.
+from Google Drive or the SSD, repos from GitHub, venvs, then scheduling. The one real port
+is `daily-backup.ps1` (robocopy + Register-ScheduledTask are Windows-only).
+
+**Correction (2026-08-03):** an earlier version of this document claimed
+`~\.claude\settings.json` and the hooks hardcode `C:\Users\eric_rash`. They do not. An
+audit found exactly three files that do: `CLAUDE.md`, `scripts\daily-backup.ps1`, and
+`scripts\fix-msys-ad-stall.ps1`. The port is smaller than this document used to imply.
+
+**Also note:** the SSD is NTFS and macOS mounts it read-only. You can restore *from* it but
+cannot back up *to* it until you reformat to exFAT. See `MIGRATION-MACOS.md` Step 10 — this
+will silently break your nightly backup on the new machine if missed.
 
 ## Deliberately NOT backed up
 
