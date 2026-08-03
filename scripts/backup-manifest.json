@@ -370,6 +370,28 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/NCAA_BestPractices_Doc",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/OKRs_2026-27",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/PlayerProfiles_FB_03-28-2026",
       "class": "institutional",
       "isRepo": true,
@@ -466,6 +488,17 @@
       ],
       "captureOrphans": true,
       "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SPA_Presentation",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
     },
     {
       "path": "DEV/SpecialRequests",
