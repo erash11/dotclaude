@@ -1,12 +1,26 @@
-# daily-backup.ps1 — KeystoneOS Phase 2 durability automation (2026-07-23)
-# Runs daily at 06:15 via scheduled task "KeystoneOS-DailyBackup".
+# daily-backup.ps1 — KeystoneOS durability automation
+# Runs daily at 00:30 via scheduled task "KeystoneOS-DailyBackup".
 #
-# Two jobs:
+# Jobs:
 #   1. Git-sync the memory repos (auto-commit + push). Git history is the review
 #      trail — an accidental deletion is recoverable from any prior commit.
-#   2. Robocopy-snapshot non-git stores to OneDrive.
-#      Personal context (Claude transcripts, Codex/Gemini state) -> personal OneDrive.
-#      Baylor work folders (non-repo DEV dirs)                   -> Baylor OneDrive.
+#   2. Snapshot non-git stores to the cloud targets.
+#   3. Manifest-driven coverage (added 2026-08-03). See backup-manifest.json.
+#
+# COVERAGE MODEL — read this before changing anything above.
+# Until 2026-08-03 this script chose a mechanism by asking "is it a git repo?".
+# That proxy silently dropped 4.13 GB across 8,883 files: gitignored data inside
+# git repos is pushed by neither `git push` nor the non-repo snapshot. A second,
+# narrower gap was uncommitted edits to tracked files. Three states now exist and
+# all three must be covered:
+#
+#   tracked + committed + pushed  -> GitHub
+#   untracked or ignored          -> SSD (captureOrphans)
+#   tracked + modified            -> SSD (captureWorkingTree)
+#
+# backup-manifest.json is the single authority. It is DEFAULT-DENY: a DEV
+# directory absent from it raises an error rather than being silently skipped.
+# Never reintroduce repo-detection as a coverage test.
 #
 # Failures append ONE line to global-memory\transcripts\.errors.log, which every
 # Claude session surfaces at startup. Full detail: scripts\logs\daily-backup.log.
@@ -88,7 +102,79 @@ function Snapshot($src, $dst, [string[]]$extraXD) {
     }
 }
 
-Log "===== daily-backup start (DryRun=$DryRun) ====="
+# --- Manifest-driven coverage (2026-08-03) ---
+
+$ManifestFile = "$U\.claude\scripts\backup-manifest.json"
+$Manifest = $null
+if (Test-Path $ManifestFile) {
+    try { $Manifest = Get-Content -Raw $ManifestFile | ConvertFrom-Json }
+    catch { $Errors.Add('manifest-unreadable'); }
+}
+
+# Additive copy: no /MIR. A mirror faithfully replicates the deletion you are
+# trying to recover from, so the survivor-grade store never propagates deletes.
+function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
+    if (-not (Test-Path $src)) { return $false }
+    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $extraXD
+    $a = @($src, $dst, '/E', '/R:1', '/W:1', '/NFL', '/NDL', '/NP', '/NJH', '/NJS') + ($xd | ForEach-Object { @('/XD', $_) })
+    if ($DryRun) { $a += '/L' }
+    $null = robocopy @a
+    return ($LASTEXITCODE -lt 8)
+}
+
+# Capture what git will never carry: untracked/ignored files, and uncommitted
+# edits to tracked files. Authoritative source is git itself, not a path regex —
+# an approximated .gitignore will drift from the real rules.
+function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
+    $skipRe = '(^|\\)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(\\|$)'
+    $copied = 0
+
+    $orphans = @()
+    $orphans += (git -C $repoPath ls-files --others --exclude-standard 2>$null)
+    $orphans += (git -C $repoPath ls-files --others --ignored --exclude-standard 2>$null)
+    foreach ($rel in ($orphans | Where-Object { $_ } | Sort-Object -Unique)) {
+        $w = $rel -replace '/', '\'
+        if ($w -match $skipRe) { continue }
+        $s = Join-Path $repoPath $w
+        if (-not (Test-Path -LiteralPath $s -PathType Leaf)) { continue }
+        $d = Join-Path $ssdRoot "DEV-repo-data\$repoName\$w"
+        if (-not $DryRun) {
+            New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null
+            try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
+        } else { $copied++ }
+    }
+
+    # Uncommitted edits to tracked files: GitHub holds only the last committed state.
+    foreach ($rel in (git -C $repoPath diff --name-only 2>$null)) {
+        $w = $rel -replace '/', '\'
+        $s = Join-Path $repoPath $w
+        if (-not (Test-Path -LiteralPath $s -PathType Leaf)) { continue }
+        $d = Join-Path $ssdRoot "DEV-working-tree\$repoName\$w"
+        if (-not $DryRun) {
+            New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null
+            try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
+        } else { $copied++ }
+    }
+    return $copied
+}
+
+# A receipt proves the destination accepted a write in THIS run. Exit code 0 can
+# be produced by a run that did nothing; a sentinel read back cannot.
+function Write-Receipt($root, $runId) {
+    if ($DryRun) { return $true }
+    try {
+        $rd = Join-Path $root '_receipts'
+        New-Item -ItemType Directory -Force -Path $rd | Out-Null
+        $f = Join-Path $rd "run-$runId.txt"
+        Set-Content -LiteralPath $f -Value "run=$runId written=$(Get-Date -Format 'o') host=$env:COMPUTERNAME" -Encoding UTF8
+        $back = Get-Content -LiteralPath $f -Raw
+        return ($back -match [regex]::Escape($runId))
+    } catch { return $false }
+}
+
+$RunId = (Get-Date -Format 'yyyyMMdd-HHmmss')
+
+Log "===== daily-backup start (DryRun=$DryRun) run=$RunId ====="
 
 # --- 1. Git memory repos ---
 Sync-Repo "$U\Desktop\SecondBrain"      'main'
@@ -112,11 +198,71 @@ Snapshot "$U\.codex\agents"     "$P\codex\agents"     @()
 Snapshot "$U\.codex\sqlite"     "$P\codex\sqlite"     @()
 Snapshot "$U\.gemini"           "$P\gemini"           @('antigravity_browser_profile')
 
-# --- 2b. Non-repo DEV folders -> Baylor OneDrive ---
+# --- 2b. Manifest-driven DEV coverage (replaces repo-detection, 2026-08-03) ---
 $B = "$U\OneDrive - Baylor University\Backups\DEV-NonRepo"
-Get-ChildItem "$U\Desktop\DEV" -Directory |
-    Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
-    ForEach-Object { Snapshot $_.FullName "$B\$($_.Name)" @('.playwright-mcp') }
+$SsdRoot = $null
+$SsdOnline = $false
+
+if ($Manifest) {
+    $SsdRoot = $Manifest.destinations.ssd.root
+    $SsdOnline = Test-Path $SsdRoot
+    if (-not $SsdOnline) {
+        # Optional destination: warn loudly, never fail silently, never block the run.
+        $Errors.Add('backup-target-offline:SSD')
+        Log "TARGET SSD $SsdRoot NOT MOUNTED - orphan and working-tree capture SKIPPED this run"
+    }
+
+    # DEFAULT-DENY: a DEV directory absent from the manifest is an error, not a skip.
+    $declared = @($Manifest.paths | Where-Object { $_.path -like 'DEV/*' } | ForEach-Object { $_.path -replace '^DEV/', '' })
+    $onDisk = @(Get-ChildItem "$U\Desktop\DEV" -Directory | Where-Object { $_.Name -notmatch '^\.' } | Select-Object -ExpandProperty Name)
+    $unmanaged = @($onDisk | Where-Object { $declared -notcontains $_ })
+    if ($unmanaged.Count -gt 0) {
+        $Errors.Add("manifest-unmanaged:$($unmanaged -join '|')")
+        Log "MANIFEST $($unmanaged.Count) unmanaged DEV dir(s): $($unmanaged -join ', ') - add to backup-manifest.json"
+    }
+    $missing = @($declared | Where-Object { $onDisk -notcontains $_ })
+    if ($missing.Count -gt 0) { Log "MANIFEST $($missing.Count) declared dir(s) absent from disk: $($missing -join ', ')" }
+
+    foreach ($entry in ($Manifest.paths | Where-Object { $_.path -like 'DEV/*' })) {
+        $name = $entry.path -replace '^DEV/', ''
+        $src = "$U\Desktop\DEV\$name"
+        if (-not (Test-Path $src)) { continue }
+
+        # Whole-folder snapshot for anything GitHub does not carry.
+        if (-not $entry.isRepo) {
+            if ($SsdOnline) {
+                $ok = Snapshot-Additive $src (Join-Path $SsdRoot "DEV-nonrepo\$name") @('.playwright-mcp')
+                if (-not $ok) { $Errors.Add("snapshot-ssd:$name") }
+            }
+            if ($entry.destinations -contains 'baylor' -and (Test-Path (Split-Path $B -Parent))) {
+                Snapshot $src "$B\$name" @('.playwright-mcp')
+            }
+        }
+        # Repos: capture exactly what git cannot.
+        elseif ($SsdOnline -and ($entry.captureOrphans -or $entry.captureWorkingTree)) {
+            $n = Capture-RepoData $src $name $SsdRoot
+            if ($n -gt 0) { Log "CAPTURE $name : $n file(s) git does not carry" }
+            $Results.Add(@{ kind = 'capture'; name = $name; status = 'OK' })
+        }
+    }
+
+    # Receipts: prove each destination accepted a write in THIS run.
+    foreach ($dn in @('ssd', 'drive')) {
+        $root = $Manifest.destinations.$dn.root
+        if (-not $root -or -not (Test-Path $root)) { continue }
+        if ($DryRun) { Log "RECEIPT $dn : skipped (dry run wrote nothing to verify)"; continue }
+        if (Write-Receipt $root $RunId) { Log "RECEIPT $dn : verified run=$RunId" }
+        else { $Errors.Add("receipt-failed:$dn"); Log "RECEIPT $dn : FAILED - destination did not read back the sentinel" }
+    }
+}
+else {
+    # Manifest missing: fall back to old behaviour but make the degradation loud.
+    $Errors.Add('manifest-missing')
+    Log "MANIFEST not found at $ManifestFile - falling back to repo-detection (KNOWN TO UNDER-COVER by ~4 GB)"
+    Get-ChildItem "$U\Desktop\DEV" -Directory |
+        Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
+        ForEach-Object { Snapshot $_.FullName "$B\$($_.Name)" @('.playwright-mcp') }
+}
 
 # --- 2c. Full memsearch reindex (no session-time cap) ---
 # The SessionEnd hook indexes incrementally under a 45s cap - enough for normal
