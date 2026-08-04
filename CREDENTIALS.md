@@ -59,6 +59,31 @@ and correct — do not attempt to preserve them. The *code* that uses them is yo
 
 On macOS this script needs porting to `.sh` — see `MIGRATION-MACOS.md` Step 8.
 
+## Accepted exception — FaceComps `.env.local` on the SSD
+
+**Decided by Eric, 2026-08-04, with the exposure stated.** `D:\AssistantBackup\DEV-nonrepo\Football\FaceComps\simulator\.env.local`
+remains on the external drive, holding live values for `DATABASE_URL`, `SITE_PASSWORD`,
+`COOKIE_SECRET`, and `CATAPULT_TOKEN`.
+
+This is the one deliberate departure from "no credentials in any backup." The reasoning
+was that the old machine — the only other copy — is being decommissioned during the
+2026-08-04 migration, so purging risked losing the values outright.
+
+Consequences, recorded so they are not rediscovered by surprise:
+
+- The drive is unencrypted NTFS. Anyone who plugs it in can read these four values.
+- If the drive is lost, checked as luggage, or left unattended, rotate all four:
+  Supabase (`DATABASE_URL`), the site password, and the Catapult token. `COOKIE_SECRET`
+  needs no service — regenerate with `openssl rand -hex 32`.
+- Once these values are in the password manager, delete the SSD copy and remove this
+  section. The backup script's deny-list already prevents it being re-copied, so deleting
+  it is permanent and safe.
+
+Every other credential found on the drive was purged on 2026-08-04: `morning-briefing/secrets/owa-profile`
+(7,633 files — a live authenticated Outlook browser profile with Cookies and Login Data)
+and an `edge-profile` under `SpecialRequests` (272 files). Both were session state that
+re-authentication regenerates.
+
 ## Rules
 
 1. **Never** commit a value to this file or any repo. `.env` files stay gitignored.
