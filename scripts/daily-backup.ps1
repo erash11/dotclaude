@@ -246,6 +246,33 @@ if ($Manifest) {
         }
     }
 
+    # Non-DEV manifest paths (~/.claude subtrees, .codex, .gemini, SecondBrain) -> SSD.
+    # These were declared in the manifest from the start but the loop above filters on
+    # 'DEV/*', so they were inert: the cloud snapshots in 2a kept Google Drive current
+    # while the SSD copy stayed frozen at the Phase 1 rescue. Found 2026-08-04 when the
+    # SSD held 1,596 conversation files against 1,630 on disk — and MIGRATION-MACOS.md
+    # Step 3 restores conversation history from the SSD, not from Drive.
+    if ($SsdOnline) {
+        foreach ($entry in ($Manifest.paths | Where-Object { $_.path -notlike 'DEV/*' -and $_.destinations -contains 'ssd' })) {
+            $rel = $entry.path -replace '/', '\'
+            $src = Join-Path $U $rel
+            if (-not (Test-Path $src)) { continue }
+            $leaf = Split-Path $rel -Leaf
+            $sub = switch -Wildcard ($entry.path) {
+                '.claude/*'  { "claude\$leaf" }
+                'Desktop/*'  { $leaf }
+                default      { $leaf -replace '^\.', '' }
+            }
+            $extra = @()
+            if ($entry.path -eq '.codex') { $extra = @('work') }
+            if ($entry.path -eq '.gemini') { $extra = @('antigravity_browser_profile') }
+            if ($entry.path -like 'Desktop/*') { $extra = @('.git') }
+            $ok = Snapshot-Additive $src (Join-Path $SsdRoot $sub) $extra
+            if ($ok) { Log "STATE-SSD $($entry.path) -> $sub : OK" }
+            else { $Errors.Add("snapshot-ssd:$($entry.path)"); Log "STATE-SSD $($entry.path) : FAILED" }
+        }
+    }
+
     # Receipts: prove each destination accepted a write in THIS run.
     foreach ($dn in @('ssd', 'drive')) {
         $root = $Manifest.destinations.$dn.root
