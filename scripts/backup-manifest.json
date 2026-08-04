@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-08-03",
+  "generated": "2026-08-04",
   "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
   "destinations": {
     "ssd": {
@@ -488,6 +488,17 @@
       ],
       "captureOrphans": true,
       "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SoftwareTech_Mgmt_Framework",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
     },
     {
       "path": "DEV/SPA_Presentation",
