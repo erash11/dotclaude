@@ -17,13 +17,15 @@ procedure for a planned move to macOS.
 
 ## Read this first — three things that will bite you
 
-1. **The SSD is NTFS. macOS mounts NTFS read-only.** You can restore *from*
-   `D:\AssistantBackup` on the Mac, but you cannot back up *to* it until you reformat
-   (Step 10). Do not skip this — it silently breaks your nightly backup on the new machine.
+1. **Use the exFAT drive, `E:\AssistantBackup`.** As of 2026-08-04 this is the migration
+   drive: a 117 GB SanDisk formatted exFAT, which macOS reads **and writes**. The older
+   `D:\AssistantBackup` (WD easystore, NTFS) is retained as a second archive copy but
+   macOS mounts NTFS **read-only** — restoring from it works, backing up to it does not.
+   Bring E:. Leave D: at home as insurance.
 2. **Restore `~/.claude` before anything else.** It carries the settings, hooks, and
    skills that make every later step work.
-3. **Credentials are deliberately in no backup.** Nothing you restore includes an API key.
-   Step 8 is not optional — without it you get code that cannot run.
+3. **Credentials are deliberately in no backup** — with one recorded exception, see
+   `CREDENTIALS.md`. Step 8 is not optional; without it you get code that cannot run.
 
 ---
 
@@ -117,10 +119,15 @@ Restores settings, hooks, agents, all skills, working memory, and the backup scr
 
 ## Step 3 — Restore AI state from the SSD
 
-Plug in the SSD; it mounts at `/Volumes/CRASHBOX`. Set `SSD` once and reuse it.
+Plug in the exFAT drive. Confirm where it landed before relying on the path — the volume
+label determines the mount point, and an unlabelled drive mounts as `/Volumes/NO NAME`,
+whose space breaks unquoted shell commands:
 
 ```bash
-export SSD="/Volumes/CRASHBOX/AssistantBackup"
+ls /Volumes/                     # find the real name first
+export SSD="/Volumes/ASSISTANT/AssistantBackup"   # adjust to what you actually see
+ls "$SSD"                        # should list DEV-repo-data, DEV-nonrepo, repos, claude, ...
+cat "$SSD/MANIFEST/TRANSFER-CHECK.txt"   # should read: RESULT : PASS
 
 rsync -a "$SSD/claude/projects/"        ~/.claude/projects/
 rsync -a "$SSD/codex/"                  ~/.codex/
@@ -313,14 +320,20 @@ Replace `YOURNAME` throughout — launchd does not expand `~` or `$HOME`.
 `daily-backup.ps1` needs three changes: `robocopy` → `rsync -a --delete`,
 `Register-ScheduledTask` → the launchd plists above, and Windows paths → macOS paths.
 
-**The NTFS problem.** `AssistantBackup` lives on an NTFS volume; macOS mounts it read-only.
-Your nightly backup will fail to write to it. Pick one:
+**The NTFS problem — resolved 2026-08-04.** This step used to require reformatting,
+macFUSE, or a new drive, because the backup lived on NTFS and macOS mounts NTFS
+read-only. The backup now lives on `E:` (exFAT), which macOS reads and writes natively.
+Point the ported backup script at the exFAT drive's mount path and nothing else is needed.
 
-- **Reformat to exFAT (recommended).** Cross-platform read/write. Do it *only after*
-  Step 11 passes and a second copy exists — reformatting destroys the drive's contents.
-- **Install macFUSE + NTFS-3G.** Keeps the drive Windows-compatible; adds a kernel
-  extension and ongoing maintenance.
-- **Buy a second drive** for the Mac and keep the WD as a frozen archive. Safest.
+Two things still worth doing:
+
+- **Label the drive.** An unlabelled exFAT volume mounts as `/Volumes/NO NAME`; the space
+  breaks unquoted paths in scripts and launchd plists. Name it `ASSISTANT`.
+- **Replace the flash drive eventually.** E: is a USB stick — fine for transport, but
+  flash wears out under sustained daily backup writes and tends to fail without warning.
+  Move the nightly target to a proper external SSD once you have one on the Mac. The WD
+  (NTFS, retained as archive) can be reformatted to exFAT then, since by that point a
+  verified copy exists in two other places.
 
 Also retarget destinations: Baylor OneDrive is gone, so the manifest's `institutional`
 paths need a new home — the SSD and Google Drive.
