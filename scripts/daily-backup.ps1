@@ -111,12 +111,36 @@ if (Test-Path $ManifestFile) {
     catch { $Errors.Add('manifest-unreadable'); }
 }
 
+# CREDENTIAL DENY-LIST — applies to every capture path. Do not weaken.
+#
+# Files are gitignored for two OPPOSITE reasons: "too big / regenerable" (we DO want
+# these backed up — that was the whole point of the 2026-08-03 orphan capture) and
+# "must never leave this machine" (we must NOT). Capturing by "what git ignores"
+# treats them identically and silently inverts the credential-exclusion policy that
+# RESTORE.md and CREDENTIALS.md both state.
+#
+# Found 2026-08-04, pre-migration: 7,633 files / 391.6 MB of
+# morning-briefing\secrets\owa-profile — a live authenticated Outlook browser profile
+# including Cookies, Login Data and Local State — had been copied to a portable drive
+# that was about to leave the building. Purged. This list is why it cannot recur.
+$CredDenyDirs  = @('secrets', 'owa-profile', 'edge-profile', 'chrome-profile', '.aws', '.ssh')
+$CredDenyFiles = @('.env', '.env.local', '.env.production', '.env.production.local',
+                   'Cookies', 'Login Data', 'Local State', '.credentials.json',
+                   'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json')
+# Regex form for the file-by-file capture path. '.env.example' is deliberately NOT
+# denied: it holds key NAMES only and is what makes a restore reconstructable.
+$CredDenyRe = '(^|\\)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(\\|$)' +
+              '|(^|\\)\.env(\.local|\.production(\.local)?)?$' +
+              '|(^|\\)(Cookies|Login Data|Local State)$' +
+              '|(^|\\)(\.credentials|gmail_token|gmail_credentials|token|credentials)\.json$'
+
 # Additive copy: no /MIR. A mirror faithfully replicates the deletion you are
 # trying to recover from, so the survivor-grade store never propagates deletes.
 function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
     if (-not (Test-Path $src)) { return $false }
-    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $extraXD
-    $a = @($src, $dst, '/E', '/R:1', '/W:1', '/NFL', '/NDL', '/NP', '/NJH', '/NJS') + ($xd | ForEach-Object { @('/XD', $_) })
+    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $CredDenyDirs + $extraXD
+    $a = @($src, $dst, '/E', '/R:1', '/W:1', '/NFL', '/NDL', '/NP', '/NJH', '/NJS') +
+         ($xd | ForEach-Object { @('/XD', $_) }) + ($CredDenyFiles | ForEach-Object { @('/XF', $_) })
     if ($DryRun) { $a += '/L' }
     $null = robocopy @a
     return ($LASTEXITCODE -lt 8)
@@ -126,15 +150,19 @@ function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
 # edits to tracked files. Authoritative source is git itself, not a path regex —
 # an approximated .gitignore will drift from the real rules.
 function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
-    $skipRe = '(^|\\)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(\\|$)'
+    # Rebuildable dirs OR anything on the credential deny-list. The deny-list is the
+    # security boundary here: this function's whole job is to capture gitignored files,
+    # and 'secrets/' is gitignored precisely because it must never be copied.
+    $skipRe = '(^|\\)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(\\|$)' + '|' + $CredDenyRe
     $copied = 0
+    $denied = 0
 
     $orphans = @()
     $orphans += (git -C $repoPath ls-files --others --exclude-standard 2>$null)
     $orphans += (git -C $repoPath ls-files --others --ignored --exclude-standard 2>$null)
     foreach ($rel in ($orphans | Where-Object { $_ } | Sort-Object -Unique)) {
         $w = $rel -replace '/', '\'
-        if ($w -match $skipRe) { continue }
+        if ($w -match $skipRe) { if ($w -match $CredDenyRe) { $denied++ }; continue }
         $s = Join-Path $repoPath $w
         if (-not (Test-Path -LiteralPath $s -PathType Leaf)) { continue }
         $d = Join-Path $ssdRoot "DEV-repo-data\$repoName\$w"
@@ -155,6 +183,7 @@ function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
             try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
         } else { $copied++ }
     }
+    if ($denied -gt 0) { Log "  DENY $repoName : $denied credential file(s) excluded by policy" }
     return $copied
 }
 
