@@ -6,8 +6,17 @@
     "ssd": {
       "root": "D:\\AssistantBackup",
       "volumeLabel": "CRASHBOX",
+      "filesystem": "NTFS",
       "optional": true,
-      "note": "Survivor-grade. Optional because the drive may be detached; absence warns, never fails silently."
+      "note": "The nightly target on the Windows machine. ON MACOS THIS MUST BE REPOINTED at a real external SSD before enabling the backup job - see START-HERE.md Phase 8. NTFS, so macOS mounts it read-only anyway."
+    },
+    "transport": {
+      "root": "E:\\AssistantBackup",
+      "volumeLabel": "ASSISTANT",
+      "filesystem": "exFAT",
+      "optional": true,
+      "writtenByJob": false,
+      "note": "TRANSPORT ONLY - a USB flash stick used to carry the backup to the new Mac on 2026-08-04. Measured ~3 MB/s write; a nightly run would take over an hour and flash degrades under that workload. Never make this the recurring backup target. exFAT so macOS can read AND write it during the restore."
     },
     "drive": {
       "root": "G:\\My Drive\\Backups\\Machine",

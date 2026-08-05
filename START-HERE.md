@@ -290,8 +290,15 @@ launchctl list | grep keystone
 
 **Port the backup script.** `~/.claude/scripts/daily-backup.ps1` needs: `robocopy` →
 `rsync -a` (no `--delete`; the store is deliberately additive), `Register-ScheduledTask` →
-the plists above, and Windows paths → macOS paths. Update the SSD root in
-`~/.claude/scripts/backup-manifest.json` to the drive's macOS mount path.
+the plists above, and Windows paths → macOS paths.
+
+**Do NOT point the nightly backup at the USB stick you restored from.** It is transport
+only. Measured write throughput on 2026-08-04 was ~3 MB/s — a nightly run would take over
+an hour, and flash wears out under exactly that pattern. Until a proper external SSD is
+attached to this Mac, set `destinations.ssd.optional = true` and let the job warn that the
+target is absent; the GitHub and Drive paths still run. When a real drive arrives, format
+it exFAT, give it a label with no spaces, and set `destinations.ssd.root` to its
+`/Volumes/<LABEL>/AssistantBackup` path.
 
 Preserve these behaviours when porting — each was added to fix a real failure:
 - **Default-deny.** A DEV directory absent from the manifest must raise an error.
