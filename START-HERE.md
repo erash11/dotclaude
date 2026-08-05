@@ -14,10 +14,10 @@ Install Claude Code first if it is not there (`npm install -g @anthropic-ai/clau
 which needs Node — `brew install node`). Then open a terminal, run `claude`, and paste this:
 
 > Read the file `/Volumes/ASSISTANT/AssistantBackup/START-HERE.md` and execute Part 2, the
-> restore runbook, from the beginning. Work through the phases in order. Stop at every
-> CHECKPOINT and show me what you found before continuing. Do not skip Phase D step 2 —
-> it is the one that matters. If the drive is not at that path, run `ls /Volumes/` and ask
-> me which one it is rather than guessing.
+> restore runbook, starting at Phase 0. Work through the phases in order. Stop at every
+> CHECKPOINT and show me what you found before continuing. Do not skip Phase 4.2, the
+> overlay — it is the one that matters. If the drive is not at that path, run
+> `ls /Volumes/` and ask me which one it is rather than guessing.
 
 That is the whole instruction. Everything else is in Part 2.
 
