@@ -60,7 +60,25 @@ and correct — do not attempt to preserve them. The *code* that uses them is yo
 
 On macOS this script needs porting to `.sh` — see `MIGRATION-MACOS.md` Step 8.
 
-## Accepted exception — FaceComps `.env.local` on the SSD
+## Accepted exception — credential files on the transport drive (expanded 2026-08-05)
+
+**Decided by Eric, 2026-08-05, with the exposure stated.** After the macOS restore
+surfaced that the drive carries SIX live credential files (not one), Eric chose to
+KEEP all of them on the drive rather than delete after restoring:
+
+- `DEV-nonrepo/Football/FaceComps/simulator/.env.local` (the original 2026-08-04 exception)
+- `DEV-repo-data/ForcePlate_DecisionSystem/.env` (4 VALD keys)
+- `DEV-repo-data/PlayerProfiles_FB_03-28-2026/.env` (Perch token)
+- `DEV-repo-data/DataBase_GPS_Reporting/gps_report/.env` (Catapult token)
+- `DEV-nonrepo/reMarkale_extract/.env` (Google Vision key)
+- `DEV-nonrepo/Football/PFF_Data_Project/.env` (PFF keys)
+
+Consequences, restated: the drive is unencrypted exFAT — anyone who plugs it in can
+read these values. If the drive is lost or leaves your control, rotate everything
+above at the issuing services. The ported backup's deny-list prevents any NEW
+credential from reaching the drive; these six are grandfathered by this decision.
+
+## Superseded — original FaceComps-only exception
 
 **Decided by Eric, 2026-08-04, with the exposure stated.** `D:\AssistantBackup\DEV-nonrepo\Football\FaceComps\simulator\.env.local`
 remains on the external drive, holding live values for `DATABASE_URL`, `SITE_PASSWORD`,
