@@ -1,12 +1,13 @@
-# Shell / Environment (Windows)
+# Shell / Environment (macOS)
 
-- **Prefer the PowerShell tool over Bash** for shell operations on this machine. Bash frequently fails silently (exit 1, empty output) in this Windows setup — if a Bash call returns empty/nonzero with no clear error, switch to PowerShell immediately instead of retrying.
-- Don't rely on PATH inside Bash for these binaries — use the verified full paths:
-  - Python: `C:\Users\eric_rash\AppData\Local\Python\bin\python.exe`
-  - uv: `C:\Users\eric_rash\.local\bin\uv.exe`
-  - Go: `C:\Program Files\Go\bin\go.exe`
-  - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `C:\Users\eric_rash\go\bin\`
-  - Node: `C:\Program Files\nodejs\node.exe`
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- Verified tool paths (all on PATH via Homebrew unless noted):
+  - Python: `/opt/homebrew/bin/python3` (3.14, PEP 668-managed — use venvs or `uv`, never `pip install` globally)
+  - uv: `/Users/kristinarash/.local/bin/uv`
+  - Go: `/opt/homebrew/bin/go`
+  - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `/Users/kristinarash/go/bin/`
+  - Node: `/opt/homebrew/bin/node`
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`).
 
 # Workflow Expectations
 

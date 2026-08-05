@@ -4,14 +4,14 @@
   "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
   "destinations": {
     "ssd": {
-      "root": "D:\\AssistantBackup",
+      "root": "/Volumes/CRASHBOX/AssistantBackup",
       "volumeLabel": "CRASHBOX",
-      "filesystem": "NTFS",
+      "filesystem": "exFAT",
       "optional": true,
-      "note": "The nightly target on the Windows machine. ON MACOS THIS MUST BE REPOINTED at a real external SSD before enabling the backup job - see START-HERE.md Phase 8. NTFS, so macOS mounts it read-only anyway."
+      "note": "Nightly target. No external SSD attached to this Mac yet (2026-08-05) - optional:true lets the job warn instead of fail. When a real drive arrives: format exFAT, label with no spaces, point this at /Volumes/<LABEL>/AssistantBackup."
     },
     "transport": {
-      "root": "E:\\AssistantBackup",
+      "root": "/Volumes/ASSISTANT/AssistantBackup",
       "volumeLabel": "ASSISTANT",
       "filesystem": "exFAT",
       "optional": true,
@@ -19,11 +19,11 @@
       "note": "TRANSPORT ONLY - a USB flash stick used to carry the backup to the new Mac on 2026-08-04. Measured ~3 MB/s write; a nightly run would take over an hour and flash degrades under that workload. Never make this the recurring backup target. exFAT so macOS can read AND write it during the restore."
     },
     "drive": {
-      "root": "G:\\My Drive\\Backups\\Machine",
+      "root": "/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/Backups/Machine",
       "optional": false
     },
     "baylor": {
-      "root": "C:\\Users\\eric_rash\\OneDrive - Baylor University\\Backups\\DEV-NonRepo",
+      "root": "/Users/kristinarash/Library/CloudStorage/OneDrive-BaylorUniversity/Backups/DEV-NonRepo",
       "optional": true,
       "deprecated": true,
       "note": "Lost when Baylor access ends. Never the sole destination for anything."

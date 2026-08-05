@@ -1,5 +1,11 @@
 # MIGRATION-MACOS.md — Windows → MacBook Neo
 
+> **AS-EXECUTED 2026-08-05:** this plan was executed. The full corrections ledger
+> (what was wrong, missing, or out of order) lives in `START-HERE.md` under
+> "AS-EXECUTED CORRECTIONS". Read that first before reusing any step here.
+
+
+
 **For Eric.** This is the executable walkthrough for standing up the MacBook Neo with your
 full working system. `RESTORE.md` is the disaster-recovery map; **this** is the ordered
 procedure for a planned move to macOS.

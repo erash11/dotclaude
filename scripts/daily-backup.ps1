@@ -1,38 +1,28 @@
-# daily-backup.ps1 — KeystoneOS durability automation
-# Runs daily at 00:30 via scheduled task "KeystoneOS-DailyBackup".
+# daily-backup.ps1 — KeystoneOS durability automation (macOS port, 2026-08-05)
+# Runs daily at 00:30 via launchd agent "com.keystone.dailybackup".
+# Windows original preserved at daily-backup.ps1.win-orig.
 #
 # Jobs:
-#   1. Git-sync the memory repos (auto-commit + push). Git history is the review
-#      trail — an accidental deletion is recoverable from any prior commit.
-#   2. Snapshot non-git stores to the cloud targets.
-#   3. Manifest-driven coverage (added 2026-08-03). See backup-manifest.json.
+#   1. Git-sync the memory repos (auto-commit + push).
+#   2. Snapshot non-git stores to the cloud targets (rsync, ADDITIVE - no delete).
+#   3. Manifest-driven coverage. backup-manifest.json is the single authority.
 #
-# COVERAGE MODEL — read this before changing anything above.
-# Until 2026-08-03 this script chose a mechanism by asking "is it a git repo?".
-# That proxy silently dropped 4.13 GB across 8,883 files: gitignored data inside
-# git repos is pushed by neither `git push` nor the non-repo snapshot. A second,
-# narrower gap was uncommitted edits to tracked files. Three states now exist and
-# all three must be covered:
-#
+# COVERAGE MODEL — three states, all covered (each gap was a real failure):
 #   tracked + committed + pushed  -> GitHub
 #   untracked or ignored          -> SSD (captureOrphans)
 #   tracked + modified            -> SSD (captureWorkingTree)
-#
-# backup-manifest.json is the single authority. It is DEFAULT-DENY: a DEV
-# directory absent from it raises an error rather than being silently skipped.
+# DEFAULT-DENY: a DEV directory absent from the manifest raises an error.
 # Never reintroduce repo-detection as a coverage test.
-#
-# Failures append ONE line to global-memory\transcripts\.errors.log, which every
-# Claude session surfaces at startup. Full detail: scripts\logs\daily-backup.log.
 
 param([switch]$DryRun)
 
 $ErrorActionPreference = 'Continue'
-$U = $env:USERPROFILE
-$LogDir = "$U\.claude\scripts\logs"
-$LogFile = "$LogDir\daily-backup.log"
-$StateFile = "$LogDir\backup-state.json"
-$ErrorsLog = "$U\.claude\global-memory\transcripts\.errors.log"
+$U = $HOME
+$DevRoot = "$U/DEV"                       # was Desktop\DEV on Windows
+$LogDir = "$U/.claude/scripts/logs"
+$LogFile = "$LogDir/daily-backup.log"
+$StateFile = "$LogDir/backup-state.json"
+$ErrorsLog = "$U/.claude/global-memory/transcripts/.errors.log"
 $Errors = [System.Collections.Generic.List[string]]::new()
 $Results = [System.Collections.Generic.List[object]]::new()
 
@@ -46,7 +36,7 @@ function Log($msg) {
 
 function Sync-Repo($path, $branch) {
     $name = Split-Path $path -Leaf
-    if ($path -eq "$U\.claude") { $name = 'dotclaude' }
+    if ($path -eq "$U/.claude") { $name = 'dotclaude' }
     if (-not (Test-Path (Join-Path $path '.git'))) { $Errors.Add("repo-missing:$name"); return }
     Push-Location $path
     try {
@@ -87,73 +77,61 @@ function Sync-Repo($path, $branch) {
     } finally { Pop-Location }
 }
 
-function Snapshot($src, $dst, [string[]]$extraXD) {
-    if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
-    $xd = @('node_modules', '.venv', '__pycache__', '.git', 'cache', 'tmp') + $extraXD
-    $args = @($src, $dst, '/MIR', '/R:2', '/W:5', '/NFL', '/NDL', '/NP', '/NJH') + ($xd | ForEach-Object { @('/XD', $_) })
-    if ($DryRun) { $args += '/L' }
-    robocopy @args | Select-Object -Last 6 | Add-Content -Path $LogFile
-    if ($LASTEXITCODE -ge 8) {
-        $Errors.Add("snapshot:$([IO.Path]::GetFileName($dst))")
-        Log "SNAP $src -> $dst : FAILED (robocopy exit $LASTEXITCODE)"
-    } else {
-        Log "SNAP $src -> $dst : OK (exit $LASTEXITCODE)"
-        $Results.Add(@{ kind='snapshot'; name=$dst; status='OK' })
-    }
-}
-
-# --- Manifest-driven coverage (2026-08-03) ---
-
-$ManifestFile = "$U\.claude\scripts\backup-manifest.json"
-$Manifest = $null
-if (Test-Path $ManifestFile) {
-    try { $Manifest = Get-Content -Raw $ManifestFile | ConvertFrom-Json }
-    catch { $Errors.Add('manifest-unreadable'); }
-}
-
 # CREDENTIAL DENY-LIST — applies to every capture path. Do not weaken.
-#
-# Files are gitignored for two OPPOSITE reasons: "too big / regenerable" (we DO want
-# these backed up — that was the whole point of the 2026-08-03 orphan capture) and
-# "must never leave this machine" (we must NOT). Capturing by "what git ignores"
-# treats them identically and silently inverts the credential-exclusion policy that
-# RESTORE.md and CREDENTIALS.md both state.
-#
-# Found 2026-08-04, pre-migration: 7,633 files / 391.6 MB of
-# morning-briefing\secrets\owa-profile — a live authenticated Outlook browser profile
-# including Cookies, Login Data and Local State — had been copied to a portable drive
-# that was about to leave the building. Purged. This list is why it cannot recur.
+# Files are gitignored for two OPPOSITE reasons: too big (back up) and secret
+# (never). On 2026-08-04 the capture swept 7,633 files of a live authenticated
+# Outlook browser profile onto a portable drive. This list is why it cannot recur.
+# 2026-08-05 restore finding: five project .env files DID reach the transport
+# drive via a pre-deny-list capture - the list below now provably excludes them.
 $CredDenyDirs  = @('secrets', 'owa-profile', 'edge-profile', 'chrome-profile', '.aws', '.ssh')
 $CredDenyFiles = @('.env', '.env.local', '.env.production', '.env.production.local',
                    'Cookies', 'Login Data', 'Local State', '.credentials.json',
                    'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json')
-# Regex form for the file-by-file capture path. '.env.example' is deliberately NOT
-# denied: it holds key NAMES only and is what makes a restore reconstructable.
-$CredDenyRe = '(^|\\)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(\\|$)' +
-              '|(^|\\)\.env(\.local|\.production(\.local)?)?$' +
-              '|(^|\\)(Cookies|Login Data|Local State)$' +
-              '|(^|\\)(\.credentials|gmail_token|gmail_credentials|token|credentials)\.json$'
+# Regex form (forward-slash paths). '.env.example' is deliberately NOT denied.
+$CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(/|$)' +
+              '|(^|/)\.env(\.local|\.production(\.local)?)?$' +
+              '|(^|/)(Cookies|Login Data|Local State)$' +
+              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials)\.json$'
 
-# Additive copy: no /MIR. A mirror faithfully replicates the deletion you are
-# trying to recover from, so the survivor-grade store never propagates deletes.
-function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
-    if (-not (Test-Path $src)) { return $false }
-    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $CredDenyDirs + $extraXD
-    $a = @($src, $dst, '/E', '/R:1', '/W:1', '/NFL', '/NDL', '/NP', '/NJH', '/NJS') +
-         ($xd | ForEach-Object { @('/XD', $_) }) + ($CredDenyFiles | ForEach-Object { @('/XF', $_) })
-    if ($DryRun) { $a += '/L' }
-    $null = robocopy @a
-    return ($LASTEXITCODE -lt 8)
+# rsync wrapper. ADDITIVE - never --delete: a mirror faithfully replicates the
+# deletion you are trying to recover from. (The Windows original mirrored the
+# cloud snapshots with /MIR; the macOS port makes every destination additive.)
+function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFiles) {
+    if (-not (Test-Path $src)) { return $null }
+    New-Item -ItemType Directory -Force -Path $dst | Out-Null
+    $a = @('-a', '--no-specials', '--no-devices')
+    if ($DryRun) { $a += '-n' }
+    foreach ($d in $excludeDirs)  { $a += "--exclude=$d/" }
+    foreach ($f in $excludeFiles) { $a += "--exclude=$f" }
+    $a += @("$src/", "$dst/")
+    & /usr/bin/rsync @a 2>&1 | Select-Object -Last 3 | Add-Content -Path $LogFile
+    return ($LASTEXITCODE -eq 0)
 }
 
-# Capture what git will never carry: untracked/ignored files, and uncommitted
-# edits to tracked files. Authoritative source is git itself, not a path regex —
-# an approximated .gitignore will drift from the real rules.
+function Snapshot($src, $dst, [string[]]$extraXD) {
+    if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
+    $xd = @('node_modules', '.venv', '__pycache__', '.git', 'cache', 'tmp') + $extraXD
+    $ok = Invoke-Rsync $src $dst $xd @()
+    if ($ok -ne $true) {
+        $Errors.Add("snapshot:$([IO.Path]::GetFileName($dst))")
+        Log "SNAP $src -> $dst : FAILED (rsync exit $LASTEXITCODE)"
+    } else {
+        Log "SNAP $src -> $dst : OK"
+        $Results.Add(@{ kind='snapshot'; name=$dst; status='OK' })
+    }
+}
+
+function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
+    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $CredDenyDirs + $extraXD
+    $ok = Invoke-Rsync $src $dst $xd $CredDenyFiles
+    if ($null -eq $ok) { return $false }
+    return $ok
+}
+
+# Capture what git will never carry. Authoritative source is git itself, not a
+# path regex - an approximated .gitignore will drift from the real rules.
 function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
-    # Rebuildable dirs OR anything on the credential deny-list. The deny-list is the
-    # security boundary here: this function's whole job is to capture gitignored files,
-    # and 'secrets/' is gitignored precisely because it must never be copied.
-    $skipRe = '(^|\\)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(\\|$)' + '|' + $CredDenyRe
+    $skipRe = '(^|/)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(/|$)' + '|' + $CredDenyRe
     $copied = 0
     $denied = 0
 
@@ -161,11 +139,10 @@ function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
     $orphans += (git -C $repoPath ls-files --others --exclude-standard 2>$null)
     $orphans += (git -C $repoPath ls-files --others --ignored --exclude-standard 2>$null)
     foreach ($rel in ($orphans | Where-Object { $_ } | Sort-Object -Unique)) {
-        $w = $rel -replace '/', '\'
-        if ($w -match $skipRe) { if ($w -match $CredDenyRe) { $denied++ }; continue }
-        $s = Join-Path $repoPath $w
+        if ($rel -match $skipRe) { if ($rel -match $CredDenyRe) { $denied++ }; continue }
+        $s = Join-Path $repoPath $rel
         if (-not (Test-Path -LiteralPath $s -PathType Leaf)) { continue }
-        $d = Join-Path $ssdRoot "DEV-repo-data\$repoName\$w"
+        $d = Join-Path $ssdRoot "DEV-repo-data/$repoName/$rel"
         if (-not $DryRun) {
             New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null
             try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
@@ -174,10 +151,9 @@ function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
 
     # Uncommitted edits to tracked files: GitHub holds only the last committed state.
     foreach ($rel in (git -C $repoPath diff --name-only 2>$null)) {
-        $w = $rel -replace '/', '\'
-        $s = Join-Path $repoPath $w
+        $s = Join-Path $repoPath $rel
         if (-not (Test-Path -LiteralPath $s -PathType Leaf)) { continue }
-        $d = Join-Path $ssdRoot "DEV-working-tree\$repoName\$w"
+        $d = Join-Path $ssdRoot "DEV-working-tree/$repoName/$rel"
         if (-not $DryRun) {
             New-Item -ItemType Directory -Force -Path (Split-Path $d -Parent) | Out-Null
             try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
@@ -187,48 +163,52 @@ function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
     return $copied
 }
 
-# A receipt proves the destination accepted a write in THIS run. Exit code 0 can
-# be produced by a run that did nothing; a sentinel read back cannot.
+# A receipt proves the destination accepted a write in THIS run.
 function Write-Receipt($root, $runId) {
     if ($DryRun) { return $true }
     try {
         $rd = Join-Path $root '_receipts'
         New-Item -ItemType Directory -Force -Path $rd | Out-Null
         $f = Join-Path $rd "run-$runId.txt"
-        Set-Content -LiteralPath $f -Value "run=$runId written=$(Get-Date -Format 'o') host=$env:COMPUTERNAME" -Encoding UTF8
+        Set-Content -LiteralPath $f -Value "run=$runId written=$(Get-Date -Format 'o') host=$(hostname)" -Encoding UTF8
         $back = Get-Content -LiteralPath $f -Raw
         return ($back -match [regex]::Escape($runId))
     } catch { return $false }
 }
 
-$RunId = (Get-Date -Format 'yyyyMMdd-HHmmss')
+$ManifestFile = "$U/.claude/scripts/backup-manifest.json"
+$Manifest = $null
+if (Test-Path $ManifestFile) {
+    try { $Manifest = Get-Content -Raw $ManifestFile | ConvertFrom-Json }
+    catch { $Errors.Add('manifest-unreadable'); }
+}
 
+$RunId = (Get-Date -Format 'yyyyMMdd-HHmmss')
 Log "===== daily-backup start (DryRun=$DryRun) run=$RunId ====="
 
 # --- 1. Git memory repos ---
-Sync-Repo "$U\Desktop\SecondBrain"      'main'
-Sync-Repo "$U\.claude\global-memory"    'main'
-Sync-Repo "$U\.claude"                  'main'
-Sync-Repo "$U\.claude\skills"           'main'
+Sync-Repo "$U/Desktop/SecondBrain"      'main'
+Sync-Repo "$U/.claude/global-memory"    'main'
+Sync-Repo "$U/.claude"                  'main'
+Sync-Repo "$U/.claude/skills"           'main'
 
 # --- 2a. Personal-context snapshots -> personal Google Drive (gmail) ---
-# NOT OneDrive: the personal OneDrive account is not signed in on this machine
-# (discovered 2026-07-23 — that folder is a dead local dir), and Google is the
-# durable personal identity that survives any institutional change.
-$P = 'G:\My Drive\Backups\Machine'
-if (-not (Test-Path 'G:\My Drive')) {
+$GDrive = "$U/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive"
+$P = "$GDrive/Backups/Machine"
+if (-not (Test-Path $GDrive)) {
     $Errors.Add('backup-target-offline:GoogleDrive')
-    Log "TARGET G:\My Drive NOT MOUNTED - is Google Drive for Desktop running? Skipping personal snapshots."
+    Log "TARGET $GDrive NOT MOUNTED - is Google Drive for Desktop running? Skipping personal snapshots."
 }
-Snapshot "$U\.claude\projects"  "$P\claude-projects"  @('worktrees')
-Snapshot "$U\.codex\memories"   "$P\codex\memories"   @()
-Snapshot "$U\.codex\sessions"   "$P\codex\sessions"   @()
-Snapshot "$U\.codex\agents"     "$P\codex\agents"     @()
-Snapshot "$U\.codex\sqlite"     "$P\codex\sqlite"     @()
-Snapshot "$U\.gemini"           "$P\gemini"           @('antigravity_browser_profile')
+Snapshot "$U/.claude/projects"  "$P/claude-projects"  @('worktrees')
+Snapshot "$U/.codex/memories"   "$P/codex/memories"   @()
+Snapshot "$U/.codex/sessions"   "$P/codex/sessions"   @()
+Snapshot "$U/.codex/agents"     "$P/codex/agents"     @()
+Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @()
+Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_profile')
 
-# --- 2b. Manifest-driven DEV coverage (replaces repo-detection, 2026-08-03) ---
-$B = "$U\OneDrive - Baylor University\Backups\DEV-NonRepo"
+# --- 2b. Manifest-driven DEV coverage ---
+$B = $null
+if ($Manifest -and $Manifest.destinations.baylor.root) { $B = $Manifest.destinations.baylor.root }
 $SsdRoot = $null
 $SsdOnline = $false
 
@@ -243,7 +223,7 @@ if ($Manifest) {
 
     # DEFAULT-DENY: a DEV directory absent from the manifest is an error, not a skip.
     $declared = @($Manifest.paths | Where-Object { $_.path -like 'DEV/*' } | ForEach-Object { $_.path -replace '^DEV/', '' })
-    $onDisk = @(Get-ChildItem "$U\Desktop\DEV" -Directory | Where-Object { $_.Name -notmatch '^\.' } | Select-Object -ExpandProperty Name)
+    $onDisk = @(Get-ChildItem $DevRoot -Directory | Where-Object { $_.Name -notmatch '^\.' } | Select-Object -ExpandProperty Name)
     $unmanaged = @($onDisk | Where-Object { $declared -notcontains $_ })
     if ($unmanaged.Count -gt 0) {
         $Errors.Add("manifest-unmanaged:$($unmanaged -join '|')")
@@ -254,20 +234,18 @@ if ($Manifest) {
 
     foreach ($entry in ($Manifest.paths | Where-Object { $_.path -like 'DEV/*' })) {
         $name = $entry.path -replace '^DEV/', ''
-        $src = "$U\Desktop\DEV\$name"
+        $src = "$DevRoot/$name"
         if (-not (Test-Path $src)) { continue }
 
-        # Whole-folder snapshot for anything GitHub does not carry.
         if (-not $entry.isRepo) {
             if ($SsdOnline) {
-                $ok = Snapshot-Additive $src (Join-Path $SsdRoot "DEV-nonrepo\$name") @('.playwright-mcp')
+                $ok = Snapshot-Additive $src (Join-Path $SsdRoot "DEV-nonrepo/$name") @('.playwright-mcp')
                 if (-not $ok) { $Errors.Add("snapshot-ssd:$name") }
             }
-            if ($entry.destinations -contains 'baylor' -and (Test-Path (Split-Path $B -Parent))) {
-                Snapshot $src "$B\$name" @('.playwright-mcp')
+            if ($entry.destinations -contains 'baylor' -and $B -and (Test-Path (Split-Path $B -Parent))) {
+                Snapshot $src "$B/$name" @('.playwright-mcp')
             }
         }
-        # Repos: capture exactly what git cannot.
         elseif ($SsdOnline -and ($entry.captureOrphans -or $entry.captureWorkingTree)) {
             $n = Capture-RepoData $src $name $SsdRoot
             if ($n -gt 0) { Log "CAPTURE $name : $n file(s) git does not carry" }
@@ -276,19 +254,14 @@ if ($Manifest) {
     }
 
     # Non-DEV manifest paths (~/.claude subtrees, .codex, .gemini, SecondBrain) -> SSD.
-    # These were declared in the manifest from the start but the loop above filters on
-    # 'DEV/*', so they were inert: the cloud snapshots in 2a kept Google Drive current
-    # while the SSD copy stayed frozen at the Phase 1 rescue. Found 2026-08-04 when the
-    # SSD held 1,596 conversation files against 1,630 on disk — and MIGRATION-MACOS.md
-    # Step 3 restores conversation history from the SSD, not from Drive.
     if ($SsdOnline) {
         foreach ($entry in ($Manifest.paths | Where-Object { $_.path -notlike 'DEV/*' -and $_.destinations -contains 'ssd' })) {
-            $rel = $entry.path -replace '/', '\'
+            $rel = $entry.path
             $src = Join-Path $U $rel
             if (-not (Test-Path $src)) { continue }
             $leaf = Split-Path $rel -Leaf
             $sub = switch -Wildcard ($entry.path) {
-                '.claude/*'  { "claude\$leaf" }
+                '.claude/*'  { "claude/$leaf" }
                 'Desktop/*'  { $leaf }
                 default      { $leaf -replace '^\.', '' }
             }
@@ -312,43 +285,35 @@ if ($Manifest) {
     }
 }
 else {
-    # Manifest missing: fall back to old behaviour but make the degradation loud.
     $Errors.Add('manifest-missing')
     Log "MANIFEST not found at $ManifestFile - falling back to repo-detection (KNOWN TO UNDER-COVER by ~4 GB)"
-    Get-ChildItem "$U\Desktop\DEV" -Directory |
-        Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
-        ForEach-Object { Snapshot $_.FullName "$B\$($_.Name)" @('.playwright-mcp') }
+    if ($B) {
+        Get-ChildItem $DevRoot -Directory |
+            Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
+            ForEach-Object { Snapshot $_.FullName "$B/$($_.Name)" @('.playwright-mcp') }
+    }
 }
 
 # --- 2c. Full memsearch reindex (no session-time cap) ---
-# The SessionEnd hook indexes incrementally under a 45s cap - enough for normal
-# session deltas, never for heavy days (a 41-chunk backlog on 7/24 needed >10 min
-# at ONNX embedding speed). This nightly pass absorbs any backlog and resets the
-# hook's consecutive-timeout alarm so mornings start clean.
-$msExe = "$U\AppData\Roaming\Python\Python314\Scripts\memsearch.exe"
+$msExe = "$U/.local/bin/memsearch"
 if (-not (Test-Path $msExe)) { $msExe = (Get-Command memsearch -ErrorAction SilentlyContinue).Source }
 if ($msExe -and -not $DryRun) {
     $msFail = $false
-    # Single source of truth: KeystoneOS declares the index set in
-    # data\memory-index-paths.json (AGENTS.md routes "Memory index path templates"
-    # there). This list used to be hardcoded here and had silently diverged from
-    # that file - three declared paths (KeystoneOS project memory, Inbox\meetings,
-    # .codex\memories) were never actually indexed by this nightly pass, so the
-    # registry described an index that did not exist. Read it instead.
+    # Single source of truth: KeystoneOS data/memory-index-paths.json.
     $msPathsFallback = @(
-        "$U\.claude\global-memory\transcripts",
-        "$U\.claude\projects\C--Users-eric-rash\memory",
-        "$U\.claude\claude-memory-compiler\daily",
-        "$U\.claude\claude-memory-compiler\knowledge",
-        "$U\Desktop\SecondBrain\Knowledge"
+        "$U/.claude/global-memory/transcripts",
+        "$U/.claude/projects/C--Users-eric-rash/memory",
+        "$U/.claude/claude-memory-compiler/daily",
+        "$U/.claude/claude-memory-compiler/knowledge",
+        "$U/Desktop/SecondBrain/Knowledge"
     )
-    $msConfig = "$U\Desktop\DEV\KeystoneOS\data\memory-index-paths.json"
+    $msConfig = "$DevRoot/KeystoneOS/data/memory-index-paths.json"
     $msPaths = $null
     if (Test-Path -LiteralPath $msConfig) {
         try {
             $declared = (Get-Content -Raw -LiteralPath $msConfig | ConvertFrom-Json).paths
             if ($declared -and $declared.Count -ge 1) {
-                $msPaths = @($declared | ForEach-Object { ($_ -replace '\{HOME\}', $U) -replace '/', '\' })
+                $msPaths = @($declared | ForEach-Object { $_ -replace '\{HOME\}', $U })
                 Log "INDEX path set: $($msPaths.Count) paths from memory-index-paths.json"
             }
         } catch { Log "INDEX config unreadable ($($_.Exception.Message)) - using built-in fallback list" }
@@ -358,10 +323,8 @@ if ($msExe -and -not $DryRun) {
         $Errors.Add('memsearch-index-config-missing')
         Log "INDEX path set: built-in fallback ($($msPaths.Count) paths) - memory-index-paths.json not usable"
     }
-    # The backup's full reindex shares the SessionEnd hook's lock. Without this,
-    # the nightly pass can run beside Claude/Codex hooks and multiply the Python
-    # embedding workers. Reclaim only a dead owner; indexers can exceed 30s.
-    $indexLockFile = "$U\.claude\global-memory\transcripts\.memsearch-index.lock"
+    # Shares the SessionEnd hook's lock. Reclaim only a dead owner.
+    $indexLockFile = "$U/.claude/global-memory/transcripts/.memsearch-index.lock"
     $indexLockStaleMs = 5 * 60 * 1000
     $haveIndexLock = $false
     try {
@@ -410,16 +373,16 @@ if ($msExe -and -not $DryRun) {
         }
     }
     if (-not $msFail -and $haveIndexLock) {
-        Remove-Item "$U\.claude\global-memory\transcripts\.memsearch-timeout-streak" -Force -ErrorAction SilentlyContinue
+        Remove-Item "$U/.claude/global-memory/transcripts/.memsearch-timeout-streak" -Force -ErrorAction SilentlyContinue
         Log "INDEX complete - hook timeout-streak counter reset"
     }
-} elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch.exe not found" }
+} elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch not found" }
 
 # --- 2d. Mirror the recovery guide to the cloud backup root ---
-if ((Test-Path 'G:\My Drive') -and (Test-Path "$U\.claude\RESTORE.md") -and -not $DryRun) {
-    New-Item -ItemType Directory -Force -Path 'G:\My Drive\Backups' | Out-Null
-    Copy-Item "$U\.claude\RESTORE.md" 'G:\My Drive\Backups\RESTORE.md' -Force
-    Log "RESTORE.md mirrored to G:\My Drive\Backups\"
+if ((Test-Path $GDrive) -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
+    New-Item -ItemType Directory -Force -Path "$GDrive/Backups" | Out-Null
+    Copy-Item "$U/.claude/RESTORE.md" "$GDrive/Backups/RESTORE.md" -Force
+    Log "RESTORE.md mirrored to $GDrive/Backups/"
 }
 
 # --- 3. State + escalation ---
@@ -433,7 +396,7 @@ $status = if ($Errors.Count -eq 0) { 'OK' } else { 'ERROR' }
 } | ConvertTo-Json | Set-Content -Path $StateFile
 
 if ($Errors.Count -gt 0 -and -not $DryRun) {
-    $line = "[{0}] daily-backup: {1} error(s): {2} - see ~\.claude\scripts\logs\daily-backup.log" -f (Get-Date -Format 'yyyy-MM-dd HH:mm'), $Errors.Count, ($Errors -join ', ')
+    $line = "[{0}] daily-backup: {1} error(s): {2} - see ~/.claude/scripts/logs/daily-backup.log" -f (Get-Date -Format 'yyyy-MM-dd HH:mm'), $Errors.Count, ($Errors -join ', ')
     Add-Content -Path $ErrorsLog -Value $line
 }
 

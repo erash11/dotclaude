@@ -128,17 +128,15 @@
       "mcp__claude_ai_Fireflies__fireflies_get_summary",
       "mcp__claude_ai_Fireflies__fireflies_search",
       "Edit(//c/Users/eric_rash/.claude/**)",
-      "Write(//c/Users/eric_rash/.claude/**)"
+      "Write(//c/Users/eric_rash/.claude/**)",
+      "Bash(launchctl:*)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
-      "C:\\Users\\eric_rash\\Desktop\\DEV\\ForcePlate_DecisionSystem\\src",
-      "C:\\Users\\eric_rash\\Desktop\\DEV\\ForcePlate_DecisionSystem\\config",
-      "C:\\Users\\eric_rash\\Desktop\\DEV\\ForcePlate_DecisionSystem",
-      "C:\\Users\\eric_rash\\Desktop\\DEV"
+      "/Users/kristinarash/DEV"
     ]
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -146,7 +144,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/c/Users/eric_rash/.local/bin/uv run --directory /c/Users/eric_rash/.claude/claude-memory-compiler python /c/Users/eric_rash/.claude/claude-memory-compiler/hooks/session-start.py",
+            "command": "/Users/kristinarash/.local/bin/uv run --directory /Users/kristinarash/.claude/claude-memory-compiler python /Users/kristinarash/.claude/claude-memory-compiler/hooks/session-start.py",
             "timeout": 15,
             "statusMessage": "Loading knowledge base..."
           }
@@ -156,7 +154,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"C:/Program Files/nodejs/node.exe\" \"C:/Users/eric_rash/.claude/hooks/context-mode-cache-heal.mjs\""
+            "command": "\"/Users/kristinarash/.claude/hooks/context-mode-cache-heal.mjs\""
           }
         ]
       },
@@ -164,7 +162,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"C:/Users/eric_rash/.claude/hooks/keystone-unified-snapshot.js\"",
+            "command": "node \"/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js\"",
             "timeout": 5,
             "statusMessage": "Loading unified cross-harness snapshot..."
           }
@@ -177,7 +175,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/c/Users/eric_rash/.local/bin/uv run --directory /c/Users/eric_rash/.claude/claude-memory-compiler python /c/Users/eric_rash/.claude/claude-memory-compiler/hooks/pre-compact.py",
+            "command": "/Users/kristinarash/.local/bin/uv run --directory /Users/kristinarash/.claude/claude-memory-compiler python /Users/kristinarash/.claude/claude-memory-compiler/hooks/pre-compact.py",
             "timeout": 10
           }
         ]
@@ -189,12 +187,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "exec /c/Users/eric_rash/.local/bin/uv run --directory /c/Users/eric_rash/.claude/claude-memory-compiler python /c/Users/eric_rash/.claude/claude-memory-compiler/hooks/session-end.py",
+            "command": "exec /Users/kristinarash/.local/bin/uv run --directory /Users/kristinarash/.claude/claude-memory-compiler python /Users/kristinarash/.claude/claude-memory-compiler/hooks/session-end.py",
             "timeout": 20
           },
           {
             "type": "command",
-            "command": "exec node \"C:/Users/eric_rash/.claude/hooks/memsearch-sync.js\"",
+            "command": "exec node \"/Users/kristinarash/.claude/hooks/memsearch-sync.js\"",
             "timeout": 50
           }
         ]
@@ -207,8 +205,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"C:/Users/eric_rash/.claude/hooks/transcript-capture.js\"",
-            "shell": "powershell",
+            "command": "node \"/Users/kristinarash/.claude/hooks/transcript-capture.js\"",
             "timeout": 5
           }
         ]
@@ -216,10 +213,9 @@
     ]
   },
   "enableWorkflows": true,
-  "defaultShell": "powershell",
   "statusLine": {
     "type": "command",
-    "command": "python C:/Users/eric_rash/.claude/statusline-command.py"
+    "command": "command -v jq >/dev/null 2>&1 || { printf '%s' \"$(basename \"$PWD\")\"; exit 0; }; input=$(cat); model=$(printf '%s' \"$input\" | jq -r '.model.display_name'); dir=$(printf '%s' \"$input\" | jq -r '.workspace.current_dir'); name=$(basename \"$dir\"); branch=\"\"; dirty=\"\"; if cd \"$dir\" 2>/dev/null; then branch=$(git --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null); if [ -n \"$branch\" ]; then st=$(git --no-optional-locks status --porcelain 2>/dev/null); [ -n \"$st\" ] && dirty=\" *\"; fi; fi; if [ -n \"$branch\" ]; then printf '\\033[2m%s\\033[0m \\033[2;36m%s\\033[0m \\033[2;33m(%s%s)\\033[0m' \"$model\" \"$name\" \"$branch\" \"$dirty\"; else printf '\\033[2m%s\\033[0m \\033[2;36m%s\\033[0m' \"$model\" \"$name\"; fi"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
@@ -302,7 +298,7 @@
       "autoUpdate": true
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
@@ -312,5 +308,6 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true
+  "useAutoModeDuringPlan": true,
+  "advisorModel": "opus"
 }

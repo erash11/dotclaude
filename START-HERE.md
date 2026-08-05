@@ -28,6 +28,93 @@ An unlabelled exFAT volume mounts as `/Volumes/NO NAME` — the space matters, s
 
 # PART 2 — Restore runbook (Claude executes this)
 
+## AS-EXECUTED CORRECTIONS — 2026-08-05 (first real execution)
+
+This runbook was executed 2026-08-05 on the new Mac (user account `kristinarash`).
+Phases 0–5 ran via `restore.command`; Phases 6–9 via Claude Code. Everything below
+is what reality disagreed with. Read this section FIRST if executing again.
+
+**Phase 0 — add a network precondition.** DNS was down during the scripted run, so
+all 18 GitHub clones failed silently-ish (17 logged failures). Nothing later works
+without the clones. Add: `curl -sI https://github.com` must succeed before Phase 4,
+or clone from `$SSD/repos/` mirrors instead.
+
+**Clone-repair procedure (used to fix Phase 4 after the fact).** When target dirs
+already hold overlay data: `git init` in place, `git fetch origin`, point HEAD+index
+at origin's default branch (`git update-ref` + `git symbolic-ref` + `git reset --mixed`),
+then check out ONLY missing tracked files (`git ls-files -z --deleted | xargs -0 git
+checkout --`). This preserves uncommitted overlay edits. Same procedure fixed
+SecondBrain (the Phase 3 rsync does not carry `.git` — the drive copy has none).
+
+**DEV lives at `~/DEV`, not `~/Desktop/DEV`.** Eric moved it post-restore. Every
+path in scripts, data files, and skills was updated accordingly.
+
+**exFAT mode bits.** Everything restored from the drive arrives mode 755, so git
+shows hundreds of phantom "modified" files. Run `git config core.fileMode false`
+in every restored repo.
+
+**Phase 2 was wrong about skills.** `~/.claude/skills` on this Mac already held a
+different (LifeOS) skill set, and dotclaude gitignores `skills/` — so the
+`claude-skills` clone never happened and nothing noticed. The REAL skill set
+(claude-stack-doctor, closeout, project-triage, graphify, pp-*, 43 uncommitted
+edits) existed ONLY on the drive at `$SSD/claude/skills` (a full git repo).
+Phase 3 must also rsync: `claude/skills`, `claude/agents`, `claude/config`,
+`claude/hooks`, `claude/scripts`, and `claude/claude-memory-compiler/{daily,knowledge,reports}`
+(gitignored compiler data — 65 daily logs existed only on the drive).
+
+**Phase 5 corrections.**
+- morning-briefing has NO `requirements.txt` — it is a pyproject project; build with
+  `python3 -m venv .venv && uv pip install -r pyproject.toml --python .venv/bin/python`
+  (editable install fails: setuptools flat-layout chokes on the restored `logs/` dir).
+- System Python is brew 3.14 (PEP 668) — `pip install memsearch` fails. Use
+  `uv tool install 'memsearch[onnx]'` and set `memsearch config set embedding.provider onnx`
+  (default is openai and needs an API key the pipeline does not have).
+- The memsearch "flush patch" contents are documented NOWHERE in any backup. Signal
+  of its absence: entries in `global-memory/transcripts/.errors.log`. Re-derive it
+  or accept the watch signal.
+- Go module paths are NOT in GitHub skills — they are in the drive skills repo's
+  `pp-*/SKILL.md`: `github.com/mvanhorn/printing-press-library/library/<cat>/<name>/cmd/<name>-pp-cli@latest`.
+  5 of 7 install cleanly. `catapult-openfield-connect` and `zotero-research-library`
+  build from a local `~/printing-press` tree that exists in NO backup — reinstall via
+  `npx -y @mvanhorn/printing-press` when the registry carries them, or re-clone the source.
+
+**Phase 6 corrections.**
+- The drive carried SIX live credential files, not one: the FaceComps exception PLUS
+  `.env` for DataBase_GPS_Reporting/gps_report, ForcePlate_DecisionSystem,
+  Football/PFF_Data_Project, PlayerProfiles_FB_03-28-2026, and reMarkale_extract —
+  captured before the 2026-08-04 deny-list existed. They restored working credentials
+  (convenient) but sat on an unencrypted drive (exposure). The ported backup's
+  deny-list now excludes them; the drive copies still need deleting once values are
+  in the password manager.
+- `reauth.bat` → `scripts/reauth.sh`; needs `playwright install chromium` in the venv.
+
+**Phase 7 corrections.**
+- True schedules (from the install scripts, not this file's table): Rituals =
+  weekdays 17:00 + Friday 15:30; Adjudicate = SUNDAY 02:30.
+- launchd plists need an explicit `EnvironmentVariables` PATH including
+  `/opt/homebrew/bin` — agents cannot find pwsh/git/uv otherwise.
+- All agents use label prefix `com.keystone.*` (including morningbriefing and
+  stackdoctor) so `launchctl list | grep keystone` counts all 8.
+
+**Phase 8 corrections — far more than 3 files were Windows-bound.**
+Also required: `keystone.ps1`, `ritual-check.ps1`, `weekly-adjudicate.ps1`,
+`morning-cadence.ps1`, `run-job.ps1` (pwsh.exe lookup, -WindowStyle, taskkill),
+`agy-sync.ps1`, `run-ledger.ps1`, `os-freshness.ps1`, `backfill-meeting-tags.ps1`,
+KeystoneOS `data/*.json` (jobs, projects, discovery-roots, memory-sources),
+`backup-manifest.json` destinations, settings.json hooks + defaultShell,
+`project-triage/render.py`, `html2pdf.ps1`. `run-job.ps1` gained a `bash` exe type
+for `run_with_logging.sh`.
+
+**New macOS-only trap: OneDrive Files-On-Demand.** The discovery scan ran
+`git status` inside `~/OneDrive - Baylor University/...`, forcing multi-GB
+hydration and hanging the morning cadence 40+ minutes. The `baylor_workdrive`
+discovery root and memory source are disabled until that folder is pinned
+"Always Keep on This Device".
+
+**Phase 9 note.** First real nightly backup run against cloud storage takes ~1h+
+(cold DriveFS/OneDrive metadata); later runs are incremental.
+
+
 ## Your operating rules for this task
 
 Read these before running anything.
@@ -103,6 +190,8 @@ git remote add origin https://github.com/erash11/dotclaude.git
 git fetch origin
 git checkout -f origin/main -b main        # -f overwrites fresh-install defaults
 
+# NOTE (2026-08-05): this clone FAILS SILENTLY if ~/.claude/skills already exists.
+# The authoritative skills live on the drive: rsync -a "$SSD/claude/skills/" ~/.claude/skills/
 git clone https://github.com/erash11/claude-skills.git          ~/.claude/skills
 git clone https://github.com/erash11/claude-global-memory.git   ~/.claude/global-memory
 git clone https://github.com/erash11/claude-memory-compiler.git ~/.claude/claude-memory-compiler
@@ -117,6 +206,12 @@ Verify: `ls ~/.claude/skills | wc -l` should be roughly 60+, and `~/.claude/CLAU
 
 ```bash
 rsync -a "$SSD/claude/projects/"        ~/.claude/projects/
+rsync -a "$SSD/claude/skills/"          ~/.claude/skills/        # REAL skill set incl. .git
+rsync -a "$SSD/claude/agents/"          ~/.claude/agents/
+rsync -a "$SSD/claude/hooks/"           ~/.claude/hooks/
+rsync -a "$SSD/claude/scripts/"         ~/.claude/scripts/
+rsync -a "$SSD/claude/claude-memory-compiler/daily/"     ~/.claude/claude-memory-compiler/daily/
+rsync -a "$SSD/claude/claude-memory-compiler/knowledge/" ~/.claude/claude-memory-compiler/knowledge/
 rsync -a "$SSD/claude/global-memory/"   ~/.claude/global-memory/
 rsync -a "$SSD/codex/"                  ~/.codex/
 rsync -a "$SSD/gemini/"                 ~/.gemini/
