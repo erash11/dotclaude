@@ -299,6 +299,7 @@
     }
   },
   "effortLevel": "medium",
+  "advisorModel": "opus",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
@@ -308,6 +309,5 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true,
-  "advisorModel": "opus"
+  "useAutoModeDuringPlan": true
 }
