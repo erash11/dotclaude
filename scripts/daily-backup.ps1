@@ -171,8 +171,16 @@ function Write-Receipt($root, $runId) {
         New-Item -ItemType Directory -Force -Path $rd | Out-Null
         $f = Join-Path $rd "run-$runId.txt"
         Set-Content -LiteralPath $f -Value "run=$runId written=$(Get-Date -Format 'o') host=$(hostname)" -Encoding UTF8
-        $back = Get-Content -LiteralPath $f -Raw
-        return ($back -match [regex]::Escape($runId))
+        # CloudStorage mounts (Google Drive/OneDrive) can lag between write and
+        # read-back visibility; retry briefly before declaring the receipt lost.
+        for ($i = 0; $i -lt 6; $i++) {
+            try {
+                $back = Get-Content -LiteralPath $f -Raw -ErrorAction Stop
+                if ($back -match [regex]::Escape($runId)) { return $true }
+            } catch { }
+            Start-Sleep -Seconds 5
+        }
+        return $false
     } catch { return $false }
 }
 
