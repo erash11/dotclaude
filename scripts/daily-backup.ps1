@@ -233,7 +233,9 @@ if ($Manifest) {
     $SsdOnline = Test-Path $SsdRoot
     if (-not $SsdOnline) {
         # Optional destination: warn loudly, never fail silently, never block the run.
-        $Errors.Add('backup-target-offline:SSD')
+        # optional:true in the manifest means an absent SSD is a warning, not an
+        # error — otherwise every run ends ERROR until a drive is attached.
+        if (-not $Manifest.destinations.ssd.optional) { $Errors.Add('backup-target-offline:SSD') }
         Log "TARGET SSD $SsdRoot NOT MOUNTED - orphan and working-tree capture SKIPPED this run"
     }
 
