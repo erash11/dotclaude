@@ -4,11 +4,11 @@
   "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
   "destinations": {
     "ssd": {
-      "root": "/Volumes/CRASHBOX/AssistantBackup",
-      "volumeLabel": "CRASHBOX",
+      "root": "/Volumes/SSK SSD/AssistantBackup",
+      "volumeLabel": "SSK SSD",
       "filesystem": "exFAT",
       "optional": true,
-      "note": "Nightly target. No external SSD attached to this Mac yet (2026-08-05) - optional:true lets the job warn instead of fail. When a real drive arrives: format exFAT, label with no spaces, point this at /Volumes/<LABEL>/AssistantBackup."
+      "note": "Nightly target. 500GB exFAT SSD attached 2026-08-06 (label 'SSK SSD' \u2014 has a space; pwsh paths handle it). optional:true so an unplugged drive warns instead of fails."
     },
     "transport": {
       "root": "/Volumes/ASSISTANT/AssistantBackup",
