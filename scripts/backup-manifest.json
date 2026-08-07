@@ -4,11 +4,11 @@
   "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
   "destinations": {
     "ssd": {
-      "root": "/Volumes/SSK SSD/AssistantBackup",
-      "volumeLabel": "SSK SSD",
+      "root": "/Volumes/CRASHBOX/AssistantBackup",
+      "volumeLabel": "CRASHBOX",
       "filesystem": "exFAT",
       "optional": true,
-      "note": "Nightly target. 500GB exFAT SSD attached 2026-08-06 (label 'SSK SSD' \u2014 has a space; pwsh paths handle it). optional:true so an unplugged drive warns instead of fails."
+      "note": "Nightly target. 500GB exFAT SSD attached 2026-08-06, volume renamed to CRASHBOX per original spec. optional:true so an unplugged drive warns instead of fails."
     },
     "transport": {
       "root": "/Volumes/ASSISTANT/AssistantBackup",
