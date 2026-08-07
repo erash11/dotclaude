@@ -216,7 +216,15 @@ Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_pro
 
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null
-if ($Manifest -and $Manifest.destinations.baylor.root) { $B = $Manifest.destinations.baylor.root }
+if ($Manifest -and $Manifest.destinations.baylor.root) {
+    if ($Manifest.destinations.baylor.deprecated) {
+        # Deprecated destination (access ending): OneDrive dehydrates files and
+        # rsync fails with mmap deadlock errors, polluting every run with
+        # snapshot failures for a target that is already scheduled to disappear.
+        Log "TARGET baylor deprecated in manifest - snapshots to it SKIPPED"
+    }
+    else { $B = $Manifest.destinations.baylor.root }
+}
 $SsdRoot = $null
 $SsdOnline = $false
 
