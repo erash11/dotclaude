@@ -57,7 +57,7 @@ Decide tier first, then write.
 - A stable project convention or gotcha (e.g. "Catapult API v6 uses /stats not v4 /statistics") → `project_*.md`
 - A feedback rule that should govern future behavior → `feedback_*.md`
 
-Write the file with proper frontmatter (`name`, `description`, `metadata.type`) and add a one-line pointer to `~/.claude/projects/C--Users-eric-rash/memory/MEMORY.md`.
+Write the file with proper frontmatter (`name`, `description`, `metadata.type`) and add a one-line pointer to the current project's `~/.claude/projects/<slug>/memory/MEMORY.md` (the harness injects the correct `<slug>` each session; on this Mac the home-directory slug is `-Users-kristinarash`). Do not write to the `C--Users-eric-rash*` slugs — those are the pre-migration Windows keys.
 
 **Tier B (global scratchpad)** — when the fact is:
 - An active thread (currently-in-progress work that will be referenced soon)
