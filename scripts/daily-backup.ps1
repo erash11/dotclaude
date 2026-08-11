@@ -54,14 +54,14 @@ function Sync-Repo($path, $branch) {
         }
         if ($behind -gt 0) {
             if (-not $DryRun) { git pull --ff-only origin $branch 2>&1 | Out-Null }
-            Log "REPO $name : fast-forwarded $behind commit(s)"
+            Log "REPO $name : $(if ($DryRun) { '[dry-run] would fast-forward' } else { 'fast-forwarded' }) $behind commit(s)"
         }
         if ($dirty -gt 0) {
             if (-not $DryRun) {
                 git add -A 2>&1 | Out-Null
                 git commit -m ("chore: daily backup sync {0} [auto]" -f (Get-Date -Format 'yyyy-MM-dd')) 2>&1 | Out-Null
             }
-            Log "REPO $name : committed $dirty change(s)"
+            Log "REPO $name : $(if ($DryRun) { '[dry-run] would commit' } else { 'committed' }) $dirty change(s)"
         }
         $counts = git rev-list --left-right --count "origin/$branch...HEAD" 2>$null
         $ahead = if ($counts) { [int](($counts -split '\s+')[1]) } else { 0 }
@@ -71,7 +71,7 @@ function Sync-Repo($path, $branch) {
                 git push origin $branch 2>&1 | Out-Null
                 if ($LASTEXITCODE -ne 0) { $Errors.Add("repo-push:$name"); Log "REPO $name : PUSH FAILED"; return }
             }
-            Log "REPO $name : pushed"
+            Log "REPO $name : $(if ($DryRun) { '[dry-run] would push' } else { 'pushed' })"
         }
         $Results.Add(@{ kind='repo'; name=$name; status='OK' })
     } finally { Pop-Location }
