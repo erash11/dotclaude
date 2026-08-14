@@ -131,7 +131,7 @@
       "Write(//c/Users/eric_rash/.claude/**)",
       "Bash(launchctl:*)"
     ],
-    "defaultMode": "auto",
+    "defaultMode": "dontAsk",
     "additionalDirectories": [
       "/Users/kristinarash/DEV"
     ]
