@@ -190,6 +190,18 @@
       "captureWorkingTree": false
     },
     {
+      "path": "DEV/CFB_Analytics_Lab",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/CFB_Analytics_Lab.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
       "path": "DEV/CFB_Victory_Model",
       "class": "personal",
       "isRepo": true,
@@ -208,6 +220,18 @@
       "remote": null,
       "destinations": [
         "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/COG_S2_Position_Reports",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
       ],
       "captureOrphans": false,
       "captureWorkingTree": false
@@ -280,6 +304,17 @@
       "destinations": [
         "ssd",
         "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Football_Data_DEV",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
       ],
       "captureOrphans": false,
       "captureWorkingTree": false
@@ -499,6 +534,19 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/S2_Evaluation",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/S2_Evaluation.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
       "path": "DEV/SoftwareTech_Mgmt_Framework",
       "class": "personal",
       "isRepo": false,
@@ -557,6 +605,17 @@
     },
     {
       "path": "DEV/TechEd_Prop",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Terminal_Fluency",
       "class": "personal",
       "isRepo": false,
       "remote": null,

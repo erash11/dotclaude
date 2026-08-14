@@ -104,7 +104,16 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
     foreach ($d in $excludeDirs)  { $a += "--exclude=$d/" }
     foreach ($f in $excludeFiles) { $a += "--exclude=$f" }
     $a += @("$src/", "$dst/")
-    & /usr/bin/rsync @a 2>&1 | Select-Object -Last 3 | Add-Content -Path $LogFile
+    # Guard the launch, and clear $LASTEXITCODE first: if rsync never runs, a stale
+    # exit code from an earlier command would make a zero-byte copy report OK.
+    $rsync = '/usr/bin/rsync'
+    if (-not (Test-Path $rsync)) {
+        $Errors.Add('rsync-missing')
+        Log "RSYNC binary not found at $rsync - copy SKIPPED (not a success)"
+        return $false
+    }
+    $global:LASTEXITCODE = 0
+    & $rsync @a 2>&1 | Select-Object -Last 3 | Add-Content -Path $LogFile
     return ($LASTEXITCODE -eq 0)
 }
 
