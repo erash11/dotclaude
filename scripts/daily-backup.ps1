@@ -203,6 +203,22 @@ if (Test-Path $ManifestFile) {
 $RunId = (Get-Date -Format 'yyyyMMdd-HHmmss')
 Log "===== daily-backup start (DryRun=$DryRun) run=$RunId ====="
 
+# --- 0. Platform guard ---
+# This file is the macOS port. Every path below is macOS-specific: /usr/bin/rsync,
+# $HOME/DEV, and the ~/Library/CloudStorage mount. On Windows it failed silently and
+# WORSE than silently - snapshots logged "SNAP OK" off a stale $LASTEXITCODE, so the
+# run reported success while copying nothing. That false receipt is the reason this
+# guard exists. Refuse loudly instead of pretending.
+# The Windows original is preserved at daily-backup.ps1.win-orig: restore and re-port
+# it before re-enabling KeystoneOS-DailyBackup on any Windows host.
+# Note $IsMacOS is a PowerShell 6+ automatic variable; on Windows PowerShell 5.1 it is
+# undefined, so -not $null still aborts. That is the intended outcome.
+if (-not $IsMacOS) {
+    Log "ABORT: daily-backup.ps1 is the macOS port and will not run on this platform. No backup ran, and no receipt was written. See daily-backup.ps1.win-orig before re-enabling a scheduled task here."
+    Log "===== daily-backup end: ABORTED (wrong platform) ====="
+    exit 1
+}
+
 # --- 1. Git memory repos ---
 Sync-Repo "$U/Desktop/SecondBrain"      'main'
 Sync-Repo "$U/.claude/global-memory"    'main'
