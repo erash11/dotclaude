@@ -24,6 +24,9 @@ $LogFile = "$LogDir/daily-backup.log"
 $StateFile = "$LogDir/backup-state.json"
 $ErrorsLog = "$U/.claude/global-memory/transcripts/.errors.log"
 $Errors = [System.Collections.Generic.List[string]]::new()
+# Per-copy wall-clock ceiling for Invoke-Rsync's watchdog. Generous: the largest healthy
+# snapshot here finishes in seconds, so anything near this is wedged, not busy.
+$RsyncTimeoutSec = 900
 $Results = [System.Collections.Generic.List[object]]::new()
 
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
@@ -112,9 +115,43 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
         Log "RSYNC binary not found at $rsync - copy SKIPPED (not a success)"
         return $false
     }
+    # WATCHDOG. rsync against the CloudStorage mount can wedge indefinitely. Observed
+    # 2026-08-14 on codex/sessions with an ALREADY-COMPLETE 256/256 mirror: the client and
+    # its --server receiver both sat at ~0.02s CPU across 85 minutes and ignored SIGTERM.
+    # Because the Drive snapshots run BEFORE the SSD capture, one wedged copy silently
+    # costs the whole orphan/working-tree layer for that night - the run never gets there.
+    # So: no single copy may block the run. Bound it and move on.
+    # Two details that cost hours to learn, do not "simplify" them away:
+    #   - SIGTERM does not clear a wedged rsync. Only SIGKILL does.
+    #   - The --server child's argv[0] is bare "rsync", not the full path, so an anchored
+    #     pattern like "^/usr/bin/rsync" matches the client ONLY and strands the receiver.
+    #     Match on the destination path instead - it appears in both command lines.
+    $tmpOut = [IO.Path]::GetTempFileName()
     $global:LASTEXITCODE = 0
-    & $rsync @a 2>&1 | Select-Object -Last 3 | Add-Content -Path $LogFile
-    return ($LASTEXITCODE -eq 0)
+    $job = Start-Job -ScriptBlock {
+        param($exe, $argv, $out)
+        & $exe @argv *> $out
+        $LASTEXITCODE
+    } -ArgumentList $rsync, $a, $tmpOut
+
+    if (Wait-Job $job -Timeout $RsyncTimeoutSec) {
+        $code = [int](Receive-Job $job)
+        Remove-Job $job -Force -ErrorAction SilentlyContinue
+    } else {
+        Stop-Job $job -ErrorAction SilentlyContinue
+        Remove-Job $job -Force -ErrorAction SilentlyContinue
+        & /usr/bin/pkill -9 -f -- "$dst" 2>$null
+        $code = 124
+        $Errors.Add('rsync-timeout')
+        Log "RSYNC TIMEOUT after ${RsyncTimeoutSec}s, killed (-9): $src -> $dst"
+    }
+
+    if (Test-Path $tmpOut) {
+        Get-Content $tmpOut -Tail 3 -ErrorAction SilentlyContinue | Add-Content -Path $LogFile
+        Remove-Item $tmpOut -Force -ErrorAction SilentlyContinue
+    }
+    $global:LASTEXITCODE = $code
+    return ($code -eq 0)
 }
 
 function Snapshot($src, $dst, [string[]]$extraXD) {
