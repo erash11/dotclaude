@@ -357,7 +357,7 @@ if ($Manifest) {
             $extra = @()
             if ($entry.path -eq '.codex') { $extra = @('work') }
             if ($entry.path -eq '.gemini') { $extra = @('antigravity_browser_profile') }
-            if ($entry.path -like 'Desktop/*') { $extra = @('.git') }
+            if ($entry.path -eq 'SecondBrain') { $extra = @('.git') }   # vault moved off Desktop 2026-08-14; github dest covers tracked files
             $ok = Snapshot-Additive $src (Join-Path $SsdRoot $sub) $extra
             if ($ok) { Log "STATE-SSD $($entry.path) -> $sub : OK" }
             else { $Errors.Add("snapshot-ssd:$($entry.path)"); Log "STATE-SSD $($entry.path) : FAILED" }
