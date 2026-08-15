@@ -215,7 +215,7 @@ rsync -a "$SSD/claude/claude-memory-compiler/knowledge/" ~/.claude/claude-memory
 rsync -a "$SSD/claude/global-memory/"   ~/.claude/global-memory/
 rsync -a "$SSD/codex/"                  ~/.codex/
 rsync -a "$SSD/gemini/"                 ~/.gemini/
-rsync -a "$SSD/SecondBrain/"            ~/Desktop/SecondBrain/
+rsync -a "$SSD/SecondBrain/"            ~/SecondBrain/
 ```
 
 Expected magnitudes from the source machine: `projects` ≈ 1,630 files,
@@ -434,7 +434,7 @@ Triage the rest as you hit them. A broken skill is a nuisance, not data loss.
 - [ ] `ls -lh ~/Desktop/DEV/ForcePlate_DecisionSystem/data/forceplate.db` ≈ 173 MB
 - [ ] `du -sh ~/Desktop/DEV/Risk_Stratification_Engine` ≈ 1.8 GB
 - [ ] `du -sh ~/Desktop/DEV/Football` ≈ 3 GB
-- [ ] `git -C ~/.claude status` clean; `git -C ~/Desktop/SecondBrain status` clean
+- [ ] `git -C ~/.claude status` clean; `git -C ~/SecondBrain status` clean
 - [ ] `pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1` → ALL CLEAR
 - [ ] A morning briefing generates end-to-end with real email threads
 - [ ] `launchctl list | grep keystone` shows 8 agents

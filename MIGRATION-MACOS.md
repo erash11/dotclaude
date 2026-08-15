@@ -162,7 +162,7 @@ for r in CFB_Victory_Model DataBase_GPS_Reporting DexaProject ForcePlate_Decisio
          ValdReport Website ZoteroInjestion; do
   gh repo clone "erash11/$r" || echo "FAILED: $r"
 done
-git clone https://github.com/erash11/SecondBrain.git ~/Desktop/SecondBrain
+git clone https://github.com/erash11/SecondBrain.git ~/SecondBrain
 
 # 4b — CRITICAL: overlay the gitignored data git could never carry
 rsync -a "$SSD/DEV-repo-data/" ~/Desktop/DEV/
@@ -373,7 +373,7 @@ commit, per the maintenance rule at the bottom.
 - [ ] `ls -lh ~/Desktop/DEV/ForcePlate_DecisionSystem/data/forceplate.db` ≈ 173 MB
 - [ ] `du -sh ~/Desktop/DEV/Risk_Stratification_Engine` ≈ 1.8 GB
 - [ ] `du -sh ~/Desktop/DEV/Football` ≈ 3 GB
-- [ ] `git -C ~/.claude status` clean; `git -C ~/Desktop/SecondBrain status` clean
+- [ ] `git -C ~/.claude status` clean; `git -C ~/SecondBrain status` clean
 - [ ] `pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1` → **ALL CLEAR**
 - [ ] A morning briefing generates end-to-end with real email threads
 - [ ] `launchctl list | grep keystone` shows 8 agents

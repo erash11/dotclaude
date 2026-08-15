@@ -134,7 +134,7 @@ sync_dir "claude/projects"  "$SSD/claude/projects"       "$HOME/.claude/projects
 sync_dir "global-memory"    "$SSD/claude/global-memory"  "$HOME/.claude/global-memory"
 sync_dir "codex"            "$SSD/codex"                 "$HOME/.codex"
 sync_dir "gemini"           "$SSD/gemini"                "$HOME/.gemini"
-sync_dir "SecondBrain"      "$SSD/SecondBrain"           "$HOME/Desktop/SecondBrain"
+sync_dir "SecondBrain"      "$SSD/SecondBrain"           "$HOME/SecondBrain"
 
 # ---------------------------------------------------------------- Phase 4
 hdr "Phase 4 — DEV projects (three passes; all three matter)"

@@ -102,7 +102,16 @@ $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh
 function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFiles) {
     if (-not (Test-Path $src)) { return $null }
     New-Item -ItemType Directory -Force -Path $dst | Out-Null
-    $a = @('-a', '--no-specials', '--no-devices')
+    # --modify-window=5: the CloudStorage mount rounds mtimes it did not itself write,
+    # typically 1-2s below what rsync set. rsync's quick-check is size+mtime, so a
+    # byte-identical file whose stored mtime drifted reads as changed and is re-sent
+    # EVERY run, forever. Measured 2026-08-14 on codex/sessions: 256/256 files
+    # size-identical, yet 134 re-sent nightly (252MB) purely on 1-2s skew. That
+    # perpetual write load is what fed the FUSE wedge below. A 5s window absorbs the
+    # rounding without hiding real edits (a real edit moves size or mtime far more).
+    # Do NOT swap this for --size-only: claude-projects has genuine same-size edits
+    # that only mtime catches.
+    $a = @('-a', '--no-specials', '--no-devices', '--modify-window=5')
     if ($DryRun) { $a += '-n' }
     foreach ($d in $excludeDirs)  { $a += "--exclude=$d/" }
     foreach ($f in $excludeFiles) { $a += "--exclude=$f" }
@@ -257,7 +266,7 @@ if (-not $IsMacOS) {
 }
 
 # --- 1. Git memory repos ---
-Sync-Repo "$U/Desktop/SecondBrain"      'main'
+Sync-Repo "$U/SecondBrain"      'main'
 Sync-Repo "$U/.claude/global-memory"    'main'
 Sync-Repo "$U/.claude"                  'main'
 Sync-Repo "$U/.claude/skills"           'main'
@@ -385,7 +394,7 @@ if ($msExe -and -not $DryRun) {
         "$U/.claude/projects/C--Users-eric-rash/memory",
         "$U/.claude/claude-memory-compiler/daily",
         "$U/.claude/claude-memory-compiler/knowledge",
-        "$U/Desktop/SecondBrain/Knowledge"
+        "$U/SecondBrain/Knowledge"
     )
     $msConfig = "$DevRoot/KeystoneOS/data/memory-index-paths.json"
     $msPaths = $null

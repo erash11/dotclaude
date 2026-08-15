@@ -40,9 +40,9 @@ for root in "$HOME/Desktop/DEV" "$HOME/projects"; do
   done
 done
 # SecondBrain lives outside DEV
-if [ -d "$HOME/Desktop/SecondBrain/.git" ] && [ -f "$HOME/Desktop/SecondBrain/CLAUDE.md" ]; then
-  (cd "$HOME/Desktop/SecondBrain" && link_agents "CLAUDE.md" "AGENTS.md") \
-    && LINKED+=("$HOME/Desktop/SecondBrain/")
+if [ -d "$HOME/SecondBrain/.git" ] && [ -f "$HOME/SecondBrain/CLAUDE.md" ]; then
+  (cd "$HOME/SecondBrain" && link_agents "CLAUDE.md" "AGENTS.md") \
+    && LINKED+=("$HOME/SecondBrain/")
 fi
 
 # 3. Offer to commit the new symlinks in each repo (git stores symlinks portably).
