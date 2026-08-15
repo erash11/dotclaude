@@ -23,30 +23,58 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
+// Declared before resolvePaths() runs: `const PATHS = resolvePaths()` executes
+// below, and resolvePaths now calls logErr on the fallback branch. If ERR_LOG
+// were still declared further down it would be in the temporal dead zone at
+// that moment, and logErr's own try/catch would swallow the ReferenceError —
+// turning the loud fallback warning silent again.
+const ERR_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.errors.log');
+
+function logErr(msg) {
+  try { fs.appendFileSync(ERR_LOG, `[${new Date().toISOString()}] memsearch-sync: ${msg}\n`); }
+  catch (_) {}
+}
+
+// Single source of truth, shared with daily-backup.ps1 and the Codex hook.
+// Was ~/Desktop/DEV on Windows; DEV lives at ~/DEV on the Mac. The stale path
+// silently resolved to the fallback below for months after the migration, so
+// SecondBrain/Knowledge, the Mac memory slug, morning-briefings, KeystoneOS
+// decisions and .codex/memories were never indexed by this hook. Fixed
+// 2026-08-14. A fallback now also writes to .errors.log — see resolvePaths.
 const KEYSTONE_INDEX_CONFIG = path.join(
-  os.homedir(), 'Desktop', 'DEV', 'KeystoneOS', 'data', 'memory-index-paths.json'
+  os.homedir(), 'DEV', 'KeystoneOS', 'data', 'memory-index-paths.json'
 );
 
 function resolvePaths() {
+  // Mac-correct emergency set, used only when the config above is unreadable
+  // or malformed. Kept deliberately small: these are the paths whose loss would
+  // be felt first. The legacy C--Users-eric-rash slug is read-only Windows
+  // history — indexing it is harmless and keeps that recall working.
   const fallback = [
     path.join(os.homedir(), '.claude', 'global-memory', 'transcripts'),
+    path.join(os.homedir(), '.claude', 'projects', '-Users-kristinarash-DEV', 'memory'),
     path.join(os.homedir(), '.claude', 'projects', 'C--Users-eric-rash', 'memory'),
     path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'daily'),
     path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'knowledge'),
-    path.join(os.homedir(), 'Desktop', 'SecondBrain', 'Knowledge', 'library'),
+    path.join(os.homedir(), 'SecondBrain', 'Knowledge'),
   ];
   try {
     const raw = fs.readFileSync(KEYSTONE_INDEX_CONFIG, 'utf8');
     const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed.paths) || parsed.paths.length === 0) return fallback;
+    if (!Array.isArray(parsed.paths) || parsed.paths.length === 0) {
+      logErr(`index config ${KEYSTONE_INDEX_CONFIG} has no usable paths — using built-in fallback (${fallback.length} paths)`);
+      return fallback;
+    }
     return parsed.paths.map(p => p.replace('{HOME}', os.homedir()).split('/').join(path.sep));
-  } catch (_) {
+  } catch (e) {
+    // Loud, not silent: a silent fallback is exactly how the Desktop/DEV drift
+    // went unnoticed from the Windows migration until 2026-08-14.
+    logErr(`index config unreadable (${KEYSTONE_INDEX_CONFIG}): ${(e && e.message ? e.message : String(e)).slice(0, 160)} — using built-in fallback (${fallback.length} paths)`);
     return fallback;
   }
 }
 
 const PATHS = resolvePaths();
-const ERR_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.errors.log');
 // Truncated each run, so it always shows the most recent index result and
 // never grows. Check this if recent sessions aren't turning up in search.
 const INDEX_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-index.log');
@@ -68,11 +96,13 @@ const TIMEOUT_STREAK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 
 // an uncapped full reindex and resets this counter, so heavy-day backlogs are
 // guaranteed to clear overnight. Alarm only if even the nightly isn't keeping up.
 const TIMEOUT_STREAK_THRESHOLD = 6;
-
-function logErr(msg) {
-  try { fs.appendFileSync(ERR_LOG, `[${new Date().toISOString()}] memsearch-sync: ${msg}\n`); }
-  catch (_) {}
-}
+// Signatures that mean "another writer holds milvus.db/LOCK", not "the database
+// is damaged". Deliberately narrow: matched against the flock/lock-acquisition
+// text, NOT against milvus-lite's wording "may not be compatible with Milvus
+// Lite 3.x" — that same sentence is emitted for genuine incompatibility too, so
+// matching it would mask real corruption as transient. A truly broken database
+// produces none of these and still escalates immediately.
+const LOCK_BUSY_RE = /DataDirLockedError|another process holds the lock|Resource temporarily unavailable|_acquire_lock|fcntl\.flock/i;
 
 const existing = PATHS.filter(p => fs.existsSync(p));
 if (existing.length === 0) process.exit(0);
@@ -158,6 +188,14 @@ try {
     try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
   } else if (res.status !== 0 && /Fail connecting to server/i.test(out)) {
     bumpTransientStreak('Milvus unreachable', (res.stderr || out));
+  } else if (res.status !== 0 && LOCK_BUSY_RE.test(out)) {
+    // Another writer (nightly reindex, a second session, a manual index) holds
+    // milvus.db/LOCK. Transient by definition — the next incremental run covers
+    // this session's content. Previously this fell through to the hard-error
+    // branch and spammed .errors.log; worse, milvus-lite words the lock error
+    // as "may not be compatible with Milvus Lite 3.x", which has already caused
+    // one destructive rebuild. Never treat this as corruption.
+    bumpTransientStreak('index busy (lock held)', (res.stderr || out));
   } else if (res.status !== 0) {
     logErr(`index exit ${res.status}: ${(res.stderr || '').slice(0, 300)}`);
     try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}

@@ -19,8 +19,8 @@ the rest can wait until you next touch that project.
 
 | # | Project | File to create | Keys | Reissue from |
 |---|---|---|---|---|
-| 1 | `morning-briefing` | `secrets/gmail_credentials.json` | OAuth client JSON (download whole file) | Google Cloud Console → APIs & Services → Credentials → OAuth 2.0 Client IDs |
-| 2 | `morning-briefing` | `secrets/gmail_token.json` | generated, not copied | Run the reauth script; it writes this file. **Do not restore from backup** — tokens expire |
+| 1 | ~~`morning-briefing`~~ | ~~`secrets/gmail_credentials.json`~~ | ~~OAuth client JSON~~ | **RETIRED 2026-08-14** — project removed from disk, local `secrets/` destroyed. Only needed if re-cloned from `github.com/erash11/morning-briefing` |
+| 2 | ~~`morning-briefing`~~ | ~~`secrets/gmail_token.json`~~ | ~~generated, not copied~~ | **RETIRED 2026-08-14** — see row 1 |
 | 3 | `DataBase_GPS_Reporting/gps_report` | `.env` | `CATAPULT_TOKEN` | Catapult OpenField → account settings → API token |
 | 4 | `ForcePlate_DecisionSystem` | `.env` | `VALD_CLIENT_ID`, `VALD_CLIENT_SECRET`, `VALD_REGION_URL`, `VALD_TEAM_ID` | VALD Hub → API access. Region URL is tenant-specific — copy exactly |
 | 5 | `Football/PFF_Data_Project` | `.env` | `PFF_BASE_URL`, `PFF_API_KEY`, `BAYLOR_TEAM_ID` | PFF Ultimate account rep. **Institutional — tied to Baylor's contract** |
@@ -29,7 +29,7 @@ the rest can wait until you next touch that project.
 | 8 | `Football/FaceComps/simulator` | `.env.local` | `DATABASE_URL`, `SITE_PASSWORD`, `COOKIE_SECRET`, `CATAPULT_TOKEN` | Supabase → project settings → database. `COOKIE_SECRET` is self-generated (`openssl rand -hex 32`) |
 | 9 | `CFB_Victory_Model` | `.env` | `CFBD_API_KEY` | collegefootballdata.com → free API key |
 | 10 | `KeystoneOS/zotero-photo-capture` | `.env` | `ZOTERO_API_KEY`, `ZOTERO_USER_ID`, `ANTHROPIC_API_KEY`, `CROSSREF_MAILTO` | Zotero → Settings → Feeds/API. `CROSSREF_MAILTO` is just your email |
-| 11 | `morning-briefing` (email delivery) | `~/.config/morning-briefing/env` (0600) | `GMAIL_APP_PASSWORD` | myaccount.google.com/apppasswords. Found 2026-08-05: was a Windows user env var, never inventoried here. `run_with_logging.sh` sources this file. **OUTSTANDING** — briefing generates but does not email until set |
+| 11 | ~~`morning-briefing` (email delivery)~~ | ~~`~/.config/morning-briefing/env` (0600)~~ | ~~`GMAIL_APP_PASSWORD`~~ | **RETIRED 2026-08-14 — no longer OUTSTANDING.** Was an open item (briefing generated but did not email until set); moot now the project is retired. Revoke the app password at myaccount.google.com/apppasswords if one was ever created |
 
 ## OAuth connectors — no files, re-auth in the app
 

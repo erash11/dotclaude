@@ -1,0 +1,172 @@
+#!/usr/bin/env node
+// SessionEnd hook: re-index memsearch so transcripts written this session
+// become searchable.
+//
+// Runs the index SYNCHRONOUSLY. At session end only this session's transcript
+// (plus the compiler's daily note) is new, so memsearch takes the fast
+// incremental path (~5s: mostly fixed model-load + scan overhead, not chunk
+// count). We deliberately do NOT fire-and-forget: detached child processes on
+// Windows are unreliable here (the child gets killed in the race when this
+// parent hard-exits before its process group is established — it creates the
+// log file but never finishes the index). Blocking at session teardown is
+// the acceptable price for an indexer that actually completes.
+//
+// spawnSync gets a 45s internal cap; the hook's settings.json timeout is 50s,
+// so spawnSync's own timeout fires first and we exit cleanly (writing whatever
+// output we got) instead of being hard-killed by the harness ("Hook cancelled").
+// Measured model-load overhead is ~17s regardless of chunk count; 25s was too
+// tight and caused ETIMEDOUT failures across sessions. 45s gives safe headroom.
+// See project_memsearch_setup.md.
+
+const { spawnSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
+const KEYSTONE_INDEX_CONFIG = path.join(
+  os.homedir(), 'Desktop', 'DEV', 'KeystoneOS', 'data', 'memory-index-paths.json'
+);
+
+function resolvePaths() {
+  const fallback = [
+    path.join(os.homedir(), '.claude', 'global-memory', 'transcripts'),
+    path.join(os.homedir(), '.claude', 'projects', 'C--Users-eric-rash', 'memory'),
+    path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'daily'),
+    path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'knowledge'),
+    path.join(os.homedir(), 'Desktop', 'SecondBrain', 'Knowledge', 'library'),
+  ];
+  try {
+    const raw = fs.readFileSync(KEYSTONE_INDEX_CONFIG, 'utf8');
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed.paths) || parsed.paths.length === 0) return fallback;
+    return parsed.paths.map(p => p.replace('{HOME}', os.homedir()).split('/').join(path.sep));
+  } catch (_) {
+    return fallback;
+  }
+}
+
+const PATHS = resolvePaths();
+const ERR_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.errors.log');
+// Truncated each run, so it always shows the most recent index result and
+// never grows. Check this if recent sessions aren't turning up in search.
+const INDEX_LOG = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-index.log');
+// When several sessions end in a cluster, each spawnSync below would otherwise
+// block the full timeout waiting on memsearch's own lock and then time out. The
+// lock is acquired ATOMICALLY (open 'wx') so only one winner indexes per cluster;
+// late arrivals see EEXIST and skip immediately — that run covers their new
+// content too. The owner PID is checked before a lock is reclaimed. Age is only
+// a fallback for locks written by an older version that did not record a PID.
+const LOCK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-index.lock');
+const LOCK_STALE_MS = 5 * 60 * 1000;
+// A single ETIMEDOUT is self-healing (the next session's incremental index
+// catches up) and usually just means session-end contention — three fired on
+// 2026-07-08 alone while the index stayed healthy. Only escalate to .errors.log
+// after this many CONSECUTIVE timeouts; the count lives in a state file and any
+// clean run resets it. Non-timeout failures still escalate immediately.
+const TIMEOUT_STREAK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-timeout-streak');
+// Raised 3 -> 6 on 2026-07-24: the nightly KeystoneOS-DailyBackup task now runs
+// an uncapped full reindex and resets this counter, so heavy-day backlogs are
+// guaranteed to clear overnight. Alarm only if even the nightly isn't keeping up.
+const TIMEOUT_STREAK_THRESHOLD = 6;
+
+function logErr(msg) {
+  try { fs.appendFileSync(ERR_LOG, `[${new Date().toISOString()}] memsearch-sync: ${msg}\n`); }
+  catch (_) {}
+}
+
+const existing = PATHS.filter(p => fs.existsSync(p));
+if (existing.length === 0) process.exit(0);
+
+function isProcessAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (e) {
+    return e && e.code === 'EPERM';
+  }
+}
+
+// --- Acquire the lock atomically. Only one process wins per cluster. ---
+let haveLock = false;
+try {
+  const fd = fs.openSync(LOCK_FILE, 'wx'); // fails if the file already exists
+  fs.writeSync(fd, String(process.pid));
+  fs.closeSync(fd);
+  haveLock = true;
+} catch (e) {
+  // Lock exists. If its owner is alive, skip regardless of age. Only reclaim a
+  // dead owner (or an old lock with no readable owner PID).
+  let ownerPid = null;
+  try {
+    ownerPid = Number.parseInt(fs.readFileSync(LOCK_FILE, 'utf8').trim(), 10);
+  } catch (_) {}
+  if (isProcessAlive(ownerPid)) process.exit(0);
+
+  let stale = false;
+  try { stale = (Date.now() - fs.statSync(LOCK_FILE).mtimeMs) >= LOCK_STALE_MS; }
+  catch (_) { stale = true; } // lock vanished between open and stat — race; treat as reclaimable
+  if (!stale) process.exit(0);
+  try {
+    fs.unlinkSync(LOCK_FILE);
+    const fd = fs.openSync(LOCK_FILE, 'wx');
+    fs.writeSync(fd, String(process.pid));
+    fs.closeSync(fd);
+    haveLock = true;
+  }
+  catch (_) { process.exit(0); }
+}
+
+function releaseLock() {
+  if (haveLock) { try { fs.unlinkSync(LOCK_FILE); } catch (_) {} haveLock = false; }
+}
+
+try {
+  const res = spawnSync('memsearch', ['index', ...existing], {
+    // Avoid an intermediate cmd.exe. On timeout, the direct child is killed
+    // instead of leaving an orphaned Python indexer behind.
+    shell: false,
+    windowsHide: true,
+    encoding: 'utf8',
+    timeout: 45000,
+  });
+
+  const out = `${res.stdout || ''}${res.stderr || ''}`.trim();
+  try { fs.writeFileSync(INDEX_LOG, out ? out + '\n' : '(no output)\n'); } catch (_) {}
+
+  // Transient, self-healing failures (the next incremental index catches up)
+  // escalate to .errors.log only after a consecutive streak. Two classes:
+  // ETIMEDOUT (session-end contention) and Milvus-unreachable (Docker Desktop
+  // hasn't started yet — morning scheduled sessions routinely end before the
+  // Milvus containers are up; observed 2026-07-16 07:40, self-healed by 08:43).
+  function bumpTransientStreak(label, detail) {
+    let streak = 0;
+    try { streak = parseInt(fs.readFileSync(TIMEOUT_STREAK_FILE, 'utf8'), 10) || 0; } catch (_) {}
+    streak += 1;
+    try { fs.writeFileSync(TIMEOUT_STREAK_FILE, String(streak)); } catch (_) {}
+    if (streak >= TIMEOUT_STREAK_THRESHOLD) {
+      logErr(`index ${label} ${streak}x consecutively — indexing may not be keeping up: ${detail.slice(0, 200)}`);
+    } else {
+      try { fs.appendFileSync(INDEX_LOG, `(${label} — streak ${streak}/${TIMEOUT_STREAK_THRESHOLD}, next session catches up)\n`); } catch (_) {}
+    }
+  }
+
+  if (res.error && res.error.code === 'ETIMEDOUT') {
+    bumpTransientStreak('ETIMEDOUT', res.error.message);
+  } else if (res.error) {
+    logErr(`index ${res.error.code || 'error'}: ${res.error.message.slice(0, 300)}`);
+    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+  } else if (res.status !== 0 && /Fail connecting to server/i.test(out)) {
+    bumpTransientStreak('Milvus unreachable', (res.stderr || out));
+  } else if (res.status !== 0) {
+    logErr(`index exit ${res.status}: ${(res.stderr || '').slice(0, 300)}`);
+    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+  } else {
+    // Clean run — reset the consecutive-timeout streak.
+    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+  }
+} finally {
+  releaseLock();
+}
+
+process.exit(0);

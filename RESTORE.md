@@ -106,8 +106,11 @@ mkdir $env:USERPROFILE\Desktop\DEV; cd $env:USERPROFILE\Desktop\DEV
 gh repo list erash11 --limit 100      # your full inventory — clone what you need
 git clone https://github.com/erash11/KeystoneOS.git
 git clone https://github.com/erash11/SecondBrain.git $env:USERPROFILE\Desktop\SecondBrain
-git clone https://github.com/erash11/morning-briefing.git
+git clone https://github.com/erash11/morning-briefing.git   # RETIRED 2026-08-14 - restore only if reviving
 ```
+> `morning-briefing` was retired 2026-08-14 (job disabled, project removed from disk, dropped from
+> the backup manifest). Skip it on a restore unless you are deliberately reviving it. Its output —
+> 56 briefings — lives in `SecondBrain/morning-briefings/` and is restored with the vault.
 Non-repo folders (if still at Baylor): copy back from Baylor OneDrive `Backups\DEV-NonRepo`.
 
 **5. Rebuild Python environments**
