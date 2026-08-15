@@ -99,7 +99,7 @@ $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh
 # rsync wrapper. ADDITIVE - never --delete: a mirror faithfully replicates the
 # deletion you are trying to recover from. (The Windows original mirrored the
 # cloud snapshots with /MIR; the macOS port makes every destination additive.)
-function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFiles) {
+function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFiles, [string[]]$extraArgs = @()) {
     if (-not (Test-Path $src)) { return $null }
     New-Item -ItemType Directory -Force -Path $dst | Out-Null
     # --modify-window=5: the CloudStorage mount rounds mtimes it did not itself write,
@@ -111,7 +111,7 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
     # rounding without hiding real edits (a real edit moves size or mtime far more).
     # Do NOT swap this for --size-only: claude-projects has genuine same-size edits
     # that only mtime catches.
-    $a = @('-a', '--no-specials', '--no-devices', '--modify-window=5')
+    $a = @('-a', '--no-specials', '--no-devices', '--modify-window=5') + $extraArgs
     if ($DryRun) { $a += '-n' }
     foreach ($d in $excludeDirs)  { $a += "--exclude=$d/" }
     foreach ($f in $excludeFiles) { $a += "--exclude=$f" }
@@ -163,10 +163,10 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
     return ($code -eq 0)
 }
 
-function Snapshot($src, $dst, [string[]]$extraXD) {
+function Snapshot($src, $dst, [string[]]$extraXD, [string[]]$extraArgs = @()) {
     if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
     $xd = @('node_modules', '.venv', '__pycache__', '.git', 'cache', 'tmp') + $extraXD
-    $ok = Invoke-Rsync $src $dst $xd @()
+    $ok = Invoke-Rsync $src $dst $xd @() $extraArgs
     if ($ok -ne $true) {
         $Errors.Add("snapshot:$([IO.Path]::GetFileName($dst))")
         Log "SNAP $src -> $dst : FAILED (rsync exit $LASTEXITCODE)"
@@ -282,7 +282,14 @@ Snapshot "$U/.claude/projects"  "$P/claude-projects"  @('worktrees')
 Snapshot "$U/.codex/memories"   "$P/codex/memories"   @()
 Snapshot "$U/.codex/sessions"   "$P/codex/sessions"   @()
 Snapshot "$U/.codex/agents"     "$P/codex/agents"     @()
-Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @()
+# --checksum here, NOT elsewhere. --modify-window=5 (see Invoke-Rsync) makes rsync's
+# quick-check tolerate a 5s mtime difference, which is safe for append-only logs: any
+# real change moves their size too. SQLite is the exception - it updates rows inside
+# EXISTING pages, so content changes while size stays byte-identical. A write landing
+# within 5s of the dest's (Drive-rounded) mtime would be skipped, and skipped forever
+# after, since neither side changes again. --checksum compares content and is immune to
+# both the rounding and the same-size case. Cheap: codex-dev.db is ~224KB.
+Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @() @('--checksum')
 Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_profile')
 
 # --- 2b. Manifest-driven DEV coverage ---
