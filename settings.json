@@ -131,7 +131,7 @@
       "Write(//c/Users/eric_rash/.claude/**)",
       "Bash(launchctl:*)"
     ],
-    "defaultMode": "dontAsk",
+    "defaultMode": "auto",
     "additionalDirectories": [
       "/Users/kristinarash/DEV"
     ]
@@ -151,7 +151,6 @@
     "ContextSearch": "off",
     "Council": "off",
     "CreateCLI": "off",
-    "CreateSkill": "off",
     "Daemon": "off",
     "Delegation": "off",
     "Evals": "off",
@@ -209,7 +208,34 @@
     "triage": "off",
     "wayfinder": "off",
     "writing-great-skills": "off",
-    "zoom-out": "off"
+    "zoom-out": "off",
+    "Agents": "off",
+    "Browser": "off",
+    "Interview": "off",
+    "Knowledge": "off",
+    "LifeOS": "off",
+    "Science": "off",
+    "articulation-skill": "off",
+    "decision-toolkit": "off",
+    "design-academy-skill": "off",
+    "diagram-generator": "off",
+    "everything-search": "off",
+    "fable-mode": "off",
+    "fact-checker": "off",
+    "find-skills": "off",
+    "firecrawl": "off",
+    "loop-designer": "off",
+    "process-interviewer": "off",
+    "research-assistant": "off",
+    "roast": "off",
+    "skill-evaluator": "off",
+    "starter-design-tokens": "off",
+    "starter-icp-positioning": "off",
+    "starter-voice-profile": "off",
+    "to-prd": "off",
+    "visual-explainer": "off",
+    "watch": "off",
+    "web-scraping": "off"
   },
   "hooks": {
     "SessionStart": [
@@ -273,7 +299,17 @@
       }
     ],
     "PostToolUse": [],
-    "PreToolUse": [],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/kristinarash/.local/bin/dcg"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -298,7 +334,7 @@
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": false,
-    "playwright@claude-plugins-official": true,
+    "playwright@claude-plugins-official": false,
     "claude-md-management@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": false,
     "commit-commands@claude-plugins-official": false,
@@ -309,20 +345,20 @@
     "andrej-karpathy-skills@karpathy-skills": false,
     "firecrawl@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": false,
-    "last30days@last30days-skill": false,
+    "last30days@last30days-skill": true,
     "claude-mem@thedotmack": false,
     "context-mode@context-mode": true,
     "codex@openai-codex": true,
-    "mattpocock-skills@mattpocock": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@mattpocock": false,
+    "mattpocock-skills@claude-plugins-official": true,
+    "watch@claude-video": true
   },
   "extraKnownMarketplaces": {
     "last30days-skill": {
       "source": {
         "source": "github",
         "repo": "mvanhorn/last30days-skill"
-      },
-      "autoUpdate": true
+      }
     },
     "cli-printing-press": {
       "source": {
@@ -363,8 +399,7 @@
       "source": {
         "source": "github",
         "repo": "bradautomates/claude-video"
-      },
-      "autoUpdate": true
+      }
     },
     "mattpocock": {
       "source": {
@@ -374,8 +409,9 @@
       "autoUpdate": true
     }
   },
+  "outputStyle": "ELI5",
   "effortLevel": "high",
-  "advisorModel": "opus",
+  "advisorModel": "fable",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
