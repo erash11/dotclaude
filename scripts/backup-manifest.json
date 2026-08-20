@@ -313,14 +313,14 @@
       "path": "DEV/Education_Content_Agent",
       "class": "institutional",
       "isRepo": true,
-      "remote": null,
+      "remote": "https://github.com/erash11/Education_Content_Agent.git",
       "destinations": [
         "ssd",
+        "github",
         "baylor"
       ],
       "captureOrphans": true,
-      "captureWorkingTree": true,
-      "note": "No git remote as of 2026-08-19: GitHub does NOT cover this repo. Until a remote is added, SSD capture is its only backup path."
+      "captureWorkingTree": true
     },
     {
       "path": "DEV/Epilepsy-Baseball-Research",
