@@ -48,6 +48,19 @@
       "captureWorkingTree": false
     },
     {
+      "path": "DEV/AgentAssist",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/AgentAssist.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
       "path": "DEV/agy",
       "class": "institutional",
       "isRepo": false,
@@ -297,6 +310,19 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/Education_Content_Agent",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true,
+      "note": "No git remote as of 2026-08-19: GitHub does NOT cover this repo. Until a remote is added, SSD capture is its only backup path."
+    },
+    {
       "path": "DEV/Epilepsy-Baseball-Research",
       "class": "institutional",
       "isRepo": false,
@@ -401,6 +427,18 @@
       ],
       "captureOrphans": false,
       "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Linda Projects",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-08-19 by stack-doctor with the most restrictive routing available: SSD only. Contains a file marked CONFIDENTIAL (I-983). Deliberately NOT routed to github or baylor. Eric to confirm classification."
     },
     {
       "path": "DEV/May_Meetings_Research",
