@@ -1,12 +1,14 @@
 # Shell / Environment (macOS)
 
 - zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
-- Verified tool paths (all on PATH via Homebrew unless noted):
-  - Python: `/opt/homebrew/bin/python3` (3.14, PEP 668-managed — use venvs or `uv`, never `pip install` globally)
-  - uv: `/Users/kristinarash/.local/bin/uv`
-  - Go: `/opt/homebrew/bin/go`
-  - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `/Users/kristinarash/go/bin/`
-  - Node: `/opt/homebrew/bin/node`
+- **The tool-path list has one home: the "Shell / Environment" section of `~/.claude/CLAUDE.md`.** Read that file when you need a path. It is deliberately not copied here — the copy drifted from it once already. Only the traps below are restated, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** Tools have existed in two places before, with the older one winning. `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first — a PATH read from inside a tool shell is polluted by that shell's own exports:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed — use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `/Users/kristinarash/.local/bin/uv`, **not** Homebrew. Claude Code hooks call that absolute path; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
 - DEV projects live at `~/DEV` (not `~/Desktop/DEV`).
 
 # Workflow Expectations

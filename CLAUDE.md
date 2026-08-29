@@ -3,11 +3,11 @@
 - zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
 - Verified tool paths (all on PATH via Homebrew unless noted):
   - Python: `/opt/homebrew/bin/python3` (3.14, PEP 668-managed — use venvs or `uv`, never `pip install` globally)
-  - uv / uvx: `/Users/kristinarash/.local/bin/uv` (standalone install, `uv self update`; **not** Homebrew — the Homebrew formula was removed 2026-08-13 to leave a single copy). Claude Code hooks call this absolute path; do not delete or relocate it.
+  - uv / uvx: `/Users/kristinarash/.local/bin/uv` (standalone install, `uv self update`; **not** Homebrew — keep exactly one copy). Claude Code hooks call this absolute path; do not delete or relocate it.
   - Go: `/opt/homebrew/bin/go` · Node: `/opt/homebrew/bin/node` · npm/npx: `/opt/homebrew/bin/`
   - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `/Users/kristinarash/go/bin/`
   - claude: `/Users/kristinarash/.local/bin/claude` · codex: `/opt/homebrew/bin/codex`
-  - `/usr/local/bin` holds **only** Docker Desktop + kubectl. The old Node install there was removed 2026-08-13.
+  - `/usr/local/bin` holds **only** Docker Desktop + kubectl — nothing else belongs there.
   - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
 - **Verify, don't trust this list.** Tools have existed in two places before, with the older one
   winning. `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first —
