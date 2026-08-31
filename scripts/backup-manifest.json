@@ -393,6 +393,17 @@
       "captureWorkingTree": false
     },
     {
+      "path": "DEV/CommandCentre",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/ContextVault",
       "class": "personal",
       "isRepo": false,
