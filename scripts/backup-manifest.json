@@ -36,6 +36,114 @@
   },
   "paths": [
     {
+      "path": ".claude/agents",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/claude-memory-compiler",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/global-memory",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/hooks",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/projects",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "drive"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/scripts",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".claude/skills",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".codex",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "drive"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": ".gemini",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "drive"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/_obsidian_extracted_from_FaceComps",
       "class": "institutional",
       "isRepo": false,
@@ -145,6 +253,18 @@
       "captureWorkingTree": false
     },
     {
+      "path": "DEV/Baseball_PerformanceProfiles",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/Basketball",
       "class": "institutional",
       "isRepo": false,
@@ -158,6 +278,18 @@
     },
     {
       "path": "DEV/Basketball_Women",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Baylor_Doc_Style",
       "class": "institutional",
       "isRepo": false,
       "remote": null,
@@ -642,6 +774,18 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/Tech_Inventory_Analysis",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/TechEd_Prop",
       "class": "personal",
       "isRepo": false,
@@ -745,114 +889,6 @@
       ],
       "captureOrphans": true,
       "captureWorkingTree": true
-    },
-    {
-      "path": ".claude/projects",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "drive"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/global-memory",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/skills",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/claude-memory-compiler",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/agents",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/hooks",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".claude/scripts",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".codex",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "drive"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": ".gemini",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "drive"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
     },
     {
       "path": "SecondBrain",
