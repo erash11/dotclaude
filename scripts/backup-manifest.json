@@ -358,6 +358,15 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/CFB_Forecast_Archive",
+      "class": "personal",
+      "isRepo": false,
+      "destinations": [
+        "ssd"
+      ],
+      "note": "Read-only copies of weekly CFB Victory Model forecast freezes. Source of truth is DEV/CFB_Victory_Model/data/."
+    },
+    {
       "path": "DEV/CFB_Victory_Model",
       "class": "personal",
       "isRepo": true,
