@@ -25,12 +25,12 @@ link_agents() {
 
 # 1. Global: Codex's user-level context now IS Claude's user-level context.
 mkdir -p "$HOME/.codex"
-link_agents "$HOME/.claude/CLAUDE.md" "$HOME/.codex/AGENTS.md" || true
+link_agents "$HOME/.claude/AGENTS.md" "$HOME/.codex/AGENTS.md" || true
 
 # 2. Per-project: every git repo with a CLAUDE.md under the usual dev roots.
 #    (Relative symlink so it works wherever the repo is cloned.)
 LINKED=()
-for root in "$HOME/Desktop/DEV" "$HOME/projects"; do
+for root in "$HOME/DEV" "$HOME/projects"; do
   [ -d "$root" ] || continue
   for repo in "$root"/*/; do
     [ -d "$repo.git" ] && [ -f "${repo}CLAUDE.md" ] || continue

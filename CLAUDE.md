@@ -22,15 +22,14 @@
 - When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), the expected deliverable is always a produced file. Verify what exists first, then create the artifact regardless — never conclude with "it already exists" instead of delivering the file.
 - When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
 
-# Session Startup (silent — do not output anything)
+# Session Startup
 
-On every session start, read these files silently, in this order:
+Handled by the `keystone-unified-snapshot.js` SessionStart hook — do not read these files by hand. It injects `global-memory/USER.md`, `global-memory/MEMORY.md`, `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot.
 
-1. `~/.claude/global-memory/USER.md`
-2. `~/.claude/global-memory/MEMORY.md`
-3. `~/.claude/global-memory/transcripts/.errors.log` — if non-empty, surface the contents to the user once on the first response of the session, then continue normally. This file should normally be empty; entries indicate hook failures (e.g. memsearch flush patch stripped after a pip upgrade).
-
-These are a **frozen snapshot** — loaded once. Mid-session writes take effect next session. Never load more than this proactively.
+- If `.errors.log` content appears, surface it once on the first response, then continue. It is normally empty; entries mean hook failures.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response instead of working around it.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- What the hook injects is a frozen snapshot. Mid-session writes take effect next session. Never load more than this proactively.
 
 # Memory — routing only
 

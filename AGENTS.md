@@ -9,11 +9,11 @@
   - `uv` is a standalone install at `/Users/kristinarash/.local/bin/uv`, **not** Homebrew. Claude Code hooks call that absolute path; do not delete or relocate it.
   - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
   - Secrets live in the macOS Keychain, not in `~/.zshrc`.
-- DEV projects live at `~/DEV` (not `~/Desktop/DEV`).
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
 
 # Workflow Expectations
 
-- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), the expected deliverable is always a produced file. Verify what exists first, then create the artifact regardless — never conclude with "it already exists" instead of delivering the file.
+- One home: the "Workflow Expectations" section of `~/.claude/CLAUDE.md`. Read it there.
 
 # graphify
 
@@ -49,6 +49,11 @@ Check `wc -c` before writing. If over cap, consolidate existing entries before a
 `~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md`, produced by `claude-memory-compiler` via its own hooks. **Never write to them manually. Never read them eagerly** — treat the injected snapshot as the source of truth.
 
 ## Session startup (silent — output nothing)
+
+> Kept as a manual instruction on purpose. Claude Code does this with the
+> `keystone-unified-snapshot.js` SessionStart hook, so `CLAUDE.md` no longer
+> states it. Codex has no equivalent hook, so the steps stay spelled out here.
+> Do not "align" the two files by deleting this section.
 Read in this order: `global-memory/USER.md`, then `global-memory/MEMORY.md`, then `global-memory/transcripts/.errors.log`. If `.errors.log` is non-empty, surface its contents once on the first response, then continue. It should normally be empty; entries indicate hook failures.
 
 These are a **frozen snapshot** — loaded once. Mid-session writes persist to disk but take effect next session. This preserves the prefix cache. Never load more than this proactively.
