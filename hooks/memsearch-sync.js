@@ -2,26 +2,56 @@
 // SessionEnd hook: re-index memsearch so transcripts written this session
 // become searchable.
 //
-// Runs the index SYNCHRONOUSLY. At session end only this session's transcript
-// (plus the compiler's daily note) is new, so memsearch takes the fast
-// incremental path (~5s: mostly fixed model-load + scan overhead, not chunk
-// count). We deliberately do NOT fire-and-forget: detached child processes on
-// Windows are unreliable here (the child gets killed in the race when this
-// parent hard-exits before its process group is established — it creates the
-// log file but never finishes the index). Blocking at session teardown is
-// the acceptable price for an indexer that actually completes.
+// Runs the index in a DETACHED BACKGROUND WORKER (see the self-respawn block
+// below). The hook process returns in milliseconds; the worker outlives it and
+// indexes at its own pace.
 //
-// spawnSync gets a 45s internal cap; the hook's settings.json timeout is 50s,
-// so spawnSync's own timeout fires first and we exit cleanly (writing whatever
-// output we got) instead of being hard-killed by the harness ("Hook cancelled").
-// Measured model-load overhead is ~17s regardless of chunk count; 25s was too
-// tight and caused ETIMEDOUT failures across sessions. 45s gives safe headroom.
-// See project_memsearch_setup.md.
+// This replaced a synchronous spawnSync capped at 45s, changed 2026-09-02.
+// The old design assumed a ~17s fixed floor and a "~5s incremental" — numbers
+// that were true when they were written and are not any more. Measured on this
+// Mac 2026-09-02 against the current corpus (10 paths, ~1,450 files, of which
+// SecondBrain/Inbox/meetings is 593 and SecondBrain/Knowledge is 334):
+//   * no-op run, nothing new to embed ....... 33s   (was ~17s)
+//   * one day of accumulated content ....... 278s   (232 chunks, ~1s/chunk)
+// So the 45s cap left ~12s of embedding budget — under a dozen new chunks.
+// Every ordinary session-end index was timing out, and incremental indexing had
+// quietly degraded to "whatever the 09:00 nightly full reindex picks up",
+// leaving search up to 24h stale. The tell was six session-ends inside 47
+// minutes on 2026-09-01 producing a 7-long ETIMEDOUT streak. Raising the cap
+// was not an option: a correct cap is minutes, and a SessionEnd hook may not
+// block session teardown for minutes.
+//
+// The original rationale for staying synchronous was a WINDOWS process-group
+// race — a detached child got killed when the parent hard-exited before its
+// group was established. **That rationale is dead.** This machine has been
+// macOS since 2026-08-05, where detached + unref is reliable. Do not "restore"
+// the synchronous version on the strength of that comment.
+//
+// The worker keeps the full original body: it owns the PID lock (so clustered
+// session-ends still elect a single indexer), writes INDEX_LOG, and runs every
+// error-classification branch. Its spawnSync cap is now 600s — no longer a
+// budget, just a runaway guard, so an ETIMEDOUT genuinely means ">10 minutes"
+// and is worth escalating. See project_memsearch_setup.md.
 
-const { spawnSync } = require('child_process');
+const { spawnSync, spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+
+// --- Detach: re-exec ourselves as a background worker, then return at once. ---
+// stdio MUST be 'ignore'. Inheriting or piping keeps the harness's pipe open,
+// so it would wait for the child anyway and we would have rebuilt the timeout
+// with extra steps. The lock below is then taken by the WORKER's pid, which is
+// what isProcessAlive() needs in order to coordinate late-arriving sessions.
+if (!process.argv.includes('--worker')) {
+  try {
+    spawn(process.execPath, [__filename, '--worker'], {
+      detached: true,
+      stdio: 'ignore',
+    }).unref();
+  } catch (_) {}
+  process.exit(0);
+}
 
 // Declared before resolvePaths() runs: `const PATHS = resolvePaths()` executes
 // below, and resolvePaths now calls logErr on the fallback branch. If ERR_LOG
@@ -158,7 +188,11 @@ try {
     shell: false,
     windowsHide: true,
     encoding: 'utf8',
-    timeout: 45000,
+    // Runaway guard, not a budget. We are detached, so nothing is waiting on
+    // this. A full day's backlog measured 278s on 2026-09-02, so 600s means a
+    // timeout here is a genuine hang worth escalating - not normal work being
+    // cut off, which is what the old 45s cap was doing on every session end.
+    timeout: 600000,
   });
 
   const out = `${res.stdout || ''}${res.stderr || ''}`.trim();

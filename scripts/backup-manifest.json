@@ -702,6 +702,18 @@
       "captureWorkingTree": true
     },
     {
+      "path": "DEV/RTP_Constraints_Course",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-09-02. Class 'personal' confirmed by Eric. Constraints-led return-to-performance course for Joe Smith. Not a git repo; SSD only."
+    },
+    {
       "path": "DEV/RTP_DataCollection_Talk",
       "class": "personal",
       "isRepo": true,
