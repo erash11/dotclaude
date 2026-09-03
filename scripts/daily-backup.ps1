@@ -71,8 +71,16 @@ function Sync-Repo($path, $branch) {
         if ($DryRun -and $dirty -gt 0) { $ahead = 1 }
         if ($ahead -gt 0) {
             if (-not $DryRun) {
-                git push origin $branch 2>&1 | Out-Null
-                if ($LASTEXITCODE -ne 0) { $Errors.Add("repo-push:$name"); Log "REPO $name : PUSH FAILED"; return }
+                # Capture push output instead of discarding it. Scheduled runs have failed
+                # to push for weeks with no recorded reason (2026-09-02 handoff); Out-Null
+                # threw the error text away. Success stays silent - only failures log.
+                $pushOut = git push origin $branch 2>&1
+                if ($LASTEXITCODE -ne 0) {
+                    $Errors.Add("repo-push:$name")
+                    Log "REPO $name : PUSH FAILED"
+                    foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR | $l" } }
+                    return
+                }
             }
             Log "REPO $name : $(if ($DryRun) { '[dry-run] would push' } else { 'pushed' })"
         }
