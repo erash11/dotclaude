@@ -7,7 +7,7 @@
   - Go: `/opt/homebrew/bin/go` · Node: `/opt/homebrew/bin/node` · npm/npx: `/opt/homebrew/bin/`
   - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `/Users/kristinarash/go/bin/`
   - claude: `/Users/kristinarash/.local/bin/claude` · codex: `/opt/homebrew/bin/codex`
-  - `/usr/local/bin` holds **only** Docker Desktop + kubectl — nothing else belongs there.
+  - `/usr/local/bin` is **empty** and stays that way. Docker Desktop (and the `kubectl` it shipped) was removed 2026-09-03 — nothing here used it. Homebrew owns `/opt/homebrew/bin`; never install into `/usr/local/bin`.
   - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
 - **Verify, don't trust this list.** Tools have existed in two places before, with the older one
   winning. `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first —
