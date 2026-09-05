@@ -1,20 +1,17 @@
 # Shell / Environment (macOS)
 
 - zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
-- Verified tool paths (all on PATH via Homebrew unless noted):
-  - Python: `/opt/homebrew/bin/python3` (3.14, PEP 668-managed — use venvs or `uv`, never `pip install` globally)
-  - uv / uvx: `/Users/kristinarash/.local/bin/uv` (standalone install, `uv self update`; **not** Homebrew — keep exactly one copy). Claude Code hooks call this absolute path; do not delete or relocate it.
-  - Go: `/opt/homebrew/bin/go` · Node: `/opt/homebrew/bin/node` · npm/npx: `/opt/homebrew/bin/`
-  - Go-installed CLIs (fireflies-pp-cli, espn-pp-cli, etc.): `/Users/kristinarash/go/bin/`
-  - claude: `/Users/kristinarash/.local/bin/claude` · codex: `/opt/homebrew/bin/codex`
-  - `/usr/local/bin` is **empty** and stays that way. Docker Desktop (and the `kubectl` it shipped) was removed 2026-09-03 — nothing here used it. Homebrew owns `/opt/homebrew/bin`; never install into `/usr/local/bin`.
-  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
-- **Verify, don't trust this list.** Tools have existed in two places before, with the older one
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. It is deliberately not inlined here — this file loads into every session in every project, and the table answers a question asked on only a few of them. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** Tools have existed in two places before, with the older one
   winning. `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first —
   a PATH read from inside a tool shell is polluted by that shell's own exports:
   `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
-- Secrets live in the macOS Keychain, not in `~/.zshrc`. `FIREFLIES_API_KEY` is read via
-  `security find-generic-password -s FIREFLIES_API_KEY -a "$USER" -w`.
+- Traps:
+  - Python is PEP 668-managed — use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `/Users/kristinarash/.local/bin/uv`, **not** Homebrew. Claude Code hooks call that absolute path; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` is empty and stays that way — never install into it.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
 - DEV projects live at `~/DEV` (not `~/Desktop/DEV`).
 
 # Workflow Expectations
