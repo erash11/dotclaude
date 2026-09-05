@@ -723,6 +723,18 @@
       "note": "Added 2026-09-02. Class 'personal' confirmed by Eric. Constraints-led return-to-performance course for Joe Smith. Not a git repo; SSD only."
     },
     {
+      "path": "DEV/skill-audit-2026-09-05",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-09-05 at Eric's request after the 09:00 run flagged it manifest-unmanaged. One-off audit of Eric's own Claude Code / Codex skill tree, run 2026-09-05 07:15: REPORT.md, CLAUDE-CODEX-DUPLICATES.md, RECOMMENDATIONS.md, inventory.json/csv, plus audit.py and usage_audit.py. Class 'personal' by precedent with CLI_Dev and Terminal_Fluency - agent tooling, not Baylor work, so it stays off the institutional target. Not a git repo; SSD only; 3.2 MB. Reports are regenerable from the two scripts, but the run is dated and decisions were taken from it, so keep the snapshot."
+    },
+    {
       "path": "DEV/RTP_DataCollection_Talk",
       "class": "personal",
       "isRepo": true,
