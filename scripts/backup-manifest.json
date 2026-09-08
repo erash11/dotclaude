@@ -144,6 +144,17 @@
       "captureWorkingTree": false
     },
     {
+      "path": "DEV/Life-OS",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
       "path": "DEV/_obsidian_extracted_from_FaceComps",
       "class": "institutional",
       "isRepo": false,

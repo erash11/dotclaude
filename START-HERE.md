@@ -75,7 +75,10 @@ Phase 3 must also rsync: `claude/skills`, `claude/agents`, `claude/config`,
 - Go module paths are NOT in GitHub skills — they are in the drive skills repo's
   `pp-*/SKILL.md`: `github.com/mvanhorn/printing-press-library/library/<cat>/<name>/cmd/<name>-pp-cli@latest`.
   5 of 7 install cleanly. `catapult-openfield-connect` and `zotero-research-library`
-  build from a local `~/printing-press` tree that exists in NO backup — reinstall via
+  build from a local Printing Press workspace. **RESOLVED 2026-09-07:** that tree moved
+  from `~/printing-press` into `DEV/CLI_Dev/printing-press`. `CLI_Dev` is in the backup
+  manifest but routes to `ssd` only — covered on CRASHBOX nights, NOT on GitHub or Drive.
+  `~/printing-press` is a symlink to the new path. Fallback if it is ever lost:
   `npx -y @mvanhorn/printing-press` when the registry carries them, or re-clone the source.
 
 **Phase 6 corrections.**
