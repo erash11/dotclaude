@@ -67,8 +67,16 @@ function lastAssistantText(transcriptPath) {
   if (input.stop_hook_active) return;
 
   const transcriptPath = input.transcript_path;
-  if (!transcriptPath || !fs.existsSync(transcriptPath)) {
-    logErr('missing transcript_path: ' + JSON.stringify(input).slice(0, 200));
+
+  // A null/absent transcript_path is not breakage — some harnesses that share
+  // these hooks (Codex `gpt-5.6*` sessions, verified 2026-09-07) never supply
+  // one. There is nothing to capture, so exit quietly. Logging it refilled
+  // .errors.log every run and buried the entries that do mean something.
+  if (!transcriptPath) return;
+
+  // A path that WAS supplied but is not on disk is real breakage. Keep logging it.
+  if (!fs.existsSync(transcriptPath)) {
+    logErr('transcript_path does not exist: ' + JSON.stringify(input).slice(0, 200));
     return;
   }
 
