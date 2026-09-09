@@ -1,0 +1,1 @@
+- [TAE pilot proposal](project-transformative-athlete-experience.md) — Baylor football transfer transformation pilot; proposal drafted, awaiting Kenny Boyd blessing

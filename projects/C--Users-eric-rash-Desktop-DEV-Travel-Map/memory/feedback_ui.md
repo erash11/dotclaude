@@ -1,0 +1,17 @@
+---
+name: UI and layout preferences
+description: Eric's confirmed preferences for this app's visual design and layout
+type: feedback
+originSessionId: fdcd7ac4-6db3-4b52-943a-0e60fae67a61
+---
+**Light mode over dark mode.**
+Why: Eric explicitly requested switching from the dark theme to light mode. Keep the Baylor green (#154734) header dark as a contrast anchor — that's intentional.
+How to apply: Default to light backgrounds (#f1f5f9 page, #fff cards, #e2e8f0 borders) for any new UI work.
+
+**Map should have maximum screen space.**
+Why: Eric wanted the sidebar moved so the map gets more room for interactivity.
+How to apply: Keep the current layout — horizontal stats strip at top, map fills full width, floating detail card over map on click, schedule panel as an opt-in toggle (not shown by default).
+
+**Floating detail card over sidebar for destination details.**
+Why: Eric chose the hybrid option (stats strip + floating card on click) over a persistent sidebar. Details should surface in context on the map, not in a separate panel.
+How to apply: When a destination is selected (dot clicked), show a bottom-left floating card. Do not re-introduce a persistent right sidebar for game details.

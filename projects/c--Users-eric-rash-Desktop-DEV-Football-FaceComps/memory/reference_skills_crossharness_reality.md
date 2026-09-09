@@ -1,0 +1,30 @@
+---
+name: reference_skills_crossharness_reality
+description: "Real on-disk state of the npx-skills cross-harness setup on this Windows machine, and the destructive local-add bug"
+metadata: 
+  node_type: memory
+  type: reference
+  originSessionId: 6e10e025-b387-4133-94c5-2614f91feecd
+---
+
+Verified 2026-06-09 on this Windows 11 machine. Corrects/expands [[reference_skill_manager]].
+
+**On-disk reality (not what the lock file implies):**
+- Source-of-truth pool: `~/.agents/skills/` (21 skills, all from GitHub repos via `npx skills add`). Manifest: `~/.agents/.skill-lock.json` (v3; per-skill source/sourceUrl/skillPath/skillFolderHash).
+- `~/.agents/.skill-lock.json` `lastSelectedAgents` lists 14 agents (codex, cursor, gemini-cli, etc.) but that is a saved *preference*, NOT on-disk truth.
+- The 21 pool skills are symlinked (junctions) ONLY into `~/.claude/skills/`. `~/.codex/skills/` contains just `codex-primary-runtime` + `.system` (none of the pool). `~/.gemini/` has no skills dir. **In practice the cross-harness pool is consumed by Claude Code only.**
+- Only 3 harness dirs exist: `~/.claude` (skills/), `~/.codex` (skills/, own convention), `~/.gemini` (no skills/).
+- `~/.claude/skills/` has ~110 entries: ~21 are junctions to the pool; the rest (~90) are REAL dirs = Claude-only. ~80 of those are the `gsd-*` suite (deeply Claude-Code-coupled: subagents, slash commands — won't function in other harnesses).
+
+**DESTRUCTIVE BUG — do not use `npx skills add <local-path>` on this machine:** tested on `humanizer`. It replaced the source dir with a junction to an EMPTY pool dir, wrote NO lock entry, linked NO other agent, and printed "Failed to install 1". The skill content was lost from `~/.claude/skills`; recovered only because a full clone survived in the Claude desktop cache (`AppData/Local/Packages/Claude_*/LocalCache/.../skills-plugin/.../skills/<name>`). The GitHub-source path of `npx skills add` works fine; the LOCAL-PATH path is broken.
+
+**Also broken:** bash `ln -s` under MSYS makes a deep COPY, not a link (default `winsymlinks` off). To create real Windows junctions use node: `node -e "fs.symlinkSync(target, link, 'junction')"` (no admin needed) — this is how the manager makes its working links.
+
+**How to actually make a local skill cross-harness here:** GitHub route (push to a repo, `npx skills add <repo> -g -a '*'`) is the only reliable manager-native path — but needs care for Baylor-internal skills (five-slides-generator, pbir-report-builder, meeting-sync, interview-me, weekly-review, project-triage reference internal vaults/workflows; do not publish publicly). Or replicate the manager manually with node junctions + hand-written lock entries.
+
+**DONE 2026-06-09:** Created **private** repo `erash11/agent-skills` with 19 portable skills (articulation-skill, decision-toolkit, design-academy, diagram-generator, fact-checker, find-skills, frontend-slides, humanizer, process-interviewer, research-assistant, skill-evaluator, slide-deck, visual-explainer, starter-design-tokens/-icp-positioning/-voice-profile, session-handoff, everything-search, game-film-timestamps). Installed via `npx skills add erash11/agent-skills -g --all`. Pool now 40, lock 39 (graphify untracked, pre-existing dup). Update with `npx skills update`. Backup of pre-install originals at `~/.claude/skills-backup-20260609/` (19).
+- Manager names pool dirs from SKILL.md `name:` not folder: `design-academy`→`design-academy-skill`, `slide-deck`→`slide-deck-generator` (cosmetic; old real dupes were removed).
+- The `skills` CLI maps agents to dirs: **Codex → `~/.codex/skills/`** (docs: developers.openai.com/codex/skills), **Gemini CLI → `~/.gemini/skills/`** (docs: geminicli.com/docs/cli/skills). Both ARE drop-in `<name>/SKILL.md` skill dirs (my earlier "Gemini uses GEMINI.md" guess was WRONG).
+- **The CLI's writes to non-auto-detected agents silently no-op here.** `npx skills add ... -a '*'` and `-a codex -a gemini-cli` both reported "Installed/copied 19" but wrote NOTHING to `~/.codex/skills` or `~/.gemini/skills` (latter not even created). Only the auto-detected agent (claude-code) actually got junctions. Treat the CLI as reliable ONLY for its auto-detected agent on this machine.
+- **RESOLVED 2026-06-09 via node junctions.** Created junctions manually: `~/.codex/skills/<name>` and `~/.gemini/skills/<name>` → `~/.agents/skills/<name>` for all 19, using a node script (`fs.symlinkSync(pool, link, 'junction')` with FORWARD-SLASH paths — bash here-docs mangle backslashes nondeterministically; node accepts `/` on Windows). All 19 resolve SKILL.md in both. Codex `.system` skills + `codex-primary-runtime` left untouched. Because all three harnesses junction to the same pool, `npx skills update` (updates the pool clone) propagates everywhere. Net: 19 portable skills now live in Claude Code + Codex + Gemini CLI. (Codex desktop app may need a restart to rescan; Gemini reads `~/.gemini/skills` on launch.)
+- **Codex marketplace fallback ALSO set up 2026-06-09.** Codex (gpt-5.5 desktop app) marketplaces use the Claude plugin format: repo needs `.claude-plugin/marketplace.json` + `.claude-plugin/plugin.json` (skills listed as explicit relative paths, so flat layout is fine — `./skills/x` not required). Added both manifests to `erash11/agent-skills` (skills array lists all 19 `./<name>`; repo folder names are originals `design-academy`/`slide-deck`, not the pool's `-skill`/`-generator` variants). Registered in `~/.codex/config.toml` as `[marketplaces.agent-skills]` (git, https), mirroring the `karpathy-skills` entry (registering the marketplace is sufficient; no separate `[plugins.*]` enable line needed). Backup at `~/.codex/config.toml.bak-20260609`; TOML validated with `python -m tomllib`. Private-repo clone via git credential-manager confirmed working (Codex should clone on restart). Codex's built-in `skill-installer` system skill (`~/.codex/skills/.system/skill-installer`) is the native alternative — installs from any GitHub repo incl. private into `~/.codex/skills`. So Codex now has BOTH the folder junctions and the marketplace registration.

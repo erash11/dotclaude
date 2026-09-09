@@ -1,0 +1,14 @@
+---
+name: feedback-auto-commit-push
+description: Eric authorized autonomous commit+push to the KeystoneOS repo (2026-06-11)
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: 654b75da-db0b-418c-80ad-d3c8167a5eeb
+---
+
+Eric granted standing authorization to commit and push changes to the KeystoneOS repo (github.com/erash11/KeystoneOS, main branch) without asking each time.
+
+**Why:** KeystoneOS is his cross-harness control plane; changes are mostly generated artifacts (graphify outputs, packets, dashboards) that don't need per-commit review, and unpushed local state defeats the purpose of a control plane visible across machines/harnesses.
+
+**How to apply:** After completing work that modifies the KeystoneOS working tree, commit with a descriptive message and push to main on your own. Still use sensible judgment: don't push half-finished work mid-task, and surface anything destructive (history rewrites, deletions of others' work) before doing it. This authorization is KeystoneOS-only — it does not extend to other repos.

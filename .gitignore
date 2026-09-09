@@ -28,3 +28,6 @@ scripts/logs/
 !/restore.command
 !/restore-README.txt
 !/.gitattributes
+
+# Claude Code session transcripts (added 2026-09-09)
+!/projects/

@@ -1,0 +1,17 @@
+---
+name: Newsletter workflow preferences
+description: How Eric wants to work on The Monitor newsletter
+type: feedback
+originSessionId: 1394306f-7cec-44d2-af2c-4ec4fd4055b2
+---
+Content confirmed as real = proceed immediately. Don't re-ask or re-verify.
+
+**Why:** Eric works fast. When he says content is accurate, he means it. Checking again wastes his time.
+
+**How to apply:** If Eric confirms content is real, skip clarifying questions about that content and move to the next action (photo, formatting, export, etc.).
+
+The brainstorm preview server (localhost) does not serve image files — only HTML. Don't use relative image paths in the browser preview; use the actual file opened in Chrome to verify photo rendering.
+
+**Why:** Wasted a session turn chasing a photo that wasn't broken in the source, only in the preview.
+
+**How to apply:** For photo verification, always ask Eric to open the source HTML file directly in Chrome (file:// URL), not the localhost preview.

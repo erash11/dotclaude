@@ -1,0 +1,47 @@
+---
+name: user-career-context
+description: "Eric's career situation, strengths, ambitions, constraints, and 12-month clock — read before giving career or work strategy advice"
+metadata: 
+  node_type: memory
+  type: user
+  originSessionId: 11138d9e-4a02-45bd-94d6-6c7e4e0b9e98
+  modified: 2026-07-27T22:31:17.441Z
+---
+
+## Current Role
+Director of Applied Performance, Baylor Athletics (~8 yrs). Applied Performance is a support/enablement function behind athlete-facing units — not athlete-facing itself. Reports to Chris Ruf (S&C Director); lost access to senior leadership (Kenny) after a 2025 reporting change that felt like a demotion. No budget, no mandate, self-defined OKRs with no external accountability. Annual report due July 2026.
+
+## The Core Problem
+The function has produced little visible output over the years → perception is "they don't do much." His highest-leverage move is **shipping concrete proof** (dashboards, reports, education content, decks) — not consensus-building or persuasion. He has the data, AI fluency, and autonomy to build without permission.
+
+## Strengths
+- **Diagnostician**: reframes shallow questions into the right question; force-plate RTP is proof (restore pre-injury baseline, not cross an arbitrary asymmetry threshold).
+- **AI fluency**: ahead of peers; produces richer, faster output than colleagues.
+- **Systems thinker**: infrastructure → question → data → analysis, in that order.
+- Underused in current environment; nobody seeks him out for these skills yet.
+
+## Weaknesses / Gaps
+- Execution in accountability-free environments (depends on others to adopt).
+- Real analytics craft (beyond AI-assisted output): data manipulation, foundational analytical systems.
+- Network thin for a pivot to pro sport or analytics roles.
+
+## 12-Month Clock (set early 2026, reassess ~mid-2027)
+Build skills, invest in people, create frameworks. If value isn't recognized or a better opportunity appears, leave. Not planning to stay long-term at Baylor. Keeping this background/discrete.
+
+## Target Role
+**Player-coach with the wheel**: analytics-forward, decision-making authority, still hands-on generating insights and presenting to coaching staff. Not a pure IC analyst, not a detached executive — both.
+
+## Dream Geography & Comp
+Near **Iowa** (family, network, wife's roots, U of Iowa ideal). Comp floor: **low-to-mid $90Ks**.
+
+## Motivation Pattern
+Energized by: building, analysis, mining insights, being at practice, being sought out.  
+Drained by: circular meetings on the same topics that never move.  
+Deepest motivator: **to matter** — be a high-credibility voice, develop others, be a servant leader. There's a known tension between genuine service and wanting to be seen ([[user-personal-constitution]]).
+
+## Settled Stance on Reduced Scope (2026-07-27)
+Describes himself as "a second-tier player now" with no major decision-making input. Has explicitly settled the question rather than left it open: hold the standard of work constant, keep pushing in chosen areas, don't lobby for the seat, trust God's plan for the outcome. Sees his current job as "understanding my role and learning to thrive in it." Framed as refinement of a stable position, not a fresh reaction.
+**Apply:** Don't propose strategies premised on fighting for inclusion, escalating, or making the case for a seat at the table — that lever is one he has deliberately set down. Visible shipped proof remains the live lever. See vault note `process-is-the-invariant`.
+
+**Why:** This document was built from a structured interview 2026-06-08. Advice assuming he can mandate adoption will fail; visible output + coalition-building are the realistic levers.  
+**How to apply:** Push on vague career reasoning, challenge rehearsed answers. Weight the "12-month clock + skill-building + network" framing for any career question.

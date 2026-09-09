@@ -1,0 +1,21 @@
+---
+name: project-drive-topology
+description: "Where Eric's projects and knowledge actually live — three homes, which is canonical, which to ignore"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: bc24c455-0908-4973-9f2c-eca4d41091f1
+  modified: 2026-07-24T02:50:30.492Z
+---
+
+Eric's projects and knowledge live in **three homes**. Know this before searching, registering, or "consolidating" anything — don't re-discover it, and don't propose moving files into one folder (settled: federation, not a monorepo — see KeystoneOS `decisions/log.md` 2026-06-12).
+
+1. **`C:\Users\eric_rash\Desktop\DEV`** — active **code** projects. Each is its own git repo → personal GitHub (`github.com/erash11`). **Canonical.** This is what the cockpit's project lanes track.
+
+2. **`C:\Users\eric_rash\OneDrive - Baylor University\00_Primary_Storage_Drive`** — the **Baylor Applied Performance work knowledge-base**. Johnny-Decimal organized (`01_ACTIVE_PROJECTS`, `02_BAIR_RESEARCH`, `03_SPORTS_PROGRAMS`, `05_DATA_SYSTEMS`, `09_PROFESSIONAL_DEVELOPMENT`, …). Mostly docs/data/research, **not** code. Some folders are **shared with colleagues** (Grigus, Holcomb, Tademy) — institutional/work files, so do NOT copy them into DEV or personal GitHub. Registered in KeystoneOS as a memory source (`baylor_workdrive`) and a discovery root (active projects under `01_ACTIVE_PROJECTS\01_ONGOING`).
+
+3. **`D:\_2026_ClaudeProjects\`** — a **STALE March-2026 backup**. Same git remotes as DEV but behind (e.g. ForcePlate DEV 55 commits vs D: 51). **Ignore it** — never register it, never let self-heal relocate a project onto it. Everything in it is either live in DEV or recoverable from GitHub.
+
+Cloud accounts (verified 2026-07-23): **personal OneDrive is NOT signed in** — `C:\Users\eric_rash\OneDrive` is a dead local folder, never route backups or syncs there. The working personal cloud is **Google Drive for Desktop (gmail) at `G:\My Drive`** — home of the daily personal-context backup (`Backups\Machine`) and the RESTORE.md mirror; see [[backup-coverage-2026-07]].
+
+Related: [[feedback-auto-commit-push]]. Command-center + cockpit + knowledge-ingestion work that established this lives in KeystoneOS `decisions/log.md`, `docs/superpowers/specs/2026-06-12-*`, and `knowledge/baylor-01-ongoing/`.
