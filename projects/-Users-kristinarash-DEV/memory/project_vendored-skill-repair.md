@@ -1,0 +1,38 @@
+---
+name: vendored-skill-repair
+description: "A vendored skill fails silently or with a confusing error — check for removed ffmpeg flags first, patch every live copy, and expect the fix to revert on update"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: a6dfb3da-c339-44b1-a836-2a6884e07ea6
+  modified: 2026-09-02T23:05:23.955Z
+---
+
+When a third-party skill produces **empty output rather than an error**, suspect
+a CLI flag the underlying tool has since removed, not the skill's own logic.
+
+**The instance (2026-09-02):** `/watch` returned zero frames with no useful
+message. Cause: `frames.py` passed ffmpeg `-vsync`, removed in ffmpeg 7+. This
+machine runs **ffmpeg 9.0.1**. Fix is `-vsync` → `-fps_mode` (same `vfr` value,
+same position, exists since ffmpeg 5.0).
+
+**Patch every live copy, and know which ones matter.** A skill can exist three
+times on this machine:
+
+1. `~/.agents/skills/<name>/…` — the vendor store, serves `~/.claude/skills/` and Codex.
+2. `~/.claude/plugins/cache/<plugin>/<skill>/<version>/skills/<name>/…` — the
+   plugin copy. **This is the one a `/slash` invocation actually loads.** Patch
+   only the vendor store and the skill stays broken.
+3. The Cowork copy under `Library/Application Support/Claude/…` — **do not
+   patch.** It is server-synced and reverts. See [[vendored-skill-install]].
+
+Confirm which file is live by reading the "Base directory for this skill" line
+the harness prints when the skill loads.
+
+**Every such patch is temporary.** Check upstream before assuming a fix is
+needed, and after patching, assume `skills update` or a plugin update reinstalls
+the bug. For `/watch` the upstream is `bradautomates/claude-video`, still
+carrying `-vsync` as of its 2026-06-30 commit.
+
+Verify by running the affected code path and **counting the output**, not by
+reading the exit code — the original failure exited 0.

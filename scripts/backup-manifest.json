@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-08-04",
+  "generated": "2026-09-09",
   "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
   "destinations": {
     "ssd": {
@@ -35,6 +35,1394 @@
     }
   },
   "paths": [
+    {
+      "path": "DEV/2025-11-25_EOS_Football_Analysis_GPS_ERR",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/2025-11-25_EOS_Football_Analysis_GPS_ERR.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/_ARCHIVE",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/_INBOX",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/_INBOX.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/_obsidian_extracted_from_FaceComps",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/agent-skills",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/agent-skills.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/AgentAssist",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/AgentAssist.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/agy",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/AI_Analyst",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/AMS_Mini",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/AppliedNewsletter_2026",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/AppliedNewsletter_2026.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/AppliedUtilization",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/AT_Utilization_Benchmarks",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Ath_Medicine",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/B_Ellis",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/B_Ellis.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/BAIR_Steering_Committee",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/BAIR_Steering_Committee.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Baseball_JD",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Baseball_PerformanceProfiles",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Basketball",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Basketball_Women",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Baylor_Doc_Style",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Baylor_Fonts",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/BodyWeightWebApp",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/BodyWeightWebApp.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/BookInbox",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/BookVaultApp",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/BookVaultApp.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Bucket",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Bucket.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Build_Along",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Build_Along.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Catapult_API",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/CATES",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/CATES.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/CFB_Analytics_Lab",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/CFB_Analytics_Lab.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/CFB_Forecast_Archive",
+      "class": "personal",
+      "isRepo": false,
+      "destinations": [
+        "ssd"
+      ],
+      "note": "Read-only copies of weekly CFB Victory Model forecast freezes. Source of truth is DEV/CFB_Victory_Model/data/."
+    },
+    {
+      "path": "DEV/CFB_Victory_Model",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/CFB_Victory_Model.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Cheer_Programming",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Cheer_Programming.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/CLI_Dev",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/cmj-norms-app",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/cmj-norms-app.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/cmj-traffic-light",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/cmj-traffic-light.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/COG_S2_Position_Reports",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/CommandCentre",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/ContextVault",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/CPSS_BaylorSportScience_Curriculum",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/DataBase_GPS_Reporting",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/DataBase_GPS_Reporting.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Department_Audits",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Department_Audits.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/DexaProject",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/DexaProject.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/docs",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Education_Alignment_Initiative",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Education_Alignment_Initiative.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Education_Content_Agent",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Education_Content_Agent.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Epilepsy-Baseball-Research",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Football",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Football_Data_DEV",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Football_GRID",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Football_GRID.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/ForcePlate_DecisionSystem",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/ForcePlate_DecisionSystem.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Game_Tracker_PWA",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Game_Tracker_PWA.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/GameONPaper",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/GameONPaper.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Gemini_Projects",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Gemini_Projects.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/graphify-out",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/indiana-fever-schedule",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/InjurPred",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/InjurPred.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Intern_Curriculum",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Intern_Curriculum.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Jump_Dash",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Jump_Dash.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/JumpReporting",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/JumpReporting.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/KeystoneOS",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/KeystoneOS.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Kinexon_Volleyball",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Kinexon_Volleyball.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/LibraryProject",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Life-OS",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Linda Projects",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-08-19 by stack-doctor with the most restrictive routing available: SSD only. Contains a file marked CONFIDENTIAL (I-983). Deliberately NOT routed to github or baylor. Eric to confirm classification."
+    },
+    {
+      "path": "DEV/May_Meetings_Research",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/morning-briefing",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/morning-briefing.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/NCAA_BestPractices_Doc",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Non-Negative-Matrix-Factorization-RTP",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Non-Negative-Matrix-Factorization-RTP.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/OKRs_2026-27",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Performance_Playbook",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Performance_Playbook.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PlayerProfiles_FB_03-28-2026",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/PlayerProfiles_FB_03-28-2026.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Portfolio",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Portfolio.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PostGameReport",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/PostGameReport.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PostSesaonAnalysis",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/PostSesaonAnalysis.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Practice_PlayCounts",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Practice_PlayCounts.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PracticeIntensity",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/printing-press-library",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/printing-press-library.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Program_Context_Meet",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Program_Context_Meet.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/project-triage",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/project-triage.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PT_Dash",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/PT_Dash.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/reMarkale_extract",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Risk_Exposure_Windows",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Risk_Stratification_Engine",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Risk_Stratification_Engine.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/RTP_Constraints_Course",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-09-02. Class 'personal' confirmed by Eric. Constraints-led return-to-performance course for Joe Smith. Not a git repo; SSD only."
+    },
+    {
+      "path": "DEV/RTP_DataCollection_Talk",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/RTP_DataCollection_Talk.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/RTP_WorkingGroup",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/RTP_WorkingGroup.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/S2_Evaluation",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/S2_Evaluation.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/shiny-vertical-jump",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/shiny-vertical-jump.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/skill-audit-2026-09-05",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false,
+      "note": "Added 2026-09-05 at Eric's request after the 09:00 run flagged it manifest-unmanaged. One-off audit of Eric's own Claude Code / Codex skill tree, run 2026-09-05 07:15: REPORT.md, CLAUDE-CODEX-DUPLICATES.md, RECOMMENDATIONS.md, inventory.json/csv, plus audit.py and usage_audit.py. Class 'personal' by precedent with CLI_Dev and Terminal_Fluency - agent tooling, not Baylor work, so it stays off the institutional target. Not a git repo; SSD only; 3.2 MB. Reports are regenerable from the two scripts, but the run is dated and decisions were taken from it, so keep the snapshot."
+    },
+    {
+      "path": "DEV/sleep-scheduler",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/sleep-scheduler.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SoftwareTech_Mgmt_Framework",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/SoftwareTechDocs",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/SoftwareTechDocs.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SPA_Presentation",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/SPC_Report",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/SPC_Report.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SpecialRequests",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/speed-velocity-profiling",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/speed-velocity-profiling.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Sport_Tech_Vetting",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/SportScience_Benchmarking",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/SportScience_Benchmarking.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SportScienceResearchRepo",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/SportScienceResearchRepo.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/SprintLab",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/SprintLab.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/TackleAnalytics",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/TackleAnalytics.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Tech_Inventory_Analysis",
+      "class": "institutional",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd",
+        "baylor"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/TechEd_Prop",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Terminal_Fluency",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/token-dashboard",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/nateherkai/token-dashboard.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Transformative_Athlete_Experience",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/Travel_Map",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Travel_Map.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/TSSHB_Skills",
+      "class": "personal",
+      "isRepo": false,
+      "remote": null,
+      "destinations": [
+        "ssd"
+      ],
+      "captureOrphans": false,
+      "captureWorkingTree": false
+    },
+    {
+      "path": "DEV/VALD_analytics",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/VALD_analytics.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/ValdReport",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/ValdReport.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/vision-builder",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/vision-builder.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Volleyball_GRID",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Volleyball_GRID.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/WashingtonWebPage",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/WashingtonWebPage.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Website",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/AppliedPerformance-Site.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Weekly_Matchups_2026",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Weekly_Matchups_2026.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/Wilhelm_Brody_RTP",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/Wilhelm_Brody_RTP.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/ZoteroInjestion",
+      "class": "personal",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/ZoteroInjestion.git",
+      "destinations": [
+        "ssd",
+        "github"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true
+    },
     {
       "path": ".claude/agents",
       "class": "personal",
@@ -142,808 +1530,6 @@
       ],
       "captureOrphans": false,
       "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Life-OS",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/_obsidian_extracted_from_FaceComps",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/AgentAssist",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/AgentAssist.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/agy",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/AI_Analyst",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/AMS_Mini",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/AppliedUtilization",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/AT_Utilization_Benchmarks",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Ath_Medicine",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Baseball_JD",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Baseball_PerformanceProfiles",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Basketball",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Basketball_Women",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Baylor_Doc_Style",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Baylor_Fonts",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/BookInbox",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Bucket",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Bucket.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Catapult_API",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/CFB_Analytics_Lab",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/CFB_Analytics_Lab.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/CFB_Forecast_Archive",
-      "class": "personal",
-      "isRepo": false,
-      "destinations": [
-        "ssd"
-      ],
-      "note": "Read-only copies of weekly CFB Victory Model forecast freezes. Source of truth is DEV/CFB_Victory_Model/data/."
-    },
-    {
-      "path": "DEV/CFB_Victory_Model",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/CFB_Victory_Model.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/CLI_Dev",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/COG_S2_Position_Reports",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/CommandCentre",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/ContextVault",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/CPSS_BaylorSportScience_Curriculum",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/DataBase_GPS_Reporting",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/DataBase_GPS_Reporting.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/DexaProject",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/DexaProject.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Education_Content_Agent",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Education_Content_Agent.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Epilepsy-Baseball-Research",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Football",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Football_Data_DEV",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/ForcePlate_DecisionSystem",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/ForcePlate_DecisionSystem.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/graphify-out",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/indiana-fever-schedule",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/KeystoneOS",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/KeystoneOS.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Kinexon_Volleyball",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Kinexon_Volleyball.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/LibraryProject",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Linda Projects",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false,
-      "note": "Added 2026-08-19 by stack-doctor with the most restrictive routing available: SSD only. Contains a file marked CONFIDENTIAL (I-983). Deliberately NOT routed to github or baylor. Eric to confirm classification."
-    },
-    {
-      "path": "DEV/May_Meetings_Research",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/NCAA_BestPractices_Doc",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/OKRs_2026-27",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/PlayerProfiles_FB_03-28-2026",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/PlayerProfiles_FB_03-28-2026.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/PracticeIntensity",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Program_Context_Meet",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Program_Context_Meet.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/project-triage",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/project-triage.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/reMarkale_extract",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Risk_Exposure_Windows",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Risk_Stratification_Engine",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Risk_Stratification_Engine.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/RTP_Constraints_Course",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false,
-      "note": "Added 2026-09-02. Class 'personal' confirmed by Eric. Constraints-led return-to-performance course for Joe Smith. Not a git repo; SSD only."
-    },
-    {
-      "path": "DEV/skill-audit-2026-09-05",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false,
-      "note": "Added 2026-09-05 at Eric's request after the 09:00 run flagged it manifest-unmanaged. One-off audit of Eric's own Claude Code / Codex skill tree, run 2026-09-05 07:15: REPORT.md, CLAUDE-CODEX-DUPLICATES.md, RECOMMENDATIONS.md, inventory.json/csv, plus audit.py and usage_audit.py. Class 'personal' by precedent with CLI_Dev and Terminal_Fluency - agent tooling, not Baylor work, so it stays off the institutional target. Not a git repo; SSD only; 3.2 MB. Reports are regenerable from the two scripts, but the run is dated and decisions were taken from it, so keep the snapshot."
-    },
-    {
-      "path": "DEV/RTP_DataCollection_Talk",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/RTP_DataCollection_Talk.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/S2_Evaluation",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/S2_Evaluation.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/SoftwareTech_Mgmt_Framework",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/SPA_Presentation",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/SpecialRequests",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Sport_Tech_Vetting",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/SportScienceResearchRepo",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/SportScienceResearchRepo.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Tech_Inventory_Analysis",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/TechEd_Prop",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Terminal_Fluency",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/token-dashboard",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/nateherkai/token-dashboard.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Transformative_Athlete_Experience",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/Travel_Map",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/Travel_Map.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/TSSHB_Skills",
-      "class": "personal",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/ValdReport",
-      "class": "institutional",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/ValdReport.git",
-      "destinations": [
-        "ssd",
-        "github",
-        "baylor"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/Website",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/AppliedPerformance-Site.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
-    },
-    {
-      "path": "DEV/ZoteroInjestion",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/erash11/ZoteroInjestion.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
     },
     {
       "path": "SecondBrain",

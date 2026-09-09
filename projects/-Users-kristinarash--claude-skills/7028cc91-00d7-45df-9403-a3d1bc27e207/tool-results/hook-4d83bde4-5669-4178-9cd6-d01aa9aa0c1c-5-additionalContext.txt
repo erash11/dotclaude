@@ -1,0 +1,148 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Key Decisions
+- Yeah, I want that sweep to change anything that needs to be routed towards the Chrome extension or the Chrome web use case or the Playwright CLI, b...
+- Q: Your LifeOS docs say "Playwright is banned across LifeOS" in ~5 places. You've asked me to prefer playwright-cli. How do I handle that ban? → A:...
+
+## Files Modified
+UpdateSkill.md, SKILL.md, QATesterContext.md, FourTierScrape.md, Standards.md, Methodology.md, route.ts, Update.md
+
+## Unresolved Errors
+- {"stdout":"=== Interceptor preflight -> exit 1 ===\nPREFLIGHT FAIL — Interceptor is NOT installed on this machine.\n  missing:  'interceptor' binar...
+- {"stdout":"62fca53 Interceptor + Browser: fail loudly when their runtime is absent","stderr":"","interrupted":false,"isImage":false,"noOutputExpect...
+- {"stdout":"=== commits ahead of main ===\n62fca53 Interceptor + Browser: fail loudly when their runtime is absent\n=== main moved? (should be empty...
+- {"stdout":"=== Interceptor (LIVE path: /Users/kristinarash/.claude/skills/Interceptor/SKILL.md) ===\n  desc chars: 1002 PASS\n  Preflight present: ...
+- {"stdout":"=== description char caps (limit 1024) ===\n  Webdesign      779  PASS\n  Apify         1077  FAIL\n  Hardening     1054  FAIL\n  Bright...
+- {"stdout":"=== confirm deliberately-untouched files are clean ===\n  ISA/Examples and Webdesign Tools/*.ts untouched: correct\n\n=== those .ts file...
+- {"stdout":"=== Telos: live routing into LIFEOS ===\n  Telos/SKILL.md:30:Reads and updates two kinds of context. Personal TELOS: the principal's lif...
+- {"stdout":"=== 1. ANY remaining LIFEOS import/exec in ALL skills (must be zero) ===\n\n=== 2. Telos guards in place ===\n  Telos/Workflows/Update.m...
+- {"stdout":"=== A. executable files (.ts/.js/.sh) mentioning LIFEOS in ANY form ===\n  Telos/Tools/UpdateTelos.ts\n  Telos/DashboardTemplate/Lib/tel...
+- {"stdout":"=== descriptions under cap, no stale RETIRED claims ===\n  Telos    766 chars PASS  | stale RETIRED claim: no-PASS\n  Evals    872 chars...
+- {"stdout":"=== every sentence containing 95 or 388K ===\n  Telos/SKILL.md:425:- **`LIFEOS/USER` is a SYMLINK to `~/.config/LIFEOS/USER` — `du -sh` ...
+- {"stdout":"  PASS broken symlink                     exit=1 expect=nonzero\n        PREFLIGHT FAIL — /var/folders/gw/8qg6y2bj7rvdqzttmxfl9lx00000gn...
+- {"stdout":"0798152 Telos: make the preflight guard fail closed; fix a false file count","stderr":"","interrupted":false,"isImage":false,"noOutputEx...
+- {"stdout":"  PASS full core set            exit=0 want=0\n        Personal TELOS OK — 5 files, newest 2026-08-15\n  PASS one core file missing    e...
+- {"stdout":"92f8eee Telos preflight: fail closed on partial storage; surface staleness","stderr":"","interrupted":false,"isImage":false,"noOutputExp...
+- {"stdout":"=== does Update.md actually create updates.md? ===\n  45:- updates.md - Comprehensive change log\n  107:!`head -50 ~/.claude/LIFEOS/USER...
+- {"stdout":"=== does the backup dir the workflow promises actually exist? ===\n  MISSING: backups\n  MISSING: Backups\n\n=== does updates.md exist? ...
+- {"stdout":"normalized casing\n=== all backup-dir references (must agree on Backups/) ===\n  16:This workflow promises a timestamped backup and a ch...
+- {"stdout":"  PASS description <=1024\n  PASS frontmatter parses\n  PASS false first-update claim removed\n  PASS correction stated explicitly\n  PA...
+- {"stdout":"=== which half of the check failed? ===\n  SKILL.md 'can end half-applied': 1\n  Update.md 'not a transaction': 0\n  441:- **An Update i...
+
+## Git
+add, push, merge, log, status
+
+## Project Rules
+.claude/CLAUDE.md, skills/CLAUDE.md, Workflows/UpdateSkill.md, Interceptor/SKILL.md, Browser/SKILL.md, BrightData/SKILL.md, Agents/QATesterContext.md, Workflows/FourTierScrape.md, Telos/SKILL.md, Evals/SKILL.md, Workflows/Update.md
+
+## Skills Used
+CreateSkill
+
+## Environment
+cwd: /Users/kristinarash/.claude/skills
+model:claude-opus-5[1m]
+model:claude-opus-5[1m]
+entered worktree: browser-routing-fix
+entered worktree: browser-routing-sweep
+entered worktree: retire-lifeos-skills
+entered worktree: decouple-inference
+entered worktree: reconcile-lifeos-docs
+entered worktree: fix-telos-guard
+entered worktree: telos-guard-partial
+entered worktree: telos-update-preconditions
+entered worktree: telos-precondition-writability
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 33 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<rules>
+Follow these decisions:
+- Yeah, I want that sweep to change anything that needs to be routed towards the Chrome extension or t
+- Q: Your LifeOS docs say "Playwright is banned across LifeOS" in ~5 places. You've asked me to prefer
+</rules>
+
+<active_skills>
+Re-invoke if relevant: CreateSkill
+To reload: call the Skill tool with the skill name.
+</active_skills>
+
+<session_mode>implement</session_mode>
+
+</session_state>

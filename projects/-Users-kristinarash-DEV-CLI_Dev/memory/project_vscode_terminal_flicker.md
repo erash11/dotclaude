@@ -1,0 +1,18 @@
+---
+name: vscode-terminal-flicker
+description: VS Code integrated terminal flickers during long streaming output on Win11/PS7; scrollback=500 + gpuAcceleration=off reduces but doesn't eliminate
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 3a2e9560-72d2-4a8d-972f-70547df31d13
+---
+
+VS Code integrated terminal on Win11 + PowerShell 7 flickers during long streaming output (e.g. Claude Code token streams).
+
+**Tried & insufficient (in order):**
+1. `terminal.integrated.gpuAcceleration: "canvas"` — reduced but did not eliminate (2026-05-20).
+2. `terminal.integrated.gpuAcceleration: "off"` + `terminal.integrated.scrollback: 500` — further reduces severity but still does not eliminate on long streams (2026-05-20).
+
+**Why:** WebGL/canvas tear on high-frequency repaints; DOM renderer + small scrollback removes most repaint cost but the underlying flicker driver persists. Root cause likely below the renderer layer (ConPTY/terminal buffer churn, not GPU path).
+
+**How to apply:** Don't re-test renderer settings — they've all been tried. Next investigation paths: ConPTY behavior, VS Code Insiders, or running Claude in Windows Terminal / WezTerm instead. Confirmed NOT caused by: Python statusline cold-start (~60ms), PSReadLine (no `$PROFILE` exists).

@@ -1,0 +1,400 @@
+[09:16] created before, I actually added it to this skills deck so that I can trigger
+[09:17] this skills deck so that I can trigger it from this page instead of having to
+[09:20] it from this page instead of having to open up cloud code in another terminal
+[09:22] open up cloud code in another terminal or chat session and typing out slash
+[09:24] or chat session and typing out slash cleanup there because most of the time I
+[09:26] cleanup there because most of the time I actually run this skill whenever I see
+[09:28] actually run this skill whenever I see my device slowing down. And so when
+[09:30] my device slowing down. And so when that's done, what it essentially does is
+[09:32] that's done, what it essentially does is also provide an output or a report
+[09:35] also provide an output or a report similar to this one where if I open
+[09:36] similar to this one where if I open that, it just provides me with this
+[09:38] that, it just provides me with this summary of the results of that skills
+[09:40] summary of the results of that skills run. And the way that you run any of
+[09:42] run. And the way that you run any of your skills headlessly, meaning without
+[09:44] your skills headlessly, meaning without having to open up a chat session, is
+[09:45] having to open up a chat session, is through this Claude feature called
+[09:47] through this Claude feature called Claude P. And without getting too
+[09:49] Claude P. And without getting too technical, what that essentially does is
+[09:51] technical, what that essentially does is spin up a quick session where it sends a
+[09:54] spin up a quick session where it sends a oneshot prompt to Claude using the model
+[09:56] oneshot prompt to Claude using the model and effort level that you want. And you
+[09:58] and effort level that you want. And you can see for this specific example, the
+[10:00] can see for this specific example, the only thing that was sent to Claude is
+[10:02] only thing that was sent to Claude is this /cleup command. And so this becomes
+[10:04] this /cleup command. And so this becomes useful when you want to integrate your
+[10:06] useful when you want to integrate your skills into dashboards like these or
+[10:08] skills into dashboards like these or even as part of internal applications,
+[10:10] even as part of internal applications, let's say that you want to create for
+[10:12] let's say that you want to create for your team or your company. And like with
+[10:14] your team or your company. And like with most of the stuff that I'll teach you
+[10:15] most of the stuff that I'll teach you today, the great thing about the tools
+[10:16] today, the great thing about the tools that we're using now like Cloud Code or
+[10:18] that we're using now like Cloud Code or Codeex is that you actually don't need
+[10:19] Codeex is that you actually don't need to learn how to use any extra technical
+[10:21] to learn how to use any extra technical tooling in order to make this happen. As
+[10:23] tooling in order to make this happen. As long as you're aware of this feature
+[10:24] long as you're aware of this feature like cloud hyphen P, then what you can
+[10:27] like cloud hyphen P, then what you can do is copy a prompt like this, which you
+[10:28] do is copy a prompt like this, which you can just screenshot and send to your
+[10:30] can just screenshot and send to your cloud code. And that can get you started
+[10:31] cloud code. And that can get you started with integrating any of your skills into
+[10:33] with integrating any of your skills into your own operating system. Now, let's go
+[10:35] your own operating system. Now, let's go to the next layer, which is memory. And
+[10:37] to the next layer, which is memory. And it's important because the more that you
+[10:38] it's important because the more that you use cloud code, the more context or
+[10:40] use cloud code, the more context or files you have that you create. And at
+[10:42] files you have that you create. And at the very first level, what you have
+[10:43] the very first level, what you have really is a workspace with a bunch of
+[10:45] really is a workspace with a bunch of files. So, for example, for my case, the
+[10:48] files. So, for example, for my case, the folder in my computer that I set as my
+[10:50] folder in my computer that I set as my Agentic operating system or workspace is
+[10:52] Agentic operating system or workspace is this folder called Robo. And you can see
+[10:54] this folder called Robo. And you can see there's a lot of files and folders
+[10:56] there's a lot of files and folders already in here. Now, when you're just
+[10:57] already in here. Now, when you're just getting started and you only have a few
+[10:59] getting started and you only have a few files, it'll mostly be okay for you
+[11:01] files, it'll mostly be okay for you experience-wise. But the problem starts
+[11:03] experience-wise. But the problem starts to arise when your context and your
+[11:04] to arise when your context and your files build up so much that it's
+[11:06] files build up so much that it's actually making it harder for your agent
+[11:08] actually making it harder for your agent to find things. So, for example, for my
+[11:10] to find things. So, for example, for my case personally, when I built out this
+[11:12] case personally, when I built out this second brain system and I pointed it to
+[11:13] second brain system and I pointed it to that robo folder, it's only then that I
+[11:16] that robo folder, it's only then that I found out that I actually have something
+[11:17] found out that I actually have something like 60,000 files already in that
+[11:19] like 60,000 files already in that folder. And so, you can imagine it's
+[11:21] folder. And so, you can imagine it's probably difficult for the agent to
+[11:23] probably difficult for the agent to navigate through that, which would have
+[11:24] navigate through that, which would have a direct impact on number one, how fast
+[11:26] a direct impact on number one, how fast you can retrieve information from your
+[11:28] you can retrieve information from your workspace, and number two, how quickly
+[11:30] workspace, and number two, how quickly you run out of your usage in your plan.
+[11:32] you run out of your usage in your plan. And so as soon as you start to see some
+[11:33] And so as soon as you start to see some slow down your systems in retrieving
+[11:35] slow down your systems in retrieving memory, I advise people to move to level
+[11:37] memory, I advise people to move to level two, which essentially is just
+[11:39] two, which essentially is just organizing that workspace that is
+[11:40] organizing that workspace that is optimized for an agent. And I say
+[11:42] optimized for an agent. And I say optimize for an agent because if you
+[11:44] optimize for an agent because if you remember if you're a millennial or a Gen
+[11:45] remember if you're a millennial or a Gen X when Windows or Mac operating systems
+[11:48] X when Windows or Mac operating systems first came to be, you probably had a
+[11:50] first came to be, you probably had a period in your life when you wanted to
+[11:52] period in your life when you wanted to organize things neatly into folders and
+[11:54] organize things neatly into folders and to properly rename the files and folders
+[11:57] to properly rename the files and folders so that you as the person can easily
+[11:59] so that you as the person can easily navigate through that workspace and
+[12:01] navigate through that workspace and actually find the things that you need.
+[12:02] actually find the things that you need. In this new paradigm where your agents
+[12:04] In this new paradigm where your agents are the ones operating on your files,
+[12:06] are the ones operating on your files, you don't really need to pay as much
+[12:07] you don't really need to pay as much attention to the names and the
+[12:09] attention to the names and the navigability of your files from within
+[12:12] navigability of your files from within this more traditional file explorer
+[12:14] this more traditional file explorer view. Because with these agentic
+[12:16] view. Because with these agentic operating systems, at the minimum, what
+[12:17] operating systems, at the minimum, what you should have in your workspace are
+[12:19] you should have in your workspace are what I like to call as a router files.
+[12:21] what I like to call as a router files. And that's best illustrated here in this
+[12:23] And that's best illustrated here in this second brain system where the center of
+[12:25] second brain system where the center of it is your claw.md. And that by itself
+[12:28] it is your claw.md. And that by itself is a router. And in my cloud.md that
+[12:30] is a router. And in my cloud.md that just provides cloud context on the
+[12:32] just provides cloud context on the different departments that I work with
+[12:33] different departments that I work with so that when I work on content it knows
+[12:35] so that when I work on content it knows that it just operates within this set of
+[12:37] that it just operates within this set of files. When I work on my community let's
+[12:40] files. When I work on my community let's say it knows that these files are the
+[12:41] say it knows that these files are the ones that are relevant and so on and so
+[12:43] ones that are relevant and so on and so forth. And then for each of these
+[12:45] forth. And then for each of these departments I also have a dedicated
+[12:47] departments I also have a dedicated router file. So for example if I search
+[12:49] router file. So for example if I search for the content.md file in here but
+[12:51] for the content.md file in here but you'll see inside that markdown file is
+[12:53] you'll see inside that markdown file is just a list of skills as well as
+[12:55] just a list of skills as well as reference files. so that when I'm
+[12:57] reference files. so that when I'm looking for something content related,
+[12:59] looking for something content related, it'll be able to look at this list and
+[13:01] it'll be able to look at this list and immediately navigate through my files
+[13:03] immediately navigate through my files and find the stuff that I want. And so
+[13:05] and find the stuff that I want. And so instead of focusing on organizing your
+[13:07] instead of focusing on organizing your workspace in terms of folders and files,
+[13:10] workspace in terms of folders and files, which is probably second nature for a
+[13:12] which is probably second nature for a lot of us who grew up with this older,
+[13:13] lot of us who grew up with this older, more traditional operating systems like
+[13:15] more traditional operating systems like Windows or Mac. But remember, since
+[13:17] Windows or Mac. But remember, since these agents like Claude Code can parse
+[13:19] these agents like Claude Code can parse through files at lightning speed, it's
+[13:21] through files at lightning speed, it's always much better to just give them
+[13:23] always much better to just give them these router files so that your agent
+[13:25] these router files so that your agent can find what you need in the fastest
+[13:27] can find what you need in the fastest way possible with the least amount of
+[13:29] way possible with the least amount of steps. And again, like I mentioned, you
+[13:30] steps. And again, like I mentioned, you can start this setup through just by
+[13:32] can start this setup through just by talking to your agent. What you can do
+[13:33] talking to your agent. What you can do is just copy this prompt and give it to
+[13:36] is just copy this prompt and give it to your cloud code and it'll get you
+[13:37] your cloud code and it'll get you started with setting up those router
+[13:39] started with setting up those router files. And then once you're ready to
+[13:41] files. And then once you're ready to upgrade your memory system, then you can
+[13:43] upgrade your memory system, then you can move on to level three, which is having
+[13:45] move on to level three, which is having your visual second brain system, which
+[13:47] your visual second brain system, which is the one that I was showing you
+[13:48] is the one that I was showing you earlier. And the reason why this is
+[13:50] earlier. And the reason why this is important for a lot of people is that it
+[13:52] important for a lot of people is that it allows you to see how all of your files
+[13:54] allows you to see how all of your files and folders connect. And also, it allows
+[13:55] and folders connect. And also, it allows you to search for things faster. And
+[13:58] you to search for things faster. And you've already seen me do this through
+[13:59] you've already seen me do this through this video when I'm showing my skills or
+[14:01] this video when I'm showing my skills or how my claw.md connects to different
+[14:03] how my claw.md connects to different departments or how these different files
+[14:05] departments or how these different files connect. That's actually really valuable
+[14:06] connect. That's actually really valuable for a lot of people who are more visual
+[14:08] for a lot of people who are more visual and can understand things better when
+[14:10] and can understand things better when you show it to them in this format
+[14:12] you show it to them in this format versus having to take them through again
+[14:13] versus having to take them through again that traditional file explorer view
+[14:15] that traditional file explorer view which is not really the most engaging
+[14:17] which is not really the most engaging format. The other thing is if let's say
+[14:19] format. The other thing is if let's say you want to go and search for the
+[14:20] you want to go and search for the cleanup skill in here usually with file
+[14:22] cleanup skill in here usually with file explorer it is much longer to find but
+[14:25] explorer it is much longer to find but earlier as I illustrated if I look for
+[14:27] earlier as I illustrated if I look for that cleanup skill from my OS or my
+[14:29] that cleanup skill from my OS or my second brain system then I can
+[14:31] second brain system then I can immediately find that and I can
+[14:32] immediately find that and I can immediately show it and preview it. Now,
+[14:34] immediately show it and preview it. Now, let's go and talk about routines. And to
+[14:36] let's go and talk about routines. And to me, this is the third layer because once
+[14:38] me, this is the third layer because once you've mastered skills and memory,
+[14:40] you've mastered skills and memory, that's only really when you get the
+[14:42] that's only really when you get the confidence to actually let your agent do
+[14:44] confidence to actually let your agent do tasks even without you monitoring it.
+[14:46] tasks even without you monitoring it. And that's the essence of routines
+[14:47] And that's the essence of routines because routines are essentially just
+[14:49] because routines are essentially just scheduled tasks. And in the first level,
+[14:51] scheduled tasks. And in the first level, the way that you do this is really
+[14:53] the way that you do this is really simple because it comes out of the box
+[14:55] simple because it comes out of the box with cloud code. And in the cloud
+[14:56] with cloud code. And in the cloud desktop app, if you head to routines
+[14:58] desktop app, if you head to routines here on the left sidebar, you'll be able
+[14:59] here on the left sidebar, you'll be able to draft routines in here just by
+[15:01] to draft routines in here just by talking to Claude in natural language.
+[15:03] talking to Claude in natural language. And you can see I have a couple here.
+[15:05] And you can see I have a couple here. The one that I use a lot is this YouTube
+[15:07] The one that I use a lot is this YouTube to substack daily and which if you open
+[15:09] to substack daily and which if you open that, you can see exactly when that
+[15:11] that, you can see exactly when that repeats, which for this one is every day
+[15:13] repeats, which for this one is every day at 8:00 a.m. And in a nutshell, a
+[15:15] at 8:00 a.m. And in a nutshell, a routine is just a prompt that Claude
+[15:17] routine is just a prompt that Claude sends to itself at that given time that
+[15:19] sends to itself at that given time that you set. So for this specific routine,
+[15:21] you set. So for this specific routine, what it does is it just turns any new
+[15:23] what it does is it just turns any new video that we have on the channel and it
+[15:24] video that we have on the channel and it drafts that into a newsletter post and
+[15:27] drafts that into a newsletter post and my tone of voice. And when that runs in
+[15:29] my tone of voice. And when that runs in the background, that also puts the
+[15:30] the background, that also puts the artifact here in my Aentic OS. So let's
+[15:32] artifact here in my Aentic OS. So let's say this previous video that I had
+[15:34] say this previous video that I had called six new rules of cloud code. When
+[15:36] called six new rules of cloud code. When it's time for me to review that, I just
+[15:37] it's time for me to review that, I just open it and it provides me with several
+[15:40] open it and it provides me with several options and drafts that I can just
+[15:41] options and drafts that I can just iterate and review. And because this
+[15:43] iterate and review. And because this uses a custom skill as well for that
+[15:45] uses a custom skill as well for that routine, then I already have something
+[15:47] routine, then I already have something like 70% 80% confidence that this is
+[15:49] like 70% 80% confidence that this is within my tone of voice and I only need
+[15:51] within my tone of voice and I only need to apply some minor edits to it for it
+[15:54] to apply some minor edits to it for it to get to production. But if you notice
+[15:56] to get to production. But if you notice here, here in my routines, I only have a
+[15:58] here, here in my routines, I only have a few in my Cloud Code desktop app. And
+[16:00] few in my Cloud Code desktop app. And the reason why that is is because at
+[16:01] the reason why that is is because at level one, even though they're really
+[16:03] level one, even though they're really simple to set up, the key limitation
+[16:04] simple to set up, the key limitation with these local routines is that they
+[16:06] with these local routines is that they only run while your computer is on. And
+[16:08] only run while your computer is on. And so a lot of my routines are actually in
+[16:10] so a lot of my routines are actually in level two where I have those scheduled
+[16:12] level two where I have those scheduled tasks running in the cloud so that even
+[16:14] tasks running in the cloud so that even if my computer is off, I have the
+[16:16] if my computer is off, I have the assurance that those scheduled tasks
+[16:18] assurance that those scheduled tasks will run even without me. And there's
+[16:19] will run even without me. And there's many solutions to this now. OpenClaw
+[16:21] many solutions to this now. OpenClaw probably popularized it before. Grockbot
+[16:23] probably popularized it before. Grockbot is also pretty new, although it's
+[16:25] is also pretty new, although it's paywalled to a pretty high price point
+[16:26] paywalled to a pretty high price point at the moment. So the one that I
+[16:28] at the moment. So the one that I personally have set up and use is
+[16:29] personally have set up and use is Hermes. And I have several other
+[16:31] Hermes. And I have several other tutorials on Hermes on this channel. Or
+[16:33] tutorials on Hermes on this channel. Or if you're part of the community, you can
+[16:34] if you're part of the community, you can also just go through this Hermes agent
+[16:36] also just go through this Hermes agent masterass to use it in the best way
+[16:38] masterass to use it in the best way possible. But in a nutshell, the reason
+[16:40] possible. But in a nutshell, the reason why Hermes is so powerful is because it
+[16:42] why Hermes is so powerful is because it is 24/7. It's always on. And the reason
+[16:44] is 24/7. It's always on. And the reason why it's 24/7 and always on is because
+[16:46] why it's 24/7 and always on is because for most people who are using Hermes,
+[16:48] for most people who are using Hermes, they give it its own computer. Like for
+[16:50] they give it its own computer. Like for myself, I give it a computer in the
+[16:52] myself, I give it a computer in the cloud. And so that's why if you look at
+[16:53] cloud. And so that's why if you look at my routines firing board in here, most
+[16:55] my routines firing board in here, most of the scheduled tasks that I have
+[16:57] of the scheduled tasks that I have personally are already loaded in my
+[16:59] personally are already loaded in my Hermes agent. But a key aspect of this
+[17:01] Hermes agent. But a key aspect of this that most people miss is that if your
+[17:03] that most people miss is that if your Hermes agent has its own computer, then
+[17:05] Hermes agent has its own computer, then how can it access all of the skills and
+[17:08] how can it access all of the skills and all of the context that you have built
+[17:09] all of the context that you have built up with cloud code? And there's many
+[17:10] up with cloud code? And there's many ways to do this. But for me personally,
+[17:12] ways to do this. But for me personally, and I think for a lot of people who are
+[17:14] and I think for a lot of people who are just getting started with this, what you
+[17:15] just getting started with this, what you can use is a tool called Sync Thing. And
+[17:18] can use is a tool called Sync Thing. And sync thing is a really good and free
+[17:19] sync thing is a really good and free open- source software that basically
+[17:21] open- source software that basically what it does is literally just sync
+[17:23] what it does is literally just sync things between your computers. And so if
+[17:25] things between your computers. And so if you point it to your workspace that
+[17:27] you point it to your workspace that cloud code works on and also install it
+[17:29] cloud code works on and also install it in the computer that your Hermes agent
+[17:31] in the computer that your Hermes agent uses, then you'll be able to sync the
+[17:33] uses, then you'll be able to sync the files that you want, including all the
+[17:34] files that you want, including all the skills and memory files that you want to
+[17:36] skills and memory files that you want to share with Hermes. And as usual, all you
+[17:39] share with Hermes. And as usual, all you need to get started is just one single
+[17:40] need to get started is just one single prompt, and you can use this one if
+[17:42] prompt, and you can use this one if you're interested to try it out. Now,
+[17:43] you're interested to try it out. Now, when it comes to the next stage of
+[17:45] when it comes to the next stage of routines, this is actually something
+[17:46] routines, this is actually something that I think is coming soon by default
+[17:49] that I think is coming soon by default for cloud. And I actually know some
+[17:51] for cloud. And I actually know some users who are tinkering a lot with this
+[17:52] users who are tinkering a lot with this type of setup where they get a VPS, a
+[17:54] type of setup where they get a VPS, a virtual private server, essentially a
+[17:56] virtual private server, essentially a computer in the cloud, and install cloud
+[17:58] computer in the cloud, and install cloud code into that. And so all of the files
+[18:00] code into that. And so all of the files and all of the context that their cloud
+[18:02] and all of the context that their cloud code builds with them lives in that
+[18:04] code builds with them lives in that space. And so in that format, you get
+[18:05] space. And so in that format, you get the best of both worlds, right? Because
+[18:07] the best of both worlds, right? Because you get routines that don't die out and
+[18:09] you get routines that don't die out and actually run 24/7. and you're operating
+[18:11] actually run 24/7. and you're operating through just one agentic platform which
+[18:13] through just one agentic platform which is cloud code in this case but you can
+[18:14] is cloud code in this case but you can also use codeex and you don't have to
+[18:16] also use codeex and you don't have to use an external tool like sync thing in
+[18:19] use an external tool like sync thing in order to sync files between your two
+[18:21] order to sync files between your two different setups. So it's highly
+[18:22] different setups. So it's highly possible that openai and entropic will
+[18:24] possible that openai and entropic will offer something like this in the future
+[18:26] offer something like this in the future but obviously because of file storage
+[18:28] but obviously because of file storage and security concerns that's probably
+[18:30] and security concerns that's probably something that you can expect sometime
+[18:32] something that you can expect sometime in the near future instead of now. Now,
+[18:33] in the near future instead of now. Now, let's go to the final element, which is
+[18:35] let's go to the final element, which is applications. Because if you're trying
+[18:37] applications. Because if you're trying to do any real work with your agents,
+[18:38] to do any real work with your agents, then you need to be able to connect to
+[18:40] then you need to be able to connect to your apps. And at the very first level,
+[18:42] your apps. And at the very first level, the way that you connect to these
+[18:43] the way that you connect to these applications is probably through the
+[18:44] applications is probably through the cloud code desktop app. Where from here,
+[18:46] cloud code desktop app. Where from here, if you go to customize and under the
+[18:48] if you go to customize and under the connectors section here, you can find
+[18:50] connectors section here, you can find and browse the different applications
+[18:51] and browse the different applications that you can connect to. But in my view,
+[18:53] that you can connect to. But in my view, this is actually not the most efficient
+[18:55] this is actually not the most efficient way to connect to these applications
+[18:57] way to connect to these applications because if you go to the second level,
+[18:59] because if you go to the second level, you can actually just have cloud code
+[19:00] you can actually just have cloud code connect to these applications itself or
+[19:03] connect to these applications itself or search for what connectors exist instead
+[19:05] search for what connectors exist instead of you having to do it for cloud. At
+[19:06] of you having to do it for cloud. At least for me personally, what I use to
+[19:08] least for me personally, what I use to find connectors is this skill that I
+[19:10] find connectors is this skill that I have called search connectors. And what
+[19:12] have called search connectors. And what it basically does is search the web for
+[19:14] it basically does is search the web for the official connectors if there's any
+[19:16] the official connectors if there's any or if there's none. Sometimes there's
+[19:18] or if there's none. Sometimes there's communitymade connectors that are in the
+[19:20] communitymade connectors that are in the form of CLIs or command line interfaces
+[19:23] form of CLIs or command line interfaces or APIs or MCPs. So basically these are
+[19:25] or APIs or MCPs. So basically these are the three usual formats that people use
+[19:27] the three usual formats that people use to connect their AI agents to their
+[19:30] to connect their AI agents to their applications. To give an example, I use
+[19:32] applications. To give an example, I use search connectors for Adobe Premiere
+[19:33] search connectors for Adobe Premiere here and look to check if there's an
+[19:35] here and look to check if there's an official one from Adobe. It also look
+[19:36] official one from Adobe. It also look for anything community made and by the
+[19:38] for anything community made and by the end of it, it provides a recommendation
+[19:40] end of it, it provides a recommendation which right now is this open-source repo
+[19:43] which right now is this open-source repo which is available on GitHub. And so if
+[19:45] which is available on GitHub. And so if I want to use this connector, then I'll
+[19:46] I want to use this connector, then I'll just continue this session and ask
+[19:48] just continue this session and ask Claude code to scan it if it's safe and
+[19:50] Claude code to scan it if it's safe and to set it up so that we can start using
+[19:51] to set it up so that we can start using it. But the great thing about these AI
+[19:53] it. But the great thing about these AI agents is that if you take it to the
+[19:55] agents is that if you take it to the next level, what you can actually do is
+[19:57] next level, what you can actually do is to build your own connectors and to
+[19:58] to build your own connectors and to build your own applications. Now,
+[20:00] build your own applications. Now, there's many ways to build your own
+[20:01] there's many ways to build your own connectors, but the one that I use
+[20:03] connectors, but the one that I use personally is the CLI printing press
+[20:05] personally is the CLI printing press from Matt VH, who is the co-founder of
+[20:07] from Matt VH, who is the co-founder of Lyft. And I actually made a separate
+[20:09] Lyft. And I actually made a separate video on this if you want to check it
+[20:10] video on this if you want to check it out. But essentially what you can do
+[20:11] out. But essentially what you can do with this is to create connectors for
+[20:13] with this is to create connectors for applications that don't have them. So in
+[20:15] applications that don't have them. So in this video I created one for my fitness
+[20:17] this video I created one for my fitness pal as well as for school because no
+[20:19] pal as well as for school because no agentic connector really exists for
+[20:21] agentic connector really exists for those platforms. And of course nothing
+[20:23] those platforms. And of course nothing stops you from creating your own
+[20:24] stops you from creating your own applications as well. Like for instance
+[20:26] applications as well. Like for instance this whole dashboard is one type of
+[20:28] this whole dashboard is one type of application but apart from that you can
+[20:30] application but apart from that you can see I also built out these micro apps
+[20:32] see I also built out these micro apps that I use almost on the daily. I have
+[20:34] that I use almost on the daily. I have this app where all of the generations
+[20:35] this app where all of the generations for images and videos that you see on
+[20:37] for images and videos that you see on this channel and in our business
+[20:39] this channel and in our business actually end up in this masonry grid so
+[20:41] actually end up in this masonry grid so that it's much easier to preview. I of
+[20:43] that it's much easier to preview. I of course have that second brain system
+[20:45] course have that second brain system which I've shown already quite a lot.
+[20:46] which I've shown already quite a lot. And those excal illustrations that
+[20:48] And those excal illustrations that you're seeing, I actually have Claude
+[20:49] you're seeing, I actually have Claude build out this landing pad where I can
+[20:51] build out this landing pad where I can just copy in those artifacts that it
+[20:54] just copy in those artifacts that it creates for me and just use them
+[20:55] creates for me and just use them depending on the visual that I'm trying
+[20:57] depending on the visual that I'm trying to communicate. And so whenever it makes
+[20:59] to communicate. And so whenever it makes sense, I encourage you to try out
+[21:00] sense, I encourage you to try out creating your own applications yourself
+[21:02] creating your own applications yourself because then you will realize just how
+[21:04] because then you will realize just how powerful these agentic platforms can be.
+[21:06] powerful these agentic platforms can be. So there that is the ARMS framework in
+[21:08] So there that is the ARMS framework in full. And I hope that was useful for you
+[21:10] full. And I hope that was useful for you to craft your own perfect agentic
+[21:12] to craft your own perfect agentic operating system. And if you want the
+[21:13] operating system. And if you want the full guide along with all of the prompts
+[21:14] full guide along with all of the prompts that I shared here so that you can start
+[21:16] that I shared here so that you can start creating something like this for
+[21:17] creating something like this for yourself or for a client as well, then
+[21:19] yourself or for a client as well, then feel free to just grab this PDF and send
+[21:21] feel free to just grab this PDF and send it to your cloud code which you can find
+[21:23] it to your cloud code which you can find down in the description. That's it for
+[21:24] down in the description. That's it for this one. Thanks for watching till the
+[21:25] this one. Thanks for watching till the end as usual and I'll see you all next
+[21:27] end as usual and I'll see you all next time. Thanks.
+```
+
+---
+_Work dir: `/Users/kristinarash/.claude/jobs/7a4ac484/tmp/watch_r66` — delete when done._

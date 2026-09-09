@@ -1,0 +1,389 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: What's the concrete thing you want the command line to let you do that it doesn't today? → A: I want to use it to navigate LLMs, specifically Cl...
+- Lesson went well, and I feel like I could use these commands in operation. However, given that you've surfaced some issues where I'm using older ve...
+- If you think it makes sense, go ahead and remove the 300 MB of dead weight, and then you can move the API key somewhere safe.
+
+## Files Modified
+SKILL.md, GLOSSARY-FORMAT.md, lesson.css, quiz.js, MISSION.md, RESOURCES.md, 0001-reading-a-command.html, agent-cli-cheatsheet.html, GLOSSARY.md, NOTES.md, 0001-starting-floor.md, project_terminal-fluency-workspace.md, MEMORY.md, 0002-where-commands-come-from.html, package-tools.html, 0002-lesson-01-completed-and-package-tool-gap.md, .zshrc, .zprofile, 0003-lesson-02-completed-and-first-real-repair.md, 0003-pipes-and-redirection.html, 0004-second-repair-and-the-composition-turn.md
+
+## Unresolved Errors
+- {"stdout":"===== CLAUDE --help =====\nUsage: claude [options] [command] [prompt]\n\nClaude Code - starts an interactive session by default, use -p/...
+- {"stdout":"log: /Users/kristinarash/DEV/.playwright-mcp/console-2026-08-13T15-46-55-092Z.log\n---\n[     261ms] [ERROR] Failed to load resource: th...
+- {"stdout":"=== 1. remove the 6 dangling-to-be symlinks (docker/kubectl untouched) ===\n  removed  /usr/local/bin/codex\n  removed  /usr/local/bin/c...
+
+## Git
+diff, log
+
+## Project Rules
+.claude/CLAUDE.md, teach/SKILL.md, teach/GLOSSARY-FORMAT.md, memory/MEMORY.md
+
+## Environment
+cwd: /Users/kristinarash/DEV/Terminal_Fluency
+model:claude-opus-5[1m]
+export PATH=***
+echo "=== which ==="; for c in claude codex; do printf "%s: " "$c"; command -v "$c" || echo "NOT FOUND"; done
+echo "=== claude --version ==="; claude --version 2>&1 | head -3
+echo "=== codex --version ==="; codex --version 2>&1 | head -3
+export PATH=***
+echo "===== CLAUDE --help ====="; claude --help 2>&1
+echo; echo "===== CODEX --help ====="; codex --help 2>&1
+export PATH=***
+curl -s -o /dev/null -w "explainshell.com -> %{http_code}\n" -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36" -L --max-time 20 "https://explainshell.com/explain?cmd=claude+-p+%22hi%22"
+curl -s -o /dev/null -w "reddit r/commandline -> %{http_code}\n" -A "Mozilla/5.0" -L --max-time 20 "https://www.reddit.com/r/commandline/"
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+node -e '
+const fs=require("fs");
+const html=fs.readFileSync("lessons/0001-reading-a-command.html","utf8");
+const m=html.match(/data-quiz=\x27([\s\S]*?)\x27>/);
+if(!m){console.log("FAIL: no data-quiz attribute found");process.exit(1);}
+let q;
+try{q=JSON.parse(m[1]);}catch(e){console.log("FAIL: JSON parse ->",e.message);process.exit(1);}
+console.log("quiz JSON OK -", q.length, "questions");
+q.forEach((x,i)=>{
+  const w=x.options.map(o=>o.split(/\s+/).length);
+  const c=x.options.map(o=>o.length);
+  const uniformW=new Set(w).size===1;
+  console.log(`  Q${i+1}: answer=${x.answer} words=[${w}] ${uniformW?"uniform":"MIXED"} chars=[${c}]`);
+});
+'
+echo "--- js syntax ---"; node --check assets/quiz.js && echo "quiz.js OK"
+echo "--- tree ---"; find . -type f | sort
+echo "--- link targets exist? ---"
+for f in assets/lesson.css assets/quiz.js MISSION.md GLOSSARY.md RESOURCES.md reference/agent-cli-cheatsheet.html lessons/0001-reading-a-command.html; do
+  [ -f "$f" ] && echo "  ok  $f" || echo "  MISSING  $f"
+done
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+node -e '
+const fs=require("fs");
+const html=fs.readFileSync("lessons/0001-reading-a-command.html","utf8");
+const m=html.match(/data-quiz=\x27([\s\S]*?)\x27>/);
+const q=JSON.parse(m[1]);
+console.log("re-validated:", q.length, "questions");
+q.forEach((x,i)=>{
+  const w=x.options.map(o=>o.split(/\s+/).length);
+  const c=x.options.map(o=>o.length);
+  console.log(`  Q${i+1}: words=[${w}] chars=[${c}] spread=${Math.max(...c)-Math.min(...c)}`);
+});
+'
+export PATH=***
+open "/Users/kristinarash/DEV/Terminal_Fluency/lessons/0001-reading-a-command.html" && echo "opened lesson 01"
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+nohup python3 -m http.server 8731 --bind 127.0.0.1 >/Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http.log 2>&1 &
+sleep 2
+curl -s -o /dev/null -w "lesson -> %{http_code}\n" "http://127.0.0.1:8731/lessons/0001-reading-a-command.html"
+curl -s -o /dev/null -w "css    -> %{http_code}\n" "http://127.0.0.1:8731/assets/lesson.css"
+curl -s -o /dev/null -w "js     -> %{http_code}\n" "http://127.0.0.1:8731/assets/quiz.js"
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+echo "--- non-ASCII bytes in quiz.js ---"
+LC_ALL=C grep -n '[^ -~	]' assets/quiz.js || echo "  none (pure ASCII)"
+echo "--- DOT line ---"
+grep -n 'var DOT' assets/quiz.js
+export PATH=***
+pkill -f "http.server 8731" 2>/dev/null && echo "test server stopped" || echo "test server already stopped"
+sleep 1
+curl -s -o /dev/null -m 3 -w "port 8731 -> %{http_code}\n" "http://127.0.0.1:8731/" 2>/dev/null || echo "port 8731 closed"
+echo "--- final tree ---"
+find /Users/kristinarash/DEV/Terminal_Fluency -type f | sed 's|/Users/kristinarash/DEV/Terminal_Fluency|.|' | sort
+open "/Users/kristinarash/DEV/Terminal_Fluency/lessons/0001-reading-a-command.html" && echo "-> lesson reopened in your browser"
+export PATH=***
+F=~/.claude/global-memory/MEMORY.md
+echo "size: $(wc -c < "$F") chars (cap 2500)"
+echo "--- current contents ---"
+cat "$F"
+export PATH=***
+echo "=== versions / paths ==="
+for c in node npm npx uv uvx python3 go; do printf "%-8s " "$c"; p=$(command -v "$c" 2>/dev/null); if [ -n "$p" ]; then printf "%-38s %s\n" "$p" "$("$c" --version 2>&1 | head -1)"; else echo "NOT FOUND"; fi; done
+echo
+echo "=== where npm installs global tools ==="
+npm root -g 2>/dev/null; npm prefix -g 2>/dev/null
+echo
+echo "=== globally installed npm packages ==="
+npm ls -g --depth=0 2>/dev/null | head -20
+export PATH=***
+echo "=== does 'npx -y cowsay' work (drill 5)? ==="
+timeout 90 npx -y cowsay "npx ran me" 2>&1 | tail -12
+echo
+echo "=== is cowsay now on PATH? (should be NO — that is the lesson) ==="
+command -v cowsay >/dev/null 2>&1 && echo "  FOUND on PATH - drill premise broken" || echo "  not on PATH -> drill premise holds"
+export PATH=***
+npx -y cowsay "npx ran me" 2>&1 | tail -12
+echo "---"
+command -v cowsay >/dev/null 2>&1 && echo "cowsay IS on PATH - premise broken" || echo "cowsay NOT on PATH -> premise holds"
+export PATH=***
+UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+for u in \
+  "https://docs.npmjs.com/cli/commands/npm-exec" \
+  "https://docs.npmjs.com/cli/commands/npx" \
+  "https://docs.npmjs.com/cli/commands/npm-install" \
+  "https://docs.astral.sh/uv/guides/tools/" ; do
+  printf "%-52s -> %s\n" "${u#https://}" "$(curl -s -o /dev/null -w '%{http_code}' -A "$UA" -L --max-time 20 "$u")"
+done
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+nohup python3 -m http.server 8731 --bind 127.0.0.1 >/Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http2.log 2>&1 &
+sleep 2
+for p in lessons/0001-reading-a-command.html lessons/0002-where-commands-come-from.html reference/agent-cli-cheatsheet.html reference/package-tools.html assets/lesson.css assets/quiz.js; do
+  printf "  %-46s %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8731/$p")"
+done
+export PATH=***
+L=$(ls -t /Users/kristinarash/DEV/.playwright-mcp/console-*.log 2>/dev/null | head -1)
+echo "log: $L"; echo "---"; cat "$L" 2>/dev/null | head -10
+echo "--- server 404s ---"
+grep -o 'GET [^ ]* HTTP[^"]*" 404' /Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http2.log 2>/dev/null | head
+grep -c '404' /Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http2.log 2>/dev/null | sed 's/^/404 count: /'
+export PATH=***
+pkill -f "http.server 8731" 2>/dev/null && echo "test server stopped" || echo "already stopped"
+echo "--- workspace ---"
+find /Users/kristinarash/DEV/Terminal_Fluency -type f | sed 's|.*/Terminal_Fluency|.|' | sort
+open "/Users/kristinarash/DEV/Terminal_Fluency/lessons/0002-where-commands-come-from.html" && echo "-> lesson 02 opened"
+export PATH=***
+echo "=== is uv a real Homebrew formula? ==="
+brew list --versions uv 2>&1 | sed 's/^/  /'
+brew info --json=v2 uv 2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); f=d.get('formulae',[]); print('  formula:', f[0]['name'], f[0]['versions']['stable'] if f else 'n/a')" 2>/dev/null || echo "  (json probe failed)"
+echo
+echo "=== does anything hardcode ~/.local/bin/uv ? ==="
+grep -rl '\.local/bin/uv' "$HOME/.claude" "$HOME/DEV" 2>/dev/null | head -20 | sed 's/^/  HIT: /' || true
+echo "  (end of hits)"
+echo
+echo "=== where does gws keep auth? ==="
+ls -d "$HOME/.config/gws" "$HOME/.gws" "$HOME/.config/googleworkspace" 2>/dev/null | sed 's/^/  /' || echo "  none of the usual paths"
+echo
+echo "=== does .local/bin/env get used by anything else? ==="
+grep -rn 'local/bin/env' "$HOME/.zshrc" "$HOME/.zprofile" "$HOME/.profile" 2>/dev/null | sed 's/^/  /'
+export PATH=***
+echo "=== before ==="
+printf "  ~/.local/bin/uv      -> "; "$HOME/.local/bin/uv" --version 2>&1
+printf "  /opt/homebrew/bin/uv -> "; /opt/homebrew/bin/uv --version 2>&1
+echo
+echo "=== uv self update ==="
+"$HOME/.local/bin/uv" self update 2>&1 | sed 's/^/  /'
+echo
+echo "=== after ==="
+printf "  ~/.local/bin/uv      -> "; "$HOME/.local/bin/uv" --version 2>&1
+export PATH=***
+echo "=== does any brew formula depend on uv? ==="
+brew uses --installed uv 2>/dev/null | sed 's/^/  /' || true
+echo "  (empty above = nothing depends on it)"
+echo
+echo "=== removing the Homebrew duplicate ==="
+brew uninstall uv 2>&1 | sed 's/^/  /'
+echo
+echo "=== how many uv binaries remain? ==="
+env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic '
+  echo "  which -a uv: $(which -a uv | tr "\n" " ")"
+  echo "  uv --version: $(uv --version 2>&1)"
+' 2>/dev/null
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+nohup python3 -m http.server 8731 --bind 127.0.0.1 >/Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http3.log 2>&1 &
+sleep 2
+curl -s -o /dev/null -w "package-tools.html -> %{http_code}\n" "http://127.0.0.1:8731/reference/package-tools.html"
+export PATH=***
+pkill -f "http.server 8731" 2>/dev/null && echo "test server stopped" || echo "already stopped"
+echo
+echo "======== FINAL STATE (clean login shell) ========"
+env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic '
+  echo "  uv:      $(uv --version)"
+  echo "  copies:  $(which -a uv | tr "\n" " ")"
+  echo "  entries: $(echo $PATH | tr ":" "\n" | wc -l | tr -d " ")"
+  echo "  dupes:   $(echo $PATH | tr ":" "\n" | sort | uniq -d | tr "\n" " ")"
+  echo "  claude:  $(command -v claude)"
+' 2>/dev/null
+echo
+echo "======== rollback, if ever needed ========"
+ls -1 "$HOME"/.zshrc.bak-* "$HOME"/.zprofile.bak-* "$HOME"/.profile.bak-* 2>/dev/null | sed 's/^/  /'
+open "/Users/kristinarash/DEV/Terminal_Fluency/reference/package-tools.html" && echo "  -> updated reference opened"
+export PATH=***
+echo "=== is yarn/pnpm used anywhere? (corepack's only job) ==="
+for c in yarn pnpm; do printf "  %-6s -> %s\n" "$c" "$(command -v $c 2>/dev/null || echo 'not installed')"; done
+echo
+echo "  lockfiles in DEV:"
+find "$HOME/DEV" -maxdepth 3 \( -name 'yarn.lock' -o -name 'pnpm-lock.yaml' \) 2>/dev/null | grep -v '.tmp.drive' | head -5 | sed 's/^/    /' || true
+echo "    (none found above = corepack unused)"
+echo
+echo "=== does Homebrew node ship corepack? ==="
+ls /opt/homebrew/lib/node_modules 2>/dev/null | sed 's/^/  /'
+echo
+echo "=== packageManager fields (would require corepack) ==="
+grep -rl '"packageManager"' "$HOME/DEV" --include=package.json 2>/dev/null | grep -v '.tmp.drive' | head -5 | sed 's/^/  /' || echo "  none"
+echo "=== all tools resolve in a CLEAN login shell? ==="
+env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic '
+for c in claude codex uv uvx node npm npx python3 go brew gws gemini bun docker kubectl; do
+  p=$(command -v "$c" 2>/dev/null)
+  if [ -n "$p" ]; then printf "  %-9s %s\n" "$c" "$p"; else printf "  %-9s ** MISSING **\n" "$c"; fi
+done' 2>/dev/null
+echo
+echo "=== do the previously-duplicated tools still run? ==="
+export PATH=***
+printf "  codex   -> "; codex --version 2>&1 | head -1
+printf "  node    -> "; node --version 2>&1
+printf "  npm     -> "; npm --version 2>&1
+printf "  docker  -> "; docker --version 2>&1 | head -1
+printf "  kubectl -> "; kubectl version --client 2>&1 | head -1
+printf "  gws     -> "; gws --version 2>&1 | head -1
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+nohup python3 -m http.server 8731 --bind 127.0.0.1 >/Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http4.log 2>&1 &
+sleep 2
+curl -s -o /dev/null -w "package-tools.html -> %{http_code}\n" "http://127.0.0.1:8731/reference/package-tools.html"
+export PATH=***
+pkill -f "http.server 8731" 2>/dev/null && echo "test server stopped" || echo "already stopped"
+open "/Users/kristinarash/DEV/Terminal_Fluency/reference/package-tools.html" && echo "-> updated reference opened"
+export PATH=***
+echo "=== standard tools the lesson needs ==="
+for c in wc sort uniq head tail grep tr cut jq; do printf "  %-6s %s\n" "$c" "$(command -v $c 2>/dev/null || echo 'NOT INSTALLED')"; done
+echo
+echo "=== git repos in ~/DEV (for a real 'git diff | claude -p' drill) ==="
+find "$HOME/DEV" -maxdepth 2 -name .git -type d 2>/dev/null | sed 's|/.git$||' | sed "s|$HOME|~|" | head -8 | sed 's/^/  /'
+echo
+echo "=== how many projects in ~/DEV? (drill uses this) ==="
+ls "$HOME/DEV" | wc -l | tr -d ' ' | sed 's/^/  entries: /'
+echo
+echo "=== log-ish files to pipe from? ==="
+find "$HOME/.claude" -maxdepth 2 -name '*.log' 2>/dev/null | head -3 | sed "s|$HOME|~|" | sed 's/^/  /' || echo "  none obvious"
+export PATH=***
+cd "$HOME/DEV" || exit 1
+echo "=== test: does claude -p read piped stdin? (tiny prompt) ==="
+printf 'apple\nbanana\ncherry\n' | claude -p "Reply with only the number of lines you received. No other words." 2>&1 | head -5 | sed 's/^/  /'
+echo
+echo "=== test: redirect stdout to a file ==="
+printf 'one\ntwo\nthree\n' | wc -l > "$HOME/.claude/jobs/7c7ca38f/tmp/pipetest.txt" 2>&1
+echo "  file contains: $(cat /Users/kristinarash/.claude/jobs/7c7ca38f/tmp/pipetest.txt | tr -d ' ')"
+echo
+echo "=== test: stderr vs stdout separation ==="
+echo "  ls ~/DEV /nonexistent > /dev/null   (stdout hidden, stderr should still show):"
+ls "$HOME/DEV" /nonexistent-dir-xyz > /dev/null 2>&1 | head -2
+ls "$HOME/DEV" /nonexistent-dir-xyz 2>&1 >/dev/null | head -2 | sed 's/^/    stderr: /'
+export PATH=***
+cd "$HOME/DEV" || exit 1
+echo "=== stdout ONLY (stderr discarded) ==="
+printf 'a\nb\nc\n' | claude -p "Reply with only the number of lines received." 2>/dev/null | sed 's/^/  |/'
+echo
+echo "=== stderr ONLY (stdout discarded) ==="
+printf 'a\nb\nc\n' | claude -p "Reply with only the number of lines received." 2>&1 >/dev/null | head -3 | sed 's/^/  |/'
+echo
+echo "=== which settings file carries the stale rule? ==="
+grep -n 'c/Users/eric_rash' "$HOME/.claude/settings.json" 2>/dev/null | head -3 | sed 's/^/  /'
+export PATH=***
+echo "=== repos with uncommitted changes ==="
+for d in DexaProject S2_Evaluation Kinexon_Volleyball DataBase_GPS_Reporting morning-briefing SportScienceResearchRepo Travel_Map Website; do
+  p="$HOME/DEV/$d"
+  [ -d "$p/.git" ] || continue
+  n=$(git -C "$p" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+  b=$(git -C "$p" branch --show-current 2>/dev/null)
+  printf "  %-26s %3s changed file(s)  branch=%s\n" "$d" "$n" "${b:-?}"
+done
+export PATH=***
+echo "=== git log content (guaranteed non-empty drill material) ==="
+for d in Website DexaProject; do
+  n=$(git -C "$HOME/DEV/$d" log --oneline 2>/dev/null | wc -l | tr -d ' ')
+  printf "  %-14s %s commits\n" "$d" "$n"
+done
+echo
+echo "=== sample: what the drill would pipe (first 3 lines) ==="
+git -C "$HOME/DEV/Website" log --oneline -3 2>/dev/null | sed 's/^/  /'
+export PATH=***
+cd /Users/kristinarash/DEV/Terminal_Fluency || exit 1
+nohup python3 -m http.server 8731 --bind 127.0.0.1 >/Users/kristinarash/.claude/jobs/7c7ca38f/tmp/http5.log 2>&1 &
+sleep 2
+for p in lessons/0001-reading-a-command.html lessons/0002-where-commands-come-from.html lessons/0003-pipes-and-redirection.html reference/agent-cli-cheatsheet.html reference/package-tools.html; do
+  printf "  %-48s %s\n" "$p" "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8731/$p")"
+done
+export PATH=***
+pkill -f "http.server 8731" 2>/dev/null && echo "test server stopped"
+echo
+echo "=== do the drills print what the lesson claims? (clean shell) ==="
+env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic '
+  echo "  drill 1  ls ~/DEV | wc -l              -> $(ls ~/DEV | wc -l | tr -d " ")   (lesson says 58)"
+  D=$(echo $PATH | tr ":" "\n" | sort | uniq -d)
+  echo "  drill 2a PATH dupes                    -> ${D:-(nothing)}   (lesson says nothing)"
+  echo "  drill 2b which -a uv | wc -l           -> $(which -a uv | wc -l | tr -d " ")    (lesson says 1)"
+' 2>/dev/null
+export PATH=***
+echo "=== workspace ==="
+find /Users/kristinarash/DEV/Terminal_Fluency -type f | sed 's|.*/Terminal_Fluency|.|' | sort | sed 's/^/  /'
+open "/Users/kristinarash/DEV/Terminal_Fluency/lessons/0003-pipes-and-redirection.html" && echo "  -> lesson 03 opened"
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 20 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

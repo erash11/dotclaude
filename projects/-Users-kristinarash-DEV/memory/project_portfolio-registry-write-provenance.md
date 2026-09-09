@@ -1,0 +1,31 @@
+---
+name: portfolio-registry-write-provenance
+description: "project-triage's portfolio.json is written from outside Claude sessions; how to prove who wrote it, and why registry changes get their own commit"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 4c8d85d1-3921-4284-adc0-0c1165479df3
+  modified: 2026-08-16T18:37:45.500Z
+---
+
+`~/DEV/project-triage/portfolio.json` is edited outside Claude sessions — Eric's
+own board, the `/project` skill, and the KeystoneOS cadence all write it. It
+changed twice mid-session on 2026-08-16 (a re-rank, then a promotion). Expect a
+dirty registry that you did not cause, and check before assuming a bug.
+
+**Proving who wrote it:** `portfolio.save_registry` always refreshes
+`portfolio.json.bak` before replacing the file. An untouched `.bak` therefore
+rules out `board.py` and the CLI. A `.bak` whose mtime tracks the registry means
+something in this repo wrote it.
+
+**Never run `board.py` against the live registry to test.** Copy
+`portfolio.json` + `board.html` into a scratch dir and point
+`board.make_server(Path(scratch), ...)` there. The sandbox growing its own
+`.bak` is the proof your writes stayed out of the real file.
+
+**Commit registry changes separately**, with a `data:` subject line, never folded
+into a code commit — the repo already does this and it keeps registry history
+readable against code history. Say what moved in the message; only ranks and
+membership ever change.
+
+Related: [[keystoneos-verification-habits]], [[dev-layout-and-discovery]]

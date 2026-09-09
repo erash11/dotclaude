@@ -1,0 +1,400 @@
+[05:58] never actually realized or addressed. I personally recommend Granola to
+[05:59] personally recommend Granola to basically everyone I work with, so I'm
+[06:01] basically everyone I work with, so I'm excited to partner with them and offer
+[06:03] excited to partner with them and offer my community 100% off their first month.
+[06:05] my community 100% off their first month. So, click the first link in the
+[06:06] So, click the first link in the description to get that all set up. You
+[06:08] description to get that all set up. You are going to be happy that you did. Part
+[06:10] are going to be happy that you did. Part two is enable your memory system. The
+[06:12] two is enable your memory system. The first part of creating a dream-like
+[06:13] first part of creating a dream-like state is making sure we're properly
+[06:15] state is making sure we're properly saving memories into our system. So, if
+[06:18] saving memories into our system. So, if you're on a recent version of Claude
+[06:19] you're on a recent version of Claude Code, they have a memory feature that is
+[06:21] Code, they have a memory feature that is on by default. If you want to look at
+[06:22] on by default. If you want to look at the setting, open your terminal and in
+[06:24] the setting, open your terminal and in whatever folder you're working on, type
+[06:26] whatever folder you're working on, type Claude and then {slash} memory and
+[06:27] Claude and then {slash} memory and you'll see the configuration details.
+[06:29] you'll see the configuration details. This feature stores memory files on your
+[06:31] This feature stores memory files on your computer, so let's actually go and look
+[06:33] computer, so let's actually go and look at these. And the reason that we're
+[06:34] at these. And the reason that we're doing this is it will help us understand
+[06:36] doing this is it will help us understand how we should set up our own dream-like
+[06:38] how we should set up our own dream-like system to complement our existing
+[06:40] system to complement our existing memories. So, when you look at the
+[06:42] memories. So, when you look at the memories folder, you'll have a memory.md
+[06:44] memories folder, you'll have a memory.md file, which is just a file that points
+[06:46] file, which is just a file that points to other files. And then on those other
+[06:48] to other files. And then on those other files, that's where the details of the
+[06:50] files, that's where the details of the actual memory sits. So, on the left you
+[06:53] actual memory sits. So, on the left you can see the memory.md and this is really
+[06:55] can see the memory.md and this is really just a reference file. And then on the
+[06:56] just a reference file. And then on the right, you can see an actual memory
+[06:58] right, you can see an actual memory that's associated with it. So, the
+[07:00] that's associated with it. So, the general structure that they have is a
+[07:02] general structure that they have is a parent memory.md file and then sub files
+[07:05] parent memory.md file and then sub files with all the details about what it wants
+[07:08] with all the details about what it wants Claude to actually remember. But, that's
+[07:09] Claude to actually remember. But, that's just part of your Claude's memory. The
+[07:11] just part of your Claude's memory. The next thing is your Claude.md file. Think
+[07:14] next thing is your Claude.md file. Think of this memories.md
+[07:15] of this memories.md and your Claude memories as things that
+[07:17] and your Claude memories as things that just happen in your day. And then
+[07:19] just happen in your day. And then Claude.md is the equivalent of what you
+[07:21] Claude.md is the equivalent of what you decide to write down on paper so you
+[07:23] decide to write down on paper so you don't forget it. And if you haven't
+[07:25] don't forget it. And if you haven't created a Claude.md file yet, don't
+[07:26] created a Claude.md file yet, don't worry, we'll create it in the next
+[07:28] worry, we'll create it in the next section. But, the key with both this
+[07:30] section. But, the key with both this memory.md and the Claude.md file is they
+[07:32] memory.md and the Claude.md file is they get loaded in at the start of every
+[07:34] get loaded in at the start of every session. So, what that means is if you
+[07:35] session. So, what that means is if you start a prompt and you say, "Hey, this
+[07:37] start a prompt and you say, "Hey, this is Austin." it'll also see all of your
+[07:39] is Austin." it'll also see all of your memory context and all of your Claude.md
+[07:42] memory context and all of your Claude.md context. Simply put, it's like copy and
+[07:44] context. Simply put, it's like copy and pasting both files and putting it at the
+[07:46] pasting both files and putting it at the start of the prompt that you just sent.
+[07:48] start of the prompt that you just sent. On screen, you can see a table from
+[07:50] On screen, you can see a table from Anthropic stocks comparing these two
+[07:52] Anthropic stocks comparing these two features and how they relate. So, you
+[07:53] features and how they relate. So, you now have a deeper understanding of how
+[07:55] now have a deeper understanding of how this all works, which is necessary for
+[07:57] this all works, which is necessary for the next part where we'll create a dream
+[07:59] the next part where we'll create a dream state. Part three is to start dreaming.
+[08:01] state. Part three is to start dreaming. Going back to what Karpathy mentioned
+[08:03] Going back to what Karpathy mentioned earlier, the beauty of how people sleep
+[08:05] earlier, the beauty of how people sleep is that humans just automatically
+[08:07] is that humans just automatically remember things. It just happens for
+[08:09] remember things. It just happens for them, right? We've all experienced this.
+[08:11] them, right? We've all experienced this. We're all humans. So, what we want to do
+[08:12] We're all humans. So, what we want to do is create a system that analyzes our
+[08:15] is create a system that analyzes our history, reviews our memory and claw.md
+[08:17] history, reviews our memory and claw.md files, and suggest improvements
+[08:20] files, and suggest improvements automatically, a lot like a human
+[08:22] automatically, a lot like a human sleeping and dreaming at night. To do
+[08:24] sleeping and dreaming at night. To do this, we're going to create /dream, an
+[08:26] this, we're going to create /dream, an orchestration skill, which is a fancy
+[08:28] orchestration skill, which is a fancy name for a skill that calls multiple
+[08:30] name for a skill that calls multiple skills. Creating this actual dream skill
+[08:32] skills. Creating this actual dream skill is very simple, but first we need to
+[08:34] is very simple, but first we need to create the three skills that this will
+[08:36] create the three skills that this will reference. The first is session
+[08:38] reference. The first is session analysis, then improve memory, then send
+[08:40] analysis, then improve memory, then send result. So, let's start off by creating
+[08:42] result. So, let's start off by creating session analysis. For each of these, I'm
+[08:44] session analysis. For each of these, I'm going to walk through the prompt that
+[08:45] going to walk through the prompt that creates these because it's important to
+[08:46] creates these because it's important to know what's going on, but don't worry to
+[08:48] know what's going on, but don't worry to take any screenshots or anything. You
+[08:50] take any screenshots or anything. You can just use the buildpartner.ai plugin
+[08:53] can just use the buildpartner.ai plugin and run /buildpartner:build
+[08:55] and run /buildpartner:build space dream, and we'll walk you through
+[08:57] space dream, and we'll walk you through this step by step. And to get that
+[08:58] this step by step. And to get that plugin, that is linked below. So, what
+[09:00] plugin, that is linked below. So, what this skill does is it looks at your
+[09:02] this skill does is it looks at your entire conversation history, which it
+[09:04] entire conversation history, which it has access to because Claude code
+[09:06] has access to because Claude code automatically saves your conversation
+[09:08] automatically saves your conversation history to local files. Currently, the
+[09:10] history to local files. Currently, the memory feature we were talking about
+[09:11] memory feature we were talking about before just decides what's important,
+[09:14] before just decides what's important, but this looks at your entire
+[09:15] but this looks at your entire conversation history. It reads the raw
+[09:17] conversation history. It reads the raw record of what you actually did and
+[09:19] record of what you actually did and pulls out patterns your memory missed.
+[09:21] pulls out patterns your memory missed. This is a gold mine for information
+[09:23] This is a gold mine for information about how your system can start learning
+[09:25] about how your system can start learning better. Then at the end of the skill
+[09:27] better. Then at the end of the skill creation prompt, we also take in an
+[09:28] creation prompt, we also take in an argument called dream. By passing in
+[09:30] argument called dream. By passing in this argument, it will create an
+[09:31] this argument, it will create an overview of the most useful memories,
+[09:34] overview of the most useful memories, which will then bring into the next step
+[09:35] which will then bring into the next step of this process. The reason that I did
+[09:37] of this process. The reason that I did it like this is that you may want to
+[09:38] it like this is that you may want to reuse this same skill in other skills in
+[09:41] reuse this same skill in other skills in the future. For example, if I want to
+[09:42] the future. For example, if I want to see where I'm spending my time, I add an
+[09:44] see where I'm spending my time, I add an argument, and the one that we're going
+[09:45] argument, and the one that we're going to use is dream. So, once you create the
+[09:47] to use is dream. So, once you create the whole thing, you would write {slash}
+[09:48] whole thing, you would write {slash} session analysis space dream. And it
+[09:51] session analysis space dream. And it tells the skill that you want to analyze
+[09:52] tells the skill that you want to analyze it for memories that you want to bring
+[09:54] it for memories that you want to bring to your long-term memory, which will
+[09:55] to your long-term memory, which will format it in a way that we'll use in the
+[09:57] format it in a way that we'll use in the next step of this process. And the
+[09:59] next step of this process. And the reason that I added as an argument
+[10:00] reason that I added as an argument instead of the default is the session
+[10:02] instead of the default is the session analysis skill I may want to use for
+[10:05] analysis skill I may want to use for other workflows in the future. For
+[10:06] other workflows in the future. For example, if I wanted to see where I'm
+[10:08] example, if I wanted to see where I'm spending my time, I could add another
+[10:10] spending my time, I could add another argument called time analysis. Then I
+[10:12] argument called time analysis. Then I would write {slash} session analysis
+[10:14] would write {slash} session analysis space time analysis, and it would look
+[10:16] space time analysis, and it would look at this information in a different way.
+[10:18] at this information in a different way. This doesn't necessarily have to do with
+[10:19] This doesn't necessarily have to do with this specific build, but I want everyone
+[10:21] this specific build, but I want everyone who watches this channel starting to
+[10:23] who watches this channel starting to understand skill creation best
+[10:24] understand skill creation best practices. So, once we set up that
+[10:26] practices. So, once we set up that skill, we're going to take the output of
+[10:28] skill, we're going to take the output of that and pass it through the {slash}
+[10:30] that and pass it through the {slash} improve memory skill. What this does is
+[10:32] improve memory skill. What this does is it looks at your memory and your claw.md
+[10:33] it looks at your memory and your claw.md files, as well as the analysis from the
+[10:35] files, as well as the analysis from the previous step. Much like the existing
+[10:37] previous step. Much like the existing dreams feature that Anthropic already
+[10:38] dreams feature that Anthropic already built, it'll merge any duplicates, and
+[10:40] built, it'll merge any duplicates, and it'll fix any contradictions that exist
+[10:42] it'll fix any contradictions that exist in these files. It'll then suggest
+[10:43] in these files. It'll then suggest upgrades to your claw.md files, so it
+[10:46] upgrades to your claw.md files, so it follows the exact format that Anthropic
+[10:48] follows the exact format that Anthropic uses for their memory files that I
+[10:49] uses for their memory files that I covered earlier. This is a way to keep
+[10:51] covered earlier. This is a way to keep your claw.md file light, and all of the
+[10:53] your claw.md file light, and all of the details actually live in separate
+[10:55] details actually live in separate subfiles. Well, now, one of the problems
+[10:57] subfiles. Well, now, one of the problems with just having memories and using a
+[10:58] with just having memories and using a claw.md file is that this is a global
+[11:00] claw.md file is that this is a global configuration for your project. But, we
+[11:02] configuration for your project. But, we really want to get more specific where
+[11:04] really want to get more specific where needed. And this brings us to something
+[11:06] needed. And this brings us to something I literally just found out about when I
+[11:08] I literally just found out about when I was researching this video, which makes
+[11:09] was researching this video, which makes a ton of sense to me. So, there's a
+[11:10] a ton of sense to me. So, there's a concept called rules, where you can have
+[11:12] concept called rules, where you can have specific memories or instructions that
+[11:15] specific memories or instructions that only load when you're working on a
+[11:16] only load when you're working on a specific part of a project. So, for
+[11:18] specific part of a project. So, for example, if I have a project called my
+[11:20] example, if I have a project called my life, and then within that I have an
+[11:21] life, and then within that I have an accounting folder, I can have specific
+[11:24] accounting folder, I can have specific accounting rules file that only loads in
+[11:26] accounting rules file that only loads in when I'm working on my accounting stuff.
+[11:28] when I'm working on my accounting stuff. Then, let's say I have a wife folder,
+[11:30] Then, let's say I have a wife folder, you could have wife rules in there that
+[11:32] you could have wife rules in there that are only specific when you're working on
+[11:34] are only specific when you're working on things with your wife, which is probably
+[11:35] things with your wife, which is probably a very extensive file. Again, these are
+[11:38] a very extensive file. Again, these are local rules you don't want to make
+[11:41] local rules you don't want to make global because it'll cloud the
+[11:42] global because it'll cloud the contextual window. If you're working for
+[11:44] contextual window. If you're working for things in the wife folder, that doesn't
+[11:46] things in the wife folder, that doesn't necessarily care about the things in the
+[11:47] necessarily care about the things in the accounting folder. So, zooming out,
+[11:49] accounting folder. So, zooming out, essentially what we're doing is we're
+[11:50] essentially what we're doing is we're looking at all of our conversation
+[11:52] looking at all of our conversation history and identifying places to
+[11:54] history and identifying places to improve the system. And some of those
+[11:56] improve the system. And some of those things are obvious, but some of them are
+[11:58] things are obvious, but some of them are not as obvious. So, what we do is we
+[12:00] not as obvious. So, what we do is we create a file called memory improvement
+[12:02] create a file called memory improvement overview. And this is where it'll
+[12:04] overview. And this is where it'll document any of the changes it'll
+[12:05] document any of the changes it'll auto-approve, and then it'll flag
+[12:07] auto-approve, and then it'll flag anything that you as the human has to
+[12:09] anything that you as the human has to improve for your system. Think of this
+[12:11] improve for your system. Think of this like Claude identifying ideas that it
+[12:13] like Claude identifying ideas that it thinks you should fix, but you're the
+[12:15] thinks you should fix, but you're the one who's finally signing off on it.
+[12:17] one who's finally signing off on it. This is the final human sign-off that
+[12:18] This is the final human sign-off that makes sure that the system is going in
+[12:20] makes sure that the system is going in the direction that you want. Then the
+[12:22] the direction that you want. Then the last skill that's needed is send
+[12:23] last skill that's needed is send results. This is personally how I prefer
+[12:25] results. This is personally how I prefer setting up all of my automations. I have
+[12:27] setting up all of my automations. I have a company automations channel within my
+[12:29] a company automations channel within my Slack, and that's where all of my
+[12:31] Slack, and that's where all of my automations go. I prefer having things
+[12:32] automations go. I prefer having things all in one place, so I know where to
+[12:34] all in one place, so I know where to look and I get updated when they run.
+[12:36] look and I get updated when they run. So, for you, this message can be
+[12:38] So, for you, this message can be wherever you want. This could be your
+[12:39] wherever you want. This could be your Telegram, WhatsApp, email. The key here
+[12:41] Telegram, WhatsApp, email. The key here is having an output that's easily
+[12:43] is having an output that's easily accessible and something that you'll
+[12:45] accessible and something that you'll review. Here's a prompt that you could
+[12:46] review. Here's a prompt that you could fill in based on where you want the
+[12:48] fill in based on where you want the results to be sent. So, at this point we
+[12:49] results to be sent. So, at this point we created {slash} session analysis,
+[12:51] created {slash} session analysis, {slash} improve memory, and {slash} send
+[12:53] {slash} improve memory, and {slash} send result skills. Now, we have to take
+[12:55] result skills. Now, we have to take these three skills and package them all
+[12:57] these three skills and package them all together into the orchestration skill,
+[12:59] together into the orchestration skill, which is dream. On screen you can see
+[13:01] which is dream. On screen you can see the prompt that actually creates this
+[13:02] the prompt that actually creates this dream skill, and there are three things
+[13:04] dream skill, and there are three things to call out. The first is I tell it to
+[13:05] to call out. The first is I tell it to review the output from the last time it
+[13:07] review the output from the last time it ran. This is so that it applies any
+[13:09] ran. This is so that it applies any changes before it runs the next
+[13:10] changes before it runs the next iteration. I then add an argument for
+[13:12] iteration. I then add an argument for mode, which has one mode for full
+[13:14] mode, which has one mode for full analysis and another for apply fixes.
+[13:16] analysis and another for apply fixes. I'll dive into why a little bit more
+[13:18] I'll dive into why a little bit more when we automate this actual skill. And
+[13:19] when we automate this actual skill. And then third, in the skill itself, you'll
+[13:21] then third, in the skill itself, you'll see that I reference each of the skills
+[13:23] see that I reference each of the skills that we already created. To reiterate
+[13:25] that we already created. To reiterate why we do this, each of the sub-skills I
+[13:27] why we do this, each of the sub-skills I reference can be used elsewhere in your
+[13:30] reference can be used elsewhere in your day-to-day. Session analysis, you could
+[13:32] day-to-day. Session analysis, you could use the data for other things. Improve
+[13:34] use the data for other things. Improve memory, you may want to just run this
+[13:36] memory, you may want to just run this manually yourself and send results.
+[13:38] manually yourself and send results. Other automations you build will use
+[13:40] Other automations you build will use this skill, so you don't need to
+[13:41] this skill, so you don't need to reinvent the wheel and you can actually
+[13:43] reinvent the wheel and you can actually scale out systems. This is really where
+[13:45] scale out systems. This is really where my software engineering background comes
+[13:47] my software engineering background comes in. You design systems based on
+[13:49] in. You design systems based on functions or self-contained logic that
+[13:51] functions or self-contained logic that you can reuse across your entire system.
+[13:53] you can reuse across your entire system. That's what we're doing here so that we
+[13:54] That's what we're doing here so that we can set the foundation for system that
+[13:56] can set the foundation for system that can scale. Now, when we package this all
+[13:58] can scale. Now, when we package this all up and we actually run the scale, you
+[13:59] up and we actually run the scale, you can see the output. It shows the things
+[14:01] can see the output. It shows the things it automatically approved and then it
+[14:02] it automatically approved and then it shows me the things that I need to make
+[14:04] shows me the things that I need to make a call on myself. And at this point, you
+[14:06] a call on myself. And at this point, you can very easily run it manually. Just
+[14:07] can very easily run it manually. Just {slash} dreams and then I'll grip it and
+[14:09] {slash} dreams and then I'll grip it and rip it. But how can we actually automate
+[14:11] rip it. But how can we actually automate this? You don't need to complicate this.
+[14:12] this? You don't need to complicate this. This is actually very straightforward.
+[14:14] This is actually very straightforward. Go to Cloud Desktop, click code,
+[14:16] Go to Cloud Desktop, click code, routines, and then local. And then
+[14:18] routines, and then local. And then within that actual routine, just
+[14:20] within that actual routine, just reference the {slash} dream skill and
+[14:22] reference the {slash} dream skill and then set the cadence for whatever you
+[14:23] then set the cadence for whatever you want. Personally, I set it for weekly on
+[14:25] want. Personally, I set it for weekly on Fridays because I'm just too busy the
+[14:27] Fridays because I'm just too busy the rest of the week. So, once you hit save,
+[14:29] rest of the week. So, once you hit save, let's say Friday at 8:00 a.m., it'll run
+[14:31] let's say Friday at 8:00 a.m., it'll run this dream skill every single Friday.
+[14:33] this dream skill every single Friday. You can do it every night. It's really
+[14:34] You can do it every night. It's really up to you. But there is a problem at
+[14:35] up to you. But there is a problem at this point. The original dream skill
+[14:37] this point. The original dream skill will create an overview of changes that
+[14:39] will create an overview of changes that I then have to go and review manually.
+[14:40] I then have to go and review manually. So, if we just have this run on Friday,
+[14:43] So, if we just have this run on Friday, it will wait until the next Friday to
+[14:45] it will wait until the next Friday to apply the changes. And that means I'm
+[14:47] apply the changes. And that means I'm waiting a week with stale data that I
+[14:49] waiting a week with stale data that I know is an issue that is just sitting
+[14:51] know is an issue that is just sitting there not getting fixed. So, what I do
+[14:53] there not getting fixed. So, what I do is on Saturday, I have another routine
+[14:55] is on Saturday, I have another routine {slash} dream apply fixes, where it'll
+[14:57] {slash} dream apply fixes, where it'll go and just look for this file and apply
+[14:59] go and just look for this file and apply fixes automatically for me based on the
+[15:01] fixes automatically for me based on the feedback. So, Friday will run dreams and
+[15:03] feedback. So, Friday will run dreams and then Saturday will apply fixes. You can
+[15:05] then Saturday will apply fixes. You can do this at whatever cadence you want,
+[15:07] do this at whatever cadence you want, but this is the structure that works for
+[15:08] but this is the structure that works for me. Now, we are going through a lot of
+[15:09] me. Now, we are going through a lot of nitty-gritty details there, so let's
+[15:11] nitty-gritty details there, so let's take a step back for a second. At this
+[15:12] take a step back for a second. At this point, we've established our baseline
+[15:14] point, we've established our baseline memory system and created a dream state
+[15:16] memory system and created a dream state that will automatically improve for us.
+[15:18] that will automatically improve for us. And over time, it's going to start
+[15:19] And over time, it's going to start bringing those short-term memories into
+[15:21] bringing those short-term memories into long-term memories so you stop having to
+[15:23] long-term memories so you stop having to repeat yourself. Which brings us to a
+[15:24] repeat yourself. Which brings us to a statement from the creator of Claude
+[15:26] statement from the creator of Claude code, Boris Cherney, that I don't agree
+[15:28] code, Boris Cherney, that I don't agree with. He tells you essentially to delete
+[15:30] with. He tells you essentially to delete everything we just created, which I'm
+[15:31] everything we just created, which I'm going to dive into, but first, as a
+[15:33] going to dive into, but first, as a thank you to everyone that supports to
+[15:35] thank you to everyone that supports to this channel, I give away a Claude Max
+[15:37] this channel, I give away a Claude Max subscription every video. And this
+[15:38] subscription every video. And this video's winner is Neons. They're
+[15:40] video's winner is Neons. They're building a language learning app. Shout
+[15:42] building a language learning app. Shout out Neons, and shout out everyone who
+[15:43] out Neons, and shout out everyone who supports this channel. Now, to enter the
+[15:45] supports this channel. Now, to enter the next giveaway, I'm genuinely curious,
+[15:47] next giveaway, I'm genuinely curious, what is everyone watching this channel
+[15:48] what is everyone watching this channel do for a living? Let me know in the
+[15:49] do for a living? Let me know in the comments, and I'll try and point you in
+[15:51] comments, and I'll try and point you in the direction of a video on my channel
+[15:52] the direction of a video on my channel that's helpful for you. Everyone
+[15:54] that's helpful for you. Everyone watching, you're the goats. Subscribe if
+[15:55] watching, you're the goats. Subscribe if you haven't, and if you have, appreciate
+[15:57] you haven't, and if you have, appreciate you turning on those post notifications.
+[15:59] you turning on those post notifications. And that brings us to part four, don't
+[16:01] And that brings us to part four, don't be misled. So, Boris Cherney, in a
+[16:03] be misled. So, Boris Cherney, in a recent interview, he was asked how he
+[16:05] recent interview, he was asked how he deals with this exact problem that we
+[16:06] deals with this exact problem that we covered, and his answer went viral.
+[16:08] covered, and his answer went viral. &gt;&gt; Every 6 months, delete your Claude MD.
+[16:11] &gt;&gt; Every 6 months, delete your Claude MD. Delete your skills.
+[16:12] Delete your skills. Delete your hooks.
+[16:13] Delete your hooks. See what the model does, and it might
+[16:15] See what the model does, and it might surprise you.
+[16:16] surprise you. &gt;&gt; Now, he's telling you to delete
+[16:17] &gt;&gt; Now, he's telling you to delete everything essentially, and I don't
+[16:19] everything essentially, and I don't think he's lying, but there's a lot of
+[16:20] think he's lying, but there's a lot of nuance here that people need to
+[16:22] nuance here that people need to understand versus just reading the
+[16:24] understand versus just reading the headline. Boris is using Claude for
+[16:26] headline. Boris is using Claude for coding, and Claude's models are actively
+[16:28] coding, and Claude's models are actively getting better and better at writing
+[16:29] getting better and better at writing code. That's entirely the truth. And so,
+[16:31] code. That's entirely the truth. And so, what he's saying is that if you have
+[16:33] what he's saying is that if you have guidance in your project that previously
+[16:35] guidance in your project that previously helped Claude solve problems, that
+[16:37] helped Claude solve problems, that guidance might no longer be needed. And
+[16:39] guidance might no longer be needed. And that makes sense to me, right? The model
+[16:40] that makes sense to me, right? The model got better, would have gotten that right
+[16:42] got better, would have gotten that right anyway. But that's not really what we're
+[16:44] anyway. But that's not really what we're doing in this video. The majority of
+[16:45] doing in this video. The majority of what your memory in Claude.md and your
+[16:48] what your memory in Claude.md and your skills are doing is directing Claude in
+[16:50] skills are doing is directing Claude in the route that you want it to go. It
+[16:52] the route that you want it to go. It literally would never know otherwise.
+[16:54] literally would never know otherwise. For example, for the dream skill, let's
+[16:56] For example, for the dream skill, let's say you deleted it. How would the model
+[16:57] say you deleted it. How would the model know what you wanted it to do? How would
+[17:00] know what you wanted it to do? How would the model know the output file format
+[17:02] the model know the output file format you wanted to review? What we're doing
+[17:04] you wanted to review? What we're doing is we're guiding Claude in the direction
+[17:05] is we're guiding Claude in the direction we want versus being overly prescriptive
+[17:08] we want versus being overly prescriptive in how to do it. Now, there is a lot of
+[17:10] in how to do it. Now, there is a lot of nuance here, and I may make a whole
+[17:11] nuance here, and I may make a whole video on this topic about the do's and
+[17:13] video on this topic about the do's and don'ts and what Boris is actually
+[17:15] don'ts and what Boris is actually saying, which if you are interested in,
+[17:17] saying, which if you are interested in, you can let me know in the comments.
+[17:18] you can let me know in the comments. But, Boris's high-level point is the
+[17:21] But, Boris's high-level point is the same end goal that we have. Get the most
+[17:23] same end goal that we have. Get the most out of Claude. And in today's video, we
+[17:25] out of Claude. And in today's video, we covered Claude's biggest problem. It's
+[17:26] covered Claude's biggest problem. It's not that it doesn't have a memory. It's
+[17:28] not that it doesn't have a memory. It's that there's no one saying what it
+[17:30] that there's no one saying what it should and shouldn't forget. So, if you
+[17:32] should and shouldn't forget. So, if you want to build exactly what I covered
+[17:34] want to build exactly what I covered here, there is a link in the description
+[17:36] here, there is a link in the description where my free plugin buildpartner.ai
+[17:38] where my free plugin buildpartner.ai will walk you through setting it up step
+[17:40] will walk you through setting it up step by step. Now, once you do set it up, the
+[17:42] by step. Now, once you do set it up, the problem that you'll realize is that this
+[17:44] problem that you'll realize is that this just references
+[17:45] just references your prompt history for data. All of
+[17:47] your prompt history for data. All of your other data lives out in the
+[17:49] your other data lives out in the external world, and that's how you take
+[17:51] external world, and that's how you take it to the next level. So, to solve this
+[17:53] it to the next level. So, to solve this problem, go check out this video where I
+[17:54] problem, go check out this video where I walk through setting up all those
+[17:56] walk through setting up all those external connections step by step so
+[17:58] external connections step by step so that you can create a self-improving
+[18:00] that you can create a self-improving system. I'll see you over there. Peace.
+```
+
+---
+_Work dir: `/Users/kristinarash/.claude/jobs/7d4e7ff3/tmp/vid` — delete when done._

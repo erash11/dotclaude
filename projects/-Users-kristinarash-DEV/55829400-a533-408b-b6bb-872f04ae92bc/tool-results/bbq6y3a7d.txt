@@ -1,0 +1,688 @@
+################ SPEC.md ################
+     1	# Implementation Spec — Baylor Weekly Coach Report
+     2	
+     3	**Date:** 2026-08-30 · **Status:** approved design, not yet built
+     4	**Reads with:** `PRODUCT.md` (product truth) and `DESIGN.md` (visual system).
+     5	Those two documents are normative. This one says how the thing gets built.
+     6	
+     7	Prototype A won the decision round. The prototypes in this folder are the *reference
+     8	rendering*, not the production source. This spec turns them into a weekly product.
+     9	
+    10	---
+    11	
+    12	## 0. Decisions this spec makes
+    13	
+    14	The handoff left five questions open. They are answered here so the build is not
+    15	blocked. Each is flippable — if you disagree, change it here and the plan follows.
+    16	
+    17	| # | Question | Decision | Why |
+    18	|---|---|---|---|
+    19	| D1 | Where does the real project live? | `~/DEV/Football/WeeklyCoachReport/`, a new git repo | One folder per project (DEV convention). The current folder is named `_Prototypes` and stays as an archive. |
+    20	| D2 | How does it run Monday, and who runs it? | One command, run by Eric: `uv run coachreport run`. No scheduler this season. | No scheduler exists. A weekly report that nobody watches fail is worse than a manual one. Automation is Phase 2, and the CLI is written so a launchd agent can call it unchanged. |
+    21	| D3 | Which throwaway code becomes real? | `build_payloads.py` is the product — its `meta` derivation and flag rule become `payload.py` + `flags.py`. `pull_snapshot.py` splits into `sources/`. `derive.py` folds into `payload.py`. `inject.py` and `embed_fonts.py` survive nearly as-is. | Mapped in §4. |
+    22	| D4 | Two documents or one? | **Two documents.** Two PDFs, one payload spine. | FERPA. The performance edition names athletes and prints their workload. One combined handout puts athlete data in the hand of every position coach who takes the coaches edition. Splitting is the cheap control. Recorded as an open decision in PRODUCT.md — this closes it. |
+    23	| D5 | Does the GPS / force-plate / VBT join enter this season? | **No. Deferred**, unchanged from the prior decision. | Not re-litigated. Re-open after the season, not during it. |
+    24	
+    25	---
+    26	
+    27	## 1. The central requirement: zero weekly hand-edits
+    28	
+    29	PRODUCT.md makes this a hard requirement, and it is the requirement the prototype
+    30	does **not** meet. The prototype hardcodes every weekly variable. Production must
+    31	derive all of them. This is the single most important section of this spec.
+    32	
+    33	### 1.1 What is hardcoded today, and what replaces it
+    34	
+    35	| Prototype constant | Where | Production derivation |
+    36	|---|---|---|
+    37	| `YEAR = 2025` | `pull_snapshot.py` | `season = now.year if now.month >= 8 else now.year - 1` |
+    38	| `WEEK = 6` | `pull_snapshot.py`, `build_payloads.py` | The most recent **completed** regular-season game: from `/games?year&team`, keep `seasonType == "regular"` and `homePoints is not None`, take `max(week)` |
+    39	| `TEAM = "Baylor"` | both | The one legitimate constant. Lives in `config.py`. |
+    40	| `OPP = "Kansas State"` | both | Read off the resolved game row: whichever of `homeTeam`/`awayTeam` is not `TEAM` |
+    41	| `NEXT_OPP = "TCU"` | `pull_snapshot.py` | First scheduled game with `week > resolved_week`, `seasonType == "regular"` |
+    42	| `GAME_ID = 401756911` | `pull_snapshot.py` | `id` of the resolved game row |
+    43	| `BAY_TID = "118"` | `build_payloads.py` | `select franchise_id from teams where is_baylor limit 1` — `pull_snapshot.py` already runs this query and then ignores the answer |
+    44	| `gr.season = 2025` | SQL in `build_payloads.py` | Bound parameter from the resolved season |
+    45	| `WEEK` in SQL | SQL in both | Bound parameter from the resolved week |
+    46	
+    47	**Gate:** a `grep` test in CI/pre-flight fails the build if a four-digit year, a
+    48	week number, or any Big-12 opponent name appears as a literal in `templates/` or in
+    49	any module other than `config.py`. See §6.
+    50	
+    51	### 1.2 Week resolution edge cases (must be handled, not assumed)
+    52	
+    53	| Case | Behaviour |
+    54	|---|---|
+    55	| Bye week (no completed game since the last report) | Exit with a clear message, produce no PDF. A bye week report is not a product. |
+    56	| Postseason row mixed into a season query | Filtered out. See §1.3. |
+    57	| Fewer than 3 prior weeks of player snaps | The flag rule needs 3 points. Players with fewer get `band: null` and `flag: null`, and the sheet says how many players were excluded and why. Never silently dropped. |
+    58	| No next opponent (last game of the season) | `meta.next_game = "No further games"` — already handled in the prototype, keep it. |
+    59	| CFBD API down or returning partial data | Fail loudly before rendering. Never publish a sheet with a missing panel. |
+    60	
+    61	### 1.3 The `seasonType` filter — mandate it once
+    62	
+    63	CFBD mixes a postseason row into a season query and relabels it with a
+    64	regular-season week number, producing a phantom duplicate week. The prototype filters
+    65	this in only two places (`tempo_rows`, `box_snaps`); `schedule`, `epa_by_week` and
+    66	`season_tempo` are unfiltered and carry the bug.
+    67	
+    68	**Production rule: the filter is applied once, in `sources/cfbd.py`, at the moment
+    69	each list is fetched.** Nothing downstream re-filters, and nothing downstream is
+    70	allowed to see a postseason row. This is a data-layer responsibility, not a
+    71	presentation one.
+    72	
+    73	---
+    74	
+    75	## 2. Project layout
+    76	
+    77	```
+    78	~/DEV/Football/WeeklyCoachReport/
+    79	├── pyproject.toml                  # uv-managed; deps: requests, duckdb, python-dotenv
+    80	├── README.md                       # the Monday command, and what to do when it fails
+    81	├── PRODUCT.md                      # moved from CoachReport_Prototypes
+    82	├── DESIGN.md                       # moved from CoachReport_Prototypes
+    83	├── SPEC.md                         # this file, moved
+    84	├── src/coachreport/
+    85	│   ├── config.py                   # TEAM, season window, paths, P4 conference set
+    86	│   ├── resolve.py                  # §1 — season / week / game / opponents.  The heart.
+    87	│   ├── sources/
+    88	│   │   ├── cfbd.py                 # HTTP; applies the seasonType filter (§1.3)
+    89	│   │   └── pff.py                  # DuckDB read-only; resolves team_id, never literal
+    90	│   ├── snapshot.py                 # sources → snapshot.json (raw, cacheable)
+    91	│   ├── metrics.py                  # quantile, percentile, polarity, reference bands
+    92	│   ├── flags.py                    # the player out-of-range rule (§3.3)
+    93	│   ├── payload.py                  # meta derivation + payload A/B assembly
+    94	│   ├── fonts.py                    # idempotent inline @font-face embedding
+    95	│   ├── render.py                   # payload → self-contained .html
+    96	│   ├── pdf.py                      # headless Chrome → PDF, and the page-count check
+    97	│   └── cli.py                      # `coachreport run`
+    98	├── templates/
+    99	│   ├── coaches.tpl.html            # from prototype_a_analytics.tpl.html
+   100	│   └── performance.tpl.html        # from prototype_b_demand.tpl.html
+   101	├── fonts/                          # cached .woff2, checked in — build must work offline
+   102	├── tests/
+   103	│   ├── fixtures/                   # the salvaged 2025 wk6 snapshot + expected payloads
+   104	│   └── test_*.py
+   105	└── out/<season>/wk<NN>/            # coaches.html/.pdf, performance.html/.pdf, payload_*.json
+   106	```
+   107	
+   108	**Why this split:** the prototype's three files each did four jobs. The boundary that
+   109	matters is *fetch → resolve → derive → render*, because only the derive layer holds the
+   110	product (the `meta` contract and the flag rule) and only that layer needs tests.
+   111	
+   112	---
+   113	
+   114	## 3. The data contract
+   115	
+   116	The payload is the frozen interface between Python and the templates. A template may
+   117	only print what the payload contains. This is what makes "zero hand-edits" checkable.
+   118	
+   119	### 3.1 `meta` — every weekly variable, derived once
+   120	
+   121	Shared identically by both editions. Keys, all required:
+   122	
+   123	```
+   124	team, opponent, next_opponent, season, week,
+   125	date            "October 4, 2025"        date_short   "04 Oct 2025"
+   126	venue, team_score, opp_score, result ("W"/"L"), home (bool), excitement,
+   127	next_week, next_home,
+   128	next_game       "Week 8 · at TCU"        next_short   "Wk 8 at TCU"
+   129	week_label      "week 6"
+   130	season_range    "weeks 1–6"
+   131	baseline_range  "weeks 1–5"              baseline_range_prose  "weeks 1 to 5"
+   132	```
+   133	
+   134	No opponent name, date, week number or season label may be typed into markup. The
+   135	same rule covers computed prose: a claim like "the widest gap of the season" is
+   136	generated from the rows rendered beside it.
+   137	
+   138	### 3.2 Coaches edition (`payload_a.json`)
+   139	
+   140	| Key | Shape | Source |
+   141	|---|---|---|
+   142	| `bands` | one row per metric, 14 metrics | `metrics.band_rows(baylor_season_adv)` |
+   143	| `next_bands` | same shape, next opponent | `metrics.band_rows(next_opp_season_adv)` |
+   144	| `winprob` | `{p, wp, hs, as}` per play | CFBD `/metrics/wp` |
+   145	| `score_events` | plays where the score changed, with WP swing | derived from `winprob` |
+   146	| `box`, `ppa_game`, `ppa_season`, `epa_by_week` | as prototype | CFBD |
+   147	| `drive_log`, `tempo` | as prototype | CFBD `/drives` |
+   148	| `box_snaps` | `{off, def, off_drives, def_drives}` | advanced box, regular season only |
+   149	| `pff_offense`, `pff_defense` | top 11 by grade, `snaps >= 15` | PFF |
+   150	| `p4_n` | Power-Four team count behind the percentiles | CFBD |
+   151	
+   152	A `bands` row: `key, label, side, unit, direction, value, p10, p25, p50, p75, p90,
+   153	lo, hi, pctl, flag`. `direction` is `+1` higher-is-better, `-1` lower-is-better;
+   154	`pctl` is already polarity-corrected so the template never re-orients an axis.
+   155	
+   156	### 3.3 Performance edition (`payload_b.json`)
+   157	
+   158	Everything in §3.1, plus `tempo`, `snaps_by_quarter`, `drive_log`, `season_tempo`,
+   159	`next_opp_tempo`, `group_totals`, `weeks`, `flag_rule`, `season_players`.
+   160	
+   161	**`box_snaps` is copied from payload A, never recomputed.** One spine per quantity —
+   162	two editions computing the same number separately is how they drifted apart the first
+   163	time.
+   164	
+   165	A `season_players` row: `name, position, group, side, by_week, total, games,
+   166	this_week, baseline, band, delta_pct, dev, flag`.
+   167	
+   168	**The flag rule** (moves to `flags.py` unchanged — DESIGN.md documents the reasoning,
+   169	and it must stay identical or the design doc becomes a lie):
+   170	
+   171	```
+   172	SPREAD_FLOOR = 4.0   # snaps — a metronome must not flag on a wobble
+   173	ABS_FLOOR    = 6     # snaps from his own median
+   174	ABSENT_AT    = 2     # snaps this week
+   175	ABSENT_MED   = 10    # ...against a prior median of at least this
+   176	```
+   177	
+   178	A player is marked only when the week is past his own prior high or low **and** more
+   179	than 1.5× his own interquartile spread from his own median **and** at least 6 snaps
+   180	off that median. `≤2 snaps against a prior median of ≥10` is `absent` — an
+   181	availability fact, drawn with a hollow mark, routed to the availability list. The
+   182	threshold is drawn on every row so a coach can argue with it.
+   183	
+   184	---
+   185	
+   186	## 4. What happens to each prototype script
+   187	
+   188	| Prototype file | Fate |
+   189	|---|---|
+   190	| `pull_snapshot.py` | **Splits.** HTTP half → `sources/cfbd.py`; DuckDB half → `sources/pff.py`; the orchestration → `snapshot.py`. Hardcoded constants → `resolve.py`. The `seasonType` filter moves in here (§1.3). |
+   191	| `derive.py` | **Folds into `payload.py` and `metrics.py`.** Its separate `report_data.json` stage disappears — it exists only because the prototype grew in two sittings. Its `DIRECTION`/`LABEL` maps merge with `PATHS` in `build_payloads.py`, which already carries both. |
+   192	| `build_payloads.py` | **The product.** `meta` block → `payload.build_meta()`. `band_rows`/`quantile`/`pctl_of` → `metrics.py`. Flag rule → `flags.py`. `GROUP`/`SIDE` position maps → `config.py`. |
+   193	| `inject.py` | **Survives.** Becomes `render.py`. Keep the `</` escaping — it stops a payload string from closing the script block. |
+   194	| `embed_fonts.py` | **Survives.** Becomes `fonts.py`. Already idempotent. Font cache moves to the repo's `fonts/` so the build works with no network. |
+   195	| `patch_*.py`, `measure_*.html`, `shots/`, `m.html` | **Dropped.** One-off repair scripts from the prototype phase. |
+   196	
+   197	Salvaged copies of all of these live in `prototype_pipeline/` in this folder, with the
+   198	JSON outputs in `prototype_pipeline/fixtures/`. They are the regression baseline (§6).
+   199	
+   200	---
+   201	
+   202	## 5. How it runs
+   203	
+   204	```bash
+   205	cd ~/DEV/Football/WeeklyCoachReport
+   206	uv run coachreport run                    # resolves the week itself
+   207	uv run coachreport run --week 6 --season 2025   # override, for a rebuild
+   208	uv run coachreport run --offline          # rebuild from the cached snapshot, no API
+   209	```
+   210	
+   211	Writes to `out/<season>/wk<NN>/`: two `.html`, two `.pdf`, both payloads, and the raw
+   212	`snapshot.json`. Exits non-zero on any failed gate in §6 — a failed run must not leave
+   213	a half-good PDF that looks finished.
+   214	
+   215	**Credentials.** `CFBD_API_KEY` is read at runtime from
+   216	`~/DEV/CFB_Analytics_Lab/.env`; the PFF DuckDB at
+   217	`~/DEV/Football/PFF_Data_Project/data/pff.db` is opened **read-only**. Values are never
+   218	copied into code, docs, payloads or output. The PFF database is already backfilled and
+   219	must not be rebuilt.
+   220	
+   221	**Phase 2 (not this season):** a launchd agent calling the same command Monday morning,
+   222	plus a failure notification. The CLI is written so this needs no code change.
+   223	
+   224	---
+   225	
+   226	## 6. Acceptance gates
+   227	
+   228	The build fails if any of these fail. They are the prototype's verified state, turned
+   229	into tests.
+   230	
+   231	| # | Gate | How |
+   232	|---|---|---|
+   233	| G1 | Each edition renders exactly 5 pages at 8.50 × 11.00 in | PDF page count and page box, not eyeballing |
+   234	| G2 | No sheet content exceeds one page | `scrollHeight` per `.sheet` at desktop width ≤ 1056 px |
+   235	| G3 | No `undefined` / `NaN` in rendered sheet text | text scrape of the rendered DOM |
+   236	| G4 | Renders identically with no network | headless Chrome with `--host-resolver-rules="MAP * 0.0.0.0"`; every expected family present in `document.fonts` with `status === "loaded"` (NOT `document.fonts.check()`, which returns true for fonts that do not exist) |
+   237	| G5 | No font host referenced | `fonts.googleapis.com` / `fonts.gstatic.com` absent from output HTML |
+   238	| G6 | Zero hardcoded weekly variables | grep `templates/` and `src/` (excluding `config.py` and `audit.py` itself, which holds the opponent list) for a 4-digit year, `Week \d`, and each Big-12 school name |
+   239	| G7 | Golden payload regression | rebuilding 2025 week 6 from `tests/fixtures/snapshot.json` reproduces the saved `payload_a.json` / `payload_b.json` |
+   240	| G8 | Both editions quote the same `box_snaps` | assert equality between payloads |
+   241	| G9 | No postseason row survives | assert every week appears at most once in `season_tempo`, `epa_by_week`, `schedule` |
+   242	| G10 | Voice check | no tier words (`elite`, `poor`, `bad`, `weak`, `underperform`) in generated player copy |
+   243	
+   244	G7 is the reason the fixtures were salvaged: it pins the whole derive layer against a
+   245	week that was reviewed by a human.
+   246	
+   247	---
+   248	
+   249	## 7. Known open items — carried forward, not solved here
+   250	
+   251	- **The fixes made after the final verdict pass were never re-reviewed.** Before the
+   252	  first real week ships, run one verdict pass on the templates. Do not assume a clean
+   253	  bill.
+   254	- **Page fill runs 35–95%.** The out-of-range sheet's height varies with how many
+   255	  players flag. Stability was chosen over density on purpose: a weekly automated report
+   256	  cannot be re-laid-out by hand.
+   257	- **Narrow-viewport rendering is broken** — clipped tables, overlapping footer.
+   258	  Acceptable while print is primary. It is not a screen product.
+   259	- **`--ref` (the interquartile fill) is under the 3:1 non-text floor on its own** and
+   260	  depends on its `--ink-3` outline. Fine in ink.
+   261	- **D4 (two documents) and D5 (GPS join deferred)** are decisions, not facts. Revisit
+   262	  after the season.
+   263	
+   264	---
+   265	
+   266	## 8. What this spec deliberately does not cover
+   267	
+   268	Project 2 — the year-over-year team-state report for S&C and medical, with positional
+   269	normative ranges from GPS, force plate and VBT. It is a new project, not an extension
+   270	of this one, and it needs its own brainstorming pass. Two things to carry into it:
+   271	`~/DEV/Football/2026-3-18_BodyWeightNorms` already solves percentile norms by position
+   272	from CFBD and is prior art; and the standing reviewer preference against judgemental
+   273	tier labels applies directly to the word "tiers" in the original ask.
+################ PRODUCT.md ################
+     1	# Product
+     2	
+     3	<!-- impeccable:product-schema 1 -->
+     4	
+     5	## Platform
+     6	
+     7	web
+     8	
+     9	## Stack
+    10	
+    11	static HTML/CSS/JS, single self-contained file per edition, rendered to PDF via headless Chrome.
+    12	Delegated: chosen because the deliverable is a printed page, the data is a small pre-computed
+    13	JSON payload, and the file must survive being emailed and re-rendered without a build step.
+    14	
+    15	## Users
+    16	
+    17	Baylor Football, weekly during the season. Two editions of one report, same week, same data spine:
+    18	
+    19	- **Coaches edition** — head coach, coordinators, and position coaches. Read in the Monday
+    20	  meeting room, on paper, in a short window, usually alongside film. They want what last
+    21	  Saturday actually says and what next Saturday demands.
+    22	- **Performance edition** — strength & conditioning and medical staff. Same week, same game,
+    23	  but the question is exposure and workload, not tendencies. Drives training-week planning
+    24	  and who gets watched.
+    25	
+    26	Author and owner: Applied Performance. The unit has published football analytics to this
+    27	audience before (the 2024 `BU_Post_2024` EPA report), so the audience already accepts a
+    28	report from this group.
+    29	
+    30	## Product Purpose
+    31	
+    32	One weekly report, produced Monday, that tells Baylor what the last game cost and what the
+    33	next opponent will demand — in two editions cut for two audiences. Success is that it ships
+    34	every game week without hand-editing, and that a coach acts on something in it.
+    35	
+    36	The predecessor failed on maintenance, not content: its source required hand-editing opponent
+    37	names, team colors, logos and the next-opponent block every single week. Zero weekly hand-edits
+    38	is a hard product requirement, not a nice-to-have.
+    39	
+    40	## Positioning
+    41	
+    42	Applied Performance is the only group at Baylor that holds both the football data (PFF grades
+    43	and snap counts, CFBD play-by-play) and the athlete data (Catapult GPS, VALD force plates,
+    44	Perch VBT). No neighboring group can truthfully produce both editions from one spine.
+    45	
+    46	## Capabilities and evidence
+    47	
+    48	Working, verified data sources — all real, none simulated:
+    49	
+    50	- **PFF** — local DuckDB at `Football/PFF_Data_Project/data/pff.db`; 175,559 game grades,
+    51	  4.7M stat rows, 2023–2025. Carries per-player snap counts across all phases.
+    52	- **CFBD API** — games, PPA/EPA, advanced box (success rate, explosiveness, line yards,
+    53	  havoc, by-down splits), drives, plays, and in-game win probability.
+    54	- Not yet joined into this report, but owned by the same unit: Catapult GPS
+    55	  (`DataBase_GPS_Reporting`), VALD ForceDecks (`ForcePlate_DecisionSystem`), Perch VBT
+    56	  (`PlayerProfiles_FB_03-28-2026`). A GPS-to-snap-count join is explicitly deferred.
+    57	
+    58	## Constraints
+    59	
+    60	- **Print is the primary medium.** The report is printed and handed out. Every fact must be
+    61	  visible on the page; nothing may live only in a hover state. Fixed page sizes, page-break
+    62	  control, and ink-safe color are requirements. Screen interaction may exist, but only as a
+    63	  bonus on top of a page that is complete without it.
+    64	- **Zero weekly hand-edits.** Opponent, next opponent, colors, and logos resolve from data.
+    65	- Season window runs late August to mid-January; the report has no value outside a game week.
+    66	- Athlete-level data carries FERPA obligations (see `SpeedProfiling/AGENTS.md`); the
+    67	  performance edition names players and must be handled accordingly.
+    68	- Reviewer preference on file (Kenny Boyd): no blame-implying rationale and no judgmental
+    69	  tier labels. Workload bands and player flags must read as descriptive, never as a verdict
+    70	  on the athlete.
+    71	
+    72	## Terminology
+    73	
+    74	EPA / PPA (expected points added per play), success rate, explosiveness, line yards, havoc
+    75	rate, stuff rate, snap count, exposure, workload baseline. Power Four = SEC, Big Ten, Big 12,
+    76	ACC — the comparison set for all percentiles.
+    77	
+    78	## Open decisions
+    79	
+    80	- Whether the two editions ship as two documents or one document with a split section.
+    81	- Whether the GPS/force-plate/VBT join enters the performance edition this season or next.
+################ DESIGN.md ################
+     1	# Design — The Monitoring Chart
+     2	
+     3	<!-- impeccable:design-schema 1 -->
+     4	
+     5	Recorded from the built prototypes, not from intention. Two editions of one weekly
+     6	report: `prototype_a_analytics.tpl.html` (coaches) and `prototype_b_demand.tpl.html`
+     7	(performance). Both are printed handouts first and web pages second.
+     8	
+     9	## The idea the system encodes
+    10	
+    11	Read the team the way you read an athlete. Every measure is drawn against a reference
+    12	range, the observed value is plotted on that range, and **only values outside the range
+    13	are marked**. A quiet page is a real reading, not an empty one.
+    14	
+    15	This is what the system refuses: the sports-analytics dashboard. No KPI tiles, no card
+    16	grid, no hero metric, no team-colour chrome.
+    17	
+    18	## Medium
+    19	
+    20	US Letter, portrait. Each `.sheet` is `8.5in × 11in` with `min-height: 11in`,
+    21	`page-break-after: always`, and `@page { size: letter; margin: 0 }`. One sheet is one
+    22	page — verify by PDF page count, never by eye. Content is measured with
+    23	`scrollHeight` at desktop width; anything over 1056px spills a page.
+    24	
+    25	Two rules follow from print being primary:
+    26	
+    27	- **Nothing may live only in a hover state.** There are no tooltips. Every figure a
+    28	  reader needs is set in type on the page.
+    29	- **Narrow-screen overrides must be scoped `@media screen and (...)`.** An unscoped
+    30	  `max-width: 9in` query fires during printing, because the page box is 8.5in wide, and
+    31	  silently reflows the whole document into mobile layout.
+    32	
+    33	`html { -webkit-print-color-adjust: exact; print-color-adjust: exact }` keeps the paper,
+    34	the row bands and the flagged grounds when someone prints from a browser with
+    35	"Background graphics" off.
+    36	
+    37	## Colour
+    38	
+    39	| Token | Value | Role |
+    40	|---|---|---|
+    41	| `--desk` | `#c9ccc3` | the surface the sheets sit on, screen only |
+    42	| `--paper` | `#f4f5f1` | sheet ground |
+    43	| `--band` | `#e6ece3` | alternating row band |
+    44	| `--ink` | `#15181a` | primary type |
+    45	| `--ink-2` | `#454e4b` | prose, secondary figures |
+    46	| `--ink-3` | `#5d6763` | 7.5pt labels, axis text, footnotes — 5.35:1 on paper |
+    47	| `--rule` / `--rule-hair` | `#aab3ac` / `#c6cdc5` | table and box rules |
+    48	| `--ref` | `#c3d0d4` | interquartile fill; outlined in `--ink-3` because the fill alone is under the 3:1 non-text floor |
+    49	| `--obs` | `#2a6ea3` | the observed value, inside its range |
+    50	| `--out` | `#b8433a` | **outside the reference range — this meaning only** |
+    51	| `--neutral` | `#6b7a76` | derived marks that rank or net, never an alarm |
+    52	
+    53	Four inks. The discipline that matters: **`--out` means one thing.** A derived bar (an
+    54	opponent's rank against the median, a net-EPA bar) uses `--neutral`, because an opponent's
+    55	weakness is good news and painting it in the alarm colour says the opposite.
+    56	
+    57	`--obs` and `--out` were validated as a categorical pair against the paper surface
+    58	(all-pairs CVD, chroma, lightness, contrast — all pass). Colour is never the only channel:
+    59	every marked value also carries a drawn glyph and a worded reading.
+    60	
+    61	## Type
+    62	
+    63	- **Archivo Narrow** 600/700, uppercase, tracked — chart labels, headings, group tags.
+    64	- **JetBrains Mono** 400/500/700, `tabular-nums` — every number, without exception.
+    65	- **Source Sans 3** — the few sentences of prose; measure held under 72ch.
+    66	
+    67	Monospace is for measurement, not for atmosphere.
+    68	
+    69	All three are **self-hosted as inline `@font-face` data URIs** — no `<link>`, no font
+    70	host, nothing to fetch. PRODUCT.md requires a file that survives being emailed and
+    71	re-rendered, and a page whose type depends on a network round trip does not.
+    72	
+    73	Each family is a variable font, so every requested weight returns a byte-identical file.
+    74	Embed each family **once** with `font-weight: 400 700`, not once per weight: 78 KB raw
+    75	across all three instead of 189 KB. Regenerate with
+    76	`prototype_pipeline/embed_fonts.py`, which is idempotent — it replaces the block it wrote
+    77	last time. Verify by rendering with DNS blackholed
+    78	(`--host-resolver-rules="MAP * 0.0.0.0"`) and confirming `document.fonts.check()` still
+    79	returns true for all three.
+    80	
+    81	## Marks
+    82	
+    83	All marks are authored SVG paths in one stroke language — never glyph fonts, never emoji.
+    84	
+    85	| Mark | Meaning |
+    86	|---|---|
+    87	| filled circle, `--obs` | observed value, inside its reference range |
+    88	| filled triangle up, `--out` | above the range |
+    89	| filled triangle down, `--out` | below the range |
+    90	| **hollow** triangle down, `--out` | did not feature — an availability fact, not a load one |
+    91	| outlined circle | a scoring play on the win-probability trace |
+    92	| dashed vertical rule, `--neutral` | the flag threshold, drawn so it can be argued with |
+    93	| bar from a centre rule, `--neutral` | a derived offset (rank, net) — not a range judgement |
+    94	
+    95	The reference track is one component, reused everywhere: a whisker for the full range,
+    96	a filled outlined box for the middle half, a rule at the median, and one mark for the
+    97	observed value. On the coaches edition the axis is polarity-corrected so **further right
+    98	is always better, including on defensive rows**. On the performance edition every player
+    99	row shares one snap axis so exceedances are comparable between rows.
+   100	
+   101	## Honesty rules the charts must keep
+   102	
+   103	These are the failures this design was corrected for. They are cheap to reintroduce.
+   104	
+   105	1. **Never draw an axis annotation the data cannot support.** The win-probability feed
+   106	   carries no clock field, so the trace has no quarter rules; its axis is labelled play
+   107	   sequence.
+   108	2. **One polarity per axis.** Measures that disagree about which direction is good do not
+   109	   share a left-to-right axis. Plot their difference instead.
+   110	3. **One spine per quantity.** Snap counts come from the advanced box in both editions,
+   111	   from one shared payload field. Where a second source appears (the drive chart, the
+   112	   play-by-play feed), the sheet says on the page why its totals differ and which to use.
+   113	4. **A section header that implies completeness must be complete.** No `slice()` behind
+   114	   a heading that says "players outside their range".
+   115	5. **Never rescale an axis to swallow the value being judged.** It hides the size of the
+   116	   exceedance and deforms the range it is judged against.
+   117	6. **State magnitude, not just status.** "1 snap past the top of it" is a different fact
+   118	   from "17 snaps under the bottom of it".
+   119	
+   120	## Zero weekly hand-edits
+   121	
+   122	The predecessor died of hand-editing. Every weekly variable is derived once in the
+   123	payload builder into `meta` — opponent, next opponent and week, dates in both forms,
+   124	`week_label`, `season_range`, `baseline_range`, result, home/away — and filled into
+   125	slots at runtime. **No opponent name, date, week number or season label may be typed
+   126	into markup.** The same rule covers computed claims: a sentence like "the widest gap of
+   127	the season" is generated from the same rows that render beside it, never written down.
+   128	
+   129	Pagination follows the same rule. Rows per sheet are computed from page height, not
+   130	set as a constant.
+   131	
+   132	## Voice
+   133	
+   134	Descriptive, never a verdict on a person. The performance edition says so on the sheet:
+   135	*"This is a description of exposure, not a judgement of the athlete."* Bands are neutral
+   136	("above his own range"), never tiered ("elite", "poor"). Low-exposure findings route to
+   137	"worth confirming against the availability list" rather than implying a cause. This
+   138	honours a standing reviewer preference: no blame-implying rationale, no judgemental tier
+   139	labels.
+   140	
+   141	## What counts as out of range
+   142	
+   143	A threshold that fires on noise gets ignored, and then the real one gets ignored with it.
+   144	The player rule takes the **stricter of two tests**, because each alone fails a real case:
+   145	
+   146	- the **observed range** alone flags one snap past a five-game maximum;
+   147	- the **spread fence** alone flags a very consistent player for a game he has already
+   148	  played, and misses a large jump by a volatile one.
+   149	
+   150	So a player is marked only when the week is past his own prior high or low **and** more
+   151	than 1.5× his own interquartile spread from his own median **and** at least 6 snaps off
+   152	that median. The spread is floored at 4 snaps so a metronome does not flag on a wobble.
+   153	
+   154	At the frozen constants the 6-snap floor is implied by the spread fence (1.5 × 4 = 6) and does not independently gate any case today; it exists as a ceiling so that a future change to `K` or `SPREAD_FLOOR` cannot authorize a flag under 6 snaps without deliberately revisiting this floor too.
+   155	
+   156	Two states, not one:
+   157	
+   158	| State | Rule | Mark |
+   159	|---|---|---|
+   160	| above / below | past both thresholds | filled triangle, `--out` |
+   161	| did not feature | ≤2 snaps against a prior median of ≥10 | **hollow** triangle, `--out` |
+   162	
+   163	"Did not feature" is an availability fact, not a workload deviation, and the copy says so
+   164	— it routes to the availability list rather than implying a training decision. Its mark is
+   165	hollow so it never reads as the same kind of event.
+   166	
+   167	The trigger threshold is **drawn on every row** as a dashed rule, and the full rule is
+   168	stated in prose on the sheet, so a coach can argue with it instead of trusting it. On the
+   169	week this was built the rule marks 12 of the 51 players with an established baseline —
+   170	2 above their own range, 2 below it, and 8 who did not feature. The previous plain
+   171	min/max rule marked 15 of the same players, including one a single snap past a
+   172	five-game best.
+   173	
+   174	## Known open work
+   175	
+   176	- Page fill runs 35–95%. The out-of-range findings get their own sheet because their
+   177	  height varies with how many players flag; a quiet week leaves paper blank, and a heavy
+   178	  week would otherwise overflow. Stability was chosen over density — a weekly automated
+   179	  report cannot be re-laid-out by hand.
+   180	- Narrow-viewport rendering clips wide tables and overlaps the sheet footer. Acceptable
+   181	  while print is primary; it is not a screen product yet.
+   182	- `--ref` (the interquartile fill) is under the 3:1 non-text floor on its own and depends
+   183	  on its `--ink-3` outline to carry the shape. Fine in ink; worth revisiting if the fill
+   184	  ever has to stand alone.
+################ CLAUDE.md ################
+     1	# CLAUDE.md
+     2	
+     3	This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+     4	
+     5	## Read first
+     6	
+     7	`PRODUCT.md` (why this exists), `DESIGN.md` (what the charts may claim), `SPEC.md` (how it is built, including the acceptance gates G1–G10). `README.md` covers running it. These are normative — a change that contradicts them is a change to them, and the document gets updated in the same commit.
+     8	
+     9	## Commands
+    10	
+    11	```bash
+    12	uv run pytest -q                          # whole suite (~60s; Chrome tests dominate)
+    13	uv run pytest tests/test_flags.py -v      # one file
+    14	uv run pytest -k test_meta_has_every_key  # one test
+    15	uv run coachreport run                    # the Monday command; resolves the week itself
+    16	uv run coachreport run --week 6 --season 2025   # rebuild a past week
+    17	uv run coachreport run --offline          # rebuild from the cached snapshot, no network
+    18	```
+    19	
+    20	Always `uv`, never `pip` — this machine's Python is PEP 668 managed. There is **no GNU `timeout` binary** here; use `subprocess.run(timeout=...)`.
+    21	
+    22	Chrome-dependent tests should **run, not skip**. A skip means the guard is mispointed, which is a defect, not a pass.
+    23	
+    24	## Architecture
+    25	
+    26	Four layers, one direction of flow:
+    27	
+    28	**fetch** (`sources/cfbd.py`, `sources/pff.py`) → **resolve** (`resolve.py`) → **derive** (`snapshot.py`, `metrics.py`, `flags.py`, `payload.py`) → **render** (`fonts.py`, `render.py`, `pdf.py`), with `cli.py` orchestrating and `audit.py` gating.
+    29	
+    30	Only the derive layer holds product logic, so it carries the heavy tests. The templates are the reviewed prototypes, moved not rewritten; they receive one JSON payload and are never hand-edited.
+    31	
+    32	### The requirement that shapes everything
+    33	
+    34	**Zero weekly hand-edits.** The predecessor report died of somebody typing the opponent, the week and the next game in every Monday. `resolve.py` derives all of it from the schedule; `payload.build_meta` turns it into the ~21 `meta` keys the sheets print. No opponent name, date, week number, season label or PFF team id may be a literal anywhere except `config.py`. Gate G6 (`audit.py`) enforces this across `templates/` and `src/`.
+    35	
+    36	### Invariants that are easy to break and hard to notice
+    37	
+    38	- **`seasonType == "regular"` is filtered exactly once**, in `sources/cfbd.py`. CFBD mixes a postseason row into season queries relabelled with a regular-season week number. Nothing downstream re-filters; adding a "defensive" second filter is a spec violation.
+    39	- **One spine per quantity.** `box_snaps` and `meta` are each computed once and *the same object* is handed to both editions. Tests assert identity (`is`), not equality — two editions computing the same number separately is how they drifted apart the first time.
+    40	- **Polarity is pre-corrected.** `metrics.band_rows` emits a `pctl` already flipped for `direction`, so further right is always better, including on defensive rows. The template never re-orients an axis. All 14 directions are pinned by test; a wrong-but-valid one silently inverts a printed chart.
+    41	- **Deterministic ordering is a product requirement.** The report is printed and handed out, so identical input must yield an identical document. Every tie-capable `sorted()` in `payload.py` carries a secondary key, and `pff.py` queries carry `ORDER BY`. There is a test that shuffles and reverses the source rows and demands identical output.
+    42	- **Flag constants are frozen** (`K=1.5`, `SPREAD_FLOOR=4.0`, `ABS_FLOOR=6`, `ABSENT_AT=2`, `ABSENT_MED=10`) and `DESIGN.md` documents each. Note `K * SPREAD_FLOOR == ABS_FLOOR` exactly, so **`ABS_FLOOR` is currently a no-op** — verified exhaustively over ~19.9M cases. It is kept as a ceiling in case `K` or `SPREAD_FLOOR` is ever lowered, and a test pins the relationship so a constant edit cannot pass unnoticed.
+    43	- **"Did not feature" is an availability fact, not a workload deviation.** The `absent` check runs before high/low, and the copy says so. Voice is descriptive, never a verdict on a person — gate G10 bans tier words.
+    44	
+    45	### Environment traps, all verified in this repo
+    46	
+    47	- **`document.fonts.check()` is unusable in this Chrome build** — it returns `true` for fonts that do not exist, on a page with zero registered faces. A gate built on it passes on any input. `pdf.probe` walks the live `FontFaceSet` for `status === "loaded"` instead. Never reintroduce `check()`.
+    48	- **`--evaluate-on-new-document` is a Puppeteer API, not a Chrome CLI flag.** Chrome ignores unknown flags silently, so a probe written that way returns nothing and G2/G3/G4 pass vacuously. `probe()` injects into a temp copy and reads `<title>` via `--dump-dom`, and **raises `ProbeFailed` rather than returning `{}`**.
+    49	- **Headless Chrome's default viewport is 756px**, under the templates' `@media screen and (max-width: 9in)` breakpoint — measuring there measures the mobile layout while judging a printed page. `probe()` forces `--window-size=1280,1200`.
+    50	- **`assert` is stripped under `-O`.** Load-bearing guards raise explicitly. A silently data-less sheet looks structurally fine and is blank where the numbers go.
+    51	- **Always pass `encoding="utf-8"`** on template read/write. The templates carry the design's own glyphs (`▲ ● → · – —`); a stripped locale mangles a printed page rather than crashing.
+    52	
+    53	## Working on this codebase
+    54	
+    55	**The recurring defect here is tests that cannot fail** — nine instances across the twelve build tasks, including one in the offline-font gate itself. Before committing a test, ask concretely: *if I deleted the behavior this names, would this fail?* Prove it by breaking the behavior, showing the failure, then restoring. Watch for: `all()` over a possibly-empty list; `pytest.raises` without `match=`; asserting equality where identity is the requirement; a fixture whose values make the assertion hold either way.
+    56	
+    57	**The golden fixtures in `tests/fixtures/` are human-reviewed artifacts.** `expected_payload_a.json` / `expected_payload_b.json` pin the whole derive layer against a week a person checked. If a golden test fails, the difference is real — diff it, decide which side is right, and report. Never edit an expected payload to make a test pass.
+    58	
+    59	**The PFF DuckDB** (`~/DEV/Football/PFF_Data_Project/data/pff.db`) is a shared, already-backfilled 4.7M-row database owned by another project. Open read-only, never rebuild, never create files in that folder.
+    60	
+    61	**`out/` is git-ignored and stays that way** — it holds PDFs naming athletes with their snap counts, under the FERPA obligations `PRODUCT.md` describes. The two editions ship as two documents for the same reason: a single handout would put athlete workload data in every position coach's hands.
+    62	
+    63	## Known open items
+    64	
+    65	Carried forward deliberately, listed in `SPEC.md §7`: page fill runs 35–95%; narrow-viewport rendering is broken (acceptable while print is primary); a verdict pass on the templates is owed before the first real week ships; and there is a verified template overflow in the true season-finale case (no next opponent at all).
+################ README.md ################
+     1	# Weekly Coach Report
+     2	
+     3	Two editions of one weekly football report for Baylor — a coaches edition and a
+     4	performance/medical edition — built from CFBD and PFF, printed and handed out.
+     5	
+     6	Read `PRODUCT.md` (why), `DESIGN.md` (how it looks and what the charts may claim),
+     7	and `SPEC.md` (how it is built) before changing anything.
+     8	
+     9	## Monday
+    10	
+    11	```bash
+    12	cd ~/DEV/Football/WeeklyCoachReport
+    13	uv run coachreport run
+    14	```
+    15	
+    16	It resolves the week itself — the latest completed regular-season game for
+    17	Baylor. Output lands in `out/<season>/wk<NN>/`: `coaches.pdf`, `performance.pdf`,
+    18	both `.html`, both payloads (`payload_a.json`, `payload_b.json`), and the raw
+    19	`snapshot.json` that everything else was derived from. `out/` is git-ignored —
+    20	the PDFs carry athlete names and grades, and nothing under FERPA obligations
+    21	gets committed.
+    22	
+    23	```bash
+    24	uv run coachreport run --week 6 --season 2025   # rebuild a specific past week
+    25	uv run coachreport run --offline                # rebuild from the cached
+    26	                                                 # snapshot, no network call
+    27	```
+    28	
+    29	Naming `--week` is itself treated as an intentional rebuild request, so it
+    30	bypasses the already-built guard below without needing `--force`. `--offline`
+    31	does too — the snapshot it reloads already lives in the directory it is about
+    32	to rewrite.
+    33	
+    34	### Exit codes
+    35	
+    36	| Code | Meaning |
+    37	|---|---|
+    38	| `0` | Clean. Every gate passed. |
+    39	| `1` | A gate failed (see stderr for which one) — or the run crashed before any gate could run (bad credentials, PFF connection failure). Either way: do not treat anything left in `out/` as finished. |
+    40	| `3` | No completed game to report on — a bye week, or the season hasn't started. Nothing was written. |
+    41	| `4` | The week is already built. Re-run with `--force`, or pass `--week`/`--offline`, either of which already counts as an explicit rebuild request. |
+    42	
+    43	A failed run still writes whatever it rendered before the gate check ran — the
+    44	exit code, not the presence of a file, is what tells you whether it's usable.
+    45	Never hand out a PDF from a run that didn't print `all gates passed`.
+    46	
+    47	## Credentials
+    48	
+    49	`CFBD_API_KEY` is read at runtime, in this order: the `CFBD_API_KEY` environment
+    50	variable, then `~/DEV/CFB_Analytics_Lab/.env`. The PFF DuckDB at
+    51	`~/DEV/Football/PFF_Data_Project/data/pff.db` is opened **read-only** — it is a
+    52	shared database owned by another project and is never written to or rebuilt
+    53	here. Neither credential is ever echoed to stdout, stderr, a payload, or this
+    54	file — an error message names the *path* it looked in, never the key value.
+    55	
+    56	## When it fails
+    57	
+    58	| Symptom | Cause | Fix |
+    59	|---|---|---|
+    60	| `RuntimeError: CFBD_API_KEY not found...` (exit 1, traceback) | `~/DEV/CFB_Analytics_Lab/.env` moved, or the key was never set | Restore the file, or export `CFBD_API_KEY`; never paste the key into code |
+    61	| `RuntimeError: PFF database has no team row flagged is_baylor` (exit 1, traceback) | PFF database moved, replaced, or the `is_baylor` flag was cleared | Check `~/DEV/Football/PFF_Data_Project/data/pff.db` |
+    62	| `no completed game...` (exit 3) | CFBD has not posted the week's result yet, or it's a bye week | Wait; passing `--week` does not manufacture a game that hasn't happened |
+    63	| `... already exists — week N is already built` (exit 4) | You ran the same week twice without meaning to | Add `--force` if that's what you meant |
+    64	| `FAILED GATES: ... G1 page count is 6` (exit 1) | A sheet overflowed onto a sixth page | Find which sheet in the gate message; this is a template/data problem, not something to shrink the type to fix |
+    65	| `FAILED GATES: ... G4 fonts not loaded offline` (exit 1) | The checked-in font cache under `fonts/` is missing or stale | The three `.woff2` files must be present and committed |
+    66	| `FAILED GATES: ... G6 hardcoded ...` (exit 1) | Someone typed a year, week number, or opponent name into a template or into `src/` outside `config.py` | Replace the literal with a `meta` slot |
+    67	| `FAILED GATES: ... G10 ... tier language` (exit 1) | Generated player copy used a judgmental word (`elite`, `poor`, `weak`, ...) | Rephrase the underlying rule in `flags.py`/`payload.py` descriptively, not the output text directly |
+    68	
+    69	## Tests
+    70	
+    71	```bash
+    72	uv run pytest -v
+    73	```
+    74	
+    75	The golden test (`tests/test_payload.py`) rebuilds 2025 week 6 from a saved
+    76	snapshot and compares against the payload a human reviewed. If it fails, a
+    77	number changed — find out which and why before touching the fixture.
+    78	
+    79	`tests/test_pdf.py` and `tests/test_cli.py` drive real headless Chrome and take
+    80	several seconds each; that is normal render time, not a hang.

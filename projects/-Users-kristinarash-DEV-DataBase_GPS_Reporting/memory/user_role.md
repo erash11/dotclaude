@@ -1,0 +1,9 @@
+---
+name: role
+description: Eric Rash is a sport scientist at Baylor University, primary user/developer of the GPS reporting pipeline
+type: user
+---
+
+Eric Rash is a sport scientist at Baylor University. He built and maintains the Catapult GPS reporting pipeline for Baylor Football. Assistants (and a Director) also run the script in-season, so scripts need to be simple and robust. He is the primary user of this system and has deep context on the Catapult API and DuckDB pipeline.
+
+Python is at `C:\Users\eric_rash\AppData\Local\Programs\Python\Python314\` (no python.exe in root — use `py` launcher via cmd.exe or full path).

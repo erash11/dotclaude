@@ -1,0 +1,28 @@
+---
+name: morning-briefing-retired
+description: "morning-briefing retired 2026-08-14 - removed from disk, code on GitHub, 56 briefings kept in vault and indexed"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: fa062f93-2c55-4016-b9c6-f1a32e0a7083
+  modified: 2026-08-15T02:38:48.999Z
+---
+
+The morning-briefing project was **retired 2026-08-14** at Eric's request — he wasn't using it and it was overhead the system had to manage. He may approach the idea differently in future.
+
+What was done:
+- `com.keystone.morningbriefing` (7:20 AM) booted out and `disabled`; **plist retained** at `~/Library/LaunchAgents/`. Do not confuse it with `com.keystone.morning` (6:00 AM KeystoneOS `morning-cadence`), which is unrelated and still live.
+- `~/DEV/morning-briefing/` deleted (338 MB — mostly a 305 MB `.venv` and a 32 MB authenticated Outlook browser profile). Code is intact at `github.com/erash11/morning-briefing` (0 unpushed commits at removal).
+- Local `secrets/` destroyed (Outlook `owa-profile`, `gmail_credentials.json`, `gmail_token.json`) plus `~/.config/morning-briefing/`. Outlook auth had already lapsed; briefs were emailing 0 threads.
+- **`KeystoneOS/data/jobs.json` entry removed — this is the one that actually mattered.** Disabling launchd was not enough: the entry had `reconcile: true` / `maxAttemptsPerDay: 2`, and `keystone-reconcile.ps1` (which dot-sources `run-ledger.ps1`, reading `data/jobs.json` live) re-launched the briefing at 19:39 on 2026-08-14 *despite* launchd being disabled — logged as `MAKE-UP morning-briefing`. Its `authWarnProbe` is also what wrote the "Outlook auth expired / run reauth.sh" line into `.errors.log`. When retiring any KeystoneOS job, remove the `jobs.json` entry or the reconciler resurrects it.
+- Lost in the removal (accepted): uncommitted `config.toml` edits from 19:37 that day, and `logs/` (508 KB, 113 run logs). Briefing *outputs* were in the vault; run logs were not.
+- Dropped from `backup-manifest.json`, stack-doctor checks, and `CREDENTIALS.md` (which had a stale **OUTSTANDING** `GMAIL_APP_PASSWORD` item, now moot).
+- KeystoneOS: brief moved to `projects/retired/morning_briefing.md`, `registry.md` + `data/projects.json` marked Retired.
+
+**Why it matters:** the 56 briefings at `~/SecondBrain/morning-briefings/` were **kept**, added to the memsearch index set, and **verified retrievable** 2026-08-15 (916 chunks indexed; queries like "Matt Tardif Firstbeat intro" and "FORMS TASKS OWED timecard Playfly" return `morning-briefings/*.md`). Note recall needs *specific* terms — generic queries like "meetings to schedule" rank other sources above them. 42 of them carry synthesized digests (who asked for what, meetings to schedule, tasks owed) spanning 2026-05-22 → 08-14. That's the recall value; the project code was not the point. Expect some noise in results: a `STILL OPEN FROM PRIOR DAYS` list bloated to ~254 stale items and leaked browser-automation strings.
+
+**How to apply:**
+- To revive: re-clone from GitHub, re-add to `stack-check.ps1`, then `launchctl enable gui/$(id -u)/com.keystone.morningbriefing` && `launchctl bootstrap`. Credentials must be re-created — do not restore tokens from backup.
+- Same edit added `{HOME}/.claude/projects/-Users-kristinarash-DEV/memory` to the index set. That path — where all Mac-era memory notes live — had **never** been indexed; only the two pre-migration `C--Users-eric-rash*` slugs were. Verified retrievable 2026-08-15: targeted queries now return these notes as top hits. Config lives at `~/DEV/KeystoneOS/data/memory-index-paths.json`, not under `~/.claude/scripts/`. See [[memsearch-index-path-drift]] — this omission was one symptom of a broader config-resolution fault.
+
+Related: [[backup-sync-system]], [[milvus-lock-misdiagnosis]], [[automation-cadence]]
