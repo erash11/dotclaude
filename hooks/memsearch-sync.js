@@ -71,8 +71,16 @@ function logErr(msg) {
 // SecondBrain/Knowledge, the Mac memory slug, morning-briefings, KeystoneOS
 // decisions and .codex/memories were never indexed by this hook. Fixed
 // 2026-08-14. A fallback now also writes to .errors.log — see resolvePaths.
+// 2026-09-10: DEV lives at ~/DEV on the Mac and ~/Desktop/DEV on the Windows
+// laptop (both machines active again). Resolve whichever exists so neither
+// machine silently falls back. Paths in the config may use {DEV} as well as {HOME}.
+const DEV_ROOT = [
+  path.join(os.homedir(), 'DEV'),
+  path.join(os.homedir(), 'Desktop', 'DEV'),
+].find(p => { try { return fs.statSync(path.join(p, 'KeystoneOS')).isDirectory(); } catch (_) { return false; } })
+  || path.join(os.homedir(), 'DEV');
 const KEYSTONE_INDEX_CONFIG = path.join(
-  os.homedir(), 'DEV', 'KeystoneOS', 'data', 'memory-index-paths.json'
+  DEV_ROOT, 'KeystoneOS', 'data', 'memory-index-paths.json'
 );
 
 function resolvePaths() {
@@ -95,7 +103,7 @@ function resolvePaths() {
       logErr(`index config ${KEYSTONE_INDEX_CONFIG} has no usable paths — using built-in fallback (${fallback.length} paths)`);
       return fallback;
     }
-    return parsed.paths.map(p => p.replace('{HOME}', os.homedir()).split('/').join(path.sep));
+    return parsed.paths.map(p => p.replace('{DEV}', DEV_ROOT).replace('{HOME}', os.homedir()).split('/').join(path.sep));
   } catch (e) {
     // Loud, not silent: a silent fallback is exactly how the Desktop/DEV drift
     // went unnoticed from the Windows migration until 2026-08-14.
