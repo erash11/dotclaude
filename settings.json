@@ -1,4 +1,4 @@
-﻿{
+{
   "env": {
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
   },
@@ -313,6 +313,10 @@
       {
         "matcher": "Bash|PowerShell",
         "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/kristinarash/.local/bin/dcg"
+          },
           {
             "type": "command",
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
