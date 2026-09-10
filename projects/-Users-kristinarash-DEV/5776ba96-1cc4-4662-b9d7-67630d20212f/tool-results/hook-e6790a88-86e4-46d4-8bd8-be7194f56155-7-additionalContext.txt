@@ -1,0 +1,123 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: Calendar and email can't be read by a background server — they only work inside a Claude session. How do you want to handle that? → A: Disk-only...
+
+## Files Modified
+t45.jpg, t52.jpg, t60.jpg, t68.jpg, t76.jpg, t84.jpg, t92.jpg, t100.jpg, t120.jpg, t108.jpg, SPEC.md, 01-full-dashboard.jpg, 08-full-dashboard-clean.jpg, 03-zoom-email-skills.jpg, 05-zoom-routines-skillcards.jpg, 06-model-effort-matrix.jpg, 09-ring-labels-search.jpg, README.md, 10-artifact-modal.jpg, 07-widget-edit-mode.jpg, agentic-os.html, aos-1440.png, aos-a-base.png, aos-e-pop.png, aos-c-search.png, aos-g-modal.png, aos-j-edit2.png, aos-l-narrow.png, aos-n-search.png, aos-m-final.png, aos-o-narrow.png, aos-h-brain.png, render.png, yt.png, newblock.py, PLATFORM.md, os.html, os-b-health.png, os-a-base.png, os-c-modal.png, os-d-skillpop.png, os-h-fail.png, os-i-final.png, render-live.png, project_command-centre.md
+
+## Unresolved Errors
+- {"stdout":"[watch] working dir: /Users/kristinarash/.claude/jobs/5776ba96/tmp/vid\n[watch] checking metadata/captions via yt-dlp…\n[youtube] Extrac...
+- {"stdout":"[youtube] Extracting URL: https://www.youtube.com/watch?v=8NSyI-npJCU\n[youtube] 8NSyI-npJCU: Downloading webpage\n[youtube] 8NSyI-npJCU...
+- {"stdout":"# Craft floor\n\nLoad this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed v...
+- {"stdout":"[45190:160369:0901/200457.707584:ERROR:ui/display/mac/cv_display_link_mac.mm:195] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -66...
+- {"stdout":"-rw-r--r--@ 1 kristinarash  staff  61596 Sep  1 20:08 /Users/kristinarash/DEV/CommandCentre/reference/rubric-agentic-os/agentic-os.html\...
+- {"stdout":"def src_graph():\n    # Count exactly the way gf_remaining.py does: a SET DIFFERENCE over the\n    # corpus, never `total - len(done)`. ...
+- {"stdout":"\"\"\"DEV Command Centre — one page, one address, survives a restart.\n\nARMS layer bonus / gap 5. Serves a single read-only status page...
+- {"stdout":"def src_agents():\n    try:\n        out = subprocess.run(['launchctl', 'list'], capture_output=True,\n                             text...
+- {"stdout":"    def do_HEAD(self):\n        self.do_GET()\n\n    def do_GET(self):\n        if not self._host_ok():\n            self._send(403, 'ba...
+- {"stdout":"# DEV Command Centre\n\n**Built 2026-08-31.** Closes ARMS gap 5 (the \"command centre\" bonus layer).\n\n> One page, one address, surviv...
+- {"stdout":"backed up\ndef safe_regular_file(p: Path) -> bool:\n    \"\"\"True only if p is a real regular file at p, reached through no symlink.\n\...
+- {"stdout":"api_state() in 0.45s, 55285 bytes JSON\n\nhealth   : warn | [('Agents', 'ok'), ('Backup', 'ok'), ('Graph', 'warn'), ('Failures', 'ok'), ...
+- {"stdout":"Agents     ok       9 agents, all clean\nBackup     ok       2026-09-01 09:42:46 ===== daily-backup end: OK (0 errors) =====\nGraph     ...
+- {"stdout":"{\n  \"generated\": \"2026-09-01T20:32:41\",\n  \"generatedUtc\": \"2026-09-02T01:32:41+00:00\",\n  \"readOnly\": true,\n  \"brand\": {\...
+- {"stdout":"os.html served: 404\nurl file:///Users/kristinarash/DEV/CommandCentre/os.html\n{\n  sw: \u001b[33m1440\u001b[39m,\n  sh: \u001b[33m900\u...
+- {"stdout":"---\nname: command-centre\ndescription: \"The DEV front door — always-on read-only status page at http://localhost:7373, plus the rules ...
+- {"stdout":"def main():\n    parser = argparse.ArgumentParser(description=\"Compile daily logs into knowledge articles\")\n    parser.add_argument(\...
+- {"stdout":"38:    MAX_TOKENS_PER_RUN,\n172:    log_path: Path, state: dict, budget=None, full_context: bool = False\n176:    Returns (status, cost)...
+- {"stdout":"/Users/kristinarash/.claude/claude-memory-compiler/scripts/adjudicate.py:52:MAX_TOKENS_PER_RUN = 250_000\n/Users/kristinarash/.claude/cl...
+- {"stdout":"Files to compile (1):\n  - 2026-08-06.md\n\n[1/1] Compiling 2026-08-06.md...\n  Retrieved 13 articles (8 relevant, 3 graph, 2 neglected)...
+- {"stdout":"########## 2026-08-08.md\n  Cost: $1.0309 tokens=input=2,output=12206,cache_creation=71801,cache_read=15513\n  Articles written: 5\nComp...
+- {"stdout":"########## 2026-08-19.md\n  Cost: $0.7907 tokens=input=2,output=4361,cache_creation=67387,cache_read=15513\n  Articles written: 2\nCompi...
+- {"stdout":"overall health: bad\n  Graph warn | 727 files left (~8 more mornings)\n  Failures bad | 2 logged failure(s)","stderr":"","interrupted":f...
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, f/t45.jpg, f/t52.jpg, f/t60.jpg, f/t68.jpg, f/t76.jpg, f/t84.jpg, f/t92.jpg, f/t100.jpg, f/t120.jpg, f/t108.jpg, tmp/yt.png
+
+## Subagent Tasks
+- [completed] Build a single self-contained HTML page that recreates a dark "Agentic OS" command-centre dashboard, work...
+
+## Skills Used
+impeccable, memory-write
+
+## Environment
+cwd: /Users/kristinarash/.claude/claude-memory-compiler
+model:claude-opus-5[1m]
+
+## Data References
+- type:image
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 42 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

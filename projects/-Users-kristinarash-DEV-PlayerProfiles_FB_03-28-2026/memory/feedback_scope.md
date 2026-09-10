@@ -1,0 +1,11 @@
+---
+name: scope
+description: User chose static HTML over React+FastAPI; prefer the simplest delivery format that meets the need
+type: feedback
+---
+
+When the user needs a report or dashboard, default to the simplest delivery format first (static HTML, CSV, script output) before proposing a full web app.
+
+**Why:** User runs things locally before meetings. A React app with a FastAPI server is unnecessary overhead when a Python script that writes an HTML file does the same job.
+
+**How to apply:** For any new reporting or visualization request in this project, propose a Python-generated HTML file or script output before suggesting a web framework.

@@ -1,0 +1,234 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Files Modified
+folio_sheet.py, folio_sheet_1.png, folio_sheet_2.png, folio_sheet_3.png, folio_sheet_4.png, zoom_check.py, zoom_ambiguous.png, ocr_conf.py, do_rename.py, extract_refs.py, zotero_overlap.py, build_refs.py, scan_pipeline.py, good.json, bad.json, verify_pdf.py, CLAUDE.md, myszka-folio-map-2026-09-05.json, 2026-09-05-book-scan-complete.md, pdf_spotcheck.png, MEMORY.md, feedback_ingest-review-gate.md, project_book-scan-page-ordering.md, _domain.md, _book.md, btnujtnn8.txt, principle--action-capacity-is-not-skill.md, claim--combine-scores-do-not-predict-nfl-performance.md, principle--far-transfer-is-rare.md, framework--three-types-of-task-decomposition.md, claim--fundamentals-do-not-require-decomposition.md, principle--external-focus-of-attention.md, claim--prescriptive-coaching-narrows-adaptability.md, principle--variability-overuse-hypothesis.md, claim--prescription-undercuts-intrinsic-motivation.md, framework--shared-attunement-vs-shared-mental-models.md, framework--skill-acquisition-specialist-role.md, ch2b.txt, framework--ecological-dynamics-athlete-environment.md, framework--newell-interacting-constraints.md, principle--representative-design.md, principle--skill-adaptation-not-acquisition.md, principle--perception-action-coupling.md, principle--dexterity-as-fit-to-the-problem.md, framework--integrated-movement-solution.md, framework--direct-learning-attention-intention-calibration.md, principle--repetition-without-repetition.md, principle--degeneracy-precedes-dexterity.md, principle--knowledge-of-vs-knowledge-about.md, framework--signature-qualities-of-dexterous-movers.md, claim--there-is-no-muscle-memory.md, ch3.txt, principle--affordances-are-opportunities-for-action.md, principle--affordances-point-both-ways.md, framework--landscape-of-affordances.md, principle--nested-affordances.md, principle--shared-affordances.md, framework--specifying-variables-in-dyadic-problems.md, claim--gaze-location-is-not-perception.md, heuristic--constrain-to-afford.md, case-study--tight-end-punt-coverage-exposure-gap.md, ch4a.txt, ch4b.txt, principle--context-shapes-content.md, principle--gamespeed-vs-stopwatch-speed.md, claim--out-of-context-perceptual-cognitive-testing.md, heuristic--how-to-watch-film.md, framework--position-problem-inventory.md, principle--form-of-life.md, heuristic--what-are-they-attuning-to-and-adapting-around.md, framework--key-events-and-notational-analysis.md, heuristic--semi-structured-player-interviews.md, heuristic--quantify-the-environment-not-just-the-athlete.md, framework--play-and-longitudinal-analysis-worksheets.md, case-study--saquon-barkley-swot.md, ch5.txt, principle--task-simplification-not-decomposition.md, framework--alive-movement-problem-checklist.md, framework--representative-learning-design-audit.md, framework--nonlinear-pedagogy-and-constraint-classes.md, principle--functional-variability.md, framework--cla-worked-examples.md, principle--slices-of-the-game.md, heuristic--ecological-questions-and-statements.md, heuristic--representative-co-design.md, framework--tactics-in-an-ecological-practice.md, principle--soft-assembly-and-learner-centred-coaching.md, ch6core.txt, framework--activity-design-template.md, principle--complexity-and-information-scaling.md, principle--movement-ownership-speed.md, heuristic--sparring-as-a-practice-mode.md, heuristic--alive-warm-up.md, principle--donor-activities.md, principle--low-complexity-activities-as-movement-vitamins.md, framework--activity-catalogue-families.md, ch7.txt, framework--skill-acquisition-periodization-seven-phases.md, principle--annual-arc-open-couple-test.md, heuristic--do-not-over-plan-the-year.md, framework--incremental-modifications-for-sceptics.md, principle--look-to-and-through.md, heuristic--daily-traffic-navigation.md, heuristic--change-the-equipment.md, heuristic--contextual-sprint-work.md, principle--bridging-the-gap.md, principle--deception-and-disguise.md, heuristic--right-thing-from-wrong-positions.md, principle--specifying-vs-non-specifying-information.md, principle--rate-limiters-and-fear.md, framework--three-challenges-for-a-new-learner.md, heuristic--equipment-scaling.md, principle--challenge-point-and-practice-variability.md, framework--choosing-a-donor-sport.md, case-study--rodgers-play-griffen-rhodes.md, case-study--sas-consulting-inside-real-constraints.md, framework--glossary-of-terms.md, frontmatter_sheet.py, frontmatter_sheet.png, zoom_contents.png, zoom_contents_tail.png, zoom_contents_backmatter.png, zoom_backmatter2.png, zoom_copyright_tail.png, rename_frontmatter.py, backup-manifest.json, 2026-09-07-brain-audit-skill-wip.md
+
+## Unresolved Errors
+- {"stdout":"# Handoff — Myszka book scanning, Joe interview ingest, Gray infographics\n\n**Date:** 2026-09-03 (evening) · **Workspace:** `/Users/kri...
+- {"stdout":"pages scored: 157   median mean-conf: 95.5\n\n=== DUPLICATE PAIRS — winner = higher confidence ===\np152: #050 2026-09-05_08-07-20.jpg  ...
+- {"stdout":"made 6 fake scans\n--- GOOD map: 6 files - 1 dupe = 5 pages, span 10..14 ---\n  files on disk (unrenamed) : 6\n  marked duplicates      ...
+- {"stdout":"# Codex Job Status\n\n- task-mtofj3ju-49hs18 | failed | rescue | Codex Task\n  Summary: You've hit your usage limit. Upgrade to Pro (htt...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"Book-scan pipeline: vFlat photos -> page-ordered, OCR'd PDF.\n\nBuilt 2026-09-05 from the two scanning ses...
+- {"stdout":"checked once\n- task-mtofj3ju-49hs18 | failed | rescue | Codex Task\n  Summary: You've hit your usage limit. Upgrade to Pro (https://cha...
+- {"stdout":"=== global MEMORY.md size ===\n    2133\n\n=== RTP thread line ===\n7:- **RTP CLA course (9/3)**: `DEV/RTP_Constraints_Course`: lesson 0...
+- {"stdout":"global MEMORY.md:     2341 chars (cap 2500)\n- task-mtofj3ju-49hs18 | failed | rescue | Codex Task\n  Phase: failed","stderr":"","interr...
+- {"stdout":"sidecar pages     : 240\npdf pages (qpdf)  : 240\noffset            : PDF page 1 == printed page 14\n\n=== 1. PAGE-ORDER CHECK (folio re...
+- {"stdout":"all scripts parse OK\n\nGATE FAILED: 6 - 1 = 5 but the folio span is 91.\nThe folio read is wrong, or a duplicate/re-shoot was missed. R...
+- {"stdout":"extract_epub.py\nextract_pdf.py\n---\n\u001b[1;31merror\u001b[0m: \u001b[1mexternally-managed-environment\u001b[0m\n\n\u001b[31m×\u001b[...
+- {"stdout":"\"\"\"Extract a PDF into per-page text as JSON, and detect scanned/image PDFs.\nUsage: python extract_pdf.py <book.pdf> [--pages A-B] [-...
+- {"stdout":"===== p23 =====\nexecuting a sweep play. To successfully gain yardage (a skill), they need to be able\nto adapt their movement (speed an...
+- {"stdout":"Task complexity from an ecological dynamics perspective\n\nFrom an ecological approach, there are three main challenges that a new learn...
+- {"stdout":"63:1. Educating attention to specifying information\n119:2. Solving the degrees of freedom problem\n160:3. Calibrating ¢> adapting to in...
+- {"stdout":"version   : 1\ngenerated : 2026-08-04\nnote      : Single authority for backup coverage. Default-deny: any DEV directory absent from pat...
+- {"stdout":"        $f = Join-Path $rd \"run-$runId.txt\"\n        Set-Content -LiteralPath $f -Value \"run=$runId written=$(Get-Date -Format 'o') h...
+- {"stdout":"=== brain-audit/measure.sh ===\n     120 /Users/kristinarash/.claude/skills/brain-audit/measure.sh\n#!/bin/bash\n# brain-audit measureme...
+- {"stdout":"Score the second brain, store the score, propose two builds. Then stop.\n\nThe point is the **trend**, not any single run. A score that ...
+
+## Git
+status, $(cat <<'EOF'
+ingest(enhancing-skill--myszka): 84 entries, ch 1-10 + glossary
+
+New skill-acquisition domain holding Myszka, Yearby & Gray, Enhancing, $(cat <<'EOF'
+ingest(enhancing-skill--myszka): schema fixes on two entries
+
+Add the missing Why, $(cat <<'EOF'
+book(enhancing-skill--myszka): front matter scanned; year confirmed; page gap found
+
+The printed contents page (p5) was scanned after the ingest and gives an external
+ground truth for page order: all thirteen landmarks match what was derived from
+the scans alone. Zero discrepancies. That is a fifth independent verification.
+
+It also exposed a gap nothing inside pages 14-253 revealed: the contents lists
+About, $(cat <<'EOF'
+memory: Myszka book ingest complete; front-matter findings
+
+Update the RTP CLA course thread: 84 library entries in the new
+skill-acquisition domain, scans p001-253, and the outstanding p254-255 gap
+with the single-rebuild plan.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), log, $(cat <<'EOF'
+backup: declare DEV/skill-audit-2026-09-05 (personal, SSD only)
+
+The 2026-09-05 09:00 run failed the default-deny check with
+manifest-unmanaged:skill-audit-2026-09-05, so a 3.2 MB directory of audit
+output was being backed up nowhere.
+
+Classified 'personal' by precedent with CLI_Dev and Terminal_Fluency: it is an
+audit of Eric's own Claude Code / Codex skill tree, not Baylor work, so it
+stays off the institutional target. Not a git repo, so SSD only.
+
+Verified by replicating the script's own check (daily-backup.ps1:329-334)
+against ~/DEV: 67 directories on disk, 67 declared, zero unmanaged.
+
+Prior manifest preserved as backup-manifest.json.bak-2026-09-05, per the
+existing convention.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), diff, $(cat <<'EOF'
+skills: link claudex/codex pair-review skills; start brain-audit
+
+Four symlinks into ~/.agents/skills (the standard vendored-skill layout):
+claudex-loop, claudex-route, codex-build, codex-review.
+
+brain-audit is IN PROGRESS - measure.sh only, no SKILL.md yet. The script is a
+facts-only measurement pass over the vault, Tier A memory and the .claude tree;
+it emits `key: value` lines so the skill scores from measurements rather than
+guessing. Committed so 120 lines of work is not sitting untracked.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), $(cat <<'EOF'
+skills: brain-audit complete - SKILL.md + measurement pass
+
+Scores the second brain as a system across four C's (context, connections,
+capabilities, cadence), writes a dated report to ~/SecondBrain/audits/, appends
+to a trend table, and proposes exactly two next builds.
+
+Exists because audits/ has held exactly one report for 45 days: the point is the
+trend, not any single score. Cadence is deliberately weighted on Notes/ rather
+than on launchd health - green jobs alongside frozen synthesis is the failure
+this system keeps repeating.
+
+Boundaries set in the frontmatter: not claude-stack-doctor (plumbing), not
+improve-system (note-level rot).
+
+measure.sh verified: exit 0, real numbers, no MISSING values.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), $(cat <<'EOF'
+handoff: brain-audit skill shipped 2026-09-07
+
+Late-evening build that appeared in no handoff, memory file or commit until the
+closeout sweep found it on disk. Records what the skill does, the boundaries it
+sets against claude-stack-doctor and improve-system, and the fact that it has
+never been run for real - the measurement half is proven, the scoring half is not.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), $(cat <<'EOF'
+skills: register vault_audits and vault_audit_trend in shared config
+
+Canonical paths for brain-audit's report directory and trend table, so the
+skill resolves them from _shared/config.json rather than hardcoding.
+
+Note: audits/_trend.md does not exist yet; brain-audit creates it on first run.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+), $(cat <<'EOF'
+audits: brain-audit baseline 2026-09-07 (67/100)
+
+First run of /brain-audit and the start of audits/_trend.md. Headline: all nine
+launchd jobs green while Notes/ sits 35 days stale - capture (Inbox 288 files,
+0d) is far ahead of synthesis (Notes 23 files, 35d). Zero grill sessions, so the
+biggest evergreen decisions are still only in Eric's head.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DxBh6KfPT5sRD2yCw28zaW
+EOF
+)
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, tmp/folio_sheet_1.png, tmp/folio_sheet_2.png, tmp/folio_sheet_3.png, tmp/folio_sheet_4.png, tmp/zoom_ambiguous.png, tmp/pdf_spotcheck.png, global-memory/MEMORY.md, tool-results/btnujtnn8.txt, tmp/ch2b.txt, tmp/ch3.txt, tmp/ch4a.txt, tmp/ch4b.txt, tmp/ch5.txt, tmp/ch6core.txt, tmp/ch7.txt, tmp/frontmatter_sheet.png, tmp/zoom_contents.png, tmp/zoom_contents_tail.png, tmp/zoom_contents_backmatter.png, tmp/zoom_backmatter2.png, tmp/zoom_copyright_tail.png, scripts/backup-manifest.json
+
+## Subagent Tasks
+- [completed] You are an independent reviewer. Do NOT change any files. Review only, then report findings.
+
+CONTEXT
+We ...
+- [completed] You are an INDEPENDENT ADVERSARIAL REVIEWER. Your job is to FALSIFY claims, not confirm them. Do NOT modi...
+
+## Skills Used
+codex:codex-cli-runtime, memory-write, ingest-book, backup
+
+## Environment
+cwd: ~/SecondBrain
+model:claude-opus-5[1m]
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 104 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

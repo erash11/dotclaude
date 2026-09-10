@@ -1,0 +1,130 @@
+---
+name: command-centre
+description: "The DEV front door — always-on read-only status page at http://localhost:7373, plus the rules that keep it trustworthy"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: b7d080c1-e0f8-4eb5-b181-d06b87224449
+  modified: 2026-09-02T01:44:00.951Z
+---
+
+**Built 2026-08-31.** Closes ARMS gap 5. `~/DEV/CommandCentre/server.py`, served by
+`com.keystone.commandcentre` (`RunAtLoad` + `KeepAlive`), own `DESIGN.md`.
+
+**<http://localhost:7373>** — one page answering "is anything broken?": agent
+health, backup result, graph progress, logged failures, active projects, and
+links to every generated report with its age.
+
+Design rules that must hold, each learned the hard way:
+
+- **Standard library only.** Python 3.14 here is PEP 668-managed, so any
+  dependency means a venv to maintain forever. A read-only local page never
+  earns that.
+- **Rendered fresh per request.** Never cached, never regenerated on a timer. A
+  page that can be stale is a page you stop believing — that is exactly why the
+  on-demand `project-triage/dashboard.html` never became a front door.
+- **A dashboard that contradicts the CLI is worse than no dashboard.** The file
+  counter first used `total - len(done)` and disagreed with `gf_remaining.py` by
+  13, because the done-list holds entries no longer in the corpus. It now does
+  the same **set difference**, and the corpus selection is kept identical across
+  `server.py`, `gf_gemini.py` and `gf_remaining.py`.
+- **Judge a running service on its PID, not its last exit code.** A `KeepAlive`
+  daemon carries the exit code of the instance that *died*, so a restart leaves a
+  nonzero code behind permanently. `launchctl list`'s first column is the PID and
+  the second is that stale status — reading the wrong column makes a healthy
+  service look broken.
+- **Live `launchctl` state is the truth**; `run-ledger.json` is shown but never
+  allowed to claim a job succeeded. See [[keystoneos-verification-habits]].
+- **Every source is optional** — a missing input renders "unknown", never a 500.
+- **Bound to `127.0.0.1` only**, which is why it needs no auth. Do not change the
+  bind address without adding one. Read-only on purpose: no buttons, so a stray
+  browser tab cannot fire an agent. `~/.claude/scripts/skill-button.sh` exists
+  for the day buttons are wanted.
+
+**The threat to a localhost service is a web page you visit, not the network.**
+Any site your browser opens can make requests to `127.0.0.1`, so binding to
+loopback is not a security boundary on its own. **DNS rebinding** is the real
+attack: the attacker's domain re-resolves to `127.0.0.1`, their JavaScript
+becomes same-origin, and it reads everything. The defence is a **`Host` header
+allowlist** — refuse any request whose Host is not a loopback name. Three review
+rounds were needed to get the parsing right: compare IPv6 numerically (so
+`[0:0:0:0:0:0:0:1]` is recognised), refuse a second `Host` header rather than
+guess, strip exactly one trailing DNS dot, and validate the port range. Also
+learned: **curl silently collapses duplicate headers** — prove that guard over a
+raw socket.
+
+**An allowlisted name is not an allowlisted file.** `Path.exists()` and
+`read_bytes()` follow symlinks, so an exact-path allowlist still served
+`/etc/hosts` when the target was swapped for a symlink. Confine the resolved
+object too, then **read through the same descriptor you checked** (`O_NOFOLLOW`,
+then compare the fd's `(st_dev, st_ino)` to the pre-check `lstat`) — checking a
+path and reopening it by name is a check/use race. Close the fd in a `finally`
+that catches every exception type, not just `OSError`.
+
+**Any number shown in two places must be computed by identical code.** A page
+that contradicts the CLI destroys trust in both. Three separate counters here
+had to be aligned four times: set difference not arithmetic, the same corpus
+selection, the same skip gates, the same `GF_MAXBYTES` env override — including
+its "0 means no cap" convention — and the gate applied to a progress line's
+numerator *and* denominator.
+
+**Creating any new `~/DEV/<folder>` breaks the backup immediately** — the manifest
+is default-deny, so `daily-backup` exits 1 until the folder is added to
+`~/.claude/scripts/backup-manifest.json`. Working as designed; just add the entry
+in the same turn. The `class` field answers *who keeps this when you leave
+Baylor* — `institutional` also copies to Baylor OneDrive ("lost when Baylor
+access ends"), `personal` stays yours. See [[backup-sync-system]].
+
+## The `/os` view — added 2026-09-01
+
+A second face over the same sources: **<http://localhost:7373/os>** (page:
+`CommandCentre/os.html`, data: `/api/state.json`). `/` is unchanged. Renders
+routines, 148 skills, an artifact ring, Second Brain counts, health and projects.
+Rationale lives in `DESIGN.md` → "The `/os` view". Backup: `server.py.bak-2026-09-01`.
+Design study it came from (video frames + original spec): `CommandCentre/reference/rubric-agentic-os/`.
+
+- **It is read-only, and that is not a gap to fill casually.** It shows which model
+  and effort a skill *would* run at; it cannot run one. Run buttons and the model ×
+  effort matrix were deliberately **not rendered** — dead controls are worse than
+  none. `~/.claude/scripts/skill-button.sh` is the guarded write path for that day.
+- **Never add a CORS header to `/api/state.json`, and never open `/os` as
+  `file://`.** Same-origin is the only thing keeping the whole state object away
+  from any site the browser has open. A `file://` page would need CORS to fetch it
+  — that is the trap, not the fix.
+- **`/open` allowlists ring files by identical string, recomputed per click** —
+  same rule as `LINKS`, never a prefix or subtree test. The ring moves as files are
+  written, so a click can 404 when it shifted underneath. That is the correct
+  failure; widening the check is how a traversal gets in.
+- **The ring must stay capped per folder and per project** (`RING_PER_DIR=2`,
+  `RING_PER_PROJECT=6`). Uncapped "40 most recent" gave 22 of 40 from a single
+  06:34 generated batch and buried every real deliverable. Verified: capped = 13
+  projects.
+- **`RING_EXCLUDE` keeps `COG_S2_Position_Reports` off the ring** — those filenames
+  carry athlete names and the ring renders filenames as labels, so a glance would
+  put named cognitive results on screen. Excluded from this view only.
+  See [[s2-cognition-analysis]].
+- **`SENSITIVE_PATHS` is module-level now**, shared by `src_graph` and the ring, so
+  the graph count and the ring can never disagree about what is off-limits. Still
+  must match `gf_gemini.py`.
+- **Calendar and email cannot be on this page.** Both live behind MCP servers that
+  only exist inside a Claude session; a background HTTP server cannot reach them.
+  Caching them would break the never-stale rule the page is built on. They became
+  System Health and Projects instead.
+- `launchctl kickstart -k` leaves **exit `-15`** on the previous instance. Expected —
+  judge it on the live PID, which `src_agents` already does.
+
+- **To verify `/os` renders, use headless Chrome — not the claude-in-chrome
+  extension.** The extension returns `Frame with ID 0 is showing error page` for
+  `localhost:7373` on both `localhost` and `127.0.0.1`, while `curl` gets 200 and
+  the server logs nothing. That is the extension's site-permission gate, **not** a
+  server fault — do not go hunting for an IPv4/IPv6 bind bug (the server is
+  IPv4-only by design, `server.py:878`, and that is not the cause). Working check:
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+  --disable-gpu --virtual-time-budget=6000 --screenshot=<out>.png \
+  --window-size=1440,900 http://127.0.0.1:7373/os`
+  **`--virtual-time-budget` is required** — without it the shot fires before the
+  `/api/state.json` fetch resolves and every panel reads `LOADING`, which looks
+  exactly like a broken board.
+
+Related: [[graphify-semantic-extraction]], [[dev-layout-and-discovery]],
+[[s2-cognition-analysis]]

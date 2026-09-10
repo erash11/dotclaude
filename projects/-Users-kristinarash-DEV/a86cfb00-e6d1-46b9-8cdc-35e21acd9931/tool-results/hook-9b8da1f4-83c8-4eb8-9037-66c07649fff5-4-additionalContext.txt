@@ -1,0 +1,1001 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- So I have the SSD attached right now, and you can go ahead and install the Zotero CLI bundle. You can delete the failed run local that you suggeste...
+
+## Files Modified
+zotero-research-library-pp-cli, store.go
+
+## Unresolved Errors
+- {"stdout":"Govulncheck\tfail\t57s\t\nValidate SKILL.md against shipped CLI source\tfail\t27s\t\nGreptile Review\tpass\t2m55s\t\nGreptile policy gat...
+- {"stdout":"=== Govulncheck 31129355829 ===\nGovulncheck\tRun govulncheck\t2026-08-06T22:56:13.1484139Z   GOTOOLCHAIN: local\nGovulncheck\tRun govul...
+- {"stdout":"\t\t// Dry-run sentinel: client.dryRun returns `{\"dry_run\": true}` instead\n\t\t// of a real response when --dry-run is set. The upser...
+- {"stdout":"{\"event\":\"sync_start\",\"resource\":\"deleted\"}\n{\"event\":\"sync_error\",\"resource\":\"deleted\",\"status\":400,\"method\":\"GET\...
+- {"stdout":"   1 failure\tValidate SKILL.md against shipped CLI source\n   1 success\tGovulncheck\n   1 success\tGreptile Review\n   1 success\tGrep...
+- {"stdout":"run=31130387428\nValidate SKILL.md against shipped CLI source\tRun verifier against affected CLI skills\t2026-08-06T23:16:50.9933558Z ^[...
+- {"stdout":"func (s *Store) upsertGenericResourceTx(tx *sql.Tx, resourceType, id string, data json.RawMessage) error {\n\t_, err := tx.Exec(\n\t\t`I...
+- {"stdout":"func (s *Store) UpsertBatch(resourceType string, items []json.RawMessage) (int, int, error) {\n\ts.writeMu.Lock()\n\tdefer s.writeMu.Unl...
+- {"stdout":"fatal: update_ref failed for ref 'refs/remotes/origin/main': cannot update ref 'refs/remotes/origin/main': trying to write ref 'refs/rem...
+- {"stdout":"=== /Users/kristinarash/printing-press/.publish-repo-dev-289aa4de\nfeat/zotero-research-library\n0\t1\n=== backup log\n2026-08-06 17:45:...
+- {"stdout":"X-Oauth-Scopes: gist, read:org, repo, user, workflow\r\n---\ntotal 40\ndrwx------@  5 kristinarash  staff    160 Aug  6 17:46 .\ndrwx---...
+- {"stdout":"            }\n        }\n        elseif ($SsdOnline -and ($entry.captureOrphans -or $entry.captureWorkingTree)) {\n            $n = Cap...
+- {"stdout":"{\n \"ssd\": {\n  \"root\": \"/Volumes/CRASHBOX/AssistantBackup\",\n  \"volumeLabel\": \"CRASHBOX\",\n  \"filesystem\": \"exFAT\",\n  \"...
+- {"stdout":"   2 2026-08-06 17:44:53 SNAP /Users/kristinarash/DEV/Football -> /Users/kristinarash/Library/CloudStorage/OneDrive-BaylorUniversity/Bac...
+- {"stdout":"Files /Users/kristinarash/.claude/jobs/a86cfb00/tmp/incoming-briefing.md and morning-briefings/2026-08-06.md differ\nDIFFER\n8a9,13\n> >...
+- {"stdout":"--- errors.log:\n[2026-08-06 08:13] daily-backup: 27 error(s): repo-push:SecondBrain, repo-push:global-memory, repo-push:dotclaude, repo...
+- {"stdout":"/Users/kristinarash/.claude/claude-memory-compiler/hooks/:\npre-compact.py\nsession-end.py\nsession-start.py\n\n/Users/kristinarash/.cla...
+- {"stdout":"usage: compile.py [-h] [--all] [--file FILE] [--dry-run] [--full-context]\n                  [--auto] [--include-quarantined]\n\nCompile...
+- {"stdout":"Macintosh HD\nSSK SSD\n---\n   Volume Name:               SSK SSD\n   File System Personality:   ExFAT\n   Disk Size:                 50...
+
+## Git
+branch, status, diff, chore: restore correct file modes clobbered by API-based push
+
+The outage-era Git Data API push wrote these files with mode 100755;
+local checkout modes (100644) are the source of truth.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM
+, log, commit, merge, handoff: 2026-08-06 restore closeout
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM
+
+## Environment
+cwd: ~/.claude/global-memory
+export PATH=***
+wc -c ~/.claude/global-memory/MEMORY.md
+ls ~/.claude/projects/-Users-kristinarash-DEV/memory/MEMORY.md 2>/dev/null && cat ~/.claude/projects/-Users-kristinarash-DEV/memory/MEMORY.md | head -8 || echo "index missing"
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+# SSH key: generate + attempt API upload
+if [ ! -f ~/.ssh/id_ed25519 ]; then ssh-keygen -t ed25519 -C "eric.rash11@gmail.com" -f ~/.ssh/id_ed25519 -N "" -q && echo "key generated"; else echo "key exists"; fi
+gh api -X POST user/keys -f title="MacBook (restored 2026-08)" -f key="$(cat ~/.ssh/id_ed25519.pub)" --jq '.id' 2>&1 | head -2
+# backup job identification
+launchctl list 2>/dev/null | grep keystone | head -10
+ls ~/DEV/KeystoneOS/scripts/ | grep -i backup | head -5
+export PATH=***
+/opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/scripts/daily-backup.ps1 2>&1 | tail -8; echo "backup exit=$?"
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+sync_one() {
+  d="$1"
+  git -C "$d" -c credential.helper='!gh auth git-credential' pull --rebase >/dev/null 2>&1 &
+  pid=$!
+  for t in $(seq 1 45); do kill -0 $pid 2>/dev/null || { wait $pid; return $?; }; sleep 2; done
+  kill -9 $pid 2>/dev/null; wait $pid 2>/dev/null; return 1
+}
+for round in 1 2 3; do
+  pending=0
+  for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory ~/.claude/claude-memory-compiler; do
+    ahead=$(git -C "$d" rev-list --count '@{u}..HEAD' 2>/dev/null)
+    [ "$ahead" = "0" ] && continue
+    if sync_one "$d"; then echo "$(basename $d): reconciled (round $round)"; else pending=$((pending+1)); fi
+  done
+  if [ "$pending" = "0" ]; then
+    cd $HOME/printing-press/.publish-repo-dev-289aa4de
+    git -c credential.helper='!gh auth git-credential' fetch origin >/dev/null 2>&1 && \
+    git checkout -q feat/zotero-research-library && git reset --hard -q origin/feat/zotero-research-library && echo "publish clone zotero branch synced"
+    echo "ALL RECONCILED"; break
+  fi
+  sleep 60
+done
+[ "${pending:-0}" != "0" ] && echo "$pending repos still pending"
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '.[] | select(.in_reply_to_id == null) | (.id|tostring) + " [" + (.path | split("/")[-1]) + ":" + (.line|tostring) + "]"' | tail -1
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq 'map(select(.in_reply_to_id == null)) | .[-1].body[:600]'
+export PATH=***
+python3 - <<'PYEOF'
+import json, subprocess, os, sys, time
+os.chdir(os.path.expanduser('~/printing-press/library/zotero-research-library'))
+REPO='repos/erash11/printing-press-library'
+PREFIX='library/productivity/zotero-research-library'
+def gh(args, payload=None):
+    cmd=['gh','api']+args; inp=None
+    if payload is not None:
+        cmd+=['--input','-']; inp=json.dumps(payload)
+    for attempt in range(4):
+        r=subprocess.run(cmd, input=inp, capture_output=True, text=True)
+        if r.returncode==0: return json.loads(r.stdout)
+        time.sleep(3*(attempt+1))
+    sys.exit(f"API failed: {args}: {r.stderr[:300]}")
+head=gh([f'{REPO}/branches/feat/zotero-research-library'])['commit']['sha']
+blob=gh(['-X','POST',f'{REPO}/git/blobs'], {'content':open('internal/config/config.go').read(),'encoding':'utf-8'})
+new_tree=gh(['-X','POST',f'{REPO}/git/trees'], {'base_tree':head,'tree':[{'path':f'{PREFIX}/internal/config/config.go','mode':'100644','type':'blob','sha':blob['sha']}]})
+msg="""fix(zotero-research-library): logout clears the global fallback store too
+
+When an explicit config's sibling store held no values, loading fell back
+to the global store; ClearTokens now removes that fallback as well so
+logout actually deauthenticates subsequent commands.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"""
+commit=gh(['-X','POST',f'{REPO}/git/commits'], {'message':msg,'tree':new_tree['sha'],'parents':[head]})
+gh(['-X','PATCH',f'{REPO}/git/refs/heads/feat/zotero-research-library'], {'sha':commit['sha']})
+print('pushed:', commit['sha'][:10])
+PYEOF
+gh api "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732131738/replies" -f body="Fixed in the follow-up commit: \`ClearTokens\` under an explicit \`--config\` now mirrors the load fallback — it removes the sibling store, and when that store held no values (meaning loading was consulting the global fallback) it removes the global store as well, so logout deauthenticates exactly the credential subsequent commands would have reloaded." --jq '.id'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length, (.[-1] | (.id|tostring) + " [" + (.path | split("/")[-1]) + "]")' 2>/dev/null | head -2
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '.[] | select(.id == 3732150427) | .path + ":" + (.line|tostring) + "\n" + .body[:600]'
+export PATH=***
+python3 - <<'PYEOF'
+import json, subprocess, os, sys, time
+os.chdir(os.path.expanduser('~/printing-press/library/zotero-research-library'))
+REPO='repos/erash11/printing-press-library'
+PREFIX='library/productivity/zotero-research-library'
+def gh(args, payload=None):
+    cmd=['gh','api']+args; inp=None
+    if payload is not None:
+        cmd+=['--input','-']; inp=json.dumps(payload)
+    for attempt in range(4):
+        r=subprocess.run(cmd, input=inp, capture_output=True, text=True)
+        if r.returncode==0: return json.loads(r.stdout)
+        time.sleep(3*(attempt+1))
+    sys.exit(f"API failed: {args}: {r.stderr[:300]}")
+changed=['internal/client/client.go','.printing-press-patches/zotero-research-library-key-origin-guard.json']
+head=gh([f'{REPO}/branches/feat/zotero-research-library'])['commit']['sha']
+tree=[]
+for f in changed:
+    blob=gh(['-X','POST',f'{REPO}/git/blobs'], {'content':open(f).read(),'encoding':'utf-8'})
+    tree.append({'path':f'{PREFIX}/{f}','mode':'100644','type':'blob','sha':blob['sha']})
+new_tree=gh(['-X','POST',f'{REPO}/git/trees'], {'base_tree':head,'tree':tree})
+msg="""fix(zotero-research-library): require https for API key transmission
+
+isTrustedZoteroURL now enforces scheme in addition to hostname, so a
+cleartext http:// base URL on a legitimate zotero.org host can no longer
+expose the credential to on-path attackers.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"""
+commit=gh(['-X','POST',f'{REPO}/git/commits'], {'message':msg,'tree':new_tree['sha'],'parents':[head]})
+gh(['-X','PATCH',f'{REPO}/git/refs/heads/feat/zotero-research-library'], {'sha':commit['sha']})
+print('pushed:', commit['sha'][:10])
+PYEOF
+gh api "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732150427/replies" -f body="Fixed in the follow-up commit: the guard is now \`isTrustedZoteroURL(u)\` — https scheme required in addition to the zotero.org hostname check — applied at both the request-build strip and redirect reattachment, so a cleartext \`http://\` base URL never carries the key. Patch record updated." --jq '.id'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '.[] | select(.in_reply_to_id == null) | (.id|tostring) + " [" + (.path | split("/")[-1]) + ":" + (.line|tostring) + "]"' | tail -3
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '.[] | select(.id == 3732169864 or .id == 3732169868) | "=== " + .path + ":" + (.line|tostring) + "\n" + .body[:550]'
+export PATH=***
+python3 - <<'PYEOF'
+import json, subprocess, os, sys, time
+os.chdir(os.path.expanduser('~/printing-press/library/zotero-research-library'))
+REPO='repos/erash11/printing-press-library'
+PREFIX='library/productivity/zotero-research-library'
+def gh(args, payload=None):
+    cmd=['gh','api']+args; inp=None
+    if payload is not None:
+        cmd+=['--input','-']; inp=json.dumps(payload)
+    for attempt in range(4):
+        r=subprocess.run(cmd, input=inp, capture_output=True, text=True)
+        if r.returncode==0: return json.loads(r.stdout)
+        time.sleep(3*(attempt+1))
+    sys.exit(f"API failed: {args}: {r.stderr[:300]}")
+changed=['internal/cli/sync.go','internal/config/config.go']
+head=gh([f'{REPO}/branches/feat/zotero-research-library'])['commit']['sha']
+tree=[]
+for f in changed:
+    blob=gh(['-X','POST',f'{REPO}/git/blobs'], {'content':open(f).read(),'encoding':'utf-8'})
+    tree.append({'path':f'{PREFIX}/{f}','mode':'100644','type':'blob','sha':blob['sha']})
+new_tree=gh(['-X','POST',f'{REPO}/git/trees'], {'base_tree':head,'tree':tree})
+msg="""fix(zotero-research-library): store scalar tombstones; logout clears both stores
+
+- wrapScalarTombstones converts the deleted resource's scalar keys into
+  storable {"key": ...} objects so sync makes incremental progress instead
+  of refetching and rejecting the same tombstones forever
+- explicit-config logout now clears both the sibling and global stores,
+  since loading consults both
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"""
+commit=gh(['-X','POST',f'{REPO}/git/commits'], {'message':msg,'tree':new_tree['sha'],'parents':[head]})
+gh(['-X','PATCH',f'{REPO}/git/refs/heads/feat/zotero-research-library'], {'sha':commit['sha']})
+print('pushed:', commit['sha'][:10])
+PYEOF
+gh api "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732169864/replies" -f body="Fixed in the follow-up commit: explicit-config \`ClearTokens\` now clears BOTH the sibling store and the global store unconditionally — loading consults both (sibling first, global fallback), so logout is effective regardless of which held the active credential." --jq '.id'
+gh api "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732169868/replies" -f body="Fixed in the follow-up commit: rather than perpetually holding the watermark over unstorable scalars, \`wrapScalarTombstones\` now converts the deleted resource's scalar keys into storable \`{\"key\": ...}\` objects before the batch upsert — the tombstones persist, \`consumed == stored\` holds, the watermark advances, and incremental progress resumes." --jq '.id'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length, (.[-1] | (.id|tostring) + " [" + (.path | split("/")[-1]) + ":" + (.line|tostring) + "]")'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '.[] | select(.id == 3732191319) | .body[:550]'
+sed -n '195,225p' $HOME/printing-press/library/zotero-research-library/internal/config/config.go
+export PATH=***
+python3 - <<'PYEOF'
+import json, subprocess, os, sys, time
+os.chdir(os.path.expanduser('~/printing-press/library/zotero-research-library'))
+REPO='repos/erash11/printing-press-library'
+PREFIX='library/productivity/zotero-research-library'
+def gh(args, payload=None):
+    cmd=['gh','api']+args; inp=None
+    if payload is not None:
+        cmd+=['--input','-']; inp=json.dumps(payload)
+    for attempt in range(4):
+        r=subprocess.run(cmd, input=inp, capture_output=True, text=True)
+        if r.returncode==0: return json.loads(r.stdout)
+        time.sleep(3*(attempt+1))
+    sys.exit(f"API failed: {args}: {r.stderr[:300]}")
+head=gh([f'{REPO}/branches/feat/zotero-research-library'])['commit']['sha']
+blob=gh(['-X','POST',f'{REPO}/git/blobs'], {'content':open('internal/config/config.go').read(),'encoding':'utf-8'})
+new_tree=gh(['-X','POST',f'{REPO}/git/trees'], {'base_tree':head,'tree':[{'path':f'{PREFIX}/internal/config/config.go','mode':'100644','type':'blob','sha':blob['sha']}]})
+msg="""fix(zotero-research-library): explicit default-config path is not explicit
+
+resolveConfigPath now recognizes when --config or the env var names the
+default config file (path-normalized, symlink-tolerant) and treats it as
+the non-explicit default, eliminating the sibling/global credential
+split-brain.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"""
+commit=gh(['-X','POST',f'{REPO}/git/commits'], {'message':msg,'tree':new_tree['sha'],'parents':[head]})
+gh(['-X','PATCH',f'{REPO}/git/refs/heads/feat/zotero-research-library'], {'sha':commit['sha']})
+print('pushed:', commit['sha'][:10])
+PYEOF
+gh api "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732191319/replies" -f body="Fixed in the follow-up commit: \`resolveConfigPath\` now compares the explicitly-supplied path against the default config path (absolute, cleaned, symlink-resolved best-effort) and treats a match as the ordinary non-explicit default — so \`--config <default-path>\` and a no-flag run share the same (global) credential store." --jq '.id'
+export PATH=***
+gh api repos/mvanhorn/printing-press-library/pulls/1668/comments --jq '[.[] | select(.in_reply_to_id == null)] | length'
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+sync_one() {
+  d="$1"
+  git -C "$d" -c credential.helper='!gh auth git-credential' pull --rebase >/dev/null 2>&1 &
+  pid=$!
+  for t in $(seq 1 45); do kill -0 $pid 2>/dev/null || { wait $pid; return $?; }; sleep 2; done
+  kill -9 $pid 2>/dev/null; wait $pid 2>/dev/null; return 1
+}
+for round in 1 2 3 4; do
+  pending=0
+  for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+    ahead=$(git -C "$d" rev-list --count '@{u}..HEAD' 2>/dev/null)
+    [ "$ahead" = "0" ] && continue
+    if sync_one "$d"; then echo "$(basename $d): reconciled (round $round)"; else pending=$((pending+1)); fi
+  done
+  [ "$pending" = "0" ] && { echo "ALL RECONCILED"; break; }
+  sleep 90
+done
+[ "${pending:-0}" != "0" ] && echo "$pending still pending"
+export PATH=***
+cat /private/tmp/claude-501/-Users-kristinarash-DEV/a86cfb00-e6d1-46b9-8cdc-35e21acd9931/tasks/b9pxw4i4r.output 2>/dev/null
+tail -3 ~/.claude/scripts/logs/daily-backup.log 2>/dev/null
+for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  echo "$(basename $d): ahead=$(git -C "$d" rev-list --count '@{u}..HEAD' 2>/dev/null)"
+done
+export PATH=***
+launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup 2>&1 && echo "backup restarted under launchd"
+export GIT_TERMINAL_PROMPT=***
+d=~/.claude/global-memory
+for i in 1 2 3 4; do
+  git -C "$d" -c credential.helper='!gh auth git-credential' pull --rebase >/dev/null 2>&1 &
+  pid=$!
+  for t in $(seq 1 40); do kill -0 $pid 2>/dev/null || break; sleep 2; done
+  kill -9 $pid 2>/dev/null; wait $pid 2>/dev/null
+  ahead=$(git -C "$d" rev-list --count '@{u}..HEAD' 2>/dev/null)
+  [ "$ahead" = "0" ] && { echo "global-memory reconciled (attempt $i)"; break; }
+  sleep 20
+done
+echo "global-memory final ahead=$(git -C "$d" rev-list --count '@{u}..HEAD' 2>/dev/null)"
+export PATH=***
+# transport still dead for git; reconcile global-memory deterministically:
+# fetch the remote commit as a patch via API, since content is identical just reset local branch using API tree
+cd ~/.claude/global-memory
+REMOTE_SHA=$(gh api repos/erash11/global-memory/branches/main --jq '.commit.sha' 2>/dev/null)
+[ -z "$REMOTE_SHA" ] && REMOTE_SHA=$(gh api "repos/erash11/$(basename $(git remote get-url origin) .git)/branches/main" --jq '.commit.sha' 2>/dev/null)
+echo "remote: ${REMOTE_SHA:0:10}; local: $(git rev-parse --short HEAD)"
+git remote get-url origin
+export PATH=***
+gh pr checks 1668 --repo mvanhorn/printing-press-library 2>/dev/null | sed 's/https[^ ]*//'
+export PATH=***
+RID_G=$(gh run list --repo mvanhorn/printing-press-library --branch feat/zotero-research-library --limit 10 --json databaseId,name,conclusion --jq '.[] | select(.conclusion=="failure" and (.name|test("vulncheck";"i"))) | .databaseId' | head -1)
+RID_S=$(gh run list --repo mvanhorn/printing-press-library --branch feat/zotero-research-library --limit 10 --json databaseId,name,conclusion --jq '.[] | select(.conclusion=="failure" and (.name|test("SKILL";"i"))) | .databaseId' | head -1)
+echo "=== Govulncheck $RID_G ==="
+gh run view "$RID_G" --repo mvanhorn/printing-press-library --log-failed 2>/dev/null | grep -viE "^.*(##\[group\]|##\[endgroup\]|Runner|Image|GITHUB_TOKEN|Prepare|Getting action|Operating System|Ubuntu|LTS|Secret source|Contents:|Metadata:)" | tail -15
+echo "=== SKILL.md $RID_S ==="
+gh run view "$RID_S" --repo mvanhorn/printing-press-library --log-failed 2>/dev/null | grep -viE "^.*(##\[group\]|##\[endgroup\]|Runner|Image|GITHUB_TOKEN|Prepare|Getting action|Operating System|Ubuntu|LTS|Secret source|Contents:|Metadata:)" | tail -15
+export PATH=***
+STAGE="$CLAUDE_JOB_DIR/tmp/zotero-staged-check"
+rm -rf "$STAGE"; mkdir -p "$STAGE"
+rsync -a --exclude='.git' $HOME/printing-press/library/zotero-research-library/ "$STAGE/"
+cd "$STAGE"
+NEWMOD="github.com/mvanhorn/printing-press-library/library/productivity/zotero-research-library"
+# rewrite module + all import references
+/usr/bin/sed -i '' "1s|^module .*|module $NEWMOD|" go.mod
+grep -rl 'zotero-research-library-pp-cli/internal' --include='*.go' . | while IFS= read -r f; do
+  /usr/bin/sed -i '' "s|\"zotero-research-library-pp-cli/internal|\"$NEWMOD/internal|g" "$f"
+done
+go build ./... && echo "STAGED VARIANT BUILDS" && go vet ./internal/... 2>&1 | head -3
+export PATH=***
+python3 - <<'PYEOF'
+import json, subprocess, os, sys, time
+stage=os.path.join(os.environ.get('CLAUDE_JOB_DIR','/Users/kristinarash/.claude/jobs/a86cfb00'),'tmp/zotero-staged-check')
+os.chdir(stage)
+REPO='repos/erash11/printing-press-library'
+PREFIX='library/productivity/zotero-research-library'
+def gh(args, payload=None):
+    cmd=['gh','api']+args; inp=None
+    if payload is not None:
+        cmd+=['--input','-']; inp=json.dumps(payload)
+    for attempt in range(4):
+        r=subprocess.run(cmd, input=inp, capture_output=True, text=True)
+        if r.returncode==0: return json.loads(r.stdout)
+        time.sleep(3*(attempt+1))
+    sys.exit(f"API failed: {args}: {r.stderr[:300]}")
+# every file I previously pushed with wrong imports
+changed=['internal/client/client.go','internal/cli/sync.go','internal/config/config.go',
+         'internal/cliutil/credentials.go','internal/cli/auth.go','internal/cli/doctor.go',
+         'internal/store/store.go']
+head=gh([f'{REPO}/branches/feat/zotero-research-library'])['commit']['sha']
+tree=[]
+for f in changed:
+    blob=gh(['-X','POST',f'{REPO}/git/blobs'], {'content':open(f).read(),'encoding':'utf-8'})
+    tree.append({'path':f'{PREFIX}/{f}','mode':'100644','type':'blob','sha':blob['sha']})
+new_tree=gh(['-X','POST',f'{REPO}/git/trees'], {'base_tree':head,'tree':tree})
+msg="""fix(zotero-research-library): restore public module import paths in patched files
+
+The review-fix commits were authored against the local module name; this
+rewrites their imports to the published module path so the staged tree
+builds again (Govulncheck loading failure, SKILL verifier fallback).
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"""
+commit=gh(['-X','POST',f'{REPO}/git/commits'], {'message':msg,'tree':new_tree['sha'],'parents':[head]})
+gh(['-X','PATCH',f'{REPO}/git/refs/heads/feat/zotero-research-library'], {'sha':commit['sha']})
+print('pushed:', commit['sha'][:10])
+PYEOF
+model:claude-fable-5
+set -e
+export PATH=***
+REPO="erash11/printing-press-library"
+BRANCH="feat/zotero-research-library"
+HEAD="04c3bd1835941f25f50393f387f9cd3e5ce88671"
+STAGED="$CLAUDE_JOB_DIR/tmp/zotero-staged-check"
+PREFIX="library/productivity/zotero-research-library"
+
+blob() { gh api "repos/$REPO/git/blobs" -f encoding=base64 -f content="$(base64 -i "$1")" --jq .sha; }
+B1=$(blob "$STAGED/internal/cli/sync.go")
+B2=$(blob "$STAGED/.printing-press-patches/zotero-research-library-watermark-dropped-records.json")
+echo "blobs: $B1 $B2"
+
+BASE_TREE=$(gh api "repos/$REPO/git/commits/$HEAD" --jq .tree.sha)
+TREE=$(gh api "repos/$REPO/git/trees" -f base_tree="$BASE_TREE" \
+  -f "tree[][path]=$PREFIX/internal/cli/sync.go" -f "tree[][mode]=100644" -f "tree[][type]=blob" -f "tree[][sha]=$B1" \
+  -f "tree[][path]=$PREFIX/.printing-press-patches/zotero-research-library-watermark-dropped-records.json" -f "tree[][mode]=100644" -f "tree[][type]=blob" -f "tree[][sha]=$B2" \
+  --jq .sha)
+COMMIT=$(gh api "repos/$REPO/git/commits" -f message="fix(zotero): persist all /deleted tombstone categories, not just items
+
+Zotero's /deleted endpoint returns a category map (collections, items,
+searches, tags, settings); extractPageItems' known-key strategy kept only
+the items array, silently dropping the other categories. Flatten every
+category into {key: '<category>/<key>', category} tombstones before upsert.
+Live-validated: 695 tombstones stored (693 items + 2 collections).
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM" \
+  -f tree="$TREE" -f "parents[]=$HEAD" --jq .sha)
+gh api -X PATCH "repos/$REPO/git/refs/heads/$BRANCH" -f sha="$COMMIT" --jq .object.sha
+echo "pushed $COMMIT"
+set -e
+export PATH=***
+LIB="$HOME/printing-press/library/zotero-research-library"
+WORK="$HOME/printing-press/.runstate/dev-289aa4de/runs/20260806-100315-0ed5c3e3/working/zotero-research-library-pp-cli"
+for f in root.go cache.go collections.go items.go ground.go; do cp "$LIB/internal/cli/$f" "$WORK/internal/cli/$f"; done
+
+REPO="erash11/printing-press-library"; BRANCH="feat/zotero-research-library"
+HEAD=$(gh api "repos/$REPO/git/refs/heads/$BRANCH" --jq .object.sha)
+echo "head=$HEAD"
+STAGED="$CLAUDE_JOB_DIR/tmp/zotero-staged-check"
+PREFIX="library/productivity/zotero-research-library"
+BASE_TREE=$(gh api "repos/$REPO/git/commits/$HEAD" --jq .tree.sha)
+ARGS=(-f base_tree="$BASE_TREE")
+for f in root.go cache.go collections.go items.go ground.go; do
+  SHA=$(gh api "repos/$REPO/git/blobs" -f encoding=base64 -f content="$(base64 -i "$STAGED/internal/cli/$f")" --jq .sha)
+  ARGS+=(-f "tree[][path]=$PREFIX/internal/cli/$f" -f "tree[][mode]=100644" -f "tree[][type]=blob" -f "tree[][sha]=$SHA")
+done
+TREE=$(gh api "repos/$REPO/git/trees" "${ARGS[@]}" --jq .sha)
+COMMIT=$(gh api "repos/$REPO/git/commits" -f message="fix(zotero): register novel subcommands with verifier-visible AddCommand pattern
+
+The addNovelCommandIfAbsent indirection hid hand-authored child commands
+(items recent, collections tree, cache *, cite, ground) from the library's
+SKILL.md verifier, which discovers children by scanning for direct
+cmd.AddCommand(newXxxCmd(...)) calls. Replace the helper with a
+hasSubcommandNamed guard around direct AddCommand calls — same collision
+semantics, verifier-visible. verify_skill.py now passes all checks locally.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM" \
+  -f tree="$TREE" -f "parents[]=$HEAD" --jq .sha)
+gh api -X PATCH "repos/$REPO/git/refs/heads/$BRANCH" -f sha="$COMMIT" --jq .object.sha
+set -e
+export PATH=***
+LIB="$HOME/printing-press/library/zotero-research-library"
+WORK="$HOME/printing-press/.runstate/dev-289aa4de/runs/20260806-100315-0ed5c3e3/working/zotero-research-library-pp-cli"
+STAGED="$CLAUDE_JOB_DIR/tmp/zotero-staged-check"
+NEWMOD="github.com/mvanhorn/printing-press-library/library/productivity/zotero-research-library"
+# update patch record
+python3 - <<'EOF'
+import json
+p = "/Users/kristinarash/printing-press/library/zotero-research-library/.printing-press-patches/zotero-research-library-watermark-dropped-records.json"
+d = json.load(open(p))
+d["reason"] = d["reason"].rstrip() + " Further extended: stored tombstones are now APPLIED — applyDeletedTombstones hard-deletes the corresponding cached records (typed row, FTS, generic row via store.DeleteResourceByID) so offline commands stop returning deleted records; application errors fail the sync so the watermark never advances past unmirrored tombstones."
+d["validated_outcome"] = d["validated_outcome"].rstrip() + " Tombstone application live-validated: a planted cached record matching a real deleted-item key was removed (tombstones_applied removed=1) with typed and generic rows both gone."
+files = d.get("files", [])
+for f in ("internal/cli/sync.go", "internal/store/store.go"):
+    if f not in files: files.append(f)
+d["files"] = files
+json.dump(d, open(p, "w"), indent=2)
+print("record ok")
+EOF
+for rel in internal/cli/sync.go internal/store/store.go .printing-press-patches/zotero-research-library-watermark-dropped-records.json; do
+  cp "$LIB/$rel" "$WORK/$rel"
+  cp "$LIB/$rel" "$STAGED/$rel"
+done
+sed -i '' "s|\"zotero-research-library-pp-cli/internal|\"$NEWMOD/internal|g" "$STAGED/internal/cli/sync.go" "$STAGED/internal/store/store.go"
+cd "$STAGED" && go build ./... && echo STAGED-BUILD-OK
+set -e
+export PATH=***
+REPO="erash11/printing-press-library"; BRANCH="feat/zotero-research-library"
+HEAD=$(gh api "repos/$REPO/git/refs/heads/$BRANCH" --jq .object.sha)
+STAGED="$CLAUDE_JOB_DIR/tmp/zotero-staged-check"
+PREFIX="library/productivity/zotero-research-library"
+BASE_TREE=$(gh api "repos/$REPO/git/commits/$HEAD" --jq .tree.sha)
+ARGS=(-f base_tree="$BASE_TREE")
+for rel in internal/cli/sync.go internal/store/store.go .printing-press-patches/zotero-research-library-watermark-dropped-records.json; do
+  SHA=$(gh api "repos/$REPO/git/blobs" -f encoding=base64 -f content="$(base64 -i "$STAGED/$rel")" --jq .sha)
+  ARGS+=(-f "tree[][path]=$PREFIX/$rel" -f "tree[][mode]=100644" -f "tree[][type]=blob" -f "tree[][sha]=$SHA")
+done
+TREE=$(gh api "repos/$REPO/git/trees" "${ARGS[@]}" --jq .sha)
+COMMIT=$(gh api "repos/$REPO/git/commits" -f message="fix(zotero): apply /deleted tombstones to the local cache
+
+Tombstones were stored but never mirrored: the cached record survived while
+the deletion watermark advanced, so offline commands kept returning deleted
+records and later incremental syncs never saw the tombstone again. Add
+store.DeleteResourceByID (typed row + FTS + generic row in one tx) and
+applyDeletedTombstones in sync; application errors fail the sync so the
+watermark cannot advance past unmirrored tombstones. Live-validated: a
+planted cached record matching a real deleted-item key was removed.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM" \
+  -f tree="$TREE" -f "parents[]=$HEAD" --jq .sha)
+gh api -X PATCH "repos/$REPO/git/refs/heads/$BRANCH" -f sha="$COMMIT" --jq .object.sha
+gh api -X POST "repos/mvanhorn/printing-press-library/pulls/1668/comments/3732398536/replies" -f body="Fixed in $COMMIT. Tombstones are now applied, not just stored: \`applyDeletedTombstones\` runs right after the tombstone upsert and hard-deletes each corresponding cached record via new \`store.DeleteResourceByID\` (typed-table row — firing its FTS triggers — plus the manual \`resources_fts\` entry and the generic row, in one transaction). An application error fails the sync so the watermark can never advance past tombstones that weren't mirrored; an already-absent record is a no-op, since tombstones can predate the local cache. Live-validated: planted a cached record matching a real deleted-item key, ran \`sync --resources deleted\`, and both the typed and generic rows were removed (\`tombstones_applied removed=1\`). Package tests pass." --jq .id
+export PATH=*** cd ~/DEV/project-triage 2>/dev/null && timeout 20 git ls-remote origin HEAD 2>&1 | head -2; echo "transport-exit=$?"
+export PATH=***
+for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  echo "=== $d"
+  cd "$d" 2>/dev/null || { echo MISSING; continue; }
+  git status --porcelain | head -3
+  git rev-list --left-right --count @{u}...HEAD 2>/dev/null || echo "no upstream"
+done
+export PATH=***
+for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  cd "$d"
+  echo "$d: $(git rev-list --left-right --count @{u}...HEAD 2>/dev/null) rebase-dir=$(test -d .git/rebase-merge -o -d .git/rebase-apply && echo IN-PROGRESS || echo none)"
+done
+export PATH=***
+for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  cd "$d"
+  br=$(git symbolic-ref --short HEAD)
+  url=$(git remote get-url origin)
+  slug=$(echo "$url" | sed -E 's#(git@github.com:|https://github.com/)##; s#\.git$##')
+  api_sha=$(gh api "repos/$slug/branches/$br" --jq .commit.sha 2>/dev/null)
+  track_sha=$(git rev-parse @{u})
+  echo "$d | $slug@$br | api=${api_sha:0:8} track=${track_sha:0:8} match=$([ "$api_sha" = "$track_sha" ] && echo yes || echo NO)"
+done
+export PATH=***
+for d in ~/DEV/CFB_Victory_Model ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  cd "$d"
+  if git diff --quiet HEAD @{u} --; then
+    git reset --keep @{u} >/dev/null 2>&1 && echo "$d: reconciled -> $(git rev-list --left-right --count @{u}...HEAD)"
+  else
+    echo "$d: TREES DIFFER — left untouched"
+  fi
+done
+export PATH=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/.claude/global-memory; do
+  echo "=== $d"
+  cd "$d"; git diff --stat HEAD @{u} -- | tail -5
+done
+export PATH=***
+cd ~/DEV/KeystoneOS && git diff HEAD @{u} -- | grep -E "^(diff|old mode|new mode)" | head -8; echo ---; cd ~/.claude/global-memory && git diff HEAD @{u} --stat | head -3; git status --porcelain
+export PATH=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage; do
+  cd "$d"
+  git reset --soft @{u} >/dev/null
+  git status --porcelain | grep -v '^??' | head -6
+  echo "--- $d after soft reset: $(git rev-list --left-right --count @{u}...HEAD)"
+done
+cd ~/.claude/global-memory && git reset --soft @{u} && echo "global-memory: $(git rev-list --left-right --count @{u}...HEAD)"; git status --porcelain | grep -v '^??'
+export PATH=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage; do
+  cd "$d"
+  if git diff --cached | grep -vE "^(diff|old mode|new mode|index) " | grep -q .; then
+    echo "$d: NON-MODE staged changes — inspecting"; git diff --cached --stat | tail -3
+  else
+    echo "$d: mode-only"
+    git diff --cached | grep -E "^(diff|new mode)" | paste - - | head -8
+  fi
+done
+export PATH=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage; do
+  cd "$d"
+  git commit -q -m "chore: restore correct file modes clobbered by API-based push
+
+The outage-era Git Data API push wrote these files with mode 100755;
+local checkout modes (100644) are the source of truth.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM"
+  echo "$d: committed $(git rev-parse --short HEAD)"
+done
+export PATH=***
+set -e
+declare -A SLUGS=( [KeystoneOS]="erash11/KeystoneOS" [morning-briefing]="erash11/morning-briefing" [project-triage]="erash11/project-triage" )
+for name in KeystoneOS morning-briefing project-triage; do
+  d="$HOME/DEV/$name"; slug="${SLUGS[$name]}"
+  cd "$d"
+  br=$(git symbolic-ref --short HEAD)
+  REMOTE_HEAD=$(gh api "repos/$slug/branches/$br" --jq .commit.sha)
+  BASE_TREE=$(gh api "repos/$slug/git/commits/$REMOTE_HEAD" --jq .tree.sha)
+  ARGS=(-f base_tree="$BASE_TREE")
+  while read -r f; do
+    BLOB=$(git rev-parse "HEAD:$f")
+    ARGS+=(-f "tree[][path]=$f" -f "tree[][mode]=100644" -f "tree[][type]=blob" -f "tree[][sha]=$BLOB")
+  done < <(git diff-tree --no-commit-id --name-only -r HEAD)
+  TREE=$(gh api "repos/$slug/git/trees" "${ARGS[@]}" --jq .sha)
+  MSG=$(git log -1 --format=%B)
+  COMMIT=$(gh api "repos/$slug/git/commits" -f message="$MSG" -f tree="$TREE" -f "parents[]=$REMOTE_HEAD" --jq .sha)
+  gh api -X PATCH "repos/$slug/git/refs/heads/$br" -f sha="$COMMIT" --jq .object.sha >/dev/null
+  git update-ref "refs/remotes/origin/$br" "$COMMIT"
+  git reset --soft "@{u}"
+  echo "$name: pushed $COMMIT, local aligned ($(git rev-list --left-right --count @{u}...HEAD)), status: $(git status --porcelain | grep -v '^??' | wc -l | tr -d ' ') tracked changes"
+done
+export PATH=***
+declare -A SLUGS=( [KeystoneOS]="erash11/KeystoneOS" [morning-briefing]="erash11/morning-briefing" [project-triage]="erash11/project-triage" )
+declare -A SHAS=( [KeystoneOS]=f8a5cd8fdc5eaa5b856ba09c668940eec24d2e80 [morning-briefing]=32f3a1183f9ac9b076cd2843296f990345b64d72 [project-triage]=65206c47590d6939a240f5b00aadaa10c3e57d43 )
+for name in KeystoneOS morning-briefing project-triage; do
+  d="$HOME/DEV/$name"; slug="${SLUGS[$name]}"; want="${SHAS[$name]}"
+  cd "$d"
+  br=$(git symbolic-ref --short HEAD)
+  meta=$(gh api "repos/$slug/git/commits/$want")
+  tree=$(echo "$meta" | /opt/homebrew/bin/jq -r .tree.sha)
+  parent=$(echo "$meta" | /opt/homebrew/bin/jq -r '.parents[0].sha')
+  an=$(echo "$meta" | /opt/homebrew/bin/jq -r .author.name); ae=$(echo "$meta" | /opt/homebrew/bin/jq -r .author.email); ad=$(echo "$meta" | /opt/homebrew/bin/jq -r .author.date)
+  cn=$(echo "$meta" | /opt/homebrew/bin/jq -r .committer.name); ce=$(echo "$meta" | /opt/homebrew/bin/jq -r .committer.email); cd_=$(echo "$meta" | /opt/homebrew/bin/jq -r .committer.date)
+  msg=$(echo "$meta" | /opt/homebrew/bin/jq -r .message)
+  if ! git cat-file -e "$tree" 2>/dev/null; then echo "$name: tree $tree missing locally — skip"; continue; fi
+  got=$(printf '%s' "$msg" | GIT_AUTHOR_NAME="$an" GIT_AUTHOR_EMAIL="$ae" GIT_AUTHOR_DATE="$ad" GIT_COMMITTER_NAME="$cn" GIT_COMMITTER_EMAIL="$ce" GIT_COMMITTER_DATE="$cd_" git commit-tree "$tree" -p "$parent")
+  if [ "$got" = "$want" ]; then
+    git update-ref "refs/heads/$br" "$got"
+    git update-ref "refs/remotes/origin/$br" "$got"
+    git reset -q
+    echo "$name: reconstructed $got — refs aligned, $(git rev-list --left-right --count @{u}...HEAD), dirty: $(git status --porcelain | grep -v '^??' | wc -l | tr -d ' ')"
+  else
+    echo "$name: SHA MISMATCH got=$got want=$want — leaving refs untouched"
+  fi
+done
+export PATH=***
+declare -A SLUGS=( [KeystoneOS]="erash11/KeystoneOS" [morning-briefing]="erash11/morning-briefing" [project-triage]="erash11/project-triage" )
+declare -A SHAS=( [KeystoneOS]=f8a5cd8fdc5eaa5b856ba09c668940eec24d2e80 [morning-briefing]=32f3a1183f9ac9b076cd2843296f990345b64d72 [project-triage]=65206c47590d6939a240f5b00aadaa10c3e57d43 )
+for name in KeystoneOS morning-briefing project-triage; do
+  d="$HOME/DEV/$name"; slug="${SLUGS[$name]}"; want="${SHAS[$name]}"
+  cd "$d"
+  br=$(git symbolic-ref --short HEAD)
+  g() { gh api "repos/$slug/git/commits/$want" --jq "$1"; }
+  tree=$(g .tree.sha); parent=$(g '.parents[0].sha')
+  an=$(g .author.name); ae=$(g .author.email); ad=$(g .author.date)
+  cn=$(g .committer.name); ce=$(g .committer.email); cd_=$(g .committer.date)
+  msg=$(g .message)
+  if ! git cat-file -e "$tree" 2>/dev/null; then echo "$name: tree $tree missing locally — skip"; continue; fi
+  got=$(printf '%s' "$msg" | GIT_AUTHOR_NAME="$an" GIT_AUTHOR_EMAIL="$ae" GIT_AUTHOR_DATE="$ad" GIT_COMMITTER_NAME="$cn" GIT_COMMITTER_EMAIL="$ce" GIT_COMMITTER_DATE="$cd_" git commit-tree "$tree" -p "$parent")
+  if [ "$got" = "$want" ]; then
+    git update-ref "refs/heads/$br" "$got"
+    git update-ref "refs/remotes/origin/$br" "$got"
+    git reset -q
+    echo "$name: reconstructed $got — aligned $(git rev-list --left-right --count @{u}...HEAD), dirty tracked: $(git status --porcelain | grep -v '^??' | wc -l | tr -d ' ')"
+  else
+    echo "$name: SHA MISMATCH got=$got want=$want — refs untouched"
+  fi
+done
+export PATH=***
+python3 - <<'EOF'
+import json, subprocess, os
+repos = {
+ "KeystoneOS": ("erash11/KeystoneOS", "f8a5cd8fdc5eaa5b856ba09c668940eec24d2e80", "main"),
+ "morning-briefing": ("erash11/morning-briefing", "32f3a1183f9ac9b076cd2843296f990345b64d72", "master"),
+ "project-triage": ("erash11/project-triage", "65206c47590d6939a240f5b00aadaa10c3e57d43", "master"),
+}
+home = os.path.expanduser("~")
+for name, (slug, sha, br) in repos.items():
+    d = f"{home}/DEV/{name}"
+    meta = json.loads(subprocess.check_output(["gh","api",f"repos/{slug}/git/commits/{sha}"]))
+    payload = meta["verification"]["payload"]
+    sig = meta["verification"]["signature"]
+    if not sig:
+        print(name, "NO SIGNATURE — unexpected"); continue
+    head, _, msg = payload.partition("\n\n")
+    gpgsig = "gpgsig " + "\n ".join(sig.rstrip("\n").split("\n"))
+    raw = head + "\n" + gpgsig + "\n\n" + msg
+    got = subprocess.check_output(["git","-C",d,"hash-object","-t","commit","-w","--stdin"],
+                                  input=raw.encode()).decode().strip()
+    if got != sha:
+        print(name, "MISMATCH", got, "want", sha); continue
+    subprocess.check_call(["git","-C",d,"update-ref",f"refs/heads/{br}",sha])
+    subprocess.check_call(["git","-C",d,"update-ref",f"refs/remotes/origin/{br}",sha])
+    subprocess.check_call(["git","-C",d,"reset","-q"])
+    counts = subprocess.check_output(["git","-C",d,"rev-list","--left-right","--count",f"origin/{br}...HEAD"]).decode().strip()
+    dirty = subprocess.check_output(["git","-C",d,"status","--porcelain"]).decode()
+    tracked = [l for l in dirty.splitlines() if not l.startswith("??")]
+    print(f"{name}: imported {sha[:8]} — aligned [{counts}], tracked dirty: {len(tracked)}")
+EOF
+export PATH=***
+python3 - <<'EOF'
+import json, subprocess, os, datetime
+repos = {
+ "KeystoneOS": ("erash11/KeystoneOS", "f8a5cd8fdc5eaa5b856ba09c668940eec24d2e80", "main"),
+ "morning-briefing": ("erash11/morning-briefing", "32f3a1183f9ac9b076cd2843296f990345b64d72", "master"),
+ "project-triage": ("erash11/project-triage", "65206c47590d6939a240f5b00aadaa10c3e57d43", "master"),
+}
+home = os.path.expanduser("~")
+def ts(iso):
+    dt = datetime.datetime.fromisoformat(iso.replace("Z","+00:00"))
+    return f"{int(dt.timestamp())} +0000"
+for name, (slug, sha, br) in repos.items():
+    d = f"{home}/DEV/{name}"
+    meta = json.loads(subprocess.check_output(["gh","api",f"repos/{slug}/git/commits/{sha}"]))
+    tree = meta["tree"]["sha"]; parent = meta["parents"][0]["sha"]
+    a, c = meta["author"], meta["committer"]
+    msg = meta["message"]
+    hdr = (f"tree {tree}\nparent {parent}\n"
+           f"author {a['name']} <{a['email']}> {ts(a['date'])}\n"
+           f"committer {c['name']} <{c['email']}> {ts(c['date'])}\n\n")
+    found = None
+    for m in (msg+"\n", msg, msg+"\n\n"):
+        raw = hdr + m
+        got = subprocess.check_output(["git","-C",d,"hash-object","-t","commit","--stdin"],
+                                      input=raw.encode()).decode().strip()
+        if got == sha:
+            found = raw; break
+    if not found:
+        print(f"{name}: no variant matched. author={a} committer={c}"); continue
+    subprocess.check_output(["git","-C",d,"hash-object","-t","commit","-w","--stdin"], input=found.encode())
+    subprocess.check_call(["git","-C",d,"update-ref",f"refs/heads/{br}",sha])
+    subprocess.check_call(["git","-C",d,"update-ref",f"refs/remotes/origin/{br}",sha])
+    subprocess.check_call(["git","-C",d,"reset","-q"])
+    counts = subprocess.check_output(["git","-C",d,"rev-list","--left-right","--count",f"origin/{br}...HEAD"]).decode().strip()
+    dirty = [l for l in subprocess.check_output(["git","-C",d,"status","--porcelain"]).decode().splitlines() if not l.startswith("??")]
+    print(f"{name}: imported {sha[:8]} — aligned [{counts}], tracked dirty: {len(dirty)}")
+EOF
+export PATH=***
+for d in ~/printing-press/.publish-repo-*; do
+  echo "=== $d"
+  cd "$d" && git branch --show-current && git status --porcelain | head -3 && git rev-list --left-right --count @{u}...HEAD 2>/dev/null
+done
+echo "=== backup log"
+tail -12 ~/.claude/scripts/logs/daily-backup.log 2>/dev/null || ls ~/.claude/scripts/logs/ 2>/dev/null
+echo "=== gh scopes"
+gh api user -i 2>/dev/null | grep -i x-oauth-scopes | head -1
+export PATH=***
+gh api user -i 2>/dev/null | grep -i '^x-oauth-scopes' ; echo ---
+DEST="$HOME/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/Backups"
+ls -la "$DEST" 2>&1 | head -8; echo ---
+grep -n "sentinel" ~/.claude/scripts/daily-backup.ps1 | head -10
+export PATH=*** sed -n 255,295p ~/.claude/scripts/daily-backup.ps1
+export PATH=*** grep -n -B2 -A25 "function Write-Receipt" ~/.claude/scripts/daily-backup.ps1
+export PATH=***
+python3 -c "
+import json,os
+m=json.load(open(os.path.expanduser('~/.claude/scripts/backup-manifest.json')))
+print(json.dumps(m['destinations'],indent=1))"
+DRIVE_ROOT="$HOME/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/Backups"
+mkdir -p "$DRIVE_ROOT/_receipts" && echo "test-$(date +%s)" > "$DRIVE_ROOT/_receipts/manual-test.txt" && cat "$DRIVE_ROOT/_receipts/manual-test.txt" && echo WRITE-READ-OK
+export PATH=*** awk '/daily-backup start/{buf=""} {buf=buf $0 "\n"} END{printf "%s", buf}' ~/.claude/scripts/logs/daily-backup.log | grep -E "FAILED|ERROR|WARN|error" | sort | uniq -c | head -15
+export PATH=*** grep -n "baylor\|deprecated\|destinations" ~/.claude/scripts/daily-backup.ps1 | head -15
+export PATH=***
+/opt/homebrew/bin/pwsh -NoProfile -Command '$t=[System.Management.Automation.PSParser]::Tokenize((Get-Content -Raw "/Users/kristinarash/.claude/scripts/daily-backup.ps1"),[ref]$null); Write-Host "parse ok, $($t.Count) tokens"'
+launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup && echo "backup kicked"
+export PATH=***
+python3 - <<'EOF'
+import re, pathlib
+p = pathlib.Path.home()/".claude/global-memory/MEMORY.md"
+t = p.read_text()
+t2 = t.replace("- **Child dental (6/25)**: 4yo cavities. NEXT: pediatric dentist, ask re SDF/n-HAp.",
+               "- **Child dental (6/25)**: 4yo cavities. NEXT: ped. dentist, SDF/n-HAp.")
+p.write_text(t2)
+print(len(t2.encode()))
+EOF
+export PATH=*** tail -8 ~/.claude/scripts/logs/daily-backup.log
+export PATH=***
+for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+  line=$(grep "daily-backup end" ~/.claude/scripts/logs/daily-backup.log | tail -1)
+  if echo "$line" | grep -q "19:[34]"; then echo "$line"; break; fi
+  /bin/sleep 10 2>/dev/null || perl -e 'select(undef,undef,undef,10)'
+done
+tail -4 ~/.claude/scripts/logs/daily-backup.log
+export PATH=***
+awk '/19:38.*daily-backup start/{found=1} found' ~/.claude/scripts/logs/daily-backup.log | grep -E "FAILED|offline|unmanaged|ERROR" | sort -u | head
+export PATH=***
+grep -n '$Errors.Add' ~/.claude/scripts/daily-backup.ps1 | head -20; echo ---
+awk '/19:38:5.*start/{f=1} f && /SKIPPED|WARN|not|NOT/' ~/.claude/scripts/logs/daily-backup.log | sort -u | head
+export PATH=***
+/opt/homebrew/bin/pwsh -NoProfile -Command '$t=[System.Management.Automation.PSParser]::Tokenize((Get-Content -Raw "/Users/kristinarash/.claude/scripts/daily-backup.ps1"),[ref]$null); Write-Host "parse ok"'
+launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup && echo kicked
+export PATH=***
+for i in $(seq 1 20); do
+  line=$(grep "daily-backup end" ~/.claude/scripts/logs/daily-backup.log | tail -1)
+  if echo "$line" | grep -qE "19:(4[4-9]|5[0-9])"; then echo "$line"; break; fi
+  perl -e 'select(undef,undef,undef,12)'
+done
+export PATH=*** tail -3 ~/.claude/scripts/logs/daily-backup.log; date "+now: %H:%M:%S"
+export PATH=***
+awk '/19:43:1[0-9].*daily-backup start/{f=1} f' ~/.claude/scripts/logs/daily-backup.log | grep -viE "OK$|verified|mirrored|SKIPPED|path set|Indexed|complete|start|end" | sort -u | head -12
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage; do
+  cd "$d"; br=$(git symbolic-ref --short HEAD)
+  git -c credential.helper= -c 'credential.helper=!gh auth git-credential' fetch origin 2>&1 | tail -1
+  git reset --soft "origin/$br"
+  echo "$d: [$(git rev-list --left-right --count origin/$br...HEAD)] tracked-dirty=$(git status --porcelain | grep -cv '^??')"
+done
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+GITC="git -c credential.helper= -c credential.helper=!gh\ auth\ git-credential"
+cd ~/DEV/SecondBrain 2>/dev/null || cd ~/SecondBrain 2>/dev/null || { echo "SecondBrain not found"; ls ~/DEV | head -30; exit 0; }
+pwd; git status --porcelain | head -3
+git -c credential.helper= -c 'credential.helper=!gh auth git-credential' fetch origin 2>&1 | tail -1
+git merge --ff-only @{u} 2>&1 | tail -2
+echo "now: [$(git rev-list --left-right --count @{u}...HEAD)] dirty: $(git status --porcelain | grep -cv '^??')"
+export PATH=*** grep -rn "SecondBrain" ~/.claude/scripts/backup-manifest.json | head -3; find "$HOME" -maxdepth 3 -type d -name "SecondBrain" 2>/dev/null | head -3
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+cd ~/Desktop/SecondBrain
+git status --porcelain | head -4
+git -c credential.helper= -c 'credential.helper=!gh auth git-credential' fetch origin 2>&1 | tail -1
+git merge --ff-only @{u} 2>&1 | tail -2
+echo "now: [$(git rev-list --left-right --count @{u}...HEAD)] tracked-dirty: $(git status --porcelain | grep -cv '^??')"
+export PATH=***
+cd ~/Desktop/SecondBrain
+git show "@{u}:morning-briefings/2026-08-06.md" > "$CLAUDE_JOB_DIR/tmp/incoming-briefing.md" 2>/dev/null && diff -q "$CLAUDE_JOB_DIR/tmp/incoming-briefing.md" morning-briefings/2026-08-06.md && echo IDENTICAL || { echo DIFFER; diff "$CLAUDE_JOB_DIR/tmp/incoming-briefing.md" morning-briefings/2026-08-06.md | head -10; }
+export PATH=***
+cd ~/Desktop/SecondBrain
+mv morning-briefings/2026-08-06.md morning-briefings/2026-08-06-failedrun-local.md
+git merge --ff-only @{u} 2>&1 | tail -1
+echo "now: [$(git rev-list --left-right --count @{u}...HEAD)] tracked-dirty: $(git status --porcelain | grep -cv '^??') untracked: $(git status --porcelain | grep -c '^??')"
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+cd ~/printing-press/.publish-repo-dev-289aa4de
+git status --porcelain | head -3
+git -c credential.helper= -c 'credential.helper=!gh auth git-credential' fetch origin 2>&1 | tail -1
+git reset --hard origin/feat/zotero-research-library 2>&1 | tail -1
+echo "publish clone: [$(git rev-list --left-right --count origin/feat/zotero-research-library...HEAD)] dirty: $(git status --porcelain | wc -l | tr -d ' ')"
+git log --oneline -3
+export PATH=***
+cd ~/printing-press/.publish-repo-dev-289aa4de
+git remote -v; git branch -vv | head -5; git config remote.origin.fetch
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+cd ~/printing-press/.publish-repo-dev-289aa4de
+GITCRED=(-c credential.helper= -c 'credential.helper=!gh auth git-credential')
+git "${GITCRED[@]}" fetch origin '+refs/heads/feat/zotero-research-library:refs/remotes/origin/feat/zotero-research-library' '+refs/heads/feat/catapult-openfield-connect:refs/remotes/origin/feat/catapult-openfield-connect' 2>&1 | tail -1
+git reset --hard origin/feat/zotero-research-library >/dev/null
+git branch -f feat/catapult-openfield-connect origin/feat/catapult-openfield-connect
+git branch --set-upstream-to=origin/feat/zotero-research-library feat/zotero-research-library >/dev/null 2>&1
+echo "zotero: [$(git rev-list --left-right --count origin/feat/zotero-research-library...HEAD)] head=$(git rev-parse --short HEAD)"
+echo "catapult: branch at $(git rev-parse --short feat/catapult-openfield-connect) remote $(git rev-parse --short origin/feat/catapult-openfield-connect)"
+export PATH=*** launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup && echo kicked
+export PATH=***
+python3 - <<'EOF'
+import pathlib
+p = pathlib.Path.home()/".claude/global-memory/MEMORY.md"
+t = p.read_text()
+t = t.replace("- **CLIs reprinted (8/6)**: PR#1667+#1668 fully green; await maintainer merge. All repos reconciled post-outage. Git hangs in sandboxed shells = credential prompt; fix: `git -c 'credential.helper=!gh auth git-credential'`. SSH key: `gh auth refresh -s admin:public_key`.",
+              "- **CLIs reprinted (8/6)**: PR#1667+#1668 fully green; await maintainer merge. Repos reconciled. Git-hang fix →Tier A zsh-shell-traps. SSH key: `gh auth refresh -s admin:public_key`.")
+p.write_text(t)
+print(len(t.encode()))
+EOF
+export PATH=*** tail -5 ~/.claude/scripts/logs/daily-backup.log; date "+now: %H:%M:%S"; pgrep -fl daily-backup | head -2
+export PATH=***
+gh api user -i 2>/dev/null | grep -i '^x-oauth-scopes'
+gh api -X POST user/keys -f title="MacBook (restored 2026-08)" -f key="$(cat ~/.ssh/id_ed25519.pub)" --jq '{id, title, created_at}'
+export PATH=***
+ssh -o StrictHostKeyChecking=accept-new -o BatchMode=yes -T git@github.com 2>&1 | head -2
+export PATH=***
+for pr in 1667 1668; do
+  echo "=== PR #$pr"
+  gh api "repos/mvanhorn/printing-press-library/pulls/$pr" --jq '{state, merged, mergeable_state, updated_at}'
+  gh api "repos/mvanhorn/printing-press-library/issues/$pr/comments" --paginate --jq '.[] | select(.user.login == "mvanhorn") | {created_at, body: (.body | .[0:300])}' | tail -5
+  gh api "repos/mvanhorn/printing-press-library/pulls/$pr/reviews" --jq '.[] | select(.user.login == "mvanhorn") | {state, submitted_at, body: (.body | .[0:200])}' | tail -3
+done
+export PATH=***
+echo "--- errors.log:"; cat ~/.claude/global-memory/transcripts/.errors.log 2>/dev/null | tail -5
+echo "--- SSD:"; ls /Volumes/ 2>/dev/null
+echo "--- env keys present:"; for v in GMAIL_APP_PASSWORD ZOTERO_API_KEY CATAPULT_API_TOKEN; do grep -qs "$v" ~/.zshrc ~/.zshenv ~/.zprofile 2>/dev/null && echo "$v: set somewhere" || echo "$v: not in shell rc"; done
+echo "--- failedrun file:"; ls ~/Desktop/SecondBrain/morning-briefings/2026-08-06-failedrun-local.md 2>/dev/null
+export PATH=***
+ls ~/.claude/claude-memory-compiler/scripts/ ~/.claude/claude-memory-compiler/hooks/; grep -rn "compile.py manually\|backlog" ~/.claude/claude-memory-compiler/hooks/*.py ~/.claude/claude-memory-compiler/scripts/*.py 2>/dev/null | grep -i "manual\|backlog" | head -5
+export PATH=***
+cd ~/.claude/claude-memory-compiler && /Users/kristinarash/.local/bin/uv run python scripts/compile.py --help 2>&1 | head -25
+export PATH=***
+cd ~/.claude/claude-memory-compiler && /Users/kristinarash/.local/bin/uv run python scripts/compile.py --dry-run 2>&1 | tail -8
+export PATH=***
+cd ~/.claude/claude-memory-compiler && /Users/kristinarash/.local/bin/uv run python scripts/compile.py 2>&1 | tail -15
+export PATH=***
+ls /Volumes/; echo ---
+diskutil info $(df /Volumes/* 2>/dev/null | tail -1 | awk '{print $1}') 2>/dev/null | grep -E "Volume Name|File System|Disk Size" | head -3
+rm ~/Desktop/SecondBrain/morning-briefings/2026-08-06-failedrun-local.md && echo "failedrun file deleted"
+export PATH=***
+python3 - <<'EOF'
+import json, pathlib
+p = pathlib.Path.home()/".claude/scripts/backup-manifest.json"
+m = json.loads(p.read_text())
+ssd = m["destinations"]["ssd"]
+ssd["root"] = "/Volumes/SSK SSD/AssistantBackup"
+ssd["volumeLabel"] = "SSK SSD"
+ssd["note"] = "Nightly target. 500GB exFAT SSD attached 2026-08-06 (label 'SSK SSD' — has a space; pwsh paths handle it). optional:true so an unplugged drive warns instead of fails."
+p.write_text(json.dumps(m, indent=2) + "\n")
+print("manifest updated")
+EOF
+mkdir -p "/Volumes/SSK SSD/AssistantBackup" && echo "dest dir ready"
+launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup && echo "backup kicked"
+export PATH=***
+cli-printing-press --help 2>&1 | grep -iE "bundle|skill|mcp|install" | head; echo ---
+ls ~/printing-press/library/zotero-research-library/ | grep -iE "skill|mcpb|manifest"; echo ---
+ls ~/.claude/skills/ | head -20
+export PATH=***
+ls ~/.claude/skills/ | grep -iE "pp-|catapult|zotero"; echo ---
+cli-printing-press bundle --help 2>&1 | head -25
+export PATH=***
+diff <(cat ~/printing-press/library/zotero-research-library/SKILL.md) <(cat ~/.claude/skills/pp-zotero-research-library/SKILL.md) >/dev/null && echo "SKILL current" || echo "SKILL differs"
+ls ~/.claude/skills/pp-zotero-research-library/
+grep -o '"[^"]*pp-mcp[^"]*"' ~/.claude.json 2>/dev/null | sort -u | head; grep -rn "pp-mcp\|catapult" ~/.claude/settings.json 2>/dev/null | head -3
+export PATH=***
+diff ~/printing-press/library/zotero-research-library/SKILL.md ~/.claude/skills/pp-zotero-research-library/SKILL.md | head -12
+echo "=== catapult skill vs library:"; diff -q ~/printing-press/library/catapult-openfield-connect/SKILL.md ~/.claude/skills/pp-catapult-openfield-connect/SKILL.md 2>&1
+echo "=== mcp registrations:"; python3 -c "
+import json,os
+try:
+    c=json.load(open(os.path.expanduser('~/.claude.json')))
+    for scope in [c.get('mcpServers',{})]:
+        for k,v in scope.items(): print(k, v.get('command',''))
+except Exception as e: print('err',e)"
+export PATH=***
+cp ~/printing-press/library/zotero-research-library/SKILL.md ~/.claude/skills/pp-zotero-research-library/SKILL.md
+cp ~/printing-press/library/catapult-openfield-connect/SKILL.md ~/.claude/skills/pp-catapult-openfield-connect/SKILL.md
+echo "skills updated"
+cli-printing-press bundle ~/printing-press/library/zotero-research-library --output ~/printing-press/library/zotero-research-library/zotero-research-library.mcpb 2>&1 | tail -4
+export PATH=***
+# register the MCP server for Claude Code (user scope) using the installed binary
+ls ~/go/bin/ | grep zotero
+go build -o ~/go/bin/zotero-research-library-pp-mcp ~/printing-press/library/zotero-research-library/cmd/zotero-research-library-pp-mcp 2>/dev/null || (cd ~/printing-press/library/zotero-research-library && go build -o ~/go/bin/zotero-research-library-pp-mcp ./cmd/zotero-research-library-pp-mcp)
+echo "mcp binary: $(ls -la ~/go/bin/zotero-research-library-pp-mcp | awk '{print $5}') bytes"
+claude mcp add --scope user zotero -- ~/go/bin/zotero-research-library-pp-mcp 2>&1 | tail -2
+export PATH=*** tail -6 ~/.claude/scripts/logs/daily-backup.log; ls "/Volumes/SSK SSD/AssistantBackup/" 2>/dev/null | head -8
+export PATH=***
+before=$(grep -c "daily-backup end" ~/.claude/scripts/logs/daily-backup.log)
+while true; do
+  now=$(grep -c "daily-backup end" ~/.claude/scripts/logs/daily-backup.log)
+  if [ "$now" -gt "$before" ]; then grep "daily-backup end" ~/.claude/scripts/logs/daily-backup.log | tail -1; break; fi
+  perl -e 'select(undef,undef,undef,20)'
+done
+export PATH=***
+python3 - <<'EOF'
+import json, pathlib
+p = pathlib.Path.home()/".claude/scripts/backup-manifest.json"
+m = json.loads(p.read_text())
+ssd = m["destinations"]["ssd"]
+ssd["root"] = "/Volumes/CRASHBOX/AssistantBackup"
+ssd["volumeLabel"] = "CRASHBOX"
+ssd["note"] = "Nightly target. 500GB exFAT SSD attached 2026-08-06, volume renamed to CRASHBOX per original spec. optional:true so an unplugged drive warns instead of fails."
+p.write_text(json.dumps(m, indent=2) + "\n")
+print("manifest -> CRASHBOX")
+EOF
+pgrep -fl "daily-backup" | head -2 || echo "no run active"
+ls "/Volumes/CRASHBOX/AssistantBackup/" 2>/dev/null | head -5
+export PATH=*** launchctl kickstart -k gui/$(id -u)/com.keystone.dailybackup && echo restarted
+export PATH=***
+grep "daily-backup end" ~/.claude/scripts/logs/daily-backup.log | tail -2
+tail -3 ~/.claude/scripts/logs/daily-backup.log; date "+now: %H:%M"
+export PATH=***
+for d in ~/DEV/KeystoneOS ~/DEV/morning-briefing ~/DEV/project-triage ~/DEV/CFB_Victory_Model ~/.claude/global-memory ~/Desktop/SecondBrain; do
+  cd "$d"; s=$(git status --porcelain | grep -v '^?? .DS_Store' | head -5)
+  echo "=== $(basename $d): $([ -z "$s" ] && echo CLEAN || echo "$s")"
+done
+echo "=== errors.log: $(wc -c < ~/.claude/global-memory/transcripts/.errors.log) bytes"
+ls -la ~/.claude/global-memory/transcripts/2026-08-06.md | awk '{print "transcript:", $6, $7, $8}'
+git -C ~/.claude/scripts status --porcelain 2>/dev/null | head -3 || echo "scripts: not a repo"
+export PATH=*** cat ~/.claude/global-memory/transcripts/.errors.log; echo ---; git -C ~/.claude 2>/dev/null rev-parse --show-toplevel 2>/dev/null || echo "~/.claude not a repo"; git -C ~/Desktop/SecondBrain log --oneline -1
+export PATH=*** git -C ~/.claude status --porcelain | grep -vE '^\?\?' | head -8; echo "--- untracked count: $(git -C ~/.claude status --porcelain | grep -c '^??')"
+export PATH=***
+export GIT_TERMINAL_PROMPT=***
+cd ~/.claude/global-memory
+git add handoffs/2026-08-06-restore-closeout.md MEMORY.md
+git commit -q -m "handoff: 2026-08-06 restore closeout
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Rd2m8Kjj56f3yU6btfEnGM" && git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push -q origin main 2>&1 | tail -1; echo "pushed: $(git rev-list --left-right --count @{u}...HEAD)"
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 321 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

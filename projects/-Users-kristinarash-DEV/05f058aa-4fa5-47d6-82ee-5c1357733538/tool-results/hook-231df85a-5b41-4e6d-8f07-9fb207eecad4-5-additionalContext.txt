@@ -1,0 +1,206 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- reivew handoff doc, handoff-ath-tech-framework-2026-08-13.md. We already have an executive summary, but I was asked to provide a couple of High-lev...
+- A couple of departments need to be added to the form. We need to add:
+- Performance Nutrition
+- Applied Performance
+Strength Conditioning needs to ...
+- Okay, I think I wasn't clear. I like the form. Let's start a new form that has the same departments listed, and we can just have the person who's f...
+
+## Files Modified
+2026-08-12-ath-tech-software-framework.md, TALKING_POINTS_ER_2026-08-13_internal.md, merged.txt, mtg_clean.md, MEETING_RECORD_2026-08-13_tech-software-review.md, ROUTING_ONEPAGER_ATH_2026-08-13.md, INVENTORY_FORM_SPEC_2026-08-13.md, INVENTORY_EMAIL_DRAFT_2026-08-13.md, MICAH_MEETING_REQUEST_2026-08-13.md, INVENTORY_FORMS_LINKS.md, .errors.log, project_gws-forms-api.md, project_fireflies-cli-broken-on-mac.md, MEMORY.md, 2026-08-13-ath-tech-routing-and-inventory.md
+
+## Unresolved Errors
+- {"stdout":"== DIAGRAM excalidraw text ==\nDIA: 'COMPLETE INTAKE FORMS\\nIdea Form + Internal ATH Form\\nDeclare data category and level'\nDIA: 'EVA...
+- {"stdout":"Fireflies CLI — Every Fireflies meeting feature, plus offline search, cross-meeting intelligence, and a local database no other tool ha…...
+
+## Git
+$(cat <<'EOF'
+Handoff + memory update: ATH tech routing sheet and inventory forms
+
+Adds 2026-08-13 handoff covering the post-meeting direction change (Micah
+Lamb writing a counter-proposal; athletics builds a one-page routing sheet
+feeding the existing IDEA form rather than a parallel process).
+
+Refreshes the stale ATH Tech framework thread in MEMORY.md — the 8/13
+meeting happened and level naming is settled.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01K2uG1bTDbEB4aykXJ12Bx6
+EOF
+), Transcript update 2026-08-13
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01K2uG1bTDbEB4aykXJ12Bx6, Handoff: record Business Office entry-point decision
+
+Every request starts with the Business Office as the first control point,
+regardless of level or data type. No Level 1 bypass. Removes the open
+question from Next actions and records it as decision 8.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01K2uG1bTDbEB4aykXJ12Bx6, Handoff: Micah follow-up email sent 8/14
+
+Next action 1 moves from 'schedule the meeting' to 'awaiting reply'.
+Flags the personal-account Gmail draft as superseded.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01K2uG1bTDbEB4aykXJ12Bx6
+
+## Project Rules
+.claude/CLAUDE.md, handoffs/2026-08-12-ath-tech-software-framework.md, tmp/merged.txt, tmp/mtg_clean.md, transcripts/.errors.log, memory/project_fireflies-cli-broken-on-mac.md
+
+## Skills Used
+humanizer
+
+## Environment
+cwd: ~/.claude/global-memory
+model:claude-opus-5[1m]
+export PATH=*** fireflies-pp-cli --help 2>&1 | head -50
+export PATH=*** fireflies-pp-cli doctor 2>&1 | head -30
+export PATH=*** timeout 300 fireflies-pp-cli sync 2>&1 | tail -20
+export PATH=*** fireflies-pp-cli sync 2>&1 | tail -20
+export PATH=***
+echo "=== recent transcripts ==="
+fireflies-pp-cli transcripts find --agent 2>&1 | /opt/homebrew/bin/python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+rows = d if isinstance(d,list) else d.get('data') or d.get('transcripts') or []
+for r in rows[:25]:
+    print(r.get('date','')[:10] if isinstance(r.get('date'),str) else r.get('date'), '|', r.get('title') or r.get('name'), '|', r.get('id'))
+" 2>&1 | head -30
+export PATH=***
+fireflies-pp-cli summary 01KZYFQ9F92NHG57AHSQJ2DFR4 --agent 2>&1 | head -c 6000
+export PATH=*** date
+fireflies-pp-cli transcripts get 01KZYFQ9F92NHG57AHSQJ2DFR4 --agent 2>&1 | /opt/homebrew/bin/python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+t=d.get('data',d) if isinstance(d,dict) else d
+if isinstance(t,dict) and 'transcript' in t: t=t['transcript']
+for k in ['title','date','dateString','duration','host_email','organizer_email','participants','meeting_attendees']:
+    v=t.get(k)
+    if v is not None: print(k,'=',json.dumps(v)[:600])
+" 2>&1
+export PATH=***
+fireflies-pp-cli transcripts get 01KZYFQ9F92NHG57AHSQJ2DFR4 --agent > "$CLAUDE_JOB_DIR/tmp/mtg.json" 2>&1
+wc -c "$CLAUDE_JOB_DIR/tmp/mtg.json"
+/opt/homebrew/bin/python3 -c "
+import json
+d=json.load(open('/Users/kristinarash/.claude/jobs/05f058aa/tmp/mtg.json'))
+t=d.get('data',d)
+if isinstance(t,dict) and 'transcript' in t: t=t['transcript']
+print('keys:',list(t.keys()))
+s=t.get('sentences') or []
+print('sentences:',len(s))
+spk={}
+for x in s: spk[x.get('speaker_name')]=spk.get(x.get('speaker_name'),0)+1
+print('speakers:',spk)
+"
+export PATH=***
+/opt/homebrew/bin/python3 -c "
+import json
+d=json.load(open('/Users/kristinarash/.claude/jobs/05f058aa/tmp/mtg.json'))
+t=d.get('data',d)
+print('speakers:',json.dumps(t.get('speakers'))[:500])
+print('meeting_info:',json.dumps(t.get('meeting_info'))[:300])
+"
+echo "=== export help ==="
+fireflies-pp-cli transcripts export --help 2>&1 | head -25
+export PATH=***
+fireflies-pp-cli transcripts export 01KZYFQ9F92NHG57AHSQJ2DFR4 --output "$CLAUDE_JOB_DIR/tmp/mtg.md" --agent 2>&1 | head -5
+wc -c "$CLAUDE_JOB_DIR/tmp/mtg.md" 2>&1
+export PATH=***
+sqlite3 ~/.local/share/fireflies-pp-cli/data.db ".tables" 2>&1
+echo "=== schema transcripts ==="
+sqlite3 ~/.local/share/fireflies-pp-cli/data.db ".schema transcripts" 2>&1 | head -20
+export PATH=*** fireflies-pp-cli transcripts get --help 2>&1 | head -30; echo "=== search cmd ==="; fireflies-pp-cli transcripts search --help 2>&1 | head -20
+export PATH=***
+fireflies-pp-cli transcripts get 01KZYFQ9F92NHG57AHSQJ2DFR4 --live --json > "$CLAUDE_JOB_DIR/tmp/mtg_live.json" 2>&1
+wc -c "$CLAUDE_JOB_DIR/tmp/mtg_live.json"
+/opt/homebrew/bin/python3 -c "
+import json
+d=json.load(open('/Users/kristinarash/.claude/jobs/05f058aa/tmp/mtg_live.json'))
+t=d.get('data',d)
+if isinstance(t,dict) and 'transcript' in t: t=t['transcript']
+print('keys:',list(t.keys())[:30])
+s=t.get('sentences')
+print('sentences:', 'NONE' if not s else len(s))
+" 2>&1
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- … 26 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

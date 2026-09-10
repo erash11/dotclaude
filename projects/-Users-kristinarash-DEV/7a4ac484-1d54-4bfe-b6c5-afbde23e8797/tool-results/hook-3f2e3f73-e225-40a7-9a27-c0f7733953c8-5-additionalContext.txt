@@ -1,0 +1,193 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: The graph needs a scope. Skipping your two PDF research libraries cuts the work by ~5x. Which do you want? → A: Working core (Recommended)
+- Q: Who should do the 55 semantic-extraction chunks? → A: Codex, pilot first (Recommended)
+- Q: No key exists on your machine. How do you want to finish the document layer? → A: You grab a free key (Recommended)
+- the shell is reporting no attribution, looks like 0 nodes are being created. not sure its working.
+- make sure you always verify our work, bring in codex to do so
+
+## Files Modified
+ARMS-gap-map.md, FOOTBALL.md, PERFORMANCE.md, RESEARCH.md, PLATFORM.md, PROGRAM.md, PERSONAL.md, CLAUDE.md, gf_detect.py, gf_scope.py, gf_ast.py, gf_pipeline.py, gf_chunk.py, mkprompt.py, gf_validate.py, run_chunks.sh, gf_build.py, run_chunks2.sh, nodecount.py, gf_fixcode.py, gf_label.py, gf_finalize.py, RESUME.md, gf_gemini.py, finish_graph.sh, gemini_loop.sh, gf_remaining.py, gf_status.py, gf_fixdone.py, gf_ab.py, verify_prompt.txt, gf_checkmerge.py, office_loop.sh, verify2_prompt.txt, handoff-arms-graph-2026-08-31.md
+
+## Unresolved Errors
+- {"stdout":"1. Which app should hold the buttons: my dashboard HTML, a local web app, or something else?\n2. Which 3-5 skills do I run often enough ...
+- {"stdout":"TOTAL PAGES: 17\n===== PAGE 1 =====\nA  R O B O N U G G E T S  G U I D E\nBuild your\nAgentic OS\nThe complete ARMS setup for the Claude...
+- {"stdout":"total_files: 7077\ntotal_words: 5241584\n  code: 1410\n  document: 1052\n  paper: 4479\n  image: 136\nskipped_sensitive: 132\n   skip: /...
+- {"stdout":"        To fix this issue, refer to the \"Safe importing of main module\"\n        section in https://docs.python.org/3/library/multipro...
+- {"stdout":"Run Codex non-interactively\n\nUsage: codex exec [OPTIONS] [PROMPT]\n       codex exec [OPTIONS] <COMMAND> [ARGS]\n\nCommands:\n  resume...
+- {"stdout":"      70 /Users/kristinarash/.claude/skills/graphify/references/extraction-spec.md\n---\n# graphify reference: extraction subagent promp...
+- {"stdout":"                freeze_support()\n                ...\n\n        The \"freeze_support()\" line can be omitted if the program\n        is...
+- {"stdout":"======== codex_07.log — last real output ========\n@@ -0,0 +1 @@\n+{\"nodes\":[],\"edges\":[],\"hyperedges\":[],\"input_tokens\":0,\"out...
+- {"stdout":"}\nDiscarding invalid hook definition for SessionStart from project: {\n  command: `powershell.exe -NoLogo -NoProfile -NonInteractive -E...
+- {"stdout":"=== does graphify.llm expose the gemini backend? ===\n  extract fns: ['_DEEP_EXTRACTION_SUFFIX', '_EXTRACTION_JSON_SCHEMA', '_EXTRACTION...
+- {"stdout":" \u001b[32m+\u001b[39m \u001b[1mpydantic-core\u001b[0m\u001b[2m==2.46.5\u001b[0m\n \u001b[32m+\u001b[39m \u001b[1mregex\u001b[0m\u001b[2...
+- {"stdout":"=== dry run (no key stored yet - should fail cleanly) ===\nERROR: no GEMINI_API_KEY in keychain.\nStore it first:\n  security add-generi...
+- {"stdout":"key len: 53\n[graphify] chunk 1/1 failed: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please...
+- {"stdout":"[graphify] chunk 1/1 failed: Error code: 503 - [{'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Sp...
+- {"stdout":"report lines: 20\n---\n## VERDICT: FAIL\n\n## CONFIRMED\n\n- Claim 1, graph integrity: PASS for the stored graph.json. It contains 8,919...
+- {"stdout":"=== office loop output ===\n===== office batch 1/8 (queued in corpus: 130) =====\n[graphify] chunk 7/7 failed: Error code: 429 - [{'erro...
+- {"stdout":"## VERDICT: FAIL\n\n## FIXED\n\n- **P1 — FIXED.** `.graphify_gemini.json` contains 329 node records and 328 unique IDs after applying Gr...
+- {"stdout":"[graphify] chunk 12/12 failed: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your...
+
+## Project Rules
+.claude/CLAUDE.md
+
+## Skills Used
+watch:watch, graphify, codex:codex-cli-runtime
+
+## Environment
+cwd: /Users/kristinarash/DEV/graphify-out
+model:claude-opus-5[1m]
+~/.claude/skills/graphify/.venv/bin/python -m pip install -q 'graphifyy[office]' 2>&1 | tail -5; echo "--- exit: $? ---"; ~/.claude/skills/graphify/.venv/bin/python -c 'import graphify; print("graphify still imports OK")' 2>&1 | tail -2
+echo "=== codex present? ==="
+which -a codex 2>/dev/null || echo "  not on PATH"
+codex --version 2>&1 | head -2
+echo
+echo "=== codex auth/config ==="
+ls -1 ~/.codex 2>/dev/null | head -10
+echo
+echo "=== fix office extra via uv (venv has no pip) ==="
+/Users/kristinarash/.local/bin/uv pip install --python ~/.claude/skills/graphify/.venv/bin/python -q 'graphifyy[office]' 2>&1 | tail -4
+echo "--- verify ---"
+~/.claude/skills/graphify/.venv/bin/python -c 'import graphify; print("graphify OK")' 2>&1 | tail -2
+export UV_HTTP_TIMEOUT=*** UV_CONCURRENT_DOWNLOADS=4
+/Users/kristinarash/.local/bin/uv pip install --python ~/.claude/skills/graphify/.venv/bin/python 'graphifyy[office]' 2>&1 | tail -8
+echo "--- verify office deps ---"
+~/.claude/skills/graphify/.venv/bin/python -c 'import docx, openpyxl; print("python-docx + openpyxl OK")' 2>&1 | tail -2
+~/.claude/skills/graphify/.venv/bin/python -c 'import graphify; print("graphify OK")' 2>&1 | tail -1
+cd /Users/kristinarash/DEV
+rm -f graphify-out/.graphify_chunk_02.json
+export GEMINI_CLI_TRUST_WORKSPACE=***
+cat /Users/kristinarash/.claude/jobs/7a4ac484/tmp/prompts/prompt_02.txt | gemini -y --skip-trust -p "Follow the instructions provided on stdin exactly." 2>&1 | grep -vE '^\s*$' | tail -15
+PY=/Users/kristinarash/.claude/skills/graphify/.venv/bin/python
+f=graphify-out/.graphify_chunk_02.json
+[ -e "$f" ] && echo "RESULT: chunk 02 = $($PY /Users/kristinarash/.claude/jobs/7a4ac484/tmp/nodecount.py "$f") nodes" || echo "RESULT: NOT WRITTEN"
+export UV_HTTP_TIMEOUT=*** UV_CONCURRENT_DOWNLOADS=4
+/Users/kristinarash/.local/bin/uv pip install --python /Users/kristinarash/.claude/skills/graphify/.venv/bin/python 'graphifyy[gemini]' 2>&1 | tail -8
+echo "--- verify ---"
+PY=/Users/kristinarash/.claude/skills/graphify/.venv/bin/python
+$PY -c "import google.genai; print('  google-genai OK')" 2>&1 | tail -1
+$PY -c "import graphify; from graphify import llm; print('  graphify + llm OK')" 2>&1 | tail -1
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+export GF_LIMIT=***
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_gemini.py 2>&1 | tail -18
+cd /Users/kristinarash/DEV
+rm -f graphify-out/.graphify_gemini.json
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+export GF_LIMIT=***
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_gemini.py 2>&1 | grep -vE 'RuntimeWarning|^\s+_scs|^\s+saved' | tail -12
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+PY=/Users/kristinarash/.claude/skills/graphify/.venv/bin/python
+AB=/Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_ab.py
+for args in "24 20" "24 6" "24 6 gemini-3.5-flash"; do
+  $PY $AB $args 2>&1 | grep -E '^RESULT|^  files=|^  files_with_nodes|^  nodes_per_file'
+  echo
+done
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+echo "key len: ${#GEMINI_API_KEY}"
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_ab.py 8 20 2>&1 | tail -20
+echo "=== exit: $? ==="
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+for M in gemini-2.5-flash gemini-3.5-flash gemini-flash-latest; do
+  printf "%-22s " "$M"
+  curl -sS --max-time 40 -o /tmp/q.json -w "HTTP %{http_code}  " \
+    "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions" \
+    -H "Authorization: Bearer $GEMINI_API_KEY" -H "Content-Type: application/json" \
+    -d "{\"model\":\"$M\",\"messages\":[{\"role\":\"user\",\"content\":\"reply with OK\"}],\"max_tokens\":5}" 2>&1
+  grep -o '"message": *"[^"]\{0,60\}' /tmp/q.json 2>/dev/null | head -1 || echo ""
+  echo
+done
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_ab.py 60 60 gemini-3.5-flash 2>&1 | grep -vE 'RuntimeWarning|warnings\.warn|^\s+_scs' | tail -10
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/.claude/jobs/7a4ac484/tmp/gf_ab.py 60 60 gemini-flash-latest 2>&1 | grep -vE 'RuntimeWarning|warnings\.warn|^\s+_scs' | tail -8
+cd /Users/kristinarash/DEV
+export GEMINI_API_KEY=*** find-generic-password -s GEMINI_API_KEY -a "$USER" -w 2>/dev/null)
+export GF_FILTER=*** GF_MODEL=gemini-flash-latest GF_CHUNK=15 GF_LIMIT=15
+/Users/kristinarash/.claude/skills/graphify/.venv/bin/python /Users/kristinarash/DEV/graphify-out/scripts/gf_gemini.py 2>&1 \
+  | grep -E 'FILTERED|LIMITED|model override|gemini pass|attribution|marked done|progress|Error code|quota|limit:' | tail -8
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 29 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

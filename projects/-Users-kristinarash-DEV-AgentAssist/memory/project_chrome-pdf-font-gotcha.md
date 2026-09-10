@@ -1,0 +1,45 @@
+---
+name: chrome-pdf-font-gotcha
+description: "Chrome --print-to-pdf silently drops every glyph unless --virtual-time-budget is passed, when the page uses large data-URI font stylesheets"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 24188e64-cd3b-4d08-a65f-fd2807d3bfb7
+  modified: 2026-08-20T02:41:23.231Z
+---
+
+Chrome's `--print-to-pdf` does **not** wait for `@font-face` files to resolve. With
+`baylor-brand.css` (1.6 MB of data-URI fonts) it prints first and drops **every single
+glyph** — you get a PDF with all the rules, background colors and logo marks, and not one
+character of text.
+
+**Why it is dangerous:** Chrome exits 0. The file is a plausible size. The HTML looks
+perfect in a browser and in a headless *screenshot*. Nothing signals failure. This shipped
+four broken PDFs on 2026-08-19 before the user noticed.
+
+**Fix:** always pass `--virtual-time-budget=20000`.
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=20000 \
+  --print-to-pdf=out.pdf "file:///abs/path/in.html"
+```
+
+**Verify the PDF, never the HTML.** Screenshotting the source HTML proves nothing — that
+is exactly what made this invisible. Check embedded fonts on the rendered PDF:
+
+```bash
+uv run --with pypdf python -c "
+from pypdf import PdfReader
+r=PdfReader('out.pdf')
+print('fonts:', len(r.pages[0].get('/Resources',{}).get('/Font',{})))"
+```
+
+Zero fonts means the text was dropped. Rough size tell: a healthy build was ~135–240 KB,
+the broken ones ~45–75 KB.
+
+This applies to the `html-to-pdf` skill too (its SKILL.md mentions `--virtual-time-budget`
+only as a fix for missing *images*; it is mandatory for embedded fonts). To rasterize and
+actually look at a PDF without installing poppler: `uv run --with pypdfium2 ...`.
+
+Relevant to [[baylor-house-style]].

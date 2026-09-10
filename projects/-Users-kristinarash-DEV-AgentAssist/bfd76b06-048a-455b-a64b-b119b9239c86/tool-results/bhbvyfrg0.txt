@@ -1,0 +1,400 @@
+[07:34] negotiate on your behalf. At my last startup, I used to speak to 10 to 20
+[07:36] startup, I used to speak to 10 to 20 different suppliers to land on the one
+[07:38] different suppliers to land on the one that I needed to produce hundreds of
+[07:39] that I needed to produce hundreds of thousands of product that would get
+[07:40] thousands of product that would get shipped around the globe. And if I had
+[07:42] shipped around the globe. And if I had this at the time, it would have been a
+[07:43] this at the time, it would have been a massive lifesaver. And because Ask AI
+[07:45] massive lifesaver. And because Ask AI work has data about what people are
+[07:47] work has data about what people are selling across platforms like Alibaba,
+[07:49] selling across platforms like Alibaba, it has unique contextual information to
+[07:50] it has unique contextual information to draft better responses. [music] And the
+[07:52] draft better responses. [music] And the thing with this is it's not something
+[07:53] thing with this is it's not something that you can just replace yourself. So,
+[07:55] that you can just replace yourself. So, if it's e-commerce marketing, outreach,
+[07:57] if it's e-commerce marketing, outreach, or operations, using Ask AI work to
+[07:59] or operations, using Ask AI work to create an agent team that runs 24/7 just
+[08:02] create an agent team that runs 24/7 just makes sense. And you can manage it
+[08:03] makes sense. And you can manage it directly through your phone through
+[08:04] directly through your phone through Telegram. If you want to start building
+[08:06] Telegram. If you want to start building with your own AI agent team, click the
+[08:08] with your own AI agent team, click the first link in the description where all
+[08:10] first link in the description where all new Ask AI work users will get free
+[08:12] new Ask AI work users will get free access for 7 days. You're going to be
+[08:13] access for 7 days. You're going to be happy you tried it. But we need to get
+[08:14] happy you tried it. But we need to get back to step two, where we're
+[08:16] back to step two, where we're identifying how AI agents can work
+[08:18] identifying how AI agents can work together within Claude code. And the
+[08:19] together within Claude code. And the thing about this, I try and think about
+[08:21] thing about this, I try and think about tasks in cross-project and
+[08:23] tasks in cross-project and inter-project. Cross-project tasks is
+[08:24] inter-project. Cross-project tasks is when two tasks are in entirely different
+[08:26] when two tasks are in entirely different things that don't have to do with each
+[08:28] things that don't have to do with each other. So, think of this as a task that
+[08:29] other. So, think of this as a task that would live in your main business or your
+[08:31] would live in your main business or your job, and then a task that sits in your
+[08:33] job, and then a task that sits in your side project. You want to optimize your
+[08:34] side project. You want to optimize your setup so that if they have nothing to do
+[08:36] setup so that if they have nothing to do with each other, let's have them
+[08:37] with each other, let's have them entirely different projects. So, to
+[08:38] entirely different projects. So, to optimize the setup, I have a folder
+[08:40] optimize the setup, I have a folder called {slash} projects. Then under
+[08:42] called {slash} projects. Then under that, I have each unique thing I work
+[08:44] that, I have each unique thing I work on. So, I have {slash} build partner,
+[08:45] on. So, I have {slash} build partner, {slash} internal OS, {slash} incubator
+[08:47] {slash} internal OS, {slash} incubator website, {slash} clients. This lets me
+[08:49] website, {slash} clients. This lets me separate context and easily allow AI to
+[08:51] separate context and easily allow AI to work within that specific domain, and
+[08:53] work within that specific domain, and I'm confident that there will be no
+[08:54] I'm confident that there will be no overlap. So, I have these clear folders,
+[08:56] overlap. So, I have these clear folders, and then in Claude code directly, I can
+[08:58] and then in Claude code directly, I can select the project that I'm working on.
+[09:00] select the project that I'm working on. By doing this, it separates the context
+[09:01] By doing this, it separates the context entirely, and it easily allows AI to
+[09:03] entirely, and it easily allows AI to know what it should be working on, so I
+[09:04] know what it should be working on, so I don't have to be worried about it
+[09:05] don't have to be worried about it working on a different project. For
+[09:07] working on a different project. For inter-project tasks, this is where it
+[09:08] inter-project tasks, this is where it gets a little bit more tricky. You want
+[09:10] gets a little bit more tricky. You want to think about tasks that are isolated.
+[09:12] to think about tasks that are isolated. So, if you're a software engineer, it's
+[09:13] So, if you're a software engineer, it's different parts of the app. If you're a
+[09:14] different parts of the app. If you're a sales rep, it's different customer
+[09:16] sales rep, it's different customer proposals. If you're a content creator,
+[09:17] proposals. If you're a content creator, it's different scripts. You want to
+[09:18] it's different scripts. You want to think about different units of work that
+[09:20] think about different units of work that don't necessarily overlap. So, if you're
+[09:21] don't necessarily overlap. So, if you're not sure where to work, here's a prompt
+[09:23] not sure where to work, here's a prompt that will work with you to identify the
+[09:25] that will work with you to identify the best task for you to work on
+[09:26] best task for you to work on simultaneously with AI. At this point,
+[09:28] simultaneously with AI. At this point, you've set up agents so that they can
+[09:29] you've set up agents so that they can work simultaneously and complete tasks
+[09:31] work simultaneously and complete tasks end-to-end. But there's a bottleneck
+[09:33] end-to-end. But there's a bottleneck here, too. From Boris, here is the
+[09:34] here, too. From Boris, here is the limitation. Prompting and steering the
+[09:35] limitation. Prompting and steering the model as you juggle sessions. Step three
+[09:38] model as you juggle sessions. Step three is supervised autonomy, and this is the
+[09:39] is supervised autonomy, and this is the second of two operational paradigm
+[09:41] second of two operational paradigm shifts that we'll cover in this video.
+[09:43] shifts that we'll cover in this video. The unlock here is described by Boris.
+[09:45] The unlock here is described by Boris. At this point, Claude proactively does
+[09:46] At this point, Claude proactively does work that you would have had to kick off
+[09:48] work that you would have had to kick off manually before. Maintenance and cleanup
+[09:49] manually before. Maintenance and cleanup that used to wait for someone to find
+[09:51] that used to wait for someone to find the time now runs continuously in the
+[09:52] the time now runs continuously in the background. The key here is that Claude
+[09:54] background. The key here is that Claude is proactively doing work for you. In
+[09:57] is proactively doing work for you. In step one, you became a better AI-powered
+[09:58] step one, you became a better AI-powered worker. That was the first paradigm
+[10:00] worker. That was the first paradigm shift. In step two, you became an AI
+[10:02] shift. In step two, you became an AI manager. And now in step three and step
+[10:04] manager. And now in step three and step four, this is about becoming a manager
+[10:06] four, this is about becoming a manager of AI managers. You become an AI agency
+[10:09] of AI managers. You become an AI agency CEO. And I like this visual of thinking
+[10:11] CEO. And I like this visual of thinking of it like an org chart where you're at
+[10:12] of it like an org chart where you're at the top and you're guiding everyone else
+[10:14] the top and you're guiding everyone else below you. We'll cover the tactical ways
+[10:16] below you. We'll cover the tactical ways to actually do this, but first there's
+[10:17] to actually do this, but first there's one limiting belief I hear more than any
+[10:19] one limiting belief I hear more than any other that keeps people in step two
+[10:21] other that keeps people in step two [music] instead of going to step three.
+[10:23] [music] instead of going to step three. They'll say, "It's faster if I just use
+[10:25] They'll say, "It's faster if I just use AI and do it myself than set up a full
+[10:27] AI and do it myself than set up a full system." And a lot of the times, the
+[10:28] system." And a lot of the times, the reality is that you're actually right.
+[10:30] reality is that you're actually right. It is faster for you to do that specific
+[10:32] It is faster for you to do that specific task yourself. But that isn't the point
+[10:34] task yourself. But that isn't the point of all this. And here's the story that
+[10:35] of all this. And here's the story that changed how I think about this. Back in
+[10:37] changed how I think about this. Back in 2021, I interviewed someone called Evan
+[10:39] 2021, I interviewed someone called Evan Veneter on TikTok Live. Shout out Evan.
+[10:41] Veneter on TikTok Live. Shout out Evan. And he told me, "If you can hire someone
+[10:43] And he told me, "If you can hire someone to do a task 80% as good, do it." Later
+[10:46] to do a task 80% as good, do it." Later that week, I decided to hire my first
+[10:47] that week, I decided to hire my first two contractors. Liam, a social media
+[10:49] two contractors. Liam, a social media manager, and Sarah, a video editor. For
+[10:50] manager, and Sarah, a video editor. For the first two weeks, each video and
+[10:52] the first two weeks, each video and social post technically took me longer
+[10:55] social post technically took me longer because I was teaching and training
+[10:56] because I was teaching and training them. But then it got faster, and then I
+[10:58] them. But then it got faster, and then I wasn't involved at all. I had built a
+[10:59] wasn't involved at all. I had built a team that was able to scale my output
+[11:01] team that was able to scale my output without me being in the middle of it.
+[11:03] without me being in the middle of it. That's the lesson I need you to take out
+[11:04] That's the lesson I need you to take out of this. Lose the battle to win the war.
+[11:07] of this. Lose the battle to win the war. If it takes you more time today, but
+[11:08] If it takes you more time today, but will save you time in the long term, do
+[11:10] will save you time in the long term, do it. So that's the mindset. You're a CEO
+[11:13] it. So that's the mindset. You're a CEO building a team. It may take longer to
+[11:15] building a team. It may take longer to set up, and you're fine with that
+[11:16] set up, and you're fine with that because you're building something that
+[11:18] because you're building something that compounds. Now, as the CEO managing AI
+[11:20] compounds. Now, as the CEO managing AI agents, there are three things that you
+[11:22] agents, there are three things that you need to do, each pulled from Boris's
+[11:24] need to do, each pulled from Boris's blog. The first is you have to create
+[11:25] blog. The first is you have to create your company standard operating
+[11:27] your company standard operating procedures. Every business needs a
+[11:29] procedures. Every business needs a concrete way to do things and complete
+[11:30] concrete way to do things and complete tasks. And the best way to do this
+[11:32] tasks. And the best way to do this within Claude is creating Claude skills.
+[11:34] within Claude is creating Claude skills. These are reusable skills that do the
+[11:35] These are reusable skills that do the same thing every time you run them, and
+[11:37] same thing every time you run them, and you've probably heard of skills before,
+[11:38] you've probably heard of skills before, but the value of this clicks when you
+[11:40] but the value of this clicks when you think about managing a team. You can
+[11:41] think about managing a team. You can think of these skills as a way to scale
+[11:43] think of these skills as a way to scale your output, codifying your processes
+[11:45] your output, codifying your processes without having to worry about AI
+[11:47] without having to worry about AI hallucinating when you're not involved
+[11:49] hallucinating when you're not involved with a task. And my favorite way to
+[11:50] with a task. And my favorite way to create skills is what I call
+[11:52] create skills is what I call output-driven skill creation. Create a
+[11:53] output-driven skill creation. Create a skill that is based on work you've
+[11:55] skill that is based on work you've already done. So, for example, if you
+[11:56] already done. So, for example, if you want to create a topic research skill
+[11:58] want to create a topic research skill that exports a PDF, you would go back
+[12:00] that exports a PDF, you would go back and forth with Claude, create a
+[12:02] and forth with Claude, create a high-quality output, and then write,
+[12:04] high-quality output, and then write, "Based on this conversation, create a
+[12:06] "Based on this conversation, create a Claude skill that allows for this
+[12:07] Claude skill that allows for this process to be reproducible." This will
+[12:09] process to be reproducible." This will create a skill called topic research
+[12:10] create a skill called topic research report and make it so that if AI were to
+[12:12] report and make it so that if AI were to complete this without you, it would
+[12:13] complete this without you, it would follow this exact process. And yes,
+[12:16] follow this exact process. And yes, creating this skill when you're doing
+[12:17] creating this skill when you're doing the task does take more time today, but
+[12:20] the task does take more time today, but it'll save you a headache in the future
+[12:21] it'll save you a headache in the future when you try and offload this task. Once
+[12:23] when you try and offload this task. Once you do that across your entire day or
+[12:25] you do that across your entire day or across your entire team, you're starting
+[12:26] across your entire team, you're starting to build these standard operating
+[12:28] to build these standard operating procedures like you're scaling a team.
+[12:30] procedures like you're scaling a team. The second step is you want to establish
+[12:31] The second step is you want to establish delivery timelines and communication
+[12:33] delivery timelines and communication expectations. For this specific
+[12:35] expectations. For this specific delivery, I use routines. So, this is
+[12:36] delivery, I use routines. So, this is Claude's way of scheduling tasks. I
+[12:38] Claude's way of scheduling tasks. I think of this a lot like saying to a
+[12:40] think of this a lot like saying to a coworker, "Hey, every Monday at 8:00
+[12:42] coworker, "Hey, every Monday at 8:00 a.m., I want this report sent to me."
+[12:44] a.m., I want this report sent to me." And to do this, I would then use the
+[12:45] And to do this, I would then use the skill that we already created, the topic
+[12:47] skill that we already created, the topic research report generation skill, and
+[12:49] research report generation skill, and then set up a routine to run that skill
+[12:51] then set up a routine to run that skill on Mondays. Then the key here is the
+[12:52] on Mondays. Then the key here is the communication expectations. Think about
+[12:54] communication expectations. Think about growing a team. You need to hear from
+[12:56] growing a team. You need to hear from them about what they're doing and any
+[12:57] them about what they're doing and any problems they're having. So, just
+[12:58] problems they're having. So, just setting up this routine is not enough.
+[13:00] setting up this routine is not enough. You need to communicate the results. And
+[13:02] You need to communicate the results. And so, what I like to do is I use Slack for
+[13:03] so, what I like to do is I use Slack for my entire team, and I have a channel
+[13:05] my entire team, and I have a channel called company updates where each of my
+[13:07] called company updates where each of my AI employees will directly report their
+[13:09] AI employees will directly report their updates when they complete a task. And
+[13:11] updates when they complete a task. And you might not have a team. That's
+[13:12] you might not have a team. That's totally fine. But for you, just think
+[13:14] totally fine. But for you, just think about a location, whether it's WhatsApp,
+[13:16] about a location, whether it's WhatsApp, Telegram, Slack, where you can get these
+[13:18] Telegram, Slack, where you can get these updates in a place that you'll actually
+[13:19] updates in a place that you'll actually check. So, in the Slack example, you
+[13:21] check. So, in the Slack example, you might just name it automation updates,
+[13:22] might just name it automation updates, and then that's where you get messages.
+[13:24] and then that's where you get messages. To do this, I create a specific skill
+[13:25] To do this, I create a specific skill called send Slack update, and then I'll
+[13:27] called send Slack update, and then I'll add that to whatever routines I want to
+[13:29] add that to whatever routines I want to see the output from. After you've done
+[13:31] see the output from. After you've done that, it's time to find the bottleneck.
+[13:32] that, it's time to find the bottleneck. Sometimes tasks take too long across
+[13:34] Sometimes tasks take too long across your team, and you need to find a better
+[13:36] your team, and you need to find a better solution. The best way to do this is
+[13:37] solution. The best way to do this is using sub-agents. Think of this like
+[13:38] using sub-agents. Think of this like having an AI agent team swarm on a
+[13:40] having an AI agent team swarm on a specific task. So, let's say that task
+[13:42] specific task. So, let's say that task is research. So, going back to that
+[13:44] is research. So, going back to that research example, let's say you want to
+[13:46] research example, let's say you want to check YouTube, Google, Twitter,
+[13:47] check YouTube, Google, Twitter, Instagram, and emails. You can have a
+[13:48] Instagram, and emails. You can have a sub-agent for each unique task, which
+[13:50] sub-agent for each unique task, which will speed up the entire process. So,
+[13:52] will speed up the entire process. So, you can say, [music] "Enhance my topic
+[13:53] you can say, [music] "Enhance my topic research report generation skill to use
+[13:56] research report generation skill to use sub-agents for each unique platform."
+[13:58] sub-agents for each unique platform." And this will cause it to fan out these
+[13:59] And this will cause it to fan out these agents to complete the task quicker. And
+[14:02] agents to complete the task quicker. And as the CEO of your team, you need to
+[14:04] as the CEO of your team, you need to understand where your bottlenecks are
+[14:05] understand where your bottlenecks are and figure out these creative solutions.
+[14:07] and figure out these creative solutions. Depending on when you watch this, I'll
+[14:08] Depending on when you watch this, I'll have a video diving into exactly how to
+[14:10] have a video diving into exactly how to fix these bottlenecks using graph
+[14:12] fix these bottlenecks using graph engineering. That'll be on my channel in
+[14:14] engineering. That'll be on my channel in about a week, so go check that out. Now,
+[14:15] about a week, so go check that out. Now, at this point, we're approaching AI
+[14:16] at this point, we're approaching AI native tier, and if you got this far,
+[14:18] native tier, and if you got this far, you're already crushing it. But, there
+[14:19] you're already crushing it. But, there are limitations that Boris calls out.
+[14:21] are limitations that Boris calls out. The trust at this point is in the loop
+[14:23] The trust at this point is in the loop and your team's decision throughput. And
+[14:25] and your team's decision throughput. And you have to ensure tokens are used
+[14:26] you have to ensure tokens are used efficiently as usage increases. At this
+[14:29] efficiently as usage increases. At this step, Boris describes the bottlenecks as
+[14:31] step, Boris describes the bottlenecks as your ability to trust in the loop and
+[14:33] your ability to trust in the loop and your team's decision throughput. And
+[14:35] your team's decision throughput. And part of this is ensuring tokens are used
+[14:37] part of this is ensuring tokens are used efficiently as usage increases. Now,
+[14:39] efficiently as usage increases. Now, both these bottlenecks we'll solve in
+[14:40] both these bottlenecks we'll solve in step four. Before we get to that, if
+[14:42] step four. Before we get to that, if this is your first video of mine,
+[14:43] this is your first video of mine, welcome to channel. But, if this is your
+[14:44] welcome to channel. But, if this is your second or more, you know the drill. This
+[14:46] second or more, you know the drill. This is our anti-slop agreement. The visuals,
+[14:48] is our anti-slop agreement. The visuals, the testing, the hours of research, me
+[14:49] the testing, the hours of research, me misspelling things on this piece of
+[14:51] misspelling things on this piece of paper, this is entirely built for
+[14:53] paper, this is entirely built for humans, not for AI robots. So, as part
+[14:55] humans, not for AI robots. So, as part of this agreement, all I ask is you hit
+[14:57] of this agreement, all I ask is you hit the subscribe button to help this
+[14:58] the subscribe button to help this content reach more people. We're about
+[14:59] content reach more people. We're about 80K subs, so shout out everybody who's
+[15:01] 80K subs, so shout out everybody who's already subscribed. Also, as a thank
+[15:02] already subscribed. Also, as a thank you, every video I give away a Claude
+[15:04] you, every video I give away a Claude Max subscription. So, this video's
+[15:05] Max subscription. So, this video's winner is Hugo Pham7210,
+[15:08] winner is Hugo Pham7210, who is using Claude to optimize a new
+[15:10] who is using Claude to optimize a new drug against cancer. That's obviously
+[15:12] drug against cancer. That's obviously epic, so shout out Hugo for making the
+[15:14] epic, so shout out Hugo for making the world a better place. Now, for this
+[15:15] world a better place. Now, for this video, comment below with a topic you'd
+[15:16] video, comment below with a topic you'd like me to make the next video about,
+[15:18] like me to make the next video about, and I do accept sarcastic answers. I'll
+[15:20] and I do accept sarcastic answers. I'll just have some fun in the comments. Now,
+[15:22] just have some fun in the comments. Now, step four of this whole process is
+[15:24] step four of this whole process is becoming AI native. Once you get to this
+[15:25] becoming AI native. Once you get to this stage, here's how Boris describes it.
+[15:27] stage, here's how Boris describes it. The loop is fully closed and most agents
+[15:29] The loop is fully closed and most agents are kicked off by Claude. Hundreds to
+[15:31] are kicked off by Claude. Hundreds to thousands of agents run, you steer by
+[15:34] thousands of agents run, you steer by intent and monitor by exception. At this
+[15:37] intent and monitor by exception. At this point, you stop starting things, you
+[15:38] point, you stop starting things, you stop checking things, and you only look
+[15:40] stop checking things, and you only look when something's wrong. And then Boris
+[15:41] when something's wrong. And then Boris says that the actual impact of this is
+[15:43] says that the actual impact of this is that quarter-long migrations become a
+[15:45] that quarter-long migrations become a workflow you kick off and check on. And
+[15:47] workflow you kick off and check on. And honestly, this step is also why AI is
+[15:49] honestly, this step is also why AI is really scary. When you properly set it
+[15:50] really scary. When you properly set it up, it creates a recursive feedback loop
+[15:52] up, it creates a recursive feedback loop that just builds things and fixes it
+[15:55] that just builds things and fixes it without you ever being involved. And
+[15:56] without you ever being involved. And that's the exact reason why AI gets
+[15:58] that's the exact reason why AI gets better exponentially instead of just
+[16:00] better exponentially instead of just linearly. It no longer requires humans
+[16:02] linearly. It no longer requires humans to improve and complete tasks. Now,
+[16:03] to improve and complete tasks. Now, that's why it's scary, but that's also
+[16:05] that's why it's scary, but that's also why it's exciting, and that's why we
+[16:06] why it's exciting, and that's why we want to capitalize it. And so now to get
+[16:08] want to capitalize it. And so now to get here, you have to become really good at
+[16:10] here, you have to become really good at two things. You have to identify the
+[16:11] two things. You have to identify the right work to automate, and you have to
+[16:13] right work to automate, and you have to keep token consumption economical while
+[16:15] keep token consumption economical while you scale. Now, quick horror story from
+[16:17] you scale. Now, quick horror story from this. One of my clients who firmly was
+[16:19] this. One of my clients who firmly was in step three some of the proper
+[16:21] in step three some of the proper guardrails set up. And he told me that
+[16:23] guardrails set up. And he told me that one morning he woke up and AI burned
+[16:24] one morning he woke up and AI burned through over $3,000 worth of tokens on a
+[16:27] through over $3,000 worth of tokens on a single task. It literally got stuck in a
+[16:29] single task. It literally got stuck in a loop and it was lighting money on fire.
+[16:31] loop and it was lighting money on fire. So, let's just make sure that that
+[16:33] So, let's just make sure that that doesn't happen. So, first we're going to
+[16:34] doesn't happen. So, first we're going to optimize automated routines for less
+[16:36] optimize automated routines for less token consumption, and then we'll cover
+[16:38] token consumption, and then we'll cover how to become an expert at identifying
+[16:40] how to become an expert at identifying automation candidates. To optimize these
+[16:42] automation candidates. To optimize these routines for token consumption, we're
+[16:43] routines for token consumption, we're going to do two things. First is set the
+[16:46] going to do two things. First is set the minimum viable model for each task.
+[16:48] minimum viable model for each task. We'll go with NVM for short because we
+[16:50] We'll go with NVM for short because we are running out of room. So, within any
+[16:51] are running out of room. So, within any skill that you run, you can optimize
+[16:53] skill that you run, you can optimize them to select the specific model for
+[16:55] them to select the specific model for the task. So, simply put, you don't need
+[16:57] the task. So, simply put, you don't need the best model for a simple task. That's
+[16:59] the best model for a simple task. That's just wasting tokens. So, in a second
+[17:01] just wasting tokens. So, in a second I'll share the prompt that will actually
+[17:03] I'll share the prompt that will actually optimize your skills so that they only
+[17:05] optimize your skills so that they only use the model that's actually required
+[17:07] use the model that's actually required for that specific task. Then after that,
+[17:09] for that specific task. Then after that, we want to establish the maximum amount
+[17:11] we want to establish the maximum amount of iterations a specific routine or loop
+[17:13] of iterations a specific routine or loop can have. My client's case, this wasn't
+[17:15] can have. My client's case, this wasn't implemented, so AI just continuously
+[17:17] implemented, so AI just continuously looped until he manually stopped it. So,
+[17:19] looped until he manually stopped it. So, what we do is establish a maximum number
+[17:20] what we do is establish a maximum number of iterations so that this never
+[17:22] of iterations so that this never actually happens. Honestly, it's the
+[17:23] actually happens. Honestly, it's the simplest way to avoid these big issues,
+[17:25] simplest way to avoid these big issues, which becomes the actual problem. Here's
+[17:27] which becomes the actual problem. Here's a prompt that will help you set the
+[17:28] a prompt that will help you set the minimum viable product and also set the
+[17:30] minimum viable product and also set the maximum amount of iterations. Now, token
+[17:32] maximum amount of iterations. Now, token optimization is a deeper rabbit hole and
+[17:34] optimization is a deeper rabbit hole and it depends on what you're using, so I do
+[17:35] it depends on what you're using, so I do have a step-by-step walk-through that
+[17:37] have a step-by-step walk-through that uses my build partner.ai plugin that
+[17:39] uses my build partner.ai plugin that will go step-by-step for free to
+[17:41] will go step-by-step for free to optimize your setup. Now, the next thing
+[17:42] optimize your setup. Now, the next thing to become an AI native expert is you
+[17:44] to become an AI native expert is you have to identify automation candidates.
+[17:46] have to identify automation candidates. The most important thing here is going
+[17:48] The most important thing here is going back to a quote I mentioned earlier that
+[17:50] back to a quote I mentioned earlier that frankly changed my life. If you can get
+[17:52] frankly changed my life. If you can get someone to do something 80% as good,
+[17:54] someone to do something 80% as good, hire them. It's the same thing here, but
+[17:56] hire them. It's the same thing here, but with one caveat. A task is fine being
+[17:58] with one caveat. A task is fine being done at 80%, then use AI. A lot of the
+[18:00] done at 80%, then use AI. A lot of the time, depending on the task, good is
+[18:02] time, depending on the task, good is good enough and those are perfect
+[18:04] good enough and those are perfect automation candidates. Now, for tasks
+[18:05] automation candidates. Now, for tasks where quality is critical, you don't
+[18:07] where quality is critical, you don't want to automate those end-to-end. And
+[18:09] want to automate those end-to-end. And that one key distinction is the whole
+[18:11] that one key distinction is the whole strategy for deciding what to hand off.
+[18:13] strategy for deciding what to hand off. Where is good good enough? Automate
+[18:15] Where is good good enough? Automate that. Where is good not good enough? And
+[18:17] that. Where is good not good enough? And don't automate that. Now, at this point,
+[18:19] don't automate that. Now, at this point, you've gone through the four steps to
+[18:20] you've gone through the four steps to become AI native. Step one is AI
+[18:22] become AI native. Step one is AI assisted. You have AI doing tasks for
+[18:24] assisted. You have AI doing tasks for you. This is the first of the two
+[18:25] you. This is the first of the two paradigm shifts. Step two is AI builds
+[18:27] paradigm shifts. Step two is AI builds in parallel. You have AI helping you
+[18:29] in parallel. You have AI helping you work on multiple things at once and you
+[18:30] work on multiple things at once and you become an AI manager. Step three is
+[18:32] become an AI manager. Step three is supervised autonomy. This is where AI is
+[18:34] supervised autonomy. This is where AI is proactively working on things and you
+[18:35] proactively working on things and you become an AI agent CEO. This is the
+[18:38] become an AI agent CEO. This is the second paradigm shift. And step four is
+[18:40] second paradigm shift. And step four is where you become AI native. AI is
+[18:41] where you become AI native. AI is running automatically and you start
+[18:43] running automatically and you start optimizing the system. Now, these are
+[18:45] optimizing the system. Now, these are the exact four steps that Boris, the guy
+[18:46] the exact four steps that Boris, the guy who created this tool, says there are to
+[18:49] who created this tool, says there are to become AI native. And no matter what
+[18:50] become AI native. And no matter what step you're on, you can get to the next
+[18:52] step you're on, you can get to the next step. Now, if you like this video, you
+[18:53] step. Now, if you like this video, you will love this video where I walk
+[18:55] will love this video where I walk through building a self-improving
+[18:56] through building a self-improving system. It goes deep on steps two and
+[18:58] system. It goes deep on steps two and three and it makes it so that the system
+[19:00] three and it makes it so that the system automatically gets better over time. So,
+[19:02] automatically gets better over time. So, click here and I'll see you over there.
+[19:03] click here and I'll see you over there. Peace.
+```
+
+---
+_Work dir: `/Users/kristinarash/.claude/jobs/bfd76b06/tmp/marchese` — delete when done._

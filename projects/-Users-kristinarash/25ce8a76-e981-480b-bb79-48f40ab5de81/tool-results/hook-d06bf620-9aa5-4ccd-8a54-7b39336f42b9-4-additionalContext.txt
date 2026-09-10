@@ -1,0 +1,297 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: Your skill menu is over budget and already being truncated, which is why Claude often can't see what your skills do. Cleaning up turns off 102 n...
+- Q: Revised after the Windows/Mac check: I'd turn off the 72 skills with zero evidence anywhere (Tier A + the 18 plugin duplicates) and hold the 30 ...
+- Q: Was the Claude→Codex rename in ~/.agents/skills intentional? Your approval was based on my description of that tree as just "stale content," whi...
+
+## Files Modified
+settings.local.json, CLAUDE.md, b5mlln1x6.output, .gitignore, MEMORY.md, 2026-08-07-doctor-cleanup.md, stack-check.ps1, bxochxfm9.output, daily-backup.ps1, 2026-08-11-stack-doctor-sweep.md
+
+## Unresolved Errors
+- {"stdout":"n=5\ntype=hook_non_blocking_error hook=Stop event=Stop\ncmd=node \"C:/Users/eric_rash/.claude/hooks/transcript-capture.js\"\nerr=Failed ...
+- {"stdout":"=== daily-backup log (tail) ===\nskipping non-regular file \"ipc/ipc.sock\"\n2026-08-06 21:24:22 STATE-SSD .codex -> codex : OK\n2026-08...
+- {"stdout":"=== compile.py CLI args ===\n25:import argparse\n36:    MAX_COMPILE_ATTEMPTS,\n37:    MAX_LOGS_PER_AUTO_RUN,\n38:    MAX_TOKENS_PER_RUN,...
+- {"stdout":"=== size ===\n    3399\n=== full output (first 120 lines) ===\nFiles to compile (54):\n  - 2026-05-13.md\n  - 2026-05-18.md\n  - 2026-05...
+- {"stdout":"=== final section ===\n[6/13] Compiling 2026-07-24.md...\n[7/13] Compiling 2026-07-27.md...\n[8/13] Compiling 2026-07-28.md...\n[9/13] C...
+- {"stdout":"=== what does Sync-Repo actually run? (does it checkout/pull/reset?) ===\n7:        git fetch origin 2>&1 | Out-Null\n8:        $counts ...
+- {"stdout":"script exists: YES\npwsh: PowerShell 7.5.2\n--- running (read-only) ---\ncom.keystone.rituals : OK\ncom.keystone.reconcile : OK\ncom.key...
+- {"stdout":"=== errors log ===\n  size: 2746 bytes\n  [2026-08-10T11:39:11.2413030-05:00] stack-doctor weekly: 8 issue(s): task:com.keystone.morning...
+- {"stdout":"=== locate SecondBrain repo ===\n  198:Sync-Repo \"$U/Desktop/SecondBrain\"      'main'\n  274:    # Non-DEV manifest paths (~/.claude s...
+- {"stdout":"=== compiler: what is actually pending? ===\n  /Users/kristinarash/.claude/claude-memory-compiler/.venv/bin/python3: can't open file '/U...
+- {"stdout":"76:    @{ p = \"$HOME/.claude/skills\"; b = 'main' }\n118:# tax paid whether or not a skill fires. It regrows silently: the 2026-07-13\n...
+- {"stdout":"173:    if ($p -ge 95) { \"$n : $len/$($m.cap) chars ($p%) - NO HEADROOM, consolidate deliberately before the next write forces it\"; $f...
+- {"stdout":"=== morning-briefings/2026-08-07.md ===\n  DIFFERS from origin/main:\n    local bytes : 39045\n    origin bytes: 39580\n    8a9,13\n    ...
+- {"stdout":"  From https://github.com/erash11/SecondBrain\n   * branch            main       -> FETCH_HEAD\n  error: The following untracked working...
+- {"stdout":"  [2026-08-11 02:15] daily-backup: 5 error(s): repo-diverged:SecondBrain, repo-push:global-memory, repo-diverged:skills, snapshot:sessio...
+- {"stdout":"=== did the 'dry run' actually commit/push? ===\n  SecondBrain                        HEAD=40851e8  last='chore: daily backup sync 2026-...
+- {"stdout":"=== proof the dry run did NOT mutate: my edits are still uncommitted ===\n   M MEMORY.md\n   M transcripts/.errors.log\n  ?? transcripts...
+
+## Git
+log, diff, status, commit, push, chore: also untrack .memsearch-timeout-streak
+
+Ephemeral 1-byte counter that daily-backup.ps1:394 deletes on every
+successful index run - same churn class as the lock and index log.
+File stays on disk; only untracked.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+git, docs: .Codex path bug fixed in ~/.agents/skills (235 occurrences, 73 files)
+
+Ground truth was origin/main, which already carried correct macOS paths.
+Case-sensitive sed left the 13 legitimate lowercase ~/.codex refs intact.
+18 files converged exactly with upstream; the checkout is still 5 commits
+behind, which is the real remaining issue.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+git, reset, branch, chore: untrack regenerated logs and __pycache__ from skills repo
+
+These 6 files are rewritten on every skill run, so the nightly daily-backup
+committed them each night. That produced the recurring repo-diverged:skills
+error, since Sync-Repo deliberately refuses to merge a diverged repo from
+automation. Untracking them removes the churn at the source.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+echo, fix(stack-doctor): exclude skillOverrides-disabled skills from skill tax
+
+The check counted every SKILL.md on disk, so it reported 133 skills / 65,467
+chars as OVER budget while 72 were already set to "off" in settings.json and
+never loaded. Verified 0 of the 72 appear in the session listing before
+patching. Now reports 61 skills / 27,093 chars - OK (85%).
+
+Reads only the skillOverrides key; settings.json also holds env/secrets.
+
+$MSG_SUFFIX
+git, docs: correct handoff verdict claim (8->6, not 8->2)
+
+The raw stack-check count went 8->6. Three of the six remaining codes are
+lagging indicators that read the last run's result, not current state; the
+original '8 -> 2' headline overstated the change. Table now separates
+genuinely-open from lagging.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+git, docs: correct SecondBrain framing, add verified DEV-slug flush finding
+
+SecondBrain: origin's briefings are live and local variants are in backup -
+that IS picking a winner, so say so, and flag that local 8/07 looks better
+(working Outlook fetch vs degraded).
+
+DEV-slug 'transcript missing': verified benign - neither session ID exists
+anywhere, and the slug received 3 transcripts in the last 24h, so the hook
+path derivation is correct. Previously inferred, now evidence-backed.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+git
+
+## Project Rules
+.claude/settings.local.json, .claude/CLAUDE.md, global-memory/MEMORY.md, handoffs/2026-08-07-doctor-cleanup.md, scripts/stack-check.ps1, scripts/daily-backup.ps1
+
+## Skills Used
+closeout, claude-stack-doctor
+
+## Environment
+cwd: $HOME/.claude/global-memory
+export GIT_TERMINAL_PROMPT=***
+echo "=== PUSH 1: global-memory ==="
+git -C ~/.claude/global-memory push origin main 2>&1 | head -10
+echo "exit=${PIPESTATUS[0]}"
+echo
+echo "=== PUSH 2: skills ==="
+git -C ~/.claude/skills push origin main 2>&1 | head -10
+echo "exit=${PIPESTATUS[0]}"
+export GIT_TERMINAL_PROMPT=***
+for d in ~/.claude/global-memory ~/.claude/skills; do
+  echo "===== $(basename $d) ====="
+  git -C "$d" fetch origin main -q 2>&1 | head -3
+  echo "ahead/behind vs origin: $(git -C "$d" rev-list --left-right --count origin/main...HEAD)"
+  echo "local HEAD : $(git -C "$d" rev-parse --short HEAD)"
+  echo "origin/main: $(git -C "$d" rev-parse --short origin/main)"
+  echo "uncommitted:"; git -C "$d" status --porcelain=v1 | head -8
+  echo
+done
+cd ~/.claude/global-memory
+export GIT_TERMINAL_PROMPT=***
+git push origin main 2>&1 | head -6; echo "exit=${PIPESTATUS[0]}"
+echo
+git fetch origin main -q
+echo "ahead/behind vs origin: $(git rev-list --left-right --count origin/main...HEAD)"
+echo "local HEAD : $(git rev-parse --short HEAD)"
+echo "origin/main: $(git rev-parse --short origin/main)"
+echo
+echo "=== working tree now ==="
+git status --porcelain=v1
+echo "(empty = clean)"
+echo
+echo "=== gitignore working? touch the lock file and re-check ==="
+touch transcripts/.memsearch-index.lock
+git status --porcelain=v1 | grep memsearch || echo "IGNORED correctly - no churn"
+rm -f transcripts/.memsearch-index.lock
+cd ~/.claude/global-memory
+export GIT_TERMINAL_PROMPT=***
+git add -A
+git status --porcelain=v1
+git commit -q -F - <<'EOF'
+chore: closeout 2026-08-07 - doctor cleanup handoff, error-log archive
+
+Archives the three resolved .errors.log entries (compiler backlog, the two
+failed repo pushes, budget-tripped) so the live file is empty again and the
+next session-start check does not surface stale failures.
+
+Adds the cross-harness handoff for the doctor cleanup + compiler backlog
+session, and records the .agents/skills .Codex path bug as an active thread
+in MEMORY.md (removed the stale Python/WinGet line to stay under the cap).
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ
+EOF
+git push origin main 2>&1 | head -4
+echo
+echo "=== verify ==="
+git fetch origin main -q
+echo "ahead/behind: $(git rev-list --left-right --count origin/main...HEAD)"
+git log --oneline -2
+echo "working tree: $(git status --porcelain=v1 | wc -l | tr -d ' ') changes"
+cd ~/.claude/global-memory
+export GIT_TERMINAL_PROMPT=***
+git rm --cached --quiet transcripts/.memsearch-timeout-streak
+git add .gitignore
+git commit -q -m "chore: also untrack .memsearch-timeout-streak
+
+Ephemeral 1-byte counter that daily-backup.ps1:394 deletes on every
+successful index run - same churn class as the lock and index log.
+File stays on disk; only untracked.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ"
+git push origin main 2>&1 | head -3
+echo
+git fetch origin main -q
+echo "ahead/behind: $(git rev-list --left-right --count origin/main...HEAD)"
+echo "working tree: $(git status --porcelain=v1 | wc -l | tr -d ' ') changes"
+echo "streak file still on disk: $(ls transcripts/.memsearch-timeout-streak 2>/dev/null && echo yes || echo no)"
+echo
+echo "=== final gitignore check: recreate all 3, expect silence ==="
+touch transcripts/.memsearch-index.lock
+git status --porcelain=v1 | grep memsearch || echo "all 3 ignored ✓"
+rm -f transcripts/.memsearch-index.lock
+cd /Users/kristinarash
+export GIT_TERMINAL_PROMPT=***
+echo "=== HEADs ==="
+echo ".claude/skills : $(git -C ~/.claude/skills rev-parse --short HEAD)  $(git -C ~/.claude/skills log -1 --format=%cs)"
+echo ".agents/skills : $(git -C ~/.agents/skills rev-parse --short HEAD)  $(git -C ~/.agents/skills log -1 --format=%cs)"
+echo
+echo "=== fetch .agents and re-check ==="
+git -C ~/.agents/skills fetch origin main -q 2>&1 | head -3
+echo "ahead/behind vs origin/main: $(git -C ~/.agents/skills rev-list --left-right --count origin/main...HEAD)"
+echo
+echo "=== is the CORRECT advisor content committed on origin/main? ==="
+git -C ~/.claude/skills show origin/main:advisor/SKILL.md 2>/dev/null | sed -n '11,13p'
+echo
+echo "=== does origin/main still contain any .Codex? ==="
+git -C ~/.claude/skills grep -c '\.Codex' origin/main -- '*.md' 2>/dev/null | head -5 || echo "none found on origin/main"
+echo
+echo "=== does origin/main still contain Windows C:\\ paths? ==="
+git -C ~/.claude/skills grep -l 'C:\\\\Users\|C:/Users' origin/main -- '*.md' 2>/dev/null | wc -l | tr -d ' '
+cd ~/.claude/global-memory
+export GIT_TERMINAL_PROMPT=***
+c=$(wc -c < MEMORY.md | tr -d ' '); echo "MEMORY.md: $c / 2500 $([ $c -le 2500 ] && echo '✓' || echo 'OVER')"
+git add -A
+git status --porcelain=v1
+git commit -q -m "docs: .Codex path bug fixed in ~/.agents/skills (235 occurrences, 73 files)
+
+Ground truth was origin/main, which already carried correct macOS paths.
+Case-sensitive sed left the 13 legitimate lowercase ~/.codex refs intact.
+18 files converged exactly with upstream; the checkout is still 5 commits
+behind, which is the real remaining issue.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01DLQxww1NcGnXRPsfYdWGrJ"
+git push origin main 2>&1 | head -3
+git fetch origin main -q
+echo "ahead/behind: $(git rev-list --left-right --count origin/main...HEAD)  tree: $(git status --porcelain=v1 | wc -l | tr -d ' ') changes"
+model:claude-opus-5[1m]
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 34 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+## User Role
+You're okay to make the change.
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

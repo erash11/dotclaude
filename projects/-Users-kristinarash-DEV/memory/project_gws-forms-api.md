@@ -1,0 +1,41 @@
+---
+name: gws-forms-api
+description: "gws CLI can create and populate Google Forms with only the drive scope — no forms.body scope needed; create is title-only, items require batchUpdate"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 05f058aa-4fa5-47d6-82ee-5c1357733538
+  modified: 2026-08-14T00:40:43.648Z
+---
+
+The `gws` CLI (`/opt/homebrew/bin/gws`, personal account eric.rash11@gmail.com) can
+create and fully populate Google Forms even though **no `forms.body` scope is
+granted**. The 12 granted scopes include `https://www.googleapis.com/auth/drive`,
+and that is sufficient for both `forms forms create` and `forms forms batchUpdate`.
+
+**Why:** worth recording because the Contacts API on this same auth returns 403 for a
+missing scope (see [[fireflies-cli-broken-on-mac]] for the sibling env traps), so the
+reasonable expectation is that Forms would fail too. It doesn't. Don't skip Forms work
+on a scope assumption — try it.
+
+**How to apply:**
+
+- `gws forms forms create --json '{"info":{"title":"...","documentTitle":"..."}}'`
+  accepts **title only**. The API rejects description, items, and settings on create.
+- Everything else goes through `forms forms batchUpdate` with a `requests` array:
+  `updateFormInfo` (with `updateMask`) for the description, then `createItem` with an
+  incrementing `location.index` per question.
+- Item shapes: `questionItem.question.textQuestion{paragraph:bool}`,
+  `...choiceQuestion{type: RADIO|CHECKBOX|DROP_DOWN, options:[{value}]}`,
+  and `pageBreakItem` for a section.
+- Editing an existing question needs `updateItem` with the item's `itemId`, the
+  question's `questionId`, `location.index`, **and** an `updateMask` such as
+  `questionItem.question.choiceQuestion.options`. Omitting itemId/questionId appends a
+  duplicate instead of editing in place.
+- `--dry-run` validates locally before sending. Use it; batchUpdate is not idempotent
+  and a re-run duplicates every item.
+- New forms are created **published and accepting responses**. On a personal account
+  that is a loose end — unpublish or delete after use.
+- Gmail drafts work the same way via `gmail users drafts create/update` with a
+  base64url RFC822 `message.raw`. Passing an existing draft `id` to `update` edits in
+  place rather than creating a duplicate.
