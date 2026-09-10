@@ -1,11 +1,11 @@
 ---
 name: rtp-cla-course
-description: "RTP Constraints-Led course — book ingest state, page-offset facts, and the one rebuild still outstanding"
+description: "RTP Constraints-Led course — book ingest complete with zero-offset PDF; lesson 0002 is next"
 metadata: 
   node_type: memory
   type: project
   originSessionId: b89c2f0b-04a6-4248-9c74-5f9b535a314c
-  modified: 2026-09-07T23:14:12.464Z
+  modified: 2026-09-10T17:00:00.000Z
 ---
 
 `DEV/RTP_Constraints_Course` — a return-to-play course built on constraints-led
@@ -15,19 +15,16 @@ practice design, sourced from Myszka et al., *Enhancing Skill*.
 new SecondBrain vault domain:
 `Knowledge/library/skill-acquisition/enhancing-skill--myszka/`.
 
-**Page-offset facts — do not re-derive these.**
+**Page facts — do not re-derive these.**
 - Phone scans on disk cover printed pages p001–p253.
-- The built PDF holds printed p14–p253, so PDF page N = printed page N + 13
-  (offset **+13**).
+- The PDF was rebuilt on 2026-09-10 and holds printed p001–p253.
+- PDF page N equals printed page N. The offset is **0**.
 - Ordering was verified five separate ways, including against the book's own
-  printed contents page. Treat the current order as correct; folio OCR lies.
+  printed contents page, then verified again after the rebuild.
   See [[book-scan-page-ordering]].
 
-**Outstanding — the one open gap.** Printed pages **254–255** (About the Authors)
-were never scanned. Scan them, then run **ONE** rebuild: it folds in the front
-matter and the tail together and drops the offset to **0**. The authoritative
-checklist is the `Outstanding` section of the domain's `_book.md`. Do not do two
-partial rebuilds.
+**Deliberate limit.** Printed pages 254 onward are a blank verso and About the
+Authors. Eric chose not to scan them because they add no course material.
 
 **Also open:**
 - Import `sources/myszka-references-new.ris` (122 records) into Zotero via
