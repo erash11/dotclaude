@@ -507,17 +507,15 @@
       "captureWorkingTree": true
     },
     {
-      "path": "DEV/DexaProject",
+      "path": "Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/DexaProject",
       "class": "institutional",
       "isRepo": true,
-      "remote": "https://github.com/erash11/DexaProject.git",
       "destinations": [
-        "ssd",
-        "github",
-        "baylor"
+        "ssd"
       ],
       "captureOrphans": true,
-      "captureWorkingTree": true
+      "captureWorkingTree": true,
+      "note": "Identifiable health data. Moved out of ~/DEV 2026-09-09. SSD destination ONLY - never github, never baylor, never any cloud target."
     },
     {
       "path": "DEV/docs",
@@ -861,6 +859,20 @@
       ],
       "captureOrphans": true,
       "captureWorkingTree": true
+    },
+    {
+      "path": "DEV/PlayCalls_SuccessRate_EPA",
+      "class": "institutional",
+      "isRepo": true,
+      "remote": "https://github.com/erash11/PlayCalls_SuccessRate_EPA.git",
+      "destinations": [
+        "ssd",
+        "github",
+        "baylor"
+      ],
+      "captureOrphans": true,
+      "captureWorkingTree": true,
+      "note": "2021-2025 Baylor offensive play-call charting CSVs (PFF export). Proprietary play-call terminology - private repo only."
     },
     {
       "path": "DEV/Portfolio",

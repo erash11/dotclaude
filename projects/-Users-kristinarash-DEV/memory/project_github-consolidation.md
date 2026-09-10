@@ -47,13 +47,20 @@ athlete names, birthdates, addresses and insurance. See [[dev-layout-and-discove
   guard. Write a script file and run it. See [[dcg-guard-blocks]].
 
 ## Open
-- `erash11/DexaProject` still exists on GitHub with the patient CSV.
-- Public repos resolved 9/9: 18 flipped to private. Exactly 3 stay public
-  because they serve live sites — `SportScienceResearchRepo` and `Travel_Map`
-  (GitHub Pages), `JumpReporting` (jump-reporting.vercel.app). Visibility flips
-  are instantly reversible, so flip back if an npm publish or container push
-  breaks (`printing-press-library`, `GameONPaper`).
-- Still open: `SportScienceResearchRepo` publicly hosts ~4,700 research PDFs.
-  That is a copyright question, not a privacy one.
-- `CFB_Victory_Model/data/weekly_forecast_log.csv` — the Windows copy has 324
-  rows the Mac lacks, preserved as `.from-windows`. See [[cfb-forecast-capture]].
+- DONE 9/9: `erash11/DexaProject` DELETED from GitHub. Before deleting, its one
+  remote-only commit (Windows scaffolding) was merged into the Google Drive copy,
+  so nothing was lost. Nothing depended on the repo: no submodules, no code,
+  0 forks/issues. `Tezino_CampPrep` names DEXA only to record it as a dead end
+  (the .mdb held demographics only, 0 scan rows across 3,504 patients).
+  The ONE live dependency was `~/.claude/scripts/backup-manifest.json`, which had
+  `github` as a destination — that is what pushed the patient CSV up nightly.
+  It now points at the Google Drive path with destinations `["ssd"]` only.
+  **If a DEXA path ever reappears in that manifest with a non-ssd destination,
+  that is a regression.**
+- SETTLED 9/9: `SportScienceResearchRepo` stays PUBLIC. Flipping it breaks the
+  GitHub Pages site, and Eric is not distributing or charging for access. The
+  ~4,700 PDFs are a personal reading library. Do not re-raise this.
+- RESOLVED 9/9: `CFB_Victory_Model/data/weekly_forecast_log.csv` merged.
+  Mac had the 09-02 capture, Windows had 08-26 and 08-31. Union on
+  `(captured_at, season, team, week, game_id)` → 540 rows, zero conflicts,
+  nothing dropped. See [[cfb-forecast-capture]].

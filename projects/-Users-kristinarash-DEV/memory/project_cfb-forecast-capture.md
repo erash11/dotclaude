@@ -26,6 +26,19 @@ moved since the prior week.
 - The ritual guard still keys off the newest `*_baylor.csv`, which the Big 12 sweep always
   writes, so detection is unaffected.
 
+## A gap can mean the other machine captured it
+
+Confirmed 2026-09-09. The Mac's `data/weekly_forecast_log.csv` looked like it had
+missed 2026-08-26 and 2026-08-31 — it jumped 07-31 → 09-02. Neither week was
+missed. **Both were captured on the Windows box**, which runs the same wrapper
+against the same repo. The two machines had diverged, each holding captures the
+other lacked.
+
+Before declaring a missed week, check the other machine's copy of the log.
+Merging is safe: the natural key is `(captured_at, season, team, week, game_id)`,
+and a union on that key had **zero conflicts** across 216 Mac + 348 Windows rows
+→ 540. Same key never carried different values. See [[github-consolidation]].
+
 ## An old newest-snapshot file is not proof of a missed week
 
 Checked 2026-09-02: the newest snapshot was `2026-07-31_baylor.csv`, and both the skill and
