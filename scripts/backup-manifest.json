@@ -120,18 +120,6 @@
       "captureWorkingTree": false
     },
     {
-      "path": "DEV/AI_Analyst",
-      "class": "institutional",
-      "isRepo": false,
-      "remote": null,
-      "destinations": [
-        "ssd",
-        "baylor"
-      ],
-      "captureOrphans": false,
-      "captureWorkingTree": false
-    },
-    {
       "path": "DEV/AMS_Mini",
       "class": "institutional",
       "isRepo": false,
@@ -1267,18 +1255,6 @@
       ],
       "captureOrphans": false,
       "captureWorkingTree": false
-    },
-    {
-      "path": "DEV/token-dashboard",
-      "class": "personal",
-      "isRepo": true,
-      "remote": "https://github.com/nateherkai/token-dashboard.git",
-      "destinations": [
-        "ssd",
-        "github"
-      ],
-      "captureOrphans": true,
-      "captureWorkingTree": true
     },
     {
       "path": "DEV/Transformative_Athlete_Experience",

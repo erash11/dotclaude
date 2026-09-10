@@ -441,3 +441,38 @@ A USB-C drive that powers on but never mounts is almost always a charge-only cab
 problem, not software.
 
 Full handoff: `~/.claude/global-memory/handoffs/2026-09-04-backup-skill.md`.
+
+## Manifest coverage closed + job-count baseline reset (2026-09-09)
+
+**The 49 `manifest-unmanaged` folders are gone.** They were never a classification backlog —
+they were fallout from the GitHub consolidation migration (see [[github-consolidation]]).
+All 49 added to `backup-manifest.json` in one pass: 47 are git repos with `erash11` remotes
+(`isRepo:true`, `captureOrphans`/`captureWorkingTree` true, destinations `["ssd","github"]`),
+and 2 are plain dirs — `_ARCHIVE` (4.3 GB) and `docs` — destinations `["ssd"]` only.
+`baylor` deliberately omitted from every new entry; it is deprecated and Eric's own newest
+entry (`DEV/Life-OS`, commit `3444c0b`) already omits it.
+
+**`class` is inert.** Grep of `daily-backup.ps1` shows it is read nowhere — only `isRepo`,
+`captureOrphans`, `captureWorkingTree` and `destinations` drive behavior. The
+institutional/personal call is documentation. Do not stall a manifest add waiting on it.
+
+**A DEV manifest entry never auto-commits or pushes that repo.** `Sync-Repo` is called on a
+hardcoded list (SecondBrain, global-memory, skills, dotclaude); the manifest loop only calls
+`Capture-RepoData` (SSD) or `Snapshot-Additive`. Adding 47 project repos was therefore safe
+with open PRs and dirty trees — verify from source before assuming otherwise.
+
+**Job-count baseline is now 76, not 31.** The 2026-09-04 note above (9 = no SSD, 31 = SSD
+attached) is superseded. Full run with CRASHBOX attached = **76 jobs**. `CAPTURE` only logs a
+line when a repo has files git does not carry, so 18 log lines with 65 capture jobs is normal —
+read `okCount`, not the log line count.
+
+**Removed 2 dead entries**: `DEV/AI_Analyst` and `DEV/token-dashboard`. Both had moved into
+`~/DEV/_ARCHIVE/`, which is itself now backed up, so coverage was preserved, not dropped.
+`DexaProject` stays declared-but-absent on purpose — it lives on Google Drive.
+
+**`~/.claude` now tracks session transcripts.** Eric's commit `8a3d55c` (2026-09-09 15:44)
+un-ignored `projects/`, so the dotclaude repo carries ~368 MB of `.jsonl` transcripts and
+Tier A memory. This **invalidates the "Tier A memory is NOT in git" trap above** — it now has
+a third layer. No single file exceeds 40 MB, so pushes succeed; they are just slower.
+
+Full handoff: `~/.claude/global-memory/handoffs/2026-09-09-backup-manifest-coverage.md`.
