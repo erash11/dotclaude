@@ -31,3 +31,8 @@ scripts/logs/
 
 # Claude Code session transcripts (added 2026-09-09)
 !/projects/
+
+!/machine.macos.md
+!/machine.windows.md
+# machine.md is per-machine, never tracked
+
