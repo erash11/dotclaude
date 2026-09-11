@@ -327,7 +327,11 @@ if ($Manifest) {
 
     # DEFAULT-DENY: a DEV directory absent from the manifest is an error, not a skip.
     $declared = @($Manifest.paths | Where-Object { $_.path -like 'DEV/*' } | ForEach-Object { $_.path -replace '^DEV/', '' })
-    $onDisk = @(Get-ChildItem $DevRoot -Directory | Where-Object { $_.Name -notmatch '^\.' } | Select-Object -ExpandProperty Name)
+    # Symlinks are not DEV projects. _DRIVE points at the Google Drive primary
+    # storage drive, which is a backup DESTINATION, not a source - declaring it
+    # in the manifest would rsync Drive into the SSD backup (and isRepo:false
+    # snapshots unconditionally, ignoring destinations[]).
+    $onDisk = @(Get-ChildItem $DevRoot -Directory | Where-Object { $_.Name -notmatch '^\.' -and -not $_.LinkType } | Select-Object -ExpandProperty Name)
     $unmanaged = @($onDisk | Where-Object { $declared -notcontains $_ })
     if ($unmanaged.Count -gt 0) {
         $Errors.Add("manifest-unmanaged:$($unmanaged -join '|')")
