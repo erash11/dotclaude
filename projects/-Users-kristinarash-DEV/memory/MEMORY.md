@@ -44,7 +44,7 @@ Never put memory content here — the file itself holds the facts.
 - [ATH Tech framework](project_ath-tech-framework.md) — the shipped 08-14 doc set, the five unwritten gaps, the ITS blocker
 - [Supervisor log pipeline](project_supervisor-log-pipeline.md) — nightly log feeding the Kenny/Chris report; action-items-are-not-outcomes trap
 - [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was rejected outright; which shapes trip it and the rewrite that works
-- [settings.json BOM trap](project_settings-json-bom-trap.md) — dcg cries "hook missing" when the hook is there; a UTF-8 BOM is the real fault and `dcg install` is the wrong fix
+- [Config encoding damage from Windows](project_settings-json-bom-trap.md) — dcg cries "hook missing", or the statusline bars render as `â–“` junk; one bad write causes both, in settings.json AND CLAUDE.md/AGENTS.md
 - [Tech inventory refresh](project_tech-inventory-refresh.md) — which forms platform is live, why gws cannot pull responses, the stale OneDrive copy, reminder sent 9/8, the refresh command
 - [Brain audit loop](project_brain-audit-loop.md) — scoring the second brain; why manual rituals die and cron ones live
 - [Hook two-copies trap](project_hook-two-copies-trap.md) — a hook patch "reverts"; `.claude/hooks/` and `.codex/hooks/` both need it
