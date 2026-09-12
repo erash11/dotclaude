@@ -12,8 +12,14 @@ equivalent, and the findings below are why one cannot be written yet.
 
 ## VERDICT
 
-**The Windows laptop has no working automated backup.** Anything pushed to GitHub is safe.
-Everything else on this machine exists in exactly one place.
+**As surveyed, the Windows laptop had no working automated backup.** Anything pushed to
+GitHub was safe; everything else on this machine existed in exactly one place.
+
+**Fixes 1-3 were applied the same day** — both backup tasks now have a trigger and a real
+next-run time, and the DEV copy is additive rather than mirrored. Fixes 4-6 are open, so
+the machine is covered but not yet *verifiably* covered: nothing on Windows reads the
+backup state to tell you when a run stops happening. Re-run
+`scripts/survey-recovery.ps1` to refresh the findings below.
 
 Git coverage is genuinely good: 131 repos, 0 unpushed, 0 without a remote, 1 uncommitted
 file at survey time. The gap is entirely in what git does not track.
@@ -87,18 +93,24 @@ stale, from the day the Mac took over.
 
 ## Fix, in order
 
-1. **Give the two tasks a trigger.** They are written and registered; they just never fire.
-   Weekly for `backup_dev.ps1`, daily for `backup_ai_sessions.ps1`. One `schtasks` change
-   each. This is the whole difference between 15 GB single-copy and 15 GB backed up.
+1. ~~**Give the two tasks a trigger.**~~ **DONE 2026-09-12.** `install-backup-triggers.ps1`
+   set both actions and triggers: AI sessions daily 00:30, DEV weekly Sunday 02:00, both
+   `StartWhenAvailable` so a run missed while the laptop was asleep is caught up rather
+   than skipped. Both now report a real `NextRunTime`. First DEV run was started by hand
+   through the scheduler to prove the path end to end, not just the script.
 
-2. **Move the scripts out of `_INBOX`.** They are load-bearing and live in a staging folder
-   that nothing syncs. `~/.claude/scripts/` is where their Mac counterparts live.
+2. ~~**Move the scripts out of `_INBOX`.**~~ **DONE 2026-09-12.** New copies at
+   `~/.claude/scripts/backup-dev-to-drive.ps1` and `backup-ai-sessions.ps1`, tracked in
+   dotclaude. The `_INBOX` originals were left unmodified rather than deleted.
 
-3. **Reconsider `/MIR` in `backup_dev.ps1`.** It mirrors. The Mac's manifest states the
-   principle learned the hard way: *"Additive, never mirrored. A mirror replicates the
-   deletion you are recovering from."* A mirrored backup taken after an accidental delete
-   propagates the delete. Drop `/MIR` for `/E`, or keep `/MIR` and accept it is a sync, not
-   a backup.
+3. ~~**Reconsider `/MIR`.**~~ **DONE 2026-09-12.** The new DEV script uses `/E`. Both scripts
+   now also write `backup-state.json`, which the existing health checks read, and both
+   abort loudly when `G:\My Drive` is not mounted instead of exiting quietly. Robocopy
+   exit codes below 8 count as success, since the code is a bitmask and 1/2/4 mean work
+   was done.
+
+   Consequence to watch: an additive backup only grows. It will need pruning by hand
+   eventually. That is the right trade for a copy of last resort, but it is not free.
 
 4. **Give Windows its own manifest.** Either a `backup-manifest.windows.json` alongside the
    Mac's, following the `machine.md` pattern already used for machine-specific config, or
