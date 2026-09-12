@@ -60,11 +60,30 @@ function Sync-Repo($path, $branch) {
             Log "REPO $name : $(if ($DryRun) { '[dry-run] would fast-forward' } else { 'fast-forwarded' }) $behind commit(s)"
         }
         if ($dirty -gt 0) {
-            if (-not $DryRun) {
+            if ($DryRun) {
+                Log "REPO $name : [dry-run] would commit $dirty change(s)"
+            } else {
                 git add -A 2>&1 | Out-Null
-                git commit -m ("chore: daily backup sync {0} [auto]" -f (Get-Date -Format 'yyyy-MM-dd')) 2>&1 | Out-Null
+                git diff --cached --quiet 2>$null
+                if ($LASTEXITCODE -eq 0) {
+                    # Dirty but nothing stageable (e.g. modified content inside a
+                    # submodule). Not a failure - there is simply nothing to commit.
+                    Log "REPO $name : $dirty change(s) but nothing stageable - no commit"
+                } else {
+                    # R10-01: capture and check the commit, as the push below already
+                    # does. A commit refused by a hook (the skills repo's pre-commit
+                    # rejects symlinks) used to be thrown away by Out-Null and logged
+                    # as "committed": a silent failure that repeated every day.
+                    $commitOut = git commit -m ("chore: daily backup sync {0} [auto]" -f (Get-Date -Format 'yyyy-MM-dd')) 2>&1
+                    if ($LASTEXITCODE -ne 0) {
+                        $Errors.Add("repo-commit:$name")
+                        Log "REPO $name : COMMIT FAILED"
+                        foreach ($l in $commitOut) { if ("$l".Trim()) { Log "REPO $name : COMMIT ERR | $l" } }
+                        return
+                    }
+                    Log "REPO $name : committed $dirty change(s)"
+                }
             }
-            Log "REPO $name : $(if ($DryRun) { '[dry-run] would commit' } else { 'committed' }) $dirty change(s)"
         }
         $counts = git rev-list --left-right --count "origin/$branch...HEAD" 2>$null
         $ahead = if ($counts) { [int](($counts -split '\s+')[1]) } else { 0 }
