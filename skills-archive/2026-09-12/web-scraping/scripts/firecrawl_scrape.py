@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""Scrape a URL (JS-rendered) to clean markdown via the Firecrawl v2 API. Stdlib only.
+
+Usage:
+  python firecrawl_scrape.py URL [-o out.md] [--formats markdown,links]
+                             [--wait MS] [--all-content] [--json]
+"""
+import argparse
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+
+API_URL = "https://api.firecrawl.dev/v2/scrape"
+
+
+def load_key(name):
+    val = os.environ.get(name)
+    if val:
+        return val.strip()
+    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+    if os.path.exists(env_path):
+        with open(env_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith(name + "="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    sys.exit(f"ERROR: API key not found. Set {name} env var or add it to {env_path}")
+
+
+def main():
+    p = argparse.ArgumentParser(description="Firecrawl scrape to markdown")
+    p.add_argument("url")
+    p.add_argument("-o", "--output", default=None, help="write markdown to file instead of stdout")
+    p.add_argument("--formats", default="markdown", help="comma-separated: markdown,links,html,rawHtml")
+    p.add_argument("--wait", type=int, default=None, help="ms to wait for page render (try 3000 for slow SPAs)")
+    p.add_argument("--all-content", action="store_true", help="include nav/footer (disables onlyMainContent)")
+    p.add_argument("--json", action="store_true", help="dump raw JSON response")
+    args = p.parse_args()
+
+    body = {
+        "url": args.url,
+        "formats": [f.strip() for f in args.formats.split(",")],
+        "onlyMainContent": not args.all_content,
+    }
+    if args.wait:
+        body["waitFor"] = args.wait
+
+    req = urllib.request.Request(
+        API_URL,
+        data=json.dumps(body).encode(),
+        headers={
+            "Authorization": f"Bearer {load_key('FIRECRAWL_API_KEY')}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            data = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        sys.exit(f"ERROR: HTTP {e.code} from Firecrawl: {e.read().decode(errors='replace')[:500]}")
+    except urllib.error.URLError as e:
+        sys.exit(f"ERROR: network failure reaching Firecrawl: {e.reason}")
+
+    if args.json:
+        print(json.dumps(data, indent=2))
+        return
+
+    if not data.get("success"):
+        sys.exit(f"ERROR: Firecrawl returned success=false: {json.dumps(data)[:500]}")
+
+    d = data.get("data", {})
+    meta = d.get("metadata", {})
+    parts = []
+    if d.get("markdown"):
+        parts.append(d["markdown"])
+    if d.get("links"):
+        parts.append("\n## Links\n" + "\n".join(d["links"]))
+    if d.get("html") and "markdown" not in body["formats"]:
+        parts.append(d["html"])
+    content = "\n".join(parts) if parts else json.dumps(d, indent=2)
+
+    if args.output:
+        header = f"<!-- scraped from {meta.get('url', args.url)} | title: {meta.get('title', '')} | status: {meta.get('statusCode', '?')} -->\n"
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(header + content)
+        print(f"Saved {len(content):,} chars to {args.output} (title: {meta.get('title', 'n/a')}, status: {meta.get('statusCode', '?')})")
+        if d.get("warning"):
+            print(f"WARNING: {d['warning']}")
+    else:
+        print(content)
+
+
+if __name__ == "__main__":
+    main()

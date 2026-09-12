@@ -665,6 +665,18 @@
    "captureWorkingTree": true
   },
   {
+   "path": "DEV/Injury_Surveillance",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Injury_Surveillance.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
    "path": "DEV/Intern_Curriculum",
    "class": "institutional",
    "isRepo": true,

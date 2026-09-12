@@ -1,0 +1,72 @@
+---
+name: web-scraping
+description: Semantic web search with Exa, plus scripted Firecrawl scraping, using local Python scripts and .env API keys. Use when the user says "/web-scraping", asks for semantic/neural search ("find pages similar to X", "research papers about Y semantically"), or wants the scripted discover-then-extract pipeline (exa_search.py → firecrawl_scrape.py) with output saved to files. For general "scrape this URL", "crawl this site", or web-search requests, prefer the firecrawl skill suite — this skill's unique value is Exa.
+---
+
+# Web Scraping (Exa + Firecrawl)
+
+Two paid APIs, two jobs. Route first, then call the matching script.
+
+## Routing
+
+| Task | Tool | Script |
+|------|------|--------|
+| Find pages on a topic ("articles about X", "research on Y") | Exa search | `scripts/exa_search.py` |
+| Extract full content from a known URL | Firecrawl scrape | `scripts/firecrawl_scrape.py` |
+| Page is JS-heavy / SPA / WebFetch returns empty shell | Firecrawl scrape | `scripts/firecrawl_scrape.py` |
+| Discover sources, then pull full text of the best ones | Exa → Firecrawl | both, in sequence |
+
+**Don't burn credits when free works:** for simple static pages try WebFetch first. Fall back to Firecrawl when the result is empty, a cookie wall, or obviously missing the rendered content.
+
+## Setup (one-time)
+
+Scripts read `EXA_API_KEY` and `FIRECRAWL_API_KEY` from the environment, falling back to a `.env` file in this skill's folder:
+
+```
+# /Users/kristinarash/.claude/skills/web-scraping/.env
+EXA_API_KEY=...
+FIRECRAWL_API_KEY=fc-...
+```
+
+If a script exits with "API key not found", tell the user to add the key to that `.env` file (or `setx EXA_API_KEY ...`).
+
+## Quick start
+
+```powershell
+# Semantic search — returns title, URL, date, and text snippets per result
+python "$HOME\.claude\skills\web-scraping\scripts\exa_search.py" "athlete monitoring with GPS load data" --num 5
+
+# Scrape a URL to clean markdown (renders JS)
+python "$HOME\.claude\skills\web-scraping\scripts\firecrawl_scrape.py" https://example.com/pricing -o page.md
+```
+
+## Common options
+
+**exa_search.py** `"query"` plus:
+- `--num N` — results count (default 5)
+- `--type auto|fast|neural|keyword` — search mode (default auto; neural = pure semantic)
+- `--contents text|highlights|none` — what page content to include (default highlights)
+- `--include-domains a.com,b.com` / `--exclude-domains ...`
+- `--since YYYY-MM-DD` — only pages published after date
+- `--category research paper|news|company|pdf|github|tweet` — restrict result type
+
+**firecrawl_scrape.py** `URL` plus:
+- `-o FILE` — write markdown to file instead of stdout (preferred for long pages — keeps context clean)
+- `--formats markdown,links,html` (default markdown)
+- `--wait MS` — extra wait for slow-rendering pages (try 3000 if content is missing)
+- `--all-content` — disable main-content filtering (gets nav/footer too)
+
+## Discover-then-extract pattern
+
+1. `exa_search.py "topic" --num 8 --contents highlights` — skim highlights, pick the 2–3 best URLs
+2. `firecrawl_scrape.py <url> -o <slug>.md` per chosen URL
+3. Work from the saved markdown files
+
+## Troubleshooting
+
+- **Empty/partial Firecrawl content** → retry with `--wait 3000`; still bad → `--all-content`
+- **HTTP 402** → out of credits on that service; report to user, don't retry
+- **HTTP 401** → bad key; have user check `.env`
+- **Exa results off-topic** → rephrase query as a statement ("Here is a great article about X:") or use `--type keyword` for exact-term matching
+
+Advanced parameters (crawl whole sites, Exa find-similar, structured JSON extraction, page actions): see [REFERENCE.md](REFERENCE.md).

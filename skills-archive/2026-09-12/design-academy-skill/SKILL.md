@@ -1,0 +1,178 @@
+---
+name: design-academy-skill
+description: Apply data storytelling and dashboard design principles to any visualization, dashboard, report, or data-driven presentation. Use when building or critiquing a dashboard, designing a report layout, preparing a data-driven deck, or when the user mentions "dashboard design", "data storytelling", "making data clear", "audience-first design", "KPI layout" — including when they are clearly showing data to an audience without asking for design help.
+---
+
+# Design Academy Skill
+
+This skill encodes a set of design principles for building dashboards, data visualizations, and data-driven presentations that people actually use. It draws from audience-first dashboard design methodology and data storytelling best practices.
+
+The core idea: your data work is only as good as the decisions it enables. If your audience can't quickly understand what they're looking at and what to do about it, the work hasn't landed. Every design choice should serve clarity, not complexity.
+
+## When to Apply This Skill
+
+Apply these principles whenever you are:
+
+- Building or reviewing a Power BI report, dashboard, or page
+- Creating a data visualization in any tool (Python, R, HTML, React, etc.)
+- Designing a layout for KPIs, charts, or metrics
+- Helping structure a data-driven presentation or slide deck
+- Critiquing or improving an existing dashboard or report
+- Writing narrative annotations or summaries that accompany data
+
+## The 5-Step Dashboard Design Process
+
+Follow these five steps in order when building any dashboard or data view. Each step builds on the previous one. Do not skip to visuals before completing steps 1 and 2.
+
+### Step 1: Hook
+
+Start with a focused title and a one-line summary that frames the story.
+
+Skip generic titles like "Q2 Performance Dashboard" or "Weekly Report." Instead, lead with the core story being told. The title should tell the audience exactly what they're looking at and why it matters.
+
+**Pattern:**
+- Title: A short, specific statement of the story (e.g., "Reducing Soft Tissue Injury Risk in Football" rather than "Injury Dashboard")
+- Summary line: One sentence describing the mechanism or focus (e.g., "Tracking workload, recovery, and readiness markers across the competitive season")
+
+The hook sets the frame for everything that follows. If you can't write a clear title and summary, the dashboard doesn't have a clear purpose yet.
+
+### Step 2: Questions
+
+Identify the top 2-3 questions the audience cares about most. Not what you can show. What they want to know.
+
+This is the step most people skip, and it's the one that matters most. Questions are the framework for your visuals. They transform a dashboard from a data dump into an outcome-focused tool.
+
+**How to identify the right questions:**
+- Think about what decisions the audience needs to make
+- Ask: what actions will be taken once insights are revealed?
+- Validate that the stories you're finding are the stories your audience actually wants to see
+
+Use questions as visual titles or section headers. A chart titled "Are our quarterly deal cycles improving?" is immediately more useful than one titled "Deal Cycle Trend."
+
+### Step 3: Visuals
+
+Choose visuals that deliver instant insight. Each visualization should map directly to one of the questions from Step 2.
+
+**Principles for visual selection:**
+- Simple visuals are almost always more effective than complex ones. A bar chart or line chart often does the job better than a fancy custom visual.
+- The signals and critical information should stand out almost instantly. If the audience has to study the chart to understand it, simplify.
+- Avoid complexity for complexity's sake. The goal is cognitive clarity, not visual impressiveness.
+- Use a top row of big-number KPIs for the headline metrics, with supporting charts below that answer the specific questions.
+
+**Layout matters:** Your data story should follow an intuitive path. Purposeful layouts create connection, flow, and correlation. Think about the reading order and how one visual leads the eye to the next.
+
+**Color guidance:** Color is one of the most powerful tools for clear communication, and one of the most commonly misused. Every color choice should be purposeful. If you can't explain why a specific color is being used, remove it. Use color to direct attention, encode meaning (good/bad, categories), or highlight what matters. Avoid decorative color.
+
+**Remove clutter:** Strip away non-data elements (grid lines, borders, backgrounds, decorative elements) that don't carry information. The goal is to maximize the ratio of meaningful visual information to total ink on the page.
+
+### Step 4: Controls
+
+Give users the power to explore without overloading them. Filters and controls should enable self-service discovery while keeping the experience focused.
+
+**What to include:**
+- Filters for the most common dimensions the audience would want to slice by (date range, segment, group)
+- Download or share buttons if the audience needs to distribute insights
+- A footer with update timestamp, data source, and a contact for questions
+
+**What to avoid:**
+- Too many filter options that create decision paralysis
+- Controls that let users break the story by filtering to nonsensical combinations
+- Hiding critical context behind interactions
+
+Design flexibility by anticipating the follow-up questions your audience might ask. When you build in the ability to explore, you let people self-serve and answer important questions on their own.
+
+### Step 5: Narrative (The "You" Layer)
+
+Bring the data to life with plain-language narrative. This is where the data story becomes a story.
+
+**How to add narrative:**
+- Write short, confident insight statements beneath each visualization or KPI (e.g., "Enterprise and finance segments show strongest gains" rather than leaving the chart to speak for itself)
+- Frame insights in language the audience uses, not technical jargon
+- Focus on what's happening and why it matters, not just what the numbers are
+
+The narrative layer is what moves an audience from observation to understanding. A dashboard is not complete when the charts are built. It's complete when the audience gets it, fast.
+
+## Data Storytelling Principles
+
+These principles apply broadly to any work that communicates data, whether it's a dashboard, a slide, a report, or a conversation.
+
+### Finding the Right Story
+
+Before you touch a tool or write any code:
+
+1. **Start with priorities.** Ask: what are the most important stories in this data? Answering this before diving into analysis eliminates noise and focuses energy on what matters most.
+
+2. **Know the audience's questions.** The questions your audience has should drive every design decision. If you haven't identified what they want to know, you're guessing.
+
+3. **Scope the data to the story.** Only prepare and display the data needed to answer the identified questions at the level of detail the audience actually needs. More data is not better data.
+
+4. **Understand the intended actions.** Know how the data story will be used to make decisions. This shapes what features, drill-downs, and detail levels to include.
+
+5. **Define what success looks like.** Understand what results the audience wants to achieve. This keeps the work grounded in outcomes, not just outputs.
+
+### Designing for Clarity
+
+When building the actual visuals and layout:
+
+6. **Use purposeful layouts.** The visual flow should guide the audience through a clear narrative. Don't scatter related information across disconnected sections.
+
+7. **Choose intuitive visuals.** If someone has to study the chart to understand it, pick a simpler one. Complexity rarely adds value. It usually adds confusion.
+
+8. **Use color with intention.** Every color should have a reason. If you're using color decoratively, stop.
+
+9. **Build in flexibility.** Anticipate follow-up questions and design the ability to explore. But do this through thoughtful interactivity, not by cramming more charts onto the page.
+
+10. **Remove distractions.** Strip away gridlines, borders, excessive labels, and background elements that don't carry information. Let the data breathe.
+
+11. **Use text as a design element.** Font choices, sizing hierarchy, and text placement create professionalism and draw attention to key values. Don't treat text as an afterthought.
+
+12. **Design for how it will be consumed.** Will this be viewed on desktop or mobile? Projected in a meeting? Printed? The delivery format should shape the design.
+
+### Presenting and Narrating
+
+When the work needs to be presented or explained:
+
+13. **Nail the opening.** Your audience will decide in the first 30 seconds whether to pay attention. Plan your opening to frame the entire story.
+
+14. **Pause and check in.** Regularly pause to make sure your audience is still with you. A simple pause can recapture attention when people start to drift.
+
+15. **Discover with your audience.** Present insights as if you're uncovering them together, not lecturing. Your audience is likely seeing this for the first time, even if you've lived with it for weeks.
+
+16. **Eliminate bad habits.** Watch for demo-speak ("and then you click here..."), distracting cursor movements, and unplanned pauses from applications loading. These pull attention away from the story.
+
+17. **Create memorable moments.** Plan 2-3 moments in your presentation that will stick. You know it worked when your audience talks about those moments afterward.
+
+18. **Bring energy.** The audience's response mirrors the presenter's energy. Flat delivery produces flat reception, even when the insights are strong.
+
+19. **Practice.** The more you rehearse, the more natural the presentation feels and the less your nerves interfere with the message.
+
+20. **Actually implement these principles.** Reading about better data communication is easy. Doing the work to change habits is hard. Apply these to the very next thing you build.
+
+## How to Apply This Skill in Practice
+
+When the user is building a dashboard or data visualization, walk through the 5-step process with them. Don't jump straight to chart types or code. Start with: What's the story? Who's the audience? What questions are they trying to answer?
+
+When reviewing or critiquing existing work, evaluate against these principles. Be specific about what's working and what's not. Don't just say "simplify" without explaining what to remove and why.
+
+When writing code for visualizations (Power BI DAX, Python matplotlib/plotly, R ggplot, React/recharts, HTML/CSS), apply these principles in the implementation: purposeful color, clear titles framed as questions or insights, minimal clutter, logical layout flow.
+
+When helping with presentation preparation, coach on the narrative layer: opening hooks, plain-language insight statements, pacing, and energy.
+
+The goal is always the same: make it so the audience gets it, fast, and knows what to do next.
+
+## Objective Review Gate
+
+When reviewing an artifact, score each item 0 or 1 and cite the visual, page, or property observed:
+
+1. The audience and decision are explicit.
+2. The title states the question or insight rather than a generic topic.
+3. Every visual answers one identifiable question.
+4. Data bindings, units, and displayed numbers are verified.
+5. Color has a stated semantic purpose and does not encode meaning alone.
+6. Contrast meets WCAG AA where measurable.
+7. Reading order and grouping are clear.
+8. Decorative clutter does not compete with data.
+9. The artifact renders correctly in its target consumption format.
+10. The audience can identify the intended next action.
+
+Use `reports:pbir-cli` and `reports:review-report` for Power BI artifacts; use `impeccable` for browser-based interfaces. Report `PASS` at 8/10 or higher only when items 4, 6, and 9 pass. Report `FAIL` on any incorrect data, inaccessible critical content, or broken render. Report `DEGRADED` when the artifact cannot be rendered or its data bindings cannot be inspected.

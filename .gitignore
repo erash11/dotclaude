@@ -21,6 +21,7 @@
 !/audits/
 !/scripts/
 scripts/logs/
+**/.env
 
 !/MIGRATION-MACOS.md
 !/CREDENTIALS.md
@@ -36,4 +37,3 @@ scripts/logs/
 !/machine.macos.md
 !/machine.windows.md
 # machine.md is per-machine, never tracked
-

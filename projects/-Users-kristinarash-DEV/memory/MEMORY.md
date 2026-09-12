@@ -31,7 +31,7 @@ Never put memory content here — the file itself holds the facts.
 - [Working-conditions bottleneck](user_working-conditions-bottleneck.md) — what limits him; the permission gate on acting unasked
 - [Zero-edit YouTube pipeline](reference_zero-edit-youtube-pipeline.md) — Jack Roberts' Claude Code video system
 - [DEV layout and discovery](project_dev-layout-and-discovery.md) — folder rules, depth-2 scan limit, gitignore trap
-- [KeystoneOS verification habits](project_keystoneos-verification-habits.md) — which state claims mislead; re-check before asserting
+- [KeystoneOS verification habits](project_keystoneos-verification-habits.md) — which state claims mislead; re-check before asserting; morning-cadence dies on a `C:\` or URL `canonicalPath` in projects.json
 - [Portfolio registry provenance](project_portfolio-registry-write-provenance.md) — who writes portfolio.json; how to commit changes
 - [Command centre](project_command-centre.md) — localhost:7373 front door + the /os board, daemon health, backup default-deny
 - [Vendored skill install](project_vendored-skill-install.md) — installing a third-party skill for Claude Code + Codex + Cowork; the `-a` flag trap
@@ -51,3 +51,4 @@ Never put memory content here — the file itself holds the facts.
 - [Child dental plan](user_child-dental-plan.md) — 4yo cavities: pediatric dentist not yet booked, SDF vs n-HAp
 - [ELI5 output style](user_eli5-output-style.md) — concise plain-language output rules shared by Claude Code and Codex
 - [GitHub consolidation](project_github-consolidation.md) — ~/DEV on GitHub: the thin root repo, _ARCHIVE, where DexaProject went, merge traps
+- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — the 2026-09-12 skill audit (160→61), the project-until-promoted rule, the re-measure command, and the verified Pi/pi.dev facts
