@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-09-12T13:55:33.554Z
+  modified: 2026-09-12T17:43:28.514Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -118,11 +118,49 @@ Script: `~/.claude/skills-audit-2026-09-12.sh` (archives, never deletes — undo
 `mv ~/.claude/skills-archive/2026-09-12/* ~/.claude/skills/`).
 Report: `~/SecondBrain/Inbox/2026-09-12-skill-audit.md`.
 
-Three traps found while doing it:
-1. **`~/.claude/skills/` is gitignored** inside the `dotclaude` repo — git is NOT a
-   safety net for skills. The archive-move is the only undo.
-2. **45 of the 160 skills are symlinks** into `~/.agents/skills/`. Archiving a symlink
-   de-registers it from Claude Code but leaves the real copy for Codex. Count with
-   `find -L`; plain `find` undercounts by 45.
-3. **"606 plugin skills" is cache, not load.** Only 6 of 24 plugins are enabled
+Traps found while doing it:
+1. **CORRECTED 2026-09-12 — `~/.claude/skills/` IS version-controlled.** It is its own
+   git repo, remote `https://github.com/erash11/claude-skills.git`, and the audit was
+   committed as `3ab4467 chore: apply global skill audit` and pushed. The earlier note
+   that it is "gitignored, archive is the only undo" was true only of the *`dotclaude`*
+   repo, which ignores this path — a different thing. **Git IS the safety net here, and
+   it is also how the cut reaches Windows.** Undo with
+   `git -C ~/.claude/skills revert <sha> && git push`, not the archive folder
+   (`skills-archive/` is not in the repo and never reaches the other machine).
+2. **A cut in `~/.claude/skills/` does NOT reach `~/.agents/skills/`.** After the audit,
+   98 of the 99 archived skills were still live in the pool (306 entries there vs 61
+   canonical). Claude Code stopped seeing them; **Pi auto-discovers that folder**, so
+   installing Pi would have re-exposed all of them. Always cut both.
+3. **Skills live in three places and it is easy to edit the wrong copy.**
+   `~/.claude/skills/` (19 entries were symlinks pointing *out* to the pool),
+   `~/.agents/skills/` (Pi, Cowork), `~/.codex/skills/` (Codex, 27 symlinks + 5 real
+   dirs). Count with `find -L`; plain `find` undercounts.
+4. **`sync-to-codex.sh` did `rm -rf "$dst/$s"; cp -R "$SRC/$s"`** over a 7-name
+   allowlist. If `$SRC/$s` ever became a symlink into `$dst`, that deletes the real
+   data. `dev-sync` tells you to run it after every pull. A `.ps1` twin has the same
+   shape — patch both.
+5. **`~/.claude/skills/_shared/`** holds `config.json` + `Inference/` and is resolved by
+   10+ skills via `parents[2]/_shared/config.json`. It has **no SKILL.md**. Never treat
+   "no SKILL.md" as "orphan, delete".
+6. **"606 plugin skills" is cache, not load.** Only 6 of 24 plugins are enabled
    (~37 skills exposed). The rest are disabled plugins and old cached versions.
+
+## Architecture decided 2026-09-12 (plan approved, not yet executed)
+
+**Canonical = `~/.claude/skills/`** (the git repo, real directories only, **never commit
+a symlink** — Windows pulls this repo). `~/.agents/skills/` and `~/.codex/skills/` are
+**generated views**, rebuilt by `sync-to-codex.sh` from a complete manifest of every
+canonical dir holding a SKILL.md, recorded in a `.generated-by-sync-to-codex` ownership
+file so an audit can tell a generated entry from a third-party `npx skills add` install.
+Symlink on Mac, copy on Windows.
+
+Portable frontmatter contract (fires in Claude Code *and* Codex): `name` must equal the
+directory name (TitleCase is legal), and `description` needs **both** a positive
+"Use when …" clause with literal trigger phrases *and* a negative "Do not use …" clause.
+Codex reads only `name` + `description` (+ optional `metadata.short-description`) and
+ignores `argument-hint` / `allowed-tools`. Codex over-fires without the negative clause;
+Claude will not trigger without the literal phrases.
+
+Plan (Codex-approved after 6 review rounds, 10→0 findings):
+`~/DEV/KeystoneOS/docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`.
+See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-install]].
