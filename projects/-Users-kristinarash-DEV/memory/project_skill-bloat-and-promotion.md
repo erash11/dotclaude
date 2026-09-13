@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-09-12T17:43:28.514Z
+  modified: 2026-09-13T06:38:22.028Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -145,7 +145,26 @@ Traps found while doing it:
 6. **"606 plugin skills" is cache, not load.** Only 6 of 24 plugins are enabled
    (~37 skills exposed). The rest are disabled plugins and old cached versions.
 
-## Architecture decided 2026-09-12 (plan approved, not yet executed)
+## Executed 2026-09-12 — traps the live run found
+
+- **Views are live links now.** `~/.agents/skills/<owned>` and `~/.codex/skills/<owned>`
+  point into canonical, so anything that writes a view path writes canonical
+  (`graphify install --platform agents` does; see [[graphify-runtime-setup]]).
+- **`skillOverrides` in `~/.claude/settings.json` breaks parity silently.** Codex and Pi
+  ignore that file, so an owned skill set `"off"` there is hidden in Claude Code but live
+  elsewhere. Perfect frontmatter does not help; `skill-portability-check.py` fails it.
+  Resolved 2026-09-13: Eric re-enabled the 7 (ArXiv, ISA, Science, capture-insight,
+  library-review, pp-espn, session-miner) — `~/.claude` commit `21c686d`, checker 42/42.
+  Never set an owned skill "off" again; retire it from canonical instead.
+- **Git's spelling wins, not the Mac's.** APFS is case-insensitive: the folder showed
+  `Harvest` while git recorded `harvest/`. Check `git ls-files` before "fixing" a
+  name to match the disk.
+- **A `closeout` in another session commits your uncommitted work** (it swept Task 5's
+  34 SKILL.md edits into its own commit). Commit each verified step immediately.
+- **Description budget:** keep each description under ~650 chars; Claude Code caps the
+  combined listing.
+
+## Architecture decided 2026-09-12 (executed through Task 5 the same day)
 
 **Canonical = `~/.claude/skills/`** (the git repo, real directories only, **never commit
 a symlink** — Windows pulls this repo). `~/.agents/skills/` and `~/.codex/skills/` are
