@@ -1,0 +1,439 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- use claude, that fine
+
+## Files Modified
+handoff-2026-09-12-harness-skill-audit.md, 2026-09-12-harness-agnostic-aios.md, aios-dispositions.md, aios-dispositions-r2.md, aios-dispositions-r3.md, aios-dispositions-r4.md, aios-dispositions-r5.md, project_skill-bloat-and-promotion.md, MEMORY.md, aios-dispositions-r6.md, aios-dispositions-r7.md, task4-new.md, r8-fixes.txt, apply-fixes.py, aios-dispositions-r8.md, parse-check.ps1, task4-v3.md, r9-fixes.txt, 2026-09-12-pre-canonical-inventory.txt, aios-dispositions-r9.md, r10-fixes.txt, aios-dispositions-r10.md, r11-fixes.txt, aios-dispositions-r11.md, r12-fixes.txt, aios-dispositions-r12.md, 2026-09-12-gate-a-approval.md, project_graphify-runtime-setup.md, t5-failing-frontmatter.txt, t5-descriptions.txt, t5-apply.py, t5-trigger.sh, SKILL.md, t5-report.py, t5-trig-claude-library-review.first, 2026-09-12-portability.md, CreateSkill.md, SkillSystem.md, t6-aios-audit-SKILL.md, skill-portability-check.py, sync-to-codex.sh, sync-to-codex.ps1, gateB-dispositions-r1.md, t6-aios-metrics.py, t5c-checker-test.py, t5c-ps-test.ps1, gateB-dispositions-r2.md, t7-failpaths.py, gateC-context.md, t8-pi-trial.md, aios-audit-cron.sh, aios-metrics.py, handoff-2026-09-13-aios-gate-c.md
+
+## Unresolved Errors
+- {"stdout":"=== os-audit SKILL.md ===\n---\nname: os-audit\ndescription: Use when someone asks to run an OS audit, check their AIOS for stale or out...
+- {"stdout":"# CLI runtime\n\nUse Python 3.10+ and the runner installed at `../scripts/runner.py` relative to this reference. Resolve it from the ski...
+- {"stdout":"      },\n      {\n        \"id\": \"R9\",\n        \"severity\": \"high\",\n        \"path\": \"docs/superpowers/plans/2026-09-12-harne...
+- {"stdout":"status: completed exit: 0 provider: codex roles: {'host': 'claude', 'planner': 'claude', 'reviewer': 'codex', 'builder': 'claude', 'insp...
+- {"stdout":"status: completed exit: 0\nVERDICT: REVISE\nSUMMARY: The revised architecture resolves the original migration direction and several prio...
+- {"stdout":"VERDICT: REVISE\nSUMMARY: The supplied SHA256 matches the on-disk plan. Several prior fixes are resolved, but the revision introduces an...
+- {"stdout":"ok\n--- Task 4 step order now ---\n318:### Task 3: Harden the sync writers — before anything moves\n337:- [ ] **Step 1: Read both curren...
+- {"stdout":"VERDICT: REVISE\nSUMMARY: The plan hash matches. Task ordering, negative-clause detection, and Mac manifest-target checks are corrected....
+- {"stdout":"  OPTION 1 (default) - roll back the sync script too:\n    git -C ~/.claude/skills revert <sync-hardening-sha> && git push\n    # dev-sy...
+- {"stdout":"VERDICT: REVISE\nSUMMARY: AMEND-01 is incomplete: it bypasses the source guard, fails to ignore the vendored symlinks, and leaves incomp...
+- {"stdout":"1082:> **15 inverted, not 19.** Of the 19 outward links, four (`claudex-loop`, `claudex-route`, `codex-build`, `codex-review`) are the v...
+- {"stdout":"checker updated","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/k...
+- {"stdout":"--- stdout tail ---\n{\"type\":\"thread.started\",\"thread_id\":\"01a09699-01a4-7581-a91b-b0dd3fc236fe\"}\n{\"type\":\"item.completed\",...
+- {"stdout":"provider: claude roles: {'host': 'codex', 'planner': 'codex', 'reviewer': 'claude', 'builder': 'codex', 'inspector': 'claude'}\nVERDICT:...
+- {"stdout":"replaced Task 4: old 279 lines -> new 185 lines\n135:### Task 1: Snapshot and freeze the current state\n321:### Task 2: Prune the stale ...
+- {"stdout":"=== checker ALLOWED / VENDORED / POSITIVE ===\n1159:ALLOWED = {\"name\", \"description\", \"metadata\", \"argument-hint\", \"allowed-too...
+- {"stdout":"checker + fixtures ready\n=== fixtures: expect negonly, dupekey, badquote, fragments FAIL; goodone + theirs absent; exit 1 ===\nFAIL bad...
+- {"stdout":"status: completed provider: claude\nVERDICT: REVISE\nSUMMARY: Most round-8 fixes hold up in this revision. Treating every symlink as thi...
+- {"stdout":"=== xargs -a occurrences ===\n1121:`--pathspec-from-file` needs git ≥ 2.26 (this Mac has 2.55). It replaces the earlier `xargs -a`, whic...
+- {"stdout":"runner exit=0\nstatus: completed provider: claude\nVERDICT: REVISE\nSUMMARY: All seven round-9 fixes are present and look correct. The r...
+- {"stdout":"=== Sync-Repo function ===\n     1\tfunction Sync-Repo($path, $branch) {\n     2\t    $name = Split-Path $path -Leaf\n     3\t    if ($p...
+- {"stdout":"applied 14 replacements\nextracted: sync-test.sh, test-pre-commit, backup-commit-test.ps1\nOLD backup block matched the real file exactl...
+- {"stdout":"######## PATCHED daily-backup (expect ALL PASSED, exit 0) ########\n=== T1: a fresh third-party link lands; the backup must REPORT the r...
+- {"stdout":"######## control exit code, no pipe ########\ncontrol exit=1 (expect 1)\nFAIL lines: 4\n\n######## guard exit code + refused run leaves ...
+- {"stdout":"runner exit=0\nstatus: completed provider: claude\nVERDICT: REVISE\nSUMMARY: All three round-10 fixes hold. Task 3 Step 5c now checks th...
+- {"stdout":"applied 11 replacements\nplan parse: all OK (3 shell scripts)\nbash script has gate: True | twin has gate: True\ntwin --error-unmatch le...
+- {"stdout":"applied 3 replacements\nplan parse: all OK (3 shell scripts)\nvalidation precedes gate: True\nfixtures ready\n######## unprepared machin...
+- {"stdout":"runner exit=0\nstatus: completed provider: claude plan_sha256: 71b5242ea6dadac667878bc6d4617facbfaa1958a75975762e2d2da40928c432\nVERDICT...
+- {"stdout":"harness exit=0 (expect 0) - REAL patched daily-backup.ps1 + INSTALLED hook (script defaults)\nLOG: REPO work : COMMIT FAILED\nLOG: REPO ...
+- {"stdout":"=== graphify skill files (excluding .venv) that name the pool or codex skill paths ===\n(none)\n\n=== installer code inside .venv that w...
+- {"stdout":"    bundle_dir = Path(__file__).parent / \"skills\" / bundle\n    if not bundle_dir.is_dir():\n        return None\n    return bundle_di...
+- {"stdout":"checker does not exist yet (good)\nwrote 150 lines sha256 7703c8409d5fc3a2\ncompiles OK\n-rwxr-xr-x@ 1 kristinarash  staff  6443 Sep 12 ...
+- {"stdout":"baseline exit= 1 | checked 42 skills, 33 failing, 9 portable\nempty exit= 2 | FATAL no SKILL.md found under /Users/kristinarash/.claude/...
+- {"stdout":"FAIL Harvest\n       - name 'harvest' != directory 'Harvest'\n       - no negative clause ('Do not use ...') - Codex over-fires\nFAIL ca...
+- {"stdout":"batch 1: ['closeout', 'memory-write', 'claude-stack-doctor', 'dev-sync', 'project'] -> checked 42 skills, 28 failing, 14 portable; still...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\nexit=0","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"html-to-pdf/SKILL.md | old fm CRLF: False | body restored: True\npp-espn/SKILL.md | old fm CRLF: True | body restored: True\nfiles: 33 |...
+- {"stdout":"3:description: \"Harden a plan with independent Claude/Codex review, then optionally build and cross-inspect it. Start in either Claude ...
+- {"stdout":"# CLI runtime\n\nUse Python 3.10+ and the runner installed at `../scripts/runner.py` relative to this reference. Resolve it from the ski...
+- {"stdout":"claude\tmemory-write\texit=1\tFIRED\tnote that the skill portability trigger test ran on 2026-09-12\n  TOOL Skill {\"skill\": \"memory-w...
+- {"stdout":"checker exit=0\nchecked 42 skills, 0 failing, 42 portable\nparsed 42 yaml errors 0\nlibrary-advisor: ew a domain for gaps, contested ent...
+- {"stdout":"exit=0\ndate=2026-09-12\ncanonical_skills=42\nthird_party_links_in_canonical=19\npool_entries=213\npool_skills=210\ncodex_skills=52\npro...
+- {"stdout":"files: 34 | bodies differ from pre-edit commit: []\nlibrary-advisor included: True\nchecked 42 skills, 0 failing, 42 portable\nparsed 42...
+- {"stdout":"15:## Today's context\n20:## The lens: four failure modes, two context types\n38:## Step 0 — Prior report and recent evidence\n43:## Exe...
+- {"stdout":"  \"observed_models\": [],\n  \"elapsed_seconds\": 52.87\n}\nstatus: completed | error: None\nVERDICT: None\nSUMMARY: None\n\nCOVERAGE: ...
+- {"stdout":"top keys: ['status', 'mode', 'provider', 'roles', 'repo', 'plan', 'plan_sha256', 'requested_model', 'requested_effort', 'base', 'snapsho...
+- {"stdout":"status: completed | VERDICT: REVISE\nsummary: Three concrete defects remain: a destructive root-alias case, a Git casing mismatch, and f...
+- {"stdout":"REAL exit 1 | checked 42 skills, 7 failing, 35 portable\n  failing set == owned-and-off set: True ['ArXiv', 'ISA', 'Science', 'capture-i...
+- {"stdout":"sync exit=0\ncanonical manifest: 43 entries; third-party links: 19\nretire Harvest from /Users/kristinarash/.agents/skills (no longer in...
+- {"stdout":"checked 1 skills, 0 failing, 1 portable\nchecker exit=0\nlines:      167\nyaml keys: ['name', 'description', 'metadata', 'argument-hint'...
+- {"stdout":"}\nstatus: completed | VERDICT: REVISE\nsummary: The checker improvements address several earlier cases, but YAML validation still accep...
+- {"stdout":"}\nstatus: completed | VERDICT: REVISE\nsummary: The root-overlap guards address R13-01, but manifest writes can still overwrite canonic...
+- {"stdout":"FIXTURES exit 1 | checked 16 skills, 9 failing, 7 portable\n  PASS dq-bad-escape: flagged=True expect=True loader_loads=False\n  PASS dq...
+- {"stdout":"Traceback (most recent call last):\n  File \"/Users/kristinarash/.claude/jobs/c59d1788/tmp/t5c-checker-test.py\", line 46, in <module>\n...
+- {"stdout":"sync exit=0\ncanonical manifest: 43 entries; third-party links: 19\nsynced 43 entries -> /Users/kristinarash/.agents/skills (link); mani...
+- {"stdout":"FIXTURES exit 1 | checked 16 skills, 12 failing, 4 portable\n  FAIL list-items-good: flagged=True expect=False loader_loads=True\nREAL r...
+- {"stdout":"FAIL pp-catapult-openfield-connect\n       - 'kind': plain scalar contains ': ' or ' #' - a YAML loader rejects or truncates it; quote i...
+- {"stdout":"FIXTURES exit 1 | checked 16 skills, 11 failing, 5 portable\nREAL roster syntax vs loader, files: 42 disagreements: []\nREAL checker exi...
+- {"stdout":" M scripts/skill-portability-check.py\ncommit exit=0\n602f3a8 fix: Gate B r2 - checker validates quoted/nested YAML and fails closed\n60...
+- {"stdout":"installed /Users/kristinarash/DEV/KeystoneOS/scripts/aios-metrics.py\ninstalled /Users/kristinarash/DEV/KeystoneOS/.claude/skills/aios-a...
+- {"stdout":"metrics exit=0\ndate=2026-09-12\ncanonical_skills=42\nthird_party_links_in_canonical=19\npool_entries=213\npool_skills=210\ncodex_skills...
+- {"stdout":"installed /Users/kristinarash/DEV/KeystoneOS/scripts/aios-audit-cron.sh\n.errors.log before: 0 bytes\nexit=0\n# AIOS trend\n\nOne row pe...
+- {"stdout":"PASS missing metrics script: exit=1 rows 1->1 log_has_FAIL=True\nPASS live lock: exit=0 rows 1->1 log_has_ABORT=True\nPASS stale lock re...
+- {"stdout":"--- .err ---\n(end .err)\n--- last log lines ---\nroster_tokens_est=6671\nportability_failures=7\nwrote: | 2026-09-12 | 42 | 19 | 210 | ...
+- {"stdout":".errors.log: removed 3 test nudge lines; restored to its empty pre-test state\n# AIOS trend\n\nOne row per monthly run. Written by scrip...
+- {"stdout":"================ gateC-keystone\n}\nstatus: completed | error: None | VERDICT: REVISE\nsummary: Three concrete Gate C defects remain: th...
+- {"stdout":"--- stderr (tail) ---\n--- stdout (tail) ---\nl \\\"manifest $manifestPath is a directory - manifest not written\\\" 3\\n      }\\n     ...
+
+## Git
+docs: harness-agnostic AIOS plan, rounds 1-2 of Codex review folded in
+
+Round 1 (REVISE, 6 high) inverted the architecture: ~/.claude/skills is its
+own git repo and must be canonical; the pool and codex dirs are generated views.
+Round 2 (REVISE, 2 high) caught that views published only 7 of 61 skills and
+that a single rollback tarball would corrupt the canonical repo.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, docs: fold round 3 Codex review into the AIOS plan
+
+Round 3 (REVISE, 2 high) caught two defects introduced by round 2's own
+fixes: a task-ordering deadlock between the sync guard and the symlink
+inversion, and a path-traversal rm -rf fed from the writable view manifest.
+Also fixes the negative-only frontmatter check (overlap, not containment),
+gives the PowerShell twin full manifest semantics, and rewrites rollback
+by migration phase.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, docs: fold round 4 Codex review into the AIOS plan
+
+R4-01 wildcard metacharacters in a manifest line reached PowerShell's
+wildcard-aware -Path; all manifest-derived ops now use -LiteralPath and
+glob chars are refused. R4-02 archive failures were suppressed before a
+delete and both views shared one archive path; archival must now succeed
+into a per-view directory or the run aborts. R4-03 rollback no longer
+runs a sync that rejects the layout it just restored. R4-04 copy
+freshness now hashes contents instead of comparing sizes.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, docs: fold round 5 Codex review into the AIOS plan
+
+R5-01: deleting a canonical skill left its generated view symlink dangling
+(-e is false for a broken link), while the name was dropped from the
+ownership manifest - permanent untracked debris reporting zero drift.
+Retirement now tests -e OR -L, archives with cp -RP so a dangling link
+archives without its target, retains ownership of refused entries, and the
+audit gains pool_dangling/codex_dangling. Archive dirs are no longer hidden.
+Verified end to end against the plan's own script.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, docs: Codex APPROVED the AIOS plan after 6 rounds
+
+Findings by round: 10 -> 9 -> 7 -> 4 -> 1 -> 0.
+High severity: 6 -> 2 -> 2 -> 2 -> 0 -> 0.
+Gate A satisfied; Task 1 may begin. Gates B, C, D still apply.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, push, Task 1 complete: snapshot + AMEND-01 (two-hop vendored chain)
+
+Verifying the snapshot found four canonical entries are a two-hop symlink
+chain into ~/.agents/vendor-review/claudex-loop/, which was outside the
+VIEWS tarball - the canonical count restored as 57, not 61. Tarball now
+includes vendor-review.
+
+Those four are also ALREADY committed to erash11/claude-skills as
+mode-120000 symlinks and pushed, i.e. the R3 breakage the plan exists to
+prevent, already live and dead on Windows. Plan amended in 6 places to
+untrack + gitignore them rather than vendor them into the repo, matching
+the existing rule for plugin skills.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, fix: R7-01..R7-05, one declared vendor inventory everywhere
+
+Codex round 7 found AMEND-01 was incomplete:
+- R7-01 blanket symlink-skip also waved the 15 ordinary outward links past
+  the R1 guard; now an explicit VENDORED allowlist with target verification.
+- R7-02 gitignore patterns ended in '/', which matches directories, not
+  symlinks - git add -A (here and in daily-backup.ps1) would have re-added
+  all four. Anchored patterns + a check-ignore verification step.
+- R7-03 PowerShell twin gets the same vendor policy.
+- R7-04 cron wrapper still read the renamed metric key; every monthly run
+  would have aborted before writing a row. Added a key-agreement check.
+- R7-05 counts reconciled: 57 owned / 4 vendored / 58 published. codex-review
+  removed from the frontmatter edit list.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, diff, Task 2 complete: prune the stale pool mirror (306 -> 208)
+
+98 skills archived yesterday from ~/.claude/skills were still live in
+~/.agents/skills, the folder Pi auto-discovers. Both guards clean; the
+~150 third-party installs and _shared untouched. Reversible.
+
+Also fixes three inversion-count expectations Codex surfaced before its
+usage limit: the guard now FATALs on 15 links not 19, the inverter
+reports inverted:15 skipped:4, and 4 vendored links legitimately remain.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, commit, add, fetch, pull, baseline: one file, one tracked link (pre-hook), fix: R9-01..R9-07, reconcile before sync, per-machine exclude, pre-commit hook
+
+Claude review round 9:
+- R9-01 a real sync ran before reconciling memory-write/meeting-sync, whose
+  pool copies hold edits found nowhere else. Task 4 now reconciles first.
+- R9-02 the generated ignore list lived in the tracked, shared .gitignore;
+  each machine would erase the other's list. Now .git/info/exclude.
+- R9-03 pre-commit hook refuses adding/changing symlinks, allows removal.
+- R9-04 inventory marks the inversion-era rollback superseded; adds
+  rollback by task.
+- R9-05 xargs -a (GNU-only) -> git rm --pathspec-from-file.
+- R9-06 dangling third-party links now enumerated and excluded.
+- R9-07 piuser gets its own primary group; not-world-readable was the
+  wrong test.
+
+Verified by running on /bin/bash 3.2: exclude block, RESUME.md kept,
+.gitignore unchanged, dangling link excluded, idempotent rerun, guard,
+no-repo path; hook T1-T4; pwsh parse.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, baseline
+ln, reset, baseline
+HOME=/tmp/sg5, fix: R10-01..R10-03, backup reports refused commits, sync unstages links
+
+Claude review round 10:
+- R10-01 the pre-commit hook's refusal was invisible: daily-backup.ps1
+  discarded git commit's exit code and logged 'committed', and a link
+  already staged by git add -A stayed staged. New Task 3 Step 5c patches
+  Sync-Repo to check the commit (nothing-stageable is not an error), and
+  both sync scripts remove third-party links from the index with
+  git rm --cached, never a reset to HEAD.
+- R10-02 remaining .gitignore wording now says .git/info/exclude.
+- R10-03 dseditgroup check added for piuser; staff has no nested groups
+  on this Mac (premise checked, did not hold).
+- Task 3 Step 0 warns not to run dev-sync between Task 3 and Task 4 Step 3.
+
+Verified by running: harness loads the real Sync-Repo via AST, patched
+version reports the refusal and still commits normal changes, unpatched
+control fails all four T1 checks; sync CASE 3/4 plus prior regressions on
+/bin/bash 3.2; all embedded scripts parse.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, base
+HOME=/tmp/t11/guard, fix: R11-01..R11-02, first-run gate on both sync scripts
+
+Claude review round 11 (0 high):
+- R11-01 Windows dev-sync would run the rewritten twin right after its next
+  pull and overwrite all 43 published entries with no snapshot or reconcile.
+  Both scripts now refuse any real run until the per-machine marker
+  ~/.agents/.sync-v2-ready exists; dry runs are always allowed. On the Mac
+  the marker is created only at the end of Task 4 Step 2, so Task 3's
+  'do not run dev-sync' warning is now enforced by code. Windows views
+  pause visibly until a dedicated prep session.
+- R11-02 the twin's index probe no longer writes native stderr, which
+  Windows PowerShell 5.1 treats as fatal under ErrorActionPreference=Stop.
+
+Verified by running on /bin/bash 3.2: CASE 5 gate (dry 0, real 2, pool-only
+edit survives, no manifest), CASE 1-4, guard, refused-run index unchanged,
+deletion workflow; pwsh parse of the twin.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, fix: R12-01, refuse any DRY_RUN value other than 0 or 1
+
+Claude review round 12 APPROVED with one low finding, fixed because it is a
+data-loss route: the bash sync tested DRY against "0" in five places and
+"1" in two, so DRY_RUN=true skipped the first-run gate yet still ran the
+publish loop's rm -rf. DRY is now validated once, before the gate.
+
+Verified: true/yes/2 refuse with exit 2 and leave the drifted pool copy
+intact; 1 stays a dry run; 0 still publishes on a prepared machine.
+Control run of the pre-fix script (5779c56) with DRY_RUN=true exited 0,
+printed no gate message and replaced the pool copy with a link.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, baseline
+cp, chore: stop tracking third-party skill symlinks
+
+All 19 outward links in this repo are third-party: 14 skills-CLI installs
+recorded in ~/.agents/.skill-lock.json (five of them mattpocock-skills),
+4 from the vendor-review/claudex-loop package, plus persistent-localhost.
+They were tracked as mode-120000 and pushed, i.e. dead links on Windows.
+
+They stay on disk and keep working here. Git ignores them through the
+per-machine .git/info/exclude, which sync-to-codex.sh regenerates; the
+pre-commit hook refuses any future symlink commit.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, docs(audit): record Task 4 reconcile decisions and publish evidence
+
+Canonical wins for all 23 diverged pool copies; graphify's Codex variant is
+archived, and its installer's write-through into canonical is recorded.
+First real sync, staging, roster and manifest checks all passed; skills
+repo commit 5f80203.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, status, log, chore: portable frontmatter across the roster
+
+Every owned skill now carries both a 'Use when' trigger clause and a
+'Do not use ... (use <sibling>)' clause, so it fires in Claude Code and
+does not over-fire in Codex or Pi. Bodies are byte-identical.
+Harvest name matches its directory; new-project frontmatter was invalid
+YAML and now parses.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, feat: portable skill frontmatter contract + checker
+
+skill-portability-check.py enforces name == directory and a description
+carrying both a 'Use when' and a 'Do not use' clause. Roster went from
+33 failing to 0. Live trigger test in Claude Code and Codex recorded in
+docs/audits/2026-09-12-portability.md, including the skillOverrides
+parity gap it exposed.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, fix: Gate B - refuse aliased roots, keep harvest spelling, trim descriptions
+
+R13-01: both sync twins resolve canonical and both view roots through every
+link in the path and its ancestors, and refuse (exit 2, no changes) when two
+roots are the same tree or nested. Before this, a pool view linked to
+canonical made the publish loop delete the canonical skill.
+R13-02: git records harvest/ in lowercase; name reverted to harvest and the
+local folder case fixed, so a fresh checkout matches.
+Three descriptions trimmed under 650 chars (listing budget).
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, fix: Gate B - checker rejects unloadable YAML and reports config parity
+
+B-01/R13-03: a plain scalar containing ': ' or ' #' is now a failure; a YAML
+loader rejects or truncates it. Cross-checked against PyYAML on 48 files, 0
+disagreements.
+B-02: an owned skill set 'off' in Claude Code skillOverrides but published to
+the Codex and Pi views is a failure. Today that is 7 skills; the enabled
+roster is Eric's decision.
+R13-02: directory spelling is compared with git's recorded spelling.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, docs(audit): record Gate B round 1 and correct the portability report
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, fix: Gate B r2 - never read or write the manifest through a link
+
+Both sync twins refuse (exit 2, no changes) when a view's manifest is a link
+or not a regular file, before any mutation. The manifest is now written to a
+new regular file and moved into place, so the old entry is replaced rather
+than written through. Before this, a manifest linked to a canonical SKILL.md
+was overwritten with the manifest text.
+
+Verified: 13 scratch-HOME cases on bash 3.2 (incl. linked manifest, directory
+manifest, second run leaves no temp files), PowerShell parse + the write path
+on a real symlink, and a real sync (43 entries, drift 0).
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, fix: Gate B r2 - checker validates quoted/nested YAML and fails closed
+
+K2-01: quoted scalars are checked for valid escapes and a closing quote on
+the same line; nested and list-item lines are validated too; flow mappings,
+anchors, aliases, tags, tab indentation and nested flow sequences are
+rejected as unsupported. Fixed a bug where any empty-valued key (metadata:)
+made every nested line skip validation.
+K2-03: unreadable or malformed settings, a non-object skillOverrides, or a
+failed git probe exit 2 instead of reading as 'no problems'.
+
+Verified: 16/16 fixtures, 0 disagreements with PyYAML over the 42 real skills,
+4/4 fail-closed cases, older fixtures unchanged. Real roster: 7 failing, all
+the skillOverrides parity gap awaiting Eric's roster decision.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, feat: aios-audit compound skill + rot.md decay tiers
+
+Project-level aios-audit owns the harness layer (skills, agents, hooks, rules,
+agent memory, cross-harness parity) and delegates the other five audits
+read-only. aios-metrics.py prints the machine-readable invariants; it honours
+the portability checker's exit code (Gate B r2 K2-03). Also records Gate B
+round 2 in the execution log.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo, feat: monthly AIOS metrics on launchd, no unattended commits
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NJF6qVz7V5DeaWmDJ72aRK
+echo
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, memory/project_skill-bloat-and-promotion.md, tmp/t5-failing-frontmatter.txt, library-advisor/SKILL.md, os-audit/SKILL.md, Workflows/CreateSkill.md, Skills/SkillSystem.md, skills/sync-to-codex.sh, skills/sync-to-codex.ps1, tmp/t6-aios-metrics.py, aios-audit/SKILL.md
+
+## Skills Used
+superpowers:writing-plans, codex-review, memory-write, CreateSkill
+
+## Environment
+cwd: /Users/kristinarash/DEV/KeystoneOS
+model:claude-opus-5[1m]
+model:claude-opus-5[1m]
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- … 120 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
