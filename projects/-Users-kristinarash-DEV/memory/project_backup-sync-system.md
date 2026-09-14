@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-09-03T18:15:45.092Z
+  modified: 2026-09-13T14:37:48.121Z
 ---
 
 **Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
@@ -66,6 +66,11 @@ no unique history since 08-05 — only two append-only Windows failure logs, pre
 byte-identical to `~/Desktop/windows-retirement-2026-08-14/` on that machine and
 deliberately **not** pushed (origin had already untracked `.memsearch-index.log` in
 `a0e58c9`; committing would have undone a Mac-side decision).
+
+**Update 2026-09-10: the Windows laptop is ACTIVE again** (synced 9/9; both machines in use).
+The retirement above is history, not current state. Unverified: whether its disabled
+scheduled tasks were re-enabled. Before blaming a single writer for `repo-diverged`, check
+the Windows task list and look for `[auto]` commits from it.
 
 Residual, by design — the box is meant to stay usable:
 - **Session hooks still write.** `settings.json` `Stop`/`SessionEnd` hooks write

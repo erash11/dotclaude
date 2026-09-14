@@ -44,6 +44,7 @@ Never put memory content here — the file itself holds the facts.
 - [ATH Tech framework](project_ath-tech-framework.md) — the shipped 08-14 doc set, the five unwritten gaps, the ITS blocker
 - [Supervisor log pipeline](project_supervisor-log-pipeline.md) — nightly log feeding the Kenny/Chris report; action-items-are-not-outcomes trap
 - [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was rejected outright; which shapes trip it and the rewrite that works
+- [Headless tool-deny gap](project_headless-claude-tool-deny-gap.md) — `claude -p --disallowedTools Bash` still runs shell via context-mode MCP; before calling a headless run read-only
 - [Config encoding damage from Windows](project_settings-json-bom-trap.md) — dcg cries "hook missing", or the statusline bars render as `â–“` junk; one bad write causes both, in settings.json AND CLAUDE.md/AGENTS.md
 - [Tech inventory refresh](project_tech-inventory-refresh.md) — which forms platform is live, why gws cannot pull responses, the stale OneDrive copy, reminder sent 9/8, the refresh command
 - [Brain audit loop](project_brain-audit-loop.md) — scoring the second brain; why manual rituals die and cron ones live
@@ -51,4 +52,4 @@ Never put memory content here — the file itself holds the facts.
 - [Child dental plan](user_child-dental-plan.md) — 4yo cavities: pediatric dentist not yet booked, SDF vs n-HAp
 - [ELI5 output style](user_eli5-output-style.md) — concise plain-language output rules shared by Claude Code and Codex
 - [GitHub consolidation](project_github-consolidation.md) — ~/DEV on GitHub: the thin root repo, _ARCHIVE, where DexaProject went, merge traps
-- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — the 2026-09-12 skill audit (160→61), the project-until-promoted rule, the re-measure command, and the verified Pi/pi.dev facts
+- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder: which of the three copies is canonical, why `~/.claude/skills` IS a git repo, the sync script that deletes, the 2026-09-12 audit, Pi/pi.dev facts

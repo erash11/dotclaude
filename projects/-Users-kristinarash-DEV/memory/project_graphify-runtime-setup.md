@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 53bc7e39-8ea3-4b0c-9787-4ed6d66f5acc
-  modified: 2026-08-29T19:34:51.928Z
+  modified: 2026-09-12T22:33:10.641Z
 ---
 
 **Set up 2026-08-29.** The `graphify` skill's Step 1 says `pip install graphifyy` — that
@@ -19,14 +19,16 @@ in a dedicated venv:
 Run every `scripts/*.py` step with that interpreter, not bare `python3`. `graphify install`
 does not touch the venv, so an upgrade leaves it intact.
 
-**Two skill copies exist and both carry a version stamp** (`.graphify_version`):
+**Since 2026-09-12 there is ONE skill copy.** `~/.agents/skills/graphify` and
+`~/.codex/skills/graphify` are symlinks to `~/.claude/skills/graphify/` (made by
+`sync-to-codex.sh`). Upgrade with `--platform claude` ONLY.
 
-- `~/.claude/skills/graphify/` — Claude Code
-- `~/.agents/skills/graphify/` — the generic `agents` convention, read by Codex-style harnesses
-
-`graphify install` updates **one platform at a time**. Running only `--platform claude`
-leaves `~/.agents` stale, and the version warning keeps firing from there even though the
-Claude copy is current. Update both: `--platform claude` **and** `--platform agents`.
+**Never run `graphify install --platform agents` now.** Its installer writes
+`~/.agents/skills/graphify/SKILL.md` and `references/` by path, so it follows the link and
+overwrites the canonical Claude copy with the Codex variant ("Task tool", "AGENTS.md").
+The daily backup would then commit that. Before 9/12 the advice was "update both"; that
+advice is now wrong. The old Codex variant is archived at
+`~/.agents/skills-archive/pre-sync-2026-09-12/graphify`.
 (Two more stamps exist under `~/.codex-migration-backups/` — those are backups, leave them.)
 
 **The old manifest was Windows-era.** A `--update` in `~/SecondBrain/Inbox/meetings` reported
