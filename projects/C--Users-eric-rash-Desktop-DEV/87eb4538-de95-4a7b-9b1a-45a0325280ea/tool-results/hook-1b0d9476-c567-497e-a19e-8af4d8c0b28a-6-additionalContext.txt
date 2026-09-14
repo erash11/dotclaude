@@ -1,0 +1,175 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Files Modified
+OKRs_2026-27
+
+## Unresolved Errors
+- {"stdout":"# Harness-Agnostic AIOS Implementation Plan\n\n> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-developmen...
+- {"stdout":"29-**Alternatives considered:** Flag the blanks and ask intent (hands the pen back); ignore them (leaves the anchor unset while PD elimi...
+- {"stdout":"---\ntype: permanent\ncreated: 2026-09-09\nsource: [[2026-09-09-interview]]\ndomain: [decision-making, leadership, personal]\ntags: [per...
+
+## Git
+status, pull, log, push, Scaffold project
+
+Bring the Zinnecker CMJ RTC report set under git: AGENTS.md with the session
+routine, docs/STATUS.md capturing the 2026-04-14 build decisions, and a
+.gitignore. CLAUDE.md left as-is.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>, Untrack Zinnecker_Skylar: it is now its own private repo
+
+The 2026-09-09 migration swept the Zinnecker files into this container repo.
+They now live in erash11/Zinnecker_Skylar, matching the Wilhelm_Brody_RTP
+pattern. Files are untouched on disk; only the index entry is removed.
+
+Note: the data remains in this repo's history. Removing it there needs a
+history rewrite and force-push, which is deliberately not done here.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+echo, docs: fill STATUS.md from git history (dev-sync, Windows)
+
+It was an empty migration stub, so this repo was invisible to the other
+machine. Reconstructed from commits and in-repo docs; marked for verification.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+, merge, docs: STATUS reflects AIOS Tasks 1-2 complete, Task 3 next
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git, docs: AGENTS.md reflects that data is tracked here; CLAUDE.md imports AGENTS.md
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+git
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md
+
+## Environment
+cwd: $Z
+model:claude-opus-5[1m]
+cd "/c/Users/eric_rash/Desktop/DEV/KeystoneOS" || exit 1
+echo "=== any .from-* still tracked here? ==="
+git ls-files | grep -c 'from-mac\|from-windows' | sed 's/^/tracked from-* files: /'
+cat > docs/STATUS.md <<'EOF'
+# STATUS
+
+Read this first. Update it before ending every session.
+
+<!-- Filled 2026-09-12 by dev-sync on Windows, reconstructed from git history and the
+     AIOS plan. It was an empty migration stub before this. Verify before relying on it. -->
+
+## Current state
+- The dominant thread is the **harness-agnostic AIOS plan**:
+  `docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`. Goal is that every skill
+  Eric owns loads identically in Claude Code, Codex and Pi from one versioned canonical
+  folder, plus a recurring audit that keeps the AIOS from rotting.
+- Architecture: `~/.claude/skills/` (repo `erash11/claude-skills`) is canonical and holds
+  real directories only. `~/.agents/skills/` and `~/.codex/skills/` are generated views
+  rebuilt per machine by `sync-to-codex.sh` / `.ps1` - symlinks on Mac, copies on Windows.
+- **Codex APPROVED the plan on round 6 with 0 findings. Gate A is satisfied; Task 1 may
+  begin.** Findings by round ran 10 -> 9 -> 7 -> 4 -> 1 -> 0.
+- The approval was a static, read-only review. It is an approved plan, not proven
+  behaviour. Gates B, C and D still apply.
+- Also landed recently: daily-backup schedule aligned with launchd (00:30 -> 09:00), a
+  stale Windows duplicate of `reMarkale_extract` dropped, and a corrupt
+  `memsearch-sync.ps1.from-mac` removed.
+
+## Next
+- Begin Task 1 of the AIOS plan. Use `superpowers:subagent-driven-development` or
+  `superpowers:executing-plans`; the plan is checkbox-tracked.
+- Gates B, C and D still have to be cleared before any of it counts as working.
+
+## Open questions
+- None recorded in the plan. Round 6 closed with no material unresolved defects in scope.
+
+## Gotchas
+- Never commit a symlink into `~/.claude/skills/`. Windows pulls that repo and an absolute
+  Mac symlink arrives unusable.
+- Hooks and sync scripts exist in two copies (`~/.claude/hooks/`, `~/.codex/hooks/`; `.sh`
+  and `.ps1`). Any change patches both.
+- Global `MEMORY.md` is at 2,489 of 2,500 chars. Consolidate before adding to it.
+- Never point Pi at `~/DEV` - it ships no sandbox and no approval prompts, by design.
+- Never let any harness near `DexaProject` (identifiable athlete health data, on Google
+  Drive, not in `~/DEV`).
+- Plugin skills (`superpowers`, `mattpocock-skills`) are vendored and out of scope.
+- On the Mac: `timeout` is not installed, `dcg` blocks `find ... -delete`, and Python is
+  PEP 668-managed (stdlib `python3` or `uv`, never global `pip install`).
+- No success claim without pasted command output.
+EOF
+echo "STATUS.md written ($(wc -l < docs/STATUS.md) lines)"
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 3 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
