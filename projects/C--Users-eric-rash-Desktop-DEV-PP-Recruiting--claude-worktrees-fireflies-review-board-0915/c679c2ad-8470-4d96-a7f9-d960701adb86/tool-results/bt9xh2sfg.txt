@@ -1,0 +1,216 @@
+===== CROSSWALK
+CROSSWALK: STAQS FACTOR  <-  TELEMETRY EVIDENCE, BY POSITION
+BAYLOR PLAYER PERSONNEL // S.T.A.Q.S. GRADING SYSTEM // TELEMETRY CROSSWALK
+Primary = metric that directly measures the factor. Secondary = supporting context. 'Tape only' = no data prox
+Baylor position | Telemetry position filter | STAQS factor | Factor type | Primary Telemetry metric | Secondary metrics | Eval key language (9 - elite) | Data flag rule
+RB | RB | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+RB | RB | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+RB | RB | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+RB | RB | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+RB | RB | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+RB | RB | Contact Balance / YAC | Position | Tackle Breaking | Yards After Contact, Tackles Avoided | Makes defenders tackle him / falls forward / stays on his feet | Tackle Breaking at/above Elite = supports 9
+RB | RB | Cutting Ability / MYM | Position | CoD | Tackles Avoided, Burst | Elusive / 1-cut ability / sudden | CoD and Tackles Avoided both at/above Elite = supports 9
+RB | RB | Vision | Position | Run Ability | Explosive Run Rate, Rushing Effectiveness | Creates on own / bend back / 2nd-level awareness | Run Ability at/above Elite = supports 9
+WR / SLOT | WR | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+WR / SLOT | WR | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+WR / SLOT | WR | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+WR / SLOT | WR | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+WR / SLOT | WR | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+WR / SLOT | WR | Suddenness / Route Running | Position | Separation | CoD, Deceleration | Fluid / sinks in & out of breaks / separates easily / sharp cuts | Separation at/above Elite = supports 9; CoD or Decel below Poor = check for stiffness
+WR / SLOT | WR | Ball Skills / Hands | Position | Ball Skills | Receiving Effectiveness | Strong hands / makes contested catches / adjusts w/ ease | Ball Skills at/above Elite = supports 9; below Poor = 1
+WR / SLOT | WR | YAC Ability | Position | YAC Over Expected | Tackles Avoided, Tackle Breaking, Yards After Contact | Explosive / elusive / home-run threat / tough to bring down | YAC Over Expected at/above Elite = supports 9
+TE | TE | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+TE | TE | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+TE | TE | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+TE | TE | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+TE | TE | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+TE | TE | Ball Skills / Hands | Position | Ball Skills | Receiving Effectiveness | Plucks ball out of air / makes contested catches | Ball Skills at/above Elite = supports 9
+TE | TE | Blocking | Position | Run Blocking | Disruption Prevention, Stops Allowed Over Expected | Pop / explosion / play strength / bend / finish | Run Blocking at/above Elite = supports 9
+TE | TE | Catch in Traffic | Position | Tape only | Ball Skills, Yards After Contact | Makes tough catches in crowded areas / reliable through contact | Proxy only
+OT | OT | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+OT | OT | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+OT | OT | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+OT | OT | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+OT | OT | Speed (Play-speed) | Critical | Tape only / verified 40 | Movement | Faster than everyone else on tape | No Telemetry speed trait for OL; use SPD chart (OL-T 5.2)
+OT | OT | Bend / Edge Protection | Position | Pass Blocking | Stops Allowed Over Expected | Consistently in position vs defender / gets hands on and sticks | Pass Blocking at/above Elite = supports 9; below Poor = 1
+OT | OT | Anchor | Position | Push (OL) | Pass Blocking | Sinks naturally; absorbs power without giving ground | Push at/above Elite = supports 9
+OT | OT | Foot Speed / Redirect | Position | Movement | Disruption Prevention | Rarely out of position / light feet / redirects w/ ease | Movement at/above Elite = supports 9
+OG / C | OG, C | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+OG / C | OG, C | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+OG / C | OG, C | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+OG / C | OG, C | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+OG / C | OG, C | Speed (Play-speed) | Critical | Tape only / verified 40 | Movement | Faster than everyone else on tape | No Telemetry speed trait for OL; use SPD chart (OL-G 5.3, OL-C 5.2)
+OG / C | OG, C | Anchor | Position | Push (OL) | Pass Blocking | Can sink, plant, and maintain position w/ solid base | Push at/above Elite = supports 9
+OG / C | OG, C | Pulling / 2nd Level Blocking | Position | Movement | Run Blocking, Disruption Prevention | Can pull and get to second level frequently and effectively | Movement and Run Blocking at/above Elite = supports 9
+OG / C | OG, C | Foot Quickness / COD / Redirect | Position | Movement | Pass Blocking | Quick, light feet / redirects with ease | Movement at/above Elite = supports 9
+NT / DT | IDL | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+NT / DT | IDL | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+NT / DT | IDL | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+NT / DT | IDL | Athletic Flexibility | Critical | Tape only | Disruption | Fluid & balanced / bend & body control | No CoD trait for IDL; use Disruption as context
+NT / DT | IDL | Speed (Play-speed) | Critical | Tape only / verified 40 | Top End Speed (mph) | Faster than everyone else on tape | No Play Speed trait for IDL
+NT / DT | IDL | Knockback | Position | Push (DL) | Disruption, Run Defense, Run Stops Over Expected | Easily controls LOS / controls blocks / makes plays behind LOS | Push at/above Elite = supports 9
+NT / DT | IDL | Pad Level / Leverage | Position | Tape only | Run Defense, Disruption | Plays with low pads, good contact balance | Proxy only
+NT / DT | IDL | Use of Hands | Position | Get Off | Pass Rush | Violent, in control, disengages quickly / gains advantage off the snap | Get Off at/above Elite = supports 9
+END | EDGE | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+END | EDGE | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+END | EDGE | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+END | EDGE | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+END | EDGE | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+END | EDGE | Strength at POA | Position | Run Defense | Push (DL), Disruption | Knocks blockers backward | Run Defense at/above Elite = supports 9
+END | EDGE | Tackling | Position | Tackling | Run Stops Over Expected | Imposing tackler / violent / knock back power | Tackling at/above Elite = supports 9; below Poor = 1
+END | EDGE | Block Destruction / Pass Rush | Position | Pass Rush | Get Off, Double Team Rate | Wins with both speed and power | Pass Rush at/above Elite = supports 9
+JACK | EDGE or OB-LB | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+JACK | EDGE or OB-LB | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+JACK | EDGE or OB-LB | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+JACK | EDGE or OB-LB | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+JACK | EDGE or OB-LB | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+JACK | EDGE or OB-LB | Pass Rush / Block Destruction | Position | Pass Rush | Get Off | Wins with both speed and power | Pass Rush at/above Elite = supports 9
+JACK | EDGE or OB-LB | Tackling | Position | Tackling | Run Stops Over Expected, Run Defense | Imposing tackler / violent | Tackling at/above Elite = supports 9
+JACK | EDGE or OB-LB | Ability to Play in Space | Position | CoD | Play Speed, Deep Speed | Shows lateral quickness, range, and awareness | CoD and Play Speed at/above Elite = supports 9
+ILB (MLB / WLB) | OB-LB | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+ILB (MLB / WLB) | OB-LB | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+ILB (MLB / WLB) | OB-LB | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+ILB (MLB / WLB) | OB-LB | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+ILB (MLB / WLB) | OB-LB | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+ILB (MLB / WLB) | OB-LB | Tackling | Position | Tackling | Run Defense, Push (DL) | Imposing tackler / violent / knock back power | Tackling at/above Elite = supports 9; below Poor = 1
+ILB (MLB / WLB) | OB-LB | Lateral Quickness / Range | Position | CoD | Play Speed, Deep Speed, Screen Awareness | Great COD in box, makes plays sideline to sideline | CoD at/above Elite = supports 9
+ILB (MLB / WLB) | OB-LB | Pass Rush / Block Destruction | Position | Pass Rush | Get Off, Push (DL) | Wins with both speed and power | Pass Rush at/above Elite = supports 9
+CB | CB | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+CB | CB | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+CB | CB | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+CB | CB | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+CB | CB | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+CB | CB | Man-to-Man Coverage | Position | EPA Per Target | Completion Rate Over Expected, Target Rate | Matches routes and disrupts ball | EPA Per Target at/above Elite = supports 9
+CB | CB | Transition Speed / Competitive Edge | Position | Deceleration | Deep Speed, CoD | Clean hips turning and running, elite make-up speed | Decel and Deep Speed at/above Elite = supports 9
+CB | CB | Ball Skills | Position | Ball Hawk | Completion Rate Over Expected | Locates & makes plays on ball in the air | Ball Hawk at/above Elite = supports 9
+SAF | SAF | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+SAF | SAF | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+SAF | SAF | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+SAF | SAF | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+SAF | SAF | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+SAF | SAF | Range | Position | Play Speed | Deep Speed, Adjusted Speed, CoD | Makes plays out to the sideline | Play Speed at/above Elite = supports 9
+SAF | SAF | Key & Diagnose | Position | Tape only | Target Rate, EPA Per Target | Disciplined / urgent / high FBI / reads and reacts quickly | Proxy only
+SAF | SAF | Run Support | Position | Tackling | Run Defense | Imposing tackler who is disciplined / reliable in run game | Tackling at/above Elite = supports 9
+STAR / NICKEL | CB or SAF | Size | Critical | HT / WT vs SZ-SPD matrix | Power Speed (size-speed combo) | Elite size | Size standards table on SETTINGS
+STAR / NICKEL | CB or SAF | Toughness | Critical | Tape only (play strength / knock back) | Yards After Contact, Tackles Avoided, Tackle Breaking, Push, Run Blocking, Run Defense | Exhibits play strength / knock back | Proxy only: best of the secondary metrics at/above Elite = supports a 9
+STAR / NICKEL | CB or SAF | Athletic Flexibility | Critical | CoD | Deceleration (WR, CB, S) | Fluid & balanced / bend & body control / no wasted movement | Best of CoD, Decel at/above Elite = 9; below Poor = 1
+STAR / NICKEL | CB or SAF | Quickness | Critical | Burst | Get Off (DL, LB) | Rapid body movement / twitchy / explosive / sudden | Best of Burst, Get Off at/above Elite = 9; below Poor = 1
+STAR / NICKEL | CB or SAF | Speed (Play-speed) | Critical | Play Speed | Deep Speed, Adjusted Speed, Top End Speed (mph) | Faster than everyone else on tape | Best of Play Speed, Deep Speed at/above Elite = 9; below Poor = 1. Speed alert at SETTINGS value
+STAR / NICKEL | CB or SAF | Man-to-Man Coverage | Position | EPA Per Target | Completion Rate Over Expected, Target Rate | Matches routes and disrupts ball | EPA Per Target at/above Elite = supports 9
+STAR / NICKEL | CB or SAF | Tackling | Position | Tackling | Run Defense | Imposing tackler / violent | Tackling at/above Elite = supports 9
+STAR / NICKEL | CB or SAF | Ball Skills | Position | Ball Hawk | Completion Rate Over Expected | Locates & makes plays on ball in the air | Ball Hawk at/above Elite = supports 9
+QB | QB | Size | Critical | HT / WT vs SZ-SPD matrix | Elite size | Size standards table on SETTINGS
+QB | QB | Athletic Ability / Escapability | QB factor | Pocket Awareness | Play Speed, Burst, CoD, Evasion Rate | Can extend with legs / sudden movements in pocket | Pocket Awareness at/above Elite = supports 9
+QB | QB | Arm Strength | QB factor | Max Throw Velocity | Adj. Throw Velocity | Ball jumps off arm / can make every throw | Max Throw Velocity at/above Elite = supports 9
+QB | QB | Throwing Accuracy | QB factor | Accuracy | Passing Effectiveness | Accurate: short, middle, deep, on move, touch | Accuracy at/above Elite = supports 9; below Poor = 1
+QB | QB | Release Speed / Mechanics | QB factor | Tape only | Batdowns | Quick / efficient / ball comes out quick | No data proxy
+QB | QB | Decision Making | QB factor | INT Avoidance | Risk Level (label), Decision Making trait | Understands progressions, doesn't force throws | INT Avoidance at/above Elite = supports 9
+QB | QB | Anticipation / Timing | QB factor | Tape only | Passing Effectiveness, Accuracy | Ball is on time and on target | Proxy only
+QB | QB | Toughness | QB factor | Tape only | Pocket Awareness, Evasion Rate, Tackle Breaking | Consistently makes throws under pressure | Proxy only
+===== METRIC GLOSSARY
+TELEMETRY METRIC GLOSSARY
+BAYLOR PLAYER PERSONNEL // S.T.A.Q.S. GRADING SYSTEM // TELEMETRY CROSSWALK
+All metrics are 0-100 percentiles vs. FBS players at the same position (2019-present) unless noted. Higher is 
+Metric | Telemetry tab | Positions | What it measures | STAQS factor it best informs
+Play Speed | Player Traits | QB, RB, WR, TE, EDGE, LB, CB, S | Model-estimated 40-yard time built from max speed and acceleration across all in-game data (not a single GPS p | Speed (critical)
+Deep Speed | Player Traits | RB, WR, TE, LB, CB, S | Top gear: estimated flying-20 split when the player has time and space to fully extend stride. | Speed (critical)
+Burst | Player Traits | QB, RB, WR, TE, EDGE, LB, CB, S | Rate of velocity increase; estimated 10-yard split. Explosiveness and ability to change speed quickly. | Quickness (critical)
+CoD | Player Traits | QB, RB, WR, TE, EDGE, LB, CB, S | Change of direction efficiency on high-effort breaks: speed and acceleration into and out of the break, angle  | Athletic Flexibility (critical); route running, lateral range
+Deceleration | Player Traits | WR, CB, S | Seconds faster or slower than average to slow down, using start speed, end speed, turns during significant dec | Athletic Flexibility (critical); suddenness, transition
+Ball Skills | Player Traits | WR, RB, TE | Ability to convert targets into completions vs. a completion-probability model that accounts for pass trajecto | Ball Skills / Hands (position)
+Run Blocking | Player Traits | WR, TE, OC, OG, OT | Non-ball-carrier contribution to run yards: space created by walling off defenders. | Blocking (position); Toughness proxy
+Pass Blocking | Player Traits | RB, TE, OC, OG, OT | How much the blocker kept his rusher from closing on the QB, adjusted for help (chip, double) and rusher quali | Anchor, Bend / Edge Protection (position)
+Run Ability | Player Traits | RB | Yards gained vs. an average ball carrier in the exact same situation (blocking and defense positions). | Vision (position)
+Tackle Breaking | Player Traits | QB, RB, WR | Ability to avoid being tackled on all contact events, vs. expected tackle probability and defender tackling ab | Contact Balance / YAC (position); Toughness proxy
+Get Off | Player Traits | EDGE, IDL | Explosion off the line: acceleration, reaction time, time to cross LOS, space to OL. Leading indicator of pres | Quickness (critical); Use of Hands / 1st step
+Pass Rush | Player Traits | EDGE, IDL | How much and how fast the rusher collapsed the pocket, adjusted for blockers faced and their ability. | Pass Rush / Block Destruction (position)
+Run Defense | Player Traits | EDGE, IDL, LB, CB, S | Yards prevented by taking on blocks, hustling, and limiting the ball carrier's space. | Strength at POA, Run Support (position); Toughness proxy
+Tackling | Player Traits | EDGE, IDL, LB, CB, S | Actual tackles vs. expected tackles from positioning and speed relative to ball carrier and blockers. | Tackling (position)
+Accuracy | Player Traits | QB | Ball placement given throw difficulty (30 spatial features); drops ignored. | Throwing Accuracy (QB)
+Max Throw Velocity | Player Traits | QB | Average of the 10 hardest throws. | Arm Strength (QB)
+Adj. Throw Velocity | Player Traits | QB | Throw velocity vs. what the situation called for (platform, distance, separation, pressure). | Arm Strength (QB)
+Risk Level | Player Traits | QB | Danger of throws attempted. Shown as Very Conservative to Very Aggressive, not a percentile. | Decision Making (QB) context
+INT Avoidance | Player Traits | QB | Ball security given the riskiness of throws attempted. | Decision Making (QB)
+Pocket Awareness | Player Traits | QB | Distance kept from the rush while in the pocket, adjusted for rusher and blocker quality and time to throw. | Athletic Ability / Escapability, Toughness (QB)
+Player Impact | Advanced Stats | All | All advanced stats combined into one value vs. a replacement-level benchmark. Cumulative, so it rewards availa | Production check (not a STAQS factor)
+YAC Over Expected | Advanced Stats | WR, TE, RB | Actual yards after catch vs. an expected-YAC distribution for the play. | YAC Ability (position)
+Tackles Avoided | Advanced Stats | RB, QB, WR, TE | Average broken or missed tackles per ball-carrying opportunity. | YAC / Cutting Ability (position); Toughness proxy
+Yards After Contact | Advanced Stats | RB, QB, WR, TE | Average yards after first contact, rushing and receiving. | Contact Balance (position); Toughness proxy
+Separation | Advanced Stats | WR, RB | Actual minus expected separation on routes vs. man coverage. | Suddenness / Route Running (position)
+Explosive Run Rate | Advanced Stats | RB | Share of runs beating expected yards by 10+. | Vision / Cutting (position)
+Receiving Production / Effectiveness | Advanced Stats | WR, TE, RB | Cumulative EPA on targets (production) and EPA per target (effectiveness). | Production check
+Passing Production / Effectiveness | Advanced Stats | QB | Cumulative EPA (production) and EPA per attempt (effectiveness). | Anticipation / Timing, production check
+Evasion Rate | Advanced Stats | QB | Rate of escaping pressure (defender within 3 yds) without a negative play. | Escapability, Toughness (QB)
+Push (OL) | Advanced Stats | IOL, OT | Ground gained away from the QB while engaged in pass pro. | Anchor (position); Toughness
+Stops Allowed Over Expected | Advanced Stats | IOL, OT, TE | Tackles allowed by the blocker's assignment near the LOS vs. expected; higher = fewer allowed. | Blocking / Sustain (position)
+Disruption Prevention | Advanced Stats | IOL, OT, TE | Ground the defender gains toward the ball carrier while engaged; higher = less allowed. | Blocking (position); Toughness
+Movement | Advanced Stats | IOL, OT | Displacement in the first 2.5 s: pulling, screens, climbing. | Pulling / 2nd level, Foot Speed / Redirect (position)
+Push (DL) | Advanced Stats | IDL, EDGE, LB | Ground gained toward the QB while engaged. | Knockback, Strength at POA (position); Toughness
+Double Team Rate | Advanced Stats | IDL, EDGE, LB | Share of pass rush snaps drawing a double team. | Context for Pass Rush
+Run Stops Over Expected | Advanced Stats | IDL, EDGE | Tackles at or near the LOS vs. expected. | Knockback, Tackling (position)
+Disruption | Advanced Stats | IDL, EDGE | Backfield penetration on run plays while engaged. | Knockback, Pad Level (position)
+Screen Awareness | Advanced Stats | IDL, EDGE, LB | Recognition and pursuit speed on screens. | Instincts / FBI proxy
+EPA Per Target | Advanced Stats | CB, SAF, LB | Average EPA allowed when targeted; lower allowed = higher percentile. | Man-to-Man Coverage (position)
+Completion Rate Over Expected | Advanced Stats | CB, SAF, LB | Completions allowed vs. completion-probability model; fewer = higher. | Man-to-Man Coverage (position)
+Ball Hawk | Advanced Stats | CB, SAF, LB | PBUs plus INTs per target. | Ball Skills (DB position)
+Target Rate | Advanced Stats | CB, SAF, LB | How rarely the defender is targeted; higher = avoided by QBs. | Coverage (position)
+Play Action Susceptibility | Advanced Stats | LB | How little the LB bites on play-action; higher = more disciplined. | Key & Diagnose / FBI proxy
+Top End Speed | Advanced Stats | Most | Average of five fastest in-game speeds. RAW MPH, not a percentile. Do not paste into percentile columns. | Speed reference only
+Adjusted Speed | Advanced Stats | QB, RB, WR, TE, EDGE, LB, S, CB | Median speed-over-expected on high-speed plays given play context. | Speed (critical)
+Power Speed | Advanced Stats | QB, RB, WR, TE, LB, S, CB | Speed relative to expected speed for the player's weight. | Size-Speed combo alert
+Penalty / Penalty Drawn | Advanced Stats | Most | Discipline (fewer flags = higher) and ability to draw holding / PI. | Fundamentals proxy
+===== 000 tabs: ['GRD SCALE', 'Sheet1', 'OFFENSE - EVAL KEY', 'OFF', 'DEF', 'DEFENSE - EVAL KEY', 'OFFENSE - SZ-SPD', 'DEFENSE - SZ-SPD', 'RB - EX', 'TE -EX', 'NIL - PAY SCALE  (POST GM MTG)', 'XFER PAY SCALE', 'POST-PORTAL RECAP', '2-DEEP B12 SCOUT', 'FRONT OFFICE IDENTITY', 'NIL - PAY SCALE (ORIGINAL)', 'QB', 'RB', 'WR', 'SLOT', 'TE', 'OT', 'OG', 'NT', 'END', 'JACK', 'ILB', 'CB', 'SAF', 'STAR', 'SPD']
+=====000 WR
+WIDE RECEIVER
+CRITICAL FACTORS
+WR | 9 - elite | 9 - elite | 3 - average | 3 - average | 1 - poor | 1 - poor
+Size | Elite Size | Adequate Size | Adequate Size | Poor Size | Poor Size
+Toughness | Exhibits play strength / Knock back | Exhibits play strength / Knock back | Average play strength / Stalemate Contact | Average play strength / Stalemate Contact | Poor play strength / Gets Knocked Backward | Poor play strength / Gets Knocked Backward
+Athletic Ability | Fluid & Balanced / Bend & body control / No wasted movement | Fluid & Balanced / Bend & body control / No wasted movement | Mild Limitations or Stiffness | Mild Limitations or Stiffness | Robotic / Tight / Lack of Coordination / Can't bend | Robotic / Tight / Lack of Coordination / Can't bend
+Quickness | Rapid body movement / Twitchy / Explosive / Sudden | Rapid body movement / Twitchy / Explosive / Sudden | Regular movement | Regular movement | Sluggish or Lethargic movement | Sluggish or Lethargic movement
+Speed (Play-speed) | Faster than everyone else on tape | Faster than everyone else on tape | Speed blends with everyone else | Speed blends with everyone else | Slower than everyone else | Slower than everyone else
+Suddenness / Route Running | Fluid / sinks in & out of breaks / Seperates easily / Sharp cuts  | Fluid / sinks in & out of breaks / Seperates easily / Sharp cuts  | Gets caught on press / OK route runner / Lacks flash | Gets caught on press / OK route runner / Lacks flash | Fails to create seperation / Rounds off all breaks / Wasted Mvmt | Fails to create seperation / Rounds off all breaks / Wasted Mvmt
+Ball Skills / Hands | Strong hands / Makes contested catches / Adjusts w/ ease | Strong hands / Makes contested catches / Adjusts w/ ease | Makes routine catches / Question contested catches / Surprised by ball | Makes routine catches / Question contested catches / Surprised by ball | Body catcher / Frequent drops | Body catcher / Frequent drops
+YAC Ability | Explosive / Elusive / Home-run threat / Tough to bring down | Explosive / Elusive / Home-run threat / Tough to bring down | Flashes ability but is inconsistent | Flashes ability but is inconsistent | Goes down on first contact often / Runs out of bounds | Goes down on first contact often / Runs out of bounds
+MEASUREMENT THRESHOLDS
+WR | < 150 | 160 | 170 | 180 | 190 | 200-220 | 220 + (TE)
+< 6'2 | 3 | 9 | 1
+6'1.5
+6'1
+6'0.5 | 3
+6'0
+5'11.5 | 1
+5'11
+5'10.5 | 1
+5'10
+5'9.5
+GRADE SCALE - TOTAL OF 8 FACORS
+ALL-AMERICAN | ALL-LEAGUE | QUALITY STARTER | FUNCTIONAL ROLE PLYR | LIMITED BACKUP | NOT GOOD ENOUGH
+72-60 (RARE/ELITE) | 59-48 (OUTSTANDING) | 47-40 (GOOD STARTER) | 39-30 (FUNCTIONAL) | 29-24 (CRITICAL DEFICIENCY) | NGE: <24
+=====000 SLOT
+SLOT RECEIVER
+CRITICAL FACTORS
+SLOT | 9 - elite | 9 - elite | 3 - average | 3 - average | 1 - poor | 1 - poor
+Size | Elite Size | Adequate Size | Adequate Size | Poor Size | Poor Size
+Toughness | Exhibits play strength / Knock back | Exhibits play strength / Knock back | Average play strength / Stalemate Contact | Average play strength / Stalemate Contact | Poor play strength / Gets Knocked Backward | Poor play strength / Gets Knocked Backward
+Athletic Ability | Fluid & Balanced / Bend & body control / No wasted movement | Fluid & Balanced / Bend & body control / No wasted movement | Mild Limitations or Stiffness | Mild Limitations or Stiffness | Robotic / Tight / Lack of Coordination / Can't bend | Robotic / Tight / Lack of Coordination / Can't bend
+Quickness | Rapid body movement / Twitchy / Explosive / Sudden | Rapid body movement / Twitchy / Explosive / Sudden | Regular movement | Regular movement | Sluggish or Lethargic movement | Sluggish or Lethargic movement
+Speed (Play-speed) | Faster than everyone else on tape | Faster than everyone else on tape | Speed blends with everyone else | Speed blends with everyone else | Slower than everyone else | Slower than everyone else
+Suddenness / Route Running | Fluid / sinks in & out of breaks / Seperates easily / Sharp cuts  | Fluid / sinks in & out of breaks / Seperates easily / Sharp cuts  | Gets caught on press / OK route runner / Lacks flash | Gets caught on press / OK route runner / Lacks flash | Fails to create seperation / Rounds off all breaks / Wasted Mvmt | Fails to create seperation / Rounds off all breaks / Wasted Mvmt
+Ball Skills / Hands | Strong hands / Makes contested catches / Adjusts w/ ease | Strong hands / Makes contested catches / Adjusts w/ ease | Makes routine catches / Question contested catches / Surprised by ball | Makes routine catches / Question contested catches / Surprised by ball | Body catcher / Frequent drops | Body catcher / Frequent drops
+YAC Ability | Explosive / Elusive / Home-run threat / Tough to bring down | Explosive / Elusive / Home-run threat / Tough to bring down | Flashes ability but is inconsistent | Flashes ability but is inconsistent | Goes down on first contact often / Runs out of bounds | Goes down on first contact often / Runs out of bounds
+MEASUREMENT THRESHOLDS
+SLOT | < 155 | 160 | 165 | 170 | 180 | 190 | 200+
+< 5'10.5 | 3 | 9
+5'10
+5'9.5
+5'9 | 3
+5'8.5
+5'8 | 1
+5'7.5
+5'7 | 1
+5'6.5
+5'6
+GRADE SCALE - TOTAL OF 8 FACORS
+ALL-AMERICAN | ALL-LEAGUE | QUALITY STARTER | FUNCTIONAL ROLE PLYR | LIMITED BACKUP | NOT GOOD ENOUGH
+72-60 (RARE/ELITE) | 59-48 (OUTSTANDING) | 47-40 (GOOD STARTER) | 39-30 (FUNCTIONAL) | 29-24 (CRITICAL DEFICIENCY) | NGE: <24
