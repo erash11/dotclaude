@@ -1566,6 +1566,78 @@
    ],
    "captureOrphans": false,
    "captureWorkingTree": false
+  },
+  {
+   "path": "DEV/PP_Recruiting",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/PP_Recruiting.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/PythonScripts_2024",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/PythonScripts_2024.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/RTP_ProgressReport",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/RTP_ProgressReport.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/Supervisor_Reviews",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Supervisor_Reviews.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/VALD_Performance",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/VALD_Performance.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/VALD_Release",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/VALD_Release.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   }
  ]
 }
