@@ -2,7 +2,7 @@
 
 Machine-specific shell, paths, and traps live in `~/.claude/machine.md`. Read that file first. On a new machine copy `machine.macos.md` or `machine.windows.md` to `machine.md`.
 
-Both machines are active as of 2026-09-10: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive. Every project repo carries a Session routine in its `AGENTS.md`: `git pull` + read `docs/STATUS.md` at start; update `STATUS.md`, commit, `git push` at end.
+Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive. Every project repo carries a Session routine in its `AGENTS.md`: `git pull` + read `docs/STATUS.md` at start; update `STATUS.md`, commit, `git push` at end.
 # Workflow Expectations
 
 - One home: the "Workflow Expectations" section of `~/.claude/CLAUDE.md`. Read it there.
@@ -27,7 +27,7 @@ File naming by type: `user_*.md`, `project_*.md`, `feedback_*.md`, `reference_*.
 **Slugs.** The slug is the cwd with `/` and `.` replaced by `-`:
 `~` → `-Users-kristinarash` · `~/DEV` → `-Users-kristinarash-DEV` · `~/.claude/skills` → `-Users-kristinarash--claude-skills`
 
-**Slugs differ per machine.** The same project is `-Users-kristinarash-DEV-<X>` on the Mac and `C--Users-eric-rash-Desktop-DEV-<X>` on Windows (Windows is active again as of 2026-09-10). Tier A written on one machine is not auto-injected on the other; memsearch still finds it. Prefer writing durable project facts to the repo's `docs/` so both machines see them.
+**Slugs differ per machine.** The same project is `-Users-kristinarash-DEV-<X>` on the Mac and `C--Users-eric-rash-Desktop-DEV-<X>` on Windows. Tier A written on one machine is not auto-injected on the other; memsearch still finds it. Prefer writing durable project facts to the repo's `docs/` so both machines see them.
 
 ## Tier B — global working memory
 `~/.claude/global-memory/`, loaded every session regardless of cwd:

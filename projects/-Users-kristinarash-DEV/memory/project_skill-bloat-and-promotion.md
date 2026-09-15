@@ -183,3 +183,19 @@ Claude will not trigger without the literal phrases.
 Plan (Codex-approved after 6 review rounds, 10→0 findings):
 `~/DEV/KeystoneOS/docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`.
 See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-install]].
+
+## Listing trim, 2026-09-14 (doctor-plus)
+
+**40 owned skills are `"name-only"` in `~/.claude/settings.json` `skillOverrides`**
+(dotclaude commit `172d547`). 13 stay full: the ones Claude invoked itself 2+ times
+(memory-write, CreateSkill, impeccable, claude-stack-doctor, codex-review, name-meetings,
+project, graphify, fireflies-intake, html-to-pdf, meeting-prep, status-report) plus
+sports-science-research-grounding. Chosen from the usage scan above (model calls vs typed).
+
+- Why `name-only`, not `"off"` or `disable-model-invocation`: the name stays listed, so
+  Skill-tool chains (`startup`→`dev-sync`, `weekly-review`→`meeting-sync`) still work,
+  the portability checker only fails `"off"`, and Codex/Pi still see full descriptions.
+- Cost: those 40 fire less on phrases ("goodnight", "capture this"). Type `/name`.
+- Next-session check: if ~17 local skills still show as bare names, the listing budget
+  is being eaten by plugin skills, not these. Promote a skill back to `"on"` by deleting
+  its line.
