@@ -1,0 +1,297 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- GPS Option A, provide me a detailed summary for what to do next and what position this sets me up for moving forward, I want to do regular pulls of...
+- go with option A - Automatic pull, import should include the mockgame. Start the pull build
+- B, review then build, pre approved to do this.
+- if approved, run the backfill and install the schedule
+- A, inspect then backfill and install
+- A, run the backfill and install the schedule
+
+## Files Modified
+project_backup-sync-system.md, SKILL.md, STATUS.md, 2026-09-12-gate-a-approval.md, log.md, append_decision.py, 2026-09-13-gps-locations.md, bulk_import.py, api_client.py, run_report.py, compare_copies.py, db_state.py, copy_auburn_json.py, .gitignore, inspect_files.py, db_recent.py, api_list.py, repro.py, csv_fields.py, csv_hdr2.py, blh65u1jm.output, 2026-09-13-regular-pull-plan.md, clean_gps_test.py, USER.md, compare_meta.py, compare_db.py, retire_copies.py, MEMORY.md, README.md, build.md, runtime.md, 2026-09-13-pull-build-PLAN.md, 2026-09-13-pull-build-REVIEW-LOG.md, r1-dispositions.md, pull.py, pull.sh, com.keystone.gpspull.plist, r2-dispositions.md, bulk_import_new.py, storage_snippet.py, r3-dispositions.md, conftest.py, test_pull_helpers.py, r4-dispositions.md, test_filters_and_types.py, test_api_client.py, test_bulk_import_exits.py, test_import_run.py, test_pull_sh.py, r5-dispositions.md, generate_norms_report.py, compute_norms.py, apply_build.py, CLAUDE.md, redcheck_spc.py, backup_db.py, verify_backfill.py, i1-dispositions.md, test_run_report_atomic.py, i2-dispositions.md, 2026-09-13-gps-regular-pull.md, refresh_all_data.bat, .gitattributes
+
+## Unresolved Errors
+- {"stdout":"# Handoff — AIOS plan after the first audit and Codex rounds 3–5 (2026-09-13)\n\nPicked up from: `/var/folders/gw/8qg6y2bj7rvdqzttmxfl9l...
+- {"stdout":"Already up to date.\na5f19b3 docs(audit): record Codex round 5 (last); IR-06/IR-07 hold only for yaml 1.1 mode\n34ab774 docs: STATUS ref...
+- {"stdout":"      98 .claude/hooks/keystone-unified-snapshot.js\n      31 .codex/hooks/keystone-unified-snapshot.js\n     129 total\n---CODEX-COPY\n...
+- {"stdout":"80:2. **L1** — `memsearch search \"query\" --top-k 5`. Hybrid vector + keyword across all indexed paths: Tier A files (including the ret...
+- {"stdout":"# UpdateSkill Workflow\n\n**Purpose:** Add workflows or modify an existing skill while maintaining canonical structure and TitleCase nam...
+- {"stdout":"\"hookEventName\":\"SessionStart\"\n## User profile (global-memory/USER.md)\n## About\n## Preferences\n## Working Style\n## Working memo...
+- {"stdout":"     647 decisions/log.md\n  `backup` from `index` from `verify-backup`, (4) durable coalesced worker, (5)\n  observability and fault in...
+- {"stdout":"Error: in prepare, unable to open database file (14) \nError: in prepare, unable to open database file (14)\n\nbase_url\naccess_token ="...
+- {"stdout":"Error: in prepare, unable to open database file (14)","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"CATAPULT_TOKEN=\n--- config db/paths\n7:  output_base_dir: \"Reports\"\n16:  flag_direction: \"both\"    # \"both\", \"high_only\", or \...
+- {"stdout":"/Users/kristinarash/.claude/skills/backup/SKILL.md:3:description: Run the KeystoneOS daily backup on demand (git-push the memory repos, ...
+- {"stdout":"backfill_velocity.py\nbulk_import.py\ncompute_norms.py\nconfig.yaml\ndata\ngenerate_norms_report.py\nlogs\nREADME.md\nReports\nrequireme...
+- {"stdout":"05_SYSTEMS/Catapult_GPS | files=2 newest=2026-03-20 |  2 pdf,\nBaylor-Clearsky.pdf;ClearSky_Baylor_Executive Overview_Football_v1.9.pdf;...
+- {"stdout":"total 0\ndrwx------@ 11 kristinarash  staff     352 Aug 17 23:28 .\ndrwx------@ 27 kristinarash  staff     864 Sep  9 18:00 ..\ndrwx----...
+- {"stdout":"@echo off\nsetlocal\n\n:: ─────────────────────────────────────────────\n::  refresh_all_data.bat\n::  Runs all data pipeline updates in...
+- {"stdout":"# Baylor Football — Automated GPS Report\n\nGenerates a post-practice HTML report and email summary from Catapult OpenField Cloud data.\...
+- {"stdout":"---\nname: pp-catapult-openfield-connect\ndescription: >-\n  Every Catapult GPS metric — ACWR, velocity benchmarks, load reports — from ...
+- {"stdout":"[S1 bad --end (no wmic)] exit=1 elapsed=11.1s\n[S1 bad --end (no wmic)] stdout tail: [\"ERROR: invalid --end date '~0,4-~4,2-~6,2'. Use ...
+- {"stdout":"tail headers: ['Total Throw Load', 'Total High Ima (avg)', 'Total High Ima/min', 'Ima Impacts Band 1 Count', 'Ima Impacts Band 2 Count',...
+- {"stdout":"    2489\n-rw-r--r--@ 1 kristinarash  staff  1849 Sep 13 15:10 api_list.py\n-rw-r--r--@ 1 kristinarash  staff   313 Sep 13 15:11 bi_wrap...
+- {"stdout":"com.google.keystone.agent.plist\ncom.google.keystone.xpcservice.plist\ncom.keystone.adjudicate.plist\ncom.keystone.agysync.plist\ncom.ke...
+- {"stdout":"coach_report/src/spc.py:66:def spc_flags(today, hist, day_type_map, spc_cfg, today_day_type):\ncoach_report/src/spc.py:71:    day_type_m...
+- {"stdout":"c03-probe.py\ngateC-dispositions.md\ngateC3-feedback.md\ngateC4-feedback.md\ngateC5-feedback.md\nir01-redgreen.py\nREADME.md\nt5f-checke...
+- {"stdout":"elapsed 152.22 usage {'input_tokens': 319203, 'cached_input_tokens': 241152, 'cache_write_input_tokens': 0, 'output_tokens': 7514, 'reas...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/r2/claudex-km212tog/result.json\nstatus completed elapsed 99.07 sha e106569953aa s...
+- {"stdout":"appended","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristina...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/r3/claudex-_2xjgv0r/result.json\nstatus completed elapsed 54.07 sha ac0b018279f8\n...
+- {"stdout":"appended","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristina...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/r4/claudex-59kz3tiq/result.json\nstatus completed elapsed 40.37 sha 71f2fd06e7a6\n...
+- {"stdout":"appended","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristina...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/r5/claudex-m0yletc6/result.json\nstatus completed elapsed 49.35 sha 8471e7cf8e2d\n...
+- {"stdout":"def render_html(context, templates_dir=None):\n    templates_dir = templates_dir or Path(__file__).resolve().parent.parent / \"templates...
+- {"stdout":"appended\n8385dcb9fff55a1c","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath...
+- {"stdout":"red check ok: new practice-history test fails on old spc.py","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"logged\n M .gitignore\nD  API_Token_FB.txt\n M CLAUDE.md\n M coach_report/coach_config.yaml\n M coach_report/src/render.py\n M coach_rep...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/i1/claudex-sh5p06kp/result.json\nstatus completed elapsed 151.68 base eee821c sess...
+- {"stdout":"appended","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristina...
+- {"stdout":"logged\na6d349b GPS pull: fix Codex inspection 1 findings\n       0","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/i2/claudex-2wptyi_f/result.json\nstatus completed elapsed 188.4 base eee821c sessi...
+- {"stdout":"\u001b[31mFAILED\u001b[0m tests/test_import_run.py::\u001b[1mtest_next_retry_from_rules[dry-run-3-failures7-2026-08-24-2026-08-24]\u001b...
+- {"stdout":"1a2d144 GPS pull: retry backlog so a later success never strands an earlier failure\n       0","stderr":"","interrupted":false,"isImage"...
+- {"stdout":"/Users/kristinarash/.claude/jobs/764640dd/tmp/claudex/i3/claudex-9z2zjjmd/result.json\nstatus completed elapsed 101.61 base eee821c sess...
+- {"stdout":"appended\ne0411f4 docs: log Codex inspection 3 (REVISE); backfill and schedule not run","stderr":"","interrupted":false,"isImage":false,...
+- {"stdout":"logged\ne3066a6 GPS pull: fix Codex inspection 3 findings\n       0","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":...
+- {"stdout":"logged","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristinara...
+- {"stdout":"     1\t@echo off\n     2\tsetlocal\n     3\t\n     4\t:: ─────────────────────────────────────────────\n     5\t::  refresh_all_data.ba...
+
+## Git
+pull, memory-write: both machines active; drop Windows-retired slug rule
+
+Audit build 1 (aios-audit 2026-09-13), approved by Eric.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: record Eric's decisions on audit build 1 and IR-06/IR-07
+
+Build 1 approved and done; checker contract stays PyYAML + YAML 1.2 core.
+GPS home is next.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs(audit): GPS locations map and one-home proposal (build 2)
+
+No new location: GD FA2026/01_Raw_GPS is the mailbox, gps_history.duckdb the home.
+Import dead since 2026-04-30. Awaiting Eric; nothing moved.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs(audit): GPS map addendum — cloud-drive archives, stale _ACTIVE copy, token files
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, status, log, Untrack Auburn G1 athlete JSON; canonical copy now on Google Drive
+
+Copied to FA2026/03_Processed/API_AUBURN_G1_2026-09-05 (sha-256 verified 7/7).
+Files stay on disk; .gitignore now blocks _*.json and *.csv.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: GPS home decision, import diagnosis, regular-pull plan
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, USER: storage is Google Drive only; OneDrive dropped 2026-09-13
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs(audit): GPS option A progress — JSON moved, copies proven duplicate
+
+Deletion of three old copies left to Eric (permission guard). OneDrive dropped.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, MEMORY: add GPS feed thread; drop finished skill-audit line
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: keep import diagnosis scripts as evidence (no data, no token)
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, MEMORY: trim GPS line under cap
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: GPS pull build plan and Codex review log (5 rounds, final REVISE)
+
+Plan includes host fix for PLAN-014 not yet re-reviewed. Build waits for Eric.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: Codex plan review round 6 APPROVED; build deviation noted
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, GPS regular pull: atomic incremental import, receipts, alerts, 06:30 schedule
+
+- bulk_import: --since-db, 7-day list windows, mock game, receipt on every exit,
+  exit codes 0-5, atomic per-session import, roster/athlete-id guards
+- api_client: network errors and bad JSON become CatapultAPIError(0)
+- pull.sh + ops/com.keystone.gpspull.plist; alerts to .errors.log
+- coach_report: mock game = scrimmage, game-like SPC history, macOS Chrome path
+- norms: scrimmage type; tests (84 gps, 40 coach); docs; untrack pyc + token file
+Plan approved by Codex round 6 (docs/2026-09-13-pull-build-PLAN.md).
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, GPS pull: fix Codex inspection 1 findings
+
+- run_report.py: parse and validate before writing; atomic session import
+- receipt-write failure never reports success (exit 5); --run-id in receipt;
+  pull.sh trusts only a receipt from its own run
+- pull.overlap_days validated (config error exit 1)
+- STATUS.md updated
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, GPS pull: retry backlog so a later success never strands an earlier failure
+
+Fixes Codex inspection 2 GPS-005. The receipt records retry_from (earliest failed
+window or unstored session); --since-db starts at min(newest - overlap, retry_from);
+only a clean since-db run clears it. 13 new tests (108 total). Red check: all 13 fail
+on a6d349b (rule-table cases via the missing function; multi-run cases assert the
+stranded session is imported on the next run). Not yet inspected by Codex.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: log Eric's decision for inspection 3
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: log Codex inspection 3 (REVISE); backfill and schedule not run
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, GPS pull: fix Codex inspection 3 findings
+
+- receipt written even when the run log cannot open (exit 5)
+- pending 'running' receipt persists retry_from before any import; a failed
+  final receipt write no longer loses retry state
+- invalid report.timezone is a config error (exit 1)
+112 gps tests, 40 coach tests. Not yet inspected by Codex.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: log Eric's override to run backfill and schedule
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, GPS pull live: backfill to 2026-09-12, 06:30 schedule installed; test isolation fix
+
+- backfill 04-26..09-13: 44 imported, 0 errors; DB 713 sessions; verified
+- com.keystone.gpspull bootstrapped (daily 06:30)
+- tests: autouse temp cwd so run() tests never write the real receipt
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: GPS regular pull live (audit build 2 follow-through)
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, MEMORY: GPS pull is live
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: handoff for GPS regular pull build (2026-09-13)
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, chore: session transcripts sync 2026-09-13 (closeout)
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, chore: closeout 2026-09-13 — transcripts, dev-docs harvest
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, refresh_all_data.bat: disable GPS step; Mac owns the GPS DB
+
+The Mac pulls gps_history.duckdb daily at 06:30 (launchd com.keystone.gpspull).
+Two writers would create two drifting databases. .gitattributes forces CRLF for
+*.bat/*.cmd on Windows checkout.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, docs: handoff — Windows GPS step disabled via _INBOX push
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, chore: session transcripts sync 2026-09-13 (closeout 2)
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ, chore: closeout 2 2026-09-13 — transcripts, MEMORY.md, dev-docs harvest
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L3xdnAc5x8mQsRbwGnuqyZ
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, memory-write/SKILL.md, global-memory/USER.md, global-memory/MEMORY.md, references/build.md, references/runtime.md, DataBase_GPS_Reporting/CLAUDE.md
+
+## Subagent Tasks
+- [completed] Read-only investigation. Do NOT modify, move, or delete anything. Do not paste athlete-identifiable data ...
+- [completed] Diagnose the Baylor Football GPS import pipeline and design a regular-pull setup. This is investigation o...
+
+## Skills Used
+CreateSkill, memory-write, claudex-loop
+
+## Environment
+cwd: ~/.claude/global-memory
+model:claude-opus-5[1m]
+mkdir -p /Users/kristinarash/.claude/jobs/764640dd/tmp/gps-test && cd /Users/kristinarash/.claude/jobs/764640dd/tmp/gps-test && ~/.local/bin/uv venv -q .venv && ~/.local/bin/uv pip install -q --python .venv/bin/python requests duckdb python-dotenv pandas jinja2 pyyaml scipy 2>&1 | tail -3; .venv/bin/python -c "import duckdb,sys;print(duckdb.__version__, sys.version)"
+cd /Users/kristinarash/DEV/DataBase_GPS_Reporting/gps_report && ~/.local/bin/uv venv .venv --python 3.14 -q 2>&1 | tail -2; ~/.local/bin/uv pip install --python .venv/bin/python -q -r requirements.txt pytest 2>&1 | tail -3; .venv/bin/python -c "import duckdb, requests, yaml, pandas, dotenv, jinja2, scipy, pytest; print('venv ok', duckdb.__version__, pytest.__version__)"
+cd ~/DEV/DataBase_GPS_Reporting && tail -25 gps_report/config.yaml; echo ---CLAUDE-LINES; grep -n -E '^## |^### |pip install|OneDrive|Windows|C:\\\\|no scheduler|Bulk historical import' CLAUDE.md; echo ---PYC; git ls-files | grep -c '\.pyc$'; git ls-files | grep '\.pyc$' | sed 's#/[^/]*$##' | sort -u
+
+## Data References
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- type:text
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 113 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
