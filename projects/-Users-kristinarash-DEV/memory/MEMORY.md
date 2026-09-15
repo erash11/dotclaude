@@ -52,4 +52,4 @@ Never put memory content here — the file itself holds the facts.
 - [Child dental plan](user_child-dental-plan.md) — 4yo cavities: pediatric dentist not yet booked, SDF vs n-HAp
 - [ELI5 output style](user_eli5-output-style.md) — concise plain-language output rules shared by Claude Code and Codex
 - [GitHub consolidation](project_github-consolidation.md) — ~/DEV on GitHub: the thin root repo, _ARCHIVE, where DexaProject went, merge traps
-- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder: which of the three copies is canonical, why `~/.claude/skills` IS a git repo, the sync script that deletes, the 2026-09-12 audit, Pi/pi.dev facts
+- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder: which of the three copies is canonical, why `~/.claude/skills` IS a git repo, the sync script that deletes, the 2026-09-12 audit, the 40 name-only skills (9/14), Pi/pi.dev facts
