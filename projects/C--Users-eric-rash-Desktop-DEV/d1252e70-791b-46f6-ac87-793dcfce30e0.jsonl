@@ -377,3 +377,6 @@
 {"type":"mode","mode":"normal","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0"}
 {"type":"permission-mode","permissionMode":"bypassPermissions","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0"}
 {"type":"cost-state","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":4649510,"startTime":1789240316785,"modelUsage":{},"hasUnknownModelCost":false}
+{"type":"ai-title","aiTitle":"migrate windows tasks macos","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0"}
+{"type":"agent-name","agentName":"migrate windows tasks macos","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0"}
+{"type":"cost-state","sessionId":"d1252e70-791b-46f6-ac87-793dcfce30e0","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":4907221,"startTime":1789240316785,"modelUsage":{},"hasUnknownModelCost":false}
