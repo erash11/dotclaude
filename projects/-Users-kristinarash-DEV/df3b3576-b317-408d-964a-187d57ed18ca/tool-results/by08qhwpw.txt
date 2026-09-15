@@ -1,0 +1,509 @@
+=================== Inbox/2026-09-14-interview.md
+---
+type: interview
+date: 2026-09-14
+duration_min: 15
+themes: [prioritization, finishing-work, OKRs, three-pillars, productivity-system]
+notes_produced: ["[[finish-one-project-before-you-start-the-next]]"]
+pulled_sources: []
+---
+
+# Interview — 2026-09-14
+
+Supervisor log for today: `Inbox/status-log/2026-09-14.md`
+
+## 1. Orientation — What did you spend time on today?
+
+Helped football collect jumps, then made the rounds with the athletic training staff. Went to a student services staff meeting. Then tried to map out and get a better handle on the projects I've actually been working on recently — the ones that should stay in the inventory because they move the needle. Getting closer to figuring that out. They center around three initiatives: **education, analytics, and research**.
+
+## 2. Signal — What surprised you, frustrated you, or changed your mind?
+
+Not surprised today. Slowly come to the realization that I take on too many projects and don't really finish anything before I attempt the next one. I need a system to prioritize my work. Because I'm largely self-directed, I'd benefit greatly from a true process to follow.
+
+Asked for help building it. Tried before, but in a better place now to build a system and a routine. The meetings with Kenny and Chris Ruf, plus the updated job description, already outline some of this. Idea: OKRs built around the primary areas I'll be evaluated on that also move the needle in the three pillars (education, analytics, research).
+
+## 3. Pattern — Connections to recent thinking?
+
+Surfaced three earlier notes on the same problem: [[self-authored-direction]] (5/22), [[the-daily-on-ramp]] (6/2), [[keep-the-main-thing-the-main-thing]] (7/31).
+
+Answer: It does connect. Been on a long pursuit to improve productivity and figure out how to provide value. Little success so far.
+
+Not answered (carried to follow-up): what made the earlier fixes stop working, and why now is different.
+
+## 4. Essay seed — One thing you'd tell a peer about today?
+
+"Finish one project before you start the next one."
+
+---
+
+## Notes produced
+- [[finish-one-project-before-you-start-the-next]]
+
+## Sources pulled
+- None. Vault notes read for Q3 only.
+
+## Open thread — follow-up session
+Build a prioritization system with Eric: OKRs tied to (a) the areas he is evaluated on and (b) the three pillars. Inputs: `Projects/Applied-Performance-JD-2026/`, `Inbox/meetings/2026-04-27_Chris_Ruf__Performance_Review__Check_ins.md`, `Inbox/meetings/2026-08-27_Applied_Performance__Job_Profiles_FMS__Logistics.md`. Open first with: why did the 5/22, 6/2 and 7/31 fixes stop working?
+=================== Notes/finish-one-project-before-you-start-the-next.md
+---
+type: permanent
+created: 2026-09-14
+source: "[[2026-09-14-interview]]"
+domain: [decision-making, methodology, personal]
+tags: [focus, prioritization, finishing, OKRs, routine]
+status: seed
+---
+
+# Finish one project before you start the next one
+
+> The problem was never only choosing the main thing. It is starting the next thing before the current one is finished. Picking priorities without a rule about finishing leaves a pile of started work and little that ships.
+
+## Why it matters
+
+Three earlier notes named the same pain from the choosing side: author your own direction, run a daily on-ramp, keep the main thing the main thing. Four months later the realization is the same, which says the gap is not in knowing what matters. The gap is at the moment a new project shows up while an old one is still open. A self-directed role has no one to say "not yet," so the rule has to be part of the process.
+
+## Evidence / origin
+
+- [[2026-09-14-interview]], essay seed, verbatim: "Finish one project before you start the next one."
+- Same day: "I try to take on too many projects and I don't really finish anything before I attempt to take on the next one. I need to develop a system to prioritize my work. Since I am largely self directed I would benefit greatly from having a true process to follow."
+- Same day, spent time sorting recent projects into the ones that move the needle: education, analytics, research.
+- "I have been on a long pursuit to improve my productivity and figure out how I can provide value. I have had little success thus far."
+
+## Connections
+- [[self-authored-direction]] — 5/22: the chain from daily intentions to department objectives; this note adds the missing rule about finishing
+- [[the-daily-on-ramp]] — 6/2: the morning brief; it surfaces unfinished work but did not stop new starts
+- [[keep-the-main-thing-the-main-thing]] — 7/31: expect the pull toward exciting side work; this is the same pull, seen as a pile of open projects
+- [[waiting-for-the-ask-kills-the-idea]] — the tension: acting unasked is good, but each unasked start adds to the open pile
+
+## Open questions
+- What made the 5/22, 6/2 and 7/31 fixes stop working? (Not answered on 9/14.)
+- Why is now different?
+- What counts as "finished" for a project in education, analytics or research?
+- How many projects can be open at once per pillar?
+
+---
+
+*Source notes:* [[2026-09-14-interview]]
+=================== Notes/self-authored-direction.md
+---
+type: permanent
+created: 2026-05-22
+source: [[2026-05-22-interview]]
+domain: [leadership, decision-making, methodology]
+tags: [priorities, focus, autonomy, OKRs]
+status: seed
+---
+
+# Self-Authored Direction
+
+> If direction isn't provided from above, you have to produce it yourself. The cost of waiting is constant fire-fighting; the cost of authoring it is the work of choosing.
+
+## Why it matters
+
+In a role where leadership doesn't hand down explicit weekly objectives, the absence of structure is mistaken for freedom. It isn't. It's an open door for everyone else's priorities to walk in and fill the vacuum. Without self-authored direction, the day shape is dictated by the inbox: meetings to schedule, emails to reply to, sponsorships to discuss, partnerships to chase. None of that is *bad* — but none of it ladders up to a stated objective unless you do the laddering.
+
+The discipline is: **daily intentions feed weekly priorities feed department objectives**. Break the chain at any link and you're running around like chickens with your heads cut off.
+
+## Evidence / origin
+
+- Friday 2026-05-22 morning briefing: 5 emails needing reply, 3 meetings to schedule, 1 form owed, 1 FYI — *all* externally initiated. None framed by a stated weekly objective.
+- Self-observation during the [[2026-05-22-interview]]: "I can get led astray. Not everything is important."
+- The Aranda practice-planning meeting [[2026-05-22_PreSummer_Planning]] is the *same dynamic at the team level* — the head coach is now imposing a deliberate practice framework (green/yellow/red days) so the season isn't driven by whatever the day happens to throw at the staff.
+- 2026-06-02 [[2026-06-02-interview]]: "a lot of really talented people who need better, stronger direction so we can achieve some really cool things." The bottleneck isn't talent — it's direction, and supplying it is the unit's job.
+
+## Connections
+- [[planning-windows-compound]] — self-authored direction is hardest to build mid-season; planning windows are when you set it
+- [[adoption-is-the-bottleneck]] — **update (2026-05-28):** this note solved only the *what*. The harder constraint is getting other people to follow self-authored direction; direction nobody adopts is isolation, not traction.
+- [[the-daily-on-ramp]] — the daily tier of the ladder; the morning brief is how authored direction survives contact with the day.
+- *Three-tier laddering* (daily → weekly → quarterly OKRs) — **now built (2026-06-02):** daily brief → weekly Thursday check-in → quarterly OKR score.
+- Future note: *The cost of saying no* — every yes to a marginal project is a no to a stated objective
+
+## Open questions
+
+- ~~What's the right cadence for re-authoring direction? Weekly review? Monthly?~~ → **resolved (2026-06-02):** weekly Thursday unit check-in + monthly objective rebalance + end-of-quarter score (the OKR operating playbook).
+- ~~How do you make self-authored objectives stick when the org doesn't reinforce them?~~ → reframed in [[adoption-is-the-bottleneck]]: it's a consensus/adoption problem, and when the velocity mismatch is large enough, exit is a legitimate answer.
+- ~~Which tool/workflow makes daily → weekly → department traceability cheap enough to maintain?~~ → **resolved (2026-06-02):** an OKR tracker for the weekly tier + [[the-daily-on-ramp]] for the daily tier.
+
+---
+
+*Source notes:* [[2026-05-22-interview]]
+=================== Notes/the-daily-on-ramp.md
+---
+type: permanent
+created: 2026-06-02
+source: [[2026-06-02-interview]]
+domain: [methodology, decision-making, personal]
+tags: [focus, momentum, priorities, OKRs, routine]
+status: seed
+---
+
+# The Daily On-Ramp
+
+> Self-authored direction doesn't fail at the strategy layer — it fails at the daily on-ramp. The cheap fix is a standing morning brief: *what didn't get done yesterday → what must get done today → the week's big rocks.* That's the mechanism that converts authored direction into daily momentum.
+
+## Why it matters
+
+You can have a sharp set of objectives and still lose the day. The gap between "I know my priorities" and "I worked my priorities" is the first 15 minutes after the workstation boots. Without a deliberate on-ramp, the inbox sets the agenda and good intentions get back-filled by whatever arrives first — and things fall through the cracks not because they were forgotten in principle but because nothing re-surfaced them at the start of the day.
+
+The brief is small on purpose. Three moves — yesterday's incompletes, today's must-dos, the week's big rocks — make the daily→weekly→quarterly ladder *visible at the moment of choosing*, which is the only moment it can change behavior. It's the daily counterpart to the weekly OKR check-in: the check-in sets the week, the brief spends it.
+
+## Evidence / origin
+
+- [[2026-06-02-interview]]: surprised by how little progress a Tuesday produced; named the fix as a morning brief that runs from yesterday's incompletes to today's must-dos to the week's big rocks, "so there's constant momentum and things don't fall through the cracks."
+- Directly answers the open question left in [[self-authored-direction]]: *which workflow makes daily → weekly → department traceability cheap enough to maintain?*
+- A partial scaffold already exists in the vault (`morning-briefings/`); the insight is to make it a disciplined daily ritual that explicitly ladders to the week's big rocks, not just a list.
+
+## Connections
+- [[self-authored-direction]] — the brief is *how* authored direction survives contact with the day; resolves its cadence/tool open questions.
+- [[answers-without-questions]] — distilling many ideas into the day's few right actions is the same discipline applied at the daily scale.
+- [[delivery-is-part-of-the-mechanism]] — **update (2026-06-04):** the generated-vs-hand-written question is downstream of a bigger one — *delivery*. The brief generated perfectly on 06-04 and still failed because nothing put it in front of me. Generation is moot if the surface isn't surfaced.
+- The OKR operating playbook's weekly Thursday check-in is the weekly tier; this note is the daily tier beneath it.
+
+## Open questions
+- Should the brief be generated (from the OKR tracker + yesterday's log) or hand-written each morning? Generated lowers friction; hand-written forces the choosing. *(2026-06-04: hand-written's hidden advantage is delivery — you read it because you wrote it.)*
+- What's the minimum that still works on a chaotic day — can it survive at 3 lines?
+- **Delivery channel (open, blocking):** the cron writes to `morning-briefings/YYYY-MM-DD.md` but doesn't deliver it. Email at 07:47? Surface at first session of the day? Needs a fix — see [[delivery-is-part-of-the-mechanism]].
+
+---
+
+*Source notes:* [[2026-06-02-interview]]
+=================== Notes/keep-the-main-thing-the-main-thing.md
+---
+type: permanent
+created: 2026-07-31
+source: "[[2026-07-31-interview]]"
+domain: [decision-making, leadership]
+tags: [focus, prioritization, mission]
+status: seed
+---
+
+# Keep the main thing the main thing
+
+> There will always be work that personally excites you but doesn't advance the larger mission. The discipline is not avoiding distraction once — it's expecting the pull constantly and re-choosing the primary thing anyway.
+
+## Why it matters
+
+Infrastructure days, vendor calls, and side projects all feel productive. The failure mode isn't laziness — it's enthusiasm pointed at the wrong target. A day can fly by fully "dialed in" and still not move the mission.
+
+## Evidence / origin
+
+End-of-day debrief, 2026-07-31 — a day spent on knowledge infrastructure and loose ends, stated verbatim as the one thing to tell a peer: "Keep the main thing the main thing. Don't get sidetracked by a bunch of frivolous stuff that maybe personally excites you but does not help you with the larger things you're trying to accomplish."
+
+## Connections
+- [[design-the-conditions-not-the-discipline]] — a tidy workspace is one condition that keeps the main thing in front of you
+- [[waiting-for-the-ask-kills-the-idea]] — the tension: proactivity is good, but proactive frivolity is still frivolity
+
+## Open questions
+- What's the test for "frivolous but exciting" vs. "exploratory and mission-adjacent"? Infrastructure work sits right on that line.
+
+---
+
+*Source notes:* [[2026-07-31-interview]]
+=================== Projects/Applied-Performance-OKRs-2026-27.md
+---
+type: strategy
+project: Applied Performance — Unit OKRs
+created: 2026-05-29
+owner: Eric Rash
+unit_members: [Eric Rash, AJ (AP Specialist — Football), Noah (BB AP GA)]
+cycle: Semester cycles aligned to athletic calendar — Summer close-out (Jun–Aug 2026), Fall (Sep–Dec 2026), Spring (Jan–May 2027)
+current_cycle: Summer close-out (through 2026-08-31)
+next_review: 2026-08-31 (cycle close + Fall set authored); mid-semester checkpoints ~Oct 15 and ~Mar 1
+status: v3 — restructured 2026-07-17 around the new responsibilities document (JD) and Jul 9 planning meeting; decision records in [[Applied-Performance-JD-2026/decisions]]
+---
+
+# Applied Performance — Unit OKRs (2026–27)
+
+## Vision (North Star)
+**Be the best applied performance department in the country.**
+
+That's the bar. A KR is "done" only at a level a top-5 program would recognize, not just "we did a thing."
+
+## Mission (how we get there)
+Turn Baylor's athlete data into decisions that keep athletes available and performing, build the data and performance literacy of the people who use it, and produce original research that advances both the program and the university's R1 mission.
+
+## Structure (v3)
+Three permanent **service pillars** — Data Systems & Analytics, Education, Research & Development — plus one **enabling objective** (Leadership & Visibility) that the new responsibilities document made explicit: the unit now delivers through people and processes Eric directs, not only through work Eric performs. Role-language definitions (Oversee, Assist, Support-and-guide, Unified) live in [[Applied-Performance-JD-2026/CONTEXT]].
+
+**Cycle mechanics:** KRs are committed per semester (quarterly rhythm retired 2026-07-17 — decision 0007). Every KR is scored at the mid-semester checkpoint (on-track/off-track) and at cycle close (0.0–1.0, keep/retire/add). The biweekly Friday report to Chris is the standing pulse between checkpoints. Every KR must have its critical path inside the unit's control — no KR whose completion depends on an external party's timeline.
+
+**Eric's protected hands-on lanes** (not delegated, not reviewed-only — built by his hands): HPI protocol and its dashboarding; technology vetting; white-paper analysis; one-off report and dashboard creation for sports. Delegation stops at these boundaries.
+
+---
+
+## Objective 1 — Data Systems & Infrastructure
+> **The data layer is standardized, governed, and survives staff transition; sport-facing delivery is bespoke on top of it and routinely drives coaching decisions.**
+
+*"Unified" means standardized underneath (metric definitions, data model, freshness), bespoke on top (per-sport dashboards and reports). A single all-programs dashboard is explicitly not the goal (decision 0008).*
+
+**Summer close-out KRs (through Aug 31)**
+| # | Key result | Owner | Target | Status |
+|---|---|---|---|---|
+| 1.1 | **Per-sport coach dashboards in routine weekly use** — Football (delivered through AJ) + Volleyball (direct) — built on shared data standards. *"Used" = referenced in the team's weekly planning meeting; core metrics fresh same-day.* | AJ (FB), Eric (VB) | ≥5 of 6 weeks, Jul 15 – Aug 31 | ⬜ |
+| 1.2 | **Technology decision matrix revived and adopted as standard vendor intake** — documented + Chris sign-off in writing. No named vendor; the next real pitch flows through it. | Eric | Adopted by Aug 31 | ⬜ |
+| 1.3 | **HPI protocol v1 drafted** — data integration, flow, storage, dashboarding, interpretation — circulated to Chris + Kenny for feedback; walked through with Kenny in a meeting Eric schedules. | Eric | Circulated by Aug 31 | ⬜ |
+
+**Staged to Fall:** data-continuity plan per NCAA Best Practices document (what survives a staff transition — informed by the Blake departure); website-era distribution architecture; Kitman/data-management system improvements.
+
+## Objective 2 — Education
+> **Applied Performance is a recognized source of education in the building — a launched, running engine, not an aspirational one.**
+
+*Reset 2026-07-17 (decision 0006): the original 6-issue target was 0-for-3 at mid-July. The blocker was launch — an open-ended sign-off loop and distribution re-planning around the unlaunched website. New rules: advance-notice, not approval-seeking ("shipping on X unless you want changes"); email distribution now, website as the Fall upgrade.*
+
+**Summer close-out KRs (through Aug 31)**
+| # | Key result | Owner | Target | Status |
+|---|---|---|---|---|
+| 2.1 | **Engine launched — 2 issues shipped**: Issue #1 ~Aug 1 anchored by the sleep education module; Issue #2 ~Aug 22 anchored by the GLP-1/performance brief. Proof-of-concept to Chris + stakeholders the week before Issue #1 with a stated ship date. | Eric | 2 issues by Aug 31 | ⬜ |
+| 2.2 | **Both leadership-requested modules circulated** — sleep education + GLP-1 brief in named stakeholders' hands for feedback (the initiative signal the Jul 9 meeting asked for). | Eric | Circulated by Aug 31 | ⬜ |
+| 2.3 | **Reach + demand baseline** — distribution counts recorded at each issue; inbound requests tracked. Targets set from evidence at the Aug 31 review, not guessed now. | Eric | Baseline recorded | ⬜ |
+
+**Staged to Fall:** cadence set from evidence (monthly floor); website distribution; staff/athlete live-session targets; AP Clinic contributions as directed by Courteney (she owns the event — Eric assists).
+
+## Objective 3 — Research & Development
+> **A real R&D engine — committee, repository, formalized partners — that produces publishable output and visibly feeds Baylor's R1 strategy.**
+
+**Summer close-out KRs (through Aug 31)**
+| # | Key result | Owner | Target | Status |
+|---|---|---|---|---|
+| 3.1 | **BAIR Steering Committee organized** — vetting process documented, first meeting scheduled with agenda. | Eric | By Aug 31 | ⬜ |
+| 3.2 | **Research repository MVP live** — catalog of projects, status, data, partners. | Eric | By Jul 31 (score honestly at review if late) | ⬜ |
+| 3.3 | **≥1 academic partnership formalized** — named project, written scope + timeline. | Eric | By Aug 31 | ⬜ |
+| 3.4 | **White paper drafted** — converted from the existing short report. Eric sole owner of the critical path; Blake credited as co-author, zero dependency on post-departure contributions (decision 0005). Publication deployment = Fall. | Eric | Drafted by Aug 31 | ⬜ |
+
+## Objective 4 — Leadership & Visibility (enabling)
+> **The director model demonstrably works: staff own their lanes, leadership is never surprised, and the department's work is visible without being asked for.**
+
+**Summer close-out KRs (through Aug 31)**
+| # | Key result | Owner | Target | Status |
+|---|---|---|---|---|
+| 4.1 | **Friday report cadence live** — biweekly email to Chris: Shipped / In Progress / Decisions Needed / Risks–No-Surprises / Next Two Weeks, <300 words. The decision-impact log feeds "Shipped" (it is no longer a standalone KR — it's ammunition). | Eric | ≥3 sent by Aug 31 | ⬜ |
+| 4.2 | **AJ full handoff through fall camp** — AJ owns camp planning and the plan-vs-actual review to the football staff (framework already jointly presented); Eric reviews all artifacts pre-delivery, weekly 1:1 standing (decision 0004). | AJ, Eric oversight | 100% of camp practices on framework; review delivered ≤1 wk post-camp | ⬜ |
+| 4.3 | **Noah mentoring cadence** — onboarding checklist written; weekly 1:1; departmental policies/procedures walked through. | Eric | Checklist + cadence live by Aug 15 | ⬜ |
+| 4.4 | **Proactive supervisor meetings held** — Kenny (HPI/research walkthrough) + H&W technology guidance, both initiated by Eric. | Eric | Both held by Aug 31 | ⬜ |
+
+---
+
+## Aug 31 review (cycle close)
+Score each KR 0.0–1.0, keep/retire/add, then author the **Fall (Sep–Dec) set** — first semester cycle, mid-semester checkpoint ~Oct 15. Set education reach targets and newsletter cadence from actuals. Fall candidates already staged: continuity plan, white-paper publication, website distribution, Linda's role integration (pending the Chris conversation), data-management system build.
+
+## Parking lot
+- White paper **published** — Fall.
+- Peer-reviewed submission — the longer-horizon outcome behind the white papers.
+- Year-end research summary — Spring close.
+- Website-based education hub (with Cody) — Fall distribution upgrade.
+
+## Superseded (v2 → v3, 2026-07-17)
+- ~~Unified single dashboard across programs~~ → per-sport on shared data standards (0008).
+- ~~6 newsletter issues / twice-monthly~~ → launch-first reset, 2 module-anchored issues (0006).
+- ~~Quarterly KR cycles~~ → semester cycles + mid-semester checkpoints (0007).
+- ~~Eric delivers fall-camp framework + Aranda review~~ → AJ owns, Eric oversees (0004).
+- ~~Decision-impact log as KR 1.3~~ → fuel for the Friday report (not scored separately).
+- ~~Blake as unit member / KR co-owner~~ → departed; ownership redistributed (0003).
+=================== Inbox/meetings/2026-04-27_Chris_Ruf__Performance_Review__Check_ins.md
+# Chris Ruf — Performance Review & Check-ins
+
+**Date:** 2026-04-27 09:55
+**Duration:** 30m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+## Summary
+
+### Overview
+
+- **Communication Improvements:** Consistent communication and project visibility are crucial for staff awareness and project utilization. 
+
+- **Data Management Focus:** Development of a data management hub is essential for empowering staff and improving collaboration.
+
+- **Staff Development Plans:** Regular check-ins will enhance transparency, support, and clarify growth opportunities for staff roles. 
+
+- **Relationship Building:** Strengthening ties with sports teams and campus partners is vital for data science integration and cultural growth. 
+
+- **Process Enhancements:** Implementing structured processes will improve problem-solving, staff support, and communication efficiency. 
+
+- **Staff Turnover Acknowledgment:** Increased turnover and workload have led to communication challenges, prompting the need for regular evaluations.
+
+### Action Items
+
+
+**Chris Ruf**
+Improve communication and planning consistency starting at interview processes and continue through all projects (07:28)
+Increase visibility of ongoing projects internally by using staff communication channels or spaces to highlight work and outcomes (13:09)
+Continue mentoring and managing Blake and AJ, ensuring AJ’s full transition into a full-time role is well-supported and autonomous (17:19)
+Set up recurring check-in meetings with Eric every two weeks starting in May or summer to improve communication and reduce anxiety (24:56)
+Prepare for a strategic planning meeting with Eric to review role and goals for the upcoming year (28:11)
+
+**Eric Rash**
+Initiate scheduling of recurring 20-30 minute check-in meetings with Chris Ruf biweekly starting May or summer (25:18)
+Continue expressing interest in future athletic performance opportunities, particularly in strength and conditioning roles, while respecting current organizational hierarchy (26:40)
+Prepare to participate in upcoming strategic planning meeting to help shape role and responsibilities for next year (28:11)
+
+
+### Keywords
+
+communication, data management, student-athlete education, leadership, recurring meetings, athletic performance
+
+=================== Inbox/meetings/2026-08-27_Applied_Performance__Job_Profiles_FMS__Logistics.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# Applied Performance — Job Profiles, FMS & Logistics
+
+**Date:** 2026-08-27 09:35
+**Duration:** 41m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Meeting Timing & Engagement:** Rushed presentations and late donor remarks lowered energy; better scheduling needed to boost focus and culture messaging.  
+- **Coach Hoot Tribute:** Honoring Hoot emphasized core values and culture, aiding recruitment and daily value reinforcement.  
+- **NCAA Fifth-Year Eligibility:** Unclear NCAA rules and lawsuits complicate roster decisions; legal uncertainty disrupts recruiting and roster planning.  
+- **Freshmen Stress & Support:** Freshmen face high emotional stress; staff urged to provide patience, presence, and communication strategies to ease transitions.  
+- **Footwear Strategy:** Plan to improve shoe quality with sport-specific metcon models; coaches collecting preferences for orders to optimize safety/performance.  
+- **Team Training Status:** Varied team health and readiness; women’s tennis strong, golf conditioning slow, volleyball prepping for tough opener, baseball rebuilding fitness.  
+- **Staff Development & Operations:** Professional growth sessions and student worker hires underway; emphasis on positive attitudes and smooth event coordination.
+
+### Action Items
+
+
+**All Coaches**
+Send preferences for Metcon shoe models (7 or 10) or indicate no need for footwear per team to Will via Kenny (20:58)
+
+**All Staff**
+Update and upload current job profiles, resumes, and certifications to the shared Box folder as requested by Kenny (10:07)
+
+**Coaching Staff**
+Practice patience and positive communication early in the semester; draft but do not send emotional emails to avoid miscommunication (14:29)
+Increase presence at team events and spaces to build relationships with freshmen and newcomers (16:01)
+Prepare and participate in staff professional development sessions focusing on cover letter and application materials; await schedule communication (34:57)
+
+**Kenny**
+Create and manage a centralized Box folder for staff job profile documents (10:07)
+Coordinate and map route for Zero Blast event on September 4th, ensuring no interference with team schedules; communicate any potential conflicts (17:45)
+
+**Track and Field Staff**
+Complete all Functional Movement Screen (FMS) tests for newcomers and returning athletes; update records including any pain or flags (33:24)
+
+**Sporting Coaches**
+Monitor and accommodate athletes’ fifth-year eligibility status and roster impacts; coordinate with administration on litigated eligibility cases (08:36)
+
+**Hiring Manager**
+Follow up on hiring two student workers to support track and field department; complete onboarding clearances and scheduling (38:34)
+
+
+### Keywords
+
+meetings, athlete eligibility, staff communication, training updates, footwear, freshmen integration, professional development
+
+=================== Projects/Applied-Performance-JD-2026/CONTEXT.md
+# CONTEXT — JD Role Language Glossary
+
+Ubiquitous language for the 2026 Athletics Performance Staff Responsibilities document (Eric Rash, Director of Applied Performance) and the OKR docs built on it. Companion decisions: [[decisions]].
+
+## Assist
+
+Another named person owns the function and sets direction; Eric executes what they delegate. Ownership, priorities, and external accountability sit with the owner, not Eric.
+
+> Example: AP Clinic — Courteney Tompkins owns the event; Eric takes his responsibilities from her lead. (Resolved 2026-07-16.)
+
+## Oversee (Eric → AP staff)
+
+Eric owns the standards, templates, and strategic direction; the staff member owns execution and the external relationships in their lane. Concretely: a weekly 1:1, pre-delivery review of any artifact leaving the department, and no direct involvement in day-to-day operations of the overseen lane.
+
+> Example: AJ owns fall-camp planning and all FB-staff communications, including presenting the plan-vs-actual review to Aranda; Eric reviews artifacts before delivery and co-builds the analysis. (Resolved 2026-07-17.)
+
+## Unified (data & dashboards)
+
+Standardized underneath, bespoke on top. Unification lives in the data layer — common metric definitions, common data model, common freshness expectations — never in a single shared UI. Each sport's dashboards and reports are bespoke deliveries built on that shared foundation.
+
+> Example: KR 1.1 — per-sport coach dashboards (FB via AJ, VB direct) on shared data standards; the HPI protocol and continuity plan are what standardize the underneath. (Resolved 2026-07-17.)
+
+## Support and guide (Eric → BB AP GA)
+
+Mentoring-weighted oversight: Eric teaches departmental procedures, policies, and data-management practice; the GA (Noah) executes with training wheels on. Distinct from Oversee — Noah is not yet accountable for a lane's outcomes; Eric is.
+
+## Briefing Asset (department briefing)
+
+The reusable core content that explains Applied Performance — the three service pillars + capability menu + one-sentence mission — as distinct from any single talk. A **deployment** is one delivery of the asset wrapped for a specific room (audience, ask, and depth vary; the model does not). Deployments are variants of the asset, never separate scopes.
+
+> Example: v1 deployment = the admin/sport-admin briefing; head-coach variant and H&W-onboarding module are staged derivatives, not part of v1. (Resolved 2026-07-18.)
+
+=================== Projects/Applied-Performance-JD-2026/JD-response-deliverable-2026-07-20.md
+# Responsibilities Document — Review Response
+
+**Eric Rash · Director of Applied Performance · 2026-07-20**
+**To:** Chris Ruf · **Cc:** Kenny Boyd
+**Re:** The three items requested on 7/9 — feedback, questions, and action steps on the Athletics Performance Staff Responsibilities document.
+
+---
+
+## 1. Feedback
+
+- **I accept the document as written.** The lanes it defines — department oversight, BAIR, HPI, technology, data infrastructure — are where Applied Performance delivers the most value, and the staffing structure (AJ owning football day-to-day, Noah developing under guidance) is already working in practice.
+- **One structural suggestion:** several responsibilities overlap as drafted — "Technology oversight," "HPI data integration," and "Create system and infrastructure for data management" are three entries describing one connected build (data flows in → is governed and stored → is visualized and interpreted). I'd suggest combining them under a single "Data & Technology Infrastructure" heading so ownership and progress are easier to track. Happy to draft that language.
+- **Two sections are blank** (Certification/PD Standards, Travel Standards). Proposed fill-ins under Questions below.
+
+## 2. Questions — each with my proposed answer
+
+| # | Question | My proposed answer — confirm or correct |
+|---|---|---|
+| 1 | **Technology vetting:** do I own vendor decisions, or recommend for your approval? | I run intake and evaluation through a documented decision matrix and bring you a recommendation; you approve. Matrix comes to you for sign-off by Aug 31. |
+| 2 | **Staff oversight depth:** does my administrative oversight of AJ and Noah include input on their evaluations? | I provide written input to their evaluations and handle day-to-day direction and development; formal evaluation authority stays with you. |
+| 3 | **H&W guidance:** is my guidance on technology and data advisory, or carried with an expectation it's followed? | Advisory, but with an agreed escalation path: if guidance on data handling is declined and creates risk, I flag it to you rather than press it myself. |
+| 4 | **Budget:** is there an AP budget line I manage for technology, education materials, and PD? | A defined annual line I manage with your visibility, spends over an agreed threshold routed to you. If no line exists, I'd like to scope one for FY27. |
+| 5 | **Linda:** what is her role and authority with coaches, and what is my responsibility toward her? | To be defined in our conversation — I'd like it on the calendar this week. My working assumption per 7/9: I support the structure you and leadership set; I don't direct it. |
+| 6 | **PD Standards (blank):** what should this section say? | Proposed: maintain SCCC (current through 7/31/28); one national conference per year; a named annual PD allocation. I'll draft exact language on your go-ahead. |
+| 7 | **Travel Standards (blank):** what should this section say? | Proposed: travel tied to the PD standard above plus assigned team needs. Drafted with #6. |
+
+## 3. Action steps — what I'm executing, with dates
+
+| By | Action |
+|---|---|
+| **This Friday** | First biweekly status email to Chris (format: Shipped / In Progress / Decisions Needed / Risks / Next Two Weeks — under a page, every other Friday thereafter). |
+| **This week** | Linda conversation scheduled; Kenny walkthrough of HPI protocol scheduled (I'll initiate both). |
+| **Aug 1** | Newsletter Issue #1 ships (sleep education module) — proof-of-concept to you and stakeholders the week prior with stated ship date. |
+| **Aug 15** | Noah onboarding checklist and weekly mentoring cadence in place. |
+| **Fall camp** | AJ owns camp load planning and plan-vs-actual review to football staff on the framework we presented; I review all deliverables before they go out. |
+| **Aug 22** | Newsletter Issue #2 ships (GLP-1/performance brief). |
+| **Aug 31** | Technology decision matrix documented and to you for sign-off · HPI protocol v1 circulated to you and Kenny · BAIR steering committee organized with documented vetting process · one academic partnership formalized · white paper draft complete (sole ownership following Blake's departure). |
+| **Sep 1** | Proposed: department OKRs move to semester cycles (Fall: Sep–Dec, Spring: Jan–May) aligned to the athletic calendar, with a mid-semester checkpoint (~Oct 15, ~Mar 1). The Aug 31 review closes the current set and opens the Fall set — I'll bring it to that review for your sign-off. |
+
+---
+
+*Mark anything above you'd change. Absent changes, I'm executing the action steps as dated, and you'll see the first Friday report this week.*
