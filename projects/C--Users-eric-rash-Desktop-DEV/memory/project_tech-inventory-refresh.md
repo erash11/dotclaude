@@ -5,14 +5,20 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3101f63e-ae24-43b1-9f12-b3bcdc82bdcc
-  modified: 2026-09-15T21:43:03.790Z
+  modified: 2026-09-16T20:38:32.452Z
 ---
 
 Analysis repo: `~/Desktop/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
 private). Supersedes the Mac-slug note of the same name, which still says "not a
 git repo" and has the 08-29 baseline.
 
-**Baseline 2026-09-15** (merged to `main` 2026-09-15): 51
+**Latest run 2026-09-16** (merged to `main` 2026-09-16, commit `6edf470`): 52
+responses, **Volleyball answered for itself → 32 of 32 units**, 188 products, 75
+athlete-data, 123 single-unit, 9 retired, 19 BO-only. Write-up
+`docs/FINDINGS_2026-09-16.md`. The fresh Forms download lands as
+`...Inventory(1-NN).xlsx` in Downloads; the OneDrive-synced copy did not update.
+
+**Previous baseline 2026-09-15** (merged to `main` 2026-09-15): 51
 responses, 31 of 32 units answering for themselves, **Volleyball covered only by a
 Business Office entry**, 185 products, 75 athlete-data candidates, 9 retirements.
 Write-up `docs/FINDINGS_2026-09-15.md`; deliverables dated 2026-09-15.

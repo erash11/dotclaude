@@ -1,0 +1,198 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- do the pass, browser is open and logged in.
+- go ahead and download the WR CSV, but verify the earlier work where we cross Reference the internal trait descriptors that Baylor personnel staff h...
+- it's set to 2025 FCS WR, go ahead
+- yes, start with FCS and Group of Six. Approved.
+- done, setting is off and tab reloaded
+
+## Files Modified
+mcp-claude_ai_Fireflies-fireflies_get_transcript-1789501232534.txt, AGENTS.md, inspect.py, wb_inspect.py, STATUS.md, 2026-09-15-review-board-meeting.md, PP_Recruiting, bt9xh2sfg.txt, open-work.md, README.md, load_leaderboard.py, file_exports.py, LOG.md, MEMORY.md, 2026-09-15-2025-baseline-load.md
+
+## Unresolved Errors
+- {"stdout":"\u001b[2mInstalled \u001b[1m2 packages\u001b[0m \u001b[2min 177ms\u001b[0m\u001b[0m\n===== 003. BAYLOR - TELEMETRY x STAQS UNIFIED GRADI...
+- {"stdout":"===== 003. BAYLOR - TELEMETRY x STAQS UNIFIED GRADING (PORTAL 2026, BAYLOR STYLE).xlsx\r\nTraceback (most recent call last):\r\n  File \...
+
+## Git
+pull, docs: bring in 2026-09-15 Review Board meeting notes
+
+Requested REVIEW BOARD changes from the Fireflies session (weekly refresh,
+leaderboard pre-portal load, positional column mapping, QB trait gaps,
+duplicates, validation, size vs Player Impact). STATUS updated with the
+priority decision and a verified gotcha: formulas read PORTAL INPUT by
+fixed column position, not header.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, docs: record renamed Fireflies meeting title
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, docs: Telemetry leaderboard check against PORTAL INPUT
+
+Read-only pass of Leaderboards (Player Traits, Advanced Stats) and the
+Transfer Portal view. Records export options, FCS and Group of Six scope
+filter, QB and WR column lists, and mismatches for the weekly refresh:
+OWR/SWR codes vs POSITION MAP, height text, Top End Speed on Advanced
+Stats, no QB Deep Speed or Decel column, separate files with no player ID.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, docs: verify WR/SLOT crosswalk; Elusiveness has no mapping
+
+Re-checked 000 WR and SLOT eval descriptors against the 003 CROSSWALK and
+METRIC GLOSSARY. All 8 factors are mapped, but Telemetry's Elusiveness
+appears nowhere even though the YAC Ability descriptor says Elusive.
+Adds the elite-share side effect of adding it as a counted trait.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, docs: WR Player Traits CSV headers and coverage
+
+Downloaded the WR Player Traits CSV (Power Four, 2026). Records exact
+headers, the PlayerId join key, Team as slug text, header diff against
+PORTAL INPUT, and near-empty week 3 trait coverage. Corrects the earlier
+no-player-ID note.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, Add leaderboard loader; record 2025 baseline plan
+
+scripts/load_leaderboard.py joins Telemetry leaderboard CSVs on PlayerId,
+maps headers onto PORTAL INPUT, maps OWR/SWR to WR, and builds a new
+workbook through Excel COM so formatting survives. Tested on the 2026
+Power Four WR CSV into a scratch copy. STATUS records the approved plan
+(2025 baseline 008, matrix renumbered 009, then weekly refresh), the
+POST-PORTAL RECAP validation seed, and the slot size caveat.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, docs: 2025 FCS WR coverage gate passed
+
+Sampled 131 of about 900 2025 FCS WRs on the leaderboard: speed, burst and
+run blocking mostly populated, CoD and Decel partial, Ball Skills empty.
+FCS stays in the 2025 baseline load.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, Add export filing script; record 2025 download progress
+
+scripts/file_exports.py names and files Telemetry leaderboard downloads by
+content (tab from header, group from position codes), verifying each copy
+and never overwriting. Tested on copies in a scratch folder. STATUS records
+2 of 22 FCS + Group of Six CSVs on Drive, the browser traps, and the split:
+Eric clicks downloads, the script files them.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, Build 008 2025 FCS-G6 baseline; map leaderboard position codes
+
+Downloaded all 22 FCS + Group of Six 2025 leaderboard CSVs and built
+008 on Drive (5,560 players with 2+ eligibility years, 441 REVIEW flags),
+verified in Excel before copying. Both scripts now map Telemetry's
+alignment codes (OWR/SWR, H/F/Y, LT/RT, LG/C/RG, DT/NT, UP/DOWN, ILB/OLB,
+FS/SS, OCB/SCB). file_exports tolerates stray unknown codes under 5%.
+STATUS records results, open questions, and the save-dialog cause.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, Rebuild 008 with Elig 1+; document Elig as a current value
+
+Telemetry's Elig. and Class are current (2026) values even in 2025 season
+files: 30 of 30 FCS/G6-to-P4 WRs match across both files. The first 008
+build filtered Elig 2+ and dropped every one-year player; it was moved to
+Drive _to_delete and replaced with an Elig 1+ build (8,761 players, 879
+REVIEW flags, 778 with Sample OK), verified in Excel. Loader help and
+README corrected.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5, Closeout 2026-09-15: STATUS rewrite and handoff
+
+STATUS trimmed to current state, next, open questions and gotchas after the
+008 build. Handoff records the meeting-to-baseline session, decisions (order,
+numbering, Elig 1+, Excel COM), every file touched on Drive and in the repo,
+and next actions (validation run first).
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N8CHea6vbH9UVbkavpBgs5
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, tool-results/mcp-claude_ai_Fireflies-fireflies_get_transcript-1789501232534.txt, PP_Recruiting/AGENTS.md, docs/STATUS.md, tool-results/bt9xh2sfg.txt, docs/open-work.md, scripts/README.md, global-memory/MEMORY.md
+
+## Skills Used
+claude-in-chrome, memory-write
+
+## Environment
+cwd: C:/Users/eric_rash/Desktop/DEV/PP_Recruiting/.claude/worktrees/fireflies-review-board-0915
+model:claude-opus-5[1m]
+entered worktree: fireflies-review-board-0915
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 20 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
