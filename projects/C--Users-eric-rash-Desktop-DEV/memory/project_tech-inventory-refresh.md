@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3101f63e-ae24-43b1-9f12-b3bcdc82bdcc
-  modified: 2026-09-16T20:38:32.452Z
+  modified: 2026-09-16T20:55:38.440Z
 ---
 
 Analysis repo: `~/Desktop/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
@@ -14,7 +14,8 @@ git repo" and has the 08-29 baseline.
 
 **Latest run 2026-09-16** (merged to `main` 2026-09-16, commit `6edf470`): 52
 responses, **Volleyball answered for itself → 32 of 32 units**, 188 products, 75
-athlete-data, 123 single-unit, 9 retired, 19 BO-only. Write-up
+athlete-data, 123 single-unit, 9 retired, 18 BO-only (VB confirmed Hawkin +
+DVSport outside the form → `UNIT_CONFIRMED` in `aliases.py`). Write-up
 `docs/FINDINGS_2026-09-16.md`. The fresh Forms download lands as
 `...Inventory(1-NN).xlsx` in Downloads; the OneDrive-synced copy did not update.
 
