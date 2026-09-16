@@ -1,5 +1,6 @@
 # Memory Index — DEV
 
+- [Baylor department names](user_baylor-department-names.md) — Athletic Performance / Athletic Medicine / Applied Performance, never S&C / sports medicine / sport science
 - [Sports teams](user_sports-teams.md) — follows the Indiana Fever (WNBA); default team for ambiguous WNBA asks
 - [Zero-edit YouTube pipeline](reference_zero-edit-youtube-pipeline.md) — Jack Roberts' 5-phase Claude Code video system; full note in vault Knowledge/frameworks/
 - [Working-conditions bottleneck](user_working-conditions-bottleneck.md) — limiter is conditions not effort; company generates his ideas and solitude refines them, plus a permission gate on acting unasked — be the thinking partner in-session
