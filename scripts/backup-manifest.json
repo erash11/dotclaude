@@ -1638,6 +1638,19 @@
    ],
    "captureOrphans": true,
    "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/Weekly_Research_Review",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Weekly_Research_Review.git",
+   "destinations": [
+    "ssd",
+    "github",
+    "baylor"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   }
  ]
 }
