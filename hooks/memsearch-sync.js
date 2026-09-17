@@ -141,6 +141,20 @@ const TIMEOUT_STREAK_THRESHOLD = 6;
 // matching it would mask real corruption as transient. A truly broken database
 // produces none of these and still escalates immediately.
 const LOCK_BUSY_RE = /DataDirLockedError|another process holds the lock|Resource temporarily unavailable|_acquire_lock|fcntl\.flock/i;
+// macOS refuses to dlopen native libraries once shutdown starts ("code signature
+// ... not valid for use in process: system is shutting down"). A session that
+// ends during a restart hits this on onnxruntime's .so and memsearch rewords it
+// as "requires onnxruntime. Install with: pip install". The install is fine;
+// do not reinstall. Seen 2026-09-16 07:46:41, reboot at 07:46:56.
+const SHUTDOWN_RE = /system is shutting down/i;
+
+// The first "SomethingError: ..." line of a traceback. memsearch wraps the real
+// failure in two more exceptions, so the first 300 chars of stderr are only
+// "Traceback ... File ... import onnxruntime" and never reach the cause.
+function rootCause(text) {
+  const m = (text || '').match(/^[\w.]*(?:Error|Exception): .*$/m);
+  return m ? m[0] : (text || '');
+}
 
 const existing = PATHS.filter(p => fs.existsSync(p));
 if (existing.length === 0) process.exit(0);
@@ -238,8 +252,11 @@ try {
     // as "may not be compatible with Milvus Lite 3.x", which has already caused
     // one destructive rebuild. Never treat this as corruption.
     bumpTransientStreak('index busy (lock held)', (res.stderr || out));
+  } else if (res.status !== 0 && SHUTDOWN_RE.test(out)) {
+    // Mac was restarting. Transient; the next session after boot catches up.
+    bumpTransientStreak('system shutting down', rootCause(res.stderr || out));
   } else if (res.status !== 0) {
-    logErr(`index exit ${res.status}: ${(res.stderr || '').slice(0, 300)}`);
+    logErr(`index exit ${res.status}: ${rootCause(res.stderr).slice(0, 300)} (full output: ${INDEX_LOG})`);
     try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
   } else {
     // Clean run — reset the consecutive-timeout streak.
