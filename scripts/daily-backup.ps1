@@ -67,7 +67,19 @@ function Sync-Repo($path, $branch) {
             # runs, so every day the other machine pushed produced a false repo-diverged
             # error (2026-09-18 and 2026-09-19 both did) and skipped the sync entirely.
             if ($DryRun) {
-                Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+                # R10-03: do not claim a fast-forward that was never attempted. A dirty file
+                # that the incoming commits also touch makes --ff-only refuse, and the old
+                # dry-run line reported "would fast-forward" anyway - which is how a dry run
+                # came back OK (0 errors) on 2026-09-19 for a state the real run would have
+                # refused. Compare the dirty paths against the incoming changed paths instead.
+                $incoming = @(git diff --name-only HEAD "origin/$branch" 2>$null)
+                $dirtyPaths = @(git status --porcelain | ForEach-Object { ($_ -replace '^.{3}', '').Trim('"') })
+                $clash = @($dirtyPaths | Where-Object { $incoming -contains $_ })
+                if ($clash.Count -gt 0) {
+                    Log "REPO $name : [dry-run] would be REFUSED - $($clash.Count) dirty file(s) also changed upstream: $($clash -join ', ')"
+                } else {
+                    Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+                }
             } else {
                 $pullOut = git pull --ff-only origin $branch 2>&1
                 if ($LASTEXITCODE -ne 0) {
