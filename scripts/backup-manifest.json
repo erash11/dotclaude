@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated": "2026-09-11",
+ "generated": "2026-09-19",
  "note": "Single authority for backup coverage. Default-deny: any DEV directory absent from paths[] fails the health check. Classification requires human review.",
  "destinations": {
   "ssd": {
@@ -197,6 +197,18 @@
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/AppliedNewsletter_2026.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/AppliedPerformance-Site",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/AppliedPerformance-Site.git",
    "destinations": [
     "ssd",
     "github"
@@ -782,6 +794,18 @@
    "captureOrphans": false,
    "captureWorkingTree": false,
    "note": "Added 2026-08-19 by stack-doctor with the most restrictive routing available: SSD only. Contains a file marked CONFIDENTIAL (I-983). Deliberately NOT routed to github or baylor. Eric to confirm classification."
+  },
+  {
+   "path": "DEV/Linda_Projects",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Linda_Projects.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   },
   {
    "path": "DEV/May_Meetings_Research",
