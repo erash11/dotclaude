@@ -22,11 +22,22 @@
   Plist backup at `~/Library/LaunchAgents/com.keystone.dailybackup.plist.bak-2026-09-19`.
 - 2026-09-19: the dry run no longer claims a fast-forward it never attempted. It compares dirty
   paths against the incoming changed paths and reports REFUSED with the clashing file names.
+- 2026-09-19: **`~/Library/LaunchAgents` is now backed up.** It had no coverage at all - not a
+  git repo, not in the manifest, not snapshotted. Two halves, because a manifest entry alone
+  copies nothing: the manifest gained `Library/LaunchAgents` (ssd + drive), and section 2a of
+  `daily-backup.ps1` gained the matching Snapshot line. Verified on a real run: 19 plists are at
+  `My Drive/Backups/Machine/launchagents`. SSD only runs when CRASHBOX is mounted, so Drive is
+  what actually protects them today.
+- 2026-09-19: **push now retries.** Up to 3 attempts, 5s then 15s, transient failures only.
+  Rejected / non-fast-forward / auth failures bail on attempt 1, since they fail identically.
+  The log names the attempt it succeeded on. Commit `da178e7`; previous file at
+  `daily-backup.ps1.bak-2026-09-19d`. Real run after the change: OK (0 errors), plain `pushed`.
 
 ## Next
 - Let active session transcripts finish writing before the next closeout snapshot.
-- Watch the next 09:0x `daily-backup` run: expect no `repo-diverged` line and no manifest
-  error. Log at `scripts/logs/daily-backup.log`.
+- Watch the 2026-09-20 09:00 `daily-backup` run. Four real runs today all ended OK (0 errors),
+  but none of them hit a day where the repo was genuinely behind, which is the case the
+  divergence fix exists for. Log at `scripts/logs/daily-backup.log`.
 - The "no-op push counted as an error" bug **does not exist** - checked 2026-09-19 and the
   2026-09-17 diagnosis was wrong. See Gotchas. All four known `daily-backup.ps1` bugs are
   now either fixed or disproven.
