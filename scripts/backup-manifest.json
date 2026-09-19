@@ -796,18 +796,6 @@
    "note": "Added 2026-08-19 by stack-doctor with the most restrictive routing available: SSD only. Contains a file marked CONFIDENTIAL (I-983). Deliberately NOT routed to github or baylor. Eric to confirm classification."
   },
   {
-   "path": "DEV/Linda_Projects",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/Linda_Projects.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
    "path": "DEV/May_Meetings_Research",
    "class": "personal",
    "isRepo": false,
