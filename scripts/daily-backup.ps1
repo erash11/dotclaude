@@ -352,6 +352,10 @@ Snapshot "$U/.codex/agents"     "$P/codex/agents"     @()
 # both the rounding and the same-size case. Cheap: codex-dev.db is ~224KB.
 Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @() @('--checksum')
 Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_profile')
+# launchd job definitions. Nothing else on this machine holds them: not a git repo, and
+# until 2026-09-19 not in the manifest either, so a disk loss took every schedule with it
+# even though the scripts survived in dotclaude.
+Snapshot "$U/Library/LaunchAgents" "$P/launchagents"   @()
 
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null

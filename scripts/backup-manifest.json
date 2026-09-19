@@ -144,6 +144,19 @@
    "captureWorkingTree": false
   },
   {
+   "path": "Library/LaunchAgents",
+   "class": "personal",
+   "isRepo": false,
+   "remote": null,
+   "destinations": [
+    "ssd",
+    "drive"
+   ],
+   "captureOrphans": false,
+   "captureWorkingTree": false,
+   "note": "launchd job definitions (com.keystone.*). Added 2026-09-19 after it was found that nothing backed them up: not a git repo, not in this manifest, not snapshotted. The 'drive' destination is served by the Snapshot line in daily-backup.ps1 section 2a; 'ssd' by the non-DEV loop in 2b, which only runs when CRASHBOX is mounted."
+  },
+  {
    "path": "DEV/2025-11-25_EOS_Football_Analysis_GPS_ERR",
    "class": "institutional",
    "isRepo": true,
