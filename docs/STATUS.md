@@ -27,8 +27,9 @@
 - Let active session transcripts finish writing before the next closeout snapshot.
 - Watch the next 09:0x `daily-backup` run: expect no `repo-diverged` line and no manifest
   error. Log at `scripts/logs/daily-backup.log`.
-- One known `daily-backup.ps1` bug is still unfixed: it counts a no-op push
-  (`Everything up-to-date`) as an error. The double-logging bug is fixed, see above.
+- The "no-op push counted as an error" bug **does not exist** - checked 2026-09-19 and the
+  2026-09-17 diagnosis was wrong. See Gotchas. All four known `daily-backup.ps1` bugs are
+  now either fixed or disproven.
 
 ## Open questions
 - `INDEX full set: Indexed 0 chunks` on the 2026-09-19 run, against 91 the day before. The
@@ -47,3 +48,13 @@
   Confirm with `launchctl print gui/$(id -u)/<label>`.
 - `daily-backup.out` now grows with every run, as `daily-backup.log` already did. Neither is
   rotated.
+- **There is no "no-op push" bug, despite the 2026-09-17 note saying so.** A genuine no-op push
+  prints `Everything up-to-date` to stderr and exits **0**, and the script only records an error
+  on a non-zero exit, so it stays silent. Verified on a throwaway repo 2026-09-19.
+  The 2026-09-17 `repo-push:dotclaude` error was a REAL failure - the full block reads
+  `RPC failed; curl 55 Recv failure`, `send-pack: unexpected disconnect`,
+  `fatal: the remote end hung up unexpectedly`, and `Everything up-to-date` was merely the last
+  of git's four stderr lines. Reading one line out of four produced the wrong diagnosis, and the
+  double-logging made that block twice as long and easy to misread.
+- That 2026-09-17 failure was a transient network error, and the job has **no retry**. A push
+  that fails this way is not reattempted until the next day's run.
