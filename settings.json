@@ -398,7 +398,8 @@
     "codex@openai-codex": true,
     "mattpocock-skills@mattpocock": false,
     "mattpocock-skills@claude-plugins-official": true,
-    "watch@claude-video": true
+    "watch@claude-video": true,
+    "typesafe@typesafe-ai": true
   },
   "extraKnownMarketplaces": {
     "last30days-skill": {
@@ -454,6 +455,12 @@
         "repo": "mattpocock/skills"
       },
       "autoUpdate": true
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
+      }
     }
   },
   "outputStyle": "ELI5",

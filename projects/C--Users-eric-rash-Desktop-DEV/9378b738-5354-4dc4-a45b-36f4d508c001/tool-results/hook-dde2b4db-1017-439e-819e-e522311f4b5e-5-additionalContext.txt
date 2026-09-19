@@ -1,0 +1,444 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Files Modified
+STATUS.md, AGENTS.md, PLATFORM.md
+
+## Unresolved Errors
+- {"stdout":"---\nname: typesafe-ai\nlicense: MIT\ndescription: >\n  Build AI-powered software with TypeSafe: small units of AI intelligence you\n  c...
+- {"stdout":"=== em-dash check in new project files (convention: none) ===\n/c/Users/eric_rash/.claude/jobs/9378b738/tmp/TypeSafe_Sandbox/.venv/Lib/s...
+- {"stdout":"=== before ===\n39:  echo \"this shell: TYPESAFE_API_KEY is ${TYPESAFE_API_KEY:+set}${TYPESAFE_API_KEY:-NOT SET}\"\npatched\r\n=== after...
+- {"stdout":"STATUS.md updated\r\nwarning: in the working copy of 'docs/STATUS.md', LF will be replaced by CRLF the next time Git touches it\nTo http...
+- {"stdout":"=== author and date ===\nauthor: Eric Rash <eric.rash11@gmail.com>\ncommitter: Eric Rash\ndate: Sat Sep 19 09:27:51 2026 -0500\n---body-...
+- {"stdout":"my local-only commit (recoverable): 64c7159\nreset to remote: 83c8577 Make setup_global_key.sh executable; record smoke test run\n=== co...
+- {"stdout":"author: Eric Rash\ndate: Sat Sep 19 09:33:09 2026 -0500\n---\nSTATUS: record that the plugin and key are Windows-only so far\n\nCo-Autho...
+- {"stdout":"Auto-merging docs/STATUS.md\nCONFLICT (content): Merge conflict in docs/STATUS.md\nAutomatic merge failed; fix conflicts and then commit...
+- {"stdout":"=== resolved Current state section ===\n## Current state\r\n- 2026-09-19: project created. Holds the global TypeSafe key installer and a...
+- {"stdout":"=== local main ===\n7b2a494 Merge pull request #1 from erash11/worktree-status+windows-verified\n0aeb5f7 Merge remote-tracking branch 'o...
+- {"stdout":"error: failed to delete 'C:/Users/eric_rash/Desktop/DEV/.git/worktrees/router+dexa-windows-path': Permission denied\nerror: failed to de...
+- {"stdout":"warning: in the working copy of 'PLATFORM.md', LF will be replaced by CRLF the next time Git touches it\nerror: failed to delete 'C:/Use...
+- {"stdout":"sandbox main now: b7d2d00 STATUS: smoke test passes on the Mac; narrow the restart gotcha\n\n=== remove merged worktree ===\nerror: fail...
+- {"stdout":"still present:\ndocs/\nsetup_global_key.sh*\nsmoke_test.py\n--- retry removal ---\n>>> removed\n=== leftover admin dir? ===\nstatus+wind...
+- {"stdout":"error: failed to delete '.git/worktrees/status+windows-verified': Permission denied\nstatus+windows-verified/\n(admin entries remain)\n=...
+- {"stdout":"=== remove my merged worktree ===\nerror: failed to delete 'C:/Users/eric_rash/Desktop/DEV/.claude/worktrees/router+typesafe-sandbox': P...
+- {"stdout":"error: failed to delete '.git/worktrees/router+dexa-windows-path': Permission denied\nerror: failed to delete '.git/worktrees/router-wrr...
+
+## Git
+push, status, $(cat <<'MSG'
+Scaffold project
+
+Holds the global TypeSafe API key installer and a smoke test. The key is not in
+this repo: it lives in the macOS Keychain (service typesafe-api-key) and is
+exported as TYPESAFE_API_KEY by ~/.zshenv, per the machine.macos.md convention
+that secrets live in the Keychain rather than in a shell rc file.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, $(cat <<'MSG'
+Router: add TypeSafe_Sandbox to the Platform index
+
+New project at DEV/TypeSafe_Sandbox (own private repo). It holds the global
+TypeSafe API key installer and a smoke test. The row records that the key lives
+in the macOS Keychain rather than in the repo, so the location is discoverable
+from the router without opening the project.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, log, $(cat <<'MSG'
+Fix key leak in --check mode
+
+`${TYPESAFE_API_KEY:-NOT SET}` expands to the VALUE when the variable is set, so
+`--check` printed the actual key to the terminal. Verified: the old expression
+output setsk-SECRET-123 for a dummy key. Replaced with an explicit -n test that
+reports only the character count.
+
+This is the first thing you would run after installing, so the leak was on the
+most likely path. Also dropped an unused END_MARKER variable.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, $(cat <<'MSG'
+Pin shell scripts to LF line endings
+
+setup_global_key.sh only runs on macOS, but this repo is cloned on the Windows
+laptop too. Without this, a Windows edit can commit CRLF and the script fails on
+the Mac with bad, $(cat <<'MSG'
+STATUS: Windows setup works, record the apikey_ prefix trap
+
+Corrects a line that said Windows was not covered. It is, and it is verified
+against the live API.
+
+Findings worth keeping:
+- The key needs its apikey_ prefix (108 chars total). Without it the API returns
+  401; a bad request body returns 422. That split tells you which end is wrong.
+- ~/.claude/typesafe.env is auto-gitignored by the dotclaude whitelist, so it is a
+  safe home for the key and the agent can read it with no restart.
+- ~/.bashrc is NOT sourced by Claude Code's Bash tool on Windows (tested).
+- Windows user env vars via setx ARE inherited, which is the automatic alternative.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, $(cat <<'MSG'
+STATUS: Windows is live, record the apikey_ prefix trap
+
+The key works end to end on Windows now. Corrects the line that said Windows was
+not covered.
+
+Findings worth keeping:
+- The key is 108 chars and needs its apikey_ prefix. Without it the API returns
+  401; a malformed body returns 422. That split tells you which end is wrong, and
+  it cost a round of debugging to learn.
+- Windows home is ~/.claude/typesafe.env, auto-ignored by the dotclaude whitelist,
+  readable by the agent with no restart.
+- ~/.bashrc is NOT sourced by Claude Code's Bash tool on Windows. Verified with a
+  probe export.
+- Windows user env vars via setx ARE inherited, which is the automatic alternative.
+
+AGENTS.md no longer claims the Keychain is the only home, since that is Mac-only.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, merge, diff, commit, branch, $(cat <<'MSG'
+Router: correct the TypeSafe key location, it is per-machine
+
+The row claimed the key lives in the macOS Keychain, full stop. That is only
+half true: Windows reads ~/.claude/typesafe.env and nothing about the key syncs
+between machines. Also records the apikey_ prefix, since dropping it returns a
+401 that looks like a broken setup rather than a bad paste.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, $(cat <<'MSG'
+Router: Mac now has a key too
+
+Eric added the key on the Mac. Recorded as added but not verified, since it
+cannot be checked from the Windows box; the Mac session's smoke test is what
+confirms it.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01KMDTxhXZ74XXzPcjEVbvbX
+MSG
+)
+git, pull, worktree
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, docs/STATUS.md, router+typesafe-sandbox/PLATFORM.md
+
+## Skills Used
+new-project
+
+## Environment
+cwd: $HOME/Desktop/DEV
+model:claude-opus-5[1m]
+set -e
+D="$HOME/.claude/jobs/9378b738/tmp/TypeSafe_Sandbox"
+cd "$D"
+
+cat > setup_global_key.sh <<'EOF'
+#!/usr/bin/env bash
+# Install the TypeSafe API key once, globally, on macOS.
+#
+# The key goes into the macOS Keychain (service: typesafe-api-key). A line added to
+# ~/.zshenv exports it as TYPESAFE_API_KEY for every zsh, including the
+# non-interactive shells Claude Code spawns. That line holds no secret, so it is
+# safe even if your dotfiles are in a git repo.
+#
+# Run this in Terminal.app, NOT through Claude Code. The prompt needs a real
+# terminal, and anything typed into a Claude session is written to a transcript
+# that is tracked in the dotclaude repo.
+#
+# Usage:  ./setup_global_key.sh          install or update the key
+#         ./setup_global_key.sh --check  report status, change nothing
+
+set -euo pipefail
+
+SERVICE="typesafe-api-key"
+ZSHENV="$HOME/.zshenv"
+MARKER="# >>> typesafe api key >>>"
+END_MARKER="# <<< typesafe api key <<<"
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  echo "This installer is macOS only (it uses the Keychain). See docs/STATUS.md for Windows." >&2
+  exit 1
+fi
+
+keychain_has_key() {
+  security find-generic-password -a "$USER" -s "$SERVICE" -w >/dev/null 2>&1
+}
+
+zshenv_has_block() {
+  [[ -f "$ZSHENV" ]] && grep -qF "$MARKER" "$ZSHENV"
+}
+
+if [[ "${1:-}" == "--check" ]]; then
+  keychain_has_key && echo "keychain:  key present (service $SERVICE)" || echo "keychain:  MISSING"
+  zshenv_has_block && echo "zshenv:    export block present" || echo "zshenv:    MISSING"
+  echo "this shell: TYPESAFE_API_KEY is ${TYPESAFE_API_KEY:+set}${TYPESAFE_API_KEY:-NOT SET}"
+  exit 0
+fi
+
+# --- 1. get the key, without it ever reaching a screen, a log, or shell history ---
+if [[ ! -t 0 ]]; then
+  echo "ERROR: no terminal on stdin." >&2
+  echo "Open Terminal.app and run this script there. Do not run it through Claude Code:" >&2
+  echo "the prompt cannot read input, and the key would land in a tracked transcript." >&2
+  exit 1
+fi
+
+if keychain_has_key; then
+  echo "A key is already in the Keychain under service '$SERVICE'."
+  printf "Replace it? [y/N] "
+  read -r reply
+  [[ "$reply" == [yY] ]] || { echo "Left the existing key alone."; exit 0; }
+fi
+
+printf "Paste your TypeSafe API key (input is hidden, from https://console.typesafe.ai/): "
+IFS= read -rs API_KEY
+printf "\n"
+
+if [[ -z "${API_KEY:-}" ]]; then
+  echo "ERROR: empty input, nothing written." >&2
+  exit 1
+fi
+
+# -A allows any process running as you to read the item with no GUI prompt. Without
+# it, a non-interactive read can raise a blocking dialog and hang the shell.
+# -U updates the item if it already exists.
+security add-generic-password \
+  -a "$USER" \
+  -s "$SERVICE" \
+  -l "TypeSafe API key" \
+  -D "application password" \
+  -j "Used by TYPESAFE_API_KEY, exported from ~/.zshenv" \
+  -w "$API_KEY" \
+  -A -U
+unset API_KEY
+echo "Stored in the Keychain under service '$SERVICE'."
+
+# --- 2. export it from ~/.zshenv, idempotently ---
+# .zshenv, not .zshrc: only .zshenv is sourced for non-interactive shells, which is
+# what Claude Code's Bash tool spawns.
+if zshenv_has_block; then
+  echo "~/.zshenv already has the export block, leaving it as is."
+else
+  [[ -f "$ZSHENV" ]] && cp "$ZSHENV" "$ZSHENV.bak.$(date +%Y%m%d%H%M%S)"
+  cat >> "$ZSHENV" <<'BLOCK'
+
+# >>> typesafe api key >>>
+# Reads from the macOS Keychain. Contains no secret, safe to commit.
+# The guard means the `security` call runs once per process tree, not per subshell.
+if [ -z "${TYPESAFE_API_KEY:-}" ]; then
+  export TYPESAFE_API_KEY=*** find-generic-password -a "$USER" -s typesafe-api-key -w 2>/dev/null)"
+fi
+# <<< typesafe api key <<<
+BLOCK
+  echo "Added the export block to ~/.zshenv (previous version backed up if it existed)."
+fi
+
+# --- 3. verify, without printing the key ---
+FETCHED="$(security find-generic-password -a "$USER" -s "$SERVICE" -w 2>/dev/null || true)"
+if [[ -n "$FETCHED" ]]; then
+  echo "Verified: the Keychain returns a value of ${#FETCHED} characters."
+else
+  echo "WARNING: could not read the key back from the Keychain." >&2
+  exit 1
+fi
+unset FETCHED
+
+cat <<'NEXT'
+
+Done. Two things left, in this order:
+  1. Restart Claude Code. A running session keeps the environment it started with,
+     so it will not see the new variable until it is restarted.
+  2. Run the smoke test:  python smoke_test.py
+
+To re-check status later:  ./setup_global_key.sh --check
+NEXT
+EOF
+chmod +x setup_global_key.sh
+bash -n setup_global_key.sh && echo "SYNTAX OK"
+set -e
+D="$HOME/.claude/jobs/9378b738/tmp/TypeSafe_Sandbox"
+cd "$D"
+
+cat > smoke_test.py <<'EOF'
+"""Prove the global TypeSafe API key resolves and the System One API answers.
+
+There is deliberately no python-dotenv here. The key is meant to be available
+globally from the environment (macOS Keychain -> ~/.zshenv -> every zsh), so
+reading anything other than os.environ would hide a broken setup.
+
+Run:  python smoke_test.py
+"""
+
+import os
+import sys
+
+REQUIRED_VAR = "TYPESAFE_API_KEY"
+
+
+def require_key() -> None:
+    if os.environ.get(REQUIRED_VAR):
+        return
+    print(f"{REQUIRED_VAR} is not set in this environment.\n", file=sys.stderr)
+    print("Fix it in this order:", file=sys.stderr)
+    print("  1. Run ./setup_global_key.sh in Terminal.app (not through Claude Code).", file=sys.stderr)
+    print("  2. Restart Claude Code. A running session keeps the environment it", file=sys.stderr)
+    print("     started with, so it will not see the new variable until restarted.", file=sys.stderr)
+    print("  3. Check status any time with ./setup_global_key.sh --check", file=sys.stderr)
+    sys.exit(1)
+
+
+def main() -> int:
+    require_key()
+
+    try:
+        from typesafe_sdk import Noul, TypeSafeClient
+    except ModuleNotFoundError:
+        print("typesafe-sdk is not installed. Run:  pip install typesafe-sdk", file=sys.stderr)
+        return 1
+
+    # The client picks the key up from TYPESAFE_API_KEY on its own.
+    with TypeSafeClient() as client:
+        response = client.system_one(
+            state={"document": "I was charged twice. Please fix this ASAP."},
+            questions={"billing": Noul(instructions="Is this ticket about billing?")},
+        )
+
+    probability = response.nouls["billing"].noul
+    print(f"question: is this ticket about billing?")
+    print(f"answer:   {probability}")
+    print()
+    print("The key resolved from the environment and the API answered. Setup is working.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+EOF
+python -c "import ast,sys; ast.parse(open(r'$D/smoke_test.py').read()); print('SYNTAX OK')"
+ls -A
+cd "$HOME/.claude/jobs/9378b738/tmp/TypeSafe_Sandbox"
+python -c "import ast; ast.parse(open('smoke_test.py').read()); print('smoke_test.py SYNTAX OK')"
+echo "=== install sdk in a venv and test the unset-key path ==="
+python -m venv .venv 2>&1 | tail -2
+./.venv/Scripts/python.exe -m pip install --quiet typesafe-sdk 2>&1 | tail -5
+echo "--- import check ---"
+./.venv/Scripts/python.exe -c "import typesafe_sdk; from typesafe_sdk import Noul, TypeSafeClient; print('typesafe_sdk imports OK, version:', getattr(typesafe_sdk,'__version__','n/a'))"
+entered worktree: router/typesafe-sandbox
+cd "$HOME/.claude/jobs/9378b738/tmp/TypeSafe_Sandbox"
+cat > /tmp/leaktest.sh <<'EOF'
+K="sk-SECRET-123"
+export TYPESAFE_API_KEY=***
+echo "OLD expression printed: this shell: TYPESAFE_API_KEY is ${TYPESAFE_API_KEY:+set}${TYPESAFE_API_KEY:-NOT SET}"
+if [ -n "${TYPESAFE_API_KEY:-}" ]; then
+  echo "NEW expression prints:  this shell: TYPESAFE_API_KEY is set (${#TYPESAFE_API_KEY} characters)"
+else
+  echo "NEW expression prints:  this shell: TYPESAFE_API_KEY is NOT SET"
+fi
+EOF
+bash /tmp/leaktest.sh
+rm -f /tmp/leaktest.sh
+echo
+echo "=== the committed block ==="; sed -n '36,48p' setup_global_key.sh
+entered worktree: status/windows-verified
+entered worktree: unnamed
+entered worktree: unnamed
+cd "$HOME/Desktop/DEV/TypeSafe_Sandbox"
+if [ -d .venv ]; then echo "venv already present"; else python -m venv .venv && echo "venv created"; fi
+./.venv/Scripts/python.exe -m pip install --quiet typesafe-sdk 2>&1 | grep -v "notice" | tail -2
+echo "=== smoke test from the real clone ==="
+K="$(grep -E '^TYPESAFE_API_KEY=' "$HOME/.claude/typesafe.env" | head -1 | cut -d= -f2- | tr -d '\r' | tr -d ' ')"
+TYPESAFE_API_KEY="$K" ./.venv/Scripts/python.exe smoke_test.py 2>&1 | tail -4
+echo "=== venv ignored by git? ==="
+git check-ignore -v .venv >/dev/null 2>&1 && echo "yes, ignored" || echo "NOT IGNORED"
+git status --short | head; echo "(clean above)"
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 35 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
