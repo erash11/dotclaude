@@ -49,15 +49,37 @@ function Sync-Repo($path, $branch) {
         if ($counts) { $p = $counts -split '\s+'; $behind = [int]$p[0]; $ahead = [int]$p[1] }
         $dirty = (git status --porcelain | Measure-Object).Count
 
-        if ($behind -gt 0 -and ($ahead -gt 0 -or $dirty -gt 0)) {
-            # Diverged with local changes: never merge blindly from automation.
+        if ($behind -gt 0 -and $ahead -gt 0) {
+            # True divergence: both sides carry commits. Never merge blindly from
+            # automation - this one needs a human.
             $Errors.Add("repo-diverged:$name")
             Log "REPO $name : DIVERGED (behind=$behind ahead=$ahead dirty=$dirty) - manual reconcile needed"
             return
         }
         if ($behind -gt 0) {
-            if (-not $DryRun) { git pull --ff-only origin $branch 2>&1 | Out-Null }
-            Log "REPO $name : $(if ($DryRun) { '[dry-run] would fast-forward' } else { 'fast-forwarded' }) $behind commit(s)"
+            # Behind only, whatever the tree looks like. A dirty tree is NOT a reason to
+            # refuse: --ff-only succeeds when the local changes do not overlap the incoming
+            # commits, and git refuses on its own when they do. Let git decide.
+            #
+            # R10-02: the old pre-check treated "behind + dirty" as divergence and returned
+            # before asking git. dotclaude and global-memory are permanently dirty, because
+            # live session transcripts and .jsonl logs are written into them while a session
+            # runs, so every day the other machine pushed produced a false repo-diverged
+            # error (2026-09-18 and 2026-09-19 both did) and skipped the sync entirely.
+            if ($DryRun) {
+                Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+            } else {
+                $pullOut = git pull --ff-only origin $branch 2>&1
+                if ($LASTEXITCODE -ne 0) {
+                    # Real overlap, or a non-ff remote. Now it is worth an error, and git's
+                    # own message says which file is in the way.
+                    $Errors.Add("repo-behind-blocked:$name")
+                    Log "REPO $name : FAST-FORWARD REFUSED (behind=$behind ahead=$ahead dirty=$dirty) - manual reconcile needed"
+                    foreach ($l in $pullOut) { if ("$l".Trim()) { Log "REPO $name : PULL ERR | $l" } }
+                    return
+                }
+                Log "REPO $name : fast-forwarded $behind commit(s)"
+            }
         }
         if ($dirty -gt 0) {
             if ($DryRun) {
