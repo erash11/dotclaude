@@ -47,6 +47,12 @@
   script does not count it as an error, so it fails silently. Not yet investigated.
 
 ## Gotchas
+- **The closeout repo sweep used to miss nested repos under `~/.claude`.** It walked `~/DEV`
+  plus three named config repos, so `claude-memory-compiler` sat on an unmerged branch for 17
+  days while closeout reported "clear to sign off". A sweep must walk nested git repos under
+  `~/.claude` too, and should flag any repo not on `main`/`master`, not just dirty ones.
+- A pre-merge `git merge-tree` "clean" result is not trustworthy - it reported clean for a merge
+  that then conflicted on `uv.lock`. Merge into the feature branch first and look.
 - `projects/**.jsonl` files are live session logs and may change again after a closeout commit when the stop hook writes its final entry.
 - `scripts/backup-manifest.json` is **not** globally sorted — some `DEV/` entries were appended
   after the non-`DEV` block. Insert new entries in place; a full re-sort churns unrelated lines.
