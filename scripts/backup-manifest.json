@@ -1237,6 +1237,18 @@
    "captureWorkingTree": false
   },
   {
+   "path": "DEV/TypeSafe_Sandbox",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/TypeSafe_Sandbox.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
    "path": "DEV/Travel_Map",
    "class": "personal",
    "isRepo": true,
