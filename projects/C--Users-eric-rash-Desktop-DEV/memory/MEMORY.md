@@ -9,3 +9,4 @@
 - [Git Bash MSYS/AD stall](project_git-bash-msys-ad-stall.md) — why bash randomly dies with `add_item errno 1`: AD lookup exceeds MSYS2's 15s spinlock; fix via nsswitch files-only + `shell: powershell` hooks
 - [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — DailyBackup exit 3221225786 + same-day clean log = benign sleep interruption, not rot
 - [Tech inventory refresh](project_tech-inventory-refresh.md) — 09-16 run: 52 resp, 32/32 units (VB answered), merged to main; synced workbook renumbers IDs, match on timestamps
+- [Third-party skill install](project_third-party-skill-install.md) — clone to ~/.agents/skills + symlink to 4 harnesses; Windows `ln -s` copies silently; sync-to-codex clears the pre-commit/backup jam
