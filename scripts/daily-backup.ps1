@@ -67,7 +67,19 @@ function Sync-Repo($path, $branch) {
             # runs, so every day the other machine pushed produced a false repo-diverged
             # error (2026-09-18 and 2026-09-19 both did) and skipped the sync entirely.
             if ($DryRun) {
-                Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+                # R10-03: do not claim a fast-forward that was never attempted. A dirty file
+                # that the incoming commits also touch makes --ff-only refuse, and the old
+                # dry-run line reported "would fast-forward" anyway - which is how a dry run
+                # came back OK (0 errors) on 2026-09-19 for a state the real run would have
+                # refused. Compare the dirty paths against the incoming changed paths instead.
+                $incoming = @(git diff --name-only HEAD "origin/$branch" 2>$null)
+                $dirtyPaths = @(git status --porcelain | ForEach-Object { ($_ -replace '^.{3}', '').Trim('"') })
+                $clash = @($dirtyPaths | Where-Object { $incoming -contains $_ })
+                if ($clash.Count -gt 0) {
+                    Log "REPO $name : [dry-run] would be REFUSED - $($clash.Count) dirty file(s) also changed upstream: $($clash -join ', ')"
+                } else {
+                    Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+                }
             } else {
                 $pullOut = git pull --ff-only origin $branch 2>&1
                 if ($LASTEXITCODE -ne 0) {
@@ -111,19 +123,38 @@ function Sync-Repo($path, $branch) {
         $ahead = if ($counts) { [int](($counts -split '\s+')[1]) } else { 0 }
         if ($DryRun -and $dirty -gt 0) { $ahead = 1 }
         if ($ahead -gt 0) {
+            $attempt = 1
             if (-not $DryRun) {
                 # Capture push output instead of discarding it. Scheduled runs have failed
                 # to push for weeks with no recorded reason (2026-09-02 handoff); Out-Null
                 # threw the error text away. Success stays silent - only failures log.
-                $pushOut = git push origin $branch 2>&1
-                if ($LASTEXITCODE -ne 0) {
-                    $Errors.Add("repo-push:$name")
-                    Log "REPO $name : PUSH FAILED"
-                    foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR | $l" } }
-                    return
+                #
+                # R10-04: retry a failed push. On 2026-09-17 a whole day's push was lost to a
+                # transient 'curl 55 Recv failure / remote end hung up' and nothing reattempted
+                # it until the next day's run. Only transient failures are retried. A rejected
+                # or unauthorised push fails identically every time, so retrying it would just
+                # delay the error behind a longer log block - those bail out immediately.
+                $Deterministic = '\[rejected\]|non-fast-forward|fetch first|Updates were rejected|Permission denied|403 Forbidden|Authentication failed|does not match any|Repository not found'
+                $delays = @(5, 15)
+                while ($true) {
+                    $pushOut = git push origin $branch 2>&1
+                    if ($LASTEXITCODE -eq 0) { break }
+                    $text = ($pushOut | Out-String)
+                    if ($text -match $Deterministic -or $attempt -gt $delays.Count) {
+                        $Errors.Add("repo-push:$name")
+                        Log "REPO $name : PUSH FAILED after $attempt attempt(s)"
+                        foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR | $l" } }
+                        return
+                    }
+                    $wait = $delays[$attempt - 1]
+                    foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR (attempt $attempt) | $l" } }
+                    Log "REPO $name : push attempt $attempt failed - transient, retrying in ${wait}s"
+                    Start-Sleep -Seconds $wait
+                    $attempt++
                 }
             }
-            Log "REPO $name : $(if ($DryRun) { '[dry-run] would push' } else { 'pushed' })"
+            $suffix = if ($attempt -gt 1) { " on attempt $attempt" } else { '' }
+            Log "REPO $name : $(if ($DryRun) { '[dry-run] would push' } else { "pushed$suffix" })"
         }
         $Results.Add(@{ kind='repo'; name=$name; status='OK' })
     } finally { Pop-Location }
@@ -340,6 +371,10 @@ Snapshot "$U/.codex/agents"     "$P/codex/agents"     @()
 # both the rounding and the same-size case. Cheap: codex-dev.db is ~224KB.
 Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @() @('--checksum')
 Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_profile')
+# launchd job definitions. Nothing else on this machine holds them: not a git repo, and
+# until 2026-09-19 not in the manifest either, so a disk loss took every schedule with it
+# even though the scripts survived in dotclaude.
+Snapshot "$U/Library/LaunchAgents" "$P/launchagents"   @()
 
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null
