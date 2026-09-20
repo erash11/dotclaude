@@ -272,6 +272,18 @@
     "web-scraping": "off"
   },
   "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/skill-router/router.py\"",
+            "timeout": 5,
+            "statusMessage": "Checking skills..."
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "",
@@ -346,10 +358,6 @@
       {
         "matcher": "Bash|PowerShell",
         "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/kristinarash/.local/bin/dcg"
-          },
           {
             "type": "command",
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
