@@ -272,18 +272,6 @@
     "web-scraping": "off"
   },
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$HOME/.claude/skill-router/router.py\"",
-            "timeout": 5,
-            "statusMessage": "Checking skills..."
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "matcher": "",
