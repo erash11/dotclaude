@@ -9,6 +9,7 @@ Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows lapt
 
 - When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), the expected deliverable is always a produced file. Verify what exists first, then create the artifact regardless — never conclude with "it already exists" instead of delivering the file.
 - When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools, not a gate. Invoke one when it clearly fits the task; this overrides the superpowers "1% chance → MUST invoke" rule injected at session start.
 
 # Session Startup
 
