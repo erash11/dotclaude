@@ -131,7 +131,6 @@
       "mcp__claude_ai_Fireflies__fireflies_get_summary",
       "mcp__claude_ai_Fireflies__fireflies_search",
       "Edit(//c/Users/eric_rash/.claude/**)",
-      "Write(//c/Users/eric_rash/.claude/**)",
       "Bash(launchctl:*)"
     ],
     "defaultMode": "auto",
