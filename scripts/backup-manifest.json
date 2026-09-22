@@ -1171,6 +1171,19 @@
    "captureWorkingTree": true
   },
   {
+   "path": "DEV/TOS_Evidence_Brief",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/TOS_Evidence_Brief.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true,
+   "note": "Added 2026-09-22 after the 09:05 run flagged it manifest-unmanaged. Created on Windows 2026-09-21, cloned to the Mac by dev-sync 2026-09-22. Thoracic outlet syndrome evidence brief for softball staff: Baylor work, so institutional."
+  },
+  {
    "path": "DEV/TSSHB_Skills",
    "class": "personal",
    "isRepo": false,
