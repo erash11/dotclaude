@@ -1,6 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "MCP_TIMEOUT": "90000"
   },
   "permissions": {
     "allow": [
@@ -136,6 +137,12 @@
     "defaultMode": "auto",
     "additionalDirectories": [
       "/Users/kristinarash/DEV"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Merging a GitHub pull request with `gh pr merge` on one of Eric's own repos (owner erash11), including when it appears inside a compound shell command (&&, ; |) alongside git or gh commands. Eric has standing approval for merging his own PRs."
     ]
   },
   "model": "opus[1m]",
@@ -366,6 +373,16 @@
           {
             "type": "command",
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell|mcp__.*|WebFetch|SendMessage|SendUserFile|Artifact",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "command": "if [ -f \"$HOME/.claude/permission-gate/shadow_hook.py\" ]; then exec python3 \"$HOME/.claude/permission-gate/shadow_hook.py\"; else cat >/dev/null; fi"
           }
         ]
       }
