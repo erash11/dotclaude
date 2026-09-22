@@ -147,6 +147,7 @@
   },
   "model": "opus[1m]",
   "skillOverrides": {
+    "CreateSkill": "off",
     "session-handoff": "user-invocable-only",
     "ArXiv": "name-only",
     "ISA": "name-only",
