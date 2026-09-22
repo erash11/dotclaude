@@ -1,0 +1,872 @@
+# STATUS
+
+Read this first. Update it before ending every session.
+
+## Current state
+- **2026-09-21 (Evidence Library tags, CLOSED)**: Eric's blind check came back **Jev 12,
+  rules 8** (60%, bar 70%). **The rules stay**; nothing written back. Sixth item in a row
+  measured off the map (rerank was the fifth). On 5 of the 8 rules-picks the reviewed labels sided with Jev, so
+  the labels were a weak yardstick and the blind check was the right gate.
+- **2026-09-21 (Evidence Library tags, run)**: **FAILS the pre-registered bar, beats
+  the rules on everything.** Held-out half (n 151): Jev exact domain set **43%** vs the
+  50% bar (rules **17%**), precision **0.85** vs 0.63, F1 0.82 vs 0.69; Rehab false tags
+  68 → 1. Best threshold t = 0.15 — Jev reads "main subject" more strictly than the
+  reviewers tag. Bar not moved. **Waiting on Eric:** mark the 20-paper blind sheet
+  `evidence_tags/blind_check.md` (A/B/=), then `python evidence_tags/blind_check.py
+  --score`; Jev wins ≥ 70% of preferences → replace rules on the 407 unreviewed
+  records. Write-up: `docs/EVIDENCE_TAGS.md`.
+- **2026-09-21 (leverage sweep)**: fresh pass over every project and the Windows
+  transcripts; nothing built. **Text-to-features is unblocked**: `Ath_Medicine` (7,555
+  diagnostics notes) and the spring exit-meeting notes are the corpora the map said did not
+  exist. New order: Ath_Medicine surgery tagger (waits on Eric: does Option C cover
+  clinical note text?) -> Evidence Library domain tags (300-record eval set, runnable now)
+  -> spring exit notes -> Fireflies tagging (attendee-lookup baseline first). Every item
+  carries a pre-registered kill test. Handoff:
+  `docs/handoffs/2026-09-21-leverage-sweep-all-projects.md` — **start there**.
+- **2026-09-21**: **`rerank_typesafe` measured and NOT built, the fifth in a row.**
+  Pre-registered before scoring (`docs/RERANK_MEASUREMENT.md`, commits `bfa5a79`,
+  `340df41`): 10 real recall questions, hit@5 **4 of 10** (5 audited), but only 1 to 2
+  misses in ranks 6 to 20 against the 3 required. The misses are context-free
+  questions ("these outputs"), an unindexed `graphify-out/`, and the vendor docs
+  outranking project state on "Jev". All three are code or instruction fixes. Also
+  today: `verify.ps1` reported a review with **no Zotero key** as "a claim does not
+  match the paper", which is #002's exact state. Fixed in `Weekly_Research_Review`
+  **PR #11** (merged): it now says **VERIFY BLOCKED**, still blocks, tested both ways.
+  Recommendation to Eric: TypeSafe goes to **maintenance** (router + verifier kept,
+  no new Jev hunting). Also recommended: drop `semantic_find` and `autoresearch` from the
+  backlog, and Eric reads the Kitman/MyLink contracts himself. Both are his call.
+  **#002 (TOS) finally verified, and the "DO NOT SEND" note did not hold.** Funakoshi
+  imported (Zotero `VPXHXK4I`, PDF attached by Eric). First run exposed a verifier
+  bug: pages were keyed by PDF position, the deck cites printed journal pages
+  (620-629), so correct values came back WRONG_PAGE. Fixed in `ed221a0`
+  (`source.printed_offset`, 001 unchanged at offset 0). Then the real findings: 0
+  fabricated or contradicted figures, 7 citations pointing at the page that discusses
+  a table instead of where it is printed, and "case series" for a Level III cohort
+  comparison. All fixed on PR #8 (`4d8d7f8`, `7871b74`): **28 verified, 2 review
+  (both read and supported), verdict REVIEW, clear to send.** Merged in order (this
+  repo #19, then WRR #11 and #8) and **v2 published to Drive** the same day; the
+  publish gate re-verified 28/2 before copying. Eric sends the `_v2` files. Handoff:
+  `docs/handoffs/2026-09-21-rerank-measured-and-ri5-002-verified.md`.
+- **2026-09-21 (Mac router enabled)**: recaptured the live Mac skill list, built a
+  **149 of 149** roster, and staged it at `~/.claude/skill-router/`. Added a local
+  acknowledgement skip so short replies do not call TypeSafe. Live results: **0 wrong
+  of 9**, **0 needless of 4**, **6 of 6 fail-open**, **3 of 3 degraded config**, and
+  1.496 s slowest normal test. Enabled `UserPromptSubmit` after saving
+  `~/.claude/settings.json.bak-before-skill-router-20260921`. Direct staged checks and
+  `claude doctor` passed. Rollback is deleting only the `UserPromptSubmit` key.
+  Handoff: `docs/handoffs/2026-09-21-mac-skill-router-enable.md`.
+- **2026-09-21 (Mac hook repair)**: Claude Code blocked every prompt because
+  `~/.claude/settings.json` had the `UserPromptSubmit` skill-router hook, but
+  `~/.claude/skill-router/router.py` did not exist. Reproduced the error, then removed
+  only that hook from the Mac settings. The JSON is valid and the other hooks remain.
+  The router stays off on the Mac. Before enabling it, run the Mac-specific
+  `build_roster.py`, tests, and `install.py` steps in `skill_router/`.
+- **2026-09-20 (closeout)**: all four PRs merged — **#13** apparatus strip, **#14**
+  capability map re-rank, **#15** sde_cascade measured off the Jev list, **#16**
+  `--pmid` for the TOS import kit. Main `da245ea`, clean. Also merged this session:
+  `_INBOX` **#1/#2** (Perch is not stale; **Windows named owner**, closing a question
+  open since 09-13 on a false premise) and `Weekly_Research_Review` **#7/#10**
+  (3-slide readout shipped, verified additive). **Four Jev capabilities have now been
+  measured off the map in a row**, so the map carries a three-condition gate: build
+  only where the answer is genuinely fuzzy, something already consumes it, and a code
+  baseline was measured first. **One thing is open on purpose:**
+  `Weekly_Research_Review` PR #8 — its "do not send" is a memory note, never a
+  measurement, and the verifier cannot run on it (empty `paper.zotero_key`, and zero
+  TOS papers in Zotero). Unblock needs one command from Eric —
+  `import_to_zotero.py --go --pmid 38707577` — because the paper (Funakoshi) is
+  **not** among the kit's priority four. Handoff:
+  `docs/handoffs/2026-09-20-closeout-capability-map-and-backlog.md` — **start there**.
+- **2026-09-20 (sde_cascade scoping)**: **the map's new #1 was measured and it is a
+  CODE LINTER, not a Jev build.** `sde_cascade/inventory.py` (local, no key, no
+  network, 23 selftest cases) over 10 seeded handoffs: **7.7% Jev-shaped** against
+  the **pre-registered 25%** threshold, **7.7–10.8% across four seeds**, and **88.4%**
+  of checkable claims settled by `stat`, `git`, a file test or a re-run. **The margin
+  is narrower than that headline**: the call holds on the measured share and under
+  either adversarial bound alone, but stacking both at once (every ambiguous
+  statement counted as Jev-shaped AND the third of the code bucket whose only
+  evidence is a non-path quoted token dropped) gives 21.6–29.9% and crosses 25% on
+  2 of 4 seeds. Code linter is right; "not a close call" is not. The best single
+  check — does every backticked path still resolve? — covers **39.3%** of code
+  claims, not the 84.9% the shape table implies. Two
+  defects in my own classifier were found by auditing the buckets — markdown
+  hard-wrapping shredded prose into fragments, and the document-reference rule missed
+  "recorded in ADR 0013" — and **both had biased the answer toward the conclusion it
+  was already leaning at**. One check covers 85% of the surface (does every backticked
+  path still resolve?), and its real cost is false alarms: the prototype walked from
+  43% unresolved to 24% **without finding one extra file**. Write-up:
+  `docs/SDE_CASCADE_SCOPING.md`. Fourth item measurement has moved down the map.
+- **2026-09-20 (latest)**: **the prose-number blind spot is CLOSED, and the planned
+  fix was aimed one layer too shallow.** The plan was "strip reference sections";
+  measured, that alone moves the citation band not at all (37 → 37). The band is the
+  **49 in-text `[n]` markers**, not the bibliography. Stripping those as well takes it
+  **37 → 4**, which takes the planted numeric defects from **5 of 6 to 6 of 6** with
+  **0 false alarms on review 001's 67 real claims** and **0 API calls** to prove any
+  of it. Narrowing the band would have manufactured the tool's first false alarm —
+  the paper writes *"Seven coronal plane angles"* and the digit 7 is nowhere in its
+  body — so `find_number_word` matches spelled-out integers and a figure is absent
+  only when neither form appears. `source.body_pages` does the stripping; the model
+  path still reads full pages. Free suites grew: `verify.py --selftest` 10 → 12,
+  `source.py --self-test` 7 → 15. Same session, two other items from the ranked list:
+  **`perch.duckdb`'s writer is identified — Windows, and the file is not stale**
+  (`_INBOX` PR #1; the 2026-04-30 record was five months out of date, so the
+  ownership decision was open on a false premise), and **`semantic_find` is BLOCKED
+  on corpus** — no Kitman or MyLink contract, quote or pricing document exists on
+  this box or on Drive, and the vault is Mac-only. Handoff:
+  `docs/handoffs/2026-09-20-apparatus-strip-and-perch-writer.md` — **start there**.
+- **2026-09-20 (later)**: prose figures now reach the string matcher — a code check
+  that runs before the model and can only escalate to `fabricated` (PRs #10, #11,
+  main `1d4b2fd`). 5 of 6 planted fabrications caught, 0 false alarms,
+  `verify.py --selftest` is free. Reviewed the remaining capability map with Eric:
+  **governance is no longer a blocker** (Option C cleared, Telemetry terms cleared),
+  Zotero renames are a recommended SKIP until something reads the labels, and the
+  next item is `semantic_find` on the Kitman/MyLink contracts. Handoff:
+  `docs/handoffs/2026-09-20-prose-numbers-and-jev-scoping.md` — **start there**.
+- **2026-09-20**: two measurements closed two open questions, and both reversed the
+  assumption behind them. `AUTO_ACCEPT` stays at 0.80 — measured, on margin, not on
+  defect count (PR #7). Athlete reconciliation is **withdrawn** from the capability
+  map: the residue is 13 pairs and a normalisation function plus a join settles the
+  rest (PR #8). Both merged; main at `dc4aa0e`. Handoff:
+  `docs/handoffs/2026-09-20-auto-accept-calibration-and-athlete-residue.md`.
+  Governance note: Eric cleared Option C (sending athlete data to TypeSafe) on
+  2026-09-20 — Baylor IT not required. Telemetry's vendor terms are a separate
+  question and are NOT covered by that clearance.
+- 2026-09-19: project created. Holds the global TypeSafe key installer and a smoke test.
+- TypeSafe skill installed in Claude Code as plugin `typesafe@typesafe-ai` v0.5.7 (user scope).
+- Key storage decided: macOS Keychain, service `typesafe-api-key`, exported by `~/.zshenv`.
+  Chosen over a plaintext `.env` because `machine.macos.md` says secrets live in the Keychain,
+  and because the `.zshenv` line contains no secret and is safe to commit.
+- 2026-09-19: the plugin install and the API key are on the **Windows** box only. The Mac has
+  the repo, the venv and the SDK, but neither the plugin nor the key. The `typesafe@typesafe-ai`
+  line above describes Windows, not the Mac.
+- 2026-09-19: cloned onto the Mac by dev-sync. Fixed the mode on `setup_global_key.sh`,
+  which was committed 644, so `./setup_global_key.sh` failed with "permission denied".
+- 2026-09-19: `.venv` built with `uv`, `typesafe-sdk==0.7.0` installed. `.venv/` is gitignored,
+  so every machine builds its own.
+- 2026-09-19: smoke test run on the Mac. It stops at the key guard and exits 1, which is
+  correct behaviour. The test never reached the API from the Mac, so the Mac side of the
+  call is still unproven there.
+  What was checked separately against SDK 0.7.0: `TypeSafeClient.system_one(state=, questions=)`,
+  `Noul(instructions=)` and `response.nouls[...].noul` all exist and match. Note that `nouls`
+  is a property, not a model field, so it does not show up in `model_fields`.
+- 2026-09-19: **the network call and authentication are now proven, on Windows.** This closes
+  the two items left open above. Key added to `~/.claude/typesafe.env` and confirmed end to end
+  against the real API. The first attempt failed 401 because the `apikey_` prefix had been
+  dropped on paste; with it restored, Noul, Choice and Score all return sane values.
+- 2026-09-19: **the smoke test now PASSES on the Mac too**, so the Mac item above is closed as
+  well. The key is in the Keychain and `~/.zshenv` exports it, so Claude Code's Bash tool sees
+  it with no restart. `.venv/bin/python smoke_test.py` exits 0 and returns `billing = 0.98`.
+  Both machines are verified against the live API. Nothing about the key syncs between them:
+  each machine holds its own copy in its own place.
+- 2026-09-19: the plugin's skill now registers as `typesafe:typesafe-ai` and is callable, which
+  confirms plugin skills load at session start rather than needing a manual restart.
+- 2026-09-19: Windows `.venv` built in the repo itself, so the setup no longer depends on a
+  temporary directory. `python smoke_test.py` returns `billing = 0.98` from the clone.
+- 2026-09-19: session cleanup done. Both router PRs merged (DEV #4 `b70e007`, this repo #1
+  `7b2a494`), the four worktrees and branches from this work removed, and three orphan git
+  admin entries in DEV cleared. Those orphans were the cause of the recurring
+  "failed to delete ... Permission denied" errors on every git command in DEV.
+
+- 2026-09-19: **full TypeSafe doc set read and mirrored** into `docs/vendor/typesafe/`.
+  59 pages, fetch manifest in `urls.txt`, stripping caveats in its README. Read in full:
+  concepts, all three primitives, advanced structure, all four patterns, confidence, the
+  jev-1.13 jaggedness page, the HTTP API, Python SDK usage, agent-skill, and 10 of the 18
+  cookbooks. Read as a prose-and-results digest for the other 8. Not read: JavaScript SDK
+  reference, Python SDK API subpages, changelogs, legal.
+- 2026-09-19: wrote `docs/JEV_CAPABILITY_MAP.md`. Hard limits, the documented failure
+  modes, a cookbook-to-workflow map with a governance tier per row, four genuinely new
+  capabilities, where not to use Jev, and a build sequence.
+- 2026-09-19: **the skill router is BUILT, TESTED and STAGED — but not enabled.**
+  Code in `skill_router/`, design and measurements in `docs/SKILL_ROUTER.md`.
+  This is the first thing in the repo that does real work with Jev.
+  - Roster: **144 of 144** skills Claude Code actually offers, with 35
+    discovered-but-uninvocable entries dropped. The platform expected-skills file is an allow-list
+    captured from a live session, so no suggestion can name something uninvocable.
+  - Measured end to end: **0 wrong loads of 9** covered prompts, 1 needless of 4,
+    median **851 ms** against a 2 s budget, **fail-open 6 of 6** and **degraded config
+    3 of 3**.
+  - **Codex reviewed it adversarially and its verdict on the never-degrade property was
+    FAIL.** It was right. Three critical defects, all now fixed and tested:
+    `urlopen(timeout=)` bounds each socket operation and not total time, so a server
+    trickling bytes could hold a prompt open forever (now a daemon-thread deadline, with
+    a trickling-server test that returns in 2.1 s); `SKILL_ROUTER_BUDGET=not-a-number`
+    exited 1 at import, before the safety net, which would have blocked the prompt; and
+    a malformed API reply printed "no skill applies" rather than staying silent, with
+    missing gate nouls renormalized so partial evidence scored *higher*. Full table in
+    `docs/SKILL_ROUTER.md`.
+  - The gate weighting is ours and was measured, not assumed: `procedure_weighted` at
+    0.25 beats the cookbook's `mean3` at 0.30 on this roster (0 wrong vs 2, 2 needless
+    vs 2). A fourth gate question was tried for the knowledge-skill problem, scored
+    0.09 on the very prompt it was written for, lost the sweep, and was deleted.
+  - `~/.claude/skill-router/` now holds a staged copy. `settings.json` was NOT edited.
+
+- 2026-09-19: **the skill router is ENABLED on Windows.** Eric registered it after the
+  prompt-privacy question was put to him explicitly. `UserPromptSubmit` is live in
+  `~/.claude/settings.json`, pointing at `~/.claude/skill-router/router.py`, timeout 5.
+  Settings backed up first to `settings.json.bak-before-skill-router-20260919-125000`;
+  verified afterwards that no other setting and no pre-existing hook changed. It is the
+  machine's first `UserPromptSubmit` hook. **Accepted, not resolved: the first 500
+  characters of every prompt now go to `api.typesafe.ai`.**
+
+- 2026-09-19: **Zotero backlog classification is BUILT and RUN** — the second item in
+  the capability map's sequence. Code in `zotero_classify/`, design and measurements in
+  `docs/ZOTERO_CLASSIFICATION.md`. Tier A: published literature and metadata only.
+  - All **1,418** eligible records classified into 96 topics across 14 domains in
+    **86 seconds** for about **$0.07**, zero failures. 87% got a specific topic; the
+    rest are reported as the domain they sit in, which is still true, just coarser.
+  - Deliverables: `zotero_classify/out/zotero_topics.csv` and
+    `zotero_classify/out/LIBRARY_MAP.md`. Nothing was written back to Zotero - the API
+    key on this machine is read-only.
+  - **Cutoff is 0.50, measured, not the cookbook's 0.90.** The same three records are
+    wrong at every cutoff from 0.50 up, so a higher one only converts correct topics
+    into coarser domains: 0.50 gives 35 precise labels of 35 correct, against 20 at
+    0.90, for the same three errors.
+  - **The first full run mislabelled foundational theory as junk** - Gibson, Bernstein,
+    degeneracy and complexity - because a single "unrelated to sport" topic sat inside
+    the junk domain and swallowed anything outside the applied core. Fixed with an
+    `adjacent-and-foundational` domain; junk fell from 54 records to 25, and those 25
+    are genuinely citation fragments and filenames worth deleting in Zotero.
+
+- 2026-09-19: **the deliverable verifier is BUILT** — third and last item in the
+  capability map's sequence. Code in `verifier/`, design in
+  `docs/DELIVERABLE_VERIFIER.md`. Tier A: a published paper and a deck about it.
+  - Checks a Research in 5 `review.json` against the paper's page text before it is
+    sent. Numbers are string-matched **in code** (Jev is never asked whether 83.89 is
+    in a table); prose gets one Choice per claim against the page the deck cites.
+  - On review 001, hand-checked to v4: **67 claims, 59 verified, 8 to a person, 0
+    false alarms, 1.4 s.** With four defects planted one per failure class:
+    **4 of 4 caught.** Finding nothing wrong with a correct deck proves nothing on its
+    own, so the planted defects are the real evidence.
+  - Deck verdict is the **worst** single claim, never a count or a mean, and
+    `verify.py` exits non-zero so it can gate a send.
+  - Two false alarms were found and fixed before it was trusted: `87.5` reported
+    fabricated when the paper printed `87.50` (string matching replaced with numeric
+    comparison, exact, so 83.89 vs 83.9 is still a real discrepancy), and
+    `did.question` reported contradicted because it is a *question* and the paper's
+    answer is no. Questions and practitioner inferences are no longer extracted.
+
+- 2026-09-19: **characterisation check added to the verifier** (`verifier/characterisation.py`),
+  pure code, no API calls. Selftest 13 of 13, including four defects planted into real TOS
+  sentences. **Two corrections to `DELIVERABLE_VERIFIER.md` came out of building it:** the
+  brief never prints the 14.4 / 9.4 measurements behind "roughly doubles", so this check
+  structurally cannot reach that error from that document; and the Research in 5 decks
+  contain zero characterising words (grep-verified). It ships as a guard with no live
+  target. Its first run raised 4 flags on the brief of which 3 were false - citation
+  `2021;11(9):1529` divided as 11/9, superlative "most", and a window crossing headings and
+  list items - all three fixed, now 0 flags 0 false alarms on both real documents.
+- 2026-09-19: **the status-report tier question is answered: no athlete or health data**
+  in that skill ("roster" is the 17-program sport list). But it names staff and carries a
+  candid section about colleagues, and its failure mode is claim-against-our-own-state
+  rather than claim-against-source, so the deliverable verifier does not extend to it.
+  Detail in `DELIVERABLE_VERIFIER.md`.
+- 2026-09-19: skill router log reviewed. All 43 error lines are in the 12h-13h staging
+  window (fail-open tests, `roster: FileNotFoundError`, HTTPError, URLError). **Zero errors
+  since 13:30**, 12 ok and 2 skip since. No rollback needed; sample is still small.
+
+- 2026-09-19: **athlete key mapping designed** (`docs/ATHLETE_KEY_MAPPING.md`), which was
+  the last open question in this file. The finding is that de-identification and entity
+  alignment are **in direct conflict**: strip the names and there is nothing left to
+  align, and the eight de-identified agreement booleans that remain are a decision table,
+  not a model's job. The four things Jev would genuinely add - nicknames, name order,
+  transliteration, married/hyphenated surnames - all require the raw names, which is the
+  gated option. So the capability map's ranking of this as the strongest fit after the
+  router does not survive its own tier constraint. Recommendation: build the local
+  deterministic join plus fuzzy match with a nickname table, measure the ambiguous
+  residue, and let that number decide whether there is any case to take to Baylor IT.
+  Verified no cross-system matcher exists today: 17 hits across DEV, none using a
+  fuzzy-matching library.
+- 2026-09-19: **PP_Recruiting assessed against Jev and deferred.** Row plus a
+  `### PP_Recruiting: not now` note added to `docs/JEV_CAPABILITY_MAP.md`. The screening
+  engine is out permanently (percentiles against thresholds, the documented weak spot;
+  its real problem is calibration, not judgment). Two apparent fits died on inspection:
+  entity resolution collapses to a code join on Telemetry's stable `PlayerId`, and role
+  assignment (WR/SLOT, END/JACK, CB/STAR) runs off deterministic alignment codes. The one
+  real fit, scouting text to decomposed features, has **no input corpus** — pre-portal
+  FCS and G6 players carry percentiles and nothing else. Trigger to revisit: staff evals
+  on REVIEW rows, or portal-era published writeups. Two standing constraints recorded
+  there: Jev cannot live inside the staff member's Excel refresh, and Telemetry's
+  third-party-processing terms, not Baylor's health-data tiers, are the gate on sending
+  8,761 rows anywhere.
+
+## Next
+- **Cheap retrieval fixes from the rerank measurement** (not Jev): add a
+  "rewrite the question with the conversation's subject before searching" line to the
+  `memory-write` retrieval ladder; exclude `dev-docs/TypeSafe_Sandbox/vendor/` from
+  the memsearch index; decide whether `graphify-out/` should be indexed.
+- ~~**`semantic_find` on the Kitman and MyLink contracts.**~~ RECOMMENDED DROP 2026-09-21: a
+  contract comparison is a lookup (gate condition 1). Eric reads them. Was:
+  small, tier A, and it feeds the Kitman-vs-MyLink decision already blocking priority
+  3. Choice over tagged line IDs plus a Noul asking whether an answer exists at all;
+  cap is 255 lines per request.
+- **Find out what wrote `perch.duckdb` on 2026-09-19** (`_INBOX/docs/STATUS.md` says
+  2026-04-30). If the Mac is writing it, the two-writer risk is live now. Then settle
+  box ownership.
+- ~~**Strip reference sections from page text before matching.**~~ DONE 2026-09-20,
+  see Current state. Correction worth keeping: the bibliography was never the cause —
+  removing it alone leaves the band at 37. The in-text `[n]` markers were.
+- **Point the verifier at review 002 and the TOS brief.** The TOS brief is the
+  known-bad case — memory records "3 misquotes + bad Poisson - DO NOT SEND" — so if it
+  does not flag those, that is a finding about the verifier, not the brief.
+- ~~**Nothing calls the verifier yet.**~~ WRONG since 2026-09-19: `publish.ps1` in
+  `Weekly_Research_Review` runs it before the Drive copy and refuses on exit 1;
+  `-SkipVerify` overrides. Corrected 2026-09-21.
+- **Watch `~/.claude/skill_router.log` for the first few sessions.** One line per
+  prompt: `ok` with a latency, or `error`/`skip`. If errors start outnumbering ok
+  lines, delete the `UserPromptSubmit` key — that is the whole rollback and nothing
+  else depends on it. Expect ~850 ms on prompts that qualify and nothing at all on
+  short acknowledgements or `/slash` commands, which skip before any network call.
+- **Eric reads `zotero_classify/out/LIBRARY_MAP.md` and renames topics.** The taxonomy
+  is a first draft from a 70-title sample; renaming is one dict entry and an 86-second
+  rerun. That is the expected next step, not a sign anything failed.
+- Not done on purpose: the `.codex/hooks/` copy (Codex has no confirmed prompt-submit
+  event; `~/.codex/hooks/` holds only a session-start script).
+- Clean the 25 records in `not-a-research-record` out of Zotero. They are bare
+  citations, filenames and personal notes, listed in `out/LIBRARY_MAP.md`.
+- Then the status report, once someone has read it: if its fields name athletes or
+  injuries that content is tier B or C and cannot go to a cloud API as it stands. That
+  is the last unbuilt item in the capability map's sequence.
+- Mac setup is DONE and verified. Re-check any time with `./setup_global_key.sh --check`,
+  and re-run `.venv/bin/python smoke_test.py`. Rebuild the venv first if it is gone:
+  `uv venv .venv && uv pip install --python .venv/bin/python typesafe-sdk`.
+- Windows is DONE and verified against the live API on 2026-09-19. The key is read from
+  `~/.claude/typesafe.env`. See Gotchas. Nothing left to do there.
+- Three things are now built on top of this: the skill router, running live in front
+  of every prompt on Windows; the Zotero classification, run once over all 1,418
+  records; and the deliverable verifier for Research in 5. The line that used to sit here said nothing was built; that stopped being
+  true on 2026-09-19.
+
+## Open questions
+- ANSWERED 2026-09-20: **governance is no longer a blocker on Jev work.** Eric
+  cleared Option C ("we can send whatever we need to typesafe") and separately
+  cleared the Telemetry third-party-processing question. Noted for the record that
+  the Telemetry item was a *vendor contract* question rather than an athlete-privacy
+  one — it binds only if Telemetry-licensed grades go to Jev — and it is cleared
+  either way. Tier labels in `JEV_CAPABILITY_MAP.md` are now history, not gates.
+- ANSWERED 2026-09-20: **do the Zotero topic renames now? No.** Nothing consumes the
+  labels — they are not written back to Zotero and no workflow reads them. Renaming
+  against no use case is the error that put athlete reconciliation at #2. Revisit
+  when something reads them (a "what do we have on X" lookup, or Research in 5 paper
+  selection). Still Eric's, separately: delete the 25 junk records and import the 4
+  TOS papers, both needing a write-access key.
+- ANSWERED 2026-09-20: **athlete reconciliation needs no model, and the capability
+  map's #2 ranking is withdrawn.** Built `athlete_matching/measure_residue.py` (local,
+  no key, no network) over the three systems that have data on this box: Catapult GPS,
+  VALD/ForceDecks, Perch. **Residue = 13 ambiguous pairs.** Of the 300 athletes that
+  found any counterpart above 80, 287 settle on *exact* normalised string equality
+  (693 more scored under 80 and have no counterpart at all) — every settled match
+  scored 100, nothing in the 95–99 band — so fuzzy matching contributes no settled
+  pairs at all. Caveat recorded in the doc: settled means exact-string-equal, **not**
+  confirmed same person; with no DOB, homonyms across seasons are invisible, and that
+  gap is a missing attribute rather than something a model would fix. A 100-entry public nickname CSV took the residue from 18 to 13. Two premises
+  died: no vendor shares an id with any other (all three pairwise intersections are
+  0, so stage 0 settles **zero**, not "most of the roster"), and **DOB does not exist**
+  in any source, so `dob_equal` was never available. Governance is moot twice over —
+  Eric cleared Option C the same day, and there is nothing worth sending. Write-up in
+  `docs/ATHLETE_KEY_MAPPING.md`.
+- ANSWERED 2026-09-20: **`AUTO_ACCEPT` stays at 0.80**, and it is now measured rather
+  than inherited. On branch `worktree-verifier-auto-accept-calibration`, **draft PR #7**,
+  not yet merged. `verifier/calibrate.py`, 38 hand-labelled claims (17 real from
+  review 001 + 21 planted defects), answers cached in `verifier/runs/calibration.jsonl`
+  so the sweep re-runs free. It stays on **margin**, not on defect count: the
+  zero-defect floor is 0.60, but the worst wrong `supports` on a planted defect scored
+  0.58, so 0.60 clears the worst observed failure by 0.02 and 0.80 clears it by 0.22 —
+  on one paper, on a gate that blocks a real send. Note honestly that the rule
+  pre-registered before the run, applied literally, says lower it to 0.60; it forgot
+  margin, and the margin criterion is an amendment made after seeing the data. The
+  prize for lowering is 2 review items out of 14. False alarms were zero at every
+  threshold. Two side findings: real review churn is 5 of 14, not 8 of 17, because
+  three of those eight are `best_page` pairing misses; and every missed defect is a
+  number written into prose, which is a routing bug rather than a threshold one. Full
+  table in `docs/DELIVERABLE_VERIFIER.md`.
+- ANSWERED 2026-09-19: yes, several Baylor workflows want System One judgments. The ranked
+  list with governance tiers is in `docs/JEV_CAPABILITY_MAP.md`. Still nothing built.
+- ANSWERED BY ACTION 2026-09-19: the skill router landed as infrastructure. It was
+  built and enabled without displacing anything on the slate, which is still capped at
+  5 and still full. Whether that holds, or the slate needs re-cutting, is Eric's call.
+- ANSWERED 2026-09-19: athlete-name reconciliation is designed in
+  `docs/ATHLETE_KEY_MAPPING.md`, and the answer is that de-identification conflicts
+  with the task rather than unlocking it. Build the local half, measure the residue,
+  and correct the capability map's ranking either way. Nothing to send to a cloud API.
+
+## Gotchas
+- **"Is this figure in the paper" is near-useless for small integers — and the cause
+  is the in-text markers, not the bibliography.** Every integer 0–37 appeared
+  somewhere in paper 001. Removing the reference section alone leaves that at 37,
+  exactly unchanged; removing the 49 `[n]` markers in the body takes it to 4.
+  Measured 2026-09-20, after an earlier note in this file asserted the opposite.
+  `source.body_pages` strips the apparatus, `source.citation_band` derives the
+  remaining range per paper, and the prose check skips integers inside it.
+- **Narrowing that band without word matching ships a false alarm.** Paper 001 writes
+  *"Seven coronal plane angles"* and the digit 7 is nowhere in its body, so a deck
+  truthfully saying "7 angles" would be called fabricated. `source.find_number_word`
+  covers zero–twenty plus the round tens; absence now means absent in both forms.
+- **The page extractor leaves a soft hyphen (U+00AD) at every line-break
+  hyphenation**, so "tenderness" arrives as `ten<U+00AD> derness` and `\bten\b`
+  matches inside it. Any word-level search over page text must de-hyphenate first —
+  `source.dehyphenate`. Found by measurement; it made "ten" look present in a paper
+  that never uses the word.
+- **Two number-matching rules on purpose.** `find_number` is exact (a table cell
+  writing 83.9 for the paper's 83.89 is a real misquote). `find_number_rounded` is
+  prose-only and rounds at the claim's precision (a deck writing "avg age 19.6" for
+  19.59 is correct). Using the rounded one on a table would ship the misquote —
+  measured both ways. Do not merge them.
+- **`ForcePlate_DecisionSystem/data/forceplate.db` is a DuckDB file, not SQLite.**
+  Opening it with `sqlite3` raises `file is not a database`, which is almost certainly
+  all "ForcePlate broken on Windows" ever meant. `duckdb.connect(..., read_only=True)`
+  opens it fine: 4 tables, 1.25M rows in `raw_tests`. Check the magic bytes before
+  believing a database is corrupt — this one says `DUCK` at offset 8.
+- **A Git Bash path like `/g/My Drive/...` is not a path Python can open.** `find`
+  accepts it and `openpyxl` raises `FileNotFoundError` on the same string. Use the
+  Windows form `G:\My Drive\...` in Python, the MSYS form in shell tools.
+- **`except BaseException` around `sys.exit(main())` catches the `SystemExit` that
+  `sys.exit` itself raises**, so a fail-open wrapper logs an error on every *successful*
+  run and buries the real failures. Compute the exit code inside the `try`, call
+  `sys.exit` outside it. Caught by reading the log, which is the argument for having
+  one: the bug is invisible from the hook's behaviour, since it exits 0 either way.
+- **A `UserPromptSubmit` hook must never exit non-zero**: exit 2 blocks the prompt.
+  Fail open means empty stdout and exit 0, always. Watch module-scope code: anything
+  parsed at import time (an `int()`/`float()` over an env var) runs before the handler
+  in `__main__` exists and can exit non-zero on its own.
+- **`urllib`'s `timeout=` is NOT a total deadline.** It applies per blocking socket
+  operation, so DNS, connect, TLS and every body read each get the whole value. A
+  server trickling one byte at a time never trips it. For a real wall-clock bound, run
+  the request on a daemon thread and `join(remaining)`; the daemon flag is what lets
+  the process exit while the socket is still wedged.
+- `~/.claude/hooks/hooks.json` is NOT live. It carries a full `UserPromptSubmit` block
+  (`TheRouter.hook.ts` and friends, bun-based, with Mac paths), but nothing in
+  `settings.json` references it. Do not assume a hook runs because it is written down.
+- `~/.zshenv` is the right profile file, not `~/.zshrc`. Only `.zshenv` is sourced for
+  non-interactive shells, which is what Claude Code's Bash tool spawns.
+- `security add-generic-password -A` lets any process running as you read the item with
+  no GUI prompt. Without it, a non-interactive read can raise a blocking dialog and hang
+  the shell. This is the same practical threat model as a `chmod 600` file.
+- A restart of Claude Code matters only for things that inherit Claude Code's own
+  environment, such as the plugin / MCP processes. The Bash tool does NOT need it:
+  it spawns a fresh zsh, which sources `~/.zshenv` and picks the key up. Verified
+  2026-09-19 with `env -i HOME="$HOME" USER="$USER" /bin/zsh -c 'echo ${TYPESAFE_API_KEY:+set}'`
+  -> `set`. Pass `USER`: the `.zshenv` line calls `security ... -a "$USER"`.
+- **The key needs its `apikey_` prefix.** The console shows `apikey_<36>_<64>`, 108 characters
+  total. Pasting only the part after `apikey_` returns a clean `401 authentication_error` from
+  `POST https://api.typesafe.ai/v1/systemone`. A malformed request body returns 422 instead,
+  so 401 means the key value is wrong and 422 means your request is wrong. That split is the
+  fastest way to tell which end is at fault.
+- **Windows home for the key is `~/.claude/typesafe.env`**, one line,
+  `TYPESAFE_API_KEY=apikey_...`. That path is auto-gitignored by the dotclaude whitelist
+  (`.gitignore` line 5 is `/*`, so any new top-level file there is ignored), and Claude reads
+  it directly with no restart.
+- **`~/.bashrc` is NOT sourced by Claude Code's Bash tool on Windows.** Tested with a probe
+  export: not visible in a fresh tool shell. Do not put env vars there expecting the agent to
+  see them.
+- **Windows user environment variables ARE inherited** by the agent's shell, so
+  `setx NAME "value"` plus a Claude Code restart also works. That is how `FIREFLIES_API_KEY`
+  and the GitHub PAT already reach it. Use it if you want the variable set automatically
+  rather than read from a file.
+- **`.claude/` is gitignored here.** Claude Code puts per-project worktrees in
+  `.claude/worktrees/`, so without the ignore a `git add -A` would commit a whole nested
+  checkout. A locked worktree (`jev-docs-capability-map`) was live in there on 2026-09-19.
+- On Windows, `git worktree remove` and `git worktree prune` often fail with
+  "Permission denied" on the first try because of a transient file lock. A plain `rm -rf` of
+  the same path immediately afterwards succeeds. Remove the directory, then the matching
+  entry under `.git/worktrees/`.
+- Verified 2026-09-19 on Windows against the live API: on a hamstring-tightness note, Noul
+  0.9 for "possible injury", Choice "lower body", Score 1.69 across
+  ["monitor only", "modify training", "hold out"]. All three primitives return sane values.
+======
+# Jev capability map
+
+What TypeSafe's System One model (Jev) can and cannot do, and where it fits the work
+we already run. Written 2026-09-19 after reading the full doc set. The vendor mirror in
+`docs/vendor/typesafe/` is the reference; this file is the judgment.
+
+## Jev in one screen
+
+Jev is not a small LLM. It does not generate text at all. You send it a **state** (a
+string, JSON object, or array) and a map of typed **questions**, and it returns typed
+answers with calibrated probabilities. Three question types, and that is the entire
+surface:
+
+| Type | Answers | Returns |
+|---|---|---|
+| `Noul` | Is this statement true? | `noul`, a probability from 0 to 1. No separate confidence. |
+| `Choice` | Which of these options? | `choice`, `probabilities` over every option, `confidence` |
+| `Score` | Which level on this rubric? | `score` (can land between levels), `legend`, `probabilities`, `confidence` |
+
+Four properties matter more than the API shape:
+
+1. **Every question in a request is evaluated independently and in parallel.** One
+   answer never becomes hidden context for another. Adding questions barely changes
+   latency and costs only the question's own tokens. Batching 13 questions over a
+   54k-character document instead of sending 13 calls was 12.2x cheaper and 10.0x
+   faster with *identical* answers.
+2. **Answers are constrained to the options you supply.** The model cannot return a
+   value outside your set, so code never parses prose. This is why "select, do not
+   generate" is the core move: find candidates in code, let Jev pick one.
+3. **Confidence is a second decision axis.** The answer says what; confidence says
+   whether to act. Low confidence is a usable signal, not a failure.
+4. **Judgments become reusable data.** Score once, then re-weight, re-threshold, and
+   re-rank in code forever with no further calls.
+
+The design rule the docs repeat hardest: **decompose**. Never ask one broad question.
+Ask each independent factor separately and combine the answers with weights you own in
+code. When priorities change you edit a coefficient, not a prompt.
+
+## Limits and failure modes
+
+Hard limits (`jev-1.13`, verified on the Models page):
+
+| Limit | Value |
+|---|---|
+| Price | $0.042 per million input tokens. Output tokens free. |
+| Context | 64k per request; 32k for `state` plus the longest question |
+| Choice options | 255 maximum, roughly 240 before reliability drops |
+| Score levels | 2 minimum, 10 maximum. An 11th returns a server error. |
+| Input | Text only. String, JSON object, or array. No image, audio, video. |
+| Rate | 250,000 tokens/sec, 1,200 requests/min, adjusted without notice |
+| Latency | About 100 to 115 ms per call, measured across two cookbooks |
+| Language | English is best. Other languages accepted, lower accuracy. |
+
+Documented failure modes, from the jev-1.13 jaggedness page:
+
+1. **Not a calculator.** Counting, arithmetic, and comparing numeric representations
+   are all unreliable. Keep math in code.
+2. **Dates are read as text, not ordered quantities.** It cannot reliably tell which
+   date is earlier or whether one falls in a window. Extract the parts as Choices over
+   enumerated options, assemble and compare in code.
+3. **Literal reading.** It answers the question you wrote, not the one you meant. If
+   you find yourself explaining what you really meant, that explanation is the missing
+   half of the instruction.
+4. **Context rot.** Accuracy falls as the state grows with irrelevant content. Filter
+   in code first, send only what the question needs.
+5. **Not adversarial by default.** State is data, and injected instructions can move
+   the answer. Never a security boundary on its own.
+6. **No structural invariants.** A Noul and an equivalent yes/no Choice are different
+   questions and give different numbers. P(A) and 1 - P(not A) do not have to agree;
+   one measured pair summed to 1.19. Never carry a threshold tuned on one primitive
+   over to another.
+7. **Consistent but not deterministic.** Mean run-to-run probability standard deviation
+   is 0.0102, far tighter than any LLM tested, but labels near a threshold still flip:
+   2 of 8 questions changed their top label across 15 repeats. The fix is an explicit
+   uncertain band (Noul 0.30 to 0.70, Choice top probability under 0.60) routed to a
+   person, which took label agreement to 99.2% while still auto-deciding 74.2%.
+
+## Where it fits what we run
+
+Governance tier controls everything, because Jev is a cloud API and Baylor data rules
+apply. **A** = no athlete or health data leaves the machine. **B** = possible only
+after de-identification. **C** = blocked without IT approval.
+
+| Cookbook / pattern | Our workflow | Primitive sketch | Tier | Effort |
+|---|---|---|---|---|
+| `skill_suggestion` | Pick 1 skill from ~155 for each prompt | Choice over all skills + 3 Noul gates, then rerank top 3 | A | S |
+| `classification_using_confidence` | Tag Zotero papers by topic; report a broader topic when unsure instead of dropping | 1 Choice over the taxonomy, back off one level below 0.9 confidence | A | S |
+| `rerank_typesafe` | memsearch result quality | 1 Noul per query-candidate pair, sort by noul | A | S |
+| `classifying_rag_passages` | Filter what reaches a prompt from memsearch or the vault | 4 Nouls: relevant, has evidence, contradicts premise, injection | A | M |
+| `entity_alignment` | Athlete ID reconciliation across Catapult, VALD, Perch, S2, roster | 1 Score with 3 levels (different / curator / same) + 1 Noul per field | B | M |
+| `composite-scoring` | Project registry ranking, prioritization slate | 1 Score per dimension, weights in code | A | S |
+| `semantic_find` | Query the NCAA charter, policies, contracts by plain question | Choice over tagged line IDs + Noul "does an answer exist" | A | S |
+| `citation_check` | Verify the Research in 5 deck and status report before sending | String-match the quote in code, then 1 Choice: supports / contradicts / says nothing | A | M |
+| `sde_cascade` | Verify Claude's own extractions before they land in STATUS.md or the vault | 1 Noul per field framed so true means escalate, gate on max | A | M |
+| `autoresearch_feature_discovery` | Turn free-text notes into numeric model features | Score + Noul per feature, answers become CatBoost columns | B/C | L |
+| `function_calling` | Natural language to our own CLIs (`portfolio.py`, report commands) | 1 Choice over commands + 1 Choice per closed-set argument + a `stated` Noul | A | M |
+| `hierarchical_classification` | Deep taxonomy walks (CPC-style research trees) | 1 Choice per level, beam search over probabilities | A | L |
+| `llm_guardrails` | Screen anything scraped or pasted before an agent acts on it | Noul battery + severity Score, thresholds per policy | A | M |
+| `autoresearch_feature_discovery` | PP_Recruiting pre-portal screening | 20 to 30 narrow Nouls and Scores per scouting note, answers join the percentile matrix as columns | A, see note | L |
+
+### PP_Recruiting: not now, and what would change that
+
+Assessed 2026-09-19 against the 009 workbook and the 09-16 validation run. **Nothing
+here is worth building today.** Recording it so it does not get re-litigated.
+
+The screening engine itself is out of scope permanently: it compares percentiles to
+thresholds (75th percentile, 0.375 elite share, Impact 90+), which is the exact thing
+the jaggedness page says Jev is unreliable at. Its real weakness is calibration, not
+judgment quality. The 09-16 validation ran low by 0.77 tiers on average, 1.25 against
+Power Four, and caught 5 of 15 defensive players. That is fixed by more graded
+validation players and code, not by a different model.
+
+Two candidates that looked like fits and are not:
+
+- **Player entity resolution.** Collapses to a code join. Telemetry carries a stable
+  `PlayerId`, and `load_leaderboard.py` already joins Player Traits to Advanced Stats
+  on it. The one open cross-source question (Jordan Church) is a single name against
+  the recap list, and 30 of 30 transfers already matched by hand. One player is not a
+  pattern.
+- **Role assignment (WR/SLOT, END/JACK, CB/STAR).** The live blocker on deliverable
+  010, so this was the one worth wanting. Inputs are alignment codes (OWR/SWR, ILB/OLB,
+  OCB/SCB), already deterministic in both scripts, plus percentiles. Nothing
+  text-shaped to decide on.
+
+**The one real fit is text to features, and it has no input corpus.** It aims straight
+at the weakest spot, defense, where percentile data is thinnest and film language is
+richest. But pre-portal FCS and G6 players at week 5 to 6 have Telemetry percentiles
+and nothing else. **Trigger: revisit when scouting text exists** — either the personnel
+staff member starts writing evals on REVIEW rows (the 30 to 50 names per position he
+asked for), or players hit the portal and recruiting services publish on them. Shape
+when that day comes: not "is this a good corner," but 20 to 30 independent narrow
+questions per note (*Noul: the note describes him redirecting without losing speed.
+Noul: the note describes him losing leverage against bigger blockers. Score 1 to 5: how
+much of this note is about his hands.*) in one request, weights in our code.
+
+Two constraints that narrow it further whenever it is revisited:
+
+- **Jev cannot live in the workbook.** The staff member runs the weekly refresh himself
+  in Excel and Power Query. Any Jev step is Eric-run preprocessing, so it must be
+  batch-once like the baseline load, or a standing Monday job. That rules out most of
+  what is otherwise tempting, and the weekly refresh is the one piece someone else runs
+  without Eric — a network call on that path is a straight downgrade.
+- **Tier A here is about the wrong risk.** These are public college players, not Baylor
+  athletes, so the health-data tiers do not bind. But Telemetry grades are licensed
+  vendor data, and sending 8,761 rows to `api.typesafe.ai` is a question under
+  **Telemetry's own terms on third-party processing**. Settle that before any of this,
+  including anything small.
+
+## What this unlocks that we cannot do today
+
+Four of these are genuinely new capability, not a cheaper version of something we have.
+
+**1. Free text becomes model features.** The autoresearch cookbook turns 2,000 wine
+tasting notes into 67 numeric columns and trains CatBoost on them. Held-out RMSE went
+from 3.09 (predict the mean) to 2.47 (word counts) to 2.15 (just ask Jev for the score)
+to **1.77** (38 decomposed feature questions). The decomposition beat asking directly,
+which is the whole thesis. Our equivalent: coach notes, wellness comments, RTP
+narrative, and scouting text become inputs to a model instead of prose nobody scores.
+Start on CFB scouting or public text, which is tier A. Athlete narrative is tier B or C
+and waits.
+
+**2. ~~Athlete ID reconciliation without a threshold to fit.~~ WITHDRAWN 2026-09-20 —
+measured, and there is no problem here to solve.** ~~We have the same name spelled four
+ways across Catapult, VALD, Perch, S2, and the roster, and today that is
+hand-matching.~~ The entity-alignment recipe makes the three Score levels *be* the three
+actions (leave unlinked, send to a curator, merge), so there is no number to tune, and
+rides three Nouls along in the same request to tell the curator which field disagrees.
+On 450 pairs it settled 89% automatically and queued 11%. Athlete names are PII, so
+this is tier B and needs a de-identified key mapping first.
+
+> **What the measurement found** (`athlete_matching/measure_residue.py`, full write-up
+> in `ATHLETE_KEY_MAPPING.md`):
+>
+> - The premise above is **false**. The name is not "spelled four ways": of the 300
+>   athletes that found any counterpart above 80, **287 settle on exact normalised
+>   string equality**, every one scoring 100, with nothing in the 95–99 band. The
+>   residue is **13 pairs**. (Settled means string-equal, not confirmed same person —
+>   see the doc's caveats; with no DOB that gap is a missing attribute, not a
+>   judgment a model could supply.)
+> - The 89%/11% figure quoted here is from the cookbook's own dataset, not ours.
+>   Measured on Baylor's data the split is 96%/4%, and the 96% needs no model —
+>   `lower()`, strip punctuation, drop suffixes, collapse initials, join.
+> - The tier-B blocker is also moot twice over: Eric cleared Option C on 2026-09-20,
+>   and there is nothing left worth sending anyway.
+>
+> This entry stays visible rather than being deleted, because the reasoning that put
+> it at #2 was sound and only an actual measurement moved it. The lesson worth keeping
+> is that it was ranked on an assumed data condition nobody had checked — the same way
+> the PP_Recruiting entity-resolution case was proposed before a `grep` killed it.
+
+**3. Ask a policy document a plain question.** Tag each line with an ID, send one
+Choice over the line IDs plus one Noul asking whether the document answers at all. The
+Noul is what stops it from confidently pointing at the closest wrong line: on a
+question the GitHub ToS does not answer, the top line still scored 0.86 while `exists`
+read 0.14. Point it at the NCAA charter, the Kitman and MyLink contracts, and Baylor
+policy. Cap is 255 lines per request; longer documents need a two-stage narrowing.
+
+**4. A cheap verifier in front of expensive output.** This is the one I would not have
+predicted. Every deliverable that leaves this machine (status report, Research in 5
+deck, evidence brief) can be screened per-claim before it goes out, at roughly $0.00005
+a call. The sde_cascade rules for a good verifier signal: one narrow grounded yes/no
+per field, framed so *true* means escalate, aggregated with `max` so one confident red
+flag survives instead of being averaged into silence.
+
+## Where not to use it
+
+- **Numeric verification on its own.** Correcting my 09-19 chat answer: the citation
+  pipeline does apply to the TOS brief, but the part that catches a misquoted number is
+  the **code string-match in step 1**, not Jev. Jev's Choice catches "this section says
+  the opposite of the claim" (it flagged one at 0.99 confidence). Use both, and do not
+  ask Jev whether 3.2 equals 3.2.
+- **Date and window arithmetic.** Kickoff-time math in the sleep scheduler, GPS pull
+  windows, availability windows. Extract parts, compute in code.
+- **Anything that needs prose out.** It does not generate. Output is free because there
+  is none.
+- **Any per-athlete GPS, force plate, DEXA, or S2 record**, until Baylor IT says
+  otherwise. Our own smoke test already posted a hamstring-tightness note to
+  `api.typesafe.ai`. It was synthetic, and it shows how small the slip is.
+- **As a security boundary.** The injection Noul is a filter, not a gate. Treat every
+  passage that reaches a prompt as untrusted regardless of its score.
+
+## Sequence
+
+**First: the skill router.** It pays off across all 23 projects rather than one, and the
+fit question I flagged on 09-19 is now resolved: 182 skills render to 16,089 characters,
+about 4k tokens, so our ~155 fit inside the 32k budget with room to spare. Measured on
+488 requests against Haiku 4.5, wrong skill loads fell 16.8% to 7.3% and needless loads
+9.8% to 4.0%. It fixed 37 requests and broke 7.
+
+Design constraints that are not optional here:
+
+- It runs as a `UserPromptSubmit` hook, which means a network call on **every** prompt.
+  Our memsearch hook is currently failing with `ETIMEDOUT` 8x consecutively. Same
+  fragility class.
+- Therefore: hard timeout around 2 seconds, **fail open** (no suggestion, never a
+  blocked prompt), and no retries in the hot path.
+- Use the cookbook's exact wording, including "Ignore this if it does not fit what the
+  user actually asked for." Pushing harder wins compliance on wrong suggestions too.
+- Patch both `.claude/hooks/` and `.codex/hooks/`, and run it under the shell the
+  MSYS-stall fix settled on, not Git Bash.
+
+**Next two, in order:** Zotero backlog classification with confidence backoff (tier A,
+small, and the 1,018-papers-for-$0.08 demo is literally the same job), then the
+deliverable verifier on the status report and Research in 5.
+
+## Re-ranked 2026-09-20, after five items were resolved
+
+All three of the original sequence shipped. Five of fourteen rows are now closed:
+`skill_suggestion` (live), `classification_using_confidence` (1,418 records),
+`citation_check` (live and gating, 6 of 6 after the apparatus strip),
+`entity_alignment` (**withdrawn**, measured) and PP_Recruiting screening (**rejected**).
+
+### The rule this project earned, stated as a gate rather than a story
+
+Every item that was measured moved, and every one moved *down*. Entity alignment was
+ranked second and was withdrawn. PP_Recruiting offered two obvious fits that both
+collapsed into code. The Zotero renames were recommended skip. `AUTO_ACCEPT` came in
+at the cookbook's 0.90 and measured to 0.80; the Zotero cutoff came in at 0.90 and
+measured to 0.50. That is not bad luck, it is a missing gate. **Build only where all
+three hold:**
+
+1. **The answer is genuinely fuzzy** — not a join, not a threshold, not a lookup.
+2. **Something already consumes the answer.** No consumer, no build. This is the
+   Zotero-renames test.
+3. **A code baseline was measured first.** If deterministic code gets most of the way,
+   the model is decoration.
+
+Each withdrawn item failed a *different* one of these, which is why no single check
+would have caught them. Entity alignment failed (1) — exact string equality settled
+287 of 300 and fuzzy matching contributed zero settled pairs. The Zotero renames
+failed (2). The prose-number work nearly failed (3) and was saved only because the
+band was measured before and after.
+
+### Next three
+
+> **ANSWERED 2026-09-20 — `sde_cascade` is a CODE LINTER, not a Jev build.** The
+> inventory below was run: 10 handoffs per sample, **7.7% Jev-shaped** against the
+> pre-registered 25% threshold, **7.7–10.8% across four seeds**, and 88.4% of
+> checkable claims settled by `stat`, `git`, a file test or a re-run. Full write-up
+> in `docs/SDE_CASCADE_SCOPING.md`; code in `sde_cascade/inventory.py`.
+>
+> **Stated precisely, because the margin is narrower than the headline:** the
+> decision holds on the measured share and under either adversarial bound alone, on
+> every seed. Stacking *both* bounds at once — assume every ambiguous statement is
+> Jev-shaped AND strip the third of the code bucket whose only evidence is a
+> non-path quoted token — gives 21.6–29.9%, which crosses 25% on 2 of 4 seeds. Code
+> linter is the right call; "not a close call" is not.
+>
+> The best single check is *does every backticked path still resolve?*, and it
+> covers **39.3%** of code claims — not the 84.9% the shape table suggests, which
+> counts any quoted token. The prototype's real cost is false alarms, not coverage:
+> the unresolved rate walked from 43% to 24% **without finding one extra file**,
+> purely by learning that `~/DEV/` is the Mac layout, that cross-repo references are
+> the common case, and that the SecondBrain vault is Mac-only. Fourth item
+> measurement has moved down the map.
+
+**1. `sde_cascade` — but scoped, and the scoping is the deliverable.**
+The target surface is real and large: **126 `STATUS.md` files and 79 handoffs** in
+`~/DEV`. The failure is live — on 2026-09-20 three documents asserted the running
+header was stripped when it removed nothing, and this very file's sibling asserted
+the citation band "is the bibliography", which aimed the session's top-priority task
+one layer too shallow.
+
+But "verify our state claims" is a category, not a build, and as a category it has
+exactly the smell that got entity alignment withdrawn. Sort the claims first:
+
+| claim shape | example from 09-20 | who checks it |
+|---|---|---|
+| a date, count, path, or "does X exist" | "`perch.duckdb` last written 2026-04-30" | **code** — `stat`, `git`, a byte count |
+| a step's effect | "the running header is stripped" | **code** — assert `chars_removed > 0` |
+| prose about what a linked document says | "PRs #7 and #8 are not merged"; "`run_pipeline.py` exists" | **Jev** — this is `citation_check`'s exact shape |
+| a causal claim | "the band *is* the bibliography" | **neither** — needs a controlled measurement |
+
+So the honest first step is not code, it is an **inventory**: take ten handoffs,
+classify every claim into those four rows, and count. If the Jev-shaped row is under
+about a quarter, `sde_cascade` is a code linter that needs no model, and should be
+built as one. Same pattern as `measure_residue.py` — measure the residue, let the
+number decide. **Do that inventory before writing any Jev call.**
+
+> **ANSWERED 2026-09-21: `rerank_typesafe` is NOT built.** Ten real recall
+> questions, pre-registered rule: hit@5 4 of 10 (5 audited), but only 1 to 2 misses
+> sit in ranks 6 to 20, against the 3 needed. The misses are context-free questions,
+> an unindexed folder and vendor-doc dilution, none of which a reranker can fix. Fifth
+> item measured off the map. Write-up: `docs/RERANK_MEASUREMENT.md`.
+
+**2. `rerank_typesafe` — second because it is the one that can be measured cheaply.**
+memsearch is rung L1 of the retrieval ladder in `memory-write`, hit on every "did we
+already…?", against a haystack of 126 STATUS files, 79 handoffs, ~230 compiled
+articles and the daily logs. One Noul per query-candidate pair, tier A, small.
+
+Pre-register the test before building: pull **ten real past questions** from the
+transcripts, record whether the right answer is in the current top-5, and only build
+if it is not. If the hit rate is already 9 of 10, reranking buys nothing and this is
+the Zotero-renames trap wearing a different hat.
+
+**3. `composite-scoring` — possible, with the caveat stated up front.**
+The consumer is real (`project-triage/slate.py`, with tests; the slate is capped at 5
+and full). But the obvious test — does Jev's ordering match Eric's? — **proves
+nothing on five items**, where chance agreement is high, and the slate is Eric's
+call by design rather than a bottleneck. Either find a bigger ranking surface (the
+full project registry, not the slate) or accept it as low-value and skip it. Do not
+run the five-item comparison and treat agreement as validation.
+
+### Blocked on access, not on effort — and both share one unblock
+
+- **`semantic_find`**: no Kitman or MyLink contract, quote or pricing document exists
+  in `~/DEV`, on Drive (full depth, nine filename patterns), or in personal Gmail;
+  the vault is Mac-only. The documents are almost certainly in **Baylor Outlook**,
+  which is not connected.
+- **`autoresearch_feature_discovery`**: the biggest genuine upside on this map
+  (decomposition beat asking directly, RMSE 1.77 against 2.15) and governance is no
+  longer the gate — but **there is no input corpus on this box.** Checked the Kitman
+  injury export: 29 columns, and the only long fields are `Pathology`, which is a
+  controlled clinical vocabulary rather than prose, and `Game Opposition`, which is
+  team names. No narrative column at all. That is the PP_Recruiting finding repeating.
+
+Both need access to a system that holds the prose — Kitman's narrative fields behind a
+key that is not read-only, or Baylor Outlook. **One access conversation unblocks two
+items**, which makes it worth more than either alone.
+
+### Demoted on inspection
+
+**`function_calling`** reads better on the map than it is. Claude Code already *is*
+the natural-language-to-CLI layer, so routing a chat request through Jev adds a step
+where a working one exists. The one place it is not redundant is the same place the
+skill router paid off: **as a hook**, deciding without a conversation turn. Build it
+only in that form, or not at all.
+
+## Re-ranked 2026-09-21, after a sweep of every project
+
+Full ranking, kill tests and coverage: `docs/handoffs/2026-09-21-leverage-sweep-all-projects.md`.
+
+- **Text-to-features is no longer blocked on a corpus.** `Ath_Medicine` holds 7,555
+  medical diagnostics notes (3,924 cleaned) already read by six regex/TF-IDF scripts feeding
+  the annual report and the 534-athlete rollup; `Football/SpringPlayerEvals_SymAnalysis`
+  holds 99 x 4 department notes behind the Coach One-Pager. The closeout's "one access
+  conversation unblocks two items" now holds only for `semantic_find`.
+- **New order:** (1) Ath_Medicine notes, surgery tagger first, gated on Eric extending
+  Option C to clinical note text; (2) Evidence Library domain tags, the only item with a
+  ready labelled set (300 reviewed; regex exact-set 55/300; only 151/707 overlap the
+  Zotero labels, so not a reuse); (3) spring exit notes, judged against the Claude pass
+  (rho 0.30, n 34), never by fitting weights; (4) Fireflies meeting to project, only if
+  an attendee lookup settles under 80%; (5) Tech Inventory athlete-data screening, the
+  one item on the slate; (6) matchup injury triage, where the fetch is the real work.
+- **`rerank_typesafe`:** no transcript evidence of misses (14 memsearch mentions, all
+  infrastructure). Its pre-registered measurement is running in another worktree; that
+  result decides its rank, not this sweep.
+
+## Corrections to the 2026-09-19 chat answer
+
+Four things the full read changed:
+
+1. The 32k fit question is answered: 155 skills fit comfortably.
+2. Citation checking is **not** ruled out for the TOS brief. See above.
+3. Fireflies renaming is workable as *selection*: code or an LLM proposes 3 to 5
+   candidate titles, Jev picks one. It still cannot write a title, and it is still
+   gated on stripping athlete names from the summary.
+4. Memory deduplication is the entity-alignment shape (a 3-level Score whose levels are
+   the actions), not a Noul with a threshold.
