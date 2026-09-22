@@ -21,7 +21,7 @@ Never put memory content here — the file itself holds the facts.
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors; diagnose before rebuilding
 - [Memory compiler pipeline](project_memory-compiler-pipeline.md) — dead-flush tells, backfilling a date, "Indexed 0 chunks"
 - [memsearch index path drift](project_memsearch-index-path-drift.md) — silent fallback to fewer indexed paths
-- [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — session-end index timing out; a fixed cap outrun by corpus growth
+- [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — slow or timed-out index; check Mac sleep (`pmset -g log`) first, then corpus growth
 - [Morning briefing retired](project_morning-briefing-retired.md) — where the code, briefings and config went
 - [graphify runtime setup](project_graphify-runtime-setup.md) — venv location, install flags, rebuild triggers
 - [graphify semantic extraction](project_graphify-semantic-extraction.md) — quota traps and silent 429s
