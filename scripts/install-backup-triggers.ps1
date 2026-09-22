@@ -21,13 +21,10 @@ $plan = @(
         Script  = "$scripts\backup-ai-sessions.ps1"
         Trigger = (New-ScheduledTaskTrigger -Daily -At 12:30am)
         Why     = 'daily 00:30 -- session logs churn every day and the copy takes seconds'
-    },
-    @{
-        Name    = 'Backup DEV to Drive'
-        Script  = "$scripts\backup-dev-to-drive.ps1"
-        Trigger = (New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 2:00am)
-        Why     = 'weekly Sun 02:00 -- ~15 GB, and GitHub already covers everything tracked'
     }
+    # 'Backup DEV to Drive' retired 2026-09-22: Drive for Desktop already mirrors
+    # Desktop\DEV as a synced root, and the ~15 GB weekly robocopy never finished a run.
+    # Task XML and script are in scripts\retired\.
 )
 
 foreach ($p in $plan) {

@@ -37,7 +37,7 @@ $mm = "$env:USERPROFILE\.claude\global-memory\MEMORY.md"
 Write-Output ("  MEMORY.md bytes         : {0} / 2500 cap" -f (Get-Item $mm).Length)
 $t = Get-ScheduledTask -EA SilentlyContinue | Where-Object { $_.TaskName -match 'Keystone' -and $_.State -eq 'Disabled' }
 Write-Output ("  KeystoneOS tasks disabled: {0}" -f ($t | Measure-Object).Count)
-foreach ($n in 'Backup DEV to Drive','Backup AI Sessions to Drive') {
+foreach ($n in 'Backup AI Sessions to Drive') {   # 'Backup DEV to Drive' retired 2026-09-22
   $i = Get-ScheduledTaskInfo -TaskName $n -EA SilentlyContinue
   Write-Output ("  {0,-26} lastRun={1}" -f $n, $(if ($i.LastRunTime) { $i.LastRunTime } else { 'NEVER' }))
 }

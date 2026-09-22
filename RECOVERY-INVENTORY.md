@@ -98,6 +98,12 @@ stale, from the day the Mac took over.
    `StartWhenAvailable` so a run missed while the laptop was asleep is caught up rather
    than skipped. Both now report a real `NextRunTime`. First DEV run was started by hand
    through the scheduler to prove the path end to end, not just the script.
+   **Update 2026-09-22: `Backup DEV to Drive` retired.** It never finished a run: the
+   9/13 run was killed by sleep, the 9/20 run was missed, and no `DEV_Backup` folder or
+   state file was ever written. Drive for Desktop already syncs `C:\Users\eric_rash\Desktop\DEV`
+   as a root (`root_preference_sqlite.db`), and the repos are on GitHub. Task XML and
+   script are in `scripts/retired/`; re-import with
+   `Register-ScheduledTask -Xml (Get-Content <xml> -Raw) -TaskName 'Backup DEV to Drive' -TaskPath '\Eric\'`.
 
 2. ~~**Move the scripts out of `_INBOX`.**~~ **DONE 2026-09-12.** New copies at
    `~/.claude/scripts/backup-dev-to-drive.ps1` and `backup-ai-sessions.ps1`, tracked in

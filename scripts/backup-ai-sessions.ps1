@@ -31,7 +31,7 @@ $jobs = @(
 foreach ($j in $jobs) {
     if (-not (Test-Path $j.from)) { continue }   # .codex/memories may not exist yet
     robocopy $j.from $j.to /E /COPY:DT /R:1 /W:2 /NP /NFL /NDL /NJH /NJS /XJ | Out-Null
-    # See backup-dev-to-drive.ps1: robocopy codes below 8 are success.
+    # Robocopy codes below 8 are success (see retired\backup-dev-to-drive.ps1).
     if ($LASTEXITCODE -ge 8) { $errors += "robocopy-rc:$($LASTEXITCODE):$(Split-Path $j.from -Leaf)" }
 }
 
