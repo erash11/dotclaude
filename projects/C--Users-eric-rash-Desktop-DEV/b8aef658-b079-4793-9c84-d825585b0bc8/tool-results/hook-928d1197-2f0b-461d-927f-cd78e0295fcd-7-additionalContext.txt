@@ -1,0 +1,156 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Files Modified
+bh2hk5npg.output, SKILL.md, PLATFORM.md, CreateSkill, CLAUDE.md, settings.json, STATUS.md
+
+## Unresolved Errors
+- {"stdout":"# Machine\r\n\r\nMachine-specific shell, paths, and traps live in `~/.claude/machine.md`. Read that file first. On a new machine copy `m...
+- {"stdout":"== hook events registered\n      1 \"PreCompact\"\n      1 \"PreToolUse\"\n      1 \"SessionStart\"\n      1 \"Stop\"\n      1 \"UserPro...
+- {"stdout":"LIFEOS:\nMEMORY/\n\nLIFEOS/MEMORY:\nSKILLS/\nexecution.jsonl\n{\"ts\":\"2026-09-22T17:00:10Z\",\"skill\":\"CreateSkill\",\"workflow\":\"...
+- {"stdout":"# Skill mechanics\r\n\r\nThe skill-specific branch of [`writing-for-agents`](SKILL.md): what changes when the document is a skill (front...
+- {"stdout":"# STATUS\r\n\r\n## Done\r\n- Repo brought under git and pushed to erash11 (2026-09-09).\r\n\r\n## Next\r\n- \r\n\r\n## Open questions\r\...
+- {"stdout":"error: failed to delete '.git/worktrees/fireflies-project-tag': Permission denied\nerror: failed to delete '.git/worktrees/ts21': Permis...
+- {"stdout":"error: failed to delete 'C:/Users/eric_rash/Desktop/DEV/TypeSafe_Sandbox/.git/worktrees/fireflies-project-tag': Permission denied\nerror...
+- {"stdout":"closeout.zip\ndev-sync.zip\nnew-project.zip\n/c/Users/eric_rash/Desktop/DEV/.claude/worktrees/doctor-plus-router-state/docs/STATUS.md\n#...
+- {"stdout":"MERGED bbdcd43\nerror: failed to delete 'C:/Users/eric_rash/Desktop/DEV/TypeSafe_Sandbox/.git/worktrees/fireflies-project-tag': Permissi...
+- {"stdout":"127 skills in the roster, of 143 Claude offers\r\n  discovered but not offered, dropped: 91\r\n0\n\r\n==================================...
+- {"stdout":"10-  [PASS]  1563ms  make a chart of weekly training load by posi   -> dataviz\n11-  [PASS]  1548ms  the memsearch hook keeps timing out...
+- {"stdout":"b6c0bb3 Merge pull request #7 from erash11/worktree-doctor-plus-router-state\n0\nd1ff7a6 Merge pull request #1 from erash11/doctor-plus/...
+- {"stdout":"error: failed to delete '.git/worktrees/Life-OS': Permission denied\nerror: failed to delete '.git/worktrees/TypeSafe_Sandbox': Permissi...
+
+## Git
+status, branch, log, pull, add, worktree, skills/CLAUDE.md: skill-creator is the one authoring home
+
+doctor-plus shifts 1/2/4/6. CreateSkill (LifeOS fork, 17 broken pointers,
+mandatory Examples, MANDATORY/STOP enforcement) scored 3/14 vs
+anthropic-skills:skill-creator 12/14, the only candidate with a scripted
+eval + trigger-test loop. CLAUDE.md becomes a short overlay of the local
+conventions worth keeping; ISA pointer updated. CreateSkill folder left in
+place (switched off via skillOverrides) pending Eric's delete.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, fetch, settings: switch off retired CreateSkill in Claude Code
+
+doctor-plus shift 4: anthropic-skills:skill-creator is the one skill-authoring
+home (claude-skills PR #4). Reversible; drop the entry once the folder is deleted.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, diff, STATUS: per-machine key status (from DEV router); drop CreateSkill from router allowlists
+
+doctor-plus shift 5 companion to erash11/DEV#7, and shift 4 companion to
+erash11/claude-skills#4 (CreateSkill retired; skill-creator is canonical).
+build_roster --check: 127 skills, no new gaps.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, STATUS: record keep-or-retire decision and move history (from DEV router)
+
+doctor-plus shift 5 companion to erash11/DEV#7.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, closeout: fold in the Cowork note so one file serves all three harnesses
+
+doctor-plus shift 4: the claude.ai-synced copy had drifted (5.1KB vs 8.2KB)
+while saying 'keep them identical'. Re-upload this file to the account.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, STATUS: doctor-plus run 2026-09-22
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, Delete retired CreateSkill (approved by Eric)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN, settings: drop CreateSkill override (folder deleted in claude-skills #4)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_011ZTYthkhS9ZxpGiLj8XytN
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, CreateSkill/SKILL.md, writing-for-agents/SKILL.md, skill-creator/SKILL.md, writing-skills/SKILL.md
+
+## Subagent Tasks
+- [completed] Read-only evaluation. Four skill-authoring skills are installed in one Claude Code setup on Windows (use ...
+- [completed] Two precise questions about current Claude Code (v2.1.280), answer from docs with citations/URLs:
+1. Skil...
+
+## Environment
+cwd: C:\Users\eric_rash/.claude
+model:claude-opus-5-5[1m]
+entered worktree: doctor-plus-router-state
+
+## Data References
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 36 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+investigate
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
