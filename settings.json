@@ -138,6 +138,12 @@
       "/Users/kristinarash/DEV"
     ]
   },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Merging a GitHub pull request with `gh pr merge` on one of Eric's own repos (owner erash11), including when it appears inside a compound shell command (&&, ; |) alongside git or gh commands. Eric has standing approval for merging his own PRs."
+    ]
+  },
   "model": "opus[1m]",
   "skillOverrides": {
     "session-handoff": "user-invocable-only",
