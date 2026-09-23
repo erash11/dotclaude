@@ -67,3 +67,13 @@ ETIMEDOUT there genuinely means ">10 minutes".
 
 Related: [[milvus-lock-misdiagnosis]], [[memsearch-index-path-drift]],
 [[memory-compiler-pipeline]], [[backup-sync-system]], [[keystoneos-verification-habits]]
+
+**2026-09-22 — a slow nightly index was the Mac sleeping, not memsearch.** The daily backup's
+full index took 18 min for 0 new chunks (09-21 09:44) and 15 min for 309 chunks (09-21 18:12).
+Timed while awake: no-op ~9s fixed startup, `dev-docs` (763 files) no-op 26s, full set 83s with
+79 new chunks (~0.7s/chunk). `pmset -g log` showed 5-second DarkWakes in the morning window and
+Idle Sleep twice mid-run in the evening. Fix: launchd `dailybackup` + the three data pulls now run
+under `/usr/bin/caffeinate -i -s` (`-s` holds only on AC; lid-shut on battery still sleeps).
+**How to apply:** before tuning memsearch, line the slow window up against `pmset -g log`.
+Same session: `daily-backup.ps1` now resolves `{DEV}` in index paths (it had skipped
+`KeystoneOS/decisions`). Jev/TypeSafe does not help indexing: it judges, it does not embed.

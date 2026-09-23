@@ -497,7 +497,7 @@ if ($msExe -and -not $DryRun) {
         try {
             $declared = (Get-Content -Raw -LiteralPath $msConfig | ConvertFrom-Json).paths
             if ($declared -and $declared.Count -ge 1) {
-                $msPaths = @($declared | ForEach-Object { $_ -replace '\{HOME\}', $U })
+                $msPaths = @($declared | ForEach-Object { ($_ -replace '\{HOME\}', $U) -replace '\{DEV\}', $DevRoot })
                 Log "INDEX path set: $($msPaths.Count) paths from memory-index-paths.json"
             }
         } catch { Log "INDEX config unreadable ($($_.Exception.Message)) - using built-in fallback list" }
