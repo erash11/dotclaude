@@ -1,47 +1,14 @@
 # STATUS
 
 ## Current state
-- Windows and macOS share this configuration repo through GitHub. The 2026-09-14 closeout captured the current Windows Claude session logs and synchronized the repository with the Mac changes.
-- Managed skills are authored in the separate `~/.claude/skills` repo and published to generated Windows views.
-- 2026-09-19: `scripts/daily-backup.ps1` no longer treats "behind + dirty" as divergence.
-  `DIVERGED` now means behind AND ahead; behind-only tries `git pull --ff-only` and errors
-  only if git itself refuses. This repo and `global-memory` are permanently dirty during a
-  session, so the old check produced a false `repo-diverged` error on every day the other
-  machine pushed. Commit `bd6b451`; previous file kept as `daily-backup.ps1.bak-2026-09-19`.
-- 2026-09-19: `scripts/backup-manifest.json` now covers `DEV/AppliedPerformance-Site`
-  (`institutional`, private GitHub repo). A concurrent session added `DEV/TypeSafe_Sandbox`
-  the same morning (`7528c06`). The `DEV/Linda_Projects` entry added earlier that day was
-  later REMOVED: it described a redundant clone, and the real folder `DEV/Linda Projects`
-  (with a space) was already covered. That entry now states the truth - it is a private
-  GitHub repo holding I-983 files, and it must stay private.
-- 2026-09-19: **double-logging fixed.** Every `daily-backup` line was written twice: the
-  script's `Log` function appends to `daily-backup.log` AND writes to stdout, and the launchd
-  plist pointed `StandardOutPath` at that same file. Proven on the 09:1x run - 36 lines, 18
-  unique. `StandardOutPath` now points at `daily-backup.out`, so the script's own append is the
-  single copy. Verified by a real launchd run: 28 lines, 28 unique, zero duplicates.
-  Plist backup at `~/Library/LaunchAgents/com.keystone.dailybackup.plist.bak-2026-09-19`.
-- 2026-09-19: the dry run no longer claims a fast-forward it never attempted. It compares dirty
-  paths against the incoming changed paths and reports REFUSED with the clashing file names.
-- 2026-09-19: **`~/Library/LaunchAgents` is now backed up.** It had no coverage at all - not a
-  git repo, not in the manifest, not snapshotted. Two halves, because a manifest entry alone
-  copies nothing: the manifest gained `Library/LaunchAgents` (ssd + drive), and section 2a of
-  `daily-backup.ps1` gained the matching Snapshot line. Verified on a real run: 19 plists are at
-  `My Drive/Backups/Machine/launchagents`. SSD only runs when CRASHBOX is mounted, so Drive is
-  what actually protects them today.
-- 2026-09-19: **push now retries.** Up to 3 attempts, 5s then 15s, transient failures only.
-  Rejected / non-fast-forward / auth failures bail on attempt 1, since they fail identically.
-  The log names the attempt it succeeded on. Commit `da178e7`; previous file at
-  `daily-backup.ps1.bak-2026-09-19d`. Real run after the change: OK (0 errors), plain `pushed`.
+- 2026-09-24 closeout: 147 DEV repositories and 13 nested repositories under `.claude` were checked. SpeedProfiling and PT_Dash are clean, synced feature branches. RunningTheRoom overview and draft plan were committed locally as `ff3cefd`, but that repository has no Git remote configured, so its commit cannot be pushed.
+- Windows and macOS share this configuration repo through GitHub. Managed skills remain authored in the separate `~/.claude/skills` repo and published to generated Windows views.
 
 ## Next
-- Let active session transcripts finish writing before the next closeout snapshot.
-- Watch the 2026-09-20 09:00 `daily-backup` run. Four real runs today all ended OK (0 errors),
-  but none of them hit a day where the repo was genuinely behind, which is the case the
-  divergence fix exists for. Log at `scripts/logs/daily-backup.log`.
-- The "no-op push counted as an error" bug **does not exist** - checked 2026-09-19 and the
-  2026-09-17 diagnosis was wrong. See Gotchas. All four known `daily-backup.ps1` bugs are
-  now either fixed or disproven.
-
+- Resume from `global-memory/handoffs/2026-09-24-sportsmith-video-workflow.md`.
+- Draft a portable video-processing and transcript-review skill in the canonical skills repo, then sync it to Codex and `.agents` views.
+- Configure the correct private remote for RunningTheRoom and push `ff3cefd`.
+- A human audio-listening pass for Sportsmith Part 2 remains optional; the transcript is caption-cross-checked, not human-verified word-for-word.
 ## Open questions
 - `INDEX full set: Indexed 0 chunks` on the 2026-09-19 run, against 91 the day before. The
   script does not count it as an error, so it fails silently. Not yet investigated.
@@ -75,3 +42,5 @@
   double-logging made that block twice as long and easy to misread.
 - That 2026-09-17 failure was a transient network error, and the job has **no retry**. A push
   that fails this way is not reattempted until the next day's run.
+
+
