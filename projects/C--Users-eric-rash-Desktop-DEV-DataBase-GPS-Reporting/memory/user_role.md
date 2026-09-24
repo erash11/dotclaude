@@ -1,5 +1,5 @@
 ---
-name: User Role and Context
+name: role
 description: Eric Rash is a sport scientist at Baylor University, primary user/developer of the GPS reporting pipeline
 type: user
 ---

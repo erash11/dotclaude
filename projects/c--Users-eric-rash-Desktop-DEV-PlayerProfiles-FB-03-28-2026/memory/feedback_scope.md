@@ -1,5 +1,5 @@
 ---
-name: Prefer simple local tools over full-stack apps
+name: scope
 description: User chose static HTML over React+FastAPI; prefer the simplest delivery format that meets the need
 type: feedback
 ---

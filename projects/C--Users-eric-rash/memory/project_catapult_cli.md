@@ -1,5 +1,5 @@
 ---
-name: project-catapult-cli
+name: catapult-cli
 description: "Catapult Connect CLI built with Printing Press — key API discoveries, CLI location, and what works"
 metadata: 
   node_type: memory

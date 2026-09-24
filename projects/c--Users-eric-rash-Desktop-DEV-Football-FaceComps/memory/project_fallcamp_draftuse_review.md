@@ -1,5 +1,5 @@
 ---
-name: project_fallcamp_draftuse_review
+name: fallcamp-draftuse-review
 description: "Read-only audit findings on the new 2026 Fall Camp practice-scripts workbook (DRAFT_USE.xlsx); fixes intentionally deferred pending Eric's 2026-06-23 staff meeting"
 metadata: 
   node_type: memory
@@ -17,4 +17,4 @@ Findings (none fixed — see below):
 
 **Why:** Eric explicitly said "don't fix anything, I just wanted context before our meeting — I'll report back with what I learned." This was reconnaissance only, not a remediation task.
 
-**How to apply:** Do not edit this workbook or act on these findings until Eric returns with the meeting outcome. When he does, treat the staff-header and stale-date issues as the two confirmed major defects to resolve (and the four minor ones as secondary), but let his meeting takeaways drive scope/priority before touching the file. Related: [[project_camp_models]] (separate thread — the 6 macro-model design work, not this workbook QA pass).
+**How to apply:** Do not edit this workbook or act on these findings until Eric returns with the meeting outcome. When he does, treat the staff-header and stale-date issues as the two confirmed major defects to resolve (and the four minor ones as secondary), but let his meeting takeaways drive scope/priority before touching the file. Related: [[camp-models]] (separate thread — the 6 macro-model design work, not this workbook QA pass).

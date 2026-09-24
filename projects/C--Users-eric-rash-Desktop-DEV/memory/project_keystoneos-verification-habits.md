@@ -1,11 +1,11 @@
 ---
-name: project-keystoneos-verification-habits
+name: keystoneos-verification-habits
 description: "Where KeystoneOS state claims are authoritative vs misleading, and which readings have already produced wrong conclusions"
 metadata: 
   node_type: memory
   type: project
   originSessionId: ea41d487-7812-4180-a6a8-f76a99753f83
-  modified: 2026-07-29T13:05:40.363Z
+  modified: 2026-09-12T13:34:11.490Z
 ---
 
 This system is well-instrumented, which makes its few misleading surfaces
@@ -18,11 +18,25 @@ under-reports. Correctness is fine — `Test-JobCompleteOn` checks the ledger *o
 the job's `successProbe`. Ask `.\scripts\keystone-reconcile.ps1 -DryRun -Json`,
 never the ledger alone and never `Get-ScheduledTaskInfo`.
 
-**memsearch timeout streaks are not failures.** The 45s SessionEnd hook is
-deliberately best-effort (`daily-backup.ps1:122-125`); the uncapped nightly at
-00:30 absorbs backlog and resets the counter. A streak of 16 on 2026-07-28 was
+**memsearch timeout streaks are not failures.** The SessionEnd hook is
+deliberately best-effort (`daily-backup.ps1:122-125`), wired at `timeout: 50` in
+`~/.claude/settings.json`; the uncapped nightly absorbs backlog and resets the
+counter. That nightly moved 00:30 → **09:00 on 2026-08-29**, so a streak now
+clears in the morning, not overnight. A streak of 16 on 2026-07-28 was
 read as a broken indexer and produced a whole plan step to "fix" it — the nightly
 cleared it the same night, exactly as designed. Alarm threshold is 6.
+
+**A scheduler's exit code is not the job's outcome.** It reports the last
+*scheduled* run, so a green log and a red status routinely coexist: a manual or
+out-of-band run never clears it, and a sleep/wake kill mid-run sets it while the
+day's work still completed on a later retry. Read the job's own log for a
+same-day clean end before treating a red status as rot. Two recorded instances:
+Windows `KeystoneOS-DailyBackup` exit 3221225786 on 2026-08-01 (four killed
+starts 08:27-11:32, clean end 16:36), and `launchctl list` on 2026-08-31 still
+showing the failed 09:00 `com.keystone.dailybackup` after the corrected re-run
+completed with 0 errors. Both cleared themselves at the next scheduled run; a
+forced re-run would have been cosmetic. (Generalised from the retired
+Windows-only `backup-task-sleepkill-signature` memory, archived 2026-09-01.)
 
 **The test suite is main-checkout-only.** `Get-KeystoneDevRoot` resolves the DEV
 root as `<repoRoot>\..`, which from a worktree yields
@@ -37,4 +51,40 @@ redundant backups, and that the indexer was chronically broken. All three were
 plausible from a point-in-time reading and all three were wrong. State a claim
 about this system only after re-running the check that produces it.
 
-Related: [[project-dev-layout-and-discovery]]
+**`canonicalPath` in `data/projects.json` must be a real filesystem path — never a URL.**
+Learned the hard way 2026-08-15: retiring a project, I set it to the GitHub URL so the field
+would not point at a deleted directory. That took down the entire 06:00 morning cadence at
+the dashboard step. `Join-Path`, `Get-Item`, `Resolve-Path`, `Get-ChildItem` and
+`Convert-Path` all throw *"Cannot find drive. A drive with the name 'https' does not exist"*
+on a URL. **`Test-Path` is the trap: it returns `False` on a URL instead of throwing**, which
+is exactly why the `if (-not (Test-Path $Path))` guards in `Get-PathSummary` and
+`Get-GitSummary` sail past it and the failure lands somewhere further downstream.
+
+A path that simply *does not exist* is handled cleanly by those guards, so the correct value
+for a retired project is its old directory; put the repo URL in a separate field
+(`restoreFrom`) that nothing treats as a path.
+
+**Recurrence 2026-09-12 — same class, cross-machine variant: a Windows drive letter.**
+The 2026-09-09 GitHub consolidation merge left a **duplicate** `reMarkale_extract` entry in
+`data/projects.json` whose `canonicalPath` was `C:\Users\eric_rash\Desktop\DEV\...`. On macOS
+that throws *"Cannot find drive. A drive with the name 'C' does not exist"* — identical
+mechanism to the URL case, different scheme. It killed morning-cadence on **every run from
+2026-09-10 through 2026-09-12** (5 runs), and the failure was **invisible in the usual
+places**: `outputs/jobs/morning-cadence-*.{out,err}.log` were both 0 bytes and
+`morning-cadence.err` was empty. The only record was `outputs/morning/cadence.log` —
+grep it for `cadence FAILED` first, not the job logs. Fixed by deleting the duplicate
+(the Mac entry was intact); BOM preserved on the write, see [[settings-json-bom-trap]].
+
+**The asymmetry is the durable lesson: this fault is one-way.** Windows tolerates a
+`/Users/...` path (`Test-Path` just returns `False`); macOS *throws* on `C:\` under
+`$ErrorActionPreference = "Stop"`. So any shared JSON that both machines write will break
+the Mac and never the Windows box — and it will recur every time Windows registers a new
+project. Expect it after any cross-machine merge; grep shared `data/*.json` for
+`eric_rash` or `C:\\` as part of post-merge cleanup. See [[github-consolidation]].
+
+**How to apply:** after editing any `data/*.json` that KeystoneOS scripts consume, run the
+consumers before trusting the edit — `scripts/keystone.ps1 dashboard`, `cockpit`, `snapshot`
+are quick and cover most path handling. A JSON-validity check proves nothing here; the file
+parsed fine and still broke the cadence. See [[morning-briefing-retired]].
+
+Related: [[dev-layout-and-discovery]]

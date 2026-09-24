@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from c--Users-eric-rash-Desktop-DEV-PlayerProfiles-FB-03-28-2026 -->
 # Memory Index
 
 - [project_architecture.md](project_architecture.md) — Python static HTML generator replaced React+FastAPI; entry point is `generate_report.py`, all arch in `src/`

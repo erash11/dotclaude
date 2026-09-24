@@ -1,5 +1,5 @@
 ---
-name: user-career-context
+name: career-context
 description: "Eric's career situation, strengths, ambitions, constraints, and 12-month clock — read before giving career or work strategy advice"
 metadata: 
   node_type: memory
@@ -37,7 +37,7 @@ Near **Iowa** (family, network, wife's roots, U of Iowa ideal). Comp floor: **lo
 ## Motivation Pattern
 Energized by: building, analysis, mining insights, being at practice, being sought out.  
 Drained by: circular meetings on the same topics that never move.  
-Deepest motivator: **to matter** — be a high-credibility voice, develop others, be a servant leader. There's a known tension between genuine service and wanting to be seen ([[user-personal-constitution]]).
+Deepest motivator: **to matter** — be a high-credibility voice, develop others, be a servant leader. There's a known tension between genuine service and wanting to be seen ([[personal-constitution]]).
 
 ## Settled Stance on Reduced Scope (2026-07-27)
 Describes himself as "a second-tier player now" with no major decision-making input. Has explicitly settled the question rather than left it open: hold the standard of work constant, keep pushing in chosen areas, don't lobby for the seat, trust God's plan for the outcome. Sees his current job as "understanding my role and learning to thrive in it." Framed as refinement of a stable position, not a fresh reaction.

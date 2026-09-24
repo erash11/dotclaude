@@ -1,5 +1,5 @@
 ---
-name: feedback-auto-commit-push
+name: auto-commit-push
 description: Eric authorized autonomous commit+push to the KeystoneOS repo (2026-06-11)
 metadata: 
   node_type: memory

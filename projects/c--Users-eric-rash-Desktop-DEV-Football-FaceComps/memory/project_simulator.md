@@ -1,5 +1,5 @@
 ---
-name: practice-load-simulator-project-state
+name: simulator
 description: Status and key facts about the Next.js simulator app built in simulator/
 metadata: 
   node_type: memory
@@ -48,4 +48,4 @@ The simulator is fully built and deployed at https://baylor-load-sim.vercel.app.
 - Neon returns Date objects — wrap in `JSON.parse(JSON.stringify(...))` before passing to client components, OR use `normalizePractice`/`normalizePeriod` from `lib/normalize.ts` which also coerces numeric columns from string.
 - Always use `getDb()` lazy init, never module-level `sql` export (crashes `next build`).
 - Env vars (DATABASE_URL, SITE_PASSWORD, COOKIE_SECRET, CATAPULT_TOKEN) all set in Vercel.
-- Auto-deploy requires the commit author's email to be verified on the `erash11` GitHub account (see [[user_github_identity]]).
+- Auto-deploy requires the commit author's email to be verified on the `erash11` GitHub account (see [[github-identity]]).

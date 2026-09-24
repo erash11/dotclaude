@@ -1,5 +1,5 @@
 ---
-name: project-springevals-pff
+name: springevals-pff
 description: Spring 2026 player-eval × PFF correlation project — purpose, data sources, methodology decisions, key finding, and state
 metadata:
   type: project

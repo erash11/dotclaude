@@ -1,5 +1,5 @@
 ---
-name: fireflies-cli-rename-bug
+name: fireflies-cli-bug
 description: "fireflies-pp-cli `transcripts update --title` is broken; use the native Fireflies MCP tool instead. Daily API rate limit also discovered."
 metadata: 
   node_type: memory
@@ -25,4 +25,4 @@ metadata:
 - Cannot force-refresh via `transcripts pull <id>` — that command requires a Business plan tier the user doesn't have.
 - Practical rule: after renaming, wait several hours before running meeting-sync, or accept that early filenames will be wrong and we'll have to mv them later.
 
-Related: [[fireflies-hygiene]], [[secondbrain-vault]]
+Related: [[fireflies-hygiene]], [[secondbrain]]

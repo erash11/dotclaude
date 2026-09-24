@@ -1,5 +1,5 @@
 ---
-name: project-perch-api-gotchas
+name: perch-api-gotchas
 description: "Verified gotchas for the Perch API (api.perch.fit) set-level ingest used in Tezino_CampPrep — auth, /v3/sets filtering, units, session_id semantics, Tezino IDs"
 metadata: 
   node_type: memory
@@ -31,4 +31,4 @@ Perch API (`api.perch.fit`) gotchas, all verified live 2026-06-11 while building
 reference client only swept 4 exercises over short windows and never needed the user filter.
 **How to apply:** any future Perch pull — use the user_id filter without exercise_id, pull
 all and filter dates locally, treat weight as lbs. Working reference:
-`scripts/extract_tezino_perch.py` -> `data/tezino_perch_sets.csv`. Related: [[project-catapult-cli-gotchas]].
+`scripts/extract_tezino_perch.py` -> `data/tezino_perch_sets.csv`. Related: [[catapult-cli-gotchas]].

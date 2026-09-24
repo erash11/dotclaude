@@ -1,5 +1,5 @@
 ---
-name: user-working-conditions-bottleneck
+name: working-conditions-bottleneck
 description: "Eric's self-identified bottleneck is working conditions, not effort — he needs a thinking partner / sharing outlet, and lacking one he goes looking for people and loses time"
 metadata: 
   node_type: memory

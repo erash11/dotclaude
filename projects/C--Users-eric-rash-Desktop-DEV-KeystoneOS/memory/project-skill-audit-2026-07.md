@@ -1,5 +1,5 @@
 ---
-name: project-skill-audit-2026-07
+name: skill-audit-2026-07
 description: "2026-07-13 full audit of ~/.claude/skills — 9 skills fixed, 3 removed, archive location for removed skills"
 metadata: 
   node_type: memory

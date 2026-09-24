@@ -1,5 +1,5 @@
 ---
-name: User role and context
+name: role
 description: Eric Rash's role at Baylor Athletics and domain knowledge relevant to this project
 type: user
 originSessionId: fdcd7ac4-6db3-4b52-943a-0e60fae67a61

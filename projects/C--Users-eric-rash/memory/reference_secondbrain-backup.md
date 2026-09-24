@@ -1,5 +1,5 @@
 ---
-name: reference-secondbrain-backup
+name: secondbrain-backup
 description: SecondBrain vault is git-backed to private GitHub erash11/SecondBrain; canonical project hub location
 metadata:
   type: reference
@@ -13,4 +13,4 @@ metadata:
 
 **OKR operating playbook:** `Projects/Applied-Performance-Operating-Cadence.md` — rollout script (folded into the first check-in, no separate kickoff), Thursday check-in facilitation, outcome-based assignment, progression/escalation, and the summer red→green arc (June stand-up / July build / Aug adopt → gate). **Eric DRI on all 9 KRs; AJ/Blake co-own. Weekly check-in Thursdays** (→ biweekly in-season); first check-in + rollout = 2026-06-04. Unit = Eric/AJ/Blake only. Strategy/notes are canonical in the vault; executable tools stay in their own `~/Desktop/DEV/` repos and are linked from the hub. Don't duplicate these into DEV — link instead.
 
-Related: [[project-facecomps-practice-simulator]], [[project-ai-integration-initiative]], [[project-athlete-data-governance]].
+Related: [[facecomps-practice-simulator]], [[ai-integration-initiative]], [[athlete-data-governance]].

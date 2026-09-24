@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-Travel-Map -->
 # Memory Index
 
 - [User role and context](user_role.md) — Eric Rash, Director of Applied Performance at Baylor Athletics; builds staff-facing tools

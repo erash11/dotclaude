@@ -1,5 +1,5 @@
 ---
-name: project-practice-planning-grill
+name: practice-planning-grill
 description: Paused grill-with-docs session designing the MorphoCycle/color/rep planning-and-prescription layer for the simulator
 metadata: 
   node_type: memory
@@ -19,4 +19,4 @@ composite day-type (no shades); rep ramp at block level (88→124→152→180→
 validate in PL/player; color triad (Intended/Scripted/Realized). Philosophy: template-and-guardrails,
 NOT rigid prescription. Resume at branch **B1 (color guardrail thresholds + calibration source)**.
 
-Related: [[project_simulator]].
+Related: [[simulator]].

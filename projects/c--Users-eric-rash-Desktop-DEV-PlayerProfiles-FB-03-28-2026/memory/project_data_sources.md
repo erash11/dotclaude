@@ -1,5 +1,5 @@
 ---
-name: PlayerProfiles — actual data source paths and schemas
+name: data-sources
 description: Absolute paths to the three pipeline databases and body weight CSV, with key table/field names
 type: project
 ---

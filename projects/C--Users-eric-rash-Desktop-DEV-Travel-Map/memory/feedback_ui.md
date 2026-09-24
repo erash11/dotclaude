@@ -1,5 +1,5 @@
 ---
-name: UI and layout preferences
+name: ui
 description: Eric's confirmed preferences for this app's visual design and layout
 type: feedback
 originSessionId: fdcd7ac4-6db3-4b52-943a-0e60fae67a61

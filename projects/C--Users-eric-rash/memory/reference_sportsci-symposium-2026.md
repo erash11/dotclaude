@@ -1,11 +1,11 @@
 ---
-name: reference-sportsci-symposium-2026
+name: sportsci-symposium-2026
 description: Sport Science Symposium 2026-05-30 — 8 talks Eric recorded; mineable themes + speakers for essays/OKR R&D
 metadata:
   type: reference
 ---
 
-**Sport Science Symposium** — 8 talks Eric attended/recorded solo on **2026-05-30** (Fireflies, `*_SportSciSympo`). Reference material for R&D, essays, and the [[project-practice-load-framework]] / OKR work.
+**Sport Science Symposium** — 8 talks Eric attended/recorded solo on **2026-05-30** (Fireflies, `*_SportSciSympo`). Reference material for R&D, essays, and the [[practice-load-framework]] / OKR work.
 
 **Talks & themes:**
 - **Patrick Ward** — research/publishing in applied sport science.

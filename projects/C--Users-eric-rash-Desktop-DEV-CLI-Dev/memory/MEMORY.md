@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-CLI-Dev -->
 - [VS Code terminal flicker](project_vscode_terminal_flicker.md) — scrollback=500 + gpuAcceleration=off reduces but doesn't eliminate; try ConPTY/alt terminal next
 - [Graphify + Obsidian discipline](feedback_graphify_obsidian.md) — Vault41 + BigHouse archived 2026-05-20; graphify output is throwaway, route to `Desktop/graphify-runs/`, never into managed vault
 - [SecondBrain vault](project_secondbrain.md) — interview-driven writing/synthesis vault at `Desktop/SecondBrain/`; 4-week pilot from 2026-05-20; trigger via `interview-me` skill

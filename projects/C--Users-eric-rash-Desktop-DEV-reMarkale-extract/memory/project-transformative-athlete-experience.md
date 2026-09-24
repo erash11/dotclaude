@@ -1,5 +1,5 @@
 ---
-name: project-transformative-athlete-experience
+name: transformative-athlete-experience
 description: "TAE pilot — cross-dept data proof-of-concept on Baylor football transfers, proposal drafted 2026-08-01 for Kenny Boyd's blessing"
 metadata: 
   node_type: memory

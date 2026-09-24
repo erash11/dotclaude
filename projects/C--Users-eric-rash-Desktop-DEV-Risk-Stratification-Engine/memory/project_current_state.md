@@ -1,5 +1,5 @@
 ---
-name: Project current state
+name: current-state
 description: Risk Stratification Engine current state as of 2026-05-04 — 175 tests, coverage-stratified evaluation complete, ForcePlate backfill incomplete
 type: project
 originSessionId: 407af261-37d4-435b-ac8f-3f912a8cade0

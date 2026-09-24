@@ -1,5 +1,5 @@
 ---
-name: project-drive-topology
+name: drive-topology
 description: "Where Eric's projects and knowledge actually live — three homes, which is canonical, which to ignore"
 metadata: 
   node_type: memory
@@ -16,6 +16,6 @@ Eric's projects and knowledge live in **three homes**. Know this before searchin
 
 3. **`D:\_2026_ClaudeProjects\`** — a **STALE March-2026 backup**. Same git remotes as DEV but behind (e.g. ForcePlate DEV 55 commits vs D: 51). **Ignore it** — never register it, never let self-heal relocate a project onto it. Everything in it is either live in DEV or recoverable from GitHub.
 
-Cloud accounts (verified 2026-07-23): **personal OneDrive is NOT signed in** — `C:\Users\eric_rash\OneDrive` is a dead local folder, never route backups or syncs there. The working personal cloud is **Google Drive for Desktop (gmail) at `G:\My Drive`** — home of the daily personal-context backup (`Backups\Machine`) and the RESTORE.md mirror; see [[backup-coverage-2026-07]].
+Cloud accounts (verified 2026-07-23): **personal OneDrive is NOT signed in** — `C:\Users\eric_rash\OneDrive` is a dead local folder, never route backups or syncs there. The working personal cloud is **Google Drive for Desktop (gmail) at `G:\My Drive`** — home of the daily personal-context backup (`Backups\Machine`) and the RESTORE.md mirror; see [[backup-coverage]].
 
-Related: [[feedback-auto-commit-push]]. Command-center + cockpit + knowledge-ingestion work that established this lives in KeystoneOS `decisions/log.md`, `docs/superpowers/specs/2026-06-12-*`, and `knowledge/baylor-01-ongoing/`.
+Related: [[auto-commit-push]]. Command-center + cockpit + knowledge-ingestion work that established this lives in KeystoneOS `decisions/log.md`, `docs/superpowers/specs/2026-06-12-*`, and `knowledge/baylor-01-ongoing/`.

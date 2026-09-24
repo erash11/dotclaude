@@ -54,3 +54,7 @@ Never put memory content here — the file itself holds the facts.
 - [GitHub consolidation](project_github-consolidation.md) — ~/DEV on GitHub: the thin root repo, _ARCHIVE, where DexaProject went, merge traps
 - [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder: which of the three copies is canonical, why `~/.claude/skills` IS a git repo, the sync script that deletes, the 2026-09-12 audit, the 40 name-only skills (9/14), Pi/pi.dev facts
 - [Prioritization slate](project_prioritization-slate.md) — Eric proposes a new project or idea; the cap, charters, slate-check timer, clearing a nag with mark-done
+- [Baylor department names](user_baylor-department-names.md) — Athletic Performance / Athletic Medicine / Applied Performance, never S&C / sports medicine / sport science
+- [Git Bash MSYS/AD stall](project_git-bash-msys-ad-stall.md) — why bash randomly dies with `add_item errno 1`: AD lookup exceeds MSYS2's 15s spinlock; fix via nsswitch files-only + `shell: powershell` hooks
+- [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — DailyBackup exit 3221225786 + same-day clean log = benign sleep interruption, not rot
+- [Third-party skill install](project_third-party-skill-install.md) — clone to ~/.agents/skills + symlink to 4 harnesses; Windows `ln -s` copies silently; sync-to-codex clears the pre-commit/backup jam

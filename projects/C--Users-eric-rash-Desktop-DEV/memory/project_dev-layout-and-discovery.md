@@ -1,5 +1,5 @@
 ---
-name: project-dev-layout-and-discovery
+name: dev-layout-and-discovery
 description: "How DEV projects must be laid out to stay visible to KeystoneOS discovery, and the gitignored-subtree trap that silently voids backups"
 metadata: 
   node_type: memory
@@ -8,12 +8,12 @@ metadata:
   modified: 2026-07-29T13:05:18.996Z
 ---
 
-Each project gets its own folder in `~/Desktop/DEV`. KeystoneOS is a map and
+Each project gets its own folder in `~/DEV`. KeystoneOS is a map and
 control plane, not a monorepo — it maps projects by reference and never holds
 their source (`AGENTS.md` operating rules).
 
-**Depth limit.** `data/discovery-roots.json` scans `Desktop\DEV` at `maxDepth 2`,
-so `DEV\Project` and `DEV\Group\Project` are discovered but `DEV\Group\Sub\Project`
+**Depth limit.** `data/discovery-roots.json` scans `~/DEV` at `maxDepth 2`,
+so `DEV/Project` and `DEV/Group/Project` are discovered but `DEV/Group/Sub/Project`
 is invisible to `keystone.ps1 inventory` — it still works as code, it just never
 appears in the registry or dashboard. One level of grouping (e.g. `Football\`) is
 safe; two is not.
@@ -31,4 +31,7 @@ while you are reading them — `SportScienceResearchRepo` moved HEAD and dropped
 from 47 dirty files to 0 mid-analysis on 2026-07-28. Re-verify git numbers at the
 point you act on them, not from a scan taken minutes earlier.
 
-Related: [[project-keystoneos-verification-habits]]
+The root's display name in that config is still the Windows-era string
+"Desktop DEV" — a label, not a path. The `path` field is `/Users/kristinarash/DEV`.
+
+Related: [[keystoneos-verification-habits]]

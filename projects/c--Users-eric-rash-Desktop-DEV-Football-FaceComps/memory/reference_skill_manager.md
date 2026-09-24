@@ -1,5 +1,5 @@
 ---
-name: reference_skill_manager
+name: skill-manager
 description: How cross-harness agent skills are installed/updated on this machine (npx skills + ~/.agents/skills). Read before touching any installed skill files.
 metadata: 
   node_type: memory
@@ -23,4 +23,4 @@ Eric manages agent skills across harnesses with **Vercel's `npx skills` CLI** (v
 - Update: `npx skills update [name] -g -y` (plain `check` is project-scope only)
 - Remove: `npx skills remove -g -s <name> -a claude-code codex gemini-cli github-copilot -y`
 
-**Gotcha:** `npx skills update` FAILS on a skill whose on-disk content was hand-modified (refuses to clobber local changes). Fix = `remove` then `add` fresh (restores canonical content + correct lock hash). This is how to-prd was reconciled after a manual edit. Matt Pocock skills come from `mattpocock/skills` (nested `skills/<category>/<name>`, needs `--full-depth`). [[project_camp_models]]
+**Gotcha:** `npx skills update` FAILS on a skill whose on-disk content was hand-modified (refuses to clobber local changes). Fix = `remove` then `add` fresh (restores canonical content + correct lock hash). This is how to-prd was reconciled after a manual edit. Matt Pocock skills come from `mattpocock/skills` (nested `skills/<category>/<name>`, needs `--full-depth`). [[camp-models]]

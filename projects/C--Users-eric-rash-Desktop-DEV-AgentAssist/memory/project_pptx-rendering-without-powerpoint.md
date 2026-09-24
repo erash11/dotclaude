@@ -1,0 +1,34 @@
+---
+name: pptx-rendering-without-powerpoint
+description: PowerPoint AppleScript is broken on this Mac; render .pptx proofs with tools/deck_preview.py plus qlmanage instead
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: cf172d4e-87d5-41a3-8a58-51f6d4ac90e7
+  modified: 2026-08-29T20:06:38.173Z
+---
+
+Driving PowerPoint over AppleScript to look at a built deck fails on this machine with a
+persistent `-9074` (started 2026-08-18 after a force-quit; relaunching and retrying did
+not clear it). Do not build a verification step that depends on it.
+
+The working path, in `Education_Content_Agent`:
+
+1. `python3 tools/deck_preview.py <file>.pptx --out preview` — parses the slide XML and
+   writes one SVG per slide. As of 2026-08-29 it renders `prstGeom` lines and triangles
+   faithfully; before that it drew every shape as its bounding box, which silently turned
+   diagonal hatch into a solid block and arrowheads into squares.
+2. `qlmanage -t -s 1500 -o <dir> <file>.svg` rasterises it. **qlmanage crops to a square**,
+   so a 16:9 slide loses its right third unless the SVG is padded into a square canvas
+   first. cairosvg is not installed and rsvg-convert/ImageMagick/Inkscape are absent.
+
+Text metrics in the preview are approximate and run **wide** — a line that fits there
+fits in PowerPoint. Treat it as a layout and colour proof, never a typographic one, and
+open the real file before presenting.
+
+**Why:** a proof you cannot produce on demand is a review step that quietly stops
+happening, and this one disagreed with the file in exactly the places drafting-style
+slides live.
+
+**How to apply:** for any deck work here, verify with `deck_qa.py` for the machine checks
+and the preview for the human look. Related: [[baylor-house-style]].

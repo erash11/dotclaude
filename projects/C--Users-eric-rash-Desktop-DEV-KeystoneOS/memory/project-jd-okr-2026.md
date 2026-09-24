@@ -1,5 +1,5 @@
 ---
-name: project-jd-okr-2026
+name: jd-okr-2026
 description: "New JD (Jul 2026) restructured the role and OKRs — semester cycles, AJ owns football, Blake departed; read before any OKR, department, or role-strategy work"
 metadata: 
   node_type: memory
@@ -19,5 +19,5 @@ Load-bearing facts:
 - Eric's protected hands-on lanes: HPI protocol/dashboarding, tech vetting, white-paper analysis, one-off sport reports.
 - JD response email (7 confirm-or-correct questions) drafted; Eric rewrote in his own voice — final version dropped PD/travel + evaluation questions (flagged; parked for 1:1s in JD-clarifying-questions.md).
 
-**Why:** These decisions override the v2 quarterly OKR framing in older memories ([[project-appperformance-utilization-brief]] scoreboard assumptions predate this).
-**How to apply:** Treat the Aug 31 review as cycle close + Fall authoring, not a quarterly gate. Never re-propose the unified dashboard or quarterly cadence. Check decisions.md before advising on role scope. Links: [[user-career-context]].
+**Why:** These decisions override the v2 quarterly OKR framing in older memories ([[appperformance-utilization-brief]] scoreboard assumptions predate this).
+**How to apply:** Treat the Aug 31 review as cycle close + Fall authoring, not a quarterly gate. Never re-propose the unified dashboard or quarterly cadence. Check decisions.md before advising on role scope. Links: [[career-context]].

@@ -1,5 +1,5 @@
 ---
-name: Eric — sports scientist / performance staff at Baylor Athletics
+name: role
 description: User's role, technical background, and domain expertise
 type: user
 ---

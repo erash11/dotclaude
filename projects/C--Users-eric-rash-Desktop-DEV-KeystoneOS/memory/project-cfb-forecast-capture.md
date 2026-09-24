@@ -1,5 +1,5 @@
 ---
-name: project-cfb-forecast-capture
+name: cfb-forecast-capture
 description: "CFB Victory Model weekly forecast freeze — Wednesdays only, cannot be backfilled; how the capture and its reminder work"
 metadata: 
   node_type: memory
@@ -43,4 +43,4 @@ Protection for everything tracked is now the GitHub remote — **so it is only a
 as the last push**. The one thing covered by neither is `data/cfbd/`, which is fine:
 `python cfbd_pull.py` rebuilds it (needs `CFBD_API_KEY`; every endpoint 401s without).
 
-Related: [[project-morning-briefing-pipeline]], [[project-backup-coverage]].
+Related: [[morning-briefing-pipeline]], [[backup-coverage]].

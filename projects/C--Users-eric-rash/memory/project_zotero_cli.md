@@ -1,5 +1,5 @@
 ---
-name: project-zotero-cli
+name: zotero-cli
 description: "Zotero research-library CLI built in Go at ~/printing-press/library/zotero-research-library/ — mirrors catapult conventions, Web API v3 only, full library mgmt"
 metadata: 
   node_type: memory
@@ -10,7 +10,7 @@ metadata:
 Eric is building a Zotero CLI (`zotero-research-library-pp-cli`) so both he and Claude have scriptable access to his research-paper library. Plan approved 2026-05-18, lives at `C:\Users\eric_rash\.claude\plans\i-want-to-dig-peppy-hoare.md`.
 
 **Locked architecture decisions:**
-- Mirrors [[project-catapult-cli]] conventions exactly: Go, Cobra, `cmd/<binary>/`, `internal/{cli,client,config,store,cache,cliutil,types}`, TOML config in `~/.config/`, SQLite store via `modernc.org/sqlite`, file-based HTTP cache
+- Mirrors [[catapult-cli]] conventions exactly: Go, Cobra, `cmd/<binary>/`, `internal/{cli,client,config,store,cache,cliutil,types}`, TOML config in `~/.config/`, SQLite store via `modernc.org/sqlite`, file-based HTTP cache
 - **Zotero Web API v3 only** — no local SQLite reads of `~/Zotero/zotero.sqlite` (avoids fighting desktop app for lock; trades offline for sync consistency)
 - **No MCP companion in v1** — CLI only; Claude shells out via Bash
 - Full library mgmt scope: read, add (DOI/arXiv/ISBN via Crossref/arXiv/OpenLibrary lookups, NOT Zotero translation-server), edit, delete (PATCH `deleted: 1` for trash, hard DELETE for `--permanent`), notes, annotations (read/export only)

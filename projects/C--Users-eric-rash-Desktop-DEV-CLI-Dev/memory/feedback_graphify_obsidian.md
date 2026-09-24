@@ -1,5 +1,5 @@
 ---
-name: graphify-obsidian-discipline
+name: graphify-obsidian
 description: "Rules for Graphify skill output and Obsidian vault usage — both vaults archived 2026-05-20, memory system is sole knowledge surface"
 metadata: 
   node_type: memory

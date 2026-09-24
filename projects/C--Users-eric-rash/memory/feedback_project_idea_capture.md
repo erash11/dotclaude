@@ -13,5 +13,7 @@ project inbox / log it on <project>?" On yes, use the /project skill verbs.
 must be frictionless but never silent.
 **How to apply:** Offer only when the signal is clear (an "I should build…" /
 "new idea…" statement or a completed deliverable on a tracked project). One
-offer, no nagging. Registry: portfolio.json at
-C:\Users\eric_rash\Desktop\DEV\project-triage\portfolio.json.
+offer, no nagging. Registry: `~/DEV/project-triage/portfolio.json` (the Windows path this file
+carried until 2026-09-01 no longer exists). That file is also written outside
+sessions — see the DEV memory `portfolio-registry-write-provenance` before
+editing it by hand.

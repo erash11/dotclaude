@@ -1,5 +1,5 @@
 ---
-name: PlayerProfiles — static HTML generator architecture
+name: architecture
 description: The project was changed from React+FastAPI spec to a Python static HTML generator; describes the actual implementation
 type: project
 ---

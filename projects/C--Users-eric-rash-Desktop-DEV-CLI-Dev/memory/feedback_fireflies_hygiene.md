@@ -18,4 +18,4 @@ metadata:
 
 **Why:** Without titles, exported filenames (`YYYY-MM-DD_<title>.md`) are unretrievable. Without speakers, AI-generated summaries lose attribution, action items become orphaned, and cross-meeting queries ("what does X consistently push on?") fail. Both fixes compound forward; bulk historical cleanup is a treadmill.
 
-Related: [[secondbrain-vault]]
+Related: [[secondbrain]]

@@ -1,5 +1,5 @@
 ---
-name: Perch API Integration Plan
+name: perch-integration-plan
 description: Design decisions from 2026-04-23 brainstorming session — 5th TSA domain "Weight Room" using Perch VBT 1RM data
 type: project
 originSessionId: 7741f8b7-e5f7-45a3-adfc-6681a97c4d3c

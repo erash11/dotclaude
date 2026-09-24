@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-KeystoneOS -->
 # Memory Index — KeystoneOS
 
 - [MSYS bash flakiness solved](project-msys-bash-flakiness.md) — "add_item errno 1" + silent bash exit-1s = load-induced MSYS init timeout; KeystoneOS-MsysKeepAlive task holds region warm (7/25)

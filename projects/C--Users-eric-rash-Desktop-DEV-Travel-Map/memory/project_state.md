@@ -1,5 +1,5 @@
 ---
-name: Project deployment and live state
+name: state
 description: Where the app is deployed, how to deploy, current feature state, and handoff docs
 type: project
 originSessionId: fdcd7ac4-6db3-4b52-943a-0e60fae67a61
