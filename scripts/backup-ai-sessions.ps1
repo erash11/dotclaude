@@ -13,6 +13,11 @@ $started = Get-Date
 
 New-Item -ItemType Directory -Force (Split-Path $state) | Out-Null
 
+# The task can fire just after a wake from sleep, before Drive for Desktop has remounted
+# G: (2026-09-24: the check ran ~45s early and failed). Give the mount up to 5 minutes.
+$deadline = $started.AddMinutes(5)
+while (-not (Test-Path "G:\My Drive") -and (Get-Date) -lt $deadline) { Start-Sleep -Seconds 10 }
+
 if (-not (Test-Path "G:\My Drive")) {
     @{ lastRun = $started.ToString('o'); status = 'ERROR'; errors = @('drive-not-mounted') } |
         ConvertTo-Json | Set-Content $state

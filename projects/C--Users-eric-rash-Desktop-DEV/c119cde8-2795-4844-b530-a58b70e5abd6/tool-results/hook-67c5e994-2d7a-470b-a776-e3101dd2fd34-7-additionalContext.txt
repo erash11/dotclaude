@@ -1,0 +1,168 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- allow this use case 
+
+
+<pasted_content id="306a">
+Use case: 1 Permission gate
+Verdict for you: Skip. Your map already rules out Jev as a security b...
+- yes to this
+
+
+
+<pasted_content id="306a">
+Use case: 9 Routing sensitive data
+Verdict for you: Circular for you. To classify DEXA or athlete text, J...
+- <pasted_content id="306a">
+I left the PR open. I found the gh pr merge permission in your settings, but no written rule that lets me merge without ...
+- 1. this is done
+2. install the hook
+
+if safe to, merge the PR
+
+## Files Modified
+CONDITIONAL_CONTEXT_MEASUREMENT.md, rules.py, score.py, STATUS.md, PERMISSION_GATE_MEASUREMENT.md, measure.py, sanitize.py, make_sheet.py, score_sheet.py, shadow_hook.py, README.md, USER.md
+
+## Unresolved Errors
+- {"stdout":"493dd3e Merge pull request #20 from erash11/closeout-0921\n310a8bd closeout 2026-09-21: STATUS marks #002 merged and published; handoff\...
+- {"stdout":"399 docs/JEV_CAPABILITY_MAP.md\n1:# Jev capability map\n3:What TypeSafe's System One model (Jev) can and cannot do, and where it fits th...
+- {"stdout":"## Where not to use it\n\n- **Numeric verification on its own.** Correcting my 09-19 chat answer: the citation\n  pipeline does apply to...
+- {"stdout":"main\n32:from __future__ import annotations\n34:import json\n35:import os\n36:import re\n37:import sys\n38:import threading\n39:import t...
+- {"stdout":"Run through Python `subprocess`: `dcg` blocks `git` inside shell command\nsubstitution, so the plan's shell form could not be used. Resu...
+- {"stdout":"        \"no TYPESAFE_API_KEY in the environment or ~/.claude/typesafe.env\"\n    )\n\n\ndef system_one(state, questions: dict, key: str...
+- {"stdout":"warning: in the working copy of 'docs/PERMISSION_GATE_MEASUREMENT.md', LF will be replaced by CRLF the next time Git touches it\n docs/P...
+- {"stdout":"    if len(scored) < MIN_SCORED:\n        verdict, word = False, f\"INCONCLUSIVE ({len(scored)} < {MIN_SCORED} labeled rows): the gate s...
+- {"stdout":"MERGED\nhint: To abort and get back to the state before \"git rebase\", run \"git rebase --abort\".\nhint: Disable this message with \"g...
+- {"stdout":" create mode 100644 permission_gate/shadow_hook.py\nRebasing (3/3)\rSuccessfully rebased and updated refs/heads/permission-gate-measure....
+- {"stdout":"docs/PERMISSION_GATE_MEASUREMENT.md:120:Rules unchanged since pre-registration (`f27c90b`)\ndocs/STATUS.md:7:  both from skip to measure...
+- {"stdout":"## main...origin/main [behind 5]\n M transcripts/2026-09-22.md\nerror: Your local changes to the following files would be overwritten by...
+- {"stdout":"Eric: 40 run, 0 review, 0 block, 0 ? (sanitizer removed the evidence)\r\nJev recall on review+block 0/0 = nan (bar 0.9)\r\nJev agreement...
+- {"stdout":"174:5 outward MCP). **Waiting on Eric:** label each row `run` / `review` / `block` / `?` (see the","stderr":"","interrupted":false,"isIm...
+- {"stdout":"3 lines kept\r\nM  docs/PERMISSION_GATE_MEASUREMENT.md\nM  docs/STATUS.md\nM  permission_gate/README.md\nM  permission_gate/blind_sheet....
+- {"stdout":"warning: in the working copy of 'transcripts/2026-09-22.md', LF will be replaced by CRLF the next time Git touches it\nAuto-merging tran...
+
+## Git
+log, pull, branch, add, fetch, conditional_context: state the sample's scope and route the USER.md change through memory-write
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, status, permission_gate: pre-register use cases 1 and 9 and freeze the code layers before extraction
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, push, diff, py_compile, rebase, STATUS: record the amended step-5 bar
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, docs: point at the rebased pre-registration hashes
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, permission_gate: blind check scored, Jev fails (0.42 vs 0.80, asks on 23 of 40 safe calls); shadow hook installed
+
+Eric labeled all 40 sanitized residue rows run. Both use cases close code only, the
+eighth item measured off the map. Shadow hook staged at ~/.claude/permission-gate/
+behind a pass-through guard, since settings.json is shared with the Mac.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, closeout 2026-09-22: handoff, STATUS next/gotchas, Option C correction
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, settings: add shadow-mode permission-gate PreToolUse hook (log-only, guarded); session transcripts
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, Windows snapshot: USER.md department names; transcripts 2026-09-22
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, commit, MEMORY: TypeSafe thread 9/22; dev-docs harvest
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V, session transcript snapshot
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018szec3AdZyb6YZbZHSDD3V
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md
+
+## Skills Used
+memory-write
+
+## Environment
+cwd: ~/.claude
+model:claude-opus-5[1m]
+
+## Data References
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:54
+- … 20 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
