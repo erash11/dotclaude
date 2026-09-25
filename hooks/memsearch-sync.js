@@ -210,6 +210,9 @@ try {
     shell: false,
     windowsHide: true,
     encoding: 'utf8',
+    // memsearch can print more than Node's 1 MiB default during a large
+    // incremental catch-up. Preserve its output and exit status for diagnosis.
+    maxBuffer: 32 * 1024 * 1024,
     // Runaway guard, not a budget. We are detached, so nothing is waiting on
     // this. A full day's backlog measured 278s on 2026-09-02, so 600s means a
     // timeout here is a genuine hang worth escalating - not normal work being

@@ -41,6 +41,7 @@ Never put memory content here — the file itself holds the facts.
 - [Ingest review gate](feedback_ingest-review-gate.md) — before ingest-book or any expensive atomization; what the arithmetic gate does and does not catch
 - [Dormant threads](project_dormant-threads.md) — Tezino CampPrep and FaceComps sim: where each stopped and what is still open
 - [RTP CLA course](project_rtp-cla-course.md) — book ingest state, the +13 page offset, the one rebuild still outstanding
+- [SCN sprint course](project_scn-sprint-course.md) — Moyer/Natera sprint course: where the 58 library entries and review live, RTP-stack role, open decisions
 - [ATH Tech framework](project_ath-tech-framework.md) — the shipped 08-14 doc set, the five unwritten gaps, the ITS blocker
 - [Supervisor log pipeline](project_supervisor-log-pipeline.md) — nightly log feeding the Kenny/Chris report; action-items-are-not-outcomes trap
 - [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was rejected outright; which shapes trip it and the rewrite that works
