@@ -1,5 +1,5 @@
 ---
-name: project-morning-briefing-pipeline
+name: morning-briefing-pipeline
 description: "morning-briefing pipeline architecture, on-ramp integration, and the 6-day silent-outage incident (2026-06-17)"
 metadata: 
   node_type: memory
@@ -15,4 +15,4 @@ metadata:
 
 **On-ramp integration (2026-06-17, commit `edc06e4`):** folded the old standalone `onramp.sh` (manual run, never wired to email) into `run.py` — new module `morning_briefing/onramp.py` renders a "▸ ON-RAMP" section (today's calendar + OKR big rocks parsed from `SCOREBOARD.md`) prepended via `config.toml`'s `[onramp]` block. Calendar fetch uses the `gws` CLI. The calendar scope gap (was 403 `insufficientPermissions`) was **resolved 2026-06-22**: re-authed via `gws auth login --scopes https://www.googleapis.com/auth/calendar.readonly,https://www.googleapis.com/auth/cloud-platform` (union form — preserves the existing `cloud-platform` scope; a bare `--services calendar` would have narrowed and dropped it). gws now has 7 scopes incl. `calendar.readonly`; live `gws calendar events list` on `primary` returns 200/owner. Note: `gws auth login` must run in a real interactive terminal — the Claude `!` in-session shell is non-interactive and can't launch the browser or hold the loopback redirect.
 
-Related: [[feedback-auto-commit-push]] (this repo has no `origin` remote configured, so push isn't applicable here — commit only).
+Related: [[auto-commit-push]] (this repo has no `origin` remote configured, so push isn't applicable here — commit only).

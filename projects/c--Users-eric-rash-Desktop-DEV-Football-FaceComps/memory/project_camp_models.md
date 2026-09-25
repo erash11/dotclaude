@@ -1,5 +1,5 @@
 ---
-name: project_camp_models
+name: camp-models
 description: "2026 Fall Camp candidate macro models (v2) — six builds, two-decision frame, built & pushed 2026-06-08"
 metadata: 
   node_type: memory
@@ -24,7 +24,7 @@ live red = contact, not load); 5-day peak block carries embedded recovery; taper
 **Relabel (key reframe):** the 92-min / 370-min anchors are in-season PREP-PRACTICE load
 (`inseason_duration_2025.csv`), NOT a game. Say "in-season day" (92) / "in-season week" (370). Lead
 the room with the block-vs-in-season-WEEK comparison. Pitch: camp builds up to and past the season's
-daily demand. See [[project_simulator]] for the broader sim/calibration context.
+daily demand. See [[simulator]] for the broader sim/calibration context.
 
 **Build finding worth presenting:** no-back-to-back caps every model's peak ~125-135% (can't stack
 reds); models differ by red count and how early heat starts, not peak height. A 7th red won't fit the

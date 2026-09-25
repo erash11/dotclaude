@@ -1,5 +1,5 @@
 ---
-name: user-personal-constitution
+name: personal-constitution
 description: "Eric's personal values, faith framework, family priorities, and the internal tensions he's working against — read for any personal, leadership, or character-level conversation"
 metadata: 
   node_type: memory
@@ -30,4 +30,4 @@ Follower of Jesus Christ — this is the organizing center, not an add-on. Every
 Not by title, accomplishments, or money. By: loving Jesus visibly, loving Kristina visibly, working hard and explaining why, being consistent rather than perfect.
 
 **Why:** Personal Constitution drafted June 2026 in a structured self-reflection session.  
-**How to apply:** Don't affirm to be encouraging — sharpen and challenge. Faith is not performative; don't treat it like decoration. When he sounds vague or rehearsed, ask the harder question. Link ([[user-career-context]]) for the work layer.
+**How to apply:** Don't affirm to be encouraging — sharpen and challenge. Faith is not performative; don't treat it like decoration. When he sounds vague or rehearsed, ask the harder question. Link ([[career-context]]) for the work layer.

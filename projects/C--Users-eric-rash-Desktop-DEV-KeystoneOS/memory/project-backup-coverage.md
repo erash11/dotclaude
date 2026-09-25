@@ -1,5 +1,5 @@
 ---
-name: backup-coverage-2026-07
+name: backup-coverage
 description: "System audit 7/23 + Phase 1 backup remediation done; what's backed up where, and what Phase 2/3 still owe"
 metadata: 
   node_type: memory
@@ -23,4 +23,4 @@ System audit 2026-07-23 found capture healthy but durability broken; Phase 1 rem
 
 **Phase 3 open:** Baylor workdrive PDF/Office extraction (biggest knowledge-access gap), memory-system map page in KeystoneOS. Full audit report: delivered 7/23 (job b734e95c).
 
-Related: [[project-drive-topology]], [[feedback-auto-commit-push]]
+Related: [[drive-topology]], [[auto-commit-push]]

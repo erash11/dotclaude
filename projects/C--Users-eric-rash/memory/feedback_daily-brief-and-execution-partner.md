@@ -1,5 +1,5 @@
 ---
-name: feedback-daily-brief-and-execution-partner
+name: daily-brief-and-execution-partner
 description: Eric wants Claude used as thought-partner + execution layer, and wants a daily morning on-ramp brief
 metadata:
   type: feedback
@@ -13,6 +13,14 @@ Eric wants to lean on Claude more as both a **thought partner and an execution l
 - When he idea-dumps, don't just discuss — distill into a short, ordered, actionable list and offer to drive execution.
 - Push for outcome clarity early ("what does done look like?") rather than activity.
 - Tie daily work up to weekly big rocks / the Applied Performance OKR cadence (weekly Thursday check-in). The daily brief is the daily tier beneath the weekly OKR check-in.
-- **Daily on-ramp ritual (built 2026-06-03):** run `bash morning-briefings/onramp.sh` — it pulls gws calendar + OKR next-actions + carry-forward (yesterday's unchecked `- [ ]`) into a compact payload, deliberately keeping raw calendar/email JSON OUT of context to save tokens. Then distill "today's must-dos" and prepend the on-ramp (① carry-forward → ② must-dos → ③ week's big rocks) to `morning-briefings/<date>.md`, above the existing Outlook inbox triage.
-- Eric chose "Claude assembles it" (vs a full script) but **explicitly worried about token burn** — so keep it cheap: lean on `onramp.sh` for the deterministic pulls and only add the judgment/distillation layer. Don't re-parse raw JSON in-session.
-- The Outlook inbox triage in `morning-briefings/<date>.md` is produced by a separate `morning-briefing` system; the on-ramp sits on top of it, doesn't replace it.
+- **The on-ramp mechanism is gone.** `morning-briefings/onramp.sh`, the Outlook
+  inbox triage, and the `morning-briefing` system were retired 2026-08-14: the
+  directory was deleted, the launchd job disabled, and Outlook auth destroyed.
+  Do not try to run them. The *preference* above still stands — the daily
+  distillation is now done in-session, not by a script.
+- His original constraint still applies: he chose "Claude assembles it" over a
+  full script but was explicit about token burn. Keep the daily pass cheap and
+  do not re-parse raw calendar/email JSON in-session.
+- The weekly tie-up is the Applied Performance OKR cadence. Use the v3 OKR doc
+  as the source, not the older cadence doc — see the DEV memory
+  `status-report-sourcing`.

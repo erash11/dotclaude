@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-DataBase-GPS-Reporting -->
 # Memory Index
 
 - [User Role and Context](user_role.md) — Eric Rash, sport scientist at Baylor, primary user/developer; Python path quirk on Windows

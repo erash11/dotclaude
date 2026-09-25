@@ -1,5 +1,5 @@
 ---
-name: secondbrain-vault
+name: secondbrain
 description: "SecondBrain Obsidian vault — writing-and-synthesis pipeline. Interview-driven capture, 4-week pilot started 2026-05-20."
 metadata: 
   node_type: memory
@@ -27,4 +27,4 @@ User established a fresh Obsidian vault at `C:\Users\eric_rash\Desktop\SecondBra
 - Capture without pull-through (notes pile up, nothing drafted) → re-tune interview prompts toward stronger essay seeds.
 - Sparse Notes/ → archive this vault; second-brain-via-Obsidian is not the user's move.
 
-Related: [[graphify-obsidian-discipline]]
+Related: [[graphify-obsidian]]

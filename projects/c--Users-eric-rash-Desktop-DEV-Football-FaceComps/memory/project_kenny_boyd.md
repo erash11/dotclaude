@@ -1,5 +1,5 @@
 ---
-name: project-kenny-boyd
+name: kenny-boyd
 description: Kenny Boyd is the decision-maker who can mandate the HPI/RTP framework and is the internal sponsor path for the Databricks data-integration push
 metadata: 
   node_type: memory
@@ -13,4 +13,4 @@ He is **also** the "Kenny + director-level" internal sponsor Eric needs to float
 
 **Why:** As of the 2026-06-05 weekly review, the RTP/HPI blocker was reframed from "who can mandate it?" (now answered) to "how do you move Kenny Boyd?" Both the HPI mandate and Databricks sponsorship route through him.
 
-**How to apply:** Frame the HPI-enforcement ask and the Databricks-sponsorship ask around this single relationship rather than as two unrelated pushes. See [[project-simulator]] for the practice-ops side this connects to.
+**How to apply:** Frame the HPI-enforcement ask and the Databricks-sponsorship ask around this single relationship rather than as two unrelated pushes. See [[simulator]] for the practice-ops side this connects to.

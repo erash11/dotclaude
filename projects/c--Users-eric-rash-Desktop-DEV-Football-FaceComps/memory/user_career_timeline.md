@@ -1,5 +1,5 @@
 ---
-name: user-career-timeline
+name: career-timeline
 description: "Eric set a self-imposed 12-month horizon (from June 2026) to transition out of his current Baylor role; orientation is up-skill, network, build portfolio projects"
 metadata: 
   node_type: memory

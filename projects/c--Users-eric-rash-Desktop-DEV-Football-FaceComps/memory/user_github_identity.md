@@ -1,5 +1,5 @@
 ---
-name: GitHub identity — eric.rash11 lives on erash11 account
+name: github-identity
 description: Eric has two GitHub accounts; eric.rash11@gmail.com is the verified email on erash11 (which owns FaceComps and matches Vercel)
 type: user
 originSessionId: 2780ff32-7bee-4e10-a90c-d6239c3c4e1e

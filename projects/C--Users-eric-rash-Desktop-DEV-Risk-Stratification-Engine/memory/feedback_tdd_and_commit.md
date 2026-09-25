@@ -1,5 +1,5 @@
 ---
-name: TDD and commit discipline
+name: tdd-and-commit
 description: Project requires strict TDD (failing tests before implementation) and targeted commits (no untracked reference files)
 type: feedback
 originSessionId: d2795305-5160-451e-be06-fea0519bbd22

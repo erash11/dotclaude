@@ -1,5 +1,5 @@
 ---
-name: User role and workflow
+name: role
 description: User is a researcher/practitioner building an athlete injury risk pipeline; uses Codex for implementation work and Claude Code for design/architecture sessions
 type: user
 originSessionId: d2795305-5160-451e-be06-fea0519bbd22

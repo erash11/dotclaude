@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from c--Users-eric-rash-Desktop-DEV-Football-FaceComps -->
 # Memory Index
 
 - [Practice Load Simulator — project state](project_simulator.md) — simulator/ app live; auto-deploy on git push works as of 2026-05-08

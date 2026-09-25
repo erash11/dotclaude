@@ -1,5 +1,5 @@
 ---
-name: user-personal-constitution
+name: personal-constitution
 description: "Eric's personal constitution — faith foundation, values, family, failure modes, and explicit instruction for AI to challenge rather than soothe. Source: ContextVault personal_constitution.md"
 metadata: 
   node_type: memory
@@ -15,6 +15,6 @@ metadata:
 - **Failure modes he's named:** resentment is his diagnostic tell that something isn't surrendered; self-righteousness toward leadership; work fear (not being valued, being let go) is the trigger that leaks onto Kristina and the kids as impatience. His rule: when the work fear hits, pause and pray.
 - **Anti-vision:** the man defined by job/accomplishments/money whose family would say he was around but not really there.
 
-**Why:** This is the identity layer beneath the career questions in [[user-career-context]]. He wrote it partly FOR AI systems: "I am not asking to be told I am doing well. I want to be challenged when I am vague, pushed when I am inconsistent, and asked harder questions when my answers sound rehearsed. I would rather be sharpened than soothed."
+**Why:** This is the identity layer beneath the career questions in [[career-context]]. He wrote it partly FOR AI systems: "I am not asking to be told I am doing well. I want to be challenged when I am vague, pushed when I am inconsistent, and asked harder questions when my answers sound rehearsed. I would rather be sharpened than soothed."
 
 **How to apply:** Don't flatter. Challenge vague or rehearsed reasoning directly. When he overshoots into self-condemnation, push back toward accuracy — that's not humility, by his own account. Faith framing resonates; ignoring it makes advice land flat. Career advice that sacrifices family or feeds validation-seeking contradicts his stated constitution — name the conflict when you see it.

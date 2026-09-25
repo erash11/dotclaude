@@ -1,5 +1,5 @@
 ---
-name: reference-catapult-api
+name: catapult-api
 description: "Local complete reference for Catapult Connect (OpenField) v6 API — endpoints, auth, troubleshooting — at DEV\\Catapult_API\\"
 metadata: 
   node_type: memory

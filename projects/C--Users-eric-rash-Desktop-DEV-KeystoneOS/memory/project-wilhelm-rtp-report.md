@@ -1,5 +1,5 @@
 ---
-name: project-wilhelm-rtp-report
+name: wilhelm-rtp-report
 description: Wilhelm RTP one-pager shipped 2026-07-21; Catapult /stats + VALD data gotchas learned building it
 metadata: 
   node_type: memory
@@ -19,4 +19,4 @@ Data gotchas (verified, will recur):
 - v3 report: radar clearance profile (attainment % of target per criterion), Bench Press replaced Power Clean (Perch Power Clean values were carried-forward/stale — bench = 76% NOT MET vs clean's fake 100%), quad LSI 92% from DynaMo knee extension (right limb assumed involved; Jul LSI jump partly from LEFT limb testing lower, flagged to PT).
 - **forceplate.db goes stale** — pull_data now does a live ForceDecks top-up for CMJ tests newer than the DB (found 3: 6/15, 6/22, 6/29 → mRSI flipped 79% NOT MET → 92% MET). API gotchas: trial `RSI-modified` is ×100 vs the DB scale; asymmetry = metric `Eccentric Braking Impulse` with `limb='Asym'` (validated to match DB −3.7 on the 6/08 test); tests endpoint = `GET {region}/tests?TenantId&ModifiedFromUtc` paged by last `modifiedDateUtc` until 204.
 
-Related: [[project-speedprofiling-data-gotchas]]
+Related: [[speedprofiling-data-gotchas]]

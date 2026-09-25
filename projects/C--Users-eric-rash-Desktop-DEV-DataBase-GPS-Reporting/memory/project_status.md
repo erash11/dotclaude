@@ -1,5 +1,5 @@
 ---
-name: Project Status
+name: status
 description: Current state of the GPS reporting pipeline as of 2026-03-16
 type: project
 ---

@@ -1,11 +1,11 @@
 ---
-name: project-athlete-data-governance
+name: athlete-data-governance
 description: Baylor Athletics athlete-data governance + AI/vendor-risk/compliance framework (external firm engagement, Anthony/Jonathan)
 metadata:
   type: project
 ---
 
-Baylor Athletics **athlete-data governance** initiative — building a governance/compliance framework for athlete data + AI/vendor risk. The gating layer for adopting new tools (ties to [[project-ai-integration-initiative]]).
+Baylor Athletics **athlete-data governance** initiative — building a governance/compliance framework for athlete data + AI/vendor risk. The gating layer for adopting new tools (ties to [[ai-integration-initiative]]).
 
 **Source:** `Athlete_Data_Legal_Discussion` (2026-05-26) with an external advisory firm.
 

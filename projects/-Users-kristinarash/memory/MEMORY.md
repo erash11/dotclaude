@@ -14,3 +14,6 @@
 - [Athlete Data Governance](project_athlete-data-governance.md) — governance + AI/vendor-risk/compliance framework, external firm engagement (Anthony/Jonathan); OKR Q1 gate item
 - [Zotero CLI Project](project_zotero_cli.md) — Go CLI at ~/printing-press/library/zotero-research-library; Web API v3 only; mirrors catapult conventions
 - [Sport Science Symposium 2026](reference_sportsci-symposium-2026.md) — 8 talks recorded 5/30; mineable themes + speakers for essays and OKR R&D
+- [User Context](user_context.md) — Sport scientist at Baylor Football; Python/R/Windows; prefers local pipelines; direct working style
+- [Memsearch Setup](project_memsearch_setup.md) — Cross-project semantic recall via memsearch + Milvus in Docker; ONNX bge-m3; has a fragile flush patch that must be re-applied after pip upgrades
+- [Python Environment](project-python-environment.md) — Python 3.14.6 via Install Manager (never WinGet); legacy C:\Python314 purged; ai-check.ps1 audits/repairs AI SDKs after patch updates

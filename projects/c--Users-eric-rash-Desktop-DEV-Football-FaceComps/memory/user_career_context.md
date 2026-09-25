@@ -1,5 +1,5 @@
 ---
-name: user-career-context
+name: career-context
 description: "Eric's full career profile — Director of Applied Performance at Baylor, role/constraint map, strengths, ambition (analytics-forward player-coach role near Iowa). Source: ContextVault Career-Context-Document.md"
 metadata: 
   node_type: memory
@@ -15,8 +15,8 @@ metadata:
 - **The crux:** the "they don't do much" perception is an output problem. Highest-leverage move = shipping visible proof (dashboards, Performance Academy/School education content, newsletter, decks) tied to OKRs — buildable solo with AI, no permission needed.
 - **Ambition:** analytics-driven "player-coach with the wheel" — decision-maker who stays hands-on. Dream geography: Iowa (family + network there; U of Iowa ideal but no role exists). Comp floor low/mid-$90Ks. Gating constraints: foundational data-analytics craft beyond AI-assisted output, and network. Treat both as urgent.
 - **Energy:** building/creating, analysis, insight-mining, training sessions, athletes. Drained by circular Groundhog-Day meetings.
-- **Deep motivator:** to matter — high-credibility voice others seek out; servant leadership. Known tension between service and being seen (see [[user-personal-constitution]]).
+- **Deep motivator:** to matter — high-credibility voice others seek out; servant leadership. Known tension between service and being seen (see [[personal-constitution]]).
 
 **Why:** Grounds all career, prioritization, and work-problem advice in his actual constraints rather than generic best practice.
 
-**How to apply:** Advice assuming he can mandate adoption will fail — realistic levers are visible output he controls and coalition-building. He asks to be challenged, not affirmed; push on vague reasoning. Links: [[user-career-timeline]] (12-month clock), [[project-kenny-boyd]].
+**How to apply:** Advice assuming he can mandate adoption will fail — realistic levers are visible output he controls and coalition-building. He asks to be challenged, not affirmed; push on vague reasoning. Links: [[career-timeline]] (12-month clock), [[kenny-boyd]].

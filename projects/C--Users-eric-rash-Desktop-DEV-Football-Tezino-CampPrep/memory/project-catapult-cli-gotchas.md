@@ -1,5 +1,5 @@
 ---
-name: project-catapult-cli-gotchas
+name: catapult-cli-gotchas
 description: "Verified gotchas for catapult-openfield-connect-pp-cli statistics queries and Baylor's OpenField parameter catalog"
 metadata: 
   node_type: memory

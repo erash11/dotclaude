@@ -1,5 +1,5 @@
 ---
-name: FaceComps repo is not an Obsidian vault
+name: no-obsidian-in-repo
 description: User decided May 2026 to remove all Obsidian config and notes from the FaceComps repo; don't reintroduce
 type: feedback
 originSessionId: 2780ff32-7bee-4e10-a90c-d6239c3c4e1e

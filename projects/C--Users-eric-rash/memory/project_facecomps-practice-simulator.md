@@ -1,11 +1,11 @@
 ---
-name: project-facecomps-practice-simulator
+name: facecomps-practice-simulator
 description: FaceComps repo (Baylor Football Practice Load) + the practice load simulator Next.js app — Eric's "face comps" and "practice simulator" are this one project
 metadata:
   type: project
 ---
 
-**FaceComps** = Eric's repo `C:\Users\eric_rash\Desktop\DEV\Football\FaceComps` ("Baylor Football Practice Load"). His shorthand **"face comps"** = this folder; **"practice simulator project"** = the `simulator/` app inside it. Same effort — it's the *implementation* of the practice-load decisions from the meetings (see [[project-practice-load-framework]]). "Faces" = practice-script Excel files (periods + load) in `SourceFaces/`.
+**FaceComps** = Eric's repo `C:\Users\eric_rash\Desktop\DEV\Football\FaceComps` ("Baylor Football Practice Load"). His shorthand **"face comps"** = this folder; **"practice simulator project"** = the `simulator/` app inside it. Same effort — it's the *implementation* of the practice-load decisions from the meetings (see [[practice-load-framework]]). "Faces" = practice-script Excel files (periods + load) in `SourceFaces/`.
 
 **Layout:**
 - `simulator/` — **production Next.js app, deployed https://baylor-load-sim.vercel.app** (live tool coaches use). Classifies periods by **PlayerLoad (PL/player) → GREEN/YELLOW/RED**. Domains: `'2026 Spring'`, `'2026 Fall Camp'` (18 DEF faces seeded to prod). Data model (`simulator/lib/types.ts`): `Practice` (season, date, dress, tempo, emphasis, duration) + `Period` (minutes, pl_team_projected/actual). Stack: Next.js + Vercel + db/lib, vitest tests.

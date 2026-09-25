@@ -1,3 +1,5 @@
+
+<!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-Football-Tezino-CampPrep -->
 # Memory Index — Tezino_CampPrep
 
 - [Catapult CLI gotchas](project-catapult-cli-gotchas.md) — JSON flags, ignored date filter, pl_med_(avg) slug fossil, PL band math, Tezino athlete ID

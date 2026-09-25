@@ -1,5 +1,5 @@
 ---
-name: project-appperformance-utilization-brief
+name: appperformance-utilization-brief
 description: "Per-sport Applied Performance (AppPerformance) team utilization brief — what it is, where it lives, what grounds it"
 metadata: 
   node_type: memory
@@ -13,4 +13,4 @@ Grounded in the AppPerformance capability menu extracted from the `knowledge/bay
 
 Covers 17 distinct programs across 15 table rows (two rows bundle XC + Track & Field for M/W) — fixed 2026-06-17, the brief previously mis-stated this as 16. Baylor sponsors 17 NCAA varsity teams (corrected 2026-06-18 — Eric confirmed 17, not 18; beach volleyball is not a Baylor sport), so the brief now has full roster coverage. The earlier "18th sport" open item is resolved/moot.
 
-**Discovery note:** the file sits at the DEV root, which the KeystoneOS workspace inventory does NOT auto-discover (only the SecondBrain Projects discovery root sets `includeFiles: true`). This memory is therefore the durable, memsearch-recallable record of the artifact. Related: [[project-drive-topology]].
+**Discovery note:** the file sits at the DEV root, which the KeystoneOS workspace inventory does NOT auto-discover (only the SecondBrain Projects discovery root sets `includeFiles: true`). This memory is therefore the durable, memsearch-recallable record of the artifact. Related: [[drive-topology]].

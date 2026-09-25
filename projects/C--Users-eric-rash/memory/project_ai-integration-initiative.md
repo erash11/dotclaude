@@ -1,5 +1,5 @@
 ---
-name: project-ai-integration-initiative
+name: ai-integration-initiative
 description: Baylor Athletics AI adoption + data-platform initiative — Claude AI workflow automation (Hoff/Soto) and Databricks/Player360 evaluation
 metadata:
   type: project
@@ -20,4 +20,4 @@ Baylor Athletics **AI integration initiative** — two parallel threads Eric is 
 - Pricing: consumption-based (cost-control emphasized).
 - Next steps: Eric to quietly gauge internal colleague interest before going broad; Databricks to send customer stories/slides + run a **mid-June virtual PD session** for staff; discovery/workshop with department heads to prioritize POC use cases; follow-up virtual meeting ~Wed 3–4pm.
 
-Related: [[project-athlete-data-governance]] (vendor/AI risk + compliance gating these tools), [[project-practice-load-framework]].
+Related: [[athlete-data-governance]] (vendor/AI risk + compliance gating these tools), [[practice-load-framework]].

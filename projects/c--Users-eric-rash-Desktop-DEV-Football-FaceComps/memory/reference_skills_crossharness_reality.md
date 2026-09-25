@@ -1,5 +1,5 @@
 ---
-name: reference_skills_crossharness_reality
+name: skills-crossharness-reality
 description: "Real on-disk state of the npx-skills cross-harness setup on this Windows machine, and the destructive local-add bug"
 metadata: 
   node_type: memory
@@ -7,7 +7,7 @@ metadata:
   originSessionId: 6e10e025-b387-4133-94c5-2614f91feecd
 ---
 
-Verified 2026-06-09 on this Windows 11 machine. Corrects/expands [[reference_skill_manager]].
+Verified 2026-06-09 on this Windows 11 machine. Corrects/expands [[skill-manager]].
 
 **On-disk reality (not what the lock file implies):**
 - Source-of-truth pool: `~/.agents/skills/` (21 skills, all from GitHub repos via `npx skills add`). Manifest: `~/.agents/.skill-lock.json` (v3; per-skill source/sourceUrl/skillPath/skillFolderHash).

@@ -1,5 +1,5 @@
 ---
-name: project-rtp-presentation
+name: rtp-presentation
 description: "RTP joint Baylor talk (Eric + Jeremy) — bookend delivery (Eric opens, Jeremy middle, Eric closes), Marp/Swiss-Modern conversion; dry run 2026-06-25, post-dry-run feedback task list pending, talk ~mid-July 2026"
 metadata: 
   node_type: memory
@@ -41,4 +41,4 @@ High-school-audience field-test alternatives added to slides 6 & 9 (jump mat, ph
 
 **Tooling gotchas:** render/export via `npx @marp-team/marp-cli` — **requires `--no-stdin`** (else it hangs waiting on stdin); use singular `--theme <css>` (the `--theme-set` array flag greedily swallows the input file); set `CHROME_PATH` to system Chrome for PDF/PPTX.
 
-**Timeline:** dry run **2026-06-25** (done — feedback captured in the task list above); actual talk ~early-to-mid **July 2026**. Eric will return in a later session to work the three task-list items. See also [[project-appperformance-utilization-brief]] (same Applied Performance context).
+**Timeline:** dry run **2026-06-25** (done — feedback captured in the task list above); actual talk ~early-to-mid **July 2026**. Eric will return in a later session to work the three task-list items. See also [[appperformance-utilization-brief]] (same Applied Performance context).
