@@ -1,6 +1,6 @@
 ---
 name: rtp-cla-course
-description: "RTP Constraints-Led course — book ingest complete with zero-offset PDF; lesson 0002 is next"
+description: "RTP Constraints-Led course — lessons 0001-0002 built, Joe gets an offline Drive package; lesson 0003 waits on his field notes"
 metadata: 
   node_type: memory
   type: project
@@ -29,7 +29,7 @@ Authors. Eric chose not to scan them because they add no course material.
 **Also open:**
 - Import `sources/myszka-references-new.ris` (122 records) into Zotero via
   File → Import.
-- Write lesson 0002.
+- Lessons 0001-0002 built (2026-09-25). Joe's package: Drive 07_EDUCATION/RTP Course - Joe Smith, rebuilt by scripts/export_for_joe.py. Lesson 0003 waits on his field notes. Current state lives in the repo's docs/STATUS.md.
 
 Before any further expensive atomization here, apply the arithmetic gate in
 [[ingest-review-gate]].
