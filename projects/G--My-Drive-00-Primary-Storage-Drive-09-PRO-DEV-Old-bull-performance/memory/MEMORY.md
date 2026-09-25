@@ -1,1 +1,1 @@
-- [No Kitman vs MyLink decision](project_no-kitman-mylink-decision.md) — error; vendor is Myelin, not pursued; Kitman stays
+- [No Kitman vs Myelin decision](project_no-kitman-myelin-decision.md) — error; vendor is Myelin, not pursued; Kitman stays
