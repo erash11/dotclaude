@@ -1,0 +1,112 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Similar to the Oldbull  and the RTP on-field course, review the material at this file location: G:\My Drive\00_Primary_Storage_Drive\09_PRO_DEV\SCN...
+
+## Files Modified
+memory, Review and Plan - On-Field RTP course.md, byrwj6iwa.txt, _book.md, 16 - BONUS Content - Run Specific Isometrics - summary.md, 01 - Sprint Biomechanics Introduction - checked transcript.md, 02 - History Lesson - checked transcript.md, Sprint Biomechanics - checked transcript.md, 04 - Joints and Muscles of Sprinting - checked transcript.md, 13 - BONUS Content - Live Teaching 1 - checked transcript.md, 05 - Coaching Eye - checked transcript.md, 08 - Transfer of Training - checked transcript.md, 16 - BONUS Content - Run Specific Isometrics - checked transcript.md, 09 - Correctives - checked transcript.md, 06 - Assess - checked transcript.md, case-study--rodgers-play-griffen-rhodes.md, 10 - Motor Control and Learning - checked transcript.md, 07 - Injuries and Profiling - checked transcript.md, 11 - Results - checked transcript.md, 12 - Technique Analysis - checked transcript.md, 15 - BONUS Content - Live Teaching 3 - checked transcript.md, 14 - BONUS Content - Live Teaching 2 - checked transcript.md, library, SecondBrain, DEV, principle--repetition-without-repetition.md, Desktop, principle--degeneracy-precedes-dexterity.md, heuristic--how-to-watch-film.md, framework--sprint-coaching-eye-local-and-global-views.md, claim--thigh-angular-velocity-and-sprint-speed.md, claim--ankle-plantar-flexors-as-main-sprint-driver.md, claim--hip-flexor-fatigue-degrades-sprint-mechanics.md, principle--isometric-overload-for-upright-running.md, principle--sprint-transfer-motor-ability-vs-motor-skill.md, framework--sprint-exercise-classes-bondarchuk-four-categories.md, principle--coach-sprint-actions-not-positions.md, framework--sprint-fault-observation-checklist.md, heuristic--film-several-sprints-before-judging-mechanics.md, heuristic--match-sprint-fault-to-rom-check-before-intervening.md, framework--isometric-training-variables-and-adaptations.md, framework--isometric-set-positions-ankle-knee-hip.md, heuristic--sprint-problem-solving-loop.md, principle--know-a-sprint-drills-origin-before-copying-it.md, claim--rtp-should-examine-the-movement-pattern-at-injury.md, principle--judge-a-sprint-method-by-the-population-it-was-built-on.md, framework--isometric-push-hold-switch-catch-continuum.md, principle--unify-general-and-special-means-sprint.md, claim--exercise-selection-over-intensity-volume-sprint.md, claim--narrow-quarter-squat-transfers-to-sprint.md, framework--soviet-lineage-of-sprint-training-ideas.md, framework--essential-vs-nonessential-variables-in-sprint-observation.md, claim--sprint-arm-action-is-secondary.md, claim--heel-striking-flags-non-contact-running-injury.md, principle--watch-them-run-in-sprint-return-to-play.md, claim--long-swing-lever-and-heel-strike-hamstring-hypothesis.md, framework--wild-four-sprint-acceleration-profiles.md, claim--acceleration-profile-predicts-injury-site.md, heuristic--derive-isometric-loads-from-the-push-test.md, heuristic--isometric-pushes-and-holds-are-destinations.md, heuristic--accentuation-band-setup-knee-drive-pawback-sprint.md, claim--wearable-resistance-kinetic-energy-sprint.md, principle--sprint-muscles-work-as-dimmers-not-switches.md, heuristic--emg-timing-shortlists-exercises-it-does-not-prove-transfer.md, framework--eccentric-to-isometric-periodization-team-sport.md, case-study--nfl-running-back-long-lever-wearable-resistance-sprint.md, heuristic--passive-vs-active-rom-decision-rule-sprint.md, framework--sprint-joint-actions-by-phase.md, claim--hamstrings-not-purely-isometric-in-late-swing.md, heuristic--pair-isometric-variant-with-running-emphasis.md, case-study--isometric-sprinter-and-hurdler.md, principle--pair-sprint-change-with-video-and-a-time.md, heuristic--low-sprint-reactivity-score-check-foot-placement.md, case-study--six-week-sprint-before-after-cases.md, case-study--sprint-swing-lever-angle-66-to-45.md, framework--sprint-technique-analysis-as-qualitative-sequence.md, claim--unilateral-isometric-exposes-hidden-asymmetry.md, claim--no-knee-extension-at-sprint-toe-off.md, heuristic--sprint-video-setup-stationary-camera.md, framework--sprint-rom-screen-thomas-hamstring-dorsiflexion.md, heuristic--pails-rails-close-active-passive-gap-sprint.md, fundamentals-of-sprinting--moyer, framework--sprint-correctives-menu-by-quality.md, heuristic--sprint-cue-selection-test-outcome-and-feel.md, principle--motor-control-theory-pluralism-sprint.md, heuristic--old-way-new-way-heel-strike-sprint.md, framework--isolate-integrate-improvise-sprint-technique.md, heuristic--check-retention-not-cue-delivery-sprint.md, _domain.md, strength-and-conditioning.md, Review and Plan - Fundamentals of Sprinting course.md, validate_entries.py, project_scn-sprint-course.md, MEMORY.md, RESOURCES.md, course.css, sprint-film-check.html, p1.png, p2.png, STATUS.md, 2026-09-26-sprint-film-check.md
+
+## Unresolved Errors
+- {"stdout":"framework--sprint-fault-observation-checklist.md:47:**Example** — Summer testing: each player's flying 10 is filmed side-on at 240 fps p...
+- {"stdout":"=== heuristic--derive-isometric-loads-from-the-push-test\n---\n\n# Derive Every Isometric Load from the Push Test\n\n**What it is** — Te...
+- {"stdout":"=== principle--isometric-overload-for-upright-running\n# Run-Specific Isometrics: Overloading What Upright Running Actually Demands\n**W...
+- {"stdout":"# BONUS Content - Run Specific Isometrics — checked transcript\r\n\r\n- Course: Fundamentals of Sprinting | A Complete Biomechanics Cour...
+- {"stdout":"=== framework--sprint-rom-screen-thomas-hamstring-dorsiflexion\nbook: fundamentals-of-sprinting--moyer\n# Moyer's Sprint ROM Screen: How...
+- {"stdout":"=== claim--thigh-angular-velocity-and-sprint-speed\n# Faster Sprinters Swing the Thigh Faster (\"Whip From the Hip\")\n**What it is** — ...
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, tool-results/byrwj6iwa.txt, tmp/p1.png, tmp/p2.png
+
+## Subagent Tasks
+- [completed] You are atomizing part of a paid sprint-coaching video course into a personal knowledge library (an Obsid...
+- [completed] You are atomizing part of a paid sprint-coaching video course into a personal knowledge library (an Obsid...
+- [completed] You are atomizing one lesson of a paid sprint-coaching video course into a personal knowledge library (an...
+- [completed] You are atomizing part of a paid sprint-coaching video course into a personal knowledge library (an Obsid...
+- [completed] You are an independent adversarial reviewer. Your job is to FALSIFY, not confirm. Four other agents just ...
+
+## Skills Used
+ingest-book, memory-write
+
+## Environment
+cwd: /c/Users/eric_rash/Desktop/SecondBrain/Knowledge/library
+model:claude-opus-5-5[1m]
+entered worktree: unnamed
+
+## Data References
+- interrupted:false stderrBytes:0
+- <agent-message from="ab0ed349b62c2a572">
+[Subagent hand-back] The text below is the final report of a subagent this session delegated to. It is mod… (9084 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- type:image
+- type:image
+- type:image
+- type:image
+- … 45 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

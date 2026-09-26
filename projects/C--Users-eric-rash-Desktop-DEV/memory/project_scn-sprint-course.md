@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: afe0ff48-dfa7-46d6-8732-fabc387127ee
-  modified: 2026-09-25T21:59:17.765Z
+  modified: 2026-09-26T22:05:13.438Z
 ---
 
 **Ingested 2026-09-25.** Strength Coach Network, *Fundamentals of Sprinting* (Jeff Moyer;
@@ -19,10 +19,11 @@ lesson 16 is a guest talk by Alex Natera on run-specific isometrics).
 - **Role in the RTP stack:** the technique/capacity layer. Harries (On-Field RTP) = dosage,
   Myszka/Gray = task complexity, Moyer/Natera = *how* he runs and which physical limit explains it.
   See [[rtp-cla-course]].
-- **Recommended first piece:** a one-page "Sprint Film Check" for return-to-run sessions
-  (user: Joe). Pairs Moyer's contact-first checklist with Bramah 2024 S-MAS (Zotero `HIZLWBSU`).
-- **Open decisions (Eric's):** build the film check now or after the ship queue; add Moyer/Natera to
-  `RTP_Constraints_Course/RESOURCES.md`; start Natera push-test norms on ForceDecks.
+- **Sprint Film Check built 2026-09-26.** `RTP_Constraints_Course/reference/sprint-film-check.html`
+  (PR #6), with a print PDF in the course folder. S-MAS (Bramah 2024, Zotero `HIZLWBSU`) for the
+  score, Moyer's words for the talk. Next: Jacob and Tim review it, then re-run Joe's export.
+  Moyer and Bramah were added to that repo's `RESOURCES.md` in the same PR.
+- **Natera push-test norms:** deferred to January winter testing (WR/DB); not in season.
 
 **Traps.** Moyer's injury and transfer claims (heel strike or long lever → hamstring,
 wearable resistance, narrow squats) are untested, and he has a LILA/Dashr conflict of interest.
