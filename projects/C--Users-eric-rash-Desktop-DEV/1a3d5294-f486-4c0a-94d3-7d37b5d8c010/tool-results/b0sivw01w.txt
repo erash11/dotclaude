@@ -1,0 +1,470 @@
+# Atomization brief (shared by every Flint ingest agent)
+
+Read this whole file before writing anything. It holds the rules the Harries review taught (2026-09-26: 25 of 35 files needed fixes). The review gate will check every rule here.
+
+## Schema
+
+Follow `C:\Users\eric_rash\.claude\skills\ingest-book\SKILL.md` exactly: `_domain.md`, `_book.md` (map and resume checkpoint, updated after EACH chapter or unit), and entries named `<kind>--<kebab-slug>.md` with kind one of principle, framework, case-study, heuristic, claim. Use the frontmatter keys exactly as the skill gives them. The body has **What it is** / **Why it works** / **When to apply** / **When NOT to apply** (mandatory, non-trivial) / **Example** / **Related**.
+
+Style reference, read before writing: `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library\strength-and-conditioning\fundamentals-of-sprinting--moyer\case-study--isometric-sprinter-and-hurdler.md`, plus one principle file in the same folder.
+
+## Voices: label every one
+
+- **The source author's statements are plain text.**
+- **Eric's views** (from `docs/method-baseline.md` or his reviews) are prefixed "Eric's baseline:" or "Eric's review:".
+- **Your own reasoning, application or synthesis** is prefixed "Inference:".
+- **Nothing unlabeled that the author did not say.** The most common failures: a judgment from Eric's review written as if the author said it; a mechanism the author never gave presented as "why it works" (write "The author gives no mechanism. Inference: ..."); an invented example.
+
+## Lessons from the Supertraining Chapter 1 review (2026-09-26: 30 FIX, 1 NO-GO of 41)
+
+- **Keep the source's internal contradictions.** When a book says X on one page and not-X on another, record both with their pages and set `contested`. Never pick one side silently. The NO-GO entry reversed the book's SJ-CMJ strength-deficit rule because the book states it both ways.
+- **Name the right voice.** In co-authored books, write "the authors" unless a passage clearly belongs to one author. A passage that names Verkhoshansky in the third person is Siff writing.
+- **Keep `proven` rare and scoped.** Scope it to the replicated core (for example, "Hill's force-velocity curve"), never the whole entry, and mark any disputed sentence inside it. Four of eight `proven` ratings were lowered.
+- **No mechanism the source does not give.** About a dozen "Why it works" sections supplied physiology the book never states. Label it "Inference:" or leave it out.
+- **Do not add "well established" or "modern research shows" without a citation.** Name the paper, or delete the phrase.
+
+## Evidence
+
+- Every number, definition and quote carries a checkable locator: PDF page (and printed page if it differs), or file plus timestamp. Never write "confirmed in PDF" unless you opened that page.
+- Never invent a number. Keep ambiguity visible: mark unclear audio or OCR as unclear, and do not harmonize two conflicting numbers from the source; record both with their locators.
+- OCR sources (`staging/ocr/*.md`): pages listed as low_confidence in the header must be checked against the page image before any number from them is cited. Use the Read tool on the PDF page, or render it.
+
+## Confidence
+
+- Practitioner courses and lectures: ceiling `supported`.
+- Books: `proven` only for established, widely replicated physiology or mechanics. Soviet-era or single-lab empirical findings and training prescriptions: `supported` at most. `untested` for single cases and anecdotes. `contested` where another library source or modern evidence disagrees (say which).
+
+## Dedup and converge
+
+Before each entry, grep `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library` and the staging library (`C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\staging\library`) for the concept. If it is covered, add a new entry only for a genuinely new angle, and link the existing one in Related. List reciprocal-link suggestions in your final report. Never edit files in the vault or another agent's staging folder.
+
+## Baylor context
+
+Read `C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\docs\method-baseline.md` (approved). Use it in When to apply, labelled "Eric's baseline:". Department names: Athletic Performance, Athletic Medicine, Applied Performance. Plain style, no em dashes. Use commas, colons and parentheses.
+
+## Scope and output
+
+- Write ONLY into your assigned staging folder. No git, no vault edits.
+- Stop at a chapter or unit boundary. It is better to finish fewer chapters well; the `_book.md` checkpoint lets the next batch resume.
+- Final reply: entries by kind and by confidence; chapters or units done and pending with page ranges; reciprocal-link suggestions; unclear or contradictory spots in the source; anything you could not read.
+=====
+######## _book.md
+---
+type: book-index
+book: block-periodization--issurin
+title: "Block Periodization: Breakthrough in Sport Training"
+author: Vladimir Issurin (ed. Michael Yessis)
+domain: strength-and-conditioning
+ingest-tier: full-text
+source: "G:\\My Drive\\Athletic Performance & Sports Science\\Shared Reference Library\\From Landon Evans\\Eric Files\\Physical Preparation\\Books\\Block Periodization - Issurin.pdf; md5 5503b473eb63477f6a7db57ded5727bb"
+created: 2026-09-26
+---
+
+# Block Periodization: Breakthrough in Sport Training (Issurin, 2008) — ingest map
+
+PDF is real text: 221 pages, `extract_pdf.py --probe`: `{"pages": 221, "text_pages": 221,
+"scanned": false}`. Publisher: Ultimate Athlete Concepts, 2008.
+
+**Print-to-PDF page offset = +11** (PDF page = printed page + 11). Verified at five
+independent chapter starts, not just the offset's origin point: Ch1 (printed 1 = PDF 12,
+"Block periodization vs. traditional theory"), Ch2 (printed 36 = PDF 47, "The Workout:
+general concepts and structure guidelines"), Ch3 (printed 76 = PDF 87, "Microcycles,
+mesocycles and training stages"), Ch4 (printed 125 = PDF 136, "Long-term preparation"),
+Ch5 (printed 160 = PDF 171, "Altitude training"). Glossary starts printed 202 = PDF 213.
+The offset holds unchanged front matter through at least PDF 213 of 221; no evidence of a
+mid-book repagination.
+
+**Note on the extractor's `--pages A-B` flag:** the upper bound is exclusive (returns pages
+A..B-1). Two pages were missed on the first pass of Chapter 1 (PDF 25 and 44) and recovered
+with a follow-up call before atomizing; watch for this on later chapters.
+
+**Confidence rule for this book:** `proven` is reserved for physiology/mechanics established
+independent of this text (e.g. CNS fatigue and motor-unit recruitment order, connective
+tissue/warm-up basics already `proven` elsewhere in this library). Issurin's own periodization
+theory, block-sequencing prescriptions, and the numeric tables he or his co-authors derived
+(residual-effect durations, key-exercise interval tables, the ≤3-modality/65-70% workout rule)
+are capped at `supported`: they are a single author's synthesis of Soviet/Israeli
+sport-science practice and secondary citations, not independently replicated in this ingest.
+Single-case coaching anecdotes (Bondarchuk's podium sweep, the author's own 1985 canoe-kayak
+program, the Gal Friedman example) are `untested`. `contested` is set where this text
+conflicts with a claim already in this library, named explicitly both ways. Issurin's own
+later peer-reviewed review — "Benefits and Limitations of Block Periodized Training
+Approaches to Athletes' Preparation" (Issurin, 2016, *Sports Medicine*, Zotero item
+`PT9QTQ2I`) — is in the user's Zotero library but full text is not yet cached for this
+ingest; entries below flag where that review would likely qualify a 2008 claim, without
+citing content from it that hasn't been read.
+
+| # | Chapter | Printed pp | PDF idx | Status | Entries |
+|---|---------|-----------|---------|--------|---------|
+| 1 | Block Periodization vs. traditional theory | 1-35 | 12-46 | done | 8 |
+| 2 | The Workout: general concepts and structure guidelines | 36-73 | 47-84 | done | 8 |
+| 3 | Microcycles, mesocycles and training stages | 76-124 | 87-135 | pending | 0 |
+| 4 | Long-term preparation | 125-159 | 136-170 | pending | 0 |
+| 5 | Altitude training | 160-201 | 171-212 | pending | 0 |
+| — | Glossary / About the author | 202-end | 213-221 | skip | n/a (reference matter, not atomized) |
+
+**Chapter 1 section map** (for locator precision): 1.1 Traditional theory (printed 1-20,
+PDF 12-31); 1.2 The Block Periodization Concept (printed 20-31, PDF 31-42, contains the
+accumulation/transmutation/realization taxonomy and Table 1.6 residual-effect durations);
+1.3 Consequences of the modern approach (printed 31-33, PDF 42-44); Summary (printed 32-33,
+PDF 43-44); References (printed 34-35, PDF 45-46, not atomized).
+
+**Chapter 2 section map**: 2.1 Workout classifications (printed 36-45, PDF 47-56); 2.2
+Workout structure — warm-up/main/cool-down (printed 46-59, PDF 57-70); 2.3 Guidelines for
+constructing a workout — sequencing, compatibility, daily series (printed 60-69, PDF 71-80);
+2.4 How to structure a workout / Summary (printed 69-72, PDF 80-83); References (printed 73,
+PDF 84, not atomized).
+
+_Batch 1 (this session): built the chapter map and atomized Chapters 1-2, per the ingest
+review gate's two-stage process — stopping cleanly at the Chapter 2/3 boundary so the
+Codex falsification review (`staging/review_block-periodization-issurin_codex.md`) can run
+on a complete, self-contained unit before Chapter 3 begins._
+
+_Batch 2 (recommended next): Chapter 3 alone (PDF 87-135, printed 76-124, ~49 printed pages).
+This is the chapter the strength-and-conditioning miss-log gap ("peaking phase structure for
+collegiate football") most needs — it covers microcycle types (3.1, including the
+pre-competitive/tuning microcycle at 3.1.6), the accumulation/transmutation/realization
+mesocycles in full prescriptive detail (3.2, only introduced at a conceptual level in Ch1),
+and "how to prolong the residual training effects" (3.3.2) directly. Recommend NOT combining
+with Chapter 4 in the same batch — Ch3 alone is already comparable in density to Ch1+Ch2
+combined (Table-heavy, multiple sub-mesocycle types per microcycle category)._
+
+_Batch 3 (after Ch3): Chapter 4, Long-term preparation (PDF 136-170, printed 125-159) — annual
+and quadrennial cycles, long-term athlete development, sensitive periods, talent
+identification. Directly relevant to Baylor's multi-year athlete development question._
+
+_Batch 4 (lowest priority for football): Chapter 5, Altitude training (PDF 171-212, printed
+160-201). Recommend framework-only treatment (5-15 entries, confidence capped at `untested`)
+or skipping entirely unless Eric names a specific altitude-camp use case — Baylor football
+does not train at altitude as a standard practice per anything in `method-baseline.md`._
+######## principle--concentration-of-training-workloads.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "1.2.2"
+topic: workload concentration principle
+category: [periodization, programming, exercise-selection]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Concentration of Training Workloads Is the Cornerstone Principle of Block Periodization
+
+**What it is** — Issurin states the Block Periodization Concept (BPC) rests on one
+foundational principle, concentration of training workloads, from which two others follow:
+(1) a minimal number of targeted abilities per block, because highly concentrated loads
+"only provide sufficient training stimuli to improve the targeted ability," and (2)
+consecutive (not simultaneous) development of abilities, because "the number of decisive
+abilities exceeds the number of abilities that can be developed simultaneously" (PDF p. 37,
+printed p. 26, Figure 1.7). The rationale is laid out as a table of contradictions in the
+traditional, simultaneous-development model for high-level athletes (Table 1.4, PDF p. 20,
+printed p. 9): concurrent workloads compete for limited energy supply, differing
+physiological-system restoration times leave athletes under-recovered for all targets at
+once, workloads interact negatively (energy deficits, technical complexity, neuromuscular
+fatigue), mental concentration cannot be split across many targets, and the training
+stimulus needed for a high-level athlete's progress cannot be reached when it is divided
+among many abilities.
+
+**Why it works** — Issurin's own explanation is that above a threshold of athletic level,
+a quality only responds to a training stimulus concentrated enough to exceed that
+threshold; splitting the same total training time across many qualities keeps each one's
+stimulus below that threshold. He does not give a quantitative mechanism for where that
+threshold sits or how "concentrated enough" is defined for a given ability or athlete — the
+principle is argued from coaches' and scientists' collective experience (Table 1.4) rather
+than derived from a stated dose-response model.
+
+**When to apply** — Designing training blocks for advanced, high-level athletes juggling
+more qualities than can be trained well at once (the explicit target population, per
+Issurin). **Eric's baseline:** this converges with the department's own compatibility rule,
+"you can't ride two horses with one saddle" — incompatible qualities are not both trained at
+full intensity in the same block (`method-baseline.md`, "Periodization and programming,"
+citing `01192022-hp5355-class1-transcript.md` pp.28-29). It also converges with
+[[periodization--bompa/principle--concentrated-loading-overreaching]], which independently
+describes concentrated, saturated loading on one quality with a delayed 4-12 week rebound.
+
+**When NOT to apply — mandatory** — Issurin's own text (PDF p. 44, printed p. 33) states the
+traditional, complex (simultaneous multi-ability) model "has visible benefits for the
+preparation of low- and mid-level athletes": it is "more diversified, attractive and
+lively," and medium-level concentration is "sufficient stimulation" at that level — the
+concentration principle is explicitly scoped to high-performance athletes, not a universal
+programming rule. **Contested:** Issurin's blanket claim elsewhere in the same chapter that
+the traditional model "does not work well for high-performance athletes" (PDF p. 19,
+printed p. 8) is disputed by this library's own Bompa & Haff 5th-edition material
+(`periodization--bompa`), which is a current (not 1984-vintage) textbook still teaching and
+defending a form of the traditional/complex periodization model for high-level athletes.
+Issurin's critique in this chapter names Bompa's *1984* edition specifically (PDF p. 13,
+printed p. 2) as one of the texts that propagated the traditional model he is arguing
+against — it is not a critique of the Bompa & Haff 5th edition already in this library,
+which incorporates concentrated-loading and conjugated-sequence ideas closer to Issurin's
+own. **Inference:** Issurin's own later peer-reviewed review (2016, *Sports Medicine*,
+"Benefits and Limitations of Block Periodized Training Approaches," Zotero item
+`PT9QTQ2I`, not yet full-text-cached in this ingest) is titled around limitations as well as
+benefits and likely narrows this 2008 book's confident framing; treat the frontmatter
+`confidence: contested` as applying specifically to the universal "traditional doesn't work
+for high performers" claim, not to the narrower, self-limited concentration principle.
+
+**Example** — A collegiate football strength staff trying to develop max strength,
+aerobic capacity, alactic power, and technical skill acquisition all at full intensity in
+the same 4-week block, per Table 1.4's logic, risks under-stimulating all four rather than
+meaningfully improving any one; concentrating the block on 1-2 of them (with the rest held
+at a retention dose) is the alternative Issurin argues for.
+
+**Related** — [[framework--block-periodization-mesocycle-taxonomy]] — the three-block
+structure this principle produces. [[periodization--bompa/principle--concentrated-loading-overreaching]]
+and [[periodization--bompa/framework--step-loading-paradigm]] — converging concentrated-load
+ideas already in this library. [[supertraining--verkhoshansky/principle--specificity-of-training-ten-dimensions]] (staging) —
+check for overlap on why generalized simultaneous training under-delivers for advanced
+athletes.
+######## principle--training-modality-compatibility-in-a-workout.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "2.3.2"
+topic: limiting and combining training modalities per session
+category: [programming, workout-design, concentration]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# No More Than Three Training Modalities Per Workout, With 65-70% of Time on One or Two
+
+**What it is** — Issurin extends the concentration principle to single-session design
+(Figure 2.4, PDF p. 75, printed p. 63; Table 2.12, PDF p. 76, printed p. 65) with five
+stated rules (PDF p. 75, printed p. 64): (1) a workout should contain **no more than three
+training modalities** — typically one dominant, one compatible with the main purpose, and
+one for technique/tactics improvement or restoration; (2) **65-70% of total training time**
+in a development workout should go to one or two selected modalities, to preserve workload
+concentration; (3) after a key-workout, the following session should show a significant
+load reduction — running two consecutive key-workouts is possible but risks excessive load
+concentration; (4) hypertrophy-focused sessions require workload to be "substantially
+reduced" for **at least 20 hours** afterward to protect the anabolic phase of muscle
+restoration; (5) limiting modality count matters most in high-performance training —
+junior/developmental athletes' programs can be more diverse and multilateral. Figure 2.4
+maps which modalities are compatible as secondary/tertiary additions to five dominant ones:
+aerobic endurance pairs with alactic sprint, strength-endurance-aerobic, and
+hypertrophy-strength (placed after); anaerobic glycolytic endurance pairs with
+strength-endurance-anaerobic, aerobic restoration, and mixed aerobic-anaerobic endurance;
+alactic sprint pairs with aerobic endurance, explosive strength, hypertrophy-strength
+(after), and aerobic restoration; hypertrophy-strength pairs with neural-strength, flexibility,
+and aerobic restoration; new-technical-skill learning pairs with any modality, but only
+*after* the dominant task. Table 2.12 gives the physiological/psychological rationale for
+several of the strongest pairings (e.g., aerobic endurance + strength endurance: increased
+oxidation supports the resistance work; alactic sprint + aerobic endurance: brief sprints
+break monotony and keep a wide muscle-fiber pool activated for the subsequent aerobic work).
+
+**Why it works — the specific numeric thresholds are asserted, not derived** — The
+underlying logic is the same concentration principle from Chapter 1
+([[principle--concentration-of-training-workloads]]): splitting a session across too many
+modalities dilutes the stimulus for all of them. **Inference:** Issurin gives no stated
+derivation for why the cutoff is exactly three modalities rather than two or four, why the
+time-share threshold is 65-70% rather than some other range, or why 20 hours is the specific
+reduced-load window after hypertrophy work (versus, e.g., 24 or 48 hours) — these read as
+the author's own practical rules of thumb built from coaching experience rather than
+citations to a dose-response study.
+
+**When to apply** — Auditing whether a practice plan or lift is trying to do too much:
+count distinct training modalities in a session and check whether one or two of them
+actually receive the majority of training time, per the 65-70% rule. Use Figure 2.4/Table
+2.12 to check whether a planned secondary modality is a known-compatible pairing or an
+unaddressed combination. **Eric's baseline** independently states a directionally identical
+rule for compatibility, though at the block level rather than the single-session level:
+"incompatible qualities... are not both targeted at full intensity in the same block"
+(`method-baseline.md`, "Periodization and programming," citing
+`01192022-hp5355-class1-transcript.md` pp.28-29, "you can't ride two horses with one
+saddle") — this Issurin entry gives that same instinct a specific numeric structure (≤3
+modalities, 65-70% time-share) that the baseline material does not currently specify at
+either the block or session level.
+
+**When NOT to apply — mandatory** — Treat the ≤3-modality, 65-70%, and 20-hour figures as
+Issurin's own heuristics rather than established constants — no citation or underlying data
+is given for any of the three in this chapter. Issurin explicitly narrows the number
+constraints to high-performance training; junior/developmental programming is stated to
+reasonably need more variety, not fewer modalities. Figure 2.4's compatibility map is not
+exhaustive (it covers five dominant modalities, not every possible combination) — an
+untested pairing should not be assumed incompatible or compatible by default; Issurin gives
+no guidance for modalities not shown in the figure.
+
+**Example** — A practice plan combining strength-endurance, aerobic-anaerobic conditioning,
+maximal-speed sprint work, and new-install technical work in one session would have four
+distinct modalities, exceeding the stated ≤3 rule; per Figure 2.4, glycolytic endurance
+pairs well with strength-endurance-anaerobic and aerobic restoration, but maximal speed and
+new technical skill acquisition would need to be reduced to secondary/tertiary roles or
+moved to a separate session to keep the session within the concentration guideline.
+
+**Related** — [[principle--concentration-of-training-workloads]],
+[[heuristic--exercise-sequencing-by-fatigue-state]],
+[[framework--key-workout-and-key-exercise-concept]].
+######## framework--accumulation-transmutation-realization-mesocycles.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "1.2.1-1.2.2"
+topic: three mesocycle-block taxonomy
+category: [periodization, programming, mesocycle]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Accumulation, Transmutation (Transformation), and Realization: the Three Mesocycle-Blocks
+
+**What it is** — Issurin's core structural unit is the mesocycle-block, one of three types
+(Table 1.7, PDF p. 37, printed p. 26): **Accumulation** targets basic abilities (aerobic
+endurance, muscular strength, basic coordination) with high volume/reduced intensity and
+"reasonable restoration"; **Transmutation** targets sport-specific abilities (special
+endurance, strength endurance, proper technique) with reduced volume/increased intensity,
+and explicitly does *not* provide full restoration — fatigue accumulates; **Realization**
+targets integrative, competition-ready preparedness (model performances, maximum speed,
+event-specific tactics) at low-medium volume/high intensity, with full restoration required
+going in. Each type has its own monitoring focus: basic-ability tests for accumulation,
+sport-specific-ability tests for transmutation, and maximum speed/strategy checks for
+realization. **Locator note:** the 1985 origin paper (Issurin & Kaverin) and this book's
+1.2.1 narrative (PDF p. 33, printed p. 22) use the term **transformation**; from section
+1.2.2 onward (PDF p. 37+, printed p. 26+) and in the book's own tables, the term used is
+**transmutation**. Both names refer to the same middle block; record both because a search
+for either term should resolve to this entry.
+
+**Why it works** — The sequencing is designed to exploit the fact that different motor
+abilities have different **residual training effect** durations (see
+[[claim--residual-training-effect-durations-by-motor-ability]]): basic abilities (aerobic
+endurance, max strength) decay slowest, so they can be built early and coast on their own
+residual while transmutation and realization narrow the focus toward faster-decaying,
+more specific and speed-dependent qualities close to competition. Issurin frames this as
+superimposition of residual effects (Figure 1.8, PDF p. 39, printed p. 28) rather than
+concurrent development of everything at once.
+
+**When to apply** — Structuring a training stage (the accumulation-transmutation-realization
+sequence, ending in competition) for advanced athletes who need multiple qualities peaked
+together — see [[framework--training-stage-and-multi-peak-annual-cycle]] for how these three
+blocks compose into a full annual plan. **Eric's baseline** shows a structurally similar but
+independently-arrived-at sequence: the department's own preparatory-period design goes
+hypertrophy/work-capacity, then basic strength, then strength-to-power
+(`method-baseline.md`, "Periodization and programming," citing week1-lecture.md pp.43-48) —
+a general-to-specific progression that parallels accumulation-to-realization, though the
+baseline's sequence is not explicitly framed with Issurin's residual-effect superimposition
+logic or his restoration-status distinctions between blocks.
+
+**When NOT to apply — mandatory** — This is a three-way classification built for advanced
+athletes who can tolerate the fatigue-accumulating transmutation block (see
+[[principle--concentration-of-training-workloads]] for the low-/mid-level-athlete
+carve-out). It presumes a training stage that ends in a real competition or test date to
+absorb the realization block's tapering logic; without a fixed target date, there is no
+clear trigger for when accumulation should end and transmutation begin. **Contested (partly):**
+the vault's Bompa & Haff material (`periodization--bompa/principle--concentrated-loading-overreaching`)
+independently describes a comparable saturated-load-then-restitution structure with a
+4-12 week delayed rebound — a longer and less rigidly three-staged model than Issurin's
+roughly two-month training stage (below); the two should be read as convergent but not
+identical prescriptions, and a program note should say which model's timing a given plan
+follows.
+
+**Example** — A training stage built for a mid-season peak: 3-4 weeks of accumulation
+(aerobic base, general strength), 3-4 weeks of transmutation (sport-specific conditioning,
+strength-endurance, technique under fatigue), then 1-2 weeks of realization (tapered
+volume, high-intensity model-speed work, full restoration) ending at the target competition
+or test date.
+
+**Related** — [[claim--residual-training-effect-durations-by-motor-ability]],
+[[framework--training-stage-and-multi-peak-annual-cycle]],
+[[case-study--bondarchuk-hammer-throw-block-mesocycles]] (a different three-block taxonomy
+from the same era, worth distinguishing from this one),
+[[periodization--bompa/principle--concentrated-loading-overreaching]],
+[[periodization--bompa/framework--step-loading-paradigm]].
+######## framework--training-stage-and-multi-peak-annual-cycle.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "1.2.3"
+topic: training stage structure and multi-peak annual planning
+category: [periodization, peaking, annual-plan, programming]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# The Training Stage (A-T-R + Competition) Is the Annual Plan's Building Block, Enabling Multiple Peaks
+
+**What it is** — Issurin's annual cycle is built from a sequence of **training stages**,
+each one containing all three mesocycle-blocks (accumulation, transmutation, realization) in
+order, ending in a competition (PDF p. 38, printed p. 27). Each training stage "gives the
+appearance of an annual cycle in miniature" — a block resembling a preparatory period
+(accumulation), one resembling a competition period (transmutation), and a tapering block
+ending in competitive performance (realization) (PDF p. 39, printed p. 28). The duration of
+a training stage is set by how long the constituent residual training effects can be
+superimposed (Figure 1.8; see
+[[claim--residual-training-effect-durations-by-motor-ability]]) and "should be about two
+months," though Issurin notes stages can run shorter near season's end or longer earlier in
+the season, in which case "special measures should be used to prolong residual training
+effects" (unspecified in this chapter — likely developed in Chapter 3, not yet ingested).
+The number of training stages in a season "usually varies from four to seven," depending on
+the sport's competition calendar (PDF p. 40, printed p. 29, Figure 1.9). Issurin lists five
+claimed benefits of this design over the traditional model (PDF p. 40, printed p. 29, and
+Table 1.8, PDF p. 42, printed p. 31): reduced total training volume without reducing workout
+count; more purposeful monitoring (fewer targeted abilities per stage); improved
+psychological focus and motivation; more targeted nutrition per block (e.g., higher protein
+during strength-focused blocks); and — most relevant to the peaking question — "a
+multi-stage annual plan creates more favorable conditions for peaking in time for the main
+competition of the season," with intermediate peaks plannable mid-season or even early
+season, not only at a single season-end date.
+
+**Why it works** — Because each training stage runs its own compressed
+accumulation-transmutation-realization cycle and ends in a real competitive test, the athlete
+is brought to a peak (or near-peak) at the end of every stage rather than once per year;
+stacking four to seven such stages across a season is what produces the multi-peak pattern.
+Issurin's stated physiological contrast (Table 1.8) is that the traditional model relies on
+adaptation to concurrent stimuli across a long period, while this model relies on
+superimposing sequential residual effects from short, concentrated blocks — the same
+mechanism underlying [[framework--accumulation-transmutation-realization-mesocycles]].
+
+**When to apply** — This is the entry most directly responsive to the strength-and-conditioning
+miss-log gap ("peaking phase structure for collegiate football," logged 2026-09-03): for a
+football program needing camp-readiness, then in-season week-to-week competitive readiness,
+this framework suggests treating each significant test point (fall camp scrimmage, each
+game week, or a defined in-season block) as a candidate training-stage boundary rather than
+relying on a single annual peak, with the caveat below about untested claims. **Eric's
+baseline** does not currently describe an explicit training-stage or multi-peak model for
+football; the closest baseline material is the general macro/meso/microcycle planning
+language and the in-season rule "maintain intensity, reduce volume" (`method-baseline.md`,
+"Periodization and programming" and "Strength and power," citing
+`01192022-hp5355-class1-transcript.md` pp.17-18, 20-21) — this Issurin framework offers a
+more explicit structural answer to "how do you actually sequence a season with more than one
+peak" than anything currently captured in the baseline.
+
+**When NOT to apply — mandatory** — The "four to seven stages" and "about two months"
+figures are stated without a derivation the reader can check — Issurin gives no worked
+example of how stage count or duration is calculated for a specific sport's calendar in
+this chapter. **Inference:** football's in-season structure (weekly games, not discrete
+multi-week competition-free blocks) does not map cleanly onto a ~2-month training stage —
+Issurin's model is built from and mainly evidenced by individual/dual sports with
+discrete competitions (track and field, canoe-kayak, windsurfing), and Chapter 3's
+microcycle-level material (not yet ingested; see `_book.md` for the recommended next batch)
+is likely necessary before this framework can be translated into a week-by-week in-season
+football plan. **Contested — flag as unqualified:** the "does not work well for
+high-performance athletes" framing of the traditional alternative carries the same caveat as
+in [[principle--concentration-of-training-workloads]] — Bompa & Haff's 5th edition, already
+in this library, is a current high-level training text that does not abandon
+period-based (as opposed to stage-based) annual planning. **Inference:** Issurin's own 2016
+review (Zotero item `PT9QTQ2I`, not yet full-text-cached) is titled around benefits *and*
+limitations of block periodization and likely qualifies the confident five-benefit list
+above; this entry's claims should be revisited once that review is read.
+
+**Example** — A five-stage football off-season/camp plan: Stage 1 (general
+accumulation, ~8 weeks, winter conditioning); Stage 2 (strength/power transmutation into
+spring ball, ending in the spring game as a "competition"); Stage 3 (summer accumulation);
+Stage 4 (fall-camp transmutation, ending in the first scrimmage or game week as
+realization); Stage 5+ (in-season stages keyed to bye weeks or rivalry-week peaks, pending
+Chapter 3's in-season microcycle guidance).
+
+**Related** — [[framework--accumulation-transmutation-realization-mesocycles]],
+[[claim--multi-peak-annual-preparation-elite-track-and-field]] (the empirical motivation for
+needing a multi-peak model), [[claim--residual-training-effect-durations-by-motor-ability]],
+[[principle--concentration-of-training-workloads]].

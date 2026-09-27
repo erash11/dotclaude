@@ -1,0 +1,752 @@
+######## claim--adaptive-reconstruction-vs-supercompensation.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.16"
+topic: adaptive reconstruction critique
+category: [adaptation, terminology, recovery]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# "Adaptive Reconstruction" vs. "Supercompensation": Verkhoshansky/Siff's Sharper Critique
+
+**What it is** — Verkhoshansky (via Siff) argues "adaptive reconstruction" is a more
+accurate term than "supercompensation" for the body's response to training load, for two
+specific reasons stated in the text: (1) enhanced performance is not simply the result of
+increased stores of bioenergetic substances (the energy-overshoot picture supercompensation
+implies), but also of structural changes in muscle and connective tissue and enhanced
+efficiency of bioenergetic and neuromuscular processing; (2) no supercompensation has been
+observed for any bioenergetic substance except glycogen — other biochemicals deplete under
+strenuous exercise but do not overshoot their baseline afterward, and each returns to
+baseline on its own timeline, making the timing of a "supercompensation window" for
+non-glycogen substances indeterminate. Russian sources use "Current Adaptation Reserves"
+(CAR) for the readily-available (superficial) and emergency (deep) energy sources drawn on
+during Selye's General Adaptation Syndrome resistance phase. (PDF pp. 94-96, printed pp.
+83-85.)
+
+**Why it works** — If supercompensation literally meant every adaptation-relevant substance
+or structure overshoots baseline on a predictable clock, timing the next training stimulus
+to "catch the peak" would be a precise science; the empirical finding that this overshoot
+pattern is essentially unique to glycogen undercuts that precision and supports treating
+"the next stimulus should land on a rebound" as a general heuristic, not a substance-by-
+substance timing rule.
+
+**When to apply** — This library already carries the supercompensation model in
+[[periodization--bompa/principle--supercompensation-cycle]], which itself notes
+"contemporary sport science largely prefers the fitness-fatigue (two-factor) model over
+literal supercompensation" and recommends treating supercompensation "as a useful mental
+model, not a measured prescription." **Inference:** this entry adds the specific mechanism
+for that caution (structural/efficiency changes beyond energy stores, and the
+glycogen-only overshoot finding) and the CAR terminology, which the Bompa entry does not
+include; use both together rather than duplicating either.
+
+**When NOT to apply** — This entry is rated `contested` because it is itself a critique of
+a still widely-taught model (supercompensation), argued from a mix of established fact
+(structural adaptation beyond energy stores) and an absence-of-evidence claim (no
+overshoot observed for other biochemicals) that could be revised by newer measurement
+techniques. **Inference:** don't treat "adaptive reconstruction" as a rejection of
+periodization practice built on supercompensation timing; the text itself notes
+supercompensation theory, despite its shortcomings, had a profound and still-useful impact
+on periodization design.
+
+**Example** — **Inference:** glycogen loading before an endurance event is a legitimate
+application of true supercompensation; assuming a similarly precise "peak window" exists
+for, say, connective tissue remodeling or neuromuscular efficiency gains is not supported
+by the same evidence.
+
+**Related** — [[periodization--bompa/principle--supercompensation-cycle]] (reciprocal link
+recommended there: note that Supertraining Ch1.16 sharpens the "useful mental model, not a
+measured prescription" caution with the specific glycogen-only-overshoot finding and the
+CAR/adaptive-reconstruction terminology).
+######## claim--bilateral-deficit-and-limb-training-specificity.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.4"
+topic: bilateral deficit
+category: [specificity, testing, exercise-selection]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# The Bilateral Deficit: Two Limbs Together Produce Less Force Than the Sum of Each Alone
+
+**What it is** — Force produced during a bilateral (two-limb, e.g. barbell) contraction is
+usually less than the sum of the forces each limb produces individually (e.g. dumbbells),
+a phenomenon called the bilateral deficit, accompanied by reduced integrated EMG
+suggesting the prime movers are less activated bilaterally (Coyle et al. 1981;
+Vandervoort et al. 1984). The deficit is reported as insignificant in athletes who always
+use their limbs simultaneously in their sport (e.g. weightlifters), and the text
+recommends athletes whose sport involves bilateral action of the same muscle groups train
+bilaterally to minimize the deficit (Secher, 1975). (PDF p. 39, printed p. 28.)
+
+**Why it works** — The deficit is attributed to a neural, not mechanical, limitation:
+reduced activation of the prime movers during simultaneous bilateral effort, which
+training the specific bilateral pattern appears to reduce over time — another instance of
+narrow, mode-specific neuromuscular adaptation.
+
+**When to apply** — **Inference:** when deciding whether to prioritize bilateral (back
+squat, bench, clean) or unilateral (split squat, single-leg press, lunge) exercise
+variants, match the training mode to how the sport actually loads the limbs. For sports
+with genuinely unilateral force production (sprinting, most cutting and
+change-of-direction actions), this text's finding argues for meaningful unilateral training
+exposure, not exclusively bilateral lifts, since bilateral-only training may under-develop
+the single-limb activation football and track actions require. This football-specific
+application is this entry's own extension, not stated in the text.
+
+**When NOT to apply** — **Inference:** do not use this to argue against bilateral lifts
+altogether; compound bilateral lifts remain valuable for maximal strength and are
+appropriate where the sport itself uses bilateral effort (e.g. some blocking or lifting
+actions). Verkhoshansky gives no specific deficit magnitude for team-sport athletes in
+this section (PDF p. 39, printed p. 28); **Inference:** the deficit's size and
+trainability likely vary by athlete and lift, which is this entry's own caution.
+
+**Example** — **Inference:** A sprinter's single-leg force production during ground contact is not fully
+predicted by their bilateral back squat strength alone; programming that includes
+single-leg strength work targets the bilateral deficit gap directly relevant to sprint and
+change-of-direction performance.
+
+**Related** — [[principle--specificity-of-training-ten-dimensions]].
+######## claim--collagen-loading-curve-and-injury-risk.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.7"
+topic: collagen loading and failure
+category: [injury-risk, connective-tissue, flexibility]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Collagenous Tissue's Four-Region Loading Curve, and Why Loading Rate Changes What Fails First
+
+**What it is** — Collagenous tissue (e.g. the ACL, studied by Frankel & Nordin 1980)
+loaded to failure shows four regions: Region I, the "toe region," where the crimped
+tissue straightens with little force and mild stretching here produces no long-term
+flexibility change; Region II, a near-linear region where fibres are fully uncrimped and
+parallel; Region III, where sequential microfailure of overstretched fibres begins; Region
+IV, complete failure. Loading rate changes the outcome: increasing loading rate roughly
+fourfold raised knee ligament failure load by almost 50% (Kennedy et al., 1976), and which
+structure fails first flips with rate — at slow loading rates the ligament's bony
+insertion is the weakest link, while at fast loading rates the ligament itself is the
+weakest link (bone's strength rises faster with rate than the ligament's). Healthy tendon's
+tensile strength can be more than twice that of its associated muscle, which is why
+ruptures are more common in muscle than tendon. (PDF pp. 54-56, printed pp. 43-45.)
+
+**Why it works** — Collagen is viscoelastic: it behaves more elastically under rapid
+loading and more plastically (creeping, deforming) under slow, sustained loading, so both
+the loading speed and the tissue's own rate-dependent stiffness change determine where in
+the body an excessive load actually causes failure.
+
+**When to apply** — **Inference:** relevant background for understanding why static
+stretching held gently (Region I) does not meaningfully change tissue length or
+flexibility over time, and why ballistic or rapid loading, once past Region II, carries
+real microfailure risk; also relevant context for why the pattern of injury (bone
+avulsion vs. mid-ligament tear vs. muscle strain) can differ by the speed of the loading
+event, which matters for how Athletic Medicine and Applied Performance jointly interpret
+an injury mechanism.
+
+**When NOT to apply** — **Inference:** this is basic tissue mechanics from cited
+1970s-1980s cadaveric/animal ligament research (ACL specifically), not a live-tissue,
+in-vivo human athlete dataset; do not use the specific numbers (50% failure-load increase,
+the fourfold rate figure) as applicable outside the original ACL loading-rate study cited.
+This is background science, not a clinical decision rule, and should not substitute for
+Athletic Medicine's own injury assessment framework.
+
+**Example** — **Inference:** a sudden high-rate valgus load to the knee is more likely to
+produce mid-ligament ACL failure, while a slower, sustained load is more likely to fail at
+the bony insertion first; this pattern helps explain, but does not replace, imaging and
+clinical exam in determining actual injury location.
+
+**Related** — [[claim--differential-tissue-adaptation-rates]],
+[[framework--series-and-parallel-elastic-components]].
+######## claim--continuous-vs-interval-circuit-training-for-concurrent-goals.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.12"
+topic: concurrent strength and endurance training
+category: [concurrent-training, programming, fiber-type]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Continuous Circuit Training Does Not Simultaneously Build Strength and Endurance; Interval Circuit Training Is a Better Fit
+
+**What it is** — Research does not support the claim (made by some instructors and machine
+manufacturers) that continuous circuit training (CCT) simultaneously develops
+cardiovascular endurance and strength. Interval circuit training (ICT: high-intensity
+loading with regular rest intervals) is described as more suitable for developing strength
+and strength-endurance together. Supporting evidence cited: prolonged low-intensity
+endurance training performed alongside strength training in the same phase seriously
+compromises strength/power development, partly because fast-twitch fibres can start
+behaving like slow-twitch fibres under prolonged low-intensity load; muscle biopsy studies
+of distance runners' gastrocnemius after a marathon show necrosis and inflammation
+detectable at least 7 days later, an abnormality not seen in comparable biopsies from
+weightlifters, sprinters, or rowers after strenuous sessions. (PDF p. 70, printed p. 59.)
+
+**Why it works** — Continuous, moderate-intensity circuit work trains the aerobic/oxidative
+system and biases fibre behavior toward slow-twitch characteristics, which is a different
+and partly conflicting neuromuscular target from the high-force, high-velocity, largely
+fast-twitch demands of strength and power work; ICT's rest intervals let each work bout
+stay in a higher-intensity, more strength/power-specific zone instead of drifting toward
+an endurance stimulus.
+
+**When to apply** — **Inference:** relevant when designing off-season/GPP programming
+that needs to develop both conditioning and strength: the text's recommendation is to
+prescribe cardiovascular training separately, in limited amounts, early in the off-season,
+with higher-intensity resistance training emphasized later, and to use interval-style
+(work/rest) circuits rather than continuous circuits when the goal includes
+strength-endurance. **Eric's baseline:** this converges with the department's own
+conditioning priority stack for football (alactic and aerobic capacity/power first, with
+glycolytic conditioning absorbed incidentally rather than programmed as a primary target;
+`method-baseline.md`, "Conditioning and energy systems," citing `class-4-2026.md pp.34,
+39`), though the baseline material does not itself cite this fibre-type mechanism.
+
+**When NOT to apply** — **Inference:** this is evidence against combining continuous,
+prolonged low-intensity work with concurrent strength training in the same block, not an
+argument against all conditioning; short, high-intensity interval conditioning is treated
+as more compatible with strength/power goals. The gastrocnemius necrosis finding is
+specific to marathon-distance running, not necessarily to all forms of aerobic
+conditioning used in team-sport contexts.
+
+**Example** — **Inference:** programming continuous, moderate-pace circuit stations as a
+"two birds, one stone" strength-and-conditioning solution is not well supported by this
+evidence; separating a short conditioning block from resistance training, or using
+interval-format circuits with real rest between high-intensity efforts, is the better-
+supported approach.
+
+**Related** — [[claim--fiber-recruitment-not-simply-graded-by-force]].
+######## claim--differential-tissue-adaptation-rates.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.6"
+topic: tissue adaptation timelines
+category: [injury-risk, connective-tissue, programming]
+confidence: proven
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Muscle Adapts in Days; Tendon, Ligament, and Bone Take Weeks to Months
+
+**What it is** — Muscle tissue adapts to increased loading within several days, whereas
+connective tissues (tendon, ligament, joint capsule) and tissue systems with a high
+connective-tissue content (bone, cartilage) only show significant adaptation and
+hypertrophy after several weeks to months of progressive loading (McDonagh & Davies,
+1984). Verkhoshansky states training prescription must account for the different
+adaptation rates of all involved systems and avoid overtraining whichever system adapts
+slowest; he recommends gradual load increases and avoiding impulsive/explosive methods
+particularly during General Physical Preparation (GPP) and for relative novices to
+strength training. (PDF p. 46, printed p. 35.)
+
+**Why it works** — Muscle's adaptive machinery (protein synthesis, neural recruitment)
+responds faster than the slower turnover and remodeling of collagenous tissue; a program
+that progresses load at the muscle's adaptation rate can outpace what tendon, ligament,
+and bone can structurally tolerate, which is a well-established mechanism in tendon and
+connective-tissue injury research independent of this text.
+
+**When to apply** — **Inference:** directly supports conservative, gradual load
+progression in GPP/early training blocks and for novice athletes specifically, and argues
+against introducing high-impulse plyometric or explosive work before a base period of
+progressive loading has given connective tissue time to adapt. This is a mechanistic
+rationale for why "the athlete feels ready for more" (muscle-level readiness) is not
+sufficient justification for a rapid load jump (tendon/bone-level readiness lags behind).
+
+**When NOT to apply** — **Inference:** this passage gives no specific timeline (only
+"several days" vs. "several weeks or months") and no athlete-population-specific data; do
+not treat it as a precise dosing table. **Inference:** this is a general injury-risk
+mechanism, not a substitute for clinical input from Athletic Medicine on a specific
+athlete's tissue status or injury history.
+
+**Example** — **Inference:** a novice athlete whose squat strength (muscle-level) is
+progressing quickly should still have their loading ramp paced by a longer timeline
+(weeks to months) appropriate to tendon and bone adaptation, not by how fast their 1RM is
+climbing.
+
+**Related** — [[framework--series-and-parallel-elastic-components]].
+######## claim--energy-system-contribution-by-sport-table.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.15"
+topic: energy system contribution by sport
+category: [energy-systems, conditioning, football]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Classic Energy-System Percentage Tables by Sport (Fox & Mathews, 1974) — Football Listed at ~90% Phosphagen
+
+**What it is** — Verkhoshansky reproduces Fox & Mathews' (1974) classic tables estimating
+the percentage contribution of the short-term (phosphagen/ATP-CP), intermediate
+(non-oxidative glycolytic), and long-term (oxidative/aerobic) energy systems to different
+training modes and sports. American football is listed at 90% short-term, 10%
+intermediate, 0% long-term — among the most phosphagen-dominant sports in the table,
+comparable to golf (95/5/0) and volleyball (90/10/0), and far more phosphagen-dominant
+than field hockey or soccer half-backs (60/20/20). Verkhoshansky himself cautions that
+this "highly determinate" scheme, compiled decades earlier, has been questioned, that
+figures for some events (he names the 1500m specifically) have since been revised, and
+that it should not be used casually because it disguises moment-to-moment metabolic
+demand shifts within a single sport. (PDF pp. 91-92, printed pp. 80-81.)
+
+**Why it works** — The table estimates an average, whole-game contribution, whereas actual
+play consists of short high-intensity bursts (plays) separated by long rest (huddles,
+substitutions), so an average figure can obscure the real repeated-sprint, phosphagen-
+dominant-per-play structure while also underweighting the role of aerobic recovery between
+bursts.
+
+**When to apply** — **Eric's baseline:** the department's stated conditioning priority for
+football is alactic and aerobic capacity/power for fall-camp and game demands, with
+glycolytic conditioning treated as a "worst case scenario" absorbed incidentally rather
+than programmed as a primary target (`method-baseline.md`, "Conditioning and energy
+systems," citing `class-4-2026.md pp.34, 39`); the baseline also states the aerobic
+system's main value for speed-power athletes is inter-effort recovery (regenerating ATP
+between bouts), not distance capacity (citing `2026-02-05-hp5355-class3-transcript.md
+p.9`). **Inference:** this table's 90/10/0 split for football (near-zero credited to the
+long-term/aerobic system) looks, at first read, to be in tension with the baseline's
+explicit inclusion of aerobic capacity as a Goal-1 priority for football — but the tension
+likely resolves once "aerobic system" is understood functionally: the baseline treats
+aerobic fitness as enabling faster ATP/phosphagen regeneration between the very
+phosphagen-dominant plays this table describes, not as a source of in-play energy. Read
+together, not as contradictory: this table describes what fuels a single play; the
+baseline describes what determines how well that fuel regenerates for the next one.
+
+**When NOT to apply** — Verkhoshansky's own caution applies directly here: **Inference**
+do not use the 90/10/0 football figure as a precise or current number; it is a decades-old
+average estimate for the sport as a whole, not a modern, position-specific or play-by-play
+breakdown, and the source text itself flags the whole table's accuracy as needing
+re-examination. This entry is rated `contested` because it is presented as a classic,
+already-questioned scheme rather than an established modern reference.
+
+**Example** — **Inference:** a single football play (a few seconds of maximal effort)
+draws almost entirely on the phosphagen system, consistent with the table; but the
+athlete's ability to repeat that near-maximal output play after play, series after series,
+depends heavily on aerobic capacity for recovery between plays — the quality the baseline
+prioritizes.
+
+**Related** — None in this ingest yet; candidate future link to a conditioning synthesis
+note once Phase 4 of the Flint project reaches conditioning and energy systems.
+######## claim--fiber-recruitment-not-simply-graded-by-force.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.12"
+topic: fibre recruitment in ballistic movement
+category: [fiber-type, plyometrics, testing]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# The Classic "Slow-Fibres-First-by-Force-Magnitude" Recruitment Model Fails for Ballistic Movement
+
+**What it is** — The standard recruitment scheme (slow-twitch fibres recruited first up to
+roughly 20% of maximum force, then progressively more fast-twitch fibres as force rises)
+holds for graded, progressive loading, but Bosco (1982, cited PDF pp. 74-75, printed pp.
+63-64) shows it breaks down for ballistic motion. Walking at moderate speed produces over
+700 N of vertical ground reaction force yet, by contact time and movement pattern, relies
+almost entirely on slow-twitch action; a maximal, high-velocity knee extension against a
+leg-press plate produces less force than walking despite being nearly pure fast-twitch
+action. The force-velocity curve itself differs by jump type: squat jumps and isokinetic
+testing reflect mainly the muscle's contractile component and follow the traditional
+hyperbolic F-V curve, while countermovement (dip) jumps and depth jumps are strongly
+shaped by elastic energy released from the Series Elastic Component during the preceding
+rapid stretch, producing an entirely different curve shape that does not fit the
+traditional model. Sprinting, high jump, and long jump coordinates also fall far from the
+traditional F-V curve. Bosco specifically cautions that isokinetic training is not
+advisable for athletes in predominantly ballistic sports.
+
+**Why it works** — Force magnitude alone does not determine which fibres are recruited or
+how force is produced; movement pattern, contact duration, and whether elastic energy
+storage/release is involved (SSC-mediated ballistic actions vs. purely contractile,
+non-ballistic actions) change both the recruitment pattern and the resulting force-time and
+force-velocity relationships.
+
+**When to apply** — **Inference:** reinforces
+[[framework--strength-deficit-jump-comparison-estimate]] and
+[[claim--fiber-recruitment-not-simply-graded-by-force|this entry's]] own caution: SJ, CMJ,
+and depth-jump testing are not interchangeable measures of the same underlying quality,
+because they load the contractile component and the SEC to very different degrees. Also
+reinforces caution about isokinetic testing/training for ballistic-sport athletes already
+raised in [[claim--velocity-and-contraction-specificity-asymmetric-transfer]].
+
+**When NOT to apply** — This entry is rated `contested` rather than `supported` because it
+directly overturns a simpler, still widely-taught recruitment model (force-graded,
+slow-then-fast) using a small number of illustrative examples (walking, car-pushing,
+seated knee extension) rather than a systematic dataset; **Inference:** treat the classic
+graded model as a reasonable first approximation for slow, controlled movement, and this
+critique as the more accurate account specifically for ballistic/SSC-involved movement.
+
+**Example** — **Inference:** a coach should not assume a squat-jump-based force
+measurement predicts depth-jump or sprint ground-reaction performance; the elastic
+contribution present in the latter two is largely absent from the former.
+
+**Related** — [[framework--strength-deficit-jump-comparison-estimate]],
+[[framework--series-and-parallel-elastic-components]].
+######## claim--heterochronic-biochemical-adaptation-sequence.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.16"
+topic: sequence of biochemical adaptation
+category: [adaptation, detraining, overtraining]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Biochemical Adaptations Occur in a Fixed Order, and Reverse in the Opposite Order When Training Stops
+
+**What it is** — Citing Platonov (1988), Verkhoshansky states biochemical adaptation to
+training follows a definite sequence, not a simultaneous shift: first, oxidative ATP
+resynthesis potential and glycogen level increase; next, structural muscle protein (myosin)
+and the intensity of non-oxidative ATP resynthesis (glycolysis) increase; only after that
+does creatine phosphate (CP) level rise. During overtraining or detraining, these
+adaptations are lost in the reverse order they were gained. The longer the training period,
+the more thorough the adaptation and the longer those biochemical changes persist after
+training stops (especially glycogen and CP levels). This gain/loss asymmetry across
+different systems is termed heterochronic (different tissues and processes change on
+different timelines). Overtraining specifically shows a distinct pattern: reduced
+glycogenolytic activity, decreased ascorbic acid/glutathione/glycogen, blood plasma
+dysproteinaemia, and reduced sympathico-adrenal function tied to disrupted acid-base
+balance. (PDF pp. 96-97, printed pp. 85-86.)
+
+**Why it works** — Different adaptations (enzymatic/oxidative capacity, structural protein
+synthesis, phosphagen system capacity) depend on different cellular mechanisms with
+different synthesis and degradation rates, so a uniform "the body adapts, then de-adapts"
+model misses that some qualities are gained early and lost late, while others are gained
+late and lost early.
+
+**When to apply** — **Eric's baseline:** the department's own conditioning material states
+that traits easiest to build (aerobic) are lost fastest under detraining, while traits
+hardest to build (alactic/speed) are lost slowest, and uses this ordering to sequence how
+often each quality needs re-exposure (`method-baseline.md`, "Conditioning and energy
+systems," citing `class-4-2026.md p.47`). **Inference:** this converges directionally with
+Platonov's heterochronic principle (different systems have different adaptation/de-
+adaptation timelines) but the two are not a stated one-to-one match — the baseline's
+build-easy/lose-fast claim is about energy-system categories (aerobic vs. alactic), while
+Platonov's sequence is about biochemical sub-processes within training generally (oxidative
+capacity, structural protein, glycolysis, CP). Treat them as parallel instances of the same
+underlying heterochronicity concept, not as the same specific claim restated.
+
+**When NOT to apply** — **Inference:** the specific ordering (oxidative/glycogen, then
+structural protein/glycolysis, then CP) is cited to one secondary source (Platonov, 1988)
+without the underlying primary data described in this text; do not treat this exact
+four-stage sequence as a settled, universally-timed protocol for monitoring detraining. Use
+it as a general principle (adaptation and loss are not uniform across systems) rather than
+a specific testing checklist.
+
+**Example** — **Inference:** an athlete returning from a multi-week layoff might show
+CP-system/power qualities holding up relatively better than the earlier-gained oxidative
+and glycogen-storage qualities, or vice versa, depending on the specific loss sequence;
+either way, "detraining" is not a single uniform decline and re-testing across qualities
+(not just one) gives a more accurate readiness picture.
+
+**Related** — [[claim--adaptive-reconstruction-vs-supercompensation]].
+######## claim--lactate-and-oxygen-debt-myths.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.15"
+topic: lactate and fatigue misconceptions
+category: [energy-systems, education, myth-busting]
+confidence: proven
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Lactate Does Not "Poison" Muscle or Cause Soreness; "Oxygen Debt" Is an Outdated Concept
+
+**What it is** — Two corrections to common misconceptions. (1) Muscle fatigue is not due
+to "lactic acid poisoning"; lactate formation is accompanied by hydrogen ions that increase
+acidity and can interfere with contraction and enzyme efficiency, but lactate itself is not
+the toxin popularly described, and blood lactate returns to normal within about an hour of
+strenuous interval training — well before delayed-onset muscle soreness (DOMS) typically
+peaks. The most pronounced soreness actually occurs after prolonged endurance efforts kept
+below the lactate threshold, so current theory attributes soreness to transient muscle
+cell or connective tissue damage, not lactic acid. (2) The classic "oxygen debt" concept
+(the idea that post-exercise heavy breathing "repays" an oxygen deficit incurred during
+anaerobic work) is now considered outdated; the post-exercise period instead reflects
+recovery oxygen consumption used to regenerate ATP and CP and restore respiratory, ionic,
+circulatory, hormonal, and thermal systems to baseline (McArdle, Katch & Katch, 1991). The
+older term "anaerobic threshold" has similarly been replaced by "blood lactate threshold"
+or OBLA (Onset of Blood Lactate Accumulation) since lactate does not require an absence of
+oxygen to form. (PDF pp. 87, 89, printed pp. 76, 78.)
+
+**Why it works** — Both corrections reflect the same underlying update in exercise
+physiology: lactate is a normal metabolic byproduct and fuel source, not an anaerobic waste
+product to be "cleared" or "repaid," and glycolysis runs alongside oxidative metabolism
+rather than only replacing it when oxygen is absent (also noted in this book: glycolysis
+dominates during sprinting even though muscles have adequate oxygen).
+
+**When to apply** — **Inference:** useful for correcting persistent coaching-room and
+classroom misconceptions (e.g. in HHPR 5355 teaching) — "lactic acid causes the burn and
+next-day soreness" and "you're paying back oxygen debt after a sprint" are both outdated
+framings that this entry can directly correct with citable sources.
+
+**When NOT to apply** — **Inference:** correcting the mechanism does not mean lactate is
+irrelevant to training; the blood lactate threshold (OBLA) remains a legitimate, useful
+marker for endurance training intensity and athlete conditioning status — only the
+"lactic acid as toxin/soreness cause" framing and the "oxygen debt" framing are being
+corrected here, not the practical value of lactate-threshold-based training zones.
+
+**Example** — **Inference:** an athlete sore two days after a hard endurance session is
+more likely dealing with muscle/connective tissue microtrauma than residual lactate, which
+would have cleared within an hour; recovery guidance should be based on that, not on
+"flushing out lactic acid."
+
+**Related** — [[claim--energy-system-contribution-by-sport-table]].
+######## claim--russian-sport-school-age-guidelines-table.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.3"
+topic: age guidelines by sport
+category: [youth, athlete-development, ltad]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Soviet Sport-School Guideline Ages by Sport (Start, Specialize, Peak)
+
+**What it is** — A per-sport table (Table 1.2) of recommended ages to begin a sport,
+begin specialization, and expect high performance, drawn from the Soviet sports-school
+system. Examples: basketball 7-8 / 10-12 / 20-25; gymnastics (women) 4-5 / 10-11 / 14-18;
+gymnastics (men) 5-6 / 12-14 / 18-24; swimming 3-7 / 10-12 / 16-18; track-and-field 6-7 /
+13-14 / 18-23; weightlifting 10-11 / 17-18 / 21-28; wrestling 10-11 / 15-16 / 24-28 (17
+sports listed in total). Early, intense specialization is explicitly discouraged in
+strength and endurance sports for children; the average age of Soviet Olympians in the
+era cited was about 24, with fewer than 10% under age 20. (PDF pp. 35-36, printed pp.
+24-25.)
+
+**Why it works** — **Inference:** the likely underlying rationale matches this library's
+existing long-term athletic development material — early specialization in
+strength/endurance sports produces faster short-term progress but a lower ultimate ceiling
+and more attrition, because the young athlete has not built the broad physical base
+specialization later draws on. Verkhoshansky's text does not itself restate this mechanism
+in this passage; it presents the table and the age-of-Olympians statistic as its supporting
+evidence (PDF p. 36, printed p. 25).
+
+**When to apply** — **Inference:** usable as a more granular, sport-by-sport reference
+table alongside this library's existing LTAD guidance. It converges with, and adds numeric
+detail beyond, the Bompa library's
+[[periodization--bompa/framework--ltad-sequential-model|Long-Term Sequential Development
+Model]], which states a general "not before ~14-15" specialization guideline but does not
+break it out by individual sport; this convergence is this entry's own comparison, not
+stated in either source.
+
+**When NOT to apply** — **Inference:** this is a 20th-century Soviet sports-school table,
+not a modern, population-representative dataset; individual biological maturation varies
+(see [[periodization--bompa/heuristic--biological-vs-training-age|Biological vs Training
+Age]]), and American collegiate sport pathways (e.g. football, not listed in Table 1.2 at
+all) do not map cleanly onto these Soviet age bands. Treat the specific ages as
+illustrative, not prescriptive, for a Baylor Athletics context; this caution is this
+entry's own judgment.
+
+**Example** — **Inference:** The table's general caution against early strength/endurance specialization
+supports keeping a young multi-sport athlete on broad physical preparation rather than
+early single-sport strength specialization, consistent with existing LTAD guidance already
+in this library.
+
+**Related** — [[periodization--bompa/framework--ltad-sequential-model]] (reciprocal link
+recommended there: add a line noting Supertraining Table 1.2 gives per-sport numeric ages
+that concretize this framework's general specialization-age guidance).
+######## claim--strength-training-threshold-stimulus.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.2"
+topic: minimum effective training load
+category: [strength, programming, training-age]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# A Minimum Load Threshold Drives Strength Gains, and It Rises as the Athlete Adapts
+
+**What it is** — Hettinger & Muller (1953) are cited for a threshold training stimulus of
+roughly one-third of maximal strength needed to produce a strength increase in an average
+person; as strength rises, the required stimulus intensity rises too, eventually reaching
+80-95% of the athlete's maximum, sometimes matching or exceeding actual competition
+intensity (Verkhoshansky, 1977). Each stimulus level has its own "strengthening
+threshold," a ceiling beyond which no further gain occurs at that intensity, and this
+ceiling is described as further from the untrained state the less trained the athlete is.
+Separately, Korobkov, Gerasimov & Vasiliev (via Verkhoshansky, 1977) are cited for the
+finding that in the initial stages of training, strength increases roughly uniformly
+regardless of load, with approximately equivalent gains reported at 20%, 40%, 60% and 80%
+of 1RM; raising training intensity early (heavier load, faster tempo, less rest) does not
+reliably improve on this until strength has already progressed some way. (PDF pp. 33-34,
+printed pp. 22-23.)
+
+**Why it works** — Early neuromuscular adaptation (see
+[[principle--neuromuscular-stimulation-drives-early-strength-gains]]) responds to almost
+any sufficiently repeated stimulus above a low floor; once that easy adaptive window
+closes, further progress requires a stimulus that approaches the athlete's current
+ceiling, because there is less slack left in recruitment and coordination to exploit.
+
+**When to apply** — **Inference:** supports keeping early-phase (novice) load prescription
+simple and consistency-focused rather than chasing high intensities, and supports
+progressively raising relative intensity toward 80-95% of max as an athlete's training age
+increases, consistent with this book's own training-age-scaling heuristic
+([[heuristic--program-variable-complexity-scales-with-training-age]]).
+
+**When NOT to apply** — These are single-source, decades-old figures cited without a
+stated sample or modern replication in this text (Hettinger 1961; Korobkov, Gerasimov &
+Vasiliev via Verkhoshansky 1977; PDF pp. 33-34, printed pp. 22-23). **Inference:** do not
+treat "one-third of max" or the specific 20/40/60/80% equivalence as precise, universal
+cutoffs for a current athlete population; use them as a directional argument for why novice
+programming can be simple, not as exact percentages to program from.
+
+**Example** — **Inference:** A true beginner's program built around consistent submaximal loading (e.g.
+50-60% 1RM) can produce comparable early strength gains to a heavier protocol, so there is
+little value in front-loading high intensity before the athlete has trained long enough to
+need it.
+
+**Related** — [[heuristic--program-variable-complexity-scales-with-training-age]].
+######## claim--velocity-and-contraction-specificity-asymmetric-transfer.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.4"
+topic: velocity and contraction-mode specificity
+category: [specificity, velocity, exercise-selection]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# High-Velocity Training Transfers to Low Velocity Better Than the Reverse; Contraction Modes Barely Cross Over
+
+**What it is** — Two specific, cited findings under the specificity umbrella: (1)
+low-velocity isokinetic training improves low-velocity strength but has minimal effect on
+high-velocity strength; high-velocity isokinetic training improves high-velocity strength
+and transfers somewhat better to low-velocity strength than the reverse direction
+(Moffroid & Whipple 1970; Perrine & Edgerton 1981; Kanehisa & Miyashita 1983b). (2)
+Contraction-mode adaptations are narrow: concentric-eccentric (weightlifting-style)
+training raises competitive strength but produces only small isometric or concentric
+isokinetic gains; isometric training raises isometric strength but not concentric
+isokinetic strength; elbow-extension training with weights increases triceps strength and
+girth without a matching isokinetic-strength change. Static and dynamic training even
+produce different microscopic structural changes in the muscle. (PDF pp. 38-40, printed
+pp. 27-29.)
+
+**Why it works** — Force-velocity curve position (see
+[[principle--force-velocity-relationship-and-training-specificity]]) and contraction-mode
+recruitment patterns are trained narrowly because different neural drive strategies and
+structural adaptations underlie each; high-velocity training likely also recruits fast-
+twitch units that contribute somewhat at slower speeds, which is the proposed reason the
+transfer is asymmetric rather than symmetric.
+
+**When to apply** — **Inference:** when selecting exercise velocity and contraction mode,
+match both to the sport action being targeted, and consider biasing toward higher-velocity
+work when in doubt, since the text's cited data shows it transfers in both directions
+somewhat, whereas slow, heavy work transfers poorly to fast actions. **Eric's baseline:**
+the isometric seated calf raise and other isometric testing are run on the ForceDecks
+"Mid-Thigh Pull" setting as part of the department's standard protocol
+(`method-baseline.md`, "Force plate and neuromuscular monitoring," citing
+`protocol-iso-seated-calf-raise.md`, `revised-force-plate-testing-v3.md`). **Inference:**
+this claim's contraction-mode specificity finding supports treating isometric testing as
+its own distinct quality rather than a proxy for dynamic 1RM strength; neither source states
+this connection directly.
+
+**When NOT to apply** — **Inference:** these are 1970s-1980s isokinetic-dynamometer
+studies (PDF pp. 38-40, printed pp. 27-29); isokinetic machine training is a narrow,
+lab-style modality rarely used in current collegiate S&C practice, and this specific
+transfer asymmetry has not been independently re-verified here for free-weight or
+plyometric training modes. **Inference:** do not assume the same asymmetric-transfer ratio
+applies to, say, barbell velocity-based training without separate evidence; this extension
+is not addressed in the text.
+
+**Example** — **Inference:** An athlete tested for isometric mid-thigh pull strength should not be assumed
+to have an equivalent dynamic 1RM or sprint force capability; each needs its own
+assessment and, if targeted, its own specific training exposure.
+
+**Related** — [[principle--specificity-of-training-ten-dimensions]].
+######## claim--voluntary-involuntary-strength-reserve-magnitudes.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1"
+topic: voluntary strength reserve size
+category: [strength, testing, neural]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# The Voluntary-Involuntary Strength Reserve Has a Measured Size
+
+**What it is** — Two cited figures quantify how much force voluntary effort leaves
+unused relative to the athlete's true ceiling. (1) In experienced weightlifters, the mean
+gap between training maximum (TFmax) and competitive maximum (CFmax) is about 12.5 ± 2.5%,
+larger in heavier weight classes (Zatsiorsky, 1995; PDF p. 13, printed p. 2). (2) Under
+involuntary or hypnotic conditions, strength output can rise by up to 35% in untrained
+people, but by less than 10% in trained athletes (PDF p. 13, printed p. 2, no primary
+citation given in text for this figure).
+
+**Why it works** — Both numbers describe the same phenomenon from different angles: a
+protective neural inhibition normally holds voluntary output below the muscle's true
+contractile ceiling, and anything that reduces that inhibition (competitive arousal,
+hypnosis, involuntary reflex recruitment) exposes more of it. Training narrows the
+untapped reserve because part of the strength-training adaptation is learning to
+recruit and inhibit less, not just growing tissue.
+
+**When to apply** — **Inference:** this is best used as a coaching narrative for why
+max-effort numbers move around by context (weigh-in day nerves, meet atmosphere, testing
+environment), and as a rough expectation that a smaller gap between training and
+competitive/testing efforts is itself a marker of higher training status. Neither the
+book nor Eric's baseline states this as an applied rule; it is this entry's own synthesis
+of the two cited numbers.
+
+**When NOT to apply** — Verkhoshansky gives no primary citation for the hypnosis figure
+(PDF p. 13, printed p. 2); treat it as a single, unverified secondary claim, not a number
+to plan around. The 12.5 ± 2.5% figure is stated specifically for experienced Olympic
+weightlifters under meet conditions (Zatsiorsky, 1995; PDF p. 13, printed p. 2).
+**Inference:** it should not be assumed to transfer directly to Baylor's team-sport
+athletes tested on a force plate (ForceDecks CMJ/IMTP) rather than in a weightlifting
+competition, and neither number should be used as a correction factor applied to that data
+without independent verification; this caution is this entry's own judgment, not stated in
+`method-baseline.md`.
+
+**Example** — **Inference:** An athlete who tests near-identically on a submaximal VBT-estimated 1RM and
+a rare true max attempt is showing a small reserve gap; a large, inconsistent gap between
+estimated and tested max may point to arousal/readiness on test day rather than a change
+in underlying capacity.
+
+**Related** — [[framework--types-of-maximal-strength]].
