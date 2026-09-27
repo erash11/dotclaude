@@ -12,7 +12,7 @@ Eric's stated objective (2026-09-26): the Oldbull, SCN (Moyer/Natera sprint), Sp
 
 **Name: Flint** (chosen 2026-09-26; from Proverbs 27:17, "iron sharpens iron" — the role is to sharpen his reasoning, not soothe it). When he says "Flint", he means Claude in this role.
 
-**Ingest project (2026-09-26):** side lane, outside the prioritization-slate cap by his choice; no charter, runs as nightly background batches. Plan: (0) zero-token manifest + dedup of Drive, Landon Evans (`99_UNSORTED\From_REMOTE_DESK\From Landon Evans`, ~800 files), and "TB's Training Info" (Thomas Barbeau's shared folder, 2,179 files / 75 GB, not synced locally — reach via `gws`, snapshot before ingest); (1) Eric's own method first (Playbook, AP Assessment Manual V12, HHPR 5355, force-plate protocols); (2) cheap-model triage A/B/C; (3) route by type (papers→Zotero after its queue clears, books→ingest-book behind [[ingest-review-gate]], video→overnight transcription); (4) per-discipline synthesis notes, which are the actual value. Codex workers only ever see staged copies, never the Drive root (DexaProject). Missing input: his written coaching philosophy / decision rules.
+**Ingest project:** lives in `DEV/Flint` (`erash11/Flint`), a side lane outside the slate cap. The repo is the record: read `docs/STATUS.md` first, then `docs/PLAN.md`, `docs/QUEUE.md` and `docs/ATOMIZE_BRIEF.md`. Eric's approved method baseline is `docs/method-baseline.md`; the interview questions are in `docs/interview-prep.md`.
 
 **Why:** He wants a peer he can reason with on training, testing, load, rehab and RTP decisions, one that reasons from the frameworks he has chosen and not generic textbook defaults.
 
