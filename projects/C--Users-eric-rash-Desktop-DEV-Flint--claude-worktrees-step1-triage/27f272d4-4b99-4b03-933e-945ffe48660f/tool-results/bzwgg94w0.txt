@@ -1,0 +1,387 @@
+########## framework--pre-competitive-microcycle-tuning.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: block-periodization--issurin
+     6	chapter: "3.1.6"
+     7	topic: pre-competitive (tuning) microcycle prescription
+     8	category: [periodization, taper, peaking, microcycle]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-26
+    12	---
+    13	
+    14	# The Pre-Competitive Microcycle: Cut Volume Hard, Raise Maximal-Speed and Sport-Specific Work, Keep Frequency
+    15	
+    16	**What it is** — The pre-competitive microcycle forms the content of the realization
+    17	mesocycle (see [[framework--realization-mesocycle-taper-prescription]]) and is also called the
+    18	taper at the microcycle level (PDF pp. 104-105, printed pp. 93-94; verified against page
+    19	images). It must satisfy three demands (PDF p. 104, printed p. 93): sport-specific
+    20	exercises/tasks that simulate the forthcoming competition and build mental readiness and
+    21	toughness; development of maximal speed/power and sport-specific quickness; and full (or
+    22	partial) restoration after the preceding transmutation mesocycle's fatiguing workloads. Table
+    23	3.5 (PDF p. 105, printed p. 94, verified against page image) gives seven prescriptive
+    24	characteristics: **workload volume**, substantially reduced, to create conditions for full
+    25	recovery; **volume of intense exercises specifically**, substantially reduced versus the
+    26	prior mesocycle, so total drill volume falls but quality rises; **contribution of maximum
+    27	speed/power exercises**, substantially **increased** (well-rested athletes respond better to
+    28	maximal-speed drills, and maximal-speed training residuals are the shortest of any ability, per
+    29	[[claim--residual-training-effect-durations-by-motor-ability]]); **contribution of
+    30	sport-specific tasks**, substantially increased (simulative tasks improve adaptation to
+    31	expected competitive stressors); **workout frequency**, usually kept **similar** to the
+    32	previous mesocycle (subdividing the same total work into more, smaller portions raises
+    33	quality per session even as volume falls); **organization**, a rational mix of group,
+    34	individual and mixed workouts, weighted somewhat more toward individual work than usual, so
+    35	athletes can attend to personal technical detail and coach rapport; **restoration**,
+    36	deliberately favorable conditions and an increased volume of restorative exercises/workouts,
+    37	since athletes have more free time and motivation to use it. Issurin states that in qualified
+    38	athletes, especially during a pre-competitive training camp, maintaining frequency in practice
+    39	means **eight to ten workouts per week** even as volume per workout drops (PDF p. 106, printed
+    40	p. 95). Workout timing should match the expected competition's daily biological-rhythm window
+    41	(example given: Olympic canoe-kayak/rowing regattas run only in the morning, so pre-Olympic
+    42	training is scheduled to place peak-effort sessions at that same morning time, PDF p. 107,
+    43	printed p. 96). Figure 3.7 (PDF p. 108, printed p. 97) gives a worked chart for a
+    44	morning-peak-performance pre-competitive microcycle, alternating maximum-strength/technique
+    45	mornings with sport-specific-simulation/alactic afternoons, moving toward heavier
+    46	sport-specific-simulation and explosive-strength content later in the week. On strength work
+    47	specifically, Issurin notes a real disagreement in the field: many athletes (particularly
+    48	swimmers, per Platonov & Fesenko, 1990, and also reported among volleyball and tennis players)
+    49	report high-resistance work pre-competition degrades fine technical skill, arguing for
+    50	reducing or excluding it; but sport-specific maximal/explosive strength work is also argued to
+    51	maintain the technical force component (Bompa & Carrera, 2003) and to prevent uncontrolled,
+    52	stress-hormone-driven muscle-mass loss pre-competition (PDF p. 108, printed p. 97).
+    53	
+    54	**Why it works** — Reduced total load is stated as the "principal condition" for reaching
+    55	supercompensation before competition (PDF p. 106, printed p. 95); the two things this
+    56	recovered state is then spent on, maximal-speed drills and sport-specific simulation, are
+    57	each chosen because their quality specifically depends on a well-rested nervous system and
+    58	energy-resource availability (maximal speed) or on the athlete's capacity to fully attend to
+    59	technical/tactical detail under simulated competitive stress (sport-specific tasks). Keeping
+    60	frequency similar while cutting volume is explicitly a quality lever, not a rest lever: more,
+    61	shorter, higher-quality sessions rather than fewer long ones.
+    62	
+    63	**When to apply — Inference, mapped to a college football calendar** — **Bowl prep:** the
+    64	week(s) immediately before a bowl game map most directly onto this framework: cut total
+    65	practice/lift volume hard, hold practice frequency roughly where it has been, shift the
+    66	practice mix toward maximal-speed/explosive work and heavy game-plan (sport-specific)
+    67	simulation, and weight walkthroughs/individual work more than a normal week. **In-season
+    68	tuning week:** the standard in-season game week already functions as a compressed version of
+    69	this pattern (practice volume tapers toward the game, Thursday/Friday sessions shift toward
+    70	walkthrough-intensity techno-tactical work); see
+    71	[[framework--in-season-team-sport-mini-block-microcycle]] for the specific team-sport
+    72	adaptation Issurin gives later in this chapter. **Season opener after fall camp:** the final
+    73	camp week before the opener is a pre-competitive microcycle relative to the whole camp block:
+    74	volume should come down from camp peak even though frequency (practice count) may stay similar.
+    75	The strength-during-taper disagreement Issurin reports (reduce high-resistance work vs. keep
+    76	sport-specific strength to protect force and prevent hormone-driven muscle loss) is directly
+    77	relevant to the recurring question of whether to lift heavy in bowl-prep week; this text does
+    78	not resolve it and presents both positions as live in the field. **Eric's baseline** gives no
+    79	session-frequency rule for a taper anywhere in `method-baseline.md`; the closest material is
+    80	the general in-season rule "maintain intensity, reduce volume" (`method-baseline.md`, "Strength
+    81	and power," citing `01192022-hp5355-class1-transcript.md` pp.20-21), which agrees directionally
+    82	(reduce volume, don't reduce intensity/speed work) but does not specify a frequency-holding
+    83	rule, an eight-to-ten-sessions-per-week figure, or an explicit sport-specific-task ramp; this
+    84	entry supplies that missing numeric structure, not something already adopted.
+    85	
+    86	**When NOT to apply — mandatory** — Every numeric particular in Table 3.5 (frequency held at
+    87	8-10/week, "substantially reduced/increased" volume and speed contributions) is Issurin's own
+    88	applied synthesis with no cited dose-response study behind the specific numbers; he
+    89	acknowledges directly that "many contradictions exist regarding workout duration and frequency
+    90	of high intensity exercises" in the pre-competitive/taper literature generally (PDF p. 105,
+    91	printed p. 94, citing Kubukeli et al., 2002). **Population caveat:** the worked example
+    92	(Figure 3.7) and both named case examples (Olympic canoe-kayak/rowing morning scheduling;
+    93	swimmer/volleyball/tennis strength-reduction reports) are individual, dual, or non-contact
+    94	sports; none address a 100+ player roster with heterogeneous individual readiness, a fixed
+    95	practice-week structure set partly by NCAA rules, or the additional load of team walkthroughs
+    96	and special-teams reps that a football pre-competitive week must still include. The
+    97	"8-10 workouts per week" frequency figure assumes an individual/dual-sport training camp
+    98	structure and should not be read as a literal session-count target for a football bowl-prep
+    99	week. Issurin does not address game-week travel, opponent scouting load, or academic-calendar
+   100	constraints anywhere in this framework.
+   101	
+   102	**Example** — A bowl-prep week could hold practice count similar to a normal in-season week
+   103	while cutting total practice/lift volume substantially, shifting a larger share of practice
+   104	time to explosive/speed work and full-speed game-plan simulation than a mid-season week would
+   105	carry, and deliberately expanding individual position-group time (film, technique correction)
+   106	relative to full-team periods, while treating the "how much to lift" question as an open
+   107	disagreement the source itself does not resolve, not a settled rule.
+   108	
+   109	**Related** — [[framework--realization-mesocycle-taper-prescription]],
+   110	[[framework--in-season-team-sport-mini-block-microcycle]],
+   111	[[claim--residual-training-effect-durations-by-motor-ability]],
+   112	[[framework--microcycle-types-and-load-wave-design]],
+   113	[[supertraining--verkhoshansky/framework--fitness-fatigue-modeling-and-taper-timing]] (staging).
+########## framework--in-season-team-sport-mini-block-microcycle.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: block-periodization--issurin
+     6	chapter: "3.1.7"
+     7	topic: in-season weekly microcycle for team and dual sports
+     8	category: [periodization, in-season, team-sports, microcycle]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-26
+    12	---
+    13	
+    14	# A Two-Mini-Block Weekly Structure for In-Season Team Sports, Naming American Football Directly
+    15	
+    16	**What it is** — Issurin addresses the specific constraint that team and dual sports (he
+    17	names **soccer, American football, rugby, volleyball** explicitly) run a 20-35 week season
+    18	where "the possibility of inserting highly concentrated training blocks is very limited"
+    19	(PDF pp. 108-109, printed pp. 97-98). He cites Fleck and Kraemer (1997): players typically
+    20	maintain strength near pre-season levels for 14-16 weeks, after which strength variables
+    21	decrease dramatically. Because the usual one-week gap between games is too short to work
+    22	effectively on every training target (metabolic conditioning, maximal/explosive strength,
+    23	injury prevention, techno-tactical skill, game-specific endurance, active restoration) at once,
+    24	Issurin proposes adapting three BPC approaches at the *week* level: high concentration of
+    25	specialized workloads within **mini-blocks**, separating mini-blocks by training modality, and
+    26	determining **key-workouts** within each mini-block. The worked example (Figure 3.8, PDF p.
+    27	109, printed p. 98, "based on Baker, 2001," a real cited source, not an uncited synthesis)
+    28	splits a standard Monday-Sunday week into two mini-blocks. **Mini-block 1 (Monday-Wednesday)**
+    29	targets sport-specific maximal and explosive strength as the dominant training aim: it opens
+    30	Monday with an active-recovery session (medium/low load, aerobic and general conditioning),
+    31	then delivers the strength emphasis across **two key-workouts**, combined with a medium-load
+    32	team practice (Tuesday afternoon) and a conditioning-restorative workout (Wednesday afternoon).
+    33	This sequencing leaves **28-30 hours of recovery** after the strength key-workouts before
+    34	mini-block 2 begins, to let the anabolic/restorative process run before the next demand.
+    35	**Mini-block 2 (Thursday-Saturday)** targets sport-specific team practice and immediate game
+    36	preparation: it includes two obligatory team practices, one before the day off (intended to
+    37	deliver a pronounced game-specific stimulus) and a second, load-restricted session immediately
+    38	before the game itself (mostly techno-tactical drills tied to the specific forthcoming
+    39	opponent). Issurin notes some highly motivated teams skip the day off and add an optional
+    40	Friday-morning conditioning or techno-tactical session instead, trading recovery time for
+    41	extra preparation; he states the tradeoff explicitly without endorsing either choice. The
+    42	chart gives priority to maximal-strength development over explosive-type work within the week,
+    43	which Issurin explains as protecting "somatic, functional and anabolic status," while noting a
+    44	cited counter-example (Newton et al., 2006) of sequencing classic high-resistance training with
+    45	ballistic explosive-type mesocycles to enhance jump performance instead.
+    46	
+    47	**Why it works** — The mini-block structure is this chapter's direct answer to the constraint
+    48	stated in [[principle--concentration-of-training-workloads]] (BPC needs concentrated,
+    49	sequenced blocks) meeting the constraint that team sports cannot suspend competition long
+    50	enough to run full-length accumulation/transmutation/realization mesocycles
+    51	(see [[framework--accumulation-mesocycle-duration-and-monitoring]] and
+    52	[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]] for what those
+    53	normally require in duration). Splitting the week itself into two purpose-specific mini-blocks,
+    54	each with its own key-workouts, is Issurin's way of keeping some of BPC's concentration
+    55	benefit even though the underlying block can only be one week long, not several.
+    56	
+    57	**When to apply — this is the entry most directly answering the in-season half of the
+    58	strength-and-conditioning miss-log's "peaking phase structure for collegiate football" gap
+    59	(logged 2026-09-03)** — Issurin explicitly names American football as a sport this structure
+    60	is meant for. **Eric's baseline's** in-season rule, "maintain intensity, reduce volume"
+    61	(`method-baseline.md`, "Strength and power," citing `01192022-hp5355-class1-transcript.md`
+    62	pp.20-21), is compatible with and gets a concrete weekly shape from this framework: the
+    63	early-week mini-block is where intensity (maximal/explosive strength) gets its two key-workouts,
+    64	while the late-week mini-block is deliberately techno-tactical and load-restricted heading into
+    65	the game, which *is* the volume reduction the baseline rule calls for. The 28-30 hour recovery
+    66	window between the strength mini-block and the practice-heavy mini-block gives a specific,
+    67	citable number for how much gap a college program might target between its heaviest in-season
+    68	lift and the next high-intensity team session.
+    69	
+    70	**When NOT to apply — mandatory** — The specific day-by-day chart (Figure 3.8) is built from
+    71	one cited source, Baker (2001), a study of professional and college-aged rugby league players'
+    72	in-season concurrent training: a real, checkable citation, but a single study in rugby league,
+    73	a sport with a different weekly game/practice rhythm than college football, which layers
+    74	additional constraints (NCAA-mandated practice-time limits, travel, and a Saturday-only game
+    75	schedule rather than rugby league's varying weekly structure). **Population caveat:** none of
+    76	this section's evidence comes from American football itself; Issurin lists
+    77	football alongside soccer, rugby, and volleyball as sports the *problem* applies to, but the
+    78	worked example and its supporting citation are rugby-specific. **Inference:** the specific
+    79	"two key-workouts, 28-30 hours recovery" prescription should be treated as a structural
+    80	template to adapt to football's own practice-count and padded/unpadded-practice rules, not a
+    81	ready-made in-season lift schedule. Issurin gives no guidance here for bye weeks, short
+    82	(Thursday-game) weeks, or the postseason gap before a bowl game; those fall outside this
+    83	weekly-cycle framework and are closer to the pre-competitive/realization material in
+    84	[[framework--pre-competitive-microcycle-tuning]] and
+    85	[[framework--prolonging-residual-effects-with-mini-blocks]].
+    86	
+    87	**Example** — A Baylor in-season week could place the two heaviest strength key-workouts on
+    88	Monday and Tuesday (following a Monday active-recovery/conditioning opener), hold Wednesday as
+    89	a conditioning-restorative bridge, then shift Thursday-Saturday entirely to team practice and
+    90	game-specific techno-tactical work, with the Friday or Saturday walkthrough load-restricted and
+    91	opponent-specific, and checking that the strength work and the first hard team practice of
+    92	mini-block 2 are separated by at least a full day, per the 28-30 hour figure.
+    93	
+    94	**Related** — [[framework--microcycle-types-and-load-wave-design]],
+    95	[[framework--pre-competitive-microcycle-tuning]],
+    96	[[heuristic--two-a-day-workout-sequencing-by-dominant-ability]],
+    97	[[claim--morning-resistance-training-no-decrement-after-6hr-rest]],
+    98	[[principle--concentration-of-training-workloads]].
+########## heuristic--microcycle-construction-key-workout-rules.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: block-periodization--issurin
+     6	chapter: "3.1.8"
+     7	topic: sequence of operations for building a microcycle
+     8	category: [periodization, microcycle, programming, workout-design]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-26
+    12	---
+    13	
+    14	# Build a Microcycle Key-Workouts First: A Six-Step Sequence and Five Design Rules
+    15	
+    16	**What it is** — Issurin gives a six-step operational sequence for compiling a training
+    17	microcycle (Table 3.6, PDF p. 111, printed p. 100): (1) determine dominant and secondary
+    18	training modalities, based on the annual plan and the current mesocycle's specificity; (2)
+    19	determine, place and compile **key-workouts** (see
+    20	[[framework--key-workout-and-key-exercise-concept]]), which carry the main development
+    21	impact; (3) determine restorative workouts and restorative "windows," to facilitate the
+    22	key-workouts and prevent excess fatigue; (4) determine, place and compile other
+    23	developmental/supportive workouts, paying special attention to how preceding workouts affect
+    24	sensitivity to subsequent ones; (5) select monitoring means for the targeted abilities and
+    25	functions; (6) plan special events (psychologist, physician, team meeting, etc.). Alongside
+    26	this sequence, Issurin states five general design rules (PDF p. 112, printed p. 101):
+    27	**first**, key-workout priority: once targeted abilities are defined, design should
+    28	start from the key-workouts, not fill them in last; **second**, arrangement around
+    29	key-workouts: the preceding session affects the athlete's sensitivity to the key-workout's
+    30	stimulus, while the following session determines fatigue accumulation and restoration, so both
+    31	neighbors must be chosen deliberately; **third**, sharing restorative means: restorative
+    32	workouts, restorative exercises (low-intensity aerobic work, stretching, relaxation, shaking,
+    33	breathing) and restorative procedures (massage, sauna, hydro/physiotherapy, mental training)
+    34	are "indispensable" and must be expertly planned into every microcycle, not treated as
+    35	optional filler; **fourth**, workload initiation and peaks: a day off lowers readiness for
+    36	high workloads, so the first session after a day off should **not** be a key-workout; the
+    37	number and placement of key-workouts is what determines whether the week is a one-, two-, or
+    38	three-peak design (see [[framework--microcycle-types-and-load-wave-design]]); **fifth**,
+    39	monitoring: key-workout execution data (achievement level, technical quality, HR, blood
+    40	lactate, RPE) is the single best indicator of an athlete's current state.
+    41	
+    42	**Why it works** — This is a process heuristic, not a physiological mechanism: Issurin's
+    43	stated rationale is that once the microcycle's actual development stimulus (the key-workouts)
+    44	is fixed, every other design decision (what precedes it, what follows it, how restoration is
+    45	distributed) exists to protect that stimulus's quality and manage the fatigue it produces.
+    46	Designing "everything else first, then slotting in the hard part" risks the key-workout landing
+    47	on a fatigued or under-prepared athlete.
+    48	
+    49	**When to apply** — As a checklist when building or auditing any microcycle: has the dominant
+    50	modality been named before workouts were scheduled; are the key-workouts placed away from the
+    51	first session after a day off; is there a planned restorative window around each key-workout;
+    52	and is monitoring tied specifically to key-workout performance rather than spread evenly across
+    53	every session. Useful as a coach-facing planning template independent of sport.
+    54	
+    55	**When NOT to apply — mandatory** — This is Issurin's own applied synthesis of BPC design
+    56	logic; no citation or comparative study is given for the six-step sequence or the five rules
+    57	themselves. Treat them as a structured practitioner heuristic, not an experimentally
+    58	validated planning method. **Inference:** the sequence assumes a coach already has a clear
+    59	single dominant-and-secondary modality assignment for the week (step 1); it gives no guidance
+    60	for a team-sport week that must simultaneously serve several position groups with different
+    61	dominant needs on the same day, a common real constraint in football that this chapter's
+    62	narrower single-athlete/single-event examples elsewhere do not have to solve.
+    63	
+    64	**Example** — Before finalizing a week's training plan, a coach could walk the six steps in
+    65	order: name this week's dominant ability, place its key-workouts (never as the first session
+    66	after a day off), build restorative windows around them, fill in supporting sessions with an
+    67	eye to how each affects the next, pick 2-3 monitoring indicators tied to the key-workouts, and
+    68	only then schedule any non-training events.
+    69	
+    70	**Related** — [[framework--key-workout-and-key-exercise-concept]],
+    71	[[framework--microcycle-types-and-load-wave-design]],
+    72	[[heuristic--exercise-sequencing-by-fatigue-state]].
+########## framework--accumulation-mesocycle-duration-and-monitoring.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: block-periodization--issurin
+     6	chapter: "3.2.1"
+     7	topic: accumulation mesocycle duration, content, monitoring
+     8	category: [periodization, mesocycle, accumulation, programming]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-26
+    12	---
+    13	
+    14	# Accumulation Mesocycle: 3-6 Weeks Early, Down to 10-14 Days Late-Season, With Diminishing Weekly Returns
+    15	
+    16	**What it is** — This is the full prescriptive detail behind the accumulation block first
+    17	introduced conceptually in [[framework--accumulation-transmutation-realization-mesocycles]]
+    18	(Ch. 1). Issurin gives duration as a function of two competing factors (PDF pp. 113-115,
+    19	printed pp. 102-104): the time needed for a real cumulative training effect in the targeted
+    20	basic abilities, aerobic endurance and maximal strength, both requiring "profound morphological
+    21	and even organic changes," versus the time limit the competition calendar allows. He cites a
+    22	supporting case study: eight highly qualified female kayakers, monitored over a **20-week**
+    23	program of high-resistance training (**4-5 hr/week**) aimed at maximal strength and aerobic
+    24	endurance, tracked via maximal isometric force in kayak-specific positions (Figure 3.9, PDF p.
+    25	114, printed p. 103, based on Sharobajko, 1984). Strength gain and weekly improvement rate fell
+    26	sharply over time: the first 3 weeks produced a 5.9% average gain (1.93%/week improvement
+    27	rate); the next 3 weeks added only 1.6% more (0.53%/week); the remaining 14 weeks added only
+    28	0.25% and then 0.13% per week. Issurin's stated conclusion: the fitness program was "very
+    29	effective at the beginning, reasonably effective through the first six weeks, and had only a
+    30	minor effect for the next 14 weeks," directly supporting BPC's case for shorter, higher-turnover
+    31	blocks over long, continuous ones (citing the same general adaptive-decline concept in
+    32	Bouchard, 1986, as applying to aerobic-endurance programs too). Based on this, Issurin sets the
+    33	following duration bands (PDF p. 115, printed p. 104): **up to six weeks** when deeper
+    34	physiological change is the goal (typically early season, when athletes are less
+    35	calendar-constrained); **three-four weeks** at mid-season, once important-competition timing
+    36	starts to dictate mesocycle sequencing; **10-14 days** at season's end, when important
+    37	competitions come at short intervals. Content is structured by sequencing microcycle types
+    38	(Table 3.7, PDF p. 116, printed p. 105): the **initial** part uses a restoration microcycle
+    39	(if starting a new training stage, not needed after a transition period) followed by an
+    40	adjustment microcycle (can be shorter than a week); the **mid-and-end** part is built from
+    41	loading microcycles, whose count sets the mesocycle's total length, with optional impact and/or
+    42	restoration microcycles inserted (a restorative microcycle, usually 3-6 days, can go
+    43	mid-mesocycle, or immediately after an impact microcycle before the next loading microcycle).
+    44	General load-shape rule: increase load gradually at the start, hold maximal load in the middle,
+    45	and reduce load at the end so the next mesocycle (transmutation) begins without excess fatigue;
+    46	a 3-4 day restorative microcycle can be inserted near the end of accumulation for this purpose.
+    47	Monitoring (Table 3.8, PDF p. 117, printed p. 106; verified against page image) tracks three
+    48	categories: **workload performance** (total weekly mileage, total sport-specific reps/week,
+    49	key-workout outcomes, each compared actual-vs-planned, week-to-week, and across the season);
+    50	**targeted (basic) abilities** (time-trial results, free-weight-trial results, average
+    51	key-workout results, using "appropriate valid tests"); and **training responses** (resting
+    52	heart rate, blood urea and CPK, body mass/muscle mass/fat component, blood lactate after
+    53	trials). Anthropometric change is flagged as a specific, useful side-outcome to track (strength
+    54	training raises muscle mass; aerobic training reduces fat component), especially relevant in
+    55	weight-category or leanness-sensitive sports.
+    56	
+    57	**Why it works** — The kayaker case study is offered as direct evidence for the general
+    58	biological principle that "the adaptive response induced by long-term training declines with
+    59	time" (Bouchard, 1986): diminishing returns set in within weeks, not months, for a fixed
+    60	training emphasis, which is the physiological argument for keeping each mesocycle-block short
+    61	and switching emphasis rather than running one long undifferentiated program.
+    62	
+    63	**When to apply — Inference, mapped to a college football calendar** — **Fall camp** functions
+    64	as a short accumulation mesocycle at the low end of Issurin's range (closer to the 10-14 day
+    65	figure, or the 3-4 week figure if camp's aerobic/strength-base emphasis is counted from
+    66	voluntary summer conditioning): given the diminishing-returns pattern in the kayaker case
+    67	(most of a strength/aerobic gain arrives in the first 3-6 weeks), a multi-month, undifferentiated
+    68	summer conditioning block is exactly the pattern this framework argues against; a shorter,
+    69	concentrated base-building window, followed by a shift to more specific work, is the BPC
+    70	alternative. **The gap between the last regular-season/conference-championship game and a bowl
+    71	game** (commonly roughly 3-5 weeks for many programs) is long enough to support a short
+    72	accumulation mesocycle (10-14 to 20-25 days, matching both this section's end-of-season figure
+    73	and the mini-block interval used later in [[framework--prolonging-residual-effects-with-mini-blocks]])
+    74	if the goal is to rebuild any basic-ability deterioration accumulated over a long season before
+    75	shifting into a bowl-specific transmutation/realization sequence.
+    76	
+    77	**When NOT to apply — mandatory** — The kayaker case study is a single unpublished thesis
+    78	(Sharobajko, 1984, a Ph.D. dissertation, Moscow All-Union Research Sport Institute), n = 8,
+    79	female kayakers, with no control group not receiving the same 20-week program; it demonstrates
+    80	a within-group improvement-rate curve, not a controlled comparison against an alternative
+    81	mesocycle length. **Population caveat:** this is Issurin's own book-wide pattern: the
+    82	accumulation-duration guidance and its supporting evidence are drawn from individual/endurance
+    83	Olympic sports (kayaking) tracking isometric strength and presumably aerobic markers, not from
+    84	any team-contact-sport population; football's basic-ability profile (short-duration high-force
+    85	efforts, position-specific demands, large roster with heterogeneous training age) is not
+    86	represented in this evidence base at all. The specific duration bands (six weeks / 3-4 weeks /
+    87	10-14 days) are Issurin's own applied judgment, not derived from a stated formula connecting
+    88	them to the kayaker data's exact decay curve.
+    89	
+    90	**Example** — A 3-4 week early-summer strength-aerobic emphasis block, monitored against
+    91	Table 3.8's indicators (weekly key-lift totals, a repeated time-trial or aerobic test, resting
+    92	HR trend, body composition), gives a coach a citable structure for when to expect most of a
+    93	block's gain to already have happened (roughly the first half of the block, per the kayaker
+    94	curve) and when continuing the same emphasis is likely yielding only marginal further return.
+    95	
+    96	**Related** — [[framework--accumulation-transmutation-realization-mesocycles]],
+    97	[[claim--residual-training-effect-durations-by-motor-ability]],
+    98	[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]],
+    99	[[case-study--popov-aerobic-strength-microcycle]],
+   100	[[periodization--bompa/framework--three-training-effects]].
