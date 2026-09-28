@@ -41,6 +41,8 @@ Never put memory content here — the file itself holds the facts.
 - [Ingest review gate](feedback_ingest-review-gate.md) — before ingest-book or any expensive atomization; what the arithmetic gate does and does not catch
 - [Dormant threads](project_dormant-threads.md) — Tezino CampPrep and FaceComps sim: where each stopped and what is still open
 - [RTP CLA course](project_rtp-cla-course.md) — book ingest state, the +13 page offset, the one rebuild still outstanding
+- [Post-merge cleanup](feedback_post-merge-cleanup.md) — standing OK to delete merged worktrees/branches unasked; verify-first rule; Windows read-only "Permission denied" fix
+- [SCN sprint course](project_scn-sprint-course.md) — Moyer/Natera sprint course: where the 58 library entries and review live, RTP-stack role, open decisions
 - [ATH Tech framework](project_ath-tech-framework.md) — the shipped 08-14 doc set, the five unwritten gaps, the ITS blocker
 - [Supervisor log pipeline](project_supervisor-log-pipeline.md) — nightly log feeding the Kenny/Chris report; action-items-are-not-outcomes trap
 - [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was rejected outright; which shapes trip it and the rewrite that works
@@ -57,4 +59,5 @@ Never put memory content here — the file itself holds the facts.
 - [Baylor department names](user_baylor-department-names.md) — Athletic Performance / Athletic Medicine / Applied Performance, never S&C / sports medicine / sport science
 - [Git Bash MSYS/AD stall](project_git-bash-msys-ad-stall.md) — why bash randomly dies with `add_item errno 1`: AD lookup exceeds MSYS2's 15s spinlock; fix via nsswitch files-only + `shell: powershell` hooks
 - [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — DailyBackup exit 3221225786 + same-day clean log = benign sleep interruption, not rot
+- [Sport-science thought partner](user_sport-science-thought-partner.md) — why he feeds in Oldbull/SCN/SportSmith/CLA; how to answer performance, S&C, rehab questions
 - [Third-party skill install](project_third-party-skill-install.md) — clone to ~/.agents/skills + symlink to 4 harnesses; Windows `ln -s` copies silently; sync-to-codex clears the pre-commit/backup jam
