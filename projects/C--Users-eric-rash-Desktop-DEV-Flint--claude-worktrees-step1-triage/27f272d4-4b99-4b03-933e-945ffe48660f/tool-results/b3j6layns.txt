@@ -1,0 +1,904 @@
+209042 total
+=== _book.md
+---
+type: book-index
+book: block-periodization--issurin
+title: "Block Periodization: Breakthrough in Sport Training"
+author: Vladimir Issurin (ed. Michael Yessis)
+domain: strength-and-conditioning
+ingest-tier: full-text
+source: "G:\\My Drive\\Athletic Performance & Sports Science\\Shared Reference Library\\From Landon Evans\\Eric Files\\Physical Preparation\\Books\\Block Periodization - Issurin.pdf; md5 5503b473eb63477f6a7db57ded5727bb"
+created: 2026-09-26
+---
+
+# Block Periodization: Breakthrough in Sport Training (Issurin, 2008) — ingest map
+
+PDF is real text: 221 pages, `extract_pdf.py --probe`: `{"pages": 221, "text_pages": 221,
+"scanned": false}`. Publisher: Ultimate Athlete Concepts, 2008.
+
+**Print-to-PDF page offset = +11**: the 0-based PDF index = printed page + 11 (a PDF viewer,
+and the Read tool's `pages` parameter, show printed + 12 instead; do not cite viewer/Read
+page numbers as if they were the 0-based index). Verified at five
+independent chapter starts, not just the offset's origin point: Ch1 (printed 1 = PDF 12,
+"Block periodization vs. traditional theory"), Ch2 (printed 36 = PDF 47, "The Workout:
+general concepts and structure guidelines"), Ch3 (printed 76 = PDF 87, "Microcycles,
+mesocycles and training stages"), Ch4 (printed 125 = PDF 136, "Long-term preparation"),
+Ch5 (printed 160 = PDF 171, "Altitude training"). Glossary starts printed 202 = PDF 213.
+The offset holds unchanged front matter through at least PDF 213 of 221; no evidence of a
+mid-book repagination.
+
+**Note on the extractor's `--pages A-B` flag (updated during Batch 2):** as of this session
+the extractor was fixed and `--pages A-B` is now **inclusive** (returns pages A through B).
+Each page also now carries `viewer_page` (index + 1) alongside `page` (still the 0-based
+index used for all citations in this book's entries: keep citing `page`, not `viewer_page`).
+Earlier note, kept for history: during Chapter 1's first pass, when the flag was still
+end-exclusive, two pages (PDF 25 and 44) were missed and recovered with a follow-up call
+before atomizing. That failure mode no longer applies with the inclusive flag, but an extra
+requested page beyond the end still does no harm.
+
+**Confidence rule for this book:** `proven` is reserved for physiology/mechanics established
+independent of this text (e.g. CNS fatigue and motor-unit recruitment order, connective
+tissue/warm-up basics already `proven` elsewhere in this library). Issurin's own periodization
+theory, block-sequencing prescriptions, and the numeric tables he or his co-authors derived
+(residual-effect durations, key-exercise interval tables, the ≤3-modality/65-70% workout rule)
+are capped at `supported`: they are a single author's synthesis of Soviet/Israeli
+sport-science practice and secondary citations, not independently replicated in this ingest.
+Single-case coaching anecdotes (Bondarchuk's podium sweep, the author's own 1985 canoe-kayak
+program) are `untested`. `contested` is set where this text conflicts with a claim already
+in this library, named explicitly both ways. Issurin's own later peer-reviewed review,
+"Benefits and Limitations of Block Periodized Training Approaches to Athletes' Preparation"
+(Issurin, 2016, *Sports Medicine*, Zotero item `PT9QTQ2I`), is full-text cached in this
+library at
+`research-papers/issurin-2016-benefits-and-limitations-of-block-periodized-training-approaches-to-athletes-preparation-a.md`
+(ingested 2026-07-31, not "not yet cached" as an earlier version of this note said). The
+principle entry cites it for a direct contradiction of the 2008 low/mid-level carve-out (its
+p.11). Its concentrated-unidirectional critique (pp.6-7) targets Verkhoshansky's model, not
+this book's A-T-R model; the training-stage entry treats it as a caveat on the 28-study
+support figure for that reason, not a contradiction.
+
+| # | Chapter | Printed pp | PDF idx | Status | Entries |
+|---|---------|-----------|---------|--------|---------|
+| 1 | Block Periodization vs. traditional theory | 1-35 | 12-46 | done | 8 |
+| 2 | The Workout: general concepts and structure guidelines | 36-75 | 47-86 | done | 8 |
+| 3 | Microcycles, mesocycles and training stages | 76-124 | 87-135 | done | 12 |
+| 4 | Long-term preparation | 125-159 | 136-170 | pending | 0 |
+| 5 | Altitude training | 160-201 | 171-212 | pending | 0 |
+| — | Glossary / About the author | 202-end | 213-221 | skip | n/a (reference matter, not atomized) |
+
+**Chapter 1 section map** (for locator precision, corrected during the Ch1-2 review pass):
+1.1 Traditional theory (printed 1-20, PDF 12-31); 1.2 The Block Periodization Concept
+(printed 20-30, PDF 31-41, contains the accumulation/transmutation/realization taxonomy and
+Table 1.6 residual-effect durations); 1.3 Consequences of the modern approach (printed
+30-33, PDF 41-44, starts at printed 30 / PDF idx 41, not printed 31 as an earlier version of
+this map said); Summary (printed 32-33, PDF 43-44); References (printed 34-35, PDF 45-46,
+not atomized).
+
+**Chapter 2 section map** (corrected during the Ch1-2 review pass): 2.1 Workout
+classifications (printed 36-45, PDF 47-56); 2.2 Workout structure (warm-up, main part,
+cool-down) (printed 46-59, PDF 57-70); 2.3 Guidelines for constructing a workout — sequencing,
+compatibility, daily series (printed 59-69, PDF 70-80, starts at printed 59 / PDF idx 70,
+not printed 60); 2.4 How to structure a workout / Summary (printed 69-72, PDF 80-83);
+References (printed 73-75, PDF 84-86, not atomized; the reference list runs through printed
+75 / idx 86, not printed 73 / idx 84 as an earlier version of this map said, though no
+substantive content is missing from the atomized entries).
+
+**Chapter 3 section map**: 3.1 Microcycles (printed 76-101, PDF 87-112): 3.1.1-3.1.2 types and
+load-wave design (printed 77-80, PDF 88-91); 3.1.3 aerobic/strength-aerobic microcycle, Popov
+example (printed 81-85, PDF 92-96); 3.1.4 anaerobic glycolytic microcycle (printed 86-89, PDF
+97-100); 3.1.5 explosive-strength microcycle, Sedykh example (printed 90-93, PDF 101-104);
+3.1.6 pre-competitive (tuning) microcycle (printed 93-96, PDF 104-107); 3.1.7 in-season
+team-sport microcycle, names American football (printed 97-100, PDF 108-111); 3.1.8 how to
+construct a microcycle (printed 100-102, PDF 111-113). 3.2 Mesocycles (printed 102-116, PDF
+113-127): 3.2.1 accumulation (printed 102-106, PDF 113-117); 3.2.2 transmutation (printed
+106-111, PDF 117-122); 3.2.3 realization/taper (printed 111-116, PDF 122-127). 3.3 Training
+stage (printed 116-121, PDF 127-132): 3.3.1 competition within the stage, Popov example
+(printed 117-118, PDF 128-129); 3.3.2 prolonging residual training effects, mini-blocks
+(printed 118-120, PDF 129-131). Summary (printed 120-121, PDF 131-132); References (printed
+122-124, PDF 133-135, not atomized).
+
+_Batch 1: built the chapter map and atomized Chapters 1-2, per the ingest review gate's
+two-stage process — stopping cleanly at the Chapter 2/3 boundary so the Codex falsification
+review (`staging/review_block-periodization-issurin_codex.md`) can run on a complete,
+self-contained unit before Chapter 3 begins._
+
+_Batch 2 (this session): atomized Chapter 3 in full (PDF 87-135, printed 76-124, 12 entries:
+8 framework, 3 case-study, 1 heuristic, 0 claim; see entry list in the session report). Gave
+the most careful treatment to 3.1.6 (pre-competitive microcycle), 3.2 (accumulation/
+transmutation/realization mesocycles in full prescriptive detail), and 3.3.2 (prolonging
+residual training effects via mini-block insertion) per the strength-and-conditioning
+miss-log's "peaking phase structure for collegiate football" gap. The first pass claimed every
+cited table and figure matched the page image; the round-1 review (2026-09-27,
+`staging/review_issurin_ch3_opus.md`) found four misreads: Figure 3.7 (AM/PM content
+inverted), Table 3.7 (Impact/Restoration durations swapped), Figure 3.10 (a fall "to" about
+69% conflated with the text's "by up to 69.3%") and Figure 3.11 ("erased" where both markers
+stay above baseline). All four were corrected against the page images in the fix pass
+(`staging/fixes_issurin_ch3_applied.md`), which also re-checked Figures 3.8 and 3.12 (this
+book is real text, not scanned, per the probe above). Extractor note: mid-session the extractor's `--pages A-B`
+behavior changed from end-exclusive to inclusive; this batch's extraction (run before the
+change, requesting 87-136 to get pages 87-135) and all page citations (the extractor's 0-based
+`page` field) are unaffected._
+
+_Batch 3 (recommended next): Chapter 4, Long-term preparation (PDF 136-170, printed 125-159) —
+annual and quadrennial cycles, long-term athlete development, sensitive periods, talent
+identification. Directly relevant to Baylor's multi-year athlete development question._
+
+_Batch 4 (lowest priority for football): Chapter 5, Altitude training (PDF 171-212, printed
+160-201). Recommend framework-only treatment (5-15 entries, confidence capped at `untested`)
+or skipping entirely unless Eric names a specific altitude-camp use case — Baylor football
+does not train at altitude as a standard practice per anything in `method-baseline.md`._
+=== claim--residual-training-effect-durations-by-motor-ability.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "1.2.1"
+topic: residual training effect durations
+category: [periodization, detraining, adaptation, programming]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Residual Training Effects Last Different Numbers of Days for Different Motor Abilities
+
+**What it is** — The residual training effect is defined as "the retention of changes
+induced by systematic workloads beyond a certain time period after the cessation of
+training," a term Issurin attributes to Brian and James Counsilman (1991) (PDF p. 33,
+printed p. 22). Issurin & Lustig (2004) is cited as the source of Table 1.6 (PDF p. 35,
+printed p. 24), giving residual duration ± SD in days after cessation of training for each
+motor ability: **aerobic endurance 30 ± 5 days**, **maximum strength 30 ± 5 days**,
+**anaerobic glycolytic endurance 18 ± 4 days**, **strength endurance 15 ± 5 days**,
+**maximum speed (alactic) 5 ± 3 days**. Table 1.6's own physiological-background column
+lists aerobic endurance's residual as resting on increased aerobic enzymes, mitochondria,
+muscle capillaries, hemoglobin capacity, glycogen storage, and fat-metabolism rate, and
+maximum strength's on improved neural mechanism and muscle hypertrophy from fiber
+enlargement, with no percentages attached in the table itself. Later in the text (PDF p. 35,
+printed p. 24), Issurin gives a specific figure for one of those table items: aerobic
+enzymes increase by 40-90% with training (Volkov, 1986; Fox et al., 1993; Wilmore & Costill,
+1993). He contrasts this with much smaller local adaptations from sprint training:
+phosphocreatine storage (+2-5%), peak lactate accumulation (+10-20%), and anaerobic enzymes
+(+2-20%), given without a citation on that page. On the following page (PDF p. 36, printed
+p. 25), Thorstensson (1988) is cited specifically for "relatively small increases" in
+quickly available energy sources, ATP and phosphocreatine, and enzymes such as creatine
+kinase, from highly concentrated sprint training.
+
+**Why it works** — Issurin states the mechanism directly (PDF pp. 35-36, printed pp. 24-25):
+aerobic ability, supported by pronounced morphological and biochemical changes, is retained
+"for a number of weeks at near-peak level," while anaerobic abilities, particularly maximum
+sprint speed, "retain near-peak levels for much shorter periods" because peak speed's gains
+are smaller and rest on "very delicate and highly precise neuro-muscular interactions, which
+are relatively unstable and cannot be maintained at the highest level without specially
+organized training." Maximum strength's comparably long residual is attributed to pronounced
+morphological, biochemical, and neural changes: enlargement of muscle-fiber cross-sectional
+area, hyperplasia, recruitment of previously inactive motor units, synchronization of their
+activity, and increased motor-neuron discharge frequency (Zatsiorsky, 1995). Strength
+endurance's residual is stated to depend on event duration and the degree of
+anaerobic-resource mobilization; longer-duration strength endurance has a relatively longer
+residual thanks to aerobic adaptation.
+
+**When to apply** — Sequencing which ability to develop first in a training stage (see
+[[framework--accumulation-transmutation-realization-mesocycles]]). **Inference:** an ability
+with a long residual (aerobic endurance, max strength, 30 ± 5 d) can be built early and
+carried further without direct work than a short-residual one, but a stage longer than about
+30 days after accumulation ends needs a retention dose (see Example); max speed (5 ± 3 d)
+needs re-exposure close to competition. **Eric's baseline directly echoes half of this table:** "Training
+residual effects set the retraining cadence: aerobic capacity and max strength both need
+re-exposure roughly every 30 days; speed needs re-exposure roughly every 5 days or tissue
+readiness for max-velocity work degrades" (`method-baseline.md`, "Periodization and
+programming," citing `01192022-hp5355-class1-transcript.md` p.27). This 30/30/5-day
+pattern matches Issurin's 30±5 / 30±5 / 5±3 figures because it is this table:
+week1-lecture.md (marker p.66) reproduces Table 1.6 directly, under a slide block that names
+"Issurin (Block Training Text)" as a source (marker p.64), and gives strength endurance as
+~12 days against Issurin's 15±5, the one value where the course departs from the book.
+
+**When NOT to apply** — Treat the numbers as a synthesized rule of thumb
+(±5, ±4, ±5, ±3 day spreads are themselves wide relative to the means), not a precise
+per-athlete clock; Issurin does not report the sample or method behind Issurin & Lustig
+(2004) in this text, so the table's evidentiary base cannot be checked further from this
+source alone. Issurin's own surrounding text also notes limits on how far residual-effect
+thinking travels: maximum oxygen uptake in highly trained endurance athletes falls when
+weekly training volume drops below a certain level (Steinacker, 1993; Steinacker et al.,
+1998), and large volumes of highly intense exercise do not prevent detraining and loss of
+aerobic endurance during a taper (Mujika, 1999) (PDF p. 34, printed p. 23).
+
+**Contested, flag this directly to Eric:** a *different* part of the same baseline corpus
+states the opposite ordering for detraining rate: "the traits easiest to build (aerobic) are
+lost fastest under detraining; the traits hardest to build (alactic/speed) are lost slowest"
+(`method-baseline.md`, "Conditioning and energy systems," citing `class-4-2026.md` p.47).
+This conflicts with Table 1.6 (aerobic residual is the *longest*, tied with strength, at
+30±5 days, while alactic speed is the *shortest* at 5±3 days). The class-1 transcript is
+not a third, independent data point against class-4-2026.md: it also states that aerobic
+capacity is gained and lost very quickly (marker pp.25, 28), gives its 30-day retention
+windows as conditional on "a small retention load" continuing during that window (marker
+p.28), a different construct from Issurin's residual *after cessation* of training, and
+ties its 5-day speed figure to connective-tissue and nervous-system readiness ("otherwise
+the nervous system doesn't change a whole lot," marker p.28) rather than to speed itself
+decaying in 5 days. The course's own numbers come directly from this table (week1-lecture.md
+marker pp.64, 66, strength endurance given there as ~12 days against Issurin's 15±5). Resolve
+with Eric: this may be residual effect after cessation (Issurin, Table 1.6) versus rate of
+loss without any retention dose (class-4-2026.md), two different constructs the corpus does
+not itself reconcile. Do not harmonize these; record all three with their locators and keep
+`contested`, with this as the stated reason.
+
+**Inference:** this table also converges with, but is not identical to, the vault's
+Verkhoshansky-staging entry on heterochronic adaptation
+([[supertraining--verkhoshansky/claim--heterochronic-biochemical-adaptation-sequence]],
+staging), which describes a *different* mechanism (order of biochemical sub-processes
+gained/lost) rather than absolute day-counts per motor ability; both describe
+heterochronicity in de-training, but at different levels of description; do not treat them
+as restating the same specific claim.
+
+**Example** — **Inference:** in a training stage that opens with 4 weeks of accumulation
+(building aerobic base and max strength) followed by 3 weeks of transmutation and 2 weeks of
+realization, competition falls 35 days after accumulation ends: at the outer edge of the
+aerobic and strength residuals' 30 ± 5-day window, not safely inside it. A coach relying on
+this table would want a maintenance dose of both qualities somewhere in transmutation, not
+an assumption that accumulation-phase gains are still fully in hand. Maximum speed work
+needs re-introduction within about 5 days of the target competition, or its residual will
+have decayed well below peak by competition day.
+
+**Related** — [[framework--accumulation-transmutation-realization-mesocycles]],
+[[periodization--bompa/heuristic--fatigue-fitness-3to1-ratio]] (a ratio-based rule for
+fatigue-vs-fitness decay, distinct from this table's absolute per-ability day counts:
+cross-reference, do not conflate),
+[[supertraining--verkhoshansky/framework--fitness-fatigue-modeling-and-taper-timing]] (staging),
+[[supertraining--verkhoshansky/claim--heterochronic-biochemical-adaptation-sequence]] (staging).
+=== framework--realization-mesocycle-taper-prescription.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "3.2.3"
+topic: realization mesocycle (taper) duration and prescription
+category: [periodization, mesocycle, taper, peaking]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Realization Mesocycle: One to Three Weeks, Much Lower Load, Built Around Maximal Speed and Rehearsed Competition Behavior
+
+**What it is** — The realization mesocycle is "traditionally... termed the taper" (PDF p. 122,
+printed p. 111; verified against page image). In traditional periodization the taper precedes
+important competitions (the book does not itself say "only"); under Block Periodization it is
+broader, forming the
+concluding phase of **every** training stage (see
+[[framework--training-stage-and-multi-peak-annual-cycle]]), so a season contains several
+realization mesocycles of differing weight depending on the upcoming competition's importance.
+Athletes enter this mesocycle fatigued from the preceding transmutation mesocycle, so the first
+objective is restoration toward supercompensation by competition day; the targeted abilities
+(maximal speed/quickness, event-specific tactics, competition readiness) all require high CNS
+reactivity, available energy resources, and mental concentration, states only available to a
+well-rested athlete, which is why workload reduction is described as "of paramount importance"
+at the mesocycle's start. Table 3.12 (PDF p. 123, printed p. 112; verified against page image)
+gives the full prescription: **aims**, peak-performance attainment, full restoration before
+competition, and completing the training stage's overall program (peaking demands scale with
+the competition's level/importance); **targeted abilities**, maximal speed/quickness,
+event-specific tactics, readiness to compete; **workload level**, "much lower than in
+preceding mesocycles," with various approaches to how that reduction is achieved (the
+"valid" qualifier is the writer's, not the book's);
+**duration**, **one to three weeks**, depending on competition importance and sport-specific
+factors; **techno-tactical improvement**, via sport-specific modeled exercises/tasks that must
+build genuine competitive performance (the "not just rehearsal" framing is the writer's own
+gloss on this requirement, not the book's wording); **emotional tension/anxiety**,
+elevates as competition approaches, more so for higher-stakes competition; **monitoring**,
+follow-up time-trials, techno-tactical execution quality, training responses, and restoration
+level, focused on integrative sport-specific estimates and each athlete's most important
+individual traits; **nutrition**, deliberate use of supplements and energy-intake control to
+produce an ergogenic effect and prevent unwanted body-composition change. On workload-reduction
+timing: a **short** mesocycle demands a fast decrease; a **longer** one allows gradual
+reduction; duration itself is "extremely important and sensitive" because a too-long taper
+risks detraining while a too-short one may not restore and develop event-specific abilities
+adequately (a contradiction Issurin attributes to Mujika et al., 2004). Techno-tactical
+simulation must (1) reproduce the competitive situation as closely as possible, (2) approximate
+competitive concentration levels, and (3) repeat enough to build stable, reliable skill. Issurin also gives the taper's own mood evidence, separate from the anxiety discussion below:
+"workload reduction during the taper causes a remarkable improvement in mood associated mainly
+with improved recovery" (citing a review by Mujika et al., 2004, PDF p. 124, printed p. 113).
+Table
+3.13 (PDF p. 124, printed p. 113) gives a worked dosage for a **two-week realization mesocycle
+for qualified kayakers**: quasi-competitive race performance, 4-6 total; race simulation in
+broken series (four quarters, 20s breaks), 8-12; selective simulation of the initial race
+quarter, 10-16; selective simulation of the two mid-race quarters, 8-12; simulation of the
+pre-event warm-up program, 3-5. On emotional tension: pre-competition anxiety can cut either
+way, moderate anxiety facilitates performance, excessive anxiety detracts from it, and elite
+athletes are reported to benefit more from increased anxiety than sub-elite athletes, while
+mid-class athletes can be "sharpened" by emotional tension (Raglin & Wilson, 2000, stated this
+way in the source; the sub-elite/mid-class distinction is not further clarified there). Table
+3.14 (PDF p. 125, printed p. 114) gives realization-specific monitoring indicators: sprint-
+repetition and simulation totals; maximal-speed and event-simulation test results; effort
+perception; HR and blood lactate after relevant exercises; CPK and urea; resting HR; sleep
+quality and mood questionnaire; body mass and fat component. Issurin also states four benefits
+of keeping the monitoring program consistent across successive realization mesocycles within a
+season (PDF p. 125, printed p. 114): coaches can validate the test set against real
+competitive outcomes over time; individual (not just group) norms can be established for each
+athlete; athletes themselves learn to read their own responses; and self-regulation and
+body-mass management methods can be set in advance rather than improvised. Issurin adds a
+specific nutrition warning, illustrated by a case
+study: **20 highly qualified male long-distance triathletes**, tracked across a 4-week
+high-workload mesocycle into a **2-week taper mesocycle** (PDF pp. 126-127, printed pp.
+115-116, based on Margaritis et al., 2003): average energy intake stayed roughly
+flat. The text states energy expenditure "decreased... by up to 69.3%" during the taper (PDF
+p. 126, printed p. 115); Figure 3.10 (PDF p. 127, printed p. 116; re-verified against the page
+image, 2026-09-27) instead plots reduced-workload expenditure at about **69% of** the
+high-workload level, i.e. roughly a 31% fall, not a 69% one (the chart's own axis, 50-110%,
+could not plot a fall to about 31% of baseline). This is a source inconsistency, not a
+transcription error on this entry's part; the figure reading is the more plausible one given
+the axis range, and both are recorded here rather than silently harmonized. Mean body mass
+didn't change, but body fat mass **increased by 4.3%** (about 104.3% of baseline, matching the
+figure). Issurin's point: unchanged body mass can mask
+a real fat gain (or muscle loss) if eating habits don't adjust downward with the drop in
+training energy cost, so body mass alone is "not always a reliable" anthropometric indicator
+during a taper. **Inference, from the primary abstract (Margaritis et al., 2003, *Journal of
+the American College of Nutrition* 22:147-156):** this was a double-blind antioxidant-
+supplementation trial with a supplemented group (n = 7) and a placebo group (n = 9), 16
+athletes analyzed, not 20 as the book states; the abstract does not report the energy-balance
+or body-composition figures the book cites, so those specific numbers could not be verified
+against the primary source and should be treated as the book's own retelling.
+
+**Why it works** — The core mechanism is the same reduced-load-toward-supercompensation logic
+already given for the pre-competitive microcycle
+(see [[framework--pre-competitive-microcycle-tuning]], which is this mesocycle's dominant
+microcycle type): the targeted abilities need a well-rested nervous system and available energy
+stores, so load must come down before those specific qualities can actually be trained and
+expressed. The duration-sensitivity point (too long detrains, too short under-restores) is
+Issurin's own applied synthesis, though he cites Mujika et al. (2004), a real, checkable
+taper-physiology review, as the source flagging this contradiction in the field generally,
+not something Issurin resolves with his own data here.
+
+**When to apply — Inference, mapped to a college football calendar** — **Bowl prep** is the
+clearest college-football analog to a full one-to-three-week realization mesocycle: workload
+should come down substantially from whatever preceded it (regular-season maintenance load, or a
+short rebuild block if the last-game-to-bowl gap was used as a mini accumulation/transmutation
+sequence, see [[framework--prolonging-residual-effects-with-mini-blocks]]), practice time
+should shift toward maximal-speed/explosive work and heavily rehearsed, opponent-specific
+game-plan simulation (the Table 3.13 dosage pattern, adapted from race-quarters to game-plan
+segments, e.g., specific down-and-distance packages, specific special-teams looks), and staff
+should watch emotional tension deliberately given a long layoff and a non-conference,
+lower-frequency opponent-preparation rhythm. **The gap between the final regular-season/
+conference-championship game and the bowl game** is exactly the scheduling problem Issurin's
+duration-sensitivity warning describes: too long a "taper-only" approach across that whole gap
+risks detraining (per Mujika et al., 2004, and consistent with
+[[claim--residual-training-effect-durations-by-motor-ability]]'s ~30-day residual windows for
+basic abilities), which is the direct rationale for treating the early part of that gap as a
+short accumulation/transmutation rebuild and only the final 1-3 weeks before the bowl as this
+realization mesocycle. The nutrition warning (unchanged eating during a lower-workload window
+risks fat gain even at stable body mass) is directly transferable to any football taper or bowl
+prep window and worth flagging to Performance Nutrition specifically, since body-composition
+oversight sits with that separate Health & Wellness unit per Eric's baseline
+(`method-baseline.md`, "Nutrition and body composition"). **Eric's baseline** gives no duration
+band or nutrition-adjustment guidance for a taper window anywhere in `method-baseline.md`; the
+closest material is the general in-season rule "maintain intensity, reduce volume," citing
+`01192022-hp5355-class1-transcript.md` pp.20-21, which is compatible in direction but supplies
+none of this entry's specificity (the one-to-three-week band, the competition-importance
+scaling, or the body-composition-during-taper warning).
+
+**When NOT to apply** — **Inference, population caveat:** every piece of
+supporting data here
+(the kayaker simulation dosage, the triathlete nutrition case) comes from individual endurance
+sports with single, clearly-defined competitive efforts; football has no equivalent single
+"race" to simulate, and a "game" cannot be rehearsed at full competitive intensity the way a
+kayak race segment can. The triathlete case (per the primary abstract) is n=16 (7+9), one study,
+one sport, with no reported statistical test of the 4.3% fat-mass change's significance in this
+text: treat the direction (unadjusted eating during a taper risks fat gain) as a plausible,
+citable caution, not a precise, guaranteed effect size for a football population with very
+different body-composition targets and energy demands than a long-distance triathlete. The 1-3
+week duration band and the anxiety-by-athlete-level claim (Raglin & Wilson, 2000) are stated
+without further detail on that study's own population or method in this text. This mesocycle's
+emotional-tension guidance assumes a single identifiable peak competition; it does not address
+a multi-game bowl-adjacent context (e.g., a conference championship immediately followed by a
+short turnaround into a bowl selection process) where emotional tension may need to be managed
+across two closely spaced high-stakes events rather than one clean taper. **Inference, from the
+staging Verkhoshansky fitness-fatigue entry:** Fitz-Clarke et al. (1991) found "presently
+accepted taper protocols may be too rigorous and short for best results"
+([[supertraining--verkhoshansky/framework--fitness-fatigue-modeling-and-taper-timing]],
+staging). This sits in tension with Issurin's own position that a short realization mesocycle
+"demands a fast workload decrease" (PDF p. 123, printed p. 112): Fitz-Clarke's caution and
+Issurin's fast-decrease prescription for short tapers point in opposite directions on how
+aggressive a short taper's load cut should be, and this text does not resolve that tension.
+
+**Example** — **Inference:** a three-week bowl-prep plan could open with a lighter first week (still
+carrying some team-practice volume, closer to a short transmutation-mesocycle tail) that
+tapers hard into a genuine one-to-two-week realization phase immediately before the game,
+with practice time shifting toward explosive work and rehearsed, opponent-specific situational
+football, energy intake reviewed alongside the drop in practice volume, and staff watching for
+either excess complacency (too little anxiety, given the layoff and often lower-stakes framing
+of some bowl games) or excess anxiety in players for whom the bowl carries personal stakes
+(e.g., a senior's final game, an NFL draft evaluation window).
+
+**Related** — [[framework--pre-competitive-microcycle-tuning]],
+[[framework--prolonging-residual-effects-with-mini-blocks]],
+[[framework--training-stage-and-multi-peak-annual-cycle]],
+[[claim--residual-training-effect-durations-by-motor-ability]],
+[[supertraining--verkhoshansky/framework--fitness-fatigue-modeling-and-taper-timing]] (staging),
+[[supertraining--verkhoshansky/claim--adaptive-reconstruction-vs-supercompensation]] (staging,
+`contested`: this entry's supercompensation mechanism, see Why it works, is the same model
+that entry critiques),
+[[periodization--bompa/heuristic--fatigue-fitness-3to1-ratio]],
+[[research-papers/issurin-2016-benefits-and-limitations-of-block-periodized-training-approaches-to-athletes-preparation-a]].
+=== framework--in-season-team-sport-mini-block-microcycle.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "3.1.7"
+topic: in-season weekly microcycle for team and dual sports
+category: [periodization, in-season, team-sports, microcycle]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# A Two-Mini-Block Weekly Structure for In-Season Team Sports, Naming American Football Directly
+
+**What it is** — Issurin addresses the specific constraint that team and dual sports (he
+names **soccer, American football, rugby, volleyball** explicitly) run a 20-35 week season
+where "the possibility of inserting highly concentrated training blocks is very limited"
+(PDF pp. 108-109, printed pp. 97-98). He cites Fleck and Kraemer (1997): players typically
+maintain strength near pre-season levels for 14-16 weeks, after which strength variables
+decrease dramatically. Because the usual one-week gap between games is too short to work
+effectively on every training target (metabolic conditioning, maximal/explosive strength,
+injury prevention, techno-tactical skill, game-specific endurance, active restoration) at once,
+Issurin proposes adapting three BPC approaches at the *week* level: high concentration of
+specialized workloads within **mini-blocks**, separating mini-blocks by training modality, and
+determining **key-workouts** within each mini-block. The worked example (Figure 3.8, PDF p.
+109, printed p. 98, "based on Baker, 2001," a real cited source, not an uncited synthesis)
+splits a standard Monday-Sunday week into two mini-blocks. **Mini-block 1 (Monday-Wednesday)**
+targets sport-specific maximal and explosive strength as the dominant training aim: it opens
+Monday with an active-recovery session (medium/low load, aerobic and general conditioning),
+then delivers the strength emphasis across **two key-workouts** (Tuesday and Wednesday
+mornings, maximal strength plus explosive strength as the secondary modality), combined with a
+medium-load team practice (Tuesday afternoon) and a conditioning-restorative workout
+(Wednesday afternoon). This sequencing leaves **28-30 hours of recovery** after the Wednesday
+strength key-workout before mini-block 2's team-practice key-workout begins, to let the
+anabolic/restorative process run before the next demand.
+**Mini-block 2 (Thursday-Saturday)** targets sport-specific team practice and immediate game
+preparation: it includes two obligatory team practices, one before the day off (Thursday
+afternoon, itself the microcycle's **third key-workout**, "substantial or big" load, intended
+to deliver a pronounced game-specific stimulus) and a second, load-restricted session
+immediately before the game itself (Saturday, mostly techno-tactical drills tied to the
+specific forthcoming opponent). Figure 3.8 shows a total of three key-workouts across the
+week, not two. Issurin notes some highly motivated teams skip the day off and add an optional
+Friday-morning conditioning or techno-tactical session instead, trading recovery time for
+extra preparation; he states the tradeoff explicitly without endorsing either choice. The
+chart gives priority to maximal-strength development over explosive-type work within the week,
+which Issurin explains as protecting "somatic, functional and anabolic status," while noting a
+cited counter-example (Newton et al., 2006) of sequencing classic high-resistance training with
+ballistic explosive-type microcycles to enhance jump performance instead.
+
+**Why it works** — Issurin's own stated reason (PDF p. 111, printed p. 100): weekly
+competition stress "restrict[s] the benefits of utilizing BP mesocycle sequencing. However,
+the benefits of accentuating dominant training targets, in a mini-block structure, and
+designing key-workouts can be attained." **Inference:** this is the chapter's direct answer to
+the constraint stated in [[principle--concentration-of-training-workloads]] (BPC needs
+concentrated, sequenced blocks) meeting the constraint that team sports cannot suspend
+competition long enough to run full-length accumulation/transmutation/realization mesocycles
+(see [[framework--accumulation-mesocycle-duration-and-monitoring]] and
+[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]] for what those
+normally require in duration); splitting the week itself into two purpose-specific mini-blocks,
+each with its own key-workouts, is a way of keeping some of BPC's concentration benefit even
+though the underlying block can only be one week long, not several, but the author frames it
+as attaining benefits under a restriction, not as a full substitute for mesocycle sequencing.
+
+**When to apply: this is the entry most directly answering the in-season half of the
+strength-and-conditioning miss-log's "peaking phase structure for collegiate football" gap
+(logged 2026-09-03)** — Issurin explicitly names American football as a sport this structure
+is meant for. **Eric's baseline's** in-season rule, "maintain intensity, reduce volume"
+(`method-baseline.md`, "Strength and power," citing `01192022-hp5355-class1-transcript.md`
+pp.20-21), is compatible with and gets a concrete weekly shape from this framework: the
+early-week mini-block is where intensity (maximal/explosive strength) gets its two key-workouts,
+while the late-week mini-block is deliberately techno-tactical and load-restricted heading into
+the game, which *is* the volume reduction the baseline rule calls for. **Inference:** the
+28-30 hour recovery window between the strength mini-block and the practice-heavy mini-block
+gives a specific, citable number for how much gap a college program might target between its
+heaviest in-season lift and the next high-intensity team session; Issurin does not himself
+generalize this figure beyond the Figure 3.8 worked example.
+
+**When NOT to apply** — The specific day-by-day chart (Figure 3.8) is built from
+one cited source, Baker (2001), a study of professional and college-aged rugby league players'
+in-season concurrent training: a real, checkable citation, but a single study in rugby league,
+a sport with a different weekly game/practice rhythm than college football, which layers
+additional constraints (NCAA-mandated practice-time limits, travel, and a Saturday-only game
+schedule rather than rugby league's varying weekly structure). **Population caveat:** none of
+this section's evidence comes from American football itself; Issurin lists
+football alongside soccer, rugby, and volleyball as sports the *problem* applies to, but the
+worked example and its supporting citation are rugby-specific. **Inference:** the specific
+"two key-workouts, 28-30 hours recovery" prescription should be treated as a structural
+template to adapt to football's own practice-count and padded/unpadded-practice rules, not a
+ready-made in-season lift schedule. Issurin gives no guidance here for bye weeks, short
+(Thursday-game) weeks, or the postseason gap before a bowl game; those fall outside this
+weekly-cycle framework and are closer to the pre-competitive/realization material in
+[[framework--pre-competitive-microcycle-tuning]] and
+[[framework--prolonging-residual-effects-with-mini-blocks]].
+
+**Example** — **Inference, following Figure 3.8's actual pattern (PDF p. 109, printed p. 98)
+for a Sunday game:** Monday AM active recovery/conditioning; Tuesday AM maximal-strength
+key-workout (plus explosive strength), Tuesday PM medium-load team practice; Wednesday AM
+second maximal-strength key-workout (plus explosive strength, bigger load), Wednesday PM
+active-recovery/conditioning; Thursday PM key team practice (substantial-to-big load); Friday
+off; Saturday AM team practice/technical work (medium load); game Sunday. For a Saturday-game
+week, this pattern would need to shift roughly one day earlier across the board (e.g., the two
+strength key-workouts moving to Sunday-Monday and the key team practice to Wednesday), since
+Issurin's own worked example assumes a Sunday game and does not itself address the shift.
+
+**Related** — [[framework--microcycle-types-and-load-wave-design]],
+[[framework--pre-competitive-microcycle-tuning]],
+[[heuristic--two-a-day-workout-sequencing-by-dominant-ability]],
+[[claim--morning-resistance-training-no-decrement-after-6hr-rest]],
+[[principle--concentration-of-training-workloads]].
+=== framework--prolonging-residual-effects-with-mini-blocks.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "3.3.2"
+topic: prolonging residual training effects with mini-block insertion
+category: [periodization, residual-training-effect, training-stage, peaking]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# When a Training Stage Outruns the 30-Day Residual Clock, Insert a Mini-Block, Don't Just Add Workouts
+
+**What it is** — This section directly answers the mismatch already flagged in
+[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]]: the accumulation
+mesocycle's basic-ability residual runs out at about **30 days** (Table 1.6; see
+[[claim--residual-training-effect-durations-by-motor-ability]]), which caps how long the
+following transmutation-plus-realization stretch can run before basic abilities decay below
+target. But Issurin notes many sports need their transmutation mesocycle to run **3-4 weeks**
+for anaerobic glycolytic development, and the realization mesocycle (taper) can run **about two
+weeks**: together, roughly **five weeks**, which already exceeds the ~30-day strength-aerobic
+residual (PDF pp. 129-130, printed pp. 118-119; verified against page image). Issurin's stated
+fix: do **not** simply add extra aerobic or strength workouts into the transmutation mesocycle
+to "top up" the decaying residual. This fails because the highly intense transmutation
+mesocycle actively suppresses the immediate effect of aerobic training, and the anabolic
+strength stimulus needs recovery time the transmutation mesocycle cannot spare. Instead, insert
+a **special compact mini-block (a short microcycle)** dedicated to the decaying ability. Figure
+3.12 (PDF p. 130, printed p. 119; re-verified against the page image, 2026-09-27) diagrams the
+resulting pattern for a training stage, in sequence: **accumulation** (high-volume basic
+aerobic-strength workloads, **20-25 days**), then **transmutation** (highly intensive specific
+workloads, **20-25 days**), then **realization** (taper and maximal speed, **10-16 days**), then
+**competition**. The figure's "Mini-block inclusion" callout points to more than one insertion,
+not a single one: an accumulation-type (aerobic-strength) patch sits inside the transmutation
+span, a transmutation-type (highly intensive specific) patch sits inside the realization span,
+and a second accumulation-type patch also sits inside the realization span: three mini-block
+insertions total across the diagram, not one. Issurin gives a worked contrast of two
+real scheduling situations (PDF p. 131, printed p. 120): when two targeted competitions are set
+**a five-week interval** apart (his cited example: kayaking's European and World Championships,
+which happen to fall five to six weeks apart in a typical calendar),
+the fix is to compress the whole stage (10-14 days accumulation, 10-14 days transmutation, 8-10
+days realization), short enough that the accumulation mesocycle's own residual still covers the
+whole stage, so **no mini-block is needed at all**. When circumstances instead force a longer,
+**7-9 week** training stage (his example: pre-Olympic preparation, where the international
+calendar has no tune-up competitions before the Games), the recommended answer is to plan longer
+mesocycles **and** include the mini-block, because a stage that long cannot otherwise carry the
+accumulation-phase residual all the way to competition. **Inference:** the chapter's own summary
+restates the placement rule concretely: an **aerobic mini-block can be inserted inside the
+transmutation mesocycle**, and a **highly intense anaerobic mini-block can be inserted inside
+the realization mesocycle** (PDF p. 132, printed p. 121); reading this alongside Figure 3.12's
+three patches, each mesocycle gets a short dose of whichever ability it does not otherwise
+train, timed to arrive before that ability's own residual clock runs out (this synthesis
+across the figure and the summary sentence is the writer's own connection, not stated by
+Issurin in one place).
+
+**Why it works** — The author gives a reason why *added workouts* fail, but hedges the
+proposed remedy rather than explaining why it succeeds. His stated reason additional workouts
+fail, scoped to the transmutation mesocycle specifically: the transmutation mesocycle
+"strongly suppresses the immediate effect of aerobic training," and added strength work
+"require[s] sufficient recovery that cannot be provided" inside a mesocycle built for a
+different, fatiguing purpose (PDF p. 130, printed p. 119). For the remedy itself, Issurin
+writes only: "**Apparently**, what should be inserted in the mesocycle is not several
+additional workouts but a special compact mini-block (short microcycle), in order to prolong
+training residuals" (PDF p. 130, printed p. 119), his own hedge word, not a stated mechanism
+for why a discrete mini-block succeeds where added workouts fail. No outcome data for the
+mini-block approach is presented in this section; Figure 3.12 cites Issurin & Lustig (2004), a
+coaching-practice article in *Leistungssport*, not a controlled study. **Inference:** a
+plausible reason a discrete mini-block might succeed is that it is short enough to insert
+without abandoning the surrounding mesocycle's main purpose while still being its own coherent
+loading-then-recovery unit rather than scattered single sessions, but this is the writer's own
+extrapolation, not something Issurin states.
+
+**When to apply: this is the entry most directly responsive to the strength-and-conditioning
+miss-log's "peaking phase structure for collegiate football" gap (logged 2026-09-03), and the
+clearest football calendar mapping in this chapter, Inference throughout** —
+
+- **The gap between the final regular-season or conference-championship game and a bowl game**
+  (commonly roughly 3-6 weeks depending on bowl selection and game date) is structurally the
+  same scheduling decision Issurin poses in his worked example. A **short** gap (roughly
+  5-6 weeks or less) should be handled like his compressed-stage case: run a short
+  accumulation-transmutation-realization sequence sized to fit inside the gap (e.g., 10-14 days
+  rebuild / 10-14 days sharpen / remaining days as realization/taper), in which case a
+  strength-aerobic residual built at the very start plausibly survives to the bowl game without
+  needing a mini-block. A **longer** gap (closer to 6+ weeks, which happens for some
+  earlier-selected bowls) more closely resembles his 7-9 week pre-Olympic case: plan a longer
+  rebuild phase **and** insert an aerobic (or strength) mini-block partway through the
+  bowl-prep transmutation-equivalent work, specifically to protect the basic conditioning base
+  built early in the gap from decaying below target by game day.
+- **In-season, week to week:** [[case-study--popov-competition-shortens-residual-effects]]
+  already shows that a hard game can itself accelerate residual decay; a bye week, or a week
+  after an unusually taxing game, is a natural, calendar-given opportunity to run something like
+  Issurin's aerobic mini-block (a few days of concentrated aerobic-strength work) to "top up" a
+  basic-ability residual before it drops further, rather than treating every week's training
+  content as identical regardless of how the prior weeks' games affected the athletes.
+- **Eric's baseline** does not currently name a mini-block concept or an explicit bowl-prep
+  periodization structure at all. **Inference:** this is the writer's own assessment, not
+  Eric's: among the Chapter 3 entries produced so far, this framework reads as the single most
+  direct, numerically specific answer this ingest has produced to that gap, and should be
+  flagged to Eric as a candidate structure to react to, not an already-adopted practice.
+
+**When NOT to apply** — **Population caveat, repeated deliberately because this is
+the chapter's central prescriptive claim:** every piece of evidence behind this framework
+(the 30-day residual table, the kayaking/pre-Olympic worked examples, the Popov case) comes from
+individual, endurance-or-technical Olympic sports with a fixed, known international competition
+calendar set months or years in advance. Football's bowl-selection process is itself uncertain
+until late in the season (a team does not always know its exact bowl date and opponent far in
+advance), which makes pre-planning an exact-length rebuild-then-taper sequence harder than in
+Issurin's kayaking example, where the championship dates are fixed well ahead of the season.
+**Inference:** none of Issurin's specific day-counts (20-25 / 20-25 / 10-16 days; the 5-6 week
+vs. 7-9 week contrast) were derived from or tested against a team-contact-sport calendar; they
+should be treated as a structural template to adapt to football's specific bowl-selection
+timeline and roster fatigue state at season's end (which is itself compounded by an already-long
+season, unlike Issurin's examples where the "prior mesocycle" is a dedicated, undisturbed
+accumulation block rather than 12+ weeks of in-season competition). The mini-block's own
+duration is not specified numerically in this section (Issurin calls it a "short microcycle,"
+consistent with the 2-4 day aerobic contrast mini-block already given in
+[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]]'s Table 3.10):
+treat 2-4 days as the applicable figure by cross-reference, not as independently stated here.
+Issurin gives his own explicit limit on this whole residual-clock logic, immediately before
+this section: "if the training design is based solely on the length of training residuals, it
+will be extremely rigid and inflexible. There are also other factors influencing training
+residuals" (PDF p. 127, printed p. 116); the training stage itself he defines as three
+consecutive mesocycle-blocks "vary[ing] from 4-10 weeks" (same locator). This entry's
+day-count-driven Example below should be read against that caveat, not as a rigid formula.
+Issurin's own later peer-reviewed review states that block-periodization evidence "does not
+supply validated block durations or effect estimates for collegiate American football"
+(Issurin, 2016, *Sports Medicine*, vault
+`research-papers/issurin-2016-benefits-and-limitations-of-block-periodized-training-approaches-to-athletes-preparation-a.md`).
+
+**Example** — **Inference:** for a **4-week gap** between a team's last game and its bowl game,
+Issurin's own worked 5-week case (10-14 / 10-14 / 8-10 days) states plainly that "you need not
+include mini-blocks because the training residuals following the accumulation mesocycle
+surpass the competition" (PDF p. 131, printed p. 120); a 4-week gap is shorter still, so by
+the same logic a plan could run roughly 10 / 10 / 8 days (accumulation / transmutation /
+realization) with **no mini-block needed at all**, following Issurin's compressed-stage case
+rather than requiring one. For a **6-week gap**, closer to but still short of Issurin's 7-9
+week pre-Olympic case, a plan following this framework could run roughly 14-16 / 14-16 / 10-12
+days **with** an aerobic mini-block inserted partway through the transmutation-equivalent
+phase, since a stage approaching that length is closer to where Issurin says the accumulation
+residual alone cannot cover the whole stage; note that Figure 3.12's own 20-25 / 20-25 / 10-16
+day figures apply to the longer 7-9 week stage, not to a 6-week gap, so they should not be used
+as the target durations here. Per the caveat above, treat both of these as a structural
+template to react to, not a rigid formula: "there are also other factors influencing training
+residuals" (PDF p. 127, printed p. 116).
+
+**Related** — [[claim--residual-training-effect-durations-by-motor-ability]],
+[[framework--accumulation-mesocycle-duration-and-monitoring]],
+[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]],
+[[framework--realization-mesocycle-taper-prescription]],
+[[case-study--popov-competition-shortens-residual-effects]],
+[[framework--training-stage-and-multi-peak-annual-cycle]] (reciprocal link recommended there:
+its "special measures" line should link back to this entry),
+[[research-papers/issurin-2016-benefits-and-limitations-of-block-periodized-training-approaches-to-athletes-preparation-a]].
+=== case-study--popov-competition-shortens-residual-effects.md
+---
+type: library-entry
+kind: case-study
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "3.3.1"
+topic: competition itself shortens the preceding mesocycle's residual
+category: [periodization, residual-training-effect, case-study, competition]
+confidence: untested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Competition Cut Popov's Aerobic-Mesocycle Gains Roughly in Half (V-AT) Within About Ten Days
+
+**What it is** — Issurin addresses whether competitions inside a training stage (not the
+final target competition) help or hurt (PDF pp. 128-129, printed pp. 117-118). His position:
+mid- and low-level competitions inside accumulation or transmutation mesocycles add useful
+emotional diversity and elicit training responses that enrich adaptation, but highly intense
+competitive efforts also trigger a stress-hormone response. The supporting case: Alexander
+Popov's (Russia, multi-Olympic/World swimming champion) preparation was tracked with an
+incremental stepwise swimming test measuring anaerobic threshold speed, V-AT (blood lactate =
+4 mM) and V-La8, the speed producing 8 mM lactate (the stated lower limit of highly intense
+glycolytic work). Measurements were taken at the start of a highly concentrated aerobic
+mesocycle, again 10 days later, and again a few days after Popov competed several times
+(Figure 3.11, PDF p. 129, printed p. 118; re-verified against the page image, 2026-09-27,
+adapted from Pyne & Touretski, 1993). Both velocity markers rose over the mesocycle's first
+~10 days (V-AT 1.57 to 1.63 m/s; V-La8 1.64 to 1.72 m/s), then fell after the competition
+(V-AT to 1.60 m/s at day ~21; V-La8 to 1.70 m/s), a decline the book itself calls "a
+substantial decrease" (its own wording, not "erased" or "fatigued"). About half of the V-AT
+gain and about a quarter of the V-La8 gain were lost; both markers remain above their starting
+values. Issurin attributes this decline to shortened training residuals "induced by the
+previous program" (PDF p. 128, printed p. 117), i.e. to the competition's effect on the
+residual clock, not to any stated change in the training content itself.
+
+**Why it works — the author's own attributed mechanism, not independently re-derived here** —
+The book gives two separate chains, not one merged chain (PDF p. 128, printed p. 117): (a)
+stress hormones (catecholamines, cortisol) reinforce the catabolic process (Viru & Viru, 2001),
+so "muscle mass and maximum strength can decrease"; and (b), cited to a different source,
+"the highly intense anaerobic glycolitic efforts typical in competition suppress the activity
+of aerobic enzymes and the oxidative process in the mitochondria" (Volkov, 1986). The book's
+conclusion 3 (PDF p. 129, printed p. 118) ties the shortened residual to stress hormones in
+general; Volkov is specifically the citation behind the glycolytic-suppression chain (b), not
+the hormonal chain (a). **Inference:** chain (b) is the same physiological substrate underlying
+aerobic endurance's normal ~30-day residual
+(see [[claim--residual-training-effect-durations-by-motor-ability]]), so a hard competition can
+be read as an accelerant on that decay clock rather than a separate, independent event; the
+book does not state this link explicitly. Issurin also notes the field's practical response:
+"prominent coaches" have "added special aerobic workloads to restore and revitalize the
+athletes after competition" (PDF p. 128, printed p. 117), a plain author statement, not this
+entry's own inference.
+
+**When to apply** — **Inference:** as a citable, named-athlete illustration for why a program including
+in-season or in-training-stage competitive tests should expect some real cost to basic-ability
+residuals, not treat competing as a free additional training stimulus. Directly supports the
+caution already logged for the transmutation mesocycle
+(see [[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]]) about why
+"including competition" is listed as an *option*, with tradeoffs, rather than an unqualified
+recommendation. **Inference:** for football, this is a reason to expect that a physically
+brutal, high-intensity early-season or mid-season game can measurably eat into whatever aerobic
+or strength base was built in the preceding weeks, not just add acute fatigue that resolves in
+a few days, which argues for the mini-block "topping up" logic in
+[[framework--prolonging-residual-effects-with-mini-blocks]] being applied proactively after
+unusually hard, high-intensity games, not only on a fixed calendar schedule.
+
+**When NOT to apply** — This is a single elite swimmer's data, reported secondhand
+(Pyne & Touretski, 1993, published via Issurin & Lustig, 2004), with no comparison athlete who
+trained the same mesocycle without competing, and no statistical test of the pre/post-competition
+change reported in this text: the chart (Figure 3.11) shows one athlete's trajectory, not a
+group result. **Inference:** swimming's anaerobic-threshold/lactate-based test protocol has no
+direct football analog; football has no simple single-modality repeated field test that isolates
+"aerobic threshold" the way a stepwise swim test does, so this exact monitoring approach cannot
+be copied, only the underlying caution (hard competition costs some residual) can be carried
+over. This case does not address whether the effect is dose-dependent on competition intensity,
+duration, or the athlete's fitness level entering the competition.
+
+**Example** — **Inference:** a strength staff noting that a physically demanding, high-effort game (e.g., a
+triple-overtime contest, or a game following an unusually taxing travel/short-week schedule)
+likely cost the team some of the conditioning base built the prior weeks has a named precedent
+(Popov's threshold-speed decline) for treating that as a real, not just anecdotal, training-load
+event worth a deliberate light aerobic "top-up" in the following week, rather than assuming a
+normal recovery day fully addresses it.
+
+**Related** — [[claim--residual-training-effect-durations-by-motor-ability]],
+[[framework--transmutation-mesocycle-duration-and-overtraining-monitoring]],
+[[framework--prolonging-residual-effects-with-mini-blocks]],
+[[case-study--popov-aerobic-strength-microcycle]].
+=== framework--pre-competitive-microcycle-tuning.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: block-periodization--issurin
+chapter: "3.1.6"
+topic: pre-competitive (tuning) microcycle prescription
+category: [periodization, taper, peaking, microcycle]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# The Pre-Competitive Microcycle: Cut Volume Hard, Raise Maximal-Speed and Sport-Specific Work, Keep Frequency
+
+**What it is** — The pre-competitive microcycle forms the content of the realization
+mesocycle (see [[framework--realization-mesocycle-taper-prescription]]), and it is the
+realization mesocycle itself, not this microcycle, that the book calls "traditionally...
+termed the taper" (PDF p. 122, printed p. 111) (PDF pp. 104-105, printed pp. 93-94; verified
+against page images, re-checked 2026-09-27). It must satisfy three demands (PDF p. 104, printed p. 93): sport-specific
+exercises/tasks that simulate the forthcoming competition and build mental readiness and
+toughness; development of maximal speed/power and sport-specific quickness; and full (or
+partial) restoration after the preceding transmutation mesocycle's fatiguing workloads. Table
+3.5 (PDF p. 105, printed p. 94, verified against page image) gives seven prescriptive
+characteristics: **workload volume**, substantially reduced, to create conditions for full
+recovery; **volume of intense exercises specifically**, substantially reduced versus the
+prior mesocycle, so total drill volume falls but quality rises; **contribution of maximum
+speed/power exercises**, substantially **increased** (well-rested athletes respond better to
+maximal-speed drills, and maximal-speed training residuals are the shortest of any ability, per
+[[claim--residual-training-effect-durations-by-motor-ability]]); **contribution of
+sport-specific tasks**, substantially increased (simulative tasks improve adaptation to
+expected competitive stressors); **workout frequency**, usually kept **similar** to the
+previous mesocycle (subdividing the same total work into more, smaller portions raises
+quality per session even as volume falls); **organization**, a rational mix of group,
+individual and mixed workouts, weighted somewhat more toward individual work than usual, so
+athletes can attend to personal technical detail and coach rapport; **restoration**,
+deliberately favorable conditions and an increased volume of restorative exercises/workouts,
+since athletes have more free time and motivation to use it. Separately from the Table 3.5
+list, Issurin states that in qualified athletes, "particularly during the pre-competitive
+training camp," maintaining frequency in practice means **eight to ten workouts per week**
+even as volume per workout drops (PDF p. 106, printed p. 95; text, not a Table 3.5 cell).
+Workout timing should match the expected competition's daily biological-rhythm window
+(example given: Olympic canoe-kayak/rowing regattas run only in the morning, so pre-Olympic
+training is scheduled to place peak-effort sessions at that same morning time, PDF p. 107,
+printed p. 96). Figure 3.7 (PDF p. 108, printed p. 97; re-verified against the page image,
+2026-09-27): sport-specific-simulation key-workouts fall on Tuesday, Thursday and Saturday
+mornings (the expected competition time), alactic and technical work on the other mornings,
+maximal or explosive strength on Monday and Thursday afternoons at medium load, and low-load
+rest or alactic sessions on the other afternoons. The morning sport-specific simulations are
+the point of the design, because the chart is built for morning peak performance (PDF p. 107,
+printed p. 96); strength sits on two afternoons, not on a late-week ramp. On strength work
+specifically, Issurin notes a real disagreement in the field: many athletes (particularly
+swimmers, per Platonov & Fesenko, 1990, and also reported among volleyball and tennis players)
+report high-resistance work pre-competition degrades fine technical skill, arguing for
+reducing or excluding it; but sport-specific maximal/explosive strength work is also argued to
+maintain the technical force component (Bompa & Carrera, 2003) and to prevent uncontrolled,
+stress-hormone-driven muscle-mass loss pre-competition. The muscle-mass-protection point
+specifically ("proper exercises for muscular hypertrophy prevent the uncontrolled reduction of
+muscle mass induced by stress hormones") is given uncited in the text, separate from the
+Bompa & Carrera citation for the technical-force-component point (PDF p. 108, printed p. 97).
+
+**Why it works** — Reduced total load is stated as the "principal condition" for reaching
+supercompensation before competition (PDF p. 106, printed p. 95); the two things this
+recovered state is then spent on, maximal-speed drills and sport-specific simulation, are
+each chosen because their quality specifically depends on a well-rested nervous system and
+energy-resource availability (maximal speed) or on the athlete's capacity to fully attend to
+technical/tactical detail under simulated competitive stress (sport-specific tasks). Issurin gives both sides on keeping frequency while cutting volume, not a single "quality
+lever" argument: reduced frequency "can be considered as a way to decrease total workloads and
+to find more time for restoration," but frequency is nonetheless usually kept because
+"additional free time... can be a serious disadvantage" for athletes, alongside the more,
+shorter, higher-quality-session logic (PDF p. 106, printed p. 95).
+
+**When to apply — Inference, mapped to a college football calendar** — **Bowl prep:** the
+week(s) immediately before a bowl game map most directly onto this framework: cut total
+practice/lift volume hard, hold practice frequency roughly where it has been, shift the
+practice mix toward maximal-speed/explosive work and heavy game-plan (sport-specific)
+simulation, and weight walkthroughs/individual work more than a normal week. **In-season
+tuning week:** the standard in-season game week already functions as a compressed version of
+this pattern (practice volume tapers toward the game, Thursday/Friday sessions shift toward
+walkthrough-intensity techno-tactical work); see
+[[framework--in-season-team-sport-mini-block-microcycle]] for the specific team-sport
+adaptation Issurin gives later in this chapter. **Season opener after fall camp:** the final
+camp week before the opener is a pre-competitive microcycle relative to the whole camp block:
+volume should come down from camp peak even though frequency (practice count) may stay similar.
+The strength-during-taper disagreement Issurin reports (reduce high-resistance work vs. keep
+sport-specific strength to protect force and prevent hormone-driven muscle loss) is directly
+relevant to the recurring question of whether to lift heavy in bowl-prep week; this text does
+not resolve it and presents both positions as live in the field. **Eric's baseline** gives no
+session-frequency rule for a taper anywhere in `method-baseline.md`; the closest material is
+the general in-season rule "maintain intensity, reduce volume" (`method-baseline.md`, "Strength
+and power," citing `01192022-hp5355-class1-transcript.md` pp.20-21), which agrees directionally
+(reduce volume, don't reduce intensity/speed work) but does not specify a frequency-holding
+rule, an eight-to-ten-sessions-per-week figure, or an explicit sport-specific-task ramp; this
+entry supplies that missing numeric structure, not something already adopted.
+
+**When NOT to apply** — Every numeric particular in Table 3.5 (the
+"substantially reduced/increased" volume and speed contributions) and the separately-stated
+8-10 workouts/week figure are Issurin's own applied synthesis with no cited dose-response
+study behind the specific numbers; he acknowledges directly that "many contradictions exist
+regarding workout duration and frequency of high intensity exercises" in the
+pre-competitive/taper literature generally (PDF p. 105, printed p. 94, citing Kubukeli et al.,
+2002). **Inference, population caveat:** the worked example
+(Figure 3.7) and both named case examples (Olympic canoe-kayak/rowing morning scheduling;
+swimmer/volleyball/tennis strength-reduction reports) are individual, dual, or non-contact
+sports; none address a 100+ player roster with heterogeneous individual readiness, a fixed
+practice-week structure set partly by NCAA rules, or the additional load of team walkthroughs
+and special-teams reps that a football pre-competitive week must still include. Issurin does
+address team sports elsewhere in this same organization discussion: "in team sports...
+group workouts are dominant" (PDF p. 106, printed p. 95), which this entry's individual/dual
+framing does not capture. **Inference:** the "8-10 workouts per week" frequency figure, stated
+for "qualified athletes, particularly during the pre-competitive training camp," assumes an
+individual/dual-sport training camp structure and should not be read as a literal
+session-count target for a football bowl-prep week. Issurin does not address game-week
+travel, opponent scouting load, or academic-calendar constraints anywhere in this framework.
+
+**Example** — **Inference:** a bowl-prep week could hold practice count similar to a normal in-season week
+while cutting total practice/lift volume substantially, shifting a larger share of practice
+time to explosive/speed work and full-speed game-plan simulation than a mid-season week would
+carry, and deliberately expanding individual position-group time (film, technique correction)
+relative to full-team periods, while treating the "how much to lift" question as an open
+disagreement the source itself does not resolve, not a settled rule.
+
+**Related** — [[framework--realization-mesocycle-taper-prescription]],
+[[framework--in-season-team-sport-mini-block-microcycle]],
+[[claim--residual-training-effect-durations-by-motor-ability]],
+[[framework--microcycle-types-and-load-wave-design]],
+[[supertraining--verkhoshansky/framework--fitness-fatigue-modeling-and-taper-timing]] (staging),
+[[supertraining--verkhoshansky/claim--adaptive-reconstruction-vs-supercompensation]] (staging,
+`contested`: this entry's supercompensation mechanism, see Why it works, is the same model
+that entry critiques).

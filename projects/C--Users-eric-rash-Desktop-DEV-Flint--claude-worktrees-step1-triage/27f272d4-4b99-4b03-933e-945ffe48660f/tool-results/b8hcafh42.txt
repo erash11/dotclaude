@@ -1,0 +1,1560 @@
+=================== claim--hettinger-muller-isometric-strength-gain-rate.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: original isometric-training strength-gain studies
+category: [isometrics, history, testing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Hettinger and Muller's Original Isometric-Training Finding: About 5% Strength Gain Per Week From One Daily 6-Second Effort at Two-Thirds Maximum
+
+**What it is** — Isometric exercises became popular in the mid-1950s in the search for
+economical, effective strength methods. Hettinger and Muller (1953, 1955) established that
+one daily effort at two-thirds of maximum, held for six seconds, performed for 10 weeks,
+increases strength by about 5% per week. Separately, Clark et al (1954) found that static
+strength continues to increase even after a four-week isometric programme has concluded.
+This early success prompted considerable research comparing isometric training's
+effectiveness against dynamic training, which produced "rather contradictory data" (see
+review by Verkhoshansky, 1970). The authors' general conclusion from that body of research:
+isometric training can be more effective than dynamic exercise specifically where the target
+exercise requires a large-magnitude muscle contraction at a certain stage of a movement, or
+during early-stage injury rehabilitation; if the target exercise involves high-speed
+movement, sustained isometric training is less effective. The authors also note that
+because isometric training's usual purpose is developing absolute strength, tension should
+be increased slowly and held for a relatively long time, since prolonged tension maintenance
+demands the energy expenditure that stimulates adequate neuromuscular adaptation; some
+researchers found no essential difference in strength gain from varying isometric tension
+intensity, from which the authors infer that tension duration, not magnitude, is the
+"fundamental conditioning factor." (PDF pp. 235, printed pp. 223-224, "4.2.4 Isometric
+Training.")
+
+**Why it works** — The authors' stated reasoning: prolonged maintenance of muscular tension
+requires an energy expenditure that "stimulates adequate adaptation in the neuromuscular
+system, thereby determining its strength potential," and this can exceed the stimulus from
+brief transient dynamic tension. Inference: no cellular or neural mechanism is given for why
+duration outweighs magnitude specifically; this is an inference the authors draw from
+studies not finding a strength-gain difference across tension intensities, not a stated
+physiological pathway.
+
+**When to apply** — Use the 5%-per-week figure and the two-thirds-maximum, 6-second, daily,
+10-week protocol as a citable historical anchor for isometric-training dosing, and use the
+authors' scoping rule (isometrics favoured for large-magnitude contraction at a specific
+movement stage or early rehab; less favoured when the target skill is high-speed) to decide
+when isometric work is the better tool versus dynamic resistance training.
+
+**When NOT to apply** — This is single-era data (1950s studies, corroborated only by a 1970
+review) without modern replication in this text; treat "5% per week" as specific to
+Hettinger and Muller's exact protocol (two-thirds max, 6 seconds, daily, 10 weeks), not a
+generalizable isometric-training growth rate. The "contradictory data" comparing isometric
+to dynamic training is acknowledged by the authors themselves, so this entry's headline
+finding should not be read as settling the isometric-versus-dynamic debate; it explains only
+the original claim's origin and the authors' scoping conditions for it.
+
+**Example** — The book's own example is the Hettinger and Muller protocol itself (daily,
+6-second, two-thirds-maximum isometric effort for 10 weeks, yielding about 5% weekly
+strength gain); no further invented example is added here.
+
+**Related** — [[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]],
+[[claim--isometric-regional-specificity-not-strictly-angular]].
+=================== claim--isometric-endurance-limits-and-recovery-phases.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: isometric endurance thresholds and recovery
+category: [isometrics, fatigue, testing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Isometric Endurance Collapses Above 10-15% of Maximal Tension, and Recovers in Three Distinct Phases
+
+**What it is** — Isometric endurance at resistance exceeding 10-15% of a muscle's maximal
+strength is very short compared with dynamic exercise, because of metabolic demand and
+impaired blood flow to the exercising muscle under sustained contraction (Petrofsky &
+Phillips, 1986); below that threshold, contractions are considered non-fatiguing, since
+intramuscular pressure stays low and is readily exceeded by rising mean arterial pressure in
+the capillaries. Verified against the page image (Fig 4.13, printed p. 227, cat soleus and
+gastrocnemius, electrically stimulated, based on Petrofsky & Hendershot, 1984): intramuscular
+pressure rises roughly linearly with muscle tension, from near 0 kPa at rest to over 20 kPa
+at 100% of maximal strength. As tension rises, intramuscular pressure rises with it and
+metabolism cannot keep pace, producing a hyperbolic drop in performance and marked fatigue
+increase (the Rohmert curve, first derived by Monod and Sherrer 1967, later by Rohmert
+1968). Verified against the page image (Fig 4.14, printed p. 227, finger flexors, based on
+Petrofsky 1980): endurance time falls hyperbolically as %MVC (maximum voluntary contraction)
+rises, and females sustain the same tension level for longer than males at every tension
+level tested, a difference the authors say "has not been adequately explained yet." Muscle
+temperature also affects isometric endurance: hot packs reduce it and pre-exercise icing
+increases it, with an optimum core muscle temperature (later work places it near 27-28
+Celsius, Petrofsky & Phillips, 1986) above and below which endurance drops; higher bodyfat
+percentage, associated with higher resting muscle temperature, is linked to lower isometric
+endurance in most situations. Unlike dynamic exercise (which is more efficient at higher
+temperatures, likely due to reduced tissue viscosity), isometric contraction involves no
+fibre movement, so viscosity plays an "insignificant role compared with that of muscle
+metabolism." Recovery from isometric contraction proceeds in three phases (Petrofsky &
+Phillips, 1986): a rapid recovery of about 50% of endurance in the first 3 minutes; a slower
+recovery lasting about 20 minutes, reaching about 90% of initial endurance; and complete
+recovery within at least 24 hours; recovery from low-tension isometric contraction is
+"interestingly" slower during the initial recovery phases. (PDF pp. 236-239, printed pp.
+226-228, "4.2.4 Isometric Training," "Isometric Endurance," "Recovery after Isometric
+Activity," Figs 4.13-4.14.)
+
+**Why it works** — The authors' stated mechanism is a mechanical-metabolic one: rising muscle
+tension raises intramuscular pressure, which above roughly 10-15% of maximal strength begins
+to exceed the arterial pressure available to perfuse the muscle, choking off the blood flow
+that metabolism needs to sustain the contraction, producing the hyperbolic Rohmert-curve
+drop in endurance. No mechanism is given for the sex difference in endurance or for the
+27-28 Celsius optimum temperature beyond citing the studies that measured them.
+
+**When to apply** — Use the 10-15%-of-maximal-strength threshold as a practical dividing line
+between "non-fatiguing" and rapidly fatiguing isometric holds when designing isometric
+protocols (e.g. low-level postural holds versus near-maximal strength holds). Use the
+three-phase recovery timeline (about 50% back in 3 minutes, about 90% back in 20 minutes,
+full recovery by 24 hours) when spacing repeated maximal isometric efforts within and between
+sessions.
+
+**When NOT to apply** — The intramuscular-pressure data (Fig 4.13) are from electrically
+stimulated cat soleus and gastrocnemius (Petrofsky & Hendershot, 1984), not human voluntary
+contraction; treat the specific kPa values as animal-model data illustrating the
+tension-pressure relationship, not human norms. The Rohmert-curve endurance data (Fig 4.14)
+are specifically finger-flexor endurance (Petrofsky, 1980), a small, distal muscle group;
+the shape of the curve (hyperbolic decline, female advantage) should not be assumed to hold
+identically for large, proximal muscle groups without separate verification. The 27-28
+Celsius optimum-temperature finding and the bodyfat-endurance link are each from single
+cited sources without reported effect sizes.
+
+**Example** — Inference: a coach prescribing a sustained postural isometric hold (e.g. a
+plank or wall-sit at low relative intensity) can expect it to be comparatively non-fatiguing
+per the 10-15%-of-maximum threshold, while a near-maximal isometric mid-thigh pull hold will
+fatigue rapidly and require the multi-minute recovery windows this entry describes before a
+comparable maximal effort can be repeated.
+
+**Related** — [[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]],
+[[principle--breath-holding-and-valsalva-support-spinal-stability-in-maximal-lifting]] (Ch3,
+a related discussion of intramuscular/intrathoracic pressure during sustained maximal
+effort).
+=================== claim--isometric-regional-specificity-not-strictly-angular.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: angular vs regional specificity of isometric training
+category: [isometrics, testing, biomechanics]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Isometric Strength Gains Spread Further From the Training Angle When the Muscle Trains in a Lengthened Position
+
+**What it is** — Many studies report isometric training producing maximum strength gains at
+or very close to the trained joint angle, leading some athletes to avoid isometric training
+altogether; the authors argue this "angular specificity" framing needs critical revision,
+citing other studies showing isometric training also produces significant strength increase
+up to about 15 degrees either side of the training angle. Because every type of muscle
+contraction has its own force/torque-versus-joint-angle curve (see 2.1.2), the authors argue
+it is "highly unlikely" that strength gain would be confined to one precise angle and
+nowhere else, and prefer the term "regional specificity" over "angular specificity" (or
+muscle-length specificity). Thepault-Mathieu et al (1988) found this regional specificity is
+strongest when the muscle trains in its most shortened position and weakest when it trains
+most lengthened: males training isometrically for 5 weeks (5 sets of 5 reps, 5 seconds each,
+3 times weekly) at 25 degrees of elbow flexion (full extension = 0 degrees) gained 54%
+strength at the training angle but only about 25% averaged over the rest of the range; a
+group training at 80 degrees gained 30% at the training angle and about 25% over the rest of
+the range; a group training at 120 degrees gained 25% at the training angle but only about
+7% over the rest of the range. The authors' summary: isometric training of a relatively
+lengthened muscle can produce substantial strength increase "not only near the region of
+training, but also throughout the range of movement." They caution this finding should not
+be read as meaning isometric training can replace other strength-training forms, since a
+specific type of static or dynamic strength depends on the neuromuscular factors governing
+how force is exerted in a given situation. (PDF pp. 237-238, printed pp. 226-227, "4.2.4
+Isometric Training," "Isometric Training and Angular Specificity.")
+
+**Why it works** — The authors give the biomechanical basis (a distinct force/torque-vs-angle
+curve exists for every contraction type) for why strict single-angle specificity is
+implausible, but they do not give a mechanism for why the Thepault-Mathieu et al (1988)
+lengthened-position condition specifically produced the broadest transfer across the range
+(54%/25 degrees training angle giving about 25% elsewhere, versus 120 degrees training angle
+giving only about 7% elsewhere). Inference: a plausible explanation, not stated in the text,
+is that training at longer muscle lengths recruits a different or broader distribution of
+sarcomere lengths and joint-angle-dependent moment arms than training at a shortened length,
+though this is not confirmed by the source.
+
+**When to apply** — Use this as a rationale for choosing a relatively lengthened joint
+position when isometric training is intended to transfer strength gains across a wider
+portion of the range of motion, rather than assuming isometric work only strengthens the
+exact trained angle. Use the "regional specificity" framing, not "angular specificity," when
+discussing isometric training's carryover with coaches or athletes.
+
+**When NOT to apply** — This is a single study (Thepault-Mathieu et al, 1988) with a specific
+protocol (5 weeks, 5x5 at 5 seconds, 3x weekly, elbow flexion only) and three training
+angles; the specific percentages (54%, 30%, 25% at-angle gains; roughly 25%, 25%, 7%
+remainder-of-range gains) should not be generalised to other joints, muscle groups, or
+protocols without direct testing. The authors' own caution stands: this finding does not
+mean isometric training can substitute for dynamic strength training generally.
+
+**Example** — The book's own example is the Thepault-Mathieu et al (1988) three-group study
+described above; no further invented example is added here.
+
+**Related** — [[claim--hettinger-muller-isometric-strength-gain-rate]],
+[[claim--joint-angle-specific-strength-training-narrows-transfer]] (Ch2, a related but
+broader claim about joint-angle transfer that this entry's regional-specificity nuance
+qualifies).
+=================== framework--isometric-contraction-categorization-voluntary-reflexive.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: taxonomy of isometric contraction types
+category: [isometrics, terminology, biomechanics]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Isometric Contraction Is Not One Thing: Voluntary vs Reflexive, Slow vs Explosive
+
+**What it is** — The authors argue isometric training is not simply holding a static
+contraction for a set time: a true isometric contraction requires the muscle to raise
+tension from rest to a maximal or sub-maximal value over a rise ("attack") time, sustain
+that tension for a resistance phase, then decrease it to rest or a lower value over a decay
+time. Verified against the page image (Fig 4.11, printed p. 225): the authors categorise
+isometric contraction into voluntary isometrics (splitting further into slow isometrics and
+voluntary explosive isometrics) and reflexive isometrics (splitting further into reflexive
+explosive isometrics and oscillatory isometrics). A voluntary isometric contraction can be
+produced deliberately; a reflexive one occurs involuntarily via the muscle's reflex response
+between the eccentric and concentric phases of plyometric activities such as a depth jump or
+the weightlifting clean-and-jerk. Verified against the page image (Fig 4.12, printed p.
+225): slow isometrics show a gradual force rise, a longer resistance-phase plateau, and a
+gradual decay; explosive (reflexive) isometrics show a much steeper rise phase and a
+substantially shorter resistance phase before decay. The authors argue that because the
+steepness of the isometric force-time curve, and the higher magnitude of maximum isometric
+versus dynamic maximum force at equivalent joint angles, both support developing explosive
+strength isometrically when the training accent is on speed of force development, "it is
+doubtful whether it is always productive to maintain a rigid distinction between dynamic and
+isometric exercise": as resistance grows very large, dynamic work becomes progressively more
+isometric, so isometric work is "really the limiting case of dynamic work as the velocity of
+movement tends to zero." Because reflexive isometric contraction bypasses the inhibitory
+effects normally associated with voluntary muscle action, "even greater explosive force can
+be displayed isometrically than dynamically." A related but separate finding on impulsive
+loading: short bouts of low-frequency mechanical vibration (10-35 Hz) applied to the body
+have been shown to speed recovery, modulate muscle activity, raise strength/power stable
+state, lower arterial pressure and enhance oxidative processes (Kopysov, 1978; Lebedev &
+Peliakov, 1991), and whole-body vibration at 26 Hz through the lower extremities has been
+shown to produce marked increases in jumping power (Bosco et al, 1998); the authors note
+this fuels an open debate about whether plyometric training effects are driven mainly by
+elastic-energy storage/release, neural facilitation, or intrinsic muscle changes (Ingen
+Schenau et al, 1997). (PDF pp. 235-236, printed pp. 224-225, "4.2.4 Isometric Training,"
+Figs 4.11-4.12.)
+
+**Why it works** — The authors' mechanism for the voluntary/reflexive distinction is neural:
+reflexive isometric contraction (occurring automatically between eccentric and concentric
+phases) escapes voluntary inhibitory control that would otherwise limit force, permitting
+higher force display than a deliberately initiated voluntary contraction can achieve.
+Inference: the slow-vs-explosive distinction within each category follows from how quickly
+neural drive ramps up to the target tension level, which the force-time curve shape (Fig
+4.12) captures directly.
+
+**When to apply** — Use this taxonomy when specifying what kind of isometric work a given
+drill is training: a sustained maximal hold at a joint angle is a slow voluntary isometric;
+a deliberately fast ramp to near-maximal tension is a voluntary explosive isometric; the
+brief isometric moment at the bottom of a depth jump or clean-and-jerk catch is a reflexive
+(explosive or oscillatory) isometric that the athlete does not consciously initiate. Per the
+authors, distinguish "isometric training for developing absolute strength" from "isometric
+training for developing explosive strength" and select the appropriate type for the goal.
+
+**When NOT to apply** — The authors themselves flag this distinction as still needing
+"detailed experimental corroboration." The vibration/whole-body-vibration findings are a
+separate line of evidence (Bosco et al, 1998, and others) that the authors connect to this
+discussion only by analogy (impulsive loading), not by stating vibration produces isometric
+contraction in the sense defined here; treat the two topics as related but distinct.
+
+**Example** — The book's own example is the depth-jump and clean-and-jerk catch positions
+cited as sources of reflexive isometric contraction; no further invented example is added
+here.
+
+**Related** — [[framework--precise-muscle-action-terminology]] (Ch1, the broader
+concentric/eccentric/isometric/quasi-isometric terminology this taxonomy sits within),
+[[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]].
+=================== heuristic--isometric-priming-and-external-internal-classification.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: external vs internal isometrics; isometric priming for supramaximal loads
+category: [isometrics, terminology, programming]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# External vs Internal Isometrics, and Using a Held Supramaximal Load to Prime the Nervous System
+
+**What it is** — The authors distinguish "external isometrics" (contraction exerted against
+an external load) from "internal isometrics" (contraction exerted against opposing muscles
+within the body, as in bodybuilders' posing actions; see
+[[heuristic--loadless-training-broomstick-protocol]]). Isometric contractions can be
+submaximal or maximal, short or long duration, continuous or intermittent, sequenced across
+different joint angles, alternated between agonist and antagonist (or adductor/abductor,
+medial/lateral rotators), and alternated between intensities, including voluntary
+oscillation between high and low intensity to prolong the total time under tension. A
+separate practical technique: isometrically holding a heavy load at a "sticking point" can
+reduce deficiencies in that region or prime the nervous system to cope with greater loading
+during gradual progressive overload; the authors' specific example is supporting a
+supramaximal load (120-150% of 1RM) on the shoulders, or performing quasi-isometric movement
+over the first few degrees of knee flexion in a squat, to "accustom the body neuromuscularly
+and favourably enhance one's mental perception" for handling future loads only slightly
+heavier than the current 1RM. The authors also state that isometric contraction released
+explosively "can decrease the reaction response time by as much as 7%, particularly if
+associated with a strong pre-stretch," against the traditional coaching belief that
+movement is most efficient starting from complete relaxation; Verkhoshansky is cited as
+stressing that a movement produced from complete relaxation is usually slower and less
+forceful than one that begins from some prior tension. Historically, isometric effort was
+emphasised heavily by DeLorme, Hettinger and Muller, but with the rise of gymnasium machines
+and the decline of Charles Atlas's mail-order "dynamic tension" programmes, isometrics
+largely fell out of popular use, though physical therapists still use it in early
+injury-rehabilitation stages, and Russian coaches often prescribe a 75% concentric / 15%
+eccentric / 10% isometric strength-training regime for the average athlete. The authors also
+note that because one basic PNF principle holds that mobility (dynamic contraction) is more
+primitive than stability (isometric contraction), stability sits at a "higher level of
+muscular learning." (PDF pp. 239-240, printed pp. 228-229, "4.2.4 Isometric Training,"
+"Other Aspects of Isometric Activity.")
+
+**Why it works** — For the reaction-time claim, the mechanism given is that reflexive
+isometric contraction bypasses voluntary inhibition (already stated for explosive isometrics
+generally, see
+[[framework--isometric-contraction-categorization-voluntary-reflexive]]), and a strong
+pre-stretch potentiates this further. For supramaximal holding, no cellular mechanism is
+given; the stated effect is psychological/neuromuscular familiarisation ("accustom the body
+neuromuscularly," "favourably enhance one's mental perception") rather than a measured
+strength-transfer pathway.
+
+**When to apply** — Use the external/internal isometrics distinction as vocabulary when
+specifying whether a drill uses an external load or purely internal agonist-antagonist
+tensing. Use supramaximal-hold priming (120-150% of 1RM support holds, or partial-range
+quasi-isometric squat work) as a technique to familiarise an athlete with loads slightly
+above their current 1RM before attempting a true max attempt. Use the 75/15/10
+concentric/eccentric/isometric regime as a citable, if dated, historical reference point when
+discussing how much isometric work a general strength programme might include.
+
+**When NOT to apply** — The 7% reaction-time figure and the supramaximal-holding
+familiarisation effect are stated without reported sample sizes or controlled outcome data
+in this passage; treat them as the authors' summarised claims, not independently verified
+percentages. The 75/15/10 regime is attributed generally to "Russian coaches" without a
+specific citation, so treat it as a reported convention rather than an experimentally
+validated ratio. Supramaximal holding (120-150% of 1RM) carries obvious injury risk if
+attempted without adequate rack/spotter safety and should not be treated as a routine
+prescription without those safeguards, which this passage does not itself discuss.
+
+**Example** — Inference: a lifter approaching a new back-squat 1RM attempt could support a
+supramaximal load (say, 110-120% of the projected new max) in the rack for a brief hold
+beforehand, per this heuristic's priming logic, to build familiarity with that load level
+before the actual max attempt; the specific 110-120% figure here is an adapted illustration,
+not the source's own 120-150% number.
+
+**Related** — [[heuristic--loadless-training-broomstick-protocol]],
+[[framework--isometric-contraction-categorization-voluntary-reflexive]],
+[[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]].
+=================== heuristic--isometric-training-execution-protocol-and-advantages-drawbacks.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: isometric training protocol, advantages and drawbacks
+category: [isometrics, programming, testing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Isometric Training's Six Advantages, Six Drawbacks, and the Authors' Recommended Execution Protocol
+
+**What it is** — The authors list six advantages proponents claim for isometric training:
+(1) it requires very simple apparatus; (2) it can locally exercise any muscle group at a
+specific joint angle, which dynamic work can only briefly pass through, since movement
+inertia usually carries the load past the angle of greatest mechanical effect; (3) it is
+time-productive, since each 6-second isometric contraction is "equivalent in its effect" to
+many dynamic ballistic contractions in which maximal force lasts no more than 0.1 second,
+meaning 10 minutes of targeted isometric tension can replace "a fatiguing hour" of dynamic
+weight training; (4) it produces an insignificant increase in muscle mass and bodymass
+compared with dynamic strength work, particularly pressing exercises; (5) it costs far less
+time and energy than dynamic weight training, letting an athlete preserve a high
+speed-strength level during a crucial competition period; (6) it offers more potential than
+dynamic exercise for using visual and kinaesthetic cues to hold a given position, an
+advantage for studying and correcting technical errors. Six drawbacks are also listed:
+isometrics fatigue the nervous system; may harm the cardiovascular system in some
+individuals via prolonged breath-holding and elevated blood pressure; disturb coordination;
+enhance muscle performance only near the specific trained joint angle; decrease speed of
+movement; and diminish soft-tissue elasticity and functional range of dynamic movement.
+Proper breathing, adequate rest/relaxation between exercises, and limiting contraction length
+to 6 seconds (some authors recommend up to 10) can minimise these harmful after-effects. The
+authors give four methods of producing isometric tension: (1) pressing against an immovable
+structure or a partner's resistance, with the drawback that strength change can only be
+judged subjectively without a dynamometer; (2) holding a raised load for a set period, with a
+quasi-isometric variant shifting the load slowly across the range with stops at different
+joint angles; (3) pushing a weight from a lower support up to press against an upper stop
+(a power rack), giving a brief dynamic phase before the isometric hold and letting the
+athlete lift several times between stops; (4) using a dynamometer or other resistance
+device to control and display tension magnitude. For non-explosive isometrics, the authors
+give a specific protocol: apply force gradually, hold maximal tension no longer than 8
+seconds, perform 6 repetitions, rest 5-10 seconds between reps, limit total isometric
+training to 10 minutes per session, and finish with relaxation exercises; for developing
+explosive strength instead, tension should be generated at maximum speed to 70-80% of
+maximum strength, and reflexive explosive isometric action from plyometric movements "can be
+extremely effective" for this. (PDF pp. 236-237, printed pp. 225-226, "4.2.4 Isometric
+Training.")
+
+**Why it works** — The authors give a specific mechanism only for advantage (2), regarding
+joint-angle specificity of loading, and advantage (3), the time-efficiency claim, which rests
+on comparing sustained near-maximal isometric tension duration against the brief (about 0.1
+second) duration of maximal force during a ballistic dynamic contraction. Inference: the
+remaining advantages and drawbacks are stated as observations rather than derived from a
+single unifying mechanism.
+
+**When to apply** — Use the 8-second hold, 6-repetition, 5-10-second-rest, 10-minute-session
+protocol as the authors' recommended baseline for non-explosive isometric training aimed at
+absolute strength, and the 70-80%-max, maximum-speed protocol for explosive-strength-focused
+isometric work. Weigh the six advantages against the six drawbacks for a given athlete and
+context: the cardiovascular caution (drawback 2) is particularly relevant for athletes with
+existing cardiovascular risk factors, and the coordination-disturbance and range-of-movement
+drawbacks argue for pairing isometric work with dynamic training rather than using it as a
+sole training means.
+
+**When NOT to apply** — This protocol and these advantages/drawbacks are the authors' own
+synthesis from an era (1950s-1970s citations) predating modern force-plate or dynamometer-based
+isometric dosing research; do not treat the "equivalent to a fatiguing hour of training"
+comparison (advantage 3) as a rigorously measured equivalence, since no controlled outcome
+comparison is cited for that specific claim. The drawbacks (cardiovascular risk, coordination
+disturbance, reduced movement speed, reduced tissue elasticity) argue against using isometric
+training as an athlete's sole or dominant training means, per the authors' own framing.
+
+**Example** — Inference: a coach using isometric mid-thigh pulls to reinforce a specific
+sticking-point joint angle is applying advantage (2) directly; the same coach should still
+program dynamic work elsewhere in the week to offset the coordination and movement-speed
+drawbacks this entry lists.
+
+**Related** — [[framework--isometric-contraction-categorization-voluntary-reflexive]],
+[[claim--hettinger-muller-isometric-strength-gain-rate]],
+[[principle--breath-holding-and-valsalva-support-spinal-stability-in-maximal-lifting]] (Ch3,
+the cardiovascular/breath-holding caution this entry's drawback 2 overlaps with).
+=================== heuristic--loadless-training-broomstick-protocol.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.4"
+topic: loadless (broomstick) tensing training
+category: [isometrics, programming, rehabilitation]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Loadless Training: Tensing Muscles Maximally Against an Unloaded Broomstick to Train Without Equipment
+
+**What it is** — "Loadless training" (the Russian term; bodybuilders call the related
+practice "posing" training) has an athlete voluntarily tense agonists and antagonists
+maximally at every joint without an external load, imitating a loaded lift's demand through
+mental effort and tension alone. In the early 1900s Anokhin and Froshek proposed developing
+strength through motivated tensing of agonists and antagonists at every joint, similar to
+bodybuilders tensing before judges, but the technique was not studied scientifically until
+after 1965. Kovalik (1978) ran a doctoral thesis on this "voluntary loadless muscle tensing,"
+aiming to develop a supplementary training system imposing less joint stress than weight
+training, particularly for younger lifters whose skeletal systems have not matured. His
+subjects performed Olympic and supplementary lifts (e.g. snatch pull, front squat) with a
+broomstick while trying to generate maximum muscle tension as if overcoming a maximal
+weight; this produced definite muscle strengthening and technical-skill improvement, but
+Kovalik concluded it must be used cautiously in Olympic weightlifting because it might
+disrupt optimal extensor-flexor strength ratios. Loadless training is described as
+especially useful without access to training facilities or during recovery from
+musculoskeletal injury, and can be performed isometrically (joint held at a specific angle),
+quasi-isometrically (joint moved powerfully through a full range), or dynamically
+(imitating a weight-training movement with unloaded muscular tension against a broomstick).
+Kovalik's recommended protocol: 5 sets per exercise, separated by 3-10 seconds of rest;
+during quasi-isometric loadless training, avoid long periods of intense breath-holding and
+instead exhale slowly in synchrony with the slow tensing of each movement; each movement
+should involve strong simultaneous tension in agonists and antagonists, starting from full
+extension and ending with stretching beyond full extension and back, over 10-15 seconds; the
+holding phase at the end of each movement (e.g. the overhead jerk position) should be held
+with maximal tension for 6-8 seconds; rotating joints in different planes and moving limbs
+in diagonal/spiral patterns follows PNF principles and can enhance loadless training's
+effectiveness as a supplementary strengthening method. (PDF pp. 240-241, printed pp.
+229-230, "4.2.4 Isometric Training," "Loadless Training.")
+
+**Why it works** — No cellular mechanism is given beyond the general isometric/quasi-isometric
+tension logic already stated for the chapter; the authors' stated rationale for loadless
+training's specific value is reduced joint stress compared with weight training (relevant
+for immature skeletons or injury recovery) and portability (no equipment required). The
+caution about disrupting extensor-flexor ratios implies that voluntary tensing without an
+external load and its accompanying proprioceptive feedback may not reproduce the same
+relative muscle-group demand as loaded lifting.
+
+**When to apply** — Use loadless training as a supplementary strengthening tool when
+equipment is unavailable (e.g. travel) or during early-stage musculoskeletal injury
+recovery, and specifically for younger or skeletally immature lifters where reduced joint
+loading is a priority. Follow Kovalik's protocol details (5 sets, 3-10s rest, slow
+exhalation during quasi-isometric tensing, 10-15s per movement, 6-8s holding phase) as the
+authors' cited baseline.
+
+**When NOT to apply** — Kovalik's own caution applies directly: use loadless training
+cautiously in competitive Olympic weightlifting programming specifically, since it may
+disrupt the optimal extensor-flexor strength ratio the sport requires. This is a single
+doctoral thesis (Kovalik, 1978) without reported sample size or a control condition compared
+against standard weight training in this passage; treat it as a supplementary method, not a
+substitute for loaded resistance training.
+
+**Example** — The book's own example is Kovalik's protocol described above (broomstick
+snatch pull and front squat, maximal tension, 5 sets); no further invented example is added
+here.
+
+**Related** — [[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]],
+[[heuristic--isometric-priming-and-external-internal-classification]].
+=================== claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.5"
+topic: eccentric training soreness, tissue damage and repeated-bout adaptation
+category: [eccentric-training, injury-risk, recovery]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Eccentric Training Damages Tissue and Causes Soreness at First, but Adaptation Removes Both Without Losing the Strength Gain
+
+**What it is** — Because the muscle complex lengthens under eccentric contraction, its series
+elastic component (SEC) is exposed to greater strain than under concentric conditions,
+raising injury potential; most muscle strains and ruptures occur during the eccentric phase
+of movement (Garrett, 1986). A single session of intense eccentric exercise commonly causes
+pronounced delayed-onset muscle soreness (DOMS), peaking 24-72 hours after exercise and
+resolving within several days (Friden et al, 1983a), accompanied by reduced dynamic strength
+and damage to myofibrils and connective-tissue elements such as the Z bands (a SEC
+component). Friden et al (1983b) also examined longer eccentric-training exposure (3
+sessions weekly over 8 weeks total) and found post-exercise soreness stopped occurring after
+2-3 weeks, while the ability to perform eccentric work increased by 375%; biopsies showed no
+Z-band damage at that point, suggesting adaptation had occurred (the repeated-bout effect).
+Schwane and Armstrong (1983) corroborated this with downhill running in rats, which produced
+a superior training effect to level or uphill running and prevented injury more effectively
+over time. Eccentric exercise is known to produce greater and more rapid strength and
+hypertrophy increases than concentric exercise (Hortobagyi et al, 2000), and it is sometimes
+suggested this stems from eccentric exercise's greater tissue damage; however, Komulainen et
+al (2000) found the increase in myofibrillar cross-sectional area in unchanged (non-damaged)
+muscle fibres was much the same after concentric exercise as after the more damaging
+eccentric exercise, a result the authors say "do not support the hypothesis that fibre
+hypertrophy depends on the extent of the fibre damage in exercised muscles." (PDF pp.
+241-242, printed pp. 230-231, "4.2.5 Eccentric Training.")
+
+**Why it works** — For the soreness/damage mechanism, the stated pathway is mechanical:
+eccentric lengthening strains the SEC (including the Z bands) more than concentric
+shortening does, producing microdamage that manifests as DOMS. For the repeated-bout
+adaptation, no cellular mechanism is given beyond the biopsy finding that Z-band damage no
+longer occurs after 2-3 weeks of repeated exposure; Inference: this is consistent with a
+protective structural or neural adaptation (increased sarcomere number in series, improved
+motor-unit recruitment patterns, or connective-tissue remodelling) that the text does not
+itself specify. For the Hortobagyi-versus-Komulainen tension, the authors present Komulainen
+et al's finding as evidence against a damage-drives-hypertrophy causal model, without
+proposing an alternative mechanism for why eccentric training produces faster
+strength/hypertrophy gains if not primarily through greater damage.
+
+**When to apply** — Use the repeated-bout effect (soreness and Z-band damage both disappear
+within 2-3 weeks of regular eccentric exposure, while eccentric work capacity rises sharply,
+here 375% in 8 weeks) as the rationale for introducing eccentric-emphasis training
+gradually and consistently rather than sporadically, to reach the adapted, lower-injury-risk
+state faster. Use the downhill-running finding (Schwane & Armstrong, 1983) as a citable
+rationale for progressive eccentric loading in return-to-running or tendon/muscle
+rehabilitation programming, alongside the tendon-adaptation hypothesis already noted in
+[[claim--eccentric-vs-concentric-training-adaptation-contradictory-findings]].
+
+**When NOT to apply** — The rat downhill-running data (Schwane & Armstrong, 1983) is an
+animal model; do not assume the same magnitude of protective adaptation transfers directly
+to human eccentric training without separate verification. The Komulainen et al (2000)
+finding that hypertrophy does not depend on damage extent contradicts the popular
+"damage-drives-adaptation" narrative for eccentric training; do not cite eccentric training's
+greater soreness or damage as itself the reason to prefer it for hypertrophy, since this
+specific study found comparable myofibrillar growth in undamaged fibres regardless of
+contraction type. The 375% eccentric-work-capacity increase is from one study (Friden et al,
+1983b) with a specific 8-week, 3x-weekly protocol; it measures work capacity, not maximal
+strength specifically.
+
+**Example** — Inference: introducing a new eccentric-emphasis exercise (e.g. slow eccentric
+Nordic curls) should start conservatively and progress gradually over roughly the first 2-3
+weeks, per Friden et al's repeated-bout timeline, before expecting soreness to diminish and
+before assuming the tissue has reached its adapted, more damage-resistant state.
+
+**Related** — [[claim--eccentric-vs-concentric-training-adaptation-contradictory-findings]],
+[[claim--eccentric-strength-and-energetics-vs-concentric]] (Ch3),
+[[claim--collagen-loading-curve-and-injury-risk]] (Ch1, related connective-tissue loading
+and injury-risk material).
+=================== claim--eccentric-vs-concentric-training-adaptation-contradictory-findings.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.5"
+topic: eccentric vs concentric training adaptation studies
+category: [eccentric-training, testing, research-methodology]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Eccentric-Training Studies Disagree on Whether It Beats Concentric Training for Strength Gains
+
+**What it is** — Eccentric contraction is metabolically more efficient than concentric
+contraction and capable of generating higher forces (Kaneko et al, 1984; Komi, 1973; Rodgers
+& Berger, 1974), and the concentric-eccentric force gap widens as contraction velocity
+increases: maximum eccentric force rises while maximum concentric force falls as velocity
+increases, even though EMG for the muscle group stays reasonably constant (Komi, 1973; see
+also [[claim--eccentric-strength-and-energetics-vs-concentric]] for the underlying
+force/energy-cost data from Ch3). Training-adaptation findings, however, are described as
+"often contradictory": Johnson et al (1976) found no significant difference between
+concentric and eccentric training methods; Komi and Buskirk (1972), using an isokinetic
+dynamometer, found eccentric training produced greater eccentric, concentric AND isometric
+strength increases than concentric training, while concentric training increased only
+concentric and eccentric strength; Friden et al (1983b) found eccentric training to failure
+produced marked increases in eccentric strength-endurance but minimal change in concentric
+strength-endurance. The high-speed, large-acceleration SMART (Seated Movement Aerobic and
+Resistive Training, "Supersitting") system created by Lisa Ericson (1992) for work with
+disabled populations tends to increase both concentric and eccentric strength-endurance
+together. The authors note other researchers report adaptation differences tied to training
+velocity, measurement velocity and the specific muscle group tested, while very few studies
+compare functional strength and power changes across free weights, auxotonic (variable
+resistance) activities, or natural sporting movements, concluding "the central role played
+by the specificity principle clearly has a profound effect on the experimental analysis." A
+separate mechanistic note: the superior eccentric strengthening seen at high isokinetic
+velocities (over 180 degrees/second) may reflect selective tensile-strength increase in
+tendon and other series elastic components rather than the contractile elements, with a
+training/rehabilitation implication that high-velocity progressive-overload eccentric work
+may build the musculotendinous junction's capacity to resist high-impact forces from
+running, jumping and other impulsive actions. (PDF p. 241, printed p. 230, "4.2.5 Eccentric
+Training.")
+
+**Why it works** — The authors give a partial mechanism for the velocity-dependent
+concentric-eccentric force gap (already established in Ch3's force-velocity treatment, see
+[[claim--eccentric-strength-and-energetics-vs-concentric]] and
+[[framework--force-time-curve-adaptation-pattern-by-movement-type]]), but give no mechanism
+reconciling why different training studies (Johnson 1976 vs Komi & Buskirk 1972 vs Friden
+1983b) reach different conclusions about which training mode transfers best; the authors'
+own explanation is methodological (differing velocities, populations, and measurement
+specificity across studies), not physiological.
+
+**When to apply** — Inference: when deciding between eccentric-emphasis and concentric-emphasis
+training for a given goal, treat "eccentric training is superior" as a contested claim
+depending heavily on which outcome is measured (eccentric strength specifically tends to
+respond best to eccentric training across these studies; broader transfer to concentric or
+functional strength is less consistent). The high-velocity eccentric/tendon-adaptation
+hypothesis is a plausible rationale for progressive high-velocity eccentric work in tendon
+rehabilitation (e.g. patellar or Achilles tendinopathy), consistent with modern eccentric
+tendon-loading protocols, though the authors do not cite such protocols directly.
+
+**When NOT to apply** — This entry summarises training-adaptation studies from a narrow era
+(1972-1992) with small, heterogeneous samples and differing protocols (isokinetic dynamometer
+training in Komi & Buskirk; training-to-failure in Friden; a seated aerobic-resistive system
+in Ericson) that are not directly comparable to one another. Do not treat "eccentric training
+increases concentric, eccentric and isometric strength" (Komi & Buskirk's specific finding)
+as a settled general principle; Johnson et al (1976) found no such advantage under a
+different protocol. The tendon-adaptation hypothesis for high-velocity eccentric work is
+explicitly framed as a possible explanation ("may be due to"), not a confirmed mechanism.
+
+**Example** — Inference: a rehabilitation programme using slow, controlled eccentric squats
+for general lower-body strength is applying a different training stimulus than one using
+fast, high-velocity eccentric work (over 180 degrees/second) aimed at tendon/musculotendinous
+junction adaptation; per this entry, the evidence for broad strength transfer is
+stronger in some cited studies than others, while the tendon-specific rationale applies
+mainly to the high-velocity case.
+
+**Related** — [[claim--eccentric-strength-and-energetics-vs-concentric]] (Ch3, the
+underlying force-magnitude and energy-cost data this entry's training studies build on),
+[[claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff]] (this section's
+companion entry on DOMS, tissue damage and the repeated-bout effect).
+=================== framework--isokinetic-method-claimed-advantages-and-mechanism.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.1"
+topic: isokinetic training method and its claimed advantages
+category: [isokinetics, terminology, equipment]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# The Isokinetic Training Method: How It Works, and Five Advantages Claimed by Its Early Proponents
+
+**What it is** — The isokinetic method, popular in the USA in the late 1960s and early
+1970s, uses a device (e.g. a centrifugal clutch or hydraulic system) that automatically
+adjusts resistance to control movement speed and, in principle, keep a maximal load on the
+muscles throughout the full working range; the limiting factor is movement speed, not the
+magnitude of resistance as in weightlifting, and resistance rises as speed rises. Depending
+on the apparatus, isokinetics may be concentric or eccentric, though most commercial
+machines of the era offered only the concentric mode; the device's resistance
+automatically accommodates each joint angle to the muscle's momentary capability, provided
+the athlete sustains sufficient motivation. Counsilman (1971, 1972), an early populariser
+for athletic training, claimed the isokinetic method's basic advantage over others is that
+it forces maximal-effort work throughout, producing larger, faster strength increases for
+particular actions even in very strong athletes; the authors state this specific claim "is
+incorrect," since isokinetic force is usually lower than isometric force throughout the
+range of joint movement, and maximal strength production is not possible under isokinetic
+conditions. Even so, the authors report some isokinetic benefits have been corroborated in
+specific sports (swimming, rowing) by considerable research (Chu & Smith, 1971;
+Rosentsweig & Hinson, 1972; Hinson & Rosentsweig, 1972; Wilson, 1972), which promote five
+advantages: (1) the device accommodates to the athlete's own capability throughout the
+range rather than the athlete accommodating to a fixed resistance, automatically adjusting
+for fatigue, pain or strength gain and thereby minimising injury risk; (2) prolonged warm-up
+becomes largely unnecessary, and a demanding workout is possible in five minutes, with no
+per-athlete adjustment needed on team equipment; (3) fewer repetitions can produce
+significant strength gains, since each repetition loads the muscle intensively throughout
+the full range; (4) real-time results display (computer monitor or graph) lets the athlete
+compete against themselves or others; (5) eliminating most eccentric activity on most
+isokinetic machines reduces post-exercise soreness. The authors caution that the studies
+behind these five points were not conducted with top-level international athletes, and did
+not specify training-phase context (general versus specific preparation). Several studies
+comparing isometric, dynamic and isokinetic regimes (Thistle et al, 1967; Rosentsweig &
+Hinson, 1972) found isokinetic exercise produced the greatest electrical (EMG) activity,
+largest muscle hypertrophy, and most effective maintenance of strength for specific muscle
+groups in the average person, with more significant strength gains in shorter periods and
+shorter sessions than other regimes in laboratory studies; transfer of this effect to
+multi-dimensional functional sporting activity, or across athletes of different
+qualification, "has not been proved." Isokinetic training also gives limited speed
+specificity over some ranges of sporting movement, since the trainer can control joint-action
+speed, but cannot reproduce force-time curves matching specific sports movements. (PDF pp.
+243-244, printed pp. 232-233, "4.2.6 Isokinetic and Other Training Means," "4.2.6.1 The
+Isokinetic Training Method.")
+
+**Why it works** — The authors state the accommodating-resistance mechanism directly
+(resistance adjusts automatically to applied force at each joint angle), but immediately
+qualify Counsilman's stronger claim (that this guarantees superior, faster strength gains)
+as incorrect on physiological grounds, since isokinetic force output is lower than isometric
+force at the same joint angle throughout the range.
+
+**When to apply** — Use this framework's five advantages as the historical case FOR
+isokinetic training, while treating Counsilman's "forces maximal effort throughout, superior
+to other methods" claim as specifically refuted by the authors. Inference: the swimming and
+rowing support cited here is consistent with isokinetics being most defensible for sports
+whose own movements are already closer to constant-velocity through part of their range (see
+[[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]], which notes
+isokinetic testing/training is "non-functional, except possibly for swimmers").
+
+**When NOT to apply** — The cited supporting studies used non-elite athlete samples and did
+not report training-phase context, per the authors' own caution; do not extend these
+findings to elite/international athletes or to specific-preparation training phases without
+separate verification. This entry's advantages should be read alongside
+[[claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation]] and
+[[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]], both of which
+the authors use to substantially qualify how much practical value these advantages carry for
+competitive athletes.
+
+**Example** — The book's own example is the swimming and rowing research cited above (Chu &
+Smith 1971; Rosentsweig & Hinson 1972; Hinson & Rosentsweig 1972; Wilson 1972); no further
+invented example is added here.
+
+**Related** — [[claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation]],
+[[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]],
+[[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]] (Ch2, a
+related caution against inferring dynamic functional strength from isometric or isokinetic
+dynamometer output).
+=================== heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.1"
+topic: quadriceps-hamstring ratio myths
+category: [isokinetics, testing, rehabilitation]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# There Is No Single "Optimal" Quadriceps:Hamstring Ratio: It Changes With Sport, Joint Angle and Test Velocity
+
+**What it is** — It is often claimed the optimal quadriceps-to-hamstring strength ratio is
+60:40, but Russian scientists found this ratio depends on the specific sport (Vorobyev,
+1978): measured at the joint angle of greatest knee-extension torque, the ratio should be
+nearer 80:20 for weightlifters and jumpers, while a treadmill-movement measurement gives
+runners a ratio near 50:50. A related popular belief, that injuries become far more common
+once left/right lower-extremity strength differs by more than 10%, is also questioned.
+Recent research (as of the text) found neither recommendation supported by scientifically
+controlled experiments that correct torque outputs for gravity's effect and avoid
+stretching the hamstrings during measurement (Stephens & Reid, 1988). The
+flexor/extensor-ratio recommendation is additionally vague because the ratio varies across
+the joint's range of motion. Verified against the page image (Fig 4.16, printed p. 234,
+Cybex dynamometer data at 36, 108 and 180 degrees/second): the ratio at the knee measured
+at 80 degrees is about 75:25 at 36 degrees/second but 68:32 at 180 degrees/second; the ratio
+equals the traditional 60:40 figure only at approximately 50 degrees of joint angle. Since
+the ratio changes with both joint angle and measurement velocity, the authors conclude "it
+is meaningless to prescribe an optimal ratio for any joint," and it would be more accurate
+to refer to a full-range characteristic curve for a given angular velocity than to a single
+number. (PDF pp. 244, 245-246, printed pp. 233-234, "4.2.6.1 The Isokinetic Training
+Method," "Recommended Strength Ratios," Fig 4.16.)
+
+**Why it works** — No physiological mechanism is given for why the ratio shifts with sport,
+joint angle or velocity beyond the general fact that different muscles' torque-generating
+capacity varies differently across the range of motion and across contraction speed, so any
+single-number ratio necessarily averages over that variation in a way that hides it.
+
+**When to apply** — Use this as a caution against citing a single flexor/extensor or
+left/right strength-ratio target (e.g. "60:40 quad:hamstring," "no more than 10% L/R
+difference") as universally optimal or diagnostic of injury risk. If a ratio must be used,
+specify the joint angle and angular velocity it was measured at, per this claim, and prefer a
+full-range curve over a single number when data allow. **Eric's baseline:** this bears on how
+isokinetic or ForceFrame-style ratio data should be interpreted for return-to-play decisions;
+the corpus does not document a specific flexor/extensor ratio target
+(`method-baseline.md`).
+
+**When NOT to apply** — This is single-source, era-specific data (Vorobyev, 1978; Stephens &
+Reid, 1988) using a Cybex dynamometer at three specific velocities on an unspecified
+population; the specific ratio-versus-angle values (75:25 at 36 degrees/second, 68:32 at 180
+degrees/second) should not be treated as universal constants for every athlete or joint. Do
+not use this entry to conclude ratio testing is worthless; the claim is that a single
+"optimal ratio" number is misleading, not that ratio measurement itself carries no
+information (see [[claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction]]
+for the related but distinct caution about using isokinetic ratios to drive "correction").
+
+**Example** — Inference: a rehabilitation report citing "this athlete's quad:hamstring ratio
+is below the healthy 60:40 standard" should specify the joint angle and test velocity the
+ratio was measured at, per this claim, since the same athlete could show a ratio at or above
+60:40 at one angle/velocity and below it at another, without any change in underlying
+tissue health.
+
+**Related** — [[claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction]]
+(Ch3.3.4.4, a related caution against using isokinetic ratios to "correct" asymmetry),
+[[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]].
+=================== claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.2"
+topic: physical limits of isokinetic devices
+category: [isokinetics, biomechanics, testing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# No Machine Can Be Truly Isokinetic: The Physics of Acceleration Means Injuries and Elastic Energy Happen Exactly Where Isokinetic Testing Cannot See
+
+**What it is** — The authors call the assumption that isokinetic dynamometers offer
+accurately constant angular velocity from start to finish a "faulty basic assumption": the
+laws of physics make it impossible, since a body at rest must accelerate to reach a terminal
+velocity, sustain it, then decelerate back to rest, meaning every movement (isokinetic or
+otherwise) has periods of positive or negative acceleration; producing truly isokinetic
+conditions throughout would require infinite acceleration, which "contradicts the laws of
+science." Manufacturers can only minimise, never eliminate, these non-isokinetic transition
+phases. The authors argue this matters critically because most injuries occur during exactly
+these transition phases, when a limb is changing velocity or musculotendinous tension is
+changing, and isokinetic testing "can reveal no useful information about what is happening
+to the muscles then." A further limitation: isokinetic testing gives no information on the
+major contribution of elastic-energy storage and release in soft tissue during dynamic,
+natural actions like walking, running, jumping or throwing. The authors' summary: "isokinetic
+testing or training is non-functional, except possibly for swimmers whose movements are
+approximately isokinetic over part of their range." Biomechanical analysis of force-time and
+rate-of-force-development curves for resisted free movement confirms distinct qualities
+(maximal strength, starting strength, acceleration strength, explosive strength, see Fig
+2.13) that isokinetic curves, being "so radically different from their free movement
+equivalents," capture poorly, limiting their value for functional analysis or specific
+neuromuscular conditioning. (PDF pp. 244-245, printed pp. 233-234, "4.2.6.2 Limitations of
+the Isokinetic Method," "Fundamental Biomechanics of Isokinetic Devices.")
+
+**Why it works** — The mechanism is pure Newtonian mechanics: any object moving from rest,
+sustaining a velocity, and returning to rest must accelerate and decelerate, and true
+isokinetic motion throughout would demand infinite (physically impossible) acceleration at
+the start and end. Because injuries and elastic-energy exchange concentrate in these
+non-constant-velocity transition phases (and in general dynamic movement, which is rarely
+constant-velocity at all), a device measuring only the constant-velocity middle portion
+misses the biomechanically important parts of most natural movements.
+
+**When to apply** — Use this as the physics-level foundation for treating isokinetic test or
+training data as descriptive of a narrow, artificial condition (the device's controlled
+constant-velocity phase) rather than as a general index of an athlete's dynamic capability.
+Inference: this reinforces the terminology point already in this library (see
+[[framework--precise-muscle-action-terminology]]) that commercial "isokinetic" devices are
+more accurately "quasi-isokinetic."
+
+**When NOT to apply** — The authors' own exception is swimming, where movement is
+"approximately isokinetic over part of their range," making isokinetic testing/training
+comparatively more relevant there than for running, jumping, throwing or lifting. Do not read
+this entry as claiming isokinetic devices provide zero useful information; the claim is
+narrower: they provide no useful information specifically about the transition
+(acceleration/deceleration) phases where most injuries occur and where elastic energy
+storage/release happens, which is where much of natural dynamic movement's biomechanical
+significance lies.
+
+**Example** — Inference: a hamstring isokinetic strength test at a fixed angular velocity
+(e.g. 60 degrees/second) can characterise force output during that constant-velocity phase,
+but per this claim it cannot characterise what happens during the initial acceleration into
+that velocity or the deceleration out of it, which is where a sprinting hamstring's peak
+eccentric strain and injury risk concentrate.
+
+**Related** — [[framework--precise-muscle-action-terminology]] (Ch1, "isokinetic" as a
+misleading term for the same physical reason given here),
+[[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]] (Ch2),
+[[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]].
+=================== heuristic--isokinetic-testing-limitations-for-functional-sport-specificity.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.2"
+topic: why isokinetic testing misrepresents functional sport movement
+category: [isokinetics, testing, specificity]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Six Reasons Isokinetic Testing and Training Misrepresent Functional Sport Movement
+
+**What it is** — Building on the physics limitation already covered (see
+[[claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation]]), the authors
+give a detailed, itemised critique of relying on isokinetic dynamometers (e.g. Cybex,
+Orthotron) for testing and rehabilitation. (1) **Functional anatomy**: nearby-joint angle
+changes the torque produced about the joint in question (e.g. hip angle changes knee
+extension torque, important to weightlifters, jumpers and sprinters), but seated isokinetic
+testing typically immobilises the hips with straps, creating "non-functional conditions" that
+measure torque specific to the seated posture, not any actual sporting posture; testing is
+also rarely combined with EMG or myotonometry to identify which specific muscles (e.g.
+vastus medialis vs lateralis, affected by lateral/medial rotation) actually contribute to the
+measured torque, and open-chain testing (foot not contacting the ground) alters how popliteus
+and gastrocnemius contribute to knee flexion, both important in running, lifting and jumping;
+seated testing also ignores medial rotation contributions (sartorius, gracilis,
+semimembranosus, semitendinosus) and lateral rotation (biceps femoris). (2) **Muscle
+physiology**: most sporting actions begin from intense isometric or explosive-isometric
+contraction with stored tendon elastic energy, a state isokinetic testing/training involves
+only insignificantly; the myotatic stretch reflex (stronger with faster stretch) is central
+to explosive running, jumping, lifting and throwing but cannot be recruited under isokinetic
+conditions; agonist-antagonist cocontraction and ballistic (preprogrammed,
+feedback-independent) movement are both common in sport but isokinetic conditions permit
+neither; torque under isokinetic conditions is usually much lower than isometric torque at
+the same joint angle, contradicting the claim (Thistle et al, 1967) that isokinetics keeps
+tension maximal throughout; reciprocal inhibition (antagonist pre-contraction raising
+agonist force, used in PNF and common in plyometric rebounding) is not permitted by most
+isokinetic devices; and bilateral versus unilateral force-production patterns differ, so
+isokinetic limb-to-limb comparisons "can be very misleading," since a dominant limb's
+superiority is often one of skill, not strength (e.g. it is common, but the authors imply
+misguided, for therapists to isokinetically strengthen a footballer's weaker kicking limb
+when the support leg's job is producing stabilising strength). (3) **Specificity**:
+indiscriminate isokinetic use neglects the specificity principle across ten dimensions (type
+of muscle contraction, movement pattern, region of movement, velocity of movement, force of
+contraction, muscle fibre recruitment, metabolism, biochemical adaptation, flexibility,
+fatigue), citing Sale and McDougall (1981) that strength gains are apparent only when
+measured during the same movement type used in training; this specificity concern
+"culminated" in Verkhoshansky's principle of dynamic correspondence (see 4.3, not yet
+ingested in this pass). The authors' concluding analogy: relying on a single isokinetic model
+to assess strength and endurance is "tantamount to permanently accepting" the early
+planetary-electron atomic model just because it is easy to work with; a more versatile,
+"kinesiological polygraph" combining high-speed video, EMG, myotensiometers, accelerometers
+and force plates is what multi-faceted human movement actually demands, and sporting
+performance itself remains the ultimate test of any training or rehabilitation regime. The
+authors also name the APRE system (based on DeLorme's original work, see 5.2.2) as an
+inexpensive, effective alternative to isokinetics, and point to Ostering (1986) for a
+detailed review of isokinetic strengths and weaknesses. (PDF pp. 245-247, printed pp.
+234-236, "4.2.6.2 Limitations of the Isokinetic Method," "Functional Anatomy," "Muscle
+Physiology," "The Importance of Specificity," "Concluding Remarks.")
+
+**Why it works** — Each of the six points above carries its own stated mechanism (listed
+inline): joint-coupling effects on torque, missing EMG/myotonometry verification, absent
+elastic-energy and stretch-reflex contribution, absent cocontraction/ballistic patterning,
+absent reciprocal inhibition, and bilateral-versus-unilateral force-pattern differences. The
+authors' unifying argument is that isokinetic devices remove or distort each of these
+naturally-occurring features of dynamic sport movement, so a test built on removing them
+cannot validly characterise performance that depends on them.
+
+**When to apply** — Use this itemised list as a detailed checklist when deciding whether a
+specific isokinetic finding (a strength deficit, an asymmetry, a rehabilitation
+"clearance" threshold) should influence a functional/sport-specific training or return-to-play
+decision: check whether the isokinetic condition tested (seated, seat-strapped, single-joint,
+no elastic energy, no stretch reflex, no cocontraction, no reciprocal inhibition, bilateral
+comparison) resembles the sporting movement in question closely enough for the finding to
+transfer. This heuristic substantially extends, with a Ch4-specific itemised mechanism list,
+the caution already recorded in
+[[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]] (Ch2, citing
+the book's own "futile" statement about isometric/isokinetic dynamometers); a reciprocal link
+from that entry to this one is recommended.
+
+**When NOT to apply** — Marked contested, inheriting the same internal tension already
+recorded in [[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]]:
+the book itself relies on isokinetic and isometric dynamometer data elsewhere (e.g. the
+force-velocity curves in Ch3, the strength-ratio data in
+[[heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity]]) to establish real
+findings, without fully reconciling that reliance with this section's sweeping "non-functional"
+critique. Do not read this entry as claiming isokinetic devices have zero diagnostic value
+(the authors themselves call them "useful for measuring isokinetic actions... in two
+dimensions"); the claim is that extrapolating isokinetic results to full sporting movement
+"is scientifically unacceptable and misleading."
+
+**Example** — Inference: a therapist isokinetically strengthening a footballer's weaker
+kicking (non-support) leg, per the authors' own named example, may be targeting the wrong
+quality if the support leg's job (stabilising strength under bilateral/unilateral,
+cocontractive demand) is actually more functionally relevant to on-field performance than the
+kicking leg's isolated, isokinetically-measured torque.
+
+**Related** — [[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]]
+(Ch2, the entry this one substantially extends with Ch4-specific mechanisms; reciprocal link
+recommended), [[claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation]],
+[[heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity]],
+[[principle--specificity-of-training-ten-dimensions]] (Ch1, the ten-dimension specificity
+principle this section applies to isokinetics specifically).
+=================== claim--static-dynamic-combined-isometric-concentric-method.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.3"
+topic: static-dynamic (isometric-then-concentric) training method
+category: [isometrics, programming, speed-strength]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# The Static-Dynamic Method: Pairing a Brief Isometric Hold With Explosive Concentric Work in One Repetition
+
+**What it is** — The static-dynamic method sequentially combines isometric and dynamic
+(auxotonic) muscular activity within one exercise. Two variants are given as experimentally
+effective: (1) a 2-3 second isometric contraction at 80% of maximum, immediately followed by
+explosive concentric dynamic work with a 30%-of-maximum load; (2) a constant load of 75-80%
+of maximum used for both the isometric and dynamic components, illustrated with a half-squat
+example: the athlete sinks into a half-squat with a barbell on the shoulders, holds that
+position for 2 seconds, then jumps upward with maximal acceleration before landing carefully
+and repeating. Experimentally, variant (1) proved better than dynamic exercise alone for
+developing speed-strength; variant (2) had an effect on speed-strength and absolute strength
+improvement roughly equivalent to dynamic exercise alone (Dobrovolsky, 1972, 1973). (PDF p.
+247, printed p. 236, "4.2.6.3 Static-Dynamic Methods.")
+
+**Why it works** — No specific mechanism is given for why pairing a brief isometric hold with
+subsequent explosive concentric work outperforms dynamic-only training for speed-strength in
+variant (1); Inference: this is plausibly related to the same explosive-isometric-to-concentric
+transition mechanism already described for depth jumps and the shock method (see
+[[framework--kinetic-energy-stimulation-mechanical-basis-and-advantages]] and
+[[framework--shock-method-and-plyometric-terminology]]), where the isometric phase primes the
+neuromuscular system immediately before the explosive concentric effort, though the authors
+do not state this connection explicitly for the static-dynamic method here.
+
+**When to apply** — Use variant (1) (2-3s isometric hold at 80% max, then explosive
+concentric at 30% max) when the specific goal is speed-strength development, per the cited
+finding that it outperformed dynamic-only training for that quality. Use variant (2) (a
+half-squat-and-jump at 75-80% max) as an option with roughly equivalent
+speed-strength-and-absolute-strength effect to dynamic training alone, useful mainly for
+variety or when the loaded-jump movement pattern itself is desired.
+
+**When NOT to apply** — This is a single-source finding (Dobrovolsky, 1972, 1973) without
+reported sample size, training-age context, or long-term outcome data beyond the immediate
+comparison to dynamic-only training; treat the specific load percentages (80%/30%, 75-80%)
+as the cited protocol's own parameters, not universally optimal figures. Variant (2)'s
+half-squat-and-jump with load requires careful technique and landing control, which this
+passage does not itself detail as a safety protocol.
+
+**Example** — The book's own example is the half-squat-hold-then-jump description above
+(variant 2); no further invented example is added here.
+
+**Related** — [[heuristic--isometric-training-execution-protocol-and-advantages-drawbacks]],
+[[framework--kinetic-energy-stimulation-mechanical-basis-and-advantages]],
+[[heuristic--choice-of-muscle-training-regime-favor-combination]] (this section's companion
+entry, which places static-dynamic training within the broader argument for combining
+regimes).
+=================== heuristic--choice-of-muscle-training-regime-favor-combination.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.6.4"
+topic: choosing among muscular-work regimes
+category: [programming, exercise-selection, periodization]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# No Single Training Regime Is "Most Effective": Combining Regimes Consistently Outperforms Any One Alone
+
+**What it is** — Asked which of the chapter's several muscular-work regimes (concentric,
+eccentric, isometric, isokinetic, static-dynamic, and combinations) is most effective, the
+authors argue a categorical answer is not possible, for three reasons: (1) comprehensive
+research comparing all regimes has not been conducted; one study comparing eccentric,
+concentric, isometric and combined regimes found some advantage of concentric over eccentric
+and isometric methods individually, but the combined-regime method showed "a clear
+advantage" over all of them (Pletnev, 1975); (2) comparative research is inherently difficult
+because training loads are hard to equate across different regimes; (3) it is
+"inappropriate to raise the question of the absolute effectiveness of any specific regime,"
+since each regime can be the most effective depending on the training situation, stage of
+the annual cycle, athlete level, the primary regime of muscular work demanded by the specific
+sport exercise, and the specific strength quality being trained. The authors' overall
+conclusion, stated with "reasonable certainty": the most rational way to enhance special
+strength preparation is to combine the various regimes of muscular work, a conclusion
+corroborated by multiple studies (Vorobyev, 1966; Andrianov & Vorobyev, 1969; Kuznetsov,
+1970; Verkhoshansky, 1970, 1972; Slobodyan, 1972; Tatyan, 1974; Pletnev, 1975; Khodykin,
+1975; Savin, 1974). Such a combination should be selected by considering its cumulative
+effect (see [[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]]) and
+its correspondence to the specific conditions of the sport. (PDF pp. 247-248, printed pp.
+236-237, "4.2.6.4 Choice of Muscle Training Regimes.")
+
+**Why it works** — No single mechanism is given for why combined regimes outperform any one
+regime alone; Inference: a plausible explanation, not stated in the text, is that different
+regimes stress different components of the strength system (contractile tissue,
+elastic/connective tissue, neural drive, fibre-type-specific adaptation) somewhat
+independently, so combining them addresses more of the system than repeatedly stressing only
+one component.
+
+**When to apply** — Use this heuristic to resist single-method dogma ("isokinetics is best,"
+"only free weights work," "eccentric training is superior") when programming special
+strength training; per this section, the authors' own multi-study conclusion favours
+deliberately combining regimes (concentric, eccentric, isometric, static-dynamic,
+resistance, kinetic-energy) rather than committing to one, selected for cumulative effect
+and sport-specific correspondence.
+
+**When NOT to apply** — The nine corroborating citations (Vorobyev 1966 through Savin 1974)
+give no individual effect sizes or protocols in this passage; treat "combining regimes is
+most rational" as the authors' summary conclusion across a body of era-specific Soviet sport
+science, not a single quantified finding. This heuristic does not specify which combination,
+in what proportion, or in what sequence to use for a given sport or athlete; it establishes
+only the general principle that combination beats any single regime, leaving the specific
+combination as a separate programming decision guided by cumulative-effect and
+dynamic-correspondence principles (see 4.3, not yet ingested in this pass).
+
+**Example** — Inference: a strength block that mixes free-weight concentric-emphasis lifts,
+occasional isometric holds at sticking points, and periodic eccentric-emphasis work (rather
+than committing the whole block to one regime) is applying this heuristic directly; the
+specific mixture and sequencing would still need to be chosen using the cumulative-effect and
+sport-specificity criteria the authors name.
+
+**Related** — [[claim--static-dynamic-combined-isometric-concentric-method]],
+[[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]],
+[[framework--non-commutative-non-associative-training-order]] (Ch4.1, the related point that
+order and combination, not just choice of regime, change training outcomes).
+=================== framework--functional-vs-nonfunctional-resistance-machines.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.7.1"
+topic: functional vs non-functional resistance machines
+category: [equipment, exercise-selection, terminology]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Two Classes of Training Machine: Functional Resistance (Sport-Specific Pattern) vs Non-Functional Resistance (General Pattern)
+
+**What it is** — The authors distinguish two classes of strength machine: functional
+resistance (FR) machines, whose purpose is offering resistance in sport-specific movement
+patterns, and non-functional resistance (NFR) machines, whose sole purpose is offering
+general resistance in non-sport-specific patterns. They call this distinction vital, because
+Western "state-of-the-art" fitness centres are usually equipped almost entirely with NFR
+machines, so much so that adequate free weights or FR machines can be hard to find in them;
+they quote Zatsiorsky (1995) directly: "the important limitation of many strength training
+machines is that they are designed to train muscles, not movement. Because of this, they are
+not the most important training tool for athletes." FR devices (guided by Ratov, 1976) are
+reported effective for aspects of special strength training across many athlete types
+(Semenov, 1970; Petrova & Gorbunov, 1970; Verkhoshansky, 1970; Deniskin & Kuznetsov, 1972;
+Dobrovolski, 1972, 1973; Kuznetsov & Aiunts, 1974; Savin, 1974), because they permit strict
+regulation of load and the movement's spatial characteristics, letting a coach use the
+appropriate regime of muscular work and programme force-over-time characteristics while
+reproducing stereotypical training movements economically. The authors' example of a
+simple, cheap, versatile FR device is the "hi-lo" pulley machine, whose rope-attached
+handles (unlike fixed bars and pivots on most NFR machines) allow sport-specific movement
+patterns of great complexity; they estimate a circuit of just four pulley machines can
+provide training capacity that would otherwise need more than 40 "state of the art" NFR
+machines, and that a circuit of 10 pulley machines plus a few benches, jumping boards, bars,
+mats and wall-bars can serve more clients with a larger range of exercises than 100
+specialised machines, at under 15% of the cost, though even this pulley-based facility would
+give inferior multi-dimensional conditioning compared with an NFR-machine-only facility on
+a per-machine basis. A major FR advantage is visual/computerised feedback on movement
+quality and quantity for controlling training. The authors caution that simulating a sport
+movement against heavy machine loads can still significantly alter the movement's
+force-time characteristics and disrupt its neuromuscular programme; functionality is not
+automatic from an exercise merely resembling a sport action, but depends on the functional
+objective for which the exercise is used and how it is integrated into the long-term
+conditioning programme. (PDF pp. 248-249, printed pp. 237-238, "4.2.7 The Use of Training
+Machines," "4.2.7.1 Functional Resistance Machines.")
+
+**Why it works** — The stated mechanism is specificity: FR machines let a coach control load
+and the spatial/temporal pattern of the movement together, closer to the actual sport
+action, while still gaining measurement feedback; NFR machines fix bars/pivots to a single
+plane and pattern that need not resemble any sport movement, training "muscles, not
+movement" per the quoted Zatsiorsky line.
+
+**When to apply** — Use this framework to audit a training facility or programme for FR
+versus NFR balance, per the authors' concern that Western commercial gyms over-provide NFR
+equipment. Prefer FR devices (pulley systems, cable machines with free movement paths,
+purpose-built sport-simulation devices) when the training goal requires reproducing a
+sport-specific spatial/temporal pattern with measurable load control.
+
+**When NOT to apply** — The authors' own caution applies: using any machine, FR or NFR, to
+simulate a sporting movement against heavy load can still disrupt the movement's natural
+force-time characteristics and neuromuscular programming; resemblance to a sport action does
+not automatically make an exercise "functional." See
+[[heuristic--nfr-machine-limitations-safety-and-appropriate-use]] for when NFR machines
+remain appropriate despite this section's general preference for FR devices and free
+weights.
+
+**Example** — The book's own example is the "hi-lo" pulley machine and the four-pulley
+versus forty-NFR-machine cost/capacity comparison described above; no further invented
+example is added here.
+
+**Related** — [[heuristic--nfr-machine-limitations-safety-and-appropriate-use]],
+[[claim--nfr-machine-marketing-claims-examined]].
+=================== heuristic--nfr-machine-limitations-safety-and-appropriate-use.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.7.2, 4.2.7.4"
+topic: non-functional resistance machine limitations and safety
+category: [equipment, injury-risk, rehabilitation]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# NFR Machines: Real Limitations on Proprioception and Joint Loading, but Not Actually Safer Than Free Weights
+
+**What it is** — Non-functional resistance (NFR) machines can play a useful supplementary
+role but generally cannot match free weights and FR machines for multi-dimensional,
+full-range neuromuscular and musculoskeletal training. Many NFR machines force the user to
+sit or lie, minimising training effect on major stabilising muscles and involving fewer
+joints through fewer degrees of freedom; while potentially valuable early in rehabilitation,
+this is an incomplete way of training the body for functional development, since machines
+that stabilise major body regions and limit the number of moving joints diminish the
+capacity to train balance, coordination and proprioception. The authors give a worked
+example: a free-standing squat involves three joints (hip, knee, ankle), while a seated knee
+extension machine constrains the body to one joint (knee) to exercise the quadriceps, so for
+a comparable exercise intensity over the same range of motion, the machine increases
+shearing force across the knee; the squat additionally exercises the thigh adductors, spinal
+erectors and other stabilisers, and enhances balance and (via longitudinal compressive
+loading) bone density. Seated exercise also always imposes a greater lumbar-disc load than
+equivalent standing exercise: maintaining a neutral spinal curve while seated raises lumbar
+disc pressure by about 40% (Chaffin & Andersson, 1984); allowing the back to flex forward can
+raise this by as much as 90%; a well-designed lumbar-supporting backrest lowers the stress
+but lumbar disc pressure can still run about 75% higher than standing; stress increases
+further against resistance, especially with jerky movements, and seated positions cannot
+absorb shock loading via knee/hip/ankle flexion the way standing can. On safety
+specifically, the authors reject the common claim that NFR machines are much safer than free
+weights: injuries to the back and knees (leg press, hack-squat, hip-sled), shoulders and
+chest (bench press, pec-deck), elbow (bicep curl machines) and back (back-extension
+machines) are "just as common with machines as with free weights," and many machines (pec
+deck, bench press, leg press, calf raise, seated press) force the movement to start from the
+biomechanically least efficient, most harmful position for the relevant joint; spotters are
+just as necessary for machines as for free weights, and faulty technique is equally dangerous
+with either. Some machines (leg extension, lat pulley, seated bicep curl) genuinely are safer
+for someone with back weakness or injury, and can help in early rehabilitation, but
+"continual avoidance of stress to the regions involved eventually leads to their progressive
+weakening" if relied on long-term. NFR machines remain useful for isolating specific muscle
+groups (bodybuilding-style supplementary training) or for the primary stages of injury
+rehabilitation, but not as an all-round conditioning replacement for free weights and FR
+devices; one exception noted is the lat-pulley machine, generally more suitable and safer
+than the free-weight equivalent (bent-over rowing) for training latissimus dorsi. (PDF pp.
+249-250, printed pp. 238-240, "4.2.7.2 Non-Functional Resistance Machines," "4.2.7.4 The
+Training Safety of Machines.")
+
+**Why it works** — The proprioception/stability mechanism is that fixing more joints and
+supporting more of the body's weight through the machine itself removes the balance,
+coordination and multi-joint stabilisation demand that free, standing exercise imposes. The
+single-joint-versus-multi-joint mechanism is straightforward: constraining a comparable
+training stimulus to fewer joints concentrates the same relative stress onto those joints'
+structures (illustrated by the squat-versus-knee-extension shearing-force example). The
+lumbar-disc mechanism is postural: seated positions load the discs differently than standing,
+and cannot use lower-body joint flexion to absorb shock the way standing positions can.
+
+**When to apply** — Use NFR machines for early-stage rehabilitation of a specific injured
+joint or muscle group, for supplementary bodybuilding-style isolation work, or when back
+weakness/injury makes a machine (leg extension, lat pulley, seated bicep curl) genuinely
+safer than the free-weight equivalent. **Eric's baseline:** the department's testing
+protocols already run standard CMJ family tests and mid-thigh pull on ForceDecks rather than
+seated machine-based strength testing (`method-baseline.md`, "Force plate and neuromuscular
+monitoring"), consistent with this section's general preference for standing, multi-joint,
+free assessment over seated/constrained machine testing.
+
+**When NOT to apply** — Do not rely on NFR machines long-term as a substitute for free
+weights or FR devices in a healthy, competitive athlete's programme, since progressive
+avoidance of stress to a region "eventually leads to... progressive weakening." Do not
+assume NFR machines are inherently safer than free weights; per the authors' own comparison,
+injury rates and biomechanically poor starting positions are comparable across both,
+technique quality and spotting matter more than equipment choice.
+
+**Example** — Inference: using a seated knee-extension machine during the first two weeks
+after a knee injury (early rehabilitation, single-joint control) while progressing toward a
+free-standing squat as tolerance improves applies this heuristic's appropriate-use window; continuing
+to rely on the knee-extension machine as the primary quadriceps exercise once the athlete
+returns to full training would not, per the "progressive weakening" caution above.
+
+**Related** — [[framework--functional-vs-nonfunctional-resistance-machines]],
+[[claim--nfr-machine-marketing-claims-examined]].
+=================== claim--nfr-machine-marketing-claims-examined.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.7.3, 4.2.7.5"
+topic: variable-resistance machine marketing claims
+category: [equipment, biomechanics, cost]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Variable-Resistance Machines' Core Marketing Claim Rests on a Physics Error, and NFR Machines Need Many More Units to Match Free Weights
+
+**What it is** — Many machine manufacturers design variable-resistance machines to match a
+joint's natural torque curve, claiming superiority over free weights and other resistance
+devices on this basis. The authors identify a flawed premise behind this claim: manufacturers
+imply a free weight's resistance stays constant throughout a lift (e.g. a 50 kg biceps curl
+is presented as exerting a constant 50 kg / about 490 Newton force from start to finish). A
+simple application of Newton's Second Law (force proportional to acceleration) shows this is
+false: the resistance a free weight offers changes with acceleration from rest and at any
+point the trainee speeds up or slows down, "as can easily be demonstrated by force plate,
+cable tensiometer or high speed video analysis"; a skilled trainee already uses proprioception
+to perceive these changes and adjust resistance and direction more efficiently, the authors
+argue, than current machines can. Separately, on training efficiency, the authors give
+several specific machine-count comparisons: it takes at least 12 NFR machines to
+approximately equal the training effect of the clean-and-push-press, at least 4 to rival the
+free-standing squat, more than 3 to equal the standing dumbbell curl, and at least 5 to
+rival the flexed-knee deadlift; in total, more than 24 NFR machines are required to match the
+combined training effect of just four free-weight exercises (clean-and-push-press, squat,
+deadlift, biceps curl), at roughly 40 times the combined cost of the equivalent free weights
+and racks, with NFR machines also carrying higher maintenance costs and more frequent
+breakdowns in a well-used gymnasium than "virtually indestructible" free weights. (PDF pp.
+250-251, printed pp. 239-240, "4.2.7.3 Machines and the Variable Resistance Philosophy,"
+"4.2.7.5 The Efficiency of Machine Training.")
+
+**Why it works** — For the variable-resistance critique, the mechanism is Newtonian: force
+equals mass times acceleration, so any free weight's true resistance already varies with the
+trainee's own acceleration/deceleration throughout the lift, contradicting the marketing
+premise that free weights offer constant resistance needing a machine's correction. For the
+machine-count comparison, the implied mechanism is that a free-weight compound exercise
+recruits and trains many more muscle groups, movement patterns and stabilising demands
+simultaneously than any single-joint NFR machine, so many NFR machines are needed in
+combination to approach the same total training stimulus.
+
+**When to apply** — Use the Newtonian-mechanics point directly to counter variable-resistance
+machine marketing claims that free weights offer "constant" resistance needing a machine's
+correction; a skilled lifter's own proprioceptive control of bar speed already varies the
+true resistance throughout the lift (see also
+[[framework--compensatory-acceleration-training]], Ch1). Use the machine-count/cost
+comparison when evaluating equipment-purchase decisions for a training facility: a small set
+of free-weight stations and racks may replicate the combined training effect of a much
+larger, more expensive NFR machine circuit, per this section's specific figures.
+
+**When NOT to apply** — The specific machine-count figures (12, 4, 3+, 5, 24+, roughly 40x
+cost) are the authors' own estimates for approximating specific free-weight exercises' total
+training effect with combinations of NFR machines; they do not cite a controlled study
+establishing these exact ratios, so treat them as illustrative rather than precisely
+measured. This entry does not argue variable-resistance machines have zero value, only that
+their core "free weights are constant resistance" marketing premise is physically incorrect;
+some variable-resistance designs may still offer useful features (feedback display, joint
+isolation for rehabilitation) independent of that specific flawed premise.
+
+**Example** — Inference: a facility manager comparing the cost of building a small free-weight
+area (barbells, plates, a rack, a platform) against an equivalent machine circuit covering
+the same major lift patterns should expect, per this section's estimates, the free-weight
+option to require far fewer total pieces of equipment and far lower combined cost.
+
+**Related** — [[framework--functional-vs-nonfunctional-resistance-machines]],
+[[heuristic--nfr-machine-limitations-safety-and-appropriate-use]],
+[[framework--compensatory-acceleration-training]] (Ch1, the related point that free-weight
+resistance already varies via the lifter's own acceleration).
+=================== claim--pursuing-perfect-bilateral-symmetry-can-be-counterproductive.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.8"
+topic: symmetric training concept and sprinter leg-asymmetry data
+category: [testing, technique, injury-risk]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# Chasing Perfect Bilateral Symmetry Is Ill-Advised: Sprinters' Push-Off and Swing Legs Are Naturally, Usefully Asymmetric
+
+**What it is** — This entry fulfils the forward reference in this library's Ch3.3.4.4 entry
+(see
+[[claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction]]), which deferred
+"The Concept of Symmetric Training" to this section. Asymmetry in leg length, muscle
+strength, stride length and other structural/functional features has been blamed for
+inefficient movement and injury, and imbalances in agonist/antagonist and left/right strength
+(including isokinetically-measured muscular endurance imbalances) have been singled out as
+leading causes of muscle injury. However, research shows isokinetically-measured left/right
+leg-strength or agonist/antagonist discrepancies as large as 10% do not statistically
+correlate with a major increase in muscular injuries. Because the body, its muscles, tendons
+and bones are characteristically asymmetric, attempts to force greater anthropomorphic and
+kinesiological symmetry "could exacerbate the existing problem or cause new injuries";
+assessing asymmetry properly requires both static structural measurement (leg length, spinal
+curvature) and dynamic biomechanical analysis (force distribution, movement patterns, ground
+reaction force, postural/phasic muscle EMG, movement-phase timing). Structural differences
+in muscle/tendon length, tendon and ligament attachment sites, and bone size/mass are
+"quite natural in all humans"; surgical or orthotic correction is warranted only when such
+structural differences cause serious functional movement imbalances, and even then only
+after confirming the asymmetry is primarily structural rather than a centrally-stored
+neuromuscular pattern (in which case the answer is modifying the motor skill itself, not
+correcting the body). There is "no perfect way" to execute any movement; style is the
+individualised expression of a motor skill and should be developed by observing and
+experimenting against an "ideal" model until the athlete's own central nervous programme
+fits their body, rather than enforcing one rigid technique standard. Yushkevich (1989)
+analysed leg-strength symmetry in sprinters and concluded striving for full leg symmetry is
+inappropriate: extensors of all joints of the push-off leg were generally significantly
+stronger than the swing leg's, with no consistent flexor-strength difference between legs.
+Asymmetry patterns differed by qualification level: novices showed stronger push-off-leg hip
+flexors than swing-leg; novice, Class 3 and Class 2 athletes showed stronger swing-leg knee
+flexors, while Class 1, Master and higher-qualified athletes showed stronger push-off-leg
+knee flexors; dorsiflexion was stronger in the push-off leg for all athletes except novices.
+Leg-strength asymmetry increased with sprint proficiency, peaking among Class 2 athletes,
+then diminishing again with further mastery. Good sprint times correlated more closely with
+swing-leg strength than push-off-leg strength. Yushkevich's conclusion: not only is
+symmetrical muscle strength a misguided target, but deliberately asymmetric exercise
+(running or jumping on sloping/inclined tracks, running curves in both directions, running or
+jumping in shoes with soles of different thickness, or running with unevenly-weighted legs)
+can be beneficial, since "asymmetric exercises destabilise the space-time characteristics of
+motor acts, thereby helping athletes break speed barriers." The authors close with an analogy
+to the tradition that Eastern-carpet weavers deliberately include at least one flaw, since
+"perfection is reserved for the Divine," implying similar asymmetry or imperfection may be
+desirable in human physical performance and training generally. (PDF pp. 251-252, printed pp.
+240-241, "4.2.8 The Concept of Symmetric Training.")
+
+**Why it works** — No cellular or biomechanical mechanism is given for why swing-leg strength
+predicts sprint time better than push-off-leg strength, or for why asymmetry peaks at Class 2
+then declines with further mastery; the authors report these as empirical findings from
+Yushkevich (1989) without deriving them from a stated causal model. For the general "why
+symmetry-forcing backfires" claim, the implied mechanism is that the body's natural asymmetry
+already reflects functional adaptation (dominant-limb skill specialisation, individualised
+structure), so imposing uniformity fights that adaptation rather than supporting it.
+
+**When to apply** — Use this claim, together with the Ch3.3.4.4 entry it completes (see
+Related), as the book's full position on symmetry testing and correction: a numeric L/R or
+agonist/antagonist discrepancy up to about 10% (isokinetically measured) is not itself
+evidence of elevated injury risk, and deliberately asymmetric training elements (uneven
+surfaces, directional bias, unevenly weighted limbs) may have a specific rationale for sprint
+athletes rather than being technique flaws to eliminate. **Eric's baseline:** this bears
+directly on how the department should interpret force-plate symmetry data, which the HD ODSF
+framework lists only as an optional reporting category (`method-baseline.md`, "Force plate
+and neuromuscular monitoring," citing `hd-odsf-metrics.md`); this entry supports treating
+symmetry as descriptive/monitoring information rather than an automatic correction target.
+
+**When NOT to apply** — The Yushkevich (1989) sprinter data are single-study, era-specific
+findings from a Soviet sprint-training research programme with an unspecified sample size in
+this passage; the specific qualification-level patterns (novice through Master) and the
+Class-2 asymmetry peak should not be assumed to generalise to other sports or populations
+without separate verification. The 10%-discrepancy-does-not-correlate-with-injury finding
+does not mean no discrepancy threshold matters; it means this specific threshold, measured
+isokinetically, was not found to correlate in the cited research. Do not read the
+"deliberately asymmetric training" recommendation as license to ignore genuine
+functional/structural imbalances that are causing injury or performance-limiting compensation
+(the authors' own scoping condition above); the recommendation applies specifically to
+sprint-specific push-off/swing-leg asymmetry, not to every kind of asymmetry.
+
+**Example** — The book's own example is the Yushkevich (1989) sprinter data described above;
+no further invented example is added here.
+
+**Related** — [[claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction]]
+(Ch3.3.4.4, the entry that deferred this section to Ch4.2.8; this entry fulfils that
+cross-reference and both should carry a reciprocal link),
+[[heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity]].
+=================== claim--muscle-isolation-is-load-dependent-mostly-illusory-under-heavy-load.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.2.9"
+topic: load-dependence of muscle isolation
+category: [exercise-selection, biomechanics, terminology]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-27
+---
+
+# "Muscle Isolation" Works at Low Loads, but Heavy Resistance Recruits Stabilisers Until Isolation Is Essentially Impossible
+
+**What it is** — Generations of bodybuilding-magazine authors have advocated specific
+machines, joint-fixation methods, precise limb placement and other techniques claimed to
+maximally recruit one muscle group while others stay "largely dormant." EMG studies confirm
+isolation of small muscle groups is genuinely possible under low loading intensity
+(Basmajian, 1978): low-intensity actions like eye-blinking, piano-playing or relaxed speech
+rely on precise, isolated action of specific small muscle groups. However, once a large load
+is imposed on a target muscle group by intense resistance, isolation becomes "virtually
+impossible": as soon as the load is applied, stabilising muscles engage to keep the body or
+specific joints stable while prime movers cope with the load, and if the nervous system
+signals the prime movers are inadequate, assistant movers, shunt muscles, emergency muscles
+and neutralisers may all be recruited to help. The authors' worked example: during heavy
+standing triceps push-downs on a cable machine, the abdominals, latissimus dorsi and erector
+spinae may contract nearly as strongly as the triceps, despite this being nominally a
+triceps-isolation exercise; analysis of many seated or reclining "isolation" machine
+exercises shows isolation simply does not occur under heavy load, even when joints are
+restrained (as on an isokinetic test machine). This is the same load-dependent
+proximal/distal recruitment shift already noted earlier in the chapter (see
+[[claim--muscle-recruitment-consistency-and-proximal-distal-shift-with-load]]), where the
+authors explicitly forward-referenced this section. This does not negate the value of
+isolation-style exercises: they can be useful in early injury rehabilitation, and the
+overflow to other muscle groups at higher loads can itself be desirable (if performed
+safely), since it simultaneously offers isometric and dynamic training to those other muscle
+groups. The authors' stated purpose for this section is to correct the "misleading concept
+of muscle isolation" still promoted by many instructors and training texts. (PDF p. 252,
+printed p. 241, "4.2.9 The Concept of Muscle Isolation.")
+
+**Why it works** — The mechanism given is neuromuscular: as external load rises, the central
+nervous system recruits whatever additional muscle groups (stabilisers, assistant movers,
+emergency muscles, neutralisers) are needed to keep the targeted joint and the body stable
+and to complete the movement, since a single "isolated" muscle group's own capacity is
+insufficient against a heavy load; at low loads, this recruitment is unnecessary, so true
+isolation (confirmed by EMG) is achievable.
+
+**When to apply** — Use this claim to correctly interpret what a "muscle isolation" exercise
+is actually training at a given load: at rehabilitation-level, low-intensity loading, genuine
+isolation is achievable and useful for targeted, precise re-education of a specific muscle
+(consistent with [[claim--irradiation-effect-raises-prime-mover-force-and-endurance]]'s
+adjacent finding that effort and tension spread between muscle groups). At hypertrophy- or
+strength-level heavy loading, expect and potentially embrace the overflow to stabilisers and
+assistant movers as additional, simultaneous isometric/dynamic training for those muscle
+groups rather than treating it as a programming failure.
+
+**When NOT to apply** — Do not describe a heavy-load exercise (a heavy cable push-down, a
+heavy leg-extension set) as "isolating" the target muscle group in marketing, coaching cues,
+or programme design; per this claim and its EMG evidence, that description is only accurate
+at low training intensities. Do not assume the specific triceps push-down example
+generalises identically to every "isolation" exercise; the authors give it as one worked
+illustration, not a universally quantified finding across exercises.
+
+**Example** — The book's own example is the heavy triceps push-down engaging abdominals,
+latissimus dorsi and erector spinae described above; no further invented example is added
+here.
+
+**Related** — [[claim--muscle-recruitment-consistency-and-proximal-distal-shift-with-load]]
+(this chapter's own forward reference to this entry, 4.2.2),
+[[claim--irradiation-effect-raises-prime-mover-force-and-endurance]] (Ch3, a related finding
+on how tension in one muscle group affects others).

@@ -1,0 +1,511 @@
+=== claim--eccentric-force-exceeds-concentric-and-isometric-force.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: eccentric force capacity and injury risk
+     8	category: [eccentric, muscle-action, injury-risk]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Eccentric Force Can Exceed Isometric Strength by 50-100%, Which Raises Injury Risk
+    15	
+    16	**What it is** — Force in the yielding (eccentric/plyometric) phase of a motion "can easily
+    17	exceed the maximal isometric strength of an athlete by 50 to 100%," and the same holds true
+    18	for isolated muscles, where "the eccentric force for a single muscle may reach a level of
+    19	up to twice the zero velocity (isometric) force" (printed p. 33). Eccentric forces rise
+    20	substantially with initial increases in joint movement velocity, then remain essentially
+    21	constant with further velocity increases (figure 2.14): mainly true for qualified
+    22	athletes and multijoint motions such as leg extension; the authors separately note that in
+    23	untrained persons, per "recently published data," maximal voluntary eccentric knee
+    24	extension/flexion torque is independent of movement velocity and stays at an isometric
+    25	level. If the same external force is developed both concentrically and eccentrically, fewer
+    26	muscle fibers are activated eccentrically, so EMG activity is lower in eccentric actions
+    27	than concentric ones at matched force (printed p. 34). A worked example: the maximal
+    28	isometric grip force of male weightlifters, measured with a dynamometer, is typically under
+    29	1,000 N; an athlete lifting a 250-kg barbell applies a maximal instantaneous force of "well
+    30	over 4,000 N" to the bar, meaning roughly 2,000 N per arm: double the grip dynamometer
+    31	ceiling: yet the athlete sustains the lift "without extending the grip" (printed p. 34).
+    32	Because eccentric exercises involve high force development, injury risk is elevated even
+    33	when the eccentric force is submaximal; downhill running is given as an example that can
+    34	"easily induce delayed muscle soreness, especially in unprepared athletes," caused by
+    35	damaged muscle fibers, though "a small magnitude of the damage is considered by some
+    36	experts a normal precursor to the adaptation of muscle to increased use." Conditioning
+    37	muscle reduces injury amount (printed p. 34). (PDF pp. 43-44, printed pp. 34-35.)
+    38	
+    39	**Why it works** — Inference: the authors do not state the cross-bridge/sliding-filament
+    40	mechanism for why eccentric actions produce higher force at lower metabolic/neural cost
+    41	(fewer active fibers per given force) in this passage; this is consistent with, but not
+    42	explained by, the force-velocity relationship covered elsewhere in this chapter (see
+    43	[[framework--maximal-muscular-performance-and-parametric-relations]]) and in this library's
+    44	Supertraining entries on muscle mechanics.
+    45	
+    46	**When to apply** — As a quantified, citable rationale for treating eccentric loading
+    47	(downhill running, eccentric-emphasis lifting, drop landings) as a distinct injury-risk
+    48	category requiring its own progression, separate from concentric/isometric strength
+    49	qualification. Inference: the grip-strength example is a useful coaching illustration that
+    50	an athlete's ability to sustain a lift does not require the grip muscles to be working
+    51	maximally in the sense a dynamometer test would show, since the mechanical demand (holding
+    52	position under eccentric-capable tension) differs from a maximal concentric or isometric
+    53	grip effort.
+    54	
+    55	**When NOT to apply** — This is a single-textbook synthesis citing unnamed "recently
+    56	published data" for the untrained-eccentric-velocity-independence claim (printed p. 34);
+    57	treat the 50-100% and "up to twice" figures as the range the authors report, not as a fixed
+    58	individual multiplier: do not compute a specific athlete's eccentric capacity as exactly
+    59	1.5-2.0x their tested isometric max without direct eccentric testing. Inference: "a small
+    60	magnitude of damage... a normal precursor to adaptation" is reported as some experts'
+    61	view, not the authors' own asserted mechanism; do not treat controlled muscle damage as a
+    62	required or recommended training stimulus on this text's authority alone.
+    63	
+    64	**Example** — Downhill running as unprepared-athlete DOMS trigger (printed p. 34, the
+    65	authors' own example): even without near-maximal eccentric force, repeated eccentric
+    66	loading in an athlete not conditioned to it produces delayed soreness from fiber damage,
+    67	illustrating that "not maximal" does not mean "not risky" for eccentric work specifically.
+    68	
+    69	**Related** — [[framework--stretch-shortening-cycle-mechanisms-and-tendon-elastic-storage]]
+    70	(the SSC's use of this same elevated eccentric force capacity),
+    71	[[framework--maximal-muscular-performance-and-parametric-relations]].
+=== framework--stretch-shortening-cycle-mechanisms-and-tendon-elastic-storage.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: stretch-shortening cycle mechanisms
+     8	category: [stretch-shortening-cycle, elasticity, plyometrics]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Four Reasons the Stretch-Shortening Cycle Increases Force, and Why Elite Athletes Store Energy in Tendons
+    15	
+    16	**What it is** — If a muscle shortens immediately after being stretched (the
+    17	stretch-shortening cycle, SSC, "reversible muscular action"), force and power output
+    18	increase and energy expenditure decreases versus a shortening-only (concentric) action. The
+    19	authors give four reasons for the increased force in the shortening phase: (1) at the peak
+    20	of the cycle (the lengthening-to-shortening transition), force is developed under
+    21	isometric-like conditions, so Fmm rather than the lower, velocity-limited Fm is exerted;
+    22	(2) because force begins rising during the eccentric phase, the time available for force
+    23	development is longer than in a pure concentric effort: countermovement jumps, not drop
+    24	jumps, are given as the authors' example of this mechanism; (3) **peripheral** (muscle and
+    25	tendon elasticity): stretched muscle or tendon stores elastic (strain) energy proportional
+    26	to the applied force and the induced deformation, which is recoiled during the concentric
+    27	phase (figure 2.16: stiffer bodies store less energy per unit force, more compliant bodies
+    28	store more, for the same force); and (4) **central** (neural/reflex): the myotatic
+    29	(stretch) reflex adds a positive, force-increasing contribution from spindle discharge
+    30	during stretch, while the Golgi tendon reflex adds a negative (inhibitory) contribution
+    31	that limits force when tension rises sharply: the net SSC force enhancement is the
+    32	combination of a muscle-tendon-elasticity component and these two opposing
+    33	length-feedback/force-feedback neural components (figure 2.18, from Houk 1974 via Komi
+    34	1986). Tendon stiffness is constant; muscle stiffness varies with the force exerted: the
+    35	more tension, the stiffer the active muscle. In elite athletes the active muscle's
+    36	stiffness can exceed the tendon's stiffness, meaning the tendon deforms more than the
+    37	muscle under load and so stores most of the elastic energy: the authors note fast-running
+    38	animals such as horses have "short, strong muscles and lengthy, compliant tendons" that
+    39	"work as springs" for exactly this reason (figure 2.17, printed p. 35). (PDF pp. 44-46,
+    40	printed pp. 34-36, 38.)
+    41	
+    42	**Why it works** — The authors state the mechanism directly across the four listed reasons
+    43	(force-time history, elastic energy storage, and the myotatic/Golgi neural interplay), so
+    44	this is the source's own stated mechanism rather than this entry's inference, except where
+    45	marked.
+    46	
+    47	**When to apply** — As the mechanistic basis for why plyometric/reactive training targets a
+    48	different quality than either pure concentric strength training or static flexibility work
+    49	(see [[claim--eccentric-force-exceeds-concentric-and-isometric-force]] for the elevated
+    50	eccentric force capacity this cycle exploits, and
+    51	[[claim--reversible-muscular-action-is-a-trainable-skill-not-automatic]] for why this
+    52	capacity does not transfer automatically from heavy lifting). Inference: the muscle-vs-tendon
+    53	stiffness relationship (figure 2.17) supports why tendon stiffness/compliance, not just
+    54	muscle strength, is a relevant training target for reactive-strength qualities in elite
+    55	athletes specifically.
+    56	
+    57	**When NOT to apply** — Inference: the four-reason breakdown is presented as the authors'
+    58	synthesis of separately-cited mechanisms (Komi 1986 for the neural figure; general
+    59	elasticity physics for figures 2.16-2.17), not as a single unified, independently-tested
+    60	model; treat each of the four contributions as separately-supported components rather than
+    61	a fully integrated, quantitatively-partitioned account of SSC force enhancement. Do not
+    62	assume the horse-tendon analogy transfers quantitatively to human athletic populations; it
+    63	is offered as an illustrative comparison, not a measured human finding.
+    64	
+    65	**Example** — The authors' own comparison: countermovement jumps are evidence of the
+    66	first mechanism (force developed isometrically at the stretch-shorten transition, and a
+    67	longer available time for force development than a static-start jump): this is why
+    68	squat-jump (static start) performance and countermovement-jump performance are trained and
+    69	interpreted as distinct qualities, consistent with force-plate practice that runs both
+    70	variants separately.
+    71	
+    72	**Related** — [[claim--eccentric-force-exceeds-concentric-and-isometric-force]],
+    73	[[claim--reversible-muscular-action-is-a-trainable-skill-not-automatic]],
+    74	[[supertraining--verkhoshansky/framework--series-and-parallel-elastic-components]]
+    75	(reciprocal-link suggestion: that entry's SEC/PEC muscle model is the finer-grained
+    76	anatomical account of the same elastic-energy storage this entry describes at the
+    77	muscle-vs-tendon level; worth cross-referencing both ways),
+    78	[[supertraining--verkhoshansky/framework--strength-deficit-jump-comparison-estimate]] (the
+    79	static-vs-countermovement jump comparison this entry's mechanism (1) underlies).
+=== claim--reversible-muscular-action-is-a-trainable-skill-not-automatic.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: reversible muscular action as a trainable skill
+     8	category: [stretch-shortening-cycle, plyometrics, skill-acquisition]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Reversible Muscular Action (SSC Skill) Must Be Specifically Trained, Not Assumed From Strength
+    15	
+    16	**What it is** — Reversible muscular action (using the stretch-shortening cycle
+    17	effectively) is innate to some movements (e.g. running takeoffs, "a spring in the leg")
+    18	but must be learned for others, such as throwing. Because many sport movements are complex
+    19	and executed briefly, "even some elite athletes fail to perform this reversible muscular
+    20	action correctly" (printed p. 35). The authors state that before 1960, SSC training was
+    21	accidental: improvement was a byproduct of other exercises; only since drop jumps and
+    22	similar exercises were incorporated into training has SSC capacity been trained
+    23	deliberately (they note the training method "has been erroneously called plyometrics by
+    24	some," since the reversible, not strictly eccentric, muscular action is the actual training
+    25	objective). The direct claim: "maximal muscular strength (Fmm) and forces produced in fast
+    26	reversible muscular action (Fm) are not correlated in good athletes and should be treated,
+    27	and trained, as separate motor abilities": as evidence, "even world-class weightlifters
+    28	cannot compete with triple jumpers in drop jumping" because, absent specific training, the
+    29	Golgi tendon reflex inhibits extensor activity during landing even in very strong athletes,
+    30	capping how much force they can sustain without a compensating drop in output; specific
+    31	training inhibits that reflex, letting a trained athlete sustain high landing forces without
+    32	a force decrease, which is also why dropping height can then be increased. In beginners,
+    33	performance in SSC-type exercises can be improved through other exercises such as heavy
+    34	weightlifting; in qualified athletes, "this skill is very specific" and drop-jump
+    35	performance does not improve from usual strength exercising alone, even with heavy weights
+    36	(figure 2.19, comparing 24 weeks of heavy-resistance vs. explosive/power training on
+    37	drop-jump height by dropping height: Hakkinen & Komi 1985). (PDF pp. 47-48, printed pp.
+    38	38-39.)
+    39	
+    40	**Why it works** — The stated mechanism is neural: the Golgi tendon reflex normally
+    41	inhibits extensor muscle activity when tension rises sharply during landing, protecting the
+    42	muscle-tendon unit; specific SSC/drop-jump training desensitizes or inhibits that reflex
+    43	response so the athlete can sustain higher landing forces without the reflex-driven force
+    44	drop. This is the authors' own stated mechanism, not this entry's inference.
+    45	
+    46	**When to apply** — As direct justification for programming drop jumps, depth jumps, or
+    47	other SSC-specific exercises as their own training category, separate from and not
+    48	substitutable by heavy strength training, once an athlete is past the beginner stage where
+    49	general strength work still transfers. **Eric's baseline:** training time is deliberately
+    50	weighted toward high motor-unit-recruitment core/ballistic movements including jumps
+    51	(`method-baseline.md`, "Strength and power," citing
+    52	`01192022-hp5355-class1-transcript.md p.13`; `week1-lecture.md p.31`); Inference: this
+    53	claim supports keeping jump/SSC-specific work in the program as its own category for
+    54	qualified athletes rather than assuming continued heavy-strength gains will carry over to
+    55	reactive/SSC qualities.
+    56	
+    57	**When NOT to apply** — Inference: the 1960-pre/post historical claim about accidental vs.
+    58	deliberate SSC training is presented without a specific citation in this passage; treat it
+    59	as the authors' historical framing, not a verified dated fact. The figure 2.19
+    60	Hakkinen-and-Komi comparison is cited as supporting evidence but is a single study (n=11
+    61	heavy-resistance group, n=10 explosive-training group); do not treat "heavy strength
+    62	training does not improve drop-jump performance in qualified athletes" as settled beyond
+    63	this cited study's population and protocol. Do not use "even world-class weightlifters
+    64	cannot compete with triple jumpers in drop jumping" to argue that strength training has no
+    65	value for reactive-strength athletes generally: the claim is about specific-skill
+    66	transfer, not about strength training's value for other qualities that also support jump
+    67	performance (peak force capacity, injury resilience).
+    68	
+    69	**Example** — The authors' own contrast: a beginner's drop-jump-type performance can still
+    70	improve from general heavy weightlifting (transfer exists at low training age), but a
+    71	qualified athlete's drop-jump performance requires drop-jump-specific training and does not
+    72	improve further from added heavy-resistance work alone (figure 2.19a vs. 2.19b).
+    73	
+    74	**Related** — [[framework--stretch-shortening-cycle-mechanisms-and-tendon-elastic-storage]],
+    75	[[claim--eccentric-force-exceeds-concentric-and-isometric-force]],
+    76	[[supertraining--verkhoshansky/framework--strength-deficit-jump-comparison-estimate]].
+=== framework--joint-strength-curves-sticking-points-and-moment-arm.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: joint angle strength curves and moment arm
+     8	category: [biomechanics, testing, technique]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Joint Strength Curves, Sticking Points, and the Moment-Arm Transformation to End-Point Force
+    15	
+    16	**What it is** — A **strength curve** plots the external force (or moment of force) an
+    17	athlete can exert at a given motion against body posture/joint angle. Fmm is a function of
+    18	muscular force that undergoes two transformations: muscle-tendon force → joint moment
+    19	(torque, M = Fd, where d is the moment arm) → external end-point force (strength). Single-
+    20	joint strength curves take three general shapes: ascending, descending, or concave (figure
+    21	2.21). Worked examples (Zatsiorsky & Raitsin, 1973; n=24): elbow flexion strength peaks
+    22	near 90° (about 100% of Fmm) and falls to roughly 46-50% near full extension/flexion
+    23	(figure 2.22a); shoulder flexion strength is highest with the arm slightly behind the trunk
+    24	(around −30°, ~100%) and falls to about 37% at 150° (figure 2.22b). The weakest position in
+    25	a joint's range is the **sticking point**: the heaviest weight liftable through a full
+    26	range of motion cannot exceed the strength at the sticking point, even though other
+    27	positions in the range are stronger. Muscle length itself changes tension via two factors:
+    28	overlapping actin/myosin cross-bridge availability, and the contribution of elastic
+    29	(mainly parallel elastic) components: as a general rule (with a few exceptions, e.g. the
+    30	rectus femoris in some cyclists) muscles exert smaller tension at smaller lengths and higher
+    31	tension when stretched. Moment arm also changes with joint angle: the text's own example is
+    32	the biceps brachii (long head), whose moment arm was 11.5 mm at 180° (full extension) and
+    33	45.5 mm at 90° (elbow flexion): a fourfold difference: meaning that if muscle tension
+    34	were identical at both angles, the moment of force (and thus external strength) would
+    35	change fourfold purely from the moment-arm change (printed p. 43, figure 2.24). For
+    36	two-joint muscles (e.g. gastrocnemius), Fmm at one joint depends on the angular position of
+    37	the *other* joint the muscle crosses: when the knee is maximally flexed and the ankle
+    38	plantarflexed, the shortened gastrocnemius cannot produce active plantar-flexion force: a
+    39	position usable for selectively training the soleus instead. (PDF pp. 49-54, printed pp.
+    40	40-44.)
+    41	
+    42	**Why it works** — The mechanism is explicitly two-part and stated directly by the authors:
+    43	(1) muscle tension varies with muscle length (cross-bridge overlap plus elastic-component
+    44	contribution), and (2) the moment arm of that muscle force varies with joint angle
+    45	independent of tension itself; strength at any joint angle is their product (figure 2.24: a
+    46	muscle tension-angle curve × a moment-arm-angle curve = the resulting joint torque curve).
+    47	
+    48	**When to apply** — As a quantified, citable rationale for coaching cues about
+    49	range-specific loading and for anticipating where in a lift's range an athlete will be
+    50	weakest (the sticking point), useful for accommodating-resistance programming (bands,
+    51	chains) or partial-range strength work targeted at a known sticking point. **Eric's
+    52	baseline:** this complements, rather than duplicates,
+    53	[[supertraining--verkhoshansky/principle--torque-optimization-in-lifting-technique]]
+    54	(bar-path/torque-minimization coaching cues) and
+    55	[[supertraining--verkhoshansky/claim--joint-angle-and-limb-position-changes-force-output]]
+    56	(a separate set of joint-angle findings, e.g. forearm pronation, trunk flexion, head tilt,
+    57	from later in Supertraining); this entry supplies the moment-arm mechanism (the
+    58	11.5-to-45.5-mm biceps example, fourfold difference) underlying why those position effects
+    59	occur, which neither Supertraining entry itself derives from the muscle-length/moment-arm
+    60	product shown here.
+    61	
+    62	**When NOT to apply** — Inference: the specific curve shapes and percentages (elbow flexion
+    63	peak ~90°, shoulder flexion peak near −30°, the 11.5/45.5 mm biceps figures) are
+    64	single-study data (Zatsiorsky & Raitsin, 1973 and 1992) from a specific population (n=24);
+    65	do not assume they transfer exactly to a different joint, muscle, or population without
+    66	verification. The rectus femoris exception (higher tension at shorter length, in some
+    67	cyclists) is noted as an exception to the general muscle-length rule, not a contradiction of
+    68	it: do not overgeneralize either the rule or its exception.
+    69	
+    70	**Example** — The pull-up supination example (printed p. 44, the authors' own): gymnasts
+    71	performing pull-ups on rings always supinate the arms while flexing the elbows, though
+    72	nobody teaches them to; the movement pattern is simply more mechanically convenient. This
+    73	illustrates athletes self-organizing technique to work with, not against, their own joint
+    74	strength curves and moment-arm geometry (see
+    75	[[heuristic--athletes-self-organize-technique-to-minimize-secondary-moments]] for the
+    76	related self-organization claim about secondary/antagonist moments in the same example).
+    77	
+    78	**Related** —
+    79	[[supertraining--verkhoshansky/claim--joint-angle-and-limb-position-changes-force-output]],
+    80	[[supertraining--verkhoshansky/principle--torque-optimization-in-lifting-technique]],
+    81	[[claim--limb-extension-and-body-position-maximize-end-point-force]],
+    82	[[heuristic--athletes-self-organize-technique-to-minimize-secondary-moments]].
+=== framework--types-of-mechanical-resistance-and-training-specificity.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: resistance types and equipment selection
+     8	category: [equipment-selection, biomechanics, exercise-selection]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Five Types of Mechanical Resistance, and Why Equipment Choice Can Break Sport-Movement Specificity
+    15	
+    16	**What it is** — Resistance training equipment can be classified by the physical law
+    17	governing the resistance it provides: **elasticity** (F = k₁D; force proportional to
+    18	displacement/deformation D, coefficient k₁ = stiffness: springs, stretch cords, rubber
+    19	bands; force is greatest at the end of range, when deformation is largest); **inertia**
+    20	(Newton's second law, F = ma; force proportional to the mass being accelerated: hard to
+    21	isolate purely inertial resistance outside lab devices like an inertia wheel, since gravity
+    22	and friction intrude); **weight** (F = W + ma, W = object weight, a = vertical
+    23	acceleration); **hydrodynamic resistance** (F = k₂V², proportional to velocity squared:
+    24	swimming, rowing, kayaking); and **viscosity-based resistance** (F = k₃V, proportional to
+    25	velocity, k₃ = a coefficient: used in machines substituting for water-sport dryland
+    26	training). Exercises are also classified by whether they have **mechanical feedback**: in a
+    27	paddling stroke, higher muscular force raises oar velocity, which raises water resistance,
+    28	which in turn demands more muscular force (a closed loop, figure 2.4): most sport
+    29	movements have this feedback loop. Mechanical feedback is **absent** specifically in
+    30	isometric exercise and with isokinetic devices (constant velocity regardless of force
+    31	applied), which is why those modes do not reproduce most sport movements' natural
+    32	force-resistance interaction. (PDF pp. 30-31, 33-34, 51-52, printed pp. 21, 23-24, 42-43.)
+    33	
+    34	**Why it works** — Inference: because different sport movements are naturally resisted by
+    35	different physical laws (hydrodynamic for swimming, elastic/momentum-based for most
+    36	throwing and jumping, weight-and-inertia for lifting), an exercise's resistance type
+    37	determines how closely its force-velocity demand matches the target movement, independent
+    38	of which muscles it uses: this is the authors' own point in the dryland-training case
+    39	study below, though the general "resistance type governs specificity" framing is this
+    40	entry's synthesis of the mechanics they lay out.
+    41	
+    42	**When to apply** — As a checklist when selecting resistance training equipment intended to
+    43	transfer to a specific sport skill: match the resistance-type profile (elastic, inertial,
+    44	weight-based, hydrodynamic, viscosity-based) to the target movement's actual resistance
+    45	type, not just its visible muscle groups or general movement pattern. This complements
+    46	[[framework--transfer-of-training-coefficient-calculation]] (Chapter 1) by giving a
+    47	mechanical reason, in addition to a measured-transfer-coefficient reason, that an exercise
+    48	might fail to transfer.
+    49	
+    50	**When NOT to apply** — Inference: this is a mechanics-based classification, not itself a
+    51	ranked hierarchy of "better" and "worse" resistance types; each type is appropriate for
+    52	different training goals (elastic resistance for end-range loading, isokinetic/isometric
+    53	for eliminating the confound of a changing external load during rehab-style force testing,
+    54	despite lacking mechanical feedback). Do not treat "lacks mechanical feedback" as
+    55	disqualifying isometric or isokinetic training outright; the authors present it as a
+    56	descriptive difference from most sport movements, not a stated flaw.
+    57	
+    58	**Example** — The authors' own case study, "Selection of Dryland Exercises for Swimmers"
+    59	(printed p. 25): a swim coach trialed extensible rubber bands (elastic resistance, pulling
+    60	force increased through the pull, unlike the customary stroke), a weightlifting pulley
+    61	machine (near-constant resistance across the pull, but the athletes could not relax at the
+    62	end of motion, unlike a real stroke), and friction/hydrodynamic training devices (either
+    63	constant resistance or resistance proportional to pull velocity, both meant to mimic water
+    64	resistance): none matched the true stroke's resistance profile (proportional to the
+    65	squared hand velocity relative to water) exactly, illustrating why matching a device's
+    66	underlying resistance law to the sport movement's own is harder than it looks, even when
+    67	targeting the same muscle groups and general movement pattern.
+    68	
+    69	**Related** — [[framework--transfer-of-training-coefficient-calculation]],
+    70	[[claim--strength-speed-correlation-depends-on-external-resistance]].
+=== claim--limb-extension-and-body-position-maximize-end-point-force.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: limb extension and end-point force
+     8	category: [biomechanics, technique, testing]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Near-Full Limb Extension Minimizes Moment Arm and Maximizes End-Point Force
+    15	
+    16	**What it is** — In a single-joint task, strength (end-point force) equals joint moment
+    17	divided by the moment arm of the external force: the smaller that moment arm, the larger
+    18	the external force the same joint moment can generate. In leg or arm extension, the highest
+    19	end-point forces occur when the extremity is nearly fully extended, because the line of
+    20	force action then passes close to the joint center, shrinking the moment arm toward zero
+    21	(figure 2.25): at full extension with the force line passing through the joint center,
+    22	the joint moment required to bear a given load approaches zero, which is why "people can
+    23	sustain extremely large forces" in that position. A seated leg-press experiment (Hugh-Jones,
+    24	1947; n=6, isometric pushes against a pedal at five thigh angles and varying knee angles)
+    25	found up to a **ninefold** difference in maximal push force purely from limb-position
+    26	changes, with the largest forces recorded near the limiting (near-straight) knee angle
+    27	(figure 2.26). A separate example: forces in baseball pitching (Fleisig et al., 1995) show
+    28	the highest shoulder torques and forces occurring near maximal external rotation
+    29	(approaching 180°), where passive elastic tissue deformation is largest (figure 2.23: 64
+    30	N·m and 67 N·m torques, 310 N force at that position). (PDF pp. 55-57, printed pp. 44-45.)
+    31	
+    32	**Why it works** — The mechanism is stated directly: joint moment = muscle tension ×
+    33	moment arm, so for a fixed joint moment capacity, minimizing the moment arm of the
+    34	*external* resistance (by extending the limb, bringing the line of force action close to
+    35	the joint) maximizes the external force that same joint moment can produce or resist. This
+    36	is standard leverage mechanics, applied here specifically to the near-full-extension case
+    37	in leg and arm extension tasks.
+    38	
+    39	**When to apply** — As the mechanical explanation for why the heaviest loads in exercises
+    40	like squats and leg presses are borne in near-extended positions, and why athletes and
+    41	lifters intuitively position limbs near full extension when maximal force output (not range
+    42	of motion) is the goal. **Eric's baseline:** relevant context for interpreting force-plate
+    43	and strength-testing data collected at different joint angles or limb positions: a test at
+    44	one limb position is not directly comparable to a test at another without accounting for
+    45	this moment-arm effect, consistent with
+    46	[[framework--joint-strength-curves-sticking-points-and-moment-arm]].
+    47	
+    48	**When NOT to apply** — Inference: this is a single-joint, isometric-testing-based finding
+    49	(Hugh-Jones 1947, seated pedal-push, n=6); the ninefold figure is specific to that
+    50	apparatus and population, and multi-joint dynamic movements (e.g. a full squat, a pitching
+    51	delivery) involve additional factors (muscle-length-tension effects, momentum, multi-joint
+    52	coordination) this simple moment-arm account does not fully capture on its own: see
+    53	[[framework--joint-strength-curves-sticking-points-and-moment-arm]] for the muscle-tension
+    54	side of the same joint-angle-strength relationship. Do not treat "near full extension
+    55	maximizes force" as a universal safety or technique recommendation; near-lockout positions
+    56	carry their own joint-loading and injury considerations not addressed in this passage.
+    57	
+    58	**Example** — The pitching-shoulder example (figure 2.23, the authors' own): during arm
+    59	cocking, external rotation approaches 180°, and the passive elastic tissues of the
+    60	shoulder, resisting this extreme range, contribute to the high torques (64-67 N·m) and
+    61	force (310 N) measured at that position: illustrating that near-end-range positions
+    62	generate high forces both through moment-arm effects and through passive tissue tension,
+    63	not moment-arm effects alone.
+    64	
+    65	**Related** — [[framework--joint-strength-curves-sticking-points-and-moment-arm]],
+    66	[[supertraining--verkhoshansky/claim--joint-angle-and-limb-position-changes-force-output]].
+=== heuristic--athletes-self-organize-technique-to-minimize-secondary-moments.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: science-and-practice-of-strength-training--zatsiorsky
+     6	chapter: "2"
+     7	topic: self-organized technique and secondary moments
+     8	category: [technique, coaching, motor-control]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-09-27
+    12	---
+    13	
+    14	# Athletes Tend to Self-Organize Technique to Minimize Secondary (Non-Primary) Joint Moments
+    15	
+    16	**What it is** — Muscles produce moments of force not only in the intended (primary)
+    17	direction but also in other directions (secondary moments); the body counterbalances
+    18	unwanted secondary moments by activating additional muscles, which increases the number of
+    19	active muscles while sometimes decreasing net strength in the primary direction (worked
+    20	example: a forceful arm supination with the elbow flexed at a right angle, as in driving a
+    21	screw: the triceps, though not a supinator, becomes active to counterbalance the flexion
+    22	moment the supinating biceps also produces as a secondary effect). The authors' second
+    23	example: gymnasts performing pull-ups on rings consistently supinate the arms while flexing
+    24	the elbows; "nobody teaches them to do so; the movement pattern is simply more convenient
+    25	for the performers" (printed p. 44). The authors present this as their stated general
+    26	observation, "athletes tend to perform forceful movements in a way that minimizes
+    27	secondary moments," using the pull-up example as its sole illustration. (PDF p. 55,
+    28	printed p. 44.)
+    29	
+    30	**Why it works** — Inference: the authors do not name a specific motor-control mechanism
+    31	(e.g. an optimization process in motor learning, energy-cost minimization, or proprioceptive
+    32	feedback) for why athletes converge on secondary-moment-minimizing technique without
+    33	coaching; they state the observation and the biomechanical reason it would be advantageous
+    34	(fewer competing/counterbalancing muscles active, potentially preserving more net force for
+    35	the primary moment), but not a mechanism for how an untaught athlete arrives at that
+    36	pattern.
+    37	
+    38	**When to apply** — Inference: as a caution against over-coaching a self-selected technique
+    39	detail that may already reflect an athlete's own biomechanically favorable adaptation (e.g.
+    40	a specific grip rotation or limb orientation an athlete adopts without being taught it)
+    41	before assuming it needs correction; worth checking whether an unprompted technique quirk
+    42	reduces secondary-moment demand rather than treating it as a fault by default.
+    43	
+    44	**When NOT to apply** — This is a single stated observation illustrated with one example
+    45	(pull-up arm supination); the authors do not provide data (EMG, force measurement across
+    46	technique variants, or a controlled comparison) showing that self-selected technique
+    47	actually reduces secondary moments more than an alternative, taught technique would.
+    48	Confidence is `untested`: treat this as a plausible coaching heuristic worth watching for,
+    49	not an established finding. Do not use it to dismiss legitimate technique coaching broadly;
+    50	the claim is narrow (secondary-moment minimization specifically), not a general argument
+    51	against coaching intervention.
+    52	
+    53	**Example** — Inference: a lineman who naturally rotates his hand/wrist into a particular
+    54	position during a punch or block, without being cued to, may be self-organizing to reduce a
+    55	secondary moment at the wrist or elbow; before correcting it, a coach could check whether
+    56	the self-selected position is biomechanically explicable (as the ring-gymnast supination
+    57	example is) rather than assuming it is simply incorrect technique. This application to a
+    58	football skill is this entry's own extension, not stated in the source.
+    59	
+    60	**Related** — [[framework--joint-strength-curves-sticking-points-and-moment-arm]].

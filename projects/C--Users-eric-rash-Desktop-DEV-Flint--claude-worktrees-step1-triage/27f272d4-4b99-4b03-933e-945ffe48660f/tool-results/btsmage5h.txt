@@ -1,0 +1,244 @@
+# Atomization brief (shared by every Flint ingest agent)
+
+Read this whole file before writing anything. It holds the rules the Harries review taught (2026-09-26: 25 of 35 files needed fixes). The review gate will check every rule here.
+
+## Schema
+
+Follow `C:\Users\eric_rash\.claude\skills\ingest-book\SKILL.md` exactly: `_domain.md`, `_book.md` (map and resume checkpoint, updated after EACH chapter or unit), and entries named `<kind>--<kebab-slug>.md` with kind one of principle, framework, case-study, heuristic, claim. Use the frontmatter keys exactly as the skill gives them. The body has **What it is** / **Why it works** / **When to apply** / **When NOT to apply** (mandatory, non-trivial) / **Example** / **Related**.
+
+Style reference, read before writing: `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library\strength-and-conditioning\fundamentals-of-sprinting--moyer\case-study--isometric-sprinter-and-hurdler.md`, plus one principle file in the same folder.
+
+## Voices: label every one
+
+- **The source author's statements are plain text.**
+- **Eric's views** (from `docs/method-baseline.md` or his reviews) are prefixed "Eric's baseline:" or "Eric's review:".
+- **Your own reasoning, application or synthesis** is prefixed "Inference:".
+- **Nothing unlabeled that the author did not say.** The most common failures: a judgment from Eric's review written as if the author said it; a mechanism the author never gave presented as "why it works" (write "The author gives no mechanism. Inference: ..."); an invented example.
+
+## Lessons from the Supertraining Chapter 1 review (2026-09-26: 30 FIX, 1 NO-GO of 41)
+
+- **Keep the source's internal contradictions.** When a book says X on one page and not-X on another, record both with their pages and set `contested`. Never pick one side silently. The NO-GO entry reversed the book's SJ-CMJ strength-deficit rule because the book states it both ways.
+- **Name the right voice.** In co-authored books, write "the authors" unless a passage clearly belongs to one author. A passage that names Verkhoshansky in the third person is Siff writing.
+- **Keep `proven` rare and scoped.** Scope it to the replicated core (for example, "Hill's force-velocity curve"), never the whole entry, and mark any disputed sentence inside it. Four of eight `proven` ratings were lowered.
+- **No mechanism the source does not give.** About a dozen "Why it works" sections supplied physiology the book never states. Label it "Inference:" or leave it out.
+- **Do not add "well established" or "modern research shows" without a citation.** Name the paper, or delete the phrase.
+
+## Evidence
+
+- Every number, definition and quote carries a checkable locator: PDF page (and printed page if it differs), or file plus timestamp. Never write "confirmed in PDF" unless you opened that page.
+- Never invent a number. Keep ambiguity visible: mark unclear audio or OCR as unclear, and do not harmonize two conflicting numbers from the source; record both with their locators.
+- OCR sources (`staging/ocr/*.md`): pages listed as low_confidence in the header must be checked against the page image before any number from them is cited. Use the Read tool on the PDF page, or render it.
+
+## Confidence
+
+- Practitioner courses and lectures: ceiling `supported`.
+- Books: `proven` only for established, widely replicated physiology or mechanics. Soviet-era or single-lab empirical findings and training prescriptions: `supported` at most. `untested` for single cases and anecdotes. `contested` where another library source or modern evidence disagrees (say which).
+
+## Dedup and converge
+
+Before each entry, grep `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library` and the staging library (`C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\staging\library`) for the concept. If it is covered, add a new entry only for a genuinely new angle, and link the existing one in Related. List reciprocal-link suggestions in your final report. Never edit files in the vault or another agent's staging folder.
+
+## Baylor context
+
+Read `C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\docs\method-baseline.md` (approved). Use it in When to apply, labelled "Eric's baseline:". Department names: Athletic Performance, Athletic Medicine, Applied Performance. Plain style, no em dashes. Use commas, colons and parentheses.
+
+## Scope and output
+
+- Write ONLY into your assigned staging folder. No git, no vault edits.
+- Stop at a chapter or unit boundary. It is better to finish fewer chapters well; the `_book.md` checkpoint lets the next batch resume.
+- Final reply: entries by kind and by confidence; chapters or units done and pending with page ranges; reciprocal-link suggestions; unclear or contradictory spots in the source; anything you could not read.
+You are an independent reviewer in Flint's ingest review gate. Another model wrote these entries; your job is to FALSIFY them, not confirm. Read-only on entries and sources. Write only your report file.
+
+Standards: `C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\docs\ATOMIZE_BRIEF.md` (read it first). Every rule there is a check.
+
+For EVERY entry in scope:
+1. Every number, definition, table value and quote appears at the cited PDF page (and printed page) and means the same thing. Open the pages yourself; do not trust the entry.
+2. Attribution: plain text is the book author's own statement. Anything else must be labelled "Eric's baseline:", "Eric's review:" or "Inference:". Flag any unlabelled claim the author did not make, any "why it works" mechanism the author did not give, and any invented example.
+3. Confidence: `proven` only for established, widely replicated physiology or mechanics, so challenge every `proven`. Soviet-era or single-lab findings and prescriptions: `supported` at most. `untested` for anecdotes. `contested` needs a stated reason.
+4. "When NOT to apply" is present and substantive.
+5. Duplicates: flag any entry that restates an existing vault entry (grep `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library`) without a new angle.
+6. Missing: up to 5 important ideas in the covered pages that no entry captures.
+
+Output (Markdown): a table with one row per entry: file | verdict (GO / FIX / NO-GO) | problem, quoting the entry and the source with its page | exact correction. For GO rows, list what you checked ("checked: 2.5x at PDF 23 / p.12"). Then the missing list. Then an overall verdict: PROMOTE, GO AFTER FIXES (list them), or NO-GO.
+# Round-1 review: Evans, *Elite Sports Performance* (course slides), 33 entries
+
+Reviewer: Claude Opus (independent, falsification pass). Date: 2026-09-27.
+Scope: `staging/library/strength-and-conditioning/elite-sports-performance--evans/` (33 entries plus `_book.md`).
+Sources opened: every lecture PDF under `...\From Landon Evans\Elite Sports Performance\Unit 1, 2, 4` and `...\EVANS\Evans - Unit 3\` (Unit 3 image pages rendered from the byte-identical `Elite Sports Performance\Unit 3\` copy when the EVANS copy failed to render). I read the text layer of every page and opened the page images for each diagram-only page an entry relies on or declares empty (U1 L2 p.2-5; U1 L3 p.11, 13; U1 L4 p.17-22; U2 L6 p.16-19; U3 L1 p.17-27; U3 L4 p.15; U3 L5 p.10, 16-17, 20-23, 31-32; U3 L6 p.9-10; U3 L8 p.2-10; U4 L1 p.12; U4 L2 p.6-20).
+
+Locator shorthand: "U3 L6 p.9" = Unit 3, Lecture 6 PDF, slide/PDF page 9 (slides have no separate printed page).
+
+## Checks that pass for all 33
+
+- Confidence: all 33 are `untested`, matching the `_book.md` ceiling. No entry exceeds it.
+- "When NOT to apply" present and substantive in all 33.
+- Wikilinks: every `[[...]]` target resolves to a file in the folder (scripted check). One self-link (see the three-overload row).
+- No em dashes in any entry.
+
+## Global fixes (apply to every entry at promotion; GO rows are GO conditional on these)
+
+- **G1. "Eric's baseline" comparisons are unlabelled prose.** About 25 entries write "Eric's baseline does X ... which maps onto / is consistent with this framework" as plain text. The voice is named, so nothing is misattributed to Evans, but the brief requires the prefix "Eric's baseline:" for Eric's position and "Inference:" for the writer's mapping judgment (for example, "maps closely onto ... exactly steps 2 and 3" in the Bondarchuk entry is the writer's judgment). Correction: split each such sentence into "Eric's baseline: <what the baseline says, with its cite>." and "Inference: <why it relates>."
+- **G2. Reviewer caution, not a finding: "in his own words".** Several entries say Evans states something "in his own words" for multi-sentence slide prose with no attribution (U3 L1 p.5-6, U2 L4 p.10, U3 L2 p.17, U4 L1 p.23). Slide prose is often lifted from textbooks (U3 L1 p.5 reads like Haff's NSCA text). Preferred wording: "the slide states (no attribution shown)". Keep "Evans's own" only where the slide's voice is plainly his (for example "Whoa there ... Absolutely not!", U4 L1 p.5).
+
+## Entry verdicts
+
+| file | verdict | problem (entry vs source, with page) | exact correction |
+|---|---|---|---|
+| claim--national-systematic-investment-and-medal-count.md | FIX | Entry, Why it works: "(UK Sport was created in 1997, though the slide does not state this date)". When NOT: Soviet/GDR "historically associated with state-sponsored doping programs". Neither is on U1 L2 p.2 or p.4; both are unlabelled outside facts. Slide content itself checked correct: p.2 medal ranks 1996 36th, 2000 10th, 2004 10th, 2008 4th, 2012 3rd; p.4 100m chart annotated "US Boycott" (1980) and "Usain Bolt" (2008-2012). | Prefix both outside facts with "Inference (reviewer knowledge, not on the slide):" or delete them. Add that the p.2 image under "Australian Sports Commission" is an Australian Institute of Sport photo, so the slide names the AIS by picture only. |
+| framework--evans-history-lineage-of-sport-science-giants.md | FIX | (1) "Evans lists thirteen named people": U1 L2 p.3 has 14 lines naming 15 people (Atko and Mehis Viru share a line). (2) "Evans names Bernstein, Bosco, the Virus, Kraaijenhof, Yessis, Issurin, and Pfaff, none of which appear in Eric's baseline's named-influences table": Dan Pfaff IS in that table (`method-baseline.md`, Named influences, row "Dan Pfaff ... coach's eye"). (3) "Bondarchuk, Verkhoshansky, Issurin, and Bompa are each cited again by name and year in U3 L4-L5": in U3 L4-L5 only Issurin (2008) and Bompa (2009) carry years; Verkhoshansky and Bondarchuk appear only in the U3 L4 p.2 "Acknowledgements & great resources" list, with no year. Roles and asterisks (Verkhoshansky, Virus, Francis, Yessis) checked correct against the p.3 image. | (1) "fourteen lines naming fifteen people". (2) Remove Pfaff from the "none appear" list; add "Pfaff appears in both". (3) Change to "Issurin (2008) and Bompa (2009) are cited by name and year in U3 L4-L5; Verkhoshansky and Bondarchuk reappear by name only in the U3 L4 p.2 acknowledgements (which also add William Freeman, Vern Gambetta and Peter Tschiene)". Related: add vault `fundamentals-of-sprinting--moyer/framework--soviet-lineage-of-sprint-training-ideas.md`. |
+| framework--power-output-as-final-goal-of-competition-exercise.md | GO | None. | checked: Verkhoshansky 2011 quotes verbatim at U1 L3 p.6; Power = F x V, W/t, Watts at p.7; Bernstein bullet p.8; "(Verkhoshanksy)" sic at p.9; sprinter vs marathoner slide has no numbers (p.13, image opened); chain across p.14 labelled Inference. Subject to G1. |
+| framework--anokhin-functional-system-three-subsystems.md | FIX | When NOT: "no worked example applying this three-part model ... no corroboration elsewhere in this course". But U3 L7 p.3 (WR "Build Profile") uses the same systems (Autonomic NS, Central NS, Neuromuscular, Energy Supply Systems) as its profile rows, and U2 L4 p.27 "Performance Chain" (CNS, neuromuscular, energy systems, ANS, hormonal, cardiac ...; "The chain always breaks at its weakest link"). The baseline parallel ("athlete monitoring across multiple systems rather than a single test", Testing and assessment) is not what the baseline says; it says "Assessment is continuous, not a single test day" (line 44). Quotes at U1 L3 p.10 and p.12 checked verbatim. | Replace "no corroboration elsewhere in this course" with: "The same subsystems reappear as the rows of the U3 L7 p.3 athlete profile and in the U2 L4 p.27 'Performance Chain' slide." Add Example: "Inference: U3 L7 p.3 is the course's closest applied use of the model." Correct the baseline paraphrase to "assessment is continuous, not a single test day" or drop it. Link [[framework--ten-step-process-for-building-an-annual-plan]]. |
+| framework--two-factors-special-work-capacity-technical-mastery.md | FIX | (1) Why it works: "psychological or tactical factors, which Evans's own later monitoring lecture lists as separate training domains, see [[framework--adime-monitoring-process]]": the domains are at U4 L1 p.4 and p.8, not the ADIME slide (p.12); wrong link. (2) "first bullet under 'Training Process' in U4 L1 p.5": p.5 is titled "Most Important: Special Work Capacity"; "Training Process" is p.4. (3) Example: "implicitly targets both factors (bioenergetic/biodynamic/biomotor sequencing for Special Work Capacity, exercise classification for Technical Mastery)" is the writer's mapping, unlabelled. U1 L3 p.14 table and U4 L3 p.2 repeat checked. | (1) Link [[framework--issurin-five-training-domains]] (U4 L1 p.4, p.8). (2) "the U4 L1 p.5 slide headed 'Most Important: Special Work Capacity'". (3) Prefix the Example mapping with "Inference:". |
+| framework--issurin-five-training-domains.md | FIX | Why it works (labelled Inference): U4 L1 p.4 narrows scope "to argue why a strength coach's monitoring effort should concentrate on the Physical, Psychological, and Intellectual domains". U4 L1 p.4 is about the coach's influence, not monitoring; the monitoring slides that follow list the five domains (p.8) and then say "Purely Physiological" (p.9). The inference runs against the source. Table text checked verbatim at U1 L3 p.15 and U2 L4 p.4 ("Training Domains", Issurin 2008). | Rewrite: "Inference: U4 L1 p.4 uses the table to bound the strength coach's influence (Physical, Psychological, Intellectual active; Tactical and Technical 'Limited to zero influence'). The monitoring slides then list the five domains (p.8) and narrow to 'Purely Physiological' (p.9), which suggests monitoring is scoped to the physical domain." |
+| framework--seven-body-constitutional-types-morphobiomechanics.md | FIX | Related: "no existing entry in the vault or staging library matches 'morphobiomechanics,' 'somatotype,' ... (checked by grep across both)". Staging `supertraining--verkhoshansky/framework--s-factors-pyramidal-fitness-model.md` contains "Structure (somatotype, size, shape)". Content checked at U2 L3 p.20 (Dorohov and Guba, seven type names, stated purpose). | Correct the Related claim and link the Supertraining S-factors entry as the nearest constitutional-type idea (different model, no duplication). |
+| framework--bondarchuk-three-principles-of-training-system-construction.md | GO | None beyond G1. The "maps closely onto ... exactly steps 2 and 3" sentence falls under G1 and must carry "Inference:". | checked: headings and quotes at U2 L4 p.7-10 verbatim (forming factors, structure, validation incl. "maximal anaerobic power ... peak rate of force development"); baseline cites lines 38, 39, 159 exist; not in Bondarchuk staging (no "forming factors" hit). |
+| case-study--dynamic-correspondence-applied-to-wrestling-takedown.md | FIX | Entry pairs "dynamics of effort and rate/time of force production" with the stopwatch quote. On U2 L4 p.22 the stopwatch passage belongs to criterion 4 (rate and time). Criterion 3 (dynamics of effort) has its own text: "one considers the biomechanical positions associated with the takedown to include your underhook technique, posture, proximity of your hips to your opponents, leg position, etcetera both during the initiation of the throw as well as during the throw". The entry drops criterion 3's content. Other quotes (p.21 amplitude and region, p.22 regime) checked. | Split into two criteria: "dynamics of effort: 'biomechanical positions ... underhook technique, posture, proximity of your hips ... leg position'" and "rate and time: 'the lift/throw is where the greatest speed is generated ... via a coach with a stop watch ...'". |
+| framework--three-types-of-overload-stimulating-retaining-detraining.md | FIX | (1) Related opens with a self-link: "[[framework--three-types-of-overload-stimulating-retaining-detraining]] shares its underlying ...". (2) When to apply: "or is a planned detraining/deload period". U2 L4 p.15 defines Detraining as load that "leads to a decrease in performance, the functional capabilities of the athlete, or both", an outcome, not a planned deload; the reinterpretation is unlabelled. Definitions at p.15, scenarios at p.14 and continuum at p.16 checked. | (1) Replace the self-link with "The '3 Basic Scenarios' slide (p.14) and the continuum slide (p.16) share this logic". (2) "Inference: a deliberate deload would only fit 'Detraining' if it lowers performance; the slide defines the type by that outcome." Reviewer suggestion, verify before adding: the stimulating/retaining/detraining terms with a "neutral zone" match Zatsiorsky and Kraemer, *Science and Practice of Strength Training* (a listed HHPR 5355 textbook, `method-baseline.md` line 219); if confirmed, name it as the likely origin. |
+| heuristic--intensity-defines-target-volume-defines-depth.md | FIX | (1) "states in his own words": U2 L6 p.20 prints both lines inside quotation marks with no attribution, so authorship is unclear. (2) When NOT: "gives no specific intensity thresholds ... cannot be applied ... without the more detailed content elsewhere in the course (e.g., ... U2 L1, or Prilepin-style percentage zones, neither of which this specific slide references directly)". The same lecture shows them two to four slides earlier: p.16 six intensity zones by % of maximum performance (<50 very low to >100 supermaximal); p.17 Jovanovic/Prilepin effort-level chart; p.18 Borilkievich (1982) five training zones with HR and lactate bands; p.19 intensification (35% high / 65% low, high sessions at least 48 h apart). (3) The Prilepin baseline parallel omits that Evans shows Prilepin's chart himself (p.17). | (1) "The slide presents both lines in quotation marks with no attribution." (2) Replace with: "The slide itself gives no thresholds, but U2 L6 p.16-18 in the same lecture supply the intensity-to-target tables (zones, %1RM effort levels, Borilkievich HR/lactate zones)." (3) Note Prilepin appears at U2 L6 p.17, so this is convergence with the baseline, not only analogy. |
+| framework--homeostasis-vs-allostasis-mcewen-sterling.md | FIX | (1) "A direct-comparison slide (p.19) credited to 'Bruce McEwen'": p.19 (image opened) has no name. McEwen is on p.20 with a different statement: "Some systems operate under the homeostasis model: Thermal Regulation, Oxygen Tension, pH Levels". That statement, a key qualifier, is missing. (2) Why it works: the BP example "only asserts 'the brain sets blood pressure via multiple mechanisms' without detailing what those mechanisms are". The p.22 diagram names them (cardiac output, vasoconstriction, renin, angiotensin II, aldosterone, cortisol, ACTH, CRH, vasopressin, ANP, norepinephrine, ANS, Na/H2O retention). (3) "(the well-known 1988 paper is by Sterling and Eyer)" is unlabelled outside knowledge. (4) Related names `supertraining--verkhoshansky/principle--strength-training-threshold-stimulus.md`; the file is `claim--strength-training-threshold-stimulus.md`. 1988 vs 1998 discrepancy (p.17 vs p.22) checked and correctly kept. | (1) Re-cite the comparison definitions to p.19 (no attribution) and add: "McEwen (p.20): some systems stay under the homeostasis model (thermal regulation, oxygen tension, pH)." (2) Replace with "the p.22 diagram names the mechanisms (list them) but does not explain any". (3) Prefix with "Inference (reviewer knowledge):". (4) Fix the filename. Add vault link `research-papers/mcewen-2000-allostasis-and-allostatic-load-implications-for-neuropsychopharmacology.md`. |
+| claim--fitness-fatigue-model-is-unvalidated-concept.md | FIX | Example: "a marathon runner (largely one biomotor quality, aerobic endurance)". U1 L5 p.4 only says "Marathon running" beside "Theoretical Model, only useful if you provide evidence"; the gloss is the writer's and is unlabelled. It may equally mean marathon running is where evidence exists. Quotes on p.3-4 checked verbatim. | Label: "Inference: the slide contrasts 'Marathon running' with a 400m runner's many qualities; the single-quality reading is the writer's." Related: add vault `periodization--bompa/heuristic--fatigue-fitness-3to1-ratio.md`. |
+| principle--recovery-is-a-training-means.md | GO | None beyond G1/G2. The slide reads "apart of" (sic); the entry silently corrects it to "a part of", which is acceptable in a paraphrase but should carry [sic] if kept as a quote. | checked: U3 L1 p.6 wording; p.5 preparedness passage verbatim; baseline lines 86 and 124 exist as cited. |
+| framework--overtraining-continuum-for-nfor-ots.md | FIX | Example: "No specific athlete case is given; the table is presented generically." The same lecture has a worked readiness case: U3 L1 p.19-26 (images) show Omegawave HRV and readiness readouts moving from "Complete recovery" to "Distress / Exhaustion", tachycardia 92 bpm, "Unable to calculate spectrum due to significant rhythm disturbance", then recovery after "Blood work ... Less training, Improved nutrition, Time" (p.26). The entry also omits p.11 "OTS have blunted responses in double exercise challenges" and the p.15-18 overwork types (monotonous, sympathetic, parasympathetic) with their symptom tables. Table and definitions at p.10, 12-14 checked. | Replace Example with the p.19-26 Omegawave case, noting it is an unnamed single case shown as device screenshots (anecdote, untested). Add one sentence each for p.11 (blunted double-exercise response) and p.15-18 (overwork types), or split them into their own entry (see Missing 1). Reviewer suggestion, verify before adding: the p.10 table layout resembles Meeusen et al. (2013) ECSS/ACSM consensus. |
+| claim--no-definitive-diagnostic-tool-for-overtraining-syndrome.md | FIX | (1) Quote "The human organisms of made up of many" does not match U3 L2 p.17 "The human organisms of made of up many". (2) Why it works: "he does not assert that any single system (hormonal, immune, HRV) is more reliable than the others". The slides endorse two: "HRV is a great way to assess persons ability to adapt to stressors" (p.9) and "hormonal markers are a potent tool to gauge disturbances" (p.12). Also p.5: blood biomarkers "cannot be used as the sole tool ... but provide valuable information". The entry should keep that tension, not smooth it. Other quotes (p.10, 11, 12) checked. | (1) Quote exactly with [sic]. (2) Replace with: "He calls HRV 'a great way' (p.9) and hormonal markers 'a potent tool' (p.12), yet concludes no definitive tool exists (p.17); both are recorded." Link the U3 L1 p.19-26 Omegawave case as his applied example. |
+| claim--periodization-evidence-classic-vs-nonclassic-literature-debate.md | FIX | Entry: "The Matveyev 1977 quote itself is the only specific citation given as an example"; Why it works reads Evans's sympathy only from "tone ... he does not say this explicitly". U3 L4 p.15 (image) shows "Figure 7: Matveyev's Classic Model of an Annual Training Plan" with red arrows on the "daily, microcycle, and mesocycle fluctuations" in volume, intensity and technical training. U3 L4 p.16 states "Non-linear in CLASSIC literature". His position is stated, not only implied. Quotes at p.13-14 checked. | Add p.15 figure and p.16 line to What it is. Replace the tone inference with: "Evans's own position is explicit: classic periodization is non-linear (p.16), illustrated by Matveyev's model with fluctuations highlighted (p.15)." |
+| principle--periodization-is-timing-not-time.md | GO | None beyond G1. | checked: U3 L4 p.16 quote verbatim; p.19 "Timing NOT time"; p.20 wording; baseline lines 148 ("two horses") and 150 (30-day and 5-day cadence) exist as cited; Inference labelled. |
+| heuristic--performance-garden-metaphor-bill-sands.md | GO | Minor: title says "Training Plants Seeds" but the slide reads "Training - Plan seeds" (U3 L4 p.21). The quote in the body is exact. | checked: U3 L4 p.21 text; no Sands entry in vault or staging. Optional: note "Plan" (sic, probably "Plant") in the title. |
+| framework--bompa-annual-plan-cycle-types.md | FIX | Why it works supplies a mechanism, unlabelled: "the mechanism (a trained athlete needing less time to re-establish base qualities before specializing toward a peak) is implied by the athlete-level guideline". When to apply: "this framework's monocycle category ... is the closest fit" for college football is the writer's judgment, unlabelled. All week counts and guideline text checked at U3 L4 p.26-30 and U3 L5 p.4-8. | Prefix the mechanism with "The slides give no mechanism. Inference:". Prefix the football fit with "Inference:". Note U3 L7 p.5 (Step Three) offers "Single / Double / Triple Periodization, Team Sport considerations", the course's own link between this menu and the ten-step plan. |
+| framework--bompa-macrocycle-phase-objectives.md | FIX | Why it works: "the underlying logic (build general capacity, narrow toward sport-specificity, peak, then allow planned detraining ...) is implied by the sequence itself" is the writer's mechanism, unlabelled. Objectives checked verbatim against the U3 L5 p.16-19 images; taper 1-2 weeks and transition 40-50% checked. | Prefix with "Inference:". Optional: add the p.20 Bompa detraining table (short-term under 4 weeks vs long-term over 4 weeks) under Transition, since the slide pairs Transition with "DETRAINING". |
+| framework--issurin-microcycle-types-and-planning-steps.md | NO-GO | Duplicate. Both halves are already staged from the primary source: the six types with purposes, loads and durations in `block-periodization--issurin/framework--microcycle-types-and-load-wave-design.md` (Table 3.1, PDF 88) and the six-step sequence in `block-periodization--issurin/heuristic--microcycle-construction-key-workout-rules.md` (Table 3.6, PDF 111). The entry's own premise is stale: it says Issurin Ch.3 is "pending (0 entries)", but `block-periodization--issurin/_book.md` line 55 shows Ch.3 "done, 12". Evans's slides (U3 L5 p.21, 22, 24) add nothing beyond typos ("Apppropriate", "Substainial"). `_book.md` already applies this dedup rule to U3 L3. | Delete the entry. Move its one new angle into [[framework--ten-step-process-for-building-an-annual-plan]] Related: "Step Nine (U3 L7 p.11) asks which Issurin microcycle type is needed; see `block-periodization--issurin/framework--microcycle-types-and-load-wave-design.md` and `heuristic--microcycle-construction-key-workout-rules.md`". Update `_book.md` U3 L5 count to 4 and total to 32. |
+| framework--buzzichelli-integration-and-development-of-motor-capacities.md | FIX | When NOT: "this can apparently only be observed after the fact" is an unlabelled inference; the slides do not say how realization type is known. Content at U3 L5 p.26-30 checked verbatim. | Prefix with "Inference:" or delete. |
+| framework--buzzichelli-load-progression-and-specificity-continuum.md | FIX | Entry: p.31-32 are "bare diagram pages" with "no extractable text describing the wave's shape, amplitude, or period"; Example: "No numeric example is given on these slides". Both false (images opened). U3 L5 p.31: bar chart of four mesocycle patterns over Micro 1-4 (Ascending Ond. 4, 3, 5, 2.5; Descending Ond. 5, 3, 4, 2.5; Step Loading 3, 4, 5, 2.5; Flat Loading 4.5, 4.5, 2.5), captioned "WAVE LOADING". U3 L5 p.32: "Load Progression in a Competitive Microcycle (Weekly Match)", roughly Mon 50, Tue 85, Wed 100, Thu 85, Fri 55, Sat 55, Sun 100 (read from the bars). Why it works contrasts wave loading with Bompa step loading "as a different named loading scheme", yet step and flat loading appear on the same slide as the wave-loading examples. Specificity slide (p.33) checked. | Rewrite What it is and Example from the p.31-32 bars (mark values "read from chart"). Replace the "different scheme" contrast with: "Step and flat loading appear as panels on the same slide captioned 'Wave Loading' (p.31); the slide does not say whether step loading is a kind of wave loading." Drop the Eric's-baseline "closest numeric illustration" claim or recast it under G1. |
+| claim--body-composition-is-a-prediction-not-a-measurement.md | FIX | Error table misread (U3 L6 p.9 image). The slide has three blocks. "Small Error Rates for Populations": UW 0.1-2.1%, BP 2%, SF 6%, DEXA 1-2%. "Large Error Rates for Individuals": UW 5%+, BP 6%+, BIA 8-9%, SF 10-15%, DEXA 4-10%. "Tracking over time ... different? SF: 3-5%". Entry errors: (a) "Bioelectrical Impedance 8-9% (no separate individual-level figure given)": 8-9% IS the individual figure; BIA has no population figure. (b) Skinfolds "internally inconsistent ... not reconciled": 3-5% sits under its own "Tracking over time" label, so it is a separate framing, not a conflict. (c) Why it works adds proxies ("impedance, X-ray absorption, skinfold thickness, water displacement") the slide does not list. (d) "individual-level error as substantially higher for every method shown": BIA has no pair. Also "Ethnicity, Age, Gender" on p.9 (left side) is omitted. | Rewrite the table as above. Delete the "internally inconsistent" claim from When NOT; replace with "the slide gives a separate, lower skinfold figure (3-5%) for tracking change over time, which supports within-method tracking". Label (c) "Inference:". Add the p.9 "Ethnicity, Age, Gender" note as listed error sources. |
+| framework--sport-specific-test-battery-model.md | GO | None beyond G1. | checked: U3 L6 p.3 considerations and test order; p.20-22 test and rationale tables for track cycling, basketball and rowers (7x4 min, 6 submax plus 1 all-out, 1 min RI); fatigue-order logic labelled Inference; baseline line 52 exists as quoted. |
+| framework--ten-step-process-for-building-an-annual-plan.md | GO | None beyond G1. Add the Related link from the microcycle NO-GO row. | checked: U3 L7 p.2-13 step titles and sub-bullets; Step One profile rows (p.3); "SLEEP ON IT" (p.13); dependency-order reading labelled Inference. |
+| case-study--wide-receiver-preparatory-phase-weekly-loading-template.md | FIX | (1) Omits U3 L8 p.2, the phase's content plan: Exercises (GPE and SPE general; GPE, SPE and SDE specific); Energetics (alactic power and aerobic capacity general; alactic capacity*, alactic power* and aerobic capacity specific); Biomotor primary/secondary/tertiary for each sub-phase. (2) "the specific comparative numbers were not found on the slide pages ... (they appear to be discussed verbally)": U3 L8 p.5-10 are image slides and hold the reference material. p.6 (Francis) shows high-intensity distance requirements with bars labelled "Football Player - Back" (to about 65 m) and "Football Player - Line" (to about 35 m); note the chart says "Back", not "wide receiver". p.5 high-intensity components by distance; p.7 motor-unit involvement by exercise; p.8 Borilkievich zones; p.9 Jovanovic/Prilepin; p.10 energy-system work:rest table. (3) Cites Exam 3 Study Guide items 62, 64-65, but `_book.md` says the guide was "used only for triage, not cited". (4) "CARA - Countable Athletically Related Activities" expansion is not on the slide. | (1) Add p.2 as the first paragraph of What it is. (2) Replace the "verbal" claim with the p.6 Back vs Line bars (as printed), plus one line listing p.5-10 as the reference slides. (3) Either drop the study-guide sentence or amend `_book.md` to say the guide is cited once. (4) Mark the expansion "Inference (NCAA term):". |
+| framework--adime-monitoring-process.md | GO | Minor: the p.12 image puts a red asterisk on Step 4 (Monitoring & Evaluation), Evans's emphasis for this lecture; worth one clause. | checked: U4 L1 p.12 image (four steps, cyclic arrows); Hamilton definition p.13 verbatim; U4 L3 p.11 repeats the diagram; nutrition-care origin labelled Inference. |
+| framework--monitoring-toolkit-by-domain-frequency-cost.md | FIX | (1) "(for three of the four) a relative cost tier": only Psychological (p.17) and Physical Fitness (p.19) have cost columns; Nutrition (p.16) and Movement (p.18) have none. (2) HRV listed as "'Best Athletes,' ED": p.19 shows "√ or Best Athletes". (3) "these formulas originate with Foster's training-monotony/strain model" is outside knowledge, unlabelled. Other rows, frequencies and the p.22 schedule checked. Worth adding: p.16 "BCA: No more than 4x per year" is the same rule the baseline records as "author uncertain" (`method-baseline.md` line 130); this may explain where that baseline rule came from. | (1) "two of the four". (2) "√ or Best Athletes". (3) "Inference (reviewer knowledge): the monotony and strain formulas match Foster's (1998) model; the slide does not cite it." Add the 4x-per-year convergence as an "Inference:" note for Eric. |
+| heuristic--monitoring-is-a-compass-not-a-gps.md | GO | None beyond G1/G2. | checked: U4 L1 p.23 closing thoughts verbatim; baseline line 24 quote exact; Inference labelled. |
+| claim--big-data-monitoring-without-training-theory-is-noise.md | FIX | (1) Contradictory page ranges: "pages 9-20 are bare diagram pages" and "pages 7-20 are largely bare diagrams". p.7 ("Performance Timeline") and p.8 (three reasons) have text; p.9-20 (images opened) are equipment and vendor photos and video stills (tape and stopwatch, jump mat, Catapult, timing gates, Omegawave, BioForce, ithlete, Haloview dashboard, Firstbeat/Polar, Noraxon, Dartfish), not diagrams. (2) When to apply: "a sequencing that itself may reflect this same Carl Valle premise (theory before monitoring)" is unlabelled speculation. Valle quotes (p.5) and pipeline (p.6) checked. | (1) Use one statement: "p.9-20 are equipment and product images with no argument text." (2) Prefix with "Inference:". |
+| claim--weight-room-transfer-limited-without-dynamic-correspondence.md | FIX | (1) The course states a tension the entry does not record. U3 L6 p.17: "1RM Squat Strength: R=.76-.91 with various jumping and sprinting tasks; 1RM Bench Press: R=.88 and grinding performance in elite sailors". U2 L4 p.19: athletes "at a lower level of sports mastery may benefit from nearly ANY TRAINING MODALITY" with positive transfer. These are correlations to jump and sprint tests and a mastery qualifier, not a contradiction, but they qualify "Provide little insight". (2) Why it works: "so a weight-room test result (e.g., a back squat max) does not directly indicate how that capacity will express itself" goes beyond the slide, which gives only "Why? Minimal DC criteria met" (U4 L1 p.5). Quote and "Whoa there ... Absolutely not!" checked. | (1) Add to When NOT: "Evans's own U3 L6 p.17 reports r = .76-.91 between 1RM squat and jump/sprint tasks, and U2 L4 p.19 says low-mastery athletes transfer from nearly any modality; the claim applies most to advanced athletes and to on-field (not test) performance." (2) Prefix the elaboration with "Inference:". |
+
+Counts: GO 9, FIX 23, NO-GO 1 (total 33).
+
+GO: power-output, bondarchuk-three-principles, recovery-is-a-training-means, periodization-is-timing-not-time, performance-garden, sport-specific-test-battery, ten-step-process, adime, monitoring-compass.
+
+## Missing (important ideas in the covered pages that no entry captures)
+
+1. **Sympathetic vs parasympathetic overtraining, and the Omegawave readiness case** (U3 L1 p.11, 15-27). Overwork types: monotonous, sympathetic ("prolonged stress response") and parasympathetic ("advanced stage ... neuroendocrine system is compromised"). The p.17 table assigns the sympathetic form to "team sports, strength and power sports" (up resting HR and BP, up cortisol, down T/C ratio) and the parasympathetic form to endurance sports. p.18 gives a symptom table, p.11 the blunted double-exercise response, and p.19-26 a device-screenshot case that recovers with less training, better nutrition and time. Most football-relevant content in the course. Note the tension with U3 L2 p.12 ("T/C ratio ... not anymore" a gold standard) versus p.17 listing down T/C as a sympathetic sign. Confidence untested.
+2. **Verkhoshansky (2012) activation reactions and the threshold of adaptability** (U1 L4 p.26-32). Training-load levels map to quiet activation, high activation, over-activation and stress. At over-activation, "the prevalence of anabolic process switches to catabolic", marking the threshold of adaptability and the critical level of homeostasis disturbance. Accumulated allostatic load past it produces allostatic overload. The homeostasis entry defers this to Supertraining, but no staged Supertraining entry contains "threshold of adaptability" or "over-activation" (grep).
+3. **AIS (2013) body-mass by skinfold interpretation matrix** (U3 L6 p.10). Eight combinations of body-mass and skinfold change mapped to muscle-mass and body-fat interpretation (for example, mass up with skinfolds stable means muscle gain with no fat change). A directly usable tracking rule that sits beside the body-composition claim.
+4. **Francis high/low intensity model** (U2 L6 p.19; U3 L5 p.23; U3 L8 p.5-6). High-intensity work separated by at least 48 h, a 35% high / 65% low mature volume ratio, sample three-high and two-high weekly schedules, and high-intensity distance requirements by sport and position (football back vs line). Evans uses it as the reference behind the WR weekly template.
+5. **Specificity depends on mastery, and the performance chain** (U2 L4 p.19, p.27). "Principle of specificity will vary greatly according to one's training status ... and overall level of sport mastery"; low-mastery athletes transfer from nearly any modality. "The chain always breaks at its weakest link" across CNS, cardiac, energy, neuromuscular, ANS, hormonal and detoxification systems. Both qualify existing entries (weight-room transfer, Anokhin).
+
+Also seen but lower priority: Bompa strength, speed and endurance periodization phase types and the annual sequencing grid (U3 L5 p.10-13); Bompa detraining table (U3 L5 p.20); Periodization types list (U3 L5 p.44); intensity-zone tables (U2 L6 p.16-18); strength-test correlations (U3 L6 p.17).
+
+## Overall verdict: GO AFTER FIXES
+
+Required before promotion:
+1. Delete `framework--issurin-microcycle-types-and-planning-steps.md` (duplicate of staged Issurin Ch.3); move its link into the ten-step entry; update `_book.md` counts (U3 L5 4, total 32).
+2. Rewrite the source-misreads found by opening the images: body-composition error table (U3 L6 p.9), Buzzichelli wave-loading bars (U3 L5 p.31-32), WR template p.2 and p.5-10, McEwen attribution and p.20 qualifier (U1 L4 p.19-20), classic-literature figure (U3 L4 p.15-16), overtraining Omegawave case (U3 L1 p.19-26).
+3. Correct factual slips: lineage count (14 lines, 15 people) and Pfaff in the baseline; wrestling criterion 3 text; five-domains monitoring inference (p.9 "Purely Physiological"); toolkit cost tiers (two of four) and HRV column; intensity heuristic's missing p.16-18 tables and "his own words"; no-definitive-tool quote and HRV/hormonal endorsements; S-factors somatotype link; Supertraining filename; self-link in three-overload; wrong ADIME link in two-factors.
+4. Record the weight-room tension (U3 L6 p.17, U2 L4 p.19) in the weight-room claim.
+5. Label every unlabelled outside fact or writer mechanism as "Inference:" (UK Sport 1997, doping, Sterling and Eyer, Foster, CARA expansion, Bompa mechanisms, football-monocycle fit, fitness-fatigue marathon gloss, Buzzichelli after-the-fact, Valle sequencing, deload reading).
+6. Apply G1 across all entries; apply G2 wording where the slide shows no attribution.
+7. Reconcile `_book.md` with the WR entry on whether the Exam 3 Study Guide is cited.
+---
+type: book-index
+book: elite-sports-performance--evans
+title: "Elite Sports Performance (course lectures)"
+author: Landon Evans
+domain: strength-and-conditioning
+ingest-tier: full-text
+source: "G:\\My Drive\\00_Primary_Storage_Drive\\99_UNSORTED\\From_REMOTE_DESK\\From Landon Evans\\Elite Sports Performance\\Unit 1-4 (Unit 3 read from the fuller 'EVANS\\Evans - Unit 3' copy); Exam 3 Study Guide.pdf"
+created: 2026-09-26
+---
+
+# Elite Sports Performance (course lectures) - ingest map
+
+Landon Evans's own slide deck set for his "Elite Sports Performance" course. Text-layer PDFs
+(confirmed via `pypdf`, not scanned), sparse slides (roughly 22-45 words per page, many pages
+are titles, single quotes, or bare diagrams). Read page-by-page with the Read tool
+(`pages` parameter) for entries below; bulk `pypdf` text extraction was used only for
+triage (deciding which pages were entry-worthy before spending a Read-tool call on them),
+never as the sole basis for a cited claim.
+
+**Special rule for this source (from the task brief, overrides the generic ingest-book
+ceiling):** every entry's `confidence` is capped at `untested`, regardless of kind. This is
+slide-only material from a practitioner course; Evans's CVASPS conference talk is being
+transcribed separately and may corroborate specific entries later, at which point they can be
+raised. Entries here are written specific enough to be checked against that transcript when
+it lands.
+
+**Unit 3 duplicate-source note:** `Elite Sports Performance/Unit 3/` (Lectures 1-8) and
+`EVANS/Evans - Unit 3/` (Lectures 1-8 + Exam 3 Study Guide) were diffed page-count-for-page-count
+and by extracted text (`pypdf`): all 8 lecture PDFs are byte-for-byte-identical in extracted
+text between the two locations. The "fuller" set is fuller only by the 2-page Exam 3 Study
+Guide, which has no counterpart in the older `Elite Sports Performance/Unit 3/` folder. All
+Unit 3 citations below use the `EVANS/Evans - Unit 3/` path per the task instructions; page
+numbers are identical either way.
+
+**Unit 4 file-type note:** all three Unit 4 lecture files are `.pdf` (none is `.docx` or
+extensionless); the brief's "may be a docx or extensionless" was a hedge, not a finding.
+
+**Dedup note (see also final report):** this course's slides on GPE/SPE/SDE/Competitive
+exercise classes, on Issurin's workout organization/task-type/load-level/warm-up/cool-down/
+sequencing/compatibility system, and on the accumulation-transmutation-realization mesocycle
+taxonomy duplicate primary-source entries already staged in
+`transfer-of-training-in-sports--bondarchuk` and `block-periodization--issurin` (both
+appeared in this staging library after this ingest began). Those lectures are marked
+"reviewed, no new entry" below rather than atomized a second time. See the final report for
+the specific reciprocal-link and convergence notes.
+
+| # | Lecture | Pages | Status | Entries |
+|---|---------|-------|--------|---------|
+| U1 L2 | History Primer | 1-5 | done | 2 |
+| U1 L3 | EP Big Picture | 1-16 | done | 4 |
+| U1 L4 | Adaptation I (Epigenetics, Homeostasis, Allostasis, GAS) | 1-33 | done | 2 |
+| U1 L5 | Adaptation II (Fitness-Fatigue, Neural, Molecular) | 1-23 | done | 1 |
+| U1 L6 | Adaptation III (Hypertrophy, Bone/Tendon, Biochemical) | 1-26 | reviewed, no new entry (generic physiology, overlaps Supertraining/textbook content; no Evans-specific framework) | 0 |
+| U2 L1 | Energetics | 1-24 | reviewed, no new entry (generic bioenergetics, no distinct Evans framing) | 0 |
+| U2 L2 | Cardiovascular Adaptations | 1-23 | reviewed, no new entry (generic exercise physiology) | 0 |
+| U2 L3 | Sports Biomechanics: The Basics | 1-24 | done | 1 |
+| U2 L4 | Training Theory (Bondarchuk system, dynamic correspondence, GPE/SPE/SDE/CE, overload, individualization) | 1-28 | done (GPE/SPE/SDE/CE skipped, dedup) | 3 |
+| U2 L5 | Training Effect / Training Residuals | 1-15 | reviewed, no new entry (mostly bare diagram pages, no citable text) | 0 |
+| U2 L6 | Training Load / Loading Schemes | 1-20 | done (loading-scheme diagrams skipped, dedup w/ Bompa step-loading) | 1 |
+| U3 L1 | Training Theory: Rest and Recovery, Overtraining Continuum | 1-28 | done | 3 |
+| U3 L2 | Training Theory: OTS hypothetical mechanisms | 1-20 | done | 1 |
+| U3 L3 | Training Theory: The Workout (organization, load level, warm-up/cool-down, sequencing) | 1-21 | reviewed, no new entry (Issurin 2008 content duplicates primary-source entries already staged in `block-periodization--issurin`) | 0 |
+| U3 L4 | Training Theory: Introduction to Periodization | 1-30 | done | 3 |
+| U3 L5 | Training Theory: Periodization Continued (annual plan, Buzzichelli motor-capacity periodization) | 1-45 | done (Bompa mesocycle A-T-R skipped, dedup w/ Issurin; microcycle-types entry deleted at review as a duplicate of staged `block-periodization--issurin` Ch.3, which was already "done, 12" at the time, not pending as that deleted entry claimed) | 4 |
+| U3 L6 | Athletic Assessment | 1-22 | done | 2 |
+| U3 L7 | Intervention: Building the Annual Plan (10-step process, football WR example) | 1-13 | done | 1 |
+| U3 L8 | Intervention II (Preparatory-period weekly template, football WR example) | 1-16 | done | 1 |
+| U3 study guide | Exam 3 Study Guide (topic list only) | 1-2 | reviewed; cited once (items 62, 64-65, in `case-study--wide-receiver-preparatory-phase-weekly-loading-template.md`, confirming Evans intended a lineman-vs-wide-receiver comparison as a teaching point); otherwise used only for triage | 0 |
+| U4 L1 | Performance Monitoring Review and Application | 1-23 | done | 4 |
+| U4 L2 | Performance Monitoring II | 1-20 | done (mostly bare diagram pages after p.8; only the Carl Valle quote and ACQUIRE-MANAGE-ANALYZE-VISUALIZE-ACTION label are citable) | 1 |
+| U4 L3 | Summary | 1-12 | reviewed, no new entry (recap of U1 L3 and U4 L1 frameworks already atomized; no new content) | 0 |
+
+**Total: 34 entries.** All units done; no lecture left pending. This closes out the course
+(no more Landon Evans "Elite Sports Performance" lectures remain in either source folder).
+The `framework--bompa-annual-plan-cycle-types.md` entry draws on both U3 L4 and U3 L5 (the
+content is repeated verbatim across both lectures) and is counted once, under U3 L5.
+
+**Round-1 review (2026-09-27, `staging/review_evans_opus.md`), applied:** 9 GO, 23 FIX, 1
+NO-GO of the original 33. `framework--issurin-microcycle-types-and-planning-steps.md` (U3 L5)
+was deleted as a duplicate of the primary-source Issurin Ch.3 entries
+(`block-periodization--issurin/framework--microcycle-types-and-load-wave-design.md`,
+`.../heuristic--microcycle-construction-key-workout-rules.md`); its one new angle (Step Nine
+of the ten-step process asking which Issurin microcycle type is needed) was folded into
+`framework--ten-step-process-for-building-an-annual-plan.md`. Two entries were added from the
+review's "Missing" list: `claim--sympathetic-vs-parasympathetic-overtraining-and-omegawave
+-readiness-case.md` (U3 L1 p.11, 15-27) and
+`framework--verkhoshansky-activation-levels-and-threshold-of-adaptability.md` (U1 L4 p.26-32,
+correcting the homeostasis entry's earlier note that this material was not atomized). All 33
+FIX/GO entries were also relabeled per the review's global fixes: "Eric's baseline:" /
+"Inference:" prefixes on every baseline comparison (G1), and "the slide states (no attribution
+shown)" wording wherever slide prose carries no attribution (G2). See
+`staging/fixes_evans_applied.md` for the full per-file log.
+
+**U4 L1 p.16 note:** the monitoring-toolkit slide's "Body Comp Analyzers... no more than 4x
+per year" rule (see `framework--monitoring-toolkit-by-domain-frequency-cost.md`) matches,
+number for number, the body-composition-testing-frequency rule `method-baseline.md` records
+as "author uncertain" (`method-baseline.md` line 130, "Nutrition and body composition," citing
+`ap-assessment-manual-draft-v12.md`). This slide may be the origin of, or share a source with,
+that baseline rule; not confirmed, flagged for Eric.

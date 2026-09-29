@@ -44,6 +44,15 @@ const os = require('os');
 // with extra steps. The lock below is then taken by the WORKER's pid, which is
 // what isProcessAlive() needs in order to coordinate late-arriving sessions.
 if (!process.argv.includes('--worker')) {
+  // Headless sessions do not index. Measured 2026-09-28 on the Windows laptop:
+  // a TypeSafe drive-triage batch (`claude -p`, entrypoint sdk-cli) ended a
+  // session every ~30s — 257 SessionEnds Sunday 19-22h — and every flush.py
+  // Agent SDK session fired this hook too (session-end.py guards on
+  // CLAUDE_INVOKED_BY; this hook did not). Each one restarted a 2.5 GB
+  // bge-m3 index. Their transcripts are picked up by the next interactive
+  // session's run, so skipping loses nothing.
+  const entry = process.env.CLAUDE_CODE_ENTRYPOINT || '';
+  if (process.env.CLAUDE_INVOKED_BY || entry.startsWith('sdk')) process.exit(0);
   try {
     spawn(process.execPath, [__filename, '--worker'], {
       detached: true,
@@ -202,6 +211,22 @@ try {
 function releaseLock() {
   if (haveLock) { try { fs.unlinkSync(LOCK_FILE); } catch (_) {} haveLock = false; }
 }
+
+// Cooldown: at most one index START per COOLDOWN_MS. The lock alone only
+// serialises runs — on 2026-09-28 it produced a back-to-back chain of 600s
+// runs all day, each paying the full model load (2.7 GB working set, 3.1 GB
+// peak) and starving the machine. Checked while holding the lock so two
+// workers cannot both pass. Content from sessions inside the window waits for
+// the next session end after it; the index is incremental, so nothing is lost.
+const LAST_RUN_FILE = path.join(os.homedir(), '.claude', 'global-memory', 'transcripts', '.memsearch-last-run');
+const COOLDOWN_MS = 30 * 60 * 1000;
+try {
+  if (Date.now() - fs.statSync(LAST_RUN_FILE).mtimeMs < COOLDOWN_MS) {
+    releaseLock();
+    process.exit(0);
+  }
+} catch (_) {} // no marker yet — first run
+try { fs.writeFileSync(LAST_RUN_FILE, new Date().toISOString() + ` pid=${process.pid}\n`); } catch (_) {}
 
 try {
   const res = spawnSync('memsearch', ['index', ...existing], {
