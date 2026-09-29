@@ -1,0 +1,644 @@
+# CLAUDE.md — PP_Recruiting (Baylor Football Player Personnel)
+
+Read `AGENTS.md` in this folder. It is the single, maintained handoff for every
+agent (Claude, Codex, or any other): standing rules, the file table, the
+Telemetry-to-STAQS algorithm, workbook structure and Telemetry notes.
+
+Then read `LOG.md` (history) and the companion repo's `docs/STATUS.md`
+(`C:\Users\eric_rash\Desktop\DEV\PP_Recruiting` on Windows, `~/DEV/PP_Recruiting`
+on the Mac) for the current state and what is next.
+
+This file used to repeat AGENTS.md and went stale (it still listed 002 as the
+latest file). It was reduced to this pointer on 2026-09-16 so there is one
+source to keep current.
+
+@AGENTS.md
+
+=====AGENTS
+# AGENTS.md — PP_Recruiting (Baylor Football Player Personnel)
+
+Handoff document for a coding agent (Codex, Claude Code, or any other) picking
+up this project cold. Read this file first, then `LOG.md` for how the project
+got here. `CLAUDE.md` in this folder only points here, so this file is the single
+source. The live state (latest deliverable number, what is next) is in the
+repo's `docs/STATUS.md`.
+
+Owner: Eric Rash. Last updated: 2026-09-16.
+
+## Where this project lives
+
+Working folder, Windows:
+`G:\My Drive\00_Primary_Storage_Drive\02_SPORTS\Football\PP_Recruiting`
+
+This is Google Drive, not OneDrive. An earlier copy under
+`OneDrive - Baylor University\00_Primary_Storage_Drive\...` no longer exists.
+Older session logs and Codex rollouts still point at that OneDrive path; ignore
+them and use the path above.
+
+Workbooks, deliverables and the `Send/` folder stay here on Drive. Project
+documentation and scripts are version controlled in the companion repo
+`DEV\PP_Recruiting` (Windows: `C:\Users\eric_rash\Desktop\DEV\PP_Recruiting`,
+Mac: `~/DEV/PP_Recruiting`), pushed to `erash11/PP_Recruiting`. Read that repo's
+`docs/STATUS.md` before starting a session.
+
+---
+
+## 1. What this project is
+
+A unified grading system for Baylor Football player personnel that couples
+**Telemetry (Teamworks) trait percentiles** with the internal **S.T.A.Q.S.**
+grading scale, so incoming transfer-portal data gets filtered down to the
+players who deserve a scout's time.
+
+Two inputs, one system:
+
+- The scout's **STAQS grade is the grade of record.**
+- Telemetry percentiles are **threshold flags** that say who to review and which
+  STAQS factors the data already supports.
+
+Nothing is averaged, weighted, or blended into a composite. That was an explicit
+design decision, not an oversight (§5).
+
+Audience for the deliverables is recruiting and personnel staff, not analysts.
+
+---
+
+## 2. Standing rules (do not violate)
+
+1. **Read-only in Telemetry.** Never edit, save, or submit anything in
+   app.telemetry.fm. Scraping the rendered UI for read purposes is fine.
+2. **Always create new files. Never overwrite.** Deliverables are numbered; as of
+   2026-09-26 the latest is `013.` and the next is `014.` (check the repo's
+   `docs/STATUS.md`). The master `000. BAYLOR - GRD SCALE.xlsx` is never
+   modified under any circumstances.
+3. **Do not read Telemetry's auth token or import its internal service
+   classes.** Both were tried and are blocked. Scrape the rendered table.
+4. **STAQS is the grade of record.** Any data output is labeled a starting point
+   for the scout, never a grade.
+5. **Append to `LOG.md`** whenever a numbered file is created, a design decision
+   is made or reversed, or a technique is proven or ruled out. Newest entries at
+   the bottom, absolute dates.
+
+---
+
+## 3. Files in this folder
+
+| File | Role |
+|---|---|
+| `000. BAYLOR - GRD SCALE.xlsx` | **Master, read-only.** GRD SCALE, OFFENSE/DEFENSE EVAL KEY, SZ-SPD matrices, NIL/XFER pay scales, per-position tabs (QB, RB, WR, SLOT, TE, OT, OG, NT, END, JACK, ILB, CB, SAF, STAR, SPD). Authority for tiers and size-speed standards. Uses custom fonts (NCAA Baylor Bears, Bahnschrift). |
+| `001. ... UNIFIED GRADING.xlsx` | Template workbook, 7 sample WRs, shows the format. 2026-09-02. |
+| `001. ... FRAMEWORK.docx` | Written framework/explainer. |
+| `002. ... UNIFIED GRADING (PORTAL 2026 LOADED).xlsx` | Proof of concept, 3,000 live portal players. 2026-09-03. |
+| `003. ... COACH EXPLAINER.docx` | 6-page walkthrough of 002 for coaches/staff. |
+| `003. ... UNIFIED GRADING (PORTAL 2026, BAYLOR STYLE).xlsx` | 002 restyled to the Baylor aesthetic. |
+| `004. ... COACH BRIEF.docx` | 1.5-page version of the explainer. |
+| `004. ... TEASER (AGM).docx` | One-page teaser for the assistant GM. |
+| `005. ... TEASER (AGM, BAYLOR STYLE).docx` | 004 restyled off the 003 workbook. Current version of the teaser. |
+| `006. ... AGM TOOL SUMMARY.docx` | One-page prose guide to the 003 workbook for the assistant GM. 2026-09-03. |
+| `007. ... AGM TOOL SUMMARY (BAYLOR STYLE).docx` | 006 in the Baylor style. Current version of the AGM summary. |
+| `008. ... UNIFIED GRADING (2025 FCS-G6 BASELINE).xlsx` | 2025 FCS + Group of Six leaderboard load, 8,761 players with Elig 1+. 2026-09-15. |
+| `009. ... UNIFIED GRADING (2025 FCS-G6, IMPACT ALERTS).xlsx` | 008 plus the Impact alert and Low Impact alert. FCS / G6 only. 2026-09-16. |
+| `010. ... UNIFIED GRADING (2025 FBS+FCS-G6, IMPACT ALERTS).xlsx` | 2025 FBS (all 136 teams) plus FCS, Elig 1+: 12,029 players, 1,899 REVIEW. Built on 009 as template. **Current workbook and the template for new loads.** 2026-09-16. |
+| `011. ... SCREENING MATRIX (PROPOSED).docx` | Proposed staff-review rules by Baylor role (14 roles): board gates sized to 30-50 on 010, exception paths, blind spots. Not workbook rules. Awaiting Eric's review. 2026-09-16. |
+| `012. ... UNIFIED GRADING (2025 FBS+FCS-G6, BENCHMARK).xlsx` | 010 plus 710 top 2025 players from `2025 Telemetry Benchmark Stats/`, tagged BENCHMARK (PORTAL INPUT BT, REVIEW BOARD AL); 578 of them are Elig 0 and were appended as reference rows. New last tab BENCHMARK PROFILES (band mix, per-metric percentile profiles). REVIEW totals include the ineligible benchmark rows; filter Benchmark to blank for the 010 board. Built by `add_benchmark.py`. 2026-09-26. |
+| `2025 Telemetry Benchmark Stats/` | Eric's 22 benchmark CSVs (exported 2026-09-23) behind 012. |
+| `Baylor_Elite_Position_Profiles_2025.pdf` | "Pre-Portal Filters": two must-haves and a main / backup trait per position, from the benchmark set. Tested 2026-09-26 (repo `docs/2026-09-26-position-profiles-test.md`). |
+| `013. ... UNIFIED GRADING (2025 FBS+FCS-G6, POSITION PROFILES).xlsx` | 012 plus the PDF's position profiles: SETTINGS rows 41-58, REVIEW BOARD AM:AQ (Must-have 1/2, Profile, Diamond signal, Profile REVIEW), and a second path into REVIEW at OT, OG, C, EDGE. Pre-portal REVIEW (Sample OK) 1,930. Built by `add_profiles.py`. **Current workbook for staff; 010 stays the template for new loads.** 2026-09-26. |
+| `CLAUDE.md` / `LOG.md` / `AGENTS.md` | Pointer to this file, development log, this handoff. |
+| `_exports/` | Telemetry CSV downloads. `2025_baseline/fcs_g6/` = 22 full files behind 008; `2025_baseline/fbs/` = 22 full FBS files (with `fcs_g6/`, behind 010); `2025_baseline/validation_fbs_fcs/` = validation files (two full QB files, the rest `*_recap-subset.csv` holding only graded recap players). |
+| `Send/` | Copies prepared for staff. |
+| `_to_delete/` | Superseded or junk files. Session cannot delete files; move them here and tell Eric. |
+
+**Scripts live in the repo, not here** (`DEV\PP_Recruiting\scripts\`, see its
+README). The workbook is reproducible without the lost `build2.py`: 003 is the
+layout, `load_leaderboard.py` loads CSVs into a copy (008),
+`add_impact_alerts.py` adds the 2026-09-16 alerts (009), a load onto 009 as
+template gives 010, and
+`check_workbook.py` validates any build against §5. `load.py` is replaced by
+`load_leaderboard.py`.
+
+---
+
+## 4. The S.T.A.Q.S. system
+
+Eight factors, each scored **1 / 3 / 9**, summing to **8-72**.
+
+Five critical factors (all positions): **S**ize, **T**oughness, **A**thletic
+Flexibility, **Q**uickness, **S**peed. Plus **3 position-specific** factors. QB
+has its own set of 8.
+
+Tiers (also loaded as the Player Grade dropdown in Telemetry Scout Reports >
+Settings):
+
+| Grade | Score | Elite traits | Color |
+|---|---|---|---|
+| AA | 60-72 | 7-8 | green `00B050` |
+| AL | 48-59 | 5-6 | yellow `FFC000` |
+| QS | 40-47 | 3-4 | black `404040` |
+| FRP | 30-39 | 1-2 | grey `D8D8D8` |
+| LIM | 24-29 | 0-1 | pink `ED6363` |
+| NGE | 8-23 (dropdown 0-23) | 0 | red `C00000` |
+
+---
+
+## 5. The bridge (Telemetry to STAQS) — the core algorithm
+
+Implement exactly this. Every constant lives on the workbook **SETTINGS** tab
+and must stay editable there rather than hardcoded in formulas.
+
+```
+elite trait      := Telemetry percentile >= 75
+deficiency       := Telemetry percentile < 25
+graded traits    := traits with a numeric percentile for that player
+elite share      := elite traits / graded traits
+```
+
+Elite share (not raw count) is used because positions carry different numbers of
+Telemetry traits — OL has 2, LB has 8 — so a raw count would systematically
+punish linemen.
+
+Share maps to a projected band using the GRD SCALE's own elite-trait cut lines:
+
+```
+>= .875 (7/8) -> AA
+>= .625 (5/8) -> AL
+>= .375 (3/8) -> QS
+>= .125 (1/8) -> FRP
+   0          -> LIM, or NGE when deficiencies exceed elite traits by 2+
+                 with no elite share
+```
+
+Guards and flags:
+
+- **Minimum 2 graded traits** to project a band; otherwise the row is `THIN`.
+- **REVIEW** fires at elite share >= .375 (the QS floor), or when the Speed
+  alert or Impact alert fires, for any row with at least one graded trait.
+- **Speed alert**: Play Speed or Deep Speed >= 90 ("documented difference making
+  SPEED" on the GRD SCALE).
+- **Impact alert** (009, decided 2026-09-16): Player Impact >= 90. Fires on its
+  own and turns REVIEW on. Chosen after the validation run caught 6 of 13
+  missed QS-or-better players at 90.
+- **Low Impact alert** (009): a REVIEW row with Player Impact <= 10. A caution
+  note only; it never removes REVIEW.
+- **Size-Speed alert**: poor size with elite speed — the GRD SCALE's "must be
+  special and offer a role" exception.
+- **LOW SAMPLE** below 150 snaps. Telemetry itself blanks most traits under
+  roughly 100 snaps.
+- **Profile REVIEW** (013, decided 2026-09-26): the position's two must-haves
+  (SETTINGS POSITION PROFILES) both at or above their floors, 200+ snaps, and
+  the position's 2nd-path switch on (OT, OG, C, EDGE). Turns REVIEW on. A blank
+  must-have counts as not cleared. Must-have status, Profile and the Diamond
+  signal show for every position as information only.
+
+**What data can and cannot grade.** Data directly supports 4 of the 5 critical
+factors (Speed, Quickness, Athletic Flexibility, Size from HT/WT) and offers
+proxies for Toughness. Position-specific factors get partial support (see the
+CROSSWALK tab). FBI, wiring, keep-ability, character, and medical are **never**
+data-graded.
+
+---
+
+## 6. Workbook structure (003 layout; 010 is current, same layout as 009)
+
+Tabs, in order:
+
+- **README** — what it is, the bridge, how to use, scope, cell legend, sources.
+- **SETTINGS** — thresholds (rows 5-12 in 009, including the two alert cut
+  points at rows 11-12), band cut lines, simplified size standards by position.
+  *All tuning happens here.*
+- **GRADE SCALE** — the six tiers.
+- **METRIC GLOSSARY** — what each Telemetry metric measures.
+- **CROSSWALK** — which Telemetry metric informs which STAQS factor, by position.
+- **POSITION MAP** — Telemetry position codes -> Baylor eval tabs -> trait counts.
+- **PORTAL INPUT** — the data sheet, columns A:BO (67) plus PlayerId, raw
+  position, Elusiveness and source file in BP:BS from 008 on. Grouped as Player
+  Traits (all positions, P:AC) / QB Traits (AD:AI) / Advanced Stats (AJ:BN).
+  Percentiles 0-100; blank where a position carries no metric. HT in inches
+  (6'1" = 73). **REVIEW BOARD reads these columns by fixed position, not by
+  header, so never insert, delete or reorder PORTAL INPUT columns.** Load data
+  with `load_leaderboard.py`, which maps CSV headers onto the template's
+  columns.
+- **REVIEW BOARD** — all formulas, do not hand-edit. One row per PORTAL INPUT
+  row. Columns: traits graded, elite traits, deficiencies, elite share,
+  projected band, REVIEW?, speed alert, size-speed alert, Impact alert and Low
+  Impact alert (N:O, 009), critical deficiency, data-suggested SIZE / TOUGH /
+  ATHLETIC / QUICK / SPEED values, best and worst trait, plus roster metadata.
+
+**Cell legend:** yellow fill `FFF2CC` with blue text = user input. Black text =
+formula.
+
+**House styling** (workbooks and companion docs both): Arial throughout unless
+the Baylor-style variant is called for; titles Arial 12pt bold Baylor green
+`154734`; subtitles and notes 9pt grey `595959`; table header rows white bold on
+`154734`; tier fills per §4. The "Baylor style" variants (003 xlsx, 005 docx)
+additionally use NCAA Baylor Bears / Baylor Bears Font display type and
+Bahnschrift body, with a black masthead bar. Those fonts render only on a
+machine that has them installed; Word substitutes elsewhere.
+
+---
+
+## 7. Telemetry platform notes
+
+Telemetry Sports (app.telemetry.fm, branded Teamworks) is the recruiting and
+scouting platform. Login is the user's; an agent without a browser session
+cannot reach it.
+
+- **Transfer Portal** > Player Traits / Advanced Stats / Boxscore. Traits and
+  stats appear only after filtering to a position or position group.
+- **Scout Reports > Settings** holds the Player Grade dropdown, already loaded
+  with the six STAQS tiers. Scout reports carry a numeric Score (0-72) plus the
+  grade.
+- **Documentation** pages (Glossary, Player Traits, Advanced Stats) embed
+  signed-URL PDFs from s3 docs.telemetry.fm. The PDFs, not the UI tooltips, are
+  the reliable definition source.
+- Traits and advanced stats are **0-100 percentiles vs the same position** (FBS,
+  2019-present, in-game tracking). Exceptions: Top End Speed is raw mph; QB Risk
+  Level is a text label; Tackle Breaking is documented but absent from the
+  portal grid; QB decision-making surfaces as "Target Selection"; the DB
+  coverage stat surfaces as "EPA/Target".
+- High school prospects have **no** Telemetry data. Grade them on the STAQS eval
+  keys as usual.
+
+### Scraping the portal (proven 2026-09-02, read-only)
+
+- The table is **virtualized** (~20 rows in the DOM) at 100 rows per page.
+  Scroll the table's scroll container, then click "Next page" by aria-label.
+  Row key = name + Previous + Entered. About 3 s per page.
+- Filter panel: Position combobox (remove chip, type code, click option), "Enter
+  snap count" input, date range via calendar. Each calendar month arrow moves
+  **two** months; the end date cannot exceed Telemetry's own "today".
+- **"Apply Filters" sometimes needs a second click.** Verify the "Filter (n)"
+  count afterward.
+- If the pager shows Next disabled on page 1, reload. The filter survives a
+  reload but window state does not, so **export scraped data before reloading.**
+- Move big payloads out of the browser as gzip+base64.
+
+---
+
+## 8. Current state (2026-09-16; the repo's docs/STATUS.md is always newer)
+
+- **010** is the current workbook: 2025 FBS (all 136 teams) plus FCS
+  leaderboard players with Elig 1+ (12,029), 1,899 REVIEW flags (1,708 with
+  150+ snaps), Impact and Low Impact alerts in place. Of those, 3,268 players
+  and 635 REVIEW flags (545 with 150+ snaps) are Power Four. Every 009 player
+  has identical values in 010.
+- **009** is the FCS + Group of Six subset (8,761 players, 1,264 REVIEW).
+- **Validation run** (repo `docs/2026-09-16-validation-run.md`): 39 players
+  Baylor graded on 000's POST-PORTAL RECAP. Projected band exact for 12, within
+  one tier for 28; the data runs low against Power Four grades. With 009's
+  alerts, REVIEW catches 21 of 28 QS-or-better players and flags 5 of 11 FRP.
+- **Scope of 010:** every 2025 FBS or FCS player who still has eligibility,
+  including returning Baylor players with Elig 1+.
+- Earlier proof of concept (002 / 003): 3,000 transfer-portal players from
+  2026-09-02, 608 REVIEW flags.
+
+Known data caution: the portal grid's Top End Speed had implausible values
+(e.g. 39 mph), and the leaderboard's Top End Speed looks like a percentile, not
+mph. Verify before quoting it. It feeds no flag.
+
+Teaching case used in the coach-facing docs: **Michael Gravely Jr.** (SAF, Ball
+State) — 5 elite of 7 traits, so an AL projection, but Player Impact in the 1st
+percentile. The traits-versus-production example.
+
+---
+
+## 9. Next steps for an agent picking this up
+
+The ordered list lives in the repo's `docs/STATUS.md`. As of 2026-09-16:
+
+1. **Review the screening matrix (011)** with Eric, then the staff member.
+   Open decisions are listed in the repo STATUS.
+2. **Weekly refresh** once 2026 data fills in; the staff member runs it himself.
+
+Done 2026-09-16: the full 2025 FBS pull (010) and the matrix draft (011).
+
+Done since the 2026-09-14 version of this list: the data load is versioned code
+(`load_leaderboard.py`), the build is reproducible from 003 plus scripts, and
+validation exists (`validate_recap.py` against graded players,
+`check_workbook.py` against §5).
+
+Things deliberately out of scope: a weighted composite score, any write
+operation against Telemetry, and data-grading of FBI, wiring, keep-ability,
+character, or medical.
+
+---
+
+## 10. Conventions for whatever you write
+
+- New deliverables are numbered; the next is `014.` as of 2026-09-26 (confirm in
+  the repo STATUS). Never overwrite an existing numbered file, and never touch
+  `000.`.
+- Scripts go in the repo's `scripts/` folder with plain names, not numbered,
+  and not in this Drive folder.
+- Workbooks: read with openpyxl, but **write only through Excel COM** (pywin32).
+  Saving with openpyxl strips the conditional formatting. The docs were built
+  with docx-js.
+- Deletion is not permitted from the agent session on this machine. Move
+  unwanted files into `_to_delete/` and tell Eric.
+- Append a dated entry to `LOG.md` for anything you build or decide.
+
+## Imported Claude Cowork project instructions
+
+=====LOG (tail)
+- REVIEW BOARD: rows extended, new last column AL `Benchmark`. No formula or
+  SETTINGS change.
+- New last tab `BENCHMARK PROFILES`: band mix of the 710 by position (live
+  COUNTIFS on REVIEW BOARD) and a 174-row table of 25th / median / 75th
+  percentile and share at 75+ per metric per group (static, from the CSVs; Top
+  End Speed left out, metrics with fewer than 5 values left out).
+- README: one BENCHMARK row.
+
+**Checks:** `check_workbook.py` passes all 7 (it now allows the optional last
+tab). Regression: all 12,029 010 rows identical in PORTAL INPUT A:BS and
+REVIEW BOARD A:AK.
+
+**Counts, read carefully:** REVIEW in 012 is 2,352 (2,159 Sample OK) because
+it includes the 578 ineligible benchmark players. The pre-portal board is
+unchanged: filter Benchmark to blank or Elig 1+ and it is 1,899 (1,708 Sample
+OK), as in 010. 011's sizing still refers to 010.
+
+**What the benchmark shows:** of the 710, 33 project AA, 79 AL, 246 QS, 246
+FRP, 66 LIM, 29 NGE, 11 THIN or NO DATA. Half (50%) project QS or better,
+16% AL or better; 554 (78%) get REVIEW. Consistent with the validation run
+finding that the data runs low against proven players.
+
+**Numbering:** the next number is 013.
+
+---
+
+## 2026-09-26: 012 copied to Send/
+
+`012. ... (2025 FBS+FCS-G6, BENCHMARK).xlsx` copied unchanged into `Send/`
+for staff (byte-identical, name kept).
+
+`Send/Prototype - 003. ... (PORTAL 2026).xlsx` moved to `_to_delete/` so staff
+see only 012. Superseded, not needed.
+
+012 sent to Anthony Mauro (assistant GM) by Eric, 2026-09-26, full workbook.
+
+---
+
+## 2026-09-26: Pre-Portal Filters PDF tested; position profiles added, 013
+
+**Input:** `Baylor_Elite_Position_Profiles_2025.pdf` (12 pages, 2026-09-23):
+two must-haves per position (floor = elite 25th percentile, target = elite
+median; elite = Player Impact 90+) and a traits-only main / backup trait.
+
+**Tested** (repo `docs/2026-09-26-position-profiles-test.md`,
+`scripts/test_position_profiles.py`): clearing both must-haves passes 4% to 44%
+of the 2025 Elig 1+ pool (loose at IOL, SAF, EDGE, CB); the traits-only side
+passes about half the pool and is not a filter. On 43 graded recap players,
+both must-haves catch 13 of 29 QS+ and 1 of 14 FRP (ties 011); REVIEW catches
+21 and 5; REVIEW or both must-haves catches 24 and 6. The additions are
+Finau, Chester (OL), Ryan Davis (EDGE), Ponder (FRP, EDGE).
+
+**Decision (Eric):** build 013 now; add the profile as flags plus a second path
+into REVIEW at OT, OG, C and EDGE only; hold the size-table change for Mauro.
+
+**Built:** `013. BAYLOR - TELEMETRY x STAQS UNIFIED GRADING (2025 FBS+FCS-G6,
+POSITION PROFILES).xlsx` from 012 by `scripts/add_profiles.py` (Excel COM, off
+Drive, copied byte-identical, no overwrite).
+- SETTINGS rows 41-58: POSITION PROFILES table (metrics, floors, targets,
+  main / backup traits, 2nd-path switch per position), Profile minimum snaps
+  200 (B57), Diamond backup cut 70 (B58).
+- REVIEW BOARD AM:AQ: Must-have 1, Must-have 2 (TARGET / FLOOR / BELOW / NO
+  DATA), Profile (BOTH-T / BOTH / ONE / NONE / NO DATA), Diamond signal,
+  Profile REVIEW. REVIEW? gains the term Profile REVIEW = Y.
+- README: POSITION PROFILES row.
+
+**Checks:** `check_workbook.py` (now recomputes the profile columns and path)
+passes all 7. Versus 012, only REVIEW? (229 rows) and Low Impact alert (63)
+change, every REVIEW change explained by Profile REVIEW (108 OG, 65 EDGE, 46 C,
+10 OT). Pre-portal REVIEW with Sample OK: 1,708 to 1,930.
+
+**Size standards:** held. The question and proposed table are in the repo,
+`docs/2026-09-26-size-standards-question.md`.
+
+**Numbering:** 013 is the staff workbook; 010 stays the load template. Next
+number is 014.
+
+013 copied into `Send/` (byte-identical); the `Send/` copy of 012 moved to
+`_to_delete/` (013 contains everything in 012). The numbered 012 stays in the
+project folder.
+=====DEV repo
+
+Already up to date.
+3ddb489 Closeout 2026-09-26: STATUS next/open/gotchas, handoff
+0e8d21d STATUS: 013 in Send, 012 copy retired
+fb421e3 Build 013: position profiles as flags and an OL/EDGE path into REVIEW
+a9503cb Test the Pre-Portal Filters PDF: sizing, head to head, size standards
+284bac0 Name Anthony Mauro as the 9/15 staff member; Reynolds has left
+Name
+----
+.claude
+.git
+data
+docs
+scripts
+.gitignore
+AGENTS.md
+CLAUDE.md
+# STATUS
+
+Read this first. Update it before ending every session.
+
+## Current state
+
+- **Jev pilot brief captured 2026-09-22:**
+  `docs/2026-09-22-jev-recruiting-pilot.md`. TypeSafe API access was verified
+  on Windows with `jev-1.13.0`; no player data was sent. The proposal is a
+  shadow-mode evidence/exception sidecar and later valuation evidence ledger.
+  It is not implemented, staff-approved, or validated. Mac API access and an
+  approved qualitative evidence corpus have not been verified. PR #2 (merged
+  2026-09-26) carried it; the dated cross-harness handoff is
+  `docs/handoffs/2026-09-22-jev-pilot-capture.md`.
+- Deliverables 001 to 013 are on Drive. Next number is 014.
+- **013** (2026-09-26) is 012 plus the position profiles from Drive
+  `Baylor_Elite_Position_Profiles_2025.pdf`, built by `scripts/add_profiles.py`.
+  SETTINGS rows 41-58 hold the profile table (all thresholds editable);
+  REVIEW BOARD AM:AQ show Must-have 1/2, Profile, Diamond signal and Profile
+  REVIEW. Profile BOTH (200+ snaps) is a second path into REVIEW at OT, OG, C
+  and EDGE only: pre-portal REVIEW (Sample OK) 1,708 to 1,930. Passes all 7
+  checks (checker now recomputes the profile path); only REVIEW? and Low
+  Impact alert differ from 012. **Current staff workbook; in Send/ (replaced the 012 copy, 2026-09-26).**
+  Test behind it: `docs/2026-09-26-position-profiles-test.md`.
+- **Size standards held for Mauro:** `docs/2026-09-26-size-standards-question.md`
+  (describe the 2025 elite market or keep Baylor's prototype; SLOT row, LB
+  weight cap, OT floor).
+- **Data governance cleared for Jev with player data (Eric, 2026-09-26).** The
+  Jev pilot's remaining blocker is an approved qualitative evidence corpus
+  (scout notes); see `docs/2026-09-22-jev-recruiting-pilot.md`.
+- **012** (2026-09-26) is 010 plus Eric's 2025 benchmark set (Drive
+  `2025 Telemetry Benchmark Stats/`, 22 CSVs, 710 top 2025 players), built by
+  `scripts/add_benchmark.py`. All 710 tagged BENCHMARK (PORTAL INPUT BT,
+  REVIEW BOARD AL); the 578 Elig 0 players were appended as reference rows
+  (12,607 rows). New last tab BENCHMARK PROFILES: band mix of the 710 by
+  position (live) and per-metric 25th / median / 75th percentile per group.
+  Passes all 7 checks; all 12,029 010 rows identical. **REVIEW in 012 is
+  2,352 because it counts the benchmark rows; the pre-portal board (Benchmark
+  blank) is still 1,899 / 1,708 Sample OK.** Benchmark projects 16% AL+ and
+  50% QS+; 78% get REVIEW. 010 stays the template for new loads.
+- **011** (2026-09-16) is the screening matrix, proposed staff-review rules:
+  `011. BAYLOR - TELEMETRY x STAQS SCREENING MATRIX (PROPOSED).docx`. One
+  template for 14 roles (300+ snaps, k core metrics at 75th+, optional Player
+  Impact floor, must-have not under 25); boards of 35 to 54 per role (609
+  unique names) plus sized exception paths (Impact, Speed, Young, staff add).
+  Keeps 13 of 28 graded QS+ on a board, 17 with exceptions, 1 of 11 FRP.
+  Method and alternatives: `docs/2026-09-16-screening-matrix.md`; harness
+  `scripts/size_matrix.py`. **Not yet reviewed by Eric or staff.**
+- **010** (2026-09-16) is the full 2025 load: FBS (all 136 teams) plus FCS,
+  Elig 1+, 12,029 players, 1,899 REVIEW (1,708 with Sample OK). Power Four
+  adds 3,268 players and 635 REVIEW (545 Sample OK). Built by
+  `load_leaderboard.py` from `_exports/2025_baseline/fcs_g6/` and `fbs/`
+  staged into one folder, template 009. Passes all 7 `check_workbook.py`
+  checks; every 009 PlayerId has identical REVIEW BOARD values in 010. **Use
+  010 as the template for future loads.** Per-position counts: Drive LOG.md,
+  2026-09-16 evening entry.
+- **009** (2026-09-16) is 008 plus the Impact alert (Player Impact 90+, turns
+  REVIEW on) and the Low Impact alert (REVIEW rows at Player Impact 10 or
+  lower, a note only). 1,264 REVIEW flags (was 879), 1,163 with Sample OK (was
+  778); all 385 new flags come from the Impact alert. 149 Low Impact alerts.
+  Bands unchanged. Built by `scripts/add_impact_alerts.py` from 008.
+- **008** (2026-09-15) is the 2025 FCS + Group of Six leaderboard baseline:
+  8,761 players with Elig 1+, built by `scripts/load_leaderboard.py` from 22
+  CSVs in Drive `_exports/2025_baseline/fcs_g6/`.
+- 2026-09-15 meeting with Anthony Mauro, assistant GM (named 2026-09-26): strong buy-in; he
+  wants 30 to 50 pre-portal names per position by week 5 or 6. Notes:
+  `docs/2026-09-15-review-board-meeting.md`.
+- Plan approved by Eric 2026-09-15: 2025 baseline (done), validation run (done
+  2026-09-16), alerts (009, done), full FBS load (010, done 2026-09-16),
+  screening matrix (011, drafted 2026-09-16, awaiting review), then the weekly
+  refresh once 2026 data fills in.
+- **Validation run, both halves (2026-09-16):** 39 graded players from 000
+  `POST-PORTAL RECAP` with a band (19 FCS / G6, 20 Power Four). Bands: 12
+  exact, 28 within one tier, and the data runs low (mean gap -0.77 tiers,
+  -1.25 on Power Four). REVIEW caught 10 of 13 QS-or-better offensive players
+  and 5 of 15 defensive players; it flagged 4 of 11 FRP players. With 009's
+  Impact alert: 21 of 28 QS-or-better caught, 5 of 11 FRP flagged. Detail:
+  `docs/2026-09-16-validation-run.md`.
+- The 008 / validation / 009 work was merged to main 2026-09-16 (PR #1); 010,
+  011, 012 and the Jev brief on 2026-09-26 (PR #2). `main` is current.
+- Drive `AGENTS.md` refreshed 2026-09-16 (file table through 009, alerts, fixed
+  column positions, COM-only writes); Drive `CLAUDE.md` is now a pointer to it.
+
+## Settings currently implemented
+
+- Elite percentile 75, poor percentile 25
+- Minimum snaps 150 (LOW SAMPLE warns below this, does not suppress)
+- Speed alert: Play Speed or Deep Speed at 90th percentile or higher, fires
+  independently of the elite-share gate
+- Review trigger: elite-trait share at or above 0.375
+- Minimum graded traits to project a band: 2, else THIN
+- Impact alert (009): Player Impact 90 or higher, fires independently and turns
+  REVIEW on for rows with trait data (NO DATA rows never show REVIEW)
+- Low Impact alert (009): REVIEW row with Player Impact 10 or lower; note only
+- Tackling stays a counted IDL trait (decided 2026-09-16)
+
+## Next
+
+1. **Mauro's size answer** (texted 2026-09-26): describe the 2025 elite market
+   or keep Baylor's prototype. If "market", build 014 with the proposed table,
+   a SLOT row and a SLOT size lookup (`docs/2026-09-26-size-standards-question.md`).
+2. **Review 011 with Eric, then Mauro.** 013's profile columns may replace
+   011's core metrics at QB, RB, WR, OT, IDL, LB; decide together.
+3. **Weekly refresh** once 2026 data fills in (weeks 5 to 6). Mauro runs it
+   himself, so it may belong in Power Query inside the workbook. Loads go onto
+   010, then `add_benchmark.py` and `add_profiles.py` rebuild the staff view.
+4. **Optional ROSTER tag:** current Baylor players in their final year (Elig 0,
+   e.g. Gavin Freeman) are not in the workbook by design. Needs a roster list.
+5. **Jev shadow pilot:** governance cleared 2026-09-26; still needs an
+   approved scout-note corpus and staff labels. See the Jev pilot brief.
+6. Run `check_workbook.py` on every new numbered workbook.
+
+## Open questions
+
+- Size standards: market or prototype? (Mauro; see Next 1.)
+- The 63 new OL/EDGE REVIEW rows in 013 that also carry the Low Impact alert:
+  keep them on the board or require Impact above 10 for the profile path?
+- Data governance for sending player data to TypeSafe: cleared by Eric
+  2026-09-26. Is TypeSafe access configured on the Mac?
+- Can staff label a position-stratified sample that includes non-board players
+  and genuine negative evaluations? The existing 39 graded cases cannot test
+  rejection or calibrate Jev routing thresholds.
+- Are the 75th percentile and 0.375 share thresholds useful for recruiting?
+  Validation (n = 39): good on offense, weak on defense, and low against Power
+  Four grades (8 of 9 AL-graded P4 players project below AL). The 2-trait OL set
+  can only produce LIM/NGE, QS or AA. No LIM or NGE graded players in the
+  sample, so rejection is untested.
+- Why do Baylor's own players disagree most (Keaton Thomas AL to LIM, DJ
+  Coleman QS to FRP with Player Impact 96, Lagway AL to NGE)?
+- Answered 2026-09-16: Jordan Church match confirmed (Louisville 2025);
+  DeBraun Hampton has no tracked 2025 snaps; current Baylor players appear in
+  009 only if their 2025 team was FCS / G6 and Elig is 1+ (see the validation
+  doc, "Why some current Baylor players...").
+- Elusiveness (Telemetry WR trait) is missing from the CROSSWALK, glossary and
+  formulas, though Baylor's WR / SLOT YAC Ability descriptor says "Elusive."
+  Add it as a counted trait (changes WR elite share) or as a secondary?
+- SETTINGS has no SLOT size row, so slot receivers are sized against WR (25 of 26 elite slots score Size 1; in the size question).
+- Size versus Player Impact for proven undersized players; band sort versus a
+  rank, given the no-composite rule.
+
+## Gotchas
+
+- **012 and 013 are not load templates.** `load_leaderboard.py` clears rows but
+  not the Benchmark tag or profile columns. Load onto 010, then rerun
+  `add_benchmark.py` and `add_profiles.py`.
+- REVIEW totals in 012/013 include the 578 Elig 0 benchmark rows. Filter
+  REVIEW BOARD Benchmark (AL) to blank for the pre-portal board.
+- In the Telemetry exports the CB column is `Comp Rate Over Expected` (the
+  loader's alias for the long name never fires on these files).
+
+- REVIEW BOARD reads PORTAL INPUT by fixed column position, not header. Load
+  with `load_leaderboard.py`; write workbooks only through Excel COM (openpyxl
+  save strips the conditional formatting).
+- Telemetry `Elig.` and `Class` are current values even in past-season files
+  (30 of 30 transfers matched). Elig 1+ means still eligible after this season.
+  `Team` is the season's school, not a current value.
+- **Validation P4 files are subsets.** In `_exports/2025_baseline/
+  validation_fbs_fcs/`, only the two QB files are full; the 16
+  `*_recap-subset.csv` hold only recap players. Fine for grading those players
+  (percentiles do not change with scope), useless for sizing alerts.
+- **Downloads from automation (2026-09-16):** with the Chrome window hidden or
+  minimized (`document.hidden` true), screenshots and timers stall and
+  scripted downloads stop after the first one, even with "allow multiple
+  downloads" on. Download CSV is an `<a download>` blob link inside a Radix
+  menu (open it with a pointerdown on "More options"; the blob is built when
+  the menu opens, so reopen after the table loads). Workaround used: `fetch()`
+  the blob in the page and read it back, about 1 KB per JavaScript return. For
+  full exports, keep the window visible and click by hand or with real clicks.
+  Mantine selects (scope, season, group) respond to mousedown + click on
+  `[role=option]`. Leaderboard `Top End
+  Speed` looks like a percentile, not mph.
+- **Verify the season before trusting a leaderboard pull.** The season box can
+  read 2025 while the table still shows 2026 (seen 2026-09-16 with the window
+  hidden). Check one known player's snaps against a saved file first
+  (for example Colandrea, UNLV, 794 snaps in 2025).
+- Leaderboard position codes are alignments: OWR/SWR, H/F/Y, LT/RT, LG/C/RG,
+  DT/NT, UP/DOWN, ILB/OLB, FS/SS, OCB/SCB, ST. Both scripts map them; ST shows
+  Baylor tab "?".
+- 4,047 of 8,761 rows in 008 are NO DATA: Advanced-Stats-only players carry
+  Player Impact but no traits. FCS has no Ball Skills values. 66 players sit in
+  two position groups and keep the first file's position.
+- **Full FBS pull (2026-09-16) worked** with the window visible: real clicks on
+  "More options" > "Download CSV", 22 files in a row. The Telemetry app is
+  `https://app.telemetry.fm` (leaderboards at `/ncaa/leaderboard/player-traits`
+  and `/advanced-stats`). The extension may open its own new window, which
+  reports hidden until Eric brings it to the front. Window width can change
+  mid-session and move the toolbar; re-measure click positions. A
+  `browser_batch` of 7 groups timed out (downloads still finished); use 4 or 5.
+  Season can be verified afterwards from file contents (136 teams, top snaps
+  near 800 to 1,000 for a full 2025 FBS file).
+- **G6 players are in both `fcs_g6/` and `fbs/`** (4,968 ids, identical values),
+  so stage both folders together; the loader merges on PlayerId.
+- Telemetry in the browser: Chrome's "Ask where to save each file" dialog
+  freezes automation (Eric turned it off 2026-09-15). Switching Player Traits /
+  Advanced Stats tabs resets season, scope and group. Scope "Clear selection"
+  does not remove Power Four; untick the option. Click coordinates use the
+  screenshot frame, not page pixels. The Advanced Stats group list adds K and P
+  at the bottom. Check the table has rows before Download CSV (one TE export
+  came back empty).
+- Portal scrape: calendar arrows move two months; "Apply Filters" may need a
+  second click; reload if Next is disabled on page 1; the table is virtualized
+  (~20 rows in the DOM).
+
+

@@ -1,0 +1,2 @@
+- [BAIR document styling](feedback_bair-document-styling.md) — BAIR letters/reports share the eval report's BU-logo style; template paths
+- [Proulx approval status](project_proulx-approval-status.md) — Phase 1-only approval sent 9/29; open conditions and owners
