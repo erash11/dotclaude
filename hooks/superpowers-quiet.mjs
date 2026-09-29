@@ -31,4 +31,4 @@ try {
     }
   }
 } catch {}
-process.stdout.write("{}");
+process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "SessionStart" } }));
