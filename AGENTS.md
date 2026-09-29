@@ -2,7 +2,10 @@
 
 Machine-specific shell, paths, and traps live in `~/.claude/machine.md`. Read that file first. On a new machine copy `machine.macos.md` or `machine.windows.md` to `machine.md`.
 
-Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive. Every project repo carries a Session routine in its `AGENTS.md`: `git pull` + read `docs/STATUS.md` at start; update `STATUS.md`, commit, `git push` at end.
+Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end.
+
 # Workflow Expectations
 
 - One home: the "Workflow Expectations" section of `~/.claude/CLAUDE.md`. Read it there.
@@ -24,8 +27,9 @@ Two tiers.
 
 File naming by type: `user_*.md`, `project_*.md`, `feedback_*.md`, `reference_*.md`. Each needs frontmatter (`name`, `description`, `metadata.type`) plus a one-line pointer added to that slug's `MEMORY.md`.
 
-**Slugs.** The slug is the cwd with `/` and `.` replaced by `-`:
-`~` → `-Users-kristinarash` · `~/DEV` → `-Users-kristinarash-DEV` · `~/.claude/skills` → `-Users-kristinarash--claude-skills`
+**Slugs.** The slug is the absolute cwd with every character other than a letter or digit replaced by `-`:
+- Mac: `~/DEV` → `-Users-kristinarash-DEV` · `~/.claude/skills` → `-Users-kristinarash--claude-skills`
+- Windows: `~/Desktop/DEV` → `C--Users-eric-rash-Desktop-DEV` · `~/.claude/skills` → `C--Users-eric-rash--claude-skills`
 
 **Slugs differ per machine.** The same project is `-Users-kristinarash-DEV-<X>` on the Mac and `C--Users-eric-rash-Desktop-DEV-<X>` on Windows. Tier A written on one machine is not auto-injected on the other; memsearch still finds it. Prefer writing durable project facts to the repo's `docs/` so both machines see them.
 
@@ -38,17 +42,17 @@ File naming by type: `user_*.md`, `project_*.md`, `feedback_*.md`, `reference_*.
 Check `wc -c` before writing. If over cap, consolidate existing entries before adding.
 
 ## Daily compiled logs (separate system, read-only)
-`~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md`, produced by `claude-memory-compiler` via its own hooks. **Never write to them manually. Never read them eagerly** — treat the injected snapshot as the source of truth.
+`~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md`, produced by `claude-memory-compiler` via its own hooks. Only the compiler writes them. Read one only when a question needs that day; the injected snapshot is the source of truth.
 
-## Session startup (silent — output nothing)
+## Session startup (read without comment)
 
 > Kept as a manual instruction on purpose. Claude Code does this with the
 > `keystone-unified-snapshot.js` SessionStart hook, so `CLAUDE.md` no longer
 > states it. Codex has no equivalent hook, so the steps stay spelled out here.
 > Do not "align" the two files by deleting this section.
-Read in this order: `global-memory/USER.md`, then `global-memory/MEMORY.md`, then `global-memory/transcripts/.errors.log`. If `.errors.log` is non-empty, surface its contents once on the first response, then continue. It should normally be empty; entries indicate hook failures.
+Read in this order: `global-memory/USER.md`, then `global-memory/MEMORY.md`, then `global-memory/transcripts/.errors.log`. The one thing to say out loud: if `.errors.log` is non-empty, give a one-line-per-kind summary (kind, count, latest message) on the first response, then continue. Entries mean a hook or scheduled job failed.
 
-These are a **frozen snapshot** — loaded once. Mid-session writes persist to disk but take effect next session. This preserves the prefix cache. Never load more than this proactively.
+These are a **frozen snapshot** — loaded once. Mid-session writes persist to disk but take effect next session. This preserves the prefix cache. Load anything further only when a question needs it.
 
 ## Writing — the steps
 On "remember this", "note that", "update memory", "save this", "forget about":

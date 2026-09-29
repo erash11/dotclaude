@@ -35,6 +35,7 @@ const SOURCES = [
     file: path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log'),
     required: false,      // absent is fine
     skipIfEmpty: true,    // normally empty; only inject when it is not
+    summarize: true,      // one line per failure kind, not one per occurrence
   },
   {
     // Points, does not paste: ~6k chars of recent activity that most sessions
@@ -42,11 +43,42 @@ const SOURCES = [
     // `memory-compiler-pipeline`: "SessionStart now points, not pastes".
     // Flip `pointOnly` to false to inline it again.
     label: 'Cross-harness activity (KeystoneOS unified snapshot)',
-    file: path.join(HOME, 'DEV', 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'),
+    // Mac: ~/DEV. Windows: ~/Desktop/DEV. First path that exists wins.
+    file: [path.join(HOME, 'DEV'), path.join(HOME, 'Desktop', 'DEV')]
+      .map((d) => path.join(d, 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'))
+      .find((f) => fs.existsSync(f)) || path.join(HOME, 'DEV', 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'),
     required: false,
     pointOnly: true,
   },
 ];
+
+// .errors.log lines look like `[ISO-time] kind: message`. A stuck job writes
+// the same kind every few minutes, so the raw log can reach 100+ near-identical
+// lines injected into every session. Collapse to one line per kind: count,
+// first and last time, and the latest message (which carries the running count).
+function summarizeErrors(body) {
+  const groups = new Map();
+  const other = [];
+  for (const line of body.split(/\r?\n/)) {
+    const m = line.match(/^\[([^\]]+)\]\s*([\w.-]+):\s*(.*)$/);
+    if (!m) { if (line.trim()) other.push(line.trim()); continue; }
+    const [, ts, kind, msg] = m;
+    const g = groups.get(kind) || { n: 0, first: ts, last: ts, msg };
+    // Both machines append, so lines are not in time order: track min/max.
+    g.n += 1;
+    if (ts < g.first) g.first = ts;
+    if (ts >= g.last) { g.last = ts; g.msg = msg; }
+    groups.set(kind, g);
+  }
+  const t = (s) => s.slice(0, 16).replace('T', ' ');
+  const cap = (s) => (s.length > 300 ? s.slice(0, 300) + '…' : s);
+  const lines = [...groups].map(([kind, g]) =>
+    `- **${kind}** ×${g.n} (${t(g.first)} → ${t(g.last)} UTC): ${cap(g.msg)}`);
+  if (other.length) lines.push(`- ${other.length} unparsed line(s); see the file.`);
+  return lines.join('\n') +
+    `\n\nFull log: \`~/.claude/global-memory/transcripts/.errors.log\`. ` +
+    'Surface this once; clear the file after the user has seen it and the cause is handled.';
+}
 
 function emit(context) {
   const output = { hookSpecificOutput: { hookEventName: 'SessionStart' } };
@@ -77,7 +109,7 @@ function main() {
       );
       continue;
     }
-    parts.push(`## ${src.label}\n\n${body.trim()}`);
+    parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
   }
 
   if (problems.length) {
