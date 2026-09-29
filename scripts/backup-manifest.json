@@ -1702,6 +1702,42 @@
    ],
    "captureOrphans": true,
    "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/AI_Analyst",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/AI_Analyst.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/Flint",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Flint.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/RunningTheRoom",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/RunningTheRoom.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   }
  ]
 }
