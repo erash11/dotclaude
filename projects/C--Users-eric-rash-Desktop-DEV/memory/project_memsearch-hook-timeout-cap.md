@@ -77,32 +77,3 @@ under `/usr/bin/caffeinate -i -s` (`-s` holds only on AC; lid-shut on battery st
 **How to apply:** before tuning memsearch, line the slow window up against `pmset -g log`.
 Same session: `daily-backup.ps1` now resolves `{DEV}` in index paths (it had skipped
 `KeystoneOS/decisions`). Jev/TypeSafe does not help indexing: it judges, it does not embed.
-
-**2026-09-28 (Windows laptop) — the 600s cap is machine-speed-dependent, and headless sessions fanned it out.**
-`memsearch-sync.js` ran back-to-back 600s-killed runs all day (streak 33), each peaking 2.7–3.1 GB, and
-Claude Code's low-memory reaper killed other sessions' background jobs. Not a full reindex — memsearch is
-incremental per file. Two causes stacked:
-- A **10,138-chunk never-indexed backlog** (all of `transcripts/`, plus `dev-docs` sorted after
-  `printing-press-library/…`). bge-m3 on this CPU embeds ~5 s/chunk (Mac 0.7–1 s), so each run cleared ~110.
-- **Headless TypeSafe drive-triage `claude -p` sessions** (entrypoint `sdk-cli`) ended every ~30s — 257
-  SessionEnds Sun 19–22h — plus every `flush.py` SDK session (the hook lacked session-end.py's
-  `CLAUDE_INVOKED_BY` guard). The PID lock serialised them into a continuous chain; it bounds overlap, not load.
-
-Windows has **no nightly index**: `KeystoneOS-DailyBackup` is disabled and `Backup AI Sessions to Drive`
-only harvests dev-docs. So nothing drains a backlog and nothing resets the streak.
-
-Fix: the hook skips `CLAUDE_INVOKED_BY` / entrypoint `sdk*`, with a 30-min start cooldown
-(`transcripts/.memsearch-last-run`, checked while holding the lock); `~/.memsearch/config.toml`
-`batch_size = 8` (peak measured 921 MB vs 3.1 GB); one-off drain task `\Eric\memsearch-drain-once` →
-`~/.claude/scripts/memsearch-drain.ps1`, log `~/.claude/scripts/logs/memsearch-drain.log`.
-Still open: the Codex Stop hook `KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1` (per turn, 45s) has no cooldown.
-**How to apply:** "memsearch eats RAM" on Windows → check the streak in `.errors.log` and do a read-only backlog
-dry run (memsearch's scanner + chunker + `compute_chunk_id` vs Milvus `chunk_hash`) before blaming Milvus.
-
-**2026-09-29 — drain finished; weekly safety net added.** The one-off drain's 9/28 17:31 run finished
-exit 0 in 232 min, 8,764 chunks. An earlier 12:01 run died with no exit line, cause unlogged. Next hook
-run: "Indexed 1 chunks", streak cleared. Chose **no nightly index** on Windows: the hook keeps up once
-the backlog is gone. Added `\Eric\memsearch-drain-weekly` (Sun 02:00, AC only, StartWhenAvailable so
-a missed run fires at the next docked wake, no wake-to-run, 12h limit), running the same
-`memsearch-drain.ps1`. A no-op run takes seconds. **How to apply:** after a bulk import, run the task by
-hand (`Start-ScheduledTask -TaskPath '\Eric\' -TaskName memsearch-drain-weekly`) instead of waiting.
