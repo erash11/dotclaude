@@ -1,11 +1,11 @@
 ---
 name: automation-cadence
-description: "Standing automation schedule on the Mac — ritual nudges, memsearch reindex timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
+description: "Standing automation schedule on Mac + Windows — ritual nudges, memsearch reindex + recall eval timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-09-30T17:00:17.945Z
+  modified: 2026-09-30T20:00:24.643Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -25,10 +25,17 @@ The nudge is only a prompt; **the output artifact is the record**, not the remin
 
 ## memsearch reindex
 
-Reindex **rides the daily backup task** rather than running on its own timer. The
-nightly moved 00:30 → **09:00 on 2026-08-29** (CRASHBOX was unplugged at 00:30), so
-any reasoning that assumes an overnight reindex is wrong — the backup's uncapped full reindex absorbs backlogs the
-short SessionEnd hook can't finish. See [[backup-sync-system]].
+**Mac:** reindex **rides the daily backup task** rather than running on its own timer
+(00:30 → 09:00 on 2026-08-29 → **21:00 since 2026-09-24**, per claude-stack-doctor). The
+backup's uncapped full reindex absorbs backlogs the short SessionEnd hook can't finish.
+See [[backup-sync-system]].
+
+**Windows:** no nightly reindex — the `KeystoneOS-DailyBackup` task is disabled (since
+2026-08-13). Task Scheduler `\Eric\memsearch-drain-weekly` (**Sundays 02:00**) chains
+`memsearch-drain.ps1` → `audits/recall-eval/recall-eval.py` (memsearch, fts5, rg, jev;
+label `weekly`) → `audits/recall-eval/after-run.ps1`, which commits+pushes the results,
+writes `LATEST.md`, and appends to `.errors.log` only on a problem. `\Eric\memsearch-drain-once`
+is the same chain for one-off runs (last armed 2026-09-30 22:30, label `post-vault-index`).
 
 ## OS audits
 
