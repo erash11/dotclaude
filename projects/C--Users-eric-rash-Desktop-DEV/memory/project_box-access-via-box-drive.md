@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 0034ec57-b6bb-4981-8c1a-28ec40711534
-  modified: 2026-09-30T19:03:36.949Z
+  modified: 2026-09-30T20:16:56.496Z
 ---
 
 Baylor blocks third-party Box apps (confirmed 2026-09-30). So the Box plugin's MCP server
@@ -19,6 +19,12 @@ shared links, collaborations, or metadata. The box plugin's skills only give gui
 
 The folder holds identifiable athlete health data (for example, injury and concussion tracking CSVs).
 Handle it like DexaProject: never paste it into chat, an artifact, or an external service.
+
+Box Drive traps (2026-09-30, Volleyball_GRID): Excel opens Box Drive files as
+`https://api.box.com/wopi/...`, so `CELL("filename")` never gives a local path. A hidden
+Excel holding a file blocks Box from syncing it (`WAITING_FOR_EXCLUSIVE_HANDLE_CLOSE` in
+`%LOCALAPPDATA%\Box\Box\logs`). Never force-kill Box/BoxUI: it left `streem.exe` crashing on
+every launch; quit from the tray.
 
 **Why:** The first attempt spent a session trying MCP setup before this block surfaced.
 **How to apply:** For any Box request, go straight to the Box Drive path; don't retry MCP
