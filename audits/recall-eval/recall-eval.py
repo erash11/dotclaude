@@ -152,6 +152,14 @@ def main():
 
     global _FTS
     backends = [b for b in a.backends.split(",") if b]
+    # Chained after memsearch-drain in a scheduled task, this runs whether or not the
+    # index finished. Don't let a partial index pass as a clean memsearch number.
+    drain_log = HOME / ".claude" / "scripts" / "logs" / "memsearch-drain.log"
+    if "memsearch" in backends and drain_log.exists():
+        tail = drain_log.read_text(encoding="utf-8", errors="replace").strip().splitlines()[-1:]
+        if not tail or "exit=0" not in tail[0]:
+            a.label = (a.label + "-index-unverified").lstrip("-")
+            print(f"memsearch-drain.log does not end in exit=0 ({tail[0][:80] if tail else 'empty'}); label -> {a.label}")
     build_s = None
     if "fts5" in backends:
         t = time.perf_counter()
@@ -197,7 +205,7 @@ def main():
     cov = round(100 * sum(c["covered"] for c in cases) / len(cases), 1) if cases else 0
 
     today = datetime.date.today().isoformat()
-    out = HERE / "results" / f"{today}-{machine}-{(a.label or 'run').replace(' ', '_')}.json"
+    out = HERE / "results" / f"{today}-{machine}-{re.sub(r'[^A-Za-z0-9._-]+', '_', a.label or 'run').strip('_')}.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps({"date": today, "machine": machine, "label": a.label, "roots": [str(r) for r in rts],
                                "missing_roots": missing_roots, "coverage_pct": cov,
