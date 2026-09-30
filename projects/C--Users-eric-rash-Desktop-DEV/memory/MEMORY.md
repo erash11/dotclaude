@@ -61,3 +61,4 @@ Never put memory content here — the file itself holds the facts.
 - [Third-party skill install](project_third-party-skill-install.md) — installing a third-party skill
 - [Admin docs house style](feedback_admin-docs-house-style.md) — building any doc for administration; Baylor_Doc_Style only, ask before breaking a page limit
 - [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector, use the local Box Drive folder
+- [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
