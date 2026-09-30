@@ -59,3 +59,4 @@ Never put memory content here — the file itself holds the facts.
 - [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — Windows backup exit 3221225786
 - [Sport-science thought partner](user_sport-science-thought-partner.md) — performance, S&C or rehab questions
 - [Third-party skill install](project_third-party-skill-install.md) — installing a third-party skill
+- [Admin docs house style](feedback_admin-docs-house-style.md) — building any doc for administration; Baylor_Doc_Style only, ask before breaking a page limit
