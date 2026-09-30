@@ -18,7 +18,11 @@ param([switch]$DryRun)
 
 $ErrorActionPreference = 'Continue'
 $U = $HOME
-$DevRoot = "$U/DEV"                       # was Desktop\DEV on Windows
+# ~/DEV on the Mac, ~/Desktop/DEV on Windows. Resolved the same way as memsearch-sync.js
+# (2026-09-30): the hardcoded "$U/DEV" made every Windows run fall back to the 5-path index
+# list and report all 52 DEV dirs "absent from disk".
+$DevRoot = @("$U/DEV", "$U/Desktop/DEV") | Where-Object { Test-Path -LiteralPath "$_/KeystoneOS" } | Select-Object -First 1
+if (-not $DevRoot) { $DevRoot = "$U/DEV" }
 $LogDir = "$U/.claude/scripts/logs"
 $LogFile = "$LogDir/daily-backup.log"
 $StateFile = "$LogDir/backup-state.json"
@@ -489,7 +493,8 @@ if ($msExe -and -not $DryRun) {
         "$U/.claude/projects/C--Users-eric-rash/memory",
         "$U/.claude/claude-memory-compiler/daily",
         "$U/.claude/claude-memory-compiler/knowledge",
-        "$U/SecondBrain/Knowledge"
+        "$U/SecondBrain/Knowledge",
+        "$U/Desktop/SecondBrain/Knowledge"
     )
     $msConfig = "$DevRoot/KeystoneOS/data/memory-index-paths.json"
     $msPaths = $null
@@ -497,7 +502,10 @@ if ($msExe -and -not $DryRun) {
         try {
             $declared = (Get-Content -Raw -LiteralPath $msConfig | ConvertFrom-Json).paths
             if ($declared -and $declared.Count -ge 1) {
-                $msPaths = @($declared | ForEach-Object { ($_ -replace '\{HOME\}', $U) -replace '\{DEV\}', $DevRoot })
+                # {VAULT}: ~/SecondBrain on the Mac, ~/Desktop/SecondBrain on Windows (2026-09-30).
+                $vaultRoot = @("$U/SecondBrain", "$U/Desktop/SecondBrain") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+                if (-not $vaultRoot) { $vaultRoot = "$U/SecondBrain" }
+                $msPaths = @($declared | ForEach-Object { (($_ -replace '\{HOME\}', $U) -replace '\{DEV\}', $DevRoot) -replace '\{VAULT\}', $vaultRoot })
                 Log "INDEX path set: $($msPaths.Count) paths from memory-index-paths.json"
             }
         } catch { Log "INDEX config unreadable ($($_.Exception.Message)) - using built-in fallback list" }

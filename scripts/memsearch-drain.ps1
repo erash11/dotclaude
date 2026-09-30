@@ -24,9 +24,10 @@ function Log($m) { Add-Content -LiteralPath $log -Value "[$((Get-Date).ToString(
 
 # Same path source as memsearch-sync.js.
 $dev  = Join-Path $env:USERPROFILE 'Desktop\DEV'
+$vault = Join-Path $env:USERPROFILE 'Desktop\SecondBrain'   # {VAULT}; this script is Windows-only
 $cfg  = Get-Content -Raw (Join-Path $dev 'KeystoneOS\data\memory-index-paths.json') | ConvertFrom-Json
 $paths = @($cfg.paths | ForEach-Object {
-    ($_ -replace '\{HOME\}', $env:USERPROFILE -replace '\{DEV\}', $dev) -replace '/', '\'
+    ($_ -replace '\{HOME\}', $env:USERPROFILE -replace '\{DEV\}', $dev -replace '\{VAULT\}', $vault) -replace '/', '\'
 } | Where-Object { Test-Path -LiteralPath $_ })
 
 # Take the lock atomically; wait up to 20 min for a live hook run to finish.

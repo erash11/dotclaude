@@ -88,6 +88,15 @@ const DEV_ROOT = [
   path.join(os.homedir(), 'Desktop', 'DEV'),
 ].find(p => { try { return fs.statSync(path.join(p, 'KeystoneOS')).isDirectory(); } catch (_) { return false; } })
   || path.join(os.homedir(), 'DEV');
+// 2026-09-30: same drift, vault edition. The config said {HOME}/SecondBrain,
+// which only exists on the Mac; on Windows the vault is ~/Desktop/SecondBrain,
+// so the existsSync filter below silently dropped all three vault paths and the
+// vault was never indexed there. Paths may now use {VAULT}, resolved the same way.
+const VAULT_ROOT = [
+  path.join(os.homedir(), 'SecondBrain'),
+  path.join(os.homedir(), 'Desktop', 'SecondBrain'),
+].find(p => { try { return fs.statSync(p).isDirectory(); } catch (_) { return false; } })
+  || path.join(os.homedir(), 'SecondBrain');
 const KEYSTONE_INDEX_CONFIG = path.join(
   DEV_ROOT, 'KeystoneOS', 'data', 'memory-index-paths.json'
 );
@@ -103,7 +112,7 @@ function resolvePaths() {
     path.join(os.homedir(), '.claude', 'projects', 'C--Users-eric-rash', 'memory'),
     path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'daily'),
     path.join(os.homedir(), '.claude', 'claude-memory-compiler', 'knowledge'),
-    path.join(os.homedir(), 'SecondBrain', 'Knowledge'),
+    path.join(VAULT_ROOT, 'Knowledge'),
   ];
   try {
     const raw = fs.readFileSync(KEYSTONE_INDEX_CONFIG, 'utf8');
@@ -112,7 +121,7 @@ function resolvePaths() {
       logErr(`index config ${KEYSTONE_INDEX_CONFIG} has no usable paths — using built-in fallback (${fallback.length} paths)`);
       return fallback;
     }
-    return parsed.paths.map(p => p.replace('{DEV}', DEV_ROOT).replace('{HOME}', os.homedir()).split('/').join(path.sep));
+    return parsed.paths.map(p => p.replace('{DEV}', DEV_ROOT).replace('{VAULT}', VAULT_ROOT).replace('{HOME}', os.homedir()).split('/').join(path.sep));
   } catch (e) {
     // Loud, not silent: a silent fallback is exactly how the Desktop/DEV drift
     // went unnoticed from the Windows migration until 2026-08-14.
@@ -166,6 +175,10 @@ function rootCause(text) {
 }
 
 const existing = PATHS.filter(p => fs.existsSync(p));
+// Say which configured paths are missing instead of dropping them silently.
+// Logged to the index log (not .errors.log) because some entries are
+// legitimately machine-specific, e.g. the other machine's memory slug.
+const missing = PATHS.filter(p => !existing.includes(p));
 if (existing.length === 0) process.exit(0);
 
 function isProcessAlive(pid) {
@@ -246,7 +259,8 @@ try {
   });
 
   const out = `${res.stdout || ''}${res.stderr || ''}`.trim();
-  try { fs.writeFileSync(INDEX_LOG, out ? out + '\n' : '(no output)\n'); } catch (_) {}
+  const skipped = missing.length ? `(skipped, not on this machine: ${missing.join(', ')})\n` : '';
+  try { fs.writeFileSync(INDEX_LOG, skipped + (out ? out + '\n' : '(no output)\n')); } catch (_) {}
 
   // Transient, self-healing failures (the next incremental index catches up)
   // escalate to .errors.log only after a consecutive streak. Two classes:
