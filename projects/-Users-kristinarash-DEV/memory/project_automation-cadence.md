@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-08-14T20:15:14.244Z
+  modified: 2026-09-30T17:00:17.945Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -37,7 +37,13 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 
 ## Capability limits worth remembering
 
-- **gws** is authenticated. Re-auth requires explicit full scope URLs — the `-s drive`
+- **gws `invalid_client: The provided client secret is invalid` = stale client SECRET, not
+  token rot** — re-auth alone never fixes it. The secret for client `208643585660-3ogm…`
+  (project `baylor-gws`) was rotated 2026-09-17 to one ending `Xyjf`; the Mac kept the
+  June one until 2026-09-30, when the Windows copy was carried over via Drive. Console no
+  longer shows or downloads a secret: copy the other machine's `client_secret.json`, or
+  Add secret (shown once). Then login, then delete `token_cache.json`.
+- **gws** re-auth requires explicit full scope URLs — the `-s drive`
   shorthand silently grants no scopes (v0.22.5 bug), and `~/.config/gws/token_cache.json`
   must be deleted after re-auth or the stale token is served. See [[gws-forms-api]].
 - **MCP Gmail is draft-only** — it can compose drafts but must not be treated as a send path.
