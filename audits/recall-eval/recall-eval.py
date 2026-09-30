@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Recall eval: can each retrieval backend find the known answer file?
 
-Runs every case in questions.jsonl against up to three backends over the SAME
+Runs every case in questions.jsonl against up to four backends over the SAME
 roots (KeystoneOS data/memory-index-paths.json, tokens resolved per machine):
 
   memsearch  vector search (Milvus + ONNX embedder), top 5 distinct files
   fts5       stdlib SQLite FTS5 / BM25 over whole files, natural-language query
   rg         ripgrep on the case's `keyword`, files ranked by match count
+  jev        fts5 top 30, then TypeSafe Jev re-sorts the ALLOWED notes by a yes/no
+             "does this note answer the question?" (cloud call; see JEV_ALLOWED)
 
 Per case: rank of the first expected file, latency, failure, and coverage
 (does an expected file exist under the configured roots on THIS machine --
@@ -17,8 +19,11 @@ to ledger.md. Stdlib only. Spec: ../2026-09-30-memory-infra-audit.md section 6.
 
   python recall-eval.py --label opus-5.5            # all backends
   python recall-eval.py --backends fts5,rg          # skip memsearch (no Docker / low RAM)
+  python recall-eval.py --backends fts5,jev         # needs TYPESAFE_API_KEY or ~/.claude/typesafe.env
 """
 import argparse, datetime, json, os, platform, re, shutil, sqlite3, statistics, subprocess, sys, time
+import urllib.error, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -101,13 +106,91 @@ def build_fts(rts):
     return db, n
 
 
-def b_fts5(q, case):
+def fts5_top(q, limit):
     toks = [t for t in TOKEN.findall(q) if len(t) > 2]
     if not toks:
         return []
     expr = " OR ".join('"%s"' % t.replace('"', "") for t in toks)
-    rows = _FTS.execute("SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d) LIMIT 5", (expr,)).fetchall()
+    rows = _FTS.execute("SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d) LIMIT ?", (expr, limit)).fetchall()
     return [r[0] for r in rows]
+
+
+def b_fts5(q, case):
+    return fts5_top(q, 5)
+
+
+# Only these folders may be sent to TypeSafe's cloud (Eric's choice, 2026-09-30):
+# vault book/knowledge notes, compiled knowledge articles, and Tier A project memory
+# (user_* personal notes excluded).
+# Transcripts, daily logs, meeting notes, briefings, dev-docs, Codex memories and
+# KeystoneOS decisions are never sent; they keep their fts5 positions instead.
+JEV_ALLOWED = ("/secondbrain/knowledge/", "/claude-memory-compiler/knowledge/", "/.claude/projects/")
+JEV_POOL = 30
+JEV_CHARS = 2000
+JEV_URL = "https://api.typesafe.ai/v1/systemone"
+_JEV_KEY = None
+JEV_USAGE = {"calls": 0, "input_tokens": 0}
+
+
+def jev_allowed(path):
+    n = norm(path)
+    if "/.claude/projects/" in n:
+        # Tier A notes only, never session transcripts; and not the personal user_* notes
+        return "/memory/" in n and not Path(n).name.startswith("user_")
+    return any(a in n for a in JEV_ALLOWED)
+
+
+def jev_key():
+    global _JEV_KEY
+    if _JEV_KEY is None:
+        _JEV_KEY = os.environ.get("TYPESAFE_API_KEY", "")
+        env = HOME / ".claude" / "typesafe.env"
+        if not _JEV_KEY and env.exists():
+            for line in env.read_text(encoding="utf-8").splitlines():
+                if line.startswith("TYPESAFE_API_KEY="):
+                    _JEV_KEY = line.split("=", 1)[1].strip().strip("'\"")
+        if not _JEV_KEY:
+            raise RuntimeError("no TYPESAFE_API_KEY")
+    return _JEV_KEY
+
+
+def jev_answers(query, path):
+    text = Path(path).read_text(encoding="utf-8", errors="replace")[:JEV_CHARS]
+    body = {"model": "jev-latest",
+            "state": {"query": query, "note": {"title": Path(path).stem, "text": text}},
+            "questions": {"answers": {"type": "noul",
+                                      "instructions": "Does `note` contain the information that answers `query`?",
+                                      "criteria": {"yes": "The note directly addresses what the query asks about.",
+                                                   "no": "The note is about something else or only mentions the words in passing."}}}}
+    req = urllib.request.Request(JEV_URL, data=json.dumps(body).encode(),
+                                 headers={"Authorization": "Bearer " + jev_key(), "Content-Type": "application/json"})
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                out = json.loads(r.read())
+            JEV_USAGE["calls"] += 1
+            JEV_USAGE["input_tokens"] += out.get("usage", {}).get("input_tokens", 0)
+            return out["answers"]["answers"]["noul"]
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 529) and attempt < 4:
+                time.sleep(2 ** attempt)
+                continue
+            raise RuntimeError(f"TypeSafe HTTP {e.code}: {e.read()[:120]!r}")
+
+
+def b_jev(q, case):
+    jev_key()  # load once before the thread pool; lazy loading inside it raced (2026-09-30)
+    pool = fts5_top(q, JEV_POOL)
+    slots = [i for i, p in enumerate(pool) if jev_allowed(p)]
+    sendable = [pool[i] for i in slots]
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        probs = list(ex.map(lambda p: jev_answers(q, p), sendable))
+    ranked = [p for _, p in sorted(zip(probs, sendable), key=lambda x: -x[0])]
+    out = list(pool)
+    for slot, p in zip(slots, ranked):
+        out[slot] = p
+    case["_jev_pool_hit"] = rank_of(pool, case["expected"])
+    return out[:5]
 
 
 def b_rg(q, case):
@@ -126,7 +209,7 @@ def b_rg(q, case):
     return [p for _, p in counts[:5]]
 
 
-BACKENDS = {"memsearch": b_memsearch, "fts5": b_fts5, "rg": b_rg}
+BACKENDS = {"memsearch": b_memsearch, "fts5": b_fts5, "rg": b_rg, "jev": b_jev}
 
 
 # ---------------- run ----------------
@@ -161,7 +244,7 @@ def main():
             a.label = (a.label + "-index-unverified").lstrip("-")
             print(f"memsearch-drain.log does not end in exit=0 ({tail[0][:80] if tail else 'empty'}); label -> {a.label}")
     build_s = None
-    if "fts5" in backends:
+    if "fts5" in backends or "jev" in backends:
         t = time.perf_counter()
         _FTS, nfiles = build_fts(rts)
         build_s = round(time.perf_counter() - t, 1)
@@ -179,7 +262,10 @@ def main():
                 err = f"{type(e).__name__}: {e}"[:200]
             ms = round((time.perf_counter() - t) * 1000)
             rk = rank_of(files, c["expected"])
-            results[b].append({"id": c["id"], "layer": c["layer"], "rank": rk, "ms": ms, "error": err, "top": files})
+            row = {"id": c["id"], "layer": c["layer"], "rank": rk, "ms": ms, "error": err, "top": files}
+            if b == "jev":
+                row["pool_rank"] = c.pop("_jev_pool_hit", None)
+            results[b].append(row)
             mark = "FAIL" if err else (f"@{rk}" if rk else "miss")
             print(f"  {b:9s} {c['id']:4s} {mark:5s} {ms:6d} ms  {c['query'][:60]}")
 
@@ -226,6 +312,9 @@ def main():
     print(f"\ncoverage {cov}%  missing roots: {len(missing_roots)}  uncovered: {[c['id'] for c in cases if not c['covered']]}")
     for b, s in summary.items():
         print(f"{b:9s} hit@5 {s['hit5']}/{s['n']}  hit@1 {s['hit1']}  MRR {s['mrr']}  p50 {s['p50_ms']} ms  fail {s['fail_pct']}%  {s['by_layer']}")
+    if "jev" in backends:
+        print(f"jev: {JEV_USAGE['calls']} calls, {JEV_USAGE['input_tokens']} input tokens "
+              f"(~${JEV_USAGE['input_tokens'] * 0.042 / 1e6:.4f} at $0.042/M)")
     print(f"results: {out}")
 
 
