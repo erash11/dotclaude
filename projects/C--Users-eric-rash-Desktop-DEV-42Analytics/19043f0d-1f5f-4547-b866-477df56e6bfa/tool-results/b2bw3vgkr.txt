@@ -1,0 +1,4938 @@
+##### 2017-03-14_81CC-uLrOtE_ball-don-t-lie-the-future-of-basketball-analytics
+{
+ "id": "81CC-uLrOtE",
+ "title": "SSAC17: Ball Don't Lie: The Future of Basketball Analytics",
+ "channel": "42 Analytics",
+ "upload_date": "20170314",
+ "duration": 3581,
+ "view_count": 10998,
+ "description": "",
+ "chapters": null,
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC17: Ball Don't Lie: The Future of Basketball Analytics"
+video_id: 81CC-uLrOtE
+url: https://www.youtube.com/watch?v=81CC-uLrOtE
+channel: 42 Analytics
+upload_date: 2017-03-14
+duration: 59:41
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [basketball]
+---
+
+# SSAC17: Ball Don't Lie: The Future of Basketball Analytics
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:10]
+good morning everyone and welcome to the
+second panel of the second day of the
+2017 Sports analytics conference my name
+is Barry brudney I'm a first year MBA
+student here at Sloan and I am extremely
+happy to be able to be the presenter for
+today's panel the future basketball
+analytics or as we like to call it don't
+lie and I'm extremely happy to be able
+to present the panelists for today's
+discussion starting from my left we have
+Luis skola current NBA player Mike Zaron
+assistant GM of the Celtics Vin Alro
+
+[00:42]
+former NBA player and head coach subd
+point guard of the Seattle Storm Dean
+Oliver VP of data science for True Media
+and our moderator for today is Zach low
+ESPN senior writer the panel for today
+will last 45 minutes followed by 15
+minutes of Q&A in order to be be able to
+submit your questions we ask that you
+please go through the Twitter app using
+the # future of
+bball the questions with the top
+mentions will be selected by our
+moderator and with that I'll hand things
+
+[01:12]
+over to Zach hey everybody uh first of
+all thanks to all this is the biggest uh
+panel I think in the history of this
+long conference there's Vinnie is a last
+minute Edition Luis is a semi last
+minute Edition so thanks for everyone
+for participating okay the future of uh
+basketball analytics I think you got to
+start with the the sport view stuff and
+the cameras and one of the research
+papers that I thought was really good at
+this conference was about mapping
+possessions using the camera data to map
+like literally what happens on
+
+[01:42]
+possessions how do players move and the
+focus was on how do the Houston Rockets
+generate Corner 3s and just what
+patterns of movement are there and it
+was a great paper and a lot of work went
+to it but my reaction was I don't really
+need a paper to tell me how the Eon
+Rockets generate Corner 3s I know how
+they generate Corner 3s so I wanted to
+start by pointing out that a that work
+was great and B from a front office
+perspective for for Dean and Mike what's
+the next step from a paper like that
+like what's buried in there that can
+
+[02:13]
+help me win basketball games like what
+little skills are are are maybe going to
+be highlighted in that sport view data
+that maybe aren't so obvious that helped
+me lead to winning what are you looking
+for in there that's interesting to you
+from building a winning
+team defense defenses you're talking
+about how they set up a corner three I
+I'm always looking at okay if you're
+saying this is what they do and that's
+what they do how do I take those
+elements away and then what's their
+counter going to be and it's always the
+defensive side what's the better
+positioning because it's I I think
+
+[02:44]
+that's been underrepresented in
+traditional work and the defensive side
+that wasn't in that paper I don't think
+as much that's what you look for you the
+big philosophical stuff is not where
+it's at in that data I don't think as
+much as the little things right so which
+guys get hung up on screens should you
+go over or under against this
+combination of guys in a pick and roll
+um we you know we didn't coaches talk
+about those things all the time and we
+never used to know you could say right I
+think Brian scalabrini is a good screen
+
+[03:15]
+Setter he says he is that's for sure but
+um but but now we actually know like he
+was good at setting screens um and so or
+whoever it is that you're tracking now
+because we actually have every screen
+identified and we can look at what
+happened and who was involved it what
+was the angle that someone was dribbling
+at those sorts of things
+so I mean more than should you take a
+lot of Threes which is a question that
+seems to be coming up a lot um it's
+those little things that you'll look at
+in that data that let your analysts talk
+like coaches and you think there's stuff
+
+[03:47]
+in there that that stuff helps you win
+that stuff can like what defense what's
+what's interesting about defense what
+are you looking for you mentioned
+positioning there's another paper about
+like we're starting to see how like what
+limbs are doing and like what arms are
+up like what's interesting to you uh
+certainly for a long time we've been
+able to determine okay Corner 3es Wing
+the above the brake 3es in terms of
+what's important but then how did they
+get them and then there's a sequence of
+okay how often do they they switch how
+often will they set the Downs screen and
+these kind of things and just give a
+
+[04:17]
+coach access to the percentage of time
+that they're setting up these shots
+because before we could say you want to
+take away the wing three for for Steph
+or whomever but then okay what's the
+percentage you want to give them up here
+versus down here now you look at the
+percentage of of ways they set those
+each of those up and you give that to a
+coach and then they say okay yeah this
+way how how often have the players here
+been told like high hands sure right all
+the time right so what if I came to you
+and said well guess what you only been
+
+[04:48]
+doing it 10% of the time and then I had
+the video link to that to show you that
+you're just running up at the guys and
+not challenging the shot 10% he's on the
+bench right so that's there you go body
+pose is important well it's I think it's
+important to highlight that what seems
+like some small detail do I really need
+to know that in a basketball game
+generally speaking it comes down to what
+2 minutes of play a run a team goes on
+you know an 80 run there goes the game
+and these these happen so quickly so
+these little details if you can fix them
+take care of them could literally win
+
+[05:19]
+you games even if it's one high hand at
+the very end or in the middle or
+whenever so it's it's I just think it's
+important to to understand that even
+though it's some small small detail
+it'll win you a game and I I think the
+timing actually the timing of high hands
+because one of the things that that gets
+taught uh that I was taught when I was
+young is the timing of when you get out
+to the shooter is critical and I think
+this can actually tell you whether your
+timing is good and I haven't seen that
+done yet but it is important you get the
+guy who puts his hands up like after the
+guy shot just say
+he's I did it but it's better than Julia
+
+[05:51]
+loal for just standing there and doing
+nothing for two
+minutes but but as a coach it's not only
+what you can help your team do looking
+back at when I was coaching obviously
+there's ways to use the data but I think
+what Dean said is very important too in
+the sense that it's what you can take
+away from the other team those are the
+things you're looking at not only the
+data to build a relationship with a
+player I always talk about as a coach
+trusting your eyes when you watch but
+the numbers reiterate that or the stats
+of the data do but also giving it to the
+player and letting them see hey it's not
+
+[06:21]
+only what I'm talking about here's the
+actual numbers to help you be better it
+it just helps the communication factor
+from one side of the data to the coach
+to the player and it's always about the
+communication with the player to help
+them understand how he can improve
+individually to make the group better
+how often did you make those numbers up
+just to get the player just once in a
+while I just call you and you would give
+me the numbers and it was perfect so
+Mike you were talking before the panel
+about like we we've spent 10 years at
+this conference talking about like how
+does one side talk to the other side and
+blah blah and what we haven't spent a
+
+[06:51]
+lot of time talking about is like what
+numbers matter for players like what do
+they want to know about themselves so we
+have two I'm going to just say it we
+have two Hall of Fame players on this
+panel right now um that's right and um
+like and and very curious about
+analytics like either one of you what
+what have you did you did analytics
+actually ever tell you something about
+yourselves that you didn't know or or
+was conversely was there ever something
+that like darl M tried to get you to
+know about yourself but you're like I
+
+[07:22]
+don't want to know that because it's
+going to get in my head I'm going to
+think about it too much did you ever
+learn anything like that yeah I think I
+learn a lot of things from num uh the is
+like early in my career I was kind of
+like disregarding all that you know you
+play for the feel of the game you
+thinking you know the game is intuitive
+you got to go out there and play just
+work hard play hard make the right play
+and all those things and you learn you
+learn different things and you evolve as
+a player usually happens when your body
+doesn't react that well you start
+looking for different things that can
+help you to continue to play at a high
+
+[07:52]
+level and you start looking at other
+stuff and at some point along that
+process I I
+got into numbers well what can I do um
+you know to continue to play hard or a
+high level continue to help the team and
+obviously I discovered some stuff about
+my game some like I was looking for the
+bad stuff because that's the things you
+want to sh and like we all know I was
+BMB but the post game is not a good
+thing the long to is not a good thing
+those were things that I was doing and
+
+[08:23]
+you had to shave them Mario game because
+they're bad and to the point before we
+were talking I think like what is it
+that is going to help us win games we we
+still trying to figure that out you know
+we have all these data all this raw
+numbers a whole bunch of numbers
+sometimes somebody came and tell you or
+I'm very curious so I always talk about
+number guy read numbers gu about numbers
+and and what's out there and they come
+with this study or research or this
+number and they say well we figured this
+out and what's the conclusion well the
+
+[08:53]
+best idea is LeBron and I was like yeah
+we kind of knew in Lebron it was good we
+we didn't need this a three month study
+to figure that out so how can we put
+this into something that helps me today
+to win this game or to practice better
+and I I think we are a little bit in
+that process and that's the reason why I
+think numbers is such a big deal right
+now because it's a is a niche now what
+can you do to get ahead of the curve
+what can you do to be in front
+somebody's going to get it down and we
+all going to be chasing them you know
+
+[09:24]
+it's the way the NBA works somebody
+figures somebody discovered something
+and everybody see their success and they
+just trying to catch them and then
+eventually they do and then somebody
+else come with a new thing I think that
+thing right now is numbers the analytic
+people they know them they understand
+them coaches they understand a little
+better than before but not so much and
+players are way behind so how we
+transitioning from the very smart people
+that GA all the data together simplify
+
+[09:54]
+for the coaches and the coaches to
+assimilate all that simplif and send it
+to the players in a very much simpler
+message that can help them win that
+night so I think that process is where
+we are right now and what that's why
+every team is really really pushing for
+it they work they go being very
+aggressive at it yeah what do you
+actually want to know about yourself um
+well there's a thin line between wanting
+to know things about yourself and seeing
+these percentages and it becoming a
+mental problem so I was told I mean I
+
+[10:25]
+already knew it but I was told oh you go
+better you shoot better going left like
+yeah I know
+and now all of a sudden I'm in a game
+and I see a team pushing me right and
+I'm like wait a minute you know and then
+you try to go right and you're mental
+about it so there's this thin line
+between again wanting to know all that
+and then it becoming a mental problem
+but it does force you to work on things
+in your game and that's definitely been
+my journey the last couple years in
+terms of the numbers and how it affects
+my game and now I'm kind of getting to
+the point where I want to know where my
+teammates are successful so you know if
+
+[10:55]
+I've got Brianna Stewart and juel Lloyd
+you know to my left and my right and I
+know Stewie Shoots Great over there and
+Jules I want to know that so I can go to
+the you know the player that's basically
+I want to put my teammates in a in a
+position to be successful and that's
+where I've kind of gone with with this
+numbers thing I'm I'm studying that more
+I mean I'm 36 there's only so much I'm
+going to change at this point I am who I
+am as a bball player but if I can help
+my teammates be successful you know and
+numbers plays a role in that my my
+experience though was that using numbers
+to help my coach or my players know
+
+[11:25]
+themselves is not as good as helping
+them to know the other team
+that was always my experience they knew
+George Carl knew his team really well
+and I I think you probably know
+teammates before the numbers there but
+there there's always a human element to
+it like like Sue just said and like Dean
+just said you know the numbers are great
+but that human element that can combine
+the data but some players you give that
+data to it slows their mind down which
+slows their feet down and they get
+mental they don't want to go right or
+they're they're trying to do something
+they're not so knowing your player their
+
+[11:56]
+personality building that relationship
+with them obviously to incorporate some
+data that can help them but some guys
+like Lewis said I could give him 10
+things that he could digest them there
+might be another younger player I might
+be only give one or two things to and
+that might be too much for him so
+knowing that human element I think is
+very important too when you're
+incorporating that the people who are
+curious about this stuff it's it's not
+like a perfect overlap with the people
+who can play and not think about it yeah
+like those are two separate groups and
+there's some overlap and there's some
+not overlap so we talk a lot about what
+
+[12:27]
+information you know the player should
+get and you don't want to be the guy
+keeping info from the players but at the
+same time you don't want to mess up
+their game and that's why you have good
+coaches hopefully um they might be
+saying the same thing to the players
+they're always saying send this guy left
+but we just are more sure about it now
+what I what I keep telling the young
+guys you know this is happening it's in
+10 years players are going to be able to
+understand all these numbers they want
+to have like a very good education in
+analytics Advanced starts and all these
+things uh it's going to happen so you
+
+[12:57]
+want to be you want to be ahead you want
+want to be one of the first ones to
+understand it cuz you will have to
+understand it anyway you might be the
+last one of the team or the first one of
+the team you might want to be the the
+first one in the NBA or the last one in
+the NBA but you will have to understand
+it so the sooner you start you has to
+start working right now because it's
+happening it's just no way to stop it
+more and more stuff's going to be online
+too right so a guy if if he's not
+getting it from you but he goes on some
+website and sees something about his
+game and you haven't told him like
+that's not a good thing either Luis do
+you think the game you were you you
+lived through this transition of how the
+
+[13:28]
+NBA is now you had to learn how to shoot
+threes you know and and change your game
+do you think the league is do you have
+more fun playing now than you did 10
+years ago or less fun no I have I have
+the same amount of fun I I think just
+playing the game is fun you know
+regardless of how if you shoot a three
+or two or a postup or you know dunks are
+more fun but I never done those so I I
+that didn't change do you like watching
+the Rockets play yeah I like it I like
+it I just you know I just like the idea
+of watching you know they they got a
+really big planning in course and they
+
+[14:00]
+executing it and it's working I think
+it's fun you know you believing in
+something that nobody believe you before
+you started you changed everything and
+it's working and I I find that
+fascinating I think uh the NBA is fun
+it's just a little bit different than
+before and it's exciting the game is
+changing but a player like Luis he has
+versatility and has a skill set where he
+can go out and shoot threes there's some
+guys that are going to lose their jobs
+because the game is changing where
+they're not as skilled where before
+years ago hey if I'm a Bruiser I set
+
+[14:31]
+good screens or I'm a great rebounder or
+whatever those players are still having
+an advantage but the versatility player
+and a player like a Lis that's so
+skilled he can run pick and roll he can
+shoot a two he can make free throws but
+now he can step out and shoot a three
+and open the court up from a number
+standpoint because the game is so pick
+and roll oriented that's an advantage
+but there isn't a lot of guys that can
+do that like him so that's a that's a
+big number a lot of this is about
+communication so I want to I want to get
+specific I don't want the two front
+office guys former and current I want an
+example of an argument that you lost an
+
+[15:03]
+analytics based argument with your coach
+or your GM or whoever your owner that
+did not go well for you and maybe maybe
+it was good that you lost or for your
+franchise or maybe it was bad that you
+lost but give me give us take us behind
+the curtain I know you have an example
+you told me it so there
+was this is only 45 minutes too by the
+way there there's a oh you think there's
+a lot of
+them we were running a play and I could
+stand it and um I won't say when or who
+the coaching staff was but but uh I I
+
+[15:35]
+went to them with like all prepared to
+say well this play was terrible all
+these information and uh we were mostly
+running it early in the game and then
+we'd go away from it later and I kept
+thinking well this is you know they
+realize later in the game it's not
+working each time like why do we keep
+and the whole point of it was just to
+set up something that we would run later
+that would confuse them because they
+thought we'd be running the first thing
+see I think that's football that's I
+didn't I didn't really realize that was
+part of so you you I guess stuff like
+that constantly we I've talked to the
+
+[16:05]
+Patriots about this stuff well yeah but
+it's not cheating come on what about you
+uh this you you've you've worked for
+some interesting some interesting teams
+the big the biggest Downer of this whole
+conference for me was that you were
+still contractually obligated to not
+talk about the Kings which is like I I
+wanted the whole panel to be you talking
+about the Kings but we can't we can't do
+that so give me an example of argument
+though and my example is is from the
+draft when I was with the Nuggets uh for
+sure so the uh and so working with
+
+[16:35]
+George Carl who have ton of respect for
+We There was a player and this is when
+you're working in the draft it's mostly
+Personnel you're working with Personnel
+people not the coaches but you end up
+trying to convince the coaches at the
+end and uh we were looking at Richard
+Hendricks in the year he got drafted he
+was a power forward out out of Alabama
+and uh the numbers I had on on him were
+very good which is not the end allll you
+you go and look at these guys and I did
+a lot of work on him uh he ended up
+getting drafted by someone else and then
+we got him for summer league um at least
+
+[17:05]
+I was able to win the argument to get
+him for summer league and I thought he
+played pretty well and I had some
+numbers here they just really didn't get
+into his use for for the Nugget system
+at that point and it was one of the you
+move on because you you don't expect to
+ever win 100% of these arguments at all
+and it's fine um but it was early on uh
+with that that group and you get to
+understand their decision process and
+and certainly I had a lot of respect
+before and even more actually after that
+
+[17:35]
+had a pretty good career overseas though
+right yeah he had a great career
+overseas as a coach did you ever did you
+ever have to tell people get out of my
+face with this stuff I don't want to
+hear it oh yeah for sure when they bring
+in these booklets and I don't have all
+day to look at them or all week to look
+at them and it's a time management thing
+but you're always trying to get
+knowledge and information to help but I
+think one thing Mike said is interesting
+is as a coach you might run a play set
+but you might have the same alignment at
+the end of the game but instead of it
+being a down screen it's a flare screen
+instead of running a high pick and roll
+
+[18:05]
+you're telling your big guy same set we
+ran this play early didn't really now I
+want you to slip the pick and roll so
+there's a human element like I said
+before where the analytics might say one
+thing but as a coach you're trying to
+put your players in an area of strength
+that you know a play set might work
+because they're jumping the pick and
+roll this is going to be open and you're
+dissecting that throughout the game to
+give your team an advantage um one of
+the things I'm curious about you know
+some I'm sure you guys get asked this a
+lot from from young people I get asked
+it like how do I break into the NBA I
+have all this analytics like what kind
+
+[18:35]
+of problems are teams interested in and
+my response is is has become like I
+don't need you to tell me who's good I
+don't need you to tell me who's bad I
+don't need you to tell me what works and
+like I know that what I would if I were
+a front office person what I would want
+to know is tell me what players on other
+teams not who are good or bad but who
+for some reason fit or don't fit with my
+team a player we could get what are the
+analytics of like a predicting how a
+player fits so for instance if if you
+were Del if Del Dems if you were for the
+
+[19:06]
+the Pelicans and Del Demps came to you
+any of you and said hey look we got a
+chance to get DeMarcus Cousins we have
+Anthony Davis on our team already you
+have two hours get me some numbers that
+will show me whether this will or will
+not work like what do you do what
+numbers are interesting to you you're
+trying to get me to talk about the
+Kings so move on please you is that
+really well I guess that is Kings okay
+what I can't talk about players on other
+teams rosters ising a team wants to
+
+[19:36]
+acquire a second big man who overlaps
+with their pre-existing big man and you
+have 2 hours to produce an analytics
+report what kind of things I'm serious
+what what's interesting I mean you want
+to look at a player's skill set see the
+things that they're good at and see how
+those things would fit on your team are
+you already doing those things so it's
+not going to be particularly additive
+are they things that two people can be
+doing at once cuz if like if you have a
+guy who's a really good poster score and
+you add another really good post score
+um is that going to work if if you have
+a guy who's just good in the post and
+Isaiah Thomas is on your team and he's
+
+[20:06]
+not a great screen Setter you know it's
+something you might not want to acquire
+if he's going to play a lot with Isaiah
+um because Isaiah's pretty efficient at
+scoring so this is you talked about the
+you don't want to know who's good and
+who's bad and those kind of things in
+order to get to a metric that says who's
+good and who's bad you have a series of
+metrics for those skills that Mike has
+talking about you stop there you just
+don't put them all together to create
+this metric of who's good and who's bad
+you stop at those skills and you say
+
+[20:38]
+okay we don't care about these skills
+because it doesn't matter in our system
+or it matters less these care we care
+about a lot more and that's and
+certainly what you're what we talk about
+with with fit with big men in the
+spacing if you're if you want a lot of
+spacing and such it's it's it's
+important to consider like particularly
+when acquiring Ro players you feel like
+your team is going to be the same and
+you just need to plug someone in you got
+to figure out what's going to happen to
+this guy in our offense yeah you know
+are they going to be open at the elbow
+if so are they going to take a lot of
+
+[21:08]
+elbow J you have time to do that at the
+trade deadline no you got to figure out
+what you think about the players
+beforehand and have it all set up so
+that you can you know you have an idea
+of what each but over the summer you
+have a lot of time it's very fast at
+this point it should be very fast I mean
+you can pull up answers within 5 minutes
+for most things okay so you have time to
+produce you can you can pull up answers
+and and you're you're looking at
+sometimes like literally where they are
+on the floor what areas on the floor do
+they inhabit where that worked for us
+with Brandon Bassam we sort of knew that
+we were you know our four was going to
+
+[21:38]
+end up open a lot in spots where kg was
+good from shooting and or shooting from
+and um you know he was one of the the
+top guys shooting from those areas were
+like nitzki Garnett Brandon Bass Chris
+Paul and we're like oh wait Brandon Bass
+we can get Brandon Bass like that spot
+on the floor is a spot where he shoots
+from a lot and he's really good uh um
+I'm interested in um this is this is
+almost like a sports science conference
+now more than more than like a
+traditional analytics conference I'm
+interested and we talked about this
+before like psychology and neurology
+
+[22:10]
+that's the kind of stuff like are we
+ever going to get analytics for that
+like we go to the draft combine every
+year and all these NBA teams ask crazy
+questions like you have 90 cents and
+five coins what coins do you have how
+many balloons can fit in this room if
+javil McGee says 10,000 balloons can fit
+in this room I don't know what that
+tells me
+about about javil McGee so like what
+what like why is everyone picking on jav
+McGee it's the low hanging fruit and you
+talk about the wonderlick tests in in
+the NFL like and and we'll get to the
+
+[22:40]
+neurology you have some good neurology
+stories but like what what do we know
+what are we trying to know about um the
+makeup of a player and is any of that
+quantifiable I think it's to get at what
+Vinnie was talking about a little bit
+how do you communicate with the players
+if if there certain players respond
+better to certain kinds of communication
+that would be my simplistic probably
+over simplistic
+answer I think you have to get a feel
+for the player I mean that's the most
+important thing we're talking about
+before we're talking about you know when
+
+[23:10]
+I was in LA and we're doing trades or
+drafts what I want to know about if
+we're trading for a guy here's our play
+sets here's our terminology defensively
+how's he going to fit and what is this
+percentage here because we're going to
+get him shots at this area or whatever
+it is so having all that but at the end
+of the day the communication the human
+part of it understanding the person
+sitting down and talking to them about
+what they're comfortable with uh knowing
+their background um their family
+situation getting to know that person
+not just as a basketball player but as a
+human being and what makes them tick
+what what what they struggle with from a
+
+[23:40]
+communication standpoint do they like to
+be reprimanded in front of the whole
+group do they like to be you know put
+your arm around them and talk to them
+and get them to do things some players
+are very touchy and especially the
+younger players that are a little bit
+more sensitive some of the veteran guys
+they've been through it they've had
+different coaches they know what to
+expect they know the game and they're
+very com comfortable in their skin the
+younger players the game is very fast
+especially for young guys the game is
+fast as you get older and experience the
+game slows down you understand the
+terminology and you understand the
+lifestyle and the commitment it takes
+
+[24:10]
+what you're eating all the things that
+are thrown at you how you can become the
+best player all those things matter for
+for for young players especially I think
+if I was a GM I'd want to know how
+somebody performs obviously off the
+court I mean on the court maybe off the
+court as well under pressure pressure be
+like the huge thing I'd want to know if
+they retain information well so maybe
+some of those questions maybe they come
+back and ask an hour later you know I
+don't know CU to me what I see now
+especially with younger players and
+maybe just cuz they're young I have no
+
+[24:40]
+idea maybe it's kids today but you'll
+put a play in like the day of the game
+you then get in the game and they don't
+remember I like cannot understand that
+it drives me up a wall and but they
+forget it's like they don't retain
+there's something about that so I'd want
+to know those two things like right off
+the bat is there a way to systematize
+that though or quantify it or or like
+you know anything like that are will we
+have numbers for that at some point I
+think if someone's telling you they can
+do it you test them and I I think there
+are people who will tell you they have
+
+[25:12]
+ways to do that and you have to test it
+if you buy their system or you test
+their system for them you better test
+those results because you don't want to
+do something that's actually going to
+hurt you did people when you came into
+the league did did teams like test you
+on stuff like no no I didn't get I
+didn't after they sign me they did a
+bunch of test physical and stuff to see
+if I was healthy but they didn't do that
+and the first time I came out they doing
+that a lot more now I think those
+numbers are are valuable but uh you need
+
+[25:42]
+to put them in in a context you know you
+have a guy to run fast or jump high well
+you know there's a lot of those um I
+think you got to compare it with some
+other guys and see if he translate you
+know you got a guy that's strong they
+jump high that's he rebound you know he
+rebound every everybody maybe you T
+another guy the very same day that does
+not jump as high or is as strong but
+they play in the same league and he
+rebounded more so you putting the number
+in a context he's strong but you know
+he's not taking the whole the we were
+
+[26:13]
+talking about grit before like grit is
+like the in thing now everyone's looking
+for grit there's no way I don't know
+that there's a way to quantify grit but
+you were telling a story about like the
+neur the neurological stuff like that to
+me is interesting though so you were in
+Russia and your team had had you jump
+through some hoops literally almost
+literally um yeah I played in Russia for
+10 years and one of the teams um the day
+of my physicals which is you know
+typical physical stuff on the treadmill
+heart monitor blah blah blah then I sat
+in a room and without much translation
+
+[26:44]
+other than like what I was meant to do
+they put a piece of paper in front of me
+and it it had like boxes kind of like
+almost like crossword looking boxes and
+I had to see how many I could put a dot
+in and I just literally for like 30
+seconds was dotting and then another
+piece of paper with lines on it and then
+I had to see like how many I could cross
+in like 30 seconds and I walk out the
+room and they told me what my body fat
+was it was bizarre yeah that was the end
+that was the end you have no idea what
+happened to those results have no idea
+what happened to those results and you
+had to draw like circles cirle as fast
+
+[27:15]
+as I can as many as I could and
+literally Russia is anything like that
+in the NBA do do do you put players in
+the draft room through these like
+Puzzles or something even if you do
+don't say you do nothing like that I
+mean you might want to know how quickly
+someone reacts to something or if
+somebody can detect something moving in
+a sort of spatial way um that those are
+things that sort of Might translate to
+basketball skills but I don't really see
+how putting a dot in like let me see how
+many crazy things I can get her to do
+
+[27:45]
+she's going to be a great teammate
+there's a bunch of there's a bunch of
+like Vision tests that I know a lot of
+teams do where like the light comes on
+over here and you have to yeah and I was
+going to talk about that we had that in
+a team and and I was asking why is this
+for and say uh measure I hand
+coordination and we discovered that
+whoever is good at this is good at
+deflections so the guys are good at that
+so I'm test myself and we all test and
+effectively it kind of like matches the
+
+[28:15]
+deflection chart of the team so me and a
+couple other the players really do it
+every day and we ended up becoming very
+very good at it and we on the on the on
+the table of the heai coordination we
+climbed we were first second and third
+with a margin of difference but we did
+not climb on the deflection
+list that's interesting because people
+ended up getting good at the test right
+you know they train for the test so they
+say for example they combin you got a 40
+
+[28:45]
+yard that's what I need to be good at it
+you forget to work on basketball you
+work at that because that's the number
+is going to get you in the draft or
+whatever and you ended up being good at
+the test but it does not translate if
+you train the T the test uh exclusively
+versus if you train in basketball and
+then do the test without a specific
+training I think when you're trying to
+get a good number on the particular test
+it kind of changes the outcome of the
+
+[29:15]
+results a little bit yeah this is what I
+meant by doing these kind of tests and
+testing the test to see if it actually
+makes a difference on the floor in the
+game that's what you got to do well and
+and I think the the wearable craze in
+the NBA is is um is is huge and there
+are more and more companies here and and
+it's an issue in the CBA and going
+forward and I would you you start to
+hear teams now um and I think this is
+actually part of the sort of influence
+of analytics people within teams there's
+
+[29:45]
+a skepticism that's burbling up about
+like I'm not sure we know well enough
+that this stuff actually works and is
+this device worth the money that we're
+paying and what other information do we
+need or what needs needs to be improved
+so I'll just put it to like anyone like
+what where are we on this is like CU you
+like some teams are even starting to
+divest themselves a little bit like I'm
+not sure I want to renew contract X like
+have any of you guys like learned you
+mean wearable contract X not cont um
+
+[30:15]
+like yeah not player contracts have have
+any of you learned like like interesting
+stuff about players and Trends and
+fatigue or anything like that like what
+are we looking for and is it
+working I mean I would would just say
+what we had talked about before is you
+know you might uh do a psychological
+test with a player and he's he's one of
+your smartest guys he's well prepared
+you might put in a new play set at
+practice the next day you might go over
+and shoot around and then you call a
+timeout during the game and you put the
+plays set in and he might mess the play
+
+[30:46]
+up there's there's so much human and
+then you'll talk to him later like you
+know you know I was I was you know
+whether they have ADD whe all these
+things that they could have as a player
+you're trying to put put them in a
+comfortable situation you think they
+handle it so that human interaction with
+that is the game is fast and guys get
+emotional and things happen or the play
+before he thought he got foued so he's
+mad and his mind's on that cuz he just
+yelled at the ref and now you're trying
+to put in so handling the human emotion
+is with the numbers I think at sometimes
+
+[31:16]
+is as vital as you were saying with
+these tests it would you know it's tough
+it would be interesting to have a
+wearable that detects emotions actually
+yeah but um what I have seen with some
+of the and I've talked to a lot of
+people doing the sports science stuff
+and and you're across multiple Sports
+you're yeah I've been doing football a
+lot on top of basketball and what I've
+seen is there are a lot of people I
+respect on the sport Science side and so
+my default is that I trust them and I
+respect them doesn't mean you don't
+continue to look you want to make sure
+
+[31:46]
+that they're not doing any any harm
+first and you keep going and and with
+that you're going to make sure then that
+what they're saying just makes sense a
+lot of times they're they may be looking
+at heart rate and how how long you can
+run whether you're getting Peak velocity
+all this kind of thing are you practing
+practicing too hard or not hard enough
+there's some of this and it makes
+sense um but yeah you've got to be doing
+the test but if you have this bias that
+I I trust them at least up front and
+you're just going to make sure that
+
+[32:17]
+they're not doing any harm you're going
+to keep them until you find those areas
+because we don't know where to look yet
+we don't know how it may help so you've
+got to keep looking I I mean the way I
+see it from a player is all right a
+coach says Hey today's going to be an
+easy day we're just going to stay half
+court and then that practice is 10 times
+harder than the one if you were going up
+and back you know cuz you're cutting
+you're doing this you're doing that and
+from what I understand things like um I
+forget the name of it now Zephyr zeph
+Zephyr yeah can track that and and I I
+
+[32:48]
+have a friend who he's a strength coach
+and he talks about he he tells his coach
+listen and the coach didn't buy it at
+first you know he like wasn't into it he
+was like no no no we didn't go up and
+down he was was like that was 10 times
+harder than you practice the other day
+and I think information like that is so
+crucial and and I'm sure there's tons of
+other data and other information that
+you do have to question and it becomes a
+problem but for me if if you tell me we
+were saying this earlier if you tell me
+I need nine hours of sleep that's going
+to help me I want to know that if you
+tell me I need to eat a thousand more
+calories I want to know that and if
+
+[33:19]
+there's some wearable that's going to
+tell me that and that to me is like more
+black white information you know that's
+like health and whatnot um you want to
+control the things you can control
+and then the other stuff I mean that's
+why we're all in this room right figure
+out that other stuff they're they're
+putting together some of the perceptions
+of the players you come out of this
+practice uh it's called an rpe what's
+your P perceived exertion and the story
+is all the players come out and they say
+that was like an eight or a nine and a
+coach thinks it was a two that's that's
+kind of typical uh for sure but they're
+using that with the actual data from the
+
+[33:50]
+tracking to get a sense yeah to to get a
+sense whether a player may be getting
+hurt because if you have someone who is
+correlated pretty well oh that really
+was about a seven or eight an eight and
+then one day they think it was like an
+eight or a nine but everybody else
+thinks it was a two maybe they're
+getting hurt would you wear it during
+games yeah I would yeah yeah I think
+it's interesting and I'll be able I I'll
+be okay with shney too like I know
+there's a lot of debate about are you
+going to use this against me there's
+going to be 440 players in the NBA next
+
+[34:21]
+year regardless you know somebody we're
+not cutting any job and if you're
+dogging it we already know you don't
+need the wearable to know and also you
+know people's going to guess if you they
+may they may know exactly or they might
+guess but they're going to make the
+decision based on that regardless and we
+going to have players which just going
+to be a better player we're going to
+have better information of the 440
+players we have I'm okay with that I
+don't think that should be a problem but
+I know a lot of players think
+differently you know this stuff is going
+
+[34:51]
+to be used against me well if you have a
+problem it's going to be used against
+you yes but what what happen if whatever
+weable tells a very good thing about you
+is going to be used in your favor so I I
+don't think uh it should be a problem I
+think all this stuff is great we got
+more information we are more prepared we
+have people studying behind the scene
+for us we have people paying a lot of
+money for our health for our performance
+all those things are good things
+sometimes the problem is that we are
+demanding from all this analyics
+
+[35:21]
+technology Sport Science to be perfect
+it is not perfect and it doesn't have to
+be perfect just has to be be better than
+the thing we were doing before tiny
+little bit better that's enough for you
+to adapt it and then eventually it's
+going to get better and better but we
+can't ask them to be perfect so
+sometimes they come and say we got this
+statistic or this weable and it fails
+one time and we're like this this is bad
+why you making me do this you making me
+do displ or you making me we this thing
+
+[35:51]
+that's one thing that is not accurate
+well a lot of things were wrong before
+we got those
+it's just better than with the thing we
+had before it does not have to be
+perfect what would you be curious to
+learn about yourself if you wore it
+during games are you curious about heart
+rate or are you curious about like I
+push off one leg more than the other
+everything all those things I think are
+extremely interesting and also there's a
+lot of times that you were we were there
+in practice so sometimes you finish
+practice and I kind of play this game so
+I guess how hard a practice was for me
+
+[36:23]
+for my body and then I look at the
+screen to see if you match and a lot of
+times it does not match you know you're
+thinking like it was the hardest
+practice ever and when you look it's
+like no so if it doesn't match do you
+find that players just say well it's
+wrong or do or do players think about
+like maybe I'm wrong or do I I I think a
+lot of players just dismiss it as wrong
+but what do you think yeah I think it
+just depends on the player yeah kind of
+what we're talking about the ones that
+want to know and are interested in it
+probably don't just go eh they probably
+
+[36:53]
+question why the others that maybe
+aren't sold on it they're going to be be
+like yeah whatever see that thing's
+wrong you'll get guys too who you know
+want to use it as an excuse sure right
+yeah right but that doesn't mean you
+don't want to have it for everybody else
+he's not going you know what I'm talking
+about in terms of what in terms of like
+how you use an excuse yeah I'm I'm
+worked really hard today I don't have to
+go lift now see the computer says I
+worked hard in practice um
+but but like you just have to work at
+convincing that guy look if you're it's
+exactly what you said like you're you're
+
+[37:23]
+going to get better if you pay attention
+to this stuff 98% of the time the team
+and the players interests are perfectly
+aligned on these things um so I I
+don't the fact that someone might end up
+using it as an excuse or someone might
+lie about how hard they thought the
+practice was isn't a reason to withhold
+that from everyone it also tells you
+something about that player right you
+know and what coaches want is they want
+time you know as as a coach you're
+always trying to manage your time you
+know but uh you know the sleep
+deprivation things the travel uh the the
+
+[37:55]
+the the the meting ings instead of going
+to do a shoot around because we've only
+gotten 5 hours sleep and we have a game
+that day or using any of that
+information I'd rather have a 3045
+minute hard practice than a two-hour
+practice but I'm an old school guy we
+used to have you know two weeks we have
+two a days and we're practicing every
+day and they're three-hour practices and
+and there was none of this stuff that
+they have now so why not use it and as a
+coach you're trying to get that
+information how can I put my player in
+an area of strength get them the most
+sleep protect them from injury you're
+getting all this information thrown at
+
+[38:26]
+you how can I use it to my advantage for
+my team we we've found those drills that
+are you know really high intensity and
+the the coach kind of thought it was a
+throwaway drill and he's you know the
+tiring out players yeah from the
+wearables absolutely because there's a
+lot of cutting or whatever it is that's
+what goes back to what you were saying
+before about the half court practice
+might actually be yeah might actually be
+hard all right Luis you become the GM of
+a team tomorrow which which down the
+line is a possibility I'll hire myself
+yeah whatever still playing yeah yeah
+
+[38:58]
+well you could sign yourself there's
+some conflicts of interest that we have
+to protect against what you're you're
+you're I don't think people know how
+deep in the weed you are within
+analytics you and Manu are texting each
+other math issues you have toys you have
+like these things at your house these
+sports science toys what crazy stuff are
+you trying as GM what are you curious
+about like what what would the numbers
+tell you to try in terms of players or
+strategy like I used to fantasize a lot
+a lot about uh me running a team and
+what would I do and in the past like
+maybe some years ago I would do all kind
+of crazy stuff and but then I had the
+
+[39:30]
+chance to play with a lot of new front
+offices and coaches is and all of them
+come with this crazy ideas that it's
+almost like we all think that we had
+this idea that nobody had before and
+most likely like almost always it's just
+like somebody had it before and they
+disregard it because it was bad it's
+that's the reason why nobody's doing it
+so I kind of felt like because my
+experience I kind of feel like that's
+the way we all feel and that's always a
+mistake so I a little bit changed with
+
+[40:02]
+the years I think like right now I'll
+have a much more traditional approach uh
+but I always think that it would be very
+interesting to run a team in everyday
+Bas basis with a a game day format with
+a game uh day type of template uh we
+practice in a totally different way that
+the games we practice early in the
+morning we do all kind of different
+exercises so I was felt like one of the
+things about analytics is the the size
+of the sample and when teams analyze
+
+[40:32]
+their own team they trying to see who
+plays well with who and they run into
+the problem that they don't have enough
+minutes so I felt like we if you run a
+team you can make make it like a game
+it's a practice but we get in together
+we're going to play a game sometimes
+it's going to be one quarter sometimes
+it's going to be two sometimes it's
+going to be a whole game four quarters
+we going to play the teams one coach is
+going to be one side we're going to
+prepare this is going to be team a this
+is going to be tnb we're going to do a
+scout we going to everything like a
+regular game and we will track stats and
+
+[41:02]
+we'll multiply by four if it's one
+quarter and we will multiply by two if
+it's two quarters and then we have a
+much bigger sample obviously it's not
+going to be the same but if you put it
+in a game format I think is that
+whatever you can get from that practice
+as an analytic standpoint is going to be
+much closer to the game versus what you
+can get in a regular practice of what we
+do now and you also have the uh
+Competitive Edge you know players will
+want to play and you you have to put
+this whatever you came out with you got
+to put it out there in the board you
+
+[41:32]
+know these players playing a lot better
+than anybody else and players don't like
+to see that the other players won that
+player would be happy but everybody else
+would be like he's taking my my spot
+he's taking my minutes you know and he's
+going to work harder and it it will
+raise the the level of the team I
+believe that could be something that I
+would look forward to do if I ever run a
+team I would abish shoot around
+just out I'm not I wouldn't get rid of
+the the
+pregame like meeting the things you go
+
+[42:04]
+over and shoot around but the timing of
+it it's I think it's the most I hate it
+it's so stupid well more teams are doing
+that yeah we don't do that we we'll do
+that on the road because it's the only
+time you can get the arena to yourself
+but at home we don't do that well yeah
+and I'm sure for NBA is different from
+WNBA the whole Charter flight thing it
+changes it just changes obviously it's
+easier but it just changes timing of
+things for for for our league shoot
+around is extremely popular I want to
+say I'm on the team the only team that
+does not have it I'm fair I'm fairly
+confident that I'm pretty sure the other
+11 is that because you have you used
+
+[42:34]
+your clout to get Sho around said no
+more shoot arounds they're done only um
+no my coach is a big believer on sleep
+we were talking about people who sleep
+she sleeps like 12 to 14 hours it's
+insane so she just didn't want to get up
+I don't understand these people I I
+understand how that's possible she
+didn't want to get up and then I got
+used to not getting up and now I'm like
+I will never do shoot around again when
+I had to do it with the Olympic team it
+was terrible
+I was like why am I why are you w Doo
+makes you guys do shoot arounds are you
+kidding and I'm like is this for me or
+is this for you cuz if it's for you I
+don't think we should do it that's not
+
+[43:05]
+fair that's not okay you guys have seems
+to be working for him like tell the
+benefit of it what was a crazy thing you
+wanted to try that the coaches just
+wouldn't do a crazy strategy a crazy
+strategy did you want to like crash four
+guys to the I know what it was I know
+what it was you didn't prep uh I wanted
+I wanted JR Smith to take a couple steps
+back and start shooting from where step
+is now because it's open and if he makes
+a couple of them you spread the floor so
+much more that was it and they would and
+
+[43:37]
+Jr wouldn't hold on Jr I don't I don't
+talk that's a good point maybe I should
+have just taken it straight to Jr but no
+I I work through the coaching so yeah
+you should have gone right to J.R Smith
+you would have shot from out of
+bounds I've started to work on that I'm
+like wait a minute cuz everyone's like
+oh when you get older you got to like
+figure out ways to get your shot off
+quicker quicker quicker you hear all
+this quick Qui and I'm like what if I
+just take a step back and they have to
+travel longer and I'm more I'm more open
+back here that to me is like makes total
+sense extending my range that's being
+
+[44:07]
+born out now particularly with Ryan
+Anderson and Eric Gordon who are
+shooting 28 to 30 Footers regularly
+right um how much time do we have are we
+good we're at 15 do I have to use the
+iPad now is that what's happening
+okay if these questions aren't good I'm
+just going to pick my own
+questions
+while he's looking uh don't hesitate to
+question your coach just CU you're
+winning huh like G I would said ever he
+must be working he's winning a lot that
+doesn't mean that doesn't mean you
+shouldn't ask about shooter on he's like
+
+[44:38]
+coaching kid wow these are sorted into
+fun questions and analytics
+questions wow should we take a vote gave
+away the secret um the first question no
+I'm not going to ask that question
+uh
+um this is a good one let's do this one
+this is topical uh this is about the MVP
+race if you were a voter what analytics
+would you consider most important I mean
+this and this is I'm a voter and like I
+
+[45:11]
+can't I have no idea what I'm like one
+through five I don't know what I'm going
+to do but you guys are all very smart
+like what are what are the two three
+what they want to know what analytics
+should like be the Tipping Point in my
+decision nothing we just spend so little
+time thinking about Awards um that is a
+good
+point I mean for me it's just like who
+has the biggest impact on winning the
+game yeah um the wind Share St does uh
+ESPN does I think that's pretty pretty
+
+[45:41]
+good in terms of getting the value of of
+a player you know I think that that
+would be a like a good starting point if
+you want to look for one okay yeah I
+would do some some sort of adjusted plus
+minus E thing per minute I think there
+needs to be a whole other category
+analytical award it's like we have NBA
+WNBA first team second team why not have
+some sort of not where it's just based
+on analytics but a way of measuring in a
+different way cuz to me I agree MVP it's
+like you know cuz you're watching and
+you can feel the impact it's not like
+
+[46:11]
+something you necessarily chart well
+this this year is interesting because we
+got Russell Westbrook going for all the
+triple doubles and everything and there
+was the sentiment that was that was
+brought to me regarding baseball Miguel
+Cabrera winning the Triple Crown a
+couple years ago and he wasn't the best
+player in b basb but he did something
+that hadn't been done in forever so
+you're going to win and there's that
+question regarding Russell he's not
+having the biggest impact he's having a
+very big impact don't get me wrong but
+because he's doing something that hasn't
+been done in 50 years there are a lot of
+
+[46:43]
+people who vote for him because of a
+stat even though we say stats LIE
+there's going to be people who vote for
+him because of a stat that kind of Lies
+there will be there will be a lot of
+people who vote for him because of
+that's that and that's that alone for
+sure interesting I like this one lower
+levels of basketball they don't have
+sport view they don't have fancy stuff
+but like that's where you know that
+incubation is very important for for
+basketball and for these kids what how
+can we apply analytics there like if you
+were a youth coach what kind of stuff
+would you do lower levels you're talking
+about below College below top yeah yeah
+
+[47:15]
+below I I just says lower levels I'm
+assuming it means aou or high school or
+like kids I mean what is there any way
+to apply this stuff to that level I like
+that question I mean at the highest
+levels of the lower levels we're getting
+that information but so I'm assuming
+we'll assume those people the way right
+you're talking about just random high
+school team yeah I thought this
+interesting question there are tools now
+that let you break down video of those
+of there's a couple companies here I
+know um that are doing the Synergy is
+thing for high school games and and
+Youth League games um and there's even
+
+[47:47]
+tools that will let the coaches do that
+themselves so you know cheap easy video
+editing tools um to do that stuff so
+really the question is what does the
+coach care most about and you know then
+someone can go track it either a company
+for you or you yourself using a tool
+that's not expensive the software has
+gotten really cheap so it's just a
+question of what do you care about
+points per possession is really big
+that's that's a useful one for a youth
+coach yeah I guess this is one that
+comes up every year but um why not ask
+
+[48:17]
+it CU it's good and and the stats change
+every year how do you guys measure
+coaching if we have a good we have an
+ex- coach here how do how do you measure
+do is it lineup the the coaches the
+question is just how do you measure if
+someone is a good coach or a bad coach
+at at the most basic level I think we do
+indirect measures of coaching because
+you can project what players are going
+to be through time and they start off
+bad as rookies and they get better and
+then you look at when they're with
+coaches and not with coaches and you see
+whether those coaches incrementally made
+them better or worse that's how you kind
+
+[48:47]
+of start but the problem is it doesn't
+tell you why it doesn't tell you what
+they did whether they were good tacti or
+they were good communicator or good
+Player Development and I don't think we
+know how to marry those at all so I I
+can't say we have a great answer I I
+don't have one I mean I you know there
+there's some coaches that do a better
+job than others experience obviously
+matters who you're dealing with you know
+you know you look at some teams you know
+the low-maintenance superstars to deal
+with them obviously because then
+
+[49:17]
+everyone else Falls in line uh time is
+obviously key for a coach practice time
+how long is the team together um is a
+mixture of Veteran guys with guys in
+their Prime and younger players to build
+that culture you're always trying to
+build that uh winning culture and those
+things takes time but having that
+superstar that can kind of set the table
+for everybody I think is key but as far
+as a coach you know the preparation
+obviously game coaches I've had some
+Hall of Fame coaches that I didn't think
+were great practice coaches but in the
+
+[49:48]
+game I believed in them and especially
+at the end of the game I really believed
+in them and when you're on a good team
+and you want to have that confidence in
+a coach end of the game things are very
+very important how you come out of
+timeouts how you execute what you're
+running what adjustments you make during
+the game but also the preparation going
+into the game I've had some Hall of Fame
+coaches where we go through a game plan
+and we'll be in a Timeout and it's the
+first quarter and we're down 10 or 15
+points you can just rip up that game
+plan and just boom I'm going to just
+
+[50:18]
+start coaching you guys and we're going
+to change this and we're going to do
+that and some guys just love that I mean
+they just kind of get into it like hey
+I'm just going to first thing is you
+have to play hard you have to play
+unselfish and you have to execute the
+game plan do your job and that sounds
+easy but some guys try to do more than
+they're capable of but as a coach you're
+always trying to get in the element and
+I've had some great coaches and some
+great players that I played with that I
+coached and um I've been very fortunate
+from that standpoint Co coaching is a
+bundle of skills like playing right so
+some of those skills are easily measured
+
+[50:49]
+and others are not right so you're going
+to go some of them you'll go you know
+you can look at a guy how what a guy
+does with lineups and see if he's
+playing some some good lineups or not um
+but some of it's how well does he teach
+guys things in practice and that might
+be harder to measure it might not you
+know there's a lot of those things we
+don't spend a lot of time talking about
+who's a good player we'll say like you
+know who's a good screener who who who's
+a good who's a good shooter who's a good
+ball handler all those things get
+divvied up into smaller and smaller
+things and it's you could do the same
+with coaching um to some extent but many
+of the things that coaches do our human
+
+[51:20]
+interaction things that are harder to
+measure than you know does a guy make
+shots from the right side how many of
+the how many of the 30 coaches right now
+would you be comfortable classifying as
+good or bad coaches based on what like
+do we do like so cuz some people will
+say I know that there are three good
+coaches and three bad coaches and like
+24 guys I have no idea if they're good
+or bad at their job which seems like
+which seems like problematic to me yeah
+when when you need to make a coaching
+change that's when you might look at
+that um but mean I think there's a lot
+of smart coaches I mean I don't think
+
+[51:50]
+coaches get enough credit to be honest
+with you I mean I'm
+obviously they don't but but I'm not as
+biased as is but I agree it's a hard job
+what' you say d I'm not as biased as you
+are but I agree I mean it's a hard job
+what I look at for coaches and what I'm
+most proud about with my I want my teams
+to improve throughout the year I want to
+see coaches that take this specific team
+maybe you make a trade or maybe you do
+something to help your talent base and
+it comes down to town obviously but
+working together the chemistry I want my
+
+[52:21]
+teams to improve whether it's
+offensively and defensively and have a
+balance I don't want to be great in
+offense and poor in defense I don't want
+to be great in defense I want it to be a
+blend so I can have a balance
+statistically so I can use all these
+numbers to get to that point I want I'm
+still waiting for the day when we get a
+coach to say something not 100% nice
+about another coach that's what I I want
+one coach to come out and say something
+like even sem
+critical that's like the holy that's the
+Holy Grail of the song you get a coach
+criticizing this is good you're going to
+
+[52:51]
+hate this question um the NBA just
+released a is like like all this new
+planning for how we're going to track
+officials and officiating this would be
+the Bob vulgaris question if he were
+here um I don't this is for anybody like
+if you could just dive into that data
+what would you be interested to know
+about referees and how they're
+performing and how they're doing their
+jobs and even more broadly than that
+this is a question that people ask me a
+lot particularly from the league like
+what constitutes a well afficiated game
+because the league really struggles with
+that like you really want us to call
+
+[53:21]
+every foul cuz then the game will be 3
+hours you really want us to call no
+fouls and then you get mugged so like
+what if you could look at that data what
+would you be curious to see about
+referees I I like the the things the NBA
+does with refere I think this pretty
+much the only league in the world that
+does that un least in basketball and
+they do it very openly they do it very
+clearly I think it's a good thing uh I
+changed my P perspective towards uh ref
+dur during the years you you know when
+was young I was always thinking they
+were making bad calls and oh my God all
+
+[53:52]
+those things but they I learned you know
+they they work work very hard at it they
+make mistakes obviously but most of the
+calls are wrong are I'm sorry are
+right most of the calls are right and
+most of the time you are wrong you know
+you're thinking oh my God that was a
+clear foul and then you see at the third
+time it's like maybe it wasn't a foul
+and you got three times to watch it
+three different angles they got to M
+they got to make the call on site and I
+think they do a great job obviously they
+
+[54:22]
+got room for improvement but I think the
+game is fair and that's what you want
+the game to be fair and they call
+everybody the same and they just do it
+for the the same way every game of the
+season and I think they do a good job of
+that um I believe also the all the
+statements they released they're healthy
+they help um sometimes you might be mad
+because he's against you sometimes you
+might be happy because he helped you but
+um I think they doing a good job and
+they're going to continue to do better
+at that I'm I'm I'm happy with them I
+
+[54:53]
+think it's weird that people are like
+upset about the trans transparency in
+this area right because this is sports
+we all talk about how much we're happy
+or upset about something that happens on
+the court and so like Paul Pierce takes
+a bad shot doesn't mean you you go crap
+shouldn't have taken that sh doesn't
+mean Paul Pierce is a bad player just he
+took a bad shot right um so why are we
+upset or why are people upset I
+understand why the officials would be
+upset for being criticized but like
+we're already upset about stuff that
+happens on the court and we should at
+least know if they're doing a good job
+or not because then you take out the oh
+
+[55:25]
+some bias against us part of it and I
+think that's the purpose of the
+transparency issue from the league
+they're going to get calls wrong we you
+know I spend time watching a lot of
+other leagues and for all the grief that
+people inside teams give NBA refs I'm
+not trading our refs for other leagues
+refs like we have the best refs but
+consistency as a player as a coach how
+you going to call it in the first
+quarter to the fourth quarter players
+getting a rhythm in a game they want to
+know is it is it going to be a physical
+more of a physical game or not and then
+now the pace of the game is so fast why
+
+[55:55]
+not add why not add a fourth referee I
+mean the guys can't catch up to the play
+it's so fast now I don't you know what I
+mean like maybe you know we can't say
+it's because of money there's plenty of
+money in the NBA and it's a better
+product but the game is so fast some of
+the refs can't get angles that they used
+to cuz the threes and the spreading of
+the game we've talked sometimes about
+like having someone up there who can
+actually see cuz like on the court you
+can't see out of bounds calls it's like
+a weird angle do they got the camera
+system they do yeah and I I I'm a little
+bit against the the official review
+
+[56:26]
+because sometimes it takes so long it's
+like you didn't have the call on side
+that's great you should have whatever 30
+seconds to make the call you get like 10
+different replays and that's your call
+you know you got a little bit more of an
+advantage but you went in there two and
+a minutes and a half and we all waiting
+for you to decide which side it goes I
+think it has to be much faster and the
+guys upstairs maybe sometimes they say
+hey this way and it's like a 5sec thing
+they getting better at it but last year
+it was it was a problem the fact that
+
+[56:56]
+the league is willing to engage with the
+teams I think the group Byron is leading
+now at the league is doing a really good
+an EV doing a really good job of making
+the teams feel at least like all we
+understand the process you're doing
+behind the scenes to make sure that
+these officials are doing a good job we
+can submit things that we get feedback
+um you know we're still going to be
+really upset if a call goes against us
+it's just the way the world is right but
+at least you feel like there's some
+process behind it that's not completely
+random um there aren't questions about
+you know is this somehow one way or
+another against you it's not you can see
+
+[57:27]
+they have a whole process set up now
+it's really good there is um a request
+for Luis to do his dmbe Matumbo
+impression and I feel like we're we're
+do do you I don't even know that you
+have that was in the analytics category
+right that was in the end that's a very
+serious question so you're not going to
+do it you won't you won't do it I have
+never SE I've never heard it before I
+don't know if no no I can't do it you
+came
+know he everywhere he probably
+here Everywhere I Go he's
+
+[57:57]
+here uh did you read George Carl's book
+that's another question I haven't read
+it yet no okay
+um last one and then we're out of time I
+think where I know his story you know
+yeah you were there for some of the
+stories do you ever is there real time
+this is the last question is there any
+real time data that actually gets
+filtered down to coaches at this point
+obviously you see the players with the
+iPads looking at film but is there ever
+real time data like you get to the last
+2 minutes of a game and and like this
+has been working this hasn't been
+working are we not there or should we
+ever even what do you mean by real time
+data they have the box score like that's
+
+[58:28]
+what's going on there's a screen
+scoreable okay better data than
+that we're tracking our own plays and
+things coaches coaches are super
+freaking smart if you ask a coach at the
+end of the first quarter what happened
+over the first quarter most of the
+coaches I've worked with Kentuck you
+about every play and most of the things
+that happened and so um we find that in
+game you know there you'll keep track of
+like what plays you ran there's someone
+on the bench doing that or a video guys
+um you can have a computer on the bench
+now which is a change so you actually
+
+[58:58]
+can have a display of a bunch of stuff
+but um the coaches are pretty sharp and
+the staffs are so big now too I mean you
+have so many are good at short-term
+patterns it's the longer term patterns
+people's brains aren't great and you
+have a lot of times you have good
+players who George would ask some of his
+best players like what did you see what
+do you think we should do against this
+guy
+and they're they're pretty good and I
+know if I'm looking at the numbers and
+I'm watching the game and trying to keep
+up they still see more than I do I think
+we are officially out of time so thanks
+
+[59:29]
+to Dean Sue Vinnie Mike and Luise for
+doing the basketball
+analytics great job
+Zach
+##### 2017-03-14_8XrPoEKFpvA_a-focused-approach-to-analytics-maximizing-player-performanc
+{
+ "id": "8XrPoEKFpvA",
+ "title": "SSAC17: A Focused Approach to Analytics: Maximizing Player Performance",
+ "channel": "42 Analytics",
+ "upload_date": "20170314",
+ "duration": 1547,
+ "view_count": 442,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction",
+   "end_time": 58
+  },
+  {
+   "start_time": 58,
+   "title": "Connecting Data to Coaches",
+   "end_time": 162
+  },
+  {
+   "start_time": 162,
+   "title": "Personal Story",
+   "end_time": 393
+  },
+  {
+   "start_time": 393,
+   "title": "Observed Metrics",
+   "end_time": 417
+  },
+  {
+   "start_time": 417,
+   "title": "Film",
+   "end_time": 455
+  },
+  {
+   "start_time": 455,
+   "title": "Empirical Data",
+   "end_time": 477
+  },
+  {
+   "start_time": 477,
+   "title": "Subjective Data",
+   "end_time": 586
+  },
+  {
+   "start_time": 586,
+   "title": "Overall Data",
+   "end_time": 598
+  },
+  {
+   "start_time": 598,
+   "title": "ThirdParty Data",
+   "end_time": 689
+  },
+  {
+   "start_time": 689,
+   "title": "League Data",
+   "end_time": 771
+  },
+  {
+   "start_time": 771,
+   "title": "Biometrics",
+   "end_time": 944
+  },
+  {
+   "start_time": 944,
+   "title": "Metrics",
+   "end_time": 954
+  },
+  {
+   "start_time": 954,
+   "title": "Catapult",
+   "end_time": 1039
+  },
+  {
+   "start_time": 1039,
+   "title": "Biometric Tracking",
+   "end_time": 1100
+  },
+  {
+   "start_time": 1100,
+   "title": "Player Tracking",
+   "end_time": 1284
+  },
+  {
+   "start_time": 1284,
+   "title": "Trends",
+   "end_time": 1312
+  },
+  {
+   "start_time": 1312,
+   "title": "Radar View",
+   "end_time": 1414
+  },
+  {
+   "start_time": 1414,
+   "title": "What to Research",
+   "end_time": 1547
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC17: A Focused Approach to Analytics: Maximizing Player Performance"
+video_id: 8XrPoEKFpvA
+url: https://www.youtube.com/watch?v=8XrPoEKFpvA
+channel: 42 Analytics
+upload_date: 2017-03-14
+duration: 25:47
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [sports-science]
+---
+
+# SSAC17: A Focused Approach to Analytics: Maximizing Player Performance
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+first year MBA student at the MIT Sloan
+School of Management it's a pleasure to
+welcome you to the 2017 Sloan sports
+analytics conference we've got a great
+competitive advantage talked in today
+focused approach to data analytics
+maximizing player performance presented
+by catapult joining us today is Brian
+cop who's the head of catapult North
+America and Ted Ellickson who's the
+Senior Director of Product Marketing
+player development at xos digital and
+I'll hand the microphone over Brian
+
+[00:30]
+thank you hi everybody afternoon thanks
+for coming this is primarily Ted's
+presentation so i'll send get to turn
+over to him and he can talk but i want
+to kind of scribe how excess and
+catapult ended up on the stage together
+for those that don't know catapult is
+the leading athlete wearable device
+company globally we work with a lot of
+different sports lot of different teams
+and a lot of what we do is focus very
+much on player safety wellness that type
+
+[01:03]
+of data when i first joined the business
+is very much around how can we connect
+that back to translate into the coaching
+staff and the leaders in that space is
+exos a lot of what they do is video
+where video analytics for coaches and a
+lot of different sports primarily NFL
+and college football NHL a few other
+areas so bringing our data and their
+video assets together we started that on
+the product side so known Ted for a long
+
+[01:34]
+time and knew how good they were with
+video news they could take our data
+really make it look amazing translate to
+the coaching staff so that was how we
+ended up come to get on the product side
+and then that led to an acquisition
+which turned out great again Ted and
+team and XO it's a really good at what
+they do we're really good at what we do
+on the athlete tracking side but what
+Ted's going to talk about is really how
+the genesis of taking data off athletes
+how that's kind of come to be and where
+
+[02:06]
+the future is in terms of translating
+that to coaches and a lot of coaches in
+a lot of sports
+there are languages video that's what
+they use that's what they analyze that's
+what they use on a daily basis so for us
+the future is connecting the dots of
+what kind of information do coaches and
+teams rely on every single day and one
+of the two of the main pillars are video
+and increasingly data and wearable data
+athlete analytics so bringing those two
+together was really strategy we're
+really excited about what the future is
+
+[02:36]
+and that's really what Ted's going to
+get into summer turn over to him and
+then answer questions thanks Brian
+further intro I want to start out with
+kind of a personal story of how i see
+metrics today how I him in the past and
+why I see them from a certain
+perspective so to go back to nineteen
+ninety-six I was finishing up my first
+year as a graduate assistant offensive
+coach I had a young up-and-coming head
+coach named nick saban at Michigan State
+
+[03:08]
+we go through a full season I'm doing my
+opponent Scouts doing a great job I'm
+obviously getting some ice colorful
+analysis from the head coach as we go
+throughout as I had my learning process
+so I knew what I had to have done when I
+had to have it done how I had to have it
+done okay itself scout 10 I spent two
+full weeks comes out recording I'm gonna
+have this thing perfect so I know if
+there's a mistake Nick's gonna find it
+in 30 seconds he gets back I hand them
+this you know it's a three-ring binder
+
+[03:38]
+it's about an inch thick several hundred
+pages of every way we could look at
+ourselves here you go coach go ahead and
+let me know as a feedback resent you owe
+me a change opens it up turns the page
+this is wrong what's wrong with coach
+I've gone through all the stuff multiple
+times is now Derrick Mason had five
+catches for another hundred 38 yards of
+a bowl game the same stats he had after
+the penn state game why didn't you do
+the bowl game I'm deride coach I took
+
+[04:10]
+all the stats right from the Big Ten
+site let me go back double check me the
+big ten didn't update I ago I start
+making a phone call phone call phone
+call I get to the right guy at the Big
+Ten says no no we've never included bowl
+game stats
+in the season that's not our policy
+policy is regular season are the
+official stats go back and tell coach
+this said I'm glad that's a big 10
+policy that's not my policy go ad all
+the bowl game stats everyone's numbers
+so I got to go out get all the
+
+[04:40]
+individual results from all the bowl
+games what a min come give it to them
+there you go coach here it is with all
+the numbers and he's like well did you
+get the Big Ten to change so this is
+going to be there so no I just did it
+manually said now that's not acceptable
+so he joins the committee and a year
+later the big 10 ads bowl game stats to
+the conference and you fast forward a
+couple years 2000 I get a call from who
+had been my former student for four
+years as an undergrad is now a year when
+GA down at LSU kid named Adam gay now
+
+[05:11]
+the head coach of the Dolphins Adam
+calls me hey Nick just ripped me I did
+the other the season-ending stats he
+told me the bowl game stuff in there
+we'd always done to Michigan stays how
+did you do that is it manually we had to
+do it every year so Adam had to go back
+redo all his stuff had the exact same
+experience Nick now joined the national
+group and two years later gets bowl game
+stats included everywhere so both myself
+and Adam who had decent careers so
+
+[05:41]
+really good about the reports we were
+supposed to do thought we could believe
+in the data and just got buried by it so
+for me from that point on and for a lot
+of the guys in the industry you learn
+quickly you've got to make sure that the
+coaches agree and believe in the data
+and so you better know it forward and
+backwards you better know what were the
+deficit is what are the boundaries are
+there bowl games included in it they are
+now everywhere but I didn't know that
+time so I exposed myself it was a very
+
+[06:11]
+important lesson for me to learn early
+on so to understand metrics of where
+we're going today he's got a look at
+where do we start right if you don't
+understand the past you're gonna repeat
+the mistakes I'd rather you not repeat
+the mistakes and have the colorful
+language I got to receive the good thing
+is you guys in heckle me all you want
+today you're not getting through the
+skin that nyx helped toughened up right
+so the first thing that we all had
+is there's two different types of
+metrics that have been used heavily for
+long time observe metrics I'm watching
+
+[06:42]
+video i'm watching practice i'm writing
+things down or laboratory simulation you
+know true kinesiology studies to look at
+where did the observed metrics start
+with really the sport advanced
+tremendously with film literal film
+where the term cut up come from we took
+film i was lucky enough late in my high
+school career to still had film we cut
+it you took a clothes pin you hung it on
+a line at the end of the line it said
+trap it was a big eight and a half by
+eleven taped onto it there were no
+
+[07:13]
+sticky notes right so you had clothes
+lines filling a room we had to cut up
+here's the traps here's the counters
+here's the powers once you've cut all
+that film apart and you taped it back
+together again and we try to write down
+notes on chalkboards later whiteboards
+piece of the paper so we're no analytics
+in a computer yet you get into the mid
+early to mid 90s and now you start
+adding some empirical data to this stuff
+because now you've got tape to tape VHS
+and beta tape and programs like apple
+tech where I can write in a few
+
+[07:43]
+different piece of information and I
+have a time code that says you'll find
+it at this point in the tape great now
+we're talking now what's empirical data
+real easy stuff right down distance yard
+line we then as we got to attract more
+and more data want to add more
+subjective information to that well now
+we're getting into you know what's the
+formation what's the play what's the
+personnel it seems like 13 13 if I have
+three times on the field what if Jimmy
+Graham's on the tenants my fafsa too
+
+[08:14]
+tight end the defense says use a wide
+receiver when I'm standing if this is my
+football field here's the two hashes
+come on the left hash I'm often for all
+of you I'm on the right hash so is it
+empirical or is it subjective so again
+understand the data you have and how
+your staff perceives that data because
+when you make assumptions in life you're
+wrong right it's just about communicate
+with the guys of great we're tracking
+all this stuff and by the way every one
+
+[08:45]
+of these fields so far the coaches asked
+for
+I want to see X ok coach I need to go
+back and record this this and this piece
+of data ok when you record it if I say
+21 personnel q backs one tight end Nick
+Saban would say blue which colors we
+don't do numbers so again even though it
+is an empirical field I have to make
+sure I have the right verbiage and so
+for data analysts this is tough not
+
+[09:16]
+because the data stuff it's really easy
+data but no one has any consistency okay
+our beautiful bow ties on the front here
+from Clemson they don't agree with any
+of the calls that next even makes
+because it's different verbiage and
+their staff then there's Alabama right
+so even if it's the exact same data now
+if I want to compare this to that to
+this I have to modernize things first I
+have to understand what were they refer
+to us now when you move from that team
+by team there is no overall data to
+
+[09:46]
+let's look at it in a bigger picture the
+last two years third-party day has been
+huge right Cummings like stats where I
+first met Brian ProFootballFocus these
+guys are putting in okay now i have
+consistent data across weeks you know
+this is not just unique to football this
+is all sorts of different companies in
+different markets are using this stuff
+you have definitions provided by these
+guys burned defender how do you say burn
+
+[10:18]
+defender if you don't know who the
+coverage responsibility was well they
+have a very nice definition of if the
+receivers within two yards of the person
+that caught the ball that's the burn
+defender coach go walnuts BS is it will
+win my coach I can give you instead of
+looking at 256 games times two
+perspectives for one NFL season and you
+go look through those 40,000 plays let
+me give you a 87 results and there may
+be eight full false positives in there I
+
+[10:49]
+saved you a whole lot of time so now the
+coach just started to say all right
+maybe there are some used to these
+metrics I haven't defined I have an ass
+for but we learned this in the market
+until they were comfortable with that
+data that they
+didn't ask for that they didn't define
+that they used the terminology you still
+get good to say now change the dart
+terminology but the more they understand
+it the more they're willing to use it
+but how did they get to that point they
+watched all this data that was put in
+against the video they compared it to
+the date of eight already entered and
+said you know what after looking at this
+
+[11:21]
+for about a year maybe we don't have to
+break down with callum anymore we could
+use that third-party potentially some of
+that the league data right you have all
+the different major leagues on it and I
+love every year because Major League
+Baseball he's really good at putting out
+a lot of really good staff and so I'm
+enjoy the research papers we see how
+every year it's the richest data set
+from a League standpoint you don't have
+as much of the subjective play calls
+right it is not what is the personnel
+
+[11:52]
+formation defensive coverage defensive
+blitz doesn't gain a lot of subjective
+fields in other leagues baseball
+Johnny's at bat he's on the left side of
+the plate facing this picture what's the
+pitch that's the closest thing you have
+to your subjective field is that I want
+to call it a sinker a slider right so
+some of these really nice but again
+somebody else was making the rule on
+that data so even though that data can
+be wonderful data can be very consistent
+
+[12:23]
+when you go to relate to your coaches
+your findings do they agree with the way
+it was called that stuff where you have
+to communicate with these guys before
+hand hey let's go through some of these
+things understand how they're making
+decisions how they're using the data
+because there may be filled them there
+were if they're not buying into it and
+it's the basis of your thesis goodnight
+you're going nowhere right so it shipped
+over from the observed metrics over to
+more the biometric the kinesiology
+studies right the stuff has been done
+
+[12:55]
+for a very long time and there's a
+tremendous muddiest trainers strength
+coaches are expected to stay up to date
+with how are we working the body how are
+we making sure that we're tracking the
+right things and train these guys the
+right way typically done and control the
+environment right you have let me
+simulate some part of
+what we're competing then is that
+cyclist on a stand being challenged to
+balance no so does it invalidate
+whatever you just study that's up to
+your coach to decide does the guy who's
+
+[13:26]
+on an elliptical have any bearing or any
+sport whatsoever I don't know I don't
+know what they're trying to study here
+not right does the pitcher typically
+stand on a plywood mount well so there
+are some of these things where de paying
+on what I'm trying to determine will
+your staff buy-in to the stuff yes or no
+and when I say staff I don't distinguish
+between coaches and GM's staff a staff
+you have decision makers that we all we
+are all trying to stay in the salary
+continuation program right I would like
+
+[13:56]
+to get my next paycheck again so what do
+I need to do to make sure I say a firm
+member of that group well understand
+that data so when you relate to the
+coaches don't don't get the next segment
+gotcha when we ripped your butt for a
+while I'd rather you guys have a
+successful fruitful relationship for a
+long time right so when you're emulating
+those motions you're taking pieces of it
+so that you can do a peer review of this
+stuff right I have to be able to say
+here's what I observed here's what you
+were able to determine from that so
+
+[14:28]
+traditional peer review two criteria is
+it accurate yep I hit the bullseye is it
+precise big scatter of data no I want a
+nice tight data so that i can say i'm
+going to hand you these results you go
+out there you're going at that same
+accuracy and precision when you do the
+same thing you know so now my peers are
+going to be able to come up with the
+same findings if this is valid data for
+coaches there's two more things they
+want to see in this thing and i'll go
+
+[14:58]
+back to no difference if you're in
+savings camp bella check scam which is
+really the parcells camp which is half a
+football everybody says in game results
+or what I have to determine if I'm going
+to do it is it going to help me win a
+game because if you can't show me family
+win a game with no time for noise get
+out let's do something else alright so
+that's the peer review you're going to
+have is yes when you do this stuff if
+you're a mathematician as you'll have no
+I'm at
+petition and he can get that accuracy
+
+[15:30]
+and precision on the same study that you
+did but he can't relate to a coach don't
+really matter because that's the pier
+that does matter because he signs the
+bottom right corner of your paycheck
+right again salary continuation program
+so today we're are metrics starting to
+go this is that's kind of how we've been
+for the last 40 years well things are
+changing fast today right ball
+mattrick's so we're lucky enough with
+the catapult acquisition that we've
+summit teams with their companies that
+
+[16:01]
+we worked with and they work with it's
+really nice that we've got this nice
+energy of we did totally opposite things
+my company sorry about that is a video
+and data aggregation company that's what
+we've been good at and that's all we
+focus on these guys are tracking a whole
+lot of metrics that you couldn't track
+before right how do I get it into the
+game see the actual practice see the
+actual game results not observed metrics
+laboratory where it actually rubber
+
+[16:31]
+meets the road right so in the AFL rugby
+we've got a smart ball we're working
+with we're starting to work with Wilson
+in the football space collecting more
+data about the ball some of these things
+you can observe some of the metrics are
+rpms of all philosophy of the ball I can
+say through a fast or slow I don't know
+the exact rpms why is that matter well
+that's where the studies come in right
+is there a metric coming from this ball
+where I can show the coaches hey look
+
+[17:01]
+when I track this it relates to this
+some of those fields that you've is a
+complete or incomplete coach you've been
+tracking that for years I can help
+determine that maybe we should work on
+this deficiency in our quarterback right
+in practice in Game metrics that can be
+proven with in-game results biometric
+tracking again these aren't complete
+list these are just a few easy examples
+heart rate is potentially the most
+important metric in the NHL because the
+
+[17:32]
+how long my shift last is based on my
+heart rate gets over 165 beats a minute
+I'm probably not absorbing a lot of
+oxygen right
+alright so 25 seconds to my shifts sit
+down and look he can recover that heart
+rate in less than 20 seconds he's
+conditioned or the two minutes he's on
+the bench he's still not down to an
+acceptable level he's not ready to go it
+sports my sport staffed by staff it's
+valid in game in practice metrics you
+have to determine with your staff what
+
+[18:03]
+is that threshold we're all about
+building the tools to help bring these
+things together but it's always on your
+staff to determine what matters right
+there they're the guys making the
+millions of dollars so your help you
+determine yeah this is where we need to
+be spending our time the big one player
+tracking right coaches love the
+positional data is not scary to them
+until giant be here and run out to the
+numbers and yes that's what he did okay
+pretty easy to understand pre to
+
+[18:33]
+translate but right now the only way the
+team presented to them is typically
+here's the eye chart spreadsheets of
+numbers what do we need to do with this
+stuff does it relate to what I'm
+coaching these guys up on but then you
+can get into you know the true
+kinesiology studies of you know as a
+company we've had to go through and say
+here's a very unique metric playroom
+we're able to determine just how much
+wear and tear you putting on these
+athletes are you preparing these guys
+right within a game are you preparing
+
+[19:03]
+them across an entire week to make sure
+that we're peaking at game time are you
+training correctly across an entire
+season to make sure we're not wearing
+these guys out we're not going overboard
+and the last three weeks we just got
+enough left in the tank am I putting
+these guys at risk of injury there's a
+lot of uses for this but the coach
+doesn't understand it at best you get
+all right this sport scientist is a
+smart dude says player Louis Delmas this
+I believe in it coordinators go well
+
+[19:34]
+what the head coach decided but they're
+not sharing that data with their players
+you have to understand it to teach it
+right so a lot of players only see the
+negative in it whoa wait a minute I
+don't know if I want them to know if I'm
+out of shape or not so when we should
+push back of we can train you better we
+can keep you healthier we can keep you
+in the league longer right that's why
+these metrics for
+build but you need to be able to express
+it to the players right all right I ease
+repeat high intensity efforts can i as a
+
+[20:04]
+really good player oops that's not the
+move i need to make can i make another
+really quick move do it again so that i
+now want to be able identify are you an
+elite level athlete if not let's fix
+those deficiencies lemon I ima's this
+one Meghan I don't want to stay here and
+train our metrics well I want to show is
+with all these metrics what we did I'll
+take the the IMA as a specific example
+so when Mac test developed this over a
+year using hours of video showing
+
+[20:35]
+specific moments and matching it to the
+corresponding data so again hours of
+video matching it to the data what do
+your coaches do 10 to 14 hours a day
+what do your Scouts do that same amount
+on what is your GM do they sit in front
+of video 10 to 14 hours a day and
+they'll compare it to the data that's
+there and it was not valid they'll Yelp
+the quality control coach so yo the ga
+fix the data or if it's coming from
+these other systems if I don't
+understand it alright work with me why
+
+[21:05]
+is this deterrent wise is validated
+exact same process your staff goes
+through that's what we're trying to do
+to make sure we have valid metrics so
+when you put in front of a coach great
+you're tracking things I couldn't track
+before and yes it does match up with
+what I'm seeing on the field I'm
+validating your findings with your staff
+so numbers show trends right like
+whatever number you want whatever I
+chart you want coach we believe the data
+shows this what does the coach want to
+
+[21:35]
+do don't watch the video well that's
+that's what we've done for years have
+put all the data in against our video
+take all this new data putting in
+against our video so now the coaches
+give valide for themselves but then we
+also want to power the coaches to make
+sure that relate in terms they
+understand one of the first things we
+did with the catapult data is we built
+this module where sideline film endzone
+film what we call our radar view it's a
+practice card it's a whiteboard coaches
+draw X's and O's all day long might be a
+
+[22:06]
+good idea for a name
+so we take the most basic thing that
+they do all day every day the biometric
+against it those paths and this
+screenshot its velocity and then we have
+the tool with it we let the coaching
+staff say when they cross 12 miles an
+hour should go from red to yellow for
+when it goes over 80 miles hour and will
+you pick the colors you pick the
+thresholds that's where you and your
+staff is everyone understands this and
+then translate this to the athletes if
+
+[22:38]
+you say Johnny the data shows that you
+have a bad a doctor so we need to do
+some extra work than later or I say
+Johnny let's look at the film every time
+you cut left nice sharp cut every time
+you cut right you got to round it out do
+you believe that we could work with you
+to make sure you don't have a deficiency
+one way or another right get that
+specific film example get these real
+easy graphics we can do 3d modeling with
+the stuff we don't want to scare coaches
+off why is what guys a little old school
+we want to make sure we can start from
+
+[23:09]
+the level of comfort as they once they
+understand it once they believe in it
+they're gonna teach it now you get that
+top to bottom by it not sport scientists
+head coach decision I'm mad because
+you're taking 30 plays of practice away
+from your day time trying to win a game
+and save my job it's not what you want
+he's only guys fighting against you we
+want to make sure that whatever you're
+relating to the staff is in terms they
+can understand right so what to research
+this is the question we get all the time
+hey what can I do so it my coach loves
+
+[23:41]
+me how how do I find the Holy Grail huh
+how can I be prometheus and deliver fire
+from Zeus to my coaching staff well you
+can't quite honestly you will first have
+to develop a relationship the best way
+we've seen this done is addition by
+subtraction meaning talk with your staff
+figure out how they make decisions today
+what are your decisions based on great
+let me go look at the analytics and let
+me see if I can validate or invalidate
+
+[24:11]
+both are just as valuable if you have a
+staff making decisions based on bad data
+and you can show that they need to stop
+that you got better and you
+related to your coaches I understand
+what you're doing I understand how
+you're working let's make sure that
+we're going to only do things that make
+us better as a group right so you're
+holding them accountable just like
+they're going to hold you accountable
+now you're becoming part of the team
+you're not just I don't that analysts in
+the corner does where we says to me it
+doesn't make any sense your main focus
+
+[24:41]
+has to be can I relate this data great
+now let me show them what the findings
+actually mean because if you have really
+solid findings the research papers in
+the hallway I heard another speaker talk
+about unfortunately a lot of those are
+going to die because no one's relating
+those to any team right now and so if
+it's just an analyst understands analyst
+and coach doesn't know what it means
+it's not valid data in this market
+accurate and precise aren't enough does
+it help them a game right so that's that
+peer review is it accurate is it precise
+
+[25:11]
+can my coaches comprehend the
+information and if they can will that
+give us a competitive advantage though
+because without that you'd be falling on
+deaf ears so thank you for the time
+happy to take any questions you guys we
+have
+[Applause]
+bueller smelly all right well thanks
+first time guys Bridget
+##### 2017-03-14_H2RN_7tsM90_moneymind-overcoming-cognitive-bias
+{
+ "id": "H2RN_7tsM90",
+ "title": "SSAC17: Moneymind: Overcoming Cognitive Bias",
+ "channel": "42 Analytics",
+ "upload_date": "20170314",
+ "duration": 3686,
+ "view_count": 19804,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction",
+   "end_time": 91
+  },
+  {
+   "start_time": 91,
+   "title": "The problem of bias",
+   "end_time": 228
+  },
+  {
+   "start_time": 228,
+   "title": "Independent decision making",
+   "end_time": 377
+  },
+  {
+   "start_time": 377,
+   "title": "Luck and process",
+   "end_time": 500
+  },
+  {
+   "start_time": 500,
+   "title": "Correcting bias",
+   "end_time": 646
+  },
+  {
+   "start_time": 646,
+   "title": "Models vs expertise",
+   "end_time": 836
+  },
+  {
+   "start_time": 836,
+   "title": "Evolving strategies",
+   "end_time": 1141
+  },
+  {
+   "start_time": 1141,
+   "title": "Scouting and intelligence",
+   "end_time": 1391
+  },
+  {
+   "start_time": 1391,
+   "title": "Validating instincts",
+   "end_time": 1550
+  },
+  {
+   "start_time": 1550,
+   "title": "Mentorship lessons",
+   "end_time": 1785
+  },
+  {
+   "start_time": 1785,
+   "title": "Decision-making techniques",
+   "end_time": 1941
+  },
+  {
+   "start_time": 1941,
+   "title": "Managing regret",
+   "end_time": 2045
+  },
+  {
+   "start_time": 2045,
+   "title": "Upstream management",
+   "end_time": 2237
+  },
+  {
+   "start_time": 2237,
+   "title": "Transparency with owners",
+   "end_time": 2434
+  },
+  {
+   "start_time": 2434,
+   "title": "Taking logical extremes",
+   "end_time": 2635
+  },
+  {
+   "start_time": 2635,
+   "title": "Evolving markets",
+   "end_time": 2839
+  },
+  {
+   "start_time": 2839,
+   "title": "Switching sports",
+   "end_time": 3006
+  },
+  {
+   "start_time": 3006,
+   "title": "Chemistry and winning",
+   "end_time": 3206
+  },
+  {
+   "start_time": 3206,
+   "title": "Acquiring character",
+   "end_time": 3386
+  },
+  {
+   "start_time": 3386,
+   "title": "Future of sports",
+   "end_time": 3686
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC17: Moneymind: Overcoming Cognitive Bias"
+video_id: H2RN_7tsM90
+url: https://www.youtube.com/watch?v=H2RN_7tsM90
+channel: 42 Analytics
+upload_date: 2017-03-14
+duration: 1:01:26
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [decision-making]
+---
+
+# SSAC17: Moneymind: Overcoming Cognitive Bias
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+[Music]
+hi
+everybody my name is Curtis Wagner I'm a
+first year here at MIT Sloan and I am
+the student lead for money mind
+overcoming cognitive bias I honored and
+excited to introduce our panelist today
+first off we have Billy Bean with us
+he's the Executive Vice President of
+baseball operations for the Oakland A we
+have Sam hinky former GM of the 76ers we
+have Farhan zi who is the GM of the Los
+Angeles Dodgers and we have of course
+
+[00:32]
+Daryl Mor our co-chair of the conference
+and GM of the Rockets uh the panel is
+going to be moderated by Kade Massie
+he's a professor at the Wharton School
+the panel is going to last for 45
+minutes and then we're going to have 15
+minutes of Q&A at the end we encourage
+you to interact with us and ask
+questions via Twitter using the hashtag
+money mind the questions with the most
+mentions will be asked on stage so with
+that take away guys's very
+skeptical afternoon guys thanks for
+being here
+Kade Massie delighted to moderate this
+
+[01:03]
+panel of illustrious general managers
+and Sam
+oh wow went hard
+early let him fly early I like it
+breaking the ice man breaking the
+ice so we were backstage talking about
+why are we here and and when Daryl sat
+down Daryl had a very clear reason why
+we're here and a lot of energy behind
+that reason so Daryl why are we here uh
+we're here cuzz human beings are really
+
+[01:33]
+really bad at making decisions I mean
+really bad you think so I know so I've
+seen it do you you seem to have an
+special uh special amount of energy
+around that right now uh well I had more
+energy around it last year when we were
+playing terrible um no I just I the more
+you're in the our industry and as GMS
+our job is really to make decisions as
+series of decisions you know that
+hopefully up your odds to win a
+
+[02:03]
+championship I mean that's that's the
+job and the more you're in it the more
+you realize that people are really bad
+at at decision Mak I mean and and we try
+to be better than most that's my job is
+to be better the most along with my team
+of folks and whatever quantitative
+methods we have but the reality is you
+realize that you're in the Fishbowl not
+knowing there's water half the time with
+a lot of your decisions you don't know
+if it's whether it's cognitive bias or
+
+[02:34]
+anchoring or loss aversion you even if
+you know it's happening it still affects
+you in a big way MH this is worrisome to
+have you who most people think of as
+good at this as anybody in sports talk
+about it with this kind of Despair well
+yeah I I just think you know there's St
+well you know in your industry and I
+think anyone here's who's been in the
+draft or you make decision after
+decision and you and study after study
+just how how much you know how you know
+
+[03:06]
+Evolution has developed our minds to
+make decisions in certain ways and they
+sometimes work really well but in me
+most of the time I would say work really
+manipulate how you make decision I mean
+just the simple simple thing of telling
+doctors look uh there's a if you tell a
+patient there's a 10% chance you die
+they go like
+oh my God I'm not doing that but you say
+like oh this one's fine 90% you're going
+to be fine they're like oh okay 90% fine
+
+[03:37]
+just I mean just you just see how bad
+people are at making choices mhm well I
+feel more despair now for sure what's
+that I said I feel more despair now for
+sure see well this is an interesting
+question actually Daryl's been doing
+this a little bit longer than you yes so
+similar Billy's got the longest tenure
+yeah so Billy tell us how he's got a
+movie he's got everything
+that's because I'm better at decision
+making there you go nice how many titles
+and if I wasn't I wasn't going to tell
+
+[04:07]
+everybody how many champ how many
+championships Billy let's
+go 20 years darl we'll
+see I'm at zero zero this is actually a
+good time for this did you
+play yeah what do you know you didn't
+play what do you know neither did you
+you barely played I did
+my my wife was a Mets fan she's like I
+don't remember
+
+[04:37]
+him okay with that sorry good start I'm
+going to sit over here bil a little
+further away that's a good idea can I
+come over there with you please Billy if
+you don't have the same level of Despair
+why do you think that is how are you
+navigating things any differently well
+you know taking to Daryl's point I mean
+listen all of us up here U are sort of
+rooted in quantitative decision making
+but I think you also have to the one
+thing over time every decision is you
+have to remind yourself it's an
+independent decision and so you sort of
+
+[05:07]
+have to in some sense clear your mind of
+all those previous biases and we as we
+were saying we were talking backstage
+about and we all sort of relate a lot of
+our experiences to decision- making with
+the draft because we we all have it and
+it's the easiest one to evaluate whether
+you're right or wrong um and
+particularly in baseball you're wrong a
+lot because you're drafting 17year old
+kids as opposed to you know the NBA and
+the NFL where there's you're pretty
+assured that when you draft the first
+round you got a pretty good idea how a
+guy's going to perform uh but the draft
+
+[05:38]
+room has and the other thing we don't we
+see players in a in a different form uh
+what I mean by that is like if you turn
+the ACCC tournament you can watch you
+know your first round pick over and over
+and over again in basketball and
+baseball we we may be getting video from
+some uh you know we get video now which
+we didn't have years ago but we get a
+video from a you know kid from Iowa and
+it was years before we got video video
+so we have to sort of
+attach um you know ways of planting you
+know sort of it's not necessarily bias
+
+[06:08]
+but you know a scout for instance may
+say hey reminds me of reminds me of
+reminds me of and it's a way of sort of
+painting that picture for the the
+decision makers but in the end we're all
+subject to when we're talking backstage
+and in our sport we may have a kid who's
+a hitter a certain college and we may
+say well that college never produces
+good hitters yeah and uh or that college
+does a great job producing pitchers or
+doesn't do a great job with the health
+of their UCLA generates great basketball
+yeah so you got to stop yourself and
+
+[06:39]
+remember that this is an independent
+decision because there's going to be a
+Mike Trout out there from milville New
+Jersey that doesn't fit any of those and
+you know and and I remember when me and
+far and faran went and uh you know the
+bias years ago it's not so much now was
+oh well you know East Coast kid he
+doesn't play a lot he's not playing as
+good competition well is it turned out
+the kid from milville New Jersey is
+arguably one of the greatest players to
+ever put on a uniform and that's so uh
+getting to your your question you have
+to stop and at the end say this is an
+
+[07:10]
+independent decision this is a lot of
+information we have but this is an
+independent decision and uh we have to
+remember that when you're in that
+business how do you keep yourself from
+taking a lot of credit when things go
+well a few years down the road or
+beating yourself up about it when things
+go poorly down the
+road well that's I do a lot of yeah well
+we the other thing we mentioned
+backstages is that there's sometimes
+you'll have a decision that turned out
+wonderfully beautifully uh and then uh
+
+[07:41]
+and yet you have to realize that there
+was probably a significant amount of
+luck that went into it and so and we we
+just did that we talked about those last
+uh few minutes ago and the other thing
+is you can have the right
+process uh on some other decisions be
+completely wrong and sort of question
+the decision and what you really got to
+do is look back to we really have the
+process corrected we do the right things
+so uh listen every to some extent you
+know you have to understand that
+especially in sports because there's so
+many variables it's not just the
+performance of the player it's also
+
+[08:11]
+about I mean you got health issues
+things like that and uh there there's
+successful Sports decision some of it's
+going to come down to being a little bit
+lucky too yeah I mean I think part of
+our responsibility is serving you know
+in our positions of leadership is to
+almost serve as a corrective Force
+against in ourselves too much about good
+moves we made or getting too down about
+bad moves because you know to Billy's
+point every decision is independent and
+um you know what we've all tried to
+
+[08:41]
+create uh is a a set of you know
+priorities and processes in how we make
+our decisions so um you know trying to
+recreate a good deal or avoid a bad deal
+are actually greater pitfalls than kind
+of uh cleaning the slate and saying this
+is our process this is how we going to
+make the the next decision and you know
+just adding to that on this idea of
+every decision being independent I do
+think you know this day and age you know
+with a panel with this topic and it's a
+
+[09:11]
+big point of conversation you almost
+have to worry about overcorrecting um
+you know there's so much talk about you
+know the phrase thinking about thinking
+um and at the end of the day we have
+decisions that we have to make um and
+you want to make sure you're not
+creating an environment where you might
+be actually stifling the ultimate
+decision that you have to make because
+you're being so conscious of your
+thought processes and potential biases
+so it's a delicate balance I mean I echo
+in a lot of ways Daryl's message of
+Despair that we're all doomed because
+we're terrible decision making I didn't
+
+[09:42]
+say we're doomed I didn't have Doom in
+there I that was just my own info okay
+okay but um uh but you know the the flip
+side you know and as an example you know
+one thing that uh we do at times uh in
+our front office is if we have a trade
+that we're talking about you know we'll
+say well to avoid group think everybody
+just grade the scale on a 1 to 10 you
+know scale on an independent B you know
+on a secret ballot um you
+know but you know there are a couple
+
+[10:12]
+problems with that one is how
+independent is it really because you
+have all the same tools and everybody's
+kind of indoctrinated into the same way
+of making decisions so you might
+actually be creating you know false
+sense of independent data points by
+doing that um so you know that's just
+one example where you know maybe the
+best way is to sit around and talk about
+it because at least there there's an
+acknowledgement that there's some group
+think going on darl doesn't agree no no
+no I mean talking about it maybe after
+the secret ballot right then then you
+
+[10:43]
+can really fool yourself here making a
+good decision so you mention process
+right Oran there you go too
+soon it's been a year his first public
+comp
+Sam so how how do you
+reconcile this the models being
+imperfect and wanting to use them but at
+the same time recognizing that they're
+imperfect and you guys told a story of
+when you were working for Billy you
+
+[11:14]
+bringing some data and how did how did
+that you're the data guy and how did
+that go down right um well yeah we had a
+we had a interesting and at times
+complicated
+relationship still but yeah exactly uh
+but uh
+You Know It
+uh you know what we were talking about
+backstage is this idea is that that a
+lot of front office and different sports
+are building models now and there's a
+question of how far are our models
+getting us and is it fair to compare the
+
+[11:46]
+player models that were being built uh
+to stock market models or things like
+that cuz you know a lot of the
+literature out there about you know
+stock market models and that type of
+thing is that when people apply their
+own
+expertise beyond the model they actually
+wind up doing worse than the model right
+uh the question is in sports the models
+that we're building are they up to the
+standard where uh you're actually making
+the mo model worse or better by adding
+some of your own independent information
+right right so Sam we know you've
+
+[12:16]
+thought a lot about this this this whole
+notion like Freestyle chess human
+machine collaboration how can you get
+that how can you get that right because
+we know the models are helpful but we
+also know they're
+imperfect I I would say it's depressing
+to to hear you talk about it because we
+often in basketball we would often think
+of um of baseball being like so much
+sort of simpler and better data and more
+sort of one-on-one interaction versus
+like uh game where where the players are
+more independent and so I I think what
+
+[12:46]
+you're trying to build is something
+where you're sort of augmented where
+you're trying to build something where
+it's a um it's a it's a a machine that
+is spitting out you know what the right
+decision is and you're trying to get
+your hands off the knobs as much as you
+can the truth is your hands are on knobs
+all the time cuz your data sucks and you
+don't have you don't have nearly enough
+like you might we we used to always say
+like if you want to have like a kind of
+a barber shop conversation about like
+who the best free throw shooter is like
+how boring does it get like somebody
+
+[13:17]
+pull out their phone and just search on
+something and we'll debate you know Ray
+Allen and Steve Nash and Curry for Mark
+Price yeah there or we'll get Cleveland
+bu Us in so so you get a little
+something but like it's just really it's
+that's really standard and it's really
+boring versus what we deal with is often
+much more complicated and so you're your
+your data is sort of influencing you in
+real ways and you're and you're trying
+to like listen to what signal is in
+there but it there's it's not nearly
+that easy you have to there's all these
+
+[13:47]
+other things that are happening in the
+world and will happen in this young
+man's future that you that the data
+knows nothing about MH MH Billy you're
+given credit for birthing this whole
+world really but you're the one who's
+least quantitative on the panel how do
+you think about the use of Quant with
+subjective expertise and traditional
+scouting how have you done that how have
+you made that work well actually it's
+interesting because uh you know when we
+first started out when it was just me
+and Paul when um Daryl was still in
+
+[14:18]
+science class in high school
+oh I'm older than Paul where he where
+he'd be teaching if it wasn't for me and
+Paul uh but
+[Laughter]
+you couldn't get
+in didn't need
+to so want you want to keep going D I
+think you Mar like that have more locker
+rooms than I have so I think he'll win
+
+[14:48]
+so you know it's funny when when when me
+and Paul first started I say Paul D
+pedesta um when we first started uh you
+know I just got done playing and you
+bring in Paul and we were really so
+myopic and it was all our decisions were
+just pure quantitative all the way down
+I mean in some respect the the Moneyball
+draft so to speak was just based purely
+on objective evidence you know we wanted
+to really go scorched Earth and uh and
+
+[15:18]
+and see what happened uh I wouldn't
+recommend that by I'm sorry I wouldn't
+recommend that
+yeah so uh
+well I was going to say when you said
+he's the least quantitative I think he's
+the most
+quantitative you know I you know what
+far would probably as a manager as a
+manager as a manager yeah I think he he
+believed in it more maybe yeah and I
+think yeah I think darl's right and me
+and far ironically and I get back to
+your question I bring in you know faran
+
+[15:48]
+who sort of comes from a a quote
+quantitative background and academic and
+by the end of it we' sort of flipped
+relationships where I had far making
+emotional decisions on players who
+quantitatively we should keep uh to the
+point where one time I yelled at him
+that he was becoming the emotional stat
+guy and uh and then he proceeded to name
+his fantasy league football team that
+year in house called the emotional stat
+guy so but Dar is is right and I think
+some of it is my own experience and and
+trying to stay disciplined too you know
+
+[16:18]
+as much as anything but going back when
+me and Paul first started we literally
+that's all we looked that because we'd
+seen the other the extreme the other way
+I mean you know the entire my entire
+career previously was based on the
+subjective and and and we made a lot of
+mistakes and we realized that you again
+looking back we didn't have as much
+information as we thought we did and uh
+it was interesting when faran came in uh
+it was when we really started to balance
+it and and wait and we realized that the
+subjective was an important part that it
+was a data point that could be built
+
+[16:49]
+into our decisionmaking and and faran
+really spearheaded that uh when he came
+in despite his background and it was
+ironic that you know uh he balanced us
+out a little bit but but at the
+beginning we were we were just all I
+mean that this is how we're going to
+make a decision we're not going to
+deviate from it but we learned from that
+as well because we started from a again
+a very disciplined way of doing things
+and realize at least we could look back
+and see where we' made mistakes and we
+made a ton of them uh but it was just
+ironic that a guy from MIT would be the
+guy that balanced us out and realized
+
+[17:20]
+the value of subjectivity yeah I mean I
+think a good metaphor for how our
+relationship was sometimes is imagine me
+holding a spreadsheet and handing it to
+Billy and then us having a fight back
+and forth yanking it cuz I was always
+cuz I knew that when Billy got objective
+information in his hands he was going to
+implement it to a te um and it wasn't
+necessarily that I didn't believe that
+was the right thing but one thing that I
+think we all have to deal with and and
+counter is you know the emotional side
+
+[17:51]
+of decision- making and the fear of
+making mistakes so even if you think
+it's the right thing the fact that
+someone's going to just take this and
+run with it um you you know can create
+some hesitation for you uh and uh you
+know we've talked about we talked about
+that a little bit backstage you know we
+talk about cognitive bias but there's
+also kind of an emotional side of
+decision- making that can distort things
+that you kind of have to manage as well
+well I think some of the best analytics
+folks end up using waiting it in their
+decision process lower because they've
+
+[18:21]
+seen where it can lead you astray and in
+our Sport and his sport where the
+advantages we're trying to create our
+smaller and smaller relative to the
+competition one of the ways that we hope
+there will be an edge is that as teams
+adopt it they overuse some of the stuff
+that that we know to be very hard to use
+in a in a in a very significant way mhm
+you you guys have talked about making
+objective very subjective inputs right
+so can can just give a example a
+
+[18:52]
+concrete example of something that
+traditional Scouts have talked about in
+the past and you're actually baking them
+into your models
+I i' would say it's it's as much a
+um it's as much a an exercise in
+intelligence gathering as it is in
+anything else you're you're trying to
+predict how a how in our case a young
+man will um will progress given like
+wild changes to his lifestyle and wild
+changes to pressure and everything and
+changes to his body and uh co-workers
+
+[19:23]
+Everything Will Change you're trying to
+project over a you know if you're lucky
+a 10year period or so and so so a you
+better have a lot of humility about that
+uh and your ability to know that his own
+ability to know that himself much less
+uh you better be gathering data in in a
+big way one of the examples I often use
+is if you describe a set of
+circumstances that you that you you win
+a lottery and you make a lot of money
+and a storm hits your house and
+something else really bad happens in
+your life and you say well how will a
+stranger react to that and you make a
+prediction versus how will say your
+
+[19:54]
+spouse react to that or how will your
+parents react to that somebody you've
+known for a long period of time time you
+can make a much tighter prediction about
+how they'll behave in that situation
+than you can about somebody that you
+don't know very well and so part of the
+exercise is like really trying to get to
+know them in a deep way which is more
+than just the first storytelling you
+hear is like how do you gather data
+points by the hundred about a particular
+player and we see this in the
+intelligence business maybe in our
+government right now like we don't have
+there's not there's not a phone call or
+two that that people look at for the for
+
+[20:26]
+some Intel they have tens of thousands
+of pages of documents over decades about
+how a particular person will react MH in
+in a certain situation given a set of
+inputs and they're trying to make
+predictions on how that person will
+react over time so this has consequences
+for how you run your organization and
+what you reward and what you want your
+people to do right so Billy you were
+talking about how you think about scouts
+or how you evaluate Scouts it you you
+said it's not even you don't even expect
+them to be right is that right no well
+no I don't expect I I don't you know one
+
+[20:56]
+of the things in faren can knows this is
+true because he sat with us for 10 years
+right next to each other is that I think
+the idea that you know you can anyone
+for an hour can go look at somebody play
+at 17 years old and be able to predict
+what's going to happen in 10 years it's
+just I haven't I think it's asking too
+much and so um uh but you know for us
+again going to some of Sam's point is
+you know one of the things that changed
+you know for us we realized listen at
+the end of the day this is all about
+Gathering as much information as you
+
+[21:27]
+possibly can to puts yourself in the
+best position to make a decision and
+there's some things that we couldn't get
+in Oakland in terms of you we could get
+all the quantitative evidence we wanted
+uh but we realized what we were missing
+was to use the term that Sam sort of
+that Ground Intelligence there's things
+that a scout or living in Oklahoma can
+tell you that you have no chance of
+getting unless you've got somebody there
+and it's can be really important in the
+decision-making process you know what
+type of kid he is you know you know
+obviously you get what type of student
+
+[21:58]
+he is but there's just so many small
+things that really we started baking
+into our decision making and uh and
+realized it was important because I mean
+it's funny I don't know how you guys are
+but in baseball we'll draft like you
+know 50 guys now we're jealous of you
+yeah well uh we just get like two babies
+you you get like 50 well the thing the
+thing for us is what's interesting is
+you can go through a draft we draft 50
+guys and you know really
+quickly when you made you know a lot of
+
+[22:28]
+times you're you know right away after
+Sam taught me that actually he called it
+the inflection point yeah yeah and you
+know maybe you get to instruction League
+or a month into the season you know it's
+when all of your staff has had a chance
+to interact and you know you'll get to
+the point where maybe three weeks after
+these guys been playing your fourth
+rounder is better than your first
+rounder and everybody knows it wow and
+you got to be okay with that a lot of
+places are trying to force at least in
+our they're trying to force their higher
+pick to be better than their worse like
+we picked Chandler Parson I think well
+
+[22:58]
+Sam was there when our third pick at 38
+and he was by far the best player we
+drafted that year clear after the first
+practice after the lock after the first
+practice practice one time and you're
+like uhoh better the other two and the
+owner actually very our owner uh very
+smart was like Hey you made a huge
+mistake there normally you'd think oh ad
+a boy second rounder doing good he's
+like you made a huge mistake and I'm
+like damn it you're smart we did like we
+should have picked him earlier and and
+then I was like would you believe I knew
+he'd last to 38
+
+[23:29]
+he's like he's like no I was like well
+you shouldn't believe that either so um
+to answer one of your things though like
+think conman and probably a paper you
+done has proven that subjective ordinal
+ranking of ordinal ranking of subjective
+Concepts can help your decision making
+right um even if there's no quantitative
+basis to it initially so uh yeah so we
+have Scouts I'm sure you do too like
+rank you know things like um habits to
+improve and things like that so yeah
+
+[23:59]
+there's a great passage in the Daniel
+conman book Thinking Fast and Slow where
+he talks about firemen and how good they
+are at knowing exactly when a building
+is about to collapse they know exactly
+when to get out of the building um and
+they get asked about it how do you know
+and they just say it was my gut it was
+just you know Instinct um the reality is
+that get out AR the ones that get out
+exactly there's a little bit of a
+sampling issue the other one struggle
+but uh
+
+[24:29]
+selection bias for sure or Darwinism
+something like that uh uh but to me
+that's actually you know I mean and when
+you really start probing you find that
+it's it's not just gutter Instinct it's
+you know a combination of their
+experience and you know the temperature
+the smell like the intensity of the of
+the light like they are taking in a ton
+of information and data and making a
+decision um and they it as just instinct
+
+[24:59]
+or gut but it's not and to me as I read
+that book that was the best analogy to
+scouting that you know I could uh that
+that I could find which is a lot of
+times your Scouts will tell you ah it's
+just this is my gut feel guy um but you
+know there's a ton of information and
+value in that for us to say it's just
+subjective or it doesn't matter um you
+know you're you're absolutely right to
+ask question the challenge of sort of
+peeling back the layers and figuring out
+a way to formalize that information so
+you can use it more systematically
+that's a big challenge for all of us MH
+
+[25:31]
+you guys are in the unique position of
+having work for these two so they're
+sitting here the wise experienced ones
+so we can call horseshit when they say
+it's the biggest difference they yeah
+they actually know it's I'm W I'm
+waiting I haven't found any yet but I'm
+looking so what have you learned either
+positively or negatively about managing
+cognitive biases from these two guys oh
+my
+god um yeah I I would say a lot of what
+um what I learned sort of watching Daryl
+is is how you would try to strip things
+
+[26:01]
+down and and isolate things as much as
+you could uh the truth is you get some
+sort of bleed over but we would we would
+talk in a really deep way about a
+player's skills uh the truth is like
+there's a player I like him I like him a
+lot he's you know second or third pick
+you know he's really good okay why let's
+get in a really deep way and see how
+you're waiting things because to Billy's
+point about sort of say a scout is you
+know we used to say like the job is not
+to be the mini GM right the job is to
+like bring all the evidence you can and
+help find more evidence and help us and
+help poke holes in all the arguments
+
+[26:31]
+we're making particularly me if I'm
+making arguments you should poke holes
+in in those but but what we really need
+to know is like how you're waiting
+things because if what you find is like
+you you really like this player and you
+think he's the number one pick in the
+draft and you don't think you can shoot
+that well you don't think you can do
+this that well or or rebound that well
+he's not that athletic whatever but like
+but your guy told him he's awesome right
+and that he brings it he's super
+competitive well great okay fine but now
+we learned that almost 80% of your
+
+[27:01]
+evaluation is your data pointer to which
+sometimes has signal in it sometimes
+it's actually a guy one of the things I
+would often do is read the body language
+of the people who are angry is we'd Rank
+and then ask and probe and probe like
+what's go because they're they're mad
+they're mad because they're trying to
+Advocate on behalf of the organization
+like no no we should pick this guy and
+so I'm asking a hundred times like why
+like why explain to me why and sometimes
+you get an answer that's a story that
+I'm I'm quick to discount but you'd
+sometimes wait it which is like I swear
+
+[27:32]
+to God this coach that coaches there was
+my college roommate and we've talked
+about 500 players over the years he's my
+number one source in the league I've
+heard him talk about all these other
+players that he's coached it's not that
+I think he's wrong I've never heard him
+talk about someone like that right okay
+oh fan out okay we're calling 20 people
+at high school you know next week we're
+we're going to go search that that's a
+hypothesis to be tested let's go let's
+go that might be something we had a
+coach one time that came back and
+watched a player and he said I think
+
+[28:03]
+he's got the best handle I've ever seen
+and I'm like what and he's like the best
+handle I've ever seen and I think if he
+comes to the NBA he might have the best
+handle in the NBA and I'm like all right
+that's 10 of us everybody's watching an
+hour video just do tomorrow you're
+getting random samples of video I want
+you to rate his ball handling and write
+500 words on his ball handling and
+everyone goes and does it right and we
+come back and you're like there was
+something there right but that's a
+latent skill that maybe we wouldn't have
+had otherwise you're not going to just
+ingest it but you you better be ready to
+test it but but you're trying to like
+
+[28:34]
+separate those things apart I think that
+was something common that um a lot of
+people do that's why in hiring it's
+important to have very passionate well-
+informed well-prepared people because
+they will Advocate and you only learn in
+the strong advocation of someone because
+you see that they're like it's so wrong
+that this guy is ahead of that guy and
+then you can learn why and until that
+moment everyone's just sort of like yeah
+higher lower whatever you know like we
+
+[29:06]
+don't learn anything from that now
+Farhan they made entire movies about how
+Billy handled that kind of
+scene what did you learn from how Billy
+handles that kind of
+scene
+um I mean I was uh you I have to say uh
+I I I was kind of sort of thinking about
+your original question and kind of what
+I learned about Billy and I I had to
+figure out a way to work this in so I
+would say the first thing I learned was
+um how to be smart with money be careful
+with money which is why when I saw Billy
+
+[29:37]
+the first thing I told him was hey the
+sport quotes from
+Target that's why there's no pocket oh
+nice nice uh but uh you know I would get
+back to what he was saying earlier about
+um you know uh sort of wiping the Slate
+clean with every decision you know and
+uh you know sometimes it wasn't just
+wiping the Slate clean with every
+decision but sort of wiping the Slate
+clean with an entirely new strategy you
+know I think back to you know uh in 2011
+
+[30:09]
+when we traded three of our best players
+Andrew Bailey uh Gio Gonzalez and Trevor
+Cahill and it was kind of we'd been
+building building and Billy was like
+let's just uh you know scrap it start
+again get some young talent and go from
+there everyone was like well these guys
+are good what are we going to do and he
+was like this is you know this is this
+is the right strategy from this point
+forward um and you know I still think
+for me that's something that's a
+continued work in progress but I think
+that comes from experience and and kind
+
+[30:39]
+of once you've done the job for long
+enough I feel like you've made every
+kind of mistake and every kind of
+miscalculation and so you're not really
+trying to avoid anything at that point
+okay I will say there's a bunch of
+tricks that can help I think you're
+still you're still often blind you're
+blind way more than you want to be but
+um we're all so good at being critical
+of someone else's arguments like write
+down your argument and read it back to
+yourself out loud yeah because like if
+you if you're you're so critical to read
+a paragraph and say like Ah that's not
+
+[31:10]
+and you poke a hole in it right or or
+have somebody else do it and those sort
+of things often help or we would we
+would like write we'd sort of call it
+sometimes the investment thesis like we
+want to pick this player we want to pick
+him here and here are all the factors
+why and here's like the the high level
+points of evidence we have for those and
+sort of our confidence interval about
+those and you'd like write it and set it
+aside and come back like two weeks later
+and you're like who wrote that like who
+who wrote bullet point number three like
+that that can't be true like whatever I
+
+[31:41]
+saw that made me say that or whatever
+they we just that's our evidence is
+super thin there so if so if we're
+betting that that that that's a big part
+of the thesis we're in we're in trouble
+I think with each of the cognitive
+biases you can you can try and create
+these tricks so endowment of I call it
+the man McNair role he's one of our
+great staff members reverse every trade
+every trade you're talking about if you
+held the other side would you actually
+do it it's shocking how often you go
+like we would didn't even like think
+about doing that and then uh cognitive
+
+[32:13]
+bias like try and not not decide what
+you think as long as possible right um
+just too off the top of my head so so
+you you guys talked also a little bit
+about regret and how regret can get in
+the way of making making trades
+sometimes and what was the solution
+propose for yeah no yeah I was a
+backstage this is going to really
+reflect bad on my Humanity but I'll tell
+the story
+anyway uh we were sitting around once
+talking about a trade where we were
+going to trade a young player for
+somebody that was you know really going
+
+[32:44]
+to help our our playoff push and there
+was a lot of kind of consternation about
+about giving up this player and you know
+I was concerned that a lot of that was
+just sort of you know uh avoidance of
+regret rather than like what's really
+the right move like which player would
+we rather have from this point forward
+so I said all right well what if we make
+this trade but instead of having to send
+this guy to the other team we just get
+to take him out back and shoot him and
+uh and everybody said well you're a
+morbid human being first of all but yeah
+
+[33:16]
+I mean when you couch but they also said
+oh yeah we' make the trade then we do it
+yeah so uh you know I think a lot
+winning argument huh a winning argument
+I guess and uh
+yeah people were much more careful
+around me after that point uh but uh uh
+but yeah I mean that that that's sort of
+an example where you kind of couch a
+decision in a different way and you kind
+of come up with a different sort of uh
+you know different conclusion we've been
+talking about general managers and their
+biases but you guys live kind of in the
+
+[33:47]
+middle of an organization you've got to
+navigate your owner's biases you've got
+to navigate your coaches and players
+biases do you find it easier to to to
+handle the Upstream stuff or the
+downstream stuff what's it like to have
+to manage your owner's
+bies I'm no chicken a chicken no I mean
+I've had the benefit of our owner I you
+know I got him later I think it's very
+hard to be an owner uh you get you're
+generally very successful in everything
+
+[34:17]
+else before with much better odds like
+you get into our industry it's one out
+of 30 one out of 32 horrible odds none
+of these people who buy teams are used
+to losing at the level they almost all
+experience at some point I think it's
+very hard and the Press comes at you
+it's a very public job so I think all
+almost all owners early make many many
+many mistakes as much as GMS do early uh
+I got I got the benefit of you know
+coming to the Rockets when our owner had
+owned the team 13 years and I think he
+one thing he was very smart about is he
+
+[34:49]
+actually holds his cards close generally
+uh and then only very Ben Franklin like
+he only inserts at the point because he
+wants he actually truly wants our
+independent opinion but it's not always
+perfect and there have been times you
+know when when we've had to you know say
+Hey you know when you even hint at
+leaning a certain way it's almost
+impossible for us not to immediately
+shift our odds of doing something like
+in seconds from hearing even his body
+language of how and at the end of the
+
+[35:20]
+day because it's it's his team and we're
+all here to Steward his team uh you know
+it's it's natural right I mean
+I think there's got to be mult I mean
+you're the academic there's got to be
+multiple studies that when the the
+leader uh of an organization takes a
+certain tack everyone sort of tacks
+behind almost immediately it's and I
+think it's worse in sports than it is in
+other Industries must be similar but but
+I don't think universally maybe maybe
+sort of high stakes politics or
+something is is similar to that but
+
+[35:50]
+because the jobs are so hard to get and
+people if they're if they're smart like
+recognize what long odds they got to get
+there that it leads to this sort of
+hunkering down way too often and so you
+find a lot of organizations have lots of
+survivors that have made it through
+dozens of regime changes one way or
+another one of the ways they did that is
+like don't stick your neck out and
+particularly if if the owner uh is
+leaning a certain way or you've heard
+rumors that the owner doesn't like this
+player doesn't like this sort of coach
+that don't stick your neck out and play
+the blame game that's a great way to
+
+[36:21]
+survive generally I it reminds me when
+um when when Obama came into office I
+mean he was sort of the first maybe
+Blackberry addict that had been
+president and so he was like fighting to
+like keep his BlackBerry and the and
+Secret Service didn't like it and
+everything and so they were trying to
+figure that out and I think he ended up
+keeping it but but one of the things he
+said was like it's not the keyboard like
+he's like these are the people that told
+me the truth like these are the people
+in my life that like like dude what are
+you doing like what did you just say
+yesterday that's not that wasn't part of
+
+[36:51]
+the plan we've known you for decades yet
+something about you getting into
+Washington and getting in this
+environment does it where versus is
+being in the white house where like all
+the information is filtered up to you
+and everyone's got an agenda and
+everyone's got sort of their own career
+agendas as well and they just leave you
+with you know the hardest of hard
+decisions and only and package it and
+frame it in just a certain way 10%
+chance you're going to you know
+everybody's going to die or 90% chance
+this will be fine
+mhh oh come on Billy oh no I was just
+yeah I've actually had four managing
+
+[37:21]
+Partners since I've been there in
+Oakland and Survivor yeah I guess I keep
+my neck down noticed uh that's me uh the
+uh u i we had the hos family and then
+steveen shot and Ken Hoffman and Lou
+wolf and then uh most recently John
+fiser uh and one of my favorite and and
+again and all was lucky to work for all
+of them I mean they all had their uh you
+know great things about them but the one
+thing I always appreciate that there was
+a reason they owned a baseball team you
+know they they just someone just didn't
+
+[37:53]
+give them a baseball team uh one of my
+and all them were different personal
+ities I remember my first year as a GM
+um we had the second pick in the draft
+because Alderson was a GM before and we
+were terrible so my first year uh so we
+got the second pick in the draft and it
+was my first draft and this was a time
+when we didn't have a a cap on bonuses
+and so we had budgeted I think like $2.5
+million for Mark Moulder and uh it was
+pretty obvious that the this cost of
+signing it was going to go up by about
+
+[38:25]
+$500,000 and um
+that was a lot of money to us then
+that's way over budget for us in Oakland
+at that time and what my owner was Ken
+Hoffman who was a a guy who was a just a
+really a tough tough guy he made his you
+know he started as a brick layer and
+went on to become a developer so he's
+sort of a made man and and uh and I
+remember sitting in my one of my first
+ownership meetings and I needed to ask
+Ken for $500,000 more to sign Mark
+Moulder and in my first year and Ken
+looks at me and he's big Gruff man and
+
+[38:56]
+he goes can you guarantee me he's going
+to be in the big leagues and I looked at
+him and I say there's no way I can
+guarantee that Ken right I literally
+just told him the truth right uh cuz in
+this business you can't guarantee
+anything and and he literally just said
+good you have the money and and W and
+what I realized in this was sort of
+Ken's style it was that listen he just
+didn't want you he was a smart guy and
+you weren't going to pull one over on
+him and it was it was sort of a good
+lesson your first my first year as a GM
+
+[39:26]
+I mean there was this you know you you
+know you mentioned Sam and we all are
+aware of you know sort of the survivors
+you know but uh at the end of the day I
+mean listen these guys again they're
+smart guys and and what I realized is
+that you know really being as
+transparent myself as an executive was
+probably going to be the best approach I
+mean there's times in farand has been
+with me where listen as a GM we all kind
+of know when our team's good and you
+know even going into the season assuming
+health and uh and and one thing we
+certainly internally we never tried to
+
+[39:56]
+do was try and spend things and you know
+sort of knowing that we're going to play
+a season in 3 months and tell our owner
+we we've got the best team since the 98
+Yankees you just wait and see knowing
+that it wasn't true so and the lesson
+that first year was that there was
+definitely uh transparency from my own
+end was was the right way to go and and
+and and quite frankly that's how you
+dealt with Ken and other guys are
+different but Ken like you said he was a
+tough guy he didn't he was going to
+smell it out if you were going to
+because again I couldn't guarantee
+anything and then to this day U
+sometimes it's more comfortable to
+
+[40:27]
+guarant to your own or something even
+though you can't do it but in the end
+it's it's I I think work well for myself
+and I learned that lesson my first year
+what role does you guys are at least
+historically been trying to do something
+different than other general managers
+baseball's may be catching up some
+basketball's catching up some but in
+general you've been trying to do
+something different or do more of it
+than other people are what role does job
+security have when you're trying to do
+something that different I would just
+say just to clarify your question like I
+think one thing I I think all of us have
+
+[40:58]
+done is more take the lessons that are
+sort of obvious that everyone's agreed
+to and taking them to the logical
+conclusion taking them further which is
+you know for example us you know it's
+better to make three than two on a shot
+you know genius right but you know but
+taking it to its logical conclusion
+which is shoot 50 of them a night is
+something people hadn't done or right
+obviously I'll speak in our and I think
+but these Sam in in his job
+you know you need stars to win I can
+
+[41:30]
+speak for him and I can tell you that
+the best way to reliably get the top
+franchise star you need to win a title
+is through the draft and he took it to
+its logical conclusion and I think
+eventually with a lot of success for
+that franchise so I I would say that's
+more what we've done than you know
+necessarily I don't know you can speak
+for yourself but like not necessarily
+than being like these innovators that
+came up with stuff no one else did we
+just said why is any like if that's the
+right answer why don't we just do it
+
+[42:02]
+like like football why are we still
+punting it's still drives me crazy like
+that's your you know you rer had that
+paper but like it makes no sense it's
+really upsetting that's why we have the
+title of the panel this year that we
+we're still not going on fourth down
+like when it's overwhelming but anyway
+sorry rant off sorry I think I killed
+your question sorry you no you you did
+clarify it but it still ra it still
+raises the issue mostly there's just
+
+[42:33]
+less there's not much latitude for
+people to take things to extreme right
+so or so the the consequence is you have
+these GMS who are themselves playing it
+safe and they may not be they may not be
+biases as much as pursuing the
+incentives they have I'm going to trade
+up because I need a player to win right
+now so it may not even be a bias it's
+just the structure that the owners con
+that the owners built I think you just
+have to be super clear about where your
+Edge is or where you're trying to get it
+you might you might not get it like
+depending on your particular strategy
+but if you're not if you're not
+
+[43:04]
+singularly focused on an edge and then
+willing to Resource behind it what are
+you doing what are you doing you're
+trying to be 1% better at everybody else
+at everything like the these leagues are
+good they they they run pretty pretty
+solid tournaments to get people leading
+them in charge you end up with a much
+like much like ownership you end up with
+like a pretty darn talented set of
+people MH uh with a set of rules that
+equalize everything generally um all
+trying for exactly the same thing pretty
+close and so if you actually want to be
+
+[43:35]
+different you're going to have to have
+some Edge in what it is and some teams
+um The Edge might be in a particular
+place in scouting here or in or in
+trades this way or in uh recruiting
+players in a certain way or the
+particular gravitas they might bring to
+a free agent meeting like I think all of
+those are reasonable um but you better
+you better have one yeah I mean I think
+you know to the extent that we've
+implemented differentiated strategies it
+hasn't been because they were different
+it's be been because we thought they
+
+[44:05]
+were right you know and that you know
+ultimately your answerability to
+ownership and these guys have alluded to
+it uh a little bit there's you know
+different levels of involvement from
+different owners some are very involved
+some are not as involved and frankly you
+know some some owners may hear more
+about how the team is doing or whether
+it's been successful or not from their
+grandkids than they hear from you I mean
+depending on their proximity and how
+much uh uh interaction you have with
+them so you know I I think you implement
+
+[44:38]
+a strategy that you believe in and if
+it's differentiated it's differentiated
+uh and you know you play it out and uh
+you know sometimes it it works out and
+sometimes it doesn't but I think what's
+behind it is a degree of conviction
+about it and not necessarily hey let's
+do something different MH Billy how has
+it been for you over time I I was at a
+small conference where you came by and
+spoke a little bit in the early 2000s
+and we talked about the idea that you
+might have said this you said you know
+it's like walking down the street and
+
+[45:08]
+people just have dollar bills laying
+around and we're just picking up dollar
+bills and we ask well what happens when
+people start adjusting to that and you
+said well then there'll be 50 cents and
+then there'll be a quarter so how has it
+been for you and how do you think about
+it right
+now well well I mean first of all you
+look at this conference I this is the
+first year I've been to this and uh I
+was was amazed at the attendance and if
+you sort of think think of why it was
+started going back
+to 2003 when Michael released the book
+and even before that uh I think we
+
+[45:39]
+always knew in Oakland at some first of
+all the game my game my business and I'm
+and I know with Daryl and Sam two guys I
+know I mean for a long time known Sam
+actually before I think Daryl because he
+was in grad school at Stanford when we
+first met and uh uh so I saw you know
+when Paul came into the game you know
+and then you know you have Theo and you
+know guys like farand came into the game
+the game has become so intelligent and
+you know trying to find that edge uh
+again you don't even know the thing is
+
+[46:09]
+you're not really privy now nowadays to
+what other teams are doing everything is
+proprietary I mean you people are hiring
+staffs and so you may think you're doing
+something different and you're not I
+mean and for me I've only been in
+Oakland so I have no idea how other
+teams are are doing things uh and you
+assume again that you're you're cutting
+edge and you may find out and you know
+farhan's had the experience of going to
+AR you know Oakland and now working with
+Andrew in Los Angeles so he does he's
+able to see the difference firsthand but
+we don't really know I mean I have no
+
+[46:39]
+idea if we're Fred Flintstone or if
+we're cutting edge because again people
+you know now just like any this is big
+business and when people are creating
+things they're keeping it to themselves
+so um uh but the game is so much smarter
+now I mean the the group of people that
+are running baseball teams now I mean I
+mean there's no wow hanging fruit at the
+executive level in baseball these guys
+are all really really bright they've got
+amazing staffs it's uh it's all gone
+zero out of 30 well no I mean just it's
+becoming more efficient you're in my
+opinion you're getting more of an
+
+[47:09]
+efficient market uh and or ultimately
+probably more so than people think when
+you you know I'll tell you a market
+that's not efficient as
+football so there's a question here from
+from from someone who's who's tweeted do
+you think you could switch Sports and Be
+an Effective GM it's a question for all
+of you guys do you think you could
+switch Sports and Be an Effective GM I
+yeah I I well yeah I mean my simple
+question would be yes I mean um I think
+that uh listen there's a there's
+certainly nuances there's things that
+
+[47:39]
+you know Daryl does and his SP and Sam
+does and me and pan do they're different
+but I think
+ultimately listen at the end of day you
+got all the information you want
+execution is the bottom line I mean
+Crossing the Rubicon is executing
+otherwise this stuff would have been
+going on 30 years ago right MH uh it can
+sit in the basement nobody if nobody's
+going to do it and understand doing it
+in sports is doing it in front of a
+crowd every single day that has an
+opinion immediately on what you're doing
+uh so uh leadership is is uh ubiquitous
+
+[48:09]
+to uh I think any business particularly
+any sport in my opinion you know listen
+you can hire guys in any sport to fill
+in the gaps that you don't have the one
+thing that's important in our job and
+you we touched on it you're talking
+about you know working with your owners
+working with people below yourself
+making decisions at a public level those
+are leadership qualities so my my answer
+would be yes MH MH I think the answer to
+that it's it's
+um I think it really depend like how you
+hear that answer really depends on how
+you see the job and if you see the job
+
+[48:40]
+as um as making consistent decisions and
+trying to build an organization that
+makes rational decisions over the long
+term and builds all the infrastructure
+that can make that happen and builds a
+culture that makes that possible to win
+given a set of rules um then I then I
+think think the answer is yes if you if
+you see the job differently I think the
+answer to those folks who are plenty
+reasonable is obviously no obviously
+that would never that would never work
+you know if if I was starting a tech
+company one of the first guys I'd hire
+would be this guy right here and and one
+
+[49:11]
+of the other guys I'd hire is Paul far
+yeah well both of them yeah so I mean
+Cho and and I've always said that even
+you know Paul's not here too and and uh
+I mean when I hired Paul you know he was
+a Harvard econ major these these guys
+weren't in my sport at the time so I
+remember getting fan letters like what
+are you doing hiring this Harvard econ
+major to help you evaluate talent right
+and that was the reaction and the fact
+of the matter is is you know being smart
+Works in everything you do and as far as
+
+[49:41]
+being a general manager again I think
+that's a leadership position uh I think
+Jack Welch would have been a pretty good
+general manager and he probably would
+have surrounded himself with really
+smart guys and made really good
+decisions kind of stole my answer I was
+going to say I think I would be a good
+NBA GM because I just hire Sam and go on
+extended vacation job
+done nice so another question from our
+audience uh this is kind of a perennial
+question you guys would be interesting
+to hear from on this how does team
+chemistry contribute to winning and vice
+
+[50:13]
+versa this is Billy's favorite question
+yeah
+Billy
+softball he's got a knock it out knock
+it out uh well listen I I'll just speak
+my own experience because at some point
+somebody's going to be able to quantify
+it and uh my experience with my team has
+been
+my my good teams have always had great
+chemistry and my poor teams have had
+poor bad chemistry
+always I've only been able to make
+
+[50:43]
+decisions based on evidence and the
+evidence that we've always had in
+Oakland is that we've had great
+clubhouses and we've been known for our
+club houses in Oakland and they've
+always been synonymous with winning
+baseball games and uh uh
+so you can go on and on about this
+forever but I've never really seen a
+team that's won that didn't have great
+chemistry and I've always assumed it was
+because of the wind what's causal though
+which direction the arrow I'm sorry said
+again what which direction is the arrow
+what what you mean does chemistry cause
+
+[51:14]
+winning yeah or the other yeah that's
+I'm asking if you're asking my opinion
+yeah I'm trying to learn from you well I
+think here here's what I know here's
+what I know we if you consider having
+some controls the gym is the Players you
+pick and if you pick players that win
+I'm going to bet the ranch you're going
+to have pretty good chemistry uh again
+I've never been able to select a a
+player based solely on say the
+perception of his personality or how he
+fit into a clubhouse and had that work
+
+[51:44]
+out and successfully create a winning
+team we hear about it we hear about it
+you know in the news recently in the NBA
+I mean teams move players partially for
+that reason teams fans question whether
+teams acquire players that have that
+baggage what do you think about it on
+the NBA side is it the same answer or is
+it different well a good team will
+absorb that you know we we've had play
+you know I I we've had some great great
+uh clubhouses when I you know going back
+to the Hudson Moulder Zeto days and
+Jambi T those those are not only great
+
+[52:15]
+players but they are great guys and when
+you have that type of guy I uh you know
+or say that has a reputation when he's
+absorbed into a winning environment it
+it again you know it it seems to work
+work if it's in an environment that's
+not uh as successful then it it seems to
+create a create a problem I will say
+this I have had a few players the one
+player that I acquired specifically for
+that reason was we we had Ronnie Gant in
+Oakland and we had a really good team
+and and Ronnie had played on winning
+teams when he was younger and um and we
+
+[52:47]
+had him two different times and and
+Ronnie was one guy remember and David
+Justice was another one where you
+brought him in and they they really
+enhanced the environment
+but the environment was already good and
+they just sort of took it to another
+level but the Acquisitions were based on
+the fact that we already had a good team
+uh it wasn't the reverse where we're
+just going to get these guys we're not
+very good and we think these these guys
+are going to make us good just by virtue
+of their force of their personality okay
+I agree with Billy that a good strong
+
+[53:18]
+locker room creates option value for
+certain guys you can add um so that
+that's a big one in terms of like the
+call I you know for me it's all about
+franchise phase so when when yaang and
+Tracy McGrady were both uh G you know
+their careers were over because of
+injury um you know we didn't focus on we
+we just desperately needed high-end
+talent and often those will not come in
+perfect packages because if they did
+
+[53:48]
+they would just stay on the teams that
+are on so we pursued them and now now
+that we're in a much better winning
+situation with a pretty high high
+probability to win the title not as high
+as we want uh you know the amount we
+spend on making sure all our role
+players um will be high quality habits
+high quality people to be around is is
+much higher okay in that to Daryl's
+particular Point um in that team ya
+McGrady were young and and were playing
+
+[54:19]
+well and bad was there we had we had a
+pretty good team and we traded a first-
+round pick for Ron Orest who was on a
+one-year deal and and came and helped us
+in a big way and and Yao and Ma both
+were pretty injured that year but helped
+us in a big way and it wasn't without
+issue it had plenty of challenges but
+like there was very little Ron could do
+in his personal life or in the locker
+room or in the team that would like
+affect Shane beter or Luis skola or
+those guy like they Chuck Hayes they
+knew exactly who they were and they were
+
+[54:49]
+comfortable with that and and it was
+hard for them to sort of be thrown off
+that by any particular blip and we had
+some blips but at this but same time I
+think it was worth it now when it came
+time to resign him to a 5-year deal we
+didn't right and he went somewhere else
+and in that place ended up winning a
+title that very first year yeah I I mean
+you hear the question asked a lot about
+causality with chemistry I'm not sure
+that's the right question I've always
+kind of viewed it as you can get caught
+in a vicious cycle or you can wind up in
+a virtuous cycle depending on you know
+the type of character that you have on
+
+[55:19]
+your team when you start winning uh and
+you have good guys they sacrifice for
+the good of the team and and you know in
+baseball there are material things that
+players can do that are unselfish that
+help you in uh and when you have the
+right environment they're more likely to
+do those things so it does manifest
+itself on the field your relief pitchers
+are more likely to pitch on days when
+they're not feeling well as opposed to
+saying I'm just not going to pitch today
+I'm not up to it um and you know on the
+flip side you start losing and everyone
+says we're losing because I'm not
+playing enough um or you know the
+
+[55:49]
+manager's not doing this or that and it
+can kind of spiral the other way so I
+think this is back to the start we used
+to always say back to sort of make poor
+decisions or like humility in this is
+like rank order all the best chemistry
+guys in the league this coming year
+right so you ought to have pretty low
+confidence in your ability to predict
+who's going to have the biggest positive
+impact on chemistry and the truth is
+what we all do is answer a different
+question which is like hey this guy was
+really awesome for us three years back
+in a different situation like yeah that
+was really great but like this context
+
+[56:19]
+is wildly different right right and so
+we we should have generally lower
+confidence so we're down to just about
+five minutes um Billy this is your first
+time at the conference uh if if what do
+you think is the most important thing
+for us to be thinking about as a
+community what do you think is the most
+important issue in baseball and sports
+going forward from your perspective oh
+God that's a tough question big question
+it's a lot of responsibility I'm ready U
+let maybe not the but what is a what is
+a important issue that you're concerned
+
+[56:49]
+about you think is coming up you we
+should pay more attention
+to gosh I don't want to disappoint you
+but I I actually
+I love where Sports has gone I love the
+fact that this conference is here that
+it's become a meritocracy that the best
+and the brightest are now working in
+this game that uh uh so I love where
+Sports is going so I wouldn't say
+concern uh I I love the fact that Sports
+have become Global in terms of our
+interest in them you know uh I love the
+fact that the NFL plays in London I love
+that I'm now a consumer of the English
+
+[57:21]
+Premier League despite the fact that
+I've never played one minute of soccer
+in my life MH uh I think that there's an
+amazing opportunity for All Sports uh
+and and again the fact that you know our
+business was very you know baseball we
+hired you know we hired guys like me ex
+players and things like that and the
+fact that the front offices are you know
+flooded with really really bright people
+that uh are having an amazing impact on
+the business and and we are and that's
+what I like want baseball to do just
+like other sports just to reach beyond
+
+[57:51]
+our borders you know and and understand
+that participation doesn't necessarily
+mean that you that you have to
+participate to to have interest in
+something as I said I don't I've never
+played any soccer in my life and yet I
+watch as much you know European EPL as
+as anybody and I think uh with baseball
+I love I would love for us to see us
+playing games in Europe and and I love
+we always volunteer to go
+internationally in Oakland so so I don't
+have concerns I'm actually excited and
+again because people who now work in
+
+[58:22]
+this industry and and the faran is a
+great example I his mom was so so
+crushed when I hired him right uh
+because he was in the process of
+finishing his PhD and then he comes and
+we would we pay you about 30 grand to
+come work for us right the fact that I
+can that I have access to that kind of
+you know this type of you know person
+who wants to come work in my industry I
+mean I'm competing against you know I
+live I'm in the Silicon Valley heart of
+Silicon Valley so I'm looking for the
+same type of employees that the biggest
+companies in the world are the advantage
+we have in our business and all of us
+
+[58:52]
+have is that a a Sam will get out of
+Stanford Business School and come work
+for me for 20 cents on the dollar
+because he has a passion for this
+business and the sport so so I didn't
+mean to not address your concern well
+not anymore but by way I'm not sure I my
+mom
+,000 yeah his mom was upset that I mean
+he was getting close he promised his
+mother he'd he'd complete his PhD which
+he did while he was in Oakland and U uh
+but I mean the fact again that I can
+bringing a guy like this into the sport
+
+[59:22]
+so I'm not concerned I'm I'm actually
+very hopeful and I I love again the fact
+that sports are now global that the
+world is so small and we we used to joke
+we hir I'm not going to say who we hir
+someone we always teased him we were
+like oh your parents are disappointed
+you're not a doctor or or a lawyer and
+like one day he was like you know Daryl
+that joke's not that
+funny cuz they really are
+disappointed so I was like okay I'll
+stop darl you started this out with a
+little bit of Despair how do you feel
+
+[59:54]
+now do you feel better was this therapy
+or no
+no it's just one hour it doesn't change
+anything no but uh yeah no I I I think
+I'm hoping for folks like yourself who
+do research on this to keep giving us
+the tools to overcome a lot of these you
+know things that Evolution have messed
+up our heads to you know while we're
+making decisions um you know a big one
+that's I I realized only recently came
+out is this loss loss of verion just a
+
+[1:00:24]
+big one like I I found out from you know
+the people I work with like we we end up
+make we made a lot of transactions in
+the period between James Harden Tracy
+Tracey McGrady and yaang and James
+Harden and you know so a lot of our
+players around the league playing well
+and just the amount that that created uh
+issues for a lot of the people that I
+need to care about fans owners
+everything uh shocked me like for me you
+know we're just trying to build a team
+to win so if they're all playing that
+
+[1:00:55]
+means we made good decisions before I
+see it as a positive but I've you know
+shockingly um folks saw it as a negative
+yeah so so they want you to only acquire
+players that other teams don't want is
+that the safest yeah that seems easy
+like that seems yeah I I did say we
+could solve the issue by never getting a
+good player then then we'd never have a
+player on another team to worry about MH
+all right well guys thank you very much
+for being here appreciate it thanks

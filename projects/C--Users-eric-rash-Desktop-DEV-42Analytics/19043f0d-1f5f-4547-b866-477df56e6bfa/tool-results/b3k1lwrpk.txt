@@ -1,0 +1,4338 @@
+##### 2020-03-25_-6pe_zOKCig_a-no-tanking-draft-allocation-policy
+{
+ "id": "-6pe_zOKCig",
+ "title": "SSAC20: A No-Tanking Draft Allocation Policy",
+ "channel": "42 Analytics",
+ "upload_date": "20200325",
+ "duration": 1658,
+ "view_count": 526,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Conference welcome",
+   "end_time": 113
+  },
+  {
+   "start_time": 113,
+   "title": "The problem of tanking",
+   "end_time": 273
+  },
+  {
+   "start_time": 273,
+   "title": "League objectives and game theory",
+   "end_time": 510
+  },
+  {
+   "start_time": 510,
+   "title": "Proposed draft policy",
+   "end_time": 713
+  },
+  {
+   "start_time": 713,
+   "title": "Case study simulations",
+   "end_time": 1087
+  },
+  {
+   "start_time": 1087,
+   "title": "Model limitations and insights",
+   "end_time": 1308
+  },
+  {
+   "start_time": 1308,
+   "title": "Q&A session",
+   "end_time": 1658
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC20: A No-Tanking Draft Allocation Policy"
+video_id: -6pe_zOKCig
+url: https://www.youtube.com/watch?v=-6pe_zOKCig
+channel: 42 Analytics
+upload_date: 2020-03-25
+duration: 27:38
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [policy,front-office]
+---
+
+# SSAC20: A No-Tanking Draft Allocation Policy
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:02]
+all right welcome everybody my name is
+stefan schmidt i'm the research paper
+lead for this year's conference and i'm
+very happy to welcome all of you to the
+event today brought to you by the major
+league baseball who was so kind to give
+us the means to give out a prize money
+of nine thousand dollars today of which
+the big prize of $5,000 will go to the
+winner of this competition before i give
+it over to our first speakers i want to
+make sure that you are aware of two
+
+[00:33]
+things number one this whole experience
+was made possible by by large team of
+students and this research paper
+competition specifically was made
+possible by carolina Vergara Michael
+Jana Jamison Cybele and Jeremy Sheriff
+who I'd like to thank at this point and
+you should do that too thank you and
+number two the finalists for tomorrow's
+
+[01:03]
+research paper finals will actually be
+determined by an audience vote you can
+vote via our app in attend defy and you
+can scan any of these QR codes the code
+on the very right will lead you to the
+vote for this research paper
+presentation semi-finals the one in the
+middle will lead you to the vote for our
+research poster competition which is
+happening among all the posters that you
+
+[01:33]
+see in our West balcony pre-function
+when you enter the room so make sure to
+vote on those as well and if you want to
+have a read on the full papers that are
+presented to you today and that you can
+see on the posters feel free to check
+out the papers on our website and now
+without further ado i'd like to hand it
+over to evan Monroe who will talk about
+anode tanking Draft allocation
+
+[02:09]
+hey everyone I'm Evan I'm a PhD student
+at Stanford and I'll be going through a
+work which talks about a better way to
+design Draft allocation policy for
+sports leagues in the US and this is
+joint work with Martino who's a fellow
+PhD student at Stanford so just to start
+off we're gonna narrow our focus just a
+little bit through this presentation the
+first is we're gonna focus on the NBA in
+terms of the data that we looked at
+because the problem of tanking which is
+
+[02:39]
+you know for most of you probably know
+what tanking is but it's where teams
+intentionally lose in order to try to
+get themselves a better draft pick it's
+considered most intractable in the NBA
+cuz the importance of key players in the
+NBA and the second thing is we're gonna
+just focus on the allocation of the
+first draft pick it makes things a lot
+more simple but our frameworks easily
+extended to cover the whole draft if you
+have questions about that I'm happy to
+answer it it's a little bit of
+background every year the NBA allocates
+the first draft pick through a lottery
+
+[03:09]
+that favors the teams with the worst
+records in the previous season so before
+1985 it was the conference losers there
+was just a coin flip between the two
+conference losers so if you were the
+worst team in the league you had a 50%
+chance of getting the first traffic you
+can imagine at that time they had a lot
+of issues with teams losing
+intentionally towards the end of the
+season to try to compete for that draft
+pick so in 1985 they changed the system
+really drastically and it went from
+having a 50% chance to actually they
+came to a lottery that was equal for
+
+[03:39]
+every non playoff team and so then if
+you were the worst team at that time the
+probability of getting the first traffic
+dropped depending on the number of teens
+in the league from between 11 and 14
+percent but the problem with that system
+was that the redistributed properties of
+the draft were weakened and so no you
+had an issue where you know team that
+just missed the playoffs had a equal
+chance to get in the draft pick as the
+team that was ranked last which you know
+hurt the redistributed properties of the
+draft which people like and we'll talk
+about why and so again it was increased
+
+[04:09]
+in 1990 to 70% 1994 they increased it
+again to 25% and then they dropped it
+back down last year
+to 14% so looking at this the NBA is
+trying to solve for something and you
+can see this out these similar things
+happening in the NHL as well and we're
+gonna go in and try to think a little
+bit more about what they're solving for
+why they seem to be having difficulty
+solving for it and then what we might be
+able to do about it
+so the first thing we're gonna write
+down is what the league objectives are
+and so we're backing this out from the
+
+[04:39]
+statements that the league's made when
+they've changed the system as well as
+you know how they've changed the system
+over overtime so the first league
+objective is that we want to maximize
+the probability that the lowest-ranked
+team received the highest draft pick so
+we can imagine in a world where there
+was no issues with tanking we would just
+hand the draft pick to the person who
+was ranked last in the season that's
+what we're assuming kind of the best
+case scenario is but we know that
+there's this problem where teams might
+intentionally lose in order to increase
+their draft pick odds if we give the
+
+[05:09]
+draft with too high probability to the
+lowest ranked team under the current
+system and so we want to constrain our
+primary objective which is to favor the
+worst team in the league by eliminating
+any incentives to tank and the
+justification this is you know if you're
+at the end of the season and a bunch of
+teams are competing to be at the bottom
+of the league that's gonna hurt your TV
+ratings it's gonna hurt attendance in
+the game and the justification for
+actually wanting to give the draft pick
+I mean that's really up to the league
+but you can imagine if you don't if it's
+just a pure market process for
+
+[05:39]
+allocating new players the teams that do
+well one year they have more cash to bid
+for new players and you could end up in
+a scenario over the long term where you
+have good teams in the league and bad
+teams in the league and not as much
+competition and it's less exciting for
+fans as such now the question is how
+well are these objectives being met very
+well so we so we saw that right now the
+lowest ranked team in the league is
+getting the draft pick with 14%
+probabilities that's not actually very
+high so I'd argue that the first
+objective which is the redistribution
+objective isn't actually being met very
+
+[06:10]
+well currently and no matter how many
+times the draft has been changed you
+know there's still constant chatter in
+the news and on sports blogs and I read
+it but what teams are tanking and what
+teams should be taking and whether or
+not the strategy will be successful so
+I'd argue that right now neither
+objective is being met very well and
+and it and there's even a question over
+whether it's even possible to satisfy
+both objectives so this is in the
+context of the hockey draft from Greg
+Wyshynski and his quote which I think
+captures kind of the research question
+this paper really well is if you don't
+
+[06:41]
+want tanking then essentially you don't
+want the welfare mechanism that
+encourages it so if you're anti-tank you
+might as well be pro draft abolishment
+so we're gonna dive into this and figure
+out is this true or under what scenarios
+is this true well this is a not the
+first time someone's tried to come up
+with an alternative draft policy so
+first of all there's actual work which
+has gone in and looked at the win-loss
+records of teams over time and shown
+that it's not just something that people
+
+[07:12]
+are imagining or people like the
+statistically teams that have the
+incentives to lose towards the end of
+the season are losing more than teams
+that don't have the incentives to lose
+so there's actually identification that
+tanking is a real problem in the NBA and
+there's been some suggestions of
+alternative draft rules but I think some
+of which have been presented at this
+conference before so there's a tombstone
+rule which is Adam gold and there's
+Linton Smith and boys who were thinking
+of a different kind of lottery which was
+determined earlier in the season so
+what's new about or like why I want you
+to pay attention to our paper I think
+
+[07:42]
+what's interesting about our approach is
+we're gonna actually write a
+mathematical environment for the league
+so what's the league objective what's
+the team's objective and from this we're
+gonna use like the simple tools from
+game theory and for a mechanism designed
+to figure out what kind of draft policy
+as possible and what kind of draft
+policy is actually optimal given the
+objectives that we wrote down for the
+league and for inferred teams and so you
+know this is like an analytics
+conference and a lot of people are
+looking at data and we're also gonna be
+
+[08:13]
+looking at data but what's nice about
+theory is it's able to narrow down
+exactly what we should be looking for in
+the data and actually figure out well
+there may not even be there may not even
+be any point in looking at a certain
+class of mechanisms because they don't
+work and so that will go into a little
+bit more about what that means so as I
+described our research question is is it
+possible to design a lottery that favors
+the worst team but eliminates all
+incentives for tanking and our first
+answer is that Greg Wyshynski is correct
+under the current
+so under a lottery that's based only on
+
+[08:44]
+final ranking so only on teams win-loss
+records it's impossible if you have if
+you favor the worst team at all there's
+always gonna be some incentives to tank
+and now you can minimize those
+incentives by not favoring the worst
+team or if you just go to a uniform
+lottery like they did in 1985 to 1989
+you can remove the incentives to tank
+but otherwise it's impossible it's
+that's a very negative result but the
+good thing is is that is that if you
+make the lottery based on when the wins
+and losses happen rather than just the
+final rankings then it actually is
+
+[09:15]
+possible to favor the worst team and
+also like remove incentives the tank and
+I'll go into the details about how that
+works and why that works so there's a
+lot there's a lot of like math in the
+paper it's not very complicated but I
+only have 20 minutes so we're not gonna
+have any of the notation or any of the
+formal structures that we have in the
+paper but if you're interested in that
+or won't ask questions about that you
+know the paper is online and I'm also
+happy to talk about it so instead I'm
+just gonna go through kind of the
+intuition and the kind of moving pieces
+that come together so that we use to
+
+[09:46]
+kind of put together our proofs about
+the results that we have so the first is
+a simple model of team decision-making
+and we're gonna imagine that teams are
+just competing for two things we're
+gonna abstract from a lot of the
+complications of like what actually
+happens and we're gonna assume that
+teams care about either making the
+playoffs which is valued at some fixed
+value or getting the first traffic which
+is valued at another fixed value so
+these are the two prizes that team cares
+about one place playoffs and two is the
+draft bag and so from this kind of
+simplified environment we we say that
+
+[10:17]
+teams either either attempt to win or
+attempt to lose and the way they make
+that decision is through this no tanking
+condition which is very intuitive it's
+that the benefit from winning game
+should also be greater to go through the
+benefit from losing a game and the
+benefit from winning a game is that the
+probability I make the playoffs goes up
+or doesn't change and the probability I
+get the draft pick goes down under the
+current system and if I attempt to lose
+the probability of getting the traffic
+goes up and the probability of getting
+making the playoffs goes down and we're
+
+[10:49]
+gonna show that under the current system
+that no tanking condition doesn't
+doesn't hold in a lot of scenarios and
+we can show that through like a really
+simple example is that if our lottery is
+fixed in advance and it favors the team
+with the worst records now after our
+teams been eliminated from the playoffs
+their probability of making the playoffs
+is now zero so at this point in any
+games that affect their final ranking
+losing improves their odds in the draft
+because it increases the probability
+that kind of they're gonna be ranked
+lower and so what they should actually
+
+[11:20]
+do is up to the point of getting some
+penalty from the league because the
+league does occasionally penalize teams
+under particularly egregious cases they
+should be actually trying to lose in
+every game post elimination that affects
+their final ranking if they only care
+about making the playoffs or getting the
+draft pick and so under the current
+system tanking is unavoidable even if I
+make the lottery just favor the worst
+teams and just a tiny little bit of
+rational team should towards the end of
+the season if there's a game that's
+important for the final rankings they
+should try to they should try to lose
+that game what can we do instead so our
+
+[11:55]
+policy makes the draft lottery dependent
+on what happens in the season every
+season and so what it does is after
+every game we re estimate the
+probabilities that every team will be
+ranked last after the season concludes
+so what does that mean if I start out at
+the beginning of the season no games
+have been played yet and maybe I maybe
+just for purposes of this example I
+assume that everyone has equal ability
+so before any games have been played
+there's an equal probability that any
+given team ends up last in a season
+
+[12:26]
+because every game you can just think
+about it like a coin flip
+now as games come in and results kind of
+accumulate over the course of the season
+then more certainty happens about what
+happens towards the end of it yeah
+by the end of the season so if I go on a
+ten game losing streak while other game
+other teams are accumulating wins and
+losses my posterior my conditional
+probability given the games that have
+happened so far of ending up last and
+the season goes up so then my draft
+probability goes up under our current
+system so you can imagine we start with
+equal draft probabilities for everyone
+
+[12:56]
+and every game that comes in we adjust
+those draft probabilities now if we kept
+doing that for the whole season by the
+end of the season we would just hand the
+draft pick to the person who ended up
+ranked last but of course if we do that
+we're going to end up with the
+saying taking issues that you have under
+the under the current system so our
+process involves freezing the draft
+probabilities at some point in the
+season but we can't just pick a stopping
+time in advance of the season before we
+knows no know what happens because it
+depends when does the losing streak
+happen for the worst team and the
+
+[13:26]
+incentives to win and lose change
+depending on who the draft is that
+season and what exactly happens in that
+season so we choose the stopping time or
+when the draft probabilities are frozen
+dynamically depending on what happens in
+the season and what's nice about this is
+that because we're targeting the draft
+probabilities are actually matching the
+probabilities that people end up last in
+the season conditional on the games that
+happen so far an expectation we're gonna
+give the draft pick to the lowest ranked
+team with the highest probability and
+we're also removing incentives at least
+in our model within it within a season
+
+[13:58]
+to t'ankin so you know one thing that
+this might do is that it might increase
+incentives for team to go on a
+rebuilding streak which is where they
+actually spend multiple seasons trying
+to you know bringing down the value of
+their team and trying to get good
+graphics we're not considering like the
+rebuilding strategy here we're
+considering just tanking strategy which
+is something that people decide in the
+middle of a season okay I'm gonna lose
+from now on not that I'm gonna lose for
+the entire season just just to be clear
+but you know the problem we're thinking
+about solving using this role okay so
+
+[14:28]
+I'm gonna show some examples now of how
+the draft rule worked in the 1980s and
+the reason I'm gonna start with the
+1980s you might think okay why are you
+showing me 1980s data I don't care about
+that it's a long time ago is that in the
+1980s they had another draft role which
+was also not encouraging tanking which
+was the uniform lottery and so what's
+nice about that is our model also
+doesn't encourage tanking and so the
+estimate of what our draft rule would
+have done in the 1980s is an unbiased
+
+[14:58]
+estimate meaning like people's behavior
+would have been the same under the NBA
+lottery that year and our lottery that
+year so I'm gonna start out with that
+and then I'll also show you some more
+recent years but the more recent years
+are tainted by the fact that the current
+rule encourages tanking hopefully that
+makes sense and happy to ask answer more
+questions about that so in 1989 the
+Miami Heat was the was the worst team in
+the league and under the lottery that
+year ever
+got the draft first traffic with equal
+probability but Miami Heat under our
+rule actually gets the first traffic
+
+[15:28]
+with 44 percent probability without
+encouraging tanking in that and all in
+the next slide I'll show you exactly how
+that works now you can also see like
+someone like Pacers who didn't end up
+doing all that badly that year also has
+a high draft probability and that's
+because we're freezing the draft
+probability at some point in the season
+and they're ranking at that point in the
+season determines the draft and if they
+you know and yeah the Pacers ended up
+going on a winning streak towards the
+end of the season which didn't count
+towards adjusting their draft
+probability but our goal we don't care
+so much about the rest our goal is to
+target the last ranked team with as high
+
+[16:00]
+probability as possible and and that
+we've done that very well here so what
+how did that actually look like or how
+did the draft you know probably the
+evolution process that I described to
+you on the on the on the more
+theoretical slide work in practice so at
+the beginning we're modeling that you
+know everyone has about the same chance
+that's coming lot of coming last then
+the heat go on a massive losing streak
+at the beginning of the season and what
+isn't you know what is nice about
+uncertain types of sports often
+
+[16:30]
+economics uncertainty is a bad thing but
+if you're trying to give a prize to
+someone who does badly uncertainty is
+actually a good thing because at the
+beginning of the season nobody really
+knows where they're gonna end up because
+none of the results are in yet so the
+heat it's very unlikely they're going to
+be losing to target the draft at that
+early time so those losses really mean
+something and we should be they really
+are giving a good signal that this is a
+bad team and not a team that's just
+losing to to kind of capture a draft
+probability so we we take advantage that
+the incentives to lose are much weaker
+at the beginning of the season we
+
+[17:00]
+address to the draft probability quite a
+lot over the first 300 games but then
+once there's more certainty in the
+season the Miami Heat can forecast and
+say well conditional on me having lost
+all these games at the beginning of the
+season there's now a very high chance
+I'm not gonna make the plows and their
+incentives to win suddenly drop you know
+drastically as we go as we move from the
+200 to the 300th game and we're gonna
+model in our in the simulation of the
+rules around the three hundred and
+thirtieth game the incentives to win if
+we kept adjusting the way that we've
+
+[17:30]
+been adjusting would start to dominate
+the incentives to lose would start to
+dominate the incentives to win so from
+that point forward the draft
+probabilities are frozen but that big
+winning streak or that big losing streak
+is very important like the Miami Heat
+aren't going to recover from that so
+they may you know even though we we
+froze the draft probabilities a third of
+the way through the season they still
+ended up the last the last team in the
+league which is what we're proving in
+the theory and then we show it actually
+happens in practice so maybe you think
+I'm just cherry picked a year and you
+
+[18:01]
+know it doesn't always look this good so
+I'm gonna also try to break the rule and
+and put it in a scenario that's really
+kind of challenging for for the role
+who knows who this is yes that's right
+so this guy was really valuable and
+everybody wanted him and there was even
+talk that the Knicks cheated in the
+draft lottery in order to get him by
+freezing some of the draft lottery balls
+so let's assume we're you know in the
+rest of the presentation we're assuming
+that the value of making the playoffs is
+actually greater than the value of the
+
+[18:31]
+draft pick and that lets us take into
+account a lot of games in the season but
+let's assume that the value that year
+Patrick Ewing was actually like pretty
+much the same as the value of making the
+playoffs like people really wanted this
+guy and really we're gonna you know take
+advantage of and game the system in any
+way they could get him though our rule
+takes that into account and in this case
+we actually don't we really can't do
+that much better than the NBA lottery
+because we know the incentives to lose
+in this season are really high because
+everyone wants Patrick Ewing and we only
+take into account the first hundred
+games in the season so the first handful
+
+[19:01]
+of games that teams play and at the
+beginning of the season and we still
+actually give the draft to the Indiana
+Pacers with the highest probability with
+a 19% probability but you can see the
+the results not as drastic as we had in
+the case we were able to take take much
+more games into into account so here
+this is my slide showing you this is
+what can go wrong and in my opinion what
+goes wrong here isn't a bad you know we
+still give the draft with the strange
+person with the highest probability but
+we're not able to have such a such a
+skewed distribution as we did in the
+case where the the draft pick isn't
+
+[19:31]
+worth as much so again I mentioned I
+mentioned the issues with you know the
+in the 2019 the final rankings might
+have been different under our rule
+because we don't encourage thanking as
+much as the current rule but this is
+what rule looks like anyway for that
+season and what happens is the feet
+Suns the second-last team actually gets
+the draft with the highest probability
+because the next a lot of their losses
+came towards the end of the season I'm
+not saying whether you're tanking or not
+but it just happened that they won more
+games meaning the season and so their
+losses didn't count towards the towards
+
+[20:02]
+the draft in in in in 2019 but what I
+think is also really nice about this is
+like if you look at what how the current
+NBA lottery looks like the other seven
+non-playoff teams that aren't towards
+the bottom of the league have a pretty
+high probability of getting the traffic
+it's like eighteen and a half percent
+probability which is like arguably too
+high like one in five chance that's
+someone that was way above just because
+we have so many teams in the NBA NBA now
+was way above the bottom teams the
+league and did much better than the
+bottom teams teams in the league might
+
+[20:32]
+get the draft thing and in our case
+those when even after you know after 350
+games which is again not even close to
+half the season the probability that any
+of those other seven non-playoff teams
+ended up last in the season was only 5%
+across all of them and so our role you
+know doesn't give the draft to those
+teams with any like meaningful
+probability and I think that's a good
+feature so overall we're using game
+theory rather than you know fiscal
+
+[21:03]
+analysis here to prove what kind of role
+can favor the worst team in a season
+without providing any incentives to tank
+and the key insight is that you know you
+want the benefit for people to be
+greater than equal to benefit from
+losing in every game and in order for
+that to be the case you know you should
+count games earlier in the season more
+than season and you can do this in a way
+by thinking about how important the
+early games are for what happens later
+in the season
+you still target the work the team who
+ends up worse than the season and we
+also like we take this we take a role to
+
+[21:33]
+the data we we you know the paper we
+have a bunch of simulations which show
+how you know how much the role games
+over over the current role and over for
+the uniform role and we find that the
+role performed very well in practice so
+if favors the worst team with a provide
+incentives to think and that's it we
+have five minutes left for questions
+sorry I'm coming to you with a mic my
+hands are trenched in disinfectant so oh
+yeah a great job really interesting the
+question would be what if there were
+
+[22:03]
+some other reason why team was bad early
+in the year LeBron James misses the
+first half of the year the team's record
+is suppressed and then he comes back but
+by then it's changed where you acquire
+somebody in a trade could you get a
+skewed view of what the how bad that are
+good the team really is yeah so I think
+a lot of this depends on simulating the
+rest of the season pretty well so people
+do that in betting markets people do
+that you know in existing draft
+simulators that it that exists so
+
+[22:33]
+whatever process that you're using to
+simulate the rest of the season
+should be trying to take into account
+factors like someone coming back into
+the season if those are known now if
+those aren't known and something really
+random happens then yes and the team has
+knowledge of that and the league doesn't
+have knowledge of that then you're right
+that there could still be some
+opportunity to game in that scenario but
+for the most part you hope that you know
+how do you want to actually implement
+this mechanism in practice maybe you
+take an average of forecast for a
+multiple websites maybe you have a open
+source tool that you know people can see
+
+[23:03]
+exactly how the forecast thing is
+happening and so so you're right that
+there could be scenarios where the leave
+forecast is off from the team forecast
+and that could cause problems but we'd
+argue that you know these things matter
+and you know there's money involved with
+who wins and who loses so there's a lot
+of information going around that should
+help you make good forecasts on what's
+gonna happen a great job this is super
+interesting would you have any worry
+that this would kind of reorient
+incentives around teams that may be
+perceived that they don't have a chance
+of a title potentially losing at the
+
+[23:33]
+beginning of seasons especially it seems
+in the NBA they're maybe eight to ten
+teams that really have no realistic
+title hook going into a season yes that
+goes into what I briefly mentioned about
+the rebuilding strategy and the issues
+where this maybe would increase into
+incentives to go to a rebuilding
+strategy now one way you could change
+that is by this is tells me what's
+optimal but maybe we say well there's
+too many moving parts I don't actually
+want to adjust the lottery every year
+but what at least this lets you do is I
+could go back and figure out what the
+optimal rule was on every last season
+and then calculate what the average
+
+[24:04]
+optimal rule was and just that's our
+optimal rule we freeze that and then we
+can calculate exact
+how much of an incentive that provides
+for people to do this rebuilding
+strategy or not so then we know that
+someone's not gonna well I know if I
+lose the first 30 games in the season
+I'm gonna get the draft pick with 100%
+probability we know because it's frozen
+based on what the average one was before
+we put the rule in in practice so two
+questions I think it's a elegant
+solution to the in game in in season
+hanging problem so good work on that I
+think part of the problem though that
+
+[24:35]
+you and they've been alluding to is that
+the the goal of the draft probably isn't
+to award the top pick to the worst team
+right it's to redistribute talent in
+some way and so you know this is gonna
+have the effect of just more really
+badly constructed teams so that you
+don't you wouldn't want to win during
+the season but that's a separate issue I
+guess my question is how sensitive is
+the model to the valuation of the
+
+[25:06]
+playoffs and the draft picks and how
+would you decide how to value that when
+you're setting the model up
+it's it's very sensitive around one so
+like if they're equal going from one to
+two it's very sensitive but once you get
+to three four five the the difference
+kind of flat but so if you are putting
+this into place practically how would
+you how would you tell the league to
+decide what the value is relative of
+make the relative values of making the
+playoffs versus you'd have to do some
+data work so you'd look at what are what
+are the valuations when people are
+
+[25:37]
+selling first-round draft picks that
+could give you some approximate
+evaluation of what a draft pick is worth
+and you'd look at you know some
+identification of how team's fortunes
+change you know with whether they made
+the boundary of making the playoffs or
+not making the playoffs in terms of TV
+revenues and such but I mean that number
+all it has to be I could set it to two
+two and as long as I know it just has to
+be a bound you know as long as it
+doesn't have to be exactly right as long
+as the the true numbers is greater than
+that number I put into the rule then I
+know I'm not gonna encourage tanking but
+
+[26:08]
+all right with time for one last
+question maybe from this side thank you
+thank you um I was wondering you mostly
+talked about just calibrating this sort
+of rule towards the top number one pick
+versus the playoffs if there are
+draft classes where maybe it's not just
+a top player but there's like a group of
+two or three or even more there might
+still be incentives to tank for the two
+or three or four pick or just topics in
+general so how would you think about
+maybe generalizing this sort of a rule
+to include more than just a top pick and
+
+[26:40]
+if so how do you think that that might
+work out mathematically so so right now
+our setup is really general all we have
+to do is have a benefit from losing and
+a benefit from winning and so if we had
+some kind of sequential lottery you know
+like they have currently where
+probabilities are redistributed after
+the first traffic's allocated based on
+who didn't win and so on we can
+calculate then what the change in value
+is assuming that there's sequential
+draft picks allocate it just makes that
+right hand side part of like what's the
+benefit from losing more complicated and
+you just add you know I now know that if
+
+[27:10]
+I don't win the first draft pick I have
+a certain probability of winning the
+second draft pick and that and you know
+again you have to assume some bound on
+the value of that draft pick and you add
+that up as a sum instead of just a
+single term and so we have that in an
+appendix of the paper it's just look at
+the notations a little more complicated
+stuff but it shouldn't be the conceptual
+issues don't change all right thank you
+very much please give it up for Evan
+Munroe and next up will be Neil Johnson
+at 12:15 p.m. thank you
+##### 2020-03-25_yz-O706SNck_tackling-name-image-and-likeness-in-college-sports
+{
+ "id": "yz-O706SNck",
+ "title": "SSAC20: Tackling Name, Image, and Likeness in College Sports",
+ "channel": "42 Analytics",
+ "upload_date": "20200325",
+ "duration": 3084,
+ "view_count": 954,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction and context",
+   "end_time": 172
+  },
+  {
+   "start_time": 172,
+   "title": "Industry challenges",
+   "end_time": 479
+  },
+  {
+   "start_time": 479,
+   "title": "Business and athlete perspectives",
+   "end_time": 834
+  },
+  {
+   "start_time": 834,
+   "title": "Education as the mission",
+   "end_time": 1050
+  },
+  {
+   "start_time": 1050,
+   "title": "The role of representation",
+   "end_time": 1323
+  },
+  {
+   "start_time": 1323,
+   "title": "Group licensing strategies",
+   "end_time": 1633
+  },
+  {
+   "start_time": 1633,
+   "title": "Communication and transparency",
+   "end_time": 2029
+  },
+  {
+   "start_time": 2029,
+   "title": "Legislative outlook",
+   "end_time": 2241
+  },
+  {
+   "start_time": 2241,
+   "title": "Recruiting and competition",
+   "end_time": 2745
+  },
+  {
+   "start_time": 2745,
+   "title": "Future outlook and wrap-up",
+   "end_time": 3084
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC20: Tackling Name, Image, and Likeness in College Sports"
+video_id: yz-O706SNck
+url: https://www.youtube.com/watch?v=yz-O706SNck
+channel: 42 Analytics
+upload_date: 2020-03-25
+duration: 51:24
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: []
+---
+
+# SSAC20: Tackling Name, Image, and Likeness in College Sports
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+I'm Kristen's Lea I'm a student here at
+Sloan it's my pleasure to welcome you to
+today's panel tackling named image and
+likeness and college sports on today's
+panel we have Jerry Cardinal founder of
+red bird Capital Partners Salem Berkeley
+running back for the New York Giants
+Stan Wilcox executive vice president at
+the NCAA and Martin Jarmon if flag
+director at Boston College moderating
+today's panel is Warren Zola executive
+director of the Boston College chief
+executives Club this pin will run for
+
+[00:32]
+approximately 55 minutes and will
+include 10 minutes of audience Q&A you
+can submit questions via twitter using
+the hashtag likeness with that Aleta
+Warren thank you very much thanks for
+joining us today the obligatory thank
+you to the students at MIT Jess Darryl
+in the entire organizing committee it's
+a fantastic event I know how hard these
+are to pull off and so kudos to you and
+hopefully we'll bring some education on
+the future of college athletics and name
+
+[01:03]
+image and likeness and I'm thrilled to
+be joined by such a great panel
+it's clear that the landscape within
+college athletics has changed
+dramatically in the past in ten years
+and continues to change there have been
+major reforms that have happened and
+that continue to happen both on the
+student side as well as on the revenue
+side name image and likeness is an issue
+that has been in front of the interplay
+in college athletics for quite some time
+and various states now have begun to
+
+[01:33]
+pass legislation there's somewhere
+between 30 and 40 states that have given
+thought to passing legislation that
+would provide the rights to name image
+and likeness to college athletes under
+the n-c-double-a umbrella moving forward
+California has passed a law that takes
+effect in 2023 Florida has passed
+legislation that either takes place this
+fall or pending some decisions at the
+state government potentially a year from
+now clearly named image and likeness is
+
+[02:03]
+coming to college athletics it's going
+to change a whole lot of how this
+industry is run both from the inter
+blades perspective and from the college
+athletes themselves
+and we're gonna take a look not at the
+past but where we think these trends are
+going what college athletics will look
+like in the future what the
+ramifications are to both the students
+and to college athletics and the last
+thing I mentioned before we get going
+college athletics is an incredibly
+valuable part of an educational system
+
+[02:33]
+the mission of institutions is to
+provide all sorts of learning
+experiences that are transformational
+that cannot occur in the classroom in
+college athletics plays a big role of
+that and so remembering to tether
+education as part of their experiences
+moving forward will be something that
+everyone's gonna have to grasp grapple
+with and understand so let me start with
+some basic questions in terms of you all
+come from very different perspectives
+what are some of the biggest challenges
+that you see facing the industry in
+
+[03:04]
+integrating this concept of name image
+and likeness under the present scenario
+of states passing legislation the in
+step n-c-double-a considering how to
+change and evaluate and understand and
+protect its its students I guess I
+should start I'll start with Stan you
+are the inside of a lay welcome you are
+representing the members of the answer
+to Ballet and have a whole lot of
+different constituents from Division 1
+on down to division 3 and will impact
+
+[03:34]
+differently across the board sure and
+just to start off with I guess I've been
+a member of the NCAA from very different
+sides as a student-athlete and then as a
+starting administrator at the NCAA then
+in a conference office at the Big East
+Conference for several years and then to
+my alma mater as administrator and then
+on to Duke as an administrator and then
+
+[04:04]
+as an athletics director of Florida
+State for five years and now Ono's and
+then back to the NCAA
+as a as a exactly executive vice
+president so I've seen and understand
+how the NCAA works from the inside out
+being on all those different sides and
+I'd say the you know the the the most
+critical and difficult thing is when you
+
+[04:35]
+have over a thousand institutions that
+are collectively coming together to
+determine how they want to run
+collegiate athletics it's always a very
+difficult thing to get everybody to
+understand and move in the right
+direction so the biggest thing and the
+biggest hurdles that we run into all the
+time is number one the education of the
+membership and understanding that this
+we are not doing away with our
+
+[05:05]
+principles or all the guidelines that we
+have and hold true to as far as what it
+means about college athletics and a
+college athletics experience for student
+athletes but we're changing with the
+times and we have to always look at our
+rules and regulations and figure out how
+do we modify those rules and regulations
+so that it does change with the time the
+times right now is really critical
+because you know particularly in the
+social media space when you have
+perspective student athletes who are
+
+[05:36]
+coming in with brands that they've
+already built whether that's on Facebook
+whether it's on YouTube whether that's
+on Instagram and they're building a
+following where they're hitting targets
+where sponsors want to put sponsorships
+on their pages advertising et cetera and
+those things are things that every human
+being every every person ought to have
+the ability to take advantage of so just
+like the regular student at a at an
+
+[06:06]
+institution we want to treat our
+student-athletes the same and so it's
+just a matter of now figuring out how we
+modify our regulations so that it
+accommodates that and it accommodates
+that within the collegiate model and
+we're going to get there we're
+definitely on the track I think we are
+now at a point where our membership
+totally under
+stands it a little better and has all
+agreed yes we're gonna make changes and
+then say it in this area now we're just
+at the point of well how far are we
+going to go and I think one of the
+
+[06:38]
+statements that you made is actually
+needs to be underscored for you to say
+you know we recognize that these
+students should have the same rights as
+the other students and that's not always
+been the same message that the insula
+has has come out with right and so that
+that's a shift yeah and you know what
+what generally is that causes that is
+because collegiate athletics is not like
+your other athletics organizations your
+professional organizations where they
+have our a draft and you're drafted to a
+
+[07:09]
+particular team and that team owns you
+included athletics we have a recruiting
+model so that student athletes a
+prospective student athletes are
+recruited and given an opportunity to
+determine what institution they would
+like to attend and so we're always
+trying to protect our recruiting model
+you know even though there are you know
+everybody knows that there are write
+violations that go on in that area if
+you look at the most violations that
+that we have in our industry it's
+generally in the air recruiting but
+
+[07:40]
+that's unique to college athletics and
+that's something that the membership
+wants to maintain and is and that's the
+very very tricky thing for us to be able
+to maintain while also making things a
+lot more liberal and and I'll come back
+to competitive balance at the college
+sure landscape in a second Jerry I want
+to turn to you you have started one team
+and for those who don't understand sort
+of the purpose of that you're coming
+from again a different perspective from
+the pro side tell us a little bit about
+
+[08:10]
+one team and what some of these changes
+at the college level are gonna mean to
+what you guys are trying to do as a
+business model yeah you're right I mean
+I we sort of started our entry into this
+whole dialogue was from the professional
+level and it just dovetailed timing-wise
+with what's going on in college but you
+know for me I mean I spent 25 years
+investing around professional sports and
+you know the premise that has worked
+very well for us over 25 years is to
+take capital like
+
+[08:40]
+we have in partner with rightsholders
+and create terminal value businesses in
+that partnership that's a win-win it's a
+win-win for the rights holder it's a
+win-win for the capital and you know
+we're constantly we underwriting our
+perspective on sports and so the one
+thing I would say when you when you get
+into this discussion is you really got
+to step back and say to yourself well
+what's the value chain here and what's
+the entry point you know we we started I
+started my career on the media side you
+know creating the YES Network we went it
+then went to the infrastructure side
+with legends hospitality we went and
+
+[09:11]
+went to the live event itself with on
+location experiences with the NFL and
+the Superbowl and now we came to the
+players and it's fascinating to me that
+it took me 25 years to bring capital to
+labor mm-hmm all right it's never
+happened before now why is that and the
+thing is is that you know this this
+discussion that we're having here on
+this panel you know it immediately jumps
+in to a very micro discussion on name
+image and likeness I actually step back
+and I say well wait a minute you know
+there actually is an inherent
+partnership here between the teams and
+
+[09:43]
+the leagues and the players they can't
+have a game without either of them and
+what's happened is when you step back
+and you look at the value chain in
+sports
+you've got the teams in the leagues
+you've got the players and it seems like
+the teams in the leagues have evolved
+and they've had capital supporting them
+and the one third of the value chain
+hasn't evolved as much from a business
+standpoint now you have the overlay in
+the professional side you have the
+overlay of the of the collective
+bargaining discussions and all that
+stuff but if you step out and you pull
+out the economics the business of sports
+what you realize is that there's a
+
+[10:13]
+starting point here that should precede
+the discussion on name image and
+likeness which is that there's an
+inherent alignment and partnership the
+play what I found on the pro side which
+I'm hoping we can actually be helpful in
+the college discussion with is that
+there is actually a very tangible
+actionable and a very receptive audience
+on both the the the owner and League and
+team side and the player side to find
+areas where they can partner together so
+that together you know there's there's
+
+[10:43]
+this notion that also precedes a name
+image and likeness that it's a zero-sum
+PI and one of our premises on the pro
+side is I don't think it is a zero-sum
+PI I actually think you can make the PI
+greater
+you can add to it incrementally and the
+only way you're going to do that though
+is if the three parts of the value chain
+come together it's anti-darwinian have
+two-thirds prospering with capital and
+one-third not and that's not a political
+statement that's just sort of good
+business and so if we can rise this up a
+bit and we can in capital can be the
+
+[11:13]
+lubricant that puts these guys together
+more and again I'm saying all of this
+not naively that there isn't obviously
+CBA discussions all that other kind of
+stuff I'm saying if you can do this part
+of it you can raise the pie for
+everybody the question I have in my mind
+as I'm just starting to turn my eyes to
+college is that paradigm also applicable
+to the college environment so say Pond
+there's been this tension between sort
+of education and commercialism within
+college athletics over the years right
+there's no doubt that college athletics
+
+[11:45]
+is a big business multi billions a year
+are coming through not to everybody but
+it's being generated the changes in how
+we consume media the media rights deals
+everything at what point during your
+career did you realize the revenue is
+being generated from the players and
+that college athletics had put some type
+of a cap on your ability to capitalize
+upon your brand as an athlete yeah I
+
+[12:15]
+would say it probably took to my
+sophomore year when you're a freshman
+that's kind of not really going on your
+mind you're worrying about getting to
+class on time and try a team and play
+well for your team but as it's got to my
+sophomore year so I have a lot more
+success and like you said we said your
+brand you could see your Instagram fall
+and you can see yourself on TV
+commercials you can see yourself on ads
+on an ESPN game and you see that your
+brand has grew tremendously so I would
+
+[12:45]
+say it took me to my sophomore year to
+you know realize it but then actually
+get a true understanding of it my junior
+year I was having a very great junior
+season yep you know kind of halfway
+through season probably born the Heisman
+with probably one husband's guys I think
+I finished like four for third but when
+you when you see that and you
+have that mindset that you know you're
+going to the next level when you're
+you're going to go to the to the NFL
+those things come to your mind
+and obviously you know I understand like
+
+[13:15]
+the n-c-double-a point of view but the
+way I look at it is what harm is it you
+know to help those guys help those
+players I know a lot of players that you
+know I came in with you know financially
+it wasn't that great at home and I'm
+that little bit of money in the pocket
+something that I could sent home to the
+mom and the families and I know life
+from you know you get your FAFSA check
+so you get a stipend I know a lot of
+those guys didn't see that because they
+sent everybody home to their mom I was
+one of those guys so I see myself all
+
+[13:45]
+over ESPN and stuff like that I think
+would have been very beneficial to not
+only myself and my family if I was able
+to you know have something that income
+in my pocket so some art I'll come to
+you I know that you work at a fantastic
+institution I can't remember where but
+but thanks for joining us here you've
+been like skin.your a Division one
+athlete you've worked at a bunch of
+colleges including Ohio State before you
+came to Boston College what are you
+hearing from your perspective both as an
+athletic director in the ACC as someone
+
+[14:17]
+who cares deeply about the mission of an
+institution and who has what are we 31
+varsity sports it's a broad scope that
+you've got to deal with on a daily basis
+yeah you know I think that we're having
+healthy conversations and it's time for
+change Stan alluded to you know I've
+been pleased to see the educational
+piece of this kind of come to the
+forefront because at the end of the day
+you know our mission is to educate
+develop and teach and I do think named
+image and likeness it allows us an
+opportunity to to help our
+
+[14:49]
+student-athletes learn and grow and
+develop in a way that they haven't been
+able to you know I look at this as an
+educational opportunity you know as far
+as your brand coming in and
+understanding what works and what
+doesn't maybe some of those lessons can
+be learned and we can help facilitate
+that but also bettering their situation
+- I think that's a win-win so I'm I look
+at it from a standpoint that that we're
+gonna get there
+and I think it's a positive thing
+and you know to Stan's point earlier you
+
+[15:20]
+know is it's like when you have a lot of
+people in the room but different
+opinions is hard to galvanize and get
+everybody to get on the same page when
+every school looks different the
+opportunities look different you know
+and then there's also the education
+piece where a lot of our student
+athletes may not understand the impact
+some of our administrators don't
+understand the impact I think we've come
+a long way now to where there's more
+education as far as what it looks like
+what it could look like but I think it's
+positive I think this is an opportunity
+
+[15:50]
+to really help young people grow and
+understand their brand understand how
+they can monetize that understand that
+maybe the market is not what they think
+it is you know I'll give an example I
+talked to one of our teams about Jersey
+sales and you know if you if a Jersey
+sells for $60 how much do you think you
+would get from that and you know I was
+getting answers $40 $50 then and then
+you start listing all all the entities
+that they got to get get their cut
+before you and it's kind of an
+
+[16:21]
+eye-opening thing so so again this is an
+educational opportunity to help young
+people learn before they get
+professional and get to to that real
+world and I think that that's important
+but I also think that the the critics
+would say and there's no doubt that I've
+been one over the years that this is
+taking a long time I testified in front
+of Congress in 2011 saying okay change
+is coming we know change is coming to
+college athletics there's lawsuits
+there's legislators that are talking
+about this and the hope was that the
+
+[16:52]
+instability would come together
+recognize that have this meaningful
+exchange to talk about reform before the
+legal cases and the legislature put
+pressure and came up with a system for
+those of us who love college athletics
+that none of us would find appealing and
+that's the pressure that we're now
+finding is we now have this clock that's
+ticking in what happens if the college
+athletes in Florida have the rates to
+their names image and likeness under
+State Legislature this fall and so I
+
+[17:23]
+think that's been one of the critiques
+but it's clear that there's I mean the
+devil's gonna be in the details trying
+to figure out what does it actually look
+like and we talk about what what sake
+once mentioned
+right in Europe mentioning on education
+so names a mission like this right to
+come to college athletes this fall next
+fall soon how are schools conferences
+the answerable a gonna now pay attention
+to the role of agents right because the
+players are now gonna have the right and
+
+[17:53]
+the least answerable has mentioned that
+they're gonna change some of their rules
+for access to agents earlier what does
+that look like when does recruitment of
+athletes to represent them for name
+image light say come on you're a high
+school all-american are you ready
+at your kitchen table as a junior to sit
+down and have a conversation with agents
+who want to represent you as you decide
+where to go and market your abilities I
+think that's where we're heading and
+that's where we're gonna have a lot of
+friction I guess would be a statement
+
+[18:23]
+yeah I'll comment on that without
+question and the one thing that I think
+we have to also think about is that you
+know the term agent is when when we
+speak of that is some time that's that's
+all thought of isn't in a narrow way in
+that we're talking about individuals
+that represent potential professional
+athletes
+whereas agencies there's a very wide
+variety of individuals who are financial
+
+[18:55]
+advisors individuals who are brand
+managers you know individuals who
+specialize in the social media space in
+getting individuals more and more clicks
+or more and more followers so when we
+look at that issue as we try to
+incorporate this in the whole name image
+and likeness we can't think of it in and
+it's in that narrow scope we have to
+think of it wider because you know
+nowadays parents are agents you know
+
+[19:25]
+parents are building their their son or
+daughters brand but what they even get
+to college so I suspect what we're going
+to be looking at there are there are
+organizations and companies out there
+right now that
+that actually specialize in this area
+that specializes in making sure that
+they know what the market is what the
+market rate is for an individual that
+has a hundred and ten thousand followers
+on Instagram or what it is for somebody
+
+[19:59]
+to be an influencer in social media
+based upon the number of followers there
+there are individuals that specialize in
+that
+there's also organizations that
+specializes in making transactions very
+transparent and that is you know very
+important and with collegiate athletics
+with the recruiting space so as we move
+down this track we're going to probably
+see organizations cropping up that are
+
+[20:33]
+not just what we will call agents but
+they're they're organizations that will
+make transactions happen will bring
+together they add people the sponsors
+along with the student-athletes who have
+the ability to maybe make a deal with an
+agent advertising agency or an or
+whatever so at this point I don't or at
+least I hope you know the NCAA is not
+
+[21:03]
+going to look at trying to do that with
+in-house because that is a huge
+undertaking and and the more that the
+NCAA gets involved in those types of
+things one thing that our institutions
+have to be careful of is that we're not
+looking for our student-athletes to be
+employees of the institution and they're
+because once they become employees of
+the institution then we're talking
+totally different laws we're talking in
+
+[21:35]
+employment laws so so we have to stay
+away from that and in order to be able
+to stay away from that some of this is
+going to have to be left open to the
+free market and some of it will have to
+be educating the prospective student
+athletes coming in our student athletes
+we that's our business we have to make
+are we protecting them from an
+educational perspective to make sure
+they're making the right decisions and
+who is going to represent them and deal
+with them in this space so so you
+mentioned a couple of things that I want
+
+[22:05]
+to bring to Jerian and sake want to get
+their thoughts right so there's there's
+two areas where named images like this
+well there's a lot of areas but but to
+sort of main areas one is group
+licensing right and so you know say plan
+you were very aware at some point that
+you couldn't play and see to believe
+football 2017 with yourself as a player
+as a result of the anti bilious rules
+right so now in in theory we're gonna
+have that ability for all of the college
+
+[22:35]
+athletes to get group licenses so that
+EA Sports can can come back at the
+college level as they're thought tonight
+I know Jerry that you guys are thinking
+about who's negotiating on behalf of
+these athletes for those rights because
+you're the ability as an individual
+you're an elite athlete you're an
+all-american there may be a local
+company a national company that wants to
+have you represent them individually but
+there's also this group licensing impact
+it will affect all of the athletes so to
+
+[23:05]
+Jerry like what are your plans to do
+that and then I'll come to sake when to
+get a sense of how that would that would
+work from your perspective you know look
+again I I I need to reset the
+conversation a little bit because you
+know what I'm finding is that everybody
+at the pro level and at the college
+level everybody's jumping in to this
+conversation from the existing
+constructs you know what I'm trying to
+say is that I think people gotta stop
+slow down
+obviously in college there's a lot more
+
+[23:35]
+players in college than there are in the
+NFL I've got two thousand players that
+are constituents in the NFL with NFL PA
+and we've got 1,500 constituents in
+baseball you know our company one team
+is anchored by the NFL PA and MLB's P
+and MLBPA but but what we're finding is
+is that B you know and I'm finding this
+also in college that you know once you
+get to the college level it immediately
+goes to name image and likeness on an
+individual level and that's when you
+start to talk about agents and you start
+to talk about individuals and you know
+
+[24:06]
+sports it's the same thing in Hollywood
+I mean there's there's the 1% and then
+there's the 99% right in Hollywood you
+got Brad Pitt and Tom Cruise and then
+the other 99% are waiting tables
+basically in sports you've got the
+breakout stars but then you can't have a
+game where a team it's the same concept
+unless you have a team and he's
+everybody and I think what we should be
+focused on certainly at the pro level
+and then also I think it even applies
+more to the college level because
+college is more complicated frankly than
+the pros I think we got to look at the
+collective and so rather than get into
+these immediate discussions on ni L with
+
+[24:37]
+regards to individuals and and agents
+and what does that mean and then it's it
+seems like it's just you know completely
+out of control I would I think with the
+starting point in the conversation is to
+be the collective grouping and I have to
+believe let me make a pile state
+something on the pro level that we're
+finding now look we're two minutes into
+this but on the pro level what we're
+finding is that or our whole investment
+thesis is predicated around group
+licensing for all of the players and
+it's anchored by two verticals video
+games and trading cards and what we're
+
+[25:07]
+finding is is that if we can if we can
+find a way to partner with the other
+two-thirds of the value chain that I
+talked about there's a chance to
+actually grow that pie now what you do
+with that incremental pie is then the
+next iteration in the discussion so I
+would submit to you that you know in in
+college there there has to be a everyone
+has to pretty much get around and agree
+that if you could grow the pie the media
+pie the sponsorship pie the ticketing
+pie by having the players participate
+with the conferences and with the the
+
+[25:37]
+league but that's got to be a good thing
+then you can go talk about well how do
+we divvy it up and what does it mean for
+individuals etc I agree but here's the
+question who's representing the college
+athletes at the table what they're
+talking about growing the pie is it the
+athletic directors and in the
+conferences to say okay you're part of
+us and we're gonna we're gonna do this
+or is there I know that that college
+athletes are not employees based on
+NLRB's quasi decision or punt that at
+the DC district but is there some
+
+[26:08]
+recognition of we allow some union for
+group license saying for this or a body
+that does it with this remote Huma at
+NCPA now like the sacred like who do you
+think should be sitting at the table
+with you or should the athletes be at
+the table representing themselves hmm
+I mean I definitely say to athletes but
+you also got a you know getting the
+mindset that we are college athletes and
+we have a lot on our plate and a lot on
+our table so kind of come back to you
+know top that keeps getting brought up
+
+[26:39]
+in this education educating those guys
+we can't just go up there just what we
+see on social media or how we feel you
+got to go into your own research and
+educate yourself and then if obviously
+the n-c-double-a or athletic directors
+and your coaches help you out we will be
+able to go up to that table in you know
+if I presenter self the right way I'm
+sorry obviously I think that the just
+kind of same way where is with the with
+the CBA and NFL I'm having your players
+and having player reps but obviously
+that's way along down the line and we
+have to have the right people in place
+
+[27:09]
+and make sure you have the right
+education system in place for us to be
+able to do that stand you like that and
+too so so over the years we've looked at
+the the NCAA structure and over what
+we've done is you know the NCAA is very
+bureaucratic machine but we recognize
+that we have to have all the various
+
+[27:40]
+different constituencies within
+collegiate athletics at the table when
+making new rules changes so I want to
+say it was back in 1990-91 we created
+back then we realized that we weren't
+hearing the student athlete voice when
+we voted on legislation we created a
+student a national student-athlete
+Advisory Committee and then that has
+expanded over the years from the
+National student-athlete Advisory
+
+[28:11]
+Committee to conference student-athlete
+Advisory committees and every
+institution has student-athlete Advisory
+committees on their campus so we we
+figured out a way of making sure that
+all student athletes had a say in how
+our rules would change and and we wanted
+to we want we needed their voice we have
+to have their
+I think we're up to that point again
+where I should say we got to come up we
+got to figure out well what is that
+legal construct to allow
+
+[28:41]
+student-athletes to be able to be
+represented if they decide that they
+want to go into group licensing and
+that's one of the one of the biggest
+issues right now that the various
+different committees are based with and
+with talking about name image and
+likeness but I do believe that there's a
+way in which we can create a
+student-athlete for lack of a better
+term Association Players Association
+come by comprised of the sat groups that
+
+[29:11]
+would be able to in essence represent
+the student athletes in any negotiations
+for group licensing but I don't see that
+happening until after we get through
+that first phase which is really going
+to be about the individual license and I
+you're right certainly that the athletes
+have participated in advisory panels but
+the framework in which those discussions
+are happening has changed right I mean
+the framework was you can't do any of
+this
+Jerry mogera me Blum tried to change it
+and O'Bannon tried to change it in the
+
+[29:42]
+answer ballet had said no here's the
+framework so we'll listen to you but
+within this construct and that's why the
+law and the legislature have come in and
+said okay this framework has some issues
+right and so I believe that the students
+have to be involved but it's been
+external forces that have played a role
+in in changing that a little bit Martin
+how are you gonna educate the what I
+have 800 athletes as they move 750
+athletes on campus because it's gonna be
+different we have a women's ice hockey
+team that has Olympic players on it
+
+[30:13]
+we've got football and you know a huge
+range yeah well with anything you have
+to start with transparency you know you
+have to communicate communicate and
+transparency you know we try to send now
+articles we try to you just got to get
+in front of it and get in front of our
+teams and our student-athletes to help
+them understand what's being talked
+about you know a lot of things that are
+going on right now it's very fluid you
+know with change there's uncertainty but
+the only thing that you can control is
+
+[30:43]
+how you communicate and the most
+information
+have you try to try to share that you
+know like I said there's a lot of
+student athletes and administrators even
+that don't really haven't had their arms
+around this and and so the more as we
+move forward before the convention in
+January to educate and get in front of
+our teams and talk about what does it
+look like you know it's not just a a
+YouTube channel it's not just Instagram
+followers on there there's so many
+things at the local and national level
+
+[31:14]
+that this can be so as it as it kind of
+the conversation matures which it has
+you know it's evolving thing it's not
+you know we're not at a place right now
+where where this is set and this is how
+it's gonna be you know change doesn't
+happen that way the way change happens
+is you continue to talk about it
+different aspects are brought to the
+table you get more voices you get more
+opinions in it and and student-athletes
+are talking and at the table now you
+know they're a part of the Council now
+they're part of the conversations so
+
+[31:46]
+collectively we have to get there
+together that's the only way this is
+going to happen is gonna happen but you
+know educating and communicating and
+being transparent with you know here's
+here's the deal this is how
+professionals like Jerry said this is
+how student-athletes see it this is how
+administrators see it this is how the
+n-c-double-a sees it and and you know
+just have those conversations and we're
+doing that now I will say that I think
+where you where you guys were going it's
+something we should consider which is
+you know the experience I've had in
+sports and then with the pros most
+
+[32:17]
+recently is that it is gonna require I
+think were you were saying other
+participants at the table in partnership
+with the players and what I found on
+this most recent one team experience
+with the the league and the players
+associations is that you know really it
+was a credit really goes to the players
+associations they already had they they
+had divided they had structured
+themselves as the Players Association
+and then they had players Inc so they
+had taken the step a while ago to
+separate out their business interests
+and they had people that were working on
+
+[32:47]
+solely the business interest then they
+had people in the PAS who were working
+solely on the CBA type issues and that
+gave us the framework to then take the
+next step next step was well who out
+there has capital and has business
+experience
+can partner with us on the p i-- side at
+the table when we're thinking through
+these things very difficult to sort of
+say to players you know just show up at
+a discussion land ni l and and from a
+standing start and so in the key though
+is that you know the problem in today's
+world is you know there's so much
+capital everywhere that you've got to
+
+[33:17]
+sort of step back and say well it can't
+just be the capital right you have to
+look at the alignment
+you know the inch there do we share the
+same cultural values do we share the
+same you know prioritization on on
+education and and and the things that we
+want to get done on the scholarship fund
+all of that stuff again particularly in
+college even more so than the pros
+there's got to be a whole other overlay
+to that and that's where it gets tricky
+when you start getting into my world
+right because my world is all about you
+know making making a profit but it has
+to bring other elements in there so I
+would suggest that there there has to be
+a seat at the table in partnership with
+
+[33:47]
+the players well yeah when you think
+about name image and likeness there's
+there's two components to this right
+when you read an ear what Mark Emmert
+said in front of Congress recently in
+January talking about having guardrails
+to protect the athletes and in the
+schools from anything that could
+potentially happen but then you also
+have the other side where you think okay
+we have to work we're concerned about
+outside influences we'll call it on
+guardrails from protecting our students
+but then you also have to figure out
+
+[34:17]
+okay if college athletes have the rights
+to their name image and likeness how do
+we ensure that they're able to
+capitalize upon those rights as well so
+you've got these two pressures right and
+so how does this and maybe it's a
+learning experience and we have to get
+there but when you think about all of
+the change that has to happen we've got
+this clock that's ticking that I mean
+there's a chance that a couple of the
+schools in the ACC if the Florida
+legislation stays supposed to take
+
+[34:47]
+effect July 1 we have danceable a little
+I've you talked about sort of what does
+that look like if that law passes and is
+put into place this summer what would
+those and I believe that there are more
+and more states now that are actually
+changing their effective dates to later
+yes so that that's encouraging
+and we are very optimistic that we
+should be able to get a congressional
+
+[35:20]
+bill in place that will preempt the
+state bills if that doesn't occur and it
+doesn't happen you know there's not only
+really two options you want either
+you're gonna have chaos because you're
+gonna have certain states that have that
+are have schools within the NCAA that
+are under different rules and and then
+collectively the question will be will
+you allow those schools to participate
+in the championship events or not you
+
+[35:50]
+know that you know that's one scenario
+and the other scenario is is the the
+same thing that were always been faced
+with over the years and that is that we
+would then have to sue bring a lawsuit
+against those states whose bill that go
+into effect prior to any pre-emptive
+congressional bill and you know we we
+believe that those state bills are
+unconstitutional as it you know it's not
+permitting free flow of individuals to
+
+[36:23]
+be able to conduct a business into the
+state within within states with
+interstate so I think there's there's
+there's two outcomes there but but I
+think we're also obviously often
+optimistic that we will be able to get
+some changes done legislatively within
+the NCA by April of this year there will
+be this will be phase 1 and then January
+21 will be phase 2 and I think as the
+states see the changes that will be made
+
+[36:54]
+that they will you know continue to
+either move their bells back or repeal
+their bills and there's no doubt that
+the architects of the California law
+intended a start date of 2023
+intentionally because they never wanted
+that lot to actually take it back
+correct it was an intent for pressure
+for people to come together and to that
+extent it's worked I certainly wanted to
+take some questions from the audience
+there's a bunch of good ones I'll start
+with Martin for you who's on your socks
+
+[37:24]
+and it's the best pair of socks that the
+they've seen for the day so I know
+that's it's my my daughter's excellent
+of scarlet in Savannah well done
+requesters let's let's turn clearly that
+these name image and likeness changes
+are gonna have an impact on recruiting
+right what sort of impact you know safe
+on your evaluating a school both for
+your future as a football player also
+for your development as a young man to
+learn if named imogen like this was in
+
+[37:55]
+effect during your recruiting process
+would that have changed your valuation
+how you've approached it in any way no
+not for me personally the reason why I
+say that obviously you go to school
+couldn't play football but the reason
+why I chose Penn State because I felt
+like that God if if it didn't work out
+for me if I didn't make out Miggs NFL
+life like Penn State would give me the
+best opportunity for a career and for
+the rest of my life so that wouldn't had
+played for part of me but I'm everyone's
+different but my personal experience of
+
+[38:26]
+what I believe in I would have the same
+loss at my work how do you think it will
+we mentioned sort of competitive
+landscape earlier when named imogen like
+this is implemented at the college level
+and every college athlete has that right
+how do you think that will change
+recruiting at the college level in terms
+of right now the power five get most of
+the athletes at some of the sports
+will there be shifts in that will there
+be opportunities for other schools to
+engage how do you think will change at
+
+[38:57]
+the college level well it will change at
+all
+Martin's then Jerry any videos Thursday
+I think it'll it may change a little bit
+but and when I say them I'm speaking in
+terms of you know again when you choose
+an institution to go play collegiate
+athletics you're choosing if you do it
+the right way agreed no I I'm going back
+to my recruiting days but you know my
+
+[39:29]
+first decision I didn't do it the right
+way I chose a school because because it
+was closer to home because my
+girlfriend that I wanted to continue to
+see and my parents just brought in this
+new card and I thought I wouldn't be
+able to take it to school but then you
+step back and you and you do the adult
+thing you have to look at what the
+graduation rates are at the institution
+you know have that has that coach
+graduated all this players what kind of
+degree that institution really holds
+once you graduate and go on if you don't
+
+[40:01]
+make it professionally just like say
+quonset and and then you know what kind
+of experience am I gonna have I'm gonna
+have a great experience at that
+institution you got to make decisions
+based on that there are those that will
+make decisions on going to search
+schools because they believe that
+they're going to be able to go there and
+maximize the most out of their name
+image or likeness that's you know that's
+normal I guess that's for some people
+because that's that that's their
+
+[40:31]
+priority but you know I guess what I
+would also say is you know if if you're
+really just about the money side of it
+you know that should be you should be
+able to have opportunity to get out a
+professional route you should be able to
+go to the G League you should be able to
+go to some semi-pro League and that's
+where you should be going you have to
+understand what the collegiate route is
+about and if you if you are about
+getting your education then name image
+
+[41:02]
+and likeness benefits that should be
+down way down the list on on you as far
+as your evaluation on what school you
+would go to but I suspect there will
+still be so that make that decision
+based on that let me piggyback off that
+real quick you know you're you're also
+talking about percentages
+you know it'll change for some but for
+most that's not why you make the
+decision to spin the next three four or
+five years of your life you know so I
+think sometimes we get caught up in that
+this is gonna impact everyone
+significantly this is this is not going
+
+[41:34]
+to impact everyone significantly and I
+think that's that's a good point right
+because we haven't mentioned title 9 and
+we haven't mentioned the impact on women
+sports and there are some that will
+argue that this actually may benefit
+well it's gonna benefit everybody in
+some way but here's an opportunity for
+the elite women's ice hockey players to
+go ahead and have a camp or to give
+lessons in ways that they couldn't
+before so it's not just the sacrum
+Berkeley is the Zion Williamson's that
+
+[42:05]
+are gonna come in and say okay I've got
+so many followers and everyone's
+thinking about this huge deal with
+whatever whatever company they want
+there's this opportunity for that money
+to find its way in other ways that has
+been restricted previously Jerry yeah I
+mean you know I think I was struck when
+I first started to get up to speed on
+the college issue that this has been
+going on since 1995 and one of the first
+questions I asked my team was well
+what's been going on since 1995 that we
+haven't seen any - any evolution here
+
+[42:35]
+and I think what we should do on this
+whole thing again you know the
+conversation keeps reverting to ni L on
+an individual level I think what we
+should really do is is let's start with
+what we have right in front of us that
+could actually move this thing along the
+first step in evolution so look at the
+pro the thing we just did with the pros
+we got video games we have trading cards
+why don't we sit down with the NCAA and
+say on an ni al basis let's go look at
+video games and trading cards it's
+incremental it adds to the pie it's not
+
+[43:05]
+threatening to any existing constituents
+and their economic you know places the
+great thing is is that when I go in and
+have negotiations with video game makers
+it's your point on the women's side you
+know we anchored this one team thing
+with with the NFL Major League Baseball
+but we also proactively added women's
+soccer women's NBA and Major League
+Soccer because when I'm at the table
+with one of the video game makers I want
+to be representing all of those leagues
+I want to represent all those
+constituents we can do the same thing
+
+[43:35]
+with College when I'm out negotiating
+the the video that our video game when
+we we basically own the Madden video
+game I should be sitting down and
+talking about college now the key is you
+can't do that in a vacuum what we should
+be doing is partnering with the NCAA and
+saying hey do you guys find this a value
+here's what I think we can and the
+starting point in this whole thing let's
+add to the PI and then and eventually if
+you do that you'll be amazed at the
+progress that you'll start to see when
+you in any cancer
+like to get into all of these other much
+more complicated issues at the at the at
+the college level about you know college
+
+[44:06]
+players their you know their individual
+ni l how does that relate to the whole
+etc but the starting point you you got
+to start somewhere in the thing as
+someone who comes from the private
+sector I'm shocked that this thing's
+been going on since 1995 and here we are
+in 2020 and we're having the same
+conversation
+so part of what I want to do is I don't
+want to I don't want to be a catalyst
+for coming in guns blazing and and
+uninformed but I would say you know the
+one thing is really interesting one of
+things that I I thought about is that
+you know it again at the pro level when
+you look at football maybe there's an
+interesting opportunity where we can
+
+[44:36]
+start to look at vertically integrating
+sport so you know if we're starting with
+the pros and we want to have discussions
+with college why don't we go all the way
+down to Pop Warner and high school and
+talk about the benefits that the whole
+value chain in football can benefit from
+by virtue of these activities I'm saying
+and so it's it's these things are
+complicated and so it's clear that you
+know the obvious point is that it's
+really complicated and there's a lot of
+constituents and but things get
+politicized and the great thing about
+capital it's the great deep politicize
+er all right and so that's why I would
+
+[45:08]
+say one of the things that should be put
+on the table sooner rather than later is
+how do we say I think everybody on this
+stage would say yes we wanted to see
+something happen here we want to see
+evolution okay well guess what Capital
+is a great way to do that it's got to be
+responsible capital so let's go have a
+conversation but what's the first step
+that doesn't you know politicize
+everything so that you're stopped you're
+stuck in the old 1995 dialogue so so we
+clearly have some incremental changes
+that are happening we have a lot of
+mechanics that are going to need to be
+executed and thought through for names
+
+[45:41]
+you'd like us to come the way we
+envisioned it at the college level but
+let's go forward 5 or 10 years right
+what does college athletics look like
+from this perspective in terms of
+compensation for athletes maintaining
+the integrity of the educational
+component to this what does what does
+college I thought it looked like in 5-10
+years what are we talking about in Sloan
+at the SSA C 2030 within college
+athletics
+
+[46:13]
+then I don't think it looks very much
+different you know whenever we've had
+some major changes where was such a big
+deal whether it was going to the cost of
+attendance so whether it was allowing
+student athletes to be able to work you
+know there was always this uproar how
+it's going to change their recruiting
+it's going to you know further divide
+the haves and have-nots I suspect that
+you know we will fit we will figure it
+
+[46:44]
+out it will be within the collegiate
+model and we will go on just as we have
+been going on and there will be
+additional benefits available for
+student-athletes and that has been
+always the the goal is to make the
+student athlete experience the best
+experience it could possibly be and to
+find out fine ways in which you can
+improve upon that on an annual basis you
+know that would that was that was my
+goal when I was on campus when I was at
+
+[47:15]
+a conference office and now at the NCAA
+and so I don't see that changing we're
+just gonna end up going to the next big
+issue
+that'll come after that which not sure
+but I hope I'm retired by then and I'm
+out of it so but I think it it looks
+pretty much the same but the the the
+understanding of this concept of
+amateurism has changed over the years
+right I don't I like to use the term
+collegiate model
+okay so collegiate model so the
+
+[47:47]
+collegiate model is big enough to
+continue to expand that's the way I
+would answer that question college
+athletics is about providing
+opportunities for young people to grow
+and develop and and become what they
+want to be and that's not gonna change
+fundamentally athletics is to support
+the mission of the institution and
+that's education you know and so this
+technology improve upon that to Stan's
+point about we always are trying to
+improve the student athlete experience
+we try to learn from guys that leave
+like sake want and learn what we could
+
+[48:18]
+have done differently what can we do
+better to enhance that but at the end of
+the day the mission is education
+so that that doesn't change regardless
+of what these big big big hairy things
+that we've got to all come together to
+figure out it's still trying to better
+the student-athlete experience that's
+what that's what this is about and so
+that's not going to change five or ten
+years from now so you've got the
+experience now of making it to the next
+level looking back at your college
+career how do you wish things had been
+different do you wish they had been
+
+[48:48]
+different at all or where you was the
+the process that that played out for you
+exactly had you expected and something
+that you wouldn't change upon oh I don't
+think I would change anything really I
+think kind of going back to what he's
+saying like there's that 1% and the 99%
+and I've been very fortunate with
+probably being at 1% so what I changed a
+little bit of it maybe maybe not I think
+you know everything happened for a
+reason I learned from it
+and now I'm in NFL and living my dream
+
+[49:18]
+and I'm doing pretty well for myself so
+I wouldn't really go back and change
+anything one thing I do know is that
+like for that people who are under 1% I
+would love to go back and talk to some
+of those guys I know and she devil a
+hose like a van I remember when I was
+going from my sophomore to junior the
+people who was like projected it goes
+like the first round turning around
+there was like event where we all would
+go and just listen they'll try to
+educate us and I would love to go back
+and talk because when you are on that 1%
+there's a lot of people when you talk
+
+[49:48]
+about agents the financial advisor their
+marketing and their managers and and so
+on and so on there's a lot of people
+that's gonna come and you got to put the
+right people in position because you got
+to have you're not gonna know how to
+negotiate a deal you're not gonna know
+how to do this and then the third you
+got to hire people for that and when you
+have those people also hire people
+that's gonna educate you too and I think
+I've done a pretty good job but that's
+so far with my team and every single
+Adam continue to learn and learn and
+hopefully we improve and in the college
+space and I can be you know kind of a
+
+[50:19]
+factor in kind of helping that in that
+area so sounds like he's gonna be the
+next we just had it last week and I do
+think that college athletics both
+instable a conference in individual
+schools have done a better job of
+helping the elite
+athletes prepare for that next level to
+understand what that process is like to
+maximise upon their potential to provide
+insurance for those athletes to be
+covered in some ways so so there's no
+
+[50:50]
+doubt that that things have changed and
+the instability has heard from their
+constituents over time as well I know
+that the clock is winding down so let me
+end with a thank you
+for the panelists for sharing their
+ideas their perspectives on reform and
+college athletics that name image and
+likeness thank you to the audience for
+listening to us we'll be available for
+questions and thank you to MIT once
+again for pulling off such a fantastic
+conference have a great day
+##### 2021-06-04_-nyTn7E2pKw_fact-or-fiction-basketball-mythbusting
+{
+ "id": "-nyTn7E2pKw",
+ "title": "SSAC21: Fact or Fiction: Basketball Mythbusting",
+ "channel": "42 Analytics",
+ "upload_date": "20210604",
+ "duration": 2819,
+ "view_count": 933,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction",
+   "end_time": 50
+  },
+  {
+   "start_time": 50,
+   "title": "NBA",
+   "end_time": 332
+  },
+  {
+   "start_time": 332,
+   "title": "Memphis",
+   "end_time": 415
+  },
+  {
+   "start_time": 415,
+   "title": "Relationship with analytics",
+   "end_time": 580
+  },
+  {
+   "start_time": 580,
+   "title": "Analytics culture",
+   "end_time": 706
+  },
+  {
+   "start_time": 706,
+   "title": "The 3point line",
+   "end_time": 882
+  },
+  {
+   "start_time": 882,
+   "title": "NBA Diversity",
+   "end_time": 1064
+  },
+  {
+   "start_time": 1064,
+   "title": "Womens College Basketball",
+   "end_time": 1559
+  },
+  {
+   "start_time": 1559,
+   "title": "NBA Bigs",
+   "end_time": 1720
+  },
+  {
+   "start_time": 1720,
+   "title": "Skillball",
+   "end_time": 1772
+  },
+  {
+   "start_time": 1772,
+   "title": "NBA Lottery",
+   "end_time": 1892
+  },
+  {
+   "start_time": 1892,
+   "title": "Chamberlain Coins",
+   "end_time": 2022
+  },
+  {
+   "start_time": 2022,
+   "title": "Fan Questions",
+   "end_time": 2499
+  },
+  {
+   "start_time": 2499,
+   "title": "Audience Question",
+   "end_time": 2519
+  },
+  {
+   "start_time": 2519,
+   "title": "tampering",
+   "end_time": 2609
+  },
+  {
+   "start_time": 2609,
+   "title": "tampering penalties",
+   "end_time": 2819
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC21: Fact or Fiction: Basketball Mythbusting"
+video_id: -nyTn7E2pKw
+url: https://www.youtube.com/watch?v=-nyTn7E2pKw
+channel: 42 Analytics
+upload_date: 2021-06-04
+duration: 46:59
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [basketball]
+---
+
+# SSAC21: Fact or Fiction: Basketball Mythbusting
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:01]
+good afternoon my name is riley foreman
+and i'm a first year mba student at mit
+sloan
+it's my pleasure to introduce our panel
+fact or fiction
+basketball myth busting today our panel
+of mythbusters
+include elton brand philadelphia 76ers
+general manager
+sonia ramon grizzlies assistant coach
+and former mit head women's basketball
+coach
+and mike sarin celtics vice president of
+basketball ops and team council
+our panel will be moderated by espn
+moderator author and professor kurt
+
+[00:32]
+goldsberry
+the panel will run for 35 minutes and we
+will leave 10 minutes at the end for
+questions
+please use the chat on the right side of
+the window for discussions during the
+panel
+and submit questions for our panelists
+on twitter using the hashtag basketball
+mythbusters
+questions will then be selected by the
+moderator and with that i'll turn it
+over to kirk
+thank you riley and before we begin on
+behalf of the whole panel i just want to
+i want to thank the student organizers
+for all their hard work especially this
+year this is my tenth sloan conference i
+know mike mike
+
+[01:02]
+has had even more than that but this has
+certainly been one of the most difficult
+and unique ones to put on so thank you
+to all the students the faculty and of
+course jess gellman and daryl murray for
+having us
+uh despite these crazy uh circumstances
+so well done to everybody we're happy to
+be here
+we're happy to have a fun discussion
+about fact or fiction and without
+further ado let's jump right in
+uh anybody can take this one fact or
+fiction
+i'm gonna get i'm gonna look at you mike
+the nba
+currently has an emerging talent
+distribution crisis these super teams
+
+[01:34]
+are consolidating all the best players
+into a few select cities
+fact or fiction um
+i think it's it's no more
+uh fact than it has been for a very very
+long time so i'll say
+fiction um i got i think i got the same
+question in 2008
+and you know the lakers got this
+question in 2001
+and the celtics and lakers got this
+question in the 80s and
+um i think i think
+
+[02:04]
+you know the best teams are going to
+have a collection of good players the
+thing that may have changed is there's a
+little bit more focus maybe on
+on players sort of choosing to go
+somewhere together
+um but even that you know has been an
+issue since
+uh the decision right so um i don't
+think i see something different going on
+now there are a bunch of teams in bigger
+markets who are bad for a long time and
+they
+happen to you know the way the system's
+set up they get good
+you sort of go up and down some and so
+those teams are getting good at the same
+
+[02:35]
+time but i i don't think it's any
+different than it has been
+that because i i guess that means
+fiction
+fiction um i'll toss it to elton in a
+second but here i think you were really
+smart to pinpoint the decision because
+between 1969 and 2010
+uh 41 of the
+only seven of 41 finals mvps had won
+that award after switching
+teams since 2010 eight of those 10
+finals mvp winners have done that
+
+[03:06]
+uh so i think it's true that something's
+happening
+maybe it's not super teams but i i think
+he nailed it he pointed to 2010 in the
+decision
+and players choosing where they're
+winning these games
+might be a big concept elton what do you
+think
+um yeah i'd agree i'd agree with you
+mike i think it's
+uh you know kind of the player
+empowerment movement
+the players are vocal about it they're
+saying i want to go to this team i do
+not want to go to
+this team or this market and i think
+that's what with the changes
+
+[03:36]
+you know what that's what we're seeing
+you know through the media through
+hearing about
+you know player x wanting to be with
+with his teammate or his friend
+in the past it would be up to us
+management
+or you know coaches or ownership to
+figure out a way to get these elite
+players
+now it's it's more of the feel that
+they're doing
+on their own which they're not as we
+know but that's the feel i think i think
+that's what it seems like
+yeah i don't know i i mean there's a
+
+[04:06]
+part of me that
+thinks it will be interesting to see
+you know sonia your team you've got a
+couple really good young stars if they
+continue
+on their upward trajectory and somehow
+you guys are able to make
+cap space my bet is a third star would
+be willing to join them to win there
+uh despite the fact that memphis isn't
+considered like a premier market or
+anything like that i still think it's
+about where you can go to
+to win um more than the specific city i
+think guys are choosing places where
+
+[04:36]
+they
+you know the nets had room to sign all
+those guys
+um and uh and you know
+if it had been somewhere else where it
+had worked out that way i think you know
+you would see guys going other places
+too but i might be wrong about that
+you know i don't think we this isn't
+some enormous market of information
+right there's only 30 teams only a few
+of them have cap space each year and
+guys come up at certain times so um
+because 10's got to be longer than since
+the decision for me to feel confident in
+it
+i i'd want to follow up on that quickly
+
+[05:06]
+too i agree you know if a team has cap
+space the team has young talent
+and they become friends because the
+talent you meet at all-star games you're
+at
+award shows you're become friends now we
+can win a championship together
+and be compensated for it you know you
+can live wherever you want to live
+in the off season right so i agree i
+think uh
+you know a team like philadelphia will
+continue to
+[Laughter]
+coach do you have any thoughts on this
+you are are sort of
+
+[05:36]
+you represent a smaller market than our
+other panelists one from philadelphia
+one from boston
+uh mike alluded to memphis's status as
+sort of a less than
+prominent uh nba market i know it's your
+first year on the bench but
+do you have any thoughts there do you
+feel that the players are are more
+likely especially the big
+the best players in the league to
+migrate to certain markets
+over places like memphis well i'd like
+to agree with mike
+um that you know and elton that it
+doesn't really matter
+where you are i think that um you know
+
+[06:07]
+friendships are formed um
+talents might you know be blended
+together in a certain way where
+where you know guys realize that it
+might be beneficial mutually beneficial
+to play together
+but in terms of where um you know like
+elton said you can live wherever you
+want in the off season
+um i think we're well past the old you
+know the days of old like media markets
+being important
+i mean you can be anywhere and and have
+a platform and
+with social media and the marketing that
+we have so you don't have to be
+in you know the bigger cities to um
+
+[06:38]
+to you know for your games to be on tv
+you know the the
+the viewership is going to go where the
+talent is so i'd like to think that
+it can happen in any market
+counterpoint they don't shoot space jam
+in memphis
+coach so not yet uh
+good stuff elton i want to i want to
+direct one question for you not yet fair
+question
+fair point uh elton uh your basketball
+journey
+has taken you from one of the best high
+school players in the state of new york
+mr basketball national college player of
+the year duke
+
+[07:08]
+number one pick in the draft and
+obviously a great
+career in the nba as a player and now
+one of the executives
+at one of the best teams in the eastern
+conference
+you've seen the nba and basketball at
+large
+change so much throughout
+this remarkable career and journey
+through basketball my question for you
+is
+how is your relationship with analytics
+since worth of sloan conference how has
+your relationship with analytics sort of
+
+[07:38]
+evolved
+uh throughout this remarkable journey
+you've had
+that's a great question so you know just
+growing up peaks go new york it was just
+about
+putting the ball in the hoop being the
+best player i could be
+you know working hard to go to new york
+city play with players like we're on our
+tests lamar odom and aau
+and travel across the country um again
+it's
+about focusing on how could i be the
+best player i can be you know it's all
+about finding an advantage
+um then you get to the collegiate level
+
+[08:08]
+coach k we were watching it on
+like uh old school you know video
+like on a movie screen but we watched
+film and we got better you know once i
+got to the nba
+um you know data really became more
+important
+you know you were trying management
+trying to find
+any way they can to enhance their
+players to get better whether it's
+you know i started with the bulls and it
+was the birdo center they had one of the
+earliest you know best practice
+
+[08:38]
+facilities with massage and
+food and you know early versions of of
+shock tracking even like it was it was
+amazing you know but
+that was after six championships um
+you know now as an exec you know we try
+to have a relationship with the players
+that they understand that
+it's it's it's for their best interest
+to
+you know learn about the data learn
+about what we're trying to do with
+analytics so that
+they can make more money they can win
+more they can be more successful and we
+
+[09:08]
+can be more successful
+so i think there was a trust issue that
+happened you know once once it started
+really moving to a certain level
+the players didn't trust that oh they're
+just tracking us oh they just want to
+you know they just want us to play a
+certain way or oh they don't know the
+game
+but now i see that slowly breaking down
+because a lot of our players they want
+to know
+how can they be most effective what
+shots can i take to
+to you know have a longer career to help
+our team be successful so it's changed
+over the
+you know 30 years i've been involved
+
+[09:39]
+with the sport
+great uh and coach rahman similar
+question to you
+um you've come from coaching women's
+basketball
+at some of the best universities uh in
+the country specifically mit
+and now i'm just curious of of how
+you've seen sort of the analytic culture
+around the sport change as you've gone
+uh from women's college basketball to
+now
+coaching in the mba well it's
+interesting you know coaching at mit you
+would think you know automatically
+
+[10:09]
+analytics are there um all the players
+are bought in immediately and
+you know data driven um but you know
+they're basketball players and they're
+they've been coached a certain way you
+know all through high school and aau
+so analytics when it came to basketball
+was was new for them too so
+similar to i think what elton alluded to
+that um
+you need to educate um on you know on
+the analytics on the numbers how it can
+be effective how it can be utilized
+um the communication and also just that
+collaboration like i tried to really
+um explain what the numbers were
+
+[10:41]
+show them film um you know analytics
+never gives you a cut and dry answer it
+might
+make you lean one way or another but
+then collaborate you know like what
+how do you guys feel comfortable with
+the coverage here's what the numbers are
+saying this is why
+we think the numbers are playing out
+that way here's our eye test
+but let's have a conversation about it
+you know we we would get to that point
+with our players where there's just like
+such a high level of trust
+that we're involving them with some of
+those decisions too so
+you know that was my experience at mit
+um they ended up getting really good
+
+[11:11]
+students of the game and
+certainly embrace the analytics and um
+watching it evolve
+um at the college level it's been a
+little bit slower
+so you know jumping over to the nba like
+that was just a huge leap
+um in my world of analytics i mean
+there's data on everything so
+um it's there and the challenge is
+really like what
+matters most you know like what's really
+important and not just what's noisy data
+or what's recent data but
+um what really matters but it's it's i
+think you know we've said it like it it
+
+[11:41]
+only helps in the end if you find
+um if you can get the buy-in
+great and uh i want to use your
+experience to sort of pivot to our next
+topic
+and uh speaking of data on everything
+you know the first year the three-point
+line existed in 1979
+three percent of nba shots were threes
+uh
+this season i believe it's very close to
+40 percent uh and if present trends
+continue
+realistically over half of nba shots
+could be three-point shots by the end of
+
+[12:11]
+this decade
+um and i want to talk about that
+specifically
+in the context of something coach rahman
+has coached through
+uh at mit which was the the women's
+college basketball
+uh league the ncaa moved their
+three-point line so has virtually every
+other major basketball league
+um on the planet over the last decade or
+so
+the only one that hasn't is arleigh the
+nba uh
+remains sort of consistent with its
+
+[12:41]
+three-point line placement with the
+three-year exception in the 1990s mike
+is it time to at least consider wait let
+me let me use the fact or fiction line
+fact or fiction
+it's time to consider moving
+the three point line in the nba
+uh not high on my list of changes to
+make to the nba right now
+i felt fake fiction but the main reason
+is um
+i i think at the end of the day
+we're an entertainment product and i
+
+[13:13]
+would want to hear
+from fans that they suddenly are not
+liking the game as much
+instead what we're hearing is fans like
+the game more than ever
+there are more people interacting with
+the nba now than there ever were before
+in all sorts of ways regardless of what
+the ups and downs of individual game
+full game tv ratings
+um and so you gotta listen to the
+customer some and people love the nba
+right now the floors really spread
+there's more exciting place at the booth
+as a result
+and they're also more crazy long
+distance shots if you look at the
+
+[13:44]
+you know which which top shot moments
+sell for a lot there's a bunch of really
+long distance shots guys that people
+want so
+um i i think you know you also have this
+problem
+that the other leagues didn't have
+because of where their three-point line
+was we have the corners and
+so the further out you move the rest of
+that three-point line the bigger the
+disparity between a corner three and the
+other three
+and we're not going to make the court
+wider because then there's less seats
+and so we sell fewer tickets
+
+[14:15]
+um so i don't i don't really know what
+that would
+accomplish uh other than you know maybe
+lower scoring games
+and and more maybe you get back to more
+mid-range or post-play some but i'm not
+sure that people
+desire that there are a bunch of
+traditionalists telling me forever that
+you know there's too many threes and i
+heard that 10 years ago and now there's
+way more to reason we're still hearing
+it from the same people but it doesn't
+seem like there's more people saying
+that
+so until more people are saying that i
+think that's fiction
+okay i like it we're gonna throw it to
+elton but i went a segway too
+
+[14:46]
+because uh there is internal data at the
+nba they've pulled the fans and one
+thing they do like
+is the diversity of scoring in the
+league that is something they have
+recently started to express
+is the two-shot type hey it's daryl's
+house here
+i'll be careful how i say it the two
+shots carol's got joel embiid
+yeah now i know now joelle is shooting
+60 from mid-range and he loves mid-range
+but
+hey speaking of mid-range elton you are
+one of the best mid-range shooters of
+your era
+uh is it just speaking as a fan
+
+[15:18]
+as a mentor uh as somebody who played a
+long time in the nba
+is it a little bit jarring forget
+analytics for a second it's a little
+jarring to see those shot types that you
+really
+uh made a lot of money and won a lot of
+games with sort of
+departing the nba it's only jarring
+because that was my staple
+it's like i was known for that face up
+mid-range jumpers and it's
+but the reason i did it was to be more
+effective
+like at six seven and a half i was
+
+[15:49]
+undersized
+and that's when every team had two seven
+foot plus guys to guard chat
+so i'm going it's you know and then it's
+the power forwards were 611
+bruises you know pj brown's and you know
+these these guys were
+you know strong and big and long so
+that's
+that's the way i felt i can be effective
+in score so
+you know as much as it hurts for one of
+my staples to be taken out of the game i
+i think it's
+i think it's the right it's the right
+play and the efficiency you know we're
+
+[16:19]
+becoming more efficient the last six
+years it's
+we're increasing our three-point
+efficiency every year as a league you
+know it's going up
+even from last year from you know 36.7
+uh
+you know i mean it's 36.7 this year from
+35.5 so
+we're not out there just hoisting brick
+and threes now that i don't think fans
+would love that
+but i'd like to see all-star games
+players shooting from half court like
+that's amazing to me you know as a
+as a fan of the game like that is that's
+a special moment so
+
+[16:49]
+you know as much as it hurts me because
+i made i made my living off it literally
+um i think it's the right play ellen did
+anyone ever tell you you should move
+back
+like how did you react to that well
+coach igor
+um he coached the suns and you know yeah
+he coached with the clippers he told me
+he was from europe he said you're strong
+enough
+um you should shoot threes from the top
+of the key and we were shooting them and
+then i just thought about all the tough
+lumbering bigs
+that said you're soft if you shoot
+jumpers yeah so it was a mind trick they
+
+[17:20]
+tricked me i would have moved back i
+would have been
+i would have moved back to kg and he was
+like hell no
+same reason same reason like you're soft
+you're
+soft if you shoot jumpers but then you
+know rasheed wallace doesn't solve dirk
+or whiskey with the software right you
+know
+guys started winning and winning
+championships with that with those plays
+so
+um yeah i wish i would have just been
+soft
+yeah you could have been soft and rich
+and i don't think
+uh kevin garnett would have said hell no
+
+[17:50]
+i think his work
+might have been more colorful but we
+won't say that here
+it was longer there's no doubt coach
+uh robin this one's for you uh you know
+women's college basketball i'm going to
+ask you to put your your coach hat on
+from
+from from your women's days it is
+having a moment i mean the women's
+tournament was really great
+uh this year their game play is a little
+bit more diverse in terms of shot
+selection women's college basketball
+uh but you know there was also a really
+
+[18:21]
+interesting and remember this is the
+sloan sports analytics conference we're
+supposed to be talking about basketball
+not just mbas
+so i have to ask you about that one
+moment
+that happened during the tournament when
+a women's player shared on social media
+the state of their weight room uh versus
+their male counterparts
+and how shocked and outraged many of us
+were to see that
+as somebody who spent decades around
+women's college basketball i'd love to
+know what you thought
+about that moment and that controversy
+
+[18:53]
+sure um well first of all i think it
+just highlights um
+you saw it in the bubble with the wnba
+last year um women are out there you
+know being
+being activists being vocal um not
+accepting things that aren't going to be
+fair
+or equal so you know good for sedona
+prince
+morgan and the coach at stanford for
+bringing this to light
+um i don't think that people you know
+coming from the women's basketball world
+were very surprised by that
+i think the division one tournament the
+division one tournament on the men's
+side versus the women's side it's
+
+[19:24]
+clearly been operated
+differently there's two different
+committees that run it um and
+you know just it feels a little bit more
+like a business
+i think what's frustrating is the cpa
+this is
+an amateur organization promoting
+amateurism
+at higher ed institutions it's not
+supposed to be a business but it's
+basically being operated as one and we
+can get into a whole different
+discussion on amateurism and name image
+likeness and all that i'm sure there's a
+panel
+just for that um but you know for me at
+the division three level um
+
+[19:54]
+it wasn't a business and it wasn't like
+that so um
+our men's team made the tournament for a
+number of years before we got there and
+i would
+you know i would go and try to learn
+what i could and then once we started
+making it um
+experience was the same and i think at
+the end you know
+at the ncaa level the student athlete
+experience there needs to be parody in
+that experience
+even if they're not going to be exactly
+the same you know there's more fans
+two to three times more fans that you
+know buy tickets for the men's
+tournament
+the operating costs are going to be
+different a lot is going to be different
+
+[20:24]
+um but i think the student athlete
+experience really needs to be the same
+in whatever way it can happen
+great um elton mike any any responses or
+did you guys have any sort of
+uh reactions to that saga has it
+unfolded a few weeks ago
+the timing was totally fascinating with
+the supreme court considering the
+case at the same same time because it
+just sort of highlights
+the the mess that is the concept of
+amateurism
+
+[20:54]
+um so i i didn't i mean i i actually
+reacted more strongly to the fact that
+maybe this is just because my job has
+been so messed up this year
+and you guys will both appreciate this
+who are working for the league but
+they were doing pcr tests for the men's
+tournament and antigen tests for the
+women's tournament so
+it's not just like you know i mean you
+could say what you want about the amount
+of
+work you'll do in a weight room over the
+course of the tournament but like
+people's health was treated differently
+in a way that i i just
+couldn't fathom that they had allowed to
+
+[21:25]
+happen um
+but like the ncaa is really messed up
+for a lot of reasons
+um i don't really have any connection to
+it so i'm not sure if i should say that
+or not but
+um if you listen to the supreme court
+argument and i'm sure you can go listen
+to an archive somewhere you'll see how
+doubtful the
+justices were about the thought that the
+ncaa can define its product
+by how much they pay people and then use
+that definition to say
+we can only preserve our product um if
+this element of it is kept
+
+[21:56]
+it's very very strange i mean elven
+probably has something to say about this
+as a former
+college athlete but it's just totally
+odd to me i don't think people are
+choosing to go to duke games or not
+based on how much the players are
+receiving and benefits
+it's because they like duke and they're
+excited about good basketball players is
+my guess
+but that was the ncaa's argument i i
+don't think it's a very compelling one
+under any antitrust law i know or
+any moral i know
+i'll speak more to the moral side um you
+
+[22:26]
+know one argument because it
+it was ironic the timing um you know the
+supreme k
+uh court case being brought about around
+the same time and one argument was well
+the men they make so much more money i'm
+just like it doesn't matter these are
+amateurs you're supposed to be able to
+compete at an even level for the
+tournament
+and we we stayed glued you know to to
+the women's tournament you know my
+daughter she's eight years old
+she's a tremendous fan and you know just
+having that disparity like
+i just like i felt sick about it like
+
+[22:58]
+just i don't know she'll never hoop at
+that sort of level division one level
+but still i'm just like
+like this this could not be right so it
+was highly disappointing and
+but there's going to be some reform
+there's going to be some change with
+ncaa
+um you know i played i don't know 20 30
+years ago
+and you know as an athlete you go there
+you go
+um you know you're on a scholarship and
+you know back then they were saying
+that's enough
+but i've seen duke jerseys with the
+number 42 on the back without my name
+but they were sold
+
+[23:28]
+some with my name you know it was just
+like
+i didn't even get an education i dropped
+out so no
+would you call that a brand name jersey
+or an off-brand jersey
+hey that was a dad joke you know i'm a
+dad i get it yeah
+um let's have some fun elton you guys
+are playing really well this year
+fact or fiction joelle embiid is the mvp
+
+[23:58]
+of the nba this season
+uh in fact like you said let's have some
+fun you saw the way he dominated mike in
+the celtics the other day for that 35.
+like he's been unstoppable 60 from mid
+range as you jokingly said
+you know 50 um from the field plus
+40 from three um and the sneaky secret
+to some
+not this group you know this is a highly
+you know verse crowd
+his defense you know we're not number
+one on half court defense
+
+[24:28]
+you know you know only because of ben
+and his
+great defense it's joel protecting the
+rim so if you're gonna have twos and
+threes
+um rim shots having joel down there you
+know playing the way he's played
+um you know he's just determined daryl
+did a great job giving him some more
+spacing
+but um the only thing i think can hold
+him back is they say he didn't play
+enough games
+but we still have over five weeks left
+we're going to monitor it we're not
+going to push him but
+like if he plays you know most of those
+
+[24:59]
+games he's hands down
+mvp to me because you know it's likely
+we'll end up one or two
+in the east um and that's where the mvps
+have been since i guess
+westbrook you know when he was in six
+but he averaged a triple double he had
+an insane year
+so i i hands-down joel indeed is just
+the most dominant player um and he's the
+mvp this year
+um yeah your your new friend daryl mori
+russell westbrook should have that mvp
+as i recall he thought it should have
+
+[25:29]
+gone to james harden that year
+um but triple doubles are a very loud
+stat in our discourse fair or not and
+and russell
+certainly broke some records with those
+triple doubles mike
+let's have some fun it's joel embiid of
+the rival sixers
+is he the mvp of this season uh i'll
+i'll go
+if you're asking me to vote right now
+i'll go fiction
+i want to say it's joking but
+but joel's having a hell of a season
+there's no doubt
+
+[25:59]
+and i i think uh one of the interesting
+things with
+with this conversation whether it's
+yokish or embiid we're on
+pace and i'll toss this to sonia but
+we're on
+pace to have potentially our first
+center win the mvp award since shaquille
+o'neal
+in 2000 2001. so it's been
+two years 20 years and and centers
+bigs have sort of fallen out of
+superstar relevance for a little bit
+we've we've been taken over by lebrons
+
+[26:29]
+and
+steph curry's and the splash brothers so
+it's kind of nice to see
+two big centers at the top of the mvp
+uh race sonia have you noticed that
+it at all in the nba uh that centers are
+sort of
+treated almost like props these days uh
+compared to
+potentially other eras or in other
+leagues do you think the bigs are as
+relevant as ever in the nba
+or or or our embiid jokic sort of um
+what would you say
+
+[26:59]
+exceptions to the rule are centers sort
+of
+still relevant in today's mba yeah i
+mean i think they are and
+this conversation certainly proves it um
+the skill set
+of biggs um the modern mba is it just
+it's incredible
+um you know what what bigs do in the nba
+um
+you know growing up mike you know in
+your backyard as a celtics fan and you
+know the centers of the celtics and
+and what we see now um and you know i
+i enjoy it very much because you know in
+the women's game the the center is still
+
+[27:30]
+a really really relevant position i mean
+asia wilson was just um you know mvp on
+the wnba side and
+um you see that um you know much more
+common but you know it's it's fun to see
+it's fun to see the big guys the big
+fellas get after it and
+get some love with these conversations i
+would add two other things one is
+um i think this might be the first year
+in the last 10 or 11 years that i don't
+think it's lebron
+um so so uh you know
+that's a big that's sort of a refreshing
+
+[28:02]
+change and then
+also this goes back to your earlier
+question we're talking about
+you know both those guys can shoot um
+but you know and and obviously joking
+shoots a few more
+threes than joel does but um
+they do a lot of post play too so to the
+extent that you're really worried about
+this three-point shooting thing we're
+talking about
+the top two mvp you know contenders
+although i'm sure there's some people in
+the chat who want different people
+besides those two
+um uh you know we're talking about guys
+
+[28:34]
+who aren't
+solely focused on three-point shooting
+so that that should lend support to our
+earlier discussion
+yeah and i think uh calling it
+small ball might be a bit of a misnomer
+one of the big trends
+in the nba is is what we might call
+skill ball like and both of these guys
+are extremely skilled relative to
+centers from the 80s and the 90s
+in terms of their shots jokic is one of
+the best passing big men
+the planet has ever seen so it'll be
+interesting to see the stretch run
+
+[29:04]
+i do think to elton's point one of the
+reasons jokic still looks
+maybe better is our stats are still very
+biased towards one end of the court
+and we don't really have a fluency uh to
+demonstrate the impact of a player like
+joel embiid or even
+mike to get you on my side kevin garnett
+in his prime
+uh when he was anchoring down those
+incredible defenses
+for for your team
+so uh factor fiction mike's aaron
+
+[29:36]
+the new nba lottery system is working
+awesome
+it's such a soft question i know well i
+got to get you going i got to get
+now i feel about the lottery system um
+it's better that there's
+that there's now uh flattened odds
+between the worst teams so you no longer
+have an incentive
+if you are bad to get historically
+ludicrously bad
+um but uh and incentives are like it's a
+weird
+term i use that in an economist's way um
+
+[30:06]
+i've always said um it's bad for our
+product if our fans perceive that their
+team should lose
+uh and so it's really more about that
+than anything
+else um it also is just very
+uncomfortable on a team where your
+players wonder if that's what you should
+be doing
+um and so uh i don't you know not
+everybody's championship driven i've
+talked about this just ad nauseam over
+the years people know that i think you
+should
+in some way take turns at having high
+picks um
+but um you know it's definitely better
+
+[30:37]
+than
+it was uh flattening it out and you know
+the reason we have a lottery um is
+we do actually want to help um the worst
+teams
+there's there's some you know there's
+some sort of
+very legitimate sets of arguments that
+we don't want a team to have to wait
+four or five years if some set of
+unlucky things happened to them
+um to get a top young player and so
+that's that's the reason we've stuck
+with this system and it makes some sense
+
+[31:07]
+but it leads to all sorts of um
+unfortunate
+things uh i would say and you know the
+commissioner at this conference has
+talked about it a few times that
+that there's an interesting balancing
+that goes on at the league level trying
+to figure it out but i don't
+i don't love the lottery system just
+because of the you know
+perverse incentives you have to build
+better or worse teams in different
+situations we should be trying to
+build the best teams all the time yeah
+short term and long term obviously i
+think everybody's long-term maximizer
+
+[31:37]
+well let's do one more on that mike
+because i know you have a really sort of
+interesting idea
+that that encompasses a lot of this
+stuff
+from incentivizing and challenging teams
+to use
+team building resources uh in different
+ways and maybe a more creative way
+than the current approach can you share
+that with us i mean we need to spend too
+much time daryl actually
+brought this up on a podcast recently um
+we our our staff david sparks and drew
+cannon came up with this idea a few
+
+[32:07]
+years ago
+that the the cap system is already
+a little bit like a strategy game so
+let's just make it let's just go all the
+way on that
+and decide that you get a certain number
+of ping pong balls each year and you can
+choose to throw them into the lottery or
+use them for cap exceptions or use them
+for any number of things and
+um we talked to some people at the
+league about it at the time we had this
+is like 2011 or 12 we branded it the
+draft balls
+which was just terrible terrible
+branding job by our people
+uh we have to do this there but none of
+us are good marketers
+
+[32:38]
+and so um i showed it to daryl the time
+he he's he's done some stuff with it
+since then
+now i think he's calling it chamberlain
+coins which like fits the current sort
+of crypto thing that's going on and also
+you know there's
+some chamber numbers associated with
+chamberlain i don't know anyway
+um uh the thought would be that you know
+any resource you want to use in your
+front office you could choose to put it
+on the draft one year you could not be
+in the draft some year and
+throw it in another year um and then
+there would still be a lottery just
+using those ping pong balls and you
+would use them also for
+
+[33:09]
+that currency uh for cap exceptions and
+things and
+you know we've got some more detail on
+it but it's a pretty drastic change the
+league is doing really well right now i
+think the appetite for something like
+that's not
+super big right now but we're always
+trying to think of ways to make make the
+world more interesting and better
+one of the issues right now right is
+that you
+you sort of trading wins for lottery
+balls and that's just a weird
+thing so in this way you would be
+trading you know free agent activity
+potentially for it instead
+and not affect the game outcomes or the
+
+[33:39]
+team building exercises
+yeah i think that's why it's really
+interesting mike is and we're going to
+get the audience questions here in a
+second but
+i think if it's true that some markets
+are sort of pre-ordained to be big-time
+destination free agent markets
+going forward and some are not this kind
+of system could allow a team
+like orlando or san antonio or oklahoma
+city to be like well we're not getting
+those free agents
+we're putting all of these resources
+into uh drafts or exceptions or whatever
+
+[34:09]
+it is to
+to stay out of like elite level free
+agency because
+let's be honest we have to overpay
+average players to get them to come here
+in this world so let's be more
+interested in the draft i think that's a
+fascinating idea i'd love to hear it
+uh fleshed out more but for now i want
+to turn it over
+to fan questions and coach rahm and i'm
+going to put you on the spot
+fact or fiction with a league average
+free throw percentage of 77 percent
+players who are stronger at getting to
+
+[34:40]
+the line should be valued higher
+allah billy beans infamous he gets on
+base so do you think that the ability to
+get to the free throw line
+is an undervalued skill in in today's
+nba or any other basketball league
+um i'm not sure if it's undervalued i
+mean i think that
+when i think of our scouting reports
+it's certainly um you know first and
+foremost right on there if
+someone is really good at getting to the
+line um i can't really speak to the
+you know the free agent and and that
+
+[35:11]
+type of conversation i haven't really
+been a part of it
+um but you know in in general i do think
+that the
+people who can get to the line we all
+know that's a really um
+important stat when it comes to the
+whole analytics package of
+a team profile so i wouldn't say i
+wouldn't say it's undervalued
+no not in my limited experience
+elton i want to ask you there there is a
+growing concern among some
+uh that there are some players who are
+really good at getting to the free-throw
+
+[35:41]
+line
+and maybe maybe doing certain things
+uh to get to the free-throw line they're
+more interested in getting to the nail
+than they are to the rim
+um is there is that a concern for you
+and as a player you mentioned it being
+soft to shoot threes earlier that was
+fascinating
+is there a similar concept among players
+that guys who go chasing whistles
+are soft or dirty and does that dissuade
+some of our best players from doing that
+
+[36:12]
+uh what are your thoughts there
+you know i think it's i think it's
+changed from soft to
+smart you know you have chris paul
+well can i say name i don't know about
+because mike's can say players names but
+i'm not going to say anybody
+but you have guys that do the rip
+through when they're in the penalty
+as soon as they're in the penalty
+they're ripping through and they're
+marching to the line
+um jamal embiid the mvp he shoots he
+makes 10 free throws a game he shoots
+almost 12.
+like it's because he's physical and
+because people can't guard him and
+you know there's tactics and you know
+
+[36:43]
+little gamesmanship to it
+um as long as you're not doing it the
+entire game and i think the refs are
+getting a little bit smarter on
+you know just flopping and like like the
+erroneous plays that should not be a
+foul but
+it's always going to be tough because
+every year the players are getting
+smarter and smarter on how to get to the
+line or how to get to their favorite
+mode
+mike i'd love to get your thoughts on
+that uh your old rival dean smith elton
+used to say the best place to score
+on the court was the free throw line i
+believe and
+it seems more players are aware of that
+
+[37:14]
+now
+and i can say names players like james
+harden and trae young
+are drawing record levels of perimeter
+fouls like there there are numbers to
+back it up
+uh they're very difficult to guard don't
+get me wrong but some people are
+expressing a little frustration with
+that mike
+do you think any league reforms are
+needed in this sort of whistle-chasing
+era
+i um i always thought the underrated guy
+this was corey mcgetty
+uh he was just ridiculous in an era when
+
+[37:45]
+people weren't doing this as much
+uh getting to the line
+the fouls i don't like are the ones
+where the offensive player generates
+all the contact the defense players
+backing up
+or almost trying to get out of the way
+in some cases
+and the offensive player just generally
+you know it's not a direct move to the
+hoop you sort of go off to the side
+somehow and that gets called about i
+would i would legislate
+
+[38:15]
+that away if the defensive player is not
+trying to get to the same spot as the
+offensive players and the offensive
+players goes into a defensive player
+um and you know the way the rules are
+written
+probably shouldn't be a foul but the way
+they're interpreted
+it is and we all agree that those are
+fouls but i just i don't like that
+aspect of the game
+but i don't think that's most of what
+some of the guys
+uh that we're hinting at or you're
+referring to here are doing i think they
+are actually really good at getting
+other people to hit them and it's really
+
+[38:45]
+impressive
+um and i don't i don't know how you
+legislate that away
+no i think that's correct i i think
+these guys are a
+very very difficult to guard very
+talented and very savvy
+uh and they know where the money is on
+that free throw line
+and they're not afraid to go get it um
+in big situations
+uh and i think it's not new i would say
+manu ginobili one of my favorite players
+of all time
+was chasing whistles on both ends of the
+court and
+you know these are champions these are
+championship plays they're competitors
+
+[39:16]
+uh we have a couple more audience
+questions i want to get to so
+forgive me we're going to jump around
+here fact or fiction uh let's go to
+elton here
+uh the nba should eliminate conferences
+in the playoffs and for instance just
+seed one to 16
+no eastern or western conference
+playoffs just the nba playoffs what do
+you think
+fact or fiction um to me it's fiction
+and i understand you know for those fans
+that
+came in ninth years back and you know
+they were half a game out of a playoff
+
+[39:47]
+spot or
+you know lost because of a tiebreaker
+but you know to me i enjoyed the rivals
+with
+the rivalries you know like i you know
+we got our butt kicked
+by boston i'm making fun of mike for the
+game another day but
+it's like that rivalry that intensity
+like we we want that in the playoffs we
+want to see those those teams over and
+over again
+um and then also travel you know they
+talked about like a portland miami
+series
+in the first round you're adding a lot
+of time
+for travel um that may be you know
+
+[40:18]
+unnecessary because we know how
+important
+sleep is for recovery for these athletes
+so
+you know because of sleep and because of
+the robberies like i wouldn't do that
+but i like to play it
+i like to play in one game um or two
+games get it in see if you can qualify
+that's more excitement for your fan base
+may not lose you know your your equity
+in the draft so i like that but
+i wouldn't be for one through 16. we
+looked at this a couple of years ago and
+uh making the first round of the
+playoffs or making the playoffs one
+
+[40:48]
+through 16
+um would add 25 000 miles of travel to
+nba teams travel which is the
+circumference of the earth
+uh travel um uh to the nba team's travel
+during the playoffs so that's a lot
+and and the rivalry games would happen
+about one
+fourth or one fifth as often as they do
+now you know
+jordan talks about getting pat you know
+the pistons talked about getting past
+the celtics jordan talks about getting
+past the piston those things
+matter a lot to a lot of fans um back
+then and now
+
+[41:19]
+and um i think you know the heat talked
+about getting past us at one point
+um those things matter and eliminating
+that
+this isn't as fun to me um someone will
+say that we're both in the east so maybe
+sony has something to say about this
+um but i i just think the travel point
+just overwhelms everyone though
+yeah i think so i think that's fair and
+i got i think we got time for one super
+spicy one
+from the audience be careful what you
+say here elton i know this is your first
+sloane so here we go
+
+[41:49]
+uh fact or fiction the nba needs to
+change the league's tampering rules with
+free agency
+elton we're not going to you first let's
+go to mike he's an experienced
+mike seriously you know you can do this
+without stepping on anything but
+are there tampering rules around the
+league that you see you're you're a
+rules changing guy
+do you think there's there's some easy
+fixes or some manipulations to the
+current rules that could help us here
+
+[42:20]
+there's this constant debate between
+having rules that you think
+make things better and rules that are
+difficult to enforce
+and that's the difficulty here we
+actually were supposed to have
+increased enforcement um with the
+pre-agency period that just passed but
+coven just
+totally screwed up this whole past year
+and so we actually don't know what an
+increased enforcement free agency period
+looks like yet so i don't know because i
+don't actually think we've
+really felt the you know those rules yet
+
+[42:52]
+um in terms of in terms of how
+the legal approach of reagency period
+both in terms of
+inside teams how teams are approaching
+it and how the enforcement mechanisms
+approach it
+this year's free agency holy school we
+had to do a whole
+three months worth of off season in like
+a week and a half everyone was a mess by
+the end of it i don't even remember what
+happened but
+um it's just i i don't i don't think we
+know the answer to this question because
+we just changed the rules and have not
+really had a normal period operating
+under them yet
+
+[43:23]
+sorry it sounds like a bit of a dodge
+but it's a total dodge but i appreciate
+it
+you know hey uh but seriously i think
+there has been some fair criticism
+you brought up a great point mike uh
+that you know it's hard to enforce these
+things
+it's easy to outline what should and
+shouldn't be done but in an era where
+players are
+really friendly with one another and the
+league seems to have a real family
+atmosphere everybody talks to everybody
+um elton you know you've seen this from
+two or three different sides now
+
+[43:53]
+i want to ask you two things one do you
+think the current tampering rules are
+even enforceable and number two when a
+team gets caught
+do you think the the damages are severe
+enough that they're punitive enough
+um some people have looked at some of
+the penalties and rolled their eyes like
+why wouldn't i tamper this is this is
+all that's going to happen to me
+um you know both good questions since i
+only follow the rules
+um you know it doesn't pertain to me but
+uh
+you know all jokes aside it was it was a
+
+[44:23]
+time where
+signings were being announced and i had
+an executive say what's going on like i
+didn't even get a chance to talk to any
+of these players
+so i understand it from that level you
+want a level playing field but they are
+going to be
+hard to enforce i'm not sure which rules
+and penalties you're talking about but
+you know i saw a million dollars five
+million dollars like there was some
+big fines for certain things um that you
+know
+our managing partners they're doing very
+well but they would not be happy about i
+don't think any team would be happy
+
+[44:53]
+about
+you know because you went over the line
+you have to pay x amount of dollars so
+okay i got to sneak this last one in
+it's from our student
+uh moderator here riley fact or fiction
+daryl mori could beat elton brand
+at horse now mike's aaron uniquely
+qualified to answer this because you've
+had a couple of battles with daryl mori
+in horus yourself i've never played a
+horse in melbourne
+but you've seen elton play i can answer
+that one i can answer that though
+
+[45:25]
+he has one trick shot from out of bounds
+that he goes over the backboard
+that's true and it's light like he can't
+he can't touch me that's that
+thanks for asking i know you know
+daryl's you know does a lot for
+for the conference but not even close
+i'll tear him up that's my go-to horse
+shot too coach rahman thanks for
+joining us do you have a go-to horse
+shot before you get out of here
+oh god um i sometimes i try to bounce it
+off the
+dead spot on the floor and see if i can
+get it out there if no one else knows
+what the dead spot is
+that's that's my best bet
+
+[45:57]
+it's a good one uh thank you guys um
+we have had a great fact or fiction
+panel
+um coach rahman mike zarin elton brand
+thank you so much
+for joining us good luck for each of you
+um and you know we we have big games
+coming up for for two or three of you
+tonight
+uh so good luck in those games we're
+eager to see how
+uh your seasons finish up all of you are
+in contention
+and all your teams are really fun to
+
+[46:28]
+watch so thanks again
+we have to stay on for a few more
+seconds until anita clears us so any
+final thoughts
+no thanks for having us thank you
+student yeah i really appreciate it in
+this difficult year
+appreciate it i miss all of you hope to
+see you in person next year
+you know that's a really great way to
+end it mike i think uh
+this sloan conference has been very
+special to me i know it has been to you
+and and to to

@@ -1,0 +1,2843 @@
+##### 2022-03-25_Rn7sZ5kNsNw_using-technology-to-monitor-workload-in-elite-figure-skating
+{
+ "id": "Rn7sZ5kNsNw",
+ "title": "SSAC22: Using Technology to Monitor Workload in Elite Figure Skating",
+ "channel": "42 Analytics",
+ "upload_date": "20220325",
+ "duration": 1630,
+ "view_count": 2090,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction to project",
+   "end_time": 70
+  },
+  {
+   "start_time": 70,
+   "title": "Defining workload metrics",
+   "end_time": 180
+  },
+  {
+   "start_time": 180,
+   "title": "Technology development",
+   "end_time": 343
+  },
+  {
+   "start_time": 343,
+   "title": "Adopting single-sensor tech",
+   "end_time": 494
+  },
+  {
+   "start_time": 494,
+   "title": "Athlete case studies",
+   "end_time": 1014
+  },
+  {
+   "start_time": 1014,
+   "title": "Challenges and insights",
+   "end_time": 1127
+  },
+  {
+   "start_time": 1127,
+   "title": "Project collaboration",
+   "end_time": 1206
+  },
+  {
+   "start_time": 1206,
+   "title": "Q&A and future directions",
+   "end_time": 1630
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC22: Using Technology to Monitor Workload in Elite Figure Skating"
+video_id: Rn7sZ5kNsNw
+url: https://www.youtube.com/watch?v=Rn7sZ5kNsNw
+channel: 42 Analytics
+upload_date: 2022-03-25
+duration: 27:10
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [sports-science]
+---
+
+# SSAC22: Using Technology to Monitor Workload in Elite Figure Skating
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+thanks again for joining us at the 2022
+sloan sports analytics conference
+competitive advantage talks presented by
+kager also known as the craft analytics
+group
+my name is emily bridges and i am a
+first year mba student at sloan
+it is my pleasure to introduce using
+technology to monitor workload in elite
+figure skating
+please join me in welcoming dr lindsey
+slater assistant professor at the
+department of physical therapy
+at the university of illinois at chicago
+
+[00:31]
+to the stage
+[Applause]
+right
+hi everyone uh it's great to be here
+thank you for inviting me
+i am excited to get rolling and showing
+you a little bit more about what we've
+been doing in figure skating especially
+figure skating has been a very hot topic
+after 2022 so unfortunately i won't be
+talking about anything russian related
+
+[01:01]
+when it comes to figure skating we're
+going to just be focusing on the us team
+because i am also the sport science
+manager for u.s figure skating
+so when we talk about monitoring
+workload this these theories go back
+quite a ways um when we first started
+doing very basic kind of studies phil
+actually was a part of those studies
+because he worked for the usopc at the
+time um and we just looked at vertical
+forces during jumps and we actually
+noted that all jumps are basically the
+same in terms of vertical loading so pop
+
+[01:32]
+jump is basically when an athlete is
+going to go in and do a double triple
+quad now
+and they pop and just do one revolution
+or two revolutions the vertical loading
+for those jumps are actually just as
+high as they would be for a triple or
+quad so when we took that into account
+we actually just decided we're counting
+all jumps all jumps are equal it doesn't
+matter if you're doing a bunch of
+triples or you're popping all session
+which we have a lot of athletes who do
+we just wanted to actually look at how
+many jumps athletes were doing
+we also looked at jump heights an old
+
+[02:03]
+school vicon camera system at university
+of delaware
+on the ice surface we actually did the
+full marker load up and we looked at
+differences in jump heights
+back then we didn't have a lot of
+athletes who were doing quads and that's
+why there are two asterisks here
+so we actually didn't see a lot of
+changes in jump heights looking at
+doubles versus triples now we have a lot
+more athletes doing triple axles and
+quads so i think that we actually need
+to go back and kind of look at that
+information i'm not so sure if that
+still holds up today
+but overall what we've learned is that
+
+[02:34]
+the number of jumps during training
+needs to be monitored that's pretty
+clear
+the problem was all of our athletes were
+basically doing with the pen and paper
+method and when you ask an olympic
+athlete to go back and journal every
+single time they do a jump one you're
+relying on their athlete to do it and
+two you're just not getting accurate
+data there are times where they'll count
+uh combinations so two or three jumps
+that they're doing is one they're not
+counting the pop jumps so there was a
+lot of reason why we wanted to try to
+use technology to monitor workload as
+opposed to just relying on pen and paper
+
+[03:06]
+so we basically reached out to a bunch
+of companies and we said we have these
+goals we want to use some sort of imu
+to track workload so making sure that
+the ultimate priority was to track
+workload not to monitor performance
+that's very very huge at the olympic
+level athlete because the olympic
+athlete does not want me to tell them
+what they should or should not be doing
+that is the fastest way to get an
+athlete to
+basically give a sensor back and say i'm
+not interested anymore you have to rely
+
+[03:37]
+on that athlete nathan chen is where he
+is for a reason i am not going to tell
+him what he can and cannot do he knows
+his body better than anyone what i can
+do is give him a tool that will help him
+perform better and he can use that data
+as he would like
+to make sure that he is accurately
+performing and monitoring his training
+regimens
+so we made sure that that was our first
+priority our second priority was then
+maybe we can start losing some of these
+jump characteristics to help you with
+performance and technique um and then
+
+[04:08]
+once we have a full picture of what you
+look like during training we can
+actually use data to monitor workload
+and then actually identify fatigue
+and so
+we uh had a company 40 motion sports uh
+come out and we flew them out to
+colorado springs and asked if they could
+actually capture this on my surface and
+so we had them hook up four sensors so
+four imus to one of our top athletes so
+we have two on the thighs one at the hip
+and one on the chest and we basically
+
+[04:38]
+said we're going to challenge you can
+you actually capture how fast our
+athlete is rotating
+when he does a triple lutz
+to date this happened literally right
+before the world shut down from the
+pandemic so
+in 2019 and then
+to date we had no one who was able to
+actually capture it without saturating
+the angular rotation because our
+athletes are obviously rotating at a
+pretty fast speed
+so they could actually successfully
+capture it and then the plus for us like
+phil was talking about
+
+[05:08]
+we didn't have to necessarily limit what
+part of the ice we were working with
+because with that
+motion capture system with markers we've
+used it before basically if you have
+this full ice surface we're telling all
+of our high-level athletes you have to
+jump in one specific circle you're never
+going to get accurate data from that if
+they leave that circle then you've lost
+all of that data and it also takes about
+an hour plus to set up in this case it
+took us five minutes or so to set up we
+basically gave them the full ice surface
+because it was all app-based and there
+
+[05:38]
+they go about their day it was actually
+the best feedback we've ever had from
+athletes and so we actually took it a
+step further
+we wanted to know could we actually
+capture the full body and this is one of
+my favorites because obviously everyone
+wants to know what's successful and when
+you fall
+and we could capture it all right so we
+see exactly what the head is doing we
+see what the arms are doing we see the
+footwork going into the jump we can do
+it the problem with this one as awesome
+as it looks is it's actually really
+difficult for an athlete or coach to set
+this up so it would mean i would have to
+
+[06:09]
+actually travel to the rinks and do this
+then i would have to spend about 10
+minutes setting it up because this is 11
+sensors on the athlete
+it's not that hard compared to a marker
+based system using 11 imus it's 10
+minutes versus probably 30 to 45 minutes
+but it's still kind of complicated and
+that's when we actually transitioned to
+a single sensor
+it was also conveniently right
+in march 2020 when i no longer had
+access to the ice rinks um where our
+athletes were training because we were
+not allowed to travel and so we
+
+[06:40]
+basically challenged 4d motion
+we now identified that you can do this
+how much data can we get from one sensor
+and to give you an idea that one sensor
+is smaller than an apple watch so when
+we talk about something light that
+doesn't impede performance that doesn't
+actually upset any of the athletes this
+was the ultimate right one single sensor
+we connect it to an app so we just
+basically downloaded a figure skating
+module
+right to their iphone or their ipad
+and basically they get immediate
+feedback
+
+[07:10]
+so this would be an athlete who would be
+turning on the sensor wearing it on
+their hip that's it they clip it on they
+go about their day they do however many
+hours of training that they want to do
+that day and they get immediate feedback
+on their app about what jump they just
+did
+how many revolutions they did which is
+huge if it was a cheetah jump or not
+we're hoping at some point we adapt this
+and change some of the judging system
+and figure skating rather than using old
+school cameras we're working on it um
+how fast you rotated how long you were
+
+[07:41]
+in the air how high you jumped and when
+you actually hit that peak angular
+velocity
+keep in mind that some of these things
+are estimates and we've really refined
+the algorithm by collecting more and
+more data to identify the exact time
+where they take off and when they land
+the ice um the hardest one has been if
+you're familiar with figure skating at
+all are loop jumps so loop jumps you
+actually start the rotation on the ice
+before you leave which means you've
+triggered the start of the jump before
+you've actually taken off otherwise
+every other jump is pretty clean
+
+[08:13]
+and so we're going to talk through case
+studies we've had three
+to be fair five of the six single
+skaters at the games wore the sensor
+leading up to the games to prepare
+and we're to talk case studies in terms
+of three athletes who were at the games
+and how we've used a sensor because the
+fact matter is every athlete is unique
+and we use it in very different ways
+case study one is an athlete who
+unfortunately had puberty issues
+
+[08:43]
+and i say issues only because when you
+go through puberty as a figure skater
+your entire body changes now you've lost
+usually your jumps and it usually takes
+us six to eight months
+maybe longer to actually get back
+technique or completely shift technique
+after you go through puberty uh so that
+we can actually get you rotating quickly
+again that is why the russians tend to
+be really successful because all their
+athletes peak before they go through
+puberty so for us we're always about the
+longevity of the athlete we want to make
+sure we're doing everything the right
+way the healthy way and so after they go
+
+[09:14]
+through puberty it's a matter of how we
+can keep you competitive and get you
+back
+so what we know triple axels on the
+female side you have to be rotating
+about 1900 to 1950 degrees per second we
+estimate the russians are actually
+closer to 2000 to 2100 degrees per
+second so you have to rotate very very
+quickly in a triple axel this athlete
+coming back in february so at the end of
+nationals in january um was rotating
+about 1750
+so rotating way too slow so basically we
+
+[09:44]
+reached out to the coaches and said pull
+back
+you are not going to do any more triple
+axel training right now we are going to
+change what we're doing off ice we're
+going to change how we're approaching
+this athlete
+just having them do
+over and over and over again these
+triple axels is just going to make sure
+she gets injured let's pull back and do
+some other things on the strength and
+conditioning side so that's when we
+pulled in physical therapists athletic
+trainers and her strength and
+conditioning coach brandon cycle and
+basically said
+we're shifting everything okay so we
+basically did not have her skate at all
+
+[10:16]
+in terms of triple axles she was allowed
+to do any other jump she wanted no
+triple axels
+and then when she came back in march all
+of a sudden there's that huge jump she's
+in the 1900s she's still not where we
+need her to be but she's better right so
+now we're giving her some leeway start
+doing some harness jumps that means when
+you have a little bit of support
+you're allowed to start doing a few
+jumps off the harness but you're not
+there yet we know you're not going to be
+successful so let's limit kind of where
+we're putting that impact and you can
+see there's this increasing trend so
+
+[10:46]
+around may she's really at peak
+performance and we got her back to
+rotating quickly enough you see that
+little
+downturn in july
+she actually got vaccinated and was
+incredibly fatigued and it was actually
+really exciting that it showed up in the
+data
+and then we got her back again in august
+so this was how we basically use the
+sensor for this particular athlete to
+monitor performance and give her ideas
+in terms of training loads the other
+thing we looked at is kind of where she
+
+[11:16]
+was doing her time to peak
+so looking at that over that full jump
+time
+you can see again in february she was
+rotating slow and she was hitting that
+time to peak so late that again it
+wasn't a recipe for success so the idea
+was can we actually reduce that time to
+peak so it's a little bit earlier in the
+jump while we're increasing your
+rotational velocity and then july august
+you're saying that it's that optimal
+time to peak that's just over halfway
+which is what we would expect
+
+[11:46]
+and she's rotating quickly so that is
+when we actually start seeing her the
+land jumps
+the other thing that we learned from
+this particular athlete that we've
+actually seen across the board in every
+single athlete developmental and olympic
+level that has worn the sensor is
+there's a clear trend with angular
+velocity that obviously it increases
+doubles triples triple axels we were
+curious what was happening on the
+harness it does it actually look like a
+triple axel it does but the things that
+were most important to us were those
+
+[12:18]
+combination jumps so you have a triple
+toe and a triple loop combination what
+that means are the two jumps you've done
+last in a combination so you've done
+like a triple lutz triple toe or
+you know a triple flip triple loop right
+so this would be the toe or the loop
+that's second in the combination if you
+look at the angular velocity it actually
+looks basically like a triple axel it
+doesn't look like any other triple which
+makes sense you don't have as much speed
+coming in you're not going to have as
+much height which means you have to
+rotate faster but that also means if you
+
+[12:48]
+don't have as much height and you don't
+have as much speed you have a ton of
+basically rotational loading when you
+land so now we're making a
+recommendation to everyone across the
+board based on what we've learned from
+these data
+you have to actually monitor how many
+triple triples you're doing
+along with triple axels and quad
+attempts
+so if you are training quads which
+almost every single one of our athletes
+now has to do
+they also need to monitor triple triples
+so if they're doing a heavy triple
+triple day they are not doing a heavy
+
+[13:19]
+quad day
+they have to think about that in their
+planning and so we started to teach that
+to coaches that not all jumps are equal
+which is where we started right we said
+all jumps are equal a pop jump looks
+like a triple jump looks like a quad
+jump that was the mentality for so long
+now it's this idea of think about triple
+triples triple axels and quads is the
+highest level
+and think about what your priorities are
+that day and then decide where you want
+to put those other jumps
+so again just like we talked about we
+
+[13:50]
+actually monitored the triple triples
+and the triple axels together for that
+athlete and when we found we monitor
+them together she had no more flare-ups
+of hip pain
+so just being able to use these data to
+help her identify where to change her
+planning has been really successful
+case study two with another athlete if
+you haven't noticed a trend with hip
+pathology that's everyone in figure
+skating has a hit pathology um if you
+haven't had some sort of hip replacement
+coming out of figure skating you can
+
+[14:20]
+consider yourself a success story
+because most athletes tara lepinsky
+talks about it all the time she got
+through the games and then she had to
+have her hip replaced um but this other
+female that uh
+was training we basically started off
+with
+how many jumps a day do you think you're
+doing she thought she was doing around
+60 70 jumps a day and just looking at
+her load this was a normal day she said
+this she thought she only did 60 she was
+actually close to 100 jumps and you can
+see that decline in terms of that
+
+[14:51]
+angular velocity over the course of the
+day so over about two hours of training
+you've done almost 100 jumps and you're
+fatigued the fatigue part isn't
+necessarily that concerning to us it's
+the residual fatigue that we were
+concerned about so if you fatigue and
+you're still performing well fine if
+you're fatigued and you're still
+fatigued the next day you haven't
+recovered then you have residual fatigue
+and that's concerning for us
+and so we were looking at days where she
+was doing closer to 70 and was looking
+pretty good she had no level of fatigue
+so we gave her a recommendation we said
+
+[15:23]
+75 is the max jumps you're allowed to do
+if you want to do more than that you're
+fine again athletes at this level do not
+like being told what they can and cannot
+do
+so if you want to do more than 75 jumps
+go ahead but you then have to schedule
+two recovery days after so if it is that
+important for you leading up to a
+competition a lot of the athletes do
+this coming into international
+competition
+you want to do a hundred jumps that's
+fine but then you have two days at
+around the 40 jump mark if that's worth
+
+[15:54]
+it to you we will not tell you not to do
+it
+she was
+very compliant
+most days look like this around the
+50-60 mark where she actually didn't
+fatigue at all she looked great
+one month later this is where she is
+we've actually
+trained her body just like progressive
+overload like you would do in strength
+and conditioning to get to a point where
+you can do more right and so we raised a
+recommendation she followed the the
+rules she did what she was supposed to
+
+[16:24]
+do now your high low days are 85 which
+is the dream right we don't want to
+limit what they're doing in practice but
+we also don't want them to be injured so
+now this is an older athlete who was
+having a lot of hip pain and now she's
+competing well she's looking great we've
+raised her recommendation at 85. two
+months later here she is at 85.
+okay so there's no fatigue at all so we
+were able to use those data to help her
+train more effectively
+
+[16:54]
+the last one
+was our most interesting case study
+so this was a female athlete who was
+convinced that she wanted a triple axel
+by beijing
+that gave us about
+uh i don't know a seven month timeline
+to get her triple axel we all kind of
+knew coming in that wasn't going to be
+super realistic but we wanted to use
+data to try to tell her whether or not
+it was and so if you look at her angular
+velocity this is her in the yellow
+singles it looks like doubles which is
+fine and then there's this huge jump in
+
+[17:25]
+terms of how quickly she has to rotate
+to complete a triple and what we believe
+is she's kind of hit a ceiling effect
+she's rotating as fast as she can
+possibly rotate for a triple which means
+she doesn't have anything left for that
+extra half a turn for a triple axel
+right and so we kind of made a
+recommendation to her after collecting
+data for
+about four months we just don't think
+this is reasonable we don't think you're
+actually physically going to be able to
+do a triple axel by beijing if you give
+us an italy timeline 2026 that's a
+
+[17:55]
+different story
+she did not want to talk about 2026 2022
+was the goal
+and so she asked us to compare to other
+athletes who were doing triple axels and
+if you look at the trend
+there is very different in how that
+athlete in yellow looks compared to all
+the other athletes who are capable of
+doing triple axels none of those other
+athletes seem to actually max out and
+hit their limit at the triples they have
+more in them so there's no ceiling
+effect for them when they get to the
+triple axel okay so this is combining
+
+[18:25]
+those two measures that we believe are
+the most important that peak angular
+velocity over time to peak
+this athlete in yellow was the only one
+who saw a decline and so again we went
+back to her and said
+we appreciate
+that you really have this goal we
+support you
+but we don't think it's possible and the
+response was where can i send the sensor
+back i don't want to wear it anymore
+so what we learned was that
+case study one
+the athlete who had gone through puberty
+
+[18:55]
+and we were trying to get back was all
+coach driven the coaches were so on
+board with it that we were communicating
+with them regularly and they loved it
+the athlete bought in because the
+coaches bought in and it was very
+successful
+case study two was athlete driven we
+actually never even talked to the coach
+the athlete communicated with us very
+regularly was always compliant let us
+know if she was feeling fatigued injured
+we adjusted the programming
+appropriately
+and again was a very successful one
+case study three we drove it
+
+[19:26]
+myself and the strength conditioning
+coach drove the bus um it was not
+successful she returned the sensor
+and
+even though she likely had a very
+successful season in her mind we
+probably could have been more successful
+had she been a little more open to using
+data but that's also okay so i think
+that was kind of the overarching theme
+of what we were trying to do with u.s
+figure skating is that it's okay for you
+to say it's not for me that's fine it's
+not for everyone could you probably be
+more successful if you had an open mind
+sure we always talk about having an open
+
+[19:57]
+mindset being open to new ideas and
+working together
+and that's fine we were still supportive
+of her in any way we possibly could be
+the last thing i'm going to say is it
+was not just me so this whole project
+takes a village we only got this up and
+running in about a year so
+we did a lot of work in terms of
+refining algorithms collecting a lot of
+data especially in the middle of a
+pandemic
+and so all these people on the slide
+were
+instrumental to get this done so you
+
+[20:28]
+have mitch moyer who is the
+athlete high performance director at us
+figure skating he was very supportive of
+it brandon cycle was our strength and
+conditioning coach it was figure skating
+he has now transitioned to usa
+volleyball um but he was phenomenal and
+he's probably the reason nathan is as
+good as he is
+he really has shifted how figure skaters
+do stream conditioning now scott rewald
+who is phil cheatham's
+colleague at usopc who was before phil
+had moved on to sportbox
+
+[20:58]
+basically funded this project so this
+was a usopc funded project they gave us
+the money to invest in the sensors so
+we're very grateful for that and then
+saying kim is the ceo and founder of 4d
+sports and he has never been more
+excited and he's very invested in the
+olympic movement and so we're very
+grateful that he has been very
+open-minded and able to work with us on
+this
+so that's all i have if anyone has any
+questions about what we've done and
+where we're going
+
+[21:36]
+hi so i actually skate as an adult
+skater but not nearly at an elite level
+or competitive level and i found that
+it's very difficult to find any wearable
+tech that will calculate your spin
+revolution did you do any work around
+camel spins all of those kinds of things
+billman's
+along with that or was it just purely
+for jumps it was purely for jumps only
+because that's considered the
+uh the loading aspect of it so we
+usually don't monitor how many spins
+
+[22:06]
+they're doing to be fair at least at
+this level it's usually hard to get our
+athletes to do as many spins and work on
+them as much as they work on the jumps
+and we actually have in the algorithm
+the way that we can pull out spins so if
+it lasts a certain amount of time you
+know or they're spinning at a certain
+rate that we know it's a spin or twizzle
+so we pull it out
+so for this particular project we
+haven't done any work with spins the
+next phase we are adding another sensor
+onto the boot so there is potential
+again because we're thinking about
+judging and how we can really move
+
+[22:38]
+figure skating forward and out of less
+like into a more objective sport and
+less of a subjective sport and i think
+there will be potential in that one to
+actually monitor how many revolutions
+they've done during spins but as of now
+it's really just jump based
+thanks
+when looking at the loading for quads
+um did you guys look at the difference
+
+[23:10]
+between
+regular jumps where your arms are just
+in and when they're above when you have
+to pre-rotate before you take off
+we have some data
+we are
+very private about that because um for
+people who are not uh aware of skating
+uh there's really just one country who
+always does things with their hands
+about their head the russians and they
+seem to get
+rewarded
+highly for it um it's actually easier
+because you can generate more angular
+
+[23:40]
+velocity
+and you actually reduce the amount of
+inertia so it's actually advantageous
+the difference is you have to be really
+strong and so
+it works at a very young level so when
+we have 14 or 15 year olds do it they
+can do it very successfully
+asking a 23 year old skater becomes very
+complicated just in terms of body mass
+distribution and how strong your actual
+abdominals need to be to perform it and
+get into that jump and stay
+
+[24:10]
+that has been our issue so we can get
+our 14 to 15 year olds to do it
+very successfully
+getting them to do it after puberty has
+proven to be a little more difficult
+but yes we we're on the same page
+
+[24:45]
+so i am now working with baseball um and
+so the ultimate goal is to do something
+very similar for pitch counts
+so uh there's definitely a direct
+application in terms of those kinds of
+things
+what we find in baseball and i'm still
+learning a lot of the lingo in baseball
+but there tends to be just an arbitrary
+number of throws that pitchers are
+allowed and what we're finding is it's
+very similar to skating where i'm not
+going to give every athlete the same
+number
+like case study one versus case study
+
+[25:16]
+three look very different and should
+have different loading and i imagine the
+same thing would happen with pictures so
+we are adapting it right now to be a
+single sensor program for pitchers
+again it's it's going to be complicated
+in terms of refining the algorithm for
+that um and then volleyball is intrigued
+by jump counts so
+we're talking the usa volleyball as well
+about whether or not there's potential
+there but i think that there are tons of
+potential the problem is
+finding the people who know enough about
+each individual sport to embed in in the
+
+[25:48]
+technology development there
+i'm curious about this research and how
+different it would be when looking at
+jumps in pair of girls
+because i mean just the height and the
+loading and assume is completely
+different yes
+pairs has been complicated only because
+the current location for the sensor in
+skating is at the hip
+
+[26:18]
+for those of you who are not familiar
+with pairs they are often being grabbed
+at their hips so putting a sensor there
+is impossible and could be dangerous
+and so we have been talking to some of
+our pear skaters
+who
+are coming up with ideas of where they
+could wear it
+it's something that we are definitely
+intrigued by especially with just the
+twists let alone jumps and everything
+like that it's something we're intrigued
+by and want to
+do but we i felt like we had to get this
+phase done first and now we're going to
+
+[26:48]
+work with some of the pair skaters and
+adapt it and figure out where we can
+actually have them wear the sensor that
+doesn't interfere with performance
+but yeah it's it's a good question
+all right and with that i think we are
+out of time but thank you so much thank
+you guys
+##### 2022-03-25_VZEYQU2-Oc8_how-data-journey-started-for-the-indianapolis-colts
+{
+ "id": "VZEYQU2-Oc8",
+ "title": "SSAC22: How Data Journey Started for the Indianapolis Colts",
+ "channel": "42 Analytics",
+ "upload_date": "20220325",
+ "duration": 1868,
+ "view_count": 1047,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction",
+   "end_time": 103
+  },
+  {
+   "start_time": 103,
+   "title": "Our Mission",
+   "end_time": 226
+  },
+  {
+   "start_time": 226,
+   "title": "Framework",
+   "end_time": 347
+  },
+  {
+   "start_time": 347,
+   "title": "Qualitative Assessment",
+   "end_time": 495
+  },
+  {
+   "start_time": 495,
+   "title": "Internal Assessment Results",
+   "end_time": 713
+  },
+  {
+   "start_time": 713,
+   "title": "Roadmap",
+   "end_time": 828
+  },
+  {
+   "start_time": 828,
+   "title": "Key Considerations",
+   "end_time": 1069
+  },
+  {
+   "start_time": 1069,
+   "title": "Data Climber",
+   "end_time": 1159
+  },
+  {
+   "start_time": 1159,
+   "title": "Key Benefits",
+   "end_time": 1274
+  },
+  {
+   "start_time": 1274,
+   "title": "QA",
+   "end_time": 1306
+  },
+  {
+   "start_time": 1306,
+   "title": "Team",
+   "end_time": 1709
+  },
+  {
+   "start_time": 1709,
+   "title": "Comparing to other industries",
+   "end_time": 1868
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC22: How Data Journey Started for the Indianapolis Colts"
+video_id: VZEYQU2-Oc8
+url: https://www.youtube.com/watch?v=VZEYQU2-Oc8
+channel: 42 Analytics
+upload_date: 2022-03-25
+duration: 31:08
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: []
+---
+
+# SSAC22: How Data Journey Started for the Indianapolis Colts
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:01]
+good evening everyone thanks again for
+joining us for the 2022 sloan sports
+analytics conference competitive
+advantage talks sponsored by kager also
+known as craft analytics group
+my name is gara verma and i'm a first
+year mba student here at mit sloan
+i'm pleased to introduce
+our the presentation how the
+indianapolis
+how data journey started for the
+indianapolis colts presented by sigma
+please join me in welcoming your speaker
+
+[00:31]
+charlie shin
+vp of data strategy and analytics for
+the indianapolis colts thank you
+thank you
+hello everyone um it's exciting to be in
+person i think the last time i was here
+was
+just before the uh the covet broke out
+so it's nice to see everyone um and get
+to see my colleagues and friends that i
+haven't seen for many uh probably for
+past two years so it's nice to be here
+
+[01:02]
+um and the opportunity for me to kind of
+share the data journey that we've taken
+at the indianapolis colts
+when we talk about data the first
+conversation that a lot of people come
+and ask is what are the technology that
+you guys are using what are some of the
+data sources that you're looking to
+integrate and how are you using that to
+drive ticket sales
+well
+while those are
+important
+the approach that we've taken at the
+colts was a little bit more holistic
+because we recognized that data
+
+[01:33]
+had an impact not only on those areas
+that we just talked about but it
+impacted all of our businesses in all
+different aspects so
+today what i wanted to do was kind of
+share the journeys that steps that we've
+taken
+to implement the journeys and this
+journey is still ongoing
+and kind of have an opportunity to share
+that information
+our journey started with
+our mission
+as a club
+we have defined a vision and a mission
+
+[02:05]
+our mission is to entertain
+and inspire and unite
+by winning the right way
+and this mission is incorporated across
+all of our business areas whether it's
+from our head coach and gm all the way
+down to our staffs in our sponsorship
+teams to marketing
+data analytics and so on so
+naturally when we started to think about
+our strategies around data
+it started off understanding from our
+mission in terms of how do we deliver
+
+[02:37]
+what we promised to our fans uh through
+the usage of data so there are a couple
+of key questions that we've needed to
+address which is
+what are some of this capabilities that
+we need
+or enhance those that we already have in
+order to deliver this mission to our
+fans
+and then just like any organizations our
+resources are limited right we have a
+finite of resource whether that's human
+capitals to financial investments that
+we could utilize so we needed to set
+
+[03:09]
+some priorities in terms of what do we
+do first
+and
+the second thing is
+it comes to technology what are some of
+the technology that we need to consider
+what do we have now what do we need for
+future and then do we have the right
+resources in place because just having
+the technology doesn't solve your
+problems you need to have the right
+people to be able to use those
+technologies and then again do we have
+that kind of the future
+what is that future data centric
+organization looks like because i think
+we've heard this theme across many other
+
+[03:40]
+sessions that at the end of the day it's
+the people that are executing all of
+this
+so
+we needed to start with a certain
+framework in mind in order to answer all
+of this question and really understand
+where are we as of today and then what
+are the goals and kind of the future
+stage that we want to get to so we've
+used a we call a data maturity framework
+and really this framework addressed five
+key strategic areas in our business
+
+[04:11]
+and that's customer strategy we have the
+infrastructure and then the analytic
+that really supports the operational
+aspect of our crm and that's where you
+go
+acquire your customers to engage and
+monetize and retain them and that's
+whether it's a b2c model or our b2b
+model with our sponsors
+operation then obviously we want to be
+able to track those performance so that
+we have that feedback into
+all of the other planning
+in our strategies moving forward so
+
+[04:42]
+that's kind of the key five areas that
+we wanted to address
+and we set a maturity framework to
+evaluate each of these areas to
+understand where we stood from our
+capability standpoint
+so we measured from
+awareness all the way down to kind of
+leading the five scales and you know
+each of these areas had two core uh
+components that we evaluated through a
+string of of questionnaires
+to understand the actual capabilities
+
+[05:12]
+and then as i've mentioned we evaluated
+the levels from hey do are we in a stage
+where we're aware of it but we're not
+actually doing anything about it at this
+point or are we currently in the process
+of developing it or are we in the uh
+stage of actually practicing uh this
+capabilities or are we trying to
+optimize uh and make it better or you
+know can we say we're the leading uh
+organization in this area when it comes
+to these capabilities so these are five
+
+[05:43]
+areas that we've kind of uh started to
+evaluate
+and this process that we've taken is we
+did a interview across key stakeholders
+we've interviewed about 24 staffs across
+all of our commercial business
+departments whether it's marketing our
+sponsorships our uh digital content and
+and our data analytics to our finance
+department um our executive uh team as
+well as our ownership group to really
+
+[06:13]
+understand what their perception of
+these capabilities were and these were
+very qualitative assessment
+and there were really rich insights that
+came out of that process where you know
+we're getting a lot of the details and
+you know a lot of frictions in terms of
+realizing the data isn't just about
+technology but a lot of times it comes
+from
+people
+it comes from process it comes from not
+having a clear goal and objective in
+places and that really deters the
+
+[06:45]
+maximization of the the impact that the
+organization could uh uh
+secure from these data so those are all
+the insights that we've gathered and
+then as part of that process what we've
+asked them was well if if you
+think that we're in this stage where do
+you feel like we need to be
+in next two years in order to be
+successful in order to deliver the
+mission that we've just uh talked about
+and they gave us some feedback well in
+this area we feel like we needed to be
+
+[07:15]
+at you know optimization standpoint
+because we really need to have these
+capabilities in order to deliver the
+engagement that we need
+so we'd set a a goal in place and then
+through that we were able to kind of
+assess where we were and then where we
+needed to be
+and that gave us the gap in terms of
+what are we missing in each of these
+five areas that we need to address and
+again those weren't just about
+technology but it addressed on the
+strategic standpoint
+uh it addressed the process it addressed
+
+[07:47]
+the organizations the kpis all of the
+areas that we felt like was important in
+delivering the uh the impact that we
+could in terms of using the data and
+through that information we were able to
+formulate some of the
+initiatives that we needed to work on
+and then we put together a blueprint
+in terms of what we needed to do for the
+next
+two and a half years and then we put
+that into a plan and then we started to
+execute
+so
+
+[08:17]
+didn't come out uh as nicely as it is
+but those this is basically the result
+of our
+internal assessment across those
+five strategic business areas and each
+of those areas had two components so all
+of it was 10
+capabilities that really needed to
+develop and we've scored 62
+out of 100.
+so we knew that there was a lot of work
+that we needed to do
+but as you could see there are different
+gaps that we recognize in terms of
+
+[08:49]
+areas that we needed to focus on and
+this translated into
+basically our data centric
+transformation plan
+and there were key target capabilities
+that we were able to extract from the
+interviews that we've done through the
+frameworks and all of those take
+target capabilities resulted in certain
+programs and initiatives that we were
+going to tackle and some of them were
+again related to technologies but some
+of them were related to organizational
+change or
+
+[09:19]
+process change or even education
+changing the uh the uh the cultural
+aspect of
+the work that we were taking on
+now i wish i could kind of share all of
+the results and initiatives that came
+out of this project but um just wanted
+to kind of
+because i was able to do that i wanted
+to share at least the framework of what
+that result looked like and on the left
+hand we have all of the initiatives
+and we categorized them in a big program
+underneath we had initiatives that kind
+
+[09:49]
+of ladder up to each of these programs
+that we listed and then how those
+programs would impact different key
+capabilities that we've identified to be
+an important
+piece in being a successful organization
+and data driven organization and as you
+can see there are a lot of different
+dots that you know just because one
+initiative
+wasn't just about driving technology but
+if we do this well it's going to help us
+with our strategies it was going to help
+us with our process improvement it was
+
+[10:19]
+going to help us with our organizational
+structure our technology and the kpi so
+this is all the things that we were able
+to map out
+the one that's highlighted yellow is the
+initiatives that really
+touched on the need for a modern day
+cloud data
+structure infrastructure right and as
+you can see our initiative isn't hey we
+need to develop a data warehousing the
+initiative was that we needed to have a
+much better integrated view of our fans
+
+[10:50]
+across different touch points as well as
+different functional areas we just
+haven't had that capability internally
+that there are a lot of different silos
+yes we did had some of the sources
+consolidated where we have those views
+but for the most we couldn't tell
+whether that person was engaging in our
+events or have purchased the merchandise
+or
+other tickets that they might have
+purchased there are a lot of disparate
+datas that existed and that limited our
+ability
+so
+
+[11:20]
+part of that initiative was you know we
+needed to have a better infrastructures
+to help us but as you could all imagine
+designing a data warehouse isn't just
+about putting the technology pieces in
+place but it's also kind of see it as an
+art and science because your data schema
+has to reflect on what you're trying to
+do in terms of the data that you need to
+incorporate your strategies and and how
+that data will get used across different
+organizations so all of that needs to be
+
+[11:50]
+built into the designing of the
+infrastructure those those are the steps
+that we've considered this is the full
+kind of road map of uh those i think
+there are
+total 12 initiatives that we've came out
+that we were implementing and there are
+different layers and timelines and as
+you can see the data warehousing kind of
+fell as immediate
+initiative that we need to tackle
+because it was an important piece that
+influenced a lot of the other areas that
+we could
+enable
+
+[12:23]
+now when you think about data platforms
+uh you know a lot of people talk about
+well are you going with certain
+solutions or certain companies
+in order to implement i think every
+company that's out there providing data
+solution have a great product and
+services out there it's really about
+what is the product that's going to
+serve my needs and my organization's
+needs so it really depended on where we
+were as a company as an organization and
+where we wanted to head and based on
+that requirement we felt like you know
+we needed to get out of this out of the
+
+[12:53]
+box solution that we were in and and be
+a little bit more uh a custom
+solution where
+gives us the flexibilities it gave us
+the
+the scalabilities and stabilities that
+we needed to achieve all of the
+capabilities that we've identified as
+being an important part of our success
+so
+as we continue to move through the data
+maturity as well as we wanted to become
+more fan centric we felt like this was
+the right time for us to move away from
+
+[13:23]
+a out of the box solution but then take
+that next step of developing
+our internal custom
+solution now with that said that might
+not be the right solution for other
+organizations again that really depends
+on where they are as an organization and
+their maturities and that needs to be
+taken into consideration uh in how you
+determine your
+options
+so big part of our uh
+consideration that went into
+
+[13:53]
+looking in at this new data solution was
+these key four areas one we needed to
+have a solution that's going to help us
+break down these silos
+as i've mentioned there are a lot of
+disparate data across different sources
+we need to make it
+not only
+be able to integrate those data but also
+make it easy for our organizations to be
+able to integrate and scale down the
+line because we know the types of data
+that we've had today but there's so much
+more technology that it's getting
+
+[14:24]
+advanced there are other platforms and
+applications that are coming online that
+we need to consider that we might not be
+aware of
+so that meant we need to be able to be
+nimble and be able to get that
+integrated without having to need and
+rely on third parties every time that
+we're expanding scalability again part
+of that is what i just talked about in
+terms of being able to expand out and
+you know
+depending on how we were
+using our data as we could start now in
+
+[14:54]
+terms of looking at the data and think
+about how we're using it that might be
+very different than year from now in
+terms of how we are going to be able to
+use that data so needed to be able to
+have a
+a platform that was going to allow us to
+be
+a scalable when that time came again
+without having to go back and say okay
+what are the more do we need to invest
+more infrastructures or do we need more
+uh um
+assets or investments to investing in
+spending that out so those are some of
+
+[15:24]
+the key consideration that we've looked
+at faster insights
+i think nowadays these technologies make
+it really easy for
+anyone to be able to go in and pull data
+and insights
+in the old days we had
+so much reliance on our analysts to be
+able to pull or do a sql uh data pool
+and analysis to be able to give them
+insight but now these modern uh cloud
+stacks allows a
+regular person with just a simple
+
+[15:54]
+trainings to be able to go and do a lot
+of these drag and drop analysis and it
+gives and and democratizes the data
+across broad organization that really
+helps
+foster the next point which is the
+collaboration makes it easy for them to
+be able to use that data without having
+to create this bottleneck into our tan
+or our team and you know we got all of
+our team members here and
+i'm sure they that uh that they'll
+appreciate in terms of this new uh
+approach that we're taking because
+
+[16:24]
+they've been
+pretty much um
+you know
+have gone have received so much
+different types of requests across
+different departments that sometimes
+it's really difficult to fulfill
+everyone's uh expectation um so these
+are all the things that we're taking
+into consideration when we're thinking
+about this new evolution of our data
+warehouse and what that's going to help
+us is in all of that business objectives
+that we've talked about through the
+assessment that we've had where hey we
+needed to have this unified fan views we
+
+[16:55]
+needed to be able to
+provide this personalized experience at
+scale and then uh improve the
+operational efficiency you know bring
+down some of that a challenge of needing
+to work with third parties or need more
+human resource to integrate these data
+but really make it easy so that you know
+we could go and drive the growth and
+retain customers and
+commercializing our data's and futures
+and really uh creating that efficiency
+i think the the big difference is you
+
+[17:26]
+know when we think about the objectives
+and the and the value levers i think
+these are pretty consistent across all
+of the organizations
+i think that the key point in terms of
+understanding is just where we are
+in terms of the lack of capabilities
+that we have and how do we go about
+solving that through the technology and
+partnership with your
+other solutions out in the market
+so
+what we've decided to do is uh partner
+with the company called data climber and
+they have a pretty extensive experience
+
+[17:57]
+within the sports industry they are very
+familiar with our data sets um and best
+part of it was that you know there were
+augmentation to our team and they're to
+come in and build this out and then
+really turn that over to us
+with the full ownership so that we could
+then you know run it on our own and and
+have that flexibility uh and have that
+scalability for us and there's a less of
+a dependency on on the partners uh post
+implementation um so you know they've
+
+[18:29]
+been a great partner for us and uh in
+terms of getting this uh started you
+know we have a different data sources
+and again these sources aren't anything
+new i think everyone kind of are faced
+with integrating the very similar data
+sets
+and then you're working on that ability
+to pull that data
+and then i think the mdm is another key
+area that we really put a lot of effort
+uh and consideration into because at the
+end of the day you have a lot of these
+data sources how do we create that
+single view is a key piece that we
+
+[19:00]
+wanted to focus on and then we're going
+to partner with snowflakes to kind of
+leverage their uh cloud data or housing
+service to really
+achieve the goals that we have and then
+obviously we'll leverage our bi tools
+for any type of reportings or analysis
+that we are looking to deliver
+so at the end of the day the key
+benefits
+again emphasizing the fully customizable
+uh ability um so we're not having to
+depend on third parties to ask for
+
+[19:30]
+certain changes and we have to wait uh
+to get that done we're gonna have the
+full control of that and be able to go
+in and make adjustments as needed
+and again this is our uh ip owned
+infrastructure that we're not going to
+have to you know rely on on the third
+party
+again we're going to build this data
+schema that's more
+driving our needs versus having to fit
+what we're trying to do into a existing
+schema
+and hopefully that will help us reduce
+
+[20:01]
+those duplications
+and then obviously being in that cloud
+uh and in the infrastructure is going to
+help with uh speed to insights but also
+just from a cost standpoint is really
+going to help us manage that so
+that's kind of the journey that we are
+in uh in progress as we speak um
+and
+you know it's it's never-ending even if
+we are done with implementation there's
+always going to be new technology that
+comes across there's going to be new
+
+[20:31]
+business requirements that come in and
+our capability will improve and then
+there will be other capabilities that
+we're going to have to tackle so again
+it's a it's a continuing cycle but i
+just wanted to emphasize the importance
+of that the step that we needed we took
+was really from a holistic standpoint
+understanding from an organization uh a
+perspective and
+recognizing the areas of capabilities
+that we needed to focus on and then
+using that to build a foundation for the
+
+[21:01]
+infrastructure
+to
+help us really
+bring the data to life with our business
+so with that
+if you have any questions happy to
+answer them
+yeah thank you
+yeah for for q a please just uh raise
+your hand and i'll bring the mic over to
+you
+
+[21:35]
+thank you for this this was great uh you
+talked here a lot about tech stack and
+tools would be curious if you are able
+and willing to share anything about your
+team and maybe how that's evolved
+alongside this journey
+ah sorry i didn't hear the question
+would love to hear about your team and
+your people yes inside the tools yes so
+um
+we got our team right here we've created
+this matrix kind of skill
+set where
+we have each person having a very
+
+[22:05]
+specific skill set so we have someone
+who's really focused on a lot of the
+strategy and analytic piece
+which is nick and then we have our crm
+manager who really is the owner of all
+of our application platforms and that's
+chris who looks at our sales force our
+data warehouse and anything related
+technology he's the person working
+closely and then we have austin who's
+really focused on activation of the data
+so he's overseeing the digital campaigns
+paid media advertisement uh all the
+different digital communication channels
+
+[22:37]
+that exists in our organization in terms
+of engaging
+our fans so those are kind of core areas
+but at the same time they service some
+of our vertical department so you know
+nick
+works closely with our ticketing team
+and he became kind of the experts on
+that side of the house and has a very
+close relationship with head of
+ticketing to understand their needs
+talking to them chris has built a
+connection with our sponsorship team and
+really understand their business side of
+it and then obviously austin works
+
+[23:07]
+closely with our marketing team so what
+that brings is
+understanding not only from the business
+aspect but also we're helping them kind
+of develop their core skill sets on each
+of the uh areas that we
+are overseeing in our department and
+then to augment this we've created a
+organ a team that's called center of
+excellence
+and what it is is
+there are other people that oversee the
+analytic piece in other departments that
+
+[23:37]
+are not part of our team so we have
+folks from our finance we have folks in
+our sponsorship team who oversees a lot
+of the valuation side of it
+and then we brought that person in
+we have person from
+club finance who oversees all of the
+financial aspect between our on-field
+side as well as the business side so we
+have that person we have a digital
+analyst who does all of our
+website and app digital social analysis
+within the digital team and what we've
+
+[24:09]
+realized was that you know we're all
+trying to use the data to ultimately
+drive the same objective but because of
+those silos
+it was a little bit becoming challenged
+because one they weren't communicating
+as much as they should and then
+everyone is kind of focused on their
+department's objective which not
+necessarily might
+serve in supporting other departments so
+we created this uh center of excellence
+team where we brought all that people
+together and then we meet on a weekly
+basis and we talk about initiatives
+
+[24:41]
+around data we talk about some of the
+challenges that we're having or
+different projects that everyone's
+working on or we'll bring some big
+projects so we've just done a
+market segmentation for our our team and
+all of that
+process was done through this center of
+excellence teams to get everyone's
+feedback because what's good about that
+is now i'm getting all the different
+perspectives from different departments
+versus our team just working on it and
+then bringing it back to the team so um
+
+[25:11]
+that's been really helpful to one foster
+that culture of utilizing data across
+your organization and then
+collaborations
+so it's not just about technology but
+you know how do we change the structure
+or even the process to help foster that
+yes
+first thank you for uh
+second i'm curious
+what is
+
+[25:53]
+yes so it starts with our ownership
+group
+our ownership has
+made a strong commitment into this area
+and the importance and they emphasize
+that to all of the department heads so i
+think that really sets the tone uh in
+terms of making sure that they're um
+part of the process and then the other
+part is just
+a lot of times it's the relationship and
+you know it's a
+hand combat basically for me to go and
+talk to the head of ticketing go talk to
+head of sponsorship go talk to head of
+
+[26:24]
+marketing and head of content and just
+try to understand what their needs are
+and then also just talk about how you
+know we see ourselves as an internal
+service and we
+continuously emphasize that our success
+is their success right there's no uh we
+we can't be successful unless you know
+ticketing is successful or the marketing
+is successful so a lot of the kpis that
+we drive isn't related to our department
+but it's all related to the organization
+uh uh each individual department so
+
+[26:55]
+that's been the communication uh now
+with that said it's not something that
+you're gonna you know
+get buying overnight it's gonna take
+time and also showing them some of the
+the cases in terms of how successful
+this could be by
+helping each other and use the data so i
+think that's really been been helpful
+and then empowering our team so as i've
+mentioned each of these
+our staffs have that connection with
+each department and i try to like have
+them go and build that relationship
+
+[27:25]
+so you know nick has a really close
+relationship with head of ticketing and
+he's going to be the one championing
+that relationship in addition to my
+conversations you know chris has that
+direct line to head of sponsorship and
+they're having that conversation and
+empowering him to go be in and have be
+the advocates of of what we're trying to
+do and help them same thing with austin
+so that's another thing that we've tried
+to do was just let them go and build
+that relationship
+so that at least you know everyone feels
+like i have someone who's being helped
+out otherwise i think some of the
+
+[27:56]
+challenge that they've had in the past
+was hey you guys are leaning so much
+towards ticketing i'm not getting the
+love that that i need and if that's the
+case why should i be working with you
+type of
+mentality so you know how do we make
+sure that we're helping across everyone
+to support their individual
+business now it's hard because we also
+have very limited resource so we need to
+do a better job of kind of prioritizing
+what are the ways that we could help
+them um but just i think that's that
+structure has been really helpful uh and
+
+[28:26]
+building that relationship with each
+department
+got time for one last quick question
+sorry hi thank you so much for the
+presentation
+you said uh part of your assessment
+approach was comparing the current
+
+[28:57]
+capabilities of the colts to some other
+outside industries i was kind of
+interested in what you found there in
+terms of how well the colts and nfl
+teams in general do in their
+data collecting and storing and
+some of the things you can take from
+outside industries and businesses that
+they do really well that could really be
+applied to sports
+absolutely
+i'm sure those that are in this space
+know that there's a really strong
+community that's built within the sports
+
+[29:28]
+uh whether it's a league or the key or
+the team and you know we have this uh
+knowledge sharing uh
+i guess culture that exists where you
+know i i have no problem sharing all the
+things that we've done and i know other
+teams have no problem sharing that and
+we actually have this uh call which run
+by russell scabetti who i'm sure
+everyone knows um but you know we come
+together and we share best practices and
+we ask questions in terms of hey how do
+you guys do this what's been some of the
+
+[29:58]
+successful things that you've seen or
+you know what's a good vendor to work
+with so there's a lot of cross knowledge
+that's being shared within the industry
+which is very unique when you when you
+think about it so i think that's been uh
+some of the the um
+benefit that exists within our industry
+but then at the same time i kind of like
+to look outside of our sports because
+because that's done so well that we feel
+like we're all kind of in a similar
+situation in terms of what we're doing i
+want to get more
+inspiration or create
+
+[30:29]
+creativities from outside of our
+industry in terms of what other people
+are doing you know how are they
+servicing their customers uh so those
+are some of the areas that we've kind of
+looked into when we're doing assessment
+was that not only look at our peers
+within the sports industries but let's
+look at some of the other companies that
+are doing well and and you know what how
+what they're doing and how they're
+implementing it so that we sent a little
+bit higher benchmark in terms of what we
+want to
+do so
+yeah thanks everyone for coming this is
+
+[30:59]
+a great presentation and great questions
+as well thank you very much
+now let's go have some drinks
+##### 2022-03-25_mtdVRx3t1eo_the-biomechanics-of-buckets-the-next-revolution-in-basketbal
+{
+ "id": "mtdVRx3t1eo",
+ "title": "SSAC22: The Biomechanics Of Buckets: The Next Revolution In Basketball Analytics",
+ "channel": "42 Analytics",
+ "upload_date": "20220325",
+ "duration": 1543,
+ "view_count": 3538,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction and vision",
+   "end_time": 162
+  },
+  {
+   "start_time": 162,
+   "title": "Shifts in sports analytics",
+   "end_time": 346
+  },
+  {
+   "start_time": 346,
+   "title": "Biomechanics in shooting",
+   "end_time": 620
+  },
+  {
+   "start_time": 620,
+   "title": "Mapping free throw errors",
+   "end_time": 966
+  },
+  {
+   "start_time": 966,
+   "title": "Future of shooting analysis",
+   "end_time": 1283
+  },
+  {
+   "start_time": 1283,
+   "title": "Q&A session",
+   "end_time": 1543
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC22: The Biomechanics Of Buckets: The Next Revolution In Basketball Analytics"
+video_id: mtdVRx3t1eo
+url: https://www.youtube.com/watch?v=mtdVRx3t1eo
+channel: 42 Analytics
+upload_date: 2022-03-25
+duration: 25:43
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [basketball,sports-science]
+---
+
+# SSAC22: The Biomechanics Of Buckets: The Next Revolution In Basketball Analytics
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+hi everyone
+hope everyone's enjoying our conference
+and thanks for joining us for the sloan
+sports analytics uh conference
+competitive advantage talks presented by
+kager my name is rafa maya i'm a first
+year mba student here and as a former
+college basketball player i'm super
+excited to present our next uh
+presentation the biomechanics of buckets
+the next revolution in basketball
+analytics and uh please
+help me welcome kurt goldsberry our next
+
+[00:30]
+speaker nba analyst for espn all right
+thank you my dude
+hey everybody uh before i begin my
+remarks i want to just take a minute to
+remind you all student run conference
+students like rafa from mit put on this
+amazing conference it's so great to be
+back here
+in person but it is a very impressive
+student-run event so thank you to you
+and your peers rafa i want to take a few
+minutes of your time today to talk about
+a vision i have
+
+[01:01]
+in a collaboration i'm a part of and
+that's something i'll emphasize multiple
+times today about where i see one part
+of basketball analytics going
+in the next 10 years
+for those of you who don't know me
+i currently work at espn and i teach
+sports analytics at the university of
+texas
+i wrote a book called sprawl ball most
+people know me because i put charts up
+on the on the internet
+and that's fine uh but
+i used to run the analytics group in the
+san antonio spurs organization and and
+
+[01:31]
+worked for team usa basketball shout out
+coach k uh he's having a big weekend too
+again when people think about my work
+they think about graphics like this i
+try to bring spatial and visual
+reasoning to sports analytics that's
+sort of my
+way into the business
+people have seen my maps
+but guys really what i want to emphasize
+with my work and it's going to extend
+into this current project
+is i've been sort of clamoring for more
+
+[02:02]
+spatial and more visual treatments
+within our field of sports analytics
+that's that's why i'm here today
+and that's going to continue as we go
+into the human body which you'll see
+i'd be remiss if i didn't sort of
+mention 10 years ago i made my debut on
+the stage talking about shot charts and
+the science of wear and bringing the
+science of wear to
+basketball that conference changed my
+life
+um i started doing media shortly after
+the finals preview in new york times
+
+[02:32]
+really the first thing i ever wrote
+about basketball
+so again applaud the uh the sloan
+conference thanks for all it's given to
+me it's an incredible opportunity an
+event
+there are three shifts i i really want
+to contextualize what i'm going to talk
+about today in these these three shifts
+in sports analytics number one we're
+going from outcomes to processes
+baseball you're ahead of us as usual but
+we're measuring less and less about the
+outcomes like rbis and doubles and more
+and more about the processes uh how hard
+
+[03:02]
+a player can swing a baseball bat or
+throw a baseball looking at angular
+velocities of joints that help explain
+velocity
+in baseball that's been a breakthrough
+another big shift is we are across
+sports going from an environment where
+we just looked
+largely at game data to an environment
+where we're looking a lot at game data
+plus practice data and process these lab
+data sets
+my good friend kyle body runs driveline
+baseball in seattle and they've really
+
+[03:32]
+led this charge and i think that's a
+perfect example of how we're collecting
+data about athletes
+not in competitive environments but in
+lab settings or practice environments
+understanding these data is a huge new
+challenge for this group in front of me
+today
+and part of that i think when you look
+at
+sports analytics at its worst it's kind
+of like employee surveillance
+and we have been separated from athletes
+monitoring them surveilling them
+judging their value and one of the
+
+[04:03]
+things i'm excited about with this
+project is bringing the kind of
+analytical reasoning into the player
+development realm bringing it down to
+the playing surface for the athletes to
+actually get better so i think those are
+three big shifts that contextualize why
+i think what i'm about to talk about is
+going to dominate basketball analytics
+uh if there was a first law of sports
+analytics where i don't think there is
+it might be this what gets measured gets
+managed
+and what doesn't doesn't
+one of the things that's happening
+
+[04:34]
+undeniably in our field right now
+is we're measuring more and more and
+more and more and that's opportunities
+to manage and understand and to learn
+and and i think that's a big part of
+where we are in 2022
+in terms of the sport i love the most
+again we're measuring stuff in practice
+now we're measuring stuff
+with sleep and nutrition and we're
+measuring and measuring all these
+different things you have to form that
+into your analytical framework at an
+
+[05:05]
+organization
+and fortunately for us we continue to
+steal from other sports
+golf and baseball i have to acknowledge
+as ahead of us
+in this domain i'm going to talk to you
+guys about today
+as it relates to hoops
+shooting shooting shooting is the most
+important skill in the sport right now
+at every level of play
+so just like
+my biomechanics and 3d motion capture
+have revolutionized our approach to
+
+[05:36]
+pitching
+in baseball i anticipate a similar thing
+happening to shooting in basketball over
+the next 10 years
+the first word on this top bullet is
+really
+the biggest question of the 2020s in
+sports analytics in my opinion uh i used
+to think about where a lot
+um but where we're going now is is more
+of a why
+why is russell westbrook struggling to
+make jump shots why is stephen curry so
+good at that the answers to those
+
+[06:06]
+questions are different than we had
+generally been looking at in sports
+analytics for the last 10 years
+at least in basketball
+so
+why are some shooters better than others
+that's one of the research questions for
+this project how can we measure the
+underlying
+causes of these differences
+and
+the goal for this project which we're
+just starting and scratching the surface
+of now in austin is what i like to say
+
+[06:37]
+with my team is to build the shot chart
+for the human body
+so
+a few years ago at this conference
+rachel marty from noaa had one of the
+best sloan talks i've ever seen
+and she said you know from shot charts
+now we can map
+the trajectory the basketball looking at
+the in-ring data and she did a marvelous
+job of helping us understand
+how the flight of the basketball and
+in-ring data can help inform shooting
+evaluations this is one of the best
+papers and talks we've seen here
+at sloan
+
+[07:07]
+and i i challenged myself then i was
+like well okay if
+why is the arc of the ball different for
+some shooters than others why are some
+shooters more consistent with the arc or
+their in-ring data than others
+and that's really the inspiration for
+this project
+going into the human body
+which means we have to read
+books and articles so putting my nose
+back into the books
+i had to read a lot about motor control
+research and one thing the baseball has
+going for it is that it's a lot of
+
+[07:37]
+discreet acts there's not a lot of
+interaction
+and in motor control research this is
+often called a closed task and
+in essence you're doing the same thing
+over and over again with repeatability
+there's no
+closeout defender rushing at you when
+you're shooting a free throw
+and so your analytical framework has to
+account for the differences between
+how you're
+approaching these tasks
+so free throws
+guys i think are
+the lowest hanging fruit here because in
+
+[08:09]
+theory a player should be trying to do
+the same thing each and every time
+in theory the goal is clear
+and there's not a lot of
+openness to that task there's not
+defenders
+in theory you should be doing that now
+as soon as we talk about step back
+jumpers or three-point shooting that
+changes because now it's contextual one
+of the things that makes stefan so great
+shooting three-point shots is he can get
+into his shot a thousand different ways
+uh and that's a very different thing
+when stefan shoots a free throw he's
+
+[08:39]
+doing the same thing
+you need to inform your research project
+with that in mind and so motor control
+research has been very helpful
+right now the system we're using to
+evaluate shooters is three
+three-dimensional motion capture
+we have an array of 40 cameras
+and
+unfortunately the only way to get
+accurate biomechanical data right now is
+to use the compression suit
+markers the nba 2k suit is what a lot of
+
+[09:10]
+people think of it as
+that won't be the case if we're here in
+five years talking about biomechanics
+but that is the case now
+there's some really impressive work in
+computer vision happening there's an
+arms race happening
+but ultimately our ability to get
+accurate joint centers right now is
+pretty limited
+and the techniques to get them
+are pretty
+intrusive
+it's not fun it's not fun to set up and
+it's not fun to perform in that said uh
+
+[09:41]
+i think we've done a good job getting
+these data sets and and we look forward
+to a time as my biomechanist partner
+says where we can burn these markers and
+light them on fire and move on with our
+lives uh but for now this is the
+necessary evil the inconvenient evil in
+our lives
+i need to emphasize here today that i'm
+not a biomechanist myself i'm a
+geography guy who's pretty good at
+making maps and graphics so i'm the
+visualization
+person in this project my business
+
+[10:12]
+partner is a woman named k jackson
+who's a biomechanist who's worked with
+elite athletes for a long time in this
+space
+speaking of that
+noaa
+data one of the graphics i made
+a while back was just looking at in-ring
+data from the second spectrum system and
+looking at where missed threes in the
+nba land this is like 800 000
+uh missed threes or something since
+2013. and one thing you learn when you
+plot that is that a vast majority of
+
+[10:43]
+missed threes in the nba
+are short or long they are depth errors
+in the ring they are not left or right
+uh and some of the research there's not
+a lot of research on shooting
+but the word velocity which is very
+important in something like
+golf or baseball they talk about we
+don't talk about velocity but one of my
+favorite papers i read on free throw
+shooting
+mentioned that
+really great free throw shooters are
+able to control the velocity
+
+[11:14]
+of the basketball uh and and it's not
+baseball we're trying to max out the
+radar gun
+we're trying to be very consistent in
+this task and executing the exact same
+velocity out of the hand
+and so some of our early work was
+mapping you know what are the tolerances
+for velocity errors and how do they
+manifest in the ring
+and really you got maybe four tenths of
+a mile per hour or half a mile per hour
+tolerance depending on what kind of shot
+you're looking at
+
+[11:44]
+for that
+uh and and a player like giannis
+antetokounmpo who we know misses a vast
+majority of his free throws short
+we can start to think about that as the
+arc is consistent we know that he's not
+getting enough velocity on those free
+throws his his stereotypical missed free
+throw he's even made some air balls that
+we can all remember in the toronto
+series and other moments
+but he doesn't put the right velocity on
+the basketball that's his quintessential
+mistype
+the question then becomes well where in
+
+[12:14]
+the kinematic sequence is there the
+difference that's manifesting in that
+velocity deficit
+and that's the science of wear 2.0 where
+in the shooter are we seeing
+inconsistency where are we seeing these
+sources
+of error in the shooter
+that
+is
+the question
+uh where are the inconsistencies in a
+free throw shooter so we set out to look
+
+[12:45]
+at that
+and this is this company called mint
+athletic performance in austin which is
+run by kate jackson and working with a
+few mba teams to to look at the
+biomechanics the integration of
+biomechanics visualization analytics and
+coaching
+and i'll come back to that point in a
+second
+this is the new sort of venn diagram
+of analytical player development again
+i'll come back to that
+so
+this is a composite
+image of a struggling nba free throw
+
+[13:17]
+shooter what we're seeing here is 20
+free throws on top of each other and the
+first thing we sort of are looking at is
+can we give this shooter's mechanics an
+mri and identify inconsistencies at
+every joint
+so where we know this guy shoots 54
+percent we know that on basketball
+reference you could look it up
+again the theme today is why does this
+guy struggle like that
+uh and the answer as i say is in the
+
+[13:47]
+joint centers but
+and there's a big but here
+this data is so robust we capture 25
+joints 250 times a second
+with sub-millimeter accuracy
+and then there's all these derived
+metrics for one free throw
+so like a lot of modern or contemporary
+analytical tasks this is a this is a
+curation
+task i don't know if i can play this
+back again
+and as we build our data set we're
+
+[14:17]
+starting to learn what to look for the
+most and and most common that we're
+finding velocity errors in free throw
+shooters come from
+the holy trinity of joints in the launch
+phase which is the shoulder
+the elbow and the wrist and all three of
+those can can cause errors
+and inconsistency
+just like the literature predicted and
+has found non-elite basketball players
+struggling free throw shooters are
+
+[14:48]
+demonstrating more inconsistency in
+their processes
+than the best free-throw shooters
+um
+so this is this is again
+uh same rubric applied to a shooter who
+shoots 85 or 90
+and you can see that there's a lot more
+consistency in aggregate in these
+composite images
+at the key joints especially the arm
+the shoulder the elbow and the wrist as
+i mentioned uh consistency in the angles
+consistency in the timing sequences
+
+[15:21]
+consistency consistency consistency so
+that's the lowest hanging fruit in the
+next revolution
+and
+it's a very slow title i'm sorry but the
+next
+free throw shooters we got to map the
+inconsistency uh is it going to solve
+every free version no it's another tool
+in the toolbox to identify
+why a player might be struggling
+what we see in good free throw shooters
+is consistency consistent mechanics in
+terms of timing in terms of space
+
+[15:53]
+repeatability
+in the task
+again just an image side by side
+threes are harder
+free throws as i keep saying lowest
+hanging fruit in the game threes are
+harder three-point shooting is a
+
+[16:24]
+fundamental now hell 30-foot three-point
+shooting is becoming a
+fundamental
+nba teams college teams men's teams
+women's teams international teams
+three-point shooting is becoming
+fundamental if it's not already
+biomechanics can and will mark my words
+ladies and gentlemen uncover new
+pathways
+to understanding the art and science of
+shooting at basketball
+
+[16:54]
+we always steal from baseball myself
+included
+there are pitching labs in a number of
+major league baseball facilities there
+were not
+a decade ago
+if you don't think there's going to be
+shooting labs in the nba in the next 5
+10 15 years you're wrong
+if again if we can look at baseball or
+golf as a precedent
+where they are using this stuff
+effectively people like bryson
+dechambeau
+and trevor bauer and people who have
+
+[17:24]
+famously used this exact technology
+to build a bridge between how their
+bodies move and how their skills are
+executed
+it's coming to basketball and in the
+skill world of basketball it's going to
+come to shooting
+one of the things that
+i've been obsessed with as both a writer
+as an analyst and as a fan is one of the
+fastest growing shot types in pro
+basketball is the long three the damien
+lillard three
+uh if you look at the average
+
+[17:54]
+three-point shot distance in the league
+it's going higher and higher and higher
+and you're looking at people like trae
+young who are literally shooting from
+distances that would have been deemed uh
+insane ten years ago
+and they're demonstrating it's not
+insane
+but why can some shooters shoot at that
+deep range and others cannot
+kevin love is a great example he's a
+really good shooter he can't extend his
+range very well in games why not that's
+another key research question here
+
+[18:24]
+and again biomechanics can give you the
+details of why so this is a very good
+nba three-point shooter shooting three
+point shots again in composite mode at
+the three-point line 24 foot shot
+all of those segments until the very end
+are
+white indicating there's very consistent
+mechanical form there
+this guy shoots 40 percent
+one of the things i love to do as an
+
+[18:54]
+analyst is to learn from coaches
+i talked in depth to phil beckner who is
+damien lillard's
+shooting coach now he works in
+philadelphia
+but one of the things he told me that
+was key with working damien's ability to
+shoot from 30 feet is the core strength
+and they have a mantra in their workouts
+saying tight body tight ball and the
+thinking is if i can keep my mechanics
+consistent through that flow phase
+through the energy transfer phase
+
+[19:24]
+through my core
+my mechanics in my upper body will be
+consistent too and obviously damien's
+hit a couple of those big ones
+like the one pictured here
+they
+not analysts but in a way they are they
+arrived at the right conclusion
+and when we try to see a typical nba
+shooter shoot from 27 feet uh who can't
+do that
+unsurprisingly we start to see
+inconsistency manifest in that launch
+phase in the arms one of the issues i'm
+
+[19:54]
+struggling with right now in this
+project is
+that's the symptom that's not the cause
+i believe the shooter is having energy
+leaks or not putting enough energy into
+the ground the base phase
+to create the energy needed to shoot and
+so he's he's bringing he's importing
+strength from his arms which is
+manifesting an inconsistency in both his
+launch phase
+and the flight of the basketball
+so even some of the stuff we're seeing
+with biomechanics is inconsistency might
+not be the cause of it and that's why we
+have to look at the story of energy
+
+[20:26]
+i have to wrap up in a minute
+um
+i can't emphasize this concluding point
+enough
+it's going to be an integration there
+are going to be biomechanists in every
+nba
+basketball operations group i promise
+you that there's going to be analysts
+there's going to be coaches and the
+teams that integrate
+these three roles and forms of reasoning
+the best
+i'm here in the competitive advantage
+
+[20:56]
+room
+those are the teams that will they will
+generate competitive advantages for
+their team their athletes
+it's going to be the integration
+analytics since we've been starting 10
+years ago 20 years ago 30 years ago
+has really gone from a one person
+endeavor in many cases to a team
+endeavor and as we get more and more
+complex with things like biomechanics
+that's only becoming
+more true
+so i wanted to leave five minutes for
+questions i left four i hope i have some
+
+[21:27]
+questions thank you guys for your time
+is consistency something that you see
+like vary from day to day or from like
+week to week and could that be a reason
+why
+certain shooters could be deemed streaky
+perhaps like in game
+yeah i think that's a great point and if
+if if one of the things with this
+capture technology that's so it's so
+pain in the butt uh we we get a guy one
+
+[21:59]
+day and he's wearing a suit and it's not
+an organic environment but that might he
+might be sore he or
+he might be injured and that's the day
+we're capturing and this is real life
+for pro basketball players and college
+basketball players some days you just
+don't have it some days you're dinged up
+and so i think to get these programs to
+be
+the best they possibly could be
+we need to make sure we're getting
+samples and have a good sampling
+strategy throughout these players
+years and days it's a good question i
+
+[22:30]
+don't have a good answer but other than
+that
+so
+what's the next step after let's say you
+identify
+you know an inconsistency in the
+shooter's you know offhand elbow
+what do you see as the next step in
+terms of correcting that
+i always say thank you for asking that
+question i would say like we're this is
+mri and you don't you don't want your
+mri
+if you tore your acl like i did you
+don't want the the person who did the
+mri to do the surgery right
+
+[23:00]
+but you're glad you had the mri and
+that's why that c part is so key
+honestly i think the conduit will be a
+shooting coach
+somebody like brandon payne who works
+for stephen curry or chip england
+famously at the spurs
+these these individuals already work on
+shooting i think this is analogous to an
+mri because we're not doing the surgery
+ourselves if i'm working for an nba team
+they don't want me to touch their
+shooters
+but i can help these teams identify hey
+
+[23:32]
+it's the guide hand it's the timing of
+the elbow
+and then what they do from that
+that's that's not my it's above my pay
+grade to be honest
+it's a good question
+hi there uh so in in his book uh that i
+know you're familiar with nick greene
+basically writes that
+uh shooting form is somewhat irrelevant
+at least in terms of free throws it's
+more uh potentially about that
+consistency would you agree that the
+form itself is is less relevant
+yeah i don't know if i'd put in those
+terms but what i would emphasize is that
+
+[24:03]
+everybody in this room has a different
+form and the first process you have to
+you have to go into this analysis
+framework saying we're all snowflakes in
+the old school sense of that we're not
+the new one although we are all
+snowflakes
+we have to
+acknowledge that the kinematic strategy
+i bring to the nail is different than
+the one you bring to the nail
+and the consistency within that
+ecosystem that's unique to you
+i believe is the key and one of the
+first things we look at is just
+generally what is the kinematic strategy
+that this uh player brings to the free
+
+[24:35]
+throw line
+last question here
+last one
+hey there can you describe any
+correlations between anthropomorphics so
+size of shooter versus consistency
+no uh but fortunately i'm working with
+somebody who could
+because i i again i don't have
+that information for you but i do think
+as players grow and develop in the
+strength room or in their adolescence
+
+[25:06]
+their mechanics change
+and i think one thing this this kind of
+analysis brings to the table is the
+ability to detect those evolutions in
+within a player's development time um
+and it's interesting everybody who grew
+up playing hoops you know you don't have
+mature shooting
+mechanics even stephen curry changed his
+shot in the middle of his adolescence
+so i think it's an interesting concept
+and i would just argue that this kind of
+technology helps us understand and
+monitor that
+thank you guys so much and enjoy the
+
+[25:36]
+rest of the conference
