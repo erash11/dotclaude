@@ -1,0 +1,660 @@
+=== 2022-03-25_Rn7sZ5kNsNw_using-technology-to-monitor-workload-in-elite-figure-skating/summary.md
+---
+type: video-summary
+video_id: Rn7sZ5kNsNw
+title: "SSAC22: Using Technology to Monitor Workload in Elite Figure Skating"
+event: SSAC22 (MIT Sloan Sports Analytics Conference)
+speakers: [Lindsey Slater (caption spelling: "lindsey slater")]
+topics: [sports-science, injury-health, other-sport:figure-skating]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker, a physical therapy professor and the sport science manager for U.S. Figure Skating, describes replacing pen-and-paper jump logs with a single hip-worn motion sensor. The first goal was to count training workload, with performance and technique feedback second, because elite athletes reject being told what to do. Three case studies show the sensor used to guide a return after puberty, to set a daily jump limit, and to test whether a skater could realistically land a triple axel by a deadline. The talk matters for athlete monitoring because it ties a device output to individual rep limits, and it shows that adoption depended on who drove the project.
+
+## Key claims
+
+- Vertical loading on a pop jump was found to match that of triple and quad jumps, so early monitoring counted every jump equally [01:32].
+- Self-logged jump counts were unreliable: athletes skipped pop jumps and counted combinations as one [02:34].
+- Priority one was tracking workload, not judging performance; telling an Olympic athlete what to do risks losing them [03:06].
+- A four-sensor setup was first tested on one top athlete, and the speaker says no earlier system had captured the rotation of a triple lutz without saturating [04:38].
+- Sensors on the full ice surface avoided the marker-system limit of jumping inside one circle [05:08].
+- A single sensor on the hip, smaller than a smartwatch, gives immediate app feedback on jump type, revolutions, rotation speed, air time, height and timing of peak angular velocity; some outputs are estimates and loop jumps are hardest [06:40], [07:10], [07:41].
+- Case 1 (post-puberty return): triple axel work was paused, rotation rose over months, peaked around May, dipped in July after a vaccination, and recovered by August [09:44], [10:16], [10:46].
+- Time to peak rotation moved earlier toward a point just over halfway through the jump as she improved [11:16].
+- The second jump in a combination shows angular velocity like a triple axel, so it carries heavy rotational landing load; coaches were told to track triple-triples with triple axels and quads [12:18], [12:48].
+- After tracking those together, the athlete had no further hip pain flare-ups [13:50].
+- Case 2: the athlete underestimated her daily jumps; rotation fell across a two-hour session, and the concern was residual fatigue the next day [14:20], [14:51].
+- A 75-jump daily ceiling was set, with two recovery days required if she chose to exceed it; the ceiling was raised after progressive exposure with no fatigue [15:23], [15:54], [16:24].
+- Case 3: after about four months of data the team judged a triple axel by the target date unrealistic because her rotation appeared capped at the triple; she returned the sensor [17:25], [18:25].
+- Adoption pattern: coach-driven succeeded, athlete-driven succeeded, practitioner-driven did not [18:55], [19:26].
+- The work was funded by the USOPC and developed with the sensor company in about a year [19:57], [20:58].
+
+## Numbers and definitions
+
+- Triple axel rotation needed for a woman: about 1900 to 1950 degrees per second; the speaker estimates the Russians at 2000 to 2100 (estimate) [09:14].
+- Case 1 athlete rotated about 1750 degrees per second on return in February; reached the 1900s in March [09:14], [10:16].
+- Setup time: about 5 minutes for sensors versus an hour or more for markers; 11 sensors about 10 minutes versus 30 to 45 minutes for a marker system [05:08], [06:09].
+- Case 2: thought she did 60 to 70 jumps a day; actual close to 100 [14:20]. Limit 75; beyond it, two days around 40 jumps [15:23], [15:54]. Later limit 85 (caption is garbled around "high low days are 85") [16:24].
+- Five of the six single skaters at the games wore the sensor [08:13].
+- Residual fatigue: still fatigued the next day [14:51].
+
+## Methods and frameworks named
+
+- Wearable IMU (single hip sensor, plus a four-sensor and an 11-sensor test) with app-based jump detection and an algorithm refined with more data [07:41].
+- Peak angular velocity and time to peak, combined, as the two key measures [18:25].
+- Individual thresholds and a progressive increase in allowed volume, compared by the speaker to progressive overload [15:54].
+- Comparison of one athlete's trend against athletes who can land triple axels [17:55].
+
+## Limits and open questions
+
+- Three case studies, no group statistics, no accuracy figures against video.
+- The speaker says the old jump-height finding (doubles versus triples) probably needs retesting with today's quads [02:03].
+- Internal tension: the talk begins with "all jumps are equal" and later says not all jumps are equal [01:32], [13:19].
+- The "no flare-ups" result is one athlete without a control [13:50].
+- The ceiling-effect judgement in Case 3 is the speaker's belief; the athlete rejected it [17:25].
+- The speaker is the sport science manager for the governing body, with an institutional interest.
+- Caption problems: sensor company transcribed as "40 motion sports" and "4d sports"/"4d motion" [04:08], [06:40], [20:58]; "cheetah jump" [07:10] is probably garbled; "pear skaters" is pairs [26:18].
+
+## Q&A
+
+- Spins: not measured; loading is jump based; a boot sensor is planned for the next phase [22:06].
+- Arms overhead: has data but keeps it private; the speaker says it reduces inertia and helps young skaters but is harder after puberty [23:10], [23:40], [24:10].
+- Baseball pitch counts and volleyball jump counts are being explored with a single sensor [24:45], [25:16].
+- Pairs skating: hip sensor is not workable, other locations are being discussed [26:18].
+=== 2022-03-25_VZEYQU2-Oc8_how-data-journey-started-for-the-indianapolis-colts/summary.md
+---
+type: video-summary
+video_id: VZEYQU2-Oc8
+title: "SSAC22: How Data Journey Started for the Indianapolis Colts"
+event: SSAC22 (MIT Sloan Sports Analytics Conference)
+speakers: [Charlie Shin (caption spelling: "charlie shin")]
+topics: [front-office, decision-making, american-football]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The Colts' vice president of data strategy and analytics describes how the club started a data program on the business side (ticketing, sponsorship, marketing), not on-field analytics. The team scored itself on a five-level maturity scale across five areas, interviewed staff, set two-year targets, and built a roadmap of initiatives, with a custom cloud data warehouse first. The speaker argues that technology alone does not fix data problems, and that people, process and clear goals matter as much. The Q&A covers team structure, a cross-department forum, and gaining leadership buy-in. The talk is useful as a method for assessing and sequencing data work, with no athlete data shown.
+
+## Key claims
+
+- The club began from its mission, then asked which capabilities to build or improve, with limited money and people [02:05], [02:37], [03:09].
+- Having technology does not help without the right people to use it [03:09].
+- A data maturity framework covered five areas (customer strategy, infrastructure, analytics, operations, performance tracking), each scored from awareness through leading [04:11], [04:42], [05:12].
+- Interviews showed friction came from people, process and unclear goals, not only technology [06:13].
+- Stakeholders were asked where capability needed to be in two years, which produced the gap [06:45], [07:15].
+- The main infrastructure need was an integrated view of fans across touch points, not "a data warehouse" as such [10:19], [10:50].
+- Designing the warehouse is partly art, since the schema must reflect strategy and use [11:20].
+- The warehouse was sequenced as an immediate item because it enabled others [11:50].
+- The club moved from an out-of-box solution to a custom one, and says this may not suit other organizations [12:53], [13:23].
+- Four selection considerations: break silos, scale without third parties, faster insight, collaboration through self-serve tools [13:53], [14:24], [15:24], [15:54].
+- Delivery: an outside firm (caption: "data climber") built it and handed over full ownership; Snowflake is the cloud warehouse; master data management gives a single view [17:57], [18:29], [19:00].
+- Benefits claimed: customizable, IP owned, schema built for their needs, less duplication, speed and cost control [19:30], [20:01].
+- The journey is described as never ending [20:31].
+
+## Numbers and definitions
+
+- 24 staff interviewed across commercial departments, finance, executives and ownership [05:43].
+- Five strategic areas, two components each, so 10 capabilities; five maturity levels (awareness to leading) [04:42], [08:17].
+- Score of 62 out of 100 on the internal assessment [08:17].
+- Blueprint spanning about two and a half years [07:47]; stakeholders were asked about two years out [06:45].
+- 12 initiatives in the roadmap [11:50].
+- "Center of excellence" meets weekly [24:41].
+
+## Methods and frameworks named
+
+- Data maturity framework with questionnaires and qualitative interviews [05:12], [06:13].
+- Gap analysis (current versus target level) turned into programs and initiatives mapped to capabilities, tagged to strategy, process, organization, technology and KPIs [07:47], [09:49], [10:19].
+- Roadmap with layers and timelines, warehouse first [11:50].
+- Matrix of staff skills (strategy and analytics, CRM and platforms, activation of data) tied to vertical departments, plus a cross-department center of excellence [22:05], [23:07], [24:09].
+
+## Limits and open questions
+
+- Business-side data only; no athlete, performance or injury content.
+- Results of the program are not reported; the work was in progress at the time [20:31].
+- The speaker says he cannot share all the initiatives [09:19]; the scoring scale and per-area scores are not shown in the captions.
+- 62 out of 100 is an internal measure with no external benchmark; the answer about outside-industry benchmarking gives no numbers [30:29].
+- The talk was presented under a sponsor (Sigma, per the host introduction) and names vendors chosen by the club, which is institutional and commercial context [00:01].
+- Caption problems: "data climber", "snowflakes", "russell scabetti" and "tan" (probably the team) may be misspelled [15:54], [18:29], [29:28].
+
+## Q&A
+
+- Team structure: three staff with distinct skill sets, each tied to a department, plus a weekly center of excellence [22:05], [24:09].
+- Second question: the audience question is garbled; the answer covers ownership's commitment, treating the group as an internal service, and building buy-in over time [25:53], [26:24], [26:55].
+- Benchmarking: teams share practices through a league community call (caption: "russell scabetti"); the club also looks outside sports for ideas [29:28], [29:58], [30:29].
+=== 2022-04-01_Q3i3FOC-dPE_using-tracking-and-charting-data-to-better-evaluate-nfl-play/summary.md
+---
+type: video-summary
+video_id: Q3i3FOC-dPE
+title: "SSAC22: Using Tracking and Charting Data to Better Evaluate NFL Players: A Review"
+event: SSAC22 (MIT Sloan Sports Analytics Conference)
+speakers: [Eric Eager (introduced as being from Pro Football Focus)]
+topics: [american-football, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Eager argues that football analytics has used its three data families (play-by-play, hand-charted data, and player tracking) mostly one at a time, and that combining them gives better player evaluation. He shows three cases from Pro Football Focus (PFF): an expected pressure rate for pass rushers, a "bite distance" measure for linebackers on play action, and a speed-adjusted receiver grade for deep routes. In each case the hand-charted grade supplies the target and tracking data supplies a measure that is steadier from year to year or tracks athletic testing. The Q&A covers second-order effects, trade-offs and model context.
+
+## Key claims
+
+- Football analytics has advanced from a few public writers to many data sources, but each source is mostly used alone, and combining them would improve player evaluation [01:33].
+- PFF charts every NFL and college game by hand, producing player grades and event labels. The NFL's tracking data comes from chips in shoulder pads and the ball [02:08, 02:40].
+- For pass rushers, PFF's charted pressure and win-rate data served as training targets, and tracking data supplied the predictors, in two models (pressure and win rate) [06:16].
+- The most important predictor of a pressure was the defender's vertical distance covered in the first second. The model was an XGBoost ensemble of decision trees [06:47].
+- Charted position labels (nose tackle, edge defender) also entered the model, so it carries some information on player type [07:18].
+- Each play yields a pressure probability, not only a yes or no [07:48].
+- Pressure is treated as the process that leads to sacks. PFF pressure rate and expected pressure rate together predict sack rate better than either alone, and tracking data also adds power when predicting a player's own pressure rate [08:19, 08:49].
+- Expected pressure rate tracks combine and pro-day athleticism measures better than charted data does, which gives a time-varying athleticism measure in place of one combine number [09:19, 09:50].
+- Coverage grades are unstable year to year. Linebacker "bite distance under expected" (BDU), the vertical displacement on play action adjusted for situation, is more predictive year to year than the coverage grade [10:20, 11:22, 12:23].
+- Eager's reasoning for BDU: biting on a fake leaves the middle of the field open, the most valuable area to throw [10:51, 11:22].
+- A receiver model using mean, median and max speed over a play found speed to be the most important variable for a positive PFF grade on go and corner routes [13:25, 13:55].
+- The resulting speed-adjusted grade is steadier year to year than the deep-pass grade and correlates with the 40-yard dash, with exceptions such as Landry (slow 40, good receiver) and Kupp (faster on field than his timed run) [13:55, 14:25, 14:56].
+- Tracking data's promise may not be reached without combining it with charting and play-by-play [15:27].
+
+## Numbers and definitions
+
+- Sacks take about two points on average from an offense [05:45].
+- Sack rate predicting itself year to year: about 0.24 (R squared), given with "I think" and "or something" [08:19].
+- BDU is described as three or four times more predictive year to year (R squared) than the coverage grade. The captions read "about four times three or four times", so the exact multiple is garbled [11:53, 12:23].
+- Kupp's pro-day 40 time: 4.62 (caption "cooper cup"; the speaker was unsure of the year and said 2017) [14:56].
+- Pressure: charted when a rusher moves the quarterback off his spot or gets a sack. Win rate: charted as whether the rusher won the rep. The two are correlated but can differ [05:15, 05:45].
+- PFF grades are discrete steps of half a point from negative two (caption wording) [26:36].
+- First-second speed was measured in the vertical (y) direction and as straight-line distance [06:47].
+
+## Methods and frameworks named
+
+- Charted grades as labels, tracking features as predictors (pressure, win rate, receiver grade) [06:16, 13:25].
+- XGBoost classification for pressure [06:47].
+- Adjusting linebacker displacement for situation (run tendencies, down and distance) and averaging over time [11:22, 11:53].
+- Year-to-year R squared as the test of whether a new measure is better than the existing grade [08:19, 12:23].
+
+## Limits and open questions
+
+- The slides are not visible. Most R squared values, sample sizes, seasons and the number of plays are not in the captions, so only the 0.24 and the "three or four times" claims can be quoted.
+- The speaker works for PFF and presents PFF tools as results, so this is an institutional and commercial view.
+- The 40-yard dash question (correlation of about 0.75 raised by a questioner) concerns career averages versus one-time combine results, not within-player prediction, and the exchange is partly unclear [22:31, 23:31].
+- Eager agreed in Q&A that BDU says nothing alone about whether a defender's passivity is worth what it costs against the run [18:58, 19:28].
+- The linebacker examples are individual cases (Warner, Kuechly, Hewitt, Cunningham, White, David as heard in the captions); no group-level validation is shown beyond the R squared claim [11:53, 18:58, 24:31].
+- Names in the captions may be misspelled (Kuechly appears as "luke lee"; Okereke as "okariki").
+
+## Q&A
+
+- An economist-style questioner asked about second-order effects (tired linemen, scheme and play-calling changes). Eager agreed, noting football has many columns but few rows, and that the game changes quickly, with play action as an example [16:28, 16:58, 17:28].
+- Is the linebacker metric the right objective, since it measures the mean rather than variance? Eager is studying the trade-off (a good run defender may accept some middle-field plays) and wants analytics to quantify it [18:28, 18:58, 19:28].
+- Do the receiver rankings match popular opinion? Eager discussed Tyreek Hill and Antonio Brown (caption spelling "tyree kill") and argued the measure captures controlled speed usable for football plays [20:28, 20:59, 21:30].
+- Clarifying the 40-yard R squared table: it uses careers, because players test only once [22:31, 23:01, 23:31].
+- Do defensive backs or linebackers who cushion create bias? Eager suggested team-level view of the two inside linebackers, because one may bite while the other covers [24:01, 24:31, 25:02].
+- Why do context variables such as yards to go matter in the grade model? PFF does not ask graders to do context math, and the model partly adjusts for it [26:03, 26:36, 27:07].
+=== 2023-03-10_RqOXn9ynQK0_the-ultimate-team-sport-building-better-football-rosters-wit/summary.md
+---
+type: video-summary
+video_id: RqOXn9ynQK0
+title: "SSAC23 - The Ultimate Team Sport: Building Better Football Rosters with Analytics"
+event: SSAC23 (MIT Sloan Sports Analytics Conference)
+speakers: [Thomas dimitrov (caption spelling), Jacqueline Davidson, Kevin demoff, Steve Palazzolo, Seth Walder (moderator), dio carrasquillo (caption spelling, introduces the panel)]
+topics: [american-football, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A five-person NFL panel (two current or former club executives, a club research director, a data-vendor executive, and an ESPN moderator) discusses how data should feed roster construction. The panelists spend most of the hour on four questions: how to set up an organization so data is actually used, how much positional value should drive the draft and free agency, whether trading down is a good bet, and how to think about quarterbacks probabilistically. The recurring argument is that data helps most when it is built into the scouting process from the start, when a team uses its own models and its own history rather than a league-wide rule, and when decisions are made before need and job pressure distort grades. Several panelists stress that NFL job security shortens decision horizons.
+
+## Key claims
+
+Caption note: the captions carry no speaker labels. Claims are attributed to a person only where the speech makes it clear; otherwise they are "a panelist".
+
+- A data group only works if the coaches, scouting directors and GM are involved and willing to drop old ideas; teams stay attached to conclusions from data three or four years old [02:32] [03:02].
+- A former GM on the panel calls NFL data "criminally underutilized" and says football people often skip surplus value when they look at free agents [04:34] [05:37].
+- The same panelist says older thinking held that every "pillar" position had to be filled, and that a team does not need the best left tackle to win a Super Bowl [06:07].
+- A research director says the way to sell research internally is to show it solves a specific problem for a GM, scout or coach, and makes their job easier [06:37] [07:07].
+- Positional value depends on the organization, its coaches, its scheme and the direction of the league; panelists disagreed over whether wide receiver is the most important non-quarterback position [09:43] [10:14].
+- One panelist prefers to ask which units to make strong and which not to leave weak, not to rank positions by pay [11:46].
+- The league copies, so an edge is found before others copy and surplus value disappears once everyone chases the same trend [13:49] [14:51].
+- No single position was named as undervalued; one panelist argues the edge is volume at receiver and in the secondary, and another argues for tight end [15:22] [15:52].
+- A panelist says some teams attach scores to individual metrics in a scouting "metric tree" without weighting the metrics against each other, and calls that subjective [16:54] [17:24].
+- Draft-board grades get inflated when a team needs a position; a panelist describes a grade moved from 59 to 65 the night before the draft [19:59] [20:30].
+- If two players are close, take the better player; planning for contracts expiring a year or two out can push a pick more than positional value [21:00] [22:01].
+- A former GM says every failed decision of his was driven by intense need [24:34].
+- Short GM and coach cycles (two to three years) push teams toward need and short windows; a Rams executive says the Rams' data improved because the same head coach and GM stayed seven years [25:04] [25:36].
+- Trading down is supported by the view that teams are overconfident in choosing between two similar players [28:38] [29:08]. A panelist counters that a trade chart is an exchange rate, and selling your own picks cheaply repeatedly works against you [32:15] [32:46].
+- A panelist argues great players usually come from the top half of the first round, so a team that needs a difference-maker should not trade back [32:46] [33:17].
+- Teams use several trade-value charts but often settle on one common currency in a 30-second call; a Rams executive says if three of five models say go, they go [36:18].
+- Quarterbacks: a panelist says there are about thirty starting-caliber quarterbacks but only five to eight a team wants to win with [38:50]. Panelists disagree on whether to keep drafting quarterbacks until one is elite [40:20] [46:25].
+- A Rams executive says a team close to winning should go for it, but must be honest about whether it is one player away or two; the Rams' 2017 to 2021 run is cited as the goal [50:00] [51:30].
+- A Rams executive says the new CBA over-corrected to overvalue top picks, the league then over-corrected on veteran trades, and the market may swing back [55:34] [56:04].
+- A panelist says a team that assumes it will beat the draft base rate without a proven formula of its own will fail [57:36] [58:08].
+
+## Numbers and definitions
+
+- First three positions cost about 90 to 100 million dollars of cap "in today's market" (as captioned) [12:17].
+- Top receivers jumped seven to eight million in the prior year [13:49].
+- Fifth-year option pickup for picks 23 to 32 "starting to fall below 40 percent down to 30 percent" (captions); the speaker says the players who did well in that range were guards, linebackers and safeties [27:38] [28:08].
+- Rams: same head coach and GM for seven years; five or six years of collected data [25:36].
+- A 2019 trade example: pick 31 traded back to 61 [29:08].
+- Vikings moved from pick 12 to 30; pick 12 versus picks 65 and 66 is described as similar on a surplus-value chart [29:40] [30:10].
+- Surplus value: described as value beyond what a player will be paid; no formula is given [30:41].
+- Claim that no number one overall quarterback from 2009 through 2018 went to a Super Bowl with his team; the speaker asks the room to check it, so it is unverified [42:20].
+- Draft base rates quoted: 50 percent first round, 40 percent, 30 percent, down to 10 to 15 percent for seventh-round picks. The captions do not define "hit" [57:36].
+- Stafford trade at "basically 50" percent of what Russell Wilson cost the next year (caption wording; may be garbled) [56:04].
+
+## Methods and frameworks named
+
+- Surplus-value trade charts used alongside the Jimmy Johnson chart; teams run several models and compare them [34:18] [36:18].
+- Scouting "metric trees" per position with a scored grade; a pyramidal scouting structure (area to regional to national to GM and head coach) [16:54] [19:29].
+- A college-to-pro projection model is named as a coming priority, with thinking about mean outcome and upside [57:05] [57:36].
+- Draft board reset the night before the draft; picks planned around contracts expiring in a year or two [19:59] [22:01].
+
+## Limits and open questions
+
+- The panel is opinion and anecdote; no datasets, sample sizes or model results are shown. Many claims rest on one executive's experience at one club.
+- A data-vendor executive and a club CEO are on the panel, so some claims (for example, that data is underused) are institutional or commercial views.
+- Panelists contradict each other on positional value, on drafting quarterbacks repeatedly, and on trade-down value; the talk does not resolve these.
+- The fifth-year option figure and the quarterback Super Bowl claim are stated from memory and not checked on stage.
+- Names and terms are garbled in places (see speakers field); numbers above are as captioned.
+
+## Q&A
+
+- Audience question: is it easier to build a roster by drafting or by trading, and which is more cost effective? Answers: it depends on the team; the Rams model was back-end picks plus veterans [52:32] [53:02] [55:34].
+- Question read by the moderator: how to balance a player's most likely outcome against the upside, and where probability enters scouting grades? Answers: college-to-pro projection models and base rates by round [56:35] [57:36].
+=== 2023-03-15_4kPyFrX2T4o_hard-cap-constrains-roster-construction-in-the-hard-cap-era-/summary.md
+---
+type: video-summary
+video_id: 4kPyFrX2T4o
+title: "SSAC23: Hard Cap Constrains: Roster Construction in the Hard Cap Era of Hockey"
+event: SSAC23 (MIT Sloan Sports Analytics Conference)
+speakers: [Max Williams (host), Kate Madigan, Brett Peterson, Megan chaika (caption spelling), Dominic Moore (moderator)]
+topics: [front-office, decision-making, competitive-advantage, other-sport:hockey, sports-science, policy]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+An NHL panel with two assistant general managers (New Jersey, Florida), the head of a hockey data company, and an ESPN-affiliated former player as moderator. They discuss how a hard salary cap shapes roster building: planning a contention window around core players, structuring contracts so they stay tradeable, buying or selling at the deadline, and balancing analytics against leadership and culture. Later sections cover player tracking and sports science, how coaches and players take up data, and why amateur scouting has weak data. The views are those of executives describing their own organizations, with no data shown.
+
+## Key claims
+
+- A team's levers are picks, prospects, the roster and cap space, and some players who must be drafted and developed become too costly to buy later [02:34].
+- Retaining talent depends on a culture and identity that gets core players to buy in [03:37].
+- Rebuild or retool decisions need honesty about where the team is and discipline to the plan despite outside pressure [04:38].
+- Intangibles such as leadership and veteran experience carry weight beside points and goals, as seen from the Devils' youth two years ago [06:08].
+- The deadline was unusually busy and often needed a third team to retain salary [09:41]; first and second round picks were fetching less than before [10:12].
+- The Presidents' Trophy winner rarely wins the Cup because playoff hockey is a different matchup style [10:43].
+- A trade target has to fit on salary, culture and analytics at once, and negotiations run for days or weeks [12:16], [12:47].
+- Front-loaded bonuses let large-market teams keep contracts tradeable, and a nearby minor-league affiliate adds flexibility [16:23].
+- Teams build a checklist of traits (faceoffs, penalty kill, leadership) and compare it with what the roster already has; relationships with other teams and scouts fill in intangibles [17:56], [18:28].
+- Alignment of core players' contract timelines with the team's window matters more than one season's push; the aim is to stay competitive for eight or nine years [22:32], [23:02].
+- Opportunity is often what finds value in overlooked players [28:15].
+- Goalie performance above expectation is not reliably repeatable [29:47].
+- The hard cap makes building a dynasty harder, mainly because core players leave and synergy is lost [31:17], [31:47]; Megan sees both benefit (parity) and cost (pay for superstars) [25:07], [26:09].
+- Teams value picks with internal and external models and a values chart, and contracts with comparables plus models [32:47], [33:18], [33:48].
+- Management decides; players influence by performance; the group deliberates with differing views [34:51], [35:23].
+- A pick's worth depends on whether it is the missing piece, so going all in is hard to quantify [37:24], [37:55].
+- Player and puck tracking is still early (a year or so of use) and hard because hockey is fluid [38:57], [39:28]; it could support sports science and injury identification [41:00], [41:31].
+- Coaches, especially assistants, are more engaged with data than five years ago [43:02], [44:02].
+- A sport scientist's role is to flag deviations from baseline and propose lighter practices, not bench stars, with an "80 20" rule for plan adherence [46:05], [46:37].
+- Players are interested in data; the panel describes them as year-round athletes [48:09], [50:11].
+- Amateur data is thin and uneven across countries, and tracking indoors has occlusion problems [51:43], [53:16], [54:18].
+- Draft logic differs by origin and age: a European project must finish by 21, a college one by 24 [55:52].
+
+## Numbers and definitions
+
+- Presidents' Trophy and Cup history: Bruins contenders for 13 years since the 2011 Cup [02:03].
+- Devils won "13 games in a row" (Kate's words) [06:08].
+- "Over 40 trades" at the deadline [09:11].
+- Example of an avoided contract: "12 million dollars" [03:04].
+- Brett was an agent for 15 years [14:21].
+- Tampa described as having gone through it "eight nine years" [08:40]; the Devils aim to be in the same spot in eight or nine years [22:32].
+- Shifts "30 seconds to 50 to a minute and a half" [38:57].
+- Tracking in use "a year year and a half" [39:28].
+- Draft ages 21 and 24 [55:52].
+- "80 20" rule: 80 percent follow the plan, 20 percent deviate [46:37].
+- Hockey player development staffs described as about three people versus about 100 at the Mets [44:32].
+
+## Methods and frameworks named
+
+- Pick value chart and internal asset models; contract comparables plus models [32:47], [33:48].
+- Intangibles checklist against current roster gaps [17:56].
+- Baseline-deviation sport science monitoring with coach communication [46:05].
+- Puck and player tracking used with the team's own data [39:28].
+
+## Limits and open questions
+
+- No data, sample sizes or outcome tests are shown; most claims are executive opinion or institutional practice.
+- Kate says she cannot explain the models, which belong to her analytics group [32:47].
+- The panel offers no measure of the intangibles it values.
+- Megan's view of the cap is mixed and partly rhetorical.
+- Several panelists' tracking remarks are unattributed in the captions; the moderator later credits Kate with the point about analytics adoption [42:31].
+- Names are garbled in captions (for example players and teams around [27:13]).
+
+## Q&A
+
+- Methods for valuing future assets: values chart plus models [32:47].
+- Do players take part in decisions: not formally, performance informs [34:20].
+- Opinion on LTIR use: rule should be applied evenly [35:54].
+- Can going all in be quantified: hard, picks lost signal it [36:54].
+- Puck and player tracking use: early, promising for sports science [38:27].
+- Coach adoption of analytics: growing, especially assistants [42:31].
+- Data and hockey experience communication: scheduling and language [45:33].
+- Player interest in data: high [47:07].
+- Amateur data gap: large, scouting still central [51:43].
+- Draft decisions by round and position: needs and ages matter [55:20].
+=== 2023-03-15_m7vJ7ozZj3U_data-centered-decision-making-how-to-implement-process-that-/summary.md
+---
+type: video-summary
+video_id: m7vJ7ozZj3U
+title: "SSAC23: Data Centered Decision Making: How to Implement Process that Maximizes Data Workshop Value"
+event: SSAC23 (MIT Sloan Sports Analytics Conference)
+speakers: [Bob Hayes (host), Ben Alomar (caption spelling)]
+topics: [basketball, front-office, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A workshop by a former NBA analytics executive on how to combine models with expert judgment in draft decisions. He demonstrates the conjunction fallacy with an audience poll, then runs a five-player draft exercise and reveals it was his own team's first overall pick, a notable failure. He contrasts a "seat at the table" model, where data and people argue and one side wins, with a "data centered" process that starts from the model, has experts state hypotheses for why it is wrong, tests them, and updates or drops them. The Q&A covers trust, communication, time pressure and explainable models. The author cannot prove the process would have changed the pick.
+
+## Key claims
+
+- Judge a decision by the process across many repeated decisions, not the single outcome observed [01:31], [02:01].
+- People favor a coherent story over probability; the audience repeated the conjunction fallacy [04:41].
+- Cognitive biases are systematic effects of how information is framed, and data helps avoid them [06:43], [07:13].
+- Humans offer narrative, creativity and deep knowledge but have bias and limited viewing; models are consistent and large-scale but miss variables and intangibles [18:41], [19:12], [19:45].
+- Unlike web A/B tests with millions of data points, projecting college players leaves huge uncertainty [20:15].
+- Data-centered decision making starts at the model and asks experts why it might be wrong, then tests each hypothesis and adjusts or rejects it; it differs from simply following the model [21:48], [23:25], [24:27].
+- Examples: test whether the model is biased against a player type; whether injuries explain weak numbers by asking how far a metric would have to move; whether low opportunity is visible on film [24:58], [26:59], [27:30].
+- The process needs analysts who accept being wrong and experts who accept dropping hypotheses [30:03], [30:34].
+- He believes, without proof, that this process would have avoided the Bennett pick [31:06].
+- Fit matters and can be tested, in part [31:38], [32:09].
+- Trust takes time and is personal, not technical [36:41], [37:11], [41:44].
+- For quick decisions, preparation of trade models is the answer [42:46].
+- Keep analysts and scouts together, not separate [45:19].
+- The more uncertainty in the data, the more hypothesis testing is needed; with millions of data points and an A/B test, follow the data [51:08].
+- Explainable models are preferred for player projection unless a black box is much more accurate [54:15], [54:45], [55:15].
+
+## Numbers and definitions
+
+- 24 percent of the audience chose "bank teller and active in liberal politics" [04:41].
+- Draft exercise: five players; audience tallies given as "10 uh player B 35 player C 13 D 43 player e" (units and who got which number unclear) [13:31].
+- Model estimates the probability of being a "star" (a perennial All-Star, first or second best player on a contender) and of a bust [10:47].
+- Bennett's model chance of being a star: "three percent" [22:54]; two other players flagged above three percent [15:04].
+- Hypothetical: a GM sees a 75 percent chance; effective field goal percentage 43 would need to rise to 47 (reasonable) versus 72 (not) [23:25], [26:59].
+- Team looked at about eight players in the week before the draft [16:39].
+- Westbrook decision was made about three weeks before the draft [48:27]; an intern from Stanford helped [49:00].
+- Levels (star, starter, role player, bust) are labels on quantitative cut points [46:25].
+
+## Methods and frameworks named
+
+- Draft model from college performance predicting star and bust probabilities [10:47].
+- Hypothesis, test, adjust or reject loop around the model [23:25].
+- Shot probability model with passer analysis for Westbrook's move to point guard [49:30].
+- "Seat at the table" versus "data centered" processes [08:45], [21:48].
+
+## Limits and open questions
+
+- The central example is one NBA draft, an anecdote.
+- The speaker concedes he could not apply this at the time and did not have this mindset [38:42].
+- The Westbrook test was rushed, crude and manually collected [50:00].
+- Hustle and Mamba mentality metrics risk survivorship bias, as he says [35:41].
+- Audience poll numbers are ambiguous in the captions.
+- Author's commercial view: he mentions his book [48:27].
+
+## Q&A
+
+- Talent versus fit: testable, depends on the claim [31:38].
+- Giannis not considered: lacked international data [32:39].
+- Measuring hustle: use tracking data [33:39].
+- Mamba mentality: ask how it shows up on court, use comparable players [34:40].
+- Building trust in the model: personal trust and explanation [36:41].
+- Whose pick did the model favor: Otto Porter [38:12].
+- Applying the loop to model building: yes, test before the room [39:43].
+- Communication with GMs: build relationships [41:14].
+- Quick decisions: prepare ahead [42:46].
+- Combine analyst and player-facing roles: collaborate, keep avenues open [44:18], [45:19].
+- Levels of skill in models: star, starter, role, bust [46:25].
+- Time allocation by pick position: less deep dive near the top [46:57].
+- Westbrook 2008 [48:27].
+- Business or tech transfer: depends on uncertainty [51:08].
+- A player with high star and bust chance: conflicting signals or small samples [52:09].
+- Revenue in draft decisions: never experienced [53:42].
+- Explainable versus black box models: explainable preferred [54:15].
+=== 2023-03-15_teg9SfzpMy0_creating-an-nfl-player-tracking-metric-presented-by-espn/summary.md
+---
+type: video-summary
+video_id: teg9SfzpMy0
+title: "SSAC23: Creating an NFL Player Tracking Metric presented by ESPN"
+event: SSAC23 (MIT Sloan Sports Analytics Conference)
+speakers: [Max (host, first name only), Seth Walder, Brian Burke, Allison Labs (caption spelling)]
+topics: [american-football, other]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+ESPN analytics staff walk through how they built Receiver Tracking Metrics from NFL Next Gen Stats tracking data. The metric has three parts: open score, catch score and yards after catch, combined into an overall score on a 0 to 99 scale. They also trace the earlier history, including pass rush and pass block win rates, coverage and route classification models, and the problems of crediting receivers when they create their own context, accounting for the quarterback, and combining mixed units. The audience Q&A covers missing data, scheme, predictiveness and defender metrics. The stated goal is fan engagement, not team use.
+
+## Key claims
+
+- ESPN's analytics aim to tell stories and engage fans, not to help a team win [02:03].
+- The receiver metric has open, catch and yards-after-catch components [04:06].
+- Open score is more than distance to the nearest defender; it uses orientation, speed and trajectory, credits untargeted receivers, and looks 0.2 seconds before release [06:12], [08:19], [08:50], [09:21].
+- Tracking access began in 2017, and it took almost half a season just to understand the data [11:24].
+- A closest-defender script revealed who blocks whom, leading to pass rush and pass block win rates [14:59].
+- On the first win-rate check, Joe Thomas ranked low on sacks allowed but third on pass block win rate, explained by the quarterback holding the ball [16:02], [16:34].
+- Coverage and route classification models were built first and became components of the receiver metric [19:39], [20:41].
+- Catch score uses a position-invariant convolutional neural network to estimate catch probability and credits catches over prediction [23:47], [24:17].
+- The problem that receivers create their own context was solved by combining general and specific context estimates, benchmarked against a simple model [25:18], [25:49], [26:20], [26:52].
+- Yards after catch uses the dots at the catch plus video-tracked ball placement [28:23], [28:55].
+- The quarterback affects open score; Mahomes was average on catch score but very high on open score [29:55], [30:27].
+- Seattle's receivers rated highly and Denver's lowest, which could partly explain Wilson's decline; the speakers hedge this [33:59], [34:32], [35:02].
+- Component weights vary by position and were set by correlation with yards per route run [36:32], [37:03].
+- Rookie receivers Olave, Wilson, Pickens and Watson ranked in the top 21; Olave in the top 10 [38:04], [38:34].
+- Results are public via 538 [40:06]; the 0 to 99 scale was chosen for fan readability and the yards-after-catch scale was clipped [42:44], [43:15].
+- A defender version failed because blame is unclear, especially in zone coverage [44:15].
+- Open score is the most stable year to year, about as consistent as batting average, with catch and yards after catch behind; whether it predicts outcomes is still undetermined [53:28], [54:59].
+
+## Numbers and definitions
+
+- AJ Brown score 86, five points above the next player (Travis Kelce, caption "Kelsey") midseason [03:05].
+- Release window: 0.2 seconds before release [08:50].
+- Speed examples: 4.6 versus 10.3 miles per hour; 9 versus 13 [08:19], [09:21].
+- Metric launched October 2022 after a six-year journey [10:23].
+- Win rate: share of plays a player sustains or beats a block for 2.5 seconds [41:43].
+- Catch example: 0.75 predicted probability, residual of 0.25 credited on a catch [24:17].
+- Score scale: 0 to 99; Debo Samuel's yards-after-catch season would be the 99 and the next best about 60 [43:15].
+- Joe Thomas: 53rd (speaker unsure whether sacks or pressures) versus third in pass block win rate [16:02].
+- Orlando Brown 16th or 18th in pass block win rate [48:49].
+- The "30 of the ESPN analytics team" figure is unclear in captions [01:03].
+
+## Methods and frameworks named
+
+- NFL Next Gen Stats tracking data (x and y only) plus ESPN video charting [11:24], [46:15].
+- Position-invariant convolutional neural network [23:47].
+- Expected versus predicted catch probability, combined [26:52].
+- Adjusted plus-minus across seasons for quarterback and receiver effects [29:55].
+- Weighting components by correlation with yards per route run [37:03].
+- Year-to-year player-level correlation to test stability [54:29].
+
+## Limits and open questions
+
+- Predictiveness is not established; stability is stated qualitatively, with a self-correction on order of catch and yards after catch [54:59].
+- No z-axis, no game-leverage context, no progression data [46:15], [47:18], [45:15].
+- Scheme and quarterback cannot be separated [51:55].
+- Presented by the metric's builders; ESPN's content purpose is stated [02:03].
+- Garbled caption names: Diggs, Kelsey, Michael Horton, Dantzler, and the quarterback named after Joe Thomas [04:37], [16:34], [23:47].
+
+## Q&A
+
+- Wanted data: quarterback progression [45:15].
+- Z-axis: not available [46:15].
+- Time and score context: not included [47:18].
+- Teammate influence: gravity credit for double teams [47:49].
+- Yards after catch context: dots and blockers [50:20].
+- Scheme versus quarterback: cannot be separated [51:55].
+- Predictiveness: still to be determined [53:28].
+- Win rate to sacks: predictive, with a finishing skill separate [55:29].
+- Route types: should be accounted for; go routes inefficient, crossing and out routes efficient [57:32].
+=== 2023-03-15_wVUwt2A_xi0_an-analytical-framework-for-winning-the-super-bowl-presented/summary.md
+---
+type: video-summary
+video_id: wVUwt2A_xi0
+title: "SSAC23: An Analytical Framework For Winning The Super Bowl presented by SumerSports"
+event: SSAC23 (MIT Sloan Sports Analytics Conference)
+speakers: [Jack Jones]
+topics: [american-football, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Jack Jones, co-founder and COO of SumerSports, splits football analytics into four areas: personnel selection, performance maximization, play design, and in-game decision making. He argues each is a search space too large for a person to explore, and cites estimated counts for rosters, player improvement paths, offensive plays, and game sequences. His company started with roster building. It scores a whole roster with one number, "roster value", then uses an optimizer to find the highest-value roster that fits the salary cap and player availability. The tool accepts user overrides and club-provided positional weights. The talk is a company pitch, and no accuracy results are shown.
+
+## Key claims
+
+- Football analytics can be split into four areas: personnel selection, performance maximization, play design, and in-game decision making [01:37].
+- Personnel selection is hard because of other teams, injuries, contracts, the cap, and varying player scale [02:38].
+- The speaker holds that no club or third party is seriously calculating a single measure of whole-roster strength, which his company calls roster value [11:22].
+- Many metrics exist for evaluating a wide receiver, but none for a whole roster [11:54].
+- Roster value is built from player grades, positional importance, and snap distribution, summed across the roster [12:55].
+- The approach has three steps: define roster value, list all feasible rosters under availability and cap limits, pick the highest-value one [12:24].
+- A roster that cannot fit under the cap is excluded from the feasible list [13:55].
+- Signing is treated as a yes or no decision, which makes this a discrete optimization problem [14:26].
+- The problem is too large to list every roster, so the team shapes it into a form that solves in seconds [15:27].
+- Decision variables include "stint paths" (how a club handles a player over time, such as drafting and later cutting) and role assignments (position and depth) [15:27].
+- The optimizer plans several future seasons, and users can weight them depending on whether they are contending or rebuilding [16:59].
+- Users can override the system, for example by barring a signing or a draft before a given round, to cover intangibles [17:30].
+- The system is meant to augment human decisions, not replace them [18:32].
+- The tool uses a club's own information and tries to optimize it rather than dictate what to optimize [21:07].
+- Positional importance has defaults but is adjusted using a club survey, because schemes differ [22:41].
+- Cap value beyond the projection horizon is handled as assets and liabilities, such as carryover and dead money [24:47].
+
+## Numbers and definitions
+
+- Roster value: a single measure of overall roster strength [11:22]. Defined as the sum of player performance values, each built from grade, positional importance, and snaps [12:55].
+- Roughly 150 snaps per game and 22 players on the field [01:07]. Later given as 154 plays in a game [08:17].
+- 53-man roster [02:38]. Hypothetical GM fills 18 spots, with 35 under contract: 11 from free agency, 7 from the draft [03:08].
+- Hypothetical pools of 100 free agents and 150 draft prospects [03:08]. The captions give "100 and 150" and the combinatorics are garbled ("1527" and "41 septillion" at [03:40]); the speaker's stated order of magnitude is 10 to the 25th rosters [03:40]. Treat the exact figure as unverified.
+- About 100 trillion synapses [04:10]; roughly 600 muscles, 300 joints, four movements per joint, average 90 degrees of range [04:40]; roughly 65 million physical ways to execute a task, and 100 trillion plus 65 million combined ways to improve a player [05:12]. The captions garble part of this arithmetic.
+- 36 million offensive passing plays and 17,280 running plays under the speaker's route-tree coding [06:13]. The captions garble this sentence ("36 million 17 200" at [06:45]).
+- Chess comparison: 40 turns per game and about 30 moves per piece per turn, against 154 football plays [08:17]. Shannon's chess figure of 10 to the 120th, and about 10 to the 80th atoms in the observable universe [08:47].
+- Average GM tenure of 2.1 years over five years, and average head coach tenure of four years [09:50].
+- SumerSports formed in January 2022 [10:22].
+- Over 200,000 decision variables in the optimizer [15:58].
+- Projection horizon number: the captions give "25th season" [16:59]; this is likely a garbled year and should not be cited.
+- Beta with two clubs, tied to the draft [20:37].
+
+## Methods and frameworks named
+
+- Four-quadrant framework for football analytics [01:37].
+- Roster value built from player grades, positional importance, and snap distribution [12:55].
+- Integer programming (a kind of discrete optimization), reformulated as a convex, linear problem to solve in seconds [14:57, 15:27].
+- Stint paths and role assignments as decision variables; multi-season projection with user weighting [15:58, 16:59].
+- User constraints and club-supplied positional importance via a survey [17:30, 22:41].
+- A team member with ten years of club experience supplies cap knowledge [24:14].
+- The product name appears in the captions as "Marvel" (caption spelling).
+
+## Limits and open questions
+
+- No accuracy, back-test, or example roster results are shown. Evidence is the speaker's description.
+- How player grades are produced and combined across positions is not described.
+- When asked whether linearizing and convexifying the problem loses optimality, the speaker said he was not the optimization expert and offered to follow up [21:37]. The question was not answered.
+- The search-space counts are rough, partly garbled in the captions, and describe size, not quality of decisions.
+- The speaker's claims about competitors and market gaps are the company's own view.
+- The tool covered the draft in beta at the time, with a year-round tool in development [23:12].
+- Method for market value and contract cost: only cap handling is described, not how player prices are estimated [24:14].
+- The talk concerns NFL cap and roster structure and may not transfer to college.
+
+## Q&A
+
+- Would the company work in other leagues such as the NBA? Football focus for now, others possible later [20:04].
+- Are some teams more data driven or more resistant? A beta with two clubs; interest varies; the tool uses club information [20:37].
+- Does linearizing or convexifying the integer program make results suboptimal? Acknowledged a trade-off, deferred to the optimization team [21:37].
+- Is positional value set by the club's scheme? Yes, defaults plus a club survey [22:11].
+- Is the tool year-round? Currently draft-focused, working toward a year-round tool [23:12].
+- How are market value and cap effects handled? Cap handling by a former club staffer; beyond-horizon effects via assets and liabilities [23:43].
+=== 2024-03-20_1nt8hK2oYrE_feeling-the-pressure-a-unified-framework-for-automating-pass/summary.md
+---
+type: video-summary
+video_id: 1nt8hK2oYrE
+title: "SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in NFL Games"
+event: SSAC24 (MIT Sloan Sports Analytics Conference)
+speakers: [S Min Hong (caption spelling; introduced as "s Min Hong", an applied scientist at AWS)]
+topics: [american-football, other:player-tracking]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+An applied scientist from AWS presents work done with the NFL's Next Gen Stats team on measuring pass-rush pressure throughout a play instead of only counting sacks, hits, and hurries at the end. The framework has three parts: identify who is rushing and who is blocking, match each rusher to blockers, and estimate a pressure score between 0 and 1 at each moment. It uses public tracking data from the Big Data Bowl and labels from PFF. The speaker reports high F1 scores for the first two parts, picked a random forest for the pressure score because of better calibration, and shows example plays. Evaluation of the pressure score is only by proxy.
+
+## Key claims
+
+- Existing pass-rush statistics record only end results, so players who got close but did not finish the play get no credit [01:02].
+- The aim is to measure pressure continuously across a play and give credit to players who apply it [01:34].
+- Three technical problems are addressed: separating rushers from blockers, matching them, and estimating pressure over time [03:10].
+- Automating blocker and rusher labeling replaces hand labeling of video clips, saving cost and labor [06:15].
+- Two models were promising for the identification tasks, and the speaker went with AutoGluon-style models, spelled "Orum" and "autog glom" in the captions (caption spelling) [07:17].
+- A graph neural network performed worse but was kept as a future direction because one model can handle both tasks [08:17].
+- The pressure score is modeled as a probability on a 0 to 1 scale at any moment in the play [09:19].
+- A random forest was chosen over neural or transformer models for better calibration [12:28].
+- In sample plays, the score shows different players creating pressure early and late, and credits two players where the human label credited one [13:00, 14:04].
+- Derived outputs include pressure time and a high-pressure zone above a 75 percent threshold [14:34].
+- Rusher distance to the passer and the number of open rushers were the main factors the speaker gave [18:08].
+
+## Numbers and definitions
+
+- F1 of 0.99 for blocker and rusher identification and about 0.91 for matchups (captions: "0.99" and "close 0.91") [07:47]. The captions are rough, so the exact values may differ.
+- Pressure score: instantaneous probability, on a 0 to 1 scale, of a rusher producing a hit, hurry, or sack [09:19].
+- High-pressure zone: time above a 75 percent threshold [14:34].
+- Blocker interference feature: count of offensive blockers within an area of interest between rusher and passer, defined by distance and angle [10:23].
+- Target variables: PFF hurry, hit, sack labels, plus an engineered distance-based label [10:54]. The speaker's example: a rusher within one yard of the passer before one second [20:39] (garbled in captions, so the exact rule is uncertain).
+- No accuracy figures are stated for the final pressure score. Evaluation was a proxy based on maximum pressure compared with PFF labels [11:26].
+- Calibration measured with expected and maximum calibration error [12:28]; no values given.
+
+## Methods and frameworks named
+
+- Data: Big Data Bowl tracking data (positions, velocity, acceleration, player IDs, play outcomes) from the NFL Next Gen Stats team and AWS [04:12, 04:42].
+- Static features (initial positions, roles) and dynamic features (position, velocity, acceleration, direction), standardized before modeling [06:46].
+- Sequential models: identify blockers and rushers, then match them [07:47].
+- Random forest probability model for pressure, with the engineered blocker interference feature [09:51, 12:28].
+- Ground truth for who blocks whom came from hand labels by the NFL and PFF [19:08].
+
+## Limits and open questions
+
+- Pressure score accuracy is not quantified in the captions; only a proxy evaluation is described [11:26].
+- The speaker said model performance differed across player groups and there is room to improve [11:58]. The captions are garbled here.
+- The model did not account for team scheme or blocking and rushing strategy [15:34].
+- It does not attribute pressure to specific players: the speaker said they did not try to separate whose pressure it is [21:40], although the demonstration credits individual players.
+- No correlation check against quarterback motion was done [23:13].
+- The speaker acknowledged complex position features were not modeled [18:38].
+- Several names and model names are garbled (Orum, autog glom, "Parson").
+
+## Q&A
+
+- Which is harder to find, a pass blocker or a pass rusher? Not answered directly; the speaker described which features drive pressure, mostly rusher distance, velocity, acceleration, and open lanes [17:37].
+- What was the ground truth for who blocks whom? Hand labels from the NFL and PFF; handles double and triple teams [19:08].
+- Should the metric favor how fast pressure arrives? Agreed; the target added a distance-and-time rule [20:09].
+- How does it disentangle which player the pressure comes from? It does not; the target is forgiving to credit rushers in a threshold area [21:40].
+- Was the score checked against quarterback motion? Not done; relative velocity features were used [23:13].

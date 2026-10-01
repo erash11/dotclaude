@@ -1,0 +1,720 @@
+=====2015-03-10_AgouMNTeyo4_analytics-of-the-tommy-john-injury-epidemic-with-glenn-fleis/summary.md
+---
+type: video-summary
+video_id: AgouMNTeyo4
+title: "SSAC15: Analytics of the Tommy John Injury Epidemic with Glenn Fleisig"
+event: SSAC15 (MIT Sloan Sports Analytics Conference)
+speakers: [Glenn Fleisig (caption spelling "fleig"; spelled Fleisig in the video title)]
+topics: [sports-science, injury-health, other-sport:baseball]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Glenn Fleisig of the American Sports Medicine Institute explains the rise of ulnar collateral ligament (Tommy John) surgery in baseball and what his group's data say about it. He covers the stress on the elbow, how often pitchers return after surgery, risk factors, and prevention. His headline finding: too much pitching, and especially pitching while fatigued, is the strongest risk factor he has found [33:31]. Curveballs were not shown to be more dangerous than fastballs, though he says they were not proven safe [52:31]. He closes with MLB and youth prevention efforts (PitchSmart) and wearable
+
+## Key claims
+
+- Professional UCL surgeries were steady for about 20 years, then climbed, so the rise is not a one-year fluke [07:42].
+- About 16 percent of professional pitchers have had the surgery, with a higher share among major leaguers that he attributes to more years pitching [08:13], [09:14].
+- The ligament has to resist most of the elbow stress in the cocked position, and cadaver work showed the ligament alone cannot take that load, so muscle and other tissue share it [16:28], [17:00].
+- The surgery does not improve velocity or performance; he believes the two studies that found performance down toward age-expected levels [21:39], [22:10].
+- Return to the majors takes about a year and a half in published studies, about 12 months in his group's data [22:40], [24:15].
+- In a spring training comparison, pitchers who had returned from surgery matched never-injured pitchers on flexibility and mechanics [28:21], [28:52].
+- Youth pitchers with over 100 competitive innings in a year had over three times the risk of serious elbow or shoulder injury [31:58].
+- Retrospective comparisons linked surgery to pitching often when fatigued, pitching many months a year, and high pitch counts in a game [32:30], [33:00].
+- Activity in children is polarized: a few do too much, many too little; moderate activity is the goal [36:38], [38:10].
+- Lab and field studies did not show curveballs to be more dangerous than fastballs; he advises young pitchers to learn fastball and changeup first [39:41], [40:12], [52:31].
+- Fatigue is individual; it cannot be measured in the moment, so coaches and trainers who know the athlete, plus next-day symptoms, are the guide [50:29], [51:30].
+- Poor mechanics are shown to increase arm stress, but it is not proven that higher stress causes more injury [58:38].
+- Drug-driven muscle gains can outpace ligaments and tendons (his statement, no data shown) [48:54].
+- The ultimate goal is tracking pitchers' biomechanics in games, which is not yet available [42:13].
+
+## Numbers and definitions
+
+- Elbow torque in the cocked position: about 100 newton-meters, compared to holding five 12 lb bowling balls on a string [15:27], [15:58]. The clip captions read "512b", which is garbled; 5 x 12 = 60 lb matches [10:45].
+- The ligament withstands about 55 percent of the stress, which he gives as 55 newton-meters [16:28].
+- Elbow speed 2,300 degrees per second (caption "2,300 de per second") [14:22].
+- Elbow about 90 degrees bent at foot contact [14:22].
+- Surgeries by age and level: 16 percent of professional pitchers have had it; about 15 percent of minor leaguers and 25 percent of major leaguers [08:13], [08:44]. The 16 percent and 25 percent come from a study he says is not yet published.
+- Return rates: about 80 percent return; about 67 percent return and stay [22:10]. His group's rate is about 80 percent, regardless of high school, college or pro [23:11], [56:34].
+- Return time: about 18 months in the studies vs about 12 months in his group's data [22:40], [24:15].
+- Three published studies: one covering 1974 to 2012, one of 147 pitchers since 1999, one of 38 recent pitchers with PitchFX data since 2008 (caption names "Ericson", "mcne/mockney", "Jang"; spellings unverified) [20:04], [20:35], [21:05].
+- Spring training study: 40 post-surgery vs 40 never-injured pitchers, both about 85 mph [25:47], [28:21].
+- Youth cohort: about 500 pitchers followed weekly during a season and yearly for 10 years; over 100 innings in any year meant more than three times the risk [31:28], [31:58].
+- Odds from retrospective questions: pitching over 80 pitches in a game, 4 to 1; more than 8 months a year, 5 to 1; pitching often when fatigued, 36 to 1 [32:30], [33:00], [33:31]. The "8 months" figure and "$36 to $1" wording are caption-dependent.
+- Lab: over 2,000 pitchers tested; 12 cameras, about 40 markers, 500 frames per second (captions say "pictures") [13:20], [43:13].
+- Proper mechanics definition: about 150 pitchers tested with healthy arms for at least a year and high fastball velocity; mean and standard deviation of each measure [55:03], [55:33].
+- Fastball velocity averaged about 2 mph higher since 2002 and the count of pitchers averaging 94 mph doubled (from a clip in the talk, not Fleisig's own data) [10:15].
+- Success after surgery in the studies: at least 10 major league games [53:32], [54:02].
+- Latin American pitchers: same rate, about 16 percent [57:05], [57:36].
+
+## Methods and frameworks named
+
+- 3D motion capture lab with reflective markers; kinematics measured, kinetics (forces and torque) calculated from motion [11:46], [12:17].
+- Cadaver testing of ligament strength [16:28].
+- Case comparison of pitchers with and without surgery on history questions [32:30].
+- Prospective youth cohort with weekly and yearly follow-up [31:28].
+- Spring training field labs with MLB, four mechanical hypotheses (compensation, holding back, "inverted W", low elbow then raise) [25:47], [26:47], [27:18].
+- Reference-range definition of proper mechanics from healthy high-velocity pitchers [55:03].
+- MLB elbow task force and the PitchSmart guidelines and risk survey [45:49], [46:19], [46:50].
+
+## Limits and open questions
+
+- Some figures come from unpublished work (16 percent, 25 percent, spring training study at the time) [08:13], [28:21].
+- Spring training study: minor leaguers only, measured only after return, and only successes [28:52], [29:22], [29:53]. No pre-injury mechanics.
+- Retrospective odds (4 to 1, 5 to 1, 36 to 1) rely on recall, not controlled prospective measures, and he says himself he did not say causation beyond this [32:30], [33:31].
+- Proper mechanics is defined by fast velocity and health, so the benchmark is partly circular; in follow-up, poor mechanics predicted injury about half the time, and the link from arm stress to injury is unproven [55:03], [58:38].
+- Curveball result: failure to prove danger is not proof of safety, as he says [52:31].
+- Long-term outcomes for surgery at young ages are unknown [56:34].
+- Institutional and commercial interest: he advises MLB, Little League, USA Baseball and modus, and is helping develop its devices [06:08], [41:13].
+- The chair says the talk is on a panel; the clip from another professor on ball pressure is unrelated to the talk [01:31].
+- Caption garbles: "thousand pictures" (likely pitchers) [23:11]; "mcne", "mockney", "Ericson", "Jang", "Kane c a i n" unverified; "sa young" is Cy Young, caption spelling [13:51].
+
+## Q&A
+
+- How do you know when a pitcher is fatigued: individual, not measurable in the moment, rely on knowing the pitcher, trainers and next-day symptoms [49:59], [50:29], [51:30].
+- Split-finger fastball stress: not studied; fastballs, curveballs and sliders are stressful and changeups less so [52:01], [53:02].
+- What counts as return success: the studies used at least 10 major league games; he prefers staying healthy and stats matching age [53:32], [54:02].
+- How proper mechanics were determined: healthy, fast pitchers' mean and standard deviation [54:32], [55:33].
+- Age at surgery: about 80 percent return across levels; long-term outcomes for the young are unknown [56:03], [56:34].
+- Latin American pitchers: same rate as Americans [57:05].
+- Did poor-mechanics pitchers get injured: about half did, half did not; arm stress-to-injury link not proven [58:06], [58:38].
+=====2015-03-10_Dr9jYbgDH2U_faster-higher-stronger-science-and-elite-performance-with-ma/summary.md
+---
+type: video-summary
+video_id: Dr9jYbgDH2U
+title: "SSAC15: Faster, Higher, Stronger: Science and Elite Performance with Mark McClusky"
+event: SSAC15 (MIT Sloan Sports Analytics Conference)
+speakers: [Mark McClusky (caption spelling varies), Wired]
+topics: [sports-science, competitive-advantage, decision-making, other-sport:cycling, other-sport:track-and-field]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A Wired editor and author of a sports-science book argues that elite results turn on tiny margins and that the high-performance world offers lessons for any field. He covers variation in a single athlete's performance, the "aggregation of marginal gains" idea from British cycling, how different bodies and genes make athletes individual, measurement effects, consumer and team technology, and sleep. He closes by saying the only sustainable advantage is learning faster than the competition. Much of the evidence is illustration and anecdote, and some figures are the speaker's retelling of other pe
+
+## Key claims
+
+- Margins at the elite level are tiny, so even a blowout can sit inside normal day-to-day variation. [05:09] [05:40]
+- Variation is about one percent in short events and larger in long and technical events. [06:11] [06:41]
+- British cycling improved by finding many small gains instead of one large one. [09:15] [09:45]
+- Small items (own pillows, hand washing, beet juice, wiping tires, heated pants) were used for small edges. [11:46] [12:16] [14:19] [14:50]
+- Elite athletes are physically individual, and bodies match their sports. [16:51] [19:26]
+- Early specialization is argued against, because sampling sports helps find the right fit. [19:56]
+- Trainability varies by genetics, and few people combine a high baseline with a strong training response. [21:58] [23:29]
+- Genes set the size of the "bucket" and environment decides how much is poured in. [24:30]
+- Being measured may change performance (Hawthorne effect), though the speaker says this is disputed. [26:32] [27:04]
+- Cheap sensors and data are now widespread. [27:37] [29:40] [30:11]
+- Data is a starting point, and the gap between analyst and decision maker matters. [32:14] [32:45]
+- Teams neglect basics while chasing new things, and nutrition response is individual ("n equals one"). [33:17] [33:47]
+- Keep nutrition advice simple enough to execute. [34:17] [34:48]
+- Sleep extension improved a basketball team's performance. [36:20] [36:51]
+- The only sustainable advantage is to learn faster, and the sports-science lesson is being willing to try and fail. [37:52] [39:56]
+
+## Numbers and definitions
+
+- Men's 100 m final in the captions: 9.64, with seven of eight runners under 10 seconds. [04:09] [04:39]
+- Variation: about one percent; the speaker says the short-event figure applies under 3k. A scenario of 9.55 is called eight tenths of a percent faster, and 9.71 would still have won. [06:11] [07:11]
+- British cycling won no gold medal between 1924 and 1988. [09:15]
+- Marginal gains: twenty things at a tenth of a percent give a 2 percent change. [09:45]
+- Equipment cost: a 25,000 pound track frame and 23,000 pound handlebar; the captions say about 48,500 pounds or nearly 80,000 in dollars. [10:45]
+- Seven percent of London Olympic competitors got sick. [12:16]
+- Heated pants held thighs at 107 degrees, with a 9 percent sprint improvement; the UK won seven of 10 track cycling golds. [14:50] [15:20]
+- Women in the US who are 5 foot 10 or taller: 2.4 percent; of 17 female rowing gold medalists, one was shorter. [17:21] [17:53]
+- Garbled: a gymnast comparison reads "13 inches tall" and "43 pounds more", presumably a different height word. [19:26]
+- Heritage study: aerobic capacity rose 15 to 25 percent over 20 weeks for most people; 60 of 100 sit in the middle. The captions then give "25 percent" higher or lower and "15" extreme, with a garbled line about low responders. About eight in 100 are high responders and about three in 100 combine a high baseline with high trainability. [21:27] [21:58] [22:29] [22:59] [23:29]
+- Aerobic capacity: women in the 60s and 70s, some men into the 90s, as elite figures. [23:29]
+- Western Electric plant: 40,000 workers; study in the 1920s. [25:32]
+- Own ride: 250 kilojoules and about 140 watts net; 6.2 watts per kilogram is a podium-level threshold in the captions. [29:40] [30:42]
+- Nutrition: one gram of protein per pound of body weight per day and two fist-sized servings of vegetables a day, said to cover 80 percent. [34:48]
+- Stanford 2005 to 2006 team went 16 and 14. Players reported 7.8 hours of sleep but measured about six and two-thirds; extended to almost eight and a half. After five to seven weeks, a "282 foot" sprint was seven tenths of a second faster, free throws improved 9 percent and three-pointers a little over 9 percent. He compares nine percent to what EPO gives. [35:20] [35:50] [36:20] [36:51] [37:22]
+- Height is about 70 percent heritable, with on the order of 50,000 variations. [41:29]
+- Horse racing has plateaued since the 1970s and greyhound racing since the 1960s. [47:44]
+
+## Methods and frameworks named
+
+- Coefficient of variation of athlete performance. [06:11]
+- Aggregation of marginal gains. [09:15]
+- Heritage study design (standard endurance program, measure response). [21:27]
+- Two factors for trainability: baseline and response. [22:59]
+- Sleep-extension experiment with sensors and on-court tests. [35:50] [36:20]
+- Scenario planning idea: learn faster than opposition. [37:52]
+
+## Limits and open questions
+
+- The Stanford study gives no sample size; results are averages. [36:51]
+- The marginal-gains arithmetic is a philosophy, not a measured sum. [09:45]
+- Several statements are retold from other researchers, for example the variation figures and the heredity numbers.
+- The Hawthorne effect is called controversial by the speaker. [27:04]
+- Equipment costs are described as probably amortized over development. [11:16]
+- The speaker has a book to promote. [00:34]
+- Genetic claims are laid out loosely, and the captions garble parts of the response-rate breakdown. [22:29]
+
+## Q&A
+
+- Genetic enhancement and doping: no single gene for performance; anti-doping protects clean athletes. [41:29] [43:04] [44:06]
+- Teams turning into labs: some are trying, with the Sacramento Kings named as an example of radical experimentation. [45:10] [45:41]
+- Whether variation is a limit: it is natural variation, and it might shrink with more knowledge. [46:43]
+- Limits of human performance: curves are flattening; one expert expects far-future change over tens of thousands of years. [47:44] [48:14] [49:17]
+=====2015-03-10_GbGLCVAeb7A_nfl-s-next-generation-statistics-sponsored-by-zebra-technolo/summary.md
+---
+type: video-summary
+video_id: GbGLCVAeb7A
+title: "SSAC15: NFL's Next Generation Statistics (Sponsored by Zebra Technologies)"
+event: SSAC15 (MIT Sloan Sports Analytics Conference)
+speakers: [Vishal Shaw (NFL media strategy), Matt Burke (NFL football development), Sean Payton (caption spelling "Shawn Payton"), Marshall Faulk, moderator not named]
+topics: [american-football, sports-science, injury-health, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A sponsored lunchtime panel on the NFL's first season of league-wide RFID player tracking, supplied by Zebra. After a promotional opening, an NFL media executive, an NFL football-development executive, a head coach and a former running back and broadcaster discuss what the data changed in year one. The coach's first use was practice workload by position, aimed at fewer soft tissue injuries. Other uses discussed were player wellness, officials, combine testing, quarterback training, and fan products. The panel is mostly forward-looking and anecdotal: no accuracy figures or injury outcomes are s
+
+## Key claims
+
+- Zebra says its system was in 18 stadiums and worn by every player in 2014 [02:42].
+- The league says it collected more data this season than in its entire history, and expects that trend to continue [22:49].
+- The league chose RFID after evaluating dozens of technologies, on three grounds: right technology, right partner, and a five-year road map [24:19] [24:50].
+- The coach's first use was workload by position: distance by speed band, with an aim of keeping players healthy and cutting soft tissue injuries [28:24] [28:54].
+- Tracking let the coach see one receiver doing much more than the other receivers on a given day, which could change the next day's practice [29:25].
+- Early on, linemen reportedly walked in circles to avoid low distance numbers [29:56].
+- The coach says there is no comparable data yet for what a given practice day should look like [33:32].
+- The league speaker is cautious about putting real-time data on sideline tablets during games, citing competitive advantage and the need for thorough vetting [36:07] [37:41].
+- A league speaker says the data lets leagues move from anecdote to quantitative support for rule changes, and warns of false inferences from large data volumes [38:11] [38:41].
+- Data that confirms a coach's read (for example where a receiver aligns) makes a play caller more confident [41:50].
+- A former player says the data could change "does he still have it" conversations in contracts and evaluation, though what it means for a slower or faster player is unknown [42:53].
+- The league is considering whether in-game speed and distance could change combine testing, as a project for this offseason [47:26] [47:57].
+- The coach sees possible quarterback "simulator" use for rep-starved positions [49:29].
+- Panelists say knowing exactly how hard a game was could help recovery and might extend careers [50:32].
+- The coach says one year of practice data will shape practice scheduling in May, training camp and season [54:39].
+- The league's stated priorities for the next period: methodical distribution and wider access to the data, and three offseason areas: player wellness, officials, combine [53:08] [53:38].
+
+## Numbers and definitions
+
+- Zebra: patented RFID, in business since 1969, 90% of Fortune 500 clients (company promotional statement) [01:41].
+- 18 stadiums in 2014 [02:42] [23:49]; all players across all 32 teams; 130 live games [23:49].
+- Tracking goal: the wide area down to a 6-inch level [23:19].
+- A broadcast clip said a player "ran 19 mph" [06:50].
+- Stadium challenge listed: 80,000 fans with cell phones, plus occlusion and bursts of speed [23:19].
+- Receivers and defensive backs cover "six seven miles" in practice (captions run across a block boundary) [28:24] [28:54].
+- Offensive linemen average 1.8 miles [29:56].
+- Practice example: about two and a half hours at 95 degrees [28:24]; Wednesday shoulder-pad practice of two and a half hours versus a Friday of 50 minutes to an hour [33:02] [33:32].
+- A receiver "aligned here 95% of the time" in the nickel [41:50].
+- The league's 40-yard dash relies on a 30-year database [43:24].
+- Hypothetical combine tests: 60 yards for a defensive back or receiver, 20 yards for a lineman [47:57].
+- League official accuracy "98 plus percent" is flagged by the speaker as possibly internal numbers [27:24] [27:54].
+- The coach referred to two-point play percentages (captions say "twoo plays") with running slightly more effective than passing [34:03] [34:34].
+- Caption spelling: a receiver is rendered "Brandon Cooks" [28:54].
+
+## Methods and frameworks named
+
+- RFID tags on players and a stadium receiver network feeding real-time position data [03:14] [23:49].
+- Analysts on site who translate data for the coaching staff [29:25].
+- Workload by position group, speed band and day type [28:24] [33:02].
+- Evaluation of dozens of tracking technologies against three criteria (technology, partner, five-year roadmap) [24:19].
+- Broadcast and digital products built on the same feed [06:19] [46:25].
+
+## Limits and open questions
+
+- The panel is sponsored by Zebra and opens with company promotion [00:07] [04:48]; the league speakers describe their own program.
+- No injury outcome data, tracking accuracy, validation, or sample sizes are given; the coach's year-one goal is stated, not a result [33:02].
+- The captions have no speaker labels. Some statements (for example "I played all of two years ago") are not reliably attributable.
+- "Numbers don't lie" is a panelist's assertion [32:29] [42:53]; the same panel says nobody yet knows which metrics matter [20:15].
+- The 98 percent official-accuracy figure is flagged as possibly internal [27:24].
+- Possible garbles: "six seven miles", "twoo plays", "Zar", "Big D".
+- Ethical or data-ownership issues for players are not discussed.
+
+## Q&A
+
+- Audience: how could the data affect the combine, given some tests might be unnecessary? Answer: a project this offseason; in-game speed and distance may inform position-specific change [47:26].
+- Audience: how can the data help player health and wellness? Answer: know the wear and tear of a game, adjust the week, track training camp workloads, and prescribe hydration or recovery [50:01] [51:37].
+- Moderator: when does the coach go with gut over data? Answer: in some game situations (for example onside kick), but weekly data shapes the gut [46:56] [47:26].
+=====2015-03-10_PSTgbawtbEQ_sports-science-performance-analytics-presented-by-catapult/summary.md
+---
+type: video-summary
+video_id: PSTgbawtbEQ
+title: "SSAC15: Sports Science: Performance Analytics (Presented by Catapult)"
+event: SSAC15 (MIT Sloan Sports Analytics Conference)
+speakers: [Clint maresi (caption spelling, student panel lead), "ad dear schiffman" (caption spelling, executive chairman of Catapult), John branis (caption spelling, host of ESPN Sports Science), Dr Leslie Saxon, Joe rowski (caption spelling, head strength and conditioning coach of the Houston Rockets), Tom habber (caption spelling, moderator, ESPN NBA analyst)]
+topics: [basketball, sports-science, injury-health, policy, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A Catapult-sponsored panel on wearable and biometric data in sport, with a vendor executive, a TV sports-science host, a cardiologist who works on implantable sensors, and an NBA strength coach. The panel argues that fear of "big data" is really a trust problem, that athletes should receive their own data, and that numbers need context: position, style of play, sleep, travel and the person. It debates minutes limits versus measured load, warns against over-reliance on analytics, and calls for data standards and clear player policy. Many claims, such as injury drops at named teams, are speaker-
+
+## Key claims
+
+- A panelist argues that fear of big data fades when it is framed as understanding injury risk and peaking on game day [03:11].
+- A panelist argues that data is not about the biggest, fastest and strongest, but a "goldilocks" zone, using receiver and running back examples [04:42] [05:12].
+- Dr Saxon argues that athlete reluctance is a trust issue, that players must be at the table on how data is used, and that implantables are seamless for busy staff [05:42] [06:12] [06:42].
+- She says athletes engage when given competitions and a deliverable, but lose attention quickly during the learning phase [07:44] [08:14].
+- The Rockets coach says trust is crucial, that the work is for athletes' long-term futures, and that athletes can only be asked for about ten favors a season [08:44] [09:14].
+- The Catapult executive says 500 teams use the technology, some in games with real-time substitution decisions [10:14].
+- The host says elite athletes want to look "under the hood" but do not obsess about one metric [11:46]; he skips metrics during an event but uses them in training [12:16].
+- It is hard to sell tracking to all-star players who succeeded without it [13:17].
+- A panelist says data should be democratized, for example a private one-to-five score in an app, to motivate athletes [14:18].
+- The Catapult executive predicts two kinds of teams in five years and calls the technology proven [14:48] [15:18].
+- Reported results: the Colts' injury reserve dropped from 15 to 3 in year one, and Florida State soft tissue injuries dropped about 87% [15:48].
+- A panelist says the middle of the curve (speed, size) can be the right target for running backs [17:18] [17:48].
+- The Rockets coach says minutes are a poor unit; two players with equal minutes can run different distance, and teams may be under-training players [19:23] [20:25].
+- Another panelist says fixed limits such as pitch counts are a narrow view; early specialization and year-round play also matter [21:27] [21:57].
+- A panelist says league injury and performance data could be modeled to answer minutes questions better than judgment [23:28].
+- The Rockets coach says the field is "not there yet" and the picture changes monthly; no set model exists [25:31].
+- He says some teams have hurt themselves with too much analytics and lost sight of the goal [26:31] [27:01].
+- Dr Saxon says data must be accurate and heart-rate type data need validation, such as with an EKG [28:33] [29:04].
+- The Rockets coach says one number is one piece among many variables, with a caution about comparing different roles [31:07] [31:38].
+- A panelist says sleep is a master variable and NBA travel is a major issue [32:39] [33:09].
+- A panelist says teams most embracing the technology have a culture of innovation and use many technologies [35:10] [35:41].
+- A panelist says a central aggregator and standardization are needed because each team interprets the same data differently [36:11] [36:41].
+- Panelists say athletes should be included and given their data, comparing it to medicine [37:42].
+- The Catapult executive says unions are sophisticated and the shared interest is healthier players who play more [45:23].
+- A panelist says concussion forces are far beyond thresholds, so rule changes and scenario changes matter more than equipment [47:26] [47:56].
+- A USC soccer example: sensors showed a coach was running players six miles the day before a game, and injuries and results improved [49:27].
+- A panelist says calm under pressure is the common trait in elite athletes and special forces [52:28] [54:31].
+- Closing view: existing tools are underused, so adoption and context matter more than new devices [56:35] [57:06] [57:36].
+
+## Numbers and definitions
+
+- NBA 35-minute players: 17 this year, 33 last year, "60" a few years ago (captions garbled) [17:48] [18:20].
+- Jerry Rice not in the top 300 fastest receivers; top five running backs none taller than 6 feet, average about 205 pounds [04:42].
+- Ten favors a season; two hours a day [09:14].
+- Catapult: 500 teams [10:14]; a thousand data points a second per player in practice [38:44].
+- Sports Science show: season 8, a thousand segments [11:16].
+- Colts injury reserve 15 to 3; Florida State 87% [15:48].
+- Player A three miles vs player B one mile at 35 minutes (simplified example) [19:23].
+- Harden about 30 miles less than Chandler Parsons at the same minutes (captions; names as spoken) [30:06].
+- Twenty different variables [31:38].
+- Four games in five nights [33:09].
+- 82 games versus 60 games [06:42].
+- USC: six miles the day before a game [49:27].
+- Navy SEAL: average person hypothermic in about eight minutes, 20 minutes elite, over an hour in ice water [53:28].
+- Concussion removal "90 days or six months" as an example [47:26].
+- Fan products in three to five years [40:46]; five years [14:48].
+
+## Methods and frameworks named
+
+- Wearable accelerometer and heart-rate sensors, camera tracking (SportVU), implantables [06:42] [19:54].
+- Player load as an alternative to minutes [19:54].
+- Collaborative review among strength, medical, coaches and management [18:52] [30:36].
+- Combining structured data with video and unstructured data [23:59].
+- Historical comparison of successful athletes' careers [24:30].
+- Private athlete-facing scale or color app [14:18].
+- Special forces testing under stress [52:28].
+
+## Limits and open questions
+
+- The panel is sponsored by Catapult and includes the vendor's executive chairman; claims such as "proven technology" are the speaker's commercial view [15:18].
+- Injury-drop figures have no sources, baselines or controls [15:48].
+- The captions have no speaker labels, so many claims cannot be attributed with confidence.
+- Several speakers contradict each other: biometrics are "proven" [15:18] versus the field is "not there yet" [25:31]; athletes want data versus athletes lose attention quickly [11:46] [07:44].
+- Some claims (adrenal fatigue, sleep as master variable) are given with no source [33:09] [33:39].
+- The Rockets coach says nine years in the league [26:01] and later ten years [29:34].
+- Implantable accuracy is asserted, not shown [28:33].
+- Garbled names: "Shane", "Dwight", "Mike Danton", "Michelle Roberts", "Paul Robinson", "JJ reick", "Travis pastr", "Stu Smith"; "ad dear" may be a garbled first name.
+
+## Q&A
+
+- How should players associations handle biometric data policy? Unions are sophisticated; shared goal is player health and availability [44:53] [45:23].
+- Can biometrics reduce sudden injuries such as concussions? Forces are very high; rule and scenario changes matter more [46:55] [47:26].
+- How will blood data be used over the next five to ten years? Point-of-service blood data may be predicted by other sensors; endocrinology is a possible next frontier [48:27] [48:57].
+- What is the frontier in brain training and in-game decisions? No "muscle memory"; nerve pathways; decisions under pressure are hard to test ahead of time [51:27] [52:28].
+- What would we learn from a pulse of every athlete in a game? Golf putting example with heart rates [55:01] [55:31].
+- What do you want out of biometrics in 2015? Adoption and context of existing tools, integration, focus [56:35] [57:06] [57:36].
+=====2015-03-10_PX_N6MpkHTg_amateurs-or-industry-ncaa-reform/summary.md
+---
+type: video-summary
+video_id: PX_N6MpkHTg
+title: "SSAC15: Amateurs or Industry: NCAA Reform"
+event: SSAC15 (MIT Sloan Sports Analytics Conference)
+speakers: [Warren Zola (moderator), Oliver Luck, Mike mccan (caption spelling), Jim Phillips, Rod Thorne (caption spelling), Amal mapani (caption spelling; student host)]
+topics: [policy, american-football, basketball]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A 2015 panel of NCAA, university, law and NBA voices debates how college sports should change as money, lawsuits and the Power 5 split reshape the amateur model. Panelists discuss whether athletes are employees under labor law, an antitrust challenge to scholarship caps, Title IX limits on paying revenue-sport athletes, the NBA age rule, and the role of agents. Most speakers favor gradual recalibration over abolition, with more weight on academics and athlete health and welfare. No analytics or data models are shown. The value for a performance staff is the policy context that shapes eligibili
+
+## Key claims
+
+- Jim Phillips (Northwestern) says campus athletics exists to teach skills such as teamwork that a classroom does not, and that academics must be the base of any reform. [03:37]
+- Oliver Luck says he joined the NCAA because he thinks the college model is unique in the world and worth saving while reforming what is broken. [06:11]
+- Rod Thorne (NBA, caption spelling) says the league's concern is player health, including very dense schedules, and that the injury level is no higher than in recent years. [08:15]
+- Mike mccan (caption spelling) explains that if football players are declared employees, a separate vote is still needed to unionize, and a ruling could let athletes at other private schools rely on it. [10:17] [10:47]
+- Mike notes the employee question is tricky because only some athletes (football) might unionize, leaving others unclear. [11:17]
+- Jim lists recent reforms: unlimited meals, full cost of attendance, four-year grants. [13:19]
+- Jim asks whether seasons are too long and time demands too high, and mentions a "year of readiness" idea that needs study. [13:51] [14:21]
+- A panelist, citing a former NCAA president, says amateurism is a social construct that changes by era. [16:23]
+- A panelist says cost of attendance is a federal calculation done by each school's financial aid office and that athletes have been under-resourced for decades. [18:26] [19:29]
+- Rod says the NBA one-year rule is a disaster for colleges but better for the NBA than drafting from high school; the league would prefer two years but needs the Players Association. [22:31] [23:03] [23:35]
+- Mike says those hurt by eligibility rules have no seat at the bargaining table, and a legal challenge to the age rule would likely also name the union. [24:05] [25:07]
+- Oliver says rules on agents may be liberalized so athletes get better information, with a warning that some advice would be self-serving. [27:38] [28:39]
+- Jim says realignment was partly driven by finances, and that nearly all programs lose money without institutional subsidy. [30:42] [31:11]
+- Mike expects Title IX litigation if men's basketball and football players are paid. [33:14]
+- Mike says the Jenkins antitrust case could be a game changer, but stars would gain while many athletes might not exceed the value of a scholarship. [35:48] [36:19]
+- Schools are budgeting for a trust fund per year under a judge's order (caption: "oanon" case, judge "wilin"). [34:16] [34:46]
+- Predictions: Oliver sees a healthy enterprise with more liberalization and academic emphasis [38:24]; Mike sees a trust-fund compromise and a capped, group-negotiated name and likeness model [39:24] [40:28]; Jim hopes pro-bound athletes get non-college options such as training academies [42:32]; Rod says the NBA's minor league could play a larger role [44:35].
+- Jim says schools made decisions that were not in athletes' interest, and that graduation rates and academic standards either matter or they do not. [53:51] [54:53]
+- A panelist says a single national academic cutoff is hard because campuses differ in mission. [55:24]
+- Mike says coaches, not presidents or athletic directors, often hold the decision power, unlike in pro leagues. [56:55] [57:27]
+
+## Numbers and definitions
+
+- About 2.7 to 2.8 billion dollars in scholarships a year. [05:40]
+- Over a thousand NCAA institutions, about 300 in Division I, 65 in the Power 5 (moderator's figures). [15:21] 351 Division I schools. [15:52]
+- At one panelist's former campus, 141 athletes had Pell grants (caption "pill Grant"; the count may be garbled). [16:54]
+- Cost of attendance adds 2 to 4,000 beyond the athletic scholarship. [17:56]
+- NBA 2005 negotiation set the one-year-after-high-school rule. [22:00]
+- Developmental league salary mentioned as "I think 25,000". [25:37]
+- 1100 schools play college athletics and 23 turn a profit without subsidy. [31:11]
+- 23 coaches paid more than 2.5 million (moderator, "I think it was 23"). [32:11]
+- Trust fund of 5,000 dollars per year. [34:46] Caption at [39:56] reads "$55,000", probably garbled.
+- Northwestern: 492 athletes, 19 sports (11 female, 8 male); the spending figure "over $800,000" is ambiguous in the captions. [47:40]
+- Hypothetical: student body graduation rate of 65 percent used as an example. [56:25]
+- NLRB vote described as five votes, possibly three to two. [10:47]
+
+## Methods and frameworks named
+
+- Labor law: employee status under the National Labor Relations Act, then a separate union vote. [10:17]
+- Antitrust: the Jenkins case argues scholarship caps restrain trade. [35:48]
+- Title IX parity. [33:14]
+- Collective bargaining as the route for league age rules. [22:00]
+- Federal cost-of-attendance calculation. [18:26]
+- Academic Progress Rate (APR) called better than before but a weak standard. [52:50]
+- Proposed graduation-rate proportionality: compare athlete rates to the school's own student body. [56:25]
+
+## Limits and open questions
+
+- No data, analytics or models were presented; this is opinion and legal commentary.
+- Speakers represent the NCAA, a university, the NBA and a law school; each speaks from an institutional position.
+- Outcomes were pending in 2015 (labor board decision, appeal of the antitrust case).
+- Captions do not mark speaker changes; some attributions above are by context. Several names, case names ("oanon", "Kesler") and figures are garbled.
+- Claim that coaches are the highest paid public employee in 40 of 50 states is garbled ("40 of the highest paid employees and 40 of the 50 states") and unverified. [57:27]
+- Predictions at [38:24] to [44:35] are untested.
+
+## Q&A
+
+- Does UAB dropping football signal more schools doing so? Panelists say probably not; it was a unique situation. [46:39]
+- Why keep athletic scholarships rather than need-based aid? A panelist says the experience seems similar either way and need-based aid may be discussed. [48:40] [49:12]
+- What does reform mean for Olympic sports? Mike says they are on the sidelines now and could be the next phase of legal challenges. [50:15] [50:47]
+- How to handle academic standards and the North Carolina lawsuit? Jim says institutions must be accountable; another panelist says one cutoff would hit campuses differently. [51:49] [53:51] [55:24]
+- Could graduation targets be proportional to the school's student body rate? Panelists say it has merit. [56:25] [56:55]
+=====2016-04-02_LkNYHpC82yc_sports-performance-measurement-and-analytics/summary.md
+---
+type: video-summary
+video_id: LkNYHpC82yc
+title: "SSAC16: Sports Performance  Measurement and Analytics"
+event: SSAC16 (MIT Sloan Sports Analytics Conference)
+speakers: [Dr Lorena Martin (caption spelling, named by the host)]
+topics: [sports-science, american-football, basketball, injury-health, other-sport:tennis]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker argues that sports data scientists need subject matter knowledge, including basic physiology, because athletes differ by sport and by position, and so should the way they are measured. She compares NFL and NBA combine results by position, questions whether single tests (the bench press especially) suit every position, and presents a measurement model with physical, physiological, psychological, behavioral and environmental variables. She briefly describes a tennis pilot on narcissism and calls for individualized "precision athleticism" using wearables, borrowed from precision medic
+
+## Key claims
+
+- Data scientists in sport should be able to discuss their sport as a fan would, not only the numbers [02:05].
+- Muscle fiber type is partly genetic and partly trained; type one fibers resist fatigue but give less power and force, type two the reverse [04:37].
+- The three energy systems are phosphagen, glycogen and oxidative; a maximal sprint relies on the first only briefly before speed drops [06:42, 07:14].
+- Between sports, and between positions within a sport, athletes should be assessed and trained differently [10:16].
+- NFL combine results differ by position, shown with a simple ANOVA on public data [13:52].
+- The bench press may not suit some positions; she asked whether a quarterback should be tested on it at all and said she was only posing questions [13:52].
+- Height is not the best predictor in basketball; wingspan and hand size are better [17:00].
+- Psychological variables are often neglected and should be measured, but available scales are self-reported and biased [19:34, 20:05].
+- Outliers should be studied, not just removed [23:07].
+- Treatment should be individualized ("n of one") using wearables, as in precision medicine [27:13].
+- Psychological variables can be trained, with some harder to change than others [30:15].
+
+## Numbers and definitions
+
+- Seven to eight muscle fiber types exist, simplified to type one and type two [03:36].
+- Phosphagen system dominates the first five to 10 seconds of a maximal effort [06:42].
+- Work to rest ratios of "1:3, 1:2, 1:20" are mentioned [08:15]; the captions are garbled and the intended ratios cannot be confirmed.
+- NFL combine bench press is at 225 pounds; centers reached about 35 to 40 reps [13:21].
+- NBA draft bench press is at 185 pounds, with results up to five, 10 or 15 reps [15:27, 15:59].
+- "Load" here means resistance weight, not wearable load [15:59].
+- Muscular strength is maximum force in one repetition; muscular endurance is maximum repetitions [13:21].
+- Brady is cited as winning four out of six Super Bowls, as an outlier example [23:07].
+
+## Methods and frameworks named
+
+- ANOVA with Tukey post hoc tests (normality assumed) on public combine data, in R [11:18, 13:52].
+- A measurement model with her colleague: physical variables (strength, power, endurance, flexibility, reaction time, coordination, body composition, specific skills), physiological (lactate threshold, resting heart rate, blood pressure, VO2 max, glucose and insulin, injury history, telomere length, methylome), psychological, behavioral and environmental [17:31, 18:31, 19:03].
+- Implicit association task to probe confidence versus narcissism by reaction time latency [21:05, 22:05].
+- Precision medicine framing, "n of one" trials, time varying covariates [27:13, 27:44].
+
+## Limits and open questions
+
+- The tennis pilot gave no sample size, results or validation [20:35 to 22:05].
+- Combine position comparisons are not tied to game performance or to injury.
+- Self-report measures are acknowledged as biased [20:05]; the implicit task was shown only as a similar example.
+- The cryotherapy, stem cell and gene editing remarks are loose and not evidenced [24:39, 26:43].
+- Claim that the injury risk of a quarterback tested on the bench press is raised is explicitly not asserted [13:52].
+- Book promotion and commercial thanks to a sponsor appear at [28:14].
+
+## Q&A
+
+- A question on how the data would be used: she would use it for injury prevention, baselines and response to training [29:14].
+- Can psychological variables be modified: yes, with willingness, though some are harder [29:44, 30:15].
+- Self-reports and big data: patterns may become clearer, and self-efficacy, confidence and narcissism need better objective models, which she called a call to action [31:19, 31:50].
+=====2016-04-07_Alj_VvBZaqo_can-you-really-predict-athletic-injury-and-performance/summary.md
+---
+type: video-summary
+video_id: Alj_VvBZaqo
+title: "SSAC16: Can you Really Predict Athletic Injury and Performance?"
+event: SSAC16 (MIT Sloan Sports Analytics Conference)
+speakers: [Phil Wagner (founder and CEO of Sparta Science, per the host and his own introduction; the host's caption spelling is "Dr phel Wagner")]
+topics: [sports-science, injury-health, other-sport:baseball, american-football, basketball, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Phil Wagner, founder of Sparta Science, argues that a standardized vertical jump on a portable force plate can flag injury risk and physical readiness, including upper body injuries in baseball pitchers. He models the approach on medicine: clinical expertise, athlete input and evidence, plus a standardized assessment. The jump is scored on three phases (load, explode, drive) into a "movement signature" with thresholds, and software turns imbalances into a prioritized exercise plan. Injury history, sport load and sleep sit on a dashboard. The talk is a vendor presentation with case studies and 
+
+## Key claims
+
+- A jump can predict an injury, specifically an upper body injury. [01:05]
+- Building prediction models generally takes 3 to 5 years of data, and Sparta has about seven years across MLB, NFL, NCAA and several countries. [03:36] [04:07]
+- The jump was chosen because other tests (sprinting, agility, throwing, hitting, single-leg jumps) are less reliable. [09:05]
+- The jump is split into load (standing to squat), explode (how quickly the athlete comes out of the bottom) and drive (how well the movement is prolonged); each is tied to success in different positions or sports. [09:05] [09:36]
+- The three scores form a "movement signature," expressed as a t-score where 50 is average. [10:06] [10:39]
+- Plates and vertical jumps are not new; what is new is thresholds for what is meaningful. [10:39]
+- In one pitcher case, a particular uneven pattern (a "healthy imbalance") is associated with ground ball percentage, and Stanford School of Medicine and BYU statistics are said to have validated it. [11:10]
+- A minor league pitcher had rising drive without matching load and then tore his UCL; a publication is said to show drive rising without load predicts severe elbow injury. [12:43] [13:13]
+- The plan starts with the lowest variable, then the next one if it is far enough from the others, then left/right differences, recovery, nutrition, hydration and sleep. [13:45] [14:15]
+- Being digital is not the same as being scientific. [14:51]
+- The program knows where an athlete will be 14 days after a given squat prescription, and general managers call to ask how long until risk is reduced. [15:21]
+- Previous injury is the biggest predictor of any injury, and recent sport load adds risk. [16:24] [16:54]
+- Organizations can decrease injuries 10 to 20% each year. [17:24]
+- Sleep is entered subjectively on a phone app, and the speaker says entries can vary depending on whether contracts are guaranteed. [19:52]
+- Sparta is a database company, not a force plate company; other biomarkers are a future area. [20:23]
+- A left versus right balance test (eyes closed is more reliable) and a single-leg landing test serve return to play when jumping is not possible. [21:29] [22:31]
+- Prior injury is added as a covariate in the predictive model, with decision trees run by statistics partners. [24:05] [24:37]
+- The test is physical and removes skill, so it shows whether an athlete needs more skill work or more physical work. [26:42] [27:12]
+- Exercises can push a variable the wrong way: squat has the largest effect on load and is the biggest negative detractor of drive. [28:16] [28:49]
+- Position affects loading, but movement patterns are shared by skill type across sports. [29:20]
+- The system cannot replace discussion; a subjective flag should prompt a conversation with the athlete. [29:52] [30:23]
+- Organizations that are most transparent, for example athletes reviewing data within 24 hours, see more buy-in. [31:40]
+- The test is not blind; variables are averaged across trials; only load shows a learning effect, which can expose pain or soreness. [32:19] [32:50]
+- In baseball the largest prediction target is Tommy John UCL injury (four years of weekly MLB assessments); in the NFL it is a foot injury (caption "Liz Frank," probably Lisfranc, caption spelling), then ACL. [34:05] [34:35]
+
+## Numbers and definitions
+
+- "Predict 99 injuries" for an MLB team in 2014 [04:07]. The captions give no denominator or percentage and may be garbled. Not usable as stated.
+- "$22.5 million" then "$225 million" of predicted season savings [04:39]. The two figures conflict in the captions; the correct one cannot be told from the captions.
+- MLB lost over $700 million to injury in 2014. [05:12]
+- Seven years of data [03:36]; 3 to 5 years to build prediction models [04:07].
+- Portable force plate weighing about 40 pounds. [08:33]
+- T-score: a scaled, more accurate percentile; 50 is average. [10:06] [10:39]
+- Drive "more than 15 from the others" is the flag tied to severe elbow injury [13:13]; the captions give no unit. The second-variable check is "more than five" [13:45]; the following words ("only one way") are garbled.
+- Squat at 80% of bodyweight for five sets of five leads to a known state at 14 days. [15:21]
+- Pitch count over the last 30 days more than two standard deviations above the athlete's normal. [16:54]
+- Claimed injury reduction of 10 to 20% per year. [17:24]
+- Balance test: 20 seconds, two on each side; left/right t-score of 48 to 51 shown as typical, below 40 is a large risk increase, a left/right difference of 10 is a large injury increase. [21:29] [23:04]
+- Four years of weekly MLB assessments. [34:35]
+
+## Methods and frameworks named
+
+- Vertical jump on a portable force plate with a standardized warm-up and set number of trials. [07:48]
+- Load, explode and drive scores combined into a movement signature and t-scores. [09:36] [10:06]
+- Thresholds built from an anonymous aggregated database of high school, college and professional athletes. [04:07] [10:39] [25:07]
+- Prioritized prescription: lowest variable first, then the next if far from the others, then left/right and recovery inputs. [13:45]
+- Dashboard combining scan, previous injury, sport load and recovery logs with alerts. [16:24] [17:56]
+- Decision trees with covariates run by statistics partners. [24:37]
+- Medicine analogy: clinical expertise, patient input, medically based studies. [05:43] [06:13] [06:44]
+
+## Limits and open questions
+
+- No data, sample sizes, false positive rates or confidence intervals appear in the captions. "Predict" is used without saying whether prospective or retrospective.
+- The 99 injuries and savings figures are garbled or inconsistent.
+- The publication on drive and elbow injury is not named. [12:43]
+- Third-party validation (Stanford, BYU) is stated without results. [11:10]
+- The 10 to 20% yearly reduction has no stated comparison group. [17:24]
+- The 14-day claim is stated as known with no evidence. [15:21]
+- Commercial view: the speaker founded and sells the product.
+- The main case studies are two pitchers, one named.
+- Sleep is self-reported. [19:52]
+- Football prediction is described as a ground-up model, less mature than baseball. [34:35]
+- The video has a gap between [17:56] and [18:48], and questions are not audible in the captions, so question wording below is inferred from the answers.
+
+## Q&A
+
+- How is sleep monitored? Subjective phone entry. [19:52]
+- Would other body chemistry data be added? Yes, as a future area. [20:23]
+- How does the left versus right balance test work? Shown with a return-to-play example. [21:29]
+- How are covariates such as existing injury handled? Added to the model. [24:37]
+- Can this apply to youth? Not yet; the database starts at high school. [25:07]
+- Individual sports? Mostly track and field so far, plus NBA and Kansas basketball. [25:37]
+- In-game wearables, skill versus physical? The test removes skill. [26:42]
+- Negative effects of exercises? Squat raises load but lowers drive. [28:16]
+- Positions? Loading differs; movement is shared by skill type. [29:20]
+- Subjective variables? Not correlated yet; they should prompt a discussion. [29:52]
+- Player buy-in? Transparency, such as reviewing data within 24 hours. [31:09]
+- Is the test blind, can it be cheated? Not blind; averaged; load is sensitive to pain. [32:19]
+- Future of Sparta? Help organizations prioritize their time. [33:35]
+- What is predicted in each sport? UCL in baseball; foot then ACL in the NFL. [34:05]
+=====2017-03-14_40NV3_u9tYY_nfl-player-assessment-test-using-psychological-tests-to-pred/summary.md
+---
+type: video-summary
+video_id: 40NV3_u9tYY
+title: "SSAC17: NFL Player Assessment Test: Using Psychological Tests to Predict Player Performance"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Ken yuso (caption spelling), Charles sheram (caption spelling)]
+topics: [american-football, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Two industrial and organizational psychologists describe a one-hour psychological assessment given to every player at the NFL combine since 2013. It measures cognitive ability and personality traits tied to football, and is meant as an addition to physical and film evidence. A three-year validation study compared combine scores with coach ratings of players after at least a year, plus penalties and injuries. Correlations are modest (about 0.22 to 0.35) but the speakers show that top and bottom scorers are rated very differently. The second half describes player-type clusters, a bust-rate compa
+
+## Key claims
+
+- The goal was to add a standardized psychological measure alongside combine physical tests, not to replace them [04:13], [06:17].
+- A league study with team executives produced 16 factors, with intelligence and personality as the two key areas [05:46].
+- Intelligence items cover learning, thinking quickly and avoiding mental errors; personality items cover leadership, teamwork, self-control, dependability, preparedness and team fit [06:50].
+- The test has run at the combine since 2013 with full participation, and the data were also turned into a coaching report [07:20], [07:51].
+- The validation compared pre-draft scores with coach ratings after the players had been on a team for at least a year [09:54].
+- The speaker calls correlations of this size good for behavioral science and says they are uncorrected [10:24].
+- High, middle and low test scores matched coach rating bands; coaches were more straightforward than expected [12:27], [12:59].
+- Low scorers on intelligence were about three times as likely to be rated poor as star; high scorers about three times as likely rated star [13:30].
+- Personality: low scorers were about four times as likely to be rated low, high scorers about four and a half times as likely rated high [14:32].
+- Intelligence and personality together predicted some ratings better, such as decisions under stress [15:33], [16:03].
+- Decisions under stress also correlated with penalties per play and yards per penalty, and the result held in a larger sample [16:35], [17:07].
+- Personality variables relate to injuries only weakly, with significance, in an early study; injury type has not been examined [17:37], [18:07].
+- Cluster analysis found nine player types combining coach-rated physical talent and the psychological scores [22:16].
+- A "whole package" cluster had a lower bust rate than a low-on-everything cluster, and two clusters with opposite strengths had the same failure rate [24:19], [25:20].
+- The speakers argue this approach can find undervalued players and de-risk draft and contract decisions [25:51].
+- Planned work: longitudinal models for second-contract decisions [26:53], [27:24].
+
+## Numbers and definitions
+
+- Test length: one hour [07:20]. Almost 100 players tested the morning of the talk [28:26].
+- Validation: three years, 1,500 player scores, about 330 combine participants per year (plus a Super Regional), about 70 percent team participation across all 32 teams [08:52], [09:22].
+- Coach ratings on about 24 dimensions after at least a year; about 500 players with performance data [09:54].
+- Coaches' scale of about seven points [12:59].
+- Correlations (captions read "0 28," "about3," "a0 29," "about 35," "0 22"): about 0.28 [10:24], about 0.3 for the cognitive composite [10:56], about 0.29 for personality [11:26], about 0.35 combined [15:33], 0.22 for decisions under stress [16:03]. The captions garble the decimal points; these are the likeliest readings.
+- Top and bottom groups each about 25 percent of the sample [12:27].
+- Rated low by coaches 13 percent of the time, good to great 87 percent (high intelligence scorers) [14:01]; 91 percent good to great (strong personality scorers) [15:02].
+- Larger penalty sample about 400 players [17:07].
+- Clusters: nine profiles from 2014 to 2016 data, shown as z-scores [22:16].
+- "Approximate value" of four or below is read as a bust, about half of drafted players; six or above counts as successful [23:48], [24:19]. Bust rate 41 percent in the "whole package" cluster and 83 percent in the low cluster [24:19]. A "0%" figure for the six-or-above line in the low cluster is stated at [24:50]; the caption is unclear.
+- Pick 199 in the sixth round (Tom Brady, 2000 draft) as an example of misses [03:11].
+
+## Methods and frameworks named
+
+- Competency model from a team-executive study; subscale items built from intelligence and personality dimensions [05:46], [06:50].
+- Criterion validation against coach ratings, penalties, yards per penalty and injuries [09:54], [17:07], [17:37].
+- Cluster analysis and mixture models for player types [21:46]; Pro Football Reference approximate value as the outcome [23:48].
+- Planned longitudinal modeling [26:53].
+
+## Limits and open questions
+
+- The main outcome is coach opinion; the talk does not say whether coaches saw the test results [09:22].
+- No confidence intervals, sample sizes by cluster or position breakdowns are shown for the clusters [22:16], [25:20].
+- Injury relationship is small and unreported in effect size [17:37].
+- Rookie-year and one-to-two-year outcomes only; long-term is future work [26:23].
+- The speakers sell or run the assessment; Harold Goldstein, a co-author, was absent [00:03].
+- Several names and terms are mis-captioned ("Wonderlick," "Dbacks," "Yak").
+
+## Q&A
+
+No Q&A in the recording; the speakers invite questions afterward [28:57].
+=====2017-03-14_8XrPoEKFpvA_a-focused-approach-to-analytics-maximizing-player-performanc/summary.md
+---
+type: video-summary
+video_id: 8XrPoEKFpvA
+title: "SSAC17: A Focused Approach to Analytics: Maximizing Player Performance"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Ted Ellickson (caption spelling; presenter), Brian cop (caption spelling; introduced as head of Catapult North America)]
+topics: [american-football, sports-science, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A presentation from a company that combines athlete tracking data with coaching video. The main speaker, a former college football graduate assistant, argues that data only matters if coaches understand it and believe it. He uses a personal story about missing bowl-game stats to show that analysts must know the limits of their data. He describes observed versus laboratory metrics, the value of consistent third-party data, and the need to validate new tracked metrics against film. He says staff should set thresholds, and analysts should earn trust by checking current decisions. The talk is a ve
+
+## Key claims
+
+- The company's data pairs with coaching video, since coaches work in video. [02:06]
+- Analysts must know the boundaries of their data; a missed bowl-game stat in a report cost the speaker and a colleague credibility with the head coach. [05:41]
+- Metrics have long come in two kinds: observed (video, practice) and laboratory. [06:42]
+- Some fields are empirical (down, distance) and others subjective (formation, personnel), and verbiage differs by staff. [08:14]
+- Third-party data gives consistent definitions across teams. [09:46]
+- A defined metric such as burn defender can save coaches large amounts of review time, at the cost of some false positives. [10:18]
+- Coaches grew willing to use third-party data after comparing it with their own for about a year. [10:49]
+- Staff buy-in decides whether findings are used. [12:23]
+- Metrics must be accurate and precise, and must help win a game. [14:28]
+- A researcher whose results cannot be explained to a coach does not matter to the coach. [15:30]
+- Wearables allow metrics from practice and games rather than the laboratory. [16:01]
+- Staff must decide the threshold that matters for a given sport and metric. [18:03]
+- Coaches often get spreadsheets of tracking numbers that do not relate to their coaching points. [18:33]
+- Load metrics can address within-game, weekly and seasonal preparation and injury risk, but coaches often do not understand them. [19:03]
+- Players may resist if they fear the data shows they are out of shape. [19:34]
+- The company validated a repeat-effort movement metric against hours of video. [20:35]
+- A radar view overlays tracked speed on practice film, letting coaches pick color thresholds. [22:06]
+- Specific film examples (a cut one way versus the other) make the data usable with athletes. [22:38]
+- Buy-in needs to run from head coach to players. [23:09]
+- Build the relationship by checking how the staff decides today and validating or invalidating it. [24:11]
+- Many research papers will go unused if no team relates to them. [24:41]
+
+## Numbers and definitions
+
+- The speaker's story is dated 1996 (first year as graduate assistant), with a call in 2000. [02:36], [04:40]
+- Report: a three-ring binder about an inch thick, several hundred pages. [03:38]
+- The captions for the player's bowl-game line are garbled: five catches and a figure that reads "another hundred 38 yards." [03:38]
+- Burn defender: defined as a receiver within two yards of the person who caught the ball. [10:18]
+- 256 games and 40,000 plays for an NFL season; the captions say 87 results with "eight full false positives" (garbled). [10:18]
+- Hockey example: heart rate above 165 beats per minute, a shift of 25 seconds, recovery in under 20 seconds versus two minutes on the bench. [17:32]
+- Coaches and scouts watch video 10 to 14 hours a day. [20:35]
+- The movement metric was developed over a year. [20:35]
+- Radar-view example threshold of 12 miles an hour; the second figure ("80 miles hour") is garbled. [22:06]
+
+## Methods and frameworks named
+
+- Observed versus laboratory metrics.
+- Peer-review test: accurate, precise, understandable to coaches, helps win.
+- Validation of tracked metrics against video by staff.
+- Radar view: tracked speed over practice film with staff-chosen thresholds.
+- Third-party event data (a named provider appears in captions as "ProFootballFocus").
+
+## Limits and open questions
+
+- The talk is a vendor presentation; claims about the value of combining video and wearable data are the speaker's commercial view.
+- No data, sample sizes or results were shown for any validation.
+- Captions are very garbled in several passages (speed thresholds, false-positive counts, statistics).
+- Names in the story may be misspelled. Adam "gay" in the captions was named as a former student and later a head coach of the Dolphins (caption spelling).
+- Smart-ball and heart-rate examples are described as examples, not results.
+- No Q&A was captured; the talk ends with applause. [25:11]
+
+## Q&A
+
+No Q&A in the captions.

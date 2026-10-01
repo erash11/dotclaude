@@ -1,0 +1,704 @@
+=== 2017-03-14_AO1Q9_SX_Us_quantifying-injury-risk-presented-by-kitman-labs/summary.md
+---
+type: video-summary
+video_id: AO1Q9_SX_Us
+title: "SSAC17: Quantifying Injury Risk presented by Kitman Labs"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Stephen Smith (caption spelling; CEO of "Kidman labs" as captioned), Ronan Parisi (introducer)]
+topics: [injury-health, sports-science, american-football, basketball, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The CEO of an athlete-management and analytics company argues that injuries drive wins, and that most teams use load data wrongly. Using base salary as a stand-in for performance, he links lost salary from injuries to wins in the NBA and NFL. He then presents team-level charts where less load, not more, coincided with more injuries, and argues that common thresholds (a one standard deviation change, the 1.5 acute to chronic ratio) fail when checked against a team's own data. He says risk models need pooled, anonymized data and specific questions about pathology, timing and mechanism. Many results are shown only as charts, and the speaker's company is the source.
+
+## Key claims
+
+- Earlier attempts to link injuries to wins failed because counts of injuries or days lost assume every athlete matters equally [01:36], [02:06].
+- Base salary is used as a stand-in for contribution because the speaker believes the best talent is paid the most in a salary cap market [02:38].
+- Days lost are priced by deducting a day of salary per missed day, then correlated with wins [03:08].
+- The speaker says 63 percent of NBA injury spending is on avoidable injuries (ruptures, strains and sprains) [03:39].
+- In the NBA, health alone is said to decide about nine wins a year [04:10].
+- Injury rates are rising across leagues while time lost shrinks, and prevention spending is not working [05:10].
+- More data has meant more decisions but not better ones; people are disillusioned, as with fitness bands [05:40], [06:11].
+- A soccer team's higher exposure to high-speed running and explosive efforts coincided with no injuries, and lower exposure with more; the team had been holding athletes back [06:42], [07:13], [07:43].
+- Two NFL examples showed more risk with doing less, and for one team the degree of change mattered, not the total [08:13], [08:43].
+- Another NFL chart showed the reverse for accelerations: above 200 in a week, injuries were frequent [08:43].
+- The common baseball view that a small change in range of motion sharply raises risk is challenged; the speaker says it varies by person, and an increase in hip internal rotation was linked to elbow ligament strain more than the opposite [09:13], [09:43], [10:13].
+- A published acute to chronic ratio threshold did not fit any of four rugby teams in one league [10:13], [10:43].
+- Each team and each person has a different load signature, including phenotypes that break from too much load, too little, or both [14:15], [14:46].
+- Risk tolerance should change with roster and opponent [13:14].
+- Good injury models need specific questions about pathology, season phase, practice versus game, and injury mechanism [16:48], [17:18], [17:49].
+- The speaker says no one is truly doing injury prediction with machine learning [15:46], [16:17].
+- Teams should keep a few core metrics and review them yearly rather than manage a hundred variables [18:51].
+- He claims the company helps teams cut days lost to injury by 42 percent [19:21].
+
+## Numbers and definitions
+
+- Correlation of salary-adjusted spending with wins: 0.76 NBA, 0.89 NFL [03:08].
+- NBA average spend on injured players: 12.9 million dollars a year; 8.1 million dollars of that avoidable [03:08], [03:39].
+- 46.6 million dollars of athlete on court: 40 wins West, 36 East, 0 percent playoff chance; 52 million dollars: 49 or 43 wins, 100 percent chance [03:39], [04:10].
+- Share of wins set by health: NFL 25 percent, MLB 9 percent, NHL 12, MLS 15 [04:40]; NBA said as nine wins, "20%" of wins needed for the playoffs [04:10]. The captions say "NFL or NBA" at [04:10], so the 20 percent is likely NBA.
+- Soccer team: "above 30 150 meters" of high-speed running over seven days (garbled; the figure is unclear) and more than 390 explosive multi-directional efforts, with no injuries [06:42], [07:13]. A one standard deviation increase was treated as risky [07:43].
+- NFL team: above 200 accelerations in seven days, 33 or 34 percent injured (phrase unclear) [08:43].
+- Baseball: 180 degrees of motion; a five degree change claimed to raise risk six to seven times [09:13].
+- Acute to chronic ratio: 150 percent said to raise risk six or seven times; the speaker's four teams would have lost 8, (garbled), 15 and 26 percent of training [10:43], [11:13]. The top-right value is garbled in the captions.
+- Premier League team: 23 injuries a year of 14 days or more; 8 to 12 of the same type [11:44], [12:14].
+- Company claims: 42 percent fewer days lost; 25 leagues, five continents; over four years, first annual report last year [19:21], [19:51].
+
+## Methods and frameworks named
+
+- Salary-weighted availability as a proxy for performance [02:38], [03:08].
+- Dose-response charts of weekly load against injury risk, per team [06:42].
+- Electronic medical record at the center, every data point statistically related to injury [11:13], [11:44].
+- Anonymized aggregation across athletes, split by sport, position and team [12:14].
+- Phenotypes of athletes by load response [14:15].
+- Annual review of metrics [18:51].
+
+## Limits and open questions
+
+- Chart samples and statistics are not stated; many numbers are partly garbled.
+- The salary link is correlational, and using salary as a stand-in for performance is the speaker's assumption.
+- Results cover a few teams; the speaker says each team differs, which limits any general rule.
+- It is a company presentation; claims such as 42 percent fewer days lost and being the "proven global leader" are the speaker's own [19:21].
+- "Infinitely higher" game injury rate is a figure of speech, not a number [16:48], [17:18].
+- Captions garble "Kitman," "Tommy John" context and some terms.
+
+## Q&A
+
+No Q&A in the recording.
+=== 2017-03-14_BJkCqf6Fj2w_truths-and-myths-of-the-three-point-revolution-in-basketball/summary.md
+---
+type: video-summary
+video_id: BJkCqf6Fj2w
+title: "SSAC17: Truths and Myths of the Three Point Revolution in Basketball"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Seth part now (caption spelling; director of basketball research, Milwaukee Bucks), introduced by Justin gold (caption spelling; student organizer)]
+topics: [basketball, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker argues that how analysts frame a finding decides whether it is adopted, and tests that idea against four common complaints about the rise of the three-point shot: that the league has become a jump shooting league, that long shots cause long rebounds and fast breaks, that the mid-range game is lost, and that defenses can control three-point percentage. In each case he grants a grain of truth, shows what the data says, and offers a replacement story. He closes with the causes he sees behind the rise in threes and calls his account a theory to be improved. He says his work for the team is private, so the talk avoids team specifics.
+
+## Key claims
+
+- The meta point: statistics have to be tied to a story and a mechanism to be accepted, because fans, coaches and front-office people hold strong prior beliefs [01:30], [02:00], [02:30].
+- The goal of framing is to give people permission to accept a new narrative [03:00].
+- Ten of the last twelve NBA finalists ranked in the top ten in three-point rate that season [04:00].
+- The league has always taken many jump shots: the share of shots from beyond ten feet was the same in 1999-2000 and last year, so the change is in distance, not in jump shooting [04:32].
+- Taking more long jump shots can be described as settling or as using the geometry of the court, and the description changes how it is heard [06:03].
+- Long misses do produce longer rebounds, but they do not produce more fast breaks than other misses [06:35].
+- Shots rebounded from around the rim lead to fast breaks more often than rebounded above-the-break threes [07:07].
+- His explanation is that a three usually follows good execution and balanced spacing, so a defender is already back; this is his own account [08:10].
+- The mid-range share has fallen, but the self-created (unassisted) mid-range shots by star players have held roughly steady [08:43], [09:44].
+- Among high-usage players, long two-pointers rose as a share of made shots over about fifteen years [10:44].
+- Unassisted above-the-break threes by star players have risen sharply in four years, driven by a small number of players [11:16], [11:47].
+- Baseball analogies hold for rate stats and efficiency, but basketball has no batting order, and a possession has a third outcome besides made or missed: not shooting [13:18], [13:48], [14:18].
+- A well-contested shot often means the player did not shoot at all [15:18].
+- Defensive three-point percentage looks like a coin flip at the individual level, and the speaker says it is not necessarily luck [16:18], [16:48].
+- Defenders can affect a shot in known ways: distance to the shooter, avoiding fouls on a jump shooter, and late-clock or end-game contests [16:48], [17:18], [17:48].
+- Defending the three therefore means avoiding it, since a three-point shot at lower than a certain accuracy is not taken [18:19].
+- Four factors behind more threes: player skill development, teams permitting players to shoot from farther, downsizing, and strategies that move where the ball is caught [18:50], [19:20], [19:50].
+- Power forwards' three-point rates have risen in four years and teams more often play four or five shooters [20:20].
+- He calls all this a theory and invites better ones, aiming to be "less wrong" [21:22].
+
+## Numbers and definitions
+
+- Jump shot (his definition): a shot from outside ten feet. Share was 55% in 1999-2000 and 55% last year [04:32].
+- Shots from outside fifteen feet: began at 42%, peaked at 48%, about 46% now [04:32], [05:02].
+- Mid-range (his definition): outside the paint, inside the three-point arc [08:43].
+- High-usage player (his definition, "arbitrary"): usage of 27% or higher [10:44].
+- Share of made shots that are long twos for that group: from 7% to 11.5%, which he calls over a 50% increase, over fifteen years [10:44].
+- Extra unassisted threes last year versus the 2000 rate: about 340, of which two players accounted for 308 [11:47]. He said he may have done the math wrong.
+- Rim-area rebound versus above-the-break three fast-break likelihood: one and a half to two times, over 15 to 20 years of data [07:07].
+- Four feet away on a catch-and-shoot: about 34%; ten feet away: about 40% [16:48], [17:18].
+- Fouling a jump shooter turns a 35% shot into 75 or 80% [17:18].
+- A 34% three is a 51% effective shot [18:19].
+- Caption problem: "worth 50% less" at twenty feet [19:50] reads unclearly; do not rely on it.
+- Ten of the last twelve finalists in the top ten for three-point rate [04:00].
+
+## Methods and frameworks named
+
+- Shot-location data, described as reliable from about 1999-2000 [04:32].
+- Assisted versus unassisted split of shots, and density plots of assisted share by location [09:44], [10:14].
+- Usage-based grouping of star players [10:44].
+- A graph by another writer (caption spelling "Hest Becker") treating individual defensive three-point percentage against a coin-flip pattern [16:18].
+- Baseball's batting average on balls in play as an analogy for what the defense controls [15:18].
+
+## Limits and open questions
+
+- The speaker said his team's work is proprietary and the talk draws on public work from his earlier site [01:00].
+- The mechanism for the fast-break finding is his hypothesis, not tested in the talk [08:10].
+- The coin-flip claim rests on one graph by another writer, with no detail shown; the speaker did not claim luck, only similarity [16:48].
+- Star-player trends rest on a small group of players, and he said two players drive the unassisted three increase [11:47].
+- The talk is built around framing, and most numbers are shown on slides the captions do not describe.
+
+## Q&A
+
+- A question about how teams measure the chains of actions that lead to a shot and how advanced teams are; the speaker declined to answer [21:52], [22:25], [22:55].
+- A question whether star shots are still inefficient; he said shot clock and the need for someone to be open limit alternatives, and that there is probably a ceiling on how many players have the skill to space the floor [23:25], [23:56]. The question text is garbled.
+=== 2017-03-14_H2RN_7tsM90_moneymind-overcoming-cognitive-bias/summary.md
+---
+type: video-summary
+video_id: H2RN_7tsM90
+title: "SSAC17: Moneymind: Overcoming Cognitive Bias"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Curtis Wagner (host), Kade Massie (moderator, caption spelling), Billy Bean (caption spelling), Sam hinky (caption spelling), Farhan zi (caption spelling), Daryl Mor (caption spelling)]
+topics: [front-office, decision-making, basketball, other-sport:baseball, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Four sports executives and a Wharton moderator talk about how cognitive bias affects front-office decisions. They agree that people are poor decision makers and discuss luck versus process, anchoring, loss aversion, regret, group think and owner influence. Practical tools they describe include writing a thesis and rereading it, reversing a trade, treating each decision as independent, and asking scouts to explain their weighting. They debate blending quantitative models with subjective scouting, how to judge scouts, and whether team chemistry causes winning. The panel is mostly anecdote from the speakers' own experience.
+
+## Key claims
+
+- A panelist said people are very poor at decisions and that even knowing about biases such as anchoring and loss aversion does not remove them. [02:34]
+- Each decision should be treated as independent of earlier ones; a prior assumption about a college or region can mislead. [06:39]
+- Good outcomes involve luck, and a right process can still produce a bad outcome. [07:41]
+- Leaders should act as a corrective against over-praising good moves and over-grieving bad ones. [08:11]
+- Over-correcting by thinking too much about bias can stifle a decision. [09:11]
+- A secret grading ballot may give a false sense of independence because staff share the same training. [10:12]
+- Model-versus-expert studies in other fields suggest added expertise can make a model worse; whether sports models are good enough to be improved is open. [11:46]
+- Hands stay on the knobs because data is thin and does not know the future of a young player. [12:46]
+- The first Moneyball-style draft was purely objective, and a panelist said he would not recommend that. [15:18]
+- Subjective scouting became a data point in decisions once a quantitative colleague pushed for balance. [16:49]
+- Some of the best analysts weigh analytics lower because they have seen where it misleads. [18:21]
+- Predicting a young player's course is like predicting a stranger, so gather many data points about the person. [19:54]
+- Scouts cannot be expected to predict a 17-year-old's ten-year result; ground-level information adds value. [20:56]
+- A draftee's early performance in instruction or practice may reveal a lower pick as better, and a team should accept that. [22:28]
+- Ordinal ranking of subjective qualities can aid decisions (a panelist cited Kahneman and a paper). [23:29]
+- A firefighter example in the captions is used to argue that "gut" is accumulated information. [24:29]
+- Ask scouts to explain how they weight things; share of an evaluation resting on one data point matters. [27:01]
+- Test a strong claim as a hypothesis: the panelist had ten staff rate a player's ball handling on random video. [28:03]
+- Passionate advocates are useful because they expose reasoning. [28:34]
+- A panelist described clearing the slate with a new strategy, citing a 2011 trade of three players. [30:09]
+- Write the argument down and reread it, or have someone else poke holes. [30:39]
+- Write an investment thesis with confidence, set it aside two weeks, and reread. [31:10]
+- Reverse every trade: would you do the other side? [31:41]
+- A panelist described a hypothetical removal of a player to test whether regret was driving resistance to a trade. [32:44]
+- Owners' hints shift staff decisions quickly, and a panelist said hunkering down is common in sports organizations. [34:49], [35:50]
+- Transparency with the owner was the lesson one panelist took from his first year as GM. [39:26]
+- Panelists said they mostly took accepted ideas to their logical conclusion (more threes, drafting stars). [40:58]
+- A team without a singular edge that it resources is not differentiated. [43:04]
+- Baseball is becoming a more efficient market, in a panelist's view, and football is not. [47:09]
+- Panelists thought a GM could switch sports if the job is leadership and building a rational organization. [48:40]
+- Chemistry: one panelist has never seen a winning team without it; the panel debated causal direction and suggested a virtuous or vicious cycle. [50:43], [54:49]
+- Prediction of who will improve chemistry should carry low confidence. [55:49]
+- Fans and owners can react negatively when a traded player does well elsewhere, which a panelist linked to loss aversion. [1:00:24]
+
+## Numbers and definitions
+
+- Panel 45 minutes plus 15 minutes of Q&A. [00:32]
+- Framing example: 10 percent chance of death versus 90 percent chance of being fine. [03:06]
+- Group grading on a 1 to 10 scale by secret ballot. [09:42]
+- A drafted player projected over about a 10-year period. [19:23]
+- A team drafts about 50 players in baseball. [21:58]
+- A basketball second-round pick at 38 was best of that class after the first practice. [22:58]
+- Almost 80 percent of one scout's evaluation rested on one data point. [27:01]
+- Ten staff each watched random video and wrote 500 words. [28:03]
+- A 2011 trade of three named players (Andrew Bailey, Gio Gonzalez, Trevor Cahill). [30:09]
+- Owner story: budget of about $2.5 million and about $500,000 more for a second-pick signing. [37:53], [38:25]
+- Four managing partners in the speaker's tenure. [37:21]
+- Teams shoot 50 threes a night (stated as the logical conclusion of three versus two). [40:58]
+- A deal described as the owner having held the team 13 years. [34:49]
+- Terms: anchoring, loss aversion, endowment (as named), group think, regret, independence of decisions.
+
+## Methods and frameworks named
+
+- Independent-decision reset.
+- Secret-ballot grading and its limits.
+- Written investment thesis with confidence, reread after two weeks.
+- Reverse-the-trade check for endowment.
+- Ordinal ranking of subjective scouting traits.
+- Hypothesis test of a scout claim using a random video sample.
+- Ground intelligence (scouts' local information).
+
+## Limits and open questions
+
+- Speaker attribution is uncertain in several passages.
+- Examples are anecdotes from four organizations; no sample sizes or results were shown.
+- The captions are garbled in places (e.g. titles, owner names).
+- Claims about owner behavior, efficient markets and chemistry are the speakers' views.
+- The panel did not resolve whether secret ballots help or hurt.
+- Chemistry causality was left open.
+
+## Q&A
+
+- Could you switch sports as a GM? Panelists mostly said yes if the job is leadership and building rational process. [47:39]
+- How does team chemistry relate to winning? Opinions varied; a virtuous or vicious cycle was proposed. [50:13]
+- What is the most important issue for the community? One panelist said he was hopeful about the field and global growth. [56:49]
+- Closing: loss aversion shocked one panelist when others viewed a former player's success elsewhere as a negative. [1:00:24]
+=== 2017-03-14_J7smyg1Czik_the-science-of-sleep/summary.md
+---
+type: video-summary
+video_id: J7smyg1Czik
+title: "SSAC17: The Science of Sleep"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [not stated]
+topics: [sports-science, injury-health, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker, a sleep scientist who says she works with athletes and teams (and refers to a lab at Henry Ford), argues that sleep and circadian rhythm are the most ignored performance factor and touch every other one. She presents three things: why sleep matters (reaction time, judgment, injury, hormones, pain, glucose), how much athletes need (9 to 10 hours, based on extension studies), and how the body clock affects performance (travel across time zones, evening games, and individual chronotype). Her take-home points are that deficits accumulate, that regular sleep matters more than sleep before a game, and that circadian timing is an unexplored, manageable advantage. A long Q&A covers quality, individual need, naps and clock shifting.
+
+## Key claims
+
+- Sleep and recovery are integral to performance and the most ignored aspect; sleep and circadian rhythm affect diet, hydration, training, cognition, mental preparation and coaching [00:00], [00:32].
+- The function of sleep is not known, but the effects of too little are [01:03].
+- Getting six to seven hours instead of eight doubles or triples reaction time [01:33].
+- Deficits accumulate over days, and three days of recovery sleep do not bring people to the level of those who sleep nine hours regularly [02:05], [02:36].
+- Sleep regularly, not only before the game; athletes tend to sleep poorly just before games [03:07].
+- Sleep loss impairs the prefrontal cortex, which handles judgment and decision-making, while emotional brain activity rises; fouls increase [03:37], [04:08].
+- Hours of sleep was the strongest predictor of injury in a study of high school athletes followed for about 22 months [04:38], [05:08].
+- Growth hormone is released in deep sleep and testosterone while sleeping; five lost hours lowered testosterone [05:40], [06:12].
+- Sleep loss raises hormones that break down muscle [06:42].
+- Less sleep increases pain sensitivity [06:42], [07:12].
+- Sleep deprivation reduced glucose tolerance in college students [07:12], [07:42].
+- Impairment from lost sleep was compared to impairment from drinking [07:42], [08:12].
+- Adults need seven to eight hours but athletes need nine to ten [08:42].
+- In Stanford sleep-extension studies (six weeks, ten hours in bed), basketball players sprinted faster and shot better, were less sleepy, and had better mood [09:12], [09:42], [10:13].
+- Football players improved in the 40-yard dash and shuttle; swimmers improved turn times; tennis players improved serve accuracy [10:44], [11:14].
+- Sleepiness depends on a homeostatic drive (time awake) and on a circadian alerting signal, with an afternoon dip [11:45], [12:18], [13:19].
+- Coordination, reaction time, cardiovascular efficiency and strength tend to peak in the evening [13:49].
+- In forty years of evening NFL games, West Coast teams beat the spread and won twice as often against East Coast teams; there was no difference in daytime games [14:19], [14:49].
+- In baseball data, East Coast teams lost their home advantage when returning home, and crossing three time zones raised the chance of losing the first game [15:50], [16:20].
+- Chronotype (night owl, morning lark) shifts the time of peak performance, and teams of mostly late chronotypes peak later than teams of early ones [16:51], [18:55], [21:00].
+- Peak performance occurred six to seven hours after waking for early and intermediate chronotypes, and eleven or more hours after for late [20:30].
+- Take-homes: elite sport is a 24-hour commitment, deficits are cumulative, sleep touches all performance factors, and circadian advantage is unexplored [22:03], [22:33], [23:03].
+- She suggests sleep loss was once masked by amphetamines and steroids in sport [23:03].
+
+## Numbers and definitions
+
+- Normal reaction time: about a quarter of a second; six to seven hours of sleep doubles or triples it [01:33].
+- Study design: seven days at reduced time in bed (the captions give "7 five versus 3 hours", garbled), then three days of nine hours [02:05], [02:36].
+- Injury: sleeping under eight hours raised injury likelihood by "1.7%" in the captions [05:08]. This may be garbled (a ratio versus a percent); do not rely on it.
+- Testosterone: down 10 to 12% after five hours of lost sleep (caption "increased... decreased" is inconsistent) [06:12]. Normal aging loss: 1 to 2% per year; she says a 20-year-old would look 31 [06:12].
+- Glucose tolerance: reduced by 40% after a week or ten days [07:42].
+- Alcohol comparison: six hours of sleep like two to three beers; four hours like about six beers [07:42], [08:12].
+- Stanford extension: ten hours in bed for six weeks; basketball free throws and three-pointers each up 9% [09:12], [09:42].
+- Football 40-yard dash improvement is garbled in the captions ("1 point1 2 seconds") [10:44]; swimmers added "five kicks" [11:14].
+- NFL: West Coast evening teams won and beat the spread "twice" as often, forty years of data [14:19].
+- Baseball: first-game loss "60% or more" after crossing three time zones; home field advantage 3.9% [15:50], [16:20]. The 60% caption is unclear.
+- Chronotype peaks: early, noon to 2; intermediate, mid-afternoon; late, 7 to 8 in the evening [18:55]. The group-level peak "between four and seven" has no am or pm in the captions [18:24].
+- Naps described: 15 to 20 minutes, 30 minutes, 90 minutes [29:33], [30:03].
+- Twelve teams were used in the team chronotype analysis [20:30].
+
+## Methods and frameworks named
+
+- Sleep-deprivation and recovery experiments with repeated performance tests [02:05].
+- Stanford sleep-extension studies using actigraphs and sleep diaries, measuring performance at the end of six weeks [09:12].
+- Forty years of NFL evening-game results compared to the Las Vegas spread, with controls for team quality and travel [14:19], [14:49].
+- Multi-year baseball game data on time zones and home advantage [15:50], [16:20].
+- The morning-evening questionnaire to classify chronotype, with performance tests six times across the day (bleep test, sprint times) [17:52], [18:24].
+- Light and melatonin to shift the body clock [29:02].
+
+## Limits and open questions
+
+- Sample sizes are not stated for most studies; the high school injury study, Stanford extension and chronotype studies are cited without numbers of athletes, except twelve teams [20:30].
+- The extension studies measured time in bed, not sleep, as she acknowledged [25:57].
+- The 40-year NFL study is called robust by the speaker [14:49]; the authors are named in captions only as "Smith and motra" (caption spelling).
+- The 9 to 10 hour recommendation is the speaker's synthesis of those extension studies [11:14].
+- Her claim that a third of teams are not interested is her own experience [28:31].
+- Several numbers (injury, football dash, baseball first-game loss) are garbled in the captions.
+
+## Q&A
+
+- Facility-limited sports such as swimming and hockey are hit hardest; swimmer studies showed gains from more sleep [23:55], [24:25].
+- Whether to get extra sleep before a long event: yes [24:55].
+- Training at peak time is better, and sleep consolidates learning; nap after training [25:25].
+- Sleep quality: the extension studies did not measure sleep itself; both quality (reaching deep sleep) and quantity matter [25:57], [26:28].
+- Individual need: those who "get by" tolerate deprivation better, not need less; chronic deprivation erases the reference for feeling alert; sleeping in on days off signals a deficit [26:58], [27:29], [28:00].
+- Team interest: about a third already do this, a third want to try, a third are not interested [28:31].
+- Shifting the clock earlier: possible with light boxes and melatonin; she mentions a trip to London for a team [29:02].
+- Naps: 15 to 20 minutes, 30 minutes, or 90 minutes; a nap is not advised if night sleep is a problem; falling-asleep trouble usually comes from time zones or late caffeine [29:33], [30:03], [30:35].
+=== 2017-03-14_bZ3i8djj2Yg_advanced-training-techniques/summary.md
+---
+type: video-summary
+video_id: bZ3i8djj2Yg
+title: "SSAC17: Advanced Training Techniques"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Brandon Payne, Blake (surname not stated; named as co-presenter and maker of the slides)]
+topics: [basketball, sports-science, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Brandon Payne, who says he owns Accelerate Basketball, describes a ten-point training philosophy built over roughly eight or nine years and used with Stephen Curry. He says the philosophy came first and technology was added where it fit without slowing sessions. The argument is that a less explosive player can close the gap by training the brain along with the body, and that drills double as readiness assessments. Conditioning is redefined as keeping decision accuracy and speed when tired, tested by repeating a light-based decision drill after simulated quarters. The talk is a practitioner description with video clips. No data, sample sizes or outcomes are shown.
+
+## Key claims
+
+- Technology was added to a philosophy built in 2008 and 2009, not the other way round. [02:10]
+- Curry would not top an NFL-style combine of explosive athletes, so the gap to more athletic players has to be closed another way. [05:44]
+- Technology should not replace the player's own work, and overloading a player with it makes them shut it out. [08:20]
+- The same philosophy is scaled from age three or four up to NBA players. Drill speed and implementation change, but the elements stay the same. [09:53]
+- The tennis-ball and dribbling overload drill is an assessment, not a ball-handling drill. The coach watches for held breath, shoulders rocking (core not engaged) and knees buckling in. [10:55] [11:56]
+- If any of those signs appear, the speaker concludes the brain-body link is not ready for accelerated learning that day. [12:26]
+- Everyone has a physical ceiling. The aim is to reach it, then use the brain (decisions, efficiency) to operate past it. [13:27] [13:58]
+- A headphone brain-stimulation product was added to physical activation in the past 18 months. The speaker says it looks good after reading the literature and cites no study. [14:28] [14:59]
+- An oxygen mask is used to produce a winded state in stationary drills, not to build conditioning, so the offseason body is not stressed further. [16:31] [17:04]
+- Light discs flash colours that map to assigned moves, and players sometimes freeze when several flash at once. The tool is used for decision-making and for grading conditioning. [18:06] [19:08]
+- Every drill trains three movement elements: acceleration, deceleration and dynamic stability. Video is important for this. [19:40] [20:10]
+- Conditioning tests that players must pass are not used. The aim is the same decision at the same speed at minute 48 as at minute one. [21:11] [21:42]
+- Conditioning is graded by repeating a baseline decision drill after each simulated quarter. If fourth-quarter scores match pregame scores, the speaker says he knows the player is ready for 82 games. [23:15] [23:48]
+- Overload and contrast (bands, heavy balls, accelerometers) is used to teach new movements. [24:19]
+- Video and a shot-tracking product are used to see whether fatigue changes mechanics and shot arc, depth and location. [24:51] [25:21]
+- Each drill is meant to serve several purposes, and a more body-aware player gets more from it. The drills also serve as feedback on readiness. [26:24] [26:57]
+- Strength work is built from what opponents did to the player last season (physical defence), using medicine balls and trainers bumping the player, and avoids fixed patterns. [27:29] [27:59]
+
+## Numbers and definitions
+
+- Curry at 165 pounds at Davidson. [00:36] (caption splits the sentence across [00:36] and [01:07])
+- Two-time MVP, one unanimous. [01:07] [07:16]
+- Company started 2008 and 2009; philosophy worked on "eight or nine years"; ten points. [00:36] [02:10] [02:42]
+- Scales from three- and four-year-olds to NBA. [09:53]
+- Product used for the past 18 months. [14:28]
+- Four light discs, one to three flash at a time. [18:06]
+- Decision-point distances: about 14 feet, then 10 feet, then six feet. [22:13] [22:45] (the 14 is split across the two blocks; treat as lightly uncertain)
+- One simulated quarter takes about five minutes, with no fouls or dead balls. [22:45]
+- Four quarters tested and compared with the pregame score; 82 games. [23:15]
+- Workouts can be 30, 90 or 120 minutes, and a nominal 90 can shrink to 30. [13:58] [14:28]
+- 48 minutes as the comparison point. [21:42]
+- Defined: "conditioning" here means decision accuracy and speed held under fatigue. [21:42]
+
+## Methods and frameworks named
+
+- A ten-point philosophy; only some points are covered (physical activation, neuromuscular activation, cognitive development, three movement elements, performance capacity, overload and contrast, high-volume reps at game speed, multiple tasks, on-court strength, systematic muscle confusion).
+- Conditioning assessment: baseline light-based decision drill with closing distance, then four simulated quarters, with the drill repeated after each and compared on time and score.
+- Drill-as-assessment checklist: breathing, shoulder movement, knee position.
+- Tools named in captions: iPad brain games, light discs (caption spelling "fitlike"), headphone stimulation product (caption "neuro Halo"), oxygen mask, "vertox" (caption spelling), shot analyzer (caption "Noah"), video.
+
+## Limits and open questions
+
+- One elite athlete, anecdotes and clips. No reliability, validity or outcome data.
+- Product claims (headphones, shot analyzer) are the speaker's view; he cites no study.
+- The speaker owns a training business and is describing his own method.
+- "Ready for 82 games" is a judgement from a drill comparison, not a validated threshold.
+- The fatigue block is not shown to be standard across athletes or sessions.
+- Caption problems: introducer name is garbled ("Michael Gan Angeli"); several product names are misspelled; the sentence about Curry's college weight is garbled around [01:07].
+
+## Q&A
+
+No Q&A. The speaker says time is short and ends the talk. [29:02]
+=== 2017-03-14_oFXTlvyFma8_player-grades-the-competitive-advantage-in-football-performa/summary.md
+---
+type: video-summary
+video_id: oFXTlvyFma8
+title: "SSAC17: Player Grades: The Competitive Advantage in Football Performance"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Chris Collinssworth (caption spelling), Neil Hornsby; introduced by Barry Brney (caption spelling)]
+topics: [american-football, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Chris Collinssworth (caption spelling) and Neil Hornsby, founder of Pro Football Focus, present how PFF grades football players. Collinssworth argues that analysts are taking over decisions once left to veteran coaches. Hornsby explains that grades come from analysts watching every play, and that raw grades are then adjusted for the quality of each opportunity, such as time to throw, step drop, down and distance and alignment. He says grades score what should have happened on a play, not its result, and are a production measure that ignores injury and talent. A coach is shown saying he disagreed with about a dozen of about 600 plays. A Q&A follows.
+
+## Key claims
+
+- PFF was working with 25 teams, expecting 28 or 30, and the speakers say data analysts now make decisions once left to coaches. [01:16] [01:46]
+- Raw grades are a blunt instrument. They must be turned into player grades by adjusting for the opportunity behind them. [13:05]
+- Counting opportunities is not enough. A tackle with 450 pass blocks can have faced more total time than one with 550, because the quarterback holds the ball longer. [14:07] [14:39]
+- Factors named: time to throw, step drop, help or chips, slide protection, down and distance, opponent technique. [15:09] [15:40]
+- Each player has a raw grade plus a normalization factor that compares the player with average. [16:11]
+- Screens and rollouts are removed from the pass-rush set because they limit the chance to get pressure. [16:43] [17:14]
+- Alignment matters: chance of pressure rises as a rusher lines up further from the centre. [17:14]
+- Step drop matters: a rusher against a quarterback who takes many seven-step drops has more chance than one against a quarterback taking many three-step drops. [18:16] [18:46]
+- Down and distance matters: a situational third-down rusher has more chance than a rusher who must also play the run. [19:16]
+- Fatigue (number of rush attempts) showed noise over ten years, so it is left out. [19:49]
+- A new process planned for 2017 will record matchup, block type, block location, how well it was done and the pass-rush move, to test whether assignment difficulty matters. The speaker does not know the answer. [21:51] [22:22] [22:53]
+- An offensive line coach says he disagreed with about a dozen of about 600 negative plays and that the grades are close to what the players are. [24:25] [25:28]
+- Grades are by position. Ranking across positions needs separate maths. [27:30] [28:02]
+- Grading is done by about 350 people on a cloud system, with a second pass, a coach-network pass, then adjustment. [29:44] [30:15]
+- Grades score what should have happened, not the result. The example is a game with five touchdown passes and no interceptions graded near zero. [31:17] [31:47] [32:17]
+- Opponent-quality adjustment is done after grades are published, by looking at who a player faced. Matchup data will allow it directly. [32:56] [33:27] [33:58]
+- PFF Ultimate is a tool to ask football questions and send answers to video or charts. [26:28]
+- The data go back ten years, and old seasons are graded too (2006 last year). [16:43] [38:37] [39:08]
+- The grade is a production metric for how a player is playing now. It ignores injury, talent and, at the moment, who was faced. [39:40]
+- One speaker is less enamoured with red-zone statistics and says the game between the 20s differs from the game inside the 20. [37:05] [37:35]
+
+## Numbers and definitions
+
+- 25 teams now; 28 or 30 expected; about 20 teams met. [01:16]
+- 300 to 350 people; 350 analysts. [02:16] [08:54]
+- 30 quarterback disruptions in 450 or 550 pass blocks. [13:37]
+- Seven-step drop, quarterback at 10 yards, rusher taken to 11 yards. [18:16]
+- About 600 plays (two thirds of the season; caption garbled), disagreement with about a dozen. [24:25]
+- Grade of 84 said to mean nothing to viewers; ranking instead, for example "number 117 of 117". [27:30]
+- About 15 years average NFL coaching in the coach network; about 20 people can input at once. [29:44] [30:15]
+- Ten years of data. [16:43]
+- Definition: production metric = how the player is playing now, excluding injury, talent and opponent strength. [39:40]
+
+## Methods and frameworks named
+
+- Analysts grade every play, with multiple passes and coach review, producing raw grades.
+- Opportunity normalization: adjust raw grade for time to throw, step drop, down and distance, alignment, help, and exclusions (screens, rollouts).
+- Point-of-attack tapes built from raw grades for each player. [12:34]
+- Grade by what should have happened on the play, not the outcome.
+- 2017 matchup and block-type data project to test assignment difficulty.
+
+## Limits and open questions
+
+- Accuracy evidence shown is one coach's disagreement count (about a dozen of about 600), reported as small.
+- Neither speaker gives the grade scale or the weights in the normalization.
+- Collinssworth says he bought the company [08:54], and Hornsby sells the grades, so claims about accuracy are the vendors' view.
+- Opponent strength is not yet in the grade, which the speaker admits. [39:40]
+- Whether assignment difficulty matters is stated as unknown. [22:53]
+- The captions garble parts of the Q&A, notably [30:45]. A talk about wide-receiver or evaluation (question) cannot be recovered.
+- Mostly NFL examples; the FBS level is mentioned but no college results are shown.
+
+## Q&A
+
+- How is grading done by hand, and can it be automated? Answer: cloud input, multiple passes, coach network, then maths. [29:44]
+- Question from a wide receiver (garbled caption). The answer says PFF grades should-have-happened, unlike league statistics. [30:45] [31:17]
+- Why not adjust for above-average opposition in the grade? Answer: done after publication; matchup data will do it. [32:56]
+- Value of the data set and uses beyond football (partly garbled). Answer: ten years of depth, possibly other sports. [34:29] [36:03]
+- Red-zone statistics. Answer: personal scepticism; and a view that the game differs inside the 20. [36:34] [37:05]
+- Grading history (Hall of Fame debates) and training new analysts. [38:37]
+=== 2017-03-14_sHXuxj3-rbQ_avoiding-tommy-john-how-the-mlb-has-used-better-data-and-tra/summary.md
+---
+type: video-summary
+video_id: sHXuxj3-rbQ
+title: "SSAC17: Avoiding Tommy John: How the MLB has Used Better Data and Training Methods"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [John DeAngelo (director of league economics and strategy, MLB)]
+topics: [other-sport:baseball, injury-health, sports-science, policy]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A Major League Baseball league-office official describes the league's response to a spike in Tommy John (UCL reconstruction) surgeries that came to a head in 2014. He lays out four concerns (more surgeries at MLB level, more repeat surgeries, more at youth and high school level, and widespread misperceptions) and the three-part Pitch Smart program built with a medical committee and USA Baseball: pitch count and rest limits, plain-language research, and accurate surgery information. He reports adoption by youth and high school bodies, a leveling off of MLB surgeries, a long-term prospective study, early results on rest-based care and orthobiologics, and new repair and training approaches, stressing that evidence on the newer methods is thin.
+
+## Key claims
+
+- MLB clubs have been required to use a league-wide electronic medical record since 2010, and the league does not share the data publicly until it is ready for peer review; the talk therefore draws on public data [01:09], [01:39].
+- The league's 2014 concerns were more MLB surgeries, more second surgeries, more surgery at youth and high school levels, and misperceptions [02:10].
+- Disabled list days for the elbow injury hit an all-time high from 2012 to 2014 [02:41].
+- MLB surgeries rose and the players were younger, including some of the best young pitchers [03:12], [03:42].
+- Players with a second surgery did not come back as strongly as those with a first, in preliminary research [04:12].
+- A leading surgeon's practice saw youth and high school patients rise from rare to about a third [04:43].
+- Insurance-record studies found the biggest increase in the 15 to 20 age group [05:14].
+- A survey found more than half of high school players thought surgery should be done without an injury, and more than half of college players thought velocity rises afterward; the speaker says medical research shows both are wrong [05:46], [06:17].
+- The medical committee said youth overuse was the largest factor, and pitching 100 or more innings in a year raised the risk of serious arm injury [07:22], [07:54].
+- Pitch Smart, launched in November 2014 with USA Baseball, has three parts: pitch count and rest limits, digestible research, and accurate information [08:54], [09:24], [12:30].
+- Adoption: major youth organizations are compliant, and a 2016 national high school federation vote required states to adopt a pitch-based rule [13:03], [13:33], [14:04].
+- MLB surgeries have leveled off, and the number of draftees with prior surgery was flat over the last three years, with 2016 itself a record high [14:36], [15:06], [15:37].
+- A long-term study enrolls drafted players with MRI, biomechanics and history, and follows them through the medical record [16:08], [16:39].
+- Early published work links fastball usage, throwing harder, more pitches in games and less rest to injury risk, with the field described as very preliminary [17:42].
+- A team study found most players with partial tears returned after six to eight weeks of rest without surgery; a second found tear location mattered [18:13], [18:43], [19:14].
+- Orthobiologics (PRP, stem cells) are growing in use, but few peer-reviewed articles show an advantage over rest and rehab, and it is unclear whether rest or the injection explains outcomes [19:44], [20:14], [20:44], [21:16].
+- Clubs use technology and unorthodox training methods to track fatigue and injury risk; the speaker says it is hard to tell whether they help [22:18], [22:49], [23:19].
+- A newer UCL repair with tape augmentation aims for about six months of recovery instead of 12 to 16, but is experimental and for certain tears [23:52], [24:22].
+
+## Numbers and definitions
+
+- Disabled list days: a 72% increase versus the three years before 2012 to 2014 [02:41]. The caption names the injury as "Elvis trees", which is garbled.
+- MLB Tommy John surgeries: previous high of 22; 36 in 2012; 31 in 2014 [03:12].
+- Recovery from surgery: 12 to 16 months [03:42].
+- Prior to 2014: surgeries by one surgeon's practice on youth and high school players were basically unheard of in 1994 and about a third by 2010 [04:43].
+- 100 or more innings in a year associated with higher serious arm injury risk [07:54].
+- Example rule: after 50 pitches, two days of rest [09:24]. Limits run from age 7 to 22 [09:55].
+- Vermont was the only state with a pitch-based rule at high school in 2014; in 2017, "44 or 46" states have limits (the captions are ambiguous), with Connecticut and Massachusetts as holdouts [13:33], [14:04], [14:36].
+- MLB: about 20 to 25 players per year have surgery [15:06].
+- Study enrollment: 225 players, about 400 expected [17:11].
+- Partial tears treated with six to eight weeks of rest: 93% returned without surgery, in 43 players [18:13], [18:43].
+- 2016 MLB pitchers using PRP or stem cells: one successful, three had surgery, four waiting [21:47].
+- UCL repair with tape: expected recovery of six months instead of 12 to 16; the caption "six to six months post 12 to 16" is garbled [23:52].
+
+## Methods and frameworks named
+
+- League-wide electronic medical record for all clubs, in collaboration with the players association, club medical staff and an epidemiologist at Johns Hopkins [01:09].
+- A public database of surgeries back to 1974 (caption: "baseball heat mass") [01:39].
+- A surgeon's practice records and insurance database studies [04:43], [05:14].
+- A survey of youth players, coaches and parents [05:46].
+- A committee of medical experts [06:52].
+- A prospective baseline-then-follow design [16:08].
+
+## Limits and open questions
+
+- The speaker works for the league office and describes the league's program; the talk gives no causal evidence that Pitch Smart reduced injuries.
+- Risk factor studies were few and preliminary, per the speaker [17:42].
+- The rest study had 43 players, and the speaker said conclusions were hard to draw [18:43].
+- Orthobiologic outcomes were mixed and not compared to rest [20:14], [21:47].
+- Teams guard their training data as a competitive advantage, so league-wide data on training are limited [28:44].
+- Names of physicians and the training-device list are garbled in the captions.
+
+## Q&A
+
+- Minor league data: tracked in the same record; no linear rise, similar pattern to MLB [25:22].
+- Japanese leagues: open to study; differences in mound height and baseball type under review [25:55].
+- Prevalence study with a former team trainer (caption spelling "Stan Conte"): no demographic difference found, and the effect of year-round youth baseball may not have emerged yet [26:42], [27:13].
+- Comparing eras: hard because pitch usage and velocity have changed; injuries appear to be rising even as teams are more careful [27:44], [28:14].
+- Training data sharing: teams are protective, so league work involves select teams [28:44].
+- Whether injury can be eliminated: no, but it can be reduced [29:22].
+- Throwing harder: raises injury risk and improves performance; focus on mechanics and location alongside velocity [30:23], [30:53].
+- College rest: the speaker said rest each year has been shown to reduce injuries (no study named) [31:54].
+=== 2017-03-21_Y7pm-79ZvjE_marijuana-as-medicine/summary.md
+---
+type: video-summary
+video_id: Y7pm-79ZvjE
+title: "SSAC17: Marijuana As Medicine"
+event: SSAC17 (MIT Sloan Sports Analytics Conference)
+speakers: [Andrew Brant (caption spelling); introduced by Rob mirandy (caption spelling)]
+topics: [american-football, injury-health, policy]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Andrew Brant (caption spelling), a former agent who says he worked for the Green Bay Packers for ten years, argues that growing public acceptance of marijuana is unlikely to reach the NFL through recreational use but may through pain management. He explains that NFL rules come from the collective bargaining agreement, not state law, outlines the league's staged testing and penalties, and notes a raised positive threshold. He links the issue to opioid and Toradol use, to advocacy by former players, and to concern about concussions. His view is that change will need to come through bargaining or be framed as health and safety. It is a policy talk, not a study.
+
+## Key claims
+
+- The talk asks whether societal acceptance will carry over into sports leagues, mainly as a pain-management tool, with the NFL as the focus. [00:31] [01:01]
+- State legalization does not let NFL players use marijuana, because they are governed by the collective bargaining agreement. [06:14] [06:45]
+- Marijuana policy is negotiated and not discretionary, unlike the personal conduct policy. [07:49] [08:21]
+- A revised drug policy added HGH testing and, in exchange, raised the marijuana positive threshold. [08:51]
+- The speaker's view is that traction will come on medicinal use and pain management, not recreational use. [16:11]
+- A newspaper study is cited saying one in four players felt pressure from team doctors to take opioids. [16:44]
+- From his own experience, Toradol was overprescribed and overused in the NFL. [17:46] [18:20]
+- Advocacy has to come from players, and former players fill the gap because active players risk stigma and have little contract protection. [18:51] [22:32]
+- Eugene Monroe is described as a former lineman who says he was handed opioids early, had problems from overuse, and found marijuana better for pain. [19:53] [20:26]
+- Concussion concern may be the route to getting owners to listen, and Monroe has donated to Johns Hopkins and Pennsylvania for study. [20:58] [21:30]
+- The NFL has followed the science on concussions, and the speaker expects kickoff returns to disappear within five years. [23:34]
+- The NFL tends to follow other leagues and avoid being a first mover on taboo subjects. [24:05]
+- Change would need a bargaining trade, or a framing as health and safety, which he calls a tough sell. [26:41] [27:43]
+- He does not expect another revision before the agreement ends in 2021. [26:41]
+
+## Numbers and definitions
+
+- 2016 ballot measures; 21 states allowing medicinal use, nine allowing recreational use including DC, and 21 illegal (caption ambiguous). [05:12]
+- Positive threshold raised from 15 to 35 nanograms per millilitre; MLB at 15; the world anti-doping body at 115 (caption names are garbled: "anagrams", "water world anti-doping Association"). [09:23]
+- Testing window April 20th to August 9th. [10:55] [11:26]
+- Stage 1: 90-day treatment plan; violation fine of three of 17 weeks' pay (caption reads "317"). [12:28] [12:59]
+- Stage 2: up to 10 tests a month, four hours to give a sample, 12 to 24 months; first violation a two-week fine versus four weeks for performance-enhancing drugs; second violation leads to a four-to-six-game suspension. [12:59] [13:30] [14:01] [14:35]
+- Stage 3: ten-game suspension, then one-year banishment with reapplication; the stage 2 testing regime continues for the rest of the career. [15:06] [15:38] (caption says "in Italy", likely garbled)
+- Opioid study: 25 percent felt pressure; "7%" taking them at three times the national rate (caption ambiguous). [16:44]
+- Collective bargaining agreement ends 2021. [26:41]
+- Fourteen padded practices in season. [28:14]
+- About 95 percent of brains tested for CTE at BU (caption says "95%"), a sample he calls slanted. [31:09] [31:39]
+
+## Methods and frameworks named
+
+- The staged NFL testing and penalty system.
+- A bargaining frame: marijuana as a trade item versus a health-and-safety issue like concussions.
+- The "follow the science" frame borrowed from concussion policy.
+
+## Limits and open questions
+
+- The speaker repeatedly says he is not a scientist [09:23] [28:14]; claims on cannabis for pain and CTE cite no study, and the Washington Post study is not shown.
+- He is a former agent and team executive, so his bargaining views are his own.
+- Anecdotes: Packers Toradol, Eugene Monroe's account, and players he says he knows.
+- Predictions (kickoff returns gone, no policy change before 2021) are opinions.
+- NFL only; the talk does not cover college or other leagues' details.
+- Monroe's quotes are advocacy and the talk does not test them.
+- Captions garble league names and units at [09:23] and [15:06].
+
+## Q&A
+
+- How much capacity does the NFL have to act given state-by-state law? Answer: through bargaining; medicinal use is possible with scientific and doctor involvement, with owner resistance. [29:34] [30:06]
+- CTE and the concussion settlement. Answer: the settlement covers dementia, Alzheimer's, ALS and Parkinson's, not CTE; CTE sampling is skewed toward players with symptoms; he says studies show cannabis helps pain management for CTE, without naming one. [30:38] [31:39] [32:09]
+=== 2018-03-01_QLdbKUiNadg_preparing-for-the-game-optimizing-player-performance/summary.md
+---
+type: video-summary
+video_id: QLdbKUiNadg
+title: "SSAC18: Preparing for the Game Optimizing Player Performance"
+event: SSAC18 (MIT Sloan Sports Analytics Conference)
+speakers: [Chris Morris (University of Kentucky, per the speaker and host)]
+topics: [american-football, sports-science, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A university football performance staff member uses Catapult data, sliced play by play in OpenField, to compare what offensive linemen do in games with what they do in practice. He argues that total player load looks alike for linemen and wide receivers, but the make-up differs: linemen have contacts, short work bouts and little high-speed running. Practice contact load was far below game level, which he says risked detraining and a spike on Saturday. The talk also covers how he gained coach buy-in, a sprint-speed myth, and a practice-schedule change moving intensity to Friday. The evidence is one team and one season, with no controlled outcome.
+
+## Key claims
+
+- Coaches rely on subjective grading, and objective data reduce opinion-versus-opinion conflict [01:02] [01:32].
+- Training should start from game demands and work backwards [02:02].
+- A published group study reported what linemen cover in a game, but the speaker argues it reports load, not the actual demands [03:04].
+- Linemen and wide receivers have similar total player load, but very different composition (explosive yardage, high-speed distance, max speed) [03:34].
+- A line coach ignored his report until the data were reframed in terms the coach cared about [04:04] [04:34].
+- A gyroscope-based line metric detects when a lineman drops into a stance, then counts contacts and load per contact [05:38].
+- Runs bring more contact and passes bring more force absorption [07:13].
+- Practice was far below game intensity in contact load, even on the most intense practice day [08:16] [08:47].
+- Energy-system detraining may occur if the alactic system is only stimulated on game day [08:47].
+- Even contact periods in practice (first-team offense versus first-team defense, scout team) gave few game-like reps [09:18] [09:48].
+- Speed is overrated for football: very few plays reach 90% of max speed [11:21].
+- Intensity should rise while volume holds, because raising both creates fatigue [15:35].
+- Moving the fast session to Friday (instead of a walkthrough) raised subjective and objective readiness on game day in his program [16:05] [16:36].
+- Athletes must be shown their own data to get buy-in, or they feel like "lab rats" [17:38].
+- A compromise with receivers: trim low-value periods and ask for full speed in the remaining ones, with load unchanged [18:08].
+
+## Numbers and definitions
+
+- Lineman game distance from the cited study: about 3,600 yards [01:32].
+- Player load: summed movement from the unit, described as a more elaborate step counter [03:34].
+- Average play duration: about 8 seconds, 7 for a run and 8 for a pass [06:10].
+- Time between plays: about 30 seconds for his team, not up-tempo; some teams aim for under 18 seconds [06:42].
+- Average load per contact: about 2.12 for pass, 2.32 for run, 2.22 combined [06:42] [07:13] [07:45].
+- Contacts per game for a lineman: about 45 [07:13].
+- Most intense practice: load per contact 1.54 against 2.22 in games [08:47].
+- Alactic stimulus guideline: lose it if not stimulated every five to eight days [08:47].
+- Game-like reps in practice: about 3.5 in one period and 1.5 in another, around five total [09:48].
+- Contacts as a share of game player load: caption says "a hundred sixty-six percent" and then "sixty six percent", so likely 66% (caption garbled) [10:19].
+- Contact load rises by over 100% from practice to game [10:19].
+- Work-to-rest ratio about 1 to 3.75 [10:50].
+- Fewer than 1% of more than 1,000 plays reached 90% of max speed [11:21].
+- Average lineman travel per play: 13.5 yards, with direction split about 25% left and 25% right [11:52].
+- Target for skill players: about 75% of game high-speed distance in practice [13:27].
+- Three-hour camp practice example: about 7,000 yards for a skill player, pacing at 17 to 18 mph [15:05].
+- Eight-second work bouts fall under ten seconds all-out, treated as alactic [10:50].
+
+## Methods and frameworks named
+
+- OpenField used to slice each play in the game files [04:04].
+- Offensive-line metric from the gyroscope: stance detection, contacts, load per contact, percent contact load [05:38].
+- Practice versus game comparison by period type (individual, seven on seven, team versus scout) [09:18].
+- Bioenergetic profile (work, rest) plus a movement profile to define what a lineman needs [12:22].
+- Tapered week with a Friday fast session, tracked with wellness questionnaires and heart rate variability from a wearable [16:05].
+
+## Limits and open questions
+
+- One program and one season, no sample size given for contacts or practice periods.
+- No evidence that closing the gap changes performance or injury. A question on this was asked and answered with his current approach, not outcomes [14:35] [15:05].
+- Adding contact is limited by concussion risk, and the speaker had not yet solved this [12:22] [12:52].
+- Heart rate variability is described as mixed: good and bad signals [16:05].
+- The "Fast Friday" result is his team's own change, no controls.
+- The speaker presents on behalf of Kentucky and the sponsor Catapult, who supply the units, and the caption suggests a company-sponsored session.
+- Garbled captions: contacts-share percentage, and some wording in [05:06] and [10:50].
+
+## Q&A
+
+- Evidence that raising practice intensity helps game performance or fatigue: keep load constant and raise intensity, shorter sharper practices, and the Friday change [14:35] [15:05].
+- Heart rate variability and wellness use: used, mixed results, Friday intensity improved readiness [16:05] [16:36].
+- Player pushback (the Eagles with Chip Kelly were cited as an earlier case): show athletes their data and trim wasted periods so intensity is high in the remaining ones [17:38] [18:08].
+- Contact: the speaker invites email and Twitter follow-up [18:38].

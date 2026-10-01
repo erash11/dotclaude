@@ -1,0 +1,807 @@
+{
+ "id": "SIn6IyYQEVI",
+ "title": "SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks",
+ "channel": "42 Analytics",
+ "upload_date": "20190310",
+ "duration": 1404,
+ "view_count": 937,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "end_time": 40,
+---
+type: video-summary
+video_id: SIn6IyYQEVI
+title: "SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks"
+event: SSAC19 (MIT Sloan Sports Analytics Conference)
+speakers: [Benjamin Foster; Michael Bins (co-author, caption spelling); Jonah (host)]
+topics: [basketball, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+## Summary
+Benjamin Foster, a PhD student in environmental sciences and engineering, presents a method for valuing NBA draft picks that carry protections, conditions that let a trading team keep a pick if it falls in a protected range. He treats a protected pick like a financial option and prices it in basketball terms (five-year win shares), not money. The system simulates team standings, builds outcome distributions by pick position, runs a Monte Carlo simulation, and adjusts for market risk with the Wang transform. A worked example on one traded pick shows protections removing about half its value. The goal is to help teams choose protections.
+## Key claims
+- Draft picks are trade assets, and protections change the distribution of outcomes the receiving team gets [03:36].
+- Millions of protection schemes are possible, so one base pick can have millions of trade values [04:07].
+- The NBA trade market is illiquid, and protections can help teams assemble trades they otherwise could not [04:37], [05:07].
+- Traded protections cluster at top five, top 10 and top 14, which the authors read as psychological anchors on round numbers [05:38], [06:08].
+- Protected picks parallel financial options, where volatility of the underlying value matters [07:40].
+- Risk preference differs by pick: the first pick is priced risk-seeking, and picks 25 and 30 risk-averse [14:48].
+- In the worked example, protections removed about half the value of the base pick [16:20].
+- The model's findings lined up with what the Suns general manager said at the time of the trade, per the speaker [16:51], [17:22].
+- Applications named: reviewing past trades, private negotiation of protections, possibly spotting mispriced assets, and pricing other assets such as Bird rights [20:25], [20:56].
+## Numbers and definitions
+- Player value metric: win shares summed over a player's first five years [11:45].
+- Team standings simulated 10,000 times for roughly 20 remaining games [09:40]; Monte Carlo simulation also run 10,000 times [11:14].
+- Seven asset classes from K-means clustering of pick outcome distributions [14:18].
+- One bar in the output: a 16.8 percent chance of a player producing between 17 and a half and 21 and a half win shares [11:45], [12:16].
+- Priced values: 43.1 win shares per five years unprotected, 21.0 protected [15:49]. Implied annual 8.6 unprotected, compared to a named player's 2018 season [15:49].
+- Protections subtracted about 51 percent of the base pick's value [16:20].
+- A 78 percent chance the pick would be protected in the first year [16:51].
+- Next-year outcome range for the fourth-worst team: first worst to 24th worst, median eight [17:22].
+- Protected pick priced at 4.2 (annual win shares, as spoken), against 4.5 for the player received in the prior year [17:52]. Caption note: 4.2 matches 21.0 divided by five; the unit is not stated in the captions.
+- Market price of risk (gamma) is the single Wang-transform assumption, read generally as the market's risk preference [13:47], [14:18].
+## Methods and frameworks named
+- Three principles: characterize volatility of the underlying asset, assess contractual conditions, account for market risk [08:40].
+- Module one: Elo-based season simulation giving a probability distribution of finishing position [09:10].
+- Module two: cumulative distributions of win shares by pick position from historical Basketball-Reference data, for first-round picks [10:42].
+- Monte Carlo combining lottery probabilities and protection schemes [11:14].
+- Wang transform, with market price of risk calibrated on pick-for-pick trades and interpolated where needed [13:17], [14:48].
+## Limits and open questions
+- Calibration of risk parameters rests on few pick-for-pick trades; the speaker says more work is needed [14:48].
+- Simulation does not account for player movement, and the work was done on personal computers with limited time [19:23].
+- The example comparison omits team-building considerations such as an expiring contract [18:22].
+- Time discounting and option value of rolling a pick over are not explicitly modeled [22:26].
+- Win shares was chosen for simplicity; other metrics could be swapped in [10:11].
+- The explanation for round-number clustering is a hypothesis [06:08].
+## Q&A
+- Asked about discounting for player performance and the future option value of rolling over picks: the speaker said time considerations are hard to frame in a market sense and are not explicitly handled [22:26].
+---
+type: video-transcript
+title: "SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks"
+video_id: SIn6IyYQEVI
+url: https://www.youtube.com/watch?v=SIn6IyYQEVI
+channel: 42 Analytics
+upload_date: 2019-03-10
+duration: 23:24
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [basketball,front-office]
+---
+# SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+[00:00]
+Hello.
+Hey everyone, good afternoon.
+Uh welcome to the research papers
+presentations presented by MLB.
+Um today we're going to have Benjamin
+Foster of UNC um talk about analytics
+for the front office, valuing
+protections on NBA draft picks. Uh the
+presentation will be 20 minutes and then
+we'll have 5 minutes for a Q&A. Uh so
+please help me in welcoming Benjamin.
+Thanks, Jonah. Um I'm glad they served
+[00:31]
+you guys sandwiches before this talk, so
+I'm not standing between you and lunch.
+Um
+if this doesn't work, my co-author is
+back there to save me.
+There we go. Um so uh like Jonah said,
+I'm Ben Foster, I'm a PhD student
+actually in environmental sciences and
+engineering. Um and I'm going to talk
+about our work where we take some
+theories um and methods from financial
+asset pricing um and try to use those to
+produce a value of protecting NBA draft
+picks. When I say value, I don't mean
+monetary value.
+I mean basketball value, so in some term
+[01:02]
+of player uh value or player value
+metric. So I want to make that clear up
+front. Um and my again, my co-author
+Michael Bins uh is here. Um he's a
+consultant at North Highland um in
+Philadelphia.
+So uh uh we're interested in in doing
+this because draft picks are important
+assets in the trade market, and that's
+why we use player value because often
+they're used uh to trade for players. Um
+and I'll bring in the most prolific
+trader of NBA draft picks Ted Stepyien
+to help me uh give you a little uh
+background here.
+[01:32]
+Um so a draft pick is a colloquial term
+uh that the NBA more uh precisely
+defines as a right to make a draft
+choice. I will use draft pick throughout
+this talk, um but I wanted to make that
+clear up front. Um and each year every
+team gets this right um in both rounds
+of the NBA draft. Of course, it's not
+tied to a particular draft slot, what we
+call a pick position. And that's
+determined after the season as a
+function of standings and a lottery
+process for those top 14 picks.
+[02:02]
+Okay, so teams uh as I mentioned can
+trade their first round draft picks,
+although there are some restrictions on
+that now thanks to our friend Ted. Um
+but what is most interesting, I think,
+is that when they trade those draft
+picks, they're allowed to add something
+called protections to the draft picks.
+So these are conditions on the transfer
+of the draft pick based on its pick
+predict pick position. And the easiest
+way to understand these is through an
+example.
+Um and we'll we'll use this throughout
+the talk. So this is the Lakers 2015
+first round pick. It was initially
+traded to the Suns for Steve Nash in
+[02:33]
+2012. It was then traded from the Suns
+to the Sixers in 2015 at the trade
+deadline. So that's the kind of
+reference point is that 2015 trade
+deadline. I think I'm feeding back. I'll
+move over here.
+Uh but that pick was protected top five
+in 2015, uh which means if the Lakers
+were to end up with the first, second,
+third, fourth, or fifth pick, they would
+get to keep it. The Sixers in this case
+would not get the pick that year. It
+would roll over. Oh, this is a
+conundrum. It works when I'm over here,
+but then I feed back.
+Um
+uh it would roll over to the next uh
+[03:05]
+years where it was top three protected
+for a couple years, then unprotected in
+2018. So we call this combination of
+things a
+the base draft pick, the Lakers 2015
+first round pick, plus its protection
+scheme a draft pick asset. And this is
+the thing we're interested in analyzing.
+All right. My co-author is back there,
+and I think I'm just going to flag him
+to switch uh slots.
+So uh what are the benefits of
+protections? To understand that, uh we
+need to understand uh what a base draft
+[03:36]
+pick looks like. Um and it looks like a
+distribution of possible pick position
+outcomes. So at some point in the middle
+of the year, you're uncertain how you're
+going to finish, you're uncertain the
+results of the draft lottery. And so
+this is what your pick posi- or your
+draft pick looks like. If you were to
+trade it, you'd be giving a team this
+set of probable outcomes. Um and so if
+we
+uh think about this in a trade context,
+this has a single value. You could trade
+this for for something, teams would
+evaluate it with one single value. But
+if you add protections, you can change
+[04:07]
+the distribution of picks. Um so this is
+one protection scheme. Uh we've got a
+couple more uh coming here. Um and you
+can do this a bunch of different ways.
+It turns out there actually millions of
+ways to do this. Um
+uh of protection schemes, which means
+you can take that base draft pick and
+give it millions of different values in
+a uh as a trade asset.
+So uh why this is uh particularly
+valuable um is that the uh trading in
+the NBA is a difficult thing to do. Um
+there's lots of reasons why. Um it's a
+[04:37]
+barter system, there's lots of
+restrictions from the NBA um in part of
+the bylaws and in the CBA. There's a
+good reason to do this from but from a
+market efficiency standpoint, we would
+say that this is a really illiquid
+market. It's very difficult to make
+transactions, to buy and sell when you
+want to buy and sell at market rates. Um
+and so
+uh but pick protections are this one
+thing that appears uh or ought to
+increase the likelihood of a transaction
+occurring. So if you imagine you're a
+team
+uh
+Oh.
+It's flying through. Okay. If you
+[05:07]
+imagine you're a team uh and you're uh
+trying to trade for some medium value
+asset, but you only hold very high value
+and very low value assets, it might be
+very difficult for you to assemble a
+package uh that will make that
+transaction occur. Uh with pick
+protections, you can take some of those
+high or low value assets, raise or lower
+their value, increasing the likelihood
+you might be able to execute a trade. Um
+so of course teams understand this um
+and they use pick protections all the
+time.
+Um this was uh figure that we first
+started this project looking at. Um it
+[05:38]
+was really the motivation. We've kind of
+updated a couple times since, but uh
+this is picks traded from 2011 to 2017,
+their level of protection across the
+x-axis, and the number of picks across
+the y.
+And you'll notice uh that there's these
+three kind of clusters. That's top five
+protected, top 10 protected, and top 14
+protected. Um we found this quite
+interesting, right? If teams are using
+protections to tailor the value of a
+draft pick to particular trade
+circumstances, it's quite odd that lots
+and lots of trade circumstances require
+[06:08]
+a top 10 protection as opposed to top
+nine or top 11, where there's actually
+only one top 11 protection in this data
+set.
+Um and so we thought maybe there ought
+to be a more smooth distribution. And
+our hypothesis for why this situation
+might be the case is that teams have a
+difficult time quantifying uh precisely,
+at least, the difference between, say,
+top nine, top 10, and top 11. As a
+result, you end up on a round number. We
+call these psychological anchors in the
+paper. So we have five and 10 and 14 as
+a basketball number, uh which we call a
+round number here.
+[06:39]
+So uh we thought about, well, could we
+come up with a way to calculate the
+value or the difference between, say, a
+top nine versus a top 10 protection, top
+11 versus top 14? And this motivates our
+primary research question, uh which is
+how valuable are pick protections on NBA
+draft picks. And our strategy for
+answering this question is to build out
+a system that can value systematically
+value draft picks with any protection
+scheme. We call this price. And as I
+mentioned before, this is a basketball
+price, so that we're not confused uh
+[07:09]
+that we're going to think about money
+here.
+Um okay, and our purpose, before we get
+into some of the methods, I want to
+remind uh keep this at the forefront of
+your mind, is to help inform team
+decision-making about where you might
+place protections. So could you better
+decide how to protect a pick when you
+trade it away, or how to protect a pick
+when you're trading for it?
+Okay, so uh the basis of our modeling is
+this insight that protected draft picks
+are like financial options.
+So if you imagine a world in which you
+just want to write down how will what is
+[07:40]
+the value of a draft pick asset, you
+might say, well, it's going to be a
+function of the protections, this
+contractual artifact um of the the draft
+pick asset, and that draft pick's future
+position. So what we really care about
+here is the volatility of that position,
+right? How probable is it that it will
+fall within or outside of the
+protections?
+This turns out parallels pretty closely
+to how we think about option value, so
+financial option value. Um there's a
+strike, which we don't need to know the
+details of, but is analogous to
+protections, is a contractual artifact.
+Um and then the underlying asset's
+[08:10]
+future value. Again, we care about the
+volatility of that future value. Um that
+is the likelihood, for example, that it
+might exceed the strike value.
+So Nobel prizes have been awarded for
+describing the mathematics behind these
+option value formulas. I don't think
+there will be one awarded for describing
+the the mathematics behind draft pick
+asset values. But uh we also don't want
+to use the math directly. It applies
+very specifically to these types of
+assets. Um so we use kind of the
+principles that underlie that math and
+[08:40]
+adapt them with our own uh methods uh to
+to price out these draft picks.
+So these are kind of broadly the three
+principles that we use. Uh we first
+characterize the volatility in the
+underlying asset, um then assess the
+impact of the contractual conditions,
+there's a protections, um and then
+account for market risk to boil that all
+down into a single price or single
+value.
+This is what our system looks like. Um
+we've got, and this is roughly how they
+fit into those three uh principles. Um
+[09:10]
+these gray boxes here contain a lot of
+details. You can find them in the paper,
+you can find them on our poster, um but
+I'm going to try to keep it relatively
+high level. If I'd started here, you
+guys would have all left 5 minutes ago.
+Um
+but the important piece here are these
+are these are these first two modules um
+or that they describe two sources of
+uncertainty uh that we're worried about.
+So the first is where will a team finish
+in the standings?
+And the way we model this is using an
+ELO rating system-based model that
+simulates an an NBA season, um and
+[09:40]
+allows us to estimate the probability
+distribution of the team's ultimate
+standings position. Now this is inverse
+for us, so when we say one, that means
+the worst team in the league. This lines
+up better with how picks are are dealt
+out. Um so I'll I'll bring it back to
+that Lakers 2015 pick. At the trade
+deadline. We simulate the 20 or or so
+odd games left for every NBA team. We do
+that 10,000 times and end up with this
+distribution of possible finishing
+positions for the Lakers.
+Okay, so the second module here is pick
+[10:11]
+position valuation. This is trying to
+account for how valuable a player could
+be picked at any position. Right, the
+first pick you can end up with Anthony
+Bennett or LeBron James. We might want
+to capture that variability. And we do
+so by building out these cumulative
+probability distributions.
+In our case, we use win shares. It's
+simple to interpret. You could use
+whatever metric you want here,
+proprietary metrics, PER, whatever you
+think is important. But the important
+piece is to be able to build these
+cumulative probability dis
+distributions.
+[10:42]
+And we did so using historic data from
+Basketball-Reference. We indexed it by
+pick position, so when the player was
+picked, and that's how we built them
+out. So, of course here we've got Tim
+Duncan and LeBron James at the far end
+of this curve, and Anthony Bennett's
+down low, and Andrew Bogut falls about
+there on this distribution. And we can
+do this for every pick. So, we do it
+every pick out to pick 30. We're we're
+just worried about the first round here.
+And that's in bright red.
+Okay, so we've captured the uncertainty
+in these two modules at the top here.
+[11:14]
+And we feed that into a Monte Carlo
+simulation. We run that 10,000 times,
+and this is where we account for lottery
+probabilities and protection schemes.
+I'll give you the very coarse overview
+of what goes on here. We start with that
+output from module one.
+And we feed that through the way we
+account for draft lotteries and the
+protection scheme. Combine that with the
+output from module two, and the result
+is this value generated by pick assets.
+So, this is the important piece right
+here. I'll actually blow this up and
+[11:45]
+look at it in more detail. So, this is
+win shares over the first five years of
+a player's career. I think I forgot to
+mention that. We sum win shares over the
+first five years of their career. This
+is our player value metric that we're
+interested in.
+And it's the those win shares
+simulated win shares generated by the
+specific pick asset. So, that Lakers
+pick with its protections.
+And to interpret this, you might say,
+"Okay, this bar here represents
+a 16.8% chance
+that the Sixers, in this case, who own
+[12:16]
+this pick, would be able to draft a
+player with it who contributes between
+17 and a half and 21 and a half win
+shares over their first five years."
+Okay, so that's the main output from
+this Monte Carlo simulation, and that
+feeds into our financial asset pricing
+model. So, the goal here is to take that
+distribution of outcomes and boil it
+down into a single value.
+And I'll do that in two I'll show how we
+do this with two distributions. So, this
+is that protected pick that we've been
+[12:46]
+talking about. And I'll also show a
+counterfactual, which is the unprotected
+2015 Lakers pick. So, this doesn't exist
+cuz they traded that protected pick, but
+we can compare the two and estimate how
+valuable protections were
+by doing this. So, the first way you
+might think about boiling this
+distribution down is to take the
+expected value or the mean of this
+distribution. So, that those are the
+black lines there, but the issue is that
+doesn't account for the variance
+in the distribution. And you might care
+about that because these really big
+outcomes here
+[13:17]
+are the result of picks one through
+three, which essentially get ruled out
+of this protected case because of the
+protections. This is the chance of
+getting LeBron James or someone who
+might change your your franchise's
+history. So, you might want to weight
+that a little bit when you assess the
+the the value of this pick.
+To do that, we use something called the
+Wang transform. It's a financial asset
+pricing model
+that we use because it works very well
+for empirical distributions.
+And it just has a single assumption,
+which is called the market price of
+[13:47]
+risk.
+And this is the math, but the important
+piece here is this highlighted gamma
+value. This is that one assumption. It's
+can be
+represented as the sharp ratio, which is
+something you can calculate if you're
+worried about stocks or corporate bonds
+or something heavily traded instruments.
+You can calculate this.
+But we're interested in the more general
+interpretation of the market price of
+risk,
+which is can be understood kind of
+generally as the risk preferences of the
+[14:18]
+market. So, now we need to figure out
+how the NBA trade market values
+different draft pick positions.
+We don't think that they should or they
+probably don't treat pick one like they
+treat pick 30.
+And so, our solution for this problem
+was to go back to our module two output.
+So, remember this is player performance
+cumulative probability distributions. We
+use K-means clustering, too.
+And a filtering method, and we identify
+like assets. So, we end up with seven
+distinct asset classes that Michael will
+flip through here.
+[14:48]
+And then we assign a different market
+price of risk for each of those asset
+classes. We have calibrated these
+using pick-for-picks trades. There
+aren't very many of those. More work
+could be done here to calibrate these
+values. But we calibrated them, we
+interpolated when we needed to, and
+these were the the values we came up
+with. So, to interpret this,
+pick one is all by itself, and we have a
+very risk-seeking market price of risk.
+So, that means teams are willing to pay
+much more than the expected value. And
+then for pick 25 and 30, it's very
+[15:19]
+risk-averse parameter. So,
+teams are willing to pay less
+than the values. So,
+I will say that hopefully that aligns
+with your intuition. When you hear about
+the trade, you often hear about teams
+taking risks at pick one, going for
+upside. At pick 25 and 30, they're
+looking for role players. They're
+interested in kind of their base
+contribution.
+Okay, so the result we put this all into
+this Wang transform model. We use this
+distribution, we end up with these
+yellow lines.
+[15:49]
+So, you'll notice in the unprotected
+case, that yellow line is way out to the
+right. So, that tail of that
+distribution pulled the price way out.
+In the protected case, it's actually
+relatively close to that expected value.
+And these are our prices, right? So,
+it's 43.1 win shares per five years and
+21.0. To give you a little more context,
+you can break that out into a kind of a
+implied annual win share contribution.
+It's 8.6 here, which is 2018 Kemba
+Walker in the unprotected case. In the
+protected case, it's 2018 Tyler Johnson.
+[16:20]
+So, for some of you that will be
+meaningful and help you understand this.
+Um
+The So, the other thing we can do, I
+mentioned this is kind of a
+counterfactual situation. Excuse me.
+Um
+And we can compare the two and then say
+the protection subtracted about 51% of
+the value of the pick of that base draft
+pick. So, I will talk about this a
+little bit more, but I want to back up
+and give you some context to the trade
+that this pick was involved in. So, it
+was the Suns-Sixers-Bucks trade. And the
+[16:51]
+Suns traded away that Lakers first-round
+pick in exchange for Brandon Knight and
+Kendall Marshall, who they ended up
+waving I think immediately.
+So, we'll compare these two. And at the
+time this Lakers pick was perceived to
+be a pretty high-value asset. A lot of
+folks were asking this question, and
+it's interesting to see Ryan McDonough,
+who's the GM of the Suns at the time,
+his response to this question. So, he
+says, "With a pick like that, we
+probably weren't going to receive the
+pick this year." And this lines up with
+our model findings. So, we end up
+assessing there's a 78% chance that that
+[17:22]
+pick was going to end up protected in
+that first year.
+So, he goes on and says, "Well, that
+pushes it back next year, and there's a
+pretty high variance as to what the
+Lakers
+how what pick what the pick could be."
+And that also lines up with our model.
+So, the Lakers were fourth the fourth
+worst team at the time. Suppose they
+were to finish fourth worst. We
+estimated the distribution of outcomes
+the next year was first worst and 24th
+worst, so sixth best. The median outcome
+there was eight.
+And he concludes and says, "If you ask
+[17:52]
+me how the Lakers are going to be a year
+from now, I have no idea." It kind of
+sounds like the uncertainty was a
+driving force in this trade.
+Getting rid of this pick. And we can go
+back and kind of think about what return
+they got, at least on this one
+dimension. So, like I said that we
+priced that protected pick at 4.2 win
+shares. Brandon Knight, who they got in
+return, had generated around 4.5 in the
+previous year and was on track for the
+same in 2015. So, there's a lot going on
+there. Uh
+[18:22]
+Brandon Knight
+was
+Go back a couple. Okay. Brandon Knight
+was um
+about to be a free agent. There's
+team-building considerations. There's
+all sorts of considerations. But this is
+another piece of data I think to use to
+analyze possibly past trades or
+prospective trades.
+So, we've got a bunch of other results
+that you can find in the paper, on the
+poster. We don't have time to go through
+them too much here. But one is this
+Bucks-Suns trade. There's the Eric
+Bledsoe trade in November 2017. The
+[18:53]
+interesting thing there is the are these
+low-end protections, so 17 through 30.
+That does some interesting things to the
+value. Hopefully, if we are fortunate
+enough to have the opportunity to talk
+tomorrow, we'll input some of this
+discussion into that talk. And then we
+answer a couple other questions, like
+what's the value of incremental
+protections or multiple-year
+protections. So, we call this rollover
+protections.
+So, for a few discussion points,
+we've used these quantitative methods
+hopefully to say something about what
+[19:23]
+the value of um
+NBA draft picks are, protected NBA draft
+picks are. But I think there's a few
+ways we can improve our model, and we
+built it kind of modularly, so we can
+update methods over time.
+So, the first thing, there's a bunch
+here. I'll just mention two. One is that
+the team simulation doesn't really
+account for player movement right now.
+There are updated methods that could be
+used. We had some We're working on this
+project on the side and using personal
+computers, and so we had some computing
+constraints and time constraints. But we
+can implement more sophisticated methods
+here to account for when a team trades a
+[19:55]
+player away, they might get worse, they
+might get better, um but there might be
+a jump in their performance, and we
+don't account for that currently. Um and
+then uh I mentioned this in the talk,
+better calibrating those risk preference
+parameters um could be done uh with some
+updated methods.
+The other thing we'd like to do is add
+some customizability to the the model.
+Um if this is going to be used by teams
+as private information to make decisions
+about pick protections, they may want to
+input their own risk preferences,
+expectations about draft quality or
+[20:25]
+future team performance, or choose a new
+or different player value metric. Um and
+those uh updates may not aren't going to
+be that difficult, I think, to add in
+here. Um so we've mentioned some of
+these applications. Um we could analyze
+past trades, which is what we've kind of
+done here today. Um we call this kind of
+tongue-in-cheek advanced analytics of
+the front office. The idea there is the
+front office has had their chance to
+advance analyze players and coaches, and
+maybe it's their turn under the
+microscope. Um the second uh would be
+private information. So this is allowing
+teams to better negotiate
+[20:56]
+pick protections um or perhaps target
+mispriced assets. That's an arbitrage
+argument that might be hard to make in a
+market that's like the NBA trade market
+and is a liquid, but um it still may be
+possible. Um and then the third is a
+more general idea, a larger a cons-
+conceptual idea, and that's to use this
+framework of NBA assets as financial
+assets um and try to price out or value
+other asset types, things like bird
+rights or draft and stash decisions um
+might be able to be maneuvered into this
+[21:26]
+framework.
+And that's it. If you have any questions
+Oh, my co-author's a Duke fan, and I
+went to Virginia, so I had the
+opportunity here to put a bunch of
+Virginia players scoring on Duke. Um so
+that's why this is up here.
+We can now open up for questions.
+[21:56]
+I think maybe you had a follow-up point
+on it that would be relevant to it, but
+did you do anything with discounting
+rates for the player performance? I
+mean, the front office is a big
+consideration that's like, "Well, you
+know, I'm I may not be the person to
+make that pick." So um so there's there
+was that piece, and then also um the
+flip side value of, you know, the the
+draft pick, as they say, it's you know,
+it's eventually becomes a player, and if
+that player isn't the player another
+team likes, it's not as valuable as the
+pick that was taken to get it. And so
+there would maybe some future option
+value to the pick actually rolling over
+um so that you can continue to keep it
+[22:26]
+as a more of a financial asset rather
+than a realized asset.
+Yeah. Yeah, there are lots of time
+considerations here, lots of dimensions
+that we don't deal with, in part because
+it's kind of hard for me to think about,
+kind of from a market perspective,
+whether assets are more valuable now or
+later. It's not like money.
+Um
+it's kind of a personal preference
+thing, so um
+we've thought about how we might
+incorporate it, but it's not explicitly
+dealt with here on both those dimensions
+that you're you're discussing. Um
+[22:56]
+but it might not It probably isn't that
+hard if we could come up with a way that
+we think actually represents the world
+um and how teams make decisions.
+Any more questions?
+All right. Well, thank you to Ben and
+his co-author, Michael.

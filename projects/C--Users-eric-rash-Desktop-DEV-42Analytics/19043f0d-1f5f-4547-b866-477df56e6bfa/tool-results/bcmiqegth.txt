@@ -1,0 +1,466 @@
+=== 2019-03-10_TIRINmtZOu0_training-schedule-confounds-the-relationship-between-acute-c/summary.md
+---
+type: video-summary
+video_id: TIRINmtZOu0
+title: "SSAC19: Training Schedule Confounds the Relationship between Acute Chronic Workload Ratio and Injury"
+event: SSAC19 (MIT Sloan Sports Analytics Conference)
+speakers: [Luke Bourne (caption spelling), Patrick Ward]
+topics: [sports-science, injury-health, american-football, other-sport:soccer, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speakers argue that the published link between the acute chronic workload ratio (ACWR) and injury may be a statistical artifact of the training schedule. A hard recent week makes a hard session today more likely, and the intensity of that session is what raises injury risk. They simulated seasons from NFL and Italian soccer load data in which only same-session intensity affected injury, and the ACWR still looked strongly predictive. When session load is accounted for, ACWR loses significance in their data. They say this does not prove the earlier papers wrong. It matters because the metric underpins software and consulting products sold as injury prevention.
+
+## Key claims
+
+- The first speaker says a vendor once claimed it could cut injury rates by over 50%, and he calls that claim false; he is generally skeptical of injury-prevention products. [00:30]
+- ACWR is the last 7 days of load divided by the last 28 days, and it has been applied to many load types, including perceived exertion, heart rate, GPS, accelerometer data and minutes played. [04:35]
+- The literature proposes a U-shaped relationship with injury and a "sweet spot" of lower risk. [05:05]
+- Positives named for ACWR: easy to calculate, intuitive for coaches, and it pushes coaches to consider past training and not only today. [05:36]
+- The speakers say critics had already raised other problems: exponentially weighted versions, mathematical coupling of numerator and denominator, weak out-of-sample prediction, and no data in the offseason. [08:09]
+- The speakers' hunch was that ACWR is an artifact of the training schedule, because training camp has both the highest load and the highest injury risk. [09:39]
+- Prior studies calculate ACWR going into each session and check whether an injury occurred in that session; they find a strong relationship across sports. [10:40]
+- The proposed causal structure: schedule drives both ACWR and session intensity, and session intensity drives injury. A hard prior week predicts a hard upcoming session. [11:41]
+- In the speakers' own data, ACWR is highly predictive of injury in a given session. [13:12]
+- In simulations where ACWR had no effect by construction, ACWR still came out extremely significant on a chi-square test. [14:13]
+- The apparent injury-risk increase in the simulations was about the same order as the literature reports. [15:15]
+- Sessions in the "danger zone" of ACWR were more likely to be hard sessions. [16:16]
+- A suggested fix is to use the actual session load of the session in which injury occurred, for example with survival models, latent variable models, or other players' loads in the same session. [17:49]
+- Prior studies have not used same-session load because the data for an injured player is usually discarded. [17:18]
+- Once session load is accounted for, ACWR goes from highly significant to non-significant in all their cases. [18:19]
+- The speakers say they have not disproved the field, only shown the analysis is open to confounding; a more complex model might still find real signal. [18:49] [23:35]
+
+## Numbers and definitions
+
+- ACWR: acute load (most recent 7 days) divided by chronic load (previous 28 days). [04:04]
+- Sweet spot: captions read "08 and 1.3", almost certainly 0.8 to 1.3, but the captions do not confirm it. [05:36]
+- 2014 first paper (cricket bowlers) cited over 250 times; the 2015 editorial (captions: "blanch and gabbit") cited over 150 times. [07:38]
+- Uncoupled ACWR: most recent 7 days over the 28 days before those 7 days. [08:39]
+- Data: one NFL team and one Italian soccer team (captions say "Syria" and "Serria", likely Serie A; not confirmed). [12:11]
+- Simulation: 1,000 simulated seasons per sport, injury probability depends only on the current session's intensity. [13:43]
+- Post-simulation apparent risk increase: 6.8% for the Italian team, 10.5% for the NFL team. The talk does not say whether these are relative or absolute. [15:15]
+- Injury definition (Q&A): non-contact injury causing the player to miss a subsequent session or match, in line with the UEFA definition. [20:22] [20:53]
+- The 6.8% and 10.5% figures are read from auto captions; they were not checked against the slides.
+
+## Methods and frameworks named
+
+- Directed acyclic graph of ACWR, schedule, session intensity and injury. [11:10]
+- Null-model simulation: simulate season-by-season session injuries where only session load matters, then test ACWR against injury with a chi-square test. [13:43] [14:43]
+- Adjustment options: survival models, latent variable models, or predicting the upcoming session load as an unmeasured confounder. [18:19] [25:11]
+- Comparison of coupled and uncoupled ACWR denominators, same result. [26:42]
+
+## Limits and open questions
+
+- Two teams from two sports; no detail on roster size, number of injuries, or load metric used.
+- Details of the real-data adjustment models are "in the paper" and were not shown. [17:49]
+- The talk does not show the adjusted effect sizes, only that significance disappears.
+- Whether chronic load is protective is explicitly not addressed. [26:42]
+- Whether a richer multivariate model finds signal is left open. [23:35]
+- The claim that better sensors would make the problem worse is the speaker's intuition, not a test. [21:54]
+- The speakers' view that ACWR products are "snake oil" is their own opinion, stated early in the talk. [01:01]
+- Wellness questionnaire data: one speaker says across four sports the players mostly enter the same value (captions: "seven") every day. This is his experience, not a study. [24:39]
+- Minor inconsistency: the talk opens strongly against the industry but closes saying it has not disproved the literature. [18:49]
+
+## Q&A
+
+- How is injury defined, and are non-training injuries dropped? Non-contact injuries causing a missed session or match; cannot rule out training relation for off-field injuries. [20:22]
+- Do device sensitivity limits matter? Noise in load sensors should weaken the effect, so the speaker expects better data not to remove the problem. [21:23]
+- How should decision makers avoid snake oil? Much sport science is well supported (nutrition, strength and conditioning); this may not be one of them. [22:33]
+- Could wellness, physiological and biomarker data in a multivariate model do better? Possibly; dose is measurable, response is not well measured, and wellness forms lack validation. [23:35] [24:39]
+- Can you predict today's load from the prior 7 days? If so, treat it as an unmeasured confounder and adjust; needs statistical skill. [25:11]
+- Do high vs low chronic loads differ, and is chronic load protective? Same results using acute load alone; protection not addressed; coupled and uncoupled denominators gave the same results. [26:42]
+=== 2019-03-11_SQV3o7g_l8A_skating-for-gold-using-wearable-technology-to-maximize-prepa/summary.md
+---
+type: video-summary
+video_id: SQV3o7g_l8A
+title: "SSAC19: Skating for Gold: Using Wearable Technology to Maximize Preparation for Elite Hockey Players"
+event: SSAC19 (MIT Sloan Sports Analytics Conference)
+speakers: [Adam Douglas]
+topics: [sports-science, decision-making, other-sport:ice-hockey]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Adam Douglas, an applied sport scientist at Catapult who also consults for Hockey Canada, shows how wearable load data from ice hockey practices and games was used with coaches. In one case, defensemen lost explosive output across a game and got less intensity in practice than forwards; skating was added to position drills and in-game explosive efforts rose. In the second, he plans practice duration and intensity ahead of a short tournament and plots measured load against the plan. His closing message is to use whatever you collect, and to feed objective load back to coaches while leaving tactical decisions to them.
+
+## Key claims
+
+- Hockey Canada's national teams target short tournaments of five or six games in about ten days, so preparation has to peak in a narrow window. [01:33]
+- Hockey has little applied workload research, which was why Hockey Canada became a Catapult client about three years earlier. [02:36]
+- The sensor combines an accelerometer, gyroscope and magnetometer worn between the shoulder plates, and it does not use GPS indoors. [03:40], [04:10]
+- Coaches reported the defense could not sustain intensity across all three periods. Douglas says the athletes are fit, so he looked at the data instead of assuming a fitness problem. [05:45]
+- With no comparable literature, he compared games and practices internally using player load per minute and a count of explosive efforts. [06:15], [06:47]
+- Defense showed a different practice intensity from forwards, and explosive output trended down across the three periods. [07:18], [08:21]
+- Defensemen got less exposure to explosive intensity than forwards, and forwards looked flatter in part because there are more of them and they get more rest. [08:51], [09:22]
+- Coaches planning practice think technical and tactical first. Douglas pushed them to consider the physical content of drills, for example getting defensemen skating in position work instead of standing at the blue line for shots. [09:22], [10:23]
+- After about three months, in-game explosive efforts were higher; Douglas cautions that Olympic arousal may have contributed. Coaches said the defense played better late in the season. [10:23], [10:53]
+- For the men's under-20 program he calls the physical side "pillars" (a term he credits to a colleague) that support technical and tactical work. [11:56]
+- He pre-plans each day on a pre-competition calendar as short or longer and medium or high intensity, then plots measured load against that plan for coaches. [12:26], [12:56], [13:27]
+- In the plotted tournament, the highest-loaded day was an outdoor game against the Americans that went to a shootout, and the lowest load was the fourth game, against a weaker opponent. [15:01], [15:31]
+- He combines wellness questionnaires, internal load, an HRV app and heart-rate data, but shows coaches only a pared-down summary of considerations. [15:31], [16:02]
+- He frames recommendations as considerations because coaches face the media and decide how hard to push. [16:33]
+- The team front-loads the tournament so athletes peak; that year's load trend went up into the medal round, but the team still lost, and he says luck and the human element are not accounted for. [17:04], [17:35]
+- If you collect data, use it. He says there is a gap between how coaches rate a session's intensity and how athletes experience it, and an objective measure puts everyone on the same page. [19:07], [19:37]
+
+## Numbers and definitions
+
+- Player load per minute: described as intensity of work per minute in games and practices; player load is called a well-researched Catapult variable. [06:47]
+- Explosive efforts: a frequency count of explosive movements on the ice. [06:47]
+- 44%: increase in in-game explosive efforts "in three months." Comparison period and statistics not given. [10:23]
+- Tournament: five or six games in about ten days. [01:33]
+- Round-robin games on the 26th, 27th, 29th and 30th, double back-to-backs. [13:58]
+- Short day: about 30 minutes or less. [12:56]
+- Three years of tracking data on the athletes. [18:37]
+- 25 athletes (can now be understood to individual level). [18:06]
+- HRV measured from August through the January tournament. [24:26]
+- Hypothetical "300 units" of load for one player, which Douglas says he is making up. [21:51]
+- Caption problem: the group of players in the position comparison is garbled ("seven players" for defense). [07:18]
+
+## Methods and frameworks named
+
+- Inertial wearable sensor data on ice, summarized as player load per minute and explosive effort counts.
+- Internal comparison of practices versus games by position group, plus simple game models for wins versus losses.
+- Pre-competition calendar with planned day types, compared with measured load.
+- Combined monitoring: subjective wellness, internal load, HRV, heart rate.
+- Concept of tactical periodization (hard and easy days), mentioned in Q&A. [22:52]
+
+## Limits and open questions
+
+- No sample sizes for sessions or games, no statistical tests, and no control for the 44% result; the speaker flags arousal and multifactor game outcomes. [08:21], [10:23]
+- Results come from national-team staff and a short-tournament setting, not a full season.
+- Douglas is a vendor employee (Catapult); he says he is also a PhD student and a Hockey Canada practitioner. [01:03]
+- The finite-load idea (too much load lowers explosive ratio) is described as theoretical, not shown. [21:20], [21:51]
+- The slides are not visible, so the shapes of plots are only described, not verified.
+
+## Q&A
+
+- Wearing comfort: athletes adapt; he explains why, asks them to wear it and checks in about 15 minutes in. [20:17]
+- Using the data to manage players' ice time: he has raised the finite-load concept but coaches decide who plays. [21:20]
+- Applying to other sports: any sport that measures practices and games can use it; loading choices belong to the practitioner. [22:52]
+- Why so little hockey research: he does not know; likely emerging applied research in North America and closed environments. [23:23]
+- HRV protocol: measured from August through the tournament, kept simple for under-20 players. [24:26]
+=== 2019-03-11_z_6M5r7031A_the-true-cost-of-tommy-john-surgery-in-major-league-baseball/summary.md
+---
+type: video-summary
+video_id: z_6M5r7031A
+title: "SSAC19: The True Cost of Tommy John Surgery in Major League Baseball"
+event: SSAC19 (MIT Sloan Sports Analytics Conference)
+speakers: [Eric McNally]
+topics: [injury-health, policy, decision-making, other-sport:baseball]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Dr. Eric McNally, an orthopedic surgeon, argues that elbow ligament injuries in baseball keep rising because pitches are faster and young players specialize and pitch year-round. He presents wearable-sleeve findings that faster pitches load the elbow more and that the velocity-stress link breaks down with fatigue. Using public data, he shows that many pitchers who have the surgery do not return to prior durability or value, and that salary paid during recovery adds up to about half a billion dollars over a decade. He closes by proposing expected value decision analysis as an adjunct for choosing surgery versus non-operative treatment.
+
+## Key claims
+
+- The ulnar collateral ligament is the main stabilizer of the throwing elbow, and a complete tear needs reconstruction with a graft. [01:36], [02:07]
+- About 900 professional pitchers have had the surgery, and he says 25% of current major league pitchers have. [03:09], [03:39]
+- Two causes for continued injuries: higher velocity, and early year-round single-sport play. [04:09]
+- In wearable studies, faster pitches impart more elbow stress for both youth and professional pitchers, and this is pitch speed, not arm speed. [04:39], [05:10]
+- In a simulated seven-inning game, fatigue ratings rose each inning and peak fastball velocity dipped around inning five, but elbow stress went up when it should have come down in fatigued pitchers. [05:10], [05:40]
+- Single-sport specialization before skeletal maturity is causing burnout of muscle and tendon, and kids feel pressure to play through pain. [07:10], [07:41]
+- Among 140 established pitchers who had the surgery, 20% never pitched in the majors again, and about one in three returned but not at prior durability. [09:13], [09:43]
+- Returning pitchers showed a statistically significant decline in numerous pitching metrics. [09:43], [10:13]
+- Wins above replacement falls for three years before surgery and takes three years after return to reach pre-surgery level. [10:13], [10:43]
+- Over 2004 to 2014, salary paid during rehab came to about half a billion dollars (2017 dollars), excluding medical, travel, minor leaguers and pre-surgery downtime. [12:14], [12:44], [13:14], [13:44]
+- Non-operative treatment for low-grade tears works some of the time but failure means losing a second season. [14:14], [15:15]
+- Expected value decision analysis can compare the two paths and show, via two-way sensitivity analysis, where each wins; he says it does not replace clinical decision-making. [15:46], [16:47], [17:19]
+
+## Numbers and definitions
+
+- 900 pitchers, 25% of current MLB pitchers. [03:09], [03:39]
+- Youth survey: 200 healthy players; 75% admitted arm pain; 25% had symptoms suggestive of overuse injury; 50% felt pressured to play despite pain. [07:10], [07:41]
+- Up to 10% of drafted pitchers had already had surgery (Mayo study, speaker credits Chris Camp). [07:41], [08:11]
+- Youngest patient: 12. [08:11]
+- 150 MLB pitchers studied, 140 "established" (10 or more games in a season). [09:13]
+- 20% of established pitchers never returned to the majors; one in three came back below the 10-game threshold. [09:43]
+- Recovery to the majors: 12 to 18 months; about four to four and a half years to return to prior level. [10:43]
+- Medical cost per player: about $50,000, called conservative. [11:13]
+- 2004 to 2014 study: about 200 surgeries; 180 days missed on average; about half starters, half relievers. [12:14], [12:44]
+- Non-operative success: 40 to 80% depending on the case; at most three months of downtime. [14:14], [14:45]
+- Surgery success: "80 to 100%" in different studies; a year to a year and a half of downtime. [14:45]
+- Sample model: expected WAR 1.6 non-operative versus 1.3 surgery, for one representative case. [16:47]
+- Caption problem: "80 to 80 to 100%" at [14:45] is garbled. "One out of three" is ambiguous about the denominator. [09:43]
+
+## Methods and frameworks named
+
+- Wearable elbow-stress sleeve on throwers (medial elbow torque), including a simulated game with fatigue ratings.
+- Surveys of youth players; cohort analysis of public MLB data; salary and wins above replacement (WAR) measures.
+- Expected value decision analysis with two-way sensitivity analysis for treatment choice.
+
+## Limits and open questions
+
+- The salary study was under review at the time. [11:44]
+- WAR was age-matched only in the first data set; the second was not controlled, as he agrees in Q&A. [18:19]
+- The salary-per-WAR figure was "back of the envelope" and not adjusted. [28:27]
+- The decision example is a single sample case with chosen inputs. [16:47]
+- The speaker is a clinician reporting his group's studies; the youth survey was done during his residency. [07:10]
+- The speaker does not give the sample or denominator behind the relief-versus-starter injury comparison and says he does not know. [27:22]
+- The fatigue study sample size is not stated.
+
+## Q&A
+
+- Was WAR controlled for starters versus relievers? First set age-matched, second not. [18:19]
+- Recovery by age? Numbers too small, appears similar to natural age trend. [18:50]
+- How to avoid the injury? Rest, pitch counts (including warm-up pitches and multiple leagues), education, wearable research on weighted balls and fatigue. [19:20], [20:21], [20:52]
+- Early specialization versus remodeling of the arm in childhood? Some early throwing is needed; the problem is rest. [19:51]
+- Hitters? The sleeve relies on a throwing motion so cannot measure hitters. [21:23]
+- Batting after injury? He allows it if pain-free. [21:54]
+- Arm slot? Next stage; slot has not shown increased elbow stress so far. [22:33]
+- Coaches' attention to pitch counts? More aware now. [23:10]
+- Fatigue mechanism? His hypothesis: kinetic chain fatigue makes the arm do more; core and bodyweight work suggested. [24:11]
+- Does salary matter to the analysis? Depends what is measured. [25:12]
+- Why research from Japan? He does not know. [25:42]
+- Pitcher elbows in MRI? Pathology is common; professionals' tears are attritional. [26:13], [26:43]
+- Why is the rate similar at the major league level? Elbows are what they are by then; possibly more relievers. [27:22]
+=== 2020-03-11_R2Lm027t2kQ_no-industry-is-safe-the-opioid-epidemic-in-sports-and-societ/summary.md
+---
+type: video-summary
+video_id: R2Lm027t2kQ
+title: "SSAC20: No Industry is Safe: The Opioid Epidemic in Sports and Society"
+event: SSAC20 (MIT Sloan Sports Analytics Conference)
+speakers: [Ryan Leaf, Seth Moulton, Corbin (caption spelling "pho" / "P Cho"), Stephanie (moderator; surname garbled in captions)]
+topics: [injury-health, policy]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A moderator, a former NFL quarterback turned analyst, a congressman who is a Marine veteran, and the head of an addiction treatment company discuss opioids in sports and in society. They argue that addiction is a chronic condition often tied to untreated trauma, depression or anxiety, that short rehab stays have little evidence behind them, and that stigma keeps athletes and veterans from asking for help. They disagree in part on blame: one panelist stresses personal responsibility, another says prescribing played a role. The panel closes on harm reduction and on testing treatments through data. It is a personal and policy discussion, with few worked analytics.
+
+## Key claims
+
+- Overdose deaths have risen steadily, and the moderator frames them through her own brother's death [01:00], [02:03].
+- Addiction should be treated as a chronic condition with relapse and genetic risk, not as a one-time 28-day event [08:10].
+- Substance use often sits on top of another psychiatric condition, with depression, anxiety and trauma the most common [08:43].
+- Risk comes from three sources: biology, life experience such as trauma, and access to the substance [09:13].
+- Veterans meet both trauma and painkillers, which raises overdose risk [09:44].
+- Leaf says an opioid given for injury pain became his way of coping with emotional pain, and that competition was his first dependence [13:20].
+- Leaf says locker-room culture offered no example of a man asking for help [13:51].
+- Moulton says veterans seeking therapy are often sent home with a prescription because the VA lacks therapists [11:47].
+- The treatment field is called a cottage industry built on individual recovery stories rather than evidence [16:27].
+- Corbin says 28-day luxury rehab has nothing in evidence behind it [16:58].
+- The evidence-based model is medication, therapy for co-occurring conditions, and recovery services [17:30], [18:01].
+- Moulton proposes routine mental health check-ups, first for the military and then for high schoolers, and a three-digit hotline [22:42], [23:43].
+- Corbin says payment models reward service volume, not outcomes, which favors repeated short stays [29:20], [29:54].
+- Corbin says pharmaceutical companies deserve some blame but blaming the substance undercuts the disease model [35:00]. Moulton says fentanyl from China is a policy problem but that sufferers must take personal responsibility [37:05]. Corbin replies that responsibility is hard when a doctor prescribed the drug [37:35].
+- Leaf says dosing beyond the prescription may be the first symptom of trouble [39:09].
+- Telling personal stories reduces stigma and lets others come forward [41:13], [43:45].
+- Corbin says analytics can flag people who have not been diagnosed, such as those seeking drugs across several providers [44:47].
+- Harm reduction means accepting patients as they arrive, and supervised injection sites and naloxone access are defended as life-saving [49:18], [51:19], [51:50].
+- Moulton supports studying cannabis and psychedelics for post-traumatic stress and says the data should decide [54:26], [54:56].
+
+## Numbers and definitions
+
+- Opioid overdose deaths since 1999: 400,000 (moderator) [01:00].
+- Drug overdose deaths in 2017: 72,000, compared to the size of an NFL stadium, with 50,000 opioid related [01:00], [01:31].
+- Leaf's brother's addiction reached $4,000 a month before a switch to heroin; he died in 2015 at 30 [02:03]. (The moderator says her own brother.)
+- Veterans are twice as likely as non-veterans to die of an opioid overdose (Moulton) [04:34].
+- Leaf describes a $31 million opportunity at the draft, second overall [06:04].
+- 80 percent of people with a substance use disorder have an underlying co-occurring psychiatric condition (Corbin) [08:43].
+- 28-day rehab: described as having single-digit success rates; a Malibu stay cited at $45,000 for 30 days [16:58].
+- Relapse risk falls after one year in recovery and becomes that of the general public after five years [18:01].
+- 51 percent of former NFL players said they used opioids, and 70 percent of those said they abused them (Corbin) [25:15].
+- Chinese supply: the claim is that China provides 90 percent of US fentanyl, and a 2014 agreement was followed by US Customs stopping 1207 shipments. The Chinese customs figure in the sentence is cut off in the captions [36:33], [37:05].
+- 20 million people diagnosed with a substance use disorder, with an 80 percent treatment gap, meaning 20 percent seek treatment [44:16], [44:47].
+- Treatment cost: several years in outpatient care at Corbin's company costs about the same as one month of resort rehab [29:54].
+- Leaf: nearly eight years sober [26:45]; stayed 90 days at rehab while three years sober [31:26]; same therapist five years [32:57].
+- Moulton: hotline number is "nine eight eight" [23:43].
+- Caption problems: "Corbin pho" and "Stephanie widdled wacks" are garbled names; the company is spelled Eleonora, Ellenor and Eleanor in captions.
+
+## Methods and frameworks named
+
+- Biopsychosocial model of addiction (biological, psychological, social) [08:43], [09:13].
+- Evidence-based treatment: medication, therapy, recovery services [17:30], [18:01].
+- Claims analytics to flag undiagnosed patients, including multiple prescribers and emergency room visits [44:47].
+- Harm reduction, including supervised injection sites and naloxone [49:18], [51:19].
+- Moulton's three-part legislative plan: annual check-ups for veterans and service members, extension to high schoolers, and a national hotline [22:42], [23:43].
+
+## Limits and open questions
+
+- Most claims are personal experience, opinion or policy advocacy; no study is cited by name.
+- The 51 and 70 percent figures for former NFL players are not sourced in the talk.
+- Corbin leads a treatment company, and Moulton is a legislator promoting his own bills; both have an institutional stake.
+- Panelists disagree on blame (Moulton and Leaf stress accountability; Corbin points to prescribing). Not resolved.
+- Leaf's statement that studies prove injection sites make communities safer is not backed by named studies [51:50].
+- A mid-talk comment that "if it wasn't opioids it would be meth" is speculation [36:02].
+- Several numbers may be garbled in the captions (see above).
+
+## Q&A
+
+- Is every addiction unhealthy, such as addiction to competition or work? Panelists say the difference lies in consequences, with positive addictions rewarded by society [46:17].
+- Is the problem international? Yes; other countries handle mental health with less stigma and more harm reduction [48:48].
+- What are supervised injection sites? A safe place for people not yet willing to seek help; defended as lowering deaths and exposing people to treatment [49:48], [51:19].
+- What about psychedelics for post-traumatic stress? Moulton says data should lead; Leaf defers to clinicians; Corbin says approaches need personalizing [53:24], [54:26], [55:27].
+=== 2020-03-11__rPWvkmRvRY_basketball-analytics-nothin-but-net-rating/summary.md
+---
+type: video-summary
+video_id: _rPWvkmRvRY
+title: "SSAC20: Basketball Analytics: Nothin’ but Net...Rating"
+event: SSAC20 (MIT Sloan Sports Analytics Conference)
+speakers: [Ben Cohen (moderator), Bob (caption spelling "vulgaris"), Mike (caption spelling "Zarin"), Tom Thibodeau, Zach Lowe]
+topics: [basketball, front-office, sports-science, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A five-person NBA panel (two team analytics executives, a former head coach, a writer, and a moderator) discusses how the three-point shot has changed the game and how teams mix data with scouting. They agree three-point volume may keep growing but say playoff success needs variety in the offense. They disagree on how far to trust catch-all defensive numbers versus watching film, and they admit load management for the playoffs is unsettled, with wearables limited by the players' union agreement and by player trust. The panel ends with rule changes and a stated view that team data work is mostly about context and role.
+
+## Key claims
+
+- Three-point volume has not stopped growing, and teams have different ways of getting them [01:30], [02:00].
+- One executive thinks diminishing returns would begin around 60 to 65 percent of shots from three, and most teams are far below that [04:01].
+- Thibodeau says shot value matters most and that being fouled on a three has the highest value [05:34].
+- Thibodeau says winning a playoff series needs offensive variety, because opponents can prepare for one pattern [06:35], [07:07].
+- A panelist says shot profiles and efficiency in the playoffs look similar to the regular season, and that the best players matter most in the playoffs [22:02], [23:03].
+- Thibodeau says rule changes have favored offense and officials should clean up traveling and carrying [10:41], [11:11].
+- The guests lean differently on evaluation: one executive prefers large samples and data, another wants to see a player live once, and Thibodeau uses eyes, ears and numbers together [12:46], [14:20], [16:23].
+- An executive says an archived numbers approach lets a team review its misses, while some organizations do not hold scouts accountable for predictions [16:53].
+- Lowe says he trusts no catch-all individual defense number over his eyes; an executive replies that those numbers are contextual but beat the average analyst [17:23], [18:25].
+- Non-numeric information such as work habits can be turned into usable ratings [38:54].
+- A panelist says prospects may simply tell a team what it wants to hear on personality surveys [39:55].
+- Thibodeau says steals and rebounding rate show how a player anticipates but that how he sees the game needs film [41:57], [42:28].
+- On loads, one executive says wearable data would help but the union agreement limits available data; another says the right minutes lead-in is "more complicated" and depends on the player [26:05], [26:35].
+- Thibodeau says teams rest players before the playoffs and raise minutes after; the issue is rest versus rust [29:10].
+- A panelist says the acute to chronic workload ratio had a math error underlying the research and an industry fell apart [31:14]. The panelist is not named in the captions.
+- Lowe says sport science staff have different levels of power by team, and convincing skeptical players is on the staff [32:46], [33:17].
+- Thibodeau names sleep as important and hard to measure [34:18].
+- An executive says wearable data is useful when compared to camera-tracking in-game load and in rehab with baselines [35:50].
+- Lowe flags outside service providers who work for the player and may have different incentives from the team [36:51], [37:22].
+- Executives say stats depend on a player's role, so they study how a target would be used by their own team [53:17], [53:48].
+
+## Numbers and definitions
+
+- Threes per team per game roughly doubled from 2007, from about 17 to about 34 (moderator) [01:00].
+- Three-point volume has grown nine years in a row [01:30].
+- Houston is said to take 50 to 55 threes a game [03:01], and about 50 percent of its shots are threes [06:35].
+- Some games have had teams with 60 percent of shots from three [04:31].
+- The value of being fouled on a three: captions read "two point six six," meaning points per shot, but this may be garbled [05:34].
+- Five years ago, wings played about 38 minutes a game, now lower [28:10].
+- Moderator: two years ago LeBron and Giannis ranked 1, 2 and 3 in minutes per game; captions give "14 24 and 75," which is probably their present ranks but is unclear [27:37].
+- "One to five starting players 32 minutes" for advancing playoff teams from March onward is garbled [27:06].
+- Season length: players and teams each get 50 percent of revenue; the "182nd of your paycheck" is probably 1/82 [50:10].
+- A season-ticket scenario of 60 games at a higher price (20 percent more) is hypothetical [50:44].
+- Rule-change list read by the moderator: Elam ending, moving the three-point line, equalizing lottery odds, shortening the season, a midseason tournament [49:40].
+- Defensive adjusted plus-minus and defensive rating are named as catch-all metrics [17:54], [18:25].
+
+## Methods and frameworks named
+
+- Eyes, ears, numbers (scouts rank, analytics ranks, then debate) [16:23].
+- Scout and model rankings archived for review [16:53].
+- Catapult wearable tracking compared with camera tracking [35:50].
+- Pre-game, in-game and halftime reports from bench technology, including points per possession on plays [47:39], [48:09].
+- Personality and psychological profiles run by a performance coach [38:23].
+- Role-specific review of stints and film when a player is in the wrong system [53:17].
+
+## Limits and open questions
+
+- The panelists are team employees; none show data, and proprietary metrics are not described.
+- No source is named for the workload math-error claim [31:14].
+- Panelists disagree on trusting defensive numbers versus film [17:23], [18:25].
+- Several speaker attributions are not clear in the captions (who offered the shot-profile comparison and the workload statement).
+- Load advice is explicitly unresolved and depends on the player [26:05].
+- Executives say they lack expertise in psychological profiling [38:23].
+- Caption names are unreliable ("vulgaris," "Zarin"); some Jared Dudley and Luca remarks are on side stories.
+
+## Q&A
+
+- How do you build a team around Luca? Find players who can complement a ball-dominant guard [46:38].
+- How is analytics used by a coach in-game? Reports before, during quarters and at halftime [47:39].
+- One rule change? Elam ending chosen, with concerns on revenue for shorter seasons [49:40], [50:10].
+- How do you assess a player in the wrong system? It is a big inefficiency; use film and stint review [52:47], [53:17].
+- Most interesting player? Zion Williamson, per Lowe [54:48].
+=== 2020-03-13_9rh-AScDN8k_defending-the-pass-using-player-tracking-data-to-gain-new-in/summary.md
+---
+type: video-summary
+video_id: 9rh-AScDN8k
+title: "SSAC20: Defending the Pass: Using Player Tracking Data to Gain New Insights"
+event: SSAC20 (MIT Sloan Sports Analytics Conference)
+speakers: [Brian McDonald (moderator), Kevin Beers (caption spelling), Evan Kaplan, Brian Burke (caption spelling; introduced as "Bryan Burk Seger"), Dominique Foxworth]
+topics: [american-football, sports-science, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+An ESPN-hosted panel shows how a data analyst and a former cornerback work together on tracking data, then thinks aloud about how to build an individual metric for pass defenders. They stress that metrics need film knowledge and that the work is a cycle of question, data, model and plain-language story. The panel walks through press coverage, coverage responsibility (with an audience poll) and anticipation, and names what tracking data cannot capture. No finished defender metric is presented, and the panel says it is brainstorming. They close with questions on the Ravens' quarterback and other industries.
+
+## Key claims
+
+- Before tracking data, defensive back analysis was hard because play-by-play data covers few defenders and broadcast video often omits them [01:34].
+- Using tracking data amounts to teaching a computer to watch film, which needs deep game knowledge (Burke) [05:12], [05:44].
+- A former player says the software does what he did when he watched film but faster and at scale [07:48], [53:42].
+- A former front office researcher says the goal is a partnership in which the analyst learns enough football to work alone [11:26], [11:56].
+- Kaplan describes three steps: give feedback on metric names, find stories in current league events, and meet analysts to match data with film [12:26], [13:26].
+- Kaplan says coverage metrics let a TV analyst confirm that a team used man coverage on every drop back in one half of a championship game [13:57], [14:27].
+- The moderator frames the process as words into numbers into words, a data science cycle with collaboration at each step [17:00], [17:30].
+- For press coverage, Foxworth stresses leverage, keeping a receiver at the line, and reputation affecting where the quarterback throws [19:04], [21:36].
+- Burke says the tracking provider supplies clean data with tagged snap and release events [22:39], [23:10].
+- Alignment at the snap does not prove press, since bail technique can start close to the line [23:41], [24:11].
+- Tracking data lacks some body detail such as hip position, and a film expert will be richer, but the data applies one rule set to every player at scale [24:42], [25:13].
+- Candidate press measures: how far a receiver is moved off the expected route and how long to get three yards downfield [25:45]; distance plus velocity, since a defender can be close and losing [26:15].
+- Re-routing a receiver at the line buys safeties time in zone coverage [27:47].
+- Outside observers do not know the call, so some mistakes cannot be assigned [28:17], [28:49].
+- For responsibility, steps are coverage identification, defender roles, route identification, then comparing where the defender should be to where he was [35:06], [35:38], [36:08].
+- Foxworth says a defender is graded at fault in the shown clip, even if the play might have been completed regardless [38:10].
+- For anticipation, one idea is to group plays with similar concepts and coverages and compare a defender's path to the average [41:47], [42:19]. The baseline is hard to establish [43:21].
+- Anticipation may also be the precursor to reaction time, such as when a safety breaks on the ball [44:54].
+- Pass denial is hard to see in statistics; a defender who prevents a throw leaves no box-score trace [46:55], [47:25].
+- Ravens opponents are seen using single-high man or cover three coverages more than other teams, and the quarterback's scrambles averaged high yards against man [48:57], [49:30], [50:30].
+- Football is called harder to analyze than baseball because player interactions are tangled, and tracking data helps isolate one player [52:05].
+
+## Numbers and definitions
+
+- Clip 3.9 seconds: a quarterback holds the ball because he beats a blitzer [03:08].
+- 500 double-teams: a pass rusher doubled more than 500 times since the start of the previous season [08:19].
+- 17.6 percent: catch chance given on one play by next-gen stats [08:52]; expected completion percentage of 63 percent, and plus 10 over expected [08:52], [09:22].
+- 84 percent catch rate, 15 percent above expectation [09:22]; 40 percent catch probability on one throw [09:22].
+- 2.2 seconds to throw, and under 2.5 seconds as the league average time [09:52].
+- Pass rush win rate: beating a blocker within 2.5 seconds [10:54].
+- Man coverage on 100 percent of drop backs in the first half of a 2018 conference championship game, the only team to do so in a half all season [13:57], [14:27].
+- Poll on responsibility: 30 percent chose number 54, 46 percent chose number 20, 24 percent chose number 27 [33:02], [33:32].
+- About 13 yards per scramble when defenses played man at one point in the season [50:30].
+- Press coverage is defined for the exercise by proximity to the line at and just after the snap [23:41], [24:11].
+- Clip numbers come from short TV narration, so units and exact subjects may be garbled in captions.
+
+## Methods and frameworks named
+
+- Next-gen stats and Zebra as tracking providers [22:39].
+- Coverage classification, route classification, and route tree labels [12:26], [35:06].
+- Pass rush win rate and double-team rate [10:54].
+- Calling the model's role definitions per defender (hook, flat, deep thirds) in cover three [35:06].
+- Average-player comparison for anticipation [41:47].
+
+## Limits and open questions
+
+- The panel produces no validated metric and says it is hypothesizing.
+- Tracking data lacks hip position, and the call or assignment is unknown to outsiders [24:42], [28:17].
+- The poll vote is not a ground truth, and Foxworth's judgement on one play is one expert's view.
+- The panelists work at or came from ESPN or the NFL; ESPN products are the subject of the opening clips.
+- Establishing the average baseline for anticipation is described as hard [43:21].
+- Caption problems: "Bryan Burk Seger," "Mathieu" spelled "Matthew," and the opening video failed to play on the first attempt [03:39].
+
+## Q&A
+
+- How do players like Lamar Jackson change strategy? Defenses play more predictable coverage, and scramble results can be separated by coverage [48:57], [50:30].
+- Are other industries faster to adopt analytics? Football is hard because of interacting players; firms face the same problem isolating employees but segment customers well [51:32], [53:06].
+- Would this data have helped Foxworth as a player? Yes, he did by hand what the data does across thousands of plays [53:42].

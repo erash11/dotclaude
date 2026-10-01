@@ -1,0 +1,927 @@
+{
+ "id": "TbYgc6_qQzo",
+ "title": "SSAC18: Volume and Intensity in Injury Incidence in Football Athletes",
+ "channel": "42 Analytics",
+ "upload_date": "20180302",
+ "duration": 1507,
+ "view_count": 178,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "title": "Introduction",
+   "end_time": 15
+  },
+  {
+   "start_time": 15,
+   "title": "Presentation Overview",
+   "end_time": 61
+  },
+  {
+   "start_time": 61,
+   "title": "Injuries in the NFL",
+   "end_time": 118
+  },
+  {
+   "start_time": 118,
+   "title": "Injuries per 1000 athlete exposures",
+   "end_time": 168
+  },
+  {
+---
+type: video-summary
+video_id: TbYgc6_qQzo
+title: "SSAC18: Volume and Intensity in Injury Incidence in Football Athletes"
+event: SSAC18 (MIT Sloan Sports Analytics Conference)
+speakers: [Patrick Ward (caption spelling "Patrick ward"), John Kendall (host)]
+topics: [american-football, sports-science, injury-health]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A research-paper-competition talk that relates inertial sensor training load to non-contact time-loss injuries in football. It starts with the limits of earlier load and injury papers (binary injury coding, no censoring, small samples, thresholds that vary by team, retrospective rather than predictive) and cites work finding single-club models predict poorly on unseen data. The study followed 101 players for one season with 29 non-contact injuries. The best model combined total player load, low player load and high impacts: higher volume and higher physical intensity went with higher risk, and the speaker frames this as risk context for practitioners, not prediction.
+
+## Key claims
+
+- Non-contact injuries matter because they are thought to be partly due to training errors: too much too soon, too much for too long, or too little [03:03].
+- Earlier papers often merge contact and non-contact injuries, mix time loss and non-time loss, skip censoring, give thresholds that differ across papers, and are retrospective [03:33], [04:04], [05:06], [06:08].
+- A cited Australian football study found single-club injury models predicted poorly on unseen data [06:39], [07:10].
+- The aim was to find associations between training load variables and non-contact time-loss injury, not to predict before a session [07:41].
+- Metrics used were total player load, four player load effort bands, impacts (three thresholds) and IMA (three thresholds) [08:12], [08:42], [09:12].
+- The speaker argues IMA helps with linemen because GPS-type measures are less reliable for high-intensity work in spaces under 20 meters [09:44].
+- The joint model (total player load, player load low, impacts high) fit best; total player load and impacts high carried the highest added risk, and player load low was inversely related [14:20], [14:51], [15:22].
+- Position group did not add explanatory value, possibly because of too few injuries per group [15:22], [15:53].
+- Volume and intensity are risk factors to be combined with coaches' own judgment [15:53], [16:23].
+- Injury is multifactorial; intrinsic and extrinsic factors and their change over a season would be needed for prediction [17:24], [17:54].
+
+## Numbers and definitions
+
+- Hundreds of millions: about 200 million dollars per year paid to players on injured reserve, in "some articles" [01:02].
+- Knee injuries 3.1 per 1000 athlete exposures; hip and hamstring 2.2 per 1000 (ten years of NFL training camp data, cited work by "feely and colleagues", caption spelling) [02:03].
+- Athlete exposure: one athlete in one game or training session [02:33].
+- Season length: 16 NFL games, 9 to 13 in college [01:32].
+- Sample: 101 football athletes, one full season preseason through regular season [11:14].
+- Definition: non-contact injury that caused missed later sessions or games, coded by a medical professional [11:14], [11:45].
+- Training load normalized per minute and standardized by position group [11:45], [12:15].
+- Models: logistic regression, compared with Bayesian information criterion and out-of-sample likelihood, with leave-one-out-style cross validation [12:47], [13:18]. Caption reads "four logistic regression models" as "for"; model count is ambiguous (one per variable group plus a joint model).
+- 29 non-contact injuries [13:18].
+- Caption problems: the figure "200 million dollars" at [01:02] appears as captioned; "Bayesian information criterion" is clear; effect sizes (odds ratios) are not given.
+
+## Methods and frameworks named
+
+- Catapult-type inertial sensors with player load, effort bands, impacts and IMA (accelerometer, gyroscope, magnetometer) [08:12], [09:12].
+- Censoring of athletes removed from a session by injury [12:15].
+- Logistic regression and leave-one-out style validation on one season [12:47], [13:18].
+
+## Limits and open questions
+
+- One team, one season; 29 injuries is small and no position-group effect was found [13:18], [15:22].
+- No game load, so no games injuries [16:53].
+- Association only; the speaker says prediction would need intrinsic and extrinsic factors [17:24].
+- Effect sizes and thresholds were not shown, and several injury types were pooled [16:23].
+- Most injuries occurred in training camp, per Q&A [22:05].
+- Underreporting of pain is a recognized limit [24:10].
+
+## Q&A
+
+- Is the problem data or random assignment, and could effort drive both load and injury? Random assignment would help if a coach agreed; effort perception data exist but were not in this paper [18:24], [19:27].
+- A panelist said a full picture needs internal load, HRV, hydration, hip mobility asymmetry and pain, and RPE; the speaker said no research shows joint range or posture predicts injury, and measures would change during a season [19:59], [20:29].
+- Did the 101 players include roster cuts and did the final 53 differ? Most injuries were in camp and effort looks similar across players, with starters managed more [21:35], [22:05].
+- Medical-attention and contact injuries? They looked at time loss and non-time loss; underreporting is a big limit; contact injury and over-exertion link is plausible but hard to model [23:09], [24:10], [24:41].
+---
+type: video-applications
+video_id: TbYgc6_qQzo
+status: draft
+---
+
+# Applications: Volume and Intensity in Injury Incidence in Football Athletes
+
+## Where this applies
+
+- Inference: Catapult practice reporting. The talk's three useful metrics (total player load as volume, impacts high as intensity, player load low as protective) [14:51], [15:22] suggest which columns to review beside the standard load view after each practice, rather than relying on one load number.
+- Inference: Line play monitoring. The speaker argues IMA is more informative for linemen than GPS-style distance because of small-space, high-intensity work [09:44]. This applies to how Eric reports OL and DL sessions, where total distance may under-describe load.
+- Inference: Injury logging. The talk's definition (non-contact, time loss, medically coded, athlete removed from the injury day's data after the event [11:14], [12:15]) can be used as a template for how Athletic Medicine and Applied Performance code injuries so load analyses are comparable.
+- Inference: Preseason camp planning. Q&A says most injuries happened in training camp [22:05], so camp-week load comparisons by position group are where to look first.
+
+## Eric's baseline
+
+- Eric's baseline: The core GPS metrics tracked include player load, field time and IMA for indoor sessions, in the Catapult workflow. The talk uses the same families of metrics, so it agrees with the tracked set but extends it with injury analysis.
+- Eric's baseline: No sport- or position-specific GPS thresholds exist in the data dictionary, and no formal injury-risk model is attributed to Eric. The talk extends this: it shows how a team might build position-standardized load measures (z-type scaling within position [11:45]) but gives no thresholds, and the speaker warns published thresholds vary by team [05:06].
+- Eric's baseline: Injury risk is reduced, not eliminated, and abrupt progression is treated as a driver (Inferred, course team position, speaker unconfirmed). The speaker's stance that the aim is associated risk, not prediction [07:41], agrees.
+- Eric's baseline: "Culture of fear" criticism of load monitoring (Inferred, course team position, speaker unconfirmed). The talk's cautious framing, a risk factor that a coach combines with experience [16:23], is compatible.
+
+## What would have to be true
+
+- Enough non-contact time-loss injuries to model. The talk had 29 injuries across 101 athletes in one season [13:18], and still could not model position groups [15:22].
+- Clean, consistent injury coding by Athletic Medicine and a rule for censoring athletes who leave a session injured [12:47].
+- Same device settings and band thresholds across the season; the speaker says the effort bands and IMA each use fixed thresholds [08:42], [09:12] but does not give their values.
+- Game load, which the talk lacked [16:53]; Baylor game data would need to be added to say anything about game injuries.
+- Out-of-sample checking, since the speaker cites work showing single-club models predict poorly on unseen data [06:39].
+
+## Do not apply when
+
+- Using these results as thresholds for Baylor athletes. One team, one season and 29 injuries cannot support a cut point, and the speaker himself says thresholds bounce around [05:06].
+- Using it to change practice plans because a session scored high on impacts. The result is an association, not a predictive tool [07:41].
+- Applying to non-football athletes or to games.
+- Reading it as evidence for a mobility screen: the speaker says no research links specific joint range or posture to injury [20:29].
+
+## First step
+
+Export one season of Baylor Catapult data to a spreadsheet with total player load per minute and IMA counts by position group, and match it to the Athletic Medicine non-contact time-loss injury list. Just describe it; build no model.
+---
+type: video-transcript
+title: "SSAC18: Volume and Intensity in Injury Incidence in Football Athletes"
+video_id: TbYgc6_qQzo
+url: https://www.youtube.com/watch?v=TbYgc6_qQzo
+channel: 42 Analytics
+upload_date: 2018-03-02
+duration: 25:07
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [football,injury-health]
+---
+
+# SSAC18: Volume and Intensity in Injury Incidence in Football Athletes
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+this is the research papers competition
+and my name is John Kendall and I'm on
+the Sloan research papers team and it is
+my pleasure to introduce Patrick ward
+who will be presenting volume and
+intensity are important training related
+factors in injury incidents and American
+football athletes and the presentation
+will last 20 minutes afterwards we'll
+have a five-minute Q&A session and
+during Q&A please raise your hand and we
+will present a microphone to you and now
+
+[00:31]
+please join me in welcoming Patrick ward
+[Applause]
+thank you injury is an unfortunate
+consequence of playing sport any sport
+and American football is no different
+and the injuries are well publicized if
+by chance during the season you happen
+to open up your favorite sports web page
+or your Twitter account you're bound to
+see headlines such as these headlines
+
+[01:02]
+talking about which players are
+sustaining injuries the epidemic of
+hamstring injuries in the NFL
+there's even Twitter accounts that'll
+give you a count of which teams have
+injuries or even how many ACL injuries
+there have been throughout the season
+and some articles have estimated that
+NFL franchises payout around 200 million
+dollars per year to players on injured
+reserve so that's not even counting you
+know the player who misses the odd
+injury here are there throughout the
+season that's players who have had an
+injury so severe that the team has been
+forced to play someone injured reserve
+
+[01:32]
+and effectively end the rest of their
+season
+aside from the monetary issue injuries
+also have the potential to influence the
+outcome of games so if you don't have
+your best players on the field you may
+have a less chance of winning the game
+which is a problem in American football
+where we place so few games in the NFL
+16-game season in college football
+anywhere from 9 to 13 defend depending
+on the conference that you play in we
+know that the American football is a
+very intense sport and previous research
+
+[02:03]
+has suggested that it carries with it
+the highest injury risk of any
+collegiate sport at the NCAA level at
+the NFL level research from feely and
+colleagues
+have found that over ten years worth of
+NFL training camp data the knee is the
+most frequently injured region of the
+body at three point one injuries per
+1000 athlete exposures followed by the
+hip and the hamstring at two point two
+injuries per 1000 athlete exposures
+where an athlete exposure is defined as
+one athlete getting injured in one game
+
+[02:33]
+or one athlete participating in one game
+or one training session and when we talk
+about these injuries it's important that
+we classify them and we can do so into
+two broad categories contact and
+non-contact injuries are what I
+frequently call occupational hazard
+they're stuff that happens in all sport
+players are going a hundred percent they
+collide with one another and something
+breaks or something tears the
+non-contact injuries are a little
+different those are the ones that you
+see when the athletes running down the
+field and all of a sudden for no reason
+
+[03:03]
+they pull up and they strain a hamstring
+or a calf or maybe while they're in the
+open field they take a weird cut and
+they tear their ACL or blow out their
+Achilles and these non-contact injuries
+are of particular interest to us because
+they're thought to be at least due in
+part to training related errors so
+applying too much of a training load too
+soon where the athletes not ready for it
+or doing a lot of training load for a
+long period of time where the athlete
+eventually breaks down or maybe doing
+too little training load where the
+athlete now becomes deconditioned and on
+
+[03:33]
+a unable to tolerate the rigors or
+demands of their sport and because of
+the issues with injury in sport it's led
+the sports science community to attempt
+to predict such injuries and over the
+past 10 years we've seen a lot of papers
+in different sports such as soccer and
+cricket as well as collision based
+sports like rugby and Australian
+football and like all research studies
+these papers have limitations for
+example some of the papers don't
+differentiate between contact and
+non-contact injuries they simple make it
+simply make it binary so whether the
+athlete got injured in a session or a
+
+[04:04]
+game yes or no this is problematic for
+the reader because now you can't really
+understand if the injuries the training
+load actually had anything to do with
+those injuries or if it was due to say
+one guy rolling up on another guy's leg
+and fracturing his fibula some of the
+studies don't differentiate between time
+loss and non time loss which is a
+problem because for the reader you don't
+know what the severity of the magnitude
+the injuries are obviously we're most
+interested in time loss injuries because
+oh the one that those are the ones that
+keep players out of games or keep
+players out of training oftentimes
+
+[04:36]
+there's a lack of censoring so
+frequently if let's say an athlete goes
+out completes maybe of the first quarter
+of a session and sustains an injury and
+has to be removed from that session
+oftentimes these these papers or the
+models that that are generated from
+these papers don't censor the athletes
+in those sessions so what happens as the
+model kicks out some weird outcome like
+really low training loads lead to high
+amounts of injuries so the way that this
+data gets coded on the backend and
+handled on the back end is really really
+important these papers often will
+
+[05:06]
+frequently end with some sort of
+conclusion for the reader like a
+threshold value for a coach to say you
+know if you train above X amount of
+training load you have a Y amount
+increase in injuries and while this may
+be useful oftentimes the thresholds
+bounce around from paper to paper even
+within the same sport and a lot of this
+is just because these papers are dealing
+with small sample sizes one team and
+maybe only one to two years worth of
+data and for the reader it's really hard
+to understand what to take away from
+that for their the context of their team
+
+[05:37]
+or within their sport oftentimes these
+papers are less about predicting injury
+for the sport and more about being
+specific regarding injury for that team
+specific to the way that coach prepares
+that team and those players it's kind of
+like nutrition research where one week
+you might open up a magazine and read an
+article about how coffee or wine is good
+for you and then the next week you open
+up another magazine and read about how
+coffee or wine is bad for you it's
+really hard for the consumer to
+understand what's important there and
+then finally while prediction gets
+thrown around in the title of these
+
+[06:08]
+papers frequently or in the body of the
+paper these papers are very often not
+predictive in nature the model is never
+tested on unseen data to understand its
+predictive value rather these are retro
+addictive papers they're providing a
+historical account of how injuries took
+place which isn't necessarily bad I
+think it's still useful but these
+limitations have led scientists across
+the field to then ask the question can
+we really predict injury and this is a
+tweet from Luke borne one of the
+co-authors on this paper that he posted
+
+[06:39]
+about
+little over a year ago recess sports
+science industry states we predict
+injuries while the sports science
+research community proclaims injury
+prediction is actually hard and
+unresolved and he gave a link to this
+paper here which is David Carey's group
+out of Australia where they built
+predictive models of training load and
+injury in Australian football and then
+tested those models on unseen data only
+to conclude that injury prediction
+models built using training load data
+from a single Club showed poor ability
+to predict injuries when tested on
+previously unseen data suggesting they
+
+[07:10]
+are limited as daily decision tools for
+practitioners and this is really
+important conclusion going back to
+Luke's statement about the sports
+science industry because we can walk
+outside and meet with any technology
+company and the big thing that they'll
+tell us is take your data dump it in
+will be able to predict injury but the
+people that are actually in the field
+collecting this data who know how
+challenging this data is to get good
+data to make it clean to code it
+properly are actually saying this is
+really hard and injury is multifactorial
+which leads us to our research aim we
+didn't want to a research aim wasn't
+
+[07:41]
+specific to trying to predict injuries
+prior to the session taking place but
+more to identify the relationship
+between training load variables and
+non-contact time loss injury in American
+football while prediction may be hard it
+is important to first start by giving
+practitioners an idea of associated risk
+and so that they can then go away and
+build appropriate training sessions that
+are logical and hopefully mitigate
+injury and we hope to do so by
+accounting for some of the limitations
+that I previously described on the other
+slide we've monitored training load
+
+[08:12]
+using some inertial sensors contained in
+the unit you see here and we used a
+variety of different inertial sensor
+metrics for example we used some player
+load metrics such as total player load
+which provides us with a continuous
+measure of accelerations taking place on
+the body on all vectors so XY and Z and
+in research this is frequently thought
+of as a total training measure of total
+training activity because it's been
+sensitive to lots of different movements
+but it's also been shown to have a
+really high correlation with local motor
+activities such as total distance run
+
+[08:42]
+during training or during a game in
+addition to that we also used some
+player load effort bands four of them
+with four different thresholds these are
+different than the total player load
+because they're not providing this
+tenuous measure of accelerations but
+rather this discrete count of activities
+taking place within those respective
+within those respective thresholds so
+for example an athlete sprinting really
+aggressively or maybe chopping up their
+feet when they break down and try and
+decelerate and change directions impacts
+are as you would assume physical contact
+
+[09:12]
+and collisions with other players and
+three corresponding thresholds for that
+and then inertial movement and analysis
+or ima we also had three thresholds for
+that and what ima is or what inertial
+movement analysis is is it's a count of
+movements taking place in different
+movement directions so forward backward
+right left and all the movements in
+between and it takes the information
+from the accelerometer the gyroscope and
+the magnetometer and produces this count
+of activities taking place within those
+three different threshold bands and we
+
+[09:44]
+think this may be a useful metric within
+the sport of American football because
+if we were to just rely on something
+like GPS which might tell us a lot about
+the guys on the outside like defensive
+backs and wide receivers who produce a
+lot of local motor activity it fails to
+tell us a lot of information about the
+guys on the inside of the field the guys
+in the trenches such as your offensive
+and defensive linemen because we know
+the reliability in these units begins to
+decrease when we start doing
+high-intensity activities in small
+spaces say below 20 meters so which is
+exactly what the guys in the trenches do
+
+[10:14]
+they move in very small spaces at high
+intensities and body up to each other
+and and kind of push and tackle each
+other and so we've we've done some
+previous work on this on these metrics
+we've looked at how they differentiate
+position groups during running and non
+running activities during training and
+we've done some proof-of-concept work
+such as this where we looked at
+activities or exercises commonly
+performed for American football players
+so that was a wide receiver and he just
+
+[10:44]
+ran a straight sprint and took a cut so
+right or left very similar to what they
+might do in training typical exercise
+and again something that might be more
+specific to the sensitivity of player
+load picking it up for inertial movement
+analysis high intensity movements taking
+place in small spaces these guys are
+doing the 5 10 5 pro agility which about
+300 some kids are gonna do next week at
+the NFL combine
+and then finally exercises that help
+players improve their ability to tackle
+so like a collision based exercise where
+
+[11:14]
+they're gonna hit a sled and drive
+through it so the analysis we evaluated
+data across a complete season for one
+full season so preseason all the way
+through the regular season and we did so
+on 101 American football athletes we
+were interested in non non-contact time
+loss injuries so the definition that we
+adopted was any injury not occurring due
+to contact with another player and
+resulting in the player missing
+
+[11:45]
+subsequent training sessions or games we
+were really stringent about this
+definition because we wanted to make
+sure that we were just talking about
+non-contact non-contact time loss
+injuries so we had a medical
+professional who was also there during
+the diagnosis of all these injuries code
+these injuries in a in a bespoke injury
+database so that we could have that done
+correctly the training load variables
+were normalized to the duration of
+minutes per training session to tell us
+a little bit about the density of the
+training sessions and then they were
+also standardized to each position group
+
+[12:15]
+and the reason we did this was to just
+borrow some strength from the position
+group data to identify any potential
+risks within those specific position
+groups based on the training loads
+imposed upon them during the session
+given that our previous research is
+showing different position groups have
+different economic tasks that are
+specific to their specific to their tech
+tactical requirements in order to handle
+the limitation of censoring what we did
+was any athlete that sustained an injury
+during a session and was evaluated by a
+
+[12:47]
+medical professional and deemed not able
+to continue that session was removed
+from the their data was removed from
+that injury day so as not to pool or
+pull the data down we built for logistic
+regression models one for each of the
+one for each of the different training
+load variables and then a joint model
+which combined all of the variables
+together we fit these models iteratively
+and then we compared them using Bayesian
+information criterion and out-of-sample
+likelihood and the last part there is to
+
+[13:18]
+try and account for the limitation of
+test
+the model on unseen data since we didn't
+have enough data to build a model and
+then test on say a holdout group or
+something like that we basically used a
+concept like leave one out cross
+validation to test this model across the
+entire season there were 29 non-contact
+injuries as you can imagine most of them
+being in the lower extremity with the
+exception of an oblique in the
+linebackers group which is kind of a
+typical injury for those guys who move
+side-to-side a lot but also then move
+their torso in different directions to
+
+[13:49]
+track a ball or track a receiver or a
+tight end during coverage a low back
+strain which is a pretty common injury
+in all sports in all human beings in
+general and an elbow strain
+interestingly enough in a defensive
+lineman it was a guy who was actually
+trying to learn a new position and so he
+was doing a lot of exercises and tasks
+that were unique to him during training
+and he ended up straining his elbow
+extensors the best model for each of the
+model categories is presented here so
+the player load model consisted of both
+total player load and player load very
+
+[14:20]
+high the IMA and impacts models
+consisted of all three of the bands of
+activity and then the joint model
+consisted of total player load player
+load low and impacts high and this model
+was found to be the most useful model
+for explaining or having a highest
+association with injuries during
+American football training when we look
+more specifically at this model we see
+that player load total player load and
+impacts high had the highest increase
+risk of injury during American football
+training and so this is useful just from
+
+[14:51]
+the standpoint that total player load
+again measuring total activity tells us
+something about the volume of work that
+the players are performing so when
+volume is really high there's a higher
+chance of injury during that session and
+then impacts high is interesting because
+we didn't look at collision injuries in
+this paper we only looked at non-contact
+injuries but it appears that the
+intensity of the session relative to how
+much physicality is involved players
+hitting each other pushing each other
+knocking each other down etc seems to
+also increase the risk of non-contact
+injuries player load low was found to
+
+[15:22]
+have a decreased risk or decrease
+association with injury during a session
+and this just makes sense because you
+can't have a session of high intensity
+and low intensity at the same time so
+the inverse relationship is logical
+we tried to include in all of these
+models a position group as a categorical
+variable and unfortunately in none of
+the the cases was it helpful that
+explaining injury any further so so we
+left it out and probably we just need
+more data on that it's it's possible
+
+[15:53]
+that we just have too few injuries
+within each of the position groups
+relative to the amount of exposure for
+the players to really say something
+meaningful there so some of the
+conclusions and and the limitations with
+the paper obviously volume and intensity
+are important for people to know about
+as their training NFL athletes or
+college football athletes or high school
+football athletes American football in
+general and hopefully that information
+can be useful as understanding the risk
+factors for practitioners and they can
+
+[16:23]
+combine it with some some of their sort
+of heuristics that they may have built
+over the years of developing training
+sessions for players for athletes and
+and build logical training sessions that
+hopefully reduce the risks of injury we
+need more data to really say something
+about injury within the position groups
+and we need data more data to say
+something about specific types of
+injuries for example it's quite possible
+that different types of movement
+activities increase the risk of
+hamstring injuries versus adductor or
+
+[16:53]
+growing strains in this study we
+combined them all together one of the
+limitations of this paper is that we
+don't have any game load so we know that
+lots of injuries frequently take place
+in games and unfortunately we don't have
+any game load to really say anything
+substantial about what happens in the
+game so that's a bit a bit of a
+challenge and then if we want to make
+this model truly predictive instead of
+just starting with the risk factors we
+need to incorporate a lot more
+information so many of the papers that
+have been previously published around
+
+[17:24]
+this topic only look at training load
+factors and injury and they try and make
+a prediction off of that and I think
+we're probably really naive if we
+believe that it's only training load
+factors that increase the risk of
+non-contact injury in reality injury
+non-contact injuries is really
+multifaceted so there's lots of
+intrinsic factors that the athlete
+brings with them to the training session
+there's
+trinsic factors that are specific to
+that training session and all the
+complex interactions between those two
+things probably are what exposed the
+
+[17:54]
+athlete most to to risk additionally how
+those interactions change over a season
+so you know as players adapt throughout
+the season either positively or Mal
+adapt to all the training sessions and
+games and activity that took place
+before them those interactions probably
+change and we have to somehow account
+for that in order to make this truly
+predictive so thanks so much and thanks
+to my co-authors Michael taken Sam
+ransom berry dress in Luke Bourne who
+was really helpful on discussing the
+
+[18:24]
+methodology of this paper and some of
+the ideas now it's time for Q&A so 50
+questions thank you I guess I'm
+wondering if the issue is more data or
+random assignment of training I don't
+know if you can find a team that really
+wanted to split it squad up into say low
+
+[18:56]
+and high but it seems to me that's the
+real problem here and that training is
+probably endogenous to effort so you
+could easily be picking up correlations
+because certain players are trying hard
+in practice and trying hard in games and
+you need random assignment to get around
+that one yeah random assignment would be
+helpful if you can find a coach that's
+willing to do that I think that'd be a
+great way to study that as far as effort
+goes well not a component of this paper
+like I said we need other information as
+
+[19:27]
+well we do track like the players
+perceptions of effort as well so that is
+something that we could incorporate into
+the model to understand the relationship
+between say their internal training
+loads and their external training loads
+or perhaps their response to the
+prescribed training load but we just it
+wasn't we didn't put it in this paper
+but yeah I agree
+yeah yeah if you're if you want to look
+at the full picture you also need the
+internal load so the heart rate loads
+
+[19:59]
+time and zone you also need the heart
+rate variability recovery profiles and
+you also need the hydration data points
+and the hip mobility asymmetry and pain
+and soreness plus the rpe stuff then
+you'll have the full picture yeah the
+number of teams that collect all that
+data is pretty much zero so yeah well we
+collect all that data I will disagree
+with you on the hip mobility piece only
+because while I think it might be
+important no research has ever been able
+
+[20:29]
+to suggest that specific joint ranges of
+motion or even postures lead to injury
+or pain there's no correlation between
+those things now you can find
+correlation in some papers that do this
+retro addictively one thing I will say
+though is that if you simply measure hip
+mobility or posture or something like
+that at the preseason these athletes
+adapt and they change so if there is a
+training intervention that changes that
+somehow we'd have to account for that
+every week throughout the season to make
+sure that they're adapting which is
+
+[20:59]
+possible to do but with the number of I
+mean at a collegiate football team at
+120 athletes it's really yeah but you're
+you're right the collection of all of
+that information would be really helpful
+it's tricky and with the end of one from
+the going to the statistics port SPECT
+if you're looking at n of one for one
+particular type of injury is very
+difficult to do so congratulations on
+this really great work it's really a big
+lift appreciate it thank you
+
+[21:35]
+so if I remember your slides correctly
+you had a hundred one athletes listed
+yeah eighteen of whom were running backs
+eighteen oh yeah yeah so most of those
+must have happened or most a large chunk
+must have happened and briers early
+parties in the roster reduction did you
+notice a difference between the athletes
+that made the final 53 and the ones that
+didn't in terms of terms of overall
+loading performance like robustness of
+
+[22:05]
+them or robustness or just how much they
+exert themselves yeah I mean you know as
+you as you correctly assume most of
+these injuries take place in training
+camp very few once you get into the
+season I think coaches intuitively
+understand that there's a game at the
+end of the week and we can't prepare us
+you know can't train as hard can't
+prepare as hard because we know that we
+you know we have to play at the end of
+the week as far as like the athletes
+that make it down into the season you
+
+[22:38]
+know I don't it's I don't think it's
+necessarily that you notice as much
+except for maybe like key starters where
+you tend to manage you know manage the
+health of your most valuable assets is
+the main thing but it's you know for the
+most part the effort is pretty similar
+across these guys you know I haven't
+seen too many coaches that allow that to
+drift very much so it it it is pretty
+consistent for these guys yeah and last
+
+[23:09]
+question
+thanks for your talk you've been
+focusing on the non-contact injuries and
+time loss injuries yeah did you also
+look at the medical attention problems
+because even if you don't have a time
+loss but you do play with pain I can
+imagine that it's very relevant for the
+performance of the team it could also
+help you to increase the number of
+injuries in your analysis and the second
+
+[23:39]
+thing is for the contact injuries
+because even in those injuries you have
+theoretical models that assume that if
+you have accumulation of load that could
+lead into for example a narrowing of the
+visual field so there is a sort of
+assumption that even those injuries are
+relevant and related to load yeah no I
+agree that is something we did look at
+the medical attention piece so we did
+also look at some models using time loss
+
+[24:10]
+and non time loss injury one of the big
+limitations in sport in pro sport in
+general is the underreporting like
+players don't want to come off the field
+money's you know their contracts are
+dependent you know all of these things
+so under reporting of like whether they
+have pain and things like that is is one
+of the most complex things and across
+collegiate and professional sport so
+capturing that is really hard as far as
+the contact injury piece yeah contact
+injury piece relative to an over
+exertion of training load yeah I agree I
+
+[24:41]
+think that there's probably something
+there I've tried to look at it in a few
+different ways but I like I think
+there's something there but it's like
+I'm trying to figure out the best way to
+make the connection to it you know
+because then there's a lot of
+assumptions that go into that obviously
+and stuff like that but I do agree
+there's probably something there that
+you need to be aware of for sure thank
+you Thank You Patrick Ward
+[Applause]

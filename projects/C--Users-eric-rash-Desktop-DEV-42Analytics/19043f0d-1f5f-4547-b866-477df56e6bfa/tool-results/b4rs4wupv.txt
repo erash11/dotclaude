@@ -1,0 +1,588 @@
+=== 2026-04-09_JHgeEo3n1do_tackling-causality-estimating-frame-level-defensive-impact/summary.md
+---
+type: video-summary
+video_id: JHgeEo3n1do
+title: "SSAC26: Tackling Causality: Estimating Frame Level Defensive Impact"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Ben Jenkins]
+topics: [american-football, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Ben Jenkins, a PhD candidate at Florida Atlantic University, presents a causal model for crediting defenders in American football. Traditional metrics credit only the tackler, and predictive models favor high-volume tacklers. His framework models all 22 players jointly with a transformer, estimates expected points saved for each defender by comparing expected points added with and without that defender's tackle, and uses propensity weighting and doubly robust estimation. On the first 9 weeks of a 2022 season it credits set-up defenders, ranks known top players better than supervised models, and aggregates to team results. He calls it a proof of concept.
+
+## Key claims
+
+- Football has a defensive attribution problem: on a 6-yard loss, traditional metrics credit only the tackler though several defenders contributed. [00:00] [00:31]
+- Supervised models predict outcomes, mix correlation with causation, favor high-volume tacklers and struggle to separate skill from opportunity. [01:01] [01:31]
+- Causal inference asks what would have happened without the defender; it isolates individual contributions and separates player from scheme better, but needs more assumptions and quality control and cannot be applied in every scenario. [01:31] [02:01]
+- Defenders do not act independently, so the model covers coordination, interference (for example, a defensive end setting the edge so a linebacker can tackle) and substitution effects, which violate independence. [02:31] [03:01] [03:31]
+- The framework, called expected points saved, treats a defender making the tackle as the treatment and expected points added as the outcome. [04:02] [04:33]
+- It uses a transformer over all 22 players, a propensity score model, an outcome model and inverse propensity weighting. [04:33] [05:04] [05:35]
+- On the example play, the tackler scores highest and four other defenders get positive credit, which the speaker says shows the model captures coordinated effort. [06:09]
+- Aaron Donald's expected points saved is around 0.27. [06:40]
+- The method ranks players who earned All-Pro or Pro Bowl honors better than supervised models. [07:09] [07:39]
+- Mean individual values aggregate to team level and explain 41% of variance in tackle play outcomes. [07:39]
+- On synthetic data the method shows higher R-squared and lower RMSE than independent models, and ranks non-rookie players better against salaries and Pro Bowl status. [08:40]
+- 68% of plays show significant interference effects, and modeling them reduces bias. [08:40] [09:10]
+- The speaker calls it the first multi-agent causal inference framework in professional football for defensive evaluation; it is a proof of concept using the first 9 weeks of the 2022 regular season. [09:10]
+- Intended next steps are quarterback decision-making and defensive back evaluation; stated uses are player evaluation, contract decisions and defensive scheme optimization. [09:41] [10:11]
+
+## Numbers and definitions
+
+- Expected points saved: expected points added on the play when the defender does not make the tackle, minus expected points added when he does (as described). [04:02]
+- Expected points added: the traditional NFL metric of how much the offense benefits on a play. [04:02]
+- Treatment: a binary indicator that the defender made the tackle. [04:02]
+- 6-yard loss: the example running play. [00:00]
+- 0.27: Aaron Donald's expected points saved; the speaker says each of his tackles prevents about 0.27 expected points. The captions describe the orange and blue distributions inconsistently (which is tackle and which is no tackle). [06:40] [07:09]
+- 41% of variance in tackle play outcomes explained at team level. [07:39] [08:10]
+- 68% of plays with significant interference effects. [08:40] [09:41]
+- 9 weeks: the data available ("first 9 weeks of the 2022 NFL regular season"). [09:10]
+- Data source named: 2024 NFL Big Data Bowl tracking data. [00:31]
+- R-squared, RMSE, rank correlations and salary comparisons: stated as better, with no values in the captions. [08:40]
+
+## Methods and frameworks named
+
+- Interference-aware causal framework with a multi-agent transformer over 22 players. [02:31] [04:33]
+- A directed acyclic graph with features: each defender's position, speed and direction, ball carrier features, relational features, 10 teammates, opponents and game context. [04:33] [05:04]
+- Propensity score model and outcome model, with inverse propensity weighting to make a pseudo-population; doubly robust estimation for protection against model misspecification. [05:04] [05:35] [09:41]
+- Validation by synthetic data, team-level aggregation, Pro Bowl and All-Pro agreement and salary rank. [07:39] [08:40]
+
+## Limits and open questions
+
+- Proof of concept on 9 weeks of one season, as the speaker says. [09:10]
+- The talk does not say how many plays per defender, how the propensity model is checked, or how the treatment is defined for players who do not tackle but get credit.
+- The video description mentions adversarial representation balancing, Bayesian uncertainty, and sensitivity analyses; none is described in the captions.
+- Validation uses synthetic data and honors; real causal effects are not observable, as the speaker notes. [08:10]
+- Scheme and assignment are not in the data; a questioner raised blitzers versus droppers, and the speaker's partial answer is propensity weighting, with scheme data expected to improve estimates. [11:43] [12:43]
+- Claims of being first and of better ranking are the author's own and come from a competition presentation.
+- "Tackle" here is the treatment; the audience question about pass rush disruption is answered only in general terms. [11:13]
+
+## Q&A
+
+- Does it handle pass plays and disruption without a tackle, such as Aaron Donald in the backfield? Yes, he gets positive credit for forcing the ball carrier elsewhere or lowering the odds a pass is beneficial. [10:43] [11:13]
+- How does scheme (a blitzing linebacker versus a dropping one) confound the metric, and how would a team use scheme data? Ongoing research on scheme and responsibility; propensity weighting up-weights a low-probability defender's tackle; scheme data would improve estimates. [11:43] [12:17] [12:43]
+=== 2026-04-09_JjeFktc4QLM_deep-reinforcement-learning-for-nba-player-valuation/summary.md
+---
+type: video-summary
+video_id: JjeFktc4QLM
+title: "SSAC26: Deep Reinforcement Learning for NBA Player Valuation"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Ben Jenkins]
+topics: [basketball, front-office, decision-making, competitive-advantage]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Ben Jenkins presents a deep reinforcement learning model that learns NBA player value from game outcomes, treating basketball as a sequence of states, actions and rewards, and splits team value among players with a neural approximation of Shapley values. He argues that identical box score actions have very different win impact depending on game state, that defense and off-ball value are missed by box score metrics, and that player synergy is measurable and predictive. He reports faster stabilization than regularized adjusted plus-minus, a Rudy Gobert example, 89 positive and 61 negative synergies, and better game prediction than traditional metrics, though the Vegas line remains best.
+
+## Key claims
+
+- Winning depends on context: the same made three-pointer matters more late in a close game, and value depends on teammates, opponents and interactions among the five on the floor. [00:00] [00:31]
+- PER, win shares and box plus-minus aggregate box score statistics with fixed weights, overweight scoring, struggle with defense and lack context. [01:01] [01:31]
+- Adjusted and regularized adjusted plus-minus regress possession outcomes on players on the floor but assume context-invariant contributions and miss synergy. [01:31]
+- Sequential models such as expected possession value capture context and flow but struggle to credit individual players; the talk proposes deep reinforcement learning to combine both. [02:02] [02:32]
+- In the example, a made three in the first quarter with a 15-point lead changed win probability by 2%, while one in the fourth quarter of a tied game with 1:30 left changed it by 23%; the speaker calls this a 10 times difference. [03:04]
+- The model treats basketball as a Markov decision process and uses an advantage function for context-aware value. [04:05] [04:35]
+- It values on-ball actions by action type, role and context, and values defense and off-ball influence by presence and constraints, not individual actions. [04:35] [05:07]
+- Shapley values allocate team value by replacing each player with a learned baseline embedding; a neural approximation is used for computation. [05:38] [06:08]
+- Compared with regularized adjusted plus-minus, the method needs about 67% fewer possessions for comparable accuracy and stabilizes in about 3 weeks versus 2 months. [06:38] [07:08]
+- Action values peak in close clutch games, where a three-pointer can be worth more than double the traditional value, and diminish in blowouts; offensive rebounds and steals are valued significantly. [07:39]
+- Jokic ranks first in the top 15; the ranking agrees substantially with regularized adjusted plus-minus and worse with box plus-minus, which the speaker ties to defensive valuation. [08:09] [08:40]
+- Rudy Gobert ranks 54th on traditional metrics and 12th on this method; the box score missed 45% of his defensive value. [09:10]
+- Defensive specialists are systematically undervalued by traditional metrics, a potential competitive advantage, and complementary skills matter in roster construction. [09:40]
+- The study found 89 positive and 61 negative synergies, and traditional metrics wrongly assume player values add. [10:10] [10:41]
+- Two equally talented rosters can differ by five or more wins because of fit, and adding synergy explains some unexplained variance. [11:11] [11:42]
+- Adding the model to a Vegas line benchmark improves prediction, and adding synergy improves it further, though the Vegas line alone is best. [11:42] [12:12]
+- In a capped league, winning comes from optimizing interactions, not collecting stars. [12:43]
+
+## Numbers and definitions
+
+- 2% versus 23%: win probability change for a low-leverage and a high-leverage made three. The speaker calls it a 10 times difference (23 divided by 2 is about 11.5, so "10 times" is approximate as spoken). [03:04]
+- 67% fewer possessions than regularized adjusted plus-minus for comparable accuracy. [06:38]
+- 3 weeks versus 2 months to stabilize. [07:08]
+- Clutch three-pointer value can exceed traditional value by "more than double." [07:39]
+- Gobert: 54th traditional, 12th by the model; 45% of defensive value missed. [09:10]
+- 89 positive synergies and 61 anti-synergies. [10:10]
+- Five or more wins: fit difference between equally talented rosters. [11:11]
+- About five seasons of play-by-play data, "thousands of games." [16:21]
+- Win residual: the difference between actual results and the model's prediction. [11:11]
+- Advantage function: expected value of an action beyond the baseline state expectation. [04:35]
+- Predictive accuracy figures: shown only on a chart, not stated in the captions. [11:42]
+
+## Methods and frameworks named
+
+- Markov decision process with states, actions, stochastic transitions and rewards in expected points and win probability. [04:05] [04:35]
+- Temporal-difference learning and a distributional win-probability model appear in the video description but are not described in the captions.
+- Neural Shapley value approximation with baseline player embeddings. [06:08]
+- A comparison of synergy: on-court versus off-court pair performance, shown in a two-way quadrant plot. [10:10]
+- Player dropout as a technique to swap each player for a neutral embedding and measure the change in win prediction. [14:16] [14:46]
+- Benchmarks: regularized adjusted plus-minus, box plus-minus, and a Vegas line. [08:09] [11:42]
+- "DRPM" appears once in the captions for the model's name (caption spelling). [15:49]
+
+## Limits and open questions
+
+- The speaker shows no player-level confidence intervals or exact accuracy numbers in the captions.
+- A judge noted that Shapley values are contextual and not designed to be portable across lineups, yet validation sums them to predict games. The speaker agreed and pointed to synergy and player dropout as partial fixes. [13:13] [14:16]
+- Sample size is a problem for new players and pairs who nearly always play together (Jokic and Murray, as captioned). [16:21]
+- Predictive validation falls short of the Vegas line. [11:42]
+- The defensive value claims (Gobert) rest on the model, with no independent check named.
+- The claim that two equal rosters differ by five or more wins is reported without how it was computed. [11:11]
+- The 67% and "3 weeks versus 2 months" figures are stated separately and not reconciled.
+- Claims of market inefficiency are the author's view. [09:40]
+
+## Q&A
+
+- Validation sums Shapley contributions although they are contextual; how to improve? Player dropout with a neutral embedding, summed over the five on the court, is expected to do better. [13:13] [14:16] [14:46]
+- How does Shapley handle two players who nearly always play together? The model accounts for who is on the court, and five seasons of play-by-play data limit the sample problem, though new players need extrapolation. [15:19] [15:49] [16:21]
+=== 2026-04-09_WB_FDxZKv-M_leveraging-data-for-athlete-health-and-performance/summary.md
+---
+type: video-summary
+video_id: WB_FDxZKv-M
+title: "SSAC26: Leveraging Data for Athlete Health and Performance"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Dr. Kristen Nicholson, Ben Sealy (introduction)]
+topics: [sports-science, injury-health, other-sport:baseball]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Dr. Kristen Nicholson, director of the Wake Forest pitching lab, tells how the lab was built to reduce elbow (UCL) injuries without losing pitch velocity. Motion-capture data from Wake Forest pitchers and community visitors produced a short list of injury and performance indicators, many of which overlap. She shows a player case, best-versus-worst fastball comparisons, and program results (no major arm injuries in three seasons, more drafted pitchers). She describes the next step, individual (n of 1) models that track fatigue, travel and rest. The results are one program's outcomes without a comparison group.
+
+## Key claims
+
+- UCL injuries have risen sharply, including in younger players; she cites a ninefold increase in non-surgical UCL injuries from 2009 to 2018 [00:36].
+- The lab started in 2018 from an orthopedic surgeon's idea, with the head baseball coach, and opened to the community as well as the team [02:06, 03:37].
+- The lab's value is the collaboration among biomechanists, sports medicine, coaches, athletic trainers and strength coaches [03:07, 03:37].
+- Pitchers need high velocity with low shoulder and elbow load, but optimal mechanics are hard to define because pitchers differ [05:09].
+- From large data sets the lab identified key injury indicators and key performance indicators, and many were the same, which she links to pitching efficiency [06:11, 06:42].
+- Maximum humeral rotation velocity and elbow extension velocity were the largest influences on pitch velocity; ground reaction force and trunk timing also related [06:42].
+- In a case example, corrective work on core strength and rotation raised ground reaction force and lined it up through the center of mass [09:20, 09:52].
+- The lab published over 20 manuscripts from 2019 to 2022, and she says baseball biomechanics papers nearly doubled in 2020 to 2021 and a baseball biomechanics society formed [10:56].
+- Every MLB team has visited or held a video call; nine were strongly influenced [11:26, 11:57].
+- Markerless motion capture from 2022 allows regular use in the bullpen and stadium, and data on nearly every high-intent pitch [11:57, 12:27, 12:57].
+- In a fall comparison of top versus bottom quartile fastballs, all key variables differed except maximum pelvis rotation velocity, which fell as performance rose; she attributes this to better lead leg blocking and energy transfer [13:28, 13:59].
+- Pairing TrackMan ball data with motion capture on a single bullpen showed what differed between good and bad pitches [14:31, 15:02].
+- Wake Forest had no major arm injuries in 2022, 2024 and 2025 and reached the postseason each year from 2022 [15:33].
+- The lab helped recruit top pitchers, and she says the pitching also helps recruit hitters [16:34, 17:06].
+- Next steps: add fatigue and physiological variables, study biomechanics and command, and use n of 1 models [17:36, 18:08, 18:40].
+- In an n of 1 model, expected performance is adjusted for travel, rest and workload, and she shows how coaches could adjust rest after an underperforming game [18:40, 19:41, 20:13].
+
+## Numbers and definitions
+
+- Ninefold increase in non-surgical UCL injuries, 2009 to 2018 [00:36].
+- 2.5% of Division 1 baseball players had UCL reconstruction in 2017 [00:36].
+- Almost 14,000 UCL injuries and 1,400 surgeries, 2013 to 2015 [01:06].
+- Median age of surgery patients fell from 20 to 18 [01:06]; nearly one in four high school players will have a UCL injury by graduation [01:06].
+- Lab equipment: 12 optical motion capture cameras, three force plates, four high-speed video cameras, TrackMan Pro [02:37].
+- Ribbon cutting January 2019 [03:37].
+- Seven key injury indicators and 10 key performance indicators [06:11].
+- Successful pitchers produce two to two and a half times body weight in ground reaction force [09:20].
+- Case player: ground reaction force from 1.9 to 2.2 times body weight [09:52].
+- Over 20 manuscripts, 2019 to 2022 [10:56].
+- Wake Forest pitchers drafted: 1.7 per year (2010 to 2018) versus 3.4 per year (2019 to 2024) [16:04].
+- First round pitcher picks in 2020, 2021, 2023, 2024 [16:04].
+- Early-season pitcher left in through about 65 pitches; late-season pitcher left at about 35, which the speaker says she cannot read on the slide, so the 35 is unreliable [19:10].
+- A later example pitcher threw almost 100 pitches above expected [20:13].
+- "N of 1 modeling": an individual rather than a group model [18:08].
+- The "14,000" and the 2013 to 2015 dates come from auto captions and could be garbled.
+
+## Methods and frameworks named
+
+- Marker-based motion capture, then markerless (computer vision) capture in 2022 [04:07, 12:27].
+- Ground reaction force and kinematic sequencing analysis [09:20, 10:23].
+- TrackMan ball flight data paired with biomechanics [14:31].
+- N of 1 modeling with expected versus observed performance lines adjusted for game travel and rest [18:40, 19:41].
+- Regular team meetings across disciplines, mostly in the fall, plus weekly data reviews in season [22:18].
+
+## Limits and open questions
+
+- Program results (injury-free seasons, postseason, draft counts) are one school's counts with no comparison group, told by the lab's director.
+- Pelvis rotation finding is one fall, no intervention; she says she has not explored the cause [24:20].
+- She states the n of 1 examples are "based on real data" but illustrative of how it might be used, not a finished result [20:13].
+- The talk studies biomechanics, not fatigue or travel, so far [17:36].
+- No football norms exist in her lab; she collected quarterback and kicker data but lacks the expertise to say what to change [23:19].
+
+## Q&A
+
+- Hitters: markerless capture can also track hitters on the field, including torso rotation and swing plane [21:15].
+- Coordination: the whole team meets at least twice a year, mostly fall; she meets the pitching coach and player development coordinator regularly in season [22:18].
+- Football quarterbacks: the lab collected quarterback and kicker data, but the database and expertise are missing [23:19].
+- Pelvic rotation and balance work: the data was from last fall with no intervention; pre and post data could be reviewed [24:20].
+- ACL prevention: outside her expertise; she notes much published work exists on lower extremity motion capture [25:22].
+=== 2026-04-09_XaKYxZc12J4_when-the-model-meets-human-the-future-of-basketball-decision/summary.md
+---
+type: video-summary
+video_id: XaKYxZc12J4
+title: "SSAC26: When the Model Meets Human: The Future of Basketball Decision Making"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Monte McNair (caption spelling; also "Monty", "Money"), Ariana Antonian (caption spelling; also "Arianna"), Steven Adams, Sonia Raman (caption spelling; also "Sonya"), Shane Battier (moderator), Judy Drew (introduction)]
+topics: [basketball, front-office, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A panel of a front-office advisor, a 76ers personnel executive, a WNBA head coach and an NBA player, moderated by Shane Battier, on how models and human judgment meet in basketball. The panelists say tracking data now explains things players and coaches already knew, that a new metric has to be actionable and fit the roster, and that models give information rather than answers. Much of the discussion is about trust: embedded analysts, small-sample outcomes, and getting players to buy in. The player on the panel says players mostly treat data as a guideline. The views are the panelists' own experience, with few numbers.
+
+## Key claims
+
+- Battier says data is now like oxygen, and that analytics has moved from what happened toward how it happens [01:34, 02:04].
+- McNair says skeletal tracking lets teams measure what players and coaches already knew, such as contested rebounds and carving out space; the early data had only a dot for each player location [02:36, 03:06].
+- Raman tests a new metric for whether it is actionable for a player, the context behind it, whether it correlates with winning, and whether it fits her own roster [03:36, 04:07, 04:37].
+- Battier says the most used phrase in NBA data rooms is that all models are wrong and some are useful [05:08].
+- Antonian says G League data and analyst support are behind the NBA, and basketball is behind baseball on biomechanics for player development [05:38, 06:08].
+- Antonian says the G League is used to test ideas (lineups, shot volume) before taking them to the NBA staff [06:39, 07:10].
+- Adams says the screening "gravity" credit is a little overblown in his view, and that screening comes down to communication with the ball handler [08:10, 08:41, 09:11].
+- McNair says he goes with data where it is nearly unimpeachable and leans on the eye test where it is only suggestive, and that scouts can be pointed to what the data cannot yet measure [11:12, 11:42, 12:13].
+- When a number looks odd, such as a low assist rate, the staff watches film to test theories [12:43, 13:13].
+- Raman says the coaching staff sets OKRs with analysts and the front office, and that she has not seen confidence measured reliably; over-indexing on numbers can make a player second-guess [14:13, 15:13, 15:44].
+- Antonian says athleticism (how someone moves) is the thing she most needs to see live [16:46, 17:16, 17:46].
+- Adams advises young bigs to lean toward defensive and off-ball work because scoring roles are volatile, and to listen for whether teammates like playing with them [18:48, 19:18, 19:48].
+- Antonian says teams gather coachability information and try to rate it, though roughly [21:20, 21:50].
+- Raman says lineup choices depend on the game situation and are planned before the game, not driven by a mid-game AI report [22:52, 23:22, 23:53].
+- Antonian says data often gives a list of issues rather than one answer, and coaches must choose which to fix in game [24:54, 25:25].
+- Adams says players tend to treat analytics as a guideline and many do not want it while playing [26:29, 27:00].
+- McNair describes a playoff series where a player hit his first three threes after the plan was to help off him; the coaches kept the plan, and he says that trust in coaches matters more than a small-sample result [28:01, 28:31].
+- Panelists say to start with near-certain (90-10) recommendations and move to closer calls as trust builds [28:31, 29:02].
+- Antonian and Raman say relationships and staff who are embedded full time build the trust needed [29:32, 31:04, 31:34].
+- Panelists describe involving players early, including asking defenders about coverage, for buy-in [32:05, 32:35, 33:06].
+- McNair tells of a Houston player who explained that crashing the glass every time costs energy for defense, which refined the model [34:37, 35:07].
+- McNair says better models mostly find things players already do that win games, and find them with more certainty and the right magnitude [36:39].
+- McNair says front offices should get familiar with large language models, including what they are bad at, and use them now [42:20, 42:51, 43:23].
+- A panelist says the tension between transition defense and offensive rebounding could not be resolved until tracking data arrived [43:55].
+
+## Numbers and definitions
+
+- Early tracking data was a dot for the first "7 8 years" (McNair) [03:06].
+- Hypothetical: a player passes "60% more" if pushed left, given by Adams as an illustration [26:29].
+- Playoff example: three threes in the first three attempts of the series [28:01]; 90-10, 80-20, 70-30 and 51-49 calls used as a scale of difficulty [28:31, 29:02].
+- PJ Tucker example: playing 38 minutes at a high level [34:37].
+- Antonian says teams have "eight different problems" on average [25:25].
+- McNair has spent eight months on AI in his sabbatical year [42:51].
+- Garbled: a G League three-point volume ("53s per game... some amount of threes") is unclear in the captions [07:10].
+- "Screening gravity" and "force of impact" are named as metrics but not defined [07:40, 08:10].
+
+## Methods and frameworks named
+
+- 3D skeletal player tracking [02:04, 03:06].
+- Retroactive testing of a new metric against league results [04:07].
+- OKRs co-set by coaches, analysts and front office [14:13].
+- Coachability rating scale built from information across a player's previous stops [21:20, 21:50].
+- Lineup and substitution pattern analysis of opponents [24:23].
+- G League as a testing ground [06:39].
+
+## Limits and open questions
+
+- Panelists are NBA and WNBA insiders (the moderator is a former player), speaking from experience, with no data shown.
+- Adams's view that screening gravity is overblown is one player's opinion.
+- The coachability scale is described as "pretty rough" [21:50].
+- The caption skips the first audience question between 37:39 and 38:16.
+- Speaker identity in several answers must be inferred from context because captions have no speaker labels; the answer to the final question (what to know on day one) is given by an unidentified panelist [43:55].
+- Names are inconsistent in captions (Monte, Monty, Money; Ariana, Arianna; Sonia, Sonya).
+
+## Q&A
+
+- Mentorship and career path: Antonian and another panelist describe mentors who believed in them and gave honest feedback [38:46, 39:19, 39:49].
+- Athleticism versus stats such as dunk rate: Antonian says they work together and discrepancies should be investigated with film [40:49, 41:20, 41:50].
+- Large language models in front offices: McNair says learn what they do well and poorly, and start using them now [42:20, 42:51].
+- One thing to know on day one: a panelist cites crashing the glass versus transition defense [43:55].
+=== 2026-04-09_Ydm3fWet554_surgery-and-sports-how-data-inform-decision-making-when-the-/summary.md
+---
+type: video-summary
+video_id: Ydm3fWet554
+title: "SSAC26: Surgery and Sports: How Data Inform Decision Making When the Stakes are High"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Dr. James Naples (caption spelling), Quinn McCarthy (introduction)]
+topics: [decision-making, injury-health]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Dr. James Naples, an ENT surgeon and educator at Harvard Medical School, argues that healthcare uses outcome and patient data well but barely measures the surgeon and the environment, which sports teams track routinely. Using a patient's Halloween remark as the starting point, he describes studies on birthdays, team familiarity, daylight savings, time of day for cancer treatment and left-handed equipment. He says sports analytics taught him to treat non-significant findings as possibly relevant and to explore outliers. He is working with a sports psychologist to build a sports-style analytics team in healthcare. Most studies are cited without names or data.
+
+## Key claims
+
+- A patient's worry that he would rush on Halloween to get home to his children changed how he thinks about data [04:39, 05:09].
+- There is no data on how he performs on Halloween, but there is a Medicare study on surgeon birthdays showing worse outcomes [05:39, 06:10].
+- Sports teams analyze the athlete and the environment; surgery analyzes outcomes and patient factors but not systematically the surgeon or system [06:40, 07:12, 07:43].
+- Healthcare lacks the analytics teams sports have; he would have to pull and analyze data himself [07:43, 08:13].
+- Papers treat the surgeon and environment as constants, which he says they are not [08:13].
+- He describes healthcare as in a "moneyball" era without systematized data use [09:15].
+- A cardiac surgery study shows that as team familiarity rises, surgical time falls and outcomes improve, more steeply for complex surgery [10:15, 10:45].
+- Daylight savings affects patient health and marathon times; he suggests a biological clock effect and says healthcare does not account for it [11:47, 12:18].
+- Capture systems account for only a small share of safety-related events [12:48].
+- Cancer patients treated early in the day have higher three-year survival than those treated later [13:19].
+- Left-handed surgeons are pushed out because left-handed equipment costs two to three times as much, and they are forced to use right-handed tools [13:50, 14:22, 14:53].
+- Healthcare has a "p value problem": non-significant does not mean irrelevant [15:53].
+- He now explores outliers with anomaly-seeking research rather than excluding them [16:25, 16:56, 17:26].
+- Leading with behavior stories before data works better with clinicians; he works with a sports psychologist and wants a healthcare organization with performance psychologists and data analysts [17:56, 18:26, 18:56].
+
+## Numbers and definitions
+
+- About 400 surgeons do his specialty [01:01].
+- Birthday study: almost a million surgeries from a Medicare database [06:10].
+- A cardiac surgery study suggests up to 98% of outcome variability is due to the surgeon and system [08:43].
+- Marathon runners about 12 minutes slower in spring than autumn around daylight savings [11:47].
+- Safety event systems capture about 14% of events [12:48].
+- Cancer time-of-day survival measured at 3 years [13:19].
+- Left-handed equipment two to three times the cost [14:53].
+- None of the studies are named in the captions; the 98% and 14% numbers could be caption errors and cannot be checked against the talk.
+
+## Methods and frameworks named
+
+- Retrospective database analysis (Medicare data, cardiac team studies) [06:10, 10:15].
+- Anomaly-seeking research on outliers [16:25].
+- Story-first communication with a sports psychologist, then data layered on [17:56].
+
+## Limits and open questions
+
+- No study is identified, and no effect sizes (other than those above) are shown.
+- Halloween has no data behind it by his own account [05:39, 16:25].
+- Time-of-day cancer result: a questioner raises possible administration or adherence explanations; Naples says studies are controlled for cancer type and degree and that scheduling barriers may exist [25:36, 26:07]. Whether timing causes the survival difference is not resolved.
+- The West Coast travel point is his interpretation [12:18].
+- Applicability to athletes is asserted by analogy, not shown.
+
+## Q&A
+
+- How long until enough research exists, and can LLMs help: depends on institutional effort; the data exists but databases have not been built to study these factors [19:56, 20:28, 20:59].
+- Why insurers do not push this research: he has reached out to insurance liaisons and wonders whether physicians avoid publishing so insurers cannot use it against them [20:59, 21:29].
+- Telematics-style pricing for physicians: people with bad outcomes would object [22:03, 22:34].
+- Testing doctor knowledge and dexterity: surgery does not test dexterity before residency, and knowledge metrics are not consistent predictors beyond board passage [23:04, 23:35].
+- Robotic surgery data: robots track hand and eye movements but that is proprietary; he has spoken with the company [24:36, 25:06].
+- Alternative explanations for cancer timing: studies are controlled, but administrative barriers may exist [25:36, 26:07].
+=== 2026-04-09_an7u-tVP5Xc_from-noise-to-knowledge-building-high-quality-data-driven-re/summary.md
+---
+type: video-summary
+video_id: an7u-tVP5Xc
+title: "SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: ["Kate Ari (caption spelling), director, co-founder and president of the Women's Health and Sports Performance Institute"]
+topics: [sports-science, injury-health, policy, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker, a sports medicine physician and endocrinologist who co-founded a women's health and sports performance institute, argues that research on female athletes is thin and often poorly built. She gives the history of excluding women from research, the health burdens female athletes face, and the results of literature audits that score studies on population, athlete caliber, menstrual status method, journal and sample size. She warns about unvalidated wearables, weak hormone measurement, survey bias and AI repeating errors, and offers a workflow for validating wearable data. Her answer to closing the gap is teamwork across clinicians, athletes and data analysts.
+
+## Key claims
+
+- Women's sport is growing: Title IX, women now have 44% of sport opportunities, more than 160 female sports leagues exist, and fandom has risen, but gaps remain in media investment and prize money. [03:06] [03:35] [04:07] [06:40]
+- Female athletes face higher rates of concussion, ACL tears and bone stress injuries, and relative energy deficiency in sport is very prevalent, partly through inadvertent under-fueling. [06:40] [07:10]
+- Team USA athletes asked for research on pregnancy and postpartum, menstrual cycle symptoms, birth control, fueling across the cycle, mental health, recovery and more female coaches. [07:42] [08:12] [08:43]
+- It is not known when sex differences change training, because they are not studied enough or studied well. [08:43] [09:14]
+- Women of childbearing potential were excluded from early drug trials from 1977 until the early 1990s; drugs in common use have different pharmacokinetics and adverse reactions in women. [09:14] [10:16] [10:46]
+- Women's health gets a small share of private health investment despite an estimated return on investment, and research funding does not match burden of disease (obstetric complications affect 33% of birthing women worldwide, yet only 2% of US registered trials address obstetrics). [11:48] [12:20] [12:51]
+- Sports medicine textbooks historically treated female athletes as a "special population," and the speaker refused to write such a chapter, asking instead for each chapter to say what is known and unknown in women. [13:21] [13:51]
+- Only 6% of articles in top sports medicine and science journals from 2014 to 2020 focused solely on women. [14:21]
+- Her group audits the literature on population, athlete caliber (tiers 0 to 5), menstrual status method, research theme, journal impact and sample size. [14:53] [15:23] [15:54] [16:25] [16:56]
+- Asking about menstrual status is not the same as testing hormones, and a withdrawal bleed on a birth control pill is not a natural cycle. [16:25]
+- Audit results: 99.5% of supplement research did not categorize or standardize menstrual cycle; female participation rose from 39% to 44% between audit periods while female-only studies did not improve. [16:56] [18:30] [19:00]
+- The Women's Health Initiative hormone trial was stopped in 2002 after harms, and a 2016 reanalysis found the problem was women who started therapy after age 60 or more than 10 years after menopause, which left a generation of women without treatment. [21:03] [22:06] [22:36] [23:07]
+- Surveys are cheap and good for prevalence and early ideas but cross-sectional, with selection, recall and non-response bias. [27:41] [28:12]
+- Wearables vary in what they measure and their validity, and they need testing against a gold standard; they also raise equity, algorithm bias and privacy issues. [28:44] [29:14] [29:44] [30:16]
+- AI can repeat and reinforce errors in numbers and citations while sounding more confident. [30:46] [31:17]
+- Hormone testing methods each have limits: saliva needs many samples and has weaker assays, blood is precise but time-sensitive, dried blood spot needs repeated sampling, and urine is well validated against serum but suited to profiling patterns. [31:47] [32:17] [32:48]
+- Her research approach is audit, observational studies, intervention studies, repeat, then advocacy and education, because it takes about 17 years from discovery to common practice. [27:10]
+- The answer to the data gap is teamwork among endocrinologists, sports physicians, athletes and data analysts. [34:53] [35:24]
+
+## Numbers and definitions
+
+- Title IX in 1972: more than 3 million more high school girls and 200,000 collegiate women playing each year; 44% of sport opportunities now go to women. [03:06] [03:35]
+- More than 160 female sports leagues; 57% increase in fandom over 5 years (McKinsey survey, caption spelling "McKenzie"). [03:35] [04:07]
+- 9% of sports media investment goes to women's sports; the Women's World Cup prize pool is a quarter of the men's. [06:40]
+- Concussion 1.4 times; ACL tears 2 to 8 times; bone stress injuries 3 times (women versus men). [06:40] [07:10]
+- 1977 exclusion; 1990 NIH Office of Research on Women's Health; 1993 reversal; 1994 FDA Office of Women's Health; 1998 demographic rule; 2002 pregnancy registries guidance; 2016 NIH both-sexes requirement; 2024 White House initiative. [09:14] to [11:48]
+- 6% of private healthcare investment goes to women's health; estimated three-time return. [11:48]
+- 33% versus 2%: obstetric complications versus trials addressing obstetrics. [12:20] [12:51]
+- 6% of articles solely on women, top journals, 2014 to 2020. [14:21]
+- Athlete caliber: tier 0 sedentary, tier 1 moving a little, tier 2 working out at least three times a week with intent to compete at least once a year, up to tier 5 world class. [15:23] [15:54]
+- 99.5% of supplement studies not standardizing menstrual cycle. [16:56]
+- Audits (2011 to 2013 versus 2021 to 2023): 39% to 44% with female participants; female-only 8.76 to 7.15 (unit not stated); male-only about 28% to about 19%; menstrual status reporting from none to about 5.6%; 7% silver and 0.5% gold classification. [18:30] [19:00] [19:30]
+- Women's Health Initiative: 161,000 women, about 70,000 in the randomized trial. [21:03] [21:35]
+- $220 million initiative and $50 million institute funding; 15,000 square feet. [23:37] [25:40]
+- 17 years from discovery to common practice. [27:10]
+- Possible caption garbles: "Kate Ari" and "Dr. Arian," "Elena Myers Taylor," "Cali Humphre," "Michaela Shiffren," "Claroo" and "Clara Woo," "Joseph Sai," "Satchin," "Dave and Jane Aught," thalidomide spellings, and "gender parody." [00:00] [02:04] [06:09] [09:14] [23:37] [25:40]
+
+## Methods and frameworks named
+
+- Standardized literature audit: topic search, screening, then population, athlete caliber, menstrual status, research theme, journal impact and sample size. [14:53] to [16:56]
+- Gold, silver and bronze classification of menstrual status reporting. [19:00]
+- Research pipeline: audit, observational and prevalence studies, intervention studies, replication, advocacy and education. [27:10]
+- Wearable validation workflow: check data fit and question impact, prepare data (sensor accuracy, missing data, outliers), validate against a trusted reference, reproduce known values or trends, analyze, then share only if conclusions hold. [33:19] [33:51] [34:22]
+
+## Limits and open questions
+
+- Much of the talk is context and history, not data analysis; the audit figures are from her group's work, and sources for several statistics (ratios, investment share, 17 years) are not named.
+- The female-only figures lack units and the audit topic coverage is not stated. [18:30]
+- Injury risk ratios are given without ranges or sources. [06:40] [07:10]
+- She says we do not know when cycle effects matter in training; no training recommendation is offered. [08:43]
+- The speaker leads an institute that receives philanthropic funding, and her recommendations (teamwork, more research) are institutional views. [25:40]
+- The political remark about the White House initiative is her opinion. [11:48]
+- No Q&A: the session ran out of time. [35:55]
+
+## Q&A
+
+No Q&A; the host said there was no time and invited attendees to meet the speaker outside. [35:55]
+=== 2026-04-09_nRoPOxRWCaQ_the-missing-variable-menstrual-cycles-injury-risk-and-the-co/summary.md
+---
+type: video-summary
+video_id: nRoPOxRWCaQ
+title: "SSAC26: The Missing Variable: Menstrual Cycles, Injury Risk, and the Competitive Edge"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Emily Kraus]
+topics: [sports-science, injury-health, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+Emily Kraus, a sports medicine physician, argues that sports analytics tracks load, sleep and heart rate variability but almost never tracks hormonal physiology. She says the menstrual cycle should be treated as a measurable signal, not noise, and that female athletes' higher rates of ACL and bone stress injuries come from hormonal, structural and environmental factors together. She reports that average cycle-phase effects on performance are small while individual effects can be large, and that calendar counting misses anovulation and luteal phase defects. She proposes a practical framework: symptom tracking, screening, a composite score, and athlete education, with attention to data privacy.
+
+## Key claims
+
+- Hormonal physiology is rarely tracked in sports, unlike load, GPS, HRV and sleep [00:39].
+- In an audit of top exercise science and sports medicine journals, only 6% of the research used female-specific data [04:50].
+- Female athletes have higher injury rates for bone stress injuries, ACL injuries and concussions, and these are predictable patterns [05:51].
+- She frames the cycle as an algorithm of dynamic hormonal signaling, not a calendar [06:22].
+- Not every athlete who bleeds has a regular cycle: hormonal contraception, luteal phase defects, anovulation and irregular bleeds are possible, and calendar tracking cannot detect them [07:55].
+- Meta-analyses and systematic reviews conclude that average phase effects on performance are trivial or small, but individual effects can be large [08:27].
+- The field is moving from phase-based prescription and "cycle syncing" toward individualized monitoring [08:59].
+- Symptom burden may affect performance more than the hormonal impact itself [09:30].
+- ACL fibers contain receptors for estrogen, progesterone and relaxin, and knee laxity changes across the cycle, but there is no conclusive evidence on how hormone fluctuations affect ACL injury risk [10:32].
+- Anatomical and biomechanical factors (femoral notch, tibial slope, landing patterns, alignment, quad dominance) interact with hormonal ones [11:03].
+- Female teams often have less medical and strength staffing and more reactive care than male teams [11:34].
+- She proposes a multilevel risk framework: athlete, team, equipment, organization and society [12:04].
+- Low energy availability can suppress estrogen, cause missed periods, lower bone mineral density and raise bone stress injury risk; RED-S and the female athlete triad are the clinical models [13:38], [14:08].
+- Calendar counting assumes a 28-day cycle, but a normal cycle can be 21 to 35 days [15:12].
+- Blood testing is invasive and expensive, urinary testing needs frequent samples, and wearables still need validation in athlete settings [15:42].
+- Her implementation framework is symptom tracking, RED-S and ACL screening, wearable data, a composite score used to adjust load, recovery, nutrition and hydration, and education of athletes and staff [16:46], [17:17].
+- She wants the menstrual cycle treated as a vital sign for every female athlete [17:48].
+
+## Numbers and definitions
+
+- 6% of journal research was female-specific; 94% male or mixed [04:50].
+- ACL injury annual rate "almost 4%" in certain sports versus 0.03% in the general population [10:01].
+- Normal cycle length 21 to 35 days [15:12].
+- "One in five of natural cycles in some populations" can have chronic or spontaneous anovulation [15:12].
+- Rehabilitation after ACL surgery: 9 to 12 months [03:17].
+- Bone mineral density described as accounting for 50 to 70% of variation in bone strength [14:39]. Caption reads "accounts to 4 50 to 70%", so the number is partly garbled.
+- Female athlete triad: low energy availability, impaired menstrual cycle, impaired bone health [14:08].
+- Eumenorrheic: a regular menstrual cycle [07:24].
+- Participation remark in Q&A: "50% or less" collecting data is a poor situation [20:01]; the caption is garbled.
+
+## Methods and frameworks named
+
+- Multilevel risk framework (individual, team and equipment, society and organization) [12:04].
+- RED-S and female athlete triad as screening models [14:08].
+- Gold-standard cycle measurement: serologic testing, quantitative urinary hormone testing, wearables [15:42].
+- Proposed composite score from symptoms, screens and wearable data [16:46].
+
+## Limits and open questions
+
+- She says evidence on phase effects and ACL risk is limited, mixed or inconclusive [08:59], [10:32].
+- No sample sizes, effect sizes or study citations are given for the performance claims.
+- The composite score is proposed, not shown or validated.
+- The framework has not been shown to reduce injuries; "predictable so preventable" is her stated belief [05:51], [18:19].
+- Wearable validation in athletes is acknowledged as incomplete [15:42].
+- The session description cites 2 to 8 times ACL rates and 2 to 4 times bone stress rates (meta.json description, not spoken); those figures are not stated in the captions.
+
+## Q&A
+
+- How to convince organizations to invest: athletes are asking for it; include athletes; introduce in the off-season; low participation undermines it [19:29], [20:01].
+- Advice for youth and under-resourced settings: start the conversation at the start of the season, keep it simple, use handouts and videos, have athletes track in a phone or journal [21:03], [22:03].
+- Personalizing without a blanket solution: slight tweaks rather than individual programs; strength training as foundation [23:40], [24:10].
+- Using data to optimize as well as prevent: tracking can show when an athlete feels best [25:12].
+- Privacy and opt-in: athlete owns and controls her data; data must not be used to pull athletes from play [26:43].
+=== 2026-04-09_sehodnyt3ko_the-future-of-peak-performance-clara-wu-tsai-and-john-donaho/summary.md
+---
+type: video-summary
+video_id: sehodnyt3ko
+title: "SSAC26: The Future of Peak Performance: Clara Wu Tsai and John Donahoe"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: [Clara Wu Tsai, John Donahoe, Jessica Gelman (moderator), Sarah Buck (introduction)]
+topics: [sports-science, injury-health, policy]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+A moderated conversation between Clara Wu Tsai (owner of the New York Liberty, founder of the Wu Tsai Human Performance Alliance) and John Donahoe (Stanford athletic director, former Nike CEO). They describe a research alliance that studies people at peak health and aims to predict injury, personalize training, and close the data gap on female athletes. Stanford is presented as the lab for applying it. Donahoe also lays out a three-part rule set he wants for college athletics. The injury-prediction work is described by its own funder and partner, and Donahoe says it is too early to show fewer injuries.
+
+## Key claims
+
+- Moving the Liberty to Barclays Center in Brooklyn was the most transformative change, followed by investing in facilities, performance and player experience on the same terms as the men's team [02:06].
+- Wu Tsai says owning the teams showed how much is unknown about the human body, and that most health research studies disease rather than peak performance [10:51, 11:21].
+- The alliance was created to study people at peak health and ask how top performers move, adapt, fatigue and recover [11:51].
+- Wu Tsai says digital twins grounded in biomechanics and physiology can predict injury, personalize training and simulate performance, using simple video from two iPhones [12:21].
+- Stanford and the alliance chose ACL injuries and hamstring injuries as the two areas to push through first [13:24].
+- Donahoe describes the ACL process: high-speed video of an athlete (about 10 minutes) produces a digital twin that estimates her ACL injury propensity and points to a specific weak link, shared with the athlete and trainer for targeted training [13:54, 14:24, 14:56].
+- Donahoe says it is too early to show a measurable drop in injuries after about a year, but athletes, coaches and trainers like it [14:56].
+- For hamstrings, researchers film football players doing a series of exercises, and the twin estimates injury or re-injury likelihood and rehab stage [15:26].
+- Wu Tsai says closing the gender gap in physiology and performance knowledge is a priority, and launched a women's health institute (WHISPER) in Boston in January, run by Dr. Kate Ackerman [17:30, 18:00, 18:30].
+- Donahoe says a Stanford event co-sponsored with Wu Tsai drew 400 people, and that Stanford can act as a lab with 900 student athletes [19:01, 20:32].
+- Donahoe says over 200 faculty work with Wu Tsai on sports science, and gives mental wellness as an example of faculty collaborating who otherwise would not [21:33, 22:03].
+- Donahoe says college athletics is in a "lawless middle" and proposes eligibility rules, transfer portal limits, and a salary cap with transparency [23:34, 24:36, 25:07].
+- Donahoe says Stanford will double down on Olympic and women's sports and launch an endowment campaign [26:39, 27:09].
+- Wu Tsai names three unsolved challenges: predicting injuries before they happen, individualizing training and recovery, and the data gap in women's physiology [31:46, 32:17, 32:47].
+- Donahoe says all the alliance research is open and shared across institutions [38:24].
+- Wu Tsai says the biggest breakthrough would come from combining league player data, academic models and private-sector mobile dashboards to tell athletes what will happen and what to do [42:58, 43:28].
+
+## Numbers and definitions
+
+- Only 6% of sports science studies are done exclusively on women (Wu Tsai) [17:30].
+- ACL injuries are "four to six times more likely" in women; Donahoe says he looked this up on ChatGPT and that it varies by sport [13:54].
+- Alliance described by the moderator: seven core institutions, hundreds of collaborations, more than 500 publications, multiple therapeutics advancing toward FDA approval [10:21].
+- ACL and hamstring screens: about 10 minutes of video each [13:54, 15:26].
+- Over 200 Stanford faculty involved [21:33]; 900 student athletes, 36 sports [25:38]; 400 attended the event [19:01].
+- About 59 Stanford students and alumni at the Paris Olympics; Directors' Cup won 25 years straight [07:13].
+- Donahoe estimates college basketball as one third professionalized and two thirds college [26:08].
+- Alliance about five years old, launched 2020; teams acquired 2019 [10:21, 10:51].
+- Athletes now play at most into the mid-40s, depending on sport (Wu Tsai) [44:31].
+- Captions are garbled in places (for example "Wyss Institute", "Woo Sai", "Oura" for what is likely a leadership body); no number appears garbled.
+
+## Methods and frameworks named
+
+- Digital twin: AI-based model of an athlete's biomechanics and physiology built from video, used for injury propensity and rehab stage [14:24, 15:26].
+- Precision exercise medicine, based on molecular biology of exercise (Salk Institute) [28:10, 28:42].
+- Regenerative rehabilitation (University of Oregon) [29:14].
+- Open, multi-institution research network convened by the alliance [38:24].
+
+## Limits and open questions
+
+- No accuracy, sensitivity or false-positive data are shown for the ACL or hamstring twins; Donahoe says results on injury rates are too early [14:56].
+- The two main speakers are the funder and the partner institution's athletic director, so benefit claims are institutional views.
+- The "four to six times" figure was looked up by the speaker on a chatbot and not sourced.
+- Claims that the work helps youth and everyday athletes [35:22, 41:28] were not tested in the talk.
+- Claim of a "digital twin" that tells an athlete what will happen before it does is a stated goal, not a shown result [32:17].
+
+## Q&A
+
+- No audience questions were captured; the moderator asked quick-hit questions at the end.
+- Liberty international games in 10 years: at least one a year [40:27].
+- Where AI will drive most insight: fans, athletes and leaders; Wu Tsai expects immersive fan experiences and injury-avoidance benefits for young athletes [40:57, 41:28].
+- Who uses alliance research in 2036: both gold medalists and youth parents [41:58].
+- Biggest possible breakthrough: injury prediction with guidance, built from league data, academic models and private dashboards [42:58].
+- Will athletes play longer: both hope so [44:31].
