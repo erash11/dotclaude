@@ -10,3 +10,6 @@ One row per backend per run. Decision rule: audit section 6.2.
 | 2026-09-30 | bu-1979fj4 | baseline n30 (fts5/rg; memsearch pending vault index) | rg | 30 | 12 | 22 | 0.533 | 94 | 132 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 8/14, transcript 1/1, vault 11/13 |
 | 2026-09-30 | bu-1979fj4 | fts5 vs fts5+jev n30 | fts5 | 30 | 21 | 25 | 0.767 | 1 | 3 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-09-30 | bu-1979fj4 | fts5 vs fts5+jev n30 | jev | 30 | 19 | 27 | 0.756 | 408 | 745 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 13/14, transcript 1/1, vault 12/13 |
+| 2026-10-01 | bu-1979fj4 | post-vault-index | memsearch | 30 | 15 | 29 | 0.694 | 5701 | 9740 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 14/14, transcript 1/1, vault 12/13 |
+| 2026-10-01 | bu-1979fj4 | post-vault-index | fts5 | 30 | 20 | 25 | 0.75 | 5 | 16 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-01 | bu-1979fj4 | post-vault-index | rg | 30 | 11 | 23 | 0.509 | 111 | 129 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 8/14, transcript 1/1, vault 12/13 |
