@@ -1,0 +1,296 @@
+=========== case-study--101-football-athletes-one-season-load-and-non-contact-injury.md
+---
+type: library-entry
+kind: case-study
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "TbYgc6_qQzo"
+topic: load metrics and non-contact injury
+category: [injury, training-load, american-football, gps]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "TbYgc6_qQzo, SSAC18, Volume and Intensity in Injury Incidence in Football Athletes"
+---
+
+# 101 Football Athletes, One Season: Volume and Impacts Tracked Non-Contact Injury
+
+**What it is** — Patrick Ward (caption spelling "Patrick ward") and co-authors analyzed one full season, preseason through regular season, in 101 American football athletes (TbYgc6_qQzo [11:14]). The aim was not to predict injuries before a session but to identify the relationship between training-load variables and non-contact time-loss injury, so practitioners get an idea of associated risk (TbYgc6_qQzo [07:41]).
+
+- **Metrics from inertial sensor units** (vendor not named in the transcript): total player load, four player load effort bands, impacts with three thresholds, and inertial movement analysis (IMA) with three thresholds (TbYgc6_qQzo [08:12] to [09:12]).
+- **Injuries:** 29 non-contact time-loss injuries, mostly lower extremity, plus an oblique in a linebacker, a low back strain and an elbow strain in a defensive lineman who was learning a new position (TbYgc6_qQzo [13:18] to [13:49]).
+- **Models:** the best model within each metric group, then a joint model. The player load model used total player load and player load "very high"; the IMA and impacts models used all three bands; the joint model used total player load, player load low and impacts high and was "the most useful" for explaining injury (TbYgc6_qQzo [13:49] to [14:20]).
+- **Direction of effects:** total player load and impacts high carried the highest increase in risk; player load low had a decreased association (TbYgc6_qQzo [14:20] to [15:22]). Ward reads total player load as volume and impacts high as session intensity or physicality, interesting because collision injuries were not studied (TbYgc6_qQzo [14:51]).
+- **Position group:** adding it as a categorical variable did not help in any model, and he suspects too few injuries per group (TbYgc6_qQzo [15:22] to [15:53]).
+- **Timing:** in Q&A, most injuries occurred in training camp, very few once the season started (TbYgc6_qQzo [22:05]).
+- **Not shown:** effect sizes, thresholds or band values (the transcript gives none), and no game load (TbYgc6_qQzo [16:53]).
+
+**Why it works** — Ward's interpretation for the inverse player-load-low result is that a session cannot be high and low intensity at the same time, so the inverse relation is "logical" (TbYgc6_qQzo [15:22]). The speaker gives no mechanism for why impacts would raise non-contact risk. Inference: it may reflect session physicality or camp-style practice, but the talk does not say.
+
+**When to apply** — Inference: as a template for which Catapult columns to read beside the standard load view after practice (total volume, a high-intensity impacts count, and the low band) instead of one load number. Eric's baseline: core GPS metrics tracked include player load, field time and IMA for indoor sessions (Explicit, Playbook pp.11-13). Eric's baseline: no sport- or position-specific GPS thresholds exist formally ("They do not exist formally," Explicit, interview 2026-09-28, Q7). Inference: this study supplies no thresholds to fill that gap. Inference: camp weeks, where most injuries fell here, are where a Baylor descriptive look would start.
+
+**When NOT to apply** — One team, one season, 29 injuries, and no effect sizes. The talk does not name the team or level; a questioner refers to roster reduction to "a final 53" (TbYgc6_qQzo [21:35]), which suggests an NFL-style roster, but that is not confirmed. Association only, with no game load. Injury types were pooled across hamstring, adductor and other injuries (TbYgc6_qQzo [16:23] to [16:53]). Do not set a Baylor load limit from it, and do not change practice plans because one session scored high on impacts. Ward himself says thresholds "bounce around" between studies (TbYgc6_qQzo [05:06]).
+
+**Example** — The speaker's own: the defensive lineman's elbow extensor strain came while learning a new position and doing exercises unique to him in training (TbYgc6_qQzo [13:49]).
+
+**Related** — [[framework--injury-coding-and-censoring-rules-for-load-analysis]] (how the data were coded). [[principle--load-gives-risk-context-not-prediction]]. [[claim--ima-informs-linemen-where-gps-distance-does-not]].
+=========== case-study--joe-thomas-win-rate-versus-sacks-allowed.md
+---
+type: library-entry
+kind: case-study
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "teg9SfzpMy0"
+source: "teg9SfzpMy0, SSAC23, Creating an NFL Player Tracking Metric presented by ESPN"
+topic: win rate check against film
+category: [case-study, offensive-line, football]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-01
+---
+
+# Case Study: Joe Thomas, Pass Block Win Rate and the Quarterback Who Held the Ball
+
+**What it is** — Panelists describe how ESPN's pass block and pass rush win rates came about accidentally: a script written to find the closest defender on each pass, to answer researchers' repeated questions about separation, drew a visualization that showed who was blocking whom (teg9SfzpMy0 [14:59], [15:30]). From there a pass block win rate was "a short step": if you can get your shoulder pads past the block it is a pass rush win, with a time component (teg9SfzpMy0 [15:30]). The first check: Joe Thomas, in his final season (2017), was about 53rd in sacks allowed or pressures allowed (the speaker is unsure which) but third in pass block win rate (teg9SfzpMy0 [16:02]). The panel's first reaction was "our metric is broken." On film Thomas was doing as well as he always had; his quarterback (caption "DeSean Kaiser") held the ball for about seven seconds and then got sacked, and "you can't expect any alignment to sustain a block that long" (teg9SfzpMy0 [16:34]). They conclude the conventional line metrics (pressures and sacks allowed) did not tell the whole story (teg9SfzpMy0 [14:29]).
+
+**Why it works** — The panel's explanation: the win rate asks about the blocker's own job (sustain or beat the block over a time window), while sacks allowed also depend on the quarterback holding the ball (teg9SfzpMy0 [16:34], [41:43]). Inference: a metric that attributes an outcome to the wrong player will look wrong against a player known to be good, and film can show why.
+
+**When to apply** — As the sanity-check pattern for a new metric: compare it with players whose quality is already well known, then watch the surprising cases. Eric's baseline: Eric (interview 2026-09-28, Q6): the coach's eye flags where to look and data investigates (Explicit). Inference: here the direction runs the other way, film questioning a metric, which supports the same sequence of observation and checking.
+
+**When NOT to apply** — One player and one season, told as a story, with no group-level comparison (teg9SfzpMy0 [16:02]). `untested`. The speaker is unsure whether the comparison metric was sacks or pressures allowed. Names are caption spellings. The panel notes the story was also "a really good story line" that helped sell the metric to ESPN colleagues, so it is a persuasion case as well as a check (teg9SfzpMy0 [16:02], [17:35]). A single clean explanation does not validate a metric.
+
+**Example** — The panel's, above (Thomas, third in win rate, about 53rd in the older metric).
+
+**Related** — [[claim--expected-pressure-rate-adds-to-pressure-rate-in-predicting-sacks]], the SSAC22 talk's pressure-versus-sack framing, a similar process measure; [[heuristic--year-to-year-stability-as-test-of-real-skill]].
+=========== case-study--spring-training-field-lab-post-surgery-vs-never-injured.md
+---
+type: library-entry
+kind: case-study
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "AgouMNTeyo4"
+topic: post-surgery pitcher comparison
+category: [biomechanics, field-testing, hypothesis-testing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "AgouMNTeyo4, SSAC15, SSAC15: Analytics of the Tommy John Injury Epidemic with Glenn Fleisig"
+---
+
+# Spring training field lab: pitchers back from UCL surgery looked mechanically like never-injured pitchers
+
+**What it is** — Glenn Fleisig describes a study done with Major League Baseball in the 2014 spring training in Arizona and Florida, where his group brought the motion-capture lab (in a tent or outdoors) to the teams instead of bringing pitchers to Birmingham (AgouMNTeyo4 [25:16], [26:17]). Design: 40 pitchers who had had the surgery a couple of years earlier and had made it back to spring training, against 40 never-injured pitchers; each filled out a form, had range of motion measured lying on a table, then had a full kinematics and kinetics test (AgouMNTeyo4 [25:47], [26:17], [26:47]).
+
+He named four hypotheses before looking (AgouMNTeyo4 [26:47], [27:18], [27:49], [28:21]):
+- The returners show compensation, "messed up" elbow and shoulder mechanics.
+- They hold back: stand more upright and push the elbow rather than driving as they did.
+- The "inverted W": the arm is late and still down at foot contact, measured as arm external rotation at foot contact.
+- A low elbow that is then raised, a stressful pattern.
+
+Result: both groups threw about 85 mph in spring training and matched on height and weight; he found no difference in flexibility and no difference in mechanics (AgouMNTeyo4 [28:21], [28:52]). His reading: minor leaguers who make it back have typical flexibility and mechanics, "when it works it works" (AgouMNTeyo4 [28:52], [29:22]).
+
+**Why it works** — The design works because it names each hypothesis as a measurable pattern before testing; the speaker gives no mechanism for the null result. Inference: if returners were compensating, the group means would differ on the four named patterns, and they did not.
+
+**When to apply** — As a template for a field comparison of a return group against matched controls: define the comparison group, name hypotheses as measurable patterns in advance, and take the lab to the athletes when the athletes cannot come to the lab.
+
+Eric's baseline: Applied Performance's contribution to return to performance is "Testing and progression" with shared loading decisions (Explicit, interview 2026-09-28, Q4); assessment is repeatable ("how you do it in January needs to be the same as how you do it in April," Inferred, transcript, speaker unconfirmed, course team position). The baseline does not document a return-group comparison at Baylor.
+
+**When NOT to apply** — Fleisig lists the limits himself: only minor leaguers were studied, only after they made it back (no pre-injury mechanics), and only success stories, not the "10 or 20%" who did not return (AgouMNTeyo4 [28:52], [29:22], [29:53]). A null result in 40 against 40 does not exclude small differences, and the talk gives no effect sizes. At the time of the talk the study had "just got published". Baseball pitchers only; do not infer a football return standard. The group is selected on having come back healthy.
+
+**Example** — The speaker's own: a never-injured pitcher and a returner both at about 85 mph, indistinguishable on the four patterns (AgouMNTeyo4 [28:21]).
+
+**Related** — [[claim--post-ucl-surgery-return-rate-and-performance-studies-disagree]]; [[framework--proper-mechanics-as-reference-range-of-healthy-fast-pitchers]]; [[framework--prospective-baseline-then-follow-cohort-from-the-draft]] (a design that would capture the pre-injury data this study lacked; Inference).
+=========== claim--bite-distance-under-expected-is-steadier-than-coverage-grade.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "Q3i3FOC-dPE"
+source: "Q3i3FOC-dPE, SSAC22, Using Tracking and Charting Data to Better Evaluate NFL Players: A Review"
+topic: bite distance under expected
+category: [linebacker, stability, football]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-01
+---
+
+# Bite Distance Under Expected Is Steadier Year to Year Than the Coverage Grade
+
+**What it is** — Eric Eager (PFF) says PFF's linebacker coverage grade has been unstable, so great coverage players "don't always repeat that year to year" (Q3i3FOC-dPE [10:20], [10:51]). He builds a tracking trait instead: how far a linebacker's vertical (y) displacement moves on play action, adjusted for situation (how often the team runs inside or outside zone, down and distance; on third and 15 players don't bite, on first and 10 they do), then averaged over time (Q3i3FOC-dPE [11:22], [11:53]). He calls it bite distance under expected (BDU). His result: using R-squared, it is "about four times three or four times more predictive" year to year than the coverage grade; the caption multiple is garbled (Q3i3FOC-dPE [11:53], [12:23]). His stated reasoning: a linebacker who bites leaves the middle of the field, the most valuable area to throw, open (Q3i3FOC-dPE [10:51], [11:22]).
+
+**Why it works** — The speaker's mechanism is that a fake handoff pulls the linebackers out of the middle zone (his example: two linebackers around the 27-yard line vacating after a fake handoff, Q3i3FOC-dPE [10:51]). He does not show that biting causes the coverage failures. Inference: the trait is steady because it measures a habit, not the outcome of a throw.
+
+**When to apply** — When a graded outcome is unstable year to year and a repeatable behavior can be pulled from tracking data. Eric's baseline: Eric (interview 2026-09-28, Q2a) uses percent change from baseline or a rolling average, with "standard deviations and SWC to diagnose signal versus noise" (Explicit). Inference: both prefer the steadier signal.
+
+**When NOT to apply** — The multiple ("three or four times") is garbled in the captions and the R-squared values are not given (Q3i3FOC-dPE [12:23]). Fred Warner and other player names are used as "smell test" examples, and no group-level validation is shown beyond that (Q3i3FOC-dPE [11:53]). Caption spelling issues (for instance "luke lee" for the player the speaker calls a Hall of Famer) mean names should be checked. `untested`. A steady trait is not the same as a good one; see [[heuristic--read-linebacker-play-action-metrics-as-a-pair-with-run-cost]].
+
+**Example** — The speaker's: Fred Warner's contract and a Hall of Fame-level player rate well on the metric; Neville Hewitt, whom the speaker calls "not a great linebacker," tops the list (Q3i3FOC-dPE [11:53], [19:28]).
+
+**Related** — [[framework--charted-grades-as-labels-tracking-data-as-predictors]], [[heuristic--year-to-year-stability-as-test-of-real-skill]], [[framework--reliability-vs-sensitivity-mdc-and-swc]].
+=========== claim--deepqb-target-accuracy-60-percent-against-20-percent-chance.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "EeBgUCYhezc"
+topic: DeepQB target accuracy
+category: [football, tracking-data, decision-making, baselines]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "EeBgUCYhezc, SSAC19, DeepQB Deep Learning with Player Tracking to Quantify Quarterback Decision Makin Performance"
+---
+
+# DeepQB Picks the Targeted Receiver About 60 Percent of the Time, Triple Chance
+
+**What it is** — Burke reports that variant 1 predicts which receiver the quarterback throws to "just about 60%" of the time on the test set; the no-information guess would be one in five, 20 percent, so "we're tripling that information gain" (EeBgUCYhezc [07:48]). Completion percentage is 74 percent when the quarterback throws to the model's recommended receiver and 55 percent when he throws to any other, "a factor of 1.4" (EeBgUCYhezc [08:50]).
+
+He explains why 60 percent is not a poor score: a quarterback "is never going to do this thing twice in a row" given the same situation, so there is natural variance no model removes, and the defense's purpose is to make sure no single receiver is far more favorable than the others, which drives the number down (EeBgUCYhezc [08:19]).
+
+**Why it works** — The speaker gives no mechanism for why completion differs by 74 versus 55. Inference: the model's top choice is the receiver with the best separation and angles, so agreement partly reflects an easier throw, not that the quarterback's choice is the cause of the difference; the talk does not separate the two.
+
+**When to apply** — When judging any "who gets the ball" or "what happens next" model, state the chance baseline (here 1 in 5) before the accuracy, as the speaker does. Use the 74 versus 55 split to ask whether the model's recommendation carries outcome information.
+
+Eric's baseline: "If it doesn't answer a question anyone has, or a direct need, then it doesn't have a place." (Eric, interview 2026-09-28, Q3.) Inference: the question here is a decision-review one (was this the right target), and a score only earns its place if staff would act on a flagged play.
+
+**When NOT to apply** — The 60 percent is the speaker's own framing of an acceptable result, from one test period (2018 through week 12) and NFL data (EeBgUCYhezc [05:13], [07:48]). There is no confidence interval, and no comparison with a simple baseline other than chance (such as "throw to the open receiver"). Agreement with the model later correlated slightly negatively with production (see [[heuristic--credit-yards-above-expected-to-the-passer-with-selection-bias-caveat]]), so high agreement is not a quality score by itself. The talk gives no college or Baylor-level numbers.
+
+**Example** — The speaker's own examples: an easy play where the model gives a crossing receiver an 80 percent target chance (EeBgUCYhezc [09:50]); a checkdown given 8 percent while a deeper open receiver gets 77 percent, which he reads as a probable poor decision (EeBgUCYhezc [10:52]); and a covered receiver the quarterback throws to anyway, where the model agrees because of a velocity advantage and inside leverage, showing that proximity alone does not decide the target (EeBgUCYhezc [11:23], [11:53]).
+
+**Related** — [[framework--deepqb-receiver-target-model-inputs-and-four-variants]]; [[framework--deepqb-checking-outcome-predictions-by-calibration-and-split]].
+=========== claim--equal-player-load-different-composition-line-vs-receivers.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "QLdbKUiNadg"
+topic: same load, different makeup
+category: [football, gps, player-load, positions]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-01
+source: "QLdbKUiNadg, SSAC18, Preparing for the Game Optimizing Player Performance"
+---
+
+# Linemen and Wide Receivers Reach Similar Player Load by Very Different Routes
+
+**What it is** — Morris says that in his team's game data, offensive linemen and wide receivers have "very similar" total player load, but what makes up that load differs: the linemen have much lower explosive yardage, high-speed distance and max speed (QLdbKUiNadg [03:34], [04:04]). He defines player load as "a summation" of movement from the unit, "a really really really fancy Fitbit" (QLdbKUiNadg [03:34]). He compares the two to Bookers bourbon versus a lighter drink: both reach the same point, "it depends on how you get there" (caption spelling "Booker's"; the comparison is garbled in the captions, QLdbKUiNadg [05:06]). No numbers are read aloud, because the values were on slides the captions do not describe.
+
+**Why it works** — The speaker gives no mechanism beyond the observation that linemen "bang all day" while receivers are running (QLdbKUiNadg [05:06]). Inference: player load adds up all movement, so a contact-heavy, short-burst profile and a running-heavy profile can sum to the same value.
+
+**When to apply** — As a warning when one number is used across positions. Inference: a team-wide player-load target or a coach's comparison of "who worked harder" can mislead if the make-up is not checked. Eric's baseline: core GPS metrics tracked at Baylor include total distance, player load, velocity and acceleration bands (`baylor-applied-performance-playbook.md pp.11-13`), so position-level splits can be read next to player load.
+
+**When NOT to apply** — Confidence is untested: the figures are not stated in the audio, so the size of "very similar" and "very different" cannot be checked. One team, one season, two position groups. Do not read it as showing that player load is a poor metric, which the speaker does not claim.
+
+**Example** — The talk's own case: a line coach threw the first report in the trash, and Morris reframed the data around what the load consisted of for linemen (QLdbKUiNadg [04:04], [04:34]).
+
+**Related** — [[framework--slice-plays-and-count-contacts-to-define-lineman-game-demand]], [[heuristic--show-coaches-and-athletes-the-data-in-their-terms]].
+=========== claim--female-athlete-injury-risk-ratios-as-stated.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "an7u-tVP5Xc"
+topic: women versus men injury ratios
+category: [injury, female-athlete, acl, concussion, bone-stress]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-01
+source: "an7u-tVP5Xc, SSAC26, From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes"
+---
+
+# Stated Injury Ratios for Women Versus Men, With No Sources Given
+
+**What it is** — The speaker (caption spelling "Kate Ari") gives these incidence comparisons for female versus male athletes (an7u-tVP5Xc [06:40] to [07:10]):
+- Concussion: 1.4 times greater in women than in men in comparable sports (an7u-tVP5Xc [06:40]).
+- ACL tears: two to eight times greater risk in females (an7u-tVP5Xc [07:10]).
+- Bone stress injuries: three times greater incidence (an7u-tVP5Xc [07:10]).
+- Relative energy deficiency in sport: "very prevalent," from a full eating disorder to inadvertent under-fueling, and she says much of it is societal, from pressure about how female athletes look and from their environments (an7u-tVP5Xc [07:10]).
+
+She also reports what Team USA athletes said they wanted researched: pregnancy and postpartum guidelines, menstrual cycle symptoms, effects of birth control, fueling across the cycle, mental health, recovery, and more women coaches (an7u-tVP5Xc [07:42] to [08:43]). The talk gives no sources, ranges or populations for any ratio.
+
+**Why it works** — The speaker gives no mechanism for the ratios; she presents them as context for why research is needed. Inference: the wide ACL range (two to eight times) suggests the figure depends heavily on the sport and the study, but she does not discuss it.
+
+**When to apply** — As a stated reason that women's programs need their own data, with the sources checked first. Eric's baseline: no formal injury-risk model is followed, and movement screens are collected without changing program decisions (Explicit, interview 2026-09-28, Q12). Inference: the ratios offer no screening method, so they create no conflict with that practice and add no new tool. Reciprocal-link suggestions (not compared in this batch): [[hewett-2006-anterior-cruciate-ligament-injuries-in-female-athletes]], [[collings-2026-an-evidence-based-and-mechanistic-approach-to-reducing-the-risk-of-anterior-cruciate-ligam]].
+
+**When NOT to apply** — Confidence is untested: three bare ratios with no source, interval or sport, spoken aloud. They are group comparisons and say nothing about risk for an individual athlete. The range for ACL tears is wide. Do not quote these in a staff or athlete document without finding the underlying studies. Not guidance for football.
+
+**Example** — The speaker's own list of the stated ratios above: concussion 1.4 times, ACL two to eight times, bone stress injuries three times (an7u-tVP5Xc [06:40] to [07:10]).
+
+**Related** — [[claim--audit-results-female-participation-and-menstrual-reporting]] (her argument that research on these topics is thin).
+=========== claim--joint-range-and-posture-do-not-predict-injury.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "TbYgc6_qQzo"
+topic: mobility screens and injury
+category: [screening, injury, mobility, contested]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-01
+source: "TbYgc6_qQzo, SSAC18, Volume and Intensity in Injury Incidence in Football Athletes"
+---
+
+# "No Research Links Joint Range or Posture to Injury": Said and Disputed in the Q&A
+
+**What it is** — In Q&A an audience member said a full picture of injury risk needs internal load (heart rate load, time in zone), heart rate variability and recovery profiles, hydration, hip mobility asymmetry and pain and soreness, plus RPE, (TbYgc6_qQzo [19:59]). The next sentence, that the number of teams collecting all that data is "pretty much zero," cannot be attributed: the captions carry no speaker labels. The reply, which I read as Patrick Ward (caption spelling "Patrick ward") answering, says "we collect all that data" but disagrees on the hip mobility piece: he said no research has been able to suggest that specific joint ranges of motion or even postures lead to injury or pain, and that you can find correlations in papers that look retrospectively (TbYgc6_qQzo [19:59] to [20:29]). He added that a preseason mobility or posture measure will change as athletes adapt or are given a training intervention, so it would need re-measuring every week, which is possible but hard with about 120 athletes on a collegiate team (TbYgc6_qQzo [20:29] to [20:59]). He agreed the full data would be "really helpful."
+
+Where it is contested: the audience member holds that hip mobility asymmetry belongs in the picture; Ward says no research supports a causal link. The disagreement is inside the talk and is not resolved there.
+
+**Why it works** — Ward's stated reason is that retrospective correlations differ from prediction and that measures taken in preseason go stale as athletes adapt (TbYgc6_qQzo [20:29]). He cites no study for the blanket statement. Inference: "no research has ever" is a strong universal claim made aloud in Q&A and should not be cited as a literature finding.
+
+**When to apply** — As a reason to ask what decision a mobility or posture screen changes before collecting it weekly. Eric's baseline: movement screens are "just collected and referred to for future needs" and change no program decisions (Explicit, interview 2026-09-28, Q12). Eric's baseline: a test that "doesn't answer a question anyone has, or a direct need" has no place (Explicit, interview 2026-09-28, Q3). Inference: this exchange supports Eric's own caution about screens, and by his Q3 rule the screens are candidates to retire or to be given a question.
+
+**When NOT to apply** — Confidence is contested because the talk itself disagrees. Ward's claim is a universal negative with no citation, and the audience member's view was not rebutted with data. Do not cite it as proof that mobility or posture is irrelevant to injury, or as a reason to stop screening in rehab or return-to-play contexts, which the talk does not address. Reciprocal-link suggestion: [[afonso-undated-asymmetries-and-injury-risk-when-titles-spin-the-tale]], on asymmetry and injury risk, was not compared in this batch.
+
+**Example** — The speaker's own point: an athlete's hip range measured in preseason and then changed by training means a single preseason value no longer describes him by midseason (TbYgc6_qQzo [20:29]).
+
+**Related** — [[principle--load-gives-risk-context-not-prediction]] (his wider multifactorial view, which includes intrinsic factors).
+=========== claim--mlb-surgery-counts-leveled-off-after-2014-with-no-causal-link.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "sHXuxj3-rbQ"
+topic: surgery trend after 2014
+category: [epidemiology, baseball, trend-interpretation]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-01
+source: "sHXuxj3-rbQ, SSAC17, SSAC17: Avoiding Tommy John: How the MLB has Used Better Data and Training Methods"
+---
+
+# MLB Tommy John surgery counts spiked in 2012 to 2014, then leveled off, but the talk does not link that to the program and also says injuries are rising
+
+**What it is** — John DeAngelo (MLB league office) reports the trend from the public surgery database (caption "baseball heat mass", back to 1974) and from the league's electronic medical record (required of all clubs since 2010; he says league data are not shared publicly until ready for peer review) (sHXuxj3-rbQ [01:09], [01:39]).
+
+The 2012 to 2014 spike (sHXuxj3-rbQ [02:41], [03:12], [03:42], [04:12]):
+- Disabled list days for the elbow injury were at an all-time high from 2012 to 2014, a 72% increase over the three years before (the injury is garbled in the caption as "Elvis trees").
+- MLB surgeries: the previous high was 22; 36 in 2012; 31 in 2014.
+- More of the players were 25 or younger than in any earlier five-year bucket, and many were top young pitchers; recovery is 12 to 16 months.
+- The number having a second surgery rose steadily from 1995 to 2014.
+
+The leveling off (sHXuxj3-rbQ [14:36], [15:06], [15:37]): roughly 20 to 25 players a year still have the procedure but "we didn't see the exponential growth" feared; the number of players drafted who had already had the surgery rose steadily to 2014, then was relatively flat over the last three years, though 2016 set an all-time high. In Q&A he says the minor league record shows no linear upward trajectory, "goes up and down" (sHXuxj3-rbQ [25:22], [25:55]).
+
+The speaker does not claim the program caused the leveling off.
+
+Contradiction inside the talk: in the Q&A he compares eras and says "the data kind of suggests ... that injuries are increasing" even though teams are more careful (sHXuxj3-rbQ [28:14], the captions are garbled around this sentence); that sits against the leveled-off statements at [14:36] to [15:37]. Another speaker in 2015 (Fleisig) said professional surgeries were still climbing and that youth and high school numbers had been "curved" (caption; read as curbed) a little but were still going up (AgouMNTeyo4 [07:42], [47:52]).
+
+**Why it works** — Neither speaker gives a mechanism for the trend. Inference: a short window after a spike mixes a plateau with ordinary year-to-year noise; one or two years do not make a trend, as the speaker says himself in the Q&A ("tough to judge one or two-year trends", sHXuxj3-rbQ [25:22]).
+
+**When to apply** — When a policy is credited for a leveling off in an injury count: check the window length, the denominator and whether the same data also say the opposite.
+
+Eric's baseline: data collection is judged on cost against insight (Explicit, SportSmith 2026-02-19), and no formal injury-risk model is in use (Explicit, interview 2026-09-28, Q12). Inference: a count of cases without exposure (innings, pitches, athletes at risk) cannot support a causal story about a program.
+
+**When NOT to apply** — Confidence is `contested` because the talk both says the count leveled off and says injuries are increasing, and the 2015 talk describes a still-rising trend; the dates differ, so these may be consistent, but the 2017 Q&A is unclear. The leveling off rests on 2 to 3 years after a spike. There is no exposure denominator or comparison group, and 2016 itself was a record in the draftee count. The speaker works for the league office. Baseball only.
+
+**Example** — The speaker's own: draftees with prior surgery rising to 2014 and then flat, with a 2016 record (sHXuxj3-rbQ [15:06], [15:37]).
+
+**Related** — [[framework--pitch-smart-count-and-rest-guideline-program]]; [[claim--post-ucl-surgery-return-rate-and-performance-studies-disagree]] (2015 prevalence and return data); [[claim--youth-pitching-over-100-innings-triples-serious-injury-risk]].

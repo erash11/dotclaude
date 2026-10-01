@@ -1,0 +1,755 @@
+=====ENTRY claim--curveballs-not-shown-more-stressful-than-fastballs.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "AgouMNTeyo4"
+topic: curveball injury risk
+category: [baseball, biomechanics, failed-hypothesis]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "AgouMNTeyo4, SSAC15, SSAC15: Analytics of the Tommy John Injury Epidemic with Glenn Fleisig"
+---
+
+# A failed attempt to prove that curveballs are more dangerous than fastballs
+
+**What it is** — Glenn Fleisig says ASMI had advised for years not to throw curveballs until the growth plates close ("don't throw curve balls until you're old enough to shave") and ran studies to prove it (AgouMNTeyo4 [38:40], [39:11]). The result went the other way:
+- Lab: in three biomechanics studies (two in Birmingham, one in Connecticut, some by other groups), elbow torque in a curveball was the same as or a little less than in a fastball (AgouMNTeyo4 [39:11], [39:41]).
+- Field: in the 10-year cohort of about 500 youth pitchers, those who started throwing curveballs younger were not the ones who got hurt (AgouMNTeyo4 [40:12]).
+- Conclusion: "we have not proven that the curve ball is dangerous. We have proven pitching too much is dangerous" (AgouMNTeyo4 [40:12], [40:42]).
+
+In Q&A he is careful: failing to prove danger is not proving safety, so young pitchers should still learn a fastball and a changeup first and add a curveball "when you're ready", because the purpose of off-speed pitches is to disturb the batter's timing (AgouMNTeyo4 [52:31], [53:02]). On pitch type, his group has studied fastballs, curveballs, changeups and sliders: fastballs, curveballs and sliders are stressful, changeups less so; split-fingered fastballs were not studied (AgouMNTeyo4 [53:02]).
+
+**Why it works** — Fleisig's measure of stress is elbow torque calculated from motion capture: kinematics (positions and angles) from cameras and kinetics (forces) calculated by equation, torque of about 100 N·m at the cocked position for a fastball (AgouMNTeyo4 [11:46], [12:17], [15:27]). Inference: if torque is the right proxy for ligament load, a pitch with equal torque should carry equal ligament risk; the speaker does not test that proxy in this talk (he says the link from arm stress to injury is unproven, AgouMNTeyo4 [58:38]).
+
+**When to apply** — As a worked example of a prior belief tested by two designs (lab mechanics and field cohort) and reported when it failed. Also when a coaching rule rests on tradition: ask what the stress measure and the field outcome actually show.
+
+Eric's baseline: Applied Performance's mission is to help the team "answer questions, ask better questions, and discover new ones" rather than hand down answers unilaterally (Explicit, Playbook p.6). Inference: Fleisig reversing a position his own center held is the posture that mission describes.
+**When NOT to apply** — Baseball pitching in youth to professional levels; the torque comparison does not transfer to any football skill. The speaker does not show the torque numbers for the three curveball studies or the cohort statistics, so the "same or less" result is as stated. "Not proven dangerous" is not "safe", as he says himself (AgouMNTeyo4 [52:31]). The cohort is the same one that shows the 100-innings result, and the tested pitches did not include the split-finger. A rule about when to introduce a pitch is a coaching and medical decision; do not remove an age guideline on this result alone.
+
+**Example** — The speaker's own contrast: ASMI's advice before the studies against its results (AgouMNTeyo4 [39:11], [40:42]).
+
+**Related** — [[claim--youth-pitching-over-100-innings-triples-serious-injury-risk]] (same cohort); [[principle--throwing-harder-raises-risk-and-performance]] (the 2017 speaker on fastball usage and velocity as risk factors); [[framework--proper-mechanics-as-reference-range-of-healthy-fast-pitchers]].
+
+-----TRANSCRIPT AgouMNTeyo4
+[11:15]
+binkis so uh that's a little about
+that's L louder that's a little about um
+how the injuries happen a little
+animation about what the surgery looks
+like I want to get a little more into
+that thing uh John binkis and I were
+talking about at the end there about the
+uh the biomechanics of it uh so what we
+have is a biomechanics data a
+biomechanics lab in Birmingham Alabama
+here's a picture of a pitcher being
+tested I don't know who it is I think a
+a high school college pitcher um we put
+the reflective markers on his body then
+
+[11:46]
+the computer M tracks the markers and it
+looks like this when uh when he's
+pitching so you can see I don't know if
+you saw there are cameras all around and
+then the cameras are collecting his
+Motion in three dimensions and we're
+getting his exact uh motions and his
+forces of how he pitches and then we've
+had lots of pitures here and we could
+compare them to other people and we
+measure the kinematics so for those of
+you who remember physics kinematics
+means motions um it's the positions and
+
+[12:17]
+the Angles and we get it directly from
+the the cameras now kinetics is we don't
+measure the kinetics directly the word
+kinetics means the forces we're very
+interested in the forces in the elbow
+and the shoulder but but um uh you had
+to use some equations it's it's kind of
+complicated well Force equals mass time
+acceleration torque equals moment
+inertia time I'm not going to get into
+it I'm going to have I have a clip of
+Professor uh uh Professor here a
+professor from
+uh speed round complete as many quotes
+
+[12:47]
+as possible as fast as you can and here
+we
+go Houston we have a Arby
+no I see blank people two you and
+[Music]
+Rebecca no life is like a box of dead
+[Applause]
+people May the force be equal to mass
+times
+
+[14:55]
+second um that's supposed to be a video
+Let's see can you click on that video
+see if it
+plays maybe that video is not
+there anything
+there okay all right well anyway the arm
+you can see it's straightened out there
+and it comes through a
+deceleration okay let's go to next thing
+and there's a large forces on the body
+because after you threw the ball you
+still have to slow down your arm and
+your elbow so you could live to pitch
+another day um I want to focus on the
+
+[15:27]
+elbow when the arm gets in this
+position I'm just going to do a little
+more physics then we'll move on the arm
+gets in this position our Charles
+Barkley and I calculated it's 100 newon
+meters of torque there now what does 100
+newton meters mean so it means if if I'm
+going this way my body's going backward
+my arm the weight of it trying to go
+this way and I the Tommy John ligament
+and everything else on my elbow has to
+stop the arm from going back and get it
+going forward and to do that it takes
+about 100 newton meters nobody really
+knows has a Feel For What 100 newton
+
+[15:58]
+meters is so statically again if a
+bowling ball weighs 12 pounds and you
+put a bowling ball in your hand that
+would not be 100 new meters you would
+have to hold a string with five 12b
+bowling balls to get the equivalent
+amount of stress on your elbow as the
+pitchers do at that time so I think you
+have a feel for that um it's comparing
+static to Dynamic but clearly there's a
+lot of stress on the elbow in that
+position now this is going to be a
+little gross if you don't want to see it
+
+[38:10]
+another great soda for more advice on
+how kids can build strong bones visit
+aaos.org Public Service message from the
+American Academy of orthopedic
+surgeons so that it's funny but that's
+our sit ation is so ideally everyone
+should play a moderate reasonable amount
+of baseball or activity um but we have a
+situation where a lot of people are not
+doing enough and a few are doing way too
+
+[38:40]
+much now the the other issue is
+curveballs you know we've heard for
+years that curveballs are dangerous but
+are they really so we've done a number
+of studies to try to test it out are
+curve balls dangerous and for years
+people have been saying curve ballls are
+dangerous we've had uh doctors trainers
+coaches Dr Andrew and myself at asmi
+have been saying it we've been saying uh
+don't throw curve balls until your
+growth plates are closed that's what
+this x-ray is showing and easy way to
+
+[39:11]
+say that would be um don't throw curve
+balls until you're old enough to shave
+okay and um that's what we were saying
+so we did a bunch of studies to try to
+prove this to prove our
+point and what we Tred to do do was we
+did some biomechanic studies again back
+in the biomechanics lab two of these
+studies were in our lab in Birmingham
+one was up in Connecticut and uh in all
+these studies we did that biomechanic
+stuff and I'm not going to show you all
+the stuff but just Let's Talk About That
+Elbow torque again which leads to the
+Tommy John
+
+[39:41]
+injuries what we found out was that
+compared to the fast ball we we expected
+the curve ball to have more torque
+therefore more injury risk turns out it
+has
+less okay so throwing a curveball
+compared to throwing a fast B
+kind of not what we expected to find but
+it shows the same or perhaps a little
+less torque on the elbow than throwing a
+fast ball well maybe something's screwy
+here maybe the experiment went wrong and
+these are three different experiments
+two different places but we did our
+
+[40:12]
+field studies remember all those stuff I
+followed those 500 kids for 10 years
+maybe the ones who started throwing
+curve balls younger were the ones who
+got hurt nope it didn't work out that
+way and it really kind of disappointing
+we wanted to prove the curveball was
+dangerous so some of these were by us
+some of these were by other groups but
+again and again we're doing studies to
+prove the curve ball is dangerous and we
+have not proven that the curve ball is
+dangerous we have proven pitching too
+much is dangerous but we haven't proven
+
+[40:42]
+throwing curve ball is
+dangerous so what do we do okay let's
+talk about
+prevention uh biomechanics it's an
+exciting thing I walk around this
+conference and there's all sorts of new
+technology about tracking pict motions
+and stuff like that commissioner uh
+Manford talked about uh some of the
+Innovations in baseball yesterday uh
+tracking the Motions what behind the
+scenes what's happening is also there's
+new biomechanics uh I showed you what
+asmi is doing I just want to mention
+
+[41:13]
+there a few other companies that are
+really you know I we don't make
+equipment and we don't sell things we're
+a research center but um modus is a
+company that I am personally helping
+them develop some uh some gadgets to
+measure things I'm going to show you in
+a second sport Vision does anyone know
+you guys know who sport vision is
+they're the ones who make pitch FX and
+up to now they've been tracking the
+baseball right and now they are starting
+to track the pitcher a little more that
+I've been talking to them and they've
+been talking to the teams they're going
+to try to track the biomechanics of the
+pitchers a little Dynamic Athletics is
+
+[52:01]
+and shoulder that's not normal if you
+feel full fatigue of your body that is
+normal if you feel full fatigue in the
+game that's your body saying let's call
+it a day
+okay uh you had kind of dispelled the
+myth of the curveball being more
+damaging if the mechanics are okay have
+you looked at the split finger uh pitch
+specifically split finger fast ball and
+additional stress on the tendons so uh
+so first of all again the curveball just
+to be clear we didn't prove it was
+
+[52:31]
+dangerous but we didn't prove it was
+safe the way the science is you trying
+to prove it's dangerous and we failed to
+prove it was dangerous what that means
+is I don't think the young pitchers
+should run out and learn a curve ball
+right away they should learn a fast ball
+and a change up because the purpose of
+the curveball or change up or any of
+those pitches is to mess up the batter's
+timing okay so again the young kids
+should learn how to throw right then
+pitch fast balls then pitch change ups
+that is certainly the same safe way to
+start curve balls don't seem to be as
+dangerous as people thought but when
+you're ready you're ready to add it to
+
+[53:02]
+your question about split fingered fast
+balls we have not studied that we've
+just studied fast balls curve balls
+change ups and Sliders and it turns out
+that fast balls curve balls and Sliders
+are stressful change ups are less
+stressful we have time for a few more
+questions
+that okay uh over here oh all right at
+the major league level we have Matt
+Harvey coming back from Tommy John
+surgery and Jose Fernandez uh how would
+you define a return to success you
+
+[53:32]
+mentioned uh one appearance as being
+successful but that wouldn't be
+successful for those guys so how would
+you define it you don't think one game
+back is enough not for them no or Mets
+fans yeah um so again the it wasn't me
+but these studies over here defining
+success uh they were defining success as
+uh pitching at least 10 games um at
+least 10 games games at the major league
+level now you know Harvey and and
+Fernandez are high-profile but some of
+
+[58:06]
+see if they injur themselves further
+down the line to know that well maybe
+these weren't proper mechanics you mean
+we we keep track of the guys in the
+biomechanics lab or when you measure you
+said the you know healthy pitchers with
+the highest velocity and you deem them
+as having proper mechanics if they injur
+themselves 5 years down the line well
+well then maybe they didn't have proper
+mechanics at we uh we we we've been
+looking at that and we've been looking
+at whether the ones we have the poor
+mechanics in our lab are indeed the ones
+who get hurt basically and what we found
+
+[58:38]
+out was uh it was a mixed bag about half
+the time they did in half the time they
+didn't and we're thinking is mechanics
+is only one factor because we're also
+trying to work on how much they pitch
+and and the other thing is we're
+intervening basically when they come to
+our lab and we test them we tell them
+what they're doing wrong and maybe some
+of them fixed it so uh we have proven
+that poor mechanics have higher stress
+on the arm and then it's a leap of faith
+leap of faith that the guys with higher
+stress in the arm get injured more so we
+haven't quite proven that part okay um I
+
+[59:10]
+want to thank everyone for coming out
+here thank you
+
+=====ENTRY claim--drl-shapley-predicts-games-better-than-box-metrics-but-not-vegas.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "JjeFktc4QLM"
+topic: out-of-sample prediction vs Vegas
+category: [basketball, validation, prediction, benchmark]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "JjeFktc4QLM, SSAC26, Deep Reinforcement Learning for NBA Player Valuation"
+---
+
+# Adding the model improves game prediction over traditional metrics, but the Vegas line stays best
+
+**What it is** — The speaker, Ben Jenkins, tests how well the model predicts games on out-of-sample data, against a Vegas line benchmark. He reports that the Vegas line alone "is obviously the best, has the highest win prediction"; adding the deep RL Shapley values improves over the traditional metrics, and adding the synergy effects improves accuracy further, getting closer to the Vegas line (JjeFktc4QLM [11:42], [12:12]). He concludes the learned values "capture real forward-looking predictive signals" (JjeFktc4QLM [12:12]). The accuracy figures are shown only on a chart and are not stated in the captions, so no effect size can be cited here (JjeFktc4QLM [11:42]). The validation sums the players' Shapley values on the court to predict games, which a judge questioned (JjeFktc4QLM [13:13], [13:44]).
+
+**Why it works** — The speaker gives no mechanism beyond the value being learned from outcomes and including interaction. Inference: a benchmark that already prices public information (the Vegas line) is a hard test, so falling short of it is the expected result for a player-value model rather than a failure.
+
+**When to apply** — As a model for how to validate a player-value metric: hold out data, compare against an existing predictive benchmark, and add the new metric to it rather than replacing it. Inference: a football grade or load metric could be tested the same way against a simple baseline on held-out games.
+
+**When NOT to apply** — Confidence is supported only for the design: out-of-sample comparison against named benchmarks is reported, but no numbers, no uncertainty, no data split and no number of games appear in the captions. The data are about five seasons of NBA play-by-play (JjeFktc4QLM [16:21]). Do not read this as beating the market: the Vegas line was best (JjeFktc4QLM [11:42]). Do not assume a similar gain for a football metric.
+
+**Example** — The speaker's own ladder: Vegas line alone, then adding the model's values, then adding synergy, each step closer to the Vegas line (JjeFktc4QLM [11:42], [12:12]).
+
+**Related** — [[claim--synergy-and-fit-effects-from-drl-shapley]], [[claim--drl-shapley-stabilizes-faster-than-rapm]], [[framework--neural-shapley-credit-and-player-dropout]].
+
+-----TRANSCRIPT JjeFktc4QLM
+[11:11]
+we've identified the synergy. That's
+that's cool. We know synergy matters,
+right? Synergy is important. But
+actually, is our model able actually to
+identify synergies? Is it useful? So,
+what the Y what the Y axis here is the
+win residual. So, it's the difference
+between our actual model and our DRL
+predicted model. So, it's the the
+unexplained unexplained variance. What
+we find is when we add
+synergy, we find that synergy is a
+meaningful is meaningfully explained
+some of this unexplained variance. We
+find that two equally talented rosters
+can differ five plus wins solely based
+on their fit. And so, synergy is not
+
+[11:42]
+only measurable, it's predictive, and it
+materially impacts team success.
+Next thing we want to look at is how
+well our model's able to predict games
+on the out-of-sample data we analyzed,
+and as well as compare that with
+synergy. So, we have the base Vegas base
+Vegas line benchmark, which is obviously
+the best, has the highest win
+prediction. This is to be expected. Uh
+but when we add DRL Shapley, we have
+seen improvement over these traditional
+metrics. And what's important to note,
+when we add these synergy effects, we
+see even greater greater accuracy, and
+we're even getting closer to this Vegas
+
+[12:12]
+benchline. And so, this this means that
+our model's able to our learn values
+capture real forward-looking uh
+predictive signals.
+So, the goal of our work was to ask a
+simple question. Can player value be
+learned directly from winning
+basketball? What we showed was that
+player impact can be learned
+sequentially from game outcomes. The
+action values are fundamentally
+contextual and not fixed. Defensive
+presence and off-ball influence can be
+measured, and that synergy is
+quantifiable and predictive. Uh so, two
+as I mentioned previously, two equally
+
+[12:43]
+talented rosters can differ by five plus
+wins solely based on these interaction
+effects and how teams how players work
+together. In a cap league, you don't win
+by just collecting stars, you win by
+optimizing interactions and optimizing
+players and how they work together.
+Uh thank you for your time. Happy to
+answer any questions.
+>> [applause]
+>> We'll take two questions from the
+judges. Could I also ask the folks in
+the back if you could please grab a
+seat. We have plenty of spots here just
+to not crowd the door. Thank you.
+
+[13:13]
+Hey, how's it going? So, I have um a
+question about validation. So, you did
+some vali- you did a bunch of
+validation. Uh the stuff with the win
+percentages and stuff like that looks
+pretty good. Um but what What were doing
+there was sort of summing the Shapley
+contributions of the players, right? But
+like throughout this we've talked
+somewhat about like or you your paper
+talked a lot like a lot about the fact
+that like Shapley values are like
+contextual and like assigning Shapley
+values to like individual contributions
+in a lineup is are like not designed to
+
+[13:44]
+be portable across lineups. So there's a
+a point where you're kind of saying, all
+right, but I'm going to just like do the
+thing and then pull them out and then
+like kind of treat them as context
+independent for the purpose of this
+prediction model. Um so I I don't think
+that's like a bad decision, but I'm like
+do you have thoughts about like what we
+could do to improve that process? Like
+obviously the synergy theft helps a
+little bit, um but there's certainly
+something going on here which is like
+um we we're deriving these things in in
+context and they're not really like
+
+[14:16]
+supposed to be able to be done that way.
+But you get good enough results that I
+don't think it's like the whole you know
+what I mean. Sure. Uh yeah, there's one
+thing that I didn't discuss in the paper
+and this one other thing I looked at is
+sort of creating a topic creating a
+thing about player drop out. So what we
+can do there is we have a deep
+reinforcement learning model. We can
+instead of using drop out, you know, for
+regularization, we can use drop out as a
+technique to be able to replace each
+player with sort of a with sort of a a
+sort of neutral base embedding. And what
+that allows us to do is measure the
+change in the win win prediction with
+individual player and then we can
+
+[15:49]
+DRPM model is we account for sort of
+who's on the court at a given time. So,
+we know who the teammates are and so
+that's sort of accounted for and so the
+Shapley values are able to identify sort
+of some of that synergy as well as
+account for the fact that some players
+are on the court together. And so the
+the value of an individual player is
+dependent on who's on the court and so
+we can sort of better measure that.
+Right.
+That does that help?
+Yeah, yeah.
+Uh yeah, it it it does help. Okay. Um
+yeah, uh
+Yeah, I guess the the
+the question is you just don't get too
+many samples of two people or Exactly.
+
+[16:21]
+like Jokic when Jokic is on there
+Murray's usually there. So
+>> Yes.
+So, yeah, the issue is the issue is is
+is stability in sample size, right? And
+so the nice thing about this is this is
+play-by-play data. So, this can go back
+many years. This is like five seasons of
+data and so the the sample size isn't
+necessarily a problem. It is it can be a
+problem when you're working with sort of
+new players and how they work and so
+that sort of requires some extrapolation
+which sort of can be I'll say a little
+bit limited in terms of how the
+accuracy. But, sort of sample size with
+play-by-play data we have thousands of
+games of historical games and so some
+sample size isn't too much of a problem
+there. Yeah. Right. Yeah.
+
+[16:53]
+Awesome. Thank you.
+>> [applause]
+
+=====ENTRY claim--faster-pitches-load-the-elbow-more.md
+---
+type: library-entry
+kind: claim
+domain: sports-analytics-and-decision-making
+book: ssac-talks--42analytics
+chapter: "z_6M5r7031A"
+topic: pitch speed and elbow stress
+category: [injury, baseball, wearable, throwing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-01
+source: "z_6M5r7031A, SSAC19, The True Cost of Tommy John Surgery in Major League Baseball"
+---
+
+# Faster Pitches Put More Stress on the Elbow, Youth and Professional
+
+**What it is** — Dr. Eric McNally's group at Henry Ford uses a wearable sleeve that detects stress and torque at the medial elbow, "right where the UCL is" (z_6M5r7031A [04:09]). He reports that, "study after study," the faster the pitch, the more elbow stress, and that this is pitch speed, not arm speed (z_6M5r7031A [04:39]). He says it holds for a 12-year-old youth pitcher and for a professional, and that it has been borne out in "numerous" independent studies from his group (z_6M5r7031A [04:39] to [05:10]). He contrasts it with older advice to avoid curveballs and off-speed pitches and "stick with straight fastballs" (z_6M5r7031A [04:39]).
+
+Related statements from the talk:
+- Arm slot: studies of slot and release point exist, and "so far" slot has not shown increased elbow stress; this is the group's next stage (z_6M5r7031A [22:33]).
+- Device limit: the sleeve relies on a throwing motion, so it cannot measure elbow stress in hitters (z_6M5r7031A [21:23]).
+- Trend: average fastball velocity is climbing year over year, which he offers as one of two reasons the injury persists (z_6M5r7031A [04:09]).
+
+**Why it works** — The speaker gives no mechanism. Inference: a faster release plausibly needs more force through the arm, so more load at the elbow is plausible, but the talk does not say so.
+
+**When to apply** — As background when a throwing sport (baseball, softball) asks whether to monitor throwing stress or velocity. Eric's baseline: a test or technology that "doesn't answer a question anyone has, or a direct need" has no place (Explicit, interview 2026-09-28, Q3). Inference: ask first what decision a sleeve or velocity number would change, then check validation (the talk does not describe any validation of the sleeve).
+
+**When NOT to apply** — The talk gives no effect sizes, sample sizes or ranges for these studies. The studies are the speaker's group's own, summarized aloud. The sleeve's validity is not discussed in the talk. It covers pitching only; he says UCL injury is essentially one position of one sport (z_6M5r7031A [21:54]). The slot finding is a preliminary "so far." Do not use it as a velocity limit for any athlete.
+
+**Example** — The speaker's own contrast: the old coaching rule was to avoid curveballs and change-ups because of elbow stress, while his group finds high-velocity fastballs also impart greater stress, in a 12-year-old and in a professional (z_6M5r7031A [04:39] to [05:10]).
+
+**Related** — [[claim--fatigue-breaks-the-velocity-elbow-stress-link]] (the same sleeve under fatigue). [[claim--youth-specialization-survey-and-early-surgery]] (the second cause the speaker gives for the injury).
+
+-----TRANSCRIPT z_6M5r7031A
+[03:39]
+pitchers and counting who have undergone
+the surgery.
+25% of all Major League Baseball
+pitchers playing today have undergone
+Tommy John surgery. So, it is very safe
+to say that Dr. Frank Jobe literally
+saved the game of baseball as we know
+it.
+The big question is, from a clinical
+perspective, why are we still seeing
+these injuries? We're really good at
+preventing injuries when we know about
+them, and we know a lot about Tommy John
+injuries, but we can't curb them.
+And I think there are basically two main
+reasons why we are continuing to see
+
+[04:09]
+this injury, and it's not going
+anywhere.
+The first is that pitchers are throwing
+harder than they've ever thrown before.
+The average fastball velocity is
+climbing up year after year after year.
+And what we're doing now is that we're
+studying what the impact of that
+velocity is on stress at the elbow. Our
+group at Henry Ford is actually using
+new wearable technology that detects
+elbow stress and elbow torque at the
+medial elbow, right where the UCL is,
+and we're trying to figure out what the
+link is between velocity and elbow
+stress.
+
+[04:39]
+And what we found in study after study
+using this technology is that the faster
+you throw,
+the more stress there is at the elbow.
+And this is not arm speed, this is pitch
+speed. And it used to be that we would
+tell our kids, "Don't throw curveballs
+or change-ups. Don't throw off-speed
+pitches. That's too much stress at the
+elbow. Just stick with straight
+fastballs."
+Well, what we're finding is, whether
+you're a 12-year-old youth pitcher or a
+professional pitcher,
+those fastballs that have high velocity
+impart greater stress to the elbow. And
+
+[05:10]
+this has been borne out in numerous
+different studies of independent studies
+from our group.
+We wanted to take it one step further.
+Maybe fatigue is playing into this, cuz
+this is an overuse injury. And so, we
+did a study recently where we took a
+bunch of pitchers, and we put them
+through a simulated game, a seven-inning
+game. And after each inning, we said,
+"How tired are you on a score of 1 to
+10?"
+And naturally, that score went up inning
+by inning, which is not surprising.
+What we found also was that the peak
+fastball velocity around inning five
+
+[05:40]
+started to dip. Again, that in of itself
+is not that surprising.
+What we were surprised to see was that
+when that stress should have come down,
+it actually went up. So, unlike the
+pitchers that we tested that were not
+fatigued,
+the velocity-stress relationship totally
+broke down in our fatigued players. And
+this is a real link to how we can
+decipher the the connection between
+fatigue, velocity, and elbow stress.
+The second reason why we're not seeing
+any drop in Tommy John surgeries at the
+
+[20:52]
+and then education our research on the
+the stress. So, we're now doing wearable
+tech research on weighted balls,
+which Justin Verlander made pretty
+famous, on uh the fatigue aspect and
+also on different training regimens and
+rehab programs. So, that's how we get to
+it, but it's a grassroots effort. Yeah.
+For hitters, so we've actually used the
+sleeve on hitters, and I've have friends
+um
+uh that are other major league baseball
+
+[21:23]
+physicians who have players with
+injuries uh that do want to bat. The
+these devices are rely lying on a
+throwing motion, so we can't measure
+elbow stress yet uh for hitters in this
+way.
+Yeah.
+
+[21:54]
+Yeah, so you know, when I have kids with
+uh two years So, the question was or the
+comment was, well, you know, when you're
+batting, it may not have that same
+stress on the elbow. So,
+I have kids come in with little league
+elbow, overused elbow. I'll say, "Look,
+don't throw, but if you want to bat and
+if it doesn't bother you, I'm okay with
+that." So, there is definitely not the
+same stress. In fact, these UCL injuries
+really you're treating one position of
+one sport. Some other players get it,
+javelin throwers, you know, gymnasts,
+but it's really one position of one
+sport. That's why pitchers
+overwhelmingly are the ones who need the
+surgery. Yeah.
+
+[22:33]
+We they There have been studies that
+look at arm slot in particular and the
+release point, and that's what our next
+stage is to look at if that release
+point affects torque and also affects
+injury risk. So, the slot is one big
+thing, and some of the submarine
+throwers the device won't pick that up,
+but the slot so far has not shown
+increased elbow stress.
+Yeah.
+
+[23:10]
+Believe it or not, I think the
+um the the media pressure now is
+is really sinking in. The first time I
+used to give these talks maybe six,
+seven years ago at these baseball
+facilities, and you could see coaches
+saying, "Okay, pitch counts." Now, when
+you talk to a coach, they're very
+attuned to it because of all this
+publicity. All those headlines, that's
+just one iota of all the headlines that
+are on this. So, I think that's our best
+way of doing it um
+educating, but the coaches now are
+getting very attuned to pitch count
+guidelines, and they are trying to
+adhere more at least that's what I'm
+
