@@ -20,6 +20,8 @@
 !/skills-audit/
 !/audits/
 !/scripts/
+!/mods/
+mods/**/.claude-plugin/types/
 scripts/logs/
 **/.env
 

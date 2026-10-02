@@ -1,0 +1,6 @@
+{
+  "name": "merge-cleanup",
+  "version": "0.1.0",
+  "description": "After gh pr merge succeeds, deletes verified-merged local/remote branches and clean worktrees, then toasts what it removed",
+  "author": { "name": "Eric Rash" }
+}

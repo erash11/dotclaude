@@ -1,0 +1,7 @@
+{
+  "name": "job-watch",
+  "version": "0.1.0",
+  "description": "Status line for scheduled jobs (Windows Eric tasks, Mac com.keystone launchd), errors.log and the recall eval; toasts when a job or background task finishes",
+  "author": { "name": "Eric Rash" },
+  "types": "./types/index.d.ts"
+}

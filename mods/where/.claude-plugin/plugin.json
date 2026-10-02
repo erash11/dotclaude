@@ -1,0 +1,7 @@
+{
+  "name": "where",
+  "version": "0.1.0",
+  "description": "Remembers every file Claude writes, across sessions; /where [filter] opens a pane of recent files with copy-path buttons",
+  "author": { "name": "Eric Rash" },
+  "types": "./types/index.d.ts"
+}

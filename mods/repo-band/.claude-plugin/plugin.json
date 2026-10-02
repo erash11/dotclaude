@@ -1,0 +1,9 @@
+{
+  "name": "repo-band",
+  "version": "0.1.0",
+  "description": "Band above the prompt: dirty and unpushed repos across DEV and ~/.claude, with Closeout and Closeout + exit buttons",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Eric Rash"
+  }
+}
