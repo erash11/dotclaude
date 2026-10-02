@@ -1,0 +1,7 @@
+{
+  "name": "next-steps",
+  "version": "0.1.0",
+  "description": "Band above the prompt with three clickable next-step prompts: newest handoffs at session start, Haiku suggestions after each turn",
+  "author": { "name": "Eric Rash" },
+  "types": "./types/index.d.ts"
+}

@@ -25,7 +25,11 @@ $rows = @()
 if (Test-Path $ledger) {
     $rows = @(Get-Content $ledger | Where-Object { $_ -match '^\| (\d{4}-\d\d-\d\d) ' -and $Matches[1] -ge $since -and (-not $Label -or $_ -match [regex]::Escape("| $Label"))})
 }
-if ($rows.Count -eq 0) { $problems.Add("recall-eval wrote no ledger rows$(if ($Label) { " labelled '$Label'" }) in the last 24 h") }
+if ($rows.Count -eq 0) {
+    $last = Join-Path $here "logs\last-$Label.txt"   # written by run-eval.ps1
+    $why = if (Test-Path $last) { " [$((Get-Content -LiteralPath $last -Raw).Trim())]" } else { '' }
+    $problems.Add("recall-eval wrote no ledger rows$(if ($Label) { " labelled '$Label'" }) in the last 24 h$why")
+}
 
 $git = 'C:\Program Files\Git\cmd\git.exe'
 $pushed = $false

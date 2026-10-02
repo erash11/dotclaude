@@ -1,0 +1,162 @@
+import type { EngineInterface, Register } from 'claude-code'
+
+// Merge cleanup: after a `gh pr merge` succeeds, remove the git debris the
+// standing post-merge rule covers (feedback_post-merge-cleanup):
+//   - a local branch goes only when it is verified merged: listed by
+//     `git branch --merged origin/<default>`, or (squash/rebase merges) its PR
+//     is MERGED and the branch tip is exactly the PR's head commit;
+//   - its remote branch goes under the same test;
+//   - a worktree goes only when it is clean, via `git worktree remove`
+//     (never --force). Anything else is left and named in the toast.
+// Runs after the merge, outside the turn. Local git + gh; no model calls.
+
+const MERGE = /\bgh\s+pr\s+merge\b/
+const PROTECTED = new Set(['main', 'master', 'develop', 'HEAD'])
+
+export function repoDirOf(command: string): string | undefined {
+  const cd = /(?:^|&&|;)\s*cd\s+(?:"([^"]+)"|'([^']+)'|(\S+))\s*(?:&&|;)/.exec(command)
+  if (cd) return cd[1] ?? cd[2] ?? cd[3]
+  const dashC = /\bgit\s+-C\s+(?:"([^"]+)"|'([^']+)'|(\S+))/.exec(command)
+  return dashC ? (dashC[1] ?? dashC[2] ?? dashC[3]) : undefined
+}
+
+export type Worktree = { path: string; branch: string | null }
+
+export function parseWorktrees(porcelain: string): Worktree[] {
+  return porcelain
+    .split(/\n\s*\n/)
+    .map(block => {
+      const path = /^worktree (.+)$/m.exec(block)?.[1]?.trim()
+      const branch = /^branch refs\/heads\/(.+)$/m.exec(block)?.[1]?.trim() ?? null
+      return path ? { path, branch } : null
+    })
+    .filter((w): w is Worktree => w !== null)
+}
+
+async function git($: EngineInterface, cwd: string | undefined, args: string[]) {
+  const r = await $.process.run(['git', ...args], { cwd, timeoutMs: 60_000 }).catch(() => null)
+  return { ok: r?.exitCode === 0, out: (r?.stdout ?? '').trim(), err: (r?.stderr ?? '').trim() }
+}
+
+async function prMerged($: EngineInterface, cwd: string | undefined, branch: string): Promise<string | null> {
+  const r = await $.process
+    .run(['gh', 'pr', 'list', '--head', branch, '--state', 'merged', '--json', 'headRefOid', '--limit', '1'], {
+      cwd,
+      timeoutMs: 30_000,
+    })
+    .catch(() => null)
+  if (!r || r.exitCode !== 0) return null
+  try {
+    const rows = JSON.parse(r.stdout) as { headRefOid?: string }[]
+    return rows[0]?.headRefOid ?? null
+  } catch {
+    return null
+  }
+}
+
+async function cleanup($: EngineInterface, dir: string | undefined): Promise<void> {
+  const home = ((await $.env.get('USERPROFILE')) ?? (await $.env.get('HOME')) ?? '').replace(/\\/g, '/')
+  const cwd = dir && home ? dir.replace(/^~(?=[\\/]|$)/, home) : dir
+  if (!(await git($, cwd, ['rev-parse', '--git-dir'])).ok) return
+  await git($, cwd, ['fetch', '--prune', '--quiet'])
+  const head = (await git($, cwd, ['symbolic-ref', '--short', 'refs/remotes/origin/HEAD'])).out || 'origin/main'
+  const base = head.replace(/^origin\//, '')
+  const current = (await git($, cwd, ['branch', '--show-current'])).out
+  const merged = new Set(
+    (await git($, cwd, ['branch', '--merged', head, '--format=%(refname:short)'])).out.split('\n').map(s => s.trim()),
+  )
+  const local = (await git($, cwd, ['for-each-ref', '--format=%(refname:short) %(objectname)', 'refs/heads']))
+    .out.split('\n')
+    .map(l => l.trim().split(' '))
+    .filter(p => p.length === 2) as [string, string][]
+  const remote = new Map(
+    (await git($, cwd, ['for-each-ref', '--format=%(refname:short) %(objectname)', 'refs/remotes/origin']))
+      .out.split('\n')
+      .map(l => l.trim().split(' '))
+      .filter(p => p.length === 2)
+      .map(([ref, sha]) => [String(ref).replace(/^origin\//, ''), String(sha)] as const),
+  )
+  const worktrees = parseWorktrees((await git($, cwd, ['worktree', 'list', '--porcelain'])).out)
+  const mainWorktree = worktrees[0]?.path
+
+  const removed: string[] = []
+  const kept: string[] = []
+
+  for (const [branch, sha] of local) {
+    if (PROTECTED.has(branch) || branch === base || branch === current) continue
+    let isMerged = merged.has(branch)
+    if (!isMerged) {
+      const prHead = await prMerged($, cwd, branch)
+      isMerged = prHead !== null && prHead === sha
+    }
+    if (!isMerged) continue
+
+    const wt = worktrees.find(w => w.branch === branch && w.path !== mainWorktree)
+    if (wt) {
+      const dirty = (await git($, wt.path, ['status', '--porcelain'])).out
+      if (dirty) {
+        kept.push(`worktree ${wt.path} (uncommitted work)`)
+        continue
+      }
+      const rm = await git($, cwd, ['worktree', 'remove', wt.path])
+      if (!rm.ok) {
+        kept.push(`worktree ${wt.path} (${/permission denied/i.test(rm.err) ? 'read-only attrs: see post-merge rule' : 'remove failed'})`)
+        continue
+      }
+      removed.push(`worktree ${wt.path.split(/[\\/]/).pop()}`)
+    }
+
+    const del = await git($, cwd, ['branch', '-D', branch])
+    if (del.ok) removed.push(branch)
+    else kept.push(`${branch} (delete failed)`)
+
+    const remoteSha = remote.get(branch)
+    if (remoteSha && (merged.has(branch) || remoteSha === sha)) {
+      const rdel = await git($, cwd, ['push', 'origin', '--delete', branch])
+      if (rdel.ok) removed.push(`origin/${branch}`)
+    }
+  }
+  await git($, cwd, ['worktree', 'prune'])
+
+  if (removed.length || kept.length) {
+    const msg = [removed.length ? `merge-cleanup removed: ${removed.join(', ')}` : '', kept.length ? `kept: ${kept.join('; ')}` : '']
+      .filter(Boolean)
+      .join(' · ')
+    $.ui.toast(msg.slice(0, 200))
+    $.ui.log(msg)
+  }
+}
+
+const NOTE =
+  'merge-cleanup mod: verified-merged branches and clean worktrees for this repo are being removed automatically; do not delete them yourself.'
+
+// The repo to clean, or null when the merge names another repo (--repo/-R)
+// and the command gives no directory to find it in: skip rather than guess.
+export function targetOf(command: string): { dir: string | undefined } | null {
+  const dir = repoDirOf(command)
+  if (!dir && /\s(--repo|-R)[\s=]/.test(command)) return null
+  return { dir }
+}
+
+function scheduleCleanup($: EngineInterface, command: string): boolean {
+  const target = targetOf(command)
+  if (!target) return false
+  $.clock.after(0, () => void cleanup($, target.dir).catch(() => {}))
+  return true
+}
+
+export const register: Register = on => {
+  on('tool.call', { tool: 'Bash' }, async ($, e, next) => {
+    const ran = await next(e)
+    if (ran.deny !== undefined || ran.isError || !MERGE.test(e.command)) return ran
+    if (!scheduleCleanup($, e.command)) return ran
+    return { ...ran, context: [...(ran.context ?? []), NOTE] }
+  })
+
+  on('tool.call', { tool: 'PowerShell' }, async ($, e, next) => {
+    const ran = await next(e)
+    if (ran.deny !== undefined || ran.isError || !MERGE.test(e.command)) return ran
+    if (!scheduleCleanup($, e.command)) return ran
+    return { ...ran, context: [...(ran.context ?? []), NOTE] }
+  })
+}
