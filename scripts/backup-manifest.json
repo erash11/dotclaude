@@ -1738,6 +1738,19 @@
    ],
    "captureOrphans": true,
    "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/42Analytics",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/42Analytics.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true,
+   "note": "Added 2026-10-02. Class 'institutional' chosen to match Flint (42Analytics feeds Flint); confirm with Eric."
   }
  ]
 }
