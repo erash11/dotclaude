@@ -132,7 +132,7 @@
       "mcp__claude_ai_Fireflies__fireflies_search",
       "Edit(//c/Users/eric_rash/.claude/**)",
       "Bash(launchctl:*)",
-      "Bash(rsync -a --update /Users/kristinarash/DEV/S2_Evaluation/data/ \"/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/04_RESEARCH/03_Active_Studies/S2_Evaluation/data/\")"
+      "Bash(rsync -a --ignore-existing /Users/kristinarash/DEV/S2_Evaluation/data/ \"/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/04_RESEARCH/03_Active_Studies/S2_Evaluation/data/\")"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
@@ -373,6 +373,10 @@
       {
         "matcher": "Bash|PowerShell",
         "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/kristinarash/.local/bin/dcg"
+          },
           {
             "type": "command",
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
