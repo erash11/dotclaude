@@ -15,7 +15,7 @@ metadata:
 - Subagents may write `applications.md` but the harness refuses `summary.md`. Do not work around it: agents return summary text, the main session saves it, then `scripts/check_summary.py`.
 - `SetEnvironmentVariable("TYPESAFE_API_KEY", (Read-Host ...))` saved an EMPTY value when the paste did not land. Check `.Length` before saving. Never paste keys into chat.
 
-**State 2026-10-01:** tier A 128 of 139 summarized, baseline lines verified, 23 supported talks atomized to Flint staging (152 entries, awaiting 2nd review before promote); 6 still rate-limited, 5 no-captions.
+**State 2026-10-01:** tier A 122 of 139 summarized; 12 still rate-limited, 5 no-captions.
 
 **Why:** Eric chose tier A only, Sonnet summaries, and a Jev claim-check test (bars proposed, unapproved) on 2026-09-30.
 **How to apply:** read the repo STATUS first; related [[flint-knowledge-base]] and the TypeSafe prereg `TypeSafe_Sandbox/docs/VIDEO_SUMMARY_CHECK_PREREG.md`.

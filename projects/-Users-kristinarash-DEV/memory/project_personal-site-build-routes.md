@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: a6dfb3da-c339-44b1-a836-2a6884e07ea6
-  modified: 2026-09-02T23:05:38.332Z
+  modified: 2026-10-02T17:26:13.952Z
 ---
 
 Two separate things, both under `~/DEV/Website/` (which **is** a git repo,
@@ -34,7 +34,8 @@ cd ~/DEV/Website/scrollcraft/builds/eric-rash
 node ~/.agents/skills/scroll-craft/scripts/serve.mjs --root . --port 4500
 ```
 
-Not hosted, and it does not touch the Artifact. `lab/` holds a few hundred
+Host or local? Decided 2026-10-02: it stays local (not hosted); the Artifact
+remains the live site. It does not touch the Artifact. `lab/` holds a few hundred
 verification PNGs and is gitignored; it reached 339MB in one session, so never
 stage it.
 
