@@ -1751,6 +1751,19 @@
    "captureOrphans": true,
    "captureWorkingTree": true,
    "note": "Added 2026-10-02. Class 'institutional' confirmed by Eric. YouTube channel pipeline that feeds Flint."
+  },
+  {
+   "path": "DEV/SoftwareTech_Review",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/SoftwareTech_Review.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true,
+   "note": "Added 2026-10-02. Baylor software/tech review for Erin; class mirrors SoftwareTechDocs."
   }
  ]
 }
