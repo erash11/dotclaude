@@ -131,7 +131,8 @@
       "mcp__claude_ai_Fireflies__fireflies_get_summary",
       "mcp__claude_ai_Fireflies__fireflies_search",
       "Edit(//c/Users/eric_rash/.claude/**)",
-      "Bash(launchctl:*)"
+      "Bash(launchctl:*)",
+      "Bash(rsync -a --update /Users/kristinarash/DEV/S2_Evaluation/data/ \"/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/04_RESEARCH/03_Active_Studies/S2_Evaluation/data/\")"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
