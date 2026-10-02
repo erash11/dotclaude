@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 25377000-859e-4d10-9d38-5e91339a12d3
-  modified: 2026-10-02T21:10:40.984Z
+  modified: 2026-10-02T21:24:09.290Z
 ---
 
 Sessions are scratchpads; the repo (commits + `docs/STATUS.md` `## Next`) is the record.
@@ -25,5 +25,6 @@ Agreed 2026-10-02 after 79 sessions piled up on the home screen.
 
 **Why:** Eric works on many projects in a day and lost track of where each stopped.
 **How to apply:** on "what was I doing" / "where did I leave off" run where-was-i; on
-"clean up sessions" run session-sweep. Auto-mode blocks Claude from deleting worktrees and
-session folders, so Eric deletes them; Claude lists them. See [[post-merge-cleanup]].
+"clean up sessions" run session-sweep, then delete each SAFE id with `claude rm <id>`
+(supported CLI; it refuses if the session's worktree has unpushed work). Never `rm` the
+`~/.claude/jobs/` folders by hand. See [[post-merge-cleanup]].
