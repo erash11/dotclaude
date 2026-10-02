@@ -37,3 +37,4 @@ scripts/logs/
 !/machine.macos.md
 !/machine.windows.md
 # machine.md is per-machine, never tracked
+audits/recall-eval/logs/
