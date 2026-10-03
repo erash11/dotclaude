@@ -18,9 +18,9 @@
 - Configure the correct private remote for RunningTheRoom and push `ff3cefd`.
 - A human audio-listening pass for Sportsmith Part 2 remains optional; the transcript is caption-cross-checked, not human-verified word-for-word.
 ## Open questions
-- `INDEX full set: Indexed 0 chunks` on the 2026-09-19 run, against 91 the day before. The
-  script does not count it as an error, so it fails silently. Investigation started
-  2026-10-03 (`HARNESS_FIXES.md` #3).
+- None open. (The 2026-09-19 "Indexed 0 chunks" was closed 2026-10-03 as not a bug; the
+  real follow-ups, a logging patch and the 09-28 run that died mid-index, are
+  `HARNESS_FIXES.md` #3 and #4.)
 
 ## Gotchas
 - **Never run `dcg install` here.** `dcg doctor` only recognizes the absolute-path hook and

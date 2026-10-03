@@ -19,8 +19,13 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
    **Never run `dcg install` on this setup**; ignore `dcg doctor` asking for it.
 2. **Check the 2026-10-03 21:00 `daily-backup` run.** It is the first test of two fixes:
    `global-memory` behind GitHub, and `42Analytics` missing from the backup list.
-3. **memsearch `INDEX full set: Indexed 0 chunks`** (first seen 2026-09-19, 91 chunks the day
-   before). The script does not count it as an error, so it fails without a warning.
+3. **Apply the memsearch index logging patch** to `scripts/daily-backup.ps1` (~lines 556-560):
+   `audits/2026-10-03-daily-backup-index-logging.patch`. It logs path and file counts, says
+   "no new content" on 0, and records errors for no input or unexpected output. Do it with
+   items 6–8, after tonight's backup is checked.
+4. **The 2026-09-28 21:54 backup run died mid-index** (`INDEX path set`, then nothing) and
+   no error was recorded. Add a check that `INDEX path set` is always followed by
+   `INDEX full set` (in `claude-stack-doctor` or the next run).
 6. **`daily-backup` has no retry** after a short network failure on push. The next try is the
    next day's run.
 7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit.
@@ -31,6 +36,9 @@ run tests only the two earlier fixes.
 
 ## Done
 
+- 2026-10-03 — **memsearch "Indexed 0 chunks" on 2026-09-19: NOT A BUG.** No sessions and
+  no changed .md files that day; memsearch dedups by content hash, and ~56 zero runs since
+  08-06 are routine. The real gaps became items #3 and #4 above.
 - 2026-10-03 — **#5 `CommandCentre/server.out`**: untracked and added to `.gitignore`
   (CommandCentre commit, pushed). File stays on disk.
 - 2026-10-03 — **#4 `dcg` blocks `$CLAUDE_JOB_DIR/tmp` redirects: WON'T FIX.** dcg 0.11.0
