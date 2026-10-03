@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-09-13T06:38:22.028Z
+  modified: 2026-10-02T21:20:24.926Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -183,6 +183,17 @@ Claude will not trigger without the literal phrases.
 Plan (Codex-approved after 6 review rounds, 10→0 findings):
 `~/DEV/KeystoneOS/docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`.
 See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-install]].
+
+## claude.ai-synced duplicates, 2026-10-02 (doctor-plus)
+
+`~/.claude/skills/synced/<account-id>/` is claude.ai account skills synced down (gitignored,
+re-synced each start — deleting the folder does not stick). They list as `anthropic-skills:<name>`.
+Where one duplicates a local skill, **local wins**: set `"anthropic-skills:<name>": "off"` in
+`skillOverrides` (namespaced keys work — verified with a headless on/off control run). Done for
+closeout, dev-sync, five-slides-generator, new-project, articulation-skill (the last one re-tracked
+in canonical 2026-10-02 after a 9/10 removal left untracked per-machine copies). Do not delete them on claude.ai: the synced
+five-slides is written for the claude.ai sandbox and is the right copy there. The "never off" rule
+above is for *owned* skills only.
 
 ## Listing trim, 2026-09-14 (doctor-plus)
 

@@ -14,7 +14,7 @@ Never put memory content here — the file itself holds the facts.
 - [Backup/sync system](project_backup-sync-system.md) — backup routing or verification
 - [CFB Analytics Lab](project_cfb-analytics-lab.md) — resuming CFB Analytics Lab
 - [CFB forecast capture](project_cfb-forecast-capture.md) — weekly Big 12 forecast capture
-- [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive
+- [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
 - [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
 - [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems

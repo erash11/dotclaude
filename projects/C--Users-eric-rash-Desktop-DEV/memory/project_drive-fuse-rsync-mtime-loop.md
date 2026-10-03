@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: fa062f93-2c55-4016-b9c6-f1a32e0a7083
-  modified: 2026-08-15T03:03:01.294Z
+  modified: 2026-10-02T21:48:00.682Z
 ---
 
 Anything rsyncing into the Google Drive for Desktop mount (`~/Library/CloudStorage/GoogleDrive-*/`) needs `--modify-window=5`. Drive stores an mtime 1–2s below what rsync set, and for large files it stamps its own upload time instead (skew of hours). rsync's quick-check is size+mtime, so byte-identical files read as changed and are re-sent on **every** run, permanently.
@@ -25,5 +25,7 @@ Diagnosed 2026-08-14 on `daily-backup.ps1` → `codex/sessions`: all 256 files s
 Reproduced: two 8-byte files, same size, content differing, mtimes 3s apart → `--modify-window=5` copies **0** files (silent loss); adding `--checksum` copies **1**. Fix in `daily-backup.ps1`: `Invoke-Rsync`/`Snapshot` take an `$extraArgs` param and the `.codex/sqlite` snapshot alone passes `--checksum`. Do not apply `--checksum` broadly — it re-reads every byte on both sides; it is cheap only because that DB is ~224 KB.
 
 **How to apply:** when adding a new `Snapshot` call, ask whether the source can change without changing size. Databases, fixed-width records, and image/binary formats with in-place headers all can — give those `--checksum`. Logs and transcripts cannot — leave them on the window.
+
+**One-way copy of new files into Drive: use `--ignore-existing`, never `--update` (2026-10-02).** `rsync -a --update` from `~/DEV/S2_Evaluation/data/` into the Drive mount hung 11 min, with nothing copied. `--update` did not skip files already on Drive, because Drive's mtimes are its own. The receiving child was blocked reading an existing Drive file. `--ignore-existing` copied the 2 missing files at once. macOS rsync is openrsync: its receiving child shows as `rsync --server`, so `pgrep -f "rsync -a ..."` misses it. Stop a hung run with TaskStop, not `kill`.
 
 Related: [[backup-sync-system]]
