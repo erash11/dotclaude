@@ -1,0 +1,160 @@
+C:\Users\eric_rash\Desktop\DEV\project-triage\.gitignore:1:dashboard.html
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\final-fix-report.md:65:**`.gitignore` check (requested):** the file contains `dashboard.html`, `pulse.md`,
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\final-fix-report.md:101:  `render.py`'s `_last_touch` and the dashboard's stale signal, and telling a future
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\progress.md:66:Ruling 6: The implementer declined to commit `dashboard.html` and `pulse.md`, which are gitignored and were never tracked. Decided: accept. They are regenerable build artifacts and force-adding them was outside the authorised scope. Cost if wrong: a future reader must run `render.py` to see the rendered dashboard rather than reading it from git.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\progress.md:221:[Omitted long matching line]
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-0cc524c..8052587.diff:27:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\board.html:8:  /* Oswald, the same face render.py embeds in the dashboard. Served by board.py
+C:\Users\eric_rash\Desktop\DEV\project-triage\board.html:9:     from assets/ rather than base64-inlined: only dashboard.html has to survive
+C:\Users\eric_rash\Desktop\DEV\project-triage\board.html:354:    // drag. Same predicate render.py uses — active only, whitespace counts as
+C:\Users\eric_rash\Desktop\DEV\project-triage\board.py:25:# Oswald carries the board's display register, the same face render.py embeds in the
+C:\Users\eric_rash\Desktop\DEV\project-triage\board.py:27:# base64-inlined; only dashboard.html has to survive the Artifact strict CSP.
+C:\Users\eric_rash\Desktop\DEV\project-triage\board_ops.py:43:    render.py's `_last_touch` perpetually fresh and mute the dashboard's stale
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-3430058..9d94741.diff:61: & "C:\Users\eric_rash\AppData\Local\Python\bin\python.exe" "C:\Users\eric_rash\Desktop\DEV\project-triage\render.py"
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-3430058..9d94741.diff:390:-   "next_action": "Work through the approved dashboard.html.j2 / html_dashboard.py rebrand and tick off the redesign plan",
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-3430058..9d94741.diff:455:-   "purpose": "This portfolio registry and front-burner dashboard",
+C:\Users\eric_rash\Desktop\DEV\project-triage\DESIGN.md:3:description: Eric's two-lane portfolio dashboard, rendered as a broadcast score bug
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:228: & "C:\Users\eric_rash\AppData\Local\Python\bin\python.exe" "C:\Users\eric_rash\Desktop\DEV\project-triage\render.py"
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:973:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:1292:+Run: `python3 render.py --no-scan`
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:1293:+Expected: exit 0, prints `wrote dashboard.html · wrote pulse.md · 21 projects · ...`
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:1298:+git add portfolio.json .curation.json.bak dashboard.html pulse.md
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:1410:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:1810:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:2568:+python3 render.py --no-scan
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:2722:+| Rendered to | `YYYY-MM-DD.html` (daily triage) | `dashboard.html`, `pulse.md` |
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:2807:+- `render.py --no-scan` exits 0 and reports `21 projects` — **pass**
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:2808:+- No inbox project renders as a card in `dashboard.html` — **pass**
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:2823:+`render.py --no-scan` exits 0.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:3281:       "next_action": "Work through the approved dashboard.html.j2 / html_dashboard.py rebrand and tick off the redesign plan",
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:3379:       "purpose": "This portfolio registry and front-burner dashboard",
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:3630:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:3858:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-5863589..9d94741.diff:4051:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\project-management-system-design.md:110:cannot drift. Retired: `render.py` → `dashboard.html` and its published Artifact. The Artifact
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\project-management-system-design.md:164:- Full `render.py` with scan ran over 23 minutes and was killed (2026-09-14).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\project-management-system-design.md:184:9. Retire `render.py`/`dashboard.html`; put a frozen banner on the Artifact.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\STATUS.md:18:- 2026-10-03: **Org step 2 done.** `portfolio.json` backfilled to 159 rows (every DEV folder + 22 Drive-only projects); inbox emptied into projects. Script + reviewed preview: `docs/inventory/backfill_2026-10-03.py`, `2026-10-03-backfill-preview.md`. Slate unchanged (5 of 5). `render.py` now finds DEV as its own parent folder (was `~/DEV`, which broke on Windows).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\STATUS.md:47:- Full `render.py` (with scan) ran >23 min on 2026-09-14 and was killed; use `--no-scan`.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\specs\2026-08-15-portfolio-merge-and-browser-editor-design.md:46:| Rendered to | `YYYY-MM-DD.html` (daily triage) | `dashboard.html`, `pulse.md` |
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\specs\2026-08-15-portfolio-merge-and-browser-editor-design.md:131:- `render.py --no-scan` exits 0 and reports `21 projects` — **pass**
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\specs\2026-08-15-portfolio-merge-and-browser-editor-design.md:132:- No inbox project renders as a card in `dashboard.html` — **pass**
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\specs\2026-08-15-portfolio-merge-and-browser-editor-design.md:147:`render.py --no-scan` exits 0.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\inventory\2026-10-03-archive-audit.md:14:| BodyWeightNorms_2026-03-18 | merged | FootballBodyWeightDevelopment | 2026-3-18_BodyWeightNorms.git | yes | 0 | 6: bodyweight_dashboard.html, bodyweight_dashboard_v1.html, bodyweight_norms.xlsx … | archive |
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:74:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:393:Run: `python3 render.py --no-scan`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:394:Expected: exit 0, prints `wrote dashboard.html · wrote pulse.md · 21 projects · ...`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:399:git add portfolio.json .curation.json.bak dashboard.html pulse.md
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:511:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:911:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:1669:python3 render.py --no-scan
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\superpowers\plans\2026-08-15-portfolio-merge-and-board.md:1765:| `curated_at` stamped on write | **not in the original plan; added in the final fix wave** — `board_ops.patch_project` and `promote` stamp it with `datetime.now().isoformat(timespec="seconds")`, matching `portfolio.py`'s writers. `reorder` deliberately abstains: a drag is a re-prioritisation, not a curation event, and stamping every drag would keep `render.py`'s `_last_touch` perpetually fresh and mute the staleness signal the dashboard exists to surface. |
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:1:# Portfolio Dashboard — Design Spec
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:10:Side-project ideas get captured on paper scraps and die there. Work front-burner
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:40:  conversation    ├─→ portfolio.json ─→ generator (render.py) ─→ dashboard.html (local)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:88:### Component 2 — Generator: `render.py`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:96:3. Render `dashboard.html` — a single self-contained file (inline CSS/JS,
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:132:  recorded in `portfolio.json` (`meta.artifact_url`) so every session
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:143:  local `dashboard.html` or the Artifact URL (documented in README, manual).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\specs\2026-07-31-portfolio-dashboard-design.md:178:- Existing daily triage skill keeps working unchanged; `render.py` reuses its
+C:\Users\eric_rash\Desktop\DEV\project-triage\handoff-portfolio-board-COMPLETE-2026-08-15.md:71:6. **Did not force-add gitignored `dashboard.html` / `pulse.md`.** *Cost:* re-run `render.py` to see them.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-08-16-board-design-and-promotion-flow.md:19:`dashboard.html` renders. `board.html` was generic dark-SaaS with a periwinkle
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-08-16-board-design-and-promotion-flow.md:96:- `render.py` — `NEEDS_ACTION`, `_needs_action`, `_next_action_html`; empty
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-08-16-board-design-and-promotion-flow.md:99:- `tests/test_board_ops.py`, `tests/test_board_server.py`, `tests/test_render.py`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-08-16-board-design-and-promotion-flow.md:125:5. `dashboard.html` and `pulse.md` are gitignored build outputs and were last
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-08-16-board-design-and-promotion-flow.md:127:   `render.py` run.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\handoffs\2026-09-14-prioritization-system.md:41:- Full `render.py` scan (without --no-scan) ran >23 min and was killed; not proven broken, not proven fine.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-8052587..b1d38e7.diff:128:         "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\portfolio.json:3:    "artifact_url": "https://claude.ai/code/artifact/34fa148f-d840-4881-b3e8-0d174835615e",
+C:\Users\eric_rash\Desktop\DEV\project-triage\portfolio.json:515:      "next_action": "Work through the approved dashboard.html.j2 / html_dashboard.py rebrand and tick off the redesign plan",
+C:\Users\eric_rash\Desktop\DEV\project-triage\portfolio.json:615:      "purpose": "This portfolio registry and front-burner dashboard",
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-9d94741..477263d.diff:268:+    render.py's `_last_touch` perpetually fresh and mute the dashboard's stale
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-9d94741..477263d.diff:358:+| `curated_at` stamped on write | **not in the original plan; added in the final fix wave** — `board_ops.patch_project` and `promote` stamp it with `datetime.now().isoformat(timespec="seconds")`, matching `portfolio.py`'s writers. `reorder` deliberately abstains: a drag is a re-prioritisation, not a curation event, and stamping every drag would keep `render.py`'s `_last_touch` perpetually fresh and mute the staleness signal the dashboard exists to surface. |
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-9d94741..477263d.diff:472:+    """render.py derives the dashboard's stale flags from curated_at, so the board
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-9d94741..477263d.diff:709:         "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:1:# Portfolio Dashboard (Phase 1) Implementation Plan
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:5:**Goal:** A two-lane (job/side) project registry + idea inbox rendered into a rich self-contained dashboard.html and 3-line pulse.md, updatable via a `/project` skill, surfaced via Artifact URL, session-start snapshot, daily scheduled render, and morning briefing.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:7:**Architecture:** One source of truth (`portfolio.json`) mutated only through `portfolio.py` (backup + validation), rendered by `render.py` which reuses activity heuristics imported from the existing triage.py skill. Surfacing is wiring: keystone.ps1 appends pulse.md to the session snapshot; morning-cadence.ps1 runs the render daily.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:17:- Generated files (`dashboard.html`, `pulse.md`, `*.bak`) are gitignored; `portfolio.json` IS tracked.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:18:- The generator must never write `dashboard.html` if the registry fails validation (spec: never publish a blank dashboard).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:29:├── render.py               # assemble + render dashboard.html & pulse.md + CLI (Tasks 2-4)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:35:│   └── test_render.py      # Task 3
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:38:(dashboard.html, pulse.md, portfolio.json.bak — generated, gitignored)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:60:**Registry schema** (exactly as spec; `meta` holds `{"artifact_url": ""}`):
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:64:  "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:80:dashboard.html
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:99:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:268:  "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:311:### Task 2: `render.py` data assembly (registry × triage heuristics)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:314:- Create: `render.py`, `tests/test_assemble.py`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:330:      "artifact_url": registry["meta"].get("artifact_url", ""),
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:351:        "meta": {"artifact_url": "https://example.test/a"},
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:399:- [ ] **Step 3: Implement `render.py`** with `scan_heuristics` and `assemble` per the Produces block. Staleness rule: `last_touch = max(latest update date, activity mtime_date if dev_folder matched)`; stale iff status=="active" and (last_touch is None or (today - last_touch).days >= 14). Momentum: any project with an update dated within 7 days of `today` (note = latest such update's note), or activity `days_since <= 7` (note "recent file activity", date = mtime_date).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:408:- Modify: `render.py` (add rendering)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:409:- Create: `tests/test_render.py`
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:433:- [ ] **Step 1: Write failing tests** in `tests/test_render.py` (reuse the fixture via `from tests.test_assemble import fixture_registry, TODAY`):
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:452:            self.assertNotIn(marker, self.html.replace(self.vm["artifact_url"], ""))
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:485:- Modify: `render.py` (add `main()`), `portfolio.py` (add `main()`)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:489:  - `C:\Python314\python.exe render.py` → loads `portfolio.json` (sibling of the script), runs `scan_heuristics` over `~/Desktop/DEV`, writes `dashboard.html` + `pulse.md` next to the script, prints `wrote dashboard.html · wrote pulse.md · <N> projects · <M> inbox ideas · stale: <names or none>`. On RegistryError: print `[error] <message>` to stderr, exit 2, write nothing.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:498:  - `C:\Python314\python.exe render.py --no-scan` → success line; `dashboard.html` and `pulse.md` exist; open dashboard.html, confirm hero + lanes + "test idea" in inbox.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:499:  - `C:\Python314\python.exe render.py` (full scan) → success; confirm Sport_Tech_Vetting / morning-briefing cards show activity data.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:500:  - Remove the smoke idea: edit `portfolio.json` to delete it, re-run `render.py --no-scan`.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:520:   - `rank` → read registry, show both lanes' active projects with ranks, take the user's new order, rewrite `rank` fields directly with Edit, validate by running `render.py --no-scan`.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:523:3. **Render + republish ritual** (after every mutation): run `render.py --no-scan`; then publish `dashboard.html` via the Artifact tool — if `meta.artifact_url` is non-empty pass it as `url`, favicon `🔥`, title "Portfolio — Front Burner"; if it was empty, write the returned URL into `meta.artifact_url` and re-run `render.py --no-scan` + republish once so the page shows its own URL.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:524:4. **Rules**: never reorder ranks yourself; never delete projects/ideas without confirmation; on `[error]` output stop and show it; registry is the single source of truth — never edit dashboard.html.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:563:- Consumes: `pulse.md` and `render.py` CLI (Task 4). Pulse path used in wiring is the CANONICAL checkout: `C:\Users\eric_rash\Desktop\DEV\project-triage\pulse.md` (wiring goes live only after the branch merges and Task 7 runs a real render there).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:580:# Portfolio dashboard daily re-render (project-triage/render.py)
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:582:    & "C:\Python314\python.exe" "C:\Users\eric_rash\Desktop\DEV\project-triage\render.py" 2>&1 |
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:591:[Omitted long matching line]
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:593:- [ ] **Step 4: README.md** at repo root covering: what this system is (3 sentences), the one-diagram architecture from the spec, how to use `/project`, CLI reference, where surfacing is wired (keystone.ps1 section name, morning-cadence.ps1), and the **Chrome new-tab setup** (manual, Eric): install "New Tab Redirect" extension or set homepage → `file:///C:/Users/eric_rash/Desktop/DEV/project-triage/dashboard.html` (or the Artifact URL for cross-device).
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:603:- [ ] **Step 1:** From the canonical checkout, run `C:\Python314\python.exe render.py` (full scan). Review dashboard.html visually.
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:604:- [ ] **Step 2:** Publish `dashboard.html` as an Artifact (favicon `🔥`, title "Portfolio — Front Burner", description "Eric's two-lane project front burner, idea inbox, and momentum").
+C:\Users\eric_rash\Desktop\DEV\project-triage\docs\plans\2026-07-31-portfolio-dashboard.md:605:- [ ] **Step 3:** Write the returned URL into `portfolio.json` → `meta.artifact_url` (via Edit), re-run `render.py --no-scan`, republish to the same URL.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-ab4fd2c..5f39766.diff:166:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-b1d38e7..05ff6e3.diff:191:       "next_action": "Work through the approved dashboard.html.j2 / html_dashboard.py rebrand and tick off the redesign plan",
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-b1d38e7..05ff6e3.diff:289:       "purpose": "This portfolio registry and front-burner dashboard",
+C:\Users\eric_rash\Desktop\DEV\project-triage\PRODUCT.md:21:A personal portfolio dashboard that keeps every project and idea in one
+C:\Users\eric_rash\Desktop\DEV\project-triage\PRODUCT.md:55:- Generator is stdlib-only Python 3.14 (`render.py`), interpreter at
+C:\Users\eric_rash\Desktop\DEV\project-triage\PRODUCT.md:58:- Registry is the single source of truth; `dashboard.html` is never edited
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:1:# project-triage — Portfolio Dashboard
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:4:into a front-burner-first dashboard, and pushed out through every surface he
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:7:else (`dashboard.html`, `pulse.md`, the published Artifact, the session
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:15:  conversation    ├─→ portfolio.json ─→ generator (render.py) ─→ dashboard.html (local)
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:22:One source of truth (`portfolio.json`), one render step (`render.py`), many
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:94:& "C:\Users\eric_rash\AppData\Local\Python\bin\python.exe" "C:\Users\eric_rash\Desktop\DEV\project-triage\render.py"
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:95:& "C:\Users\eric_rash\AppData\Local\Python\bin\python.exe" "C:\Users\eric_rash\Desktop\DEV\project-triage\render.py" --no-scan
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:103:- `render.py` does a full `DEV/` activity-heuristics scan and writes
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:104:  `dashboard.html` + `pulse.md`; prints
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:105:  `wrote dashboard.html · wrote pulse.md · <N> projects · <N> inbox ideas · stale: ...`.
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:106:- `render.py --no-scan` does the same but skips the `DEV/` scan (fast — use
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:112:`dashboard.html` — it's fully regenerated by `render.py`.
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:134:`render.py` looks for spec and plan docs under each project's `dev_folder`
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:181:  `render.py` right after `morning`/`meeting-sync` and *before* `snapshot`
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:190:  `meta.artifact_url`, and `run.py` prepends the resulting "▸ FRONT BURNER
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:195:  the URL is stored in `portfolio.json` → `meta.artifact_url` so every
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:204:   `file:///C:/Users/eric_rash/Desktop/DEV/project-triage/dashboard.html`
+C:\Users\eric_rash\Desktop\DEV\project-triage\README.md:207:   published Artifact URL (`portfolio.json` → `meta.artifact_url`) instead of
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\review-c0877b6..3d78474.diff:87:+        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-brief.md:48:Run: `python3 render.py --no-scan`
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-brief.md:49:Expected: exit 0, prints `wrote dashboard.html · wrote pulse.md · 21 projects · ...`
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-brief.md:54:git add portfolio.json .curation.json.bak dashboard.html pulse.md
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_assemble.py:14:        "meta": {"artifact_url": "https://example.test/a"},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:106:Command: `python3 render.py --no-scan`
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:110:wrote dashboard.html · wrote pulse.md · 21 projects · 0 inbox ideas · stale: SPA_Presentation, OKRs_2026-27, Morning_Briefing, TSSHB_Skills, SportScience_Curriculum
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:114:Note: "0 inbox ideas" refers to `registry["ideas"]` (the older idea-inbox concept `render.py` already understood), which is unrelated to the new `registry["inbox"]` tier merge_curation.py just populated with 15 records. `render.py` has not been updated to surface the new inbox tier — that appears to be Phase 2 (Board) scope, not this task. Flagging as informational, not a defect in this task's work.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:157:[Omitted long matching line]
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:179:3. `dashboard.html` and `pulse.md` were intentionally left out of the commit (gitignored, never tracked, not covered by pre-authorized force-add scope). They exist on disk and regenerate via `render.py --no-scan` any time.
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-3-report.md:180:4. `render.py`'s "inbox" stat (idea inbox) is a different concept from the new `registry["inbox"]` curation tier and still reads 0 — expected, since wiring the renderer to the new tier is presumably Phase 2 (Board) scope, not this task.
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_board_ops.py:10:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_board_ops.py:184:        # active + blank is exactly the state render.py and the board flag
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_board_ops.py:243:    """render.py derives the dashboard's stale flags from curated_at, so the board
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_board_server.py:20:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-5-brief.md:26:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_merge_curation.py:14:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_portfolio.py:12:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_render.py:31:            self.assertNotIn(marker, self.html.replace(self.vm["artifact_url"], ""))
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_slate.py:44:        "meta": {"artifact_url": "", "slate": {
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-7-brief.md:34:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\tests\test_stage.py:13:        "meta": {"artifact_url": ""},
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-9-brief.md:335:python3 render.py --no-scan
+C:\Users\eric_rash\Desktop\DEV\project-triage\.sdd-archive\2026-08-15-portfolio-merge-and-board\task-9-report.md:126:(`portfolio.validate(...)`, `render.py --no-scan`) against the real

@@ -1,0 +1,496 @@
+=================== startup
+---
+name: startup
+description: >-
+  Start of day, or sitting down at either machine: sync this machine against GitHub,
+  then report where the last session left off and wait. Use when Eric says '/startup',
+  'good morning', 'starting up', 'where did I leave off', 'what was I working on',
+  'picking this back up', or opens a session without naming a task. Do not use for the
+  end-of-session sign-off (use closeout).
+---
+
+# Startup
+
+The front door for a work session on either machine. This skill owns no logic of its own — it runs `dev-sync`, whose Step 5 loads context back in.
+
+## What to do
+
+Invoke the `dev-sync` skill and run it end to end, Step 0 through Step 5.
+
+Do not reimplement any of it here. If the sync behaviour or the context report needs to change, change `dev-sync/SKILL.md`. One home for the procedure, and this file is an alias so the command matches how Eric actually thinks about it: "sync" is what the machine does, "startup" is what he is doing.
+
+## After the report
+
+`dev-sync` Step 5 ends with a short "picking up" report and a stop. Hold there and wait for Eric to confirm or redirect. Do not begin the next task on your own — `docs/STATUS.md` records where the last session stopped, which is not the same as what he wants to do this morning.
+
+If he names a repo when he invokes this, pass it through so Step 5 reports on that one instead of guessing from the most recent commit.
+
+## Not this
+
+- Not the morning brief. Calendar, email and the shape of the day belong to the `morning` / `morning-briefing` work. This skill answers "where was I", not "what's my day".
+- Not a memory loader. Global memory arrives through the SessionStart hook before this runs; do not re-read `USER.md` or `MEMORY.md` by hand.
+=================== dev-sync
+---
+name: dev-sync
+description: >-
+  Bring this machine into line with GitHub and load back the context that came with it:
+  locate DEV automatically, pull config and skills, inventory every project, commit and
+  push local work, pull the other machine's work, clone what is missing, report
+  conflicts, then read the repo's STATUS and latest handoff and report where the last
+  session left off. Use when Eric switches machines, sits down to start work, says 'sync
+  DEV', asks whether everything is pushed, or asks where he left off. Do not use when
+  Eric says '/startup' or 'good morning' (use startup, which runs this sync) or to
+  scaffold a new repo (use new-project).
+---
+
+# DEV sync
+
+Eric works on a Mac and a Windows laptop. GitHub (`erash11`, all private) is the transport. This skill makes the current machine match GitHub without losing anything on either side. It is the first thing to run when sitting down at a machine.
+
+## Step 0: find DEV (never depend on cwd)
+
+Eric may run this from anywhere. Detect the machine and go to its DEV root:
+
+- macOS (`uname` = Darwin): `~/DEV`
+- Windows (PowerShell, or `$OS` = Windows_NT): `C:\Users\eric_rash\Desktop\DEV`
+
+If that folder does not exist, stop and say so. Do not guess another location. Print the root you chose on the first line of output.
+
+## Step 1: config and skills
+
+These are separate repos and the other machine may have changed them:
+
+1. `~/.claude` (repo `dotclaude`): `git pull`. If `~/.claude/machine.md` is missing, copy `machine.macos.md` or `machine.windows.md` to `machine.md` for this OS. Then sync the mods: `bash ~/.claude/mods/mods-sync.sh` (Mac) or `powershell -ExecutionPolicy Bypass -File $HOME\.claude\mods\mods-sync.ps1` (Windows). The folder is the list; put its one line (`mods: N loaded, N disabled, N invalid`) in the report and name any invalid mod. Then apply the 7-day rule: `python <dir of portfolio_json>/portfolio.py seven-day --apply` (`portfolio_json` in `_shared/config.<platform>.json`). It pauses any project started more than 7 days ago with no receiver and no step 1 done, and prints one line plus each project paused or on the clock; put that in the report.
+2. `~/.claude/skills` (repo `claude-skills`): `git pull`, then run `sync-to-codex.sh` (Mac) or `sync-to-codex.ps1` (Windows) so Codex sees the shared skills.
+3. `~/.claude/global-memory` (repo `claude-global-memory`): `git pull`. **This is the only thing that carries memory between the two machines.** USER.md, MEMORY.md and the handoffs live here. `daily-backup` pushes this repo nightly, but nothing pulled it at the start of a session until this step existed, so a same-day handoff (worked on the Mac after lunch, picked up on Windows that evening) arrived with stale memory. Pull it before anything else reads it. If the pull brings in commits, say how many and name the newest, so it is visible that memory moved.
+
+If any of the three has local uncommitted changes, commit them first with `<machine> snapshot before sync`, then pull, then push.
+
+4. **Mirror project memory across the two slugs.** Tier A memory is keyed by a slug built from the absolute path, so every project has a Mac folder (`-Users-kristinarash-DEV-X`) and a Windows folder (`C--Users-eric-rash-Desktop-DEV-X`) under `~/.claude/projects/`. dotclaude carries both to both machines, but each machine auto-loads only its own. Before this step existed, 43 memories written on the Mac never loaded on Windows (found 2026-09-24). After the pulls above, run:
+
+   - Mac: `python3 ~/.claude/skills/dev-sync/mirror_memory.py`
+   - Windows: `python $HOME\.claude\skills\dev-sync\mirror_memory.py`
+
+   It copies files one side lacks, lets the newer version win when both have one (frontmatter `modified:`, else last commit), merges `MEMORY.md` indexes line by line, creates the twin folder when a project has memory on only one machine, and never deletes. The older side of any replaced file stays in dotclaude history. Put its summary line in the Step 4 report. If it wrote anything, commit `~/.claude` with `<machine> memory mirror` and push, so the other machine gets the result on its next sync.
+
+   Mirroring is a union: a memory deleted on one machine comes back from the other. To retire a memory for good, delete it from both slug folders in the same commit.
+
+Merge note for `global-memory`: `transcripts/.errors.log` and `MEMORY.md` are both append-heavy and both machines write them. On conflict, keep both sides' content rather than choosing one — these are logs, not settings, and a dropped line is a lost memory.
+
+## Step 2: inventory (always show before changing anything)
+
+Walk `DEV/*`, `DEV/Football/*`, and `DEV/SpecialRequests/*`. Skip `.claude`, `_tools`, `_DRIVE` (a link to the Google Drive primary storage drive, not a project; never init it, never walk into it), `token-dashboard` (someone else's remote), and any folder ending in `_OLD_merged*`. For each folder report one of:
+
+- **repo + erash11 remote**: uncommitted count, unpushed count
+- **repo, no remote**: needs `gh repo create`
+- **not a repo**: needs init + create (use the `new-project` skill's file set)
+
+Then `gh repo list erash11 --limit 300 --json name` and list repos with no local folder. Skip: `dotclaude` (that is `~/.claude`), `SecondBrain`, `claude-skills`, `claude-memory-compiler`, `DEV`, `DexaProject`.
+
+Eric pre-approves these operations; the inventory is for visibility, not a pause for approval, unless something looks wrong (a repo with hundreds of uncommitted files, a large file about to be added).
+
+**Group the report by activity, not alphabetically.** Run `~/.claude/scripts/dev-activity.sh` (Mac) or `dev-activity.ps1` (Windows), which ranks repos by distinct commit days over 90 days. List the active ones individually and collapse the rest to a count: "118 dormant repos: all clean" is the useful line, not 118 names. About 14 repos are genuinely worked at any time; the rest are archives that happen to live in the same folder.
+
+Rank by **commit days, not recency**. On 2026-09-09 a bulk migration gave 43 repos one commit each, after which every one of them looked active by any recency measure. Days-worked is not fooled by that, because a migration touches a repo once.
+
+Nothing is archived or moved on the strength of this. Sorting is a reporting concern. Moving a dormant repo into an archive folder would break three things at once: `harvest-dev-docs` reads `<dir>/docs/*.md` without recursing, so archived repos would silently drop out of the memsearch index; KeystoneOS `projects.json`, `memory-sources.json`, `memory-index-paths.json` and `discovery-roots.json` hold DEV paths; and Tier A project memory is keyed by a slug derived from the absolute path, so moving a repo orphans its memory. Checked 2026-09-12. Do not revive the archive idea without fixing all three first.
+
+## Step 3: apply, per repo
+
+1. If uncommitted: put any untracked file over 95 MB and any `.env` into `.gitignore`, then `git add -A && git commit -m "<machine> snapshot before sync"`.
+2. `git fetch origin` then `git merge --no-edit origin/<branch>`.
+3. On conflict: keep this machine's version, save the remote version beside it as `<file>.from-mac` or `<file>.from-windows` (whichever the other machine is), stage both, commit. Never discard either side. `.DS_Store` conflicts: just delete the file.
+
+   Save the remote side by **moving the file, never by redirecting stdout**. A
+   redirect re-encodes the bytes; on Windows that silently mangles every
+   non-ASCII character (an em-dash becomes `ΓÇö`) and adds a UTF-8 BOM, so the
+   saved copy is corrupt and every later diff shows a phantom first-line change.
+
+   - PowerShell: `git checkout --theirs -- <f>; Move-Item <f> <f>.from-mac; git checkout --ours -- <f>`
+   - bash: `git checkout --theirs -- <f> && mv <f> <f>.from-mac && git checkout --ours -- <f>`
+
+   Never run `git add -A` while `.git/MERGE_HEAD` exists — it stages the
+   conflict markers themselves and commits a broken file. Stage only the named
+   paths you just resolved.
+4. `git push`.
+5. Missing locally: `gh repo clone erash11/<name> DEV/<name>`.
+6. No remote: `gh repo create erash11/<name> --private --source=. --push`.
+
+Windows note: line-ending noise (`LF will be replaced by CRLF`) is normal. If a merge refuses to start because of phantom modifications, run `git add --renormalize .` and commit before merging.
+
+Stale-lock note: if a commit or push fails with `cannot lock ref 'HEAD'`, check
+`pgrep -fl git` (or `Get-Process git`) first. If no git is running and the
+`.git/*.lock` file is zero bytes and older than the session, it is stale from an
+interrupted run. Move it aside — do not delete it — then retry.
+
+## Step 4: verify and report
+
+Re-walk every repo. Report: DEV root used, config and skills pulled (yes/no), the memory-mirror summary line, repos checked, pulled, cloned, created, and any folder still dirty or unpushed. List every `.from-*` file created so Eric can reconcile them. Finish with one line: clean or not.
+
+## Step 4b: start the project board
+
+The live board (`project-triage/board.py`, PM system design Decision 10) writes `portfolio.json`, so it may only start on a registry that has the other machine's edits. Start it only when project-triage came through Step 3 clean: pulled, no `.git/MERGE_HEAD`, no `portfolio.json.from-*` file. Then run, from the folder holding `portfolio_json`:
+
+- Windows: `python board.py --background`
+- Mac: `python3 board.py --background`
+
+It reuses a board already running on this machine or starts one tied to this session, opens the page, and prints `board started at <url>` or `board already running at <url>`; put that line in the report. If project-triage did not come through clean, do not start it; report `board: not started, project-triage pull unresolved` and name the conflict. Eric's `pm` (shell) and `/pm` (Claude Code) run the same command later in the day.
+
+## Step 5: pick up where the other machine left off
+
+Syncing git state is only half the job. The other half is loading the context that came with it, and nothing else does this — the SessionStart hook injects global memory, but project state lives in the repo, and Tier A project memory only crosses machines through the Step 1 mirror. This step is the only place that repo context gets read back in.
+
+Do this for the repo Eric names, or the one he is in. If he has not named one, pick from the ACTIVE list in Step 2, not from all 132: take the active repo with the most recent commit and say which you chose. A dormant repo receiving one migration commit must never win this, which is exactly what picking by recency across everything would do.
+
+1. Read `<repo>/AGENTS.md` (or `CLAUDE.md` if there is no AGENTS.md).
+2. Read `<repo>/docs/STATUS.md`.
+3. Read the newest file in `<repo>/docs/handoffs/`, if the folder exists and its newest file is within about two weeks.
+4. If `docs/STATUS.md` does not exist in a repo that has real work in it, say so — that repo is invisible to the other machine and closeout should have created it.
+
+Then report, in six lines or fewer, before doing any work:
+
+```
+Picking up: <repo>
+Last session: <date>, <mac|windows>
+Where things stand: <two lines from STATUS.md Current state>
+Blocked on: <open questions, or "nothing">
+Next: <top one or two from STATUS.md Next>
+```
+
+Stop there and wait for Eric to confirm or redirect. Do not start the next task off the back of STATUS.md on your own — it records where work stopped, not what he wants to do this morning.
+
+## Do not
+
+- Do not `rm` anything. Move to a `_to_delete` or `_OLD_*` folder if something must get out of the way.
+- Do not rebase or force-push.
+- Do not push DexaProject or any repo whose CLAUDE.md says its data must stay local.
+=================== closeout
+---
+name: closeout
+description: >-
+  End-of-session sign-off ritual. Sweeps loose ends, commits and pushes what needs it,
+  verifies memory capture, writes a cross-harness handoff, and reports "clear to sign
+  off" or what's still open. Use when the user says "/closeout", "any loose ends?", "am
+  I good to sign off?", "close out for the night", "closing out", "goodnight", "wrap up
+  for the day", or asks for a system health check before leaving. Do not use at the
+  start of a session (use startup) or for a standalone automation health check (use
+  claude-stack-doctor).
+---
+
+# Closeout
+
+One command that replaces the manual end-of-day sequence: "any loose ends?" → "commit and push what needs to be" → "is this in memory?" → "write a handoff so Codex can pick this up."
+
+Run all five checks, then give ONE verdict. Do not ask permission between steps — the invocation of this skill IS the authorization for the full sequence. Commit and push is standing-authorized for every DEV repo: each repo's `AGENTS.md` Session routine says "update STATUS, commit, push at end", and unpushed work on one machine is the top cause of conflicts on the other. The only exceptions are repos whose `CLAUDE.md` says their data must stay local (DexaProject is the precedent); commit those locally and list them as open.
+
+This one file serves Claude Code, Codex and Cowork (uploaded to claude.ai). Cowork has no TaskList and no Claude Code memory hooks: do what applies there and say what was skipped.
+
+## Step 1 — Loose-ends sweep
+
+- `git status` across **every** repo in DEV, not only the ones named in this conversation. Another session, another harness, or the other machine may have left work dirty, and a closeout that only checks what it remembers touching will say "clear to sign off" over someone else's uncommitted work. Walk `DEV/`, `DEV/Football/` and `DEV/SpecialRequests/`, and report any repo with uncommitted or unpushed commits. The full walk takes about 90 seconds.
+  - Windows: `git -C <repo> status --porcelain` per repo. Do NOT use `Get-ChildItem -Recurse` to look for files; it silently skips paths past the 260-character limit. Inside a repo, `git ls-files` is the reliable way to ask whether a file exists.
+  - Repos with dirty state you did not touch: commit and push them like any other, and name them in the report so the user knows another session left them.
+- **Registry drift.** Run `python <dir of portfolio_json>/portfolio.py crosswalk` (`portfolio_json` is in `~/.claude/skills/_shared/config.<platform>.json`). It compares `portfolio.json` with every DEV folder and Drive `01_PROJECTS` folder and only reports; it never moves anything. Do not fix drift during closeout. List each item it found under "Still open", naming any folder created this session first: that is a project started without a row, the exact way projects got lost before the 2026-10-03 organization pass. `drive_unreachable` means the Drive checks never ran; say so, do not call it clean. Cowork cannot run it; say it was skipped.
+- **7-day rule.** Run `python <dir of portfolio_json>/portfolio.py seven-day --apply`. Name any project it paused, and any project on its last two days, under "Still open" with what it still needs (a receiver, step 1). Revive with the board's status pill or `portfolio.py` once there is a first step to show.
+- Unfinished todos/tasks from this session (TaskList if available).
+- Background jobs or workflows still running.
+- Anything the user was promised earlier in the session that wasn't delivered.
+
+## Step 2 — Commit & push
+
+- **Registry edits get their own commit.** In project-triage, if `git status --porcelain portfolio.json` shows a change (board edits from the day, `set-status`, `set-receiver`), commit that file alone first as `data: board edits <YYYY-MM-DD>`, then the rest. The board header's "N unpushed registry edits" counts these; a skipped one becomes a JSON merge conflict when the other machine edits too.
+- Every repo touched this session: stage, commit with a descriptive message, `git pull --no-rebase` (the other machine may have pushed), push. If the merge conflicts, follow the conflict steps in `dev-sync/SKILL.md` (they are the one home for them), then push and list the file under "Still open".
+- Before staging, make sure any new file over 95 MB and any `.env` is in `.gitignore`.
+- Local-only repos (CLAUDE.md says so): commit, do not push, list it.
+- If `~/.claude/mods` changed this session (a mod added, edited or `.disabled`), run the mods sync (`bash ~/.claude/mods/mods-sync.sh` on the Mac, `powershell -ExecutionPolicy Bypass -File $HOME\.claude\mods\mods-sync.ps1` on Windows) and list any invalid mod under "Still open".
+- Also check the three config repos, `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills) and `~/.claude/global-memory` (claude-global-memory). If any has changes, commit and push it the same way, so the other machine's `/dev-sync` picks it up.
+- **Push `global-memory` even on a light session.** `daily-backup` pushes it nightly, which is too late for a same-day handoff: work the Mac in the afternoon, sit down at Windows that evening, and anything written to MEMORY.md or handoffs is still only on the Mac. Pushing it here is what makes memory available to the other machine tonight rather than tomorrow. It is the only repo that carries memory across, so treat an unpushed `global-memory` the same as an unpushed project repo: it blocks "clear to sign off".
+- Nothing to commit → say so in one line, move on.
+
+## Step 3 — Memory verification
+
+- Check `~/.claude/global-memory/transcripts/.errors.log` — must be empty. If not, surface contents and fix the hook issue if obvious.
+- Confirm today's transcript file exists at `~/.claude/global-memory/transcripts/<today>.md` and was modified within the last few hours. On a Cowork-only day it may be absent; say so, it is not an error.
+- Run the dev-docs harvest so repo docs reach memsearch: `bash ~/.claude/scripts/harvest-dev-docs.sh` (Mac) or `powershell -ExecutionPolicy Bypass -File $HOME\.claude\scripts\harvest-dev-docs.ps1` (Windows). It copies every repo's `docs/*.md` into `~/.claude/global-memory/dev-docs/`, which is on the index list. One line of output; do this after Step 4 so today's STATUS is included.
+- If this session produced a durable decision or new active thread, update `~/.claude/global-memory/MEMORY.md` (respect the 2,500-char cap; consolidate before adding) or write a Tier A memory file per the memory-system rules in CLAUDE.md.
+- **Tier A does not cross machines — mirror it or lose it.** Project memory lives under a slug built from the project's absolute path, and that path differs on the Mac and the Windows laptop, so a Tier A file written today is not auto-injected tomorrow on the other machine. Global memory and the repo both cross; Tier A does not. So for every Tier A fact written this session, ask: is this durable and project-scoped? If yes, it must also land in the repo — `docs/STATUS.md` for current state, `docs/DECISIONS.md` for a decision and its reasoning, the dated handoff for the detail. Treat Tier A as a fast local cache and the repo as the record. If a fact only ever exists in Tier A, assume the other machine will never see it.
+
+## Step 4 — Cross-harness handoff
+
+This is the **canonical durable handoff** — the one future sessions and other harnesses read. (For a mid-session, chat-only summary before `/clear`, that's the `session-handoff` skill; the mattpocock `handoff` skill writes to the OS temp dir and is not durable — don't rely on it for cross-session state.)
+
+If real work happened this session (not just Q&A), write a handoff to
+`<repo>/docs/handoffs/<YYYY-MM-DD>-<slug>.md` (or `~/.claude/global-memory/handoffs/` if no repo fits):
+
+- What was being worked on and why
+- Decisions made (with the reasoning that would be lost)
+- Exact file paths of everything created or modified this session
+- Next actions, most important first
+- Anything mid-flight (open questions, awaited inputs)
+
+Plain markdown, no harness-specific syntax — Codex, Antigravity, or a fresh Claude session must be able to resume from it. Commit it with the Step 2 commit when in a repo.
+
+**Always, in every repo touched (even for light sessions): update `docs/STATUS.md`.** It is the file the next session reads first, on either machine, in any harness. Rewrite the sections in place, keep it short:
+
+- `## Current state` — two to five lines on where things stand today
+- `## Next` — most important first. Item 1 is one concrete action (a command to run or a file to open), not a theme: it is the line `~/.claude/scripts/where-was-i.py` shows Eric the next morning
+- `## Open questions` — decisions waiting on Eric
+- `## Gotchas` — anything that will bite the next session
+
+The dated handoff file is the detailed record; STATUS.md is the summary. Do Step 4 before the Step 2 commit so both land in the same push.
+
+**Keep the resume cards true (PM system design Decision 9).** The live board shows each project as a card read from STATUS and the registry; if a card doesn't make sense tonight, it won't in six weeks. Run `python <dir of portfolio_json>/landed.py scan --days 1` (about a minute), then `python <dir of portfolio_json>/portfolio.py card-check`. It prints the card of every registry project touched today, on either machine, with its gaps. Fix each gap before the Step 2 commit:
+
+- `STATUS has no entry dated <today>`: add `- <today>: <what happened>` under the repo's Done / Current state.
+- `STATUS has no Next item`: put one concrete action first under `## Next`.
+- `no next step (next_action)` (Drive-only row): set it on the board or with `portfolio.py add-update <name> "<note>" --next-action "<step>"`.
+- `needs a receiver`: `portfolio.py set-receiver <name> "<who>"` (a name, or `me: <why>`). Ask Eric when it is not obvious from the session; never invent one.
+- `touched but marked <status>`: revive it (`portfolio.py set-status <name> active`) or say in STATUS why a retired project was touched.
+
+Re-run `card-check` after the fixes. Its output is the last section of the report (**Cards:**); trim to projects with work today if it is long, but never drop one that still has a gap.
+
+## Step 5 — Verdict
+
+End with a single short report:
+
+```
+## Closeout — <date>
+
+**Committed & pushed:** <repos + one-line summary, or "nothing to commit">
+**STATUS.md:** updated in <repos>
+**Memory:** captured ✓ / issue found: <what> / skipped (Cowork, no hooks)
+**Handoff:** <path, or "not needed — no substantive work">
+**Registry drift:** <N items, or "none"> (`portfolio.py crosswalk`)
+**Still open:** <numbered list, or "none">
+
+Clear to sign off. / Not clear: <the one thing blocking>.
+
+**Cards:** <`portfolio.py card-check` output, after the Step 4 fixes>
+```
+
+The cards come last on purpose: they are what the next session, on either machine, picks up from.
+
+"Clear to sign off" means: every touched repo is pushed (or is a declared local-only repo). If anything is unpushed, the verdict is "Not clear" and the unpushed repo is the one thing blocking.
+
+Every file created or modified during the session must appear somewhere in the report with its full path — "where did this save?" should never need to be asked.
+
+**Where everything landed.** Build that list from the ledger, not from memory: the Step 4 `landed.py scan --days 1` already refreshed it (it reads git in every DEV repo and file times on Drive and the vault, so files written by scripts and shell copies are included); run `landed.py show --days 1`. Put its project-grouped output in the report under **Landed:** (trim to the projects this session touched if it is long). The ledger lives in `~/.claude/global-memory/landed/` and is pushed with global-memory, so `/landed` on the other machine shows it too.
+
+## Rules
+
+- Push every touched DEV repo. Do not leave the laptop with unpushed work; the other machine pulls from GitHub, not from this disk.
+- Never skip Step 3 — memory capture failing silently is the user's top recurring worry.
+- If a check fails and the fix is quick and safe (restage a file, clear a stale lock), fix it and note it. If the fix is risky, list it under "Still open" instead.
+- Total output should fit on one screen. The user is leaving; brevity is the deliverable.
+=================== interview-me
+---
+name: interview-me
+description: "End-of-workday interview in two parts: a 90-second supervisor log of operational facts (equipment, people, blockers) for the biweekly status report, then four reflection questions distilled into atomic SecondBrain notes. Use when the user types `/interview-me`, says \"interview me\", \"let's debrief\", \"end of day interview\", \"process my day\", \"wrap up today\", \"log my day\", or asks to capture their workday. Do not use for building the biweekly report itself (use status-report)."
+---
+
+# Interview Me
+
+End-of-workday synthesis ritual. The user is a sport-science / performance analyst who writes essays connecting sport science, product strategy, and decision-making. The interview's job is to extract publishable insights, not to record what happened.
+
+## Vault location
+
+Use `vault_root` from the selected platform config.
+
+**Paths:** canonical vault locations live in `~/.claude/skills/_shared/config.<platform>.json` — load it if unsure; if a literal path here ever disagrees, the config wins.
+
+- `Inbox/` — full transcripts (one per day)
+- `Notes/` — atomic permanent notes (one idea per file)
+- `Drafts/` — essays in progress
+- `Archive/` — published
+- `Templates/interview-note.md`, `Templates/permanent-note.md`
+- `Inbox/status-log/` — daily supervisor fact logs (Part 0). Path key: `vault_status_log`.
+
+---
+
+## Part 0 — Supervisor log (90 seconds, ask first)
+
+**Three questions, asked before the reflection questions.** Facts are easier to recall
+than insight when the user is tired, and a hard 90-second opener is what makes the ritual
+survivable nightly. Reflection quality does not suffer from coming second; it suffers
+from the user never starting.
+
+This part exists because `status-report` — the biweekly email to the user's supervisors —
+has a sourcing gap: roughly two thirds of what belongs in that email (equipment arriving,
+installs, who onboarded onto what, hallway conversations, follow-ups awaiting a reply)
+appears in **no** automated source. Without a nightly log, the report has to reconstruct
+two weeks from memory. With one, it mostly writes itself.
+
+Ask all three at once. Accept short answers. Do not probe.
+
+> Quick log first, 90 seconds. Then the usual four.
+> 1. Anything arrive, get installed, or change hands today? Who's onboarding onto it?
+> 2. Who did you talk to that Kenny or Chris would want to know about? Names and sport.
+> 3. Waiting on anyone, or anything about to go sideways?
+
+**Honest zero rule.** If all three are genuinely "nothing", write **no file**. A day with
+no operational facts is a real day. Padding this log is worse than skipping it, because
+`status-report` trusts these entries verbatim.
+
+### Output — `{vault_status_log}/YYYY-MM-DD.md`
+
+```markdown
+---
+date: YYYY-MM-DD
+sports: [Football, Tennis]      # programs named in the answers; [] if none
+---
+
+## Equipment & installs
+- Perch cameras installed at Foster. Football onboarding this week.
+
+## People & conversations
+- Javi (Tennis) — FirstBeat onboarding, wants a one-pager for his staff.
+
+## Waiting on / risks
+- Micah, no reply since 8/17.
+```
+
+Use the user's own words. Do not editorialize, rank, or add commentary — `status-report`
+does the judgement pass later, and it needs raw facts to judge.
+
+**Append, never overwrite.** If today's file exists (a second debrief, or a correction),
+add to the existing sections rather than replacing the file.
+
+**This log never becomes a permanent note.** It is a fact record for one downstream
+consumer. Insight goes in `Notes/` via Part 1, which is why the skill's "NOT a journaling
+app" rule still holds.
+
+---
+
+## Part 0b — Project block (30 seconds, right after Part 0)
+
+The user works a 2-hour calendar block per slate project each week (rules:
+`SecondBrain/Projects/Applied-Performance-Operating-Cadence.md`). This question is the only
+thing that records whether a block happened; the Friday weekly report counts it, so skipping
+it makes a worked week look empty.
+
+Run `python3 ~/DEV/project-triage/portfolio.py slate-check` first to get the active project
+names. Then ask once:
+
+> Project block: which slate project did you work on today, what moved, and did you finish a step?
+
+- Each project named → `python3 ~/DEV/project-triage/portfolio.py add-update <Project> "[block] <what moved, in the user's words>"`.
+  The exact `[block]` prefix is what the weekly report counts.
+- A step finished → confirm the step name back, then `python3 ~/DEV/project-triage/portfolio.py mark-done <Project> --step N`
+  (charter order: 1 plan agreed, 2 first draft, 3 final delivered, 4 in use).
+- "None" is a real answer — write nothing.
+- Work on something **not** on the slate is not a block. If it was a new idea, offer
+  `/project idea` and say it waits for a free slot.
+- Match names case-insensitively; ask if two projects match. On `[error]`, show it verbatim
+  and carry on with Part 1.
+
+---
+
+## Part 1 — The interview
+
+**Time budget:** 10–15 minutes total including Part 0. If the user wants to keep talking, schedule a follow-up session — don't blow the budget.
+
+**Opening line (verbatim is fine):**
+> Now the four. Then I write up anything that earned its place.
+
+### Question 1 — Orientation (filter)
+> What did you spend time on today?
+
+Listen for themes. Don't try to capture everything. Look for: a hard decision, a piece of work that consumed a lot of time, anything that felt different from yesterday.
+
+### Question 2 — Signal (insight detection)
+> What surprised you, frustrated you, or changed your mind?
+
+This is the gold question. Genuine surprise, frustration, or updated belief = the moments worth writing down. If the answer is "nothing," probe once: *"Nothing at all? Even small recalibrations count."* If still nothing, accept and move on — not every day produces signal.
+
+### Question 3 — Pattern (synthesis)
+> Does anything from today connect to what you were thinking about earlier this week or recently?
+
+**Optional aid:** quietly Glob `Notes/*.md` modified in the last 7 days; if you find 2–3 candidates that match today's themes, name them and ask if today's experience updates them.
+
+### Question 4 — Essay seed (publishable insight)
+> If you told a peer one thing about today's work, what would it be?
+
+This question converts experience into transferable insight. If the user gives a great one-liner — capture it verbatim as the seed for a permanent note.
+
+## Optional source pull-ins
+
+Offer when the user references them. Don't pull unprompted.
+
+- **Meeting referenced** ("today's call with X", "this morning's standup"):
+  → **First, check `Inbox/meetings/` for a local summary** — Glob for files matching the date or participant. If found, read and quote from the local file (free, fast, no API call).
+  → If not found locally, ask: *"Want me to pull from Fireflies?"* → invoke the `meeting-sync` skill to sync the latest meetings, then read the local file.
+  → Fall back to direct `pp-fireflies` only if `meeting-sync` reports nothing matching.
+- **Paper / article referenced:**
+  → "Want me to pull the source from Zotero?" → use `pp-zotero-research-library` skill.
+- **GPS / Catapult data referenced:**
+  → "Want me to pull the underlying metric?" → use `pp-catapult-openfield-connect` skill.
+
+Quote sources in the note's frontmatter `source:` field or the **Evidence / origin** section.
+
+## Output protocol
+
+### Write the supervisor log (unless all three answers were nothing)
+
+`Inbox/status-log/YYYY-MM-DD.md` — see Part 0 for the shape. Write this **first**, before
+the transcript, so a session that gets cut short still leaves the report its facts.
+
+### Always write the transcript
+
+`Inbox/YYYY-MM-DD-interview.md` — full Q&A, lightly cleaned. Use the `Templates/interview-note.md` skeleton. Fill in `themes`, `notes_produced`, `pulled_sources` in frontmatter.
+
+### Write 0–3 permanent notes
+
+**Bias toward fewer notes.** A vault full of mediocre notes is worse than one with three great ones. If nothing crossed the bar today, write zero — say so to the user. They will respect this.
+
+A note earns its place if it meets at least one of:
+- States a transferable claim (works beyond today's context)
+- Updates a previously held view (in which case, also update / link the old note)
+- Names a pattern across two or more recent days
+- Is a clean essay seed the user could draft from later
+
+Each note goes to `Notes/<concept-title-kebab-case>.md` with the `Templates/permanent-note.md` skeleton filled in:
+- `created`: today's date
+- `source`: `[[YYYY-MM-DD-interview]]`
+- `domain`: pick from `sport-science`, `product`, `decision-making`, `leadership`, `methodology`, `personal`
+- `tags`: free-form, but reuse existing tags from other Notes when possible
+- Body: claim in 1–2 sentences, why it matters, evidence/origin, connections (use `[[wikilink]]` to related Notes), open questions
+
+### Memory bridge (when warranted)
+
+If the interview surfaces a **durable** fact about the user, their projects, or working style that should persist across Claude sessions:
+- Also write a Tier A memory file via the `memory-write` skill (it derives the correct project slug from the current working directory) or update USER.md / project_*.md as appropriate.
+- Tell the user explicitly: "Also saved this to memory as <name>."
+- Do NOT bridge ephemeral notes. Most permanent notes stay in the vault only.
+
+## What NOT to do
+
+- **Don't pad notes with model commentary.** The user's own words and insights are the value. You are a scribe with editorial judgment, not a co-author.
+- **Don't ask follow-up questions beyond the four** unless an answer was genuinely ambiguous and one clarification unlocks a much better note.
+- **Don't produce a note "just to have one."** Zero notes is an honest output.
+- **Don't break the 10–15 min budget.** Offer a follow-up session if needed.
+- **Don't write to `Drafts/` from a daily interview.** Drafts come out of weekly synthesis, not daily capture.
+- **Don't pad the supervisor log to make the day look productive.** `status-report` copies these entries into an email to the user's supervisors with light editing. An invented install or an inflated conversation becomes a false claim in front of Chris Ruf and Kenny Boyd. No file is the correct output for a quiet day.
+- **Don't turn a Part 0 answer into a permanent note** unless it independently clears the Part 1 bar. Operational facts are not insight.
+
+## Gotchas
+
+- **Part 0 goes first, and that ordering is the whole design.** The ritual lapsed for 49 days in 2026 because reflection is expensive when tired. Three factual questions is a low enough floor to clear on a bad day, and a partial run that captures only the log still has value downstream. Moving Part 0 after the four questions quietly reverts the fix.
+- **`status-report` reads this directory verbatim.** It counts logged days against the period ("N of 14 days logged") and surfaces the gap to the user. That visible gap is the intended nudge — do not backfill missing days with guesses to make the count look better.
+- **Never hardcode the log path.** It is `vault_status_log` in `~/.claude/skills/_shared/config.<platform>.json`. The vault has already moved once (off the iCloud-synced Desktop, 2026-08-14) and every hardcoded path broke.
+- **Sports named in the answers must go in the `sports:` frontmatter array.** The status report's sport coverage panel — the reason that report exists, since it documents involvement beyond football and basketball — is assembled from this field. A conversation logged without its sport is credit the user does not get.
+- **Append to today's file, never overwrite it.** A second debrief on the same day is common and overwriting silently deletes the first pass.
+
+## Weekly synthesis
+
+Weekly synthesis is NOT this skill's job. If the user says "weekly synthesis", "weekly review", or asks to look across the week, invoke the `weekly-review` skill — it owns the Friday ritual (themes, project status, decisions, stale action items, essay angles). This skill is strictly the daily debrief.
+
+## End-of-session sign-off
+
+Always end with a brief summary:
+- Supervisor log: saved to `Inbox/status-log/YYYY-MM-DD.md`, or "nothing to log today"
+- Transcript saved: `Inbox/YYYY-MM-DD-interview.md`
+- Notes created: list with paths and one-line summaries
+- Memory bridge: yes/no, what
+- Any open thread to revisit tomorrow
+
+Keep it tight — three to five lines.
