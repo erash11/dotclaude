@@ -1,0 +1,150 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- 1. Done, however I need to extend the summary based on a conversation I had with Kenny today
+2. Not done
+3. Done, waiting for Joe to go through les...
+- yes to all three, first draft went out 9/16
+- the extended doc with costs and terms is still yet to be created. I have an inbventory document he was referring to, that needs to be extended to i...
+- Q: Which inventory document should be extended with costs and terms, and in what form? → A: New Excel workbook (Recommended)
+
+## Files Modified
+project_prioritization-slate.md, gate.py, make_example.py, example.jsonl, test_gate.py, mutants.py, README.md, STATUS.md, Supervisor_Reviews, _ledger.md, skills, SKILL.md, portfolio.py, project-triage, slate.py, test_slate.py, meeting-header.md, add_header.py, 2026-10-01_KB_TechReview_Followup.md, Tech_Inventory_Analysis, build_cost_workbook.py, scripts, build_docx.py, build_exec_summary.py, build_tech_lists.py, build_unit_list.py, exec.png, check_summary.py, AGENTS.md, CLAUDE.md, .gitignore, early.txt, TEAMS_PLAN.md, build_cost_request_csv.py, EMAIL_ERIN_BOYETTE.md, build_its_tracker.py, DEV, PROGRAM.md, MEMORY.md, 2026-10-01-softwaretech-review-and-slate.md
+
+## Unresolved Errors
+- {"stdout":"=================== README.md\n# Context Language Models (CLMs)\n\n<p align=\"center\">\n  <a href=\"https://rulinshao.github.io/\">Ruli...
+- {"stdout":"54fb662 STATUS 2026-10-01: Windows key and SDK verified by smoke test\n1a9f19d video_check: draft pre-registration and sample builder fo...
+- {"stdout":"# AGENTS.md\n\nProject: TypeSafe_Sandbox\n\n## What this is\nA sandbox for building against the TypeSafe System One API (the Jev model),...
+- {"stdout":"47:def log(msg: str) -> None:\n65:    def complete(self) -> bool:\n69:def score(episodes: list[Episode]) -> Score:\n85:def _sem(xs: list...
+- {"stdout":"docs/STATUS.md:47:  assumption that role is just extraction is wrong, and was checked — only 5 of 99\ndocs/STATUS.md:91:- **2026-09-21 (...
+- {"stdout":"https://github.com/erash11/TypeSafe_Sandbox/pull/32\n**Verified:** `python skill_gate/test_gate.py` 20/20. Four deliberately broken gate...
+- {"stdout":"{\"headRefOid\":\"9a1b0c1686b4e2f82163a918299b68fd2fc61c18\",\"isDraft\":true,\"mergeStateStatus\":\"UNKNOWN\",\"mergeable\":\"UNKNOWN\"...
+- {"stdout":"\u001b[31mFAILED\u001b[0m tests/test_slate_calendar.py::\u001b[1mTestCli::test_cli_writes_ics_and_leaves_registry_alone\u001b[0m - OSErr...
+- {"stdout":"\u001b[31mFAILED\u001b[0m tests/test_stage.py::\u001b[1mTestSetStage::test_set_stage_cli\u001b[0m - OSError: [WinError 50] The request i...
+- {"stdout":"remote: \npull request create failed: GraphQL: Head sha can't be blank, Base sha can't be blank, No commits between main and worktree-ch...
+- {"stdout":" M portfolio.json\n?? .claude/\nc563e49 Merge pull request #1 from erash11/worktree-checkpoint-skip\ndone: Tech_Inventory_Analysis step ...
+- {"stdout":"Fireflies CLI — Every Fireflies meeting feature, plus offline search, cross-meeting intelligence, and a local database no other tool ha…...
+- {"stdout":"f4f1c51 Handoff and STATUS for 09-29 admin package\n725e485 Add Technology by Unit list; exec summary says collection closed\nea2aa79 Co...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"Build the two-page Technology by Unit list: for every unit, the products it uses.\n\nRun:\n    uv run --wi...
+- {"stdout":"0\n[]\r\n  File \u001b[35m\"C:\\Users\\eric_rash\\AppData\\Local\\uv\\cache\\archive-v0\\IbiYyA8GpIRjHkuzst_dU\\Lib\\site-packages\\pyce...
+- {"stdout":"982b322 Merge pull request #1 from erash11/worktree-cost-workbook\nQuick_Inventory_export_2026-09-16.xlsx\n D raw/Quick_Inventory_export...
+- {"stdout":"warning: in the working copy of 'staging/atomize_42analytics_prompt.md', LF will be replaced by CRLF the next time Git touches it\nwarni...
+- {"stdout":"2448 MEMORY.md\n5:- **Prioritization slate (9/14)**: LIVE, 5/5. →Tier A prioritization-slate\n9:- **ATH Tech**: shipped; ITS pending; fi...
+- {"stdout":"error: failed to delete 'C:/Users/eric_rash/Desktop/DEV/SoftwareTech_Review/.git/worktrees/where': Permission denied\nerror: failed to d...
+- {"stdout":"51cda9d STATUS: 10-01 slate sweep and --skip\n0","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff"...
+- {"stdout":"Deleted branch closeout-1001 (was 133e85c).\nerror: failed to delete '.git/worktrees/closeout': Permission denied\nerror: failed to dele...
+
+## Git
+log, status, add, push, fetch, branch, commit, Initial commit, pull, worktree, STATUS: costs workbook moved to SoftwareTech_Review Drive folder
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL, Closeout 2026-10-01: SW/Tech Review thread + handoff
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL, STATUS: Erin email sent 10-01; Teams build 10-02
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL, STATUS: 10-01 slate sweep and --skip
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL, dev-docs harvest + transcript, closeout 2026-10-01
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL, transcript 2026-10-02 (closeout)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016M6RgVUUtU6a3tr5Km5uSL;
+
+## Project Rules
+memory/project_prioritization-slate.md, docs/STATUS.md, tests/test_slate.py, checkpoint-skip/portfolio.py, assets/meeting-header.md, scripts/build_docx.py, scripts/build_exec_summary.py, scripts/build_tech_lists.py, scripts/build_unit_list.py, tmp/exec.png, scripts/build_cost_workbook.py, tmp/early.txt, router-softwaretech/PROGRAM.md, meeting-prep/SKILL.md, gm-wt/MEMORY.md
+
+## Subagent Tasks
+- [completed] Read-only search, "very thorough". Windows machine. Find the document(s) that list Baylor Athletics softw...
+
+## Skills Used
+new-project, closeout
+
+## Environment
+cwd: ~/.claude/global-memory
+entered worktree: skill-gate
+entered worktree: checkpoint-skip
+entered worktree: cost-workbook
+entered worktree: unnamed
+
+## Data References
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:54
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:54
+- … 77 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

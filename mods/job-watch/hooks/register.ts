@@ -1,17 +1,19 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register } from 'claude-code'
 
-import type { Job, JobReport } from '../types'
+import type { DockerState, Job, JobReport } from '../types'
 
 // Job watch: answers "did the overnight job run?" without asking. A status
 // line entry for scheduled jobs (Windows Task Scheduler \Eric\, Mac launchd
-// com.keystone.*), the global errors.log and the scheduled recall eval, plus
-// a toast when a job's last run changes mid-session or a background task
-// Claude started reports back. Local reads only; no model calls.
+// com.keystone.*), the global errors.log, the scheduled recall eval and the
+// Docker-hosted Milvus that memsearch needs, plus a toast when a job's last
+// run changes mid-session, Milvus goes down, or a background task Claude
+// started reports back. Local reads only; no model calls.
 
 const report = atom({ plugin: 'job-watch', key: 'report' } as const, null)
 
 const PERIOD_MS = 10 * 60_000
+const SAW_MILVUS = 'sawMilvus' // $.store: this machine has had a milvus container
 
 // Task Scheduler result codes that are not failures.
 const NOT_YET_RUN = 267011 // 0x41303
@@ -66,6 +68,23 @@ export function parseLaunchctl(stdout: string): Job[] {
     }))
 }
 
+// `docker ps -a --filter name=milvus` as `name|status` lines. No milvus
+// container means this machine does not run memsearch on Docker: null.
+export function parseDocker(exitCode: number | null, stdout: string): DockerState {
+  if (exitCode === null) return null // docker not installed
+  if (exitCode !== 0) return 'docker-down'
+  const rows = stdout.split('\n').map(l => l.trim()).filter(Boolean)
+  if (!rows.length) return null
+  const standalone = rows.find(r => r.startsWith('milvus-standalone|')) ?? rows[0] ?? ''
+  return /\|Up\b/.test(standalone) ? 'up' : 'milvus-down'
+}
+
+const DOCKER_TEXT: Record<Exclude<DockerState, null>, string> = {
+  up: 'milvus ✓',
+  'docker-down': 'docker ✗',
+  'milvus-down': 'milvus ✗',
+}
+
 function when(iso: string | null): string {
   if (!iso) return 'never'
   const d = new Date(iso)
@@ -89,6 +108,7 @@ export function statusText(r: JobReport): string {
   if (running.length) parts.push(`running: ${running.map(j => j.name).join(', ')}`)
   parts.push(r.errorLines ? `errors.log ${r.errorLines} ⚠` : 'errors.log 0')
   if (r.evalStatus) parts.push(`eval ${r.evalStatus}`)
+  if (r.docker) parts.push(DOCKER_TEXT[r.docker])
   return parts.join(' · ')
 }
 
@@ -116,7 +136,21 @@ async function collect($: EngineInterface): Promise<JobReport> {
   const latest = await $.fs.read(`${home}/.claude/audits/recall-eval/LATEST.md`).catch(() => '')
   const evalStatus = /Status:\s*(\w+)/.exec(String(latest))?.[1] ?? null
 
-  return { checkedAt: await $.clock.now(), jobs, errorLines, evalStatus }
+  const d = await $.process
+    .run(['docker', 'ps', '-a', '--filter', 'name=milvus', '--format', '{{.Names}}|{{.Status}}'], { timeoutMs: 15_000 })
+    .catch(() => null)
+  let docker = parseDocker(d ? d.exitCode : null, d?.stdout ?? '')
+  // A stopped Docker matters only where memsearch runs on it (not Milvus Lite).
+  if (docker === 'up' || docker === 'milvus-down') await $.store.set(SAW_MILVUS, true)
+  else if (docker === 'docker-down' && !(await $.store.get(SAW_MILVUS))) docker = null
+
+  return { checkedAt: await $.clock.now(), jobs, errorLines, evalStatus, docker }
+}
+
+function dockerWarning(state: DockerState): string | null {
+  if (state === 'docker-down') return 'Docker is not running: memsearch recall and session sync will fail. Start Docker Desktop.'
+  if (state === 'milvus-down') return 'Milvus container is down: memsearch recall and session sync will fail. Start milvus-standalone.'
+  return null
 }
 
 async function refresh($: EngineInterface, announce: boolean): Promise<void> {
@@ -124,6 +158,11 @@ async function refresh($: EngineInterface, announce: boolean): Promise<void> {
   const now = await collect($)
   await update($, report, () => now)
   $.ui.status(statusText(now))
+
+  // Milvus down is said once when first seen, then again each time it drops.
+  const warning = dockerWarning(now.docker)
+  if (warning && (!before || before.docker === 'up' || before.docker === null)) $.ui.toast(warning)
+  if (before && before.docker && before.docker !== 'up' && now.docker === 'up') $.ui.toast('Milvus is back up.')
 
   if (!announce || !before) return
   for (const job of now.jobs) {
@@ -181,6 +220,7 @@ export const register: Register = on => {
         ...(rows.length ? rows : ['- none found']),
         `errors.log: ${r.errorLines} line(s)`,
         `recall eval: ${r.evalStatus ?? 'no LATEST.md'}`,
+        `memsearch backend: ${r.docker ? (dockerWarning(r.docker) ?? 'Milvus up') : 'no Milvus container on this machine'}`,
       ].join('\n'),
     }
   })

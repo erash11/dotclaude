@@ -4,17 +4,25 @@ import type { EngineInterface, Register } from 'claude-code'
 import type { RepoState, Snapshot } from '../types'
 
 // Repo-state band: one row above the prompt that says which repos under
-// DEV (and ~/.claude) have uncommitted or unpushed work, plus Closeout and
-// Closeout + exit buttons. Local git only: no fetch, no model calls.
+// DEV (and ~/.claude) have uncommitted, unpushed or unpulled work, plus
+// Closeout and Closeout + exit buttons. No model calls.
+//
+// Two machines push to the same repos, so "behind" matters: every repo is
+// fetched once at session start (then rescanned locally every 5 min), and the
+// first edit Claude makes in a repo each session fetches that repo again and,
+// when it is behind origin, asks: pull first, edit anyway, or cancel.
 
 const snapshot = atom({ plugin: 'repo-band', key: 'snapshot' } as const, null)
 const isScanning = atom({ plugin: 'repo-band', key: 'isScanning' } as const, false)
 const pendingExit = atom({ plugin: 'repo-band', key: 'pendingExit' } as const, false)
 const isHidden = atom({ plugin: 'repo-band', key: 'isHidden' } as const, false)
+const isFetching = atom({ plugin: 'repo-band', key: 'isFetching' } as const, false)
 
 const MIN_GAP_MS = 20_000
 const PERIOD_MS = 5 * 60_000
 const CONCURRENCY = 8
+const FETCH_TIMEOUT_MS = 30_000
+const NO_PROMPT = { GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'never' } // fail, never ask for credentials
 const SKIP = new Set(['_ARCHIVE', 'node_modules', '_DRIVE'])
 
 const norm = (p: string) => p.replace(/\\/g, '/').replace(/\/$/, '')
@@ -60,7 +68,15 @@ export function parseStatus(name: string, path: string, out: string): RepoState 
   const head = lines[0]?.startsWith('## ') ? lines.shift()!.slice(3) : ''
   const branch = (head.split('...')[0] ?? '').replace(/^No commits yet on /, '').trim()
   const ahead = Number(/ahead (\d+)/.exec(head)?.[1] ?? 0)
-  return { name, path, branch, dirty: lines.length, ahead, hasUpstream: head.includes('...') }
+  const behind = Number(/behind (\d+)/.exec(head)?.[1] ?? 0)
+  return { name, path, branch, dirty: lines.length, ahead, behind, hasUpstream: head.includes('...') }
+}
+
+async function statusOf($: EngineInterface, name: string, path: string): Promise<RepoState | null> {
+  return $.process
+    .run(['git', '--no-optional-locks', '-C', path, 'status', '--porcelain=v1', '-b'], { timeoutMs: 15_000 })
+    .then(res => (res.exitCode === 0 ? parseStatus(name, path, res.stdout) : null))
+    .catch(() => null)
 }
 
 async function scan($: EngineInterface): Promise<void> {
@@ -71,14 +87,7 @@ async function scan($: EngineInterface): Promise<void> {
     const results: RepoState[] = []
     for (let i = 0; i < found.length; i += CONCURRENCY) {
       const batch = found.slice(i, i + CONCURRENCY)
-      const done = await Promise.all(
-        batch.map(r =>
-          $.process
-            .run(['git', '--no-optional-locks', '-C', r.path, 'status', '--porcelain=v1', '-b'], { timeoutMs: 15_000 })
-            .then(res => (res.exitCode === 0 ? parseStatus(r.name, r.path, res.stdout) : null))
-            .catch(() => null),
-        ),
-      )
+      const done = await Promise.all(batch.map(r => statusOf($, r.name, r.path)))
       for (const d of done) if (d) results.push(d)
     }
     const snap: Snapshot = { scannedAt: await $.clock.now(), total: results.length, repos: results }
@@ -88,6 +97,75 @@ async function scan($: EngineInterface): Promise<void> {
   }
 }
 
+async function fetchRepo($: EngineInterface, path: string): Promise<boolean> {
+  return $.process
+    .run(['git', '-C', path, 'fetch', '--quiet', '--no-tags'], { timeoutMs: FETCH_TIMEOUT_MS, env: NO_PROMPT })
+    .then(res => res.exitCode === 0)
+    .catch(() => false)
+}
+
+// Fetch every repo that tracks a remote, then rescan: the band's only network step.
+async function fetchAll($: EngineInterface): Promise<void> {
+  if (await read($, isFetching)) return
+  await update($, isFetching, () => true)
+  try {
+    if (!(await read($, snapshot))) await scan($)
+    const tracked = ((await read($, snapshot))?.repos ?? []).filter(r => r.hasUpstream)
+    for (let i = 0; i < tracked.length; i += CONCURRENCY) {
+      await Promise.all(tracked.slice(i, i + CONCURRENCY).map(r => fetchRepo($, r.path)))
+    }
+  } finally {
+    await update($, isFetching, () => false)
+  }
+  await scan($)
+}
+
+// The repo holding `file`: the deepest scanned repo whose path contains it.
+// Worktrees under .claude/worktrees are their own checkouts: none.
+export function repoFor(repos: RepoState[], file: string): RepoState | null {
+  const f = norm(file).toLowerCase()
+  if (f.includes('/.claude/worktrees/')) return null
+  let best: RepoState | null = null
+  for (const r of repos) {
+    const p = norm(r.path).toLowerCase()
+    if (f.startsWith(`${p}/`) && (!best || p.length > best.path.length)) best = r
+  }
+  return best
+}
+
+const PULL = 'Pull first'
+const ANYWAY = 'Edit anyway'
+
+// Before the first edit in a repo this session: fetch it and, when it is
+// behind, ask. Returns a deny reason, or null to let the edit run.
+async function pullFirst($: EngineInterface, file: string, checked: Set<string>): Promise<string | null> {
+  const snap = await read($, snapshot)
+  const repo = snap ? repoFor(snap.repos, file) : null
+  if (!repo || !repo.hasUpstream || checked.has(repo.path)) return null
+  checked.add(repo.path)
+  if (!(await fetchRepo($, repo.path))) return null // offline or no access: do not block
+  const now = await statusOf($, repo.name, repo.path)
+  if (!now || now.behind === 0) return null
+  const answer = await $.ui
+    .ask(
+      `${repo.name} (${now.branch}) is ${now.behind} commit(s) behind origin, likely pushed from the other machine. Pull before editing?`,
+      { options: [PULL, ANYWAY, 'Cancel'], header: 'Behind' },
+    )
+    .catch(() => ANYWAY)
+  if (answer === ANYWAY) return null
+  if (answer !== PULL) return `The user cancelled: ${repo.name} is ${now.behind} commit(s) behind origin. Pull it before editing.`
+  const pulled = await $.process
+    .run(['git', '-C', repo.path, 'pull', '--ff-only', '--quiet'], { timeoutMs: 60_000, env: NO_PROMPT })
+    .catch(() => null)
+  void refreshSoon($, true)
+  if (pulled?.exitCode === 0) {
+    $.ui.toast(`Pulled ${now.behind} commit(s) into ${repo.name}`)
+    return null
+  }
+  const why = (pulled?.stderr ?? 'pull did not run').trim().split('\n')[0] ?? ''
+  return `${repo.name} is ${now.behind} commit(s) behind origin and a fast-forward pull failed (${why}). Commit or stash local changes, pull, then retry the edit.`
+}
+
 async function refreshSoon($: EngineInterface, force = false): Promise<void> {
   const snap = await read($, snapshot)
   const now = await $.clock.now()
@@ -95,11 +173,12 @@ async function refreshSoon($: EngineInterface, force = false): Promise<void> {
   $.clock.after(500, () => void scan($))
 }
 
-const needsAttention = (r: RepoState) => r.dirty > 0 || r.ahead > 0
+const needsAttention = (r: RepoState) => r.dirty > 0 || r.ahead > 0 || r.behind > 0
 
 export const register: Register = on => {
   let timer: { cancel: () => void } | undefined
   let stayTimer: { cancel: () => void } | undefined
+  const checked = new Set<string>() // repos fetched before an edit this session
 
   on('session.start', async ($, e, next) => {
     await $.command.register({
@@ -108,8 +187,23 @@ export const register: Register = on => {
     })
     timer?.cancel()
     timer = $.clock.every(PERIOD_MS, () => void scan($))
-    void refreshSoon($, true)
+    $.clock.after(500, () => void fetchAll($).catch(() => {}))
     return next(e)
+  })
+
+  on('tool.call', { tool: 'Write' }, async ($, e, next) => {
+    const deny = e.agentId ? null : await pullFirst($, e.file_path, checked)
+    return deny ? { deny } : next(e)
+  })
+
+  on('tool.call', { tool: 'Edit' }, async ($, e, next) => {
+    const deny = e.agentId ? null : await pullFirst($, e.file_path, checked)
+    return deny ? { deny } : next(e)
+  })
+
+  on('tool.call', { tool: 'NotebookEdit' }, async ($, e, next) => {
+    const deny = e.agentId ? null : await pullFirst($, e.notebook_path, checked)
+    return deny ? { deny } : next(e)
   })
 
   on('turn.complete', async ($, e, next) => {
@@ -142,11 +236,11 @@ export const register: Register = on => {
     const snap = await read($, snapshot)
     if (!snap) return { text: 'repo-band: no scan yet.' }
     const flagged = snap.repos.filter(needsAttention)
-    if (flagged.length === 0) return { text: `All ${snap.total} repos clean and pushed.` }
-    const rows = flagged.map(
-      r =>
-        `- ${r.name} (${r.branch || '?'}): ${r.dirty ? `${r.dirty} changed` : ''}${r.dirty && r.ahead ? ', ' : ''}${r.ahead ? `${r.ahead} unpushed` : ''} — ${r.path}`,
-    )
+    if (flagged.length === 0) return { text: `All ${snap.total} repos clean, pushed and up to date as of the last fetch.` }
+    const rows = flagged.map(r => {
+      const bits = [r.dirty ? `${r.dirty} changed` : '', r.ahead ? `${r.ahead} unpushed` : '', r.behind ? `${r.behind} to pull` : '']
+      return `- ${r.name} (${r.branch || '?'}): ${bits.filter(Boolean).join(', ')} — ${r.path}`
+    })
     return { text: `${flagged.length} of ${snap.total} repos need attention:\n${rows.join('\n')}` }
   })
 
@@ -156,25 +250,27 @@ export const register: Register = on => {
     const snap = await read($, snapshot)
     const scanning = await read($, isScanning)
     const exiting = await read($, pendingExit)
+    const fetching = await read($, isFetching)
     const { Box, Text, Button } = $.ui.resolve(e)
 
     const flagged = snap ? snap.repos.filter(needsAttention) : []
     const dirty = flagged.filter(r => r.dirty > 0).length
     const unpushed = flagged.filter(r => r.ahead > 0).length
+    const behind = flagged.filter(r => r.behind > 0).length
     const summary = !snap
       ? 'repos: scanning…'
       : flagged.length === 0
         ? `repos ✓ ${snap.total} clean`
-        : `repos: ${dirty} dirty · ${unpushed} unpushed`
+        : `repos: ${dirty} dirty · ${unpushed} unpushed${behind ? ` · ${behind} behind` : ''}`
     const detail = flagged
-      .map(r => `${r.name}${r.dirty ? ` ✎${r.dirty}` : ''}${r.ahead ? ` ↑${r.ahead}` : ''}`)
+      .map(r => `${r.name}${r.dirty ? ` ✎${r.dirty}` : ''}${r.ahead ? ` ↑${r.ahead}` : ''}${r.behind ? ` ↓${r.behind}` : ''}`)
       .join('  ')
 
     const mine = (
       <Box flexDirection="column">
         <Box flexDirection="row" gap={1}>
           <Text color={flagged.length ? 'yellow' : 'green'}>{summary}</Text>
-          {scanning && snap && <Text dimColor>(rescanning)</Text>}
+          {fetching ? <Text dimColor>(fetching)</Text> : scanning && snap && <Text dimColor>(rescanning)</Text>}
           <Button
             key="closeout"
             label={exiting ? 'Closeout + exit queued' : 'Closeout'}
