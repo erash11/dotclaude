@@ -1,0 +1,319 @@
+##### framework--strength-training-aims-and-method-chart-figs-7-1-and-7-2.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7"
+     7	topic: classifying strength training methods
+     8	category: [strength, programming, methods, classification]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Strength Training Methods Sorted by Structural or Functional Aim (Figs 7.1 and 7.2)
+    15	
+    16	**What it is** — The authors open Chapter 7 by restating that "all strength training depends on two dominant factors ... namely structural conditioning and functional (central nervous and neuromuscular) conditioning", so training "may be categorised according to its major structural and functional aims relative to the importance of nervous system training methods (Fig 7.1)" (PDF p. 404 / printed p. 393). Fig 7.1 (PDF p. 405 / printed p. 394, read from the page image) splits Strength Training into Structural (Connective Tissue Hypertrophy and Strength; Muscle Hypertrophy) and Functional (Muscle Endurance; Maximal Strength; Power), with an arrow under the five boxes labelled "Increasing importance of nervous system training", running from connective tissue on the left to power on the right. The caption says power "refers to the qualities of strength-speed and speed-strength".
+    17	
+    18	Fig 7.2 (PDF p. 406 / printed p. 395, read from the page image and 300 dpi crops) is a four-column chart: Fitness Quality, Category of Method, Methods, Variations. The authors chose a "loosely interconnected array of columns and rows, showing only some of the more obvious relationships" because a single flowchart would be "logically tedious, unattractive and largely unusable" given the overlap between methods (PDF p. 404 / printed p. 393). What the image shows:
+    19	- Fitness qualities: explosive strength, maximal strength, strength-speed, speed-strength, strength-endurance, speed-endurance, flexibility, hypertrophy. Only three carry a drawn connector: explosive strength to Reactive Methods, flexibility to a box of static, passive, active, ballistic and PNF, and hypertrophy to Bodybuilding Methods. The other five quality boxes have no drawn link.
+    20	- Categories: reactive, supramaximal, maximal, circa-maximal, submaximal. Reactive Methods connects to Plyometrics and Contrast Methods; Supramaximal Methods connects straight to its box of variations; Maximal, Circa-maximal and Submaximal Methods have no drawn connector to any method.
+    21	- Methods with their variations: Plyometrics; Contrast Methods (load release, heavy-light set, stripping, pneumatics, static-dynamic); supramaximal variations (forced reps, restricted range, eccentrics, cheating, ballistics); Weightlifting Method (single rep sets, few rep sets); Isometrics (traditional, explosive, oscillatory, APRE); Quasi-isometrics and Endurance Methods, both with no drawn variations; an Oxford Method box in the variations column with no drawn link; Pyramiding (load pyramiding, rest pyramiding, stripping, reverse pyramid, APRE, DeLorme method); Bodybuilding Methods (plateau, step, multi-sets, supersets, split routine, continuous sets, progressive segments, pre-exhaustion, reps to failure, alternating sets, miscellaneous); Circuit Training (interval, continuous); Multi-purpose Training (isokinetics, loadless training, zone training, hybrids, interval sets, cluster training).
+    22	
+    23	Stripping appears twice (under Contrast Methods and under Pyramiding) and APRE appears twice (under Isometrics and under Pyramiding). The authors give the reason: "some of the training methods may be used to achieve several different aims by altering variables such as the load, number of repetitions and rest intervals"; pyramiding "should not be regarded merely as a bodybuilding method" because it can serve hypertrophy, strength and endurance "depending on the load and number of repetitions (which are inversely related)" (PDF pp. 404-405 / printed pp. 393-394). Likewise cheating and restricted range repetitions, "although classified as supramaximal methods, may also be used submaximally or circamaximally", and it is "the role of the coach to choose a given method according to the intended training goal" (PDF p. 405 / printed p. 394).
+    24	
+    25	**Choosing between hypertrophy and nervous system work.** On the same page the authors say the choice "may be based on performance in tests of explosive strength and speed-strength (e.g. vertical jump), as well as on the magnitude of the strength deficit discussed early in Chapter 1. If this deficit at any stage is large, then it would be appropriate to concentrate more on weightlifting and reactive methods, whereas, if the deficit is small, submaximal bodybuilding methods should be relied upon" (PDF p. 405 / printed p. 394). This is the direction of Chapter 1's "In general" rule ("if the strength deficit is large ... weightlifting or plyometric methods"; "If the strength deficit is small, hypertrophy must be induced by submaximal loading methods", PDF p. 21 / printed p. 10). The jump-test paragraph on that same Chapter 1 page pairs a large deficit with "strength and hypertrophy training with 5RM to 8RM ... loads" instead (PDF p. 21 / printed p. 10). Chapter 7 names jump performance as a basis but gives a direction only for the deficit, so it does not settle which reading applies to a jump-test deficit. The rule and its internal conflict are rated `contested` in [[heuristic--strength-deficit-sets-training-method-choice]].
+    26	
+    27	The authors also point to Table 1.1, "based largely on the practical experience of generations of bodybuilders and weightlifters", as "an initial guide" read alongside Fig 7.1 (PDF p. 405 / printed p. 394; see [[framework--resistance-training-prescription-by-goal]]).
+    28	
+    29	**Sources and scope of the catalogue.** The chapter opens with the sources of strength-training knowledge: "Weightlifting and Powerlifting", "Bodybuilding", "Supplementary resistance training", "Physical therapy" and "Scientific research" (PDF p. 404 / printed p. 393, checked against the page image). "Only in recent years, has science begun to investigate seriously the foundations, validity and scope of the vast amount of practical information gathered by several generations of adherents of the 'Iron Game'" (PDF p. 404). The concluding remarks call 7.1 "a rapid reference for the major methods which are most frequently used in the training of high-level athletes", and say it leaves out methods "quoted or 'invented' by writers in popular bodybuilding magazines, simply because they differ only in name and a few minor details from existing methods" (PDF p. 414 / printed p. 403, checked against the page image). Inference: most of the 7.1 catalogue rests on practice in the strength sports, not on studies cited on these pages.
+    30	
+    31	**Notes beside Fig 7.1** (PDF p. 405 / printed p. 394, checked against the page image):
+    32	- *Superslow.* Quasi-isometrics "occurs as a natural consequence of training with near-maximal loads", but "there is a discrete method of quasi-isometrics (nowadays popularised in bodybuilding circles as the *superslow method*), which entails performing very slow controlled repetitions with even moderately heavy or lighter loads. In this case the athlete chooses to move the load slowly; with heavier weights he has no option but to move slowly." No load, repetition or rest figures are given. The term itself is defined in Chapter 1 ([[framework--precise-muscle-action-terminology]]).
+    33	- *Active stretching.* "several of the other training methods with heavy resistance used over a full range of movement constitute very effective means of active stretching".
+    34	- *Connective tissue first.* "great emphasis should be placed on increasing the mass and strength of the connective tissues, such as the tendons, ligaments, cartilages and joint capsules, particularly during the early stages of training and transition phases to levels of higher competitive intensity (see 1.6.2)". Chapter 1 gives the basis (connective tissue adapts more slowly than muscle, [[claim--differential-tissue-adaptation-rates]]) and Chapter 6 the rule ([[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]]).
+    35	- *Low-intensity cyclical work.* "An essential part of the general preparatory phase of all training is also low intensity, prolonged cyclical activity to enhance cardiovascular and circulatory processes, as well as capillarisation in all the relevant muscle groups. This same type of activity can also play a useful role in restoration between intensive training sessions and phases." No study, duration or intensity is given.
+    36	
+    37	**Why it works** — The authors' basis is the two-factor view of strength (structural and functional) stressed "throughout this text" (PDF p. 404 / printed p. 393), set out in Chapter 1 ([[framework--functional-vs-structural-resistance-training]]). They give no evidence for the ordering of the five aims along the nervous-system arrow. Inference: the arrow is a teaching device that places each aim by how much of its gain the authors attribute to neural change; it is not a measured scale.
+    38	
+    39	**When to apply** — As a menu when building a block: start from the fitness quality the block targets, then pick a category and method, and set load, repetitions and rest to fit the aim, since the same method can serve several aims (PDF pp. 404-405). Eric's baseline (line 103): "The Principle of Dynamic Correspondence (Verkhoshansky) ... governs whether an exercise actually transfers, rather than surface resemblance to the sport." **Explicit (interview 2026-09-28, Q1)**. Inference: the chart picks a method for a quality; dynamic correspondence still decides which exercise the method is applied to. Eric's baseline (line 76) uses the dynamic strength index "to determine whether we need more plyometric training or more max-strength training" **Explicit (interview 2026-09-28, Q21)**, tagged in the baseline as contested on the evidence. Inference: that is the same kind of decision the authors make from a jump test and the strength deficit, made with a different measure.
+    40	
+    41	**When NOT to apply** — Do not read Fig 7.2 as a decision tree. The authors say it shows "only some of the more obvious relationships" (PDF p. 404), and five of its eight quality boxes have no drawn link to any method. Do not read the method headings as fixed: a method's aim moves with its load, repetitions and rest (PDF pp. 404-405). The authors' concluding remark for 7.1 also warns that "no methods operate in isolation of one another; each method has immediate and delayed training effects which have significant effects on other methods that follow hours, days or even weeks later" (PDF p. 414 / printed p. 403), so a method chosen from the chart still has to be placed in a sequence. Do not read the catalogue as tested: the authors say science has only "in recent years" begun to examine Iron Game practice (PDF p. 404). Do not use the hypertrophy-or-nervous-system rule on a jump-test deficit without reading the conflict recorded in [[heuristic--strength-deficit-sets-training-method-choice]].
+    42	
+    43	**Example** — The authors' own example: pyramiding is placed in its own row because, by changing the load and number of repetitions, it can be used "in the earlier preparatory stages to meet several general training aims such as increased muscle hypertrophy, strength and endurance" (PDF pp. 404-405 / printed pp. 393-394).
+    44	
+    45	**Related** — [[framework--functional-vs-structural-resistance-training]] (Chapter 1 source of the structural and functional split); [[heuristic--strength-deficit-sets-training-method-choice]] (the deficit rule; Chapter 7 restates its "In general" direction); [[framework--strength-deficit-jump-comparison-estimate]]; [[framework--resistance-training-prescription-by-goal]] (Table 1.1); [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]]; [[framework--contrast-methods-load-release-pneumatics-heavy-light-set]]; [[framework--three-bodybuilding-regimes-and-add-on-methods]]; [[heuristic--isometric-apre-six-second-maximum-protocol]] (why APRE sits under Isometrics); [[framework--precise-muscle-action-terminology]] (quasi-isometric defined); [[heuristic--eccentric-quasi-isometrics-for-active-flexibility-and-starting-strength]]; [[framework--stretching-techniques-taxonomy-static-vs-dynamic]]; [[claim--differential-tissue-adaptation-rates]] (connective tissue adapts slowly); [[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]]
+##### framework--maximal-supramaximal-circa-maximal-and-submaximal-methods.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: methods by load category
+     8	category: [strength, methods, maximal-strength, loading]
+     9	confidence: contested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Maximal, Supramaximal, Circa-maximal and Submaximal Methods: Definitions, Loads and Rests
+    15	
+    16	**What it is** — Section 7.1 defines four load categories of resistance method (PDF pp. 406-407 / printed pp. 395-396, checked against the page images):
+    17	
+    18	**Maximal methods**
+    19	- *Weightlifting method:* "single repetition explosive sets or low repetition sets (2-3 reps), in which each repetition is separated from the next by a short rest period (1-5 minutes, depending on how close the load is to a 1RM)", also called "the *interval set* method" (PDF p. 406 / printed p. 395). Bodybuilders adopted it as the *rest-pause method*, "sets of 1RM, but with rest periods of 10-20 seconds"; the authors say the shorter rest "is possible, since bodybuilding movements do not require the high levels of skill, speed and coordination of the Olympic lifts" (PDF p. 407 / printed p. 396).
+    20	- *Maximal or circa-maximal concentrics:* the concentric phase of a 1RM or near-1RM lift is completed and the bar is dropped (bumper plates) "so as to avoid executing the depleting eccentric lowering phase"; in bodybuilding "a partner usually assists in the lowering" (PDF p. 407).
+    21	- *Maximal isometrics:* slow or explosive isometrics "in single or few repetition sets lasting about 5 seconds with rest intervals of 2-3 minutes between sets" (PDF p. 407).
+    22	- *Maximal eccentrics:* a load "about 30-40% greater than one's maximum concentric lift" taken from racks or raised by a partner and lowered under control (PDF p. 407).
+    23	
+    24	**Supramaximal methods** (PDF p. 407 / printed p. 396)
+    25	- *Forced repetitions:* to failure, then "a few more repetitions with the aid of a training partner, who provides the minimal assistance necessary" for the concentric phase; the eccentric phase "is carried out without help".
+    26	- *Restricted range repetitions:* a load heavier than the full-range maximum, moved through "a few small range concentric-eccentric repetitions near his strongest region of action"; done at the end of "a normal 5-8 repetition" set to the point of "burn", these are "*burning reps*". Weightlifters and powerlifters use partial ranges "to rectify any deficit of strength in that region", for example pulls "around knee-to-lower thigh level" and squats or bench presses at the "sticking point", set up in power racks.
+    27	- *Cheating:* momentum, bouncing, swaying or accessory muscles, used above 1RM or at the end of a heavy set to failure; "There are recommended safe ways of cheating and these must be followed religiously if injury is to be avoided" (the safe ways are not described).
+    28	- *Ballistics:* "lowering or dropping a weight rapidly to recruit the myotatic stretch reflex or exploit the stored elastic energy"; "the training load is not necessarily supramaximal; rather, it is the resulting muscle tension that reaches this level of intensity."
+    29	
+    30	**Circa-maximal methods:** loads "characteristically about 90-97.5% of 1RM"; the difference from maximal methods is that circa-maximal work "may be performed with several successive repetitions without a prolonged rest interval" (PDF p. 407 / printed p. 396).
+    31	
+    32	**Submaximal methods:** "loads of about 60-80% of one's 1RM to the point of failure on the last set", "mainly for bodybuilding reasons such as hypertrophy or muscle definition" (PDF p. 407 / printed p. 396).
+    33	
+    34	**Classification inconsistency (not a contradiction).** Maximal eccentrics are described under Maximal Methods in the text, which adds that "Often the eccentric method is regarded as one of the 'supramaximal' methods" (PDF p. 407); Fig 7.2 lists eccentrics under supramaximal (PDF p. 406, image). The method is the same; only its heading differs.
+    35	
+    36	**Why `contested`: rest between near-maximal singles.** The rating applies only to the rest between near-maximal singles; the load-band definitions are not in dispute. The weightlifting method gives "1-5 minutes" between single repetitions (PDF p. 406 / printed p. 395). Two pages later the authors say "much weightlifting and powerlifting training relies on a specific form of interval resistance training, namely the use of single repetitions of near-maximal weights with a few seconds of rest between repetitions" (PDF p. 409 / printed p. 398, image). As worded, both sentences describe the rest between near-maximal singles in weightlifting training. PDF p. 406 calls the 1-5 minutes "optimal recovery intervals between sets", and the PDF p. 409 sentence opens the interval section that leads straight into cluster training (10-20 s within an extended set), so the two passages may describe different methods, sets of singles against clustered singles. The book does not say which, and does not reconcile them. Inference: the "few seconds" version is closer to the bodybuilders' rest-pause (10-20 s) or to intensive clustering (about 20 s, see [[framework--interval-resistance-training-and-cluster-sets]]) than to the weightlifting method as first defined.
+    37	
+    38	**Why it works** — The authors give mechanisms for only some methods: dropping the bar avoids the "depleting" eccentric phase; rest-pause can use shorter rests because bodybuilding movements need less skill, speed and coordination; ballistics recruit "the myotatic stretch reflex" or "stored elastic energy"; restricted range work targets "any deficit of strength in that region" (PDF pp. 406-407). For eccentrics they give risk, not mechanism: the method "carries an increased risk of injury", is "associated with greater muscle soreness than most other methods and should not be used too frequently", and its dangers "can be reduced by selecting the load carefully and avoiding sudden changes in movement velocity or trajectory" (PDF p. 407). The damage and adaptation evidence is atomized in [[claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff]].
+    39	
+    40	**When to apply** — As working definitions when writing or reading a programme: the category names tie a method to a load band (circa-maximal about 90-97.5%, submaximal about 60-80% of 1RM) and a rest pattern. Restricted range work fits a lift that fails at one region of the range (the authors' sticking-point use). Eric's baseline (line 61): "No sport performs true 1RM testing. Maxes are projected from observation plus the athlete's history." **Explicit (interview 2026-09-28, Q10)**. Inference: every %1RM band here then rests on a projected max, and the 7.5-point width of the circa-maximal band may be no larger than the error of a projected max, so that band may be easier to hit by repetitions in reserve or bar speed than by a percentage. Eric's baseline (line 107) keeps %1RM prescription "on that explicit basis" (Tension 16, resolved 2026-10-02).
+    41	
+    42	**When NOT to apply** — Not for novices on the supramaximal side: the authors give injury warnings for eccentrics and cheating (PDF p. 407); forced repetitions sit in the same supramaximal group, and Chapter 5 says shock methods of this kind "are generally unsuitable for novices" ([[framework--shock-methods-to-break-training-stagnation]]). Do not use cheating on the authors' word alone: they say safe ways exist but do not give them. Do not treat the rest figures for singles as settled; the book gives two values that may describe different methods (above). Eccentrics "should not be used too frequently" (PDF p. 407), and the authors give no frequency.
+    43	
+    44	**Example** — The authors' own examples: partial pulls "around knee-to-lower thigh level" and squats or bench presses in the range of the "sticking point", with power racks securing the start position (PDF p. 407 / printed p. 396); and a weightlifter dropping a near-1RM bar on bumper plates to skip the eccentric phase (PDF p. 407).
+    45	
+    46	**Related** — [[framework--strength-training-aims-and-method-chart-figs-7-1-and-7-2]]; [[framework--three-methods-for-maximum-strength-repetitive-brief-maximal-isometric]] (Chapter 5's maximum-strength methods and loads); [[claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff]]; [[framework--shock-methods-to-break-training-stagnation]] (forced reps, restricted range maxima and maximal eccentrics as shock methods); [[claim--joint-angle-specific-strength-training-narrows-transfer]] (why partial-range work may transfer narrowly); [[science-and-practice-of-strength-training--zatsiorsky/framework--joint-strength-curves-sticking-points-and-moment-arm]]; [[framework--interval-resistance-training-and-cluster-sets]]
+##### framework--three-bodybuilding-regimes-and-add-on-methods.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: bodybuilding regimes and set methods
+     8	category: [hypertrophy, bodybuilding, sets-and-reps, programming]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Three Bodybuilding Regimes (Classical, Extensive, Intensive) and the Add-on Methods They Use
+    15	
+    16	**What it is** — Under Submaximal Methods the authors give three regimes (PDF p. 408 / printed p. 397, checked against the page image):
+    17	
+    18	| Regime | Sets x reps | Load | Rest between sets |
+    19	|---|---|---|---|
+    20	| A. Classical | 3-5 x 8-10, same load | not stated | 2-5 min |
+    21	| B. Extensive ("high volume") | 3-5 x 15-20 | "about 60-70%" | 2-3 min, "increasing with increase in load from set to set" |
+    22	| C. Intensive ("high intensity") | 3-5 x 5-8 | "80-90%" | 2-5 min, increasing with load |
+    23	
+    24	The classical regime "may also be regarded as a particular case of the *plateau system*". A second classical form raises the load each set so that repetitions fall "from 10 in the first set to 4-5 repetitions in the last set", with rest rising as load rises: "a typical form of the *pyramid system*". For the intensive regime the authors point to "Figs 1.8 and 1.9" (not checked for this entry).
+    25	
+    26	"Each of the preceding regimes may use" forced repetitions, cheating, eccentrics (negatives), burning repetitions and ballistics (defined in [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]]), plus these "popularly used" methods (PDF p. 408 / printed p. 397):
+    27	- **Supersets:** set 1 of exercise 1, then set 1 of exercise 2, and so on. "Since supersets are not intended to develop strength, the athlete allows little or no rest between sets." More than two exercises is *multi-setting*; the *giant set* is "4-6 different exercises performed in a mini-circuit".
+    28	- **Pre-exhaustion:** a single-joint exercise first "preferentially exhausts one of the muscle groups that will be used in the following multi-joint exercise", which also "compels other muscles to act strongly as accessory muscles".
+    29	- **Repetitions to failure:** until no further repetition is possible without help; "often used for muscle endurance and definition training".
+    30	- **Split routine:** two components trained on successive workouts (upper then lower body; or flexors and adductors one day, extensors and abductors the next); advanced athletes may split within a day. "A common weekly split routine prescribes split training on Monday-Tuesday, resting on Wednesday, more split training on Thursday-Friday, completed by a weekend of passive or active rest."
+    31	- **Zone training** (PDF p. 409 / printed p. 398): one body zone per session, so a whole-body regime "must be spread over several sessions or days"; split routines are "one variation of this method".
+    32	
+    33	**Set against Table 1.1.** The book's own goal chart gives hypertrophy as 60-80% 1RM, 8-15 repetitions, 4-8 sets, 2-5 min rest (PDF p. 22 / printed p. 11, per [[framework--resistance-training-prescription-by-goal]]). The three regimes overlap it on load and rest; the extensive regime's 15-20 repetitions and the intensive regime's 5-8 repetitions fall outside 8-15, and all three use 3-5 sets against 4-8. Inference: these are named variants inside a broad goal chart, not two answers to one question, so this is recorded as a difference, not a contradiction. The submaximal category itself is "about 60-80% of one's 1RM" (PDF p. 407), while the intensive regime reaches 90%.
+    34	
+    35	**Why it works** — The authors give a reason only for supersets (little rest because they "are not intended to develop strength") and for pre-exhaustion (the pre-exhausted prime mover forces accessory muscles to work harder, PDF p. 408). They give no mechanism for the regimes and no study. Chapter 7 places these methods under the structural aim of hypertrophy ([[framework--strength-training-aims-and-method-chart-figs-7-1-and-7-2]]); Chapter 1 sets out the kinds of hypertrophy they produce ([[framework--sarcomere-vs-sarcoplasmic-hypertrophy]]).
+    36	
+    37	**When to apply** — When a hypertrophy or work-capacity phase is planned and the coach wants named, bounded regimes. Eric's baseline (line 180): "The preparatory period is sequenced hypertrophy/work-capacity, then basic strength, then strength-to-power, each with defined intensity/volume bands (e.g., hypertrophy phase 50-75% intensity, 3-6 sets of 5-20 reps ...)" **Inferred (transcript + slides)**. Inference: the classical and extensive regimes sit inside those course bands; the intensive regime's 80-90% sits above the course's hypertrophy band, in the range the course gives for the strength phase ("strength phase 80-90% intensity", same line). Inference: split routines and zone training suit athletes who lift on more days than a whole-body session allows.
+    38	
+    39	**When NOT to apply** — Not as sport strength methods. The authors say bodybuilding methods "are of minimal significance for developing most of the specific functional types of strength fitness required in competitive sport" (PDF p. 412 / printed p. 401). Supersets are, in the authors' words, "not intended to develop strength" (PDF p. 408). Eric's baseline (line 104): "single-joint assistance work is kept to a small share of total volume" **Inferred (transcript + slides)**. Inference: pre-exhaustion and isolation-led splits build a session around single-joint work, which runs against that rule outside a dedicated hypertrophy block. Eric's baseline (line 61): "No sport performs true 1RM testing." **Explicit (interview 2026-09-28, Q10)**; the regimes' percentages would rest on projected maxes.
+    40	
+    41	**Example** — The authors' own: "if supine dumbbell flyes are performed before a bench press, the pectoral and anterior deltoid muscles are pre-exhausted and the triceps are forced to become more vigorously involved" (PDF p. 408 / printed p. 397).
+    42	
+    43	**Related** — [[framework--resistance-training-prescription-by-goal]] (Table 1.1); [[framework--set-structures-plateau-step-stripping-and-pyramids]] (plateau and pyramid systems); [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]]; [[framework--miscellaneous-bodybuilding-set-variations]]; [[framework--sarcomere-vs-sarcoplasmic-hypertrophy]]; [[claim--muscle-isolation-is-load-dependent-mostly-illusory-under-heavy-load]] (the book's view on how far a single-joint exercise isolates a muscle); [[framework--circuit-layout-variants-superset-retrophase-zigzag-detour]] (a two-station circuit is a superset)
+##### framework--set-structures-plateau-step-stripping-and-pyramids.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: set structures and pyramids
+     8	category: [sets-and-reps, loading, programming, bodybuilding]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Set Structures: Plateau, Step, Stripping, Three Kinds of Pyramid, and the Reverse Pyramid
+    15	
+    16	**What it is** — The authors define six ways of arranging load and repetitions across the sets of one exercise (PDF pp. 408-409 / printed pp. 397-398, checked against the page images):
+    17	
+    18	- **Plateau:** "After a specific warmup with a light weight, the load remains constant for 3-4 sets (e.g. 50 x 10, 70 x 6, 70 x 6, 70 x 6)". Used "during the early stages of training novices or for transitional active rest phases after weeks of heavy training" (PDF p. 408). The unit of 50 and 70 is not given.
+    19	- **Step:** "The number of repetitions is kept fixed, while the load is increased after each set until the prescribed number of repetitions can no longer be maintained (e.g. 60 x 3, 70 x 3, 80 x 3, 85 x 3)" (PDF p. 408).
+    20	- **Stripping (descending set, "Drop Sets"):** pyramid up "until a target load is reached with about 3-4 repetitions", then "A partner immediately removes 5-10 kg and the athlete exercises to failure", repeated "until the starting weight or less is reached". Used "for muscle endurance and definition training". If the rising pyramid reaches "a 1RM or 2RM with no more than 6 repetitions for any set, then stripping offers a logical way of developing strength and muscle endurance, since the use of higher repetition sets is too fatiguing to enable one to reach a true 1RM" (PDF p. 408).
+    21	- **Pyramid (load pyramiding):** "4-5 sets" with load rising and repetitions falling. Submaximal example "10 x 70%.1RM, 8 x 80%.1RM, 6 x 85%.1RM, 4 x 90%.1RM"; maximal strength example "6 x 85%.1RM, 4 x 90%.1RM, 2 x 97%.1RM, 1 x 100%.1RM", with the values stated to be "derived from the equations associated with Fig 1.9" (not checked for this entry). Rest "2-6 minutes, depending on the load used, the aim of the pyramid and the number of the set (the rest increases with load)" (PDF pp. 408-409).
+    22	- **Repetition pyramiding:** fixed load, repetitions raised "by one or two repetitions per set (e.g. from an initial 4 to a maximum of 10)". **Rest pyramiding:** fixed load, rest progressively shortened; load is rarely raised at the same time, and if it is, "the increments are kept small (2.5-5 kg)" (PDF p. 409). The DeLorme method and APRE "involve some form of pyramiding" (PDF p. 409).
+    23	- **Reverse pyramid:** pyramid up to a final set, then "work down the pyramid in reverse order using the same number of repetitions for each load". It is "very similar to the stripping method, but does not require the athlete to exercise to failure" (PDF p. 409).
+    24	
+    25	The authors then add: "Pyramiding is rarely used by serious athletes today; they find it more beneficial to progress rapidly to the main training load and performing higher repetition work on the way down from a maximum, if absolutely necessary" (PDF p. 409 / printed p. 398). Their sticking-point list repeats this: "If you uses pyramids, use fewer repetition sets to reach your maximum, then do your repetition work during a reverse pyramid down from your maximum. This can be especially useful if you wish to concurrently work on strength and hypertrophy" (item 7, PDF p. 413 / printed p. 402).
+    26	
+    27	Inference: this sits alongside, not against, the chapter's opening point that pyramiding can serve hypertrophy, strength or endurance "in the earlier preparatory stages" (PDF p. 405). One sentence says what pyramiding can do; the other says what serious athletes prefer.
+    28	
+    29	**Why it works** — The one reason the authors give is for stripping and the reverse pyramid: high-repetition sets on the way up are "too fatiguing to enable one to reach a true 1RM" (PDF p. 408), so the repetition work goes after the heavy set. They give no mechanism or study for the other structures.
+    30	
+    31	**When to apply** — Plateau sets for novices early on and for active-rest transitions, by the authors' own scope (PDF p. 408). Inference: step sets can find a working load for a fixed repetition target. A short ramp to the top set, then back-off or reverse-pyramid sets, when a session must serve strength and hypertrophy together (PDF pp. 409, 413). Eric's baseline (line 107): "Prilepin's chart (total reps and reps-per-set by %1RM) is the default guide for daily rep/set assignment within a training block" **Inferred/Explicit (shared team material)**, kept with %1RM "on that explicit basis" of projected maxes (Tension 16, resolved 2026-10-02). Inference: a pyramid written in %1RM, like the authors' two examples, inherits the projection error of Eric's baseline line 61 ("No sport performs true 1RM testing", **Explicit (interview 2026-09-28, Q10)**); the step method finds the day's load from performance instead.
+    32	
+    33	**When NOT to apply** — Do not use a long ascending pyramid to reach a true maximum: the authors say "higher repetition sets" on the way up are too fatiguing for that (PDF p. 408), and that serious athletes rarely pyramid (PDF p. 409). Stripping to failure is, in the authors' words, "commonly used for muscle endurance and definition training" (PDF p. 408); it is not a maximal-strength method unless the ascent stays at 6 repetitions or fewer. Plateau sets are for novices and transition phases (PDF p. 408). Inference: not for a peaking block.
+    34	
+    35	**Example** — The authors' own maximal-strength pyramid: 6 x 85%, 4 x 90%, 2 x 97%, 1 x 100% of 1RM, with rest lengthening as the load rises, inside 2-6 minutes (PDF p. 409 / printed p. 398).
+    36	
+    37	**Related** — [[framework--three-bodybuilding-regimes-and-add-on-methods]] (the classical regime as a plateau case, the second classical method as a pyramid); [[claim--delorme-oxford-mccloy-progressive-resistance-variants-compared]]; [[framework--apre-autoregulating-progressive-resistance-exercise]]; [[heuristic--apre-skill-learning-6rm-pyramid-test-and-rm-muscle-testing]]; [[framework--circuit-layout-variants-superset-retrophase-zigzag-detour]] (pyramid and stripping circuits); [[heuristic--overcoming-sticking-points-repertoire-of-27-strategies]]
+##### framework--interval-resistance-training-and-cluster-sets.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: interval resistance and cluster sets
+     8	category: [strength-endurance, interval-training, cluster-sets, loading]
+     9	confidence: contested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Interval Resistance Training (Extensive and Intensive) and Cluster Sets
+    15	
+    16	**What it is** — The authors define interval resistance training by analogy with track: "the primary aim of interval training is generally to develop strength-endurance by means of systematically alternating work and recovery phases", with rest "(preferably active rest)" too short for full recovery "so that the athlete is forced to cope with increasing exhaustion" (PDF p. 409 / printed p. 398, checked against the page image). They split it into two broad categories, "one to increase strength or power and the other to increase endurance", and the endurance category into two methods (PDF p. 409):
+    17	
+    18	| | Extensive interval | Intensive interval |
+    19	|---|---|---|
+    20	| Develops | "medium duration strength-endurance" and recovery capacity | "short-duration strength-endurance" and recovery capacity |
+    21	| Load | "30-40% of 1RM" | "50-60% of 1RM" |
+    22	| Sets x reps | "5-6 sets of 20-30 repetitions" | "3-6 sets, where each set is performed to failure" |
+    23	| Rest | "1-2 minutes" | "10-90 seconds", by exercise, load, fitness and loading duration |
+    24	| Energy | below 40% "arterial blood flow is not restricted" and "'aerobic' energy processes predominate" | higher loads "inhibit arterial blood flow and anaerobic energy processes predominate" |
+    25	| Heart rate | large muscle groups needed to reach the level "recommended for aerobic conditioning, e.g. 75% of (220-Age)" | "can readily increase heart rates to over 180 beats/min" |
+    26	| Circuits | "Specially designed circuit training programmes" can serve | special circuits with "1-3 minutes" between circuits |
+    27	
+    28	For extensive work the authors want "the larger muscle groups such as the quadriceps, glutei, pectorals and erector spinae"; "bicep curls, calf raises and tricep push-downs play a minimal role in elevating the heart rate" (PDF p. 409).
+    29	
+    30	**Cluster training** is "another form of interval training": one or more repetitions "with a 10-20 second interval between each repetition or cluster of repetitions in an extended set". "Characteristically, the minimum load used is one's 5RM and 4-6 sets are performed" (PDF p. 409 / printed p. 398). *Extensive clustering*: "4-6 repetitions with one's 4-6RM, with 10 second rest intervals between each cluster", or stripping-style with the load cut "by 10-20%" and a 10 s rest after each set (PDF pp. 409-410). *Intensive clustering*: "4-6 sets of only one repetition with 75-90% of 1RM, with about a 20 second rest between repetitions for 4-6 repetitions" (PDF p. 410 / printed p. 399, image). That last sentence is unclear as printed: it gives both "sets of only one repetition" and "4-6 repetitions" without saying how they nest.
+    31	
+    32	**Why `contested`.** The same paragraph sets the minimum at "one's 5RM" (PDF p. 409) but prescribes extensive clustering "with one's 4-6RM" (a 6RM is lighter than a 5RM) and a stripping form that cuts the load "by 10-20%" after each set (PDF pp. 409-410), both of which take the load below that minimum; intensive clustering then gives "75-90% of 1RM" (PDF p. 410). All of these state the load for the same method. Inference: the authors' own maximal pyramid puts 6 repetitions at 85% of 1RM, with values "derived from the equations associated with Fig 1.9" (PDF p. 409), so by the book's own figures a 5RM sits above 85%, and the lower end of the intensive range (75%) falls below the stated minimum. The book does not reconcile them.
+    33	
+    34	A second internal conflict touches this section: the weightlifting method rests "1-5 minutes" between singles (PDF p. 406), while this section says weightlifting and powerlifting rely on near-maximal singles "with a few seconds of rest between repetitions" (PDF p. 409). The two passages may describe different methods (sets of singles against clustered singles), and the book does not say which; see [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]].
+    35	
+    36	**Different method, not a conflict.** Chapter 5's circuit guidelines give aerobic circuits "20-40" repetitions at "usually not more than 30% of 1RM" and anaerobic circuits "3-8" repetitions at "usually more than 70% of 1RM" ([[framework--aerobic-vs-anaerobic-circuit-parameters]], PDF p. 315 / printed p. 304). Those are station prescriptions for circuits; the figures here are for interval sets. They differ (for example, 50-60% to failure here against more than 70% for 3-8 reps there) but they answer different questions.
+    37	
+    38	**Why it works** — The authors' mechanisms: incomplete rest forces the athlete "to cope with increasing exhaustion and thereby develop muscular endurance"; below about 40% of maximum arterial flow is not restricted, so aerobic processes predominate; at 50-60% flow is inhibited and anaerobic processes predominate (PDF p. 409). They give no mechanism for cluster sets beyond classing them as interval training. Chapter 3 adds that a series of single repetitions costs more energy than a continuous set with the same load ([[claim--exercise-economy-improves-with-skill-and-interval-style-costs-more]]).
+    39	
+    40	**When to apply** — Extensive intervals or circuits for general strength-endurance and recovery capacity in a general preparation phase, built on large muscle groups. Intensive intervals for short-duration strength-endurance. Cluster sets when the aim is more repetitions at a heavy load than one continuous set allows. Eric's baseline (line 182): "incompatible qualities (e.g., maximal strength work and glycolytic-capacity work) are not both targeted at full intensity in the same block" **Inferred (transcript + slides)**. Inference: intensive intervals to failure at 50-60% with short rest are close to glycolytic work, so by that rule they would not share a block with a maximal-strength emphasis. The authors' "75% of (220-Age)" is an aerobic conditioning target; Eric's baseline (line 119) uses age-based maximum heart rate for the anaerobic threshold at "about 85% of that" **Explicit (interview 2026-09-28, Q20)**. Inference: the two use the same formula for different targets and do not conflict.
+    41	
+    42	**When NOT to apply** — "Because of increasing fatigue and the greater likelihood of injury under such conditions, exercises that require high levels of skill are not recommended" (PDF p. 409); keep Olympic lifts and other technical lifts out of endurance intervals. Do not set intensive cluster loads from the book without choosing among its load statements (the 5RM minimum against the 4-6RM, the 10-20% strip and 75-90% of 1RM). Small single-joint exercises will not raise heart rate enough for extensive intervals, by the authors' own example (PDF p. 409).
+    43	
+    44	**Example** — The authors' own extensive interval prescription: 30-40% of 1RM, 5-6 sets of 20-30 repetitions, 1-2 minutes' rest, using exercises for the quadriceps, glutei, pectorals and erector spinae rather than curls, calf raises or push-downs (PDF p. 409 / printed p. 398).
+    45	
+    46	**Related** — [[framework--aerobic-vs-anaerobic-circuit-parameters]]; [[framework--continuous-interval-and-mixed-circuit-training-classification]]; [[claim--exercise-economy-improves-with-skill-and-interval-style-costs-more]]; [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]] (rest-pause and the weightlifting interval set); [[framework--set-structures-plateau-step-stripping-and-pyramids]] (stripping); [[heuristic--strength-endurance-load-tempo-and-the-75-80-percent-ceiling]]
+##### framework--hybrid-repetitions-and-hybrid-sets.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: hybrid exercises and sets
+     8	category: [exercise-selection, complexes, weightlifting, programming]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Hybrid Training: Several Movements in One Repetition, or a Different Movement Within One Set
+    15	
+    16	**What it is** — "Hybrid Training ... refers to exercise in which each repetition consists of two or more separate movements between the starting and end points" (PDF p. 410 / printed p. 399, checked against the page image). The clean-and-jerk, "a pull from the ground, with a front squat, followed by a thrust overhead", is "probably the best known hybrid exercise". The method also covers "the *hybrid set*, which comprises a different movement for each repetition of the set" (PDF p. 410).
+    17	
+    18	The authors' examples (PDF p. 410):
+    19	- Hybrid repetitions: barbell or dumbbell curl + overhead standing press; back or front squat + press (or push press or jerk); squat + good morning; dumbbell lateral raise (palms pronated) + upright row; dumbbell bench press + bent-elbow pullover (or flye).
+    20	- Hybrid sets: reps 1-5 dumbbell press, 6-10 dumbbell curl, 11-15 lateral raise; reps 1-5 narrow-grip bench press, 6-10 wide-grip; reps 1-5 squat, 6-15 calf raise; reps 1-5 squat, 6-10 overhead press or push press; reps 1-5 dumbbell bench press, 6-10 bent-elbow flye, 11-15 bent-elbow pullover.
+    21	- Unequal counts are allowed: "Reps 1-3: Power clean from the hang (3 reps); Reps 4-8: front squat (5 reps); Reps 9-10: push press (2 reps)" (PDF p. 411 / printed p. 400). Using "the recording convention in 6.6.2", this is written as 80 with a superscript 3 over "3+5+2", "for a bar loaded to 80kg, for a set of 3 repetitions" (PDF p. 411, image). By the 6.6.2 convention (PDF pp. 335-336 / printed pp. 324-325, checked against the page images, where "60 x 10, 70 x 8, 80 x 6, 80 x 6" is also written "10(60)¹, 8(70)¹, 6(80)²", so "6(80)²" means two sets of 6 at 80 kg) the superscript is the number of sets, so 80³ over 3+5+2 means three sets of the 10-repetition hybrid; the text's "for a set of 3 repetitions" conflicts with its own convention.
+    22	
+    23	Guidelines "to avoid injury for this demanding type of training" (PDF p. 411): "The load must be selected so that it can be performed without excessive strain in the weakest movement of the hybrid", and "The order of movements should always be arranged to permit their safe and controlled execution without causing exhaustion, impaired technique or overloading." A larger list of hybrid exercises is promised in Ch 8.4.
+    24	
+    25	**Why it works** — The authors' reasons: the clean-and-jerk "exercises an extensive variety of muscle groups", and "It is doubtful if any manoeuvre in any other sport rivals the clean-and-jerk or clean-and-push-press in recruiting maximal or near maximal contraction in so many muscle groups in such a short time". They cite their own Table 3.12 for the clean-and-jerk costing "over 60kJ per maximal lift, higher than all other lifts" (book's cross-reference, not checked for this entry). They attribute this to hybrid exercises involving "more joints of the body moving through a greater number of degrees of freedom", which gives "a more concentrated form of circuit training": "Instead of doing three separate exercises at three different stations, one can do all of them in a single repetition or at a single station" (PDF p. 410 / printed p. 399).
+    26	
+    27	**When to apply** — When a circuit is to be condensed into one station (the authors' use, PDF p. 410). Inference: also when session time or space is short and several movements can be loaded by the same bar. Eric's baseline (line 104): "Training time is deliberately weighted toward high motor-unit-recruitment core/ballistic movements (squats, cleans, jumps, throws, sprints)" **Inferred (transcript + slides)**. Inference: clean-based hybrids such as hang power clean, front squat and push press fit that rule; the curl and lateral-raise hybrids do not.
+    28	
+    29	**When NOT to apply** — When the load is set by the strongest movement: the authors require it to suit "the weakest movement of the hybrid" (PDF p. 411), so the stronger movements are under-loaded. Inference: that makes hybrids a poor choice when the aim is maximal load in one of the movements. Not in an order that brings a technical movement after a fatiguing one; the authors rule out orders that cause "exhaustion, impaired technique or overloading" (PDF p. 411). Do not cite the 60 kJ figure from this entry; it is the book's pointer to Table 3.12, not checked here.
+    30	
+    31	**Example** — The authors' own unequal hybrid set: hang power clean for 3, front squat for 5, push press for 2, with an 80 kg bar, written 80³ (three sets by the 6.6.2 convention) (PDF p. 411 / printed p. 400). The load is limited by the weakest of the three movements, by the authors' rule.
+    32	
+    33	**Related** — [[framework--strength-training-aims-and-method-chart-figs-7-1-and-7-2]] (hybrids under Multi-purpose Training); [[framework--continuous-interval-and-mixed-circuit-training-classification]]; [[claim--exercise-economy-improves-with-skill-and-interval-style-costs-more]]; [[heuristic--progressive-and-random-segmental-training]]
+##### heuristic--progressive-and-random-segmental-training.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: segmental range training
+     8	category: [partial-range, weightlifting, exercise-variation, technique]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Progressive and Random Segmental Training: Work the Range in Segments, as Rigert Did for the Pull
+    15	
+    16	**What it is** — *Progressive Segmental Training* divides "the range of movement into 2-4 segments, then performing 3-7 repetitions in each successive segment" (PDF p. 410 / printed p. 399, checked against the page image). The bodybuilding form is "Twenty-Ones": 7 repetitions over each third of a curl's range, "(or frequently, over the full range of movement)" for the last seven. The authors' weightlifting example: the Russian middle-heavyweight Rigert "used this method for training the pull in the clean and the snatch". In the clean pull "the bar first was raised to just below the knees for 1-3 repetitions, next the bar was moved for 1-3 repetitions between this point and mid-thigh, and, finally, 1-3 repetitions were performed between mid-thigh and waist level with full shoulder shrug and extension onto the toes. Frequently, the set was completed with a full clean pull from the ground" (PDF p. 410).
+    17	
+    18	A bodybuilding variant exercises the segments "in a different or random order or pattern every set or workout to minimise the possibility of early accommodation to a predictable regime, which can diminish the training effect"; the authors name it "Random Segmental Training" "For want of a better term" (PDF p. 410).
+    19	
+    20	**Why it works** — The authors give a reason only for the random variant: varying the order limits "early accommodation to a predictable regime, which can diminish the training effect" (PDF p. 410). For the progressive form they give no mechanism. Inference: each segment of the pull can be practised with repetitions before the whole pull is joined up, which is how Rigert's set ends. Zatsiorsky's library entry on accommodation states the general law the random variant appeals to ([[science-and-practice-of-strength-training--zatsiorsky/principle--accommodation-and-the-diminishing-returns-law]]).
+    21	
+    22	**When to apply** — Inference: for a lifter whose pull breaks down at one segment (for example below the knee or at mid-thigh), as segment practice that ends in the full lift, which is the structure of the authors' Rigert example. The random variant from the start of a block, to limit early accommodation (the authors' stated purpose, PDF p. 410). Eric's baseline (line 103) judges transfer by Dynamic Correspondence, including "amplitude/direction of movement" and "region of force production" **Explicit (interview 2026-09-28, Q1)**. Inference: segment work trains force in a chosen region of the range, so it fits that rule when the segment is the region the sport or lift needs.
+    23	
+    24	**When NOT to apply** — Inference: not as the only pull work. Rigert's set "Frequently" ended with a full clean pull (PDF p. 410), and the book's Chapter 2 material warns that joint-angle-specific strength transfers narrowly ([[claim--joint-angle-specific-strength-training-narrows-transfer]]). The authors give no evidence that segmental work improves the full lift; the Rigert account is an anecdote with no outcome reported.
+    25	
+    26	**Example** — The authors' own: Rigert's clean pull in three segments (floor to just below the knee, knee to mid-thigh, mid-thigh to waist with shrug and rise onto the toes), 1-3 repetitions each, often finished with a full pull from the ground (PDF p. 410 / printed p. 399).
+    27	
+    28	**Related** — [[framework--maximal-supramaximal-circa-maximal-and-submaximal-methods]] (restricted range repetitions); [[claim--joint-angle-specific-strength-training-narrows-transfer]]; [[heuristic--train-force-at-the-accentuated-joint-angle]]; [[science-and-practice-of-strength-training--zatsiorsky/principle--accommodation-and-the-diminishing-returns-law]]; [[framework--hybrid-repetitions-and-hybrid-sets]]
+##### framework--contrast-methods-load-release-pneumatics-heavy-light-set.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "7.1"
+     7	topic: reactive contrast methods
+     8	category: [power, explosive-strength, contrast-training, potentiation]
+     9	confidence: contested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Contrast Methods: Load Release, Pneumatics and the Heavy-Light Set
+    15	
+    16	**What it is** — "Reactive methods are intended to develop power and explosive strength by imposing specific demands on nervous processes." Besides plyometrics (5.2.4), the category includes the *Contrast Methods* (PDF p. 411 / printed p. 400, checked against the page image):
+    17	
+    18	- **Load release:** perform an exercise with an added load, "then releasing the load suddenly during the lift, so that the contrast in stimulus received by the nervous system produces a rapid acceleration". The stripping method "offers a non-explosive variation of this method", and the term also covers the sudden release of a parachute towed by a runner, swimmer or cyclist.
+    19	- **Pneumatics:** "much the same as the preceding contrast method", on a compressed-air machine whose pressure can be "quickly increased or decreased at any stage of a movement at the touch of a button", so resistance drops "fairly rapidly, though not as rapidly as with the load release method" (Keiser machines are named).
+    20	- **Heavy-light set:** "performing a low repetition heavy set, decreasing the load by about 20%, taking a rest of 10-20 seconds, then executing the lighter set as rapidly as possible for 3-5 repetitions."
+    21	- **Static-dynamic method:** preliminary isometric tension raises the dynamic and explosive strength of the following action through the after-effect (3.3.1, 3.4.2); its size depends on "the duration of static loading, muscular fatigue and the interval between the static stimulus and the subsequent action". This method is atomized from Chapter 4 in [[claim--static-dynamic-combined-isometric-concentric-method]] and not repeated here.
+    22	
+    23	**Why it works** — The authors' mechanisms: for load release, "the contrast in stimulus received by the nervous system produces a rapid acceleration"; for the heavy-light set, "The nervous system remains briefly adapted to the heavy load if the rest interval is brief and the muscles are temporarily able to operate in this super-stimulated condition to produce a very powerful and rapid contraction with the lightened load" (PDF p. 411 / printed p. 400). No study is cited on this page.
+    24	
+    25	**Why `contested`.** The rating applies to the heavy-light set. The book's own 3.4.2 section reports that research on this question "is contradictory, particularly in Western literature": a faster unloaded movement directly after the same movement with a weight (Murray, 1959; Van Huss et al, 1962), but no such effect in other studies "despite subjective claims by the athletes that their movements felt quicker after using loads" (Nofsinger, 1963; "Nelson & Lamber, 1965", as printed), no vertical jump increase shortly after resistive exercise (Stockholm & Nelson, 1965), and worse shot-put results after throws with a heavier shot (Bischke & Morehouse, 1950) (PDF p. 175 / printed p. 164, checked against a crop of the page image). The same page reports Russian findings in favour: "Dynamic work with heavy weights (i.e. high tension with relatively few repetitions) also elicits a positive after-effect in the central nervous system (CNS), which produces a general toning influence on the motor apparatus and an improvement in speed and strength (Portnov, 1955; Ratov, 1957; Diachkov, 1961; Muravov & Tkachev, 1964; Letunov, 1965)", and "intense preliminary strength tension improves results in jumping exercises (Diachkov, 1958; 1961; Verkhoshansky, 1961; Tatian, 1964; Tkachev, 1967), in shotputting (Fritsch, 1961; Ivanova, 1964; Markov, 1966), and in rowing (Ermishkin & Vozniak, 1965; Chuprun, 1966)" (PDF p. 175 / printed p. 164, checked against the page image). The heavy-light set rests on exactly the effect these studies disagree about: that a heavier load makes the following lighter effort faster. Load release and pneumatics unload within a single repetition; the cited studies did not test that, so the conflict does not reach them directly. See [[claim--pap-findings-contested-western-vs-russian-literature]] and, for the Russian findings on load, timing and sequence, [[framework--post-activation-potentiation-load-timing-sequencing]].
+    26	
+    27	**When to apply** — For power and explosive-strength work in athletes with a strength base, when the aim is a faster lighter effort straight after a heavier one. The heavy-light set needs only a bar and a quick load change. The authors also list "Use any of the contrast training methods discussed earlier" as a way through a sticking point (item 9, PDF p. 413 / printed p. 402). Inference: in Eric's in-season week (baseline line 186: "Monday heavy lift; Tuesday and Wednesday heavy practice, with a lighter lift Wednesday" **Explicit (interview 2026-09-28, Q15)**), a heavy-light pairing is a low-volume way to keep a fast element in the lighter Wednesday lift; this is not something the authors or Eric propose.
+    28	
+    29	**When NOT to apply** — Do not expect a reliable acute boost from the heavy-light set: the Western studies the book cites are split (two found a faster unloaded movement, others found none), and the Russian studies it cites found one (PDF p. 175). The heavy-light set depends on the rest staying brief (10-20 s, PDF p. 411); with longer rest the authors' stated mechanism no longer applies. Do not use the stripping method as a power method; the authors call it the "non-explosive variation" (PDF p. 411). Chapter 5 classes contrast methods among shock methods for experienced athletes, used only after overtraining is ruled out ([[framework--shock-methods-to-break-training-stagnation]]).
+    30	
+    31	**Example** — The authors' own: an athlete does a dip or pull-up "as powerfully as possible with a load grasped between the legs, then release[s] the load early during the next repetition and accelerate[s] rapidly upwards for the remainder of the movement" (PDF p. 411 / printed p. 400).
+    32	
+    33	**Related** — [[claim--pap-findings-contested-western-vs-russian-literature]]; [[framework--post-activation-potentiation-load-timing-sequencing]]; [[claim--static-dynamic-combined-isometric-concentric-method]]; [[heuristic--parachute-resistance-sizing-progression-and-contrast-release]] (parachute release as a contrast method); [[framework--shock-methods-to-break-training-stagnation]]; [[framework--strength-training-aims-and-method-chart-figs-7-1-and-7-2]]

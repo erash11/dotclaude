@@ -1,0 +1,271 @@
+######## framework--logical-scheme-of-training-management-load-fitness-state-external-interactions.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.4"
+     7	topic: training as a management system
+     8	category: [programming, monitoring, training-load, theory]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Training as a Managed System: Training Load, Fitness State and External Interactions, Controlled at Two Levels
+    15	
+    16	**What it is** — The authors treat programming "as a problem in management" and name three components of the managed system (PDF p. 347 / printed p. 336, checked against the page image):
+    17	1. "The complex of the athlete's external influences encountered in competition." "The greater the athlete's motor potential, the more effectively the complex of external interactions can be organised." Sports results "are the observable product of the organisation of the athlete's external interactions."
+    18	2. "the athlete's fitness state," defined as "the athlete's structural-functional qualities which determine the athlete's potential to produce sporting prowess (Zatsiorsky, 1979)."
+    19	3. "specialised motor activities, i.e. the training load."
+    20	
+    21	The causal chain runs one way: "The dosage of the training load is prescribed to promote changes in the athlete's fitness state which, in turn, entails changes in the complex of external interactions of the athlete and a corresponding improvement in sporting results." When planned results are reached, "the sequence of the preceding conditions is repeated at higher levels" (PDF p. 347 / printed p. 336).
+    22	
+    23	Fig 6.12, "A logical scheme for organising sports training (Siff & Verkhoshansky, 1999)" (PDF p. 348 / printed p. 337, checked against the page image), draws the loop: Fitness needs for given sport, Training objectives, Programming of training, Characteristics of training model, then Training load, Training potential of loading, Athlete's fitness state (shaded box A), Training effect of loading, Athlete's external interactions (shaded box B), Change in performance, and Assessment of effect (fed by "Sports Competition" and "Laboratory Tests"), which returns to Fitness needs.
+    24	
+    25	Key terms (PDF p. 348 / printed p. 337):
+    26	- **Training potential of the loading:** "its potential for promoting adaptation of the body and corresponding changes in its fitness state," and "a relative concept which should be examined and assessed in accordance with the athlete's current fitness state."
+    27	- **Assessment of the training effect:** "measuring the performance change that the loading produces in each case under competitive and laboratory conditions."
+    28	- **Two levels of control:** the fitness state ("control of the effect of the loading on fitness") and external interactions ("control of the change in their characteristics as a result of changes in fitness").
+    29	- **Two subsystems:** A = {Training Load, Training Potential of Loading, Athlete's Fitness State}; B = {Training Effect of Loading, Athlete's Fitness State, Athlete's External Interactions}. "the lower the measures for the first one (A), the weaker the link in the entire management system."
+    30	
+    31	**Why it works** — The authors' reason is structural: fitness state is the only route from load to result, so both the load-to-fitness link and the fitness-to-performance link must be measured. The basis for the training effect is "the accumulation of adaptive traces within the body produced by the entire complex of training influences" (PDF p. 348 / printed p. 337). They give no data for the scheme; it is a conceptual model, hence `untested`.
+    32	
+    33	**When to apply** — Inference: when auditing a monitoring set-up, for each test, ask which box of Fig 6.12 it measures. A jump test reads the fitness state; game or practice output reads external interactions; neither alone closes the loop. Eric's baseline: "Preparedness (the athlete's underlying physical capability, built over a long period) is explicitly distinguished from readiness (day-to-day fluctuation)" (`docs/method-baseline.md` line 64, Inferred (transcript)). Inference: the authors' "fitness state" corresponds to that preparedness, and the two-level control is the same split between what the body can do and what it shows in competition. Eric's baseline: "If it doesn't answer a question anyone has, or a direct need, then it doesn't have a place" (line 32, Explicit (interview 2026-09-28, Q3)). Inference: Fig 6.12 gives each test a place to answer to: a test that sits in no box of the loop is the kind the rule removes.
+    34	
+    35	**When NOT to apply** — The scheme names what to measure but gives no measures, thresholds or numbers. "One can be certain that the lower the measures for the first one (A), the weaker the link" is stated without a study. The authors also widen "management" in the same passage to "motivation, the athlete's personality and social factors" (PDF p. 347 / printed p. 336), which the figure does not show. Inference: the model is linear and single-athlete; it does not cover fatigue, injury or sport-skill learning as separate inputs.
+    36	
+    37	**Example** — The authors give no worked case. Inference: a sprinter's training load (sprints, jumps, lifts) is assessed at level A by laboratory tests (jump height, isometric force) and at level B by race times; if the tests rise but race times do not, the weak link is between fitness state and external interactions, not the load.
+    38	
+    39	**Related** — [[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]], [[framework--four-level-functional-specialisation-and-special-physical-preparedness]], [[framework--specific-correspondence-of-the-training-effect-four-tasks]], [[heuristic--build-training-theory-from-interacting-complexes-and-coach-scientist-cooperation]] (6.5, the research programme behind Fig 6.13), [[old-bull-performance-course--old-bull/framework--monitoring-versus-testing]] (Weber separates short-horizon monitoring from phase-length testing; Inference: a practical split for the two control levels)
+######## heuristic--build-training-theory-from-interacting-complexes-and-coach-scientist-cooperation.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.5"
+     7	topic: science and practice integration
+     8	category: [theory, research-methods, coaching, organisation]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Training Theory Needs Research on Interacting Complexes of Means and Close Coach-Scientist Cooperation, Not Single-Factor Fragments
+    15	
+    16	**What it is** — The authors open 6.5: "A successful solution to the problem of programming and organising training cannot be obtained only by assembling the results of individual fragments of research" (PDF p. 349 / printed p. 338, checked against the page image). Their diagnosis has three parts:
+    17	1. **Split specialists.** Some study "primarily ... the neuromuscular system," applying it "largely to speed-strength and complex-technical types of sport"; others the "cardiovascular-respiratory systems and metabolic processes" of cyclic sports. Such specialisation "is effective and applicable only on the basis of close integration between theory and practice."
+    18	2. **Single-factor designs.** "All too often, studies are based on the effect of a single factor on performance; very rarely does research focus on the interactive effects of concurrent or sequential complexes of training methods" (PDF p. 349 / printed p. 338).
+    19	3. **Over-generalising across sport types.** Specialists who favour speed-strength or cyclic sports cannot be condemned "if they limit their theoretical and practical generalisations to 'their' types of sport. It is when they attempt to apply the same principles and methods to other types of sport that this single-minded approach becomes misleading" (PDF p. 350 / printed p. 339, checked against the page image).
+    20	
+    21	On the coach-scientist divide: "Until recently, generalised practical experience was usually regarded as the only valid way of establishing effective training principles," while "scientists disdained this attitude and coaches regarded scientists as impractical theoreticians, with the result that their individual bodies of information were not shared and training methodology suffered. The advancement of sport now depends strongly on close cooperation between scientists, coaches and athletes" (PDF p. 350 / printed p. 339).
+    22	
+    23	Fig 6.13, "A general theory of structuring sports training (Siff & Verkhoshansky, 1999)" (PDF p. 349 / printed p. 338, checked against the page image), lays out the research agenda: The Training Process splits into Programming (characteristics of adaptation; of structural-functional specialisation; of the athlete's state and training load; of attaining sports mastery), Organisation (interdependence of training and competitive activities; classification of loads by emphasis and training potential; optimal duration and interdependence of loads of different emphasis) and Management (methods of assessing the athlete's state; of calculating and analysing loads; models of the dynamics of the athlete's state). These lead to principles of structuring, ways of structuring, and ways of controlling and correcting training, which feed a "General theory of training construction," together with "Concepts of training in given sports" and "Principles of individualising training."
+    24	
+    25	**Why it works** — The authors' example of the cost of the divide: because general endurance was treated "exclusively to be a function of respiratory potential," physiologists "were perplexed" by the fall in VO2 max in the competition period, which "should not have been unexpected if they had concurrently examined the contractile and metabolic characteristics of the muscles" (PDF p. 350 / printed p. 339). That argument is atomized from Chapter 4 in [[claim--vo2max-alone-does-not-determine-endurance-performance]]. No further mechanism is given; this is the authors' methodological position.
+    26	
+    27	**When to apply** — Inference: when reading or commissioning research, prefer studies of combined and sequenced programmes over one-variable studies, and check that a finding comes from the same sport group before transferring it. Eric's baseline: Applied Performance's mission is to "drive elite performance ... by leveraging science and technology through education and relationships" (`docs/method-baseline.md` line 27, Explicit). Inference: the authors' call for "close cooperation between scientists, coaches and athletes" is the same stance, stated from the research side. Eric's baseline: "Data collection has a cost in time, athlete compliance, and staff attention" (line 30, Explicit). Inference: the authors' Fig 6.13 is a research wish-list; the baseline's cost rule decides which parts of it a department can afford to measure.
+    28	
+    29	**When NOT to apply** — The authors give no survey or count behind "All too often" or "very rarely"; these are judgments. The authors do not say single-factor studies are useless, only insufficient on their own. Inference: they remain the usual way to isolate a mechanism. Fig 6.13 is a scheme the authors say "need not be described in much detail," with no data (PDF p. 349 / printed p. 338).
+    30	
+    31	**Example** — The authors' own: the VO2 max fall in the competition period, which puzzled specialists who studied only respiration but would have been expected by anyone also studying the working muscles (PDF p. 350 / printed p. 339).
+    32	
+    33	**Related** — [[framework--logical-scheme-of-training-management-load-fitness-state-external-interactions]], [[claim--vo2max-alone-does-not-determine-endurance-performance]], [[claim--endurance-rests-on-muscle-oxidative-and-strength-qualities-not-vo2max]], [[principle--motor-system-leads-cardiorespiratory-adaptation-do-not-separate-them]], [[framework--sequential-and-concurrent-variants-of-systematic-means]], [[old-bull-performance-course--old-bull/heuristic--replace-translation-with-early-education]] (Weber on educating staff to a shared understanding; a practitioner version of the same integration problem)
+######## heuristic--arousal-optimum-is-individual-so-fit-restoration-to-personality-and-task-complexity.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.6.1"
+     7	topic: arousal, stress and restoration
+     8	category: [psychology, restoration, overtraining, individualisation]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# The Arousal Optimum Is Individual: Fit Restoration to Personality and Task Complexity, and Do Not Read the Yerkes-Dodson Curve Literally
+    15	
+    16	**What it is** — The model is Yerkes and Dodson's inverted-U of performance against arousal; the authors borrow it and apply it to training stress and restoration. The 6.6.1 section cites "(Siff, 1990)" as the source of its selection of models; this entry still writes "the authors" because no passage names Verkhoshansky in the third person. The authors' points (PDF p. 351 / printed p. 340, checked against the page image, unless noted):
+    17	1. **The optimum is individual.** "There appears to be an optimum level of arousal for any person performing a specific task at a specific time." The curve's shape "depends on individual characteristics such as level of introversion/extroversion, level of exhaustion, standard of health, and task complexity," and "all motivational techniques are not universally applicable to everyone."
+    18	2. **Personality and restoration.** "the introvert appears to have a lower optimal arousal zone, unlike the extrovert who requires greater stimulation and can cope better with high levels of stress." This "has important implications for the prescription of restorative procedures, with the introvert probably requiring early restoration and the extrovert requiring careful monitoring to prevent overtraining caused by a desire for greater stimulation."
+    19	3. **Task complexity.** "Complex tasks require low levels of arousal to reach optimal performance over very limited periods (e.g. in golf, gymnastics and pole vaulting), whereas simple sports tasks may be executed over a longer period at higher levels of arousal." Applied to training: "Excessive exposure of an athlete to complex training tasks can lead rapidly to 'overstress', while simple tasks may be insufficiently challenging to produce continued supercompensation. A balance between complexity, simplicity, intensity and volume of load is necessary to ensure growth and to minimise overtraining" (PDF pp. 351-352 / printed pp. 340-341).
+    20	4. **Repeated stress changes the response.** "regular exposure to a stressor may produce either habituation or oversensitisation, so that the same level of stress may not produce the same response at a later stage. In either event, timely use of restoration measures is of central importance."
+    21	5. **Limits of the curve.** It "implies that there is just one discrete peak"; the "'second wind' phenomenon (curve B) and the effect of task complexity on curve shape are two of several reasons why the original curve must be applied to restoration and stress management with circumspection." Also, "it is well known that both sensory underload and overload may lead to phases of enhanced performance (curves A, C)," and meditation and similar states "may enhance performance in certain situations (curve A)." Hence "both optimisation and transcendental stress management strategies are necessary."
+    22	
+    23	Fig 6.15 (checked against the page image) is a schematic with no units: one broad inverted-U over "low / optimal / high" arousal, a narrow spike A at low arousal, and spikes B and C near high arousal.
+    24	
+    25	**Why it works** — The authors give no mechanism and no data for the introvert/extrovert or task-complexity claims; point 2 is hedged ("appears", "probably"), and the "it is well known" sentence in point 5 carries no citation.
+    26	
+    27	**When to apply** — Inference: when an athlete's response to the same load differs from a teammate's: consider temperament and task complexity before changing the load. Technical sessions (high complexity) may need calm conditions and short exposures; simple conditioning can tolerate higher arousal for longer. Eric's baseline: "Recovery is managed through training-load design alone; nothing objective is tracked, sleep included" (`docs/method-baseline.md` line 153, Explicit (interview 2026-09-28, Q23)). Inference: the authors' point 2 suggests that load design alone may under-serve the athletes who need restoration early, and point 4 says the same load can stop meaning the same thing over a season.
+    28	
+    29	**When NOT to apply** — Inference: do not sort athletes into introvert and extrovert recovery plans on this basis, since the authors give no study and their own wording is tentative. Inference: a measured fatigue marker is the better trigger for restoration. The figure's curves A, B and C are illustrations, not data. The task-complexity claim is about arousal during performance; the jump to "complex training tasks ... 'overstress'" is the authors' extension, also without data.
+    30	
+    31	**Example** — The authors' own: golf, gymnastics and pole vaulting as complex tasks needing low arousal over very limited periods (PDF p. 351 / printed p. 340). Inference: a pole vaulter's technical session is kept short and calm, while the same athlete's sprint conditioning tolerates a louder, longer session.
+    32	
+    33	**Related** — [[claim--plyometric-skill-is-cognitive-and-state-dependent]], [[framework--types-of-maximal-strength]], [[claim--voluntary-involuntary-strength-reserve-magnitudes]], [[heuristic--restorative-stage-length-scales-with-homeostatic-disturbance]], [[elite-sports-performance--evans/framework--verkhoshansky-activation-levels-and-threshold-of-adaptability]]
+######## heuristic--expectancy-motivation-break-distant-goals-into-attainable-steps.md
+     1	---
+     2	type: library-entry
+     3	kind: heuristic
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.6.1"
+     7	topic: expectancy theory of motivation
+     8	category: [psychology, motivation, coaching, goal-setting]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Expectancy Motivation: Effort Follows Attractiveness Times Believed Attainability, So Break Distant Goals Into Reachable Steps
+    15	
+    16	**What it is** — The model is Vroom's Expectancy Theory of Motivation, which the authors take from Tellier (1978) and apply to coaching athletes (PDF p. 353 / printed p. 342, checked against the page image). "it is not merely a specific goal, but the individual perception of that goal which motivates people." Motivational Force depends on:
+    17	- "the perceived attractiveness (valence V) of the goal or outcome"
+    18	- "the perceived probability of achieving that goal or outcome (one's personal belief, B, that success is likely)"
+    19	
+    20	combined as "their arithmetic product F = V X B." Scales: attractiveness "from -5 (extremely undesirable) to +5 (extremely desirable)," belief "from 0 (total disbelief) to 1 (total belief)"; the overall force "is the sum of the motivational forces calculated from the products ... for all the important goals or outcomes associated with carrying out the task."
+    21	
+    22	The authors' applications: if a goal is "extremely attractive, but you believe it to be far outside your reach, you will experience a small Motivational Force," so "it is desirable to break down a large or distant goal into smaller goals to be achieved over a period or at a rate which you perceive to be more matched to your capabilities or experience." And: "a manager or leader can motivate athletes strongly if he appreciates that motivation depends on perceptions of goal attractiveness and attainability. He can improve performance either by modifying the task accordingly or by altering the athlete's perceptions of the task and its outcomes" (PDF p. 353 / printed p. 342).
+    23	
+    24	**Why it works** — The mechanism is the multiplication itself: if belief is near zero, attractiveness cannot compensate. The authors give no study and say "Detailed examples of this theory are outside the scope of this book" (PDF p. 353 / printed p. 342).
+    25	
+    26	**When to apply** — Setting targets with an athlete. Inference: check both terms. A target the athlete values but does not believe in (a large testing jump, a return-to-play date) gets split into stages the athlete can see as reachable. A target the athlete can reach but does not value needs its outcome made worth something to that athlete. Eric's baseline: "New movement patterns are expected to take roughly 3-4 weeks of practice to become efficient" (`docs/method-baseline.md` line 171, Inferred (transcript)). Inference: that expected timeline is one way to keep belief realistic when a new exercise is introduced, so early clumsiness is not read as failure.
+    27	
+    28	**When NOT to apply** — The authors present the model without data, and the scales (-5 to +5, 0 to 1) are Vroom's as reported, not measured here. The page gives F as a single product and then as a sum over outcomes; both appear, for one goal and for a task with several outcomes. Inference: "altering the athlete's perceptions" is not licence to inflate belief beyond the athlete's real capability, since a target that is then missed lowers belief for the next one.
+    29	
+    30	**Example** — The authors' own, in general form: a goal that is highly attractive but believed far out of reach yields little effort until it is broken into smaller goals matched to capability (PDF p. 353 / printed p. 342). Inference: an athlete told to add 100 kg to a squat over a year is given four quarterly targets instead.
+    31	
+    32	**Related** — [[heuristic--arousal-optimum-is-individual-so-fit-restoration-to-personality-and-task-complexity]], [[framework--situational-leadership-coach-matches-style-to-athlete-maturity]], [[claim--plyometric-skill-is-cognitive-and-state-dependent]], [[research-papers/halson-2017-amazing-athletes-with-ordinary-habits-why-is-changing-behavior-so-difficult]] (recommends athlete-chosen measurable goals and small progressive changes; agreement)
+######## framework--situational-leadership-coach-matches-style-to-athlete-maturity.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.6.2"
+     7	topic: situational leadership for coaches
+     8	category: [leadership, coaching, staff-development, communication]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Situational Leadership for Coaches: Rate the Athlete's Maturity, Then Tell, Sell, Participate or Delegate
+    15	
+    16	**What it is** — The model is Hersey and Blanchard's Situational Leadership Model, which the authors present for "the coach in playing a role as leader" (PDF p. 354 / printed p. 343, checked against the page image). "Hersey and Blanchard stated that leadership style ought to be implemented according to each situation which arises." Style is matched to the follower's "'maturity' (education, experience, responsibility, self-motivation, degree of self-actualization)."
+    17	
+    18	Fig 6.19 (checked against the page image) plots relationship behaviour (vertical, low to high) against task behaviour (horizontal, low to high), with four quadrants: S1 Telling (high task, low relationship), S2 Selling (high task, high relationship), S3 Participating (low task, high relationship), S4 Delegating (low task, low relationship). A bell-shaped curve runs through them. Below the grid, maturity of followers runs M1 (low) at the high-task end to M4 (high) at the low-task end, so M1 pairs with S1 and M4 with S4.
+    19	
+    20	How to use it: "the coach in playing a role as leader rates the maturity of the follower as low, moderate or high (M1, M2, M3 or M4), then reads off the appropriate leadership style (S1, S2, S3 or S4) in the relevant box above. Relationship behaviour includes the amount of time and effort put into interaction with followers. One spends more time in Selling or Participatory situations than in Telling or Delegating situations, hence the shape of the curve" (PDF p. 354 / printed p. 343).
+    21	
+    22	**Why it works** — The authors give no mechanism or data beyond the model's logic: a follower low in experience and responsibility needs direction, and a mature one needs freedom. Inference: it is the coaching version of matching instruction to the learner.
+    23	
+    24	**When to apply** — Inference: deciding how much to direct an athlete, intern or staff member: a first-year athlete in a new lift gets Telling (clear instructions, little discussion); an experienced athlete who knows the method gets Participating or Delegating. Eric's baseline: interns "need both the 'why' (conceptual education) and the 'how' (hands-on technical training) each week" and should leave with "a professional portfolio of real work products" (`docs/method-baseline.md` line 204, Explicit). Inference: that progression from instruction to owned work products is the M1-to-M4 path in this model.
+    25	
+    26	**When NOT to apply** — The text says maturity is rated "low, moderate or high" but lists four levels (M1 to M4); the page does not say how the three words map to the four codes. The authors give no evidence that matching style to maturity improves results. Inference: maturity is task-specific; the same athlete can be M4 in the squat and M1 in a new sprint drill, so rate per task, not per person.
+    27	
+    28	**Example** — The authors give no worked case. Inference: a freshman lineman learning the hang clean gets S1 Telling from the coach; by his third year, running his own warm-up and accessory work within the plan, he gets S4 Delegating.
+    29	
+    30	**Related** — [[heuristic--expectancy-motivation-break-distant-goals-into-attainable-steps]], [[heuristic--arousal-optimum-is-individual-so-fit-restoration-to-personality-and-task-complexity]], [[old-bull-performance-course--old-bull/framework--knowledge-behaviour-matrix]] (Weber's 2x2 of staff knowledge against behaviour; a different axis set for the same staffing question), [[old-bull-performance-course--old-bull/heuristic--assign-meeting-ownership-to-develop-staff]]
+######## framework--three-sport-groups-acyclic-cyclic-complex-for-programming.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.7"
+     7	topic: classification of sports
+     8	category: [classification, energy-systems, programming, specificity]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Classify Sports by Movement Organisation and Energy Supply: Acyclic, Cyclic and Complex (Farfel 1969)
+    15	
+    16	**What it is** — Programming rules need "the limits of generality and specificity in individual sports or groups of related sports," so sports must be classified "scientifically." "Classification of sports into individual, team, ball or water sports, for example, is not scientifically useful; it is more appropriate to classify sports on the basis of the particular organisation of the sporting movements and characteristics of the physical systems used to produce their working effect" (PDF p. 356 / printed p. 345, checked against the page image). The authors adopt three groups "as already outlined by Farfel (1969)" (PDF p. 357 / printed p. 346, checked against the page image):
+    17	1. **Acyclic sports**, "in which perfecting of the neuromuscular system for precise regulation of movements and the ability to produce great power play the dominant roles." Earlier on the same page: "complex organisation of motor actions and an intense concentration of working effort, displayed briefly," with energy "primarily through ATP-CP energy processes." Subgroups: "powerful, brief, explosive efforts" and "fine motor control and spatially precise movement."
+    18	2. **Cyclic sports** "(usually of submaximal and of moderate power), associated primarily with the production of muscular work through aerobic processes": "prolonged repetition of stereotyped work cycles of relatively simple organisation which do not require maximal muscular tension." Subgroups: "extensive oxygen utilisation" and work where "the muscles have an inadequate oxygen supply."
+    19	3. **Complex (combined) sports**, "where characteristically there is a high variability of motor actions under conditions of advancing fatigue and varying intensity of work, typified by team sports and one-on-one events (e.g. boxing and fencing)." Their energy production "is of a mixed aerobic-anaerobic character, with the greater part being derived from glycolytic reactions."
+    20	
+    21	A second rule: "In classifying sports, it is necessary to consider competitive, as well as training activities," because training exercises can differ from competition, "often due to the necessity for repeated reproduction of the competitive movements in training"; this is where "special endurance (e.g. speed-, jumping-, and strength-endurance)" belongs. The authors' example: the 100 m takes about 10 s and "does not depend on oxidative efficiency. However, in order for a sprinter to prepare himself to effectively display such effort, he should execute training loads that develop his aerobic and anaerobic potential, in particular the latter" (PDF p. 357 / printed p. 346).
+    22	
+    23	**Why it works** — The authors' rationale is physiological: "The more prolonged and the lower the intensity of muscular work, the greater the role of aerobic processes"; the glycolytic role "grows as the duration of work decreases and the power of muscular work increases"; in brief acyclic work under heavy load, athletes overcome resistance in "tenths and even hundredths of a second," which demands "an effective and reliable biodynamic structure" (PDF p. 356 / printed p. 345). The three-group scheme itself is Farfel's convention, adopted without data, hence `supported` rather than `proven`.
+    24	
+    25	**When to apply** — Inference: use it as the first question when writing a programme for a new sport or position: which group, and which subgroup? The authors use this scheme again in 6.8.2 to say which systems specialise (see Related). Eric's baseline: "A sport cannot maximize all three energy systems at once"; "priority has to be picked based on what the competition actually demands" (`docs/method-baseline.md` line 115, Explicit). Inference: Farfel's grouping is a coarse first pass at that priority choice, and the sprinter example supports training activities that differ from the competition's own energy profile.
+    26	
+    27	**When NOT to apply** — Source against Eric's baseline on football: the authors put team sports in the complex group, with "the greater part" of energy "derived from glycolytic reactions" (PDF p. 357 / printed p. 346). Eric's baseline: for football, glycolytic conditioning "is treated as a 'worst case scenario' to be absorbed incidentally through camp and practice rather than programmed as a primary target" (`docs/method-baseline.md` line 116, Explicit, claimed again in interview 2026-09-28, Q1), and "our staff does program it in the off-season" (line 117, Explicit (interview 2026-09-28, Q19)). The authors give no football data, and "team sports" is a broad category. Inference: within the complex group, positions differ enough (a lineman's short bursts against a receiver's repeated sprints) that the group label decides little on its own; the authors' own call to "further subdivide" applies. This is a different scheme from Diachkov's four categories by motor regime used in 5.1 (see Related).
+    28	
+    29	**Example** — The authors' own: boxing and fencing as one-on-one complex sports; the 100 m sprinter whose event does not depend on oxidative efficiency but whose training should still develop aerobic and, especially, anaerobic potential (PDF p. 357 / printed p. 346).
+    30	
+    31	**Related** — [[framework--special-strength-methods-classified-by-sport-group-and-strength-type]] (Diachkov's four sport categories, 5.1; a different classification), [[principle--functional-specialisation-is-a-primary-emphasis-not-an-exclusive-energy-system]] (6.8.2 applies this scheme), [[heuristic--cyclic-vs-acyclic-speed-strength-tempo-rest-and-fatigue]], [[claim--energy-system-contribution-by-sport-table]], [[claim--all-round-athletes-main-regime-cyclic-and-phasic-tonic]]
+######## principle--mesocycle-not-microcycle-as-the-unit-and-planned-dips-are-not-errors.md
+     1	---
+     2	type: library-entry
+     3	kind: principle
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.8.1"
+     7	topic: mesocycle as the unit of training
+     8	category: [periodisation, programming, supercompensation, planning]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Plan in Mesocycles, Not Microcycles, and Do Not Read Every Planned Dip in Work Capacity as a Programming Error
+    15	
+    16	**What it is** — The authors list three practical rules that followed from supercompensation research (Weigert's law, "first formally described by Folbrot (1941, 1952, 1958)"; also Yakovlev 1955, 1975; Gorkin et al 1973; Volkov 1975; Monogarov & Platonov 1975; Sergeyev 1981) (PDF p. 358 / printed p. 347, checked against the page image):
+    17	- "It is necessary for the athlete to maintain a state of adaptation during training, so that it is possible to execute the fundamental sporting actions effectively over an extended period"
+    18	- "Repetition of training loads when the body is in a state of insufficient restoration is generally undesirable, although this is permissible in certain instances"
+    19	- "Special work capacity should rise steadily during the course of training; any decrease at given stages of training would indicate that the training is incorrectly organised."
+    20	
+    21	Their verdict: "Undoubtedly, all of these premises were progressive in their time and to a certain extent are still valid today. However, modern sporting requirements reveal the necessity to alter the main approach to structuring training and obey common sense, which indicates that the fundamental unit of training should be the mesocycle and not the microcycle." This requires "An extensive study of the characteristics of long-term adaptation," whose value "will be appreciated only if one can observe the specific effect of given training loads on the dynamics of the athlete's state and determine the quantitative characteristics of the adaptation process" (PDF p. 358 / printed p. 347).
+    22	
+    23	The same section then describes a loading form that deliberately lowers the functional indicators for weeks (concentrated loading, Fig 6.23; PDF pp. 360-361 / printed pp. 349-350). Inference: this is the authors' own revision of the third rule: a planned decrease inside a concentrated mesocycle is not, in their model, a sign of incorrect organisation.
+    24	
+    25	**Why it works** — The authors' reason is that the effects they care about (long-term adaptation, delayed gains after concentrated loading) unfold over weeks, so judging each microcycle against the previous one misreads them. They give no study for the mesocycle claim itself on this page; "common sense" is their stated basis.
+    26	
+    27	**When to apply** — Inference: when reviewing a plan, judge progress block by block, not week by week, especially during a deliberately heavy block. Eric's baseline: "Weekly tracking is preferred over infrequent (e.g., once-a-phase) testing, specifically to catch plateaus or declines early enough to adjust programming" (`docs/method-baseline.md` line 59, Inferred (transcript)). Inference: the two fit if weekly data are read against the mesocycle's expected shape: a decline during a planned concentrated block is expected, while the same decline in a normal block is a signal. Eric's baseline: undulating periodization, "waving volume week to week" (line 106, Explicit (interview 2026-09-28, Q1)). Inference: a wave inside a mesocycle is already a planned non-steady rise.
+    28	
+    29	**When NOT to apply** — The authors keep the old rules "to a certain extent ... still valid," and the second one ("generally undesirable ... permissible in certain instances") is not withdrawn. Inference: a decline outside a planned loading block, or one that does not recover when load drops, is still the warning the third rule describes. Batch 6a (sections 6.1 to 6.3, Matveyev's periodisation and "The Periodisation Controversy," PDF pp. 324-346) may carry an overlapping entry on the authors' critique of classical periodisation; this entry is limited to the 6.8.1 statement.
+    30	
+    31	**Example** — The authors' own contrast: the third rule says any decrease means the training is "incorrectly organised" (PDF p. 358 / printed p. 347), while concentrated loading produces a "decrease of the functional indicators" followed by a rise that "exceeds the level achieved with the first form of adaptation" (PDF p. 360 / printed p. 349).
+    32	
+    33	**Related** — [[framework--distributed-vs-concentrated-loading-two-forms-of-compensatory-adaptation]], [[claim--adaptive-reconstruction-vs-supercompensation]], [[periodization--bompa/principle--supercompensation-cycle]], [[framework--fitness-fatigue-modeling-and-taper-timing]], [[block-periodization--issurin/framework--accumulation-transmutation-realization-mesocycles]] (Issurin also builds plans from mesocycle blocks)
+######## claim--four-observations-on-long-term-speed-strength-adaptation.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "6.8.1"
+     7	topic: long-term adaptation dynamics
+     8	category: [long-term-development, speed-strength, periodisation, monitoring]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-10-03
+    12	---
+    13	
+    14	# Long-Term Speed-Strength Adaptation: Rises Every Year, Starts Each Year Below Last Year's Peak, Rises Less in the Highly Qualified, and Follows the Season's Peaks
+    15	
+    16	**What it is** — From "observing the dynamics of an athlete's special physical preparedness indicators over many years of training," the authors state four conclusions, mainly for "sports which require explosive effort" (PDF p. 358 / printed p. 347, checked against the page image):
+    17	1. "The absolute and mean level of special strength preparedness increases annually."
+    18	2. "The initial level of speed-strength in each annual cycle is lower than the level at the end of the preceding year's, but higher than at its beginning."
+    19	3. "The rise in speed-strength from year to year is larger for athletes of medium qualification than for highly qualified athletes."
+    20	4. The annual trend "is determined by the traditional periodisation of training for the given sport and competition calendar. One can clearly trace a twin peak in the dynamics of speed-strength with two competition stages, because the level of special strength preparedness is higher in the second competition stage than in the first. In types of sports with one competition season, speed-strength rises regularly and uniformly."
+    21	
+    22	Fig 6.22, "The dynamics of adaptation in sports training over several years (Siff & Verkhoshansky, 1999)" (PDF p. 358 / printed p. 347, checked against the page image and a high-resolution crop), is a schematic over Years 1-3 with no numeric axis ("Relative levels"): a thick, nearly straight rising line A labelled "Fitness state"; two wavy lines B and C labelled "Functional indicators" that oscillate around A and dip near each year boundary; and a lower, slowly rising wavy line D labelled "Skill." The text assigns B to bi-cyclic and C to mono-cyclic periodisation, and A to "relatively stable, long-term adaptation over many years." D shows that "adaptation in sport consists not only of increased motor potential, but also the improvement of the athlete's skills to more effectively utilise this potential" (PDF p. 359 / printed p. 348, text layer only).
+    23	
+    24	**Why it works** — The authors read the annual waves (B, C) as "temporary, unstable and to a certain extent, reversible" compensatory changes riding on slower stable adaptation (A) (PDF p. 359 / printed p. 348, text layer only; see [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]]). No athletes, sports, sample sizes or citations are given for the four conclusions; "Extensive research allows us to reach the following conclusions" is the only basis stated, hence `supported` at most.
+    25	
+    26	**When to apply** — Inference: set each year's expectations from these patterns: speed-strength at the start of a new year should sit below last year's best but above last year's start; a smaller annual gain in an advanced athlete is expected, not a failure. Eric's baseline: "Preparedness (the athlete's underlying physical capability, built over a long period) is explicitly distinguished from readiness (day-to-day fluctuation)" (`docs/method-baseline.md` line 64, Inferred (transcript)). Inference: Fig 6.22's A and B/C lines draw that distinction, on a season scale rather than a daily one. Eric's baseline: in football "you want to peak every Saturday, but definitely throughout the month of November" (line 185, Explicit (interview 2026-09-28, Q14)). Inference: football's one long season is closest to the authors' single-season case, where speed-strength "rises regularly and uniformly."
+    27	
+    28	**When NOT to apply** — The conclusions come from explosive-strength sports; the authors say long-term adaptation in endurance sports has not been observed as clearly (PDF p. 359 / printed p. 348, text layer only). Figure against text: the text later describes graph A as "a parabola whose peak is eventually reached with time" (PDF p. 359 / printed p. 348), but in the image A is close to a straight line over the three years drawn, with no visible peak. Inference: for an athlete whose speed-strength has plateaued across years, conclusion 1 no longer describes them; that is the limit the parabola refers to.
+    29	
+    30	**Example** — The authors' own: the "twin peak" in speed-strength with two competition stages, the second higher than the first (PDF p. 358 / printed p. 347).
+    31	
+    32	**Related** — [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]], [[principle--mesocycle-not-microcycle-as-the-unit-and-planned-dips-are-not-errors]], [[framework--logical-scheme-of-training-management-load-fitness-state-external-interactions]], [[claim--strength-and-speed-training-response-shifts-with-training-age]], [[claim--physical-quality-transfer-decreases-as-specific-fitness-increases]]

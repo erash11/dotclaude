@@ -1,0 +1,589 @@
+---
+type: book-index
+book: supertraining--verkhoshansky
+title: "Supertraining (6th Edition, Expanded)"
+author: Yuri Verkhoshansky and Mel C. Siff
+domain: strength-and-conditioning
+ingest-tier: full-text
+source: "TB's Training Info/Verkhoshansky/Supertraining (6th Edition - Expanded Version) - Yuri Verkhoshansky & Mel Siff.pdf (Drive); staging copy md5 d3453c5e459eb08ec0a89a4300a66e54"
+created: 2026-09-26
+---
+
+# Supertraining (6th Edition, Expanded) — ingest map
+
+PDF is real text: 591 pages, 576 with extractable text (`extract_pdf.py --probe`:
+`{"pages": 591, "text_pages": 576, "scanned": false}`), not scanned.
+
+**Print-to-PDF page offset = +11** (PDF page = printed page + 11). Verified at six
+independent chapter/section starts, not just the offset's origin point: Ch1 (printed 1 =
+PDF 12, "STRENGTH AND THE MUSCULAR SYSTEM"), Ch2 (printed 95 = PDF 106, "SPORT SPECIFIC
+STRENGTH TRAINING"), Ch3 (printed 125 = PDF 136, "FACTORS INFLUENCING STRENGTH
+PRODUCTION"), Ch4 (printed 201 = PDF 212, "THE MEANS OF SPECIAL STRENGTH TRAINING"), Ch7
+(printed 393 = PDF 404, "STRENGTH TRAINING METHODS"), and the Addendum's second section
+(printed 563 = PDF 574, "9.2 The Shock Method for Developing Power"). The offset holds
+unchanged from the front matter through page 574 of 591; no evidence of a mid-book
+repagination (no unnumbered plate inserts were found at the checked points).
+
+**PDF numbers are 0-based:** the "PDF p. N" locators in this book's entries are the
+extractor's 0-based page index (printed + 11), matching the offset above. In a normal
+1-based PDF viewer (and the Read tool's `pages` parameter), the same page shows as
+printed + 12, i.e. one more than the entries' "PDF p." number.
+
+**Confidence rule for this book:** `proven` only for findings that are established,
+widely-replicated physiology or mechanics (e.g. force-velocity relationship, motor unit
+recruitment order, connective tissue loading response) independent of this text.
+Soviet-era empirical findings and training prescriptions original to Verkhoshansky, Siff,
+or the Soviet sport-science tradition they cite are capped at `supported`, even when
+stated with confidence in the text, because they are largely single-lab or
+practice-derived rather than independently replicated in the modern literature available
+to this ingest. `contested` is set where modern evidence, or another library book, takes
+a different position (e.g. the two-factor fitness-fatigue model vs. classical
+supercompensation, already flagged as a live tension in `periodization--bompa`).
+
+| # | Chapter | Printed pp | PDF idx | Status | Entries |
+|---|---------|-----------|---------|--------|---------|
+| 1 | Strength and the Muscular System | 1-94 | 12-105 | done | 41 (see section rows below) |
+| 1.intro | Objectives … Strength Deficit (unnumbered lead-in) | 1-9 | 12-20 | done | 6 |
+| 1.1 | Preliminary Issues | 10-16 | 21-27 | done | 6 |
+| 1.2 | Fundamental Biomechanics of Strength | 17-23 | 28-34 | done | 5 |
+| 1.3 | A Philosophy of Physical Training | 24-26 | 35-37 | done | 1 |
+| 1.4 | Specificity in Training | 27-31 | 38-42 | done | 3 |
+| 1.5 | Strength and Fitness | 32-32 | 43-43 | done | 1 |
+| 1.6 | The Nature of Strength | 33-35 | 44-46 | done | 3 |
+| 1.7 | The Muscle Complex | 35-48 | 46-59 | done | 4 |
+| 1.8-1.11 | Classification, Cocontraction, Types, Triphasic Nature of Muscle Action | 49-54 | 60-65 | done | 2 |
+| 1.12 | Types of Muscle Fibre | 55-64 | 66-75 | done | 2 |
+| 1.13 | The Mechanism of Muscle Growth | 65-68 | 76-79 | done | 1 |
+| 1.14 | Neurophysiological Aspects of Exercise | 69-72 | 80-83 | done | 1 |
+| 1.15 | Bioenergetics and the Energy Systems | 73-81 | 84-92 | done | 2 |
+| 1.16 | Adaptation and the Training Effect | 82-94 | 93-105 | done | 4 |
+| 2 | Sport Specific Strength Training | 95-124 | 106-135 | done | 12 (see section rows below) |
+| 2.1.1 | Increasing the Working Effect of Movements | 97-99 | 108-110 | done | 1 |
+| 2.1.2 | Perfecting the Motor Pattern of Sports Movements | 100-104 | 111-115 | done | 3 (one entry also spans 2.2.2) |
+| 2.1.3 | Perfecting the Kinesiological Pattern of Movements | 105-106 | 116-117 | done | 1 |
+| 2.2.2 | Sports Implications of Strength Indices | 109 | 120 | done | 2 (includes the entry that also spans 2.1.2) |
+| 2.2.3 | The Functional Topography of the Muscular System | 110-111 | 121-122 | done | 1 |
+| 2.2.4 | Motor Specialisation in Developing Sports Mastery | 112-115 | 123-126 | done | 1 |
+| 2.3.1 | The Structure of Physical Fitness | 116 | 127 | done | 1 |
+| 2.3.2 | The Interrelation between Motor Abilities | 117-119 | 128-130 | done | 2 |
+| 2.3.4 | General Concepts of the Structure of Physical Fitness | 120-124 | 131-135 | done | 1 |
+| 3 | Factors Influencing Strength Production | 125-200 | 136-211 | done | 60 (see section rows below) |
+| 3.1 | Regimes of Muscular Work | 125-128 | 136-139 | done | 2 |
+| 3.2.1 | Explosive Strength | 129-141 | 140-152 | done | 5 |
+| 3.2.2 | Strength-Endurance | 142-143 | 153-154 | done | 1 |
+| 3.3.1-3.3.9 | Influence of External Conditions on Strength (pre-working state through the secular increase in strength) | 144-161 | 155-172 | done | 13 |
+| 3.4.1 | The Warm-up and Pre-Activity Preparation | 162-163 | 173-174 | done | 1 |
+| 3.4.2 | The After-Effect of Muscle Activity | 164-166 | 175-177 | done | 2 |
+| 3.4.3 | Additional Movement | 166-167 | 177-178 | done | 1 |
+| 3.4.4 | Preparatory Movement | 167 | 178 | done | 0 (no new angle beyond existing entries; deferred to Ch3a [[claim--pre-working-muscle-state-ranks-performance]] and Ch1 [[principle--short-amortization-preserves-elastic-energy]]; see dedup note) |
+| 3.4.5 | Coordination in Muscular Work | 167-168 | 178-179 | done | 1 |
+| 3.4.6 | Efficiency of Energy Expenditure | 168-170 | 179-181 | done | 1 |
+| 3.4.7 | Emotion and Other Psychological Factors | 170-171 | 181-182 | done | 2 |
+| 3.4.8 | The Effect of Cold Application | 171-172 | 182-183 | done | 1 |
+| 3.4.9 | Breathing and Strength Production | 172-173 | 183-184 | done | 1 |
+| 3.4.10 | Strength Development and Proprioception | 173-174 | 184-185 | done | 1 |
+| 3.5.1 | A Definition of Flexibility | 174-176 | 185-187 | done | 3 |
+| 3.5.2 | The Effects of Stretching | 176 | 187 | done | 1 |
+| 3.5.3 | The Neuromuscular Component of Flexibility | 176-179 | 187-190 | done | 2 |
+| 3.5.4 | Components of Joint Flexibility | 179 | 190 | done | 1 |
+| 3.5.5 | Parameters of Flexibility | 179-180 | 190-191 | done | 1 |
+| 3.5.6 | Soft Tissue Biomechanics and Flexibility | 180-182 | 191-193 | done | 5 |
+| 3.5.7 | The Influence of Exercise on Connective Tissue | 182 | 193 | done | 1 |
+| 3.5.8 | Stretching Techniques | 182-187 | 193-198 | done | 6 (1 more entry for the "Is Stretching Always Necessary?" coda is filed under chapter 3.6, printed 192-193, since it falls in that section's page range; see 3.6 row) |
+| 3.5.9 | Low Flexibility versus Non-functional Muscle Tension | 187-188 | 198-199 | done | 2 |
+| 3.6 | The Stretching Matrix System (incl. "Is Stretching Always Necessary?") | 188-193 | 199-204 | done | 2 |
+| 3.7 | The Movement Matrix System | 193-200 | 204-211 | done | 4 |
+| 4 | The Means of Special Strength Training | 201-254 | 212-265 | done | 64 (see section rows below) |
+| 4.1 | The Problem of Training Means (4.1.1 Characteristics of Strength Increase, 4.1.2 The Effect of the Strength Training Means) | 201-206 | 212-217 | done | 6 |
+| 4.2 | Different Means of Strength Development (4.2.1 Electrostimulation through 4.2.9 Muscle Isolation) | 207-241 | 218-252 | done | 35 (see section rows below) |
+| 4.2.1 | Electrostimulation (incl. the unnumbered 4.2 lead-in classifying the four stimulation mechanisms, printed 207) | 207-216 | 218-227 | done | 8 |
+| 4.2.2 | Resistance and Strength Training | 216-220 | 227-231 | done | 4 |
+| 4.2.3 | Kinetic Energy and Strength Processes | 220-223 | 231-234 | done | 3 |
+| 4.2.4 | Isometric Training | 223-230 | 234-241 | done | 7 |
+| 4.2.5 | Eccentric Training | 230-231 | 241-242 | done | 2 |
+| 4.2.6 | Isokinetic and Other Training Means (4.2.6.1-4.2.6.4) | 231-237 | 242-248 | done | 6 |
+| 4.2.7 | The Use of Training Machines (4.2.7.1-4.2.7.5) | 237-240 | 248-251 | done | 3 |
+| 4.2.8 | The Concept of Symmetric Training | 240-241 | 251-252 | done | 1 |
+| 4.2.9 | The Concept of Muscle Isolation | 241 | 252 | done | 1 |
+| 4.3 | Dynamic Correspondence as a Means of Strength | 241-247 | 252-258 | done | 13 |
+| 4.4 | Strength Training and General Endurance | 248-254 | 259-265 | done | 10 |
+| 5 | The Methods of Special Strength Training | 255-312 | 266-323 | done | 75 (see section rows below) |
+| 5.1 | The Problem of Methods | 255-257 | 266-268 | done | 4 |
+| 5.2 | General Principles of Special Strength Training (lead-in) | 257-258 | 268-269 | done | 1 |
+| 5.2.1 | The Development of Maximum Strength | 258-261 | 269-272 | done | 5 |
+| 5.2.2 | Autoregulating Progressive Resistance Exercise | 261-264 | 272-275 | done | 3 |
+| 5.2.3 | The Development of Speed-Strength | 264-267 | 275-278 | done | 6 |
+| 5.2.4 | Development of Explosive Strength and Reactive Ability | 267-285 | 278-296 | done | 25 |
+| 5.2.5 | The Development of Strength-Endurance | 285-287 | 296-298 | done | 5 |
+| 5.3 | Application of Special Strength Training Means (lead-in) | 287-290 | 298-301 | done | 5 |
+| 5.3.1 | Interaction between Different Training Means | 291 | 302 | done | 1 |
+| 5.3.2 | A Sequential System of Training Means | 291-292 | 302-303 | done | 1 |
+| 5.3.3 | The Conjugate Sequence System of Training Means | 292-294 | 303-305 | done | 3 |
+| 5.4 | The Principal Aims of Special Strength Training (lead-in) | 294 | 305 | done | 1 |
+| 5.4.1 | Converging the Partial Effects of Strength Training Means | 294-296 | 305-307 | done | 2 |
+| 5.4.2 | Acceleration of Specific Adaptation | 296 | 307 | done | 1 |
+| 5.4.3 | Specific Correspondence of the Training Effect | 296-297 | 307-308 | done | 1 |
+| 5.4.4 | Maintaining the Strength Training Effect | 297-298 | 308-309 | done | 1 |
+| 5.5 | Cross Training in Sport | 298-300 | 309-311 | done | 2 |
+| 5.6 | Circuit Training | 300-312 | 311-323 | done | 8 |
+| 6 | Organisation of Training | 313-392 | 324-403 | pending | 0 |
+| 7 | Strength Training Methods | 393-420 | 404-431 | pending | 0 |
+| 8 | Designing Sport Specific Strength Programmes | 421-480 | 432-491 | pending | 0 |
+| — | References and Bibliography | 481-494 | 492-505 | skip | n/a (reference list, not atomized) |
+| — | Index | 495-502 | 506-513 | skip | n/a |
+| 9 | Addendum (9.1 Laws of Sports Mastery, 9.2 The Shock Method for Developing Power) | 503-579 (verify) | 514-590 | pending | 0 |
+
+This row-level table is the resume checkpoint: each 1.x row is set to `done` with its
+real entry count immediately after that section is atomized, never batched.
+
+_Batch boundary: Chapter 2 is done (12 entries). Chapter 3 is now fully done: sections 3.1
+through 3.4.10 (32 entries, prior session) plus 3.5 Flexibility and Sporting Performance
+through 3.5.9, 3.6 The Stretching Matrix System, and 3.7 The Movement Matrix System (28
+entries, this session covering printed 174-200, PDF idx 185-211) for 60 entries total in
+Chapter 3. One dedup note from this session: the 3.5.6 restatement (printed 181) of "bony
+insertion weakest at slow loading rate, soft tissue weakest at fast loading rate" was NOT
+re-atomized, since it duplicates [[claim--collagen-loading-curve-and-injury-risk]] (Ch1,
+Kennedy 1976/Frankel & Nordin 1980); only the genuinely new adjacent detail (the graded
+bone-tendon transitional-stiffness system and its disruption by anabolic steroids) got its
+own entry, [[claim--tendon-insertion-transitional-stiffness-gradient-disrupted-by-steroids]].
+Chapters 4-9 remain pending for later sessions; resume at Chapter 4, The Means of Special
+Strength Training (printed 201, PDF idx 212)._
+
+_Batch boundary, this session: Chapter 4 section 4.1 "The Problem of Training Means" (4.1.1
+Characteristics of Strength Increase, 4.1.2 The Effect of the Strength Training Means;
+printed 201-206, PDF idx 212-217) is done, 6 entries. The short unnumbered lead-in before
+4.1 (page 201/PDF 212, history-of-the-field narrative) produced no entry of its own; it is
+scene-setting with no discrete claim. One dedup note: the 4.1.1 passage at printed 202
+(PDF 213) repeats, via the same Verkhoshansky 1977 citation chain, the
+Korobkov/Gerasimov/Vasiliev "strength gains are roughly uniform at 20/40/60/80% of 1RM in
+early training" finding and the Hettinger & Muller (1953) one-third-max threshold finding
+already captured in [[claim--strength-training-threshold-stimulus]] (Ch1, 1.2); that
+identical material was NOT re-atomized. The genuinely new adjacent material in 4.1.1
+(Zimkin 1961 and Muller & Hettinger 1957 training-age-dependent load percentages;
+Chernyavsky 1966 light/heavy load-proportion result) became
+[[claim--strength-and-speed-training-response-shifts-with-training-age]]. Two further new
+claim entries cover delayed onset of strength gains
+([[claim--delayed-strength-training-effect-lag-before-gains-appear]]) and detraining/
+retention timelines, including an unreconciled internal contradiction between the
+Chernyavsky 20-session decay curve and the Vasiliev/McMorris & Eklins 40-session retention
+data ([[claim--strength-detraining-and-retention-timelines]]). Section 4.1.2's "Algebraic
+Relations" passage (Commutative/Associative Laws applied to training order) and its
+Acute/Delayed Training Effect and Particular/Cumulative Effect taxonomy became two framework
+entries ([[framework--non-commutative-non-associative-training-order]],
+[[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]]); the remaining
+"Steps Towards Structuring the Training Process" material (training load's five
+characteristics; volume's two functions; structured system beats random combination even at
+lower volume, citing Verkhoshansky 1966/1970, Tatyan 1974, Khodykin 1975; Figure 4.1,
+verified against the page image) became
+[[heuristic--structured-load-progression-beats-volume-alone-or-random-combination]]. Chapter
+4 sections 4.2 (Different Means of Strength Development: electrostimulation, resistance and
+kinetic-energy training, isometric, eccentric, isokinetic, machines, symmetric training,
+muscle isolation), 4.3 (Dynamic Correspondence) and 4.4 (Strength Training and General
+Endurance) remain pending; resume at 4.2, printed 207 / PDF idx 218, "4.2 Different Means of
+Strength Development" / "4.2.1 Electrostimulation."_
+
+_Batch boundary, this session: Chapter 4 section 4.2 "Different Means of Strength
+Development" is now fully done, all nine subsections (4.2.1 Electrostimulation through 4.2.9
+Muscle Isolation; printed 207-241, PDF idx 218-252), 35 entries total (8+4+3+7+2+6+3+1+1 per
+the section rows above). Every table and figure encountered was opened as a page image
+(Figs 4.2, 4.3, 4.6, 4.7, 4.8, 4.11, 4.12, 4.13, 4.14, 4.16) before being cited; Figs 4.4,
+4.5, 4.9 and 4.10 are also cited and were checked against the page images (PDF idx 230 and
+234). Fig 4.15 (PDF idx 239, isometric endurance against forearm-immersion temperature,
+Clarke et al 1958; its caption is image-only) is cited in
+[[claim--isometric-endurance-limits-and-recovery-phases]] and was checked against the page
+image. Voice: 4.2.1
+Electrostimulation has first-person Siff material only on printed p.215: "the ES training
+applied to the author by Serge Reding" (Siff as the subject) and "Work that I witnessed" in
+Ratov's Moscow laboratory. The printed p.209 Reding passage names Siff in the third person
+("one of the authors (Siff)"), and the printed p.208 Ratov passage is the authors'.
+[[case-study--reding-electrostimulation-protocol-siff-account]] and
+[[claim--ratov-functional-electrostimulation-emg-triggered-sport-specific]] attribute each
+passage accordingly. The MACS/MICS "integrated theory" of
+electrostimulation (4.2.1.4-4.2.1.5, citing Becker, Nordenstrom and Pilla on bioelectric
+cell-signalling) is rated `contested`, with its mainstream-status judgment labelled
+Inference, rather than presented as settled physiology;
+see [[claim--macs-mics-integrated-theory-of-electrostimulation]]. Two forward/backward
+cross-references the book itself makes were completed as reciprocal links: the 4.2.2 passage
+on load-dependent proximal/distal muscle recruitment explicitly forward-references 4.2.9
+(now [[claim--muscle-recruitment-consistency-and-proximal-distal-shift-with-load]] linked to
+[[claim--muscle-isolation-is-load-dependent-mostly-illusory-under-heavy-load]]), and the
+Ch3.3.4.4 entry [[claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction]]
+explicitly deferred "symmetric training" to 4.2.8, now fulfilled by
+[[claim--pursuing-perfect-bilateral-symmetry-can-be-counterproductive]] (reciprocal link
+recommended on the Ch3 entry, not made since it is outside this session's assigned
+write-scope). [[heuristic--isokinetic-testing-limitations-for-functional-sport-specificity]]
+(4.2.6.2) substantially extends the existing Ch2 entry
+[[heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength]] with a
+detailed, itemised mechanism list; a reciprocal link on that Ch2 entry is recommended but not
+made (outside this session's write-scope). No entries were needed for chapter 4's own
+electrostimulation/isometric/eccentric/isokinetic/symmetric-training/muscle-isolation
+concepts already covered elsewhere in this folder or in the vault; dedup was checked against
+Moyer's `framework--isometric-training-variables-and-adaptations` (vault, a distinct
+dose-variable framework, not duplicated), Handford 2024's eccentric-training-methods paper
+(vault, not duplicated, no direct overlap found), and Bishop 2016's asymmetry paper (vault,
+already linked from the Ch3 entry this session's 4.2.8 entry completes). Chapter 4 sections
+4.3 (Dynamic Correspondence as a Means of Strength) and 4.4 (Strength Training and General
+Endurance) remain pending; resume at 4.3, printed 241 / PDF idx 252, "4.3 Dynamic
+Correspondence as a Means of Strength" / "4.3.1 The Amplitude and Direction of Movement."_
+
+_Batch boundary, this session: Chapter 4 sections 4.3 "Dynamic Correspondence as a Means of
+Strength Training" (4.3.1-4.3.6, including the "Parachute Resistance Training" subsection;
+printed 241-248, PDF idx 252-259) and 4.4 "Strength Training and General Endurance" (with its
+unnumbered subsections Oxidative Capacity and Muscular Endurance, Strength Training and General
+Endurance, The Process of Functional Specialisation, Factor Analysis; printed 248-253, PDF idx
+259-264) are done: 13 and 10 entries. Two page notes for the rows above: 4.3.6 runs onto
+printed 248 (PDF 259), where 4.4 starts mid-page; and printed 254 (PDF 265) is blank. Figs
+4.17-4.24 and Tables 4.1-4.2 were checked against page images (PDF 253-257, 260-264).
+Supertraining had no entry for the five dynamic-correspondence criteria themselves (only the
+Ch1.4 ten-dimension specificity entry and Evans's applied case study);
+[[framework--five-criteria-of-dynamic-correspondence]] is now the anchor. Contested in this
+batch: [[claim--endurance-rests-on-muscle-oxidative-and-strength-qualities-not-vo2max]]
+(raise VO2 max p.249 vs not p.250; less glycolysis p.249 vs high glycolytic productivity
+p.253) and [[claim--strength-training-raises-haemoglobin-myoglobin-and-aids-distance-sport]]
+(Pattengale & Holloszy 1967 is a treadmill-running study by its title). Chapter 4 is now
+complete; resume at Chapter 5, The Methods of Special Strength Training, printed 255 / PDF idx
+266._
+
+_Batch boundary, 2026-10-03 (Mac): Chapter 5 complete in three parallel batches (5a: 5.1-5.2.3, 19 entries; 5b: 5.2.4-5.2.5, 30; 5c: 5.3-5.6, 26), each through an independent round-1 review, fixes, and a round-2 review (reviews and fix logs in `staging/review_supertraining_ch5{a,b,c}_opus*.md` and `staging/fixes_supertraining_ch5{a,b,c}_applied.md`). Section boundaries fall mid-page at PDF 266, 278, 296 and 298. Resume at Chapter 6, Organisation of Training, printed 313 / PDF idx 324._
+     344
+_book.md
+case-study--alternate-leg-bounding-with-thigh-cuffs-for-sprinters.md
+case-study--antonova-and-levchenko-high-strength-volume-lowers-explosive-qualities.md
+case-study--arm-throw-height-after-barbell-press-tonic-work.md
+case-study--barbell-and-depth-jump-sequences-in-high-jumpers.md
+case-study--deniskin-depth-jumps-after-resistance-and-rest-as-a-training-means.md
+case-study--high-jumper-factor-structure-by-qualification.md
+case-study--junior-sprinters-short-and-long-jump-training-effects.md
+case-study--nedobyvailov-light-heavy-and-combined-loads-in-jumpers.md
+case-study--novice-strength-and-speed-strength-sequencing-experiments.md
+case-study--reding-electrostimulation-protocol-siff-account.md
+case-study--sirenko-double-peak-strength-means-for-middle-distance-runners.md
+case-study--skater-factor-structure-by-qualification.md
+case-study--soviet-sport-specific-strength-endurance-prescriptions.md
+case-study--tabachnik-100m-sprinter-model-characteristics.md
+case-study--triple-jumper-plantarflexors-depressed-while-thigh-extensors-high.md
+case-study--unidirectional-weekly-microcycles-swimming-and-speed-strength.md
+case-study--vorobyev-ermakov-weightlifting-load-distributions.md
+claim--400m-stride-length-held-by-local-strength-endurance.md
+claim--absolute-leg-strength-connects-to-sprint-speed-only-indirectly-via-jump.md
+claim--active-flexibility-correlates-more-with-sporting-proficiency-than-passive.md
+claim--adaptive-reconstruction-vs-supercompensation.md
+claim--all-round-athletes-main-regime-cyclic-and-phasic-tonic.md
+claim--annual-speed-strength-dynamics-depend-on-qualification.md
+claim--average-or-peak-force-times-velocity-is-not-power.md
+claim--berger-sets-reps-and-frequency-studies-in-novices.md
+claim--bilateral-deficit-and-limb-training-specificity.md
+claim--bondarchuk-50-percent-more-volume-did-not-prolong-training-effect.md
+claim--chernyak-volume-intensity-week-combinations.md
+claim--collagen-loading-curve-and-injury-risk.md
+claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation.md
+claim--complex-training-falls-short-for-highly-qualified-athletes.md
+claim--concentrated-beats-distributed-loading-for-highly-qualified-athletes.md
+claim--concentrated-strength-loading-limited-period-qualified-athletes-and-volume-saving.md
+claim--continuous-vs-interval-circuit-training-for-concurrent-goals.md
+claim--conversion-phase-is-a-misnomer.md
+claim--delayed-strength-training-effect-lag-before-gains-appear.md
+claim--delorme-oxford-mccloy-progressive-resistance-variants-compared.md
+claim--depth-jump-training-beat-higher-volume-traditional-training-in-jumpers.md
+claim--depth-landings-from-2-to-3-2-m-produce-forces-over-20-times-bodyweight.md
+claim--differential-tissue-adaptation-rates.md
+claim--eccentric-strength-and-energetics-vs-concentric.md
+claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff.md
+claim--eccentric-vs-concentric-training-adaptation-contradictory-findings.md
+claim--endurance-rests-on-muscle-oxidative-and-strength-qualities-not-vo2max.md
+claim--energy-system-contribution-by-sport-table.md
+claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique.md
+claim--exercise-economy-improves-with-skill-and-interval-style-costs-more.md
+claim--female-male-strength-ratio-varies-by-muscle-group-and-bodymass.md
+claim--fiber-recruitment-not-simply-graded-by-force.md
+claim--force-velocity-curve-limitations-and-in-vivo-deviations.md
+claim--four-observations-on-long-term-speed-strength-adaptation.md
+claim--heavy-medium-light-alternation-beats-monotonic-increasing-loading.md
+claim--heavy-squats-and-light-fast-lifts-miss-the-eccentric-concentric-switch.md
+claim--heterochronic-biochemical-adaptation-sequence.md
+claim--heterochronicity-of-strength-quality-and-muscle-group-development-order.md
+claim--hettinger-four-features-that-stimulate-strength-gains.md
+claim--hettinger-muller-isometric-strength-gain-rate.md
+claim--high-volume-plyometrics-do-not-build-rebound-fatigue-resistance.md
+claim--hypnosis-and-social-presence-alter-strength-output.md
+claim--implement-mass-for-speed-strength-keep-technique-and-size-per-athlete.md
+claim--irradiation-effect-raises-prime-mover-force-and-endurance.md
+claim--isokinetic-devices-cannot-be-truly-isokinetic-physics-limitation.md
+claim--isometric-endurance-limits-and-recovery-phases.md
+claim--isometric-regional-specificity-not-strictly-angular.md
+claim--ivanov-1966-contraction-mode-and-which-strength-test-improves.md
+claim--joint-angle-and-limb-position-changes-force-output.md
+claim--joint-angle-specific-strength-training-narrows-transfer.md
+claim--kots-electrostimulation-strength-claims-not-replicated.md
+claim--lactate-and-oxygen-debt-myths.md
+claim--ldte-in-endurance-training-documented-only-after-altitude-training.md
+claim--lewis-formula-estimates-jump-power-from-bodymass-and-height.md
+claim--ligament-tendon-adaptation-and-detraining-response.md
+claim--local-blood-flow-not-vo2max-tracks-competition-period-endurance-gains.md
+claim--macs-mics-integrated-theory-of-electrostimulation.md
+claim--maximal-power-output-load-differs-lab-vs-competition-lift.md
+claim--middle-distance-runners-need-strength-and-jump-training-benchmarks.md
+claim--moderate-and-mixed-movement-tempo-for-repetition-strength-gains.md
+claim--multiarticular-muscle-action-cannot-be-predicted-from-joints-spanned.md
+claim--multijoint-coordination-compensates-for-disadvantageous-joint-angles.md
+claim--muscle-isolation-is-load-dependent-mostly-illusory-under-heavy-load.md
+claim--muscle-recruitment-consistency-and-proximal-distal-shift-with-load.md
+claim--natural-asymmetry-caution-against-isokinetic-symmetry-correction.md
+claim--newton-ii-and-impulse-momentum-as-the-math-behind-the-force-time-curve.md
+claim--nfr-machine-marketing-claims-examined.md
+claim--olympic-lifters-flexible-and-combined-stretch-strength-boosts-sprint-speed.md
+claim--optimal-depth-jump-drop-height-for-power-vs-force.md
+claim--pap-findings-contested-western-vs-russian-literature.md
+claim--parachute-resistance-tradeoffs-for-dynamic-correspondence.md
+claim--periodisation-controversy-verkhoshansky-vs-zheljazkov.md
+claim--physical-quality-transfer-decreases-as-specific-fitness-increases.md
+claim--plyometric-injury-risk-comes-from-prescription-not-the-method.md
+claim--plyometric-skill-is-cognitive-and-state-dependent.md
+claim--popular-plyometric-drills-work-through-other-mechanisms.md
+claim--power-output-peaks-then-declines-with-load-jump-vs-leg-press.md
+claim--pre-working-muscle-state-ranks-performance.md
+claim--prestretch-benefit-decay-time-differs-by-task.md
+claim--prolonged-competition-period-volume-cuts-lower-special-work-capacity.md
+claim--pursuing-perfect-bilateral-symmetry-can-be-counterproductive.md
+claim--ratov-functional-electrostimulation-emg-triggered-sport-specific.md
+claim--reaction-time-mostly-fixed-movement-time-trainable.md
+claim--regime-switching-ability-decides-mixed-regime-events.md
+claim--russian-sport-school-age-guidelines-table.md
+claim--seasonal-trainability-hettinger-muller-ultraviolet.md
+claim--secular-increase-in-lifting-performance-gompertz-growth.md
+claim--speed-barrier-is-genetic-ceiling-not-neural-block.md
+claim--spinal-ligaments-share-load-with-erector-spinae-in-heavy-pulls.md
+claim--sprint-and-distance-training-emphasis-shifts-with-qualification-vankov.md
+claim--spurious-muscle-tension-limits-rom-independent-of-tissue-flexibility.md
+claim--squat-1-5-to-2-bodymass-rule-applies-to-maximal-depth-jumps-only.md
+claim--static-cyclic-stretching-increases-rom-via-stretch-tolerance-not-tissue-change.md
+claim--static-dynamic-combined-isometric-concentric-method.md
+claim--strength-age-relationship-and-adjustment-equations.md
+claim--strength-and-speed-training-response-shifts-with-training-age.md
+claim--strength-deficit-scales-with-resistance-fraction.md
+claim--strength-detraining-and-retention-timelines.md
+claim--strength-endurance-hypertrophy-and-cyclic-endurance.md
+claim--strength-training-raises-haemoglobin-myoglobin-and-aids-distance-sport.md
+claim--strength-training-threshold-stimulus.md
+claim--stretch-shortening-history-dependence-of-isometric-force.md
+claim--stretching-benefits-list-from-older-literature-review.md
+claim--tendon-insertion-transitional-stiffness-gradient-disrupted-by-steroids.md
+claim--three-zone-force-velocity-curve-for-cyclic-locomotion.md
+claim--thrown-load-height-decreases-with-load-increases-with-drop-height.md
+claim--time-limits-of-single-emphasis-loading-by-motor-quality.md
+claim--traditional-circuit-weight-training-gives-only-modest-mixed-benefits.md
+claim--two-large-mesocycles-a-year-bi-cyclic-organisation.md
+claim--velocity-and-contraction-specificity-asymmetric-transfer.md
+claim--vo2max-alone-does-not-determine-endurance-performance.md
+claim--voluntary-involuntary-strength-reserve-magnitudes.md
+claim--vorobyev-mean-training-weight-by-bodymass-and-qualification.md
+claim--zatsiorsky-and-hansen-show-strength-endurance-training-specificity.md
+framework--acute-delayed-particular-cumulative-training-effect-taxonomy.md
+framework--aerobic-vs-anaerobic-circuit-parameters.md
+framework--annual-models-for-medium-and-long-duration-endurance-sports.md
+framework--apre-autoregulating-progressive-resistance-exercise.md
+framework--bi-cyclic-annual-model-for-explosive-strength-sports.md
+framework--bodymass-strength-scaling-laws.md
+framework--central-vs-peripheral-fatigue-mechanisms.md
+framework--circuit-layout-variants-superset-retrophase-zigzag-detour.md
+framework--clinical-physiological-effects-of-electrostimulation.md
+framework--compensatory-acceleration-training.md
+framework--conditions-for-concentrated-unidirectional-loading.md
+framework--conjugate-sequence-system-of-training-means.md
+framework--continuous-interval-and-mixed-circuit-training-classification.md
+framework--cybernetic-periodisation-rpe-and-rating-of-technique.md
+framework--descriptive-and-prescriptive-training-models.md
+framework--determinants-of-strength-structural-functional.md
+framework--distributed-vs-concentrated-loading-two-forms-of-compensatory-adaptation.md
+framework--dynamometric-and-functional-profile-for-weak-link-identification.md
+framework--early-history-of-periodisation-kotov-to-dyson.md
+framework--eight-step-sequence-for-programming-annual-training.md
+framework--eight-types-of-muscular-tension.md
+framework--eight-weaknesses-of-the-matveyev-model.md
+framework--factors-limiting-strength-production.md
+framework--fitness-fatigue-modeling-and-taper-timing.md
+framework--five-criteria-of-dynamic-correspondence.md
+framework--five-phases-of-a-plyometric-action.md
+framework--flexibility-definition-and-rom-determinants.md
+framework--flexibility-speed-strength-endurance-qualities.md
+framework--force-time-curve-adaptation-pattern-by-movement-type.md
+framework--four-component-model-of-explosive-force.md
+framework--four-documents-for-programming-and-controlling-training.md
+framework--four-level-functional-specialisation-and-special-physical-preparedness.md
+framework--four-mechanisms-of-stimulating-muscular-tension.md
+framework--four-methods-of-enhancing-rom-ranked-by-effectiveness.md
+framework--four-principles-of-special-strength-training-organisation.md
+framework--functional-vs-nonfunctional-resistance-machines.md
+framework--functional-vs-structural-resistance-training.md
+framework--inertial-flywheel-and-elastic-band-resistance-devices.md
+framework--intensity-zone-distribution-and-load-recording.md
+framework--isokinetic-method-claimed-advantages-and-mechanism.md
+framework--isometric-contraction-categorization-voluntary-reflexive.md
+framework--joint-stabilization-sequence-across-range-of-motion.md
+framework--key-specific-nonspecific-levelling-motor-ability-model.md
+framework--kinaesthetic-system-and-feedforward-visualization.md
+framework--kinematic-pair-chain-system-movement-analysis-levels.md
+framework--kinesiological-pattern-and-strength-field-components.md
+framework--kinetic-energy-stimulation-mechanical-basis-and-advantages.md
+framework--logical-scheme-of-training-management-load-fitness-state-external-interactions.md
+framework--matveyev-microcycle-and-mesocycle-types-and-sequences.md
+framework--mesocycle-variants-smooth-rise-versus-concentrated-dip-and-rebound.md
+framework--methods-for-improving-voluntary-muscle-relaxation.md
+framework--motor-ability-connection-types-taxonomy.md
+framework--movement-matrix-system-for-multiarticular-exercise-selection.md
+framework--non-commutative-non-associative-training-order.md
+framework--non-impact-plyometrics-ericson-and-martial-arts.md
+framework--order-and-causal-analysis-for-judging-training-schemes.md
+framework--plyometric-training-classification-impact-intensity-and-function.md
+framework--positive-and-negative-sequences-of-endurance-loading.md
+framework--post-activation-potentiation-load-timing-sequencing.md
+framework--precise-muscle-action-terminology.md
+framework--reactivity-coefficient-and-depth-jump-test.md
+framework--resistance-training-prescription-by-goal.md
+framework--s-factors-pyramidal-fitness-model.md
+framework--sarcomere-vs-sarcoplasmic-hypertrophy.md
+framework--sequential-and-concurrent-variants-of-systematic-means.md
+framework--series-and-parallel-elastic-components.md
+framework--seven-primary-aims-of-programming-training.md
+framework--shock-method-and-plyometric-terminology.md
+framework--shock-methods-to-break-training-stagnation.md
+framework--situational-leadership-coach-matches-style-to-athlete-maturity.md
+framework--six-broad-periodisation-schemes.md
+framework--six-parameters-influencing-flexibility.md
+framework--soft-tissue-contribution-to-joint-stiffness-and-stretch-duration-type.md
+framework--special-strength-methods-classified-by-sport-group-and-strength-type.md
+framework--specific-correspondence-of-the-training-effect-four-tasks.md
+framework--speed-sport-block-organisation-and-two-glycolytic-peaks.md
+framework--sport-alone-vs-sport-plus-supplementary-training-and-adjunct-modes.md
+framework--strength-deficit-jump-comparison-estimate.md
+framework--strength-endurance-taxonomy-and-absolute-vs-partial.md
+framework--strength-speed-continuum-five-zones.md
+framework--stretch-reflex-types-and-neuromuscular-control-of-flexibility.md
+framework--stretching-matrix-system-reverse-of-contraction-action.md
+framework--stretching-techniques-taxonomy-static-vs-dynamic.md
+framework--supplementary-readiness-markers-hr-bp-ceff-palpation.md
+framework--temporal-and-qualitative-forms-of-the-training-effect.md
+framework--three-levels-of-change-in-fitness-state.md
+framework--three-methods-for-maximum-strength-repetitive-brief-maximal-isometric.md
+framework--three-sport-groups-acyclic-cyclic-complex-for-programming.md
+framework--three-viewpoints-on-organising-endurance-development.md
+framework--training-cycle-hierarchy-durations-and-russian-term-swap.md
+framework--tricyclic-annual-model-for-individual-and-one-on-one-sports.md
+framework--two-force-regimes-overcoming-weight-vs-inertia.md
+framework--two-groups-of-speed-strength-movements-and-their-tension-types.md
+framework--types-of-maximal-strength.md
+framework--volume-intensity-and-relative-intensity-calculation.md
+framework--warmup-mechanisms-and-task-specific-guidelines.md
+framework--work-capacity-fitness-preparedness.md
+heuristic--allow-restoration-after-a-concentrated-block-before-the-next.md
+heuristic--analytical-synthetic-and-multifaceted-preparation-suit-only-early-training.md
+heuristic--apre-skill-learning-6rm-pyramid-test-and-rm-muscle-testing.md
+heuristic--arousal-optimum-is-individual-so-fit-restoration-to-personality-and-task-complexity.md
+heuristic--ballistic-stretching-safe-with-gradual-progressive-protocol.md
+heuristic--blindfolded-training-enhances-proprioceptive-skill-acquisition.md
+heuristic--brief-cold-application-before-effort-vs-prolonged-cold-contraindicated.md
+heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size.md
+heuristic--build-the-annual-plan-backwards-from-competitions.md
+heuristic--build-training-theory-from-interacting-complexes-and-coach-scientist-cooperation.md
+heuristic--choice-of-muscle-training-regime-favor-combination.md
+heuristic--choose-cross-training-by-fitness-qualities-and-phase-not-sport-label.md
+heuristic--circuit-progression-load-prescription-and-novice-pre-testing.md
+heuristic--circuits-cannot-develop-sport-specific-strength-qualities.md
+heuristic--concentrated-blocks-of-3-4-weeks-three-in-a-row-then-longer-recovery.md
+heuristic--cyclic-vs-acyclic-speed-strength-tempo-rest-and-fatigue.md
+heuristic--dedicated-stretching-may-be-unnecessary-with-progressive-movement-preparation.md
+heuristic--depth-jump-execution-cues-landing-gaze-breath.md
+heuristic--depth-jump-height-set-by-transition-speed-and-heel-contact.md
+heuristic--depth-jump-weekly-frequency-and-seasonal-placement.md
+heuristic--dynamic-correspondence-means-matching-motor-characteristics-not-copying-the-sport-movement.md
+heuristic--early-specialisation-by-motor-regime-not-by-sport.md
+heuristic--eccentric-quasi-isometrics-for-active-flexibility-and-starting-strength.md
+heuristic--electrostimulation-sequencing-dosage-and-safety-practicalities.md
+heuristic--equip-circuits-with-free-weights-and-pulleys-over-multistation-machines.md
+heuristic--expectancy-motivation-break-distant-goals-into-attainable-steps.md
+heuristic--follow-a-concentrated-block-with-moderate-volume-explosive-work.md
+heuristic--gpp-and-spp-form-one-unit-curtail-gpp-for-advanced-athletes.md
+heuristic--head-and-eye-position-cues-for-barbell-lifts.md
+heuristic--heart-rate-work-capacity-tests-for-lifters.md
+heuristic--identify-moved-stabilized-and-both-joints-before-selecting-exercises.md
+heuristic--in-season-stabilisation-twice-weekly-30-minutes.md
+heuristic--instruction-type-and-verbal-framing-shape-strength-output.md
+heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity.md
+heuristic--isokinetic-testing-limitations-for-functional-sport-specificity.md
+heuristic--isometric-apre-six-second-maximum-protocol.md
+heuristic--isometric-dynamometry-misrepresents-dynamic-functional-strength.md
+heuristic--isometric-priming-and-external-internal-classification.md
+heuristic--isometric-training-execution-protocol-and-advantages-drawbacks.md
+heuristic--keep-event-specific-competitive-stress-in-preparation.md
+heuristic--loading-reduction-for-the-delayed-effect-must-outlast-1-2-weeks.md
+heuristic--loadless-training-broomstick-protocol.md
+heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport.md
+heuristic--match-plyometric-drills-to-limb-symmetry-and-rotational-dominance.md
+heuristic--match-plyometric-prescription-to-joint-angle-and-fiber-type.md
+heuristic--maximal-plyometric-and-depth-jump-volume-and-rest.md
+heuristic--nfr-machine-limitations-safety-and-appropriate-use.md
+heuristic--nine-reasons-electrostimulation-research-conflicts.md
+heuristic--no-supplementary-sport-is-categorically-good-or-bad.md
+heuristic--no-unsafe-stretch-only-unsafe-execution-for-individual.md
+heuristic--parachute-resistance-sizing-progression-and-contrast-release.md
+heuristic--phasic-biomechanical-analysis-before-selecting-special-strength-means.md
+heuristic--plan-variation-to-avoid-restrictive-neural-patterns.md
+heuristic--plyometric-surface-footwear-and-simple-apparatus.md
+heuristic--plyometric-training-coupling-under-0-15-s-feedforward-and-force-time-pattern.md
+heuristic--preparatory-progression-before-depth-jumps.md
+heuristic--program-variable-complexity-scales-with-training-age.md
+heuristic--progress-skills-only-at-70-80-percent-technical-reliability.md
+heuristic--rate-plyometric-intensity-by-contact-momentum-from-drop-height.md
+heuristic--reflex-based-techniques-for-flexibility-training.md
+heuristic--replace-means-as-their-training-effect-fades.md
+heuristic--resisted-and-water-plyometrics.md
+heuristic--restorative-stage-length-scales-with-homeostatic-disturbance.md
+heuristic--rfd-as-correspondence-criterion-and-impulse-cannot-compare-movements.md
+heuristic--routine-artificial-restoration-can-blunt-adaptation.md
+heuristic--rule-of-sixty-percent-light-day-volume.md
+heuristic--same-exercise-different-regime-boxer-vs-shot-putter.md
+heuristic--sequence-jumps-then-barbell-then-depth-jumps-across-stages.md
+heuristic--sequential-accumulation-needs-4-6-week-stages-extensive-before-explosive.md
+heuristic--set-mesocycle-boundaries-by-main-competition-dates.md
+heuristic--setchinov-alternation-for-circuit-station-sequencing.md
+heuristic--shock-microcycle-limits.md
+heuristic--speed-strength-loading-light-loads-maximal-acceleration-and-5-to-1-mix.md
+heuristic--strength-deficit-sets-training-method-choice.md
+heuristic--strength-endurance-load-tempo-and-the-75-80-percent-ceiling.md
+heuristic--strength-endurance-under-demanding-sport-like-conditions.md
+heuristic--structured-load-progression-beats-volume-alone-or-random-combination.md
+heuristic--technique-work-during-and-after-a-concentrated-strength-block.md
+heuristic--tendon-stretching-must-preserve-elastic-energy-storage-capacity.md
+heuristic--test-monthly-under-constant-conditions-and-compare-with-targets.md
+heuristic--time-technique-and-competition-strength-work-to-the-ldte-window.md
+heuristic--train-coupled-hip-flexion-extension-without-heavily-loaded-simulation.md
+heuristic--train-force-at-the-accentuated-joint-angle.md
+heuristic--use-low-intensity-gpp-as-restoration-in-concentrated-loading-models.md
+heuristic--within-session-order-of-explosive-means-matters-less-than-volume-and-contrast.md
+principle--accelerating-specific-adaptation.md
+principle--breath-holding-and-valsalva-support-spinal-stability-in-maximal-lifting.md
+principle--converging-partial-effects-of-strength-training-means.md
+principle--equal-force-different-loading-methods.md
+principle--force-time-profile-determines-strength-vs-power-training-target.md
+principle--force-velocity-relationship-and-training-specificity.md
+principle--functional-specialisation-is-a-primary-emphasis-not-an-exclusive-energy-system.md
+principle--load-must-sit-within-the-current-adaptation-reserve-window.md
+principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue.md
+principle--local-muscular-endurance-adaptation-is-specific-to-the-trained-muscles.md
+principle--long-term-delayed-training-effect-from-volume-above-the-optimum.md
+principle--mesocycle-not-microcycle-as-the-unit-and-planned-dips-are-not-errors.md
+principle--motor-system-leads-cardiorespiratory-adaptation-do-not-separate-them.md
+principle--neuromuscular-stimulation-drives-early-strength-gains.md
+principle--pelvic-tilt-is-task-specific-not-universal.md
+principle--programme-objective-approach-quantified-goals-dictate-training.md
+principle--programming-is-an-art-on-principles-not-an-algorithm.md
+principle--rate-of-force-development-as-independent-limiter.md
+principle--sequentially-introduce-means-of-greater-training-effect.md
+principle--short-amortization-preserves-elastic-energy.md
+principle--specificity-of-training-ten-dimensions.md
+principle--speed-strength-strength-endurance-and-speed-endurance-are-independent-qualities.md
+principle--sporting-form-cannot-be-held-permanently-matveyev.md
+principle--technical-mastery-needs-competition-intensity-practice.md
+principle--torque-optimization-in-lifting-technique.md
+principle--training-effort-must-match-or-exceed-sport-effort-judged-by-movement-speed.md
+principle--triphasic-nature-of-muscle-action.md
