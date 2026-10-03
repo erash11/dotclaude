@@ -31,7 +31,7 @@ Never put memory content here — the file itself holds the facts.
 - [DEV layout and discovery](project_dev-layout-and-discovery.md) — moving or adding folders in ~/DEV
 - [KeystoneOS verification habits](project_keystoneos-verification-habits.md) — before asserting KeystoneOS state
 - [Portfolio registry provenance](project_portfolio-registry-write-provenance.md) — changing portfolio.json
-- [Command centre](project_command-centre.md) — localhost:7373 dashboard or daemon health
+- [Command centre](project_command-centre.md) — retired 10-03 (board replaced it); localhost web-service security rules
 - [Vendored skill install](project_vendored-skill-install.md) — installing a vendored skill
 - [Vendored skill repair](project_vendored-skill-repair.md) — a skill returns empty output
 - [Personal site build routes](project_personal-site-build-routes.md) — building the personal site
