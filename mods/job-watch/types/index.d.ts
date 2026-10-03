@@ -5,11 +5,14 @@ export type Job = {
   nextRun: string | null
 }
 
+export type DockerState = 'up' | 'docker-down' | 'milvus-down' | null
+
 export type JobReport = {
   checkedAt: number
   jobs: Job[]
   errorLines: number
   evalStatus: string | null
+  docker: DockerState
 }
 
 declare module 'claude-code' {

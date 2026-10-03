@@ -4,6 +4,7 @@ export type RepoState = {
   branch: string
   dirty: number
   ahead: number
+  behind: number
   hasUpstream: boolean
 }
 
@@ -20,6 +21,7 @@ declare module 'claude-code' {
       isScanning: boolean
       pendingExit: boolean
       isHidden: boolean
+      isFetching: boolean
     }
   }
 }

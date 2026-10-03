@@ -1,0 +1,7 @@
+{
+  "name": "twin-copy-guard",
+  "version": "0.1.0",
+  "description": "After an edit to a mirrored hook or skill file, flags the twin copy left unpatched (~/.claude vs ~/.codex/~/.agents) and offers to copy the edit across; /twins lists drift",
+  "author": { "name": "Eric Rash" },
+  "types": "./types/index.d.ts"
+}

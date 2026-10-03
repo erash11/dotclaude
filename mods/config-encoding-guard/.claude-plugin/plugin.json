@@ -1,0 +1,7 @@
+{
+  "name": "config-encoding-guard",
+  "version": "0.1.0",
+  "description": "Catches a UTF-8 BOM or CP1252-garbled characters (â€” for —) in ~/.claude and ~/.codex config after each write or shell call, and offers a backed-up repair; /encoding",
+  "author": { "name": "Eric Rash" },
+  "types": "./types/index.d.ts"
+}
