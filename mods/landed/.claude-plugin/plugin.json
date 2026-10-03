@@ -1,0 +1,6 @@
+{
+  "name": "landed",
+  "version": "0.1.0",
+  "description": "Where files landed: /landed [days|refresh|filter] shows files created or changed, grouped by project, from project-triage's landed.py ledger (both machines). Scans in the background at session start.",
+  "author": { "name": "Eric Rash" }
+}

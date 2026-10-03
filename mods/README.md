@@ -14,6 +14,7 @@ Synced to both machines through the `~/.claude` repo.
 | `twin-copy-guard` | around Write/Edit/NotebookEdit, `turn.complete` | At turn end, names a hook/skill twin left unpatched (`~/.claude/hooks` ↔ `~/.codex/hooks`, `~/.claude/skills` ↔ `~/.agents/skills`) and offers **Copy across** when the pair matched before the edit; `/twins` lists every differing pair | none |
 | `config-encoding-guard` | `session.start`, after Write/Edit/Bash/PowerShell, `turn.complete` | Catches a UTF-8 BOM or CP1252 garbling (`â€”`, `â–“`) in `~/.claude`/`~/.codex` config (see `project_settings-json-bom-trap`); offers a repair that keeps `.encoding-bak` and never writes JSON that will not parse; `/encoding` | none |
 | `slate-status` | `session.start`, 30-min timer | Status line: `slate: DUE · 1/5 active · 2 to do` from `project-triage/portfolio.py slate-check`; toasts when it changes and is not OK; `/slate` lists problems | none |
+| `landed` | `session.start` (background scan) | `/landed [today\|week\|N] [refresh] [project]`: files created or changed, grouped by project, both machines, from `project-triage/landed.py` | none |
 
 Added 2026-10-03 (from the Nate Herk mods video + a 45-day transcript audit):
 `repo-band` now fetches every repo once at session start, shows `↓N` behind, and
