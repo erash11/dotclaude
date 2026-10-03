@@ -1,0 +1,6 @@
+{
+  "name": "pm",
+  "version": "0.1.0",
+  "description": "/pm opens the project board (project-triage board.py): reuses the one running on this machine, else starts it tied to this Claude Code session. Same entry as the shell's `pm`.",
+  "author": { "name": "Eric Rash" }
+}
