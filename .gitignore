@@ -23,6 +23,7 @@
 !/scripts/
 !/mods/
 mods/**/.claude-plugin/types/
+mods/.loadlist
 scripts/logs/
 **/.env
 
