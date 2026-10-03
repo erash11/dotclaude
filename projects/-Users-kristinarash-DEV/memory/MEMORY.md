@@ -63,3 +63,4 @@ Never put memory content here — the file itself holds the facts.
 - [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector, use the local Box Drive folder
 - [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
 - [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
+- [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix outside Friday's slot

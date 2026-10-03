@@ -1,0 +1,314 @@
+  127277 total
+
+@@@@ FILE case-study--soviet-sport-specific-strength-endurance-prescriptions.md
+---
+type: library-entry
+kind: case-study
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.5"
+topic: strength-endurance prescriptions by sport
+category: [strength-endurance, programming, endurance-sport, case-study]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Sport-Specific Strength-Endurance Prescriptions: Skiers, Distance Runners, Skaters and Rowers
+
+**What it is** — The authors' examples of applying the general strength-endurance principles "differently in each specific case" (PDF p. 297 / printed p. 286, verified against the page image):
+- **Skiers (Chistyakov, 1965):** in the preparatory period, weights "up to 65% of 1RM", combined with simulation exercises on a flat surface and roller-ski movements.
+- **Middle and long distance runners (Likachyevskaya & Kovalchuk, 1963):** a barbell of "55-60% of bodymass" lifted to head level "8-10 times rhythmically"; clean-and-jerks with "60-85% of bodymass"; kettlebell jumps from a squat with "about one-third of bodymass for 18-20 repetitions"; squats with "55-60% of bodymass until complete fatigue." Also (Popov, 1966): "60-80% of 1RM for multiple repetitions, jumping and hard running."
+- **Skaters (Mikhailov & Panov, 1975):** heavy weights "(80-85% of 1RM)" for "several sets at a moderate tempo for 4-12 repetitions per set until the point of complete fatigue, with 2-4 minutes of rest between sets"; light and moderate weights "as rapidly as possible for 15-25 repetitions per set, for 3-5 sets with rest intervals of 5-8 minutes." Leg progression: "increasing the number of barbell squats by 20-30 each week (beginning with 50 squats per set and over a period of 2-3 months increasing this to 200-300 repetitions), then increasing the amount of weight and starting a new cycle of strength training, but beginning with a smaller number of squats."
+- **Rowers:** men "50-80% of 1RM", women "30-40% of 1RM" (Ulrich et al, 1966). Women rowers with light weights "(18-20kg) for many repetitions" improved strength-endurance "up to 40% from initial levels" (Chumakova, 1964), more than with "(35-50 kg) executed in sets of 2-3 repetitions", "and it is even greater (by 28%) than that produced by a combination of both methods."
+
+**Why it works** — The authors present these as applications of the general principles (load set by the dynamics of the sport exercise). No mechanism is given per sport.
+
+**When to apply** — As reference doses when designing strength-endurance work for cyclic athletes. Inference: the skater squat progression (50 to 200-300 reps per set over 2-3 months) is an extreme local-endurance model with no obvious football use; the rower result (light, many reps beating heavy, low-rep sets for strength-endurance) is the transferable point.
+
+**When NOT to apply** — The skaters' 80-85% 1RM conflicts with the 75-80% 1RM ceiling stated a page earlier (see [[heuristic--strength-endurance-load-tempo-and-the-75-80-percent-ceiling]]). Loads mix % of 1RM and % of bodymass. The Chumakova "by 28%" comparison is ambiguous (28 percentage points or 28% relative is not stated). No sample sizes, durations or outcome tests are given. These are Soviet-era single-source prescriptions.
+
+**Example** — The authors' own: the skater squat progression from 50 to 200-300 reps per set before raising the weight and restarting with fewer reps (PDF p. 297 / printed p. 286).
+
+**Related** — [[heuristic--strength-endurance-load-tempo-and-the-75-80-percent-ceiling]]; [[heuristic--strength-endurance-under-demanding-sport-like-conditions]]; [[claim--strength-endurance-hypertrophy-and-cyclic-endurance]]; [[framework--strength-endurance-taxonomy-and-absolute-vs-partial]]
+
+@@@@ FILE claim--depth-landings-from-2-to-3-2-m-produce-forces-over-20-times-bodyweight.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: depth landings without rebound
+category: [plyometrics, eccentric-strength, depth-landings, safety]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Depth Landings Without a Rebound Raised Strength in Dursenev and Raevsky (1978): 1500-3500 kgf in 0.028-0.061 s From Drops up to 3.2 m
+
+**What it is** — "*depth landings* (i.e. depth jumps without the rebound after landing) alone can also have a significant effect on concentric and eccentric strength. This was shown by Dursenev and Raevsky (1978) who investigated the effect of depth landings from heights of 2m or more onto soft gymnastic mats. Under these conditions, the subjects acquired the ability to display brief muscle tension (over periods of between 0.028-0.061 secs) of magnitude 1500-3500 kgf, i.e. over 20 times bodyweight for heights of up to 3.2 metres. The rationale for using this method was that weight training or other similar methods of resistance training cannot produce this intensity of voluntary effort." "the maximum possible height which the athletes could contemplate using produced the greatest increase in strength, although they often hesitated to attempt these extremely stressful jumps" (PDF p. 288 / printed p. 277, verified against the page image).
+
+The authors' caveats on the same page: "the drop heights studied were for experimental purposes alone and it would be most inadvisable to use drops of 3.2 metres for training." "It appeared that the main consideration for enhancing strength is not the type of muscle contraction, but the intensity and speed of contraction elicited by the exercise." Increase drop height "gradually from fairly low levels", "limit the number of drops per session", "land on suitably firm shock-absorbing surfaces" and attend to landing technique.
+
+**Why it works** — The authors' rationale: intensity of tension that resistance training cannot reach, with intensity and speed of contraction, not contraction type, as "the main consideration." Inference: "over 20 times bodyweight" holds for a 75 kg subject at the low end (1500 kgf / 75 kg = 20); the book gives no subject masses, so the ratio is approximate.
+
+**When to apply** — As evidence that the eccentric landing alone is a strong stimulus, which supports using low-height landing drills as a step before rebound work. Inference: for football, landing drills from modest heights are the safe use of this finding; the experimental heights are not.
+
+**When NOT to apply** — Never use 2-3.2 m drops in training (the authors' own warning). The study is reported second-hand, with no subject numbers, training duration or strength measure given. It used "soft gymnastic mats", which differs from the firm surfaces the authors want for rebound plyometrics (see [[heuristic--plyometric-surface-footwear-and-simple-apparatus]]).
+
+**Example** — The authors' own: drops of 2 m or more onto soft mats, with peak tensions of 1500-3500 kgf over 0.028-0.061 s (PDF p. 288 / printed p. 277).
+
+**Related** — [[claim--squat-1-5-to-2-bodymass-rule-applies-to-maximal-depth-jumps-only]]; [[claim--eccentric-training-damage-adaptation-and-injury-risk-tradeoff]]; [[claim--optimal-depth-jump-drop-height-for-power-vs-force]]; [[heuristic--rate-plyometric-intensity-by-contact-momentum-from-drop-height]]
+
+@@@@ FILE claim--depth-jump-training-beat-higher-volume-traditional-training-in-jumpers.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: training economy of depth jumps
+category: [plyometrics, depth-jumps, reactive-ability, training-economy]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Jumpers Doing 475 Depth Jumps in 12 Weeks Gained More Reactive Ability Than a Group Doing 1472 Barbell Push-Offs and 93 Tonnes
+
+**What it is** — "The plyometric method of developing explosive strength and reactive ability solves to a significant degree the problem of economising training, since it ensures that a high level of special conditioning is attained in the minimum time. Thus, a comparative experiment revealed that a group of track-and-field jumpers executing primarily depth-jumps (all of them did 475 jumps) over a 12 week period in the preparation phase showed greater improvement in reactive ability than the group which trained with traditional methods and executed 1472 general push-offs (squats, jumping and hopping with a barbell weighing 90-95%, 70-80% and 30-40% of 1RM) and lifted a total volume of 93 tons!" (PDF p. 288 / printed p. 277, verified against the page image).
+
+Two sentences around it: "The training effect of depth-jumps or shock-loading for developing explosive strength is very large, having little equal when compared with the other means of strength training, especially when combined in a complex with other forms of intensive strength training", corroborated by Semyenov 1971, Tatyan 1974, Dobrovolsky 1972, Savin 1974, Khodykin 1974 and Deniskin 1976 (same page). And: "Carefully periodised training programmes which combine resistance exercises with plyometrics can develop explosive strength even more effectively than plyometrics alone, provided the resistance movements precede the plyometric activities in individual sessions" (same page).
+
+**Why it works** — The authors give the result as evidence of "economising training"; no mechanism is stated here beyond the shock-method rationale elsewhere in 5.2.4.
+
+**When to apply** — Making the case to coaches that a small, well-placed depth-jump dose can do more for reactive ability than a large barbell volume. Inference: the companion sentence (resistance work before plyometrics in the same session) is a direct sequencing rule for combined sessions.
+
+**When NOT to apply** — Unclear points in the source: "all of them did 475 jumps" does not say whether 475 is per athlete or the group total; the experiment has no citation, group sizes, statistics or outcome test named beyond "reactive ability"; the comparison group's "1472 general push-offs" is also unclear per athlete or total. Supported only as a reported Soviet-era comparison. The result is for track-and-field jumpers in a preparation phase.
+
+**Example** — The authors' own experiment as quoted above (PDF p. 288 / printed p. 277).
+
+**Related** — [[heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size]]; [[heuristic--maximal-plyometric-and-depth-jump-volume-and-rest]]; [[heuristic--structured-load-progression-beats-volume-alone-or-random-combination]]; [[framework--post-activation-potentiation-load-timing-sequencing]]
+
+@@@@ FILE claim--heavy-squats-and-light-fast-lifts-miss-the-eccentric-concentric-switch.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: limits of barbell means for explosive strength
+category: [explosive-strength, reactive-ability, exercise-selection]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Heavy Squats Build Strength Potential and Light Fast Lifts Build Speed, but Neither Trains the Rapid Eccentric-to-Concentric Switch
+
+**What it is** — The authors open 5.2.4 by analysing the traditional speed-strength means. In heavy barbell squats "the muscles work very slowly (quasi-isometrically) with a relatively constant tension produced by the load. Consequently, the muscles primarily develop isometric strength". Raising the barbell weight, "frequently considered a basic indicator of special strength fitness, places a large and generally unnecessary load on the spine." For speed-strength, athletes use smaller loads; their example is "squat thrusts with a 60kg barbell on the shoulders", which "produces a large dynamic maximum force". So "exercises with heavy weights tend to increase the strength potential of the muscles, while fast exercises with light weights improve speed." Neither adequately enhances "specific components of explosive movements such as the rapid excitation of muscles and the rapid changing from eccentric to concentric work." These skills need "a specific training regime which is impossible to imitate with only one resistance exercise": slow resistance movements, and lifting a barbell in preparation for squatting or jumping with it, remove "the possibility of controlling the mechanisms which are crucial to the rapid switching of muscles to the active state", while lowering the resistance "diminishes the dynamic effort required and creates a vicious cycle from which there is no apparent escape." This analysis is the authors' stated route to the shock (plyometric) method on the same page. (PDF p. 278 / printed p. 267, verified against the page image.)
+
+**Why it works** — The authors' reason is the one quoted: the barbell means do not reproduce rapid excitation or the fast eccentric-concentric switch. They give no further physiology here. Inference: the "vicious cycle" is that heavy loads slow the movement and light loads drop the effort, so no single barbell load gives both high effort and a fast switch.
+
+**When to apply** — When a program relies on heavy squats plus light speed squats to develop jumping or cutting explosiveness, this is the authors' argument for adding a means that trains the switch itself (see [[framework--shock-method-and-plyometric-terminology]]). Eric's baseline: "Training time is deliberately weighted toward high motor-unit-recruitment core/ballistic movements (squats, cleans, jumps, throws, sprints)" (`docs/method-baseline.md` line 104). Inference: this entry is the authors' case for why the jumps in that list are not interchangeable with the squats.
+
+**When NOT to apply** — The authors do not say heavy squats are useless for explosive athletes: "this does not mean that it is impossible for them to execute fast dynamic contractions", and heavy work raises "strength potential". Later in the same section they prefer heavy "brief maximal tension" work where explosive force must overcome large resistance (see [[heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size]]). The 60 kg squat-thrust load is given without athlete bodymass or level, so it is not a prescription.
+
+**Example** — The authors' own example: heavy squats (slow, quasi-isometric) versus squat thrusts with a 60 kg barbell (large dynamic maximum force), with neither training the rapid switch (PDF p. 278 / printed p. 267).
+
+**Related** — [[framework--shock-method-and-plyometric-terminology]]; [[principle--equal-force-different-loading-methods]]; [[heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size]]; [[principle--rate-of-force-development-as-independent-limiter]]
+
+@@@@ FILE claim--high-volume-plyometrics-do-not-build-rebound-fatigue-resistance.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: plyometric volume and fatigue resistance
+category: [plyometrics, volume, fatigue, motor-control]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Many Sets and Reps of Plyometrics Do Not Build Fatigue Resistance for Repeated Rebounding; Movement Efficiency Does (Nicol et al, 1997)
+
+**What it is** — Stated twice in 5.2.4:
+- "Many repetitions of plyometric drills frequently are prescribed for some sports because of assumptions that this sort of training will improve fatigue resistance in repeated actions such as rebounding in basketball, yet research has shown this to be untrue (Nicol et al, 1997)" (PDF p. 280 / printed p. 269, verified against the page image).
+- "The use of many repetitions and sets of plyometric drills in an attempt to facilitate adaptation to cope with exhaustive bouts of stretch-shortening activities such as rebounding in basketball is not supported by research (Nicol et al, 1997). Instead any improvement in such situations is better mediated by the use of training to enhance movement efficiency. This is a very important point which concerns all explosive and ballistic activities: it is futile to rely predominantly on plyometric drills to enhance sport specific explosive strength and power, because efficiency of motor control is fundamental to all skilled sporting performance" (PDF pp. 288-289 / printed pp. 277-278, verified against the page images).
+
+**Internal conflict, recorded:** the "futile to rely predominantly" sentence is followed on PDF p. 289 / printed p. 278 by "plyometrics should be the main method in the training of highly qualified athletes for developing explosive strength and reactive ability." See [[heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size]].
+
+**Why it works** — The text's stated reason is "efficiency of motor control is fundamental to all skilled sporting performance." It does not describe the Nicol et al (1997) study design or measures, and the paper was not checked for this entry, so what it measured is unverified here.
+
+**When to apply** — When someone proposes high-rep plyometric circuits to make athletes "fresher" in the fourth quarter. Eric's baseline: "Everything we do is some form of conditioning" (`docs/method-baseline.md` line 122). Inference: the text's alternative for repeat-effort tolerance is better movement efficiency in the sport skill itself, not more drill volume; the book also allows "much shorter intervals with submaximal plyometrics to develop explosive-strength endurance" (PDF p. 285 / printed p. 274, item 6), so submaximal plyometric endurance work is not ruled out.
+
+**When NOT to apply** — Not evidence against plyometrics for explosive strength; the same section calls the shock method's training effect "very large." The claim rests on one citation the book does not describe.
+
+**Example** — The text's own: basketball rebounding as the repeated stretch-shortening task that high plyometric volume was assumed, wrongly, to prepare (PDF p. 280 / printed p. 269).
+
+**Related** — [[heuristic--maximal-plyometric-and-depth-jump-volume-and-rest]]; [[claim--plyometric-injury-risk-comes-from-prescription-not-the-method]]; [[heuristic--brief-maximal-tension-vs-plyometrics-by-resistance-size]]; [[claim--exercise-economy-improves-with-skill-and-interval-style-costs-more]]
+
+@@@@ FILE claim--lewis-formula-estimates-jump-power-from-bodymass-and-height.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: Lewis jump power formula
+category: [testing, vertical-jump, power, biomechanics]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The Lewis Formula P = 21.693 x B x √H Tracks Jump Progress, but It Computes a Falling-Body Power, Not Take-Off Power
+
+**What it is** — In the preparatory programme, the authors suggest tracking jump progress this way: "To gain an idea of individual progress, the power developed may be calculated from the Lewis nomogram or from the formula: Power P = (21.693) B√H watts, where B = bodymass in kg and H = height jumped in metres" (PDF p. 288 / printed p. 277, formula read from the page image; the text layer garbles it as "b Vh").
+
+**Why it works** — The book gives no derivation. Inference (physics): 21.693 = 9.8 × √4.9, so the formula is P = B·g·√(g·H/2) with g = 9.8 m/s². A body falling freely from rest through height H reaches √(2gH); its mean speed during the fall is half that, √(gH/2). So the formula is body weight (B·g) times the mean speed of a body falling through H, in watts. It is a fixed function of bodymass and jump height only.
+
+**When to apply** — As the authors use it: a cheap way to see whether an individual's bodymass-scaled jump is improving over time, when only a jump height and a scale are available. Eric's baseline: jumps are tested on ForceDecks force plates (`docs/method-baseline.md` line 77, the CMJ family protocol). Inference: where force plates are available, measured propulsive power replaces this estimate; the formula is only a fallback.
+
+**When NOT to apply** — Inference: because the formula is weight times the mean speed of a free fall through H, it is not the athlete's peak or mean propulsive power during take-off, which depends on how fast force is produced over the push-off distance; two athletes with the same mass and jump height get the same value even if one pushes off much faster. Do not compare its values with force-plate peak power. The book gives no validation data for it.
+
+**Example** — Inference: a 100 kg athlete jumping 0.50 m gives P = 21.693 × 100 × √0.50 ≈ 1,534 W; at 0.55 m, ≈ 1,609 W. This arithmetic is not in the source.
+
+**Related** — [[heuristic--preparatory-progression-before-depth-jumps]]; [[claim--average-or-peak-force-times-velocity-is-not-power]] (Ch4.3, the authors' own warning about crude power estimates); [[framework--strength-deficit-jump-comparison-estimate]]
+
+@@@@ FILE claim--plyometric-injury-risk-comes-from-prescription-not-the-method.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: plyometric safety
+category: [plyometrics, injury-risk, cartilage, overtraining]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Plyometric Injury Risk Comes From Prescription (Overload and Overuse), Not the Method; Regularly Impact-Loaded Cartilage Is Reported as Healthier
+
+**What it is** — In "Plyometric Training and Safety" (PDF pp. 280-281 / printed pp. 269-270; p. 280 verified against the page image) the text argues:
+- The claim that "plyometric drills on their own are dangerous and useless has not been proved experimentally or clinically"; the danger is "inferred from the magnitude of the impulsive peak forces which have been measured via force plate research", and an experiment isolating plyometric effects with matched controls "is very difficult to design."
+- Opponents imply running and jumping "in the context of normal sport are perfectly safe, but in the context of special plyometric drills are dangerous", and assume joints do not follow SAID (Specific Adaptation to Imposed Demands).
+- Cartilage: "joints subjected to heavy impact are relatively free from osteoarthritis in old age and ... those subjected to much lower loading experience a greater incidence of osteoarthritis and cartilage fibrillation (Bullough et al, 1973; Kempson et al, 1975; Seedhom & Swann, 1985; Seedhom & Wright, 1988; Seedhom et al, 1977)." Siff's former colleague Mark Swanepoel (University of the Witwatersrand) noted that fibrillation at any age increases going up from ankle to knee, hip and lumbar spine. Regularly impulse-loaded cartilage is "mechanically much stiffer", while cartilage "heavily loaded infrequently softens due to decrease in proteoglycan production" (Swanepoel, 1998).
+- "it is not the inherent nature of plyometrics which may produce injury, but the manner in which it is used." Western practice earns much of the criticism: "encyclopaedic compilations of drills offered in extended, isolated and highly repetitive forms"; drills often prescribed without regard to "loading imposed by other work or play ... or the use of formal restoration"; and "the athlete's sport alone may offer all or most of the plyometric training that is necessary."
+- "overtraining comprises two distinct components: overload (the imposition of too great a force at any given time) and overuse (the imposition of too great a volume of exercise)." An "individually appropriate volume and intensity (e.g. via choice of drop height)" with "gradual progressive overload" and "adequate restoration regimes need pose no greater risks than the naturally occurring plyometric actions found in running or jumping" (PDF pp. 280-281).
+
+Voice: Siff (the passage names "Siff's former colleague").
+
+**Why it works** — The stated mechanism is adaptation (SAID) and the cartilage findings cited. Inference: overload maps to drop height and rebound effort, overuse to contacts per session and week, which gives two separate dials to manage.
+
+**When to apply** — Answering "are depth jumps dangerous?" for coaches or medical staff: the text's position is that risk is a dose question. Inference: in football, count the plyometric loading already present in practice (cutting, jumping, sprinting) before adding drills, as the text's "sport alone may offer all or most" warning suggests.
+
+**When NOT to apply** — The text argues mainly from absence of proof and from cartilage studies of everyday joint loading; it cites no controlled study showing plyometric drills are safe. The "heavy impact joints are free from osteoarthritis" sentence compares joints and loading histories, not plyometric training programs, so do not cite it as evidence that depth jumps protect joints. The cited studies were not checked for this entry.
+
+**Example** — The text's own: the Nicol et al (1997) finding, that many repetitions do not improve fatigue resistance in basketball rebounding, as an example of a Western volume habit that is "untrue" (PDF p. 280 / printed p. 269; see [[claim--high-volume-plyometrics-do-not-build-rebound-fatigue-resistance]]).
+
+**Related** — [[claim--collagen-loading-curve-and-injury-risk]]; [[claim--differential-tissue-adaptation-rates]]; [[heuristic--maximal-plyometric-and-depth-jump-volume-and-rest]]; [[claim--squat-1-5-to-2-bodymass-rule-applies-to-maximal-depth-jumps-only]]
+
+@@@@ FILE claim--popular-plyometric-drills-work-through-other-mechanisms.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: popular plyometric drills
+category: [plyometrics, exercise-selection, terminology]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Most "Plyometric" Drills in Popular Western Books Work Through Eccentric Loading, Connective Tissue, Starting Strength and Prestretch, Not the Shock Mechanism
+
+**What it is** — Under "Popular Information on Plyometrics" (PDF pp. 293-294 / printed pp. 282-283; p. 293 verified against the page image, p. 294 from the text layer):
+- Popular Western texts ("e.g. Chu, 1992; Radcliffe & Farantinos, 1985") present jumping and rebound activities "many of which do not constitute true plyometric training as originally conceived by Russian scientists"; they are "often supplementary or preparatory movements."
+- "Most books classify extended range swinging, passing or catching of medicine balls or other objects as 'plyometric', although the amortisation phase is too long to produce classical plyometrics." These drills still help "eye-hand coordination, eccentric strength and starting strength, but they are not strictly plyometric."
+- Books omit the tonic versus phasic myotatic reflex in relation to drill types, the positive supportive reaction, the crossed extensor reflex, phased breathing, the maximal-submaximal distinction, and concurrent and sequential prescription.
+- "the so-called plyometric drills in current Western texts are known to enhance performance, but it is not predominantly due to plyometric training, but more to the increased loading of eccentric contraction, the conditioning of connective tissue, the improvement of voluntary starting strength from the quasi-isometric state, the use of prestretch, and enhancement of acceleration strength by increasing the velocity of projectiles such as medicine balls" (PDF p. 294 / printed p. 283).
+- The physiotherapy link: in PNF a therapist "sometimes imposes a short, sharp jerk on an eccentrically or isometrically contracting muscle to produce strong muscle contraction in a weakened muscle", principles that "preceded sporting plyometrics by several decades" (same page).
+- Related, from the classification passage: *pseudo-plyometrics* such as aerobics "power moves" and many "water plyos" lack "an explosive rebound phase with a short coupling time" (PDF p. 284 / printed p. 273, verified against the page image).
+
+**Why it works** — The text's argument is definitional: long amortisation phases fall outside the shock method, so the benefit must come from the other listed qualities. It gives no study separating these mechanisms.
+
+**When to apply** — Labelling a program's med-ball and jump drills honestly: Inference: a long-amortisation med-ball chest pass or rotational throw is a starting-strength and eccentric drill in the authors' terms, and should not be counted as shock-method volume or dosed with shock-method rest.
+
+**When NOT to apply** — `untested`: the list of "other mechanisms" is the text's assertion, with no data. The criticism of specific books is the author's opinion and was not checked against those books. Not a reason to drop these drills: the text says they "are known to enhance performance."
+
+**Example** — The text's own: extended-range medicine ball swinging and catching, called plyometric in popular books, as an example of a drill whose amortisation is too long for classical plyometrics (PDF p. 293 / printed p. 282).
+
+**Related** — [[framework--plyometric-training-classification-impact-intensity-and-function]]; [[heuristic--plyometric-training-coupling-under-0-15-s-feedforward-and-force-time-pattern]]; [[framework--shock-method-and-plyometric-terminology]]; [[heuristic--reflex-based-techniques-for-flexibility-training]]
+
+@@@@ FILE claim--strength-endurance-hypertrophy-and-cyclic-endurance.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.5"
+topic: hypertrophy and endurance
+category: [strength-endurance, hypertrophy, endurance-sport, relative-strength]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Strength-Endurance Helps Cyclic Endurance, but Some Popular Strength Exercises and Excess Hypertrophy Hinder It; Never Let Relative Strength Fall
+
+**What it is** — From 5.2.5 (PDF pp. 297-298 / printed pp. 286-287, verified against the page images):
+- "an increase in strength-endurance contributes to improving endurance in distance runners, skiers and skaters (Popov, 1968; Nabatnikova, 1972; Mikhailov & Panov, 1975). However ... the magnitude of the strength load used is different if, on the one hand, the key quality required is general endurance and, on the other hand, it is strength-endurance."
+- "certain popular strength exercises such as running with a sack of sand weighing 25% of the subject's bodyweight, barbell pressing, squats, 'good mornings', and twisting with a barbell not only do not enhance, but to a certain degree, will even hinder the development of endurance in cyclic type exercises (Maisuradze, 1960)." In some instances "the increase in strength is associated with excessive muscle hypertrophy". "Endurance and hypertrophy do not increase simultaneously and there is no correlation between them (Maison & Broeker, 1941; McMorris & Elkins, 1954)."
+- No definite correlation between special strength and muscle mass in cyclic endurance sports (middle distance running, skating, skiing: Chistyakov, 1965; Chernyaev, 1965; Nabatnikova, 1972). But in gymnasts "a positive linear correlation (R = 0.77) is noticed between strength-endurance and relative strength (Zhalei, 1964). Therefore, in those cases where endurance is associated with the display of significant strength, some muscular hypertrophy does not negatively influence training results."
+- Closing rules: "Strength training should not result in increased muscle mass in those types of sport where the key quality is endurance of moderate work output. If strength-endurance is required, especially in those cases where it is necessary to overcome a large resistance, a small increase in muscle mass is permissible. In no cases, should the training ever produce a decrease in relative strength of any muscle groups in the body" (PDF p. 298 / printed p. 287).
+
+**Tension with Chapter 4, recorded:** section 4.4 cites research that strength training "contributes more to the largest improvements in distance sports than aerobic training" (PDF pp. 261-262 / printed pp. 250-251; see [[claim--strength-training-raises-haemoglobin-myoglobin-and-aids-distance-sport]]), while 5.2.5 says squats, presses and good mornings "will even hinder the development of endurance in cyclic type exercises" (PDF p. 297 / printed p. 286). Inference: the two may differ in which strength exercises and loads are meant, but the book does not reconcile them.
+
+**Why it works** — The authors' explanation is the hypertrophy by-product and the lack of correlation between endurance and hypertrophy; they give no physiology beyond that.
+
+**When to apply** — Inference: for football the relevant case is the gymnast-like one, endurance "associated with the display of significant strength", where some hypertrophy "does not negatively influence training results." The relative-strength rule applies to every position: Inference: track strength per kg of bodymass when linemen are gaining mass, since the authors say training should never lower relative strength.
+
+**When NOT to apply** — The Maisuradze (1960) list is a single citation without design or loads beyond the 25% bodyweight sandbag. The correlation and hypertrophy statements cite studies from 1941-1972. Not a reason to avoid squats for endurance athletes in general; the authors' own sport prescriptions (skaters, runners) use squats ([[case-study--soviet-sport-specific-strength-endurance-prescriptions]]), which is itself in tension with the Maisuradze sentence.
+
+**Example** — The authors' own: gymnasts, R = 0.77 between strength-endurance and relative strength (Zhalei, 1964), against middle-distance runners, skaters and skiers with no definite strength-mass correlation (PDF p. 297 / printed p. 286).
+
+**Related** — [[claim--strength-training-raises-haemoglobin-myoglobin-and-aids-distance-sport]]; [[claim--endurance-rests-on-muscle-oxidative-and-strength-qualities-not-vo2max]]; [[framework--bodymass-strength-scaling-laws]]; [[heuristic--strength-endurance-load-tempo-and-the-75-80-percent-ceiling]]
+
+@@@@ FILE claim--squat-1-5-to-2-bodymass-rule-applies-to-maximal-depth-jumps-only.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.2.4"
+topic: strength prerequisite for depth jumps
+category: [plyometrics, depth-jumps, readiness, safety]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The "Squat 1.5-2 Times Bodymass" Prerequisite Is a Safety Rule for Maximal Depth Jumps, Not for Submaximal Plyometrics
+
+**What it is** — "Some authors rightly criticize the recommendation sometimes put forward that athletes should be able to squat 1.5 - 2 times bodymass in order to use certain plyometric drills, since they consider that this criterion is not based on research evidence and does not apply to all plyometric exercises. This recommendation is a safety measure based on force plate analysis of *maximal plyometrics* in the form of depth jumps, where the ground reaction force on the lower extremity can easily exceed 6 times bodyweight. *This guideline was never intended to apply religiously to submaximal plyometrics using small drops, skipping drills or less demanding actions.* This misunderstanding of Russian guidelines is largely a result of an incomplete grasp of the scientific principles on which the original shock method was based" (PDF pp. 293-294 / printed pp. 282-283; p. 282 verified against the page image, p. 283 from the text layer).
+
+Both halves are the authors': they agree the criterion is not research-based ("rightly criticize"), then defend it as a force-plate-based safety measure for maximal depth jumps.
+
+**Why it works** — The authors' reasoning: maximal depth jumps can produce ground reaction forces that "easily exceed 6 times bodyweight", so a strength base is a safety margin. They give no derivation linking a 1.5-2 × bodymass squat to tolerating a 6 × bodyweight landing. Inference: the squat is a slow, bilateral, concentric-eccentric test and the landing is a brief eccentric-isometric impact, so the rule is a proxy, not a matched test.
+
+**When to apply** — Deciding whether an athlete may do maximal depth jumps (high box, maximal rebound). Inference: for football, where most players have a lifting base, the rule mainly screens young or newly enrolled athletes before maximal depth jumps; it should not block hops, skips, low drops or bounds, which the authors explicitly exclude.
+
+**When NOT to apply** — Not a gate for submaximal plyometrics, "small drops, skipping drills or less demanding actions." The authors do not say whether the squat is a 1RM, a full or partial squat, or how to test it. The book also says readiness for plyometric versus heavy work should be decided by the strength deficit (see [[heuristic--strength-deficit-sets-training-method-choice]]), which is a different question from this safety threshold.
+
+**Example** — The authors' own framing: the threshold comes from force plate analysis of maximal depth jumps with ground reaction forces over 6 × bodyweight (PDF p. 293 / printed p. 282).
+
+**Related** — [[heuristic--preparatory-progression-before-depth-jumps]]; [[framework--plyometric-training-classification-impact-intensity-and-function]]; [[claim--depth-landings-from-2-to-3-2-m-produce-forces-over-20-times-bodyweight]]; [[heuristic--strength-deficit-sets-training-method-choice]]
