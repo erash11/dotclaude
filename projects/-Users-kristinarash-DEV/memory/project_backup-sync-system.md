@@ -5,8 +5,19 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-09-13T14:37:48.121Z
+  modified: 2026-10-03T23:04:26.036Z
 ---
+
+> **Current schedule (2026-10-03) — supersedes every time below.** Mac
+> `com.keystone.dailybackup` runs **21:00 daily since 2026-09-24** (00:30 until 08-29, then
+> 09:00), with the full memsearch reindex riding it; reconcile's make-up window follows it
+> (21:00–23:59). launchd catches up a run missed during sleep, **not** one missed during a
+> shutdown — then run `/backup`. Leave CRASHBOX attached at 21:00 or the SSD layer skips.
+> **Windows has no nightly DEV backup by design**: `Desktop\DEV` is covered by Drive sync,
+> `\Eric\Backup AI Sessions to Drive` runs 00:30 (session logs + repo-doc harvest; an exit of
+> 0xC000013A is the sleep-kill signature, see [[backup-task-sleepkill-signature]]), and
+> `\Eric\memsearch-drain-weekly` runs Sundays 02:00. `KeystoneOS-DailyBackup` on Windows
+> stays disabled — the script is the macOS port.
 
 **Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
 right about that — but **not** because reconcile hard-codes the backup. The real mechanism,

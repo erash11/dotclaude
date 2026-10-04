@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: df3b3576-b317-408d-964a-187d57ed18ca
-  modified: 2026-09-15T03:00:00.777Z
+  modified: 2026-10-03T15:45:05.188Z
 ---
 
 Built 2026-09-14 from that day's interview. Eric's diagnosis in his words: projects started on random ideas or suggestions, no deadlines, no staged deliverables, "done is never really defined", and work nobody asked for so nobody to deliver it to. Four earlier fixes (5/22 note, 6/2 morning brief, 6/12 okr-tracker, 7/31 note) died because each needed remembering.
@@ -16,7 +16,9 @@ Built 2026-09-14 from that day's interview. Eric's diagnosis in his words: proje
 
 **Clearing a nag:** `python3 ~/DEV/project-triage/portfolio.py mark-done <Project> --step N` or `mark-done "report #2"` (checkpoint match must be unique).
 
-**Fall 2026 slate:** Tech_Inventory_Analysis (Kenny, 10-09) · HPI_Protocol (Chris+Kenny, 12-11) · Education_Curriculum (Student Services leadership, 12-11) · RTP_Constraints_Course (Joe Smith, 12-11) · WomensHealth_Survey (Andrew Gallucci, 12-11). Next up: NCAA_BestPractices_Doc. Checkpoints: status reports #2 09-18 … #9 12-18, Oct 15 OKR checkpoint, Dec 18 close. Summer KRs scored 09-14, avg 0.23; Fall KRs in the OKR doc.
+**CLEARED 2026-10-03 by Eric (no progress being made):** all 5 slate projects set to `paused`, charters kept for a restart; 0 of 5 active, next_up still NCAA_BestPractices_Doc. Same day the registry grew to 159 rows (every DEV folder + Drive project) with lanes job/side/system/knowledge/tool, `parent` families, `merged`/`archived` statuses and a read-only `portfolio.py crosswalk` drift report — plan and decisions in `~/DEV/project-triage/docs/inventory/`. Only `lane: job` + `active` counts against the cap.
+
+**Fall 2026 slate (as set 2026-09-14, now paused):** Tech_Inventory_Analysis (Kenny, 10-09) · HPI_Protocol (Chris+Kenny, 12-11) · Education_Curriculum (Student Services leadership, 12-11) · RTP_Constraints_Course (Joe Smith, 12-11) · WomensHealth_Survey (Andrew Gallucci, 12-11). Next up: NCAA_BestPractices_Doc. Checkpoints: status reports #2 09-18 … #9 12-18, Oct 15 OKR checkpoint, Dec 18 close. Summer KRs scored 09-14, avg 0.23; Fall KRs in the OKR doc.
 
 **Parked (as of 2026-09-14):** Baseball profiles · Acro pass builder · 6 job projects. Moved here from `global-memory/MEMORY.md` on 2026-09-19 to stay under its 2,500-char cap; MEMORY.md no longer lists them, so this line is the record.
 

@@ -5,23 +5,25 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-09-30T20:00:24.643Z
+  modified: 2026-10-03T23:04:15.787Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
 settings, not active threads — health-check them with `/claude-stack-doctor`.
 
-## Ritual nudges (launchd `com.keystone.rituals`)
+## Ritual nudges — OFF on both machines (updated 2026-10-03)
 
-- **Weekdays 17:00** → `/interview-me`
-- **Fridays 15:30** → `/weekly-review`
-- `harvest` and `forecast-capture` also run through `ritual-check.ps1`; their
-  due/overdue state is computed from their own output, not from a fixed clock
-  (forecast-capture is Monday-anchored and season-bounded — see
-  [[cfb-forecast-capture]]). Four rituals total; `Name    = ` in
-  `KeystoneOS/scripts/ritual-check.ps1` is the authoritative list.
+- Mac `com.keystone.rituals` was booted out and disabled **2026-09-24**; Windows
+  `KeystoneOS-Rituals` (weekdays 17:00, Fri 15:30) is disabled and Eric chose to **keep it
+  off** on 2026-10-03. Nothing nudges `/interview-me` or `/weekly-review` any more.
+- The reminder now is `~/DEV/WORKFLOW.md` (the ideal day/week) plus the status lines.
+  `ritual-check.ps1` still works by hand. It has **five** rituals (interview-me,
+  weekly-review, harvest, forecast-capture, `slate` added 09-14); `Name    = ` in
+  `KeystoneOS/scripts/ritual-check.ps1` is the authoritative list. Due/overdue is computed
+  from each ritual's own output (forecast-capture is Monday-anchored and season-bounded —
+  see [[cfb-forecast-capture]]).
 
-The nudge is only a prompt; **the output artifact is the record**, not the reminder firing.
+**The output artifact is the record**, not a reminder firing.
 
 ## memsearch reindex
 

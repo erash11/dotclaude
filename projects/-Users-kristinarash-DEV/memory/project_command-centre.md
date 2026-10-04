@@ -1,12 +1,20 @@
 ---
 name: command-centre
-description: "The DEV front door — always-on read-only status page at http://localhost:7373, plus the rules that keep it trustworthy"
+description: "RETIRED 2026-10-03 — the old localhost:7373 status page (the live project board replaced it); kept for its hard-won localhost security and dashboard-trust rules"
 metadata: 
   node_type: memory
   type: project
   originSessionId: b7d080c1-e0f8-4eb5-b181-d06b87224449
-  modified: 2026-09-02T01:44:00.951Z
+  modified: 2026-10-03T23:17:05.473Z
 ---
+
+> **RETIRED 2026-10-03.** The CommandCentre repo was archived in the organization pass.
+> The `com.keystone.commandcentre` launchd agent is stopped and disabled by
+> `~/DEV/project-triage/docs/inventory/mac_archive_pass.sh --go` on the Mac — still pending
+> as of 2026-10-03; check `launchctl list | grep commandcentre` before assuming it's off. The front door is now the live
+> project board (`pm` in a shell, `/pm` in Claude Code; `project-triage/board.py`). The rules
+> below (DNS-rebinding Host allowlist, fd-checked reads, "one number, one code path",
+> judge a daemon by its PID) still apply to any local web service — the board follows them.
 
 **Built 2026-08-31.** Closes ARMS gap 5. `~/DEV/CommandCentre/server.py`, served by
 `com.keystone.commandcentre` (`RunAtLoad` + `KeepAlive`), own `DESIGN.md`.
