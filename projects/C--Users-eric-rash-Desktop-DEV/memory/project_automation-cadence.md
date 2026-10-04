@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-04T14:50:12.193Z
+  modified: 2026-10-04T17:45:11.644Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -41,6 +41,15 @@ a problem), retrying a step that exits 0xC0000142. Log: `audits/recall-eval/logs
 Why: as three separate actions, action 2 died at 02:10 with 0xC0000142 (DLL init failed, never
 ran a line) on 10-01 and 10-04; it runs fine by hand. `\Eric\memsearch-drain-once` no longer exists.
 
+## Claude files digest (Windows, since 2026-10-04)
+
+`\Eric\claude-files-digest` runs daily at **06:30** (and on wake if missed): it emails
+Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored commits, grouped by
+repo with full paths. It fetches all repos and reads `--all`, so the Mac's work counts once
+pushed. Sent through the `gws` CLI, like DailyGmailDigest. Script
+`~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`); a failed send logs to
+`.errors.log`. Files outside git (Drive) are not listed.
+
 ## OS audits
 
 Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run);
@@ -57,7 +66,9 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 - **gws** re-auth requires explicit full scope URLs — the `-s drive`
   shorthand silently grants no scopes (v0.22.5 bug), and `~/.config/gws/token_cache.json`
   must be deleted after re-auth or the stale token is served. See [[gws-forms-api]].
-- **MCP Gmail is draft-only** — it can compose drafts but must not be treated as a send path.
+- **MCP Gmail sends to Eric himself are approved** (2026-10-04): `send_message`/`forward` work.
+  Eric OK'd sending to eric.rash11@gmail.com and his Outlook, Eric_Rash@Baylor.edu. Anyone
+  else still gets a draft, not a send.
 
 ## reMarkable OCR
 
