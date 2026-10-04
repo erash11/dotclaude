@@ -26,7 +26,8 @@ GWS_JS = HOME / r"AppData\Roaming\npm\node_modules\@googleworkspace\cli\run.js"
 LOG = HOME / ".claude" / "scripts" / "logs" / "claude-files-digest.log"
 ERR_LOG = HOME / ".claude" / "global-memory" / "transcripts" / ".errors.log"
 PER_REPO = 30          # paths listed per repo before "+N more"
-MAX_BODY = 28000       # Windows command line caps the whole call at 32767 chars
+COUNT_ONLY = {"Flint", "SecondBrain"}   # bulk generated notes: show the count, not the list
+MAX_BODY = 28000      # Windows command line caps the whole call at 32767 chars
 
 # Same health-data filter as project-triage/landed.py, plus session transcripts.
 SKIP = re.compile(
@@ -82,7 +83,12 @@ def build(day: dt.date, found: dict[Path, list[str]]) -> tuple[str, str]:
              f"(both machines, as pushed). {total} files in {len(found)} repos.</p>"]
     if not found:
         parts.append("<p>Nothing created that day.</p>")
-    for repo, paths in sorted(found.items(), key=lambda kv: -len(kv[1])):
+    listed = sorted((kv for kv in found.items() if kv[0].name not in COUNT_ONLY), key=lambda kv: -len(kv[1]))
+    counted = [kv for kv in found.items() if kv[0].name in COUNT_ONLY]
+    if counted:
+        parts.append("<p style='color:#666'>Generated notes, count only: " + "; ".join(
+            f"{html.escape(r.name)} {len(p)} ({html.escape(str(r))})" for r, p in counted) + "</p>")
+    for repo, paths in listed:
         items = "".join(f"<li>{html.escape(p)}</li>" for p in paths[:PER_REPO])
         more = f"<li><i>+{len(paths) - PER_REPO} more</i></li>" if len(paths) > PER_REPO else ""
         block = (f"<h3 style='margin-bottom:2px'>{html.escape(repo.name)} ({len(paths)})</h3>"
