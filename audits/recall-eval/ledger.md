@@ -13,3 +13,7 @@ One row per backend per run. Decision rule: audit section 6.2.
 | 2026-10-01 | bu-1979fj4 | post-vault-index | memsearch | 30 | 15 | 29 | 0.694 | 5701 | 9740 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 14/14, transcript 1/1, vault 12/13 |
 | 2026-10-01 | bu-1979fj4 | post-vault-index | fts5 | 30 | 20 | 25 | 0.75 | 5 | 16 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-01 | bu-1979fj4 | post-vault-index | rg | 30 | 11 | 23 | 0.509 | 111 | 129 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 8/14, transcript 1/1, vault 12/13 |
+| 2026-10-04 | bu-1979fj4 | weekly | memsearch | 30 | 15 | 28 | 0.684 | 4048 | 21025 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 14/14, transcript 1/1, vault 11/13 |
+| 2026-10-04 | bu-1979fj4 | weekly | fts5 | 30 | 19 | 25 | 0.733 | 2 | 6 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-04 | bu-1979fj4 | weekly | rg | 30 | 10 | 22 | 0.468 | 115 | 183 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 8/14, transcript 1/1, vault 11/13 |
+| 2026-10-04 | bu-1979fj4 | weekly | jev | 30 | 19 | 27 | 0.758 | 581 | 993 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 13/14, transcript 1/1, vault 12/13 |
