@@ -29,7 +29,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -f \"$HOME/.claude/skills/impeccable/scripts/hook.mjs\" ] && node \"$HOME/.claude/skills/impeccable/scripts/hook.mjs\" || true",
+            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" ] || \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" hook",
+            "timeout": 5,
+            "statusMessage": "Checking UI changes"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" ] || \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" hook",
             "timeout": 5,
             "statusMessage": "Checking UI changes"
           }
@@ -41,13 +52,35 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -f \"$HOME/.claude/skills/impeccable/scripts/hook.mjs\" ] && node \"$HOME/.claude/skills/impeccable/scripts/hook.mjs\" || true",
+            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" ] || \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" hook",
+            "timeout": 30,
+            "statusMessage": "Design deep pass"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" ] || \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" hook",
             "timeout": 30,
             "statusMessage": "Design deep pass"
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" ] || \"C:\\\\Users\\\\eric_rash\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable\" hook",
+            "timeout": 5,
+            "statusMessage": "Preparing build session"
+          }
+        ]
+      }
     ]
   },
-  "description": "Impeccable design detector: immediate-tier checks after Edit/Write/MultiEdit on UI files, full-rule deep pass on Stop."
+  "description": "Impeccable design detector: immediate-tier checks after Edit/Write on UI files, full-rule deep pass on Stop."
 }
