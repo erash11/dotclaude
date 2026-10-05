@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 7755f8f2-3158-4d2a-8623-b9e9b0bb0679
-  modified: 2026-09-09T23:55:25.460Z
+  modified: 2026-10-03T16:43:39.552Z
 ---
 
 On 2026-09-09 every project under `~/DEV` was put on GitHub under `erash11`
@@ -23,6 +23,12 @@ map and Claude Code loads it directly.
 (`token-dashboard`, `AI_Analyst`) and duplicate second checkouts. It is
 intentionally not a git repo, so any sweep skips it. Everything inside is
 already on GitHub, so nothing there is unbacked-up.
+
+**Superseded 2026-10-03:** `_ARCHIVE` exists only on the Mac and never synced, so archiving
+there was invisible to Windows. Archive is now: registry status `archived`/`merged` in
+`project-triage/portfolio.json` + `gh repo archive` + local clone moved to
+`~/DEV_archive_hold/<date>/` for 30 days. 41 repos done that way on 2026-10-03 (Windows; Mac
+script `project-triage/docs/inventory/mac_archive_pass.sh`). See [[prioritization-slate]].
 
 **DexaProject left `~/DEV`.** Files now at
 `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/DexaProject`,

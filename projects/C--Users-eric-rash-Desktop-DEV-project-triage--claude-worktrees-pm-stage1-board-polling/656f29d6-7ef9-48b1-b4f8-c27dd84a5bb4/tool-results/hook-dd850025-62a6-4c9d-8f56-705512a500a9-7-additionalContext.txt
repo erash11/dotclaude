@@ -1,0 +1,262 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: .claude (main) is 3 commit(s) behind origin, likely pushed from the other machine. Pull before editing? → A: Pull first
+- Q: DEV (main) is 1 commit(s) behind origin, likely pushed from the other machine. Pull before editing? → A: Pull first
+
+## Files Modified
+2026-10-03-pm-stage1-board-polling.md, test_board_server.py, board.html, test_cards.py, cards.py, board.py, portfolio.py, shot.py, s2.png, s3a.png, drag.py, test_portfolio.py, test_board_ops.py, board_ops.py, recv.py, seven_day.py, start.py, s5.png, project_skill-bloat-and-promotion.md, .claude, plugin.json, hooks.json, register.ts, pm.test.ts, README.md, SKILL.md, test_sweep.py, sweep.py, skills, scripts, hooks, mods, settings.json, KeystoneOS, project-triage, PRODUCT.md, DESIGN.md, morning-cadence.ps1, PLATFORM.md, COMMANDS.md, banner.py, STATUS.md, project-management-system-design.md, calm.py, after.png, before.png, after-open.png, after-open2.png, pr-body.md, GUIDE.md, project_automation-cadence.md, feedback_session-hygiene.md, project_supervisor-log-pipeline.md, project_status-report-sourcing.md, project_prioritization-slate.md, project_command-centre.md, project_backup-sync-system.md, project_memory-compiler-pipeline.md, project_cfb-forecast-capture.md, project_morning-briefing-retired.md, user_working-conditions-bottleneck.md, project_keystoneos-verification-habits.md, USER.md, MEMORY.md, bx1u1nnuq.txt, blv3gm8qj.txt, b22yvf3zx.txt, bi3bf1ww1.txt, bqrxdd4p4.txt, ritual-check.ps1, Applied-Performance-Operating-Cadence.md, memory, 2026-09-24-machine-split.md, DEV, WORKFLOW.md, CLAUDE.md, probe_test.py, operating-rhythm.html, codex-verify-prompt.md, phone-dark.png, desk-light.png, codex-verify2.md, 2026-10-03-pm-system-build.md, count.py
+
+## Unresolved Errors
+- {"stdout":"# STATUS\r\n\r\n## Done\r\n- Repo brought under git and pushed to erash11 (2026-09-09).\r\n- 2026-09-14: **Prioritization system (job-la...
+- {"stdout":"# Project management system: design\r\n\r\nDecided 2026-10-03 in a grill-with-ui session (13 questions, 5 rounds). Design only; nothing\...
+- {"stdout":"\"\"\"Local drag-and-drop board over portfolio.json.\r\n\r\nBinds 127.0.0.1 only. A per-run token guards /api/*, and writes additionally...
+- {"stdout":"  <button class=\"plain\" id=\"undo\">Undo</button>\n</header>\n<div id=\"app\"></div>\n<div class=\"flash\" id=\"flash\"></div>\n\n<scr...
+- {"stdout":"----------------------------------------------------------------------\r\nRan 10 tests in 0.093s\r\n\r\n\u001b[1;31mFAILED\u001b[0m (\u0...
+- {"stdout":"----------------------------------------------------------------------\r\nRan 54 tests in 20.764s\r\n\r\n\u001b[1;31mFAILED\u001b[0m (\u...
+- {"stdout":"Ran 54 tests in 22.157s\r\n\r\n\u001b[1;31mFAILED\u001b[0m (\u001b[1;31mfailures=1\u001b[0m)\r\n\u001b[1;35mAssertionError\u001b[0m: \u0...
+- {"stdout":"(60.4, 'http://127.0.0.1:61600/?token=tok')\r\n(61.1, 'registry?token=tok')\r\n(61.1, 'http://127.0.0.1:61600/oswald.woff2')\r\n('consol...
+- {"stdout":"\u001b[1;31mFAILED\u001b[0m (\u001b[1;31merrors=1\u001b[0m)\r\nRan 291 tests in 23.196s\n\u001b[32mOK\u001b[0m\r\nRan 291 tests in 20.98...
+- {"stdout":"\"\"\"Where files landed: a ledger of files created or changed, mapped to registry projects.\n\nBuilt from the file systems themselves (...
+- {"stdout":"\u001b[1;31mFAILED\u001b[0m (\u001b[1;31merrors=1\u001b[0m)","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"Ran 73 tests in 20.159s\n\u001b[1;31mFAILED\u001b[0m (\u001b[1;31merrors=2\u001b[0m)","stderr":"","interrupted":false,"isImage":false,"n...
+- {"stdout":"PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\eric_rash\\\\AppData\\\\Local\\\\Temp\\\\tmppecmapqp\\\\portfolio.json.3...
+- {"stdout":"\u001b[32mOK\u001b[0m\r\n\u001b[32mOK\u001b[0m\r\n\u001b[1;31mFAILED\u001b[0m (\u001b[1;31merrors=1\u001b[0m)","stderr":"","interrupted"...
+- {"stdout":"40:def reorder(data: dict, name: str, lane: str, stage: str, position: int) -> dict:\n41-    \"\"\"Move a card. Deliberately does NOT st...
+- {"stdout":"    try:\n        return _dt.date.fromisoformat(value) if isinstance(value, str) else None\n    except ValueError:\n        return None\...
+- {"stdout":"\"\"\"The 7-day rule: a project started must prove itself within a week, or it is paused.\n\nDecided 2026-10-03 (Eric). \"Proved\" = a n...
+- {"stdout":"def promote(data, name, lane, stage, position, purpose, next_action):\n    \"\"\"Move an inbox record onto the board.\n\n    Deliberatel...
+- {"stdout":"# Claude Code mods\r\n\r\nFunction-hook plugins (\"Claude Mods\"), built 2026-10-02 from the session audit\r\n(`/watch` of Chase AI's \"...
+- {"stdout":"The `/os` board lives at `http://localhost:7373/os`. If the page does not load, restart the server:\n`launchctl kickstart -k gui/501/com...
+- {"stdout":"the output ledger. The \"plan complete — ship it?\" drift flag is the\ndashboard's cue to run `/harvest <project>` before moving on.\n\n...
+- {"stdout":"across two very different kinds of work (job deliverables with deadlines, and\nside projects that are fun and value-adding but historica...
+- {"stdout":"/c/Users/eric_rash/.claude/hooks/:\ntotal 688\ndrwxr-xr-x 1 Eric_Rash Domain Users     0 Sep 30 15:17 ./\ndrwxr-xr-x 1 Eric_Rash Domain ...
+- {"stdout":"=================== startup\n---\r\nname: startup\r\ndescription: >-\r\n  Start of day, or sitting down at either machine: sync this mac...
+- {"stdout":"=================== weekly-review\n---\r\nname: weekly-review\r\ndescription: >-\r\n  Friday close-of-week synthesis ritual. Pulls the l...
+- {"stdout":"['permissions', 'enabledPlugins', 'hooks', 'description']\r\n{\r\n \"PostToolUse\": [\r\n  {\r\n   \"matcher\": \"Edit|Write|MultiEdit\"...
+- {"stdout":"=================== status-report\n---\r\nname: status-report\r\ndescription: >-\r\n  Build the every-two-weeks Applied Performance stat...
+- {"stdout":"=================== ingest-book\n---\r\nname: ingest-book\r\ndescription: >-\r\n  Ingest a book (PDF/EPUB full-text, Kindle highlights, ...
+- {"stdout":"=================== project\n---\nname: project\ndescription: >-\n  Manage the portfolio project registry (ideas, updates, ranking, prom...
+- {"stdout":"=== where-was-i.py\n\"\"\"Where was I? One line per project: the first item under `## Next` in docs/STATUS.md.\nSorted by when STATUS.md...
+- {"stdout":"=================== library-advisor\n---\r\nname: library-advisor\r\ndescription: >-\r\n  Consult a grounded domain advisor built from t...
+- {"stdout":"### Step 4: Select the Color Palette\n\nChoose a topic-appropriate 3-color palette. Never default to generic blue.\n\n| Domain | Palette...
+- {"stdout":"ArXiv/\nFireFlies_to_Obsidian/\nISA/\nScience/\n_shared/\nadvisor/\nanimejs/\narticulation-skill/\nask-matt/\nbackup/\nbrain-audit/\ncap...
+- {"stdout":"import { atom, read, update } from 'claude-code'\nimport type { EngineInterface, Register } from 'claude-code'\n\nimport type { DockerSt...
+- {"stdout":"=================== graphify\n5:  project content — especially when graphify-out/ exists, where the question should be\n14:Turn any fold...
+- {"stdout":"off 95 ['Agents', 'ApertureOscillation', 'Aphorisms', 'Apify', 'Art', 'AudioEditor', 'BeCreative', 'BiasCheck', 'BitterPillEngineering',...
+- {"stdout":"/c/Users/eric_rash/.claude/AGENTS.md\n/c/Users/eric_rash/.claude/CLAUDE.md\n/c/Users/eric_rash/.claude/CREDENTIALS.md\n/c/Users/eric_ras...
+- {"stdout":"2026-10-03-harness-time-budget.md:20:- #5 `CommandCentre/server.out` untracked + gitignored (CommandCentre commit, pushed).\n2026-10-03-...
+- {"stdout":"{\n  \"_comment\": \"Windows path configuration. SecondBrain was restored on this machine at C:\\\\Users\\\\eric_rash\\\\Desktop\\\\Seco...
+- {"stdout":"# 2026-10-02 — Background job list cleanup (Mac)\r\n\r\n## What\r\nRemoved 61 completed background sessions from `~/.claude/jobs/` with ...
+- {"stdout":"## Scheduled job durability\n\nManaged jobs are declared in `data/jobs.json` and started **only** through `.\\scripts\\run-job.ps1 -Job ...
+- {"stdout":"# STATUS\n\n## Done\n- Repo brought under git and pushed to erash11 (2026-09-09).\n- 2026-09-14: **Prioritization system (job-lane slate...
+- {"stdout":"86:Run `python3 ~/DEV/project-triage/portfolio.py slate-check` first to get the active project\n91:- Each project named → `python3 ~/DEV...
+- {"stdout":"(node:18348) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, ...
+- {"stdout":"-rw-r--r-- 1 Eric_Rash Domain Users 816 Oct  3 18:06 C:/Users/eric_rash/AppData/Local/Temp/claude/C--Users-eric-rash-Desktop-DEV/656f29d...
+- {"stdout":"3050 C:/Users/eric_rash/.claude/jobs/656f29d6/tmp/codex-verify-out.txt\n13:Independent verification request. READ-ONLY: do not edit, com...
+- {"stdout":"5. **PROBLEM — documentation contains contradictions and an unsafe recovery instruction.**\n\n   - [WORKFLOW.md:214](C:/Users/eric_rash/...
+
+## Git
+pull, log, add, feat(board): poll /api/changes and re-render on terminal edits
+
+Every 3 s, paused while the tab is hidden. A change that lands while a field
+is focused or a card is mid-drag is held and applied on blur/drop.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, push, stash, feat(board): resume cards (stands / next / touched)
+
+cards.py reads each live row's docs/STATUS.md (newest dated entry outside
+Next/Open questions/Gotchas; first real Next item, wrapped lines joined,
+struck items skipped), falls back to the registry, and takes last touched
+from the landed ledgers. /api/registry carries them as data.cards.
+
+save_registry retries os.replace on WinError 5: a reader holding the file
+(the board's poll, a scan) made it fail; it was also the flaky undo tests.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat(board): focus view and search (design Decision 5)
+
+Focus shows active rows, paused rows touched in the last 14 days (landed,
+either machine) and rows with an undone charter date in the next 14 days.
+'All rows' toggles it off (remembered per browser). Search covers every
+lane, matches name/purpose/next/stands/folders, and badges the lane tabs.
+Columns say how many rows the view hides. Drops translate the visible
+position to the full column so hidden rows keep their order. cards.py adds
+due/due_what (earliest undone step, else finish_by).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat(board): receivers on job/side/tool rows (design Decision 7)
+
+portfolio.RECEIVER_LANES, receiver_of (row, else charter) and
+receiver_needed (active job/side/tool row with none; paused rows are not
+backfilled). validate refuses a bare 'me' without a reason. The page edits
+receiver (patch_project receiver=, blank clears), shows it as the card's
+'for' line, and flags an active row that needs one.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat(board): Start/Park/Done through one slate-cap check
+
+board_ops._guard_cap refuses to make a row an active job row when
+meta.slate.cap is reached; it runs in patch_project(status=active),
+reorder/set_lane (moving an active row into job) and promote. The page's
+Start/Park/Done buttons and the new 'portfolio.py set-status' both go
+through patch_project, so terminal and page cannot drift. Starting stamps
+'started' (7-day clock); cards carry clock_left/clock_needs from
+seven_day.days_left/missing and the card shows the countdown.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat(board): one board per machine; --background for pm and /pm
+
+board.py records {pid, port, token, repo} in a temp-dir state file and,
+when a live board for this repo answers its own token, reuses it instead
+of starting a second. --background starts it as a child of the calling
+terminal (it stops when that closes), waits until it answers, prints the
+URL and returns. The shell's pm, the /pm mod (dotclaude 068bdf0) and
+dev-sync Step 4b (claude-skills d7ad390) all run this.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat: closeout card check and unpushed-edits nudge (Decisions 9, 10)
+
+portfolio.py card-check prints the resume card of every registry project
+touched since a date (landed ledger, both machines) with the gaps that
+keep it from being true: no STATUS entry dated today (a registry update
+does not count), no Next item, no receiver where one is needed, or a
+retired row being worked. closeout runs it, fixes the gaps, and prints the
+cards last (claude-skills commit). The board header shows 'N unpushed
+registry edits' (dirty portfolio.json + unpushed commits touching it).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, feat: Friday sweep of quiet paused rows (design Decision 6)
+
+sweep.py: candidates = paused rows with no landed-ledger entry (30-day
+window) and no live parked_until, oldest known date first, 10 a week.
+decide(): revive (needs a next step and, for job/side/tool, a receiver;
+goes through patch_project so the slate cap and 7-day clock apply), keep
+(parked_until = today + 90, logged), archive. CLI: portfolio.py sweep /
+sweep-decide. parked_until is validated as a date. The board header shows
+'N paused rows awaiting a decision'. weekly-review runs it (Step 4b).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, retire render.py and the static dashboard (design Decision 8)
+
+render.py (dashboard.html + pulse.md) and its tests (test_render,
+test_assemble, the render classes of test_stage) are removed; nothing
+imported it. The published Artifact carries a 'frozen 2026-10-03' banner
+(version 24). README rewritten around the live board; PRODUCT/DESIGN and
+code comments that cited render.py updated (reorder still does not stamp
+curated_at: the sweep reads it). Elsewhere: /project skill (claude-skills
+e23aa73), KeystoneOS morning-cadence (cf08abe), DEV router (9c5303e).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, STATUS: PM system built (stages 1-9); next is the merge
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, style(board): restraint pass - neutral greys, one typeface, gold for 3 things
+
+Eric: 'highly functional and user-friendly; don't overdo it with colors or
+typography'. Green turf and green-tinted greys -> neutral greys; Oswald
+uppercase -> system font, sentence case, min 11.5px; gold only for the
+active status, the #1 card bar and the focus ring; empty fields dashed
+instead of red; lane buttons wrap; no hover lift or shadows. DESIGN.md
+records the new spec and keeps the scorebug system as history.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, status, fetch, diff, STATUS + handoff: PM system merged, guide in PR #3, closeout 2026-10-03
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01TXaQEfopHsp5RvnGqpPN88, branch
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, tests/test_board_server.py, pm-stage1-board-polling/cards.py, pm-stage1-board-polling/board.html, tmp/s2.png, tmp/s3a.png, tmp/s5.png, memory/project_skill-bloat-and-promotion.md, pm-stage1-board-polling/board.py, dev-sync/SKILL.md, closeout/SKILL.md, weekly-review/SKILL.md, pm-stage1-board-polling/README.md, project/SKILL.md, docs/STATUS.md, tmp/after.png, tmp/before.png, tmp/after-open.png, tmp/after-open2.png, pm-stage1-board-polling/DESIGN.md, memory/project_automation-cadence.md, memory/feedback_session-hygiene.md, memory/project_supervisor-log-pipeline.md, memory/project_status-report-sourcing.md, memory/project_prioritization-slate.md, memory/project_command-centre.md, memory/project_backup-sync-system.md, memory/project_memory-compiler-pipeline.md, memory/project_cfb-forecast-capture.md, memory/project_morning-briefing-retired.md, memory/user_working-conditions-bottleneck.md, memory/project_keystoneos-verification-habits.md, global-memory/USER.md, global-memory/MEMORY.md, mods/README.md, tool-results/bx1u1nnuq.txt, tool-results/blv3gm8qj.txt, tool-results/b22yvf3zx.txt, tool-results/bi3bf1ww1.txt, tool-results/bqrxdd4p4.txt, handoffs/2026-09-24-machine-split.md, interview-me/SKILL.md, status-report/SKILL.md, .claude/settings.json, workflow/phone-dark.png, workflow/desk-light.png
+
+## Subagent Tasks
+- [completed] Read-only search, "very thorough". On this Windows machine, find every place that runs, references, or de...
+- [completed] Read-only research, "very thorough". Windows machine. I am writing Eric's ideal daily workflow guide and ...
+- [completed] Read-only research, "very thorough". Windows machine. I am writing Eric's ideal daily workflow guide (mor...
+- [completed] Independent verification request (READ-ONLY: do not edit, commit, or push anything). Windows 11 laptop; E...
+
+## Skills Used
+superpowers:writing-plans, memory-write
+
+## Environment
+cwd: ~/.claude/skills
+model:claude-opus-5-5[1m]
+entered worktree: pm-stage1-board-polling
+
+## Data References
+- type:text
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- … 117 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
