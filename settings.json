@@ -146,6 +146,8 @@
     "anthropic-skills:dev-sync": "off",
     "anthropic-skills:five-slides-generator": "off",
     "anthropic-skills:new-project": "off",
+    "anthropic-skills:watch": "off",
+    "anthropic-skills:last30days": "off",
     "session-handoff": "user-invocable-only",
     "ArXiv": "name-only",
     "ISA": "name-only",
