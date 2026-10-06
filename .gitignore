@@ -42,3 +42,4 @@ scripts/logs/
 !/machine.windows.md
 # machine.md is per-machine, never tracked
 audits/recall-eval/logs/
+__pycache__/
