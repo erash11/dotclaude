@@ -1,0 +1,173 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- draft me a goal prompt that will take every item on my 5 slides in 5 minutes intentory list and create a unique slide deck that appeals to a colleg...
+- Q: Where will these decks mostly be seen? That decides density and type size. → A: Projected, Eric presents (Recommended)
+- Q: Pick the visual world for all 40 decks. Every option keeps Baylor green/gold, the 5-slide arc, dark/light alternation and editable PowerPoint. (...
+- lets pause this for right now , find a ogood sport to stop . we need to find a way to use less agents to do this , my usage is getting crushed
+- forget about the fable review for this phase.  I will do an individual review at the time I present the deck, dont need to reivew it now.
+- we dont need to finshs the build now, find a good place to /closeout
+
+## Files Modified
+build.js, deck.js
+
+## Unresolved Errors
+- {"stdout":"agents\nreference\nscripts\nSKILL.md\nadapt.md\nadapt.native.md\nandroid.md\nanimate.md\naudit.md\naudit.native.md\nbolder.md\nclarify.m...
+- {"stdout":"  125 init.md\n  107 new-work.md\n   42 craft-floor.md\n  788 critique.md\n  136 audit.md\n 1198 total\n# New visual work\n\nUse this fl...
+- {"stdout":"# Init flow\n\n`init` captures durable product truth in PRODUCT.md. It does not invent a visual world and does not write DESIGN.md; [new...
+- {"stdout":"### Create or replace the visual world\n\n1. Name the product's unique mechanism in one sentence, the audience's real scene, its cultura...
+- {"stdout":"  warn 06-acute-chronic-workload-ratio: slide 4: 54 words on the slide (aim for under 35)\nok   06-acute-chronic-workload-ratio (285s)\n...
+- {"stdout":"1\nFAIL 06-acute-chronic-workload-ratio: QA probe did not run","stderr":"\nShell cwd was reset to C:\\Users\\eric_rash\\Desktop\\DEV\\NC...
+- {"stdout":"FAIL 06-acute-chronic-workload-ratio: QA probe did not run","stderr":"\nShell cwd was reset to C:\\Users\\eric_rash\\Desktop\\DEV\\NCAA_...
+- {"stdout":"  overflow 02-the-8-second-filter slide 1: \"8\" y+48px x+0px\n  overflow 02-the-8-second-filter slide 2: \"The report cited a statistic...
+- {"stdout":"// Render a built deck to an editable PowerPoint file: native text boxes and shapes only.\n\nconst PptxGenJS = require(\"pptxgenjs\");\n...
+- {"stdout":"32:const words = s => (s.match(/[A-Za-z0-9%][^\\s]*/g) || []).length;\n35:  const errs = [], warns = [];\n44:    if (!sl.notes || words(...
+- {"stdout":"patched \u001b[33m33\u001b[39m \u001b[33m34\u001b[39m \u001b[33mtrue\u001b[39m\n  FAIL 06-acute-chronic-workload-ratio: slide 2: British...
+- {"stdout":"# Craft floor\n\nLoad this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed v...
+- {"stdout":"# Craft floor\n\nLoad this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed v...
+- {"stdout":"49:  slate: {\n50:    name: \"Cool slate and pale gold\",\n51-    dark:  { bg: \"25303A\", ink: \"F2F4F5\", muted: \"BCC6CE\", accent: \...
+- {"stdout":"  151 scripts/build.js\n   88 scripts/gallery.js\n   39 scripts/qa.js\n  278 total\n130:      if (errs.length) { failed++; errs.forEach(...
+- {"stdout":"#!/usr/bin/env node\n// Build decks: node scripts/build.js [all | 06 | 06 12 ...]\n// For each decks/NN-slug/deck.js writes deck.pptx, d...
+- {"stdout":"#!/usr/bin/env node\r\n// Build decks: node scripts/build.js [all | 06 | 06 12 ...]\r\n// For each decks/NN-slug/deck.js writes deck.ppt...
+- {"stdout":"  151 scripts/build.js\n   39 scripts/qa.js\n  190 total\n130:      if (errs.length) { failed++; errs.forEach(e => console.log(`  FAIL $...
+- {"stdout":"  151 scripts/build.js\n   88 scripts/gallery.js\n   39 scripts/qa.js\n  278 total\n130:      if (errs.length) { failed++; errs.forEach(...
+- {"stdout":"# Craft floor\n\nLoad this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed v...
+- {"stdout":"# Craft floor\n\nLoad this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed v...
+- {"stdout":"### The core problem: support saturation\n\nA student-athlete may get \"sleep hygiene\" from mental health on Tuesday, \"recovery modali...
+- {"stdout":"# EAI — transferred project context\r\n\r\nCarried over from the Claude cloud project, Sept 2026.\r\n\r\n## Position\r\n\r\nEric works w...
+- {"stdout":"130:      if (errs.length) { failed++; errs.forEach(e => console.log(`  FAIL ${dir}: ${e}`)); continue; }\n137:      console.log(`  FAIL...
+- {"stdout":"130:      if (errs.length) { failed++; errs.forEach(e => console.log(`  FAIL ${dir}: ${e}`)); continue; }\n137:      console.log(`  FAIL...
+- {"stdout":"#!/usr/bin/env node\n// Build decks: node scripts/build.js [all | 06 | 06 12 ...]\n// For each decks/NN-slug/deck.js writes deck.pptx, d...
+- {"stdout":"### 24674975 Postexercise cold water immersion benefits are not greater than the placebo effect.\r\nDespite a general lack of understand...
+- {"stdout":"=== Barriers and facilitators to mental health help-seeking for young elite athletes: a qualitative study.\nBackgroundAdolescents and yo...
+- {"stdout":"// Series spine drawn on every slide: running head, footer, and the 5-frame rail that\r\n// marks where the talk stands. Identical posit...
+- {"stdout":"// Series spine drawn on every slide: running head, footer, and the 5-frame rail that\r\n// marks where the talk stands. Identical posit...
+- {"stdout":"  FAIL 18-mental-health-first-aid: C:\\Users\\eric_rash\\Desktop\\DEV\\Education_Alignment_Initiative\\.claude\\worktrees\\5s5m-library\...
+- {"stdout":"[38948:11224:1004/203736.753:ERROR:mojo\\public\\cpp\\bindings\\lib\\interface_endpoint_client.cc:748] Message 7 rejected by interface b...
+- {"stdout":"  FAIL 34-consultant-vs-speaker: C:\\Users\\eric_rash\\Desktop\\DEV\\Education_Alignment_Initiative\\.claude\\worktrees\\5s5m-library\\d...
+- {"stdout":"28:  if (stale.length) { problems++; stale.forEach(x => console.log(`  STALE ${d}: ${x}`)); continue; }\n32:  if (!found) { console.log(...
+- {"stdout":"[39576:21480:1004/205109.168:ERROR:chrome\\browser\\web_applications\\externally_managed_app_manager.cc:680] https://mail.google.com/mai...
+- {"stdout":"[41180:41392:1004/205842.904:ERROR:chrome\\updater\\ipc\\update_service_dialer_win.cc:75] Failed to open named pipe server process 36488...
+- {"stdout":"[31732:25184:1004/211206.904:ERROR:chrome\\updater\\ipc\\update_service_dialer_win.cc:75] Failed to open named pipe server process 34548...
+- {"stdout":"     40 ok\n[image2 @ 000001fd290a45c0] Cannot write more than one file with the same name. Are you missing the -update option or a sequ...
+- {"stdout":"{\n  \"_comment\": \"Windows path configuration. SecondBrain was restored on this machine at C:\\\\Users\\\\eric_rash\\\\Desktop\\\\Seco...
+
+## Git
+log, status, pull, worktree, 5S5M library: deck engine (pptx + html from one source), checks, gallery, pilots 02 and 06
+
+PowerPoint (native, editable) and offline HTML render from one deck.js per topic.
+Build checks: 5-slide arc, sourced figures, ~4:45 timing, WCAG contrast.
+Brief, PRODUCT.md and the two pilot decks.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, 5S5M: builder guide, 40-deck plan, surface brief, palette contrast fix, parallel-safe export/QA
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, 5S5M: apply Fable pilot review (sources, US English, palette variety, word cap, roles, staleness checks, variety menu)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, 5S5M: decks 01-40 drafted (all pass build checks); 11-25 still need visual QA
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, 5S5M: pause point. All 40 decks exported; export retries locked files; contact-sheet script; STATUS updated
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, STATUS + handoff: 5S5M library paused (40 decks on branch 5s5m-library)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PtiDcd4mdmxZTdzkKGhXq6, closeout 2026-10-04: memory, transcripts, landed, dev-docs
+
+## Subagent Tasks
+- [completed] You are an independent design and content reviewer for a staff-education slide series. You have no browse...
+- [completed] You are building four decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building four decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+- [completed] You are building five decks for the "5 Slides in 5 Minutes" staff-education library (Baylor Athletics, Ap...
+
+## Skills Used
+impeccable, closeout
+
+## Environment
+cwd: ~/.claude/global-memory
+
+## Data References
+- interrupted:false stderrBytes:77
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:77
+- interrupted:false stderrBytes:77
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:77
+- interrupted:false stderrBytes:77
+- interrupted:false stderrBytes:77
+- … 425 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
