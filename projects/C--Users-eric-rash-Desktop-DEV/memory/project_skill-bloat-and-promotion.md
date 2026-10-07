@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-10-02T21:20:24.926Z
+  modified: 2026-10-06T13:37:43.110Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -190,7 +190,9 @@ See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-ins
 re-synced each start — deleting the folder does not stick). They list as `anthropic-skills:<name>`.
 Where one duplicates a local skill, **local wins**: set `"anthropic-skills:<name>": "off"` in
 `skillOverrides` (namespaced keys work — verified with a headless on/off control run). Done for
-closeout, dev-sync, five-slides-generator, new-project, articulation-skill (the last one re-tracked
+closeout, dev-sync, five-slides-generator, new-project, watch, last30days (2026-10-06; the
+plugins `watch@claude-video` and `last30days@last30days-skill` keep them; local `watch` was
+already "off"), articulation-skill (the last one re-tracked
 in canonical 2026-10-02 after a 9/10 removal left untracked per-machine copies). Do not delete them on claude.ai: the synced
 five-slides is written for the claude.ai sandbox and is the right copy there. The "never off" rule
 above is for *owned* skills only.

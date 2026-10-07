@@ -50,21 +50,6 @@ pushed. Sent through the `gws` CLI, like DailyGmailDigest. Script
 `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`); a failed send logs to
 `.errors.log`. Files outside git (Drive) are not listed.
 
-## Nightly digest (Windows, since 2026-10-06)
-
-`\Eric\nightly-digest` runs daily at **21:00** (StartWhenAvailable, so on wake if the laptop
-was shut) under **pythonw.exe**: `~/.claude/scripts/nightly-digest.py` emails
-Eric_Rash@baylor.edu from eric.rash11@gmail.com via gws. Sections: active threads + pending
-decisions (global MEMORY.md); decisions and action items from the daily compiled log (Windows
-sessions only, since `daily/` is gitignored); docs created that day (.md/.docx/.xlsx/.pptx/.pdf/.html
-added in any git commit, plus files created on the Drive storage tree, pruning 05_SYSTEMS,
-_exports, _to_delete); `## Next` / `## Open questions` from every STATUS.md committed in 7 days
-(full for same-day, one line otherwise). About 11 min, mostly the Drive walk. Before noon it
-reports yesterday. `--date`, `--dry-run`; full HTML always in `scripts/logs/nightly-digest-<date>.html`.
-Gotchas: a body over 28K chars is truncated with the full HTML attached, and gws `--attach` only
-accepts paths inside its cwd, so gws runs from `scripts/logs`; under python.exe the visible
-console got closed mid-run (0xC000013A), hence pythonw plus CREATE_NO_WINDOW on child processes.
-
 ## OS audits
 
 Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run);

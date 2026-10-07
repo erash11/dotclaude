@@ -9,6 +9,7 @@ Never put memory content here — the file itself holds the facts.
 - [Fireflies CLI on Mac](project_fireflies-cli-broken-on-mac.md) — Fireflies CLI errors or renames
 - [gws Google Forms API](project_gws-forms-api.md) — creating or editing a Google Form
 - [Kenny Boyd doc review](project_kenny-boyd-doc-review-preferences.md) — writing a review doc for Kenny
+- [Kenny Boyd writing voice](project_kenny-boyd-writing-voice.md) — writing to, for, or like Kenny; SAS Leadership meeting
 - [Terminal Fluency workspace](project_terminal-fluency-workspace.md) — resuming Terminal Fluency
 - [PATH shadowing and cleanup](project_path-shadowing-and-cleanup.md) — PATH questions; before deleting any binary
 - [Backup/sync system](project_backup-sync-system.md) — backup routing or verification
