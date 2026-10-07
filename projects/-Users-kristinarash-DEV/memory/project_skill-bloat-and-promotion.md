@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-10-07T15:57:39.816Z
+  modified: 2026-10-07T16:19:01.179Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -220,7 +220,8 @@ sports-science-research-grounding. Chosen from the usage scan above (model calls
   lagged at 1.2.3. Prefer the author's own marketplace.
 - Removed 6 untracked symlinks in `~/.claude/skills/` that shadowed plugin skills (code-review,
   grilling, handoff, prototype, teach, watch). Targets stay in `~/.agents/skills/` for Codex/Pi.
-- Review skills trimmed: keep built-in `/code-review` + `codex-review`.
-  `mattpocock-skills:code-review` "off"; `superpowers:requesting-code-review` "name-only"
+- Review skills trimmed (Eric's choice, same day): keep `mattpocock-skills:code-review` +
+  `codex-review`. Built-in `code-review` set "off" (bare key; does not hit the namespaced plugin
+  skill). `superpowers:requesting-code-review` "name-only"
   (superpowers executing-plans and subagent-driven-development call it by name). dotclaude `b3641cc`.
 - A description/body similarity scan of 148 active skills found no other duplicates.
