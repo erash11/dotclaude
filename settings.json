@@ -162,6 +162,7 @@
     "closeout": "name-only",
     "code-review": "off",
     "superpowers:requesting-code-review": "off",
+    "superpowers:test-driven-development": "off",
     "codex-build": "name-only",
     "design-taste-frontend": "name-only",
     "dev-sync": "name-only",

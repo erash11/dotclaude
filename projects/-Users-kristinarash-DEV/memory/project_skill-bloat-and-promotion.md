@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-10-07T16:19:42.562Z
+  modified: 2026-10-07T16:20:14.842Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -224,4 +224,5 @@ sports-science-research-grounding. Chosen from the usage scan above (model calls
   `codex-review`. Built-in `code-review` set "off" (bare key; does not hit the namespaced plugin
   skill). `superpowers:requesting-code-review` "off" (Eric's call; superpowers
   executing-plans and subagent-driven-development call it by name, so their review step may fail).
+- `superpowers:test-driven-development` "off" too; `mattpocock-skills:tdd` is the TDD skill.
 - A description/body similarity scan of 148 active skills found no other duplicates.
