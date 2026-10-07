@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-10-07T16:19:01.179Z
+  modified: 2026-10-07T16:19:42.562Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -222,6 +222,6 @@ sports-science-research-grounding. Chosen from the usage scan above (model calls
   grilling, handoff, prototype, teach, watch). Targets stay in `~/.agents/skills/` for Codex/Pi.
 - Review skills trimmed (Eric's choice, same day): keep `mattpocock-skills:code-review` +
   `codex-review`. Built-in `code-review` set "off" (bare key; does not hit the namespaced plugin
-  skill). `superpowers:requesting-code-review` "name-only"
-  (superpowers executing-plans and subagent-driven-development call it by name). dotclaude `b3641cc`.
+  skill). `superpowers:requesting-code-review` "off" (Eric's call; superpowers
+  executing-plans and subagent-driven-development call it by name, so their review step may fail).
 - A description/body similarity scan of 148 active skills found no other duplicates.
