@@ -160,7 +160,7 @@
     "claudex-route": "name-only",
     "cli-hub-meta-skill": "name-only",
     "closeout": "name-only",
-    "mattpocock-skills:code-review": "off",
+    "code-review": "off",
     "superpowers:requesting-code-review": "name-only",
     "codex-build": "name-only",
     "design-taste-frontend": "name-only",
