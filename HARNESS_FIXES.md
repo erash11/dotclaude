@@ -30,6 +30,18 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
    next day's run.
 7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit.
 8. **`~/Library/LaunchAgents` is not backed up.** The launchd job files exist only on this Mac.
+9. **WINDOWS: memsearch cannot reach Milvus.** 7 failed indexes in a row on 2026-10-06
+   (~10:00–14:30 Central); the same `milvus-standalone` container also restarted by itself on
+   2026-10-04. The Mac is fine (embedded Milvus Lite). On Windows: `docker ps` (three `milvus-*`
+   Up), `curl http://localhost:9091/healthz` (`OK`); if down, `docker logs milvus-standalone
+   --tail 50` first to learn why, then `cd ~/.memsearch/milvus && docker compose up -d`, then
+   `memsearch stats`. Never `memsearch reset`. Optional: tag `.errors.log` lines with the
+   machine name, because the log syncs and Windows errors look like Mac errors.
+10. **WINDOWS: `nightly-digest` send failed on its first night (2026-10-06).** The script is
+    Windows-only and the real error is only in the Windows log:
+    `Get-Content ~\.claude\scripts\logs\nightly-digest.log -Tail 5`. If it says auth/token/401,
+    run `gws auth login`. Then resend: `python ~\.claude\scripts\nightly-digest.py --date
+    2026-10-06` (sends a real email). Send options and the `-a` attachment checked OK on the Mac.
 
 Items 6–8 wait until after the 2026-10-03 21:00 backup run is checked (item 2), so that
 run tests only the two earlier fixes.
