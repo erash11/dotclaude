@@ -270,11 +270,22 @@ try {
   // ETIMEDOUT (session-end contention) and Milvus-unreachable (Docker Desktop
   // hasn't started yet — morning scheduled sessions routinely end before the
   // Milvus containers are up; observed 2026-07-16 07:40, self-healed by 08:43).
+  //
+  // One counter per class (2026-10-07): a shared counter let a Milvus-outage
+  // streak and a timeout streak add up and report as "ETIMEDOUT 9x" when they
+  // were two different problems. ETIMEDOUT keeps the original file name so
+  // memsearch-drain.ps1 and older state still line up; other classes get a
+  // suffix. Any clean run (or hard error) clears every class.
+  function streakFile(label) {
+    if (label === 'ETIMEDOUT') return TIMEOUT_STREAK_FILE;
+    return `${TIMEOUT_STREAK_FILE}-${label.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`;
+  }
   function bumpTransientStreak(label, detail) {
+    const file = streakFile(label);
     let streak = 0;
-    try { streak = parseInt(fs.readFileSync(TIMEOUT_STREAK_FILE, 'utf8'), 10) || 0; } catch (_) {}
+    try { streak = parseInt(fs.readFileSync(file, 'utf8'), 10) || 0; } catch (_) {}
     streak += 1;
-    try { fs.writeFileSync(TIMEOUT_STREAK_FILE, String(streak)); } catch (_) {}
+    try { fs.writeFileSync(file, String(streak)); } catch (_) {}
     if (streak >= TIMEOUT_STREAK_THRESHOLD) {
       logErr(`index ${label} ${streak}x consecutively — indexing may not be keeping up: ${detail.slice(0, 200)}`);
     } else {
