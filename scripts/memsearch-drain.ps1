@@ -59,7 +59,7 @@ try {
     $p.WaitForExit()
     $tail = ((Get-Content -LiteralPath $out, $err -ErrorAction SilentlyContinue) | Select-Object -Last 5) -join ' | '
     Log ("exit={0} elapsed={1:N0} min :: {2}" -f $p.ExitCode, $sw.Elapsed.TotalMinutes, $tail)
-    if ($p.ExitCode -eq 0) { Remove-Item -LiteralPath $streak -ErrorAction SilentlyContinue }
+    if ($p.ExitCode -eq 0) { Remove-Item -Path "$streak*" -ErrorAction SilentlyContinue }   # every per-class streak (memsearch-sync.js)
 }
 finally {
     Set-Content -LiteralPath $lastRun -Value "$((Get-Date).ToString('o')) drain finished pid=$PID"

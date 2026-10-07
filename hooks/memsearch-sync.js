@@ -152,6 +152,15 @@ const TIMEOUT_STREAK_FILE = path.join(os.homedir(), '.claude', 'global-memory', 
 // an uncapped full reindex and resets this counter, so heavy-day backlogs are
 // guaranteed to clear overnight. Alarm only if even the nightly isn't keeping up.
 const TIMEOUT_STREAK_THRESHOLD = 6;
+// Clears every per-class streak file (see bumpTransientStreak).
+function clearStreaks() {
+  const dir = path.dirname(TIMEOUT_STREAK_FILE), base = path.basename(TIMEOUT_STREAK_FILE);
+  try {
+    for (const f of fs.readdirSync(dir)) {
+      if (f === base || f.startsWith(base + '-')) { try { fs.unlinkSync(path.join(dir, f)); } catch (_) {} }
+    }
+  } catch (_) {}
+}
 // Signatures that mean "another writer holds milvus.db/LOCK", not "the database
 // is damaged". Deliberately narrow: matched against the flock/lock-acquisition
 // text, NOT against milvus-lite's wording "may not be compatible with Milvus
@@ -297,7 +306,7 @@ try {
     bumpTransientStreak('ETIMEDOUT', res.error.message);
   } else if (res.error) {
     logErr(`index ${res.error.code || 'error'}: ${res.error.message.slice(0, 300)}`);
-    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+    clearStreaks();
   } else if (res.status !== 0 && /Fail connecting to server/i.test(out)) {
     bumpTransientStreak('Milvus unreachable', (res.stderr || out));
   } else if (res.status !== 0 && LOCK_BUSY_RE.test(out)) {
@@ -313,10 +322,10 @@ try {
     bumpTransientStreak('system shutting down', rootCause(res.stderr || out));
   } else if (res.status !== 0) {
     logErr(`index exit ${res.status}: ${rootCause(res.stderr).slice(0, 300)} (full output: ${INDEX_LOG})`);
-    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+    clearStreaks();
   } else {
     // Clean run — reset the consecutive-timeout streak.
-    try { fs.unlinkSync(TIMEOUT_STREAK_FILE); } catch (_) {}
+    clearStreaks();
   }
 } finally {
   releaseLock();
