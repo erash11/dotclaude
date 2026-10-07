@@ -1,0 +1,989 @@
+60758 artifacts/source-evidence-review.md
+---
+title: Thoracic Outlet Syndrome in Overhead Throwing Athletes — Evidence Brief
+date: 2026-09-18
+author: Eric Rash (Applied Performance, Baylor Athletics)
+purpose: Evidence brief for softball strength & conditioning staff on TOS causes, risk factors, and mitigation
+status: complete
+tags: [sport-science, softball, baseball, thoracic-outlet-syndrome, overhead-athlete, injury-risk, workload]
+---
+
+# Thoracic Outlet Syndrome in Overhead Throwing Athletes
+
+**An evidence brief for softball performance staff.**
+
+Prepared 2026-09-18. Every citation in this document was verified against PubMed
+(NCBI E-utilities), Europe PMC, or the publisher record before inclusion.
+Sources from the Applied Performance Zotero library are marked
+`[Zotero: KEY, p. N]`. All others are marked `[External]` and are peer-reviewed
+primary sources or systematic reviews unless stated otherwise.
+
+> **How to read the confidence labels.** This brief separates what is
+> **Established** (measured, replicated), **Plausible but unproven** (a coherent
+> mechanism with no direct test), and **Speculation** (asserted in practice,
+> unsupported in literature). The distinction matters. A claim presented as
+> stronger than it is will not survive a second opinion, and it will cost the
+> person making it credibility on the claims that *are* solid.
+
+---
+
+## Bottom line up front
+
+1. **The peer comparison cannot be made.** TOS is not separately coded in the
+   NCAA Injury Surveillance Program. There is no national softball TOS rate to
+   compare against. (§1.4)
+2. **TOS is rare enough that no single program can estimate its own rate.**
+   Population incidence is roughly **2–3 per 100,000 per year** for neurogenic
+   TOS. On a 35-athlete roster, expected cases per season is about **0.0014**.
+   Two cases is a plausible chance cluster, not a signal. (§1.5)
+3. **Diagnosis drives counts at least as much as biology does.** There is no
+   gold-standard test for neurogenic TOS. The provocative test most used in an
+   athletic training room is **positive in 47–62% of people who do not have
+   TOS**. A program that starts looking will find cases; one that does not,
+   will not. (§1.3)
+4. **The throwing motion is the exposure, and the histology does not implicate
+   the weight room.** The cocked position roughly doubles scalene stiffness. The
+   scalene muscle changes found in TOS patients are type II *atrophy* plus
+   fibrosis — the opposite of a resistance-training signature. (§2.4, §2.5)
+5. **"Don't lift before throwing" has no research support**, and the adjacent
+   evidence leans against it. The defensible version is much narrower. (§4)
+6. **The endurance hypothesis is coherent and worth acting on, but it is not
+   established.** The best supporting study found a 45% rotator endurance
+   deficit in TOS patients — in 40-year-old non-athletes, with the direction of
+   causation unresolved. (§3)
+7. **The strongest modifiable exposure is workload, and it is not the strength
+   coach's lever.** Collegiate softball pitchers throw **2.9× the innings of
+   baseball pitchers on a staff one-third the size**, under no pitch count limit
+   and no mandated rest — and about **half of true pitch volume is bullpen and
+   warm-up that nobody counts**. (§5)
+
+---
+
+## Section 1 — What TOS is, how common it is, and why the peer comparison fails
+
+### 1.1 Three conditions, not one
+
+TOS is compression of the brachial plexus, subclavian artery, or subclavian vein
+in one of three anatomical spaces. The subtypes behave very differently and
+should never be discussed as a single entity.
+
+| Subtype | General population | Athletes |
+|---|---|---|
+| **Neurogenic (nTOS)** | 82–95% | 66–74% |
+| **Venous (vTOS / Paget-Schroetter, effort thrombosis)** | 3–16% | **26–34%** |
+| **Arterial (aTOS)** | ~1–2% | ~2% (1 of 52 in the largest pro series) |
+
+`[External]` Illig KA, et al. *Ann Vasc Surg* 2021;70:263-72. PMID 32771464 — 526 consecutive referrals: 82% nTOS, 16% vTOS, 2% aTOS.
+`[External]` Chandra V, Little C, Lee JT. *J Vasc Surg* 2014;60(4):1012-7. PMID 24835692 — 41 competitive athletes: 66% nTOS, 34% Paget-Schroetter.
+`[External]` Chauhan A, et al. *Am J Sports Med* 2024;52(7):1692-9. PMID 38702964 — 52 pro baseball players: 69% neurogenic, 29% venous.
+`[External]` Gutman MJ, et al. *Phys Sportsmed* 2022;50(2):141-6. PMID 33472488 — 27 MLB pitchers: 74% nTOS, 26% vTOS.
+
+**Established.** Venous TOS is roughly **5- to 10-fold over-represented in
+athletes** relative to the general population. The mechanism is chronic
+repetitive compression of the subclavian vein in the costoclavicular space.
+`[External]` Vemuri C, et al. *J Vasc Surg Venous Lymphat Disord* 2016;4(4):485-500. PMID 27639006.
+
+**Caveat:** every athlete proportion above is a *referral-center or treated-case*
+proportion, not an incidence. They describe the mix among athletes who reached a
+TOS surgeon — not the mix among athletes who have TOS.
+
+### 1.2 The base rate — and a statistic to stop repeating
+
+**Do not use "3–80 per 1,000."** It is the most commonly cited TOS incidence
+figure and it does not survive tracing:
+
+1. StatPearls (where most clinicians land) says "3 to 80 cases per 1,000," citing —
+2. Jones MR, et al. *Pain Ther* 2019;8(1):5-18 (PMID 31037504), which says
+   "Several articles report an incidence of 3–80/1000 [4]," citing —
+3. Citisli V. *J Pain Relief* 2015;4(2):1-7 — **which is not indexed in
+   PubMed/MEDLINE at all.** A PubMed author search returns zero results.
+
+A 27-fold-wide range is itself the tell that nobody measured anything.
+
+**What the actual data say.** `[External]` Illig KA, Rodriguez-Zoppi E.
+*Thorac Surg Clin* 2021;31(1):11-17. PMID 33220767, opening line: *"The incidence
+of neurogenic thoracic outlet syndrome is completely unknown, and has been wildly
+overestimated in the past."* Their prospective referral database back-calculates:
+
+- **nTOS ≈ 2–3 per 100,000 per year**
+- **vTOS ≈ 0.5–1 per 100,000 per year**
+- **aTOS sporadic**
+
+The discrepancy between the folklore figure and the measured one is **100-fold
+to 2,700-fold**.
+
+### 1.3 There is no gold-standard test — and the field says so in its own documents
+
+**Established, and this is the most defensible section of the brief.**
+
+- The **SVS reporting standards** define nTOS as ≥3 of 4 criteria, one of which
+  is *absence of other pathology explaining the symptoms* (a diagnosis of
+  exclusion) and one of which is *response to a scalene block* (a therapeutic
+  trial, not a test). No imaging, electrodiagnostic, or laboratory criterion
+  exists. `[External]` Illig KA, et al. *J Vasc Surg* 2016;64(3):e23-35. PMID 27565607.
+- `[External]` Sanders RJ, Hammond SL, Rao NM. *Neurologist* 2008;14(6):365-73. PMID 19008742:
+  *"there is no standard objective test to confirm clinical impressions... To
+  date there is still no reliable objective test to confirm the diagnosis."*
+- **Cochrane:** *"TOS is one of the most controversial diagnoses in clinical
+  medicine."* The review *"had to rely exclusively on the diagnosis of TOS by the
+  investigators in the reviewed studies."* Only **two RCTs worldwide** met a
+  6-month follow-up bar. `[External]` Povlsen B, Hansson T, Povlsen SD. *Cochrane Database Syst Rev* 2014;(11):CD007218. PMID 25427003.
+- **Wilbourn vs Roos, *Muscle Nerve* 1999** — "TOS is overdiagnosed" and "TOS is
+  underdiagnosed," published back to back in the same issue of the same journal.
+  `[External]` PMID 9883870 / PMID 9883869.
+- Even at a **dedicated TOS center**, only **150 of 183 (82%)** of new nTOS
+  referrals met an established criteria set. `[External]` Balderman J, et al. *J Vasc Surg* 2017;66(2):533-544.e2. PMID 28735950.
+- A Delphi expert consensus published in 2026 — a decade after the SVS standards —
+  exists precisely because criteria remain unsettled. **Its fifth criterion is
+  "participation in work/exercise requiring repetitive arm stress (overhead
+  athletes, throwing sports)."** `[External]` Wagner ER, et al. *Orthop J Sports Med* 2026;14(5):23259671261440925. PMID 42169800.
+
+  **Read that last one twice.** Being an overhead athlete is itself a formal
+  diagnostic criterion for nTOS. For a program comparing its softball TOS rate
+  to peers, that is circular: athlete status is an *input* to the diagnosis.
+
+**False-positive rates of provocative tests in people who do not have TOS:**
+
+| Test | Rayan 1995 (200 asymptomatic limbs) | Plewa 1998 (53 healthy) | Nord 2008 (normals) |
+|---|---|---|---|
+| Adson's | 13.5% vascular / 2% neuro | 11% pulse | 9–20% |
+| Costoclavicular | 47% vascular / 10% neuro | 11% pulse / 15% paresthesia | 16% |
+| Wright's / hyperabduction | **57% vascular** / 16.5% neuro | — | — |
+| **Roos / EAST** | — | **62% pulse, 36% paresthesia, 21% pain** | **47%** |
+| **≥1 test positive** | — | — | **56% of normals** |
+
+`[External]` Rayan GM, Jensen C. *J Shoulder Elbow Surg* 1995;4(2):113-7. PMID 7600161.
+`[External]` Plewa MC, Delinger M. *Acad Emerg Med* 1998;5(4):337-42. PMID 9562199.
+`[External]` Nord KM, et al. *Electromyogr Clin Neurophysiol* 2008;48(2):67-74. PMID 18435210.
+`[External]` Warrens AN, Heaton JM. *Ann R Coll Surg Engl* 1987;69(5):203-4. PMID 3674682 — 58% of volunteers positive on ≥1 maneuver, in a group where only 17% had any symptoms.
+
+Nord 2008 adds the decisive number: in **carpal tunnel patients** — who by
+definition do not have TOS — Roos/EAST was positive in **77%**, and **94% had at
+least one positive TOS maneuver.** Gillard 2001 reduces it to one figure:
+provocative tests have **mean specificity 53%**. `[External]` Gillard J, et al. *Joint Bone Spine* 2001;68(5):416-24. PMID 11707008.
+
+**Practical implication.** The Roos/EAST test — the one most likely to be used in
+an athletic training room — is positive in roughly **half of people who do not
+have TOS**. Screening a 35-athlete roster with EAST would be expected to flag
+16–20 healthy athletes.
+
+### 1.4 TOS is not coded in the NCAA ISP — the peer comparison cannot be made
+
+**Established.**
+
+- The ISP data model releases **body part or system affected**, **specific
+  injury**, and **type of injury**. The body-part list is coarse and anatomical:
+  head/face, neck, shoulder, arm or elbow, hand/wrist, trunk, hip/groin, thigh,
+  knee, lower leg, ankle, foot, other. **There is no "thoracic outlet" site and
+  no vascular or peripheral-nerve category.** `[External]` Kerr ZY, et al. *J Athl Train* 2014;49(4):552-60. PMID 24870292.
+- The diagnosis taxonomy is **injury-type** based — strains, sprains, contusions,
+  inflammatory conditions, concussion — not disease-entity based.
+- **TOS appears nowhere** in the two most recent 5-year NCAA baseball and
+  softball epidemiology reports, or in the decade-long report.
+  `[External]` Boltz AJ, et al. *J Athl Train* 2021;56(7):742-9. PMID 34280265. / Veillard KL, et al. *J Athl Train* 2021;56(7):734-41. PMID 34280289. / Wasserman EB, et al. *J Athl Train* 2019;54(2):198-211. PMID 30951387.
+- The ISP denominator is **athlete-exposures, not athletes or rosters**, drawn
+  from a **convenience sample** — an annual average of ~34 collegiate baseball
+  teams — which the authors themselves warn "should be interpreted with caution."
+
+**Honest limit:** the Datalys ISP documentation page returned HTTP 404, so I
+cannot prove no internal code string exists. What is demonstrable: TOS is not
+*reported* in any published NCAA ISP baseball or softball output and is not in
+the released taxonomies. A program wanting certainty should submit a data
+request to the Datalys Center.
+
+**The one usable collegiate denominator** comes from a chart review, not the ISP:
+`[External]` Talutis SD, et al. *J Vasc Surg* 2025;82(1):155-62. PMID 40132734 —
+**15,609 NCAA Division I athletes, 21 sports, 7 years, 76 TOS cases (0.48%).**
+
+| Sport | TOS prevalence |
+|---|---|
+| Tennis | 2.6% |
+| **Softball** | **1.3%** |
+| Rowing | 1.3% |
+| All sports | 0.48% |
+
+90.8% neurogenic, 9.2% venous. **96.0% managed without surgery; 95.4% returned
+to unrestricted competition.** Softball sits above the all-sport baseline but
+below tennis — and the outcomes are good.
+
+### 1.5 Why a roster-level comparison is statistically meaningless
+
+Using Illig's estimate of roughly 4 per 100,000 per year for all TOS combined, a
+35-athlete roster observed for one season has an expected count of **0.0014
+cases**.
+
+- **Zero cases tells you nothing.** By the rule of three, 35 athlete-years with
+  zero events puts the 95% upper bound at 3/35 ≈ **8.6% per athlete-season** —
+  four orders of magnitude above the true rate. A program with no cases has no
+  evidence it is below average. `[External]` Hanley JA, Lippman-Hand A. *JAMA* 1983;249(13):1743-5. PMID 6827763.
+- **One case looks catastrophic and means almost nothing.** The exact Poisson 95%
+  CI on a single observed event is (0.03, 5.6) events. The interval admits
+  essentially any hypothesis.
+- **Two cases is a plausible chance cluster.** Poisson 95% CI on 2 events:
+  (0.24, 7.2). A peer program with 0 and a peer program with 3 are not
+  statistically distinguishable at these counts.
+- **Ascertainment dominates everything.** 56% of normals screen positive on at
+  least one provocative maneuver, and being an overhead athlete is a formal
+  diagnostic criterion. Any observed between-program difference is far more
+  likely to measure the **referral pathway** — whether the school has a
+  relationship with a TOS center — than the underlying biology.
+
+**The framing to take into the room:** TOS is rare enough that no single athletic
+program generates a sample large enough to estimate its own rate, let alone
+compare it to a peer's. The meaningful question is not *"is our rate high?"* but
+*"is our diagnostic and referral pathway appropriate, and are our modifiable
+exposures managed?"*
+
+### 1.6 Outcomes, for reassurance
+
+Five independent professional-baseball return-to-play studies exist, and they
+converge tightly: **74–81% return to play at 9–11 months.**
+
+| Study | n | RTP | Performance conclusion |
+|---|---|---|---|
+| Thompson 2017 | 13 MLB pitchers | 77% at 10.8 mo | 75% of 72 PitchF/x metrics unchanged; max velocity −0.6 mph (P=.047) |
+| Gutman 2022 | 27 MLB pitchers | 74% at 297 d | ERA worse (3.66→4.50, P=.03); velocity unchanged |
+| Arnold 2022 | 26 MLB pitchers | 81% at 10 mo | No difference vs matched controls |
+| **Chauhan 2024** | 52 pro (88% pitchers) | **79% at 9.5 mo** | **Declines present, but no faster than matched healthy controls aging normally** |
+
+`[External]` Thompson RW, et al. *Ann Vasc Surg* 2017;39:216-27. PMID 27522980. / Gutman MJ, et al. PMID 33472488. / Arnold MT, et al. *Orthop J Sports Med* 2022;10(4):23259671221079835. PMID 35494495. / Chauhan A, et al. PMID 38702964.
+
+**The narrative that TOS surgery collapses a pitcher's career is supported by
+exactly one study** (Gutman's unmatched pre/post ERA comparison) **and
+contradicted by the two that used matched controls.** Chauhan 2024 — the only one
+using MLB's internal Health and Injury Tracking System rather than press reports —
+concluded the decline after TOS surgery was no faster than in healthy pitchers
+aging normally. An unmatched pre/post design on a cohort with mean age ~29–30
+will manufacture a decline out of ordinary aging.
+
+Funakoshi 2024, the largest overhead-athlete series (79 athletes: **baseball 67,
+tennis 4, softball 3, volleyball 3, swimming 1, handball 1**), reported **97%
+return to play and 81% return to the same level** at 7.3 ± 5.1 months, with
+**91.1% excellent/good** Roos scores in athletes vs 62.8% in non-athletes.
+`[External]` Funakoshi T, et al. *JSES Int* 2024;8(3):620-9. PMID 38707577.
+
+---
+
+## Section 2 — What actually causes TOS in throwing athletes
+
+### 2.1 The three compression spaces
+
+**Established.**
+
+| Space | Boundaries | Contents |
+|---|---|---|
+| **Interscalene triangle** | Anterior scalene (front), middle scalene (back), first rib (below) | Brachial plexus **trunks**, subclavian **artery**. The subclavian vein passes *anterior* to the anterior scalene and is not in this triangle. |
+| **Costoclavicular space** | Clavicle and subclavius (above), first rib (below) | Plexus **divisions**, subclavian artery **and vein** |
+| **Subcoracoid / retropectoralis minor space** | Pectoralis minor and its coracoid insertion (front), chest wall (behind) | Plexus **cords**, axillary artery and vein |
+
+For **arterial** compression the costoclavicular space is the discriminating
+site. Demondion 2006 imaged 44 volunteers and 28 arterial-TOS patients at 0°,
+90°, 130° and 170° abduction: no significant arterial stenosis in the
+interscalene triangle or retropectoralis minor space in either group; only the
+costoclavicular space separated patients from volunteers, at every angle, with
+**130° hyperabduction most discriminating**. `[External]` Demondion X, et al. *J Ultrasound Med* 2006;25(2):217-24. PMID 16439785.
+
+The common claim that the **subcoracoid space is the space most implicated in
+throwers** is **plausible but unproven** — no study compares the three spaces
+head-to-head in throwing athletes. It rests on a general surgical population
+(>75% of nTOS patients also had pectoralis minor syndrome; ~30% had it alone)
+plus expert opinion. `[External]` Sanders RJ, Rao NM. *Ann Vasc Surg* 2010;24(6):701-8. PMID 20471786.
+
+### 2.2 Structural predisposition — common, and usually silent
+
+**Established.**
+
+- **Cervical rib: 0.74%** of 1,352 London chest radiographs (females 1.09%,
+  males 0.42%); corroborated at **0.7%** in 6,571 Nigerian radiographs.
+  `[External]` Brewin J, Hill M, Ellis H. *Clin Anat* 2009;22(3):331-6. PMID 19280652. / Ezeofor SN, et al. *Niger J Clin Pract* 2016;19(4):513-6. PMID 27251970.
+- **Elongated C7 transverse process: 2.21%** — about three times more common than
+  a cervical rib, and the more likely bony contributor in any given athlete.
+- **Fibromuscular bands.** Roos described **seven** types in 1976 and **nine** by
+  1980 across 1,120 operations. **One third of 58 cadaver thoracic outlets showed
+  at least one** — in people who never had symptoms. `[External]` Roos DB. *Am J Surg* 1976;132(6):771-8. PMID 998867. / *Acta Chir Belg* 1980;79(5):353-61. PMID 7223264.
+  - *The frequently cited "Roos described 14 types" appears in no Roos primary
+    source. Cite nine (1980). Do not repeat the 14 figure.*
+- **Scalene anatomy is highly variable.** The textbook arrangement — plexus
+  passing between anterior and middle scalene — was present in **only 60%** of 51
+  cadavers. `[External]` Harry WG, Bennett JD, Guha SC. *Clin Anat* 1997;10(4):250-2. PMID 9213042.
+- **In TOS surgical series anomalies are the norm:** 66% of 200 consecutive cases
+  had developmental abnormalities — 20 supernumerary scalenes, 86 scalene and 39
+  subclavius variations. `[External]` Makhoul RG, Machleder HI. *J Vasc Surg* 1992;16(4):534-42. PMID 1404675.
+
+**The honest caveat, and it matters.** Predisposition is not causation. Roos
+found his bands in a third of *asymptomatic* cadavers. Makhoul & Machleder
+concluded morphology alone predicted the clinical syndrome *only* for
+Paget-Schroetter. The defensible framing is: **structural narrowing is common,
+usually silent, and becomes symptomatic when loaded.** That makes TOS a screening
+and load-management problem — not an act of God, and not an exoneration.
+
+### 2.3 First rib stress fracture — a throwing injury inside the outlet
+
+**Established.** 24 first-rib stress fractures in overhead throwing athletes,
+mean age 16.8 years, dominant arm, presenting as posterior shoulder pain on
+throwing — and "some patients may have symptoms consistent with thoracic outlet
+syndrome." `[External]` Funakoshi T, et al. *J Bone Joint Surg Am* 2019;101(10):896-903. PMID 31094981.
+
+Callus after such a fracture has caused frank arterial TOS with cerebellar
+infarction in a baseball player. `[External]` Suehara Y, et al. *JBJS Case Connect* 2017;7(3):e64. PMID 29252893.
+
+A 2025 case in a 12-year-old elite pitcher fractured at the **serratus anterior
+attachment** and presented as scapular winging and snapping — i.e. a first-rib
+stress fracture can masquerade as exactly the scapular control problem a strength
+coach would be asked to fix. `[External]` Yoon Y, et al. *Diagnostics (Basel)* 2025;15(19):2437. PMID 41095656.
+
+### 2.4 The scalene histology — why the weight room is the wrong suspect
+
+**Established, and the single most useful finding in this brief.**
+
+Two independent biopsy series of scalene muscles taken at surgery from TOS
+patients found the same pattern:
+
+| Finding | Machleder 1986 | Sanders 1990 |
+|---|---|---|
+| Type I (slow/tonic) fiber predominance | **85.1% ± 5.1%** | **78% vs 53%** in controls |
+| Type II fibers | — | **Atrophied** |
+| Connective tissue (fibrosis) | — | **36% vs <15%** in controls |
+
+`[External]` Machleder HI, Moll F, Verity MA. *Arch Surg* 1986;121(10):1141-4. PMID 3767646.
+`[External]` Sanders RJ, Jackson CG, Banchero N, Pearce WH. *Am J Surg* 1990;159(2):231-6. PMID 2301718.
+
+Machleder's interpretation: the anterior scalene "demonstrates an extraordinary
+adaptive transformation and recruitment response in the type 1 fiber system
+reflecting chronic increased tone or motor neuron stimulation."
+
+**Why this matters.** Resistance training produces **type II hypertrophy**. The
+scalene muscle in TOS shows **type II atrophy plus fibrosis and type I
+predominance**. That is the signature of chronic sustained tone and of injury —
+not of a training adaptation. If anyone argues that weight-room hypertrophy built
+the compressing muscle, the histology does not support it.
+
+Treat the *pattern* as established and the *exact percentages* as study-specific;
+both are surgical biopsy series with convenience controls.
+
+### 2.5 Throwing loads the outlet — measurably
+
+**Established.** Shear wave elastography on 30 collegiate baseball pitchers:
+
+| Position | Anterior scalene | Middle scalene |
+|---|---|---|
+| Neutral | 9.4 ± 2.0 kPa | 10.9 ± 3.4 kPa |
+| **ABER (cocked)** | **14.4 ± 3.8 kPa** (P<.001) | **15.8 ± 5.0 kPa** (P<.001) |
+| ABER + neck rotation away | **18.1 ± 4.6 kPa** | 15.8 ± 2.6 kPa |
+
+`[External]` Takaba K, et al. *Orthop J Sports Med* 2022;10(8):23259671221114930. PMID 36003968.
+
+The cocked throwing position roughly **doubles** anterior scalene stiffness. This
+is the cleanest mechanistic link between the throwing motion itself and loading
+of the interscalene triangle. It measures muscle stiffness, not nerve
+compression — but it locates the exposure in the throw.
+
+**Corroborating anatomy from the largest athlete series:** mean interscalene
+distance in TOS patients **5.6 ± 3.6 mm**, against cadaveric norms of 10.7–15 mm;
+and **"hypertrophy of the serratus anterior and posterior scalene muscles was
+commonly observed in overhead athletes."** `[External]` Funakoshi T, et al. *JSES Int* 2024;8(3):620-9. PMID 38707577.
+
+*Note which muscles: posterior scalene and serratus anterior. Those are
+throwing-driven, not bench-press-driven. This finding is the one a critic could
+reach for, and it should be presented honestly and in context rather than
+omitted.*
+
+### 2.6 Positional compression is normal — which limits what a positive test means
+
+**Established.** MR imaging of 35 asymptomatic volunteers and 54 TOS patients in
+neutral and provoked positions:
+
+- **47% of asymptomatic volunteers** showed positional venous compression at the
+  prescalene level (vs 63% of patients); **54% vs 61%** costoclavicular.
+- **Arterial compression: 72% of patients, 0% of volunteers.**
+- **Nerve compression: 7% of patients, 0% of volunteers.**
+- "Except for venous thrombosis, vasculonervous compressions were demonstrated
+  only with arm elevation."
+
+`[External]` Demondion X, et al. *Radiology* 2003;227(2):461-8. PMID 12637678.
+
+Compression is a positional phenomenon — it does not exist at rest. And roughly
+half of healthy people compress when you put their arm overhead. Only arterial
+and nerve compression discriminated.
+
+A separate MRI study confirms the spaces are real, measurable and
+position-dependent, with significant positional change in patients and none in
+controls. `[External]` Demirbag D, et al. *Arch Phys Med Rehabil* 2007;88(7):844-51. PMID 17601463.
+
+### 2.7 Posture and scapular position
+
+**Established, with an important correction.** "Droopy shoulder syndrome" is
+frequently described as costoclavicular narrowing. It is not. Swift & Nichols
+described low-set shoulders and a long neck, with symptoms that **worsened with
+downward traction and improved when patients elevated their arms** — the opposite
+of what compression of a narrowed costoclavicular space predicts. This is a
+**brachial plexus traction** mechanism. `[External]` Swift TR, Nichols FT. *Neurology* 1984;34(2):212-5. PMID 6538012.
+
+**Established in healthy non-athletes.** A short pectoralis minor resting length
+is associated with a scapula that stays **anteriorly tipped** at higher elevation
+angles and is **more internally rotated** at lower angles (50 asymptomatic
+volunteers, electromagnetic motion capture). `[External]` Borstad JD, Ludewig PM. *J Orthop Sports Phys Ther* 2005;35(4):227-38. PMID 15901124.
+
+Pectoralis minor length can be measured reliably in the field (coracoid to 4th
+rib/sternocostal junction; intrarater ICC 0.86–0.97, between-day 0.95).
+`[External]` Borstad JD. *J Orthop Sports Phys Ther* 2008;38(4):169-74. PMID 18434665. / Rosa DP, et al. *Braz J Phys Ther* 2016;20(2):176-83. PMID 26982455.
+**No validated numeric cut-off for "short" exists — report the measurement, not a threshold.**
+
+**Scope caveat:** this work was done in healthy, asymptomatic, non-athlete adults
+and targeted subacromial impingement, not TOS. Extending it to throwers *and*
+from impingement to subcoracoid neurovascular compression is a two-step
+inference. Reasonable, but **plausible-unproven**.
+
+Scapular dyskinesis on the throwing side was commonly documented by 3D-CT in the
+Funakoshi athlete series — descriptive, not causal.
+
+### 2.8 The cervical spine contribution — and a finding from our own library
+
+**Established in college pitchers.** 49 healthy college baseball pitchers
+measured in the 2018 preseason and followed through the season. A Cervical
+Flexion-Rotation Test finding of ≤39° on the dominant side carried **9.4× the
+risk** of a >7-day time-loss shoulder or elbow injury (RR 9.38, 95% CI
+1.28–68.49). Cervical flexion ROM ≤64° carried RR 10.56 (95% CI 1.50–74.34) for
+pain and disability. Pitchers with restricted rotation were injured earlier
+(83.6 of 112 days played vs 109.4).
+`[Zotero: F5YKF6B4, p. 1]` Devaney LL, et al. *Orthop J Sports Med* 2020;8(5):2325967120920556. DOI 10.1177/2325967120920556.
+
+Proposed mechanism, `[Zotero: F5YKF6B4, p. 6]`: reduced upper cervical rotation
+requires compensatory mid-cervical motion, and "these combined motions may
+decrease the space for the nerve roots in the intervertebral foramina" with
+consequent myotomal changes impairing scapular and glenohumeral control.
+
+**Read this carefully.** Devaney is *not* a TOS study — it measured shoulder and
+elbow injury. But it establishes, in exactly our population, that **neck mobility
+is a modifiable, screenable risk factor for throwing injury**, with a mechanism
+adjacent to the TOS story. The wide confidence intervals (n=49, 10 injuries) mean
+the 9.4× point estimate should not be quoted as precise; the *direction* and the
+screening implication are the usable findings.
+
+**Plausible but unquantified:** no study quantifies cervical foraminal narrowing
+as a contributor to nTOS specifically in throwers.
+
+### 2.9 What the literature does *not* support
+
+- **GIRD → TOS: no evidence whatsoever.** Three separate PubMed queries return
+  **zero** records. Any such link is speculation. Do not assert it.
+- **Resistance training causes TOS: unsupported.** No controlled or cohort
+  evidence. What exists is case reports — a weightlifter with Paget-Schroetter
+  attributed to bench pressing; a rower/weightlifter with well-developed
+  scalenes; a weightlifter with subclavian occlusion *confounded by anabolic
+  steroid use*. `[External]` Crossland DT, Overturf MD. *Cureus* 2024;16(6):e62824. PMID 39036114. / Wong DKH, et al. *JBJS Case Connect* 2021;11(2). PMID 33882031. / Meller L, et al. *Cureus* 2023;15(4):e37763. PMID 37213978.
+- The closest thing to support for a hypertrophy mechanism in a thrower is a
+  Division I pitcher with "intermittent axillary artery compression with the arm
+  in abduction resulting from hypertrophy of the pectoralis minor and scalene
+  muscles" — attributed to **throwing**, not to a documented lifting programme.
+  `[External]` Ligh CA, Schulman BL, Safran MR. *Clin Orthop Relat Res* 2009;467(10):2744-8. PMID 19588212.
+- A 2022 systematic review of TOS in sport located 78 articles: **40 case
+  reports, 10 clinical studies, 28 reviews**, concluding the field "still lacks
+  rigorous diagnostic criteria and management guidelines for athletes." That
+  composition *is* the finding. `[External]` Garraud T, et al. *Front Physiol* 2022;13:838014. PMID 35755427.
+
+**The defensible statement:** pectoralis minor and scalene hypertrophy have been
+documented as the compressing structure in individual athlete case reports, in
+throwing, water polo, rowing and weightlifting. **Whether training-induced
+hypertrophy raises TOS risk at a population level has never been tested.**
+
+---
+
+## Section 3 — Can lack of endurance or muscle capacity cause TOS?
+
+**Direct answer: it is a coherent, mechanistically reasonable hypothesis with no
+direct empirical support. Act on it because it is cheap, safe, and independently
+justified — not because the evidence establishes it.**
+
+### 3.1 The strongest supporting study
+
+**Established finding, contested interpretation.** 100 nTOS patients vs 100
+healthy controls, isokinetic shoulder rotator testing, with an endurance test
+defined as 30 repetitions at 180°/s:
+
+| Measure | Medial rotators | Lateral rotators |
+|---|---|---|
+| Peak strength 60°/s | −21% | −29% |
+| Peak strength 180°/s | −23% | −20% |
+| **Endurance (30 reps @ 180°/s)** | **−45%** | **−30%** |
+
+All p≤.001, all correlated with QuickDASH. **The endurance deficit is roughly
+twice the strength deficit** — the single most striking number in this review.
+`[External]` Daley P, et al. *Diagnostics (Basel)* 2021;11(9):1529. PMID 34573871.
+
+**Four constraints block a causal reading. State all four or the claim will not
+survive scrutiny:**
+
+1. **Direction of causation is unresolvable by this design.** nTOS *is* brachial
+   plexus compression. Reduced fatigue resistance is at least as plausibly a
+   *consequence* — partial denervation, pain inhibition, disuse, kinesiophobia —
+   as a cause. A cross-sectional symptomatic-vs-control design cannot separate
+   them. The authors make no causal claim; they frame it as a diagnostic and
+   follow-up tool.
+2. **Wrong muscles.** This measured **glenohumeral rotators** — not scapular
+   stabilisers, not deep neck flexors, not postural muscles.
+3. **Wrong population.** 71% female, mean age 39.4 ± 9.6, clinic population.
+   **Every direct capacity study in TOS is a non-athlete, predominantly female,
+   ~40-year-old clinic cohort.** Transfer to a 20-year-old pitcher is assumption.
+4. **The companion study argues for consequence.** Grip **−30%**, key pinch
+   **−19.5%** vs controls — the classic C8–T1 lower-plexus signature. That
+   pattern points to nerve compression producing weakness, not the reverse.
+   `[External]` Fouasson-Chailloux A, et al. *Diagnostics (Basel)* 2021;11(5):874. PMID 34068245.
+
+### 3.2 The outright evidentiary blanks
+
+- **Scapular stabiliser endurance in TOS vs controls: no study exists.**
+- **Deep neck flexor endurance in TOS: zero studies.** Complete blank.
+- **EMG evidence of scalene overactivity during breathing in TOS: none.** The
+  "accessory breathing → interscalene narrowing" chain is untested. The one
+  respiratory study found TOS patients had *reduced* MIP, MEP and respiratory
+  muscle endurance — which if anything is the opposite of the hyperactive-
+  accessory-breather story, and the authors decline a causal direction.
+  `[External]` Saglam M, et al. *J Manipulative Physiol Ther* 2020;43(6):606-11. PMID 32829949.
+- **Nobody has ever measured costoclavicular or retropectoralis minor space
+  before and after a fatigue protocol.** That single experiment would convert
+  this from plausibility to mechanism. It has not been run.
+- **No RCT of exercise therapy versus control for nTOS exists.** The only nTOS
+  RCT compared surgery to continued conservative care in patients already
+  refractory to conservative therapy — and all 25 conservative-arm patients
+  applied for surgery at 3 months. `[External]` Goeteyn J, et al. *Eur J Vasc Endovasc Surg* 2022;64(1):119-27. PMID 35537641.
+
+### 3.3 The indirect chain — fatigue alters scapular position
+
+**Established (in healthy subjects, acute lab fatigue, framed around subacromial
+impingement — not the thoracic outlet):**
+
+| Study | n | Fatigue protocol | Scapular result |
+|---|---|---|---|
+| Tsai 2003 | 30 healthy | External rotation | ↓ posterior tilt, ↓ external rotation, ↓ upward rotation |
+| Ebaugh 2006 (JOSPT) | 20 healthy | External rotation | ↓ posterior tilt early; **↑** upward rotation mid-range |
+| Ebaugh 2006 (JEK) | 20 healthy | Repetitive overhead | **↑** upward and external rotation |
+| Joshi 2011 | 25 overhead athletes | GH external rotation | ↓ lower trapezius activity, **↑** upward rotation |
+| Harrison 2021 | 30 | Serratus anterior | ↓ posterior tilt, ↑ internal rotation, no change in upward rotation |
+
+`[External]` Tsai NT, McClure PW, Karduna AR. *Arch Phys Med Rehabil* 2003;84(7):1000-5. PMID 12881824. / Ebaugh DD, et al. *J Orthop Sports Phys Ther* 2006;36(8):557-71. PMID 16915977; *J Electromyogr Kinesiol* 2006;16(3):224-35. PMID 16125416. / Joshi M, et al. *J Athl Train* 2011;46(4):349-57. PMID 21944066. / Harrison N, Garrett WZ, Timmons MK. *J Sport Rehabil* 2021;30(8):1151-7. PMID 34294607.
+
+**Two honest observations:**
+
+- **What replicates is decreased posterior tilt (increased anterior tilt).** Four
+  of five studies show it. Combined with increased internal rotation, that is the
+  consistent fatigue signature.
+- **Upward rotation does not replicate.** One study found it decreased, three
+  found it *increased*, one found no change. **Do not assert a consistent
+  upward-rotation deficit.**
+
+**The inferred chain — label it as inferred:**
+
+> scapular muscle fatigue → increased anterior tilt and internal rotation
+> *(measured, replicated)* → coracoid moves inferoanteriorly, clavicle approaches
+> the first rib *(anatomically reasoned)* → narrowing of the costoclavicular and
+> subcoracoid spaces *(spaces are real and position-dependent, but never measured
+> under fatigue)* → brachial plexus compression *(never demonstrated)*
+
+### 3.4 What the treatment protocols actually target
+
+A 2026 scoping review screened 1,381 studies and included 29. Exercise appeared
+in 17/19 (90%) of programmes:
+
+- **Stretching (n=15).** Main targets: **scalenes and pectoralis (n=10)**.
+- **Strengthening (n=14).** Main targets: **scapula (n=9), trapezius and serratus
+  anterior (n=5)**.
+- Posture (n=13), manual therapy (n=10), neural mobility (n=7), activity
+  modification (n=7).
+
+`[External]` O'Sullivan J, et al. *Hand Ther* 2026;17589983251411877. PMID 41657761.
+
+**So the premise is confirmed at the level of muscle selection — and fails at the
+level of muscle quality.** The review's own conclusion: *"The reporting of
+rehabilitation techniques for NTOS is generally poor, particularly regarding
+treatment intensity."* **No published nTOS protocol specifies sets, reps, loads
+or time-under-tension in a way that would let you classify it as endurance
+training.** Anyone asserting "the protocols target endurance specifically" is
+reading intent into silence.
+
+The canonical masterclass describes the core as *"the graded restoration of
+scapula control, movement, and positioning at rest and through movement"* — that
+is **motor-control language, not endurance language**. `[External]` Watson LA, Pizzari T, Balster S. *Man Ther* 2010;15(4):305-14. PMID 20382063.
+
+**Conservative success rates span a wide, selection-driven range:**
+
+| Study | n | Result |
+|---|---|---|
+| Novak 1995 | 42 | 25 improved / 10 same / 7 worse (~60%); only 16/42 back to full work + recreation |
+| Lindgren 1997 | 119 | 88% satisfied at ~25 mo; 73% returned to work (uncontrolled, subjective endpoint) |
+| **Balderman 2019** | 150 | **Only 40 (27%) satisfactory with PT alone**; 60% went to surgery |
+| Fouasson-Chailloux 2025 | 182 | 3-week inpatient rehab: **rotator endurance +35–39%**, QuickDASH 57→30 (uncontrolled) |
+
+`[External]` Novak CB, Collins ED, Mackinnon SE. *J Hand Surg Am* 1995;20(4):542-8. PMID 7594276. / Lindgren KA. *Arch Phys Med Rehabil* 1997;78(4):373-8. PMID 9111456. / Balderman J, et al. *J Vasc Surg* 2019;70(3):832-41. PMID 30852035. / Fouasson-Chailloux A, et al. *Ann Vasc Surg* 2025;121:603-12. PMID 40907821.
+
+27% and 88% are not in conflict — they are opposite ends of a **selection
+spectrum**. Neither is the number for an athlete. **No cohort anywhere reports
+what fraction of throwing athletes with nTOS resolve with rehabilitation alone.**
+For a strength-and-conditioning audience, that is the most important absence in
+the entire literature.
+
+### 3.5 Does injury-prevention programming work in overhead athletes?
+
+**Mixed, and weaker than our field generally believes. Know this before citing it.**
+
+- **The risk-factor study:** 206 elite male handball players — obvious scapular
+  dyskinesis OR 8.41 (95% CI 1.47–48.1), external rotation strength OR 0.71 per
+  10 Nm (0.44–0.99). `[External]` Clarsen B, et al. *Br J Sports Med* 2014;48(17):1327-33. PMID 24948083.
+- **The replication failed.** Same research group, 329 players — the paper is
+  subtitled *"previous findings could not be confirmed."* `[External]` Andersson SH, et al. *Br J Sports Med* 2018;52(18):1191-8. PMID 28784621.
+- **The flagship RCT** (45 teams, 660 players) reduced *any* shoulder problem —
+  OR 0.72 (0.52–0.98), p=.038 — but **not substantial** shoulder problems: OR
+  0.78 (0.53–1.16), **p=.23**. `[External]` Andersson SH, et al. *Br J Sports Med* 2017;51(14):1073-80. PMID 27313171.
+- **The mechanism failed to move.** An RCT of 8 weeks of external rotation band
+  strengthening produced a between-group difference of **0.06 N/kg (95% CI −0.01
+  to 0.14)**. Conclusion: *"The ER strength program improved neither the ER
+  strength nor the ER:IR ratio."* `[External]` Fredriksen H, Cools A, Myklebust G. *J Orthop Sports Phys Ther* 2021;51(4):174-87. PMID 33789429.
+- **The pooled result is null.** 3 RCTs, n=747: **OR 0.73 (95% CI 0.45–1.17)**.
+  `[External]` Yonneau J, et al. *BMJ Open Sport Exerc Med* 2025;11(3):e002416. PMID 41035524.
+- **Baseball's positive RCT used different content.** 16 teams / 237 youth
+  players, 12-month follow-up, HR 1.940 (95% CI 1.175–3.205), p=.010 favouring
+  intervention — but the programme was **5 stretching + 2 dynamic mobility + 2
+  balance exercises, with no scapular strengthening at all.**
+  `[External]` Sakata J, et al. *Am J Sports Med* 2019;47(11):2709-16. PMID 31336051.
+
+### 3.6 Field tests a strength coach could actually use
+
+| Test | Normative data | Reliability | Caveat |
+|---|---|---|---|
+| **Deep Neck Flexor Endurance** | Men 38.9 ± 20.1 s; women 29.4 ± 13.7 s | ICC(2,k) 0.66 (0.34–0.86) — **moderate at best** | Age and activity level did not affect performance |
+| **Scapular Muscle Endurance** | **None published** | ICC 0.67, **MDC 30.1 s** | MDC is large relative to hold times — **not good for tracking an individual** |
+| **CKCUEST** | Collegiate baseball reference values exist | — | Closed-chain stability, not endurance |
+| **Upper Quarter Y-Balance** | HS baseball/softball: composite 87.2 ± 8.9 %AL, no throwing/non-throwing asymmetry | — | Mobility/stability, not endurance |
+
+`[External]` Domenech MA, et al. *PM R* 2011;3(2):105-10. PMID 21333948. / Edmondston SJ, et al. *J Manipulative Physiol Ther* 2008;31(5):348-54. PMID 18558277. / Roush JR, Kitamura J, Waits MC. *N Am J Sports Phys Ther* 2007;2(3):159-63. PMID 21522211. / Butler RJ, et al. *Int J Sports Phys Ther* 2014;9(4):518-24. PMID 25133080.
+
+**The decisive caveat: not one of these has ever been validated against TOS.**
+None has been administered to a TOS population; none has a cut-point for TOS
+risk. Use them as general upper-quarter capacity monitoring with defensible
+normative data. **Presenting any of them as a TOS screen would be unsupported.**
+
+### 3.7 Verdict
+
+**(a) Direct causal evidence that a muscular endurance deficit contributes to
+TOS: none.** Not weak — absent. No prospective study has measured capacity at
+baseline and observed who subsequently developed TOS.
+
+**(b) Treatment-implies-mechanism reasoning is the strongest strand, and it is
+structurally circular.** Treatment content tells you what clinicians believe, not
+what causes the disease.
+
+**(c) Pure plausibility carries the rest, and it is well-built plausibility.**
+Fatigue demonstrably alters scapular position; the outlet spaces are real and
+position-dependent; anterior tilt plus internal rotation plausibly narrows those
+corridors. Every link past the kinematics is inference.
+
+**The line to use:** *"Building scapular and postural capacity is a
+mechanistically coherent, low-cost, low-risk intervention that is independently
+justified by general shoulder health. The claim that it prevents TOS specifically
+has no direct empirical support."*
+
+---
+
+## Section 4 — "Don't lift the pitchers before they throw": is it supported?
+
+**Direct answer: no. There is no research supporting this recommendation, and the
+adjacent evidence leans against it.**
+
+### 4.1 The direct evidence does not exist
+
+Three structured PubMed queries returned **no baseball study** examining
+resistance training performed before throwing and its effect on velocity,
+accuracy, mechanics, kinematics, kinetics, or injury rates. On TOS specifically:
+**zero papers connect resistance training timing to thoracic outlet syndrome.**
+
+### 4.2 The adjacent evidence leans the other way
+
+| Study | Protocol | Result |
+|---|---|---|
+| Water polo, n=12 | 3×6 @ 80% 1RM (bench, row, half squat) **15 min before** in-water testing | **No difference** in throwing velocity (14.67 vs 14.91 m/s), accuracy, tethered force, swim, or jump (all p>0.05) |
+| Tennis | 3×6 @ 75% 1RM, maximal intended velocity, not to failure | **No change** in serve/forehand/backhand velocity or accuracy at **3 min, 24 h, or 48 h** |
+| Trained throwers, n=14 | Morning total-body resistance session | Afternoon overhead throw distance **improved** (p<0.05), 4–6 h later |
+
+`[External]` Malliaros I, et al. *Sports (Basel)* 2025;13(11):378. PMID 41295761 — authors state such training "can be safely implemented 15 min prior to in-water training sessions."
+`[External]` Terraza-Rebollo M, Baiget E. *PLoS One* 2021;16(12):e0260825. PMID 34882729.
+`[External]` Ekstrand LG, et al. *J Strength Cond Res* 2013;27(1):101-6. PMID 22395279.
+
+### 4.3 The one study showing a decrement — and why it undercuts the rule
+
+16 adolescent baseball pitchers: push-ups **to failure** and repeated CMJs **to
+failure** each dropped pitch velocity ~2 km/h (p=0.005).
+`[External]` Tremblay M, et al. *J Strength Cond Res* 2024;38(8):1447-52. PMID 38838214.
+
+1. It used **fatigue to failure**, not a programmed lift.
+2. The **recovery interval before re-test was not quantified**. Pilot,
+   non-randomised.
+3. **Lower-body fatigue dropped velocity as much as upper-body fatigue.** If the
+   mechanism were loading the throwing arm, squatting should not have mattered
+   equally. This contradicts the rationale the rule rests on.
+
+### 4.4 The mechanistic chain breaks at the end
+
+- **Fatigue degrades shoulder proprioception** — robust and replicated.
+  `[External]` Carpenter JE, Blasier RB, Pellizzon GG. *Am J Sports Med* 1998;26(2):262-5. PMID 9548121. / Tripp BL, et al. *J Athl Train* 2004;39(4):316-20. PMID 15592603.
+- **But the deficit does not become functional.** A **160% increase in joint
+  repositioning error** produced **no change** in motor control (Y-Balance Upper
+  Quarter) or performance (Athletic Shoulder test). `[External]` Hadjisavvas S, et al. *Hum Mov Sci* 2024;98:103299. PMID 39461122.
+- **Recovery is fast.** After throwing-to-fatigue in 16 collegiate players,
+  scapulothoracic, glenohumeral, elbow and endpoint acuity **recovered within 4–7
+  minutes**. The one exception: **glenohumeral acuity in the arm-cocked position
+  had not recovered at 10 minutes.** `[External]` Tripp BL, Yochem EM, Uhl TL. *J Athl Train* 2007;42(4):452-7. PMID 18174932.
+- **Counterweight:** strength training is associated with *better* shoulder
+  proprioception chronically. `[External]` Salles JI, et al. *J Athl Train* 2015;50(3):277-80. PMID 25594912.
+- All the fatigue-alters-pitching-mechanics literature concerns fatigue **from
+  throwing itself**. `[External]` Murray TA, et al. *Am J Sports Med* 2001;29(2):137-42. PMID 11292037. / Birfer R, Sonne MW, Holmes MW. *PeerJ* 2019;7:e7390. PMID 31392098.
+
+That arm-cocked exception is the **single most defensible mechanistic hook** for
+the athletic training staff's concern. It is narrow, and it is about the cocked
+position specifically.
+
+### 4.5 The defensible version
+
+| Rationale | Support |
+|---|---|
+| (a) Manage **total daily/weekly load** | **Best supported**, but indirectly — the literature is about cumulative *throwing* load |
+| (b) Avoid **heavy loading of the throwing shoulder** specifically | **Not supported, actively undercut** |
+| (c) **Proximity in hours** | **Weak** — 15 min fine, 3 min fine, 4–6 h beneficial |
+| (d) Nothing at all | **Closest to the truth for the blanket rule** |
+
+**Recommended reframe:** *avoid taking the upper body to failure, and avoid novel
+heavy eccentric upper-body work, in the hours before a high-intent throwing
+session.* A dose-and-proximity-to-failure statement. Every trial using a dosed,
+sub-failure lift found no impairment.
+
+Present the current rule as **conservative professional judgment — a legitimate
+basis for a decision — but not as research-backed.** There is no NSCA or ACSM
+baseball-specific position statement, and no MLB/ASMI consensus, prescribing
+lifting-relative-to-throwing order.
+
+---
+
+## Section 5 — Softball-specific evidence and workload
+
+### 5.1 The softball TOS literature barely exists
+
+PubMed `"thoracic outlet"[TIAB] AND softball[TIAB]` returns **exactly 6 records**:
+
+- **2 case reports in softball athletes**, both **structural/congenital first-rib
+  pathology** — a fracture nonunion and a congenital pseudarthrosis. **Neither
+  identifies the patient as a pitcher.** `[External]` Young BL, et al. *J Shoulder Elbow Surg* 2016;25(11):e353-7. PMID 27742249. / Gibson TW, Carson L. *JBJS Case Connect* 2021;11(3). PMID 34329202.
+- **4 cohort studies where softball is pooled with baseball** or given only as a
+  prevalence.
+
+A systematic review of Paget-Schroetter syndrome in athletes **does not contain
+the word "softball"** — zero softball effort-thrombosis cases in the systematic
+literature. `[External]` Keller RE, et al. *J Shoulder Elbow Surg* 2020;29(11):2417-25. PMID 32868012.
+
+**Net: no peer-reviewed paper attributes TOS or effort thrombosis in a softball
+pitcher to the pitching motion.** The design ceiling across the entire softball
+TOS literature is the single case report. Every mechanistic claim must be
+extrapolated from baseball, and the extrapolation should be stated.
+
+### 5.2 The windmill is not load-sparing
+
+| Measure | Value | Source |
+|---|---|---|
+| Shoulder distraction, youth | **94% body weight** | Werner 2005, n=53 |
+| Shoulder distraction, elite/Olympic | **80% BW** | Werner 2006, n=24 |
+| Peak compression, shoulder & elbow | **70–98% BW** | Barrentine 1998, n=8 |
+| Shoulder extension/abduction torque | **9–10% BW × height** | Barrentine 1998 |
+| **Peak biceps activation, windmill vs overhand (velocity-matched)** | **38% vs 19%** | Rojas 2009 |
+| Scapular excursion through the pitch | 5–22° per plane | Holtz 2026, n=17 |
+
+`[External]` Werner SL, et al. *Am J Sports Med* 2005;33(4):552-60. PMID 15722291; 2006;34(4):597-603. PMID 16282576. / Barrentine SW, et al. *J Orthop Sports Phys Ther* 1998;28(6):405-15. PMID 9836172. / Rojas IL, et al. *Am J Sports Med* 2009;37(3):558-65. PMID 19174551. / Holtz KA, et al. *Int J Sports Med* 2026;47(1):72-7. PMID 40738124.
+
+Three independent sources state windmill shoulder and elbow loads are **similar
+to baseball pitching**. Our own library says the same:
+`[Zotero: FGQAC8DL, p. 1]` — *"it is continually reported that the shoulder stress
+endured from the softball pitch is analogous to that of the baseball pitch,"* and
+shoulder injury rates and patterns are "comparable with those reported in the
+sport of baseball." Oliver GD, et al. *Orthop J Sports Med* 2019;7(8):2325967119865171.
+
+**The "windmill is a natural motion" belief is explicitly named as a
+misconception in the peer-reviewed literature.** At matched ball velocity, biceps
+demand is **double** the overhand throw.
+
+**Hyperabduction — label as inference.** The windmill carries the arm through
+full overhead elevation once per pitch, transiently and at high angular velocity.
+**No windmill study reports maximum shoulder elevation angle or time above 90°.**
+The plausible outlet link is cumulative repetition, not sustained positional
+narrowing.
+
+**The actionable lever is proximal.** Lower-extremity screening alone predicted
+**49.9%** of peak shoulder distraction variance in 46 collegiate pitchers, rising
+to **56.2%** with hip rotation strength. `[External]` Ulman SM, et al. *Am J Sports Med* 2025;53(3):565-70. PMID 39844736.
+
+Our library adds the trunk side: at foot contact, increased trunk rotation toward
+the pitching arm, increased stride length and a posteriorly shifted COM explained
+**~33% of variance** in upper-extremity pain among 37 D1 softball pitchers.
+`[Zotero: FGQAC8DL, p. 1 and p. 4]`
+
+### 5.3 Workload — the strongest part of the case
+
+**Rules, verified: NCAA softball has NO pitch count limit and NO mandated rest.**
+Confirmed three ways (Zaremski 2025 states "no established pitch count guidelines
+for collegiate softball"; Freetly et al. Table 2 lists NCAA for both sports as
+"No restrictions / None"; the NCAA softball playing-rules page lists no such
+document). NCAA baseball likewise has none — but **NFHS Rule 6-2-6 requires every
+state association to adopt a baseball pitch-count restriction with mandated
+rest**, while NFHS softball is capped only by *innings*.
+
+*Caveat: the current NCAA rulebook PDF would not retrieve. Confirm against the
+current rulebook before publishing a rules claim.*
+
+**Collegiate workload** — 40 softball and 40 baseball College World Series teams,
+2016–2021:
+
+| | Softball | Baseball | Ratio |
+|---|---|---|---|
+| Innings pitched/season (median) | **84.1** | 29.2 | **2.9×** |
+| Appearances/season | 23.0 | 16.0 | 1.4× |
+| Innings/game | **3.6** | 1.6 | 2.3× |
+| Pitchers per roster | **4.5 ± 1.1 (21.0%)** | 15.7 ± 2.3 (44.2%) | — |
+| **% exceeding 100 IP/season** | **43.7%** | 7.35% | **6×** |
+
+All p<0.0001. `[External]` Freetly T, Albright P, Feeley S, Feeley B, Chambers C.
+Increased Utilization of Pitchers in NCAA Women's Softball Compared to Men's
+Baseball. *J Womens Sports Med* 2024;4(2):1-8. DOI 10.53646/khdyxt64.
+
+**That roster structure is the one-pitcher-carries-the-staff pattern,
+quantified:** a softball staff is under one-third the size of a baseball staff,
+and each pitcher absorbs nearly 3× the innings.
+
+**The single most actionable workload finding:** 8,248 pitches tracked over 89
+varsity outings. Counting game pitches only, **25.6%** exceeded recommendations.
+**Including bullpen and warm-up: 51.2%** (P=0.001). **Roughly half of true pitch
+volume is invisible to a box score.** `[External]` Kamarajugadda S, et al. *J Sports Med Phys Fitness* 2025;65(10):1306-10. PMID 40673787.
+
+**Volume thresholds (youth/HS only — no collegiate pitch-count study exists):**
+>85 pitches/game → **>2× likelihood of seeking medical attention**; shoulder pain
+associated with **429 vs 219 pitches/week** and **19,195 vs 8,876 pitches/year**.
+`[External]` Gooch B, et al. *Sports Health* 2022;14(5):702-9. PMID 34672828.
+
+**Fatigue — mixed direction, read carefully:**
+
+- After **99 ± 21 pitches**: dominant-side deficits **11–22%** across hip,
+  scapula, shoulder, elbow, wrist; **velocity −3.4%**. `[External]` Corben JS, et al. *Am J Sports Med* 2015;43(8):2035-41. PMID 26109610.
+- Kinetics **decreased** at shoulder, elbow and wrist in the last and doubleheader
+  innings — the pitcher produces *less* force, not more. `[External]` Fava AW, et al. *Am J Sports Med* 2024;52(12):3118-29. PMID 39344907.
+- Consecutive-day tournament pitching raises fatigue (2.0 → 3.5) and pain
+  (1.3 → 2.5). `[External]` Skillington SA, et al. *Am J Sports Med* 2017;45(6):1413-9. PMID 28298058.
+- But post-game stride-leg knee extension and trunk flexion strength
+  **increased** in one study. `[External]` Pletcher ER, et al. *Sports Biomech* 2024;23(9):1210-8. PMID 34134606.
+
+Consistent reading: **proximal control and output degrade within and across
+days**, while isolated post-game strength tests can move either way. Do not
+present fatigue as a clean monotonic decline.
+
+### 5.4 Injury epidemiology
+
+- **NCAA softball overall: 3.92 per 1,000 AE. Shoulder is the #1 body part at
+  15.2%.** `[External]` Veillard KL, et al. PMID 34280289.
+- Game 4.30 vs practice 2.67 per 1,000 AE; **preseason practice 3.65 vs in-season
+  1.68.** `[External]` Marshall SW, et al. *J Athl Train* 2007;42(2):286-94. PMID 17710178.
+- **Collegiate pitchers specifically: 72.8% injured in one season** (n=181); 92 of
+  131 injuries chronic/overuse, 33 shoulder-related. `[External]` Hill JL, et al. *J Strength Cond Res* 2004;18(3):426-31. PMID 15320672.
+- **20 of 24 collegiate pitchers had injuries/complaints; 82% of time-loss
+  injuries were upper extremity.** `[External]` Loosli AR, et al. *Am J Sports Med* 1992;20(1):35-7. PMID 1554071.
+
+### 5.5 Prevention — an open field
+
+Effectively **no softball-specific prevention evidence exists.** A systematic
+review screened 1,605 articles, included 7, and found **only 1 described an
+injury-prevention program for softball players** — with no efficacy trial.
+`[External]` Paul J, Brown SM, Mulcahey MK. *Sports Health* 2021;13(4):390-5. PMID 33535878.
+
+Uptake is poor: **<46% of fastpitch coaches run any prevention program**, with
+unfamiliarity and staffing cited as barriers. `[External]` Nurrenbern J, et al. *Int J Sports Phys Ther* 2023;18(4):958-68. PMID 37547836.
+
+### 5.6 A number to stop repeating
+
+**"1,200–1,500 pitches in a 3-day tournament (vs 100–120 for baseball)."** This
+appears in a peer-reviewed paper — but is cited to a biomechanics study of 53
+youth pitchers that **reports no tournament volume at all**. The citation does not
+support the figure. The only other peer-reviewed tournament number, **95–381
+pitches/weekend**, is an order of magnitude lower and also describes youth
+pitchers. **Do not use 1,200–1,500.**
+
+---
+
+## Section 6 — Mitigation, mapped to who owns each lever
+
+The point of this table is that **most of the modifiable exposure does not sit in
+the weight room.** That is not a deflection; it is where the evidence points.
+
+| Lever | Owner | Evidence strength | Action |
+|---|---|---|---|
+| **Count all pitches — bullpen and warm-up included** | Pitching coach + AT | **Strong** — half of true volume is uncounted (Kamarajugadda 2025) | Track every pitch. This is the highest-yield, lowest-cost change available. |
+| **Innings distribution across the staff** | Head coach | **Strong** — 43.7% of collegiate softball pitchers exceed 100 IP/season on a 4.5-pitcher staff | Develop staff depth. No rule will do this for you. |
+| **Consecutive-day and doubleheader exposure** | Head coach | **Moderate** — fatigue and pain accumulate across tournament days (Skillington 2017) | Build rest into tournament plans. |
+| **Cervical mobility screening (CFRT, cervical flexion ROM)** | AT + S&C | **Moderate, in our exact population** — RR 9.38 for time-loss injury `[Zotero: F5YKF6B4]` | Add to preseason screen. Cheap, fast, defensible. |
+| **Pec minor resting length** | S&C | **Moderate mechanism, no TOS validation** | Measure (reliable method exists). Do not publish a cut-off. |
+| **Hip and trunk capacity / lower-extremity mechanics** | S&C | **Moderate** — LE screening predicts ~50–56% of shoulder distraction variance (Ulman 2025) | This is the strongest evidence-aligned S&C target for shoulder load in softball pitchers. |
+| **Scapular control and postural capacity** | S&C | **Plausible, unproven for TOS** | Do it — low cost, low risk, independently justified. Do not claim it prevents TOS. |
+| **Upper-quarter capacity monitoring (DNF endurance, SME, CKCUEST, UQYBT)** | S&C | **Weak for individual tracking** (SME MDC = 30.1 s) | Use as group screens. Never present as a TOS screen. |
+| **Lifting timing relative to throwing** | S&C | **No evidence either way** | Avoid upper-body work to failure and novel heavy eccentrics near high-intent throwing. Drop the blanket rule. |
+| **Diagnostic and referral pathway** | Sports medicine | **Strong** — ascertainment drives counts; 47–62% false-positive rate on EAST | Agree on criteria before counting cases. Consider the SVS ≥3-of-4 standard. |
+| **Year-round throwing / travel ball history** | Recruiting + sports medicine | **Moderate** | Capture prior throwing volume at intake. |
+
+---
+
+## Appendix — what to say, and what not to say
+
+**Say:**
+
+- "TOS is not separately coded in NCAA injury surveillance, so there is no peer
+  benchmark to compare against."
+- "With a population incidence around 2–3 per 100,000 per year, a roster our size
+  cannot generate a statistically meaningful rate. Two cases is within chance."
+- "The provocative test used most often is positive in roughly half of people who
+  don't have TOS. Case counts track how hard you look."
+- "Windmill pitching produces shoulder loads equal to baseball, and our pitchers
+  throw about three times the innings on a staff a third the size, with no pitch
+  count limit."
+- "About half of true pitch volume is bullpen and warm-up that nobody counts."
+- "Scalene muscle changes in TOS are type II atrophy and fibrosis — the opposite
+  of a weight-training adaptation."
+- "There is no research supporting a ban on lifting before throwing. The
+  defensible version is avoiding upper-body work to failure near high-intent
+  throwing."
+- "Building capacity is worth doing on general shoulder-health grounds. I won't
+  claim it prevents TOS, because that hasn't been shown."
+
+**Do not say:**
+
+- "TOS incidence is 3–80 per 1,000." *(Traces to a non-indexed source.)*
+- "Roos described 14 types of congenital bands." *(No Roos primary says 14.)*
+- "GIRD contributes to TOS." *(Zero literature. Three queries, no records.)*
+- "Softball pitchers throw 1,200–1,500 pitches per tournament weekend."
+  *(Citation does not support the figure.)*
+- "Droopy shoulder syndrome narrows the costoclavicular space." *(It is a
+  traction mechanism; symptoms improve with arm elevation.)*
+- "Scapular endurance deficits cause TOS." *(No study has measured scapular
+  endurance in a TOS population at all.)*
+- "TOS surgery ends pitching careers." *(Matched-control studies find decline no
+  faster than normal aging; RTP 74–81% at 9–11 months.)*
+
+---
+
+## Open questions worth answering locally
+
+1. **What is our actual diagnostic pathway?** Which test findings triggered each
+   diagnosis, and did they meet the SVS ≥3-of-4 standard?
+2. **What are our real pitch counts**, bullpen and warm-up included? No
+   collegiate pitch-count figure exists in the literature — it has to be
+   measured locally.
+3. **What is each pitcher's prior throwing history** (travel ball volume,
+   year-round participation, previous first-rib or clavicle injury)?
+4. **Has anyone imaged for structural predisposition** in the affected athletes —
+   cervical rib, elongated C7 transverse process, first-rib abnormality?
+
+---
+
+*Prepared by Eric Rash, Applied Performance, Baylor Athletics. All citations
+verified against PubMed/Europe PMC or publisher records on 2026-09-18. Local
+library sources marked `[Zotero: KEY]`; all others `[External]`.*

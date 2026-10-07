@@ -21,6 +21,7 @@ Never put memory content here — the file itself holds the facts.
 - [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems
 - [memsearch index path drift](project_memsearch-index-path-drift.md) — memsearch indexes fewer paths
 - [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — memsearch slow or timing out
+- [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [Morning briefing retired](project_morning-briefing-retired.md) — old morning-briefing code or config
 - [graphify runtime setup](project_graphify-runtime-setup.md) — installing or rebuilding graphify
 - [graphify semantic extraction](project_graphify-semantic-extraction.md) — graphify quota or 429 errors

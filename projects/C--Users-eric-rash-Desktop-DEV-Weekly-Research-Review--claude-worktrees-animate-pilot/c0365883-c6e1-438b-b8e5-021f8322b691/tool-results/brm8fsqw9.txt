@@ -1,0 +1,489 @@
+./plugins/animate/skills/animate/tools/export.mjs
+./plugins/animate/skills/animate/tools/framehash.mjs
+./plugins/animate/skills/animate/tools/gallery.mjs
+./plugins/animate/skills/animate/tools/gpu.mjs
+./plugins/animate/skills/animate/tools/measure/refs.mjs
+./plugins/animate/skills/animate/tools/measure/shotlog.py
+./plugins/animate/skills/animate/tools/review.mjs
+./plugins/animate/skills/animate/tools/still.mjs
+./plugins/animate/skills/animate/tools/storyboard.mjs
+./plugins/animate/skills/animate/tools/textcheck.mjs
+./plugins/animate/skills/animate/tools/tile.mjs
+./plugins/animate/skills/animate/tools/voice.mjs
+./plugins/animate/skills/animate/tools/voice_words.py
+./README.md
+---
+LICENSE
+README.md
+docs/
+plugins/
+# Animate — procedural animation in any style, for Claude Code
+
+A Claude Code skill that makes short animated videos entirely in code: one `<canvas>`, drawn and scored procedurally, deterministic frame by frame, rendered to MP4 with a headless browser and ffmpeg. Explainers, histories, little stories — in one of the built-in styles, or in a new look matched from your own references.
+
+![the built-in styles](docs/styles.png)
+
+*The built-in styles, each a frame from its demo piece: cut paper, crosshatch ink, riso print, sketchbook, math, pixel, isometric — and the eighth slot: any other look, made from your references.*
+
+## How it works
+
+The skill walks you through a few questions, then makes you approve three cheap things before it spends time animating:
+
+| step | what you see | you decide |
+|---|---|---|
+| 0. Intake | a handful of questions (subject, formats, voice, the look, hero, your music, your product) and the style gallery | answers, a style, or your references |
+| 1. Story check | the format it picked and a numbered beat table, facts web-checked | approve / change beats |
+| 2. Look check | 2–4 full-size style frames (for a new look: side-by-side comparisons with your references) | thumbs up per frame |
+| 3. Storyboard | every beat as a key frame, with sound and the transition into the next | thumbs up/down by panel number |
+| 4. Build | — (animate the approved panels, render, review) | — |
+| 5. Delivery | the video plus measured checks: cuts on the beat grid, story arc loudness, hero anchoring, the loudest moment after the silence, narration pace | notes → a revision run |
+
+## Styles
+
+A style is a plug-in: the story grammar, timing, sound, renderer and tools stay the same; the style supplies the drawing kit. A piece picks one in its `piece.json` (`"style": "riso"`).
+
+| style | the look |
+|---|---|
+| cut paper | torn paper, drop shadows, crayon, patterns, characters with faces |
+| crosshatch | sketchy ink that boils on 2s, hatch and pencil shading, warm paper and navy "inside the machine" worlds |
+| riso | a three-ink risograph print: halftone screens at their own angles, overprints, misregistration |
+| sketchbook | graphite and one accent colour on a sketchbook page, hand lettering |
+| math | a manim-style math explainer: black stage, axes and graphs, colour-coded variables, smooth easing |
+| pixel | low-resolution eras: drawn at the true resolution, upscaled nearest-neighbour, a bitmap font |
+| isometric | precise isometric line art: constant hairlines, white faces hiding what's behind, rounded slabs, one dark accent; light or dark ground |
+
+**Your own look:** give the skill references (a video, stills, a web page) and it follows a procedure — measure the palette, line weight, texture, motion and cut rhythm; draw 1–2 matched frames next to your references (`tools/compare.mjs`); ask for your thumbs up; save it as `styles/<name>/` in your project so every later piece can use it. Reference media stays on your machine.
+
+Each style folder has a `STYLE.md` (its rules, palette, motion habits and a frame checklist), a `kit.js`, a `sample.png` and a small `demo/` piece.
+
+## What's baked in
+
+- **A story grammar** (`grammar/`) — 8 short-form formats (a history is a chronology joined by shape morphs; a mission cuts on the beat; …), the rules every piece follows (one constant, colour means one thing, silence before the payoff and loudest on it, the end is the start changed), and a checklist for what any single frame needs.
+- **A kit** (`kit/`) — seeded randomness and a line that boils on 2s; cameras; a renderer with shape-morph transitions (the old world closes in on one object, it morphs into the next world's counterpart, the new world opens out of it) that draws through the style's hooks; a storyboard; a synthesizer and a loudness stage for phone playback.
+- **Tools** (`tools/`) — build (assembles one self-contained `index.html` from the piece, the kit and the style), test tiles, stills, storyboard, export (frames → WAV + stems → MP4), review (contact sheets and the measured checks, including text that's cut off or overlapping, and loudness), compare (reference vs frame), a reference measurer, gallery, and a frame-hash check that a kit change left a piece pixel-identical.
+- **Craft rules** (`craft.md`) — everything learned building these pieces, from "the sustained pad sets a section's loudness, not the plucks" to "cameras put a world point on a screen point".
+- **A voice-over** — it writes the script, gets one take per line from the ElevenLabs connector (or your recording), hears when every word is spoken (locally, with faster-whisper) and times the picture to the words; re-takes re-time the picture automatically.
+- **Your own music** — give it a track and it maps the beats (tempo, bars, the big hits, the drops), cuts on the song's beats and puts the payoff on its loudest hit; or it composes a score in code.
+- **Your real product** — it screenshots your site (or takes your logo files) and animates the real screens inside the style.
+- **Every format from one piece** — 9:16, 1:1, 4:5 and 16:9 laid out for each shape, not cropped.
+- **Motion that feels expensive** — closed-form springs in the kit and optional motion blur for smooth styles.
+- **Parallel builds** — long pieces split one scene file per agent, joined by the build.
+
+**Coming:** a WebGL motion-design style (ray-marched 3D, sub-frame motion blur, bloom) — the export and review tools already run WebGL pieces on the GPU and warn when only software rendering is available.
+
+## Install
+
+Requirements: [Claude Code](https://code.claude.com), Node 18+, [Playwright](https://playwright.dev) with Chromium, and ffmpeg on your PATH. Fonts are local system fonts with fallbacks for Windows, macOS and Linux. For voice-overs: Python with `faster-whisper` (word timing) and, optionally, the ElevenLabs connector in Claude (Settings → Connectors) for the voice.
+
+```bash
+npm i -g playwright && npx playwright install chromium
+```
+
+As a plugin:
+
+```
+/plugin marketplace add cth9191/animate
+/plugin install animate@animate
+```
+
+Or copy the skill folder by hand: `plugins/animate/skills/animate/` → `~/.claude/skills/animate/`.
+
+## Use
+
+```
+/animate a 45-second history of the bicycle, cut paper
+/animate how a hash map works, in the math style
+/animate a short about our API in the style of these screenshots: ./refs/
+/animate a 20s launch reel for https://my-product.com, cut to ./audio/song.mp3, vertical and square
+/animate a narrated 45s explainer of how DNS works, math style, 16:9, voice from ElevenLabs
+```
+
+Pieces are created in your project under `pieces/<name>/`. You can also drive the tools yourself:
+
+```bash
+SKILL=~/.claude/skills/animate            # or the plugin's install path
+node $SKILL/tools/build.mjs pieces/my-piece
+node $SKILL/tools/tile.mjs pieces/my-piece tile.png 24 48 96
+node $SKILL/tools/still.mjs pieces/my-piece 2.5,9,14 frames.png --scale 0.5
+node $SKILL/tools/storyboard.mjs pieces/my-piece
+node $SKILL/tools/beats.mjs pieces/my-piece/audio/track.wav pieces/my-piece --start 12
+node $SKILL/tools/capture.mjs https://my-product.com pieces/my-piece/assets/home.png
+node $SKILL/tools/voice.mjs pieces/my-piece            # voice/script.json + one take per line -> voice.wav, voice.json (--scratch: a timing voice)
+node $SKILL/tools/export.mjs pieces/my-piece --share --formats 9:16,1:1,16:9
+node $SKILL/tools/review.mjs pieces/my-piece
+node $SKILL/tools/measure/refs.mjs references/my-look/
+node $SKILL/tools/compare.mjs references/my-look/a.png pieces/my-piece 2.5 compare.png --auto-trim
+```
+
+Open any built `index.html` in a browser to preview it (click to hear the score; `?t=12.5` freezes a frame). Every style's demo builds the same way: `node $SKILL/tools/build.mjs $SKILL/styles/riso/demo`.
+
+## The example
+
+`plugins/animate/skills/animate/examples/history-of-ai/` is a complete 60-second cut-paper piece: 15 eras from Turing's "Can machines think?" (1950) to Claude Code (2025), a small orange "spark" that gains a ray each era, 13 shape-morph transitions, one hard cut on the payoff, and a synthesized score. Build it with `node plugins/animate/skills/animate/tools/build.mjs plugins/animate/skills/animate/examples/history-of-ai`, then export it.
+
+## License
+
+MIT
+---SKILL
+---
+name: animate
+description: Make a short procedural animation in any style — an explainer, a history, a little story — as a single-file canvas video with a synthesized score, rendered to MP4. Ships with styles (cut paper, crosshatch ink, riso print, sketchbook, manim-style math, pixel art, isometric line art) and makes new ones from the user's references. Walks the user through intake, then three check-ins (story, look, storyboard) before animating, and proves the result with measured review checks. Use when the user asks for an animated video, short, explainer or reel made in code, or wants a look matched from references.
+argument-hint: "[what the video is about] [style or reference]"
+---
+
+# Animate
+
+You make short animated videos in code: one `<canvas>`, drawn and scored procedurally, deterministic frame by frame, rendered with a headless browser and ffmpeg. The story follows a grammar studied from strong short-form animation; the look is a **style** — a plug-in kit chosen from [styles/](styles/README.md) or made from the user's references with [new-style.md](new-style.md).
+
+**Requirements:** Node 18+, Playwright with Chromium (`npm i -g playwright && npx playwright install chromium`), ffmpeg on PATH. Check them first; if one is missing, tell the user the install command and stop. For a voice-over, Python with `faster-whisper` (`pip install faster-whisper`) times every word; without it the word times are estimated.
+
+All paths below are relative to this skill's base directory. Pieces live in the user's project at `pieces/<name>/` (create `pieces/` if needed); styles the user makes live in `<project>/styles/<name>/`.
+
+## Non-negotiables
+
+1. **No animating before the storyboard is approved.** The check-ins exist because a wrong story or look costs a full build.
+2. **Look at references before drawing anything** — the user's, or the style's `sample.png` and demo. Then check every key frame against [grammar/FRAME.md](grammar/FRAME.md) and the style's own checklist in its `STYLE.md`.
+3. **Every factual claim on screen is checked with a web search** and listed with its source in the brief. Never claim "first" without a source.
+4. **Single file, all code:** one `index.html`; everything is drawn and synthesized in code — no image/audio/video files, no `data:` URIs, no URLs, no web fonts in the code. `tools/build.mjs` enforces it. Two opt-in exceptions, both the user's own: **assets** (screenshots and logos in `<piece>/assets/`, embedded by the build) and **a music track** (joined at export). See Assets and Music below.
+5. **Deterministic:** seeded randomness only (`RNG(...)`), the boil index `B` for per-step variation. Never `Math.random()` or wall-clock time.
+6. **Reference media stays local.** Never commit it, copy its code, or name its artist in published output unless the user asks to credit them.
+7. **"Done" is measured:** `tools/review.mjs` passes and you have looked at the contact sheets. Report the numbers, not "looks good".
+8. **Ask with options.** Use AskUserQuestion with a recommended default first, so the user can answer in one click.
+
+## The flow
+
+### 0. Intake
+Ask the questions in [intake.md](intake.md) — only the ones you can't infer. For the look, build the gallery (`node tools/gallery.mjs <out.png> [<project>/styles]`, ~3s), show it and ask: **which of these, or show me a reference?** Then study the references yourself against FRAME.md and the style's checklist.
+
+### 1. Story check (text, fast)
+Pick the **format** from [grammar/FORMATS.md](grammar/FORMATS.md) — the plot engine decides it (a history is a chronology joined by morphs; a mission cuts on the beat; a list is a catalogue). Read [grammar/STORY.md](grammar/STORY.md). Web-check the facts. Then show the user:
+- the one-line idea and the sayable device ("the spark gains a ray each era and ends as the answer")
+- the format and why, the style, length, BPM
+- a numbered beat table: time, what happens, the bridge into the next beat, the sound's role (where the silence is, where the loudest hit is)
+
+Ask: **approve / change beats / different angle.** Revise until approved. This is where "I meant X, not Y" gets caught cheaply.
+
+### 2. Look check (2–4 style frames)
+Start the piece at `pieces/<name>/`: copy `piece.json` and `src/` from the style's demo (`styles/<name>/demo/`) — it already speaks the style's kit and joins eras with a morph — or from [templates/beat-cut/](templates/beat-cut/) for a piece that cuts hard on the beat (8ths, a 16th-note rush on odd frames, one era per shot, framings from cameras), or [templates/piece/](templates/piece/) for the plainest cut-paper morph. Set `"style"` in `piece.json`, then write `brief.md` and `LOG.md` fresh (the template's are placeholders).
+- **A shipped style:** read its `STYLE.md` and demo and draw with its kit.
+- **The user's references:** follow [new-style.md](new-style.md). Measure the references first (`tools/measure/refs.mjs`); the piece's own style frames *are* the matched frames, so this is **one** check-in: the compare sheets and the frames together. Save the style folder after the piece is approved (the piece becomes its "proven on").
+
+Draw 2–4 of the most different beats as full-size frames. Each must pass FRAME.md and the style's checklist. Render them side by side with `node tools/still.mjs pieces/<name> 2.25,9.75,16.5 look.png --scale 0.5` (or `tools/storyboard.mjs` with `TIMELINE.board` set to those beats), and show the image. Ask: **thumbs up per frame / change the look / try another style.**
+
+### 3. Storyboard check (every beat)
+Draw every beat in the approved look. Fill `TIMELINE.board` with one key time per beat (`{ t, title, sound, next }`) and render the board. Ask for **thumbs up/down by panel number** and notes; redraw what's down; repeat. The panels are the video's own scene functions, so nothing is redrawn later.
+
+### 4. Build
+1. Write `pieces/<name>/brief.md` (spec, style, beats, bridges, sound plan, claims + sources). Keep a `LOG.md`.
+2. Animate the scenes: timed actions with `TT`, `ev(t, d)`, `popS(t)`, write-ons (see [craft.md](craft.md) → Motion). Wire eras, cameras and bridges in `src/bridges.js` (morph-joined formats) or leave `BRIDGES = []` for hard cuts.
+3. `node tools/build.mjs pieces/<name>` → `index.html` (the style's kit is pulled in from `piece.json` `"style"`).
+4. Test tiles while building: `node tools/tile.mjs pieces/<name> tile.png <frames...>` — look at them; tile across every morph and cut.
+5. Score in `src/score.js` (see craft.md → Sound).
+6. `node tools/export.mjs pieces/<name> --share` → frames, `audio.wav`, stems, `renders/final.mp4`, `renders/share.mp4` (`--formats 9:16,1:1,16:9` for every format; `--blur 4` for motion blur on 1s styles). Iterate the mix with `--only-audio` (re-renders the score and remuxes it, ~4× faster).
+7. `node tools/review.mjs pieces/<name>` → contact sheets per shot, cut grid, morph grid, story arc, anchor, **text** (cut off / overlapping / under the phone UI) and **sound** (the loudest moment, the silence before it, LUFS). Fix until it passes, view the sheets, write a per-shot PASS table in `LOG.md`. Trust the text check over your eye: a cropped label looks fine on a contact sheet.
+
+### 5. Deliver
+Send `renders/share.mp4`. Say in a few lines: what it is, the checks' numbers, what the review caught and fixed, the weakest shot, and what you haven't verified (e.g. you can't listen to the score). Ask what should change: story, look, transitions, pacing, sound.
+
+### 6. Learn
+After each run append to the piece's `LOG.md`. If something new went wrong or worked, propose a one-line rule for [craft.md](craft.md), the style's `STYLE.md` or a kit change, and add it when the user agrees.
+
+## Voice-over (optional)
+
+Ask at intake (question 3). With a voice, **the voice is the clock**: each beat starts ~0.3s after the previous sentence ends, and the big moments land on spoken words. The script is the storyboard: one line per beat.
+1. Write the script to `pieces/<name>/voice/script.json`: `{ "lead": 1.2, "tail": 1.8, "lines": [{ "id": "open", "text": "As it is spoken.", "after": 0.45 }, ...] }`. Write numbers and names the way they should be said. Keep it ≤ 3.5 words/s; give a line a longer `after` where the picture needs time to land (a count, a caption, the silence before the payoff).
+2. **Build before the voice exists:** `node tools/voice.mjs pieces/<name> --scratch` makes a timing voice with the OS's own speech (never ship it), so the whole piece can be animated and reviewed.
+3. **The takes:** one file per line, saved as `voice/<id>.mp3` with `"file"` set on the line.
+   - **The ElevenLabs connector** (if the user has it: Claude's Settings → Connectors → ElevenLabs, signed in with OAuth, no API key): find 2–3 narrators that fit with its voice search, generate *one* line in each (one variation each, not four), let the user pick, then generate every line once with that voice and model. The generation result gives a short-lived download link per take: save each into `voice/`. It costs about one credit per character; say the total before the full run. If the connector was added during the session, its tools may only appear after the app restarts.
+   - **The user's own recording,** one file per line (or cut from one take).
+   - Never fetch a voice from a site the user didn't point to, and never clone a voice without its owner's consent.
+4. `node tools/voice.mjs pieces/<name>` → `voice/voice.wav` (the lines with their pauses) and `voice.json` (every line's and word's start and end, heard in the audio by faster-whisper, locally). The build injects it as `VOICE`.
+5. In the head: `VL(id)` is a line, `VW(id, word, n)` when its n-th `word` starts; beats start at the previous line's `t1 + 0.3`; `TIMELINE.narration` comes from `VOICE.lines` and `DURATION` from `VOICE.duration`. Cue Writes and flashes on the words that name them. **Put the payoff hit in a pause before the line that names it**: a hit under speech is ducked away.
+6. `piece.json`: `"voice": { "file": "voice/voice.wav", "music": -12 }`. Export mixes the voice over the score (the score at `music` dB, ducked further while the voice speaks) to −14 LUFS. Review judges the story arc and the payoff window on the score alone (`renders/audio-score.wav`; a voice is louder than any hit) and the voice with its NARRATION check.
+7. **Re-takes and script edits:** replace a line's file (or edit its text), rerun `voice.mjs`, rebuild: scenes cued from `VOICE` move with it. A changed word can orphan a cue that points at it; check those beats.
+
+## Music: the user's own track (optional)
+
+Ask at intake (question 6). Without a track the score is composed in code on a 120 BPM grid. With one:
+1. Put it in the piece: `pieces/<name>/audio/track.wav` (WAV, MP3 or M4A), and in `piece.json`: `"music": { "file": "audio/track.wav", "start": 12.0, "gain": 0, "fade": 0.5 }` (`start` = where in the song the piece begins).
+2. `node tools/beats.mjs pieces/<name>/audio/track.wav pieces/<name> --start 12 --dur <piece length>` → `beats.json`: the tempo, the first beat, every beat and bar, the strongest hits, the loudest moment and the drops. Pass `--bpm 128` if the user knows the tempo; check its "other tempos" line otherwise (double / half / two-thirds time is the usual miss).
+3. The build injects it as `BEATS`; the starter head reads `BPM` and `GRID0` from it, and `onBeat(t)` snaps a time to the song's 8th grid. Put cuts, morphs and cues on `onBeat(...)`. **The song decides the arc:** put the turn on a drop (`BEATS.quiet`) and the payoff on its loudest hit (`BEATS.loudest`, `BEATS.hits`), not where a composed score would have put them.
+4. The score (`src/score.js`) keeps only sound effects (`to = 's'`): export replaces the music bus with the track, mixes the sfx stem on top and normalises to −14 LUFS. Review's grid uses `TIMELINE.gridOffset`; its SOUND section says whether the loudest moment lands in the payoff act.
+5. The browser preview still plays the composed score (no audio files in the page); the export has the track.
+
+## Assets: real screenshots and logos (optional)
+
+Ask at intake (question 7) when the subject is a product. Then:
+- `node tools/capture.mjs <url> pieces/<name>/assets/home.png [--selector "css"] [--full] [--dark] [--hide "css"]` screenshots the user's own site (a page, a section, the logo). Ask before capturing anything they don't own. Logo files they give you go in `assets/` too (PNG, SVG, JPG, WEBP).
+- `tools/build.mjs` embeds everything in `assets/` into `index.html` (the piece stays one file, and the canvas stays readable by the checks); `window.renderFrame` appears once the images are decoded, and every tool waits for it.
+- Draw them with `drawAsset('home.png', x, y, w, h, { fit: 'cover' | 'contain', r })` inside the style's own framing (a torn-paper photo, an inked frame, a printed card) so they belong to the look. `asset(name)` returns the image.
+- **Real product UI only:** animate the real screens (crop, push in, reveal, point at them with the hero); never draw a fake screen as if it were the product. Sample brand colours from the screenshots.
+
+## Formats: one piece, several shapes (optional)
+
+Ask at intake (question 2, multi-select). List them in `piece.json` `"formats": ["9:16", "1:1", "16:9"]` (the first is the main one). The starter's head reads `?format=` and sets `W`, `H`, `SAFE` and `CX`; scenes place things with `LX(fraction)`, `LY(fraction)` and size them with `UNIT`, and choose a different arrangement with `PORTRAIT` / `WIDE` where a shape needs it (a column of three on 9:16, a row of three on 16:9). Never crop a 9:16 render to 16:9.
+- `node tools/export.mjs pieces/<name> --formats 9:16,1:1,16:9 --share` → `renders/final.mp4` (main) and `final-<w>x<h>.mp4` for the others.
+- Review each: `node tools/review.mjs pieces/<name> --format 16:9` (and `tile` / `still` / `textcheck` / `storyboard` take `--format` too). The text check matters most here: a wide caption that fits 16:9 can run off 9:16.
+
+## Motion: springs and blur
+
+- **Springs** (`kit/core.js`): `springMove(t0, a, b, SPRING.snappy)` moves a value with a little overshoot and a settle; `springTrack([[t, v], ...])` follows a value through many targets without a jump. Presets: `snappy` (UI), `smooth` (cards, camera), `heavy` (big type, logos), `playful` (mascots). Closed-form, so frames stay deterministic. On-2s styles step them every 2 frames, as they should.
+- **Motion blur:** `export.mjs --blur 4` averages 4 sub-frames per frame — only for styles on 1s (`STYLE.ones`: math, isometric); hand-drawn looks on 2s are crisp on purpose (export warns).
+
+## Parallel agents (long pieces)
+
+A 45–60s piece has 10–15 scenes; split the drawing across agents once the storyboard is approved:
+- **One `src/` file per section or era, owned by one agent** (`src/era-01.js`, `src/era-02.js`, …). List them in `piece.json` `"scenes": [...]`; they take the place of `src/scenes.js` in the build order.
+- **The shared parts stay with you:** `src/head.html` (TIMELINE, eras, shots, cues), `src/bridges.js`, the score, and the kit. Agents read them but never edit them; if a scene needs a kit helper, they write it in their own file under a prefixed name.
+- **Brief each agent** with the approved board panel(s), the style's `STYLE.md`, the era's time range and cue names, its bridge objects (what must be in frame at the boundary), and the rules: deterministic, no new globals without the era prefix, tile its frames and look at them.
+- **`build.mjs` joins them**; you build, tile across every boundary, and run the review.
+
+## Files
+
+| path | what | read when |
+|---|---|---|
+| [intake.md](intake.md) | the questions and defaults | step 0 |
+| [craft.md](craft.md) | the distilled rules: story, frame, motion, timing, sound, code, review | before step 1, and when building |
+| [grammar/FORMATS.md](grammar/FORMATS.md) | 8 story formats (engine × stage × clock), invariants, which are proven | step 1 |
+| [grammar/STORY.md](grammar/STORY.md) | beat-level story rules with evidence | step 1 |
+| [grammar/FRAME.md](grammar/FRAME.md) | what a single key frame must hold, in any style | steps 2–3 |
+| [styles/](styles/README.md) | the styles: `STYLE.md` (rules + frame checklist), `kit.js`, `sample.png`, `demo/`; the STYLE hooks contract | steps 0, 2, building |
+| [new-style.md](new-style.md) | making a new style from the user's references | step 2 |
+| `kit/core.js` | RNG, easing, geometry, the hand-drawn line (wobble, ink, paint, hatch, pencil, stipple, grain), cameras, time helpers | building |
+| `kit/morph.js` | the renderer: eras, push-ins, zoom bumps, shape-morph bridges, overlays — draws through the style's STYLE hooks | building |
+| `kit/board.js` | the storyboard renderer | steps 2–3 |
+| `kit/score-*.js` | synth (pluck, pad, drone, bass, sub, noiseHit, sweep, riser, chime, blip), loudness stage | scoring |
+| [templates/](templates/) | `piece/` (an 8s cut-paper morph), `beat-cut/` (a 6s hard-cut piece with a 16th rush), `style/` (a blank style kit for new looks) | step 2 |
+| `tools/` | build, tile, still, storyboard, export, review, textcheck, compare (reference vs frame), gallery, framehash (pixel-identity check), beats (a supplied track's beat map), capture (screenshots of the user's site), voice (a voice-over's lines and word times); `measure/` for references (`refs.mjs` for stills, `shotlog.py` for video) | throughout |
+| [examples/history-of-ai/](examples/history-of-ai/) | a full 60s worked example (cut paper) | when unsure how something fits |
+
+## Honesty about what's proven
+Formats F2 (chronology / morph chain) and F4 (mission) have each produced a piece that passed every check from the card alone; F5 (fixed-hero journey) has several. The others are documented from study but unproven — say so when you pick one. Cut paper and crosshatch have carried full pieces; riso, sketchbook, math and pixel each come from one or two finished pieces plus a demo; isometric was made from references with new-style.md and so far has only its demo; a style made from new references is new ground until it has carried a piece. WebGL motion design (ray-marched 3D, motion blur, bloom) is not a shipped style yet.
+---FORMATS
+# Formats: the structures short animations are built on
+
+**Where it sits:** a piece = **grammar** ([STORY.md](STORY.md), rules every piece follows) + **a format** (this file: what drives the plot and how we get from one thing to the next) + **a style** (`styles/`: the medium) + **a subject** (something true).
+
+These come from measured shot logs of 16 short-form animations. The key finding: about half of them don't cut on a beat grid at all — several run 48–80s with no hard cuts. Structure comes from the plot *engine*, so pick the format first.
+
+## The formula: four choices
+
+Every piece is one choice from each column. Read a format as a proven combination.
+
+| 1. Plot engine (what makes the next thing happen) | 2. Stage (how we get from one thing to the next) | 3. Clock (what the changes land on) | 4. Medium |
+|---|---|---|---|
+| **chronology:** real time order, often with an on-screen counter | **beat-cut:** held frames joined by hard cuts | **music grid:** 120 BPM 8ths/16ths at 24fps, 90 BPM 16ths, or a 1.00s clock at 30fps | a style |
+| **token through stations:** one object travels; each station does one thing to it | **one sheet, follow-camera:** one huge drawing, eased pans between stations, a zoom-out at the end | **voice:** the change lands ~0.2–0.4s after a sentence ends | |
+| **call → catalogue:** a question answered by a list, gathered into one image | **morph chain:** the scene closes down to one shape that becomes the next scene (shape morph, draw-off / draw-on) | **even stations:** equal 7–8s blocks with no grid | |
+| **goal + helper:** someone wants something; the helper solves it step by step | **locked-off build:** one framing; layers accumulate | | |
+| **fixed subject, N variations:** the same armature redrawn N ways | | | |
+| **claims → proof:** a card says it, footage shows it | | | |
+
+**How the columns couple** (no exceptions in the study):
+- **Spatial plots get a follow-camera.** When the plot is a *path* (stations, a machine), the camera travels one sheet and never cuts. (F1 is still unproven: when a chronology or a fixed-hero journey tells the same process, prefer the proven card and say so.)
+- **Chronologies transition from the scene.** Time passing — on one stage or across many worlds — is joined by morphs and draw-offs, not cuts.
+- **Characters and lists get cuts on the beat.** A story with several places/people, or a catalogue, cuts held frames on a music grid.
+- **A voice takes over the clock.** Narrated pieces drop the beat grid and change picture on sentence ends; the music sits under at −20 to −25 dB.
+
+## Invariants: every format, every time
+
+1. **One constant the eye can hold** — a hero, a stage, a silhouette or a page that never changes while everything else does.
+2. **Colour means one thing** for the whole piece (visited/not, a lineage, the AI, a plan, a side, love, trouble).
+3. **Silence before the payoff, loudest on the payoff.** A drop of 15–35 dB for 0.5–4s while the picture holds, then the loudest hit on the turn or reveal. (Pieces with no turn skip it.)
+4. **The end is the start, changed.** Most return to their opening image; many loop pixel-exactly.
+5. **One device you can say in a sentence**, usually revealed at the 80–95% mark.
+6. **A helper character, when present, is small, with one hard-edged identity** — it helps a human and is rarely the hero.
+
+**Optional, not invariant:** a handwritten title or signature, a music beat grid, acceleration toward the end, on-screen text.
+
+**A useful device: the flash-forward open.** Open on the finished result, then rewind or erase and earn it. It makes the loop automatic.
+
+## The formats
+
+"Checks" are things `tools/review.mjs` proves when `TIMELINE.format` is set.
+
+### F1. Machine (token through stations, one sheet)
+- **Engine:** a token (a ball, a marble) moves through N stations; each does one literal thing to it. Order = the path.
+- **Stage:** one large drawing; hold on a station most of the time, then a ~1.0s eased pan to the next. A zoom-in at the start, a zoom-out reveal of the whole layout in the last 4–7s.
+- **Clock:** even stations of ~7–9s (music only) or speech-paced stations of 2–7s (narrated).
+- **Reveal:** the zoom-out shows the layout *means* something (it's a clock face; the stations spiral into a rainbow).
+- **Device:** the token visibly accumulates each station's effect, then spends it at the end.
+- **Fits:** an agent loop (the prompt is the ball; Read, Grep, Edit, tests are stations).
+- **Status:** studied, not yet built with this kit.
+
+### F2. Chronology, morph chain
+- **Engine:** chronology with a visible clock — a year tag or counter.
+- **Stage:** either one fixed frame (things drawn on and off it) or a new world per era. Eras are joined by **shape morphs** (one shape carries into the next scene: the sun becomes an eye) and draw-offs, not cuts.
+- **Clock:** music-led (no strict grid) or voice-led. Scenes ~1.5–4s each. A bridge costs 1.2s by default: under 30s keep to 3 morphs or shorten them (`d: 0.4`).
+- **Turn:** a silence on a held image, then a slam, then a dark stretch with the longest quiet.
+- **Device:** the last era reveals a survivor or successor, then returns to the first image.
+- **Fits:** any history; a session's context window filling over time.
+- **Checks (`format: 'F2'`, fixed stage):** 0 hard cuts; the stage still ≥85% of frames; ≥4 morph bridges on the grid; the counter present ≥80%; ≤−40 dB for ≥0.4s before the loudest hit. Morph-chain pieces across many worlds use `format: 'morph-chain'` (cuts + morph grid + story arc).
+- **Status: proven** — a fixed-stage history of AI video, and a 60s cut-paper history of AI across 15 worlds (13 morphs, one hard cut on the payoff; `examples/history-of-ai`).
+
+### F3. Call → catalogue
+- **Engine:** a call goes out; the answer is a catalogue, one item per beat, gathered into one image; the answer goes back.
+- **Stage:** beat-cut held frames; recurring framings that each side lives in, plus one card per catalogue item (each its own flat colour, the label in the lower third).
+- **Clock:** 120 BPM; cards 0.5s × ~8, one held 1.0s, then 0.25s × 4, then a ~2s gather.
+- **Turn:** a quiet beat while the question lands, then the catalogue.
+- **Device:** a reversal at the end (the answer was the asker).
+- **Checks:** ≥80% of cuts on the 120 BPM 8th grid; the cards accelerate; a gather shot ≥1.5s after the fastest run.
+- **Status:** studied, not yet built with this kit.
+
+### F4. Mission (goal + helper, step by step)
+- **Engine:** someone wants something and can't; the helper solves it one problem at a time. A flash-forward open on the goal achieved, then rewind.
+- **Stage:** beat-cut, wide ↔ close alternation; a recurring prop that marks time (a wall clock).
+- **Clock:** 120 BPM 8ths, or 90 BPM 16ths.
+- **Rhythm:** vignettes of 3–4s, one per problem → a rush of 4 × 0.5s → brake into a wait → the deadline in silence → the payoff held ~2s.
+- **Device:** the helper shows its plan before doing it (a dashed sketch over the scene, then the same thing done for real).
+- **Framing:** close-ups fill the phone-safe area (~1.2× on 9:16).
+- **Payoff sound:** a short chord stab on the hit, a flat chord after it, and the rush's hits never stacked on the groove's kick.
+- **Checks (`format: 'F4'`):** ≥80% of cuts on the grid; last frame ≈ frame 0; a 4-shot rush one beat apart; ≤−40 dB before the loudest hit, which falls in the payoff act.
+- **Status: proven** — a 32s Claude Code deadline story, built from this card alone.
+
+### F5. Fixed-hero journey (the world changes, the hero stays put)
+- **Engine:** chronology or a voyage; the hero changes worlds.
+- **Stage:** beat-cut; in the fastest section the hero holds its exact screen position while the world cuts around it. Iris and match-position links.
+- **Clock:** 120 BPM; the cut rate accelerates on a fixed tempo (beat → 8th → 16th).
+- **Fits:** anything with one carried thing (a context jar carried across tasks, a message passed through tools).
+- **Checks:** the cut grid, the story arc, the anchor (`TIMELINE.anchor` + `window.anchorAt`).
+- **Status: proven** — several short explainers. Fully specified by STORY.md.
+
+### F6. Process loop (result → blank → the true making steps → result)
+- **Engine:** the real order of making something, on one locked-off framing. Open on the finished thing, dissolve to blank, rebuild.
+- **Rhythm:** fast early stages (~1.3s each), long near-still holds late.
+- **Sound:** one crescendo that brightens as detail gets finer; the loudest note on the single reveal.
+- **Ending:** pixel-identical to frame 0.
+- **Fits:** a feature from blank to merged (the app → blank editor → plan → tests → code → green tests → the app).
+- **Checks:** 0 hard cuts; 1 dissolve; last frame = frame 0; stage starts on note attacks.
+- **Status:** studied, not yet built with this kit.
+
+### F7. Variation reel (one subject, N techniques)
+- **Engine:** none — the same armature redrawn N ways, one per second.
+- **Stage:** held stills, hard match-position cuts, exactly 1.00s each; the silhouette never moves.
+- **Clock:** a 1.00s clock, an attack on every cut; the arc lives in the music's swell.
+- **Fits:** a brand or style reel. Weak for explaining.
+- **Checks:** every shot 1.00s; the armature overlaps ≥95% across cuts.
+- **Status:** studied, not yet built with this kit.
+
+### F8. Trailer (claims → proof) — provisional
+- **Engine:** a handwritten claim card, then footage that proves it; a cold-open hook; a set-piece climax; a win screen; the title twice.
+- **Stage:** close crops (median ~1.3s), cards 1.2–2.5s as the quiet beats.
+- **Fits:** feature launches ("it can now …" → proof).
+- **Status:** one example studied; treat as a sketch.
+
+## Format-specific rules (don't apply them everywhere)
+
+1. **"Cuts land on the beat grid"** holds for beat-cut formats (F3, F4, F5, F7). F1, F2 and F6 have few or no hard cuts; with a voice the clock is the sentence.
+2. **"The journey is the fastest section"** — F1 with even stations never accelerates; F6 decelerates; F4's fastest stretch is a 2s rush just before the deadline.
+3. **"Travel is one continuous camera move"** — in F1 the whole piece is travel; F2 may have no camera at all.
+4. **"A handwritten title at the end"** — a signature, not structure.
+5. **"One small hero from first frame to last"** — F2 can use a relay of heroes sharing one identity cue; F6 and F7 have only a fixed subject.
+
+## Measuring a reference
+
+`tools/measure/shotlog.py` misreads three kinds of footage: animation on 2s hides real cuts, dissolves of 6–8 frames read as one hard cut, and windows that straddle a cut look like stepping. For cut counts use a coarse 16×16 colour diff; for grids, test the specific BPM against chance (the fraction of a frame window over the grid period). Pass the real fps.
+---STYLES
+# Styles
+
+A style is a plug-in: the story, formats, timing, sound, renderer and tools stay the same, and the style supplies the look. A piece picks one with `"style": "<name>"` in its `piece.json`, and `tools/build.mjs` puts that style's `kit.js` into the built file.
+
+Build the gallery of every style's sample: `node tools/gallery.mjs styles.png [<project>/styles]`.
+
+| style | the look | motion | proven on |
+|---|---|---|---|
+| [cut-paper](cut-paper/STYLE.md) | torn paper, drop shadows, crayon, patterns, characters with faces | on 2s | a 60s history (15 worlds, 13 morphs) |
+| [crosshatch](crosshatch/STYLE.md) | sketchy ink that boils, hatch / pencil shading, warm paper and navy "inside the machine" | on 2s | several short explainers |
+| [riso](riso/STYLE.md) | a three-ink risograph print: halftone screens, overprints, misregistration | on 2s | a 6s frame-matched study |
+| [sketchbook](sketchbook/STYLE.md) | graphite and one accent colour on a sketchbook page, hand lettering | on 2s | a 15s explainer |
+| [math](math/STYLE.md) | a manim-style math explainer: black stage, axes and graphs, colour-coded variables, smooth easing | on 1s | two short math explainers |
+| [isometric](isometric/STYLE.md) | isometric product line art: constant hairlines, white faces, rounded slabs, one dark accent; light or dark ground | on 1s, spring settles | this demo (the first style made with new-style.md) |
+| [pixel](pixel/STYLE.md) | low-resolution eras: draw at the true resolution, upscale nearest-neighbour | on 1s or 2s | a fixed-stage history of AI video |
+| custom | any other look: show it a video, stills or a web page and it measures the style, matches frames with you and saves `styles/<name>/` ([new-style.md](../new-style.md)) | either | woodblock prints, neon signs (test runs) |
+
+A new look gets made from the user's references with [new-style.md](../new-style.md), then saved as a style beside the project's pieces (`<project>/styles/<name>/`), where `build.mjs` finds it.
+
+## What a style folder holds
+
+```
+styles/<name>/
+  STYLE.md     the look's rules: what it is, palette, line and texture, motion habits, its frame checklist, do/don't, proven on
+  kit.js       the drawing code, built on kit/core.js, ending in `const STYLE = { ... }`
+  sample.png   one representative frame, 540x960 (half of 1080x1920)
+  demo/        a 4–8s piece in the style (piece.json + src/) that builds, tiles deterministic and morphs once
+```
+
+## The STYLE hooks (what kit/morph.js calls)
+
+The renderer draws nothing itself. Every `kit.js` ends with:
+
+```js
+const STYLE = {
+  name: '<name>',
+  paper: '#hex',                 // the blank sheet a morph happens on
+  backdrop(c, o) { ... },        // fill the frame with colour c, in the medium (o: see window; absent outside morphs)
+  window(P, key, src, o) { ... }, // draw canvas src seen through outline P (screen coords): a torn hole, an inked iris, a printed circle
+                                 //   o = { c: the bridge shape's colour, u: 0..1 progress, phase: 'shrink' | 'morph' | 'grow', eraA, eraB }
+  blob(P, c, key, u, o) { ... }, // the morphing shape itself (outline P, colour c, progress u, in the medium)
+  hero(x, y, r, o) { ... },      // the style's hero, for hero-to-hero bridges (SP(x, y, r, n) shapes): r = half the hero's size, n may be ignored
+  heroColor: '#hex', heroPts(x, y, r, n) { ... },   // the hero's colour and outline for bridges (optional)
+  post() { ... },                // after every frame: grain, a print pass, an upscale (optional)
+  ones: false,                   // true = motion on 1s (TT = every frame); default on 2s
+};
+```
+
+Rules every kit keeps:
+- **Deterministic:** randomness from `RNG(...)` keys only; anything that changes per boil step keys on `B`; never `Math.random()` or the clock. `tools/tile.mjs` checks it.
+- **Nothing carries between frames.** The renderer clears each era's layer; a kit never keeps drawing state across `renderFrame` calls (caches of *static* things, keyed and seeded, are fine).
+- **Everything is code.** No images, fonts files, `data:` URIs or URLs. Fonts are local system fonts with fallbacks for Windows, macOS and Linux.
+- **Captions and tags go through `DEFER`** (see `yearTag` in cut-paper) so they draw after the camera, at screen size.
+- **Kits don't mix.** One style per piece: kits reuse names (`handText`, `STYLE`), so a piece that needs two looks gets a merged kit.
+
+Renderer quirks a kit has to know:
+- **Colours given to the renderer are 6-digit hex** (`ERA_BG`, `heroColor`, bridge shapes' `c`): `mixHex` blends them. Mid-morph, `blob` and `backdrop` receive the blend as an `rgb(r,g,b)` string.
+- **Eras draw under the camera transform** (`push`, `bump`, `pieceCam`). A look with constant line widths (hairlines, pixels) divides widths by the current zoom (`ctx.getTransform().a`).
+- **The morph resamples both outlines by angle around their centroids** — bridge shapes of similar proportions morph cleanly; a dot into a long thin bar pinches.
+- **Captions drawn through `DEFER` stay at screen size during a morph:** the old era's tags show over the shrinking window, the new era's over the growing one. Suppress them in a style's caption helper if they fight the morph (e.g. skip when the era layer is being drawn for a window: compare `TT` with the bridge times).
+
+### Names a kit must not reuse
+
+`kit/core.js`, `kit/morph.js` and the piece head already define these at the top level; redeclaring one either fails the build or silently replaces it: `W`, `H`, `FPS`, `ctx`, `F`, `B`, `TT`, `E0`, `DEFER`, `SPARK_AT`, `C`, `MONO`, `RAINBOW`, `TAU`, `DEG`, `RNG`, `hash`, `clamp`, `lerp`, `seg`, `past`, `dist`, `EZ`, `ev`, `popS`, `smooth` (a smoothstep), `mod`, `ellipsePts`, `rrectPts`, `arcPts`, `xform`, `bbox`, `resample`, `pathLen`, `subPath`, `pointAt`, `wobble`, `trace`, `ink`, `paint`, `texture`, `hatch`, `pencil`, `stipple`, `grain`, `construct`, `cline`, `ruler`, `sparkBurst`, `burst`, `star4`, `rainbow`, `hexGrid`, `irisRim`, `irisHole`, `camera`, `screen`, `toScreen`, `fillAll`, `monoText`, `monoW`, `handwrite`, `drawPencil`, `asterisk`, `camOf`, `push`, `bump`, `SP`, `starPts`, `byAngle`, `mixHex`, `maskK`, `layer`, `renderEra`, `renderFrame`, `HAND`, `CX`, `TIMELINE`, `SPRING`, `springEase`, `springMove`, `springTrack`, `LX`, `LY`, `UNIT`, `PORTRAIT`, `WIDE`, `asset`, `drawAsset`, `ASSETS`, `BEATS`, `FORMAT`, `FORMATS`, `GRID0`, `onBeat`. Prefix a kit's own helpers (`iso…`, `pix…`, `riso…`) when in doubt.
+
+## Making a style from an existing piece (porting)
+
+1. Extract the look's drawing code into `kit.js` on top of `kit/core.js` (drop what core already has; keep names stable). A brand-new look can start from `templates/style/kit.js`.
+2. Write `STYLE` hooks in the medium.
+3. Build `demo/` (copy `crosshatch/demo/`): two eras, one shape morph, a hero, a caption, 3+ details of background life.
+4. `node tools/build.mjs styles/<name>/demo`, then `node tools/tile.mjs styles/<name>/demo tile.png <frames>` → `deterministic: true`, and look at the tile.
+5. `node tools/still.mjs styles/<name>/demo <t> styles/<name>/sample.png --scale 0.5`.
+6. Write `STYLE.md` with its frame checklist.
+{
+  "name": "animate",
+  "displayName": "Animate",
+  "description": "Make short procedural animations in any style (explainers, histories, product reels, little stories) as single-file canvas videos. Seven styles built in or a new one from your references; your own music track (beat-mapped) or a composed score; real screenshots of your product; every format from one piece. Intake, story / look / storyboard check-ins, then a measured build to MP4.",
+  "version": "0.4.0",
+  "author": {
+    "name": "cth9191"
+  },
+  "license": "MIT",
+  "keywords": [
+    "animation",
+    "canvas",
+    "video",
+    "explainer",
+    "storyboard",
+    "procedural",
+    "motion-graphics",
+    "style-transfer"
+  ]
+}
+MIT License
+
+Copyright (c) 2026 cth9191
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:

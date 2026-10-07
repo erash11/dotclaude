@@ -29,9 +29,9 @@
 //
 // The worker keeps the full original body: it owns the PID lock (so clustered
 // session-ends still elect a single indexer), writes INDEX_LOG, and runs every
-// error-classification branch. Its spawnSync cap is now 600s — no longer a
-// budget, just a runaway guard, so an ETIMEDOUT genuinely means ">10 minutes"
-// and is worth escalating. See project_memsearch_setup.md.
+// error-classification branch. Its spawnSync cap is now 3h (600s until
+// 2026-10-07) — not a budget, just a runaway guard, so an ETIMEDOUT genuinely
+// means a hang and is worth escalating. See project_memsearch_setup.md.
 
 const { spawnSync, spawn } = require('child_process');
 const fs = require('fs');
@@ -252,10 +252,13 @@ try {
     // incremental catch-up. Preserve its output and exit status for diagnosis.
     maxBuffer: 32 * 1024 * 1024,
     // Runaway guard, not a budget. We are detached, so nothing is waiting on
-    // this. A full day's backlog measured 278s on 2026-09-02, so 600s means a
-    // timeout here is a genuine hang worth escalating - not normal work being
-    // cut off, which is what the old 45s cap was doing on every session end.
-    timeout: 600000,
+    // this. Raised 600s -> 3h on 2026-10-07: on the Windows laptop under
+    // memory pressure (1-2 GB free) indexing ran ~1.2 s/chunk, so every 600s
+    // run was killed mid-progress (965 rows written across two runs, streak 9)
+    // and a backlog could never clear. The PID lock already stops overlap and
+    // the 30-min cooldown stops back-to-back chains, so a long run costs
+    // nothing but its own memory. A timeout now really is a hang.
+    timeout: 3 * 60 * 60 * 1000,
   });
 
   const out = `${res.stdout || ''}${res.stderr || ''}`.trim();
