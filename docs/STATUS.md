@@ -1,6 +1,10 @@
 # STATUS
 
 ## Current state
+- 2026-10-07 (Mac): mattpocock-skills 1.3.1 win every overlap (Tier A
+  `feedback_defer-to-mattpocock-skills.md`). The memsearch Milvus and nightly-digest
+  failures in `.errors.log` are both Windows-side; queued as `HARNESS_FIXES.md` #9 and #10.
+  Handoff: `global-memory/handoffs/2026-10-07-pocock-skills-and-windows-failures.md`.
 - 2026-10-03 (Mac): harness time budget adopted. System work only in the Friday 1–2 PM slot;
   the queue lives in `HARNESS_FIXES.md`. First pass done: CommandCentre `server.out`
   untracked; dcg job-dir redirect is won't-fix. Handoff:
@@ -9,6 +13,8 @@
 - Windows and macOS share this configuration repo through GitHub. Managed skills remain authored in the separate `~/.claude/skills` repo and published to generated Windows views.
 
 ## Next
+- On Windows: `Get-Content ~\.claude\scripts\logs\nightly-digest.log -Tail 5` to get the real
+  send error (`HARNESS_FIXES.md` #10), then the Milvus checks in #9.
 - Eric: close all Claude sessions, run `git -C ~/.claude restore settings.json` (drops the
   duplicate Mac dcg hook), then reopen and check `git -C ~/.claude diff --stat settings.json`.
 - Do not commit `settings.json` while it shows the extra `/Users/kristinarash/.local/bin/dcg` entry.
@@ -23,6 +29,8 @@
   `HARNESS_FIXES.md` #3 and #4.)
 
 ## Gotchas
+- **`.errors.log` syncs between machines.** A Windows failure shows up on the Mac. Look for
+  `C:\Users\` in a traceback before debugging on the wrong machine (2026-10-07).
 - **Never run `dcg install` here.** `dcg doctor` only recognizes the absolute-path hook and
   will ask for it; the portable guarded entry already covers both machines. Installing
   re-adds a Mac-only line that then gets swept into a settings commit (e72c374).
