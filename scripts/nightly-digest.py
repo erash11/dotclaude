@@ -29,8 +29,9 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 # Runs under pythonw from Task Scheduler: give git/gws children no console window either.
-_run = subprocess.run
-subprocess.run = lambda *a, **k: _run(*a, **{"creationflags": subprocess.CREATE_NO_WINDOW, **k})
+if os.name == "nt":
+    _run = subprocess.run
+    subprocess.run = lambda *a, **k: _run(*a, **{"creationflags": subprocess.CREATE_NO_WINDOW, **k})
 
 HOME = Path.home()
 SCRIPTS = HOME / ".claude" / "scripts"
@@ -41,7 +42,8 @@ _spec.loader.exec_module(fd)          # reuse its repo list, git helper, SKIP fi
 TO = "Eric_Rash@baylor.edu"
 MEMORY = HOME / ".claude" / "global-memory" / "MEMORY.md"
 DAILY = HOME / ".claude" / "claude-memory-compiler" / "daily"
-DRIVE = Path(r"G:\My Drive\00_Primary_Storage_Drive")
+DRIVE = (Path(r"G:\My Drive\00_Primary_Storage_Drive") if os.name == "nt" else
+         HOME / "Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive")
 DRIVE_PRUNE = {"05_SYSTEMS", "_exports", "_to_delete", "__pycache__", ".git", "node_modules", ".venv"}
 DOC_EXT = {".md", ".docx", ".xlsx", ".pptx", ".pdf", ".html"}
 STATUS_DAYS = 7       # a STATUS.md committed within this many days counts as an active project
@@ -179,8 +181,8 @@ def build(day, threads, pending, sessions, statuses, gitdocs, drivedocs):
     n_docs = sum(map(len, gitdocs.values())) + sum(map(len, drivedocs.values()))
     subject = (f"Nightly digest {day:%a %b %d}: {n_dec} decisions, {n_act} action items, "
                f"{len(statuses)} active projects, {n_docs} docs created")
-    p = [f"<p style='{SUB}'>Decisions and action items come from the Windows daily log (Mac sessions are "
-         f"not in it). Open items read every STATUS.md committed in the last {STATUS_DAYS} days on any "
+    p = [f"<p style='{SUB}'>Decisions and action items come from this machine's daily log (sessions on "
+         f"other machines are not in it). Open items read every STATUS.md committed in the last {STATUS_DAYS} days on any "
          f"branch, both machines as pushed. Docs = .md/.docx/.xlsx/.pptx/.pdf/.html added that day.</p>"]
 
     p.append(f"<h2 style='{H}'>Active threads</h2>{ul(threads)}")
@@ -211,8 +213,8 @@ def build(day, threads, pending, sessions, statuses, gitdocs, drivedocs):
         p.append(f"<p style='margin-bottom:0'><b>{html.escape(repo.name)}</b> (git, {len(paths)})</p>"
                  f"<ul style='margin-top:4px'>{items}{more}</ul>")
     if drivedocs:
-        p.append(f"<p style='{SUB}'>Drive (G:\\My Drive\\00_Primary_Storage_Drive, excluding 05_SYSTEMS, "
-                 f"_exports, _to_delete). Mac-made files show the day Drive synced them.</p>")
+        p.append(f"<p style='{SUB}'>Drive ({html.escape(str(DRIVE))}, excluding 05_SYSTEMS, "
+                 f"_exports, _to_delete). Files made on another machine show the day Drive synced them.</p>")
     for folder, names in drivedocs.items():
         items = "".join(f"<li>{html.escape(os.path.join(folder, x))}</li>" for x in names[:PER_LIST])
         more = f"<li><i>+{len(names) - PER_LIST} more</i></li>" if len(names) > PER_LIST else ""
@@ -285,7 +287,7 @@ def main() -> int:
         print(f"{subject}\n{full}\nbody {len(body)} chars{' + attachment' if attach else ''}")
         return 0
 
-    r = subprocess.run([fd.NODE, str(fd.GWS_JS), "gmail", "+send", "--to", TO, "--subject", subject,
+    r = subprocess.run([*fd.GWS, "gmail", "+send", "--to", TO, "--subject", subject,
                         "--body", body, "--html", *attach], cwd=full.parent, capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
     if r.returncode == 0:

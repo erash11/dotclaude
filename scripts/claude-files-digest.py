@@ -12,17 +12,24 @@ Runs from Task Scheduler (\\Eric\\claude-files-digest, 06:30, reports the previo
 import argparse
 import datetime as dt
 import html
+import os
 import re
+import shutil
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HOME = Path.home()
-DEV = HOME / "Desktop" / "DEV"
+WINDOWS = os.name == "nt"
+# Mac since 2026-10-08 (the Windows laptop is hands-off); Windows values kept for reference.
+DEV = HOME / "Desktop" / "DEV" if WINDOWS else HOME / "DEV"
+SECONDBRAIN = HOME / "Desktop" / "SecondBrain" if WINDOWS else HOME / "SecondBrain"
 TO = "Eric_Rash@baylor.edu"
 NODE = "node"
 GWS_JS = HOME / r"AppData\Roaming\npm\node_modules\@googleworkspace\cli\run.js"
+# Windows calls run.js through node to dodge cmd.exe parsing; the Mac has a plain gws binary.
+GWS = [NODE, str(GWS_JS)] if WINDOWS else [shutil.which("gws") or "/opt/homebrew/bin/gws"]
 LOG = HOME / ".claude" / "scripts" / "logs" / "claude-files-digest.log"
 ERR_LOG = HOME / ".claude" / "global-memory" / "transcripts" / ".errors.log"
 PER_REPO = 30          # paths listed per repo before "+N more"
@@ -54,7 +61,7 @@ def repos() -> list[Path]:
         if parent.is_dir():
             found += [p for p in parent.iterdir() if (p / ".git").exists()]
     found += [HOME / ".claude", HOME / ".claude" / "skills", HOME / ".claude" / "global-memory",
-              HOME / "Desktop" / "SecondBrain"]
+              SECONDBRAIN]
     # DEV/claude-global-memory is a second clone of ~/.claude/global-memory: count it once.
     return [p for p in found if (p / ".git").exists() and p.name != "claude-global-memory"]
 
@@ -121,7 +128,7 @@ def main() -> int:
         print(f"{subject}\n{out}")
         return 0
 
-    r = subprocess.run([NODE, str(GWS_JS), "gmail", "+send", "--to", TO, "--subject", subject,
+    r = subprocess.run([*GWS, "gmail", "+send", "--to", TO, "--subject", subject,
                         "--body", body, "--html"], capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
     if r.returncode == 0:
