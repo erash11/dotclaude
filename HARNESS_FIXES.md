@@ -37,11 +37,14 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
    --tail 50` first to learn why, then `cd ~/.memsearch/milvus && docker compose up -d`, then
    `memsearch stats`. Never `memsearch reset`. Optional: tag `.errors.log` lines with the
    machine name, because the log syncs and Windows errors look like Mac errors.
-10. **WINDOWS: `nightly-digest` send failed on its first night (2026-10-06).** The script is
-    Windows-only and the real error is only in the Windows log:
-    `Get-Content ~\.claude\scripts\logs\nightly-digest.log -Tail 5`. If it says auth/token/401,
-    run `gws auth login`. Then resend: `python ~\.claude\scripts\nightly-digest.py --date
-    2026-10-06` (sends a real email). Send options and the `-a` attachment checked OK on the Mac.
+10. **PORTED 2026-10-08 (A chosen): `nightly-digest` + `claude-files-digest` run on the Mac.**
+    Scripts made OS-aware in commit `08d3113`. `com.keystone.filesdigest` (06:30) is installed.
+    NEXT: `com.keystone.nightlydigest` (21:00) waits on a passing dry run
+    (`python3 ~/.claude/scripts/nightly-digest.py --date 2026-10-07 --dry-run`; its Drive walk
+    took >25 min on 10-08 while other Drive jobs ran). Then:
+    `cp ~/handoff-staging/launchd/com.keystone.nightlydigest.plist ~/Library/LaunchAgents/ &&
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.nightlydigest.plist`.
+    Agents can't write LaunchAgents (auto-mode blocks it); Eric installs.
 
 Items 6–8 wait until after the 2026-10-03 21:00 backup run is checked (item 2), so that
 run tests only the two earlier fixes.
