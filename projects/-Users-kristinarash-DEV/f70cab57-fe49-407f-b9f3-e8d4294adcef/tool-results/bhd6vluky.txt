@@ -1,0 +1,910 @@
+---
+type: canonical-list
+owner: Eric Rash
+purpose: The reportable active-project spine. Filters personal tooling out and maps every project to a Key Result and a sport.
+authority: Applied-Performance-OKRs-2026-27.md (Fall 2026 KRs, 7) + portfolio.json charters
+source_registry: /Users/kristinarash/DEV/project-triage/portfolio.json (lane == "job")
+maintained_by: status-report skill
+updated: 2026-09-14
+---
+
+# Applied Performance — Canonical Active Projects
+
+This is the reportable list. It exists because `portfolio.json` mixes personal tooling
+(KeystoneOS, Project_Triage, TSSHB_Skills) with departmental work, and because a project
+with no Key Result and no sport is hard to justify in a status report.
+
+Two columns do the work here. **KR** answers *"why is this on my desk?"* — a project with
+no KR is either serving an unstated priority or shouldn't be active. **Sport** answers
+*"who does this help?"* — and it is the field that makes non-football, non-basketball
+involvement visible, which is the reason the status report exists at all.
+
+**Reset 2026-09-14 (prioritization system).** The list below is the Fall 2026 slate: every
+active job project has a charter in `portfolio.json` (receiver, done means, 4 dated steps).
+Rules: [[Applied-Performance-Operating-Cadence]]. **KR numbers below are the Fall set** — they
+reuse the summer numbers for different results (Fall 1.1 = tech inventory; Summer 1.1 was
+dashboards). Summer scores are in the OKR doc.
+
+## Reportable (Fall 2026 slate — cap 5 this semester)
+
+| Project | Fall KR | Receiver | Sport | Finish | Next step due |
+|---|---|---|---|---|---|
+| Tech_Inventory_Analysis | 1.1 | Kenny Boyd | Dept-wide | 2026-10-09 | Plan agreed 09-18 |
+| HPI_Protocol | 1.2 | Chris Ruf + Kenny Boyd | Dept-wide | 2026-12-11 | Plan agreed 10-01 |
+| Education_Curriculum | 2.1 | Student Services leadership | Dept-wide | 2026-12-11 | Plan agreed 09-25 |
+| RTP_Constraints_Course | 2.2 | Joe Smith (AT) | Sports medicine, cross-sport | 2026-12-11 | Plan agreed 09-24 |
+| WomensHealth_Survey | 3.1 | Andrew Gallucci | TBD | 2026-12-11 | Plan agreed 09-25 |
+
+Leadership KRs with no project: 4.1 status report every other Friday (8 timer checkpoints,
+#2 due 09-18); 4.2 Noah 1:1 every two weeks.
+
+**Next up:** NCAA_BestPractices_Doc (Chris Ruf).
+
+**Done 2026-09-14:** Kinexon_Volleyball — in use by Mike Wenger and Ryan McGuyre.
+
+**Parked 2026-09-14 (not reportable as in progress):** SoftwareTech_Mgmt_Framework (ITS thread
+continues inside Tech_Inventory_Analysis), SPA_Presentation, OKRs_2026-27, Ask_The_Library,
+Transformative_Athlete_Experience, SportScienceResearchRepo, Baseball_PerformanceProfiles;
+earlier-paused: Sport_Tech_Vetting, Coach_Report, ForcePlate_DecisionSystem,
+Risk_Stratification_Engine, Travel_Map, PlayerProfiles_FB.
+
+*The 2026-08-11 seeded table and its "KRs with no project attached" analysis are in git history.*
+
+## Sport coverage — the honest baseline
+
+The report exists to make involvement across sports visible. The roster of programs
+comes from `DEV/AppliedUtilization/Applied_Performance_Utilization_Brief.md`
+§"Recommendations by program" — 15 rows covering all 17 varsity programs. That document
+is **prescriptive** (what each program *could* use), not a record of activity. Measured
+against evidence, here is where things actually stand:
+
+| | Programs |
+|---|---|
+| **Named in a project** | Football, Volleyball |
+| **Named in the OKRs** | Football (via AJ), Volleyball (direct) — KR 1.1, and no others |
+| **Appearing in meeting filenames** | Football (11), Baseball (5), Volleyball (3), Softball (2), Acro & Tumbling (2), Tennis (1), Women's Golf (1) |
+| **Zero evidence anywhere** | Men's Basketball, Women's Basketball, Soccer, Men's/Women's XC & Track, Equestrian, Men's Golf, Men's/Women's Tennis as distinct programs |
+
+Two findings worth sitting with before the first report goes out:
+
+**Both basketball programs have zero recorded activity** — no meetings, no projects — yet
+they carry detailed recommendations in the utilization brief. That is the largest single
+gap between what the department says it offers and what it demonstrably delivers.
+
+**Soccer is the brief's own "highest ROI now" pick** and its best-fit GPS use case, with
+zero meetings and zero projects against it. If the ask driving this report is broader
+involvement beyond football and basketball, soccer is the cheapest, best-documented
+place to start — the case for it is already written in your own brief.
+
+Also note: `RTP` (24 meetings) and `StaffMeet` (29) dwarf every individual sport in the
+corpus, but no document lists them as served groups. Real work is happening in lanes
+none of your planning documents describe, which is its own kind of invisibility.
+
+Four projects carry `TBD` sports. If any of them serve a program outside football and
+volleyball, that involvement is currently invisible in every system you have — which
+means it is invisible to Chris and Kenny too.
+
+## Maintenance
+
+The `status-report` skill updates stage, sport, and "moved this period" on each run. Add
+and retire projects at the Aug 31 gate alongside the KR keep/retire/add pass, so this
+list and the OKR set stay in step rather than drifting apart the way the registry and
+the OKRs already have.
+=================== Inbox/meetings/2026-09-24_StaffMeet_09242026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.81 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# StaffMeet_09242026
+
+**Date:** 2026-09-24 09:30
+**Duration:** 52m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Athlete Training:** Women’s tennis trains six hours daily; men’s golf adopts eccentric weight training; baseball pitchers tested with P3 but staff cautious on mechanics changes.  
+- **Tech Integration:** Bridge Athletic considered for digital training logs; staff wary of extra admin tasks; tennis consultant Joe Reed supports training with tailored data input.  
+- **Facilities Maintenance:** Turf and gym repairs pending approval; garage door unrepaired for 2+ weeks; equipment layout changes planned; slideshow upload issues slow updates.  
+- **Athlete Safety:** Heat injury at Arizona State shows protocol gaps; gradual pitching mechanic changes advised; medical teams praised for cautious injury management.  
+- **Staff Development:** Interns gaining coaching confidence; consultant advice balanced with collegiate context; poor meeting scheduling noted requiring clearer communication.  
+- **Upcoming Events:** Senior night planned early for women’s soccer; P3 pitcher evaluations continue with new training phase upcoming; Joe Reed onsite visit in late September.
+
+### Action Items
+
+
+**Unassigned**
+Monitor and document attendance and training notes explicitly for the women’s golf team to ensure compliance and track progress (02:28)
+Follow up on garage door repair approval and expedite the repair process to avoid further delays (16:03)
+Order and coordinate delivery and installation of leg press equipment; refine gym equipment layout in collaboration with coaches (16:03)
+Continue internal communication and coordination on flooring repairs and turf adhesive strip application to maintain facility quality (22:22)
+Proceed with scheduling and review of Bridge Athletic platform demo; evaluate its capabilities and integration potential with existing systems (17:47)
+Provide more on-floor coaching and leadership opportunities to intern Becca; assess her interest and suitability for a field staff position (36:14)
+Follow up with ROTC athlete regarding their role in the Fort Hood soldier visit planned for October 7 (40:39)
+Continue monitoring P3 pitching evaluations; attend sessions to learn about the process and validate its effectiveness and accuracy (05:25)
+Keep leadership updated on Joe Reed tennis collaboration and prepare for his onsite visit in late September or October (28:54)
+
+**eric rash**
+Check with campus technical support, including Pat Black, to resolve issues with uploading the tennis graphics slideshow (24:00)
+
+
+### Keywords
+
+women's tennis, pitching evaluation, Bridge Athletic, heat injury incident, intern development, facility maintenance
+
+=================== Inbox/meetings/2026-09-27_CABC_sundayschool_james.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.99 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# CABC_sundayschool_james
+
+**Date:** 2026-09-27 10:40
+**Duration:** 40m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Trials and Temptations:** Trials test faith and build endurance; temptations come from personal desires and lead to sin if unchecked.  
+- **Nature of Evil:** Evil is absence of good, not a created entity; God allows trials but does not tempt believers.  
+- **Spiritual Growth:** Endurance through trials leads to maturity; Holy Spirit and community support are vital for overcoming challenges.  
+- **Practical Responses:** Ask God for wisdom, pray for aligned desires, and view all trials as chances to glorify Jesus.  
+- **God’s Care:** Trials are part of God’s loving redemptive plan, with His Spirit and community providing steady support.
+
+### Action Items
+
+
+**Unassigned**
+Reflect personally on the relationship between trials, temptations, and desires; seek to understand where to intervene in the temptation process (25:40)
+Ask God regularly for wisdom to navigate trials and temptations effectively (30:12)
+Focus on developing desires aligned with God’s will to reduce temptation (38:41)
+
+**Meredith**
+Close future meetings with prayer highlighting dependence on God's wisdom and alignment of desires with His will (39:50)
+
+
+### Keywords
+
+Trials, Temptation, Endurance, Wisdom, Evil, Sanctification
+
+=================== Inbox/meetings/2026-09-28_The_Armchair_Scout_Building_a_Player_Similarity_Engine_App__.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.98 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# The Armchair Scout: Building a Player Similarity Engine App | Saiprasad Kagne
+
+**Date:** 2026-09-28 08:00
+**Duration:** 11m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Small Data Challenge:** Youth cricket scouting struggles with limited match data, typically 140-200 balls per player, making stats unreliable.  
+- **Player Selection Dilemma:** Deciding between flashy but small-sample performance vs. consistent long-term stats requires multi-factor judgment beyond raw numbers.  
+- **Advanced Statistical Techniques:** Bayesian shrinkage and similarity metrics reduce noise and identify comparable players, boosting confidence in sparse data.  
+- **Blending Data with Coaching Insights:** Combining quantitative stats with coaches’ qualitative notes creates a fuller, contextual player evaluation framework.  
+- **Multi-Sport & Format Flexibility:** The scouting framework works across sports and adapts to varied cricket formats like the 40/20 tournament for smarter talent assessment.  
+- **Hands-On & Collaborative Learning:** Shared code, live coding, and interactive Q&A foster skill-building and community growth in data-driven youth sports scouting.
+
+### Action Items
+
+
+**Saiprasad Kagne**
+Share slides and code base with participants for practice and portfolio use (03:15)
+Walk participants through the full dataset and metrics during the session (10:29)
+
+**Michael Czahor**
+Manage the chat/questions during the session and enable chat functionality for participants to ask questions (00:49)
+
+
+### Keywords
+
+Player Scouting, Recruitment Tactics, Youth Cricket Data, Bayesian Shrinkage, Similarity Metrics, Sports Analytics
+
+=================== Inbox/meetings/2026-09-28_Type1.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.98 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# Type1
+
+**Date:** 2026-09-28 11:20
+**Duration:** 42m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Remote Research:** Remote studies enable large, diverse samples, with over 100 type 1 diabetes participants and strong data quality despite less control.  
+- **Real-World Monitoring:** Continuous glucose monitoring during 7 race stages showed stable glucose but rising nighttime hypoglycemia risk after exercise.  
+- **Enhanced Platform:** Integrates multiple data types, provides personalized exercise-glucose insights, and fosters community and clinical connections.  
+- **Insulin Preferences:** Athletes choose pens or pumps based on sport, logistics, and access; pumps still struggle with exercise-related glucose control overnight.  
+- **Emerging Tech:** Dual hormone systems face stability issues; ketone monitoring is planned for safety, while long-acting insulins have limited impact for type 1 exercise.  
+- **Product and Engagement:** Upcoming app update improves user experience; mobile app prioritized with ongoing community and clinical support across diverse diabetes groups.
+
+### Action Items
+
+
+**Sam Scott**
+Prepare and present a demo of the new Enhanced app version in a future webinar (40:36)
+
+**Enhance team**
+Continue expanding integration capabilities with multiple devices and data types for seamless user experience in the Enhanced platform (09:03)
+Develop and improve educational content within the Enhanced app, including Glucose Go, podcasts, and books focused on type 1 diabetes and sports science (19:19)
+Expand Enhanced Clubs geographically and organize community events including mobile outreach van in the UK (15:48)
+Refine clinician dashboard and web interface to provide digestible data review within clinical appointment constraints, incorporating machine learning and large language models (33:54)
+Investigate and develop contextualized closed-loop insulin delivery systems responsive to exercise type and overnight glucose management needs (14:03)
+Assess and incorporate glucose and ketone monitoring capabilities thoughtfully to provide actionable insights without overwhelming users (38:55)
+
+
+### Keywords
+
+type 1 diabetes, remote interventions, exercise glucose management, enhanced app, insulin pump vs pens, continuous glucose monitoring
+
+=================== Inbox/meetings/2026-10-01_Bridge__Workout_Digitization__API_Access.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.62 2026-10-06 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# Bridge — Workout Digitization & API Access
+
+**Date:** 2026-10-01 15:05
+**Duration:** 28m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Current Gap:** Excel files, printed cards, scans, and Box archives make workout history difficult to search or reuse.
+- **Bridge Import:** AI can extract PDFs, images, and Excel files, with review, editing, and possible bulk migration of gigabytes.
+- **Change Capture:** Coaches can edit programs live or upload annotated cards for review, reducing extra data entry.
+- **Analytics:** API access and centralized records could support Databricks, Power BI, injury reviews, and historical training analysis.
+- **Trial:** Baylor will test Bridge with the spirit team; setup, API review, and Vault Connect beta access remain pending.
+- **Scope:** Evaluation focuses on workout digitization and integration; nutrition remains with Teamworks Nutrition.
+
+### Action Items
+
+**Bridge/Vault Team**
+Send API documentation (02:56)
+Explore bulk migration (06:00)
+Set up trial environment (26:25)
+Schedule follow-up meeting (26:25)
+
+**Unassigned**
+Test Bridge platform (19:02)
+Explore Bridge features (26:25)
+
+### Keywords
+
+Bridge, Import AI, Workout digitization, Databricks, Vault Connect, Power BI
+
+=================== Inbox/meetings/2026-10-01_Bridge_Pilot_for_Spirit_Team_Digitization.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.62 2026-10-06 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# Bridge Pilot for Spirit Team Digitization
+
+**Date:** 2026-10-01 15:05
+**Duration:** 23m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **AI Import:** Import historical PDFs, spreadsheets, images, and workout files; Bridge can support bulk conversion.
+- **Program Tools:** Reusable libraries, AI-assisted creation, flexible calendars, supersets, templates, alternatives, and exercise tracking.
+- **Workflow Fit:** Coaches can edit programs live on phones or iPads; print layouts need improvement for individualized lifting.
+- **Pilot Trial:** Eric Rash will test Bridge with the spirit team during the semester, focusing on digitization and live edits.
+- **Data Integration:** Historical records support training reviews and injury investigations; Vault Connect links Bridge with Power BI.
+- **Next Steps:** Enable trial access, support Vault Connect, and evaluate results; nutrition remains outside scope due to Teamworks Nutrition.
+
+### Action Items
+
+**Eric Rash**
+Test Bridge workflows (14:37)
+Submit Vault Connect application (20:40)
+
+**Tom Milroy**
+Nudge Vault Connect team (19:29)
+Set up Bridge trial environment (21:52)
+Follow up with Eric Rash (21:52)
+
+### Keywords
+
+Bridge training platform, Import AI, Training programme templates, Workout analytics, Vault Connect, Databricks data integration
+
+=================== Inbox/meetings/2026-10-01_KB_TechReview_Followup.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/SoftwareTech_Review
+- person/kenny-boyd
+- project/SoftwareTech_Mgmt_Framework
+<!-- jev-project: SoftwareTech_Mgmt_Framework p=0.81 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# KB_TechReview_Followup
+
+**Date:** 2026-10-01 11:00
+**Duration:** 30m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Follow-Up Gaps:** Overdue responses and unclear ownership are delaying approvals; requests need quick acknowledgment, status, and next steps.
+- **Weekly Coordination:** Start 30-minute weekly check-ins to review projects, align messaging, and prevent inconsistent guidance.
+- **Project Tracker:** Create a simple spreadsheet showing status, blockers, dependencies, last contact, and next steps.
+- **Research Partnerships:** Temple Foundation opportunity could support a seven-figure JTF partnership over three to five years.
+- **Software Planning:** Update the inventory by October 1 with costs, expenses, and terms for FY28 budget planning.
+- **Data And Tools:** Evaluate Bridge Athletic, Vault integration, and a Databricks basketball pilot for better strength-and-conditioning data.
+
+### Action Items
+
+**Unassigned**
+Send reminder to Michael Lamb (03:00)
+Schedule fall council meeting (19:27)
+Update software summary (19:27)
+Add software financial details (20:59)
+Centralize updated documents (23:01)
+Invite research partners (24:32)
+Schedule weekly check-in (26:19)
+Set stakeholder meetings (28:16)
+
+**Eric Rash**
+Communicate Vault status (26:19)
+Attend Databricks discussions (28:16)
+
+### Keywords
+
+Project tracking, Athletics Research Council, Software governance, Vault, Databricks, FY28 budget planning
+
+=================== Inbox/meetings/2026-10-01_StaffMeet_10012026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=1.0 2026-10-01 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# StaffMeet_10012026
+
+**Date:** 2026-10-01 09:30
+**Duration:** 63m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Athletics:** Baseball shifted to Sunday; softball continues its 20-hour block; volleyball manages injuries and a reduced roster.
+- **Health:** Tennis athletes faced severe cramping, possible rhabdomyolysis, and strep; other teams reported concussion, hip, and illness concerns.
+- **Schedules:** Soccer travels to Colorado Wednesday, plays Thursday, then faces Kansas State Sunday; fall-break training plans were adjusted.
+- **Operations:** Army facility use, training-shoe purchases, budgets, and possible Nike funding reductions require follow-up.
+- **Applications:** Submit consistent, complete materials; tailor references, verify details, and follow every posting instruction.
+- **Hiring:** Candidates are scored across 10 categories totaling 100 points, then reviewed for role fit, professionalism, and public information.
+
+### Action Items
+
+**Unassigned**
+- Schedule baseball scrimmages (04:36)
+- Monitor baseball athletes (05:50)
+- Monitor hip discomfort symptoms (13:29)
+- Confirm soccer travel plans (14:49)
+- Match references to positions (36:17)
+- Notify references before applying (37:27)
+- Ensure reference counts (40:01)
+- Standardize application formatting (33:28)
+- Build hiring evaluation matrix (44:37)
+- Define scoring standards (44:37)
+- Verify candidate certifications (45:55)
+- Review candidate social media (56:53)
+- Perform candidate Google searches (59:31)
+- Identify Army group facility (29:49)
+- Finalize Army group schedule (29:49)
+- Confirm team training-shoe budgets (31:51)
+- Order training shoes (31:51)
+- Update reference contact details (42:51)
+
+### Keywords
+
+Athletics operations, Student-athlete health, Training-load management, Travel and competition scheduling, Professional references, Hiring evaluation matrix
+
+=================== Inbox/meetings/2026-10-04_Sermon__James_1_Hearing__Doing_the_Word.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.99 2026-10-06 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# Sermon — James 1 Hearing & Doing the Word
+
+**Date:** 2026-10-04 10:40
+**Duration:** 35m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Hearing and Anger:** Listen eagerly, speak carefully, and slow down anger; human anger does not produce God’s righteousness.
+- **Receiving the Word:** Remove old patterns and accept correction humbly, especially when criticized, ignored, overwhelmed, or challenged.
+- **Living the Word:** Scripture should lead to action, including honest apologies, controlled speech, attentive listening, and truthful encouragement.
+- **Practicing Attention:** Stay focused on God’s word; it reveals needed change and forms people into genuine freedom.
+- **Visible Faith:** Authentic faith shows through careful speech, compassion for vulnerable people, and holiness without adopting the world’s values.
+
+### Action Items
+
+**Unassigned**
+Reflect on readiness for God’s Word (00:00)
+Discuss anger responses (08:53)
+Practice deliberate listening (08:53)
+Apply teachings to apologies (24:02)
+Make sincere apologies (24:02)
+Listen to opposing perspectives (24:02)
+Control defensive communication (30:05)
+Care for vulnerable people (32:04)
+Resist worldly influence (32:04)
+
+### Keywords
+
+James 1, God’s Word, Anger and speech, Christian formation, Hearing and doing, Compassion for vulnerable people
+
+=================== Inbox/meetings/2026-10-05_DataBricks_Demo_Basketball.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+- project/Basketball
+<!-- jev-project: Basketball p=0.85 2026-10-06 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# DataBricks_Demo_Basketball
+
+**Date:** 2026-10-05 10:30
+**Duration:** 37m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Platform:** Databricks combines tracking, wellness, performance, basketball, and other data into one configurable player view.
+- **Analytics:** Baylor’s 2025–2026 demo covered offense, defense, four factors, lineups, shot profiles, archetypes, and AI-generated reports.
+- **Data Integration:** Supports SportsRadar, Skill Corner, Synergy, Draft Express, Huddle, Instat, ForceDecks, Connexon, and EliteForm.
+- **Workflow:** Automating daily exports could replace Excel consolidation, improving reporting beyond the current weekly coach updates.
+- **Health Data:** Baylor prioritized better visibility into wellness, performance, medical, and EMR data, with HIPAA and FERPA compliance discussed.
+- **Next Steps:** Baylor will assess interest, define trial scope, and schedule focused technical discussions on integrations and use cases.
+
+### Action Items
+
+**Unassigned**
+Evaluate Databricks trial feasibility (02:24)
+Review vendor API access (09:37)
+Assess data-sharing approvals (24:11)
+Confirm medical-data permissions (33:22)
+
+**Michael**
+Review recruiting-agent integration (31:58)
+Support technical follow-up (36:14)
+
+**Nat Shadick**
+Send compliance documentation (34:49)
+Coordinate focused discussions (36:14)
+
+**Kenny**
+Follow up with participants (36:14)
+
+### Keywords
+
+Databricks, Sports analytics, Athlete health performance, Data integration, Basketball operations, Artificial intelligence
+
+=================== Inbox/meetings/2026-10-05_SA_Leadership_10052026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+- project/HPI_Protocol
+<!-- jev-project: HPI_Protocol p=0.79 2026-10-06 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# SA_Leadership_10052026
+
+**Date:** 2026-10-05 11:30
+**Duration:** 59m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Wellbeing:** Midsemester pressures require calm leadership, attentive support, and timely referrals for struggling staff or student-athletes.
+- **Personnel:** Shelly started September 21; Renee departs Friday for an NC State internship and graduate assistant opportunity.
+- **Student Feedback:** Real Response received 82 responses, representing 17% participation; post results and acknowledge concerns visibly.
+- **Compliance:** Complete 2025–26 NCAA attestations, with review materials going to Doug and President Livingstone.
+- **Reporting:** Prepare annual-report updates for early December; track partnerships, committees, collaborations, and shared programs.
+- **Databricks:** Start with a small sport-specific pilot, clarify use cases, address governance risks, and measure return before scaling.
+
+### Action Items
+
+**Unassigned**
+- Send Excel export (10:22)
+- Follow up with respondents (10:22)
+- Share survey data (10:22)
+- Add NCAA materials (25:57)
+- Complete annual report reviews (27:42)
+- Track campus partnerships (27:42)
+- Share Q&A outcomes (29:34)
+- Follow up with Juliana (43:02)
+- Schedule health discussions (43:02)
+- Discuss pricing (45:56)
+- Define pilot use case (45:56)
+- Assess staff resistance (56:10)
+
+**Nat**
+- Follow up with Jake (43:02)
+
+### Keywords
+
+Real Response survey, Student-athlete well-being, NCAA attestations, Campus collaboration, Databricks integration, Athletics data strategy
+
+=================== Inbox/meetings/2026-10-07_CarrieCatchUp_10072026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+- project/WomensHealth_Survey
+<!-- jev-project: WomensHealth_Survey p=0.61 2026-10-07 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# CarrieCatchUp_10072026
+
+**Date:** 2026-10-07 14:10
+**Duration:** 43m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Databricks:** Demo feedback was negative; pilot options include men’s basketball, Teamworks, and a stripped-down Kitman setup.
+- **Reporting:** Define each report’s purpose and measurable KPIs before collecting data; baseline and follow-up testing were suggested.
+- **Women’s Health:** Start with one team by semester’s end; Equestrian is the leading candidate for a 15-minute education session and survey.
+- **Follow-Up:** Coach approval, reminders, educational resources, and follow-up providers are still needed for the pelvic-floor initiative.
+- **TOS Review:** Evidence remains insufficient to link workload with outcomes or confirm TOS overdiagnosis; case interpretations remain disputed.
+- **Audit:** NCAA attestation and peer-audit processes are being prepared; confidentiality rules for sharing findings need clarification.
+
+### Action Items
+
+**Unassigned**
+Review Databricks feedback (00:00)
+Clarify Databricks pilot scope (09:32)
+Define report questions (12:28)
+Correct TOS year label (37:00)
+Review TOS report (38:37)
+Inform Kenny about audit approach (41:24)
+
+**Kenny**
+Review Databricks risk issues (04:10)
+Compare Databricks platforms (08:21)
+Review departmental reports (12:28)
+
+**Carrie**
+Confirm pelvic-floor sessions (30:27)
+Draft coach outreach emails (30:27)
+Contact Laurel Singh (30:27)
+Pitch pelvic-floor initiative (30:27)
+Schedule pilot sessions (30:27)
+Contact Carly Stacio (31:59)
+
+### Keywords
+
+Databricks, Kitman, Pelvic-floor health, Student-athlete education, Thoracic outlet syndrome, Healthcare audits
+
+=================== Inbox/meetings/2026-10-08_KB_TechSync_10082026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+- project/SoftwareTech_Mgmt_Framework
+<!-- jev-project: SoftwareTech_Mgmt_Framework p=0.82 2026-10-08 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# KB_TechSync_10082026
+
+**Date:** 2026-10-08 13:50
+**Duration:** 41m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Technology Inventory:** Excel inventory covers approximately 182 items; Teams launch awaits a pinned usage guide.
+- **Move Health:** Rollout remains blocked pending security review; athlete-level rehab or testing use is supported.
+- **Equipment Requests:** Force Frame purchase under $5,000 is under review; shared use is preferred over team ownership.
+- **Databricks:** Two-week athletics sandbox trial stalled; follow-up needed, with Dallas event attendance planned.
+- **Data Governance:** Draft athlete performance-data documentation targeted for October, distinguishing acknowledgment from consent.
+- **Annual Report:** Completed and ready for distribution after or alongside Roof’s review.
+
+### Action Items
+
+**Eric Rash**
+- Activate Teams group (04:32)
+- Create instructional post (06:08)
+- Share categorization documents (07:39)
+- Check Joe Reed profile (07:39)
+- Follow up with Brian (14:39)
+- Attend Databricks event (23:16)
+- Email annual report (29:09)
+- Share Texas documentation (33:01)
+- Contact Mitch and Ernie (34:41)
+- Draft Baylor consent form (34:41)
+- Consult academic departments (36:19)
+
+### Keywords
+
+Databricks, Athletics technology governance, Microsoft Teams, Force Frame, Athlete data consent, Performance data management
+
+=================== Inbox/meetings/2026-10-08_StaffMeet_10082026.md
+## Project tags
+> Tag this meeting against active projects. Add freely. Used by weekly-review to surface drift.
+
+- project/
+- person/
+<!-- jev-project: none of these p=0.91 2026-10-08 -->
+
+## Key topics
+
+## Decisions
+
+## Action items
+> Pulled from Fireflies. Mark complete by replacing `[ ]` with `[x]`.
+
+## Open questions
+
+# StaffMeet_10082026
+
+**Date:** 2026-10-08 09:30
+**Duration:** 52m
+**Status:** PROCESSED
+**Organizer:** eric.rash11@gmail.com
+**Participants:** eric.rash11@gmail.com
+
+---
+
+## Summary
+
+### Overview
+
+- **Team Performance:** Upward momentum after two wins; home competition versus Fresno State starts tomorrow at 11:00.
+- **Competition Results:** Cross country placed women eighth of 30 and men 16th of 29; golf teams placed fourth and second.
+- **Athlete Workload:** Softball enters a high-volume peak week; baseball moved to a 20-hour schedule with four scrimmages.
+- **Health And Risk:** Volleyball added a recovered middle blocker; extended two-and-a-half to three-hour practices remain a concern.
+- **Operations:** Install TW 2.0, complete cybersecurity training by Friday the 23rd, and review benefits enrollment next Tuesday.
+- **Staff Wellbeing:** Use fall break for recovery; appreciation night is Saturday, with registration required.
+
+### Action Items
+
+**Unassigned**
+Review six-page report (00:27)
+Address athlete focus lapses (06:20)
+Update softball training schedules (06:20)
+Monitor flooring damage (22:24)
+Update Teamworks 2.0 app (24:12)
+Complete cybersecurity course (30:28)
+Complete benefits enrollment (30:28)
+Register for Staff Appreciation Night (33:55)
+Review Journey checklist (35:14)
+Verify payroll deductions (36:46)
+Send ASU document (50:16)
+
+**Silas**
+Repair damaged flooring (22:24)
+
+**Coach Rash**
+Film sprint and jump videos (24:12)
+
+### Keywords
+
+Load management, Athletic performance, Team training, Sports medicine, Benefits enrolment, Campus engagement
+

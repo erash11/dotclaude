@@ -1,11 +1,11 @@
 ---
 name: automation-cadence
-description: "Standing automation schedule on Mac + Windows — ritual nudges, memsearch reindex + recall eval timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
+description: "Standing automation schedule (Mac only since 2026-10-08) — digests, ritual nudges, memsearch reindex + recall eval timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-04T17:45:11.644Z
+  modified: 2026-10-08T23:02:03.657Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -41,14 +41,22 @@ a problem), retrying a step that exits 0xC0000142. Log: `audits/recall-eval/logs
 Why: as three separate actions, action 2 died at 02:10 with 0xC0000142 (DLL init failed, never
 ran a line) on 10-01 and 10-04; it runs fine by hand. `\Eric\memsearch-drain-once` no longer exists.
 
-## Claude files digest (Windows, since 2026-10-04)
+## Mac is the only scheduler (since 2026-10-08)
 
-`\Eric\claude-files-digest` runs daily at **06:30** (and on wake if missed): it emails
-Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored commits, grouped by
-repo with full paths. It fetches all repos and reads `--all`, so the Mac's work counts once
-pushed. Sent through the `gws` CLI, like DailyGmailDigest. Script
-`~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`); a failed send logs to
-`.errors.log`. Files outside git (Drive) are not listed.
+The Windows laptop is hands-off ([[work-laptop-hands-off]]); every Windows entry in this file
+is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claude` commit `08d3113`):
+
+- **Claude files digest** — launchd `com.keystone.filesdigest`, daily **06:30** (runs on wake if
+  missed). Emails Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored
+  commits, by repo, via `gws`. `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`).
+- **Nightly digest** — plist `com.keystone.nightlydigest` (21:00) is built but **not installed**:
+  it waits in `~/handoff-staging/launchd/` until a `--dry-run` passes (its Drive-tree walk ran
+  >25 min on 10-08 while other Drive jobs were running).
+- **Run nowhere now:** memsearch-drain-weekly (the recall eval), DailyGmailDigest
+  (`DEV/agy/daily_digest.py`), Backup AI Sessions (`backup-ai-sessions.ps1`; the Mac daily backup
+  already snapshots `.codex/sessions`), CFB-ForecastCaptureReminder.
+- Agents cannot write `~/Library/LaunchAgents` (auto-mode blocks it as persistence): stage the
+  plist and Eric installs with `cp … && launchctl bootstrap gui/$(id -u) <plist>`.
 
 ## OS audits
 
