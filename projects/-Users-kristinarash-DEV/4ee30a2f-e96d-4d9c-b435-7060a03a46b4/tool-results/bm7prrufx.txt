@@ -1,0 +1,440 @@
+{
+ "id":"Q83",
+ "sourceFile":"Return to play in professional football players following traumatic cervical spine injury - Expert opinions from the National Football League spine surgeons.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title 'Return to play in professional football players following traumatic cervical spine injury: expert opinions from the National Football League spine surgeons' in the text matches the filename (J Neurosurg Spine, DOI 10.3171/2024.8.SPINE24421).",
+ "confidence":"high",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Sports Medicine & Injury",
+ "domains":["Sports Medicine & Injury","Rehabilitation & Return to Sport"],
+ "audiences":["Sports Medicine","Athletic Training","Rehabilitation"],
+ "sports":["American Football"],
+ "populations":["Professional / Elite","Mixed / Unspecified"],
+ "evidenceSummary":"Cross-sectional online survey of 26 NFL team spine consultants (from 49 invited, covering 21 of 32 teams) answering five hypothetical cervical injury vignettes on management and return-to-play criteria. Most favoured anterior cervical discectomy and fusion for symptomatic disc herniation (73% for radiculopathy, 88% for myelopathy), a rigid orthosis for nondisplaced unilateral facet fracture (68%) and single-level fusion for facet dislocation (56%). Six months was the most common time to full professional play for both disc vignettes (42% and 38%).",
+ "screeningLimitations":"The sample is 26 consultants' opinions on hypothetical vignettes, not outcomes in players, so the study cannot show which treatment or clearance timing returns players to play more safely. The authors state the results are not a consensus statement or return-to-play guideline.",
+ "synthesisCaution":"Staff could read the common 6-month return timeline or the fusion-based clearance criteria as a validated standard, when they reflect how a small group of consultants answered hypothetical cases.",
+ "paper":{
+   "year":2024,
+   "citation":"White MD, Hersh AM, Weber-Levine C, et al. Return to play in professional football players following traumatic cervical spine injury - Expert opinions from the National Football League spine surgeons. J Neurosurg Spine. 2024.",
+   "doi":"10.3171/2024.8.SPINE24421",
+   "abstract":"Objective: to report NFL team spine consultants' management and return-to-play decisions after cervical spine injury. Methods: a cross-sectional online survey of five clinical vignettes (radiculopathy, myelopathy, unilateral facet fracture, unilateral facet dislocation, and neck pain with ligamentous STIR signal), using multiple-choice and open-ended questions. Results: 26 physicians from 21 of 32 teams responded. Anterior surgery was most common for disc herniation with radiculopathy (73%) or myelopathy (88%); a rigid orthosis was preferred for nondisplaced facet fracture (68%), and single-level anterior fusion for facet dislocation (56%). Common clearance criteria were a normal examination, pain-free range of motion and radiographic fusion or fracture healing. Conclusions: decisions are complex and vary, and the results show how team consultants may counsel players.",
+   "tldr":"NFL team spine consultants mostly favour anterior fusion for disc herniations with radiculopathy or myelopathy and a rigid orthosis for nondisplaced facet fractures. Clearance criteria vary, and most require a normal neurological exam and imaging evidence of healing or fusion.",
+   "methods":"Cross-sectional online survey (SurveyMonkey) sent to 49 NFL spine consultants on all 32 teams, with five hypothetical vignettes built from non-NFL patient images. Responses were summarised descriptively, and chi-square or Fisher exact tests compared return-to-play timing by management choice. Of 26 respondents, one who stopped after the second vignette was excluded from later analyses.",
+   "findings":"Anterior cervical discectomy and fusion was the most common choice for disc herniation with radiculopathy (73%) or myelopathy (88%), and the most common time to full professional play was 6 months (42% and 38%). For clearance after disc herniation with radiculopathy, respondents cited a normal examination (85%), radiographic fusion (58%) and pain-free range of motion (50%), and listed persistent stenosis (35%) and instability (31%) as contraindications. Authors describe timing for clearance as highly variable, with 6 to 12 months the common range for facet injuries.",
+   "limitations":"The results are expert opinion and self-reported practice from 26 of 49 invited consultants, not player outcomes or a formal consensus. Vignettes are hypothetical and use non-NFL images, and the survey cannot capture all injuries, treatments or clinical nuances. Respondents may read instability and healing on imaging differently, and the authors note the survey is a framework for later Delphi work.",
+   "practicalImplications":"Expect team physicians to clear a player for full contact only after a normal neurological examination, pain-free full neck motion and, after surgery, imaging evidence of fusion. Plan around the common 6 to 12 month window for full play after the cited injury types rather than an early return. Consider nonoperative care first for nondisplaced facet fractures, with surgery favoured for facet dislocation.",
+   "athleteDev":"Use these clearance criteria to set the gate for progressing a player back to full contact after a cervical injury: normal neurological exam, pain-free full neck range of motion and, after fusion, imaging evidence of healing. Performance staff should not treat the 6 to 12 month timelines as training benchmarks, because they describe clearance for full professional play.",
+   "rtp":"The survey shows the criteria NFL spine consultants commonly cite for clearing players after disc herniation, facet injury and ligamentous injury. These include a normal or improved neurological exam (68% to 88% across vignettes) and pain-free full range of motion (31% to 50%). It cannot set a return-to-play standard, because the cases are hypothetical and no player outcome data are reported."
+ }
+}
+
+ CLINICAL ARTICLE
+ Return to play in professional football players following
+ traumatic cervical spine injury: expert opinions from the
+ National Football League spine surgeons
+ Presented at the 2024 AANS/CNS Joint Section on Disorders of the Spine and Peripheral Nerves
+ *Michael D. White, MD,1 Andrew M. Hersh, MD,2 Carly Weber-Levine, MS,2 Kelly Jiang, MS,2
+ A. Daniel Davidar, MBBS,2 Victoria Bergstein, BA,2 Vikas N. Vattipally, BS,2
+ Scott L. Zuckerman, MD, MPH,3 Allen K. Sills, MD,3 Randall W. Porter, MD,1
+ and Nicholas Theodore, MD2
+ Department of Neurosurgery, Barrow Neurological Institute, Phoenix, Arizona; 2Department of Neurosurgery, Johns Hopkins
+ 1
+ University School of Medicine, Baltimore, Maryland; and 3Department of Neurological Surgery, Vanderbilt University Medical
+ Center, Nashville, Tennessee
+ OBJECTIVE There is a paucity of high-quality return-to-play (RTP) data following treatment of cervical spine injuries
+ in contact sports. In this study, the authors gathered insights from National Football League (NFL) team spine surgeon
+ consultants to highlight current practices in treating cervical spine injuries and report decision-making regarding RTP in
+ professional American football players.
+ METHODS A cross-sectional, online survey was distributed to all NFL consulting physicians specializing in the manage-
+ ment of spine injuries. The survey covered the following five clinical vignettes of cervical spine injuries: 1) radiculopathy,
+ 2) myelopathy, 3) unilateral facet fracture, 4) unilateral facet dislocation, and 5) neck pain with MRI showing a ligamen-
+ tous STIR signal. Participants were asked about management options and criteria to clear players for RTP using a com-
+ bination of multiple-choice and open-ended answers.
+ RESULTS A total of 26 physicians from 21 of 32 (66%) teams responded. Anterior surgery was most commonly recom-
+ mended for cervical disc herniation causing radiculopathy or myelopathy (73% and 88%, respectively). A rigid cervical
+ orthosis was preferred by 68% of experts for initial management of nondisplaced unilateral facet fracture, but single-level
+ anterior fusion was preferred by 56% for a unilateral facet dislocation. Common criteria to clear players for RTP with
+ cervical disc herniation causing radiculopathy included a normal examination (85%), radiographic fusion postoperatively
+ (58%), and pain-free range of motion (50%). Contraindications for RTP included persistent stenosis (35%), instability
+ (31%), multilevel fusion (27%), and persistent cord signal change (23%). Additional criteria for RTP in players with facet
+ fractures or dislocations included radiographic evidence of fracture healing (32% and 24%, respectively) and normal
+ flexion/extension radiographs (24% and 32%, respectively). Finally, for players with isolated ligamentous STIR signal
+ changes, resolution of MRI findings was required by 36% of responding physicians prior to RTP.
+ CONCLUSIONS Decision-making regarding RTP after cervical spine injuries in professional football players is complex
+ and influenced by improvement of symptoms, pain-free range of motion, and radiographic evidence of fusion or fracture
+ healing. Respondents preferred anterior cervical discectomy and fusion for disc herniations causing cervical radiculopa-
+ thy and myelopathy, rigid orthosis for unilateral facet fractures, and surgery for unilateral facet dislocations. The results
+ of this study provide insight into how surgeons serving as consultants to professional football teams may counsel players
+ who sustain cervical spine injuries.
+ https://thejns.org/doi/abs/10.3171/2024.8.SPINE24421
+ KEYWORDS football; spine; trauma; return to play; cervical; spinal cord injury
+ABBREVIATIONS ACDF = anterior cervical discectomy and fusion; NFL = National Football League; PCF = posterior cervical foraminotomy; PLC = posterior ligamentous
+complex; RTP = return to play; SCI = spinal cord injury.
+SUBMITTED April 2, 2024. ACCEPTED August 12, 2024.
+INCLUDE WHEN CITING Published online December 20, 2024; DOI: 10.3171/2024.8.SPINE24421.
+* M.D.W. and A.M.H. contributed equally to this work.
+©AANS 2024, except where prohibited by US copyright law J Neurosurg Spine December 20, 2024 1
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+White et al.
+T
+ he high-velocity and high-impact nature of Ameri- the neck down. MRI demonstrated diffuse cervical steno-
+ can football places athletes at risk for cervical spine sis from a congenitally narrow canal (axial diameter of 9
+ injuries that can range from minor strains causing mm from C2 to C7) with cord edema at C4–5 and no evi-
+neck pain to catastrophic spinal cord injury (SCI). Epide- dence of active cord compression (Fig. 1B). The symptoms
+miological studies of injuries sustained by players in the improved within 24 hours, but a follow-up visit revealed
+National Football League (NFL) report that approximate- bilateral hyperreflexia with positive Hoffman’s and Babin-
+ly 44% of all injuries to the axial skeleton or spine oc- ski’s signs. These two cases compared the differences in
+cur in the cervical spine.1 Additionally, cervical fractures, treatment and RTP considerations for cervical disc hernia-
+cervical disc herniations, and traumatic SCI represent tions causing foraminal stenosis/nerve root compression
+three of the top injuries that lead to the most time away versus those causing cord compression, incomplete SCI,
+from play.1 Although there is an abundance of literature and myelopathy.
+pertaining to the optimal treatment of cervical pathology The third vignette (case 3) highlighted a hypothetical
+in the general population, treatment decisions for football player with a unilateral C6 facet fracture from helmet-to-
+players need to account for additional factors such as lost helmet contact. The facet fracture involved less than 40%
+playing time, effects of surgical intervention on neck mo- of the lateral mass and had some extension to the C5–6
+bility and subsequent player performance, risks of rein- facet joint (Fig. 2A). The patient experienced burning par-
+jury or catastrophic injury when returning to full-contact esthesia of the left arm that resolved after 2 days of oral
+play, timing of return to play (RTP), and effects on overall steroids. The fourth vignette (case 4) described a hypo-
+career length. thetical player with a unilateral C4–5 facet fracture and
+ Clearing American football players to return to full- dislocation resulting in intense bilateral neck pain radiat-
+contact play requires complex decision-making, with the ing to the shoulders with stiffness following a tackle (Fig.
+potential for significant consequences given the potential 2B). Successful closed reduction of the perched facet was
+high-risk nature of these injuries. Treatment decision- achieved with 40 lbs of traction. Cases 3 and 4 compared
+making is at the discretion of players’ medical staff and differences in management for isolated and nondisplaced
+consultants. This study aims to highlight the current prac- unilateral facet fractures versus facet fractures with asso-
+tice patterns of professional-team spine surgeons affiliated ciated dislocation.
+with NFL clubs in treating various cervical spine injuries The final vignette (case 5) featured a hypothetical play-
+and decision-making regarding RTP criteria. These results er with immediate sharp neck pain following a blind-side
+will provide a better understanding of how these injuries tackle, with MRI showing prevertebral edema and hyper-
+are currently being managed, may educate spine surgeons intense signal changes on sagittal STIR sequences consis-
+treating similar injuries among contact sport athletes, and tent with injury of the anterior longitudinal ligament and
+identify areas of incongruity. mild posterior STIR changes in the posterior ligamentous
+ complex (PLC) from C2 to C6 (Fig. 3).
+Methods
+ Statistical Analysis
+Study Design
+ The responses were collected and analyzed using Mi-
+ The present study was deemed exempt from institu- crosoft Excel. The results were summarized using descrip-
+tional review board approval. A cross-sectional online tive statistics including percentages and proportions. Chi-
+survey was created using SurveyMonkey and distributed square and Fisher’s exact tests were calculated to compare
+to 49 NFL spine consultants specializing in the manage- differences in timing of RTP based on respondents’ choice
+ment of spine injuries across all 32 NFL teams. Partici- of management, with p < 0.05 considered statistically sig-
+pation in the survey was voluntary. Demographic infor- nificant.
+mation about the participating physician was collected
+including surgical specialty, level of competitive football
+players they evaluate clinically and treat, and the num- Results
+ber of football-related spinal injuries and surgeries per- Respondents
+formed. A total of 26 spine consultants responded to the survey,
+ representing 21 distinct NFL teams (Table 1). Respondents
+Survey Vignettes consisted of 16 (62%) neurosurgeons and 10 (38%) ortho-
+ The survey included five clinical vignettes (Supplemen- pedic surgeons. Most respondents (54%) indicated being
+tary Survey), with each vignette including a description in practice for longer than 20 years, with one respondent
+of the traumatic injury, symptoms, relevant patient imag- (4%) practicing less than 10 years. All respondents con-
+ing, and treatment options. The images were obtained in firmed caring for professional football players in the last
+patients who sustained injuries while playing football but 12 months. Twenty-one (81%) respondents also reported
+are not from NFL athletes. The first vignette (case 1) de- treating football players at the collegiate level, 6 (23%)
+scribed cervical radiculopathy in a hypothetical player ex- at the club (recreational) level, and 11 (42%) at the high
+periencing acute-onset right arm pain and hand numbness, school and below level. Most participants (81%) saw fewer
+without weakness, following a tackle. MRI showed a right than 10 football-related spine injuries in the past year, with
+C5 nerve root compression from a herniated disc (Fig. 5 (19%) seeing greater than 10 injuries. One participant
+1A). The second vignette (case 2) featured an incomplete stopped responding after the second vignette and was ex-
+SCI at C4–5 with transient weakness and numbness from cluded from subsequent analyses.
+2 J Neurosurg Spine December 20, 2024
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+ White et al.
+ FIG. 1. A: Case 1. Sagittal and axial MR imaging showing a lateral disc herniation causing compression of the right C5 nerve root.
+ B: Case 2. Sagittal and axial MR imaging showing broad-based disc herniation at C4–5.
+Cases 1 and 2: Cervical Disc Herniation Causing (31%) respondents would not allow the player in case 2 to
+Radiculopathy or Incomplete SCI/Myelopathy RTP after an incomplete SCI. Conversely, in the case of
+ Most respondents favored anterior approaches for play- cervical disc herniation causing radiculopathy, all respon-
+ers with symptomatic cervical disc herniation, with 19 dents favored RTP.
+(73%) and 23 (88%) surgeons favoring anterior cervical The free-response section included additional criteria
+discectomy and fusion (ACDF) for radiculopathy and that respondents use when evaluating a player with cer-
+myelopathy/SCI, respectively (Table 2). The majority of vical disc herniation for RTP. The most commonly cited
+respondents did not require bracing after surgery in both criteria were normal/improved neurological examination,
+cases (62% and 54% for radiculopathy and myelopathy/ evidence of solid fusion on postoperative imaging, pain-
+SCI, respectively). Among respondents who preferred free and full range of motion, and resolution of abnormal
+postoperative bracing, there was variability in the timing cord signal change if present at the time of initial injury.
+of bracing. Similarly, most respondents agreed on radio- The most commonly cited contraindications for clearing a
+graphic follow-up for 12 months (69% and 73% for radicu- player for RTP included persistent symptoms/neurological
+lopathy and myelopathy/SCI, respectively) and resuming deficits, continued significant stenosis, persistent abnor-
+light training at 6 weeks (81% and 58% for radiculopathy mal cord signal change on follow-up MRI, and malalign-
+and myelopathy/SCI, respectively). ment/instability.
+ For case 1 involving cervical disc herniation and radic-
+ulopathy, the consensually recommended time until clear- Cases 3 and 4: Unilateral Facet Fracture or Dislocation
+ance for return to full professional play was significantly The player in case 3 with an isolated and nondisplaced
+shorter for those recommending posterior cervical foram- unilateral facet fracture was most commonly treated ini-
+inotomy (PCF) compared to those recommending ACDF tially with a rigid cervical orthosis by 17 (68%) respon-
+(p = 0.01) (subgroup analyses in Supplementary Tables dents. However, cervical orthosis was only recommended
+1–4). Overall, there was significant variability observed by 6 (24%) surgeons as the initial treatment for the player
+with optimal time to resume normal training and full RTP, in case 4 with a unilateral facet dislocation. The most
+although 6 months was the most common recommenda- commonly chosen treatment for this player was with up-
+tion for both cases (42% and 38% for the radiculopathy front surgical treatment with ACDF by 56% of surgeons
+and the myelopathy/SCI cases, respectively). However, 8 (Table 3). Additionally, 5 (20%) surgeons selected poste-
+ J Neurosurg Spine December 20, 2024 3
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+White et al.
+ TABLE 1. Characteristics of survey respondents
+ Characteristic No. of Respondents (%)
+ Specialty
+ Neurosurgery 16 (62)
+ Orthopedic surgery 10 (38)
+ Yrs of practice
+ <10 1 (3.8)
+ 11–20 11 (42)
+ >20 14 (54)
+ Competitive athletic football players cared
+ for in last yr
+ Club 6 (23)
+ K–12 11 (42)
+ Collegiate 21 (81)
+ Professional 26 (100)
+ Vol of football-related spinal injuries in last yr
+ <10 21 (81)
+ 11–25 3 (12)
+ 26–50 2 (7.7)
+ Vol of spine surgery for football-related
+ injuries in last yr
+ 0 21 (81)
+ 1–2 3 (12)
+ 3–5 1 (3.8)
+ >5 1 (3.9)
+ rior cervical fusion for treatment of the unilateral facet
+ dislocation. There was significant variability observed in
+FIG. 2. A: Case 3. Sagittal MR imaging and axial and sagittal CT imag- the length of bracing by respondents who recommended
+ing showing a nondisplaced fracture of the left C6 facet (arrows) involv- initial bracing for case 3, with 6 (33%) respondents sug-
+ing less than 40% of the lateral mass with extension to the C5–6 facet gesting 6 weeks, 4 (22%) suggesting 8 weeks, and 8 (44%)
+joint. B: Case 4. Sagittal and axial CT imaging showing a perched right suggesting 12 weeks. The two most common intervals se-
+C4–5 facet (arrows). Figure is available in color online only. lected for radiographic follow-up for the unilateral facet
+ fracture were 6 months (32%) and 12 months (56%). In
+ the case of unilateral facet dislocation, most respondents
+ (80%) recommended continuing radiographic follow-up
+ for 12 months.
+ Most respondents favored resuming light, noncontact
+ training at either 6 weeks or 3 months, with greater dis-
+ agreement concerning the time to resume normal train-
+ ing, although most suggested waiting at least 6 months.
+ The recommended timing for players with unilateral facet
+ dislocation to be cleared for full RTP was not significantly
+ different between respondents suggesting initial nonop-
+ erative treatment with rigid cervical orthosis and those
+ recommending upfront surgery (p = 0.64). All but one
+ respondent recommending initial treatment with cervical
+ orthosis indicated waiting 6–12 months before RTP. Simi-
+FIG. 3. Case 5. Sagittal (A) and axial (B) MR imaging showing prever- larly, all but one respondent who recommended initial
+tebral edema and STIR changes consistent with injury of the anterior surgical treatment also suggested waiting 6–12 months
+longitudinal ligament at C2–5, along with mild posterior STIR changes before RTP. All surgeons agreed that these players are not
+in the PLC of C2–6. contraindicated for eventual RTP.
+ Additional criteria noted in the decision-making for
+ RTP included normal/improved neurological examina-
+ tion, no radiographic evidence of instability on flexion/
+4 J Neurosurg Spine December 20, 2024
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+ White et al.
+TABLE 2. Respondent choices concerning treatment of a football » CONTINUED FROM PREVIOUS COLUMN
+player who develops cervical radiculopathy (case 1) or myelopathy TABLE 2. Respondent choices concerning treatment of a football
+(case 2) player who develops cervical radiculopathy (case 1) or myelopathy
+ No. of Respondents (case 2)
+ (%; n = 26) No. of Respondents
+ Cervical Cervical (%; n = 26)
+ Radiculopathy Myelopathy Cervical Cervical
+Op Radiculopathy Myelopathy
+ ACDF 19 (73) 23 (88) Contraindications to RTP† (continued)
+ PCDF 0 (0) 3 (12) Significant stenosis 9 (35) 8 (31)
+ MI-PCF 7 (27) — Malalignment/instability 8 (31) 5 (19)
+ PCD alone — 0 (0) Multilevel disease/multilevel fusion 7 (27) 3 (12)
+Postop bracing Cord signal change 6 (23) 7 (27)
+ No bracing 16 (62) 14 (54) Pseudarthrosis 4 (15) 4 (15)
+ 4 wks 6 (23) 4 (15) History of SCI — 3 (12)
+ 6 wks 2 (7.7) 4 (15) MI = minimally invasive; PCD = posterior cervical decompression; PCDF =
+ 8 wks 1 (3.8) 2 (7.7) PCD and fusion; ROM = range of motion.
+ 12 wks 1 (3.8) 2 (7.7) * Respondents who selected “never” for RTP were not included in the analysis.
+ † Percentages tally above 100% due to respondents writing multiple options.
+Last radiographic follow-up This question was posed as an open-ended response, while the other ques-
+ 4–8 wks 4 (15) 0 (0) tions were multiple choice.
+ 3 mos 1 (3.8) 3 (12)
+ 6 mos 2 (7.7) 4 (15)
+ 9 mos 1 (3.8) 0 (0)
+ 12 mos 18 (69) 19 (73)
+ extension radiographs, pain-free and full range of motion,
+ radiographic evidence of bony healing of the fracture, and
+Resume light, noncontact training radiographic evidence of fusion for players who under-
+ 6 wks 21 (81) 15 (58) went cervical fusion. Contraindications to RTP cited in
+ 3 mos 4 (15) 8 (31) the free-response section included persistent symptoms,
+ 6 mos 1 (3.8) 3 (12) abnormal healing of the fracture, kyphosis/malalignment,
+ 9 mos 0 (0) 0 (0) significant stenosis, instability, or pseudarthrosis for play-
+ 12 mos 0 (0) 0 (0)
+ ers who underwent cervical fusion.
+Resume normal training
+ Case 5: Neck Pain With Anterior Longitudinal Ligament
+ 6 wks 2 (7.7) 0 (0) and PLC Injury
+ 3 mos 8 (31) 6 (23) There was notable variability among respondents re-
+ 6 mos 12 (46) 9 (35) garding the duration of bracing for the patient in case 5
+ 9 mos 2 (7.7) 2 (7.7) (Table 4). The most common selection by 11 (44%) respon-
+ 12 mos 2 (7.7) 9 (35) dents was for 6 weeks of bracing, with the second most
+RTP common selection by 5 (20%) respondents for no bracing
+ at all. Return to full professional play was most commonly
+ 6 wks 1 (3.8) 1 (3.8)
+ recommended after 3 months (36%) or 6 months (40%).
+ 3 mos 8 (31) 1 (3.8) One respondent (4.0%) recommended that this player nev-
+ 6 mos 11 (42) 10 (38) er RTP, citing concern over ligamentous injury and mul-
+ 12 mos 6 (23) 6 (23) tilevel involvement. Criteria for RTP reported in the free-
+ Never 0 (0) 8 (31) response section included normal/improved neurological
+RTP clearance criteria*,† examination, no radiographic evidence of instability on
+ flexion/extension radiographs, pain-free and full range of
+ Normal/improved neurological exam 22 (85) 23 (88)
+ motion, and resolution of STIR signal on follow-up MRI.
+ Full/pain-free ROM 13 (50) 8 (31) Persistent symptoms, evidence of instability, significant
+ Fusion on imaging 15 (58) 16 (62) stenosis, persistent abnormal MRI signal changes, and
+ Maintenance of cervical lordosis 3 (12) — multilevel injury were cited in the free-response section as
+ Resolution of T2 signal change/ — 9 (35) contraindications to clearing this player to RTP.
+ neural compression
+Contraindications to RTP† Discussion
+ Persistent deficits/symptoms 15 (58) 15 (58) Cervical spine injuries in American professional foot-
+ CONTINUED IN NEXT COLUMN » ball players present challenges in decision-making for the
+ optimal management and safe RTP. Our understanding
+ J Neurosurg Spine December 20, 2024 5
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+White et al.
+TABLE 3. Respondent choices concerning treatment of a » CONTINUED FROM PREVIOUS COLUMN
+football player who develops unilateral facet fracture (case 3) or TABLE 3. Respondent choices concerning treatment of a
+dislocation (case 4) football player who develops unilateral facet fracture (case 3) or
+ No. of Respondents dislocation (case 4)
+ (%; n = 25) No. of Respondents
+ Unilat Facet Unilat Facet (%; n = 25)
+ Fracture Dislocation Unilat Facet Unilat Facet
+Treatment Fracture Dislocation
+ PCF 1 (4) 5 (20) Full/pain-free ROM 10 (40) 9 (36)
+ Single-level ACDF 7 (28) 14 (56) Fusion on imaging 10 (40) 11 (44)
+ Rigid cervical orthosis 17 (68) 6 (24) Contraindications to RTP†
+Bracing length (respondents favoring Persistent deficits/symptoms 10 (40) 12 (48)
+bracing w/o op) Abnormal bony healing/kyphotic 10 (40) 9 (36)
+ 4 wks 0 (0) 0 (0) deformity
+ 6 wks 6 (33) 1 (17) Significant stenosis 4 (16) 5 (20)
+ 8 wks 4 (22) 3 (50) Instability 8 (32) 7 (28)
+ 12 wks 8 (44) 2 (33) Pseudarthrosis 4 (16) 5 (20)
+Bracing length (respondents favoring op) * Respondents who selected “never” for RTP were not included in the analysis.
+ No bracing 1 (12) 6 (32) † Percentages tally above 100% due to respondents writing multiple options.
+ 4 wks 3 (38) 3 (16) This question was posed as an open-ended response, while the other ques-
+ tions were multiple choice.
+ 6 wks 3 (38) 4 (21)
+ 8 wks 0 (0) 2 (11)
+ 12 wks 1 (12) 4 (21)
+Radiographic follow-up of how operative versus nonoperative treatment for vari-
+ 4–8 wks 0 (0) 0 (0) ous cervical spine injuries affects the ability of players to
+ safely return to full-contact play has evolved. The prior
+ 3 mos 2 (8.0) 0 (0)
+ belief that RTP was contraindicated for players after one-
+ 6 mos 8 (32) 4 (16) level ACDF, for example, has been largely superseded by
+ 9 mos 1 (4.0) 1 (4.0) a multitude of studies demonstrating RTP to be generally
+ 12 mos 14 (56) 20 (80) safe with a low risk of subsequent cervical spine–related
+Resume light, noncontact training injury.2–5 The complexity and wide spectrum of cervi-
+ 6 wks 10 (40) 9 (36) cal injuries among football players have made establish-
+ ing standardized protocols for these injuries difficult and
+ 3 mos 13 (52) 14 (56)
+ impractical. Randomized or multicenter studies to pro-
+ 6 mos 1 (4.0) 1 (4.0) vide clear evidence-based practices are not feasible when
+ 9 mos 0 (0) 1 (4.0) studying elite athletes, and our current approach to man-
+ 12 mos 1 (4.0) 0 (0) aging these patients is largely based on small retrospec-
+Resume normal training tive cohorts and recommendations from experts.6 Here, we
+ 6 wks 0 (0) 0 (0) present survey results from 26 consulting football spine
+ surgeons highlighting current practice patterns for man-
+ 3 mos 6 (24) 7 (28)
+ agement and RTP after traumatic cervical spine injury in
+ 6 mos 14 (56) 8 (32) professional football players.
+ 9 mos 3 (12) 4 (16)
+ 12 mos 2 (8.0) 6 (24) Cervical Disc Herniation
+RTP Cervical disc herniation is a common pathology among
+ 6 wks 1 (4.0) 0 (0) elite athletes and is observed at a higher frequency in pro-
+ 3 mos 5 (20) 2 (8.0) fessional football players than in the general population.7,8
+ 6 mos 13 (52) 12 (48)
+ Although most cervical disc herniations present with as-
+ sociated symptoms, these typically resolve before com-
+ 12 mos 6 (24) 11 (44) plete radiographic resolution, and RTP timing is therefore
+ Never 0 (0) 0 (0) controversial. Most surgeons would allow RTP when the
+RTP clearance criteria*,† player is asymptomatic and radiographic images demon-
+ Normal/improved neurological exam 21 (84) 19 (76) strate resolution of the herniation, while most symptomat-
+ Fracture healed on imaging 8 (32) 6 (24) ic herniations are an absolute contraindication to play.6,9,10
+ Normal flexion-extension radiographs 6 (24) 8 (32)
+ Isolated cervical radiculopathy is the most common pre-
+ (no instability)
+ senting symptom but can also present with bilateral neck
+ pain, myelopathy, or transient quadriplegia.11 First-line
+ CONTINUED IN NEXT COLUMN » treatment for symptomatic cervical disc herniation is con-
+6 J Neurosurg Spine December 20, 2024
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+ White et al.
+servative therapy for 4–8 weeks, which may include rest, TABLE 4. Respondent choices concerning treatment of a football
+anti-inflammatory medication, immobilization, and thera- player who develops acute neck pain with STIR signal changes
+peutic injections. Other studies have recommended that (case 5)
+surgical treatment for acute disc herniations should only No. of Respondents
+be performed in patients with acute neurological deficits, (%; n = 25)
+unresolved weakness, or myelopathy.8
+ Cases 1 and 2 presented two hypothetical player-pa- Bracing length
+tients with disc herniations: one with persistent radicu- No bracing 5 (20)
+lar symptoms and one with transient weakness and cord 4 wks 4 (16)
+signal change. ACDF was the most commonly selected 6 wks 11 (44)
+treatment, with 27% of surgeons selecting minimally in-
+ 8 wks 1 (4.0)
+vasive PCF for players with radicular symptoms. Both
+procedures have demonstrated near equivalence and good 12 wks 4 (16)
+outcomes in the general population,12 but success in pro- Radiographic follow-up
+fessional athletes is defined by several unique parameters, 4–8 wks 2 (8.0)
+including time to RTP, career length, neck flexibility, and 3 mos 7 (28)
+on-field performance after surgery. For example, Mai et al. 6 mos 8 (32)
+reported that 92% of professional athletes undergoing PCF 9 mos 1 (4.0)
+returned to play compared with 70% of those undergoing
+ACDF.13 Furthermore, the PCF group returned to play at 12 mos 7 (28)
+a rate 35% faster than the ACDF cohort; however, they Resume light, noncontact training
+had significantly higher rates of reoperation (46% vs 6%, 6 wks 15 (60)
+respectively).13 Both ACDF and PCF are viable treatment 3 mos 9 (36)
+options, and the decision for one over the other can be in- 6 mos 1 (4.0)
+fluenced by surgeon experience/preference and the goals 9 mos 0 (0)
+of treatment. PCF may be an enticing option for players
+ 12 mos 0 (0)
+early in the season to expedite their RTP with the under-
+standing that they are at a higher risk for reoperation in Resume normal training
+the future. Cervical disc arthroplasty was not presented 6 wks 1 (4.0)
+as a treatment choice in the survey, as there have been no 3 mos 15 (60)
+published reports of arthroplasty in professional football 6 mos 6 (24)
+players. However, there are reports of cases in professional 9 mos 1 (4.0)
+hockey players and collegiate football players.14–16 12 mos 2 (8.0)
+ RTP for players with myelopathy or SCI from a cervi-
+cal disc herniation is complicated by the higher risk of re- RTP
+peat injury and potentially permanent neurological deficits 6 wks 3 (12)
+when returning to full-contact play. Resolution of T2 cord 3 mos 9 (36)
+signal on follow-up MRI was highlighted by 9 respondents 6 mos 10 (40)
+who permit RTP after surgery. Persistent T2 cord signal 12 mos 2 (8.0)
+suggests the presence of neurodegeneration and demy- Never 1 (4.0)
+elination within the spinal cord. However, Tempel et al.
+ RTP clearance criteria*,†
+reported multiple cases of clearing athletes for RTP prior
+to resolution of T2 cord signal changes, with none of the Normal/improved neurological exam 17 (68)
+athletes reporting any episodes of neurapraxia or further Resolution of MRI findings 9 (36)
+injury.26 They suggested that without ongoing stenosis or Normal flexion-extension radiographs (no 16 (64)
+instability, the presence of persistent cord signal changes instability)
+should not prohibit RTP. However, a study of the Cervical Full/pain-free ROM 10 (40)
+Spine Research Society found weak consensus that players Contraindications to RTP†
+with continued T2 cord signal change and a canal diam-
+ Persistent deficits/symptoms 13 (52)
+eter less than 13 mm should not be allowed to RTP but can
+be considered on a case-by-case basis if the canal diameter Instability 12 (48)
+exceeds 13 mm.17 Significant stenosis 6 (24)
+ More than half of the respondents indicated that they Persistent abnormal imaging 5 (20)
+require follow-up imaging with evidence of solid fu- Multilevel injury 2 (8)
+sion prior to clearing the player for RTP. Although it is
+ * Respondents who selected “never” for RTP were not included in the analysis.
+reassuring to have radiographic evidence of solid fusion, † Percentages tally above 100% due to respondents writing multiple options.
+evidence is lacking regarding players with asymptomat- This question was posed as an open-ended response, while the other ques-
+ic pseudarthrosis and whether they can safely return to tions were multiple choice.
+contact sports. To date, there have not been any reports in
+the literature of significant implant complications for NFL
+players after undergoing ACDF and returning to play. The
+ J Neurosurg Spine December 20, 2024 7
+ Brought to you by University of Cincinnati | Unauthenticated | Downloaded 12/21/24 11:16 PM UTC
+White et al.
+concern with clearing football players back to full contact closed reduction with external fixation were stable at long-
+with pseudarthrosis at the operative level is the risk of in

@@ -1,0 +1,286 @@
+{
+ "id": "Q09",
+ "sourceFile": "Ramping isometrics for accelerated return to play following hamstring tendon repair - A case study.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Text title 'Ramping Isometrics for Accelerated Return to Play following Hamstring Tendon Repair: A Case Study' matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Case Report / Case Series",
+ "primaryDomain": "Rehabilitation & Return to Sport",
+ "domains": ["Rehabilitation & Return to Sport", "Sports Medicine & Injury", "Nutrition & Hydration"],
+ "audiences": ["Rehabilitation", "Sports Medicine", "Performance", "Nutrition"],
+ "sports": ["Rugby"],
+ "populations": ["Professional / Elite", "Male Athletes", "Injured Athletes"],
+ "evidenceSummary": "Single case report of one 27-year-old male elite international rugby union player with a retracted semimembranosus tear, combined with semitendinosus and biceps femoris injury, treated with surgical repair. A low-jerk ramping isometric protocol began in the first rehabilitation session, alongside progressive loading and a nutrition plan. The player returned to team training at week 10 and to play exactly 12 weeks after surgery, with a 14% eccentric Nordic deficit remaining at return to training, and the authors report no reinjury over the following two seasons.",
+ "screeningLimitations": "This is one uncontrolled player with no comparison group, so the ramping protocol cannot be separated from the collagen, creatine, blood flow restriction and other interventions, or from the player's motivation and surgical approach. The authors state that the eccentric tests after week 8 were done post-running in a fatigued state, which may have reduced their validity.",
+ "synthesisCaution": "Staff may read the 12-week return as proof that early ramped isometrics shorten return to play, when it is one player on a bundled program and the authors say the protocol's effect on healing is not yet demonstrated.",
+ "paper": {
+  "year": 2023,
+  "citation": "Power D, Haddad F, Wallis S, Baar K. Ramping Isometrics for Accelerated Return to Play following Hamstring Tendon Repair: A Case Study. Journal of Elite Sport Performance. 2023.",
+  "doi": "10.54080/MOMV6327",
+  "abstract": "This case study describes an elite international rugby union player with a retracted semimembranosus tear, combined with biceps femoris and semitendinosus injury, treated with surgical repair. The authors used a low-jerk ramping isometric protocol early in rehabilitation, alongside progressive loading and nutrition support. The player returned to team training at 10 weeks, returned to play at 12 weeks after surgery, and had no reinjury over the following two seasons.",
+  "tldr": "One elite rugby player returned to play 12 weeks after a surgically repaired semimembranosus tear, using early ramped isometrics within a bundled rehabilitation and nutrition plan. This single case shows the protocol was tolerated without reinjury, not that it speeds recovery.",
+  "methods": "Clinical case description of one player's post-surgical rehabilitation. Isometric loading began in the first session as 5-second ramps, a 20-second hold and a 5-second release, with a load sensor and phone app used for feedback. Strength was tracked with isometric heel-dig tests on a force platform and Nordic eccentric tests, and MRI was repeated at 8 weeks after surgery.",
+  "findings": "Nordic eccentric strength improved steadily with exposure, and the player returned to training with a 14% eccentric deficit, with a limb symmetry index of 17.5% at week 9. The authors report absolute eccentric strength above pre-injury baseline at return to play, and a between-limb imbalance they describe as moderate. Over the 16-week period, the summed eight skinfolds fell by 18.6 mm and body mass by 0.9 kg, and high-speed running distances after return were above pre-injury levels.",
+  "limitations": "This is a single uncontrolled case, and the protocol was one part of a multimodal program, so no effect of the isometric protocol can be isolated. The authors note that eccentric tests after running were fatigued, and that the isometric and eccentric results did not agree.",
+  "practicalImplications": "This case supports discussing early, pain-free ramped isometric loading with the surgeon after proximal hamstring tendon repair, with close monitoring of symptoms and tendon status. It does not establish a standard timeline, and the isometric dose and ramp rate should not be assumed to transfer to other injuries.",
+  "athleteDev": "Performance Application: The case shows a staged progression from isometrics to eccentric, reactive and high-speed work, with Nordic and isometric tests tracked as limb symmetry. Running was built from partial body-weight treadmill sessions to pitch-based high-speed running with GPS-based targets.",
+  "rtp": "Return to Sport Application: The 12-week return came from one player who passed the other criteria and still had a 14% eccentric deficit. It cannot set a return timeline for other players or injury grades, and it cannot show that ramped isometrics shorten recovery. Reinjury data cover only the two seasons reported."
+ }
+}
+
+                                                                         Power D, Haddad F, Wallis S, Baar K. Ramping Isometrics for Accelerated Return to Play
+                                                                         following Hamstring Tendon Repair: A Case Study. Journal of Elite Sport Performance.
+                                                                         Published online June 1, 2023. doi:10.54080/MOMV6327
+
+
+
+Case Studies
+
+Ramping Isometrics for Accelerated Return to Play following
+Hamstring Tendon Repair: A Case Study
+David Power1,2       , Fares Haddad3, Simon Wallis1, Keith Baar4
+1 Performance Department, Leicester, United Kingdom , Leicester Tigers, 2 Department of Sport & Exercise Science, , Northumbria University,
+
+Newcastle Upon Tyne, United Kingdom, 3 Department of Trauma and Orthopaedic Surgery, University College London Hospitals, London, UK,
+4 Department of Neurobiology, Physiology, and Behaviour, University of California Davis, Davis, CA, USA
+
+Keywords: semimembranosus, intramuscular tendon, ramping isometric loading, post-surgical hamstring rehabilitation
+https://doi.org/10.54080/MOMV6327
+
+
+
+Journal of Elite Sport Performance
+
+                   Semimembranosus injuries are becoming increasingly common in rugby union, often via
+                   an overstretch mechanism, particularly from the jackal action in deep hip flexion with
+                   simultaneous knee extension. This injury often requires surgical repair, leading to an
+                   estimated return to play (RTP) time of 16 weeks. This case study documents the RTP of
+                   an elite international rugby union player following a combined semimembranosus,
+                   semitendinosus, and biceps femoris injury, with surgical reconstruction of the retracted
+                   semimembranosus tendon. Using an early low-jerk ramping isometric protocol, the
+                   player returned to team training at 10 weeks with RTP at exactly 12 weeks
+                   post-operation. He continued to play at international and club level for the remaining 2
+                   seasons, without re-injury. This case study demonstrates how the early introduction of a
+                   ramped isometric protocol can be safe for muscle-tendon injuries and may improve
+                   expected recovery rates.
+
+
+INTRODUCTION                                                               we detail exercise progressions and how the early intro-
+                                                                           duction of a novel low-jerk isometric loading strategy fa-
+Injuries are common in rugby union.1 Recent attention has                  cilitated accelerated muscle and tendon adaptation and the
+been paid to player safety around the ‘breakdown’ or ‘ruck’                early return to participation (12 weeks post-surgery).
+area, particularly the safety of “the jackler,” or defensive
+player attempting to poach the ball from the opposition’s                  CASE CHARACTERISTICS
+tackled player before a ruck forms.2,3 This position involves
+                                                                           The player involved was a 27-year-old male front-row rugby
+the jackling player adopting a wide stance for stability with
+                                                                           union player, who gave informed consent for the use of
+maximal or near-maximal hip flexion while competing for
+                                                                           his information. He was an established senior international
+the ball and absorbing significant chaotic impacts from op-
+                                                                           player and played as a hooker. He had no prior injury his-
+position players who attempt to forcefully ‘clear out’ the
+                                                                           tory to the affected hamstring or any significant prior lower
+jackling player. A growing concern with this position is
+                                                                           limb soft-tissue injuries to note.
+forceful impacts causing excessive hip flexion leading to
+stretch-type injuries to the hamstrings, which may lead to
+                                                                           CASE PRESENTATION
+partial or complete tears of the semimembranosus muscle.
+Tears of this muscle with combined tendon retraction often                 MECHANISM OF INJURY
+require surgical repair to restore tendon function.4
+   Previous case studies of proximal semimembranosus re-                   The player suffered a stretch-type injury to his right ham-
+pair include an elite footballer who returned to training                  string complex during team training, while competing for
+(RTT) 18 weeks post-surgery,5 and epidemiological data                     the ball in a defensive ruck (Supplemental Video 1). He was
+suggests a high return to play (RTP) (95%) and low reinjury                hit by an opponent while in a position of combined maxi-
+rates following semimembranosus repair in professional                     mal hip flexion and knee extension. He instantly reported
+athletes.4 More distal semimembranosus repairs in profes-                  to the pitch-side physiotherapists the feeling of a ‘popping’
+sional rugby have reported RTP at 20 weeks.6 In this article,              sensation in his hamstring and was immediately removed
+we share the clinical outcomes and reasoning behind the                    from the session. Due to the mechanism of injury, loss of
+RTP process of a player who suffered a semimembranosus                     active and passive range, limited function, and significant
+tendon retracted tear with concomitant biceps femoris                      pain during clinical assessment, it was decided that an MRI
+long-head and semitendinosus injury, including the play-                   scan was warranted.
+ers’ strength diagnostics and RTP criteria for such an injury.
+   There are a wide variety of exercise interventions in pub-
+lished research addressing hamstring strain injury rehabili-
+tation; however, the quality of reporting is often low.7 Here,
+                                Ramping Isometrics for Accelerated Return to Play following Hamstring Tendon Repair: A Case Study
+
+
+
+                                                                                           tional MRI imaging if there were concerns or slow progres-
+                                                                                           sion.
+                                                                                              A broad post-surgical protocol that is typically followed
+                                                                                           was given to the medical team for reference (Appendix 1).
+                                                                                           The initial plan outlined a return to play at 16 weeks, as per
+                                                                                           the suggested protocol, and along with the basis of prior re-
+                                                                                           search of similar cases.5
+
+
+                                                                                           EARLY ISOMETRIC LOADING AND
+                                                                                           REHABILITATION PROGRESSIONS
+                                                                                           PROTECTION PHASE (WEEKS 1-3)
+
+                                                                                           The acute protection phase aimed to promote tissue heal-
+                                                                                           ing via optimal loading,9 maintenance of aerobic and
+                                                                                           anaerobic qualities, minimisation of atrophy, and estab-
+                                                                                           lishing a clear plan among the multidisciplinary team to
+Figure 1. Post-Injury MRI                                                                  ensure psychological readiness for the challenges ahead.
+                                                                                              Due to the expected length of RTP (16+ weeks), the
+MRI reported a full thickness tear of the semimembranosus intramuscular tendon
+16.5cm from the ischial tuberosity. Evidence of tendon disruption and retraction of the    player was offered a week off-site in the initial week post-
+tendon (BAMIC Grade 4C).8 Distal Semimembranosus and biceps femoris tendons are            surgery. During this phase, a multidisciplinary team case
+normal. No large haematoma. Normal signal intensity of the ischial tuberosity. Signifi-
+cant oedema noted tracking along the sciatic nerve and intermuscular septum. Myofas-
+                                                                                           conference was held to discuss the player’s rehabilitation
+cial oedema noted of the proximal biceps femoris and semitendinosus muscles sur-           plan and specific needs, with representatives from medical,
+rounding the whole circumference of the muscle extending into the lower 3rd of the         athletic performance, sport science, nutrition, and rugby
+thigh, in keeping with a BAMIC grade 3a myofascial strain injury of the proximal biceps
+femoris and semitendinosus muscles.
+                                                                                           coaching present to provide a clear plan for the first four-
+                                                                                           week block of rehabilitation.
+
+INVESTIGATIONS                                                                             EARLY LOADING
+
+An MRI was performed 4 days post-injury, showing a “sig-                                   The post-surgical protocol advised an initial protective pe-
+nificant stretch injury of the semimembranosus which had                                   riod of 6 weeks before beginning specific loading of the
+disconnected from proximal to distal, with a stretch injury                                hamstring muscle. Other studies have described no loading
+to the biceps femoris, semitendinosus and conjoint tendon,                                 of the injured tissue until 7 weeks post-operation.5 More
+but these injuries did not look to be complete” (Figure 1).                                recent work has suggested that early loading following
+                                                                                           musculoskeletal injury decreases RTP by 25%.10 The pos-
+CLINICAL HYPOTHESIS                                                                        sibility of earlier than routine isometric loading was pro-
+                                                                                           posed to the player’s surgeon, who was happy to load before
+Following MRI, as pain settled the player began low-inten-
+                                                                                           the recommended 6-week mark, provided this was moni-
+sity rehabilitation around the injured site, however, due to
+                                                                                           tored closely and that stretching of the hamstring muscles
+the extent of injury and evidence of tendon retraction, it
+                                                                                           was avoided. The player began formal physiotherapist-led
+was decided that a surgical opinion was required. An on-
+                                                                                           rehabilitation 7 days post-surgery.
+line call took place with the surgeon, player, and medical
+team 7 days post-injury. After a lengthy discussion, surgical
+                                                                                           RAMPING ISOMETRICS
+repair of the semimembranosus tendon, followed by brac-
+ing and physiotherapy, was agreed to provide the best pos-                                 To avoid potential damage early in the repair process, from
+sibility for returned power of the hamstring muscle com-                                   the first rehabilitation session, a ‘ramping’ isometric pro-
+plex in the medium-long term. The surgeon explained that                                   tocol was used to avoid the potentially damaging ‘jerk’ at
+such injuries usually have a 16-week timescale of recovery,                                the injured site as a result of regular isometric contrac-
+which varies from player to player.                                                        tions. This protocol involved the athlete increasing isomet-
+                                                                                           ric contraction intensity over ~5 seconds, sustaining this
+SURGICAL INTERVENTION                                                                      level of contraction for 20 seconds, and then slowly releas-
+                                                                                           ing the load over ~5 seconds. The player used an Activ-
+The player consented to surgery which took place 9 days
+                                                                                           body Activ5® load sensor device (Activbody Inc., San Diego,
+post-injury. Post-operative guidelines permitted mobilis-
+                                                                                           CA, USA) which provided contraction time and live force
+ing, partial weight-bearing with crutches in a hinged knee
+                                                                                           output (N) feedback for the athlete via a phone app (Ac-
+brace at 60-120˚ for 2 weeks, followed by 30-120˚ for a fur-
+                                                                                           tivForce 2 App), to ensure progressive overload between
+ther 2 weeks. From the beginning of week 5, the athlete was
+                                                                                           sessions11(Supplemental Video 2). While a general recom-
+permitted to regain a short-step gait pattern with the re-
+                                                                                           mendation for low-jerk isometrics is to permit a 2-3/10 on
+moval of the brace. He used Aspirin and TED stockings VTE
+                                                                                           a VAS pain scale,12,13 the player was instructed to complete
+prophylaxis with pictures of his wound to be sent at 2 weeks
+                                                                                           the loading in a pain-free state. This was considered pru-
+(Figure 2), clinical reassessment at 8-10 weeks, and addi-
+
+
+                                                                        Journal of Elite Sport Performance                                             2
+                               Ramping Isometrics for Accelerated Return to Play following Hamstring Tendon Repair: A Case Study
+
+
+
+
+Figure 2. Surgical and Post-Surgical images
+(A) Operative image. The procedure was undertaken under general anesthesia with Cefuroxime and tranexamic acid cover. He was placed in the prone position. A longitudinal inci-
+sion was used. Diathermy haemostasis was obtained. The posterior cutaneous nerve of the thigh was retracted laterally with the main muscle mass and the medial window was
+opened. There was an oblique staggered tear of the semimembranosus with at least a 1- to 1.5-centimeter retraction. This was accessed without difficulty. Three sets of no. 5 Ethi-
+bond Kessler sutures were used to bring the main distal and proximal segments together which allowed tension restoration. This was then reinforced with 1 Vicryl, both transversely
+and longitudinally, to restore good tension to the semimembranosus tendon and membrane. A thorough washout was performed. The sciatic nerve did not need to be dissected. After
+a thorough washout, closure was effected with 3/0 Monocryl sutures to skin. Bio Occlusive dressings were applied. (B) Wound review image – 2 weeks post-surgery. (C) Wound review
+image – 3 weeks post-surgery.
+
+
+
+dent due to the early nature of the loading and the likeli-                                ering to touch a box, then to the floor, and to depth (Sup-
+hood that given the player’s character, he would be likely                                 plemental Video 3).
+to push excessively if encouraged to reach into pain.14,15
+The low-jerk ramping contractions were prescribed as col-                                  RELOAD (WEEKS 4-7)
+lagen and muscle damage has been shown to increase with
+strain rate.16,17 The 5-second strain ramp decreases strain                                The aims of the ‘Reload’ phase were to build injury-specific
+rate while allowing the directional load through the tissue                                tissue capacity, restore the athlete’s confidence for running
+required for proper orientation of the matrix.18                                           and prepare for a return to on-field running. This required
+   Isometric loading range of motion was progressed within                                 progressions through extensive plyometrics, pre-running
+restrictions of the bracing. All contractions were done                                    coordination drills, AlterG® anti-gravity treadmill (AlterG®,
+within the permitted range of the brace (60-120˚ for 2 weeks                               California US) running progressions, and a return to full bi-
+post-op, followed by 30-120˚ for a further 2 weeks) while                                  lateral S&C participation.
+avoiding combined knee extension and hip flexion to min-
+imise stretch and potential disruption of the healing site.                                RETURN TO STRENGTH TRAINING
+
+                                                                                           At 4 weeks and 3 days post-op, the player began yielding
+EARLY ISOTONIC LOADING
+                                                                                           isometric loading on compound lifts using barbell RDL (Ro-
+Alongside the hamstring-specific isometric loading, iso-                                   manian deadlift), split-stance RDL’s and barbell split
+tonic loading of surrounding muscles and synergists took                                   squats.31 These quickly progressed to submaximal eccentric
+place immediately in rehabilitation with the aim of en-                                    quasi-isometrics (EQI) using the same exercises, main-
+couraging mechanotransduction and potential lateral force                                  tained with a long time under tension (~40 seconds) per
+transmission to the healing site19,20 along with nutritional                               rep to promote tendon adaptation and were used to build
+support (See Table 1). The uninjured contralateral lower                                   confidence in tolerating slow loading through range and
+limb was trained to stimulate both a cross-education effect,                               segue to return to low-load compound lifts. Later the same
+with the aim of minimising atrophy and cortical inhibition                                 week, he returned to isotonic bilaterally loaded RDL and
+of the affected limb,21 and the promotion of a biochemical                                 hip thrust, split squat, single-leg goblet box squat, and con-
+milieu that promotes collagen synthesis and matrix                                         tinued to combine these with EQI’s of progressing inten-
+strengthening.22 Upper body and trunk strength work was                                    sities. EQI exercise has been shown result in less muscle
+also progressed throughout the rehabilitation, while modi-                                 soreness, lower increases in echo intensity (a proposed
+fied rugby-skills work was prescribed as appropriate.                                      measure of muscle damage and intra and intercellular
+   Progressive slow standing ‘slouching’ exercises across                                  metabolite accumulation), and smaller reductions in iso-
+multiple planes of hip rotation were introduced as early as                                metric and concentric torque at long muscle lengths when
+tolerated, used as graded exposure to standing hip flexion                                 compared with traditional eccentric contractions.32 Subse-
+and knee extension activities and restored confidence into                                 quent reviews argue EQI contractions would likely be valu-
+‘jackal-specific’ loading.23 Range was progressed from low-
+
+
+                                                                      Journal of Elite Sport Performance                                                                         3
+                         Ramping Isometrics for Accelerated Return to Play following Hamstring Tendon Repair: A Case Study
+
+
+
+Table 1. Nutrition Intervention
+
+    •   From day 1 post-op, the player began collagen and vitamin C supplementation, with an aim to enhance tendon and muscle matrix adaptations to
+        loading.
+    •   The athlete was provided 20g of hydrolysed collagen in shot form, with 80mg vitamin C one hour before training and with breakfast on days
+        when training was not completed. This intervention has been shown to double load-induced collagen synthesis24 and accelerate RTP following
+        ACL reconstruction.25
+    •   To minimise muscle atrophy and reduce excess unnecessary inflammation, the player supplemented daily with 4g Omega 3 fish oil (2000mg
+        Eicosapentaenoic acid (EPA), 1000mg docosahexaenoic acid (DHA)26 and two 60ml turmeric shots (The Turmeric Co – Raw Turmeric & Ginger),
+        promoting curcumin intake,27,28 per day. The player was provided with support in periodizing his energy intake to meet the demands of his
+        training, prioritising 3 hourly protein intakes of 40g29 with the aim of achieving 2.3g/kg/BM (262g).26
+    •   To expedite the accrual of muscle mass on the immobilised limb once loading commenced, the player commenced creatine supplementation. Ini-
+        tially loading with 20g/d (split into bidaily 10g doses) over 7 days followed by a 5g/d maintenance dose thereafter.30
+
+
+
+
+able in rehabilitative settings prior to high intensity load-                  play, with a shift in emphasis from local restoration to
+ing.33                                                                         global performance. Strength work progressed in intensity
+   Hamstring loading in this phase consisted of progressive                    to high-impact reactive loading and accentuated eccentric
+isotonic loading through range using hamstring bridges off                     loading (AEL), with added focus on the right lower limb.
+a box at inner, mid, and eventually outer range and pro-                       Loading volumes of assistance exercises were mismatched
+gressing from bilateral, b-stance/split stance, to unilateral                  as appropriate to target between-limb hamstring strength
+(Supplemental Video 4). At this point, he also added a sin-                    deficits.
+gle leg machine leg curl for knee dominant hamstring                              Given the player’s unique position, graded exposure to
+strength. Blood flow restriction (BFR) training was used to                    rugby-specific demands, namely jackal, scrum, and contact
+supplement these exercises while load compromised and                          was required. Rugby skills were integrated into rehabilita-
+this was performed using a commonly recommended proto-                         tion in the gym and on the pitch as soon as possible at each
+col (75 reps - 30 x 15 x 15 x 15 reps @~30% 1RM, 30 secs                       stage to encourage an external focus of attention, minimise
+rest).34–36 The return to strength training phase also in-                     fear avoidance, and promote corticospinal adaptation.38,39
+cluded the beginning of more reactive hamstring contrac-                       This was completed via a progressive framework and deliv-
+tions to build

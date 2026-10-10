@@ -1,0 +1,410 @@
+{
+ "id": "Q49",
+ "sourceFile": "Relative Rest Correlates to Winning Percentage in 2022 National Football League Season - A Preliminary Study.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'Relative Rest Correlates to Winning Percentage in 2022 National Football League Season: A Preliminary Study', matches the filename.",
+ "confidence": "medium",
+ "studyDesign": "Other",
+ "primaryDomain": "Recovery & Readiness",
+ "domains": [
+  "Recovery & Readiness",
+  "Training & Performance"
+ ],
+ "audiences": [
+  "Performance",
+  "Coaching",
+  "Research & Analytics"
+ ],
+ "sports": [
+  "American Football"
+ ],
+ "populations": [
+  "Professional / Elite"
+ ],
+ "evidenceSummary": "Retrospective correlational analysis of every regular-season game of the 2022 NFL season (n = 271 games, 32 teams, one canceled game excluded), using public schedule data. Each team's relative rest (its rest interval minus its opponent's, averaged over the season) was correlated with season winning percentage. Season relative rest correlated positively with winning percentage (r = 0.338, p = 0.029); playoff teams and winning teams had higher average relative rest than non-playoff and losing teams (about 0.2 vs -0.15 days, p = 0.022 for both comparisons), but winning percentage did not differ across the high, middle and low relative-rest tertiles.",
+ "screeningLimitations": "One season of team-level, ecological data cannot show that rest causes wins, and no individual player, load, injury or performance data were analysed. The authors describe the work as preliminary.",
+ "synthesisCaution": "Staff could read this as proof that schedule rest drives team success, when it is a single-season association between rest difference and winning percentage.",
+ "paper": {
+  "year": 2025,
+  "citation": "Jajtner, A. R., Pinzone, A. G., Abu-Amara, Y., Gant, R. W., Rivera, J., Tagesen, E. C., et al. Relative Rest Correlates to Winning Percentage in 2022 National Football League Season: A Preliminary Study. International Journal of Strength and Conditioning. 2025.",
+  "doi": "10.47206/ijsc.v5i1.403",
+  "abstract": "The authors examined whether season-average relative rest (the difference in days of rest between a team and its opponent in each game) relates to winning percentage across the 2022 NFL regular season. A significant positive correlation was found, and teams that won more often or made the playoffs had higher average relative rest.",
+  "tldr": "In the 2022 NFL season, teams that had more rest than their opponents, on average, won a larger share of games. The link is a single-season correlation, so it describes schedule context rather than a cause.",
+  "methods": "All 271 regular-season games of 2022 were analysed from public schedule data. Rest intervals were calculated per team per game, relative rest was averaged over the season, and it was correlated with winning percentage. Teams were split into thirds by relative rest and compared with ANOVA, and winning and playoff teams were compared with independent t-tests.",
+  "findings": "Season relative rest correlated positively with winning percentage (r = 0.338, p = 0.029), accounting for about 11.4% of the variance. Winning teams (mean relative rest 0.183) and playoff teams (0.206) had higher relative rest than losing teams (-0.175) and non-playoff teams (-0.153), both p = 0.022, with moderate effect sizes (d about 0.71). Winning percentage did not differ between the high, middle and low relative-rest groups (p = 0.133).",
+  "limitations": "Only one season was studied, so results may not hold in other years. The analysis is team-level and correlational. It did not include travel, time-zone change, sleep, training load, injuries or individual players. The three-group comparison was not significant, and the authors note the result rests on the correlation and the two group comparisons.",
+  "practicalImplications": "Relative rest across a season was associated with winning. Coaches could look at rest disadvantage when planning load management in the weeks a team has less rest than its opponent, as the authors suggest. The study does not show that managing rest changes results.",
+  "athleteDev": "Use relative rest as one schedule factor when planning training load and recovery in weeks when a team has less rest than its opponent. Do not treat the finding as evidence that a specific load plan improves performance, because the study did not measure training or athlete outcomes.",
+  "rtp": "This study cannot inform return to sport. It has no injury, rehabilitation, or individual athlete return data, and its team-level results should not be applied to decisions about a single athlete."
+ }
+}
+                                                                                                         Jatner, A. R., Pinzone, A. G., Abu-Amara, Y., Gant, R. W., Rivera, J., Tagesen, E. C., & Barkley,
+                                                                                                          J. E. (2025). Relative Rest Correlates to Winning Percentage in 2022 National Football League
+                                                                                                                                                                              Season: A Preliminary Study.
+                                                                                                                                                       International Journal of Strength and Conditioning
+                                                                                                                                                                     https://doi.org/10.47206/ijsc.v5i1.403
+
+
+
+
+Relative Rest Correlates to
+Winning Percentage in 2022
+National Football League
+Season: A Preliminary Study
+Adam R. Jajtner1, Anthony G. Pinzone1, Yousuf Abu-Amara1, Ryan W. Gant1, Jennifer Rivera1, Emily C.
+Tagesen1 and Jacob E. Barkley1
+1
+    Exercise Science and Exercise Physiology, Kent State University, Kent, OH, USA
+ABSTRACT                                                                              during the 2022 NFL season.
+
+The purpose of this investigation was to                                              Keywords:                     American                     Football,                  Performance,
+examine whether season average relative rest                                          Recovery
+(RR) influences winning percentage (WIN%) in
+professional American Football. We define RR as
+the difference in rest intervals between teams from                                   INTRODUCTION
+prior games. To address this, we analyzed each
+game played in the 2022 NFL season (n=271) and                                        American football is a popular sport that requires
+calculated rest intervals between each successive                                     high power output and involves high-velocity
+game for each team. The rest interval was defined                                     sprinting, as well as several accelerations and
+as the number of days between the schedule start                                      decelerations each game (7,27) resulting in
+for each successive game, with all teams being                                        increased physiological demands (6). As a result, it
+assigned a rest interval of 0 during Week 1. Each                                     is not surprising that a prior report indicate reduced
+team’s RR was then determined by subtracting                                          peak force and power during both the squat and
+the opposing team’s rest interval. The RR for each                                    counter movement jumps over the course of a
+game for all teams were then averaged across                                          football game (14). Biomarkers indicative of muscle
+the season. Subsequently, a correlation between                                       damage, like creatine kinase (CK) and myoglobin,
+season average RR and WIN% was performed and                                          also increase following competitive games in those
+a tertial split in season average RR was conducted                                    that played versus did not play (14,19), which
+to separate teams into HIGH (teams 1-11), MID                                         appears to be a consistent finding between seasons
+(teams 12-21) and LOW (teams 22-32). A one-way                                        (22). Moreover, the pro-inflammatory cytokine, tumor
+ANOVA comparing WIN% between HIGH, MID                                                necrosis factor α (TNFα), was also demonstrated
+and LOW was then conducted while independent                                          to increase following a scrimmage among Israeli
+samples t-tests were employed to assess season                                        national team members (15), while perceived
+average RR between teams with records above                                           recovery has been shown to be suppressed for as
+(WIN) and below 0.500 (LOSE) and those qualifying                                     long as four days following competitive National
+(PO) and not qualifying (NPO) for the playoffs. Data                                  Collegiate Athletics Association (NCAA) D-I football
+indicate that a significant positive relationship exists                              games (11). Consequently, the effects of one game
+between WIN% and season average RR (r=0.338;                                          likely impact subsequent performances, indicating
+p = 0.029). Moreover, successful teams (WIN/PO)                                       that the effects of each game may compound over
+had significantly greater season average RR than                                      the course of a season.
+unsuccessful teams (LOSE/NPO). Therefore, a
+team’s rest interval, relative to their opponent was                                  Interestingly, prior reports have indicated no changes
+associated with the outcome of the competition                                        in myoglobin or CK in response to competitive
+
+                                           Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                open access article distributed under the terms and conditions of the
+                                    Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+                                                                                              Relative Rest Correlates to Winning Percentage in 2022 National
+International Journal of Strength and Conditioning. 2025                                                         Football League Season: A Preliminary Study
+
+
+games over the course of a season (13), with                                              and correlated with their final WIN%. Additionally, a
+possible improvements in recovery characteristics                                         tertial split was performed based on season average
+(12). However, it is important to consider the level of                                   RR, grouping teams into three groups: HIGH (teams
+competition as both studies (12,13) utilized NCAA                                         ranked 1-11), MID (teams ranked 12-21) and
+D-III players. When examining the effects of an entire                                    LOW (teams ranked 22-32), with WIN% compared
+football season in higher level competition (NCAA                                         between these groups. Lastly, teams were also
+D-I), Kraemer et al (18) suggested that playing time                                      separated based on WIN% into teams above (WIN)
+likely influenced the post-game increases in CK                                           and below 0.500 (LOSE) as well as teams qualifying
+following the final game of the season while Stone                                        for the playoffs (PO) and not qualifying for the
+and colleagues (23) demonstrated increased CK                                             playoffs (NPO). The season average RR was then
+concentrations over the course of the season, with                                        compared between these groups.
+augmented concentrations in starters versus non-
+starters. Collectively, these data demonstrate that                                       Participants and Ethical Approval
+at high levels of competition, the effects of a single
+American Football game in conjunction with training                                       This investigation analyzed each game played in
+(9) can compound over the course of a season,                                             the 2022 NFL season as individual cases (n=271)
+increasing markers of muscle damage (23) and                                              from publicly available data. All games played
+possibly reducing performance.                                                            during the 2022 NFL regular season were included
+                                                                                          in this investigation. Importantly, one game (Buffalo
+The National Football League, (NFL) is the                                                Bills at Cincinnati Bengals; January 2, 2023) was
+preeminent professional football league in North                                          canceled due to an on field medical emergency,
+America. Currently, the season is structured over                                         leaving these teams playing only 16 games instead
+the course of 18 weeks, with 17 games being                                               of the scheduled 17 (25). This investigation was
+played by each team, allowing for one bye week                                            submitted to the University IRB, and determined to
+that occurs between Weeks 6 and 14 (30). As of                                            not be Human Subjects Research, and therefore
+2006, the NFL introduced regular Thursday night                                           exempt from IRB review.
+football games (4), shortening the time between
+some games considerably. Given the previously                                             Data Analysis
+discussed potential compounding effects of
+competitions, teams may be at an advantage over                                           To investigate the relationship between teams’
+their competitors if they just completed their bye                                        season average RR and WIN%, the rest interval
+week or played the prior Thursday. This highlights                                        for each team was established for each of their
+the potential importance of different rest intervals                                      games. Rest interval was defined as the number of
+between teams, indicating the relative rest (RR),                                         days between the scheduled start for successive
+which we define as a comparative ratio of the rest                                        games. For example, a team playing a Thursday
+interval between games for each team, may be an                                           night (8:20PM EST) game in week one, and a
+important consideration for leagues to use while                                          Sunday late afternoon game in week two (4:05PM
+scheduling games. Therefore, the purpose of this                                          EST), would have a rest interval of 9.822 days.
+investigation was to assess whether RR intervals                                          Game data was initially downloaded from www.
+were associated with the winning percentage                                               profootballreference.com, and confirmed through
+(WIN%) of NFL teams. We hypothesized that season                                          spot checking games on www.NFL.com. During
+average RR and WIN% have a positive relationship,                                         Week 1, every team was assigned a rest interval of
+and that significant differences in WIN% would be                                         0, resulting in no difference between teams for their
+apparent between teams with different levels of RR.                                       relative rest during this week. Preseason games
+Moreover, we hypothesized that season average                                             were excluded from consideration as the results
+RR would be higher in both teams that qualified for                                       did not count toward the teams’ final WIN%. Each
+the playoffs, and teams with a winning record.                                            team’s RR was then determined by subtracting
+                                                                                          their opposing team’s rest interval. Therefore, a
+                                                                                          positive RR indicated a team had more rest than
+METHODS                                                                                   their opponent, and a negative RR indicated less
+                                                                                          rest than their opponent. Each team’s RR was then
+Experimental Approach to the Problem                                                      averaged across the season to determine their
+                                                                                          season average RR.
+To assess whether RR impacted a team’s WIN%,
+each teams’ season average RR was calculated
+                                               Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                    open access article distributed under the terms and conditions of the                                  2
+                                        Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+                                                                                           Jatner, A. R., Pinzone, A. G., Abu-Amara, Y., Gant, R. W., Rivera, J.,
+International Journal of Strength and Conditioning. 2025                                                                       Tagesen, E. C., & Barkley, J. E.
+
+
+Statistical Analysis                                                                      was observed for WIN vs LOSE (d = 0.706) and for
+                                                                                          PO vs NPO (d = 0.709).
+Data were initially assessed for normality, using
+the Shapiro-Wilk test. Then, a Pearson Product
+Correlation was performed between season                                                  DISCUSSION
+average RR and WIN%. Next, a one-way ANOVA,
+with LSD pairwise comparisons was used to assess                                          Our data indicate that a team’s season average
+differences in WIN% between HIGH, MID and LOW,                                            RR was positively related to and accounts for as
+while independent samples t-tests were used to                                            much as 11.4% of the variance in team’s WIN%.
+compare differences in season average RR between                                          Though no differences were observed in WIN%
+WIN vs LOSE and PO vs NPO. Statistically significant                                      between teams with HIGH, MID and LOW RR,
+findings were further assessed by Cohen’s d to                                            successful teams (WIN and PO) had significantly
+assess effect size for each comparison. Effect sizes                                      higher RR than unsuccessful teams (LOSE and
+were qualitatively defined as previously described                                        NPO). Moreover, the differences between success
+[Small: 0.2; Medium: 0.5; Large: 0.8; Very Large:                                         categories demonstrated a moderate effect on RR.
+1.3; (1)]. All data were analyzed using SPSS version                                      Collectively, these results support the notion that
+28 (IBM, Armonk, NY), with significance defined as                                        increased rest, relative to an opponent, predicted a
+α ≤ 0.05.                                                                                 greater likelihood of winning the contest.
+
+                                                                                          To our knowledge, no study to date has examined
+RESULTS                                                                                   the relationship between RR and WIN% in any
+                                                                                          professional sport league. Nonetheless, these
+Descriptive data for all 32 NFL teams during the                                          results are not surprising given the data surrounding
+2022 season are presented in Table 1. A significant                                       the large workloads associated with an American
+positive correlation between WIN% and season                                              Football game (6,27) and their corresponding effects
+average RR was observed (r = 0.338, p = 0.029;                                            on skeletal muscle damage (14,19,22), inflammation
+Figure 1). When comparing WIN% between                                                    (15) and the time course of perceived recovery
+HIGH, MID and LOW, no significant difference                                              (11). Though no investigations have previously
+was observed (Table 2). Interestingly, however,                                           addressed the specific role of RR on performance
+significant differences were observed when                                                and season success, prior work in professional
+comparing season average RR between WIN vs                                                soccer players supports these results and have
+LOSE and PO vs NPO (Table 2). A moderate effect                                           demonstrated that limited rest between games
+
+
+
+
+            Figure 1. Correlation between the Season Average Relative Rest (RR) and winning percent-
+            age (WIN%).
+
+                                               Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                    open access article distributed under the terms and conditions of the                                      3
+                                        Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+                                                                                              Relative Rest Correlates to Winning Percentage in 2022 National
+International Journal of Strength and Conditioning. 2025                                                         Football League Season: A Preliminary Study
+
+
+            Table 1. Team Descriptives
+                          Team                         RR              Win%                                  Team                         RR        WIN%
+                   Arizona Cardinals                -0.217             0.235                    Las Vegas Raiders                        -0.395     0.353
+                    Atlanta Falcons                 -0.365             0.412                *Los Angeles Chargers                        -0.198     0.588
+                  *Baltimore Ravens                 -0.664             0.588                    Los Angeles Rams                         0.091      0.294
+                      *Buffalo Bills                 1.341             0.813                      *Miami Dolphins                        0.349      0.529
+                  Carolina Panthers                  0.474             0.412                    *Minnesota Vikings                       0.076      0.765
+                    Chicago Bears                    0.387             0.176                 New England Patriots                        -1.132     0.471
+                  *Cincinnati Bengals                0.857             0.750                   New Orleans Saints                        -0.471     0.412
+                  Cleveland Browns                   0.148             0.412                     *New York Giants                        0.035      0.529
+                   *Dallas Cowboys                   0.392             0.706                        New York Jets                        -0.379     0.412
+                   Denver Broncos                    0.496             0.294                  *Philadelphia Eagles                       -0.142     0.824
+                      Detroit Lions                  0.746             0.529                    Pittsburgh Steelers                      -0.253     0.529
+                  Green Bay Packers                 -0.826             0.471                 *San Francisco 49ers                        0.144      0.765
+                    Houston Texans                  -0.490             0.235                    *Seattle Seahawks                        0.037      0.529
+                   Indianapolis Colts               -0.253             0.235              *Tampa Bay Buccaneers                          0.421      0.471
+                *Jacksonville Jaguars               -0.116             0.529                     Tennessee Titans                        -0.292     0.412
+                 *Kansas City Chiefs                 0.357             0.824             Washington Commanders                           -0.030     0.529
+                                                                                                               RR                            WIN%
+                                 MEAN (SD)                                                           0.004 (0.507)                        0.501 (0.184)
+                                  RANGE                              -1.132 to 1.341  0.176 to 0.824
+            Season Average Relative Rest (RR) and winning percentage (WIN%) for every team. Teams
+            that qualified for the playoffs are notated by an asterisk (*).
+
+            Table 2. Comparison of Relative Rest between levels of success.
+                                       WIN%                         RR                               n                            t/F              p
+                   WIN           0.645 (0.125)            0.183 (0.487)                             16
+                                                                                                                                2.105             0.022
+                  LOSE           0.357 (0.097) -0.175 (0.476)                                       16
+                    PO           0.658 (0.131)            0.206 (0.485)                             14
+                                                                                                                                2.095             0.022
+                   NPO           0.379 (0.111) -0.153 (0.479)                                       18
+                  HIGH           0.538 (0.214)            0.543 (0.328)                             11
+                   MID           0.559 (0.193) -0.032 (0.128)                                       10                          2.162             0.133
+                  LOW        0.412 (0.108) -0.502 (0.273)     11
+            All data presented as Mean (SD)
+            RR: Season Average Relative Rest; WIN%: Winning Percentage.
+            WIN: Winning Season; LOSE: Losing Season; PO: Playoff Team; NPO: Non-Playoff Team
+
+increases injury rates (14), along with reducing both                                     competition when compared to training in college
+physical (24) and tactical performance (10).                                              players (5). Moreover, up to 78% of injuries sustained
+                                                                                          during competition are considered contact injuries
+Though American Football competitions are                                                 (5,28). With a possible positive relationship between
+known to reduce performance (14) and perceived                                            injury rates and the level of competition (8,21),
+recovery for at least four days (11), the effects of                                      this becomes particularly concerning among
+injury on overall team performance should also be                                         professional American Football players. Given the
+considered. The Workload-Etiology model (29)                                              prior evidence of the possible compounding impact
+suggests that as modifiable internal risk factors,                                        of a football season on markers of recovery and
+such as fatigue increase, so does the risk of injury.                                     evidence gleaned from other sports, it stands to
+Given that American Football games are known to                                           reason that reduced rest, and possibly RR across a
+involve high accelerations and decelerations, along                                       season may increase the likelihood of injuries on a
+with multiple collisions each game (6,7,27), it is not                                    specific team, thereby decreasing the performance
+surprising that injury rates are nine times higher in                                     of the team. As we did not address injuries in the
+                                               Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                    open access article distributed under the terms and conditions of the                                   4
+                                        Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+                                                                                           Jatner, A. R., Pinzone, A. G., Abu-Amara, Y., Gant, R. W., Rivera, J.,
+International Journal of Strength and Conditioning. 2025                                                                       Tagesen, E. C., & Barkley, J. E.
+
+
+present study, future research is warranted to                                            CONFLICTS OF INTEREST
+examine the potential relationship between RR and
+injuries in professional sport.                                                           No authors report any actual or potential conflicts of
+                                                                                          interest.
+Though load management is a common
+consideration in professional basketball (20),
+football and strength and conditioning coaches                                            FUNDING
+alike may want to consider the use of various load
+management techniques with their players. This                                            This study received no specific funding in order to
+is likely especially important to consider in weeks                                       be completed.
+their team has a RR disadvantage. Though this
+investigation did not consider specific training load
+metrics, future investigations should seek to identify                                    ETHICAL APPROVAL
+which metrics most relate to on-field performance,
+and how these variables differ between position                                           This investigation was submitted to the University
+groups (6,27). This will help provide a more                                              IRB, and determined to not be Human Subjects
+detailed description of the effects RR may have on                                        Research, and therefore exempt from IRB review.
+performance of an individual, rather than simply
+considering team success.
+                                                                                          DATES OF REFERENCE
+The primary limitation of this investigation was
+that only one season was examined. Therefore,                                             Submission - 27/06/2024
+future investigations should examine whether the                                          Acceptance - 04/11/2024
+observed influence of RR on WIN% is present in                                            Publication - 18/04/2025
+seasons other than the 2022 season. While the
+focus of this paper was strictly the effect of rest,
+relative to an opponent, there are several other                                          CORRESPONDING AUTHOR
+concerns that should also be addressed in future
+investigations, including the travel associated with                                      Adam R Jajtner - ajajtner@kent.edu
+competition, as well as the influence of changes
+in time zone and the possible disruptions to sleep
+and training schedules (2,3,17,26). Moreover, future                                      REFERENCES
+work should also address whether changes in the
+NFL scheduling practices, such as the addition of                                         1.      Carson, C. The effective use of effect size indices in
+Thursday night games each week (4) influences                                                     institutional research. In: (Vol. 41).2012. pp. 41–48
+                                                                                          2.      Charest, J, Samuels, CH, Bastien, CH, Lawson, D,
+this relationship and whether changes in season                                                   and Grandner, MA. Impacts of travel distance and
+average RR predict the injury rates within specific                                               travel direction on back-to-back games in the National
+teams.                                                                                            Basketball Association. J Clin Sleep Med 17: 2269–2274,
+                                                                                                  2021.
+                                                                                          3.      Cook, JD, Charest, J, Walch, O, and Bender, AM.
+                                                                                                  Associations of circadian change, travel distance,
+PRACTICAL APPLICATIONS                                                                            and their interaction with basketball performance: a
+                                                                                                  retrospective analysis of 2014–2018 National Basketball
+These data indicate that greater average RR                                                       Association data. Chronobiol Int 39: 1399–1410, 2022.
+predicted a greater WIN%, likelihood of being                                             4.      DeArdo, B. 2023 NFL “Thursday Night Football” schedule:
+                                                                                                  Kickoff times, live streaming, watch every game. CBS
+over 0.500 and of making the playoffs during the                                                  Sports, 2023.Available from: https://www.cbssports.com/
+2022 NFL season. Therefore, coaches may want                                                      nfl/news/2023-nfl-thursday-night-football-schedule-kickoff-
+to consider the use of various load management                                                    times-live-streaming-watch-every-game/
+techniques during both games and training,                                                5.      Dick, R, Ferrara, MS, Agel, J, et al. Descriptive
+                                                                                                  epidemiology of collegiate men’s football injuries: National
+especially in weeks they have a RR disadvantage                                                   Collegiate Athletic Association Injury Surveillance System,
+to minimize the deleterious effects of subsequent                                                 1988–1989 through 2003–2004. J Athl Train 42: 221, 2007.
+game performances. Finally, to maintain competitive                                       6.      Early, KS, Lemoine, NP, Simoneaux, A, et al. Positional
+parity, American Football leagues of any level should                                             Differences in Pre-Season Scrimmage Performance of
+consider the RR of their teams while constructing                                                 Division I Collegiate Football Players. Sensors 21: 769,
+                                                                                                  2021.
+the season schedule.                                                                      7.      Edwards, T, Spiteri, T, Piggott, B, Haff, GG, and Joyce, C.
+
+                                               Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                    open access article distributed under the terms and conditions of the                                      5
+                                        Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+                                                                                              Relative Rest Correlates to Winning Percentage in 2022 National
+International Journal of Strength and Conditioning. 2025                                                         Football League Season: A Preliminary Study
+
+
+    A Narrative Review of the Physical Demands and Injury                                 24. Vieira, LHP, Aquino, R, Lago-Peñas, C, et al. Running
+    Incidence in American Football: Application of Current                                    performance in Brazilian professional football players
+    Knowledge and Practices in Workload Management.                                           during a congested match schedule. J Strength Cond Res
+    Sports Med 48: 45–55, 2018.                                                               32: 313–325, 2018.
+8. Feeley, BT, Kennelly, S, Barnes, RP, et al. Epidemiology                               25. Vrentas, J. N.F.L Cancels Bills-Bengals Game. N. Y.
+    of National Football League Training Camp Injuries from                                   Times. , 2023.Available from: https://www.nytimes.
+    1998 to 2007. Am J Sports Med 36: 1597–1603, 2008.                                        com/2023/01/05/sports/football/bills-bengals-game-
+9. Flatt, AA, Esco, MR, Allen, JR, et al. Cardiac-Autonomic                                   canceled.html
+    Responses to In-Season Training Among Division-1                                      26. Wang, X, Zhang, S, Gasperi, L, Robertson, S, and Ruano,
+    College Football Players. J Strength Cond Res 34:                                         MAG. Rest or rust? Complex influence of schedule
+    1649–1656, 2020.                                                                          congestion on the home advantage in the National
+10. Folgado, H, Duarte, R, Marques, P, and Sampaio, J.                                        Basketball Association. Chaos Solitons Fractals 174:
+    The effects of congested fixtures period on tactical and                                  113698, 2023.
+    physical performance in elite football. J Sports Sci 33:                              27. Wellman, AD, Coad, SC, Goulet, GC, and McLellan,
+    1238–1247, 2015.                                                                          CP. Quantification of Competitive Game Demands of
+11. Fullagar, HHK, Govus, A, Hanisch, J, and Murray, A. The                                   NCAA Division I College Football Players Using Global
+    Time Course of Perceptual Recovery Markers After Match                                    Positioning Systems. J Strength Cond Res 30: 11–19,
+    Play in Division I-A College American Football. Int J Sports                              2016.
+    Physiol Perform 12: 1264–1266, 2017.                                                  28. Willigenburg, NW, Borchers, JR, Quincy, R, Kaeding,
+12. Hoffman, JR, Im, J, Kang, J, et al. The effect of a                                       CC, and Hewett, TE. Comparison of Injuries in American
+    competitive collegiate football season on power                                           Collegiate Football and Club Rugby: A Prospective Cohort
+    performance and muscle oxygen recovery kinetics. J                                        Study. Am J Sports Med 44: 753–760, 2016.
+    Strength Cond Res 19: 509–513, 2005.                                                  29. Windt, J and Gabbett, TJ. How do training and competition
+13. Hoffman, JR, Kang, J, Ratamess, NA, and Faigenbaum,                                       workloads relate to injury? The workload—injury aetiology
+    AD. Biochemical and Hormonal Responses during an                                          model. Br J Sports Med 51: 428–435, 2017.
+    Intercollegiate Football Season. Med Sci Sports Exerc 37:                             30. Creating the NFL Schedule. Available from: https://
+    1237–1241, 2005.                                                                          operations.nfl.com/gameday/nfl-schedule/creating-the-nfl-
+14. Hoffman, JR, Maresh, CM, Newton, RU, et al.                                               schedule/
+    Performance, biochemical, and endocrine changes during
+    a competitive football game. Med Sci Sports Exerc 34:
+    1845–1853, 2002.
+15. Hoffman, JR, Ostfeld, I, Zamir, A, et al. Examination of
+    Cognitive Function, Neurotrophin Concentrations, and
+    both Brain and Systemic Inflammatory Markers Following
+    a Simulated Game of American Football. J Strength Cond
+    Res 36: 686–694, 2022.
+16. Howle, K, Waterson, A, and Duffield, R. Injury Incidence
+    and Workloads during congested Schedules in Football.
+    Int J Sports Med 41: 75–81, 2020.
+17. Huyghe, T and Calleja-Gonzalez, J. Long-Distance
+    Traveling in Basketball: Practical Applications Based on
+    Scientific Evidence. Basketb Sports Med Sci 929–946,
+    2020.
+18. Kraemer, WJ, Looney, DP, Martin, GJ, et al. Changes in
+    Creatine Kinase and Cortisol in National Collegiate Athletic
+    Association Division I American Football Players During a
+    Season. J Strength Cond Res 27: 434–441, 2013.
+19. Kraemer, WJ, Spiering, BA, Volek, JS, et al. Recovery
+    From a National Collegiate Athletic Association Division I
+    Football Game: Muscle Damage and Hormonal Status. J
+    Strength Cond Res 23: 2–10, 2009.
+20. Scamardella, F, Russo, N, and Napolitano, F. The
+    phenomenon of load management. J Phys Educ Sport 20:
+    2306–2309, 2020.
+21. Shankar, PR, Fields, SK, Collins, CL, Dick, RW, and
+    Comstock, RD. Epidemiology of High School and
+    Collegiate Football Injuries in the United States, 2005-
+    2006. Am J Sports Med 35: 1295–1303, 2007.
+22. Sterczala, AJ, Flanagan, SD, Looney, DP, et al. Similar
+    Hormonal Stress and Tissue Damage in Response to
+    National Collegiate Athletic Association Division I Football
+    Games Played in Two Consecutive Seasons. J Strength
+    Cond Res 28: 3234–3238, 2014.
+23. Stone, JD, Kreutzer, A, Mata, JD, et al. Changes in
+    Creatine Kinase and Hormones Over the Course of an
+    American Football Season. J Strength Cond Res 33:
+    2481–2487, 2019.
+
+                                               Copyright: © 2025 by the authors. Licensee IUSCA, London, UK. This article is an
+                                                    open access article distributed under the terms and conditions of the                                  6
+                                        Creative Commons Attribution (CC BY) license (https:// creativecommons.org/licenses/by/ 4.0/).
+
