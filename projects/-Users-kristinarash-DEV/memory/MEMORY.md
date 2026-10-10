@@ -68,3 +68,4 @@ Never put memory content here — the file itself holds the facts.
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix outside Friday's slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
 - [Work laptop hands-off](project_work-laptop-hands-off.md) — anything that runs on the Windows laptop; scheduled tasks there
+- [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
