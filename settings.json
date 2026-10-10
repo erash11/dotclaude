@@ -328,7 +328,7 @@
           {
             "type": "command",
             "command": "node \"$HOME/.claude/hooks/superpowers-quiet.mjs\"",
-            "timeout": 5
+            "timeout": 15
           }
         ]
       },
@@ -337,7 +337,7 @@
           {
             "type": "command",
             "command": "node \"$HOME/.claude/hooks/keystone-unified-snapshot.js\"",
-            "timeout": 5,
+            "timeout": 15,
             "statusMessage": "Loading unified cross-harness snapshot..."
           }
         ]
