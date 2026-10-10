@@ -1,0 +1,326 @@
+{
+ "id": "Q10",
+ "sourceFile": "Sprinting and hamstring strain injury - Beliefs and practices of professional physical performance coaches in Australian football.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "The title in the text, 'Sprinting and hamstring strain injury: Beliefs and practices of professional physical performance coaches in Australian football', matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Cross-sectional Study",
+ "primaryDomain": "Sports Medicine & Injury",
+ "domains": [
+  "Sports Medicine & Injury",
+  "Training & Performance"
+ ],
+ "audiences": [
+  "Performance",
+  "Coaching",
+  "Sports Medicine"
+ ],
+ "sports": [
+  "Other Sport"
+ ],
+ "populations": [
+  "Professional / Elite"
+ ],
+ "evidenceSummary": "Online Delphi-validated survey of high-performance managers at Australian Football League clubs, with 9 of 18 invited managers responding (50%; all male). Closed questions were summarised as counts and percentages, and open responses were coded into themes by two researchers. All nine rated acceleration and maximum-speed sprinting as common or very common activities linked to hamstring strain injury (HSI), all used weekly eccentric hamstring strength testing, and all reported regular sprint exposure.",
+ "screeningLimitations": "Only nine respondents from one league, with self-reported beliefs and practices rather than injury outcomes, so the results describe coach views and cannot show that any practice reduces HSI. Anonymous responses may also reflect response bias.",
+ "synthesisCaution": "Staff could read the coaches' consensus on sprinting and eccentric training as evidence that these methods prevent HSI, when the survey measured what coaches believe and do, not injury rates.",
+ "paper": {
+  "year": 2021,
+  "citation": "Freeman BW, Talpey SW, James LP, Young WB. Sprinting and hamstring strain injury: Beliefs and practices of professional physical performance coaches in Australian football. Physical Therapy in Sport. 2021;48:12-19.",
+  "doi": "10.1016/j.ptsp.2020.12.007",
+  "abstract": "This survey asked high-performance managers at Australian Football League clubs about their beliefs and practices for sprinting and hamstring strain injury. Nine of 18 invited managers responded. Sprinting, eccentric strength training and periodisation were seen as effective, and all coaches reported regular sprint exposure, but the speed thresholds they used for sprinting varied widely.",
+  "tldr": "Nine AFL high-performance managers said sprinting and eccentric hamstring training help prevent hamstring injury, and all reported regular sprint exposure. Their definitions of sprinting speed varied widely, and most tracked speed with GPS.",
+  "methods": "An online, Delphi-validated questionnaire was sent to 18 AFL high-performance managers between November 2019 and February 2020. It used closed and open questions about beliefs, training practices and speed thresholds. Two researchers coded the open responses into themes.",
+  "findings": "Nine of 18 managers responded, and all nine rated acceleration and maximum-speed sprinting as common or very common HSI activities. All used weekly eccentric hamstring strength testing and reported sprint training, while sprinting was defined as anything from above 85% to above 95% of maximum velocity. No respondent reported measuring sprinting faster than 85% of maximum velocity, and eight of nine tested maximum speed with GPS.",
+  "limitations": "Small sample from one league (9 of 18 invited, all male), with anonymous self-report that may reflect response bias. Respondents were asked only about AFL experience. The study did not compare coach beliefs with injury data.",
+  "practicalImplications": "Staff can check whether the speed thresholds they use match how they define sprinting, since respondents described sprinting as above 90% of maximum velocity but none reported measuring it above 85%. The survey does not show which sprint dose prevents HSI, so it supports reviewing thresholds and monitoring exposure rather than adopting a set dose.",
+  "athleteDev": "Define sprint exposure with relative speed bands, such as a percentage of each athlete's maximum velocity, and make sure the bands used to prescribe and monitor sprinting match the definition the staff uses. Keep sprint exposure individualised and periodised, since respondents said the dose should suit each athlete.",
+  "rtp": "This survey cannot inform return-to-sport decisions. It describes coach beliefs about prevention and training, not rehabilitation progression or readiness criteria for athletes returning from HSI."
+ }
+}
+
+                                                                     Physical Therapy in Sport 48 (2021) 12e19
+
+
+
+                                                                 Contents lists available at ScienceDirect
+
+
+                                                              Physical Therapy in Sport
+                                                         journal homepage: www.elsevier.com/ptsp
+
+
+Original Research
+
+Sprinting and hamstring strain injury: Beliefs and practices of
+professional physical performance coaches in Australian football
+Brock W. Freeman a, *, Scott W. Talpey a, Lachlan P. James b, Warren B. Young a
+a
+    School of Science, Psychology and Sport, Federation University Australia, Ballarat, Australia
+b
+    School of Allied Health, Human Services and Sport, La Trobe University, Melbourne, Australia
+
+
+
+
+a r t i c l e i n f o                                     a b s t r a c t
+
+Article history:                                          Objectives: The purpose of this study was to establish beliefs and practices of physical performance
+Received 27 September 2020                                coaches regarding sprinting and Hamstring Strain Injury (HSI) in Australian Rules football.
+Received in revised form                                  Designs: Delphi-validated questionnaire.
+3 December 2020
+                                                          Setting: Online.
+Accepted 5 December 2020
+                                                          Participants: Eighteen high-performance managers of the Australian Football League.
+                                                          Main outcome measures: Descriptive statistics were collected to establish experience; central themes
+Keywords:
+                                                          were established for the analyses of the beliefs and practices.
+Injury prevention
+High-speed running
+                                                          Results: Nine (50%) physical performance coaches responded to an invitation to complete the ques-
+Coaching                                                  tionnaire. Participants held an undergraduate degree and had 9.2 ± 4.3 years of experience. Accelerations
+Hamstring                                                 (n ¼ 9), maximum speed sprints (n ¼ 9) and running with hip ﬂexion (n ¼ 7) were the most common
+Australian football                                       activities associated with HSI. Coaches believed sprinting, eccentric strength training and proper peri-
+                                                          odisation were effective strategies to reduce HSI risk. There’s a disparity between beliefs and practices
+                                                          when using GPS to monitor sprinting, however, all coaches reported regular exposure to sprint training
+                                                          across both pre and in-season. Overstriding (n ¼ 9) and pelvic instability (n ¼ 6) were identiﬁed as key
+                                                          ﬂaws in running mechanics.
+                                                          Conclusions: This information can be used to improve training strategies, whilst these ﬁndings indicate
+                                                          further investigations into sprint training and running mechanics for HSI risk reduction.
+                                                                                                                           © 2020 Elsevier Ltd. All rights reserved.
+
+
+
+
+1. Introduction                                                                               strengthening exercises (Opar et al., 2015).
+                                                                                                  Within the sport of ARF, it is common for strength and condi-
+   Hamstring strain injury (HSI) is a frequent, costly injury in team                         tioning staff to expose athletes to a combination of strategies to
+based, ﬁeld sports that have a high-speed running component                                   reduce the risk of injuries. As HSI is the most common cause of
+(Australian Football League, 2018; Woods et al., 2004). In ﬁeld                               missed matches in ARF (Australian Football League, 2018) and
+sports such as Australian Rules football (ARF), HSI results in an                             therefore has a marked effect on a team’s performance (Hoffman
+average of 25 missed matches per club per year (Australian Football                           et al., 2019), it would be logical to assume that HSI risk mitigation
+League, 2018), and as of 2012, each club spent approximately                                  is a key pillar of a successful high-performance program. Despite
+$245,842 on costs associated with this injury (Hickey et al., 2014).                          this, HSI rates have remained consistently higher than other in-
+Considering this, many modiﬁable risk factors have been identiﬁed                             juries over the past 20 years in ARF, indicating that there is still a
+(Opar et al., 2012), with the aim of developing various training                              disconnect between research and practice in the elite setting. This
+strategies to mitigate their risk of occurrence such as high-speed                            may be partially explained by the paucity of research with low
+running load management (Duhig et al., 2016; Ruddy et al., 2018),                             ecological validity.
+ﬂexibility training (van Dyk et al., 2018) or eccentric hamstring                                 Hamstring strain injury prevention research initially focused on
+                                                                                              ﬂexibility (van Dyk et al., 2018) as the primary modiﬁable risk factor
+                                                                                              to target for preventative interventions, however this is now
+                                                                                              accepted as a weak risk factor for HSI. Research has since focussed
+  * Corresponding author. P.O. Box 663 University Drive, Mount Helen, 3350, Vic-
+toria, Australia                                                                              towards eccentric hamstring strength training (Arnason et al., 2008;
+    E-mail address: brockw.freeman@gmail.com (B.W. Freeman).                                  Opar et al., 2015), which is currently viewed as a stronger risk factor
+
+https://doi.org/10.1016/j.ptsp.2020.12.007
+1466-853X/© 2020 Elsevier Ltd. All rights reserved.
+B.W. Freeman, S.W. Talpey, L.P. James et al.                                                                     Physical Therapy in Sport 48 (2021) 12e19
+
+
+for injury. However, recently a shift in the research has focussed on         Delphi Panel consultation took place. The Delphi process has been
+high-speed running and sprinting exposure as a HSI research area              previously used to improve survey validity, as it relies on multiple
+(Duhig et al., 2016; Malone et al., 2017; Ruddy et al., 2018). Early          rounds of review by a panel of experts in a speciﬁc ﬁeld to ensure a
+indications suggest the importance of addressing these factors,               consensus decision is made (Hasson et al., 2000; Hsu & Sandford,
+however little is known about the HSR and sprinting training prac-            2007). Six experts representing physical performance coaching,
+tices in elite sports. Although the scientiﬁc evidence-base is used to        sports physiotherapy practice and sports science/sports medicine
+inform training to prevent HSI has increased substantially over the           research took part in the Delphi review process. Initially, three
+past 10 years, physical performance coaches may not rely solely on            rounds of consultation were deemed desirable; however, a group
+research evidence to inform their practice. The gap between research          consensus was achieved following the second round of reviews. To
+and application to practice is noted across many elite sports                 ensure readability and understanding, the survey was piloted with
+(Harrison et al., 2020). Physical performance coaches instead estab-          three physical performance coaches working in semi-professional
+lish their evidence-based practice from their professional experi-            ARF. The survey included questions designed to collect de-
+ences, formal and informal discussions with practitioners and                 mographic data, as well as open and closed response questions
+academics and scientiﬁc literature (English et al., 2012).                    regarding the beliefs and the practices of the participants regarding
+    Currently, there is general, low detail, published evidence to            HSI in Australian Rules football. An example of an open-ended
+describe the methods used by professional ARF teams to prepare                question is “Do you think your athletes should be doing more or
+players for the physical demands of competition. Although this has            less maximum speed sprinting for hamstring strain injury pre-
+been explored in other sports, like baseball (Ebben et al., 2005),            vention? Why/Why not?” A ﬁnal copy of the survey questions can
+there is no information in elite ARF. Therefore, the purpose of this          be seen in the supplementary materials.
+investigation was to understand the beliefs and practices of pro-                 Each club’s high-performance manager was contacted via email,
+fessional ARF physical performance staff towards the training, and            which included a brief introduction of the topic and a link to the
+assessment prescribed to mitigate the risk of HSI. A better-                  online survey (Qualtrics, Provo, UT). Participants were informed
+developed understanding about the sprinting and complemen-                    that the aim of this research was to determine the current beliefs
+tary practices currently implemented by physical performance                  and practices of professional physical performance coach’s
+coaches, will help align the needs of practitioners with the ﬁndings          regarding HSI. The surveys were distributed in November 2019.
+of academics. This will improve the implementation of injury                  Each high-performance manager received a reminder email with a
+prevention strategies for HSI, and serve as a reference to bridge the         follow up link monthly, until the survey closed in February of 2020.
+gap between research and practice in elite ARF.                               Following data collection and analysis, a copy of the results was
+                                                                              distributed to all 18 of the invited high-performance managers.
+2. Methods
+                                                                              2.3. Statistical analysis
+2.1. Participants and study design
+                                                                                  This survey contained both closed and open-ended questions.
+    To establish the beliefs and practices of professional physical           Closed questions were subject to analysis methods previously used
+performance coaches working in the Australian Football League                 in peer-reviewed research (Ebben et al., 2005; Patton, 1990). Once
+(AFL), an online survey was distributed to current high-                      survey responses were recorded in Qualtrics (Qualtrics, Provo, UT),
+performance managers. These high-performance managers were                    responses were exported into Microsoft Excel (Version 16.0.4) for
+targeted as they are at the forefront of their ﬁeld within the highest        analysis. In line with previous research (Ebben et al., 2005; Patton,
+level of ARF. Respondents were asked to describe, in detail, both             1990), individual responses were deﬁned as raw data. From this
+their beliefs, and their practices regarding strategies to reduce the         point, higher order themes were established by researchers
+risk of HSI in ARF with a focus on sprinting.                                 through analysis of the raw data. During the analysis, two re-
+    Eighteen high performance managers in the AFL were invited to             searchers (BF and ST) independently coded the responses and
+take part in a brief 20e30 min survey during the 2019 post-season.            generated themes for each open-ended research question. Re-
+High performance managers were chosen as the point of contact for             searchers had previous experience analysing and interpreting
+each of the 18 AFL teams, as they are tasked with overseeing and              qualitative strength and conditioning data. These themes were
+implementing the high performance program across both strength                then discussed between the researchers to establish agreed central
+and conditioning and medical staff. This includes the imple-                  themes that accurately represented the responses. For the majority
+mentation of strategies targeting the reduction of HSI. This project          of questions, the raw data from participant responses encompassed
+received approval from the Human Research Ethics Committee                    multiple concepts, which supported more than one theme.
+(Approval Number e B19-024). Potential respondents were
+informed of the risks and beneﬁts of this study via an online plain           3. Results
+language information statement that accompanied the survey.
+Consent was implied by completing and submitting the survey. Of               3.1. Participant characteristics
+the 18 high performance managers invited to participate, nine
+successfully completed the survey (age: 38.9 ± 4.4, male: 9 female:               Nine of the 18 respondents invited to participate completed the
+0). No coach or team name was associated with any responses to                online survey, resulting in a response rate of 50%. The average time
+protect the anonymity of the respondents.                                     for the respondents to be working in their role within the AFL was
+                                                                              9.2 ± 4.3 years. Respondents reported a variety of formal qualiﬁ-
+2.2. Instruments                                                              cations, including undergraduate degree (n ¼ 9), postgraduate
+                                                                              degree (n ¼ 6), Graduate Certiﬁcate (n ¼ 2), and PhD (n ¼ 2).
+   A survey addressing the beliefs and practices of professional              Professional qualiﬁcations included the Australian Strength and
+physical performance coaches regarding sprint training and HSI                Conditioning Association (ASCA) Level 1 Qualiﬁcation (n ¼ 8), ASCA
+was developed by the authorship team based upon previous                      Level 2 (n ¼ 2), ASCA Level 3 (n ¼ 3), Exercise and Sport Science
+research into strength and conditioning coaching practice (Ebben              Australia (ESSA) Exercise Scientist (n ¼ 5), ESSA Sport Scientist
+et al., 2005). Following development of the survey, two rounds of             (n ¼ 2), and ESSA High Performance Manager (n ¼ 4).
+                                                                         13
+B.W. Freeman, S.W. Talpey, L.P. James et al.                                                                                    Physical Therapy in Sport 48 (2021) 12e19
+
+
+3.2. Beliefs around the mechanism of hamstring injury                                     consuming” and “the risk of injury” as barriers. Respondents re-
+                                                                                          ported regularly exposing (1e2 times per week, across most weeks
+   Respondents reﬂected their beliefs about different aspects of                          of the year) exposing their athletes to maximum speed sprinting,
+strength and conditioning related to hamstring strain injury. When                        however most advocated for a more individualised approach to
+asked about the frequency of events that lead to HSI, sprinting                           sprint training for ﬁeld sport athletes. Full results are included in
+(acceleration), sprinting (maximum speed) and running in hip                              Table 4..
+ﬂexion were adjudged very common or common activities associ-                                 Six of the nine respondents (66.7%) identiﬁed injury risk as a
+ated with HSI in ARF (Table 1). Overstriding was identiﬁed as a key                       barrier to implementing sprint training with their team, whilst one
+mechanical ﬂaw that contributes to HSI. Visual observation was the                        of the respondents identiﬁed the fear is ampliﬁed by the lack of job
+most common method of analysing running mechanics (n ¼ 9).                                security as a physical performance coach in the AFL. The most
+                                                                                          common barrier to speed testing their athletes was fear of injury
+3.3. Activites and strategies to reduce the risk of hamstring strain                      from testing (n ¼ 6).
+injury
+                                                                                          3.6. Trends in physical preparation
+   Table 2 describes coach’s perceptions of strategies commonly
+used to mitigate the risk of HSI. This is followed by Table 3 which                          The ﬁnal question in the survey asked respondents to reﬂect on
+outlines the hamstring injury screening practices implemented by                          the changes in HSI injury prevention practices in the AFL across
+respondents working in ARF, as well as the training interventions                         their career, with a clear increase in HSR the most popular response
+used to mitigate the risk of HSI, and the implementation of these                         (n ¼ 7). Respondents also identiﬁed that Pilates or core exercises
+methods by AFL teams.                                                                     were common (n ¼ 4), as well as increase in the popularity of
+                                                                                          eccentric hamstring and isometric hamstring strengthening exer-
+3.4. High-speed running and sprinting thresholds                                          cises (n ¼ 4). Four of the nine respondents suggested that they
+                                                                                          question the functionality and application of the Nordic hamstring
+   The respondents in this study reported that they believed                              exercise with their athletes (see Table 5).
+5.8 ± 0.7 m s1 to be a mean representative of HSR in absolute
+terms. There were a range of deﬁnitions for relative HSR terms,                           4. Discussion
+however the most common answer was 70% of maximum running
+speed (%Vmax) (n ¼ 4), whilst 75%Vmax (n ¼ 2), 80%Vmax (n ¼ 1), 85%                           This is the ﬁrst study to investigate the beliefs and practices of
+Vmax (n ¼ 1) and velocity at VO2max (n ¼ 1) were all listed answers.                      professional physical performance coaches working in the AFL
+Respondents believed 7.6 ± 0.4 m s1 to represent sprinting in                            regarding sprinting and complementary practices used to reduce
+absolute terms. In relative terms, three different speeds were                            the risk of HSI. More speciﬁcally, the link between sprinting and HSI
+identiﬁed, starting at >85%Vmax (n ¼ 3), >90%Vmax (n ¼ 5) and >95%                        is well established, however it is evident there is a gap between the
+Vmax (n ¼ 1).                                                                             interpretation of evidence and the prescription. It is possible that
+   All respondents reported measuring high-speed running in both                          this may be due to factors outside the control of physical perfor-
+absolute and relative terms. Some respondents provided an abso-                           mance coaches, such as ﬁxturing, time allocation between tactical,
+lute and relative term for HSR and sprinting, whilst some only                            technical and physical coaching, along with prioritization of other
+provided one option. Fig. 1 is an indication of the range of velocity                     strength and conditioning aspects. Moreover, the respondents felt
+thresholds used to measure HSR and sprinting in absolute and                              that the best way to mitigate the risk of HSI occurrence was to
+relative terms.                                                                           implement a well-periodized training plan that incorporates
+                                                                                          eccentric hamstring strength training, core/lumbopelvic exercises
+3.5. Sprint training                                                                      and exposure to maximal velocity sprinting. Respondents advo-
+                                                                                          cated for the individualisation of sprint training; however, there
+    Respondents were asked about their beliefs regarding sprint                           was disparity between velocity thresholds that should be used to
+training and testing for hamstring injury prevention, when                                classify sprinting.
+designing a training session for their team. Tests of maximum
+running speed were reported in the pre-season (n ¼ 8), and the in-                        4.1. Perceived risks for hamstring strain injury
+season (n ¼ 6). The most common testing procedure was to collect
+maximum running speed from global positioning system (GPS)                                   Whilst sprinting was a primary theme regarding the occurrence
+data (n ¼ 9), whilst respondents reported moving away from                                and prevention of HSI, sub-themes such as acceleration, maximum
+testing maximum speed with timing gates (n ¼ 3), citing “time                             speed and running mechanics were characteristics of Australian
+
+
+Table 1
+Coach’s perceptions regarding activities associated with hamstring strain injury (HSI).
+
+  Coaches perceptions of activities associated with HSI
+
+  Mechanism                                    Very Common                   Common                 Neither             Uncommon                     Very Uncommon
+
+  Sprinting (Acceleration)                     22.2%                         77.8%                  0%                  0%                           0%
+  Sprinting (Maximum Speed)                    33.3%                         66.7%                  0%                  0%                           0%
+  Running in Hip Flexion                       0%                            77.8%                  11.1%               11.1%                        0%
+  Jumping                                      0%                            0%                     33.3%               33.3%                        33.3%
+  Landing                                      0%                            0%                     33.3%               33.3%                        33.3%
+  Kicking                                      0%                            33.3%                  55.6%               0%                           11.1%
+  COD/Deceleration                             0%                            11.1%                  55.6%               33.3%                        0%
+  Poor Running Mechanics                       0%                            44.4%                  4.4%                0%                           11.1%
+  Poor Warm Up                                 0%                            0%                     0%                  44.4%                        55.6%
+
+
+                                                                                     14
+B.W. Freeman, S.W. Talpey, L.P. James et al.                                                                                             Physical Therapy in Sport 48 (2021) 12e19
+
+Table 2
+Coach’s perceptions regarding effective strategies to reduce the risk of HSI.
+
+  Coaches perceptions of effective strategies to reduce the risk of HSI
+
+  Training Method                                 Very Effective                  Effective                 Neither                  Ineffective                Very Ineffective
+
+  Eccentric                                       33.3%                           44.4%                     22.2%                    0%                         0%
+  Isometric                                       11.1%                           22.2%                     44.4%                    22.2%                      0%
+  Traditional Resistance                          11.1%                           66.7%                     22.2%                    0%                         0%
+  Monitor HSR Load                                11.1%                           88.9%                     0%                       0%                         0%
+  Sprint Training                                 22.2%                           77.8%                     0%                       0%                         0%
+  Flexibility                                     0%                              11.1%                     44.4%                    44.4%                      0%
+  Core/Lumbopelvic                                11.1%                           55.6%                     22.2%                    11.1%                      0%
+  Improve Running Mechanics                       11.1%                           77.8%                     11.1%                    0%                         0%
+  Proper Periodisation                            11.1%                           88.9%                     0%                       0%                         0%
+
+COD e Change of Direction.
+
+
+
+Table 3
+Australian Rules Football (ARF) Physical Performance Coaches practices regarding hamstring strain injury (HSI) risk reduction.
+
+  Hamstring injury screening practices of elite physical performance coaches in ARF
+
+  Theme                                                   Responses                            Raw data representing this response
+
+  Weekly Eccentric Strength                               9 (100%)                             “We have used the NordBord previously, testing every week and comparing
+                                                                                               (within reason) to baseline”
+  Muscle Imaging                                          3 (33.3%)                            “Have used fascicle length imaging in the pre-season for players who are deemed
+                                                                                               at risk”
+  Training strategies used to reduce the risk of HSI in ARF
+
+  Training Intervention                                                                        Teams using intervention                            Teams not using intervention
+  Eccentric Strengthening                                                                      9 (100%)                                            0
+  Isometric Strengthening                                                                      7 (77.8%)                                           2 (22.2%)
+  Traditional Resistance Training                                                              9 (100%)                                            0
+  High-Speed Running Training                                                                  9 (100%)                                            0
+  Sprint Training                                                                              9 (100%)                                            0
+  Flexibility Training                                                                         5 (55.6%)                                           4 (44.4%)
+  Core/Lumbopelvic Training                                                                    9 (100%)                                            0
+  Training to Improve Running Mechanics                                                        9 (100%)                                            0
+  Proper Periodisation                                                                         8 (88.9%)                                           1 (11.1%)
+
+
+
+
+Table 4
+Central themes regarding sprint training and the association with hamstring injury.
+
+  When designing training for your team, do you believe sprint training to be beneﬁcial, or too risky in relation to hamstring strain injury?
+
+  Theme                             Responses Raw data representing this response
+
+  Individualisation          6 (66.7%) “Sprint training is deﬁnitely beneﬁcial, but risky in the sense that the dose must be individualised to each athlete”
+  Unknown Volume             5 (55.6%) “I certainly think it is beneﬁcial, but the volume or dose is hard to get right”
+  Timing/Planning            5 (55.6%) “Can be difﬁcult to incorporate around a ﬂoating schedule”
+  When and how are athletes exposed to maximum speed sprinting?
+
+  Theme                         

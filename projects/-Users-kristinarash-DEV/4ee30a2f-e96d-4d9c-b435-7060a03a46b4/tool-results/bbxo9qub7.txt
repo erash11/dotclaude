@@ -1,0 +1,383 @@
+# Evidence Library screening + synthesis (v2)
+
+You screen sports-science PDFs and, if eligible, write a library record for Baylor Athletics performance, medical, rehab, nutrition and research staff.
+
+Inputs: `inputs.json` gives each paper an ID, the filename it was catalogued under (`sourceFile`), page count, and DOI strings found anywhere in the text (`doiCandidatesInText`; most are from the reference list). Full extracted text is at `text/<ID>.txt`. Read it fully, in chunks if large. Controlled vocabularies are in `taxonomy.json`. Use ONLY those exact values. Base everything ONLY on the extracted text, never on outside knowledge of the paper.
+
+## Decision
+- `INCLUDE`: the text is the article the filename names, AND it is athlete health/performance evidence of one of these types: original research (any design, including case reports and validation studies), systematic review/meta-analysis, narrative or clinical review, or consensus/position statement.
+- `EXCLUDE` (give `exclusionReason`):
+  - (a) source identity mismatch: the text is a different article from what the filename names. Compare the filename title with the title in the text carefully.
+  - (b) editorial, commentary, letter, or opinion piece without original methods or a structured review of evidence. Also (b): a study protocol with no results (decided by Eric 2026-10-10; no listed reason fits exactly, so use (b) and say "study protocol, no results" in the reason).
+  - (c) not relevant to athletes, sport, exercise performance or athlete health.
+- `DEGRADED` (give `degradedReason`): the text is unreadable or truncated, critical sections are missing, or **the article's own DOI is not printed in the text**. Reference-list DOIs do not count. If the DOI is missing but everything else is fine, still fill in all fields and set `doiMissing: true`. The operator may verify the DOI externally and upgrade the decision.
+
+## Output: write `drafts/<ID>.json`
+```
+{
+ "id":"<ID>", "sourceFile":"...", "decision":"INCLUDE|EXCLUDE|DEGRADED",
+ "exclusionReason":"", "degradedReason":"", "doiMissing":false,
+ "identityCheck":"one sentence: title found in text vs filename",
+ "confidence":"high|medium|low",
+ "studyDesign":"<one studyDesigns value>",
+ "primaryDomain":"<one domains value>", "domains":[...must include primaryDomain], "audiences":[...], "sports":[...], "populations":[...],
+ "evidenceSummary":"2-3 sentences: design, sample, main results, as the authors report them",
+ "screeningLimitations":"1-2 sentences: key limits on what this evidence can support",
+ "synthesisCaution":"1 sentence: the most likely way staff could over-read this paper",
+ "paper":{
+   "year":2020, "citation":"Authors. Title. Journal. Year;vol(issue):pages.", "doi":"10.xxxx/...",
+   "abstract":"", "tldr":"", "methods":"", "findings":"", "limitations":"",
+   "practicalImplications":"", "athleteDev":"", "rtp":""
+ }
+}
+```
+For EXCLUDE, the taxonomy, summary and `paper` fields may be null.
+
+## Field rules
+- `year`: the journal issue/publication year from the citation line or the journal header. NOT the received, accepted or online-first date. If only an online-first date exists, use that year.
+- `doi`: the article's own DOI, exactly as printed, lowercase prefix "10.". Never use a DOI from the references.
+- `citation`: list authors as printed (surname + initials; use "et al." after 6 authors). Include volume, issue and pages only if they are printed for this article. Do not invent them.
+- `populations`: add `Male Athletes` and/or `Female Athletes` when the sample is athletes and their sex is stated. Do not use athlete tags (sex or `Healthy Athletes`) for non-athlete samples such as recreationally active adults, patients, staff or students; use `Adult / Recreational` or `Mixed / Unspecified`. Add `Healthy Athletes` or `Injured Athletes` when health status is stated. Add the competition level (Professional / Elite, Collegiate, Youth / Adolescent, Adult / Recreational). Use `Mixed / Unspecified` only when the level really is mixed or unstated.
+- `studyDesign`: code scoping reviews with a described systematic search as `Systematic Review / Meta-analysis` (library precedent). Use `Narrative Review` only when no search method is described.
+- `primaryDomain`: the domain staff would browse to find this paper. Use Monitoring & Technology for papers whose main contribution is a measurement tool, test, device or monitoring method, including reliability, validity and test profiling.
+- If the abstract and the results/tables disagree, report the results/table values and note the conflict in `limitations`.
+
+## Writing standard (critical)
+- Every claim must be directly supported by the text. Report sample sizes, designs, effect directions and significance accurately. Never invent numbers.
+- Distinguish within-group change from between-group difference. Distinguish association from causation. Do not overstate observational or small-sample findings.
+- Each paper field: 1-3 plain sentences. `tldr`: one or two practitioner sentences. `athleteDev` = Performance Application. `rtp` = Return to Sport Application. If the study cannot inform return to sport, say what it cannot be used for.
+- Practical fields must follow from the findings. No generic advice the paper does not support.
+- Plain language, no em dashes.
+
+## Files
+Write only to `drafts/<ID>.json` and your own `helpers/<your-folder>/`. Never write anywhere else, including the filesystem root.
+{
+ "domains": [
+  "Training & Performance",
+  "Sports Medicine & Injury",
+  "Rehabilitation & Return to Sport",
+  "Recovery & Readiness",
+  "Nutrition & Hydration",
+  "Brain Health & Psychology",
+  "Athlete Wellbeing",
+  "Monitoring & Technology"
+ ],
+ "audiences": [
+  "Performance",
+  "Athletic Training",
+  "Sports Medicine",
+  "Rehabilitation",
+  "Nutrition",
+  "Research & Analytics",
+  "Coaching"
+ ],
+ "sports": [
+  "Mixed / General Sport",
+  "American Football",
+  "Soccer",
+  "Basketball",
+  "Baseball / Softball",
+  "Rugby",
+  "Volleyball",
+  "Track & Field",
+  "Swimming & Diving",
+  "Gymnastics",
+  "Tennis",
+  "Golf",
+  "Ice Hockey",
+  "Combat Sports",
+  "Endurance Sport",
+  "Other Sport"
+ ],
+ "populations": [
+  "Professional / Elite",
+  "Collegiate",
+  "Youth / Adolescent",
+  "Adult / Recreational",
+  "Female Athletes",
+  "Male Athletes",
+  "Injured Athletes",
+  "Healthy Athletes",
+  "Mixed / Unspecified"
+ ],
+ "studyDesigns": [
+  "Systematic Review / Meta-analysis",
+  "Randomized Controlled Trial",
+  "Cohort Study",
+  "Cross-sectional Study",
+  "Case-control Study",
+  "Consensus / Position Statement",
+  "Narrative Review",
+  "Case Report / Case Series",
+  "Laboratory / Experimental Study",
+  "Qualitative Study",
+  "Methodological / Validation Study",
+  "Internal Evidence Synthesis",
+  "Other"
+ ]
+}helpers:
+g1
+g10
+g11
+g12
+g2
+g3
+g4
+g5
+g6
+g7
+g8
+g9
+v10
+v3
+v4
+v5
+v6
+v7
+
+verified:
+== Q01
+{
+ "id": "Q01",
+ "sourceFile": "Sports Medicine - Nutritional Sciences and Nutritional Biochemistry, Focusing on Nutritional Supplements from the FFNFO Framework to Contamination.pdf",
+ "decision": "EXCLUDE",
+ "exclusionReason": "(b) Editorial for a special issue. It summarises other papers and proposes a framework, with no original methods or structured review of evidence of its own.",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sports Medicine: Nutritional Sciences and Nutritional Biochemistry, Focusing on Nutritional Supplements from the FFNFO Framework to Contamination') matches the filename.",
+ "confidence": "high",
+ "studyDesign": null,
+ "primaryDomain": null,
+ "domains": null,
+ "audiences": null,
+ "sports": null,
+ "populations": null,
+ "evidenceSummary": null,
+ "screeningLimitations": null,
+ "synthesisCaution": null,
+ "paper": null
+}
+
+== Q02
+{
+ "id": "Q02",
+ "sourceFile": "Sports concussions- can head impact sensors help biomedical engineers to design better headgear.pdf",
+ "decision": "EXCLUDE",
+ "exclusionReason": "(b) Editorial (BJSM commentary by Wu on head impact sensors and headgear design). It reviews and comments on other work and has no original methods or structured review of its own.",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sports concussions: can head impact sensors help biomedical engineers to design better headgear?') matches the filename.",
+ "confidence": "high",
+ "studyDesign": null,
+ "primaryDomain": null,
+ "domains": null,
+ "audiences": null,
+ "sports": null,
+ "populations": null,
+ "evidenceSummary": null,
+ "screeningLimitations": null,
+ "synthesisCaution": null,
+ "paper": null
+}
+
+== Q03
+{
+ "id": "Q03",
+ "sourceFile": "Sports injuries and game stakes - Concussions in the National Football League.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sports injuries and game stakes: Concussions in the National Football League') matches the filename.",
+ "confidence": "medium",
+ "studyDesign": "Cross-sectional Study",
+ "primaryDomain": "Sports Medicine & Injury",
+ "domains": ["Sports Medicine & Injury"],
+ "audiences": ["Sports Medicine", "Research & Analytics"],
+ "sports": ["American Football"],
+ "populations": ["Professional / Elite"],
+ "evidenceSummary": "Observational analysis of NFL regular-season games from 2012 to 2015 (948 games, 563 concussions after exclusions), with concussions taken from public injury reports. The authors measure game stakes as how much a win changes a team's playoff qualification odds, and control for fixed effects with standard errors clustered by team. They report that a game where a win guarantees playoff qualification is associated with a 24 percentage point higher risk of at least one concussion.",
+ "screeningLimitations": "This is an observational panel analysis, so it shows association and not causation, and unmeasured game factors may be linked to stakes. Concussion counts depend on the public injury reports, which may miss or misclassify events, and the sample is four NFL seasons only.",
+ "synthesisCaution": "Staff could read the 24 point figure as the concussion risk in any high-stakes game, when it is one league's regular-season estimate built on a model-based measure of playoff odds.",
+ "paper": {
+   "year": 2023,
+   "citation": "Courty P, Cisyk J. Sports injuries and game stakes: Concussions in the National Football League. Economic Inquiry. 2023;1-19.",
+   "doi": "10.1111/ecin.13173",
+   "abstract": "NFL regular-season games differ in importance for playoff qualification. The authors build an incentive-based measure of how a win changes a team's qualification probability and relate it to concussions. Teams were 24 percentage points more likely to suffer a concussion in games where a win secures a playoff berth.",
+   "tldr": "Concussion risk in NFL games appears higher when a win would secure playoff qualification. This is an observational finding from one league, so it should prompt readiness for high-stakes games rather than a firm risk estimate.",
+   "methods": "Team-game panel of NFL regular-season games from 2012 to 2015, excluding neutral-site games and the final week. A swing measure of playoff odds was computed for each game, concussion events were taken from injury reports, and regressions included fixed effects with standard errors clustered by team.",
+   "findings": "The swing variable had a statistically significant association with concussion incidence. A game that guarantees one team playoff qualification with a win was associated with a 24 percentage point higher risk of at least one concussion. Some alternative specifications gave weaker results.",
+   "limitations": "Observational design with no direct measure of game intensity or exposure. The stakes measure depends on a model of playoff odds. Injury data come from public reports, and the findings are limited to NFL regular-season games from 2012 to 2015.",
+   "practicalImplications": "Concussion risk may rise in games where the stakes are high, so staff could plan extra sideline and concussion-protocol readiness for those games. The paper does not test any prevention measure.",
+   "athleteDev": "This paper does not address athlete development or performance. It covers injury risk linked to game stakes only.",
+   "rtp": "This study does not inform return to sport. It measures how often concussions occur in high-stakes games and says nothing about recovery time or clearance decisions."
+ }
+}
+
+== Q04
+{
+ "id": "Q04",
+ "sourceFile": "Sports performance - is there evidence that the body clock plays a role.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sports performance: is there evidence that the body clock plays a role?') matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Training & Performance",
+ "domains": ["Training & Performance", "Recovery & Readiness"],
+ "audiences": ["Performance", "Research & Analytics"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Mixed / Unspecified"],
+ "evidenceSummary": "Narrative review of the time-of-day pattern in athletic performance and whether the internal body clock contributes to it. It draws on laboratory and simulated-competition studies of strength, power, running, swimming, cycling and skilled tasks. The authors report performance peaks at about 15:30 to 20:30 hours, with amplitudes of 2 to 11 percent of the daily mean in studies that sampled at least six times across 24 hours.",
+ "screeningLimitations": "This is a narrative review with no described search method, so the choice of studies cannot be checked. The authors note that much of the cited work is short-duration and of poor quality, and that the body clock cannot yet be separated from time awake and environmental factors.",
+ "synthesisCaution": "Staff could read the evening performance peak as proof that the body clock drives it, when the authors say current evidence cannot separate the body clock from sleep, time awake and environmental cues.",
+ "paper": {
+   "year": 2009,
+   "citation": "Reilly T, Waterhouse J. Sports performance: is there evidence that the body clock plays a role? Eur J Appl Physiol. 2009;106:321-332.",
+   "doi": "10.1007/s00421-009-1066-x",
+   "abstract": "Athletic performance shows a time-of-day effect with possible causes in environmental factors, the sleep-wake cycle and the internal body clock. The authors conclude that the body clock probably plays some role in sports performance rhythms, but the evidence does not separate it from time awake. They outline protocols to separate these roles and note that muscle fatigue is a serious barrier to experimental work.",
+   "tldr": "Sports performance follows a time-of-day pattern that peaks in the late afternoon, and the body clock probably contributes to it. Current evidence cannot yet say how much of the pattern is the body clock rather than time awake or the environment.",
+   "methods": "Narrative review of the time-of-day performance literature and chronobiological evidence, with suggested experimental protocols. No systematic search method is described.",
+   "findings": "Many performance measures are higher in the late afternoon and early evening than in the morning. Reported rhythm peaks fall between about 15:30 and 20:30 hours, with amplitudes of 2 to 11 percent of the daily mean. The authors judge that the body clock probably plays some role, but the evidence is inconclusive.",
+   "limitations": "Many of the cited studies are short-duration tasks of poor quality with small or unbalanced designs. Muscle fatigue makes rigorous protocols long or unacceptable, and the body clock and time awake cannot yet be separated.",
+   "practicalImplications": "When comparing athlete performance across the day, standardise and record test times, because the time of day alone can shift results. Where possible, test protocols should separate time awake from the body clock.",
+   "athleteDev": "Performance measures tend to peak in the late afternoon and early evening, so training and testing schedules could take time of day into account. This review cannot say how much of that rhythm is the body clock.",
+   "rtp": "This review cannot inform return-to-sport decisions. It does not address injured athletes or rehabilitation outcomes."
+ }
+}
+
+== Q05
+{
+ "id": "Q05",
+ "sourceFile": "Sports-related Concussion V Genetic Factors copy.pdf",
+ "decision": "DEGRADED",
+ "exclusionReason": "",
+ "degradedReason": "The article's own DOI is not printed in the extracted text. The only DOI-like strings are reference-list links.",
+ "doiMissing": true,
+ "identityCheck": "Title in the text ('Sports-related Concussion V Genetic Factors', McGrew) matches the filename.",
+ "confidence": "medium",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Brain Health & Psychology",
+ "domains": ["Brain Health & Psychology", "Sports Medicine & Injury"],
+ "audiences": ["Sports Medicine", "Athletic Training", "Research & Analytics"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Mixed / Unspecified"],
+ "evidenceSummary": "Narrative review of genetic biomarkers for sport-related concussion risk and recovery, drawing on predominantly small pilot studies in collegiate athletes, a South African rugby cohort, military subjects and a mild TBI cohort of children. The author reports mixed results, with APOE, IL-6R, GRIN2A and SLC17A7 variants linked to risk or recovery in some studies but not replicated. The largest prospective cohort (1056 college athletes) reported IL-6R CC genotype with about three times the concussion risk and APOE4 with about 40 percent lower risk.",
+ "screeningLimitations": "This is a narrative review with no described search method, so the selection of studies cannot be checked. The author states that most genetic studies have small samples, high bias risk and little replication.",
+ "synthesisCaution": "Staff could treat the reported genotype associations as usable risk markers, when they come from small pilot studies that have largely not replicated.",
+ "paper": {
+   "year": 2019,
+   "citation": "McGrew CA. Sports-related Concussion V Genetic Factors. Current Sports Medicine Reports. 2019;18(1):20-21.",
+   "doi": null,
+   "abstract": "Genetic biomarkers have been evaluated for validity in predicting risk for sports-related concussion and for prognosis of recovery. Results from predominantly small pilot studies are mixed and not adequately replicated. The use of such genetic biomarkers should currently be considered investigational and not for routine clinical use.",
+   "tldr": "Genetic markers linked to concussion risk and recovery are not ready for clinical use. The studies so far are small, carry bias risk and have rarely been replicated.",
+   "methods": "Narrative review of genetic association studies of sport-related concussion and traumatic brain injury, including the author's discussion of the legal, ethical and social issues of genetic testing. No systematic search method is described.",
+   "findings": "APOE genotype results are mixed for traumatic brain injury and show no association in sport-related concussion studies. Some studies linked IL-6R CC genotype to higher concussion risk and APOE4 to lower risk, and others linked APOE, GRIN2A and SLC17A7 variants to symptom burden or recovery time. The author concludes that genetic testing cannot yet be endorsed as a clinical tool in concussion management.",
+   "limitations": "Most studies are small, carry high or moderate bias risk and have not been adequately replicated. Genetic association results have often been shown to be false when retested. The review has no described search method.",
+   "practicalImplications": "Staff should not use genetic tests to guide concussion decisions, because the author states they are investigational. Any future use should be weighed against the discrimination, insurance and employment concerns the review raises.",
+   "athleteDev": "This review cannot support genetic screening for athlete development or selection. It notes that athletes could face discrimination based on genotype in participation or playing-time decisions.",
+   "rtp": "Genetic markers cannot yet be used to predict delayed recovery or guide return-to-play decisions. The review describes the evidence as preliminary."
+ }
+}
+
+== Q06
+{
+ "id": "Q06",
+ "sourceFile": "Sprint running- from fundamental mechanics to practice—a review.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sprint running: from fundamental mechanics to practice - a review') matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Training & Performance",
+ "domains": ["Training & Performance"],
+ "audiences": ["Performance", "Coaching", "Research & Analytics"],
+ "sports": ["Track & Field", "Mixed / General Sport"],
+ "populations": ["Mixed / Unspecified"],
+ "evidenceSummary": "Invited narrative review that applies fundamental mechanical principles to sprint running research. It assesses spring-mass models, force and power analyses based on total and horizontal (end-goal) force, and common coaching concepts. The authors argue that some models and power calculations from isolated horizontal force can lead to misinterpretation.",
+ "screeningLimitations": "This is a narrative review with no described search method, so the choice of literature cannot be checked. It is largely a theoretical argument and reports no new athlete data.",
+ "synthesisCaution": "Staff could treat a model that fits sprint kinematics as proof of the underlying mechanism, which the authors say a model cannot establish.",
+ "paper": {
+   "year": 2019,
+   "citation": "Haugen T, McGhie D, Ettema G. Sprint running: from fundamental mechanics to practice (a review). Eur J Appl Physiol. 2019.",
+   "doi": "10.1007/s00421-019-04139-0",
+   "abstract": "The authors examine sprint running literature using the mechanical principles that govern accelerated running. They discuss spring-mass models and their limits, the link between sprint mechanics and metabolic demand, and the emphasis on total and horizontal force. They argue that power analysis based on isolated end-goal force is flawed and discuss some practical concepts in sprint coaching.",
+   "tldr": "Sprint mechanics research can be misread when models or horizontal-force power figures are taken at face value. Coaches and analysts should check how a measure was derived before using it to explain sprint performance.",
+   "methods": "Invited narrative review of sprint running mechanics literature, interpreted through fundamental mechanical principles. No systematic search method is described.",
+   "findings": "Spring-mass models describe gross sprint kinematics such as step length, step rate and contact time, but the authors argue they have flaws when applied to accelerated running. Analyses based on total and horizontal force, and power derived from isolated end-goal force, are argued to be limited or flawed. Metabolic models of sprinting are described as promising but still model based.",
+   "limitations": "The review is an argument rather than a systematic synthesis, and no search method is described. It presents no new data, and its views on practical sprint concepts are discussed rather than tested.",
+   "practicalImplications": "Check how a sprint model or force measure was derived before treating it as a mechanism. Interpret horizontal-force power figures obtained from isolated force data with caution.",
+   "athleteDev": "The mechanical principles can guide sprint technique and force-application work. Model-based power figures should not be read as direct measures of an athlete's capacity, and the review gives no training prescription.",
+   "rtp": "This review does not address return to sport or rehabilitation and cannot be used to set return-to-sport criteria."
+ }
+}
+
+== Q07
+{
+ "id": "Q07",
+ "sourceFile": "Sprint vs isolated eccentric training - Comparative effects on hamstring architecture and performance in soccer players.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sprint versus isolated eccentric training: Comparative effects on hamstring architecture and performance in soccer players') matches the filename.",
+ "confidence": "medium",
+ "studyDesign": "Randomized Controlled Trial",
+ "primaryDomain": "Training & Performance",
+ "domains": ["Training & Performance", "Sports Medicine & Injury"],
+ "audiences": ["Performance", "Sports Medicine", "Athletic Training"],
+ "sports": ["Soccer"],
+ "populations": ["Healthy Athletes", "Mixed / Unspecified"],
+ "evidenceSummary": "Soccer players were assigned to a sprint group, a Nordic hamstring exercise group or a soccer-only group for the six preseason weeks; 32 were recruited and 23 completed (8 sprint, 7 Nordic, 8 soccer-only). The authors report small to large pre-post improvements in 50 m sprint performance and mechanics in the sprint group, except maximal velocity, and a moderate increase in biceps femoris long head fascicle length, compared with a smaller increase in the Nordic group. Only the Nordic group showed a small increase in pennation angle.",
+ "screeningLimitations": "Very small analysed groups (7 to 8 per group), with no record of match or training load, and two-dimensional ultrasound estimates of fascicle length that the authors note have known limits. The between-group fascicle conclusion rests on these small samples, and injury was not measured.",
+ "synthesisCaution": "Staff could read the fascicle-length gain as proof that sprint training prevents hamstring injury, when the study measured muscle architecture and sprint performance only.",
+ "paper": {
+   "year": 2020,
+   "citation": "Mendiguchia J, Conceição F, Edouard P, Fonseca M, Pereira R, Lopes H, et al. Sprint versus isolated eccentric training: Comparative effects on hamstring architecture and performance in soccer players. PLoS ONE. 2020;15(2):e0228283.",
+   "doi": "10.1371/journal.pone.0228283",
+   "abstract": "The study compared Nordic hamstring exercise with sprint training, both added to regular soccer practice, on sprint performance, sprint mechanics and biceps femoris long head architecture. Six preseason weeks were compared across a soccer-only group, a Nordic group and a sprint group. The authors conclude that sprint training increased fascicle length and improved sprint performance and mechanics, while Nordic training did not improve sprint performance.",
+   "tldr": "Adding sprint training to a soccer preseason improved 50 m sprint performance and increased hamstring fascicle length in this small sample. Injury protection was not measured, so the fascicle result should not be read as injury prevention.",
+   "methods": "Prospective interventional control study over six preseason weeks in 32 recruited soccer players who were allocated to three groups, with matching by position, playing status and previous hamstring injury. Nine players dropped out, leaving 23 analysed. Outcomes were 50 m sprint performance and mechanics, and biceps femoris long head fascicle length and pennation angle measured by two-dimensional ultrasound.",
+   "findings": "In the sprint group, sprint performance and mechanics showed small to large pre-post improvements, except maximal running velocity. The sprint group showed a moderate increase in fascicle length, compared with a smaller increase in the Nordic group and a trivial change in the soccer-only group. The soccer-only and Nordic groups showed trivial to small negative sprint changes, and only the Nordic group showed a small increase in pennation angle.",
+   "limitations": "Only 23 of 32 players were analysed, and the abstract reports the group sizes at recruitment (10, 12 and 10). Training and match load were not recorded. Two-dimensional ultrasound has known limits for fascicle estimates. Injury outcomes were not measured.",
+   "practicalImplications": "Sprint work within preseason soccer practice may improve 50 m sprint performance and mechanics over six weeks. Staff should not replace Nordic hamstring exercise with sprint work on the basis of this study, because injury protection was not tested.",
+   "athleteDev": "In this sample, sprint training within routine soccer practice improved 50 m sprint performance and mechanics over six preseason weeks. Its effect on biceps femoris long head fascicle length was larger than that of the Nordic group.",
+   "rtp": "The study used players without recent hamstring injury and did not measure return to play. It cannot show how sprint or Nordic training should guide return-to-sport decisions after a hamstring injury."
+ }
+}
+
+== Q08
+{
+ "id": "Q08",
+ "sourceFile": "Sprinting - A key piece of the hamstring injury risk management puzzle.pdf",
+ "decision": "EXCLUDE",
+ "exclusionReason": "(b) Editorial (BJSM commentary by Edouard et al. proposing a sprint-based hamstring risk management approach). It has no original methods or structured review of evidence of its own.",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in the text ('Sprinting: a key piece of the hamstring injury risk management puzzle') matches the filename.",
+ "confidence": "high",
+ "studyDesign": null,
+ "primaryDomain": null,
+ "domains": null,
+ "audiences": null,
+ "sports": null,
+ "populations": null,
+ "evidenceSummary": null,
+ "screeningLimitations": null,
+ "synthesisCaution": null,
+ "paper": null
+}
+
+<class 'list'>
+{'id': 'Q01', 'queueOrder': 1, 'pilotDomain': None, 'sourceFile': 'Sports Medicine - Nutritional Sciences and Nutritional Biochemistry, Focusing on Nutritional Supplements from the FFNFO Framework to Contamination.pdf', 'pages': 4, 'extractedCharacters': 18093, 'doiCandidatesInText': ['10.3390/life14111392']}
+{'id': 'Q02', 'queueOrder': 2, 'pilotDomain': None, 'sourceFile': 'Sports concussions- can head impact sensors help biomedical engineers to design better\xa0headgear\uf025.pdf', 'pages': 2, 'extractedCharacters': 9684, 'doiCandidatesInText': ['10.1136/bjsports-2019-101300']}
+{'id': 'Q03', 'queueOrder': 3, 'pilotDomain': None, 'sourceFile': 'Sports injuries and game stakes - Concussions in the National Football League.pdf', 'pages': 19, 'extractedCharacters': 80403, 'doiCandidatesInText': ['10.1016/j.cor.2006.11.005', '10.1016/j.ejor.2013.06.025', '10.1016/j.jsams.2006.02.009', '10.1016/j.socscimed.2015.04.011', '10.1016/j.socscimed.2020.113491', '10.1016/s0001‐4575(02)00131‐8']}
+{'id': 'Q04', 'queueOrder': 4, 'pilotDomain': None, 'sourceFile': 'Sports performance - is there evidence that the body clock plays a role.pdf', 'pages': 12, 'extractedCharacters': 59347, 'doiCandidatesInText': ['10.1007/BF00235173', '10.1007/s00421-003-0793-7', '10.1007/s00421-004-1059-8', '10.1007/s00421-009-1066-x', '10.1016/S1087-0792(99)90004-7', '10.1016/S1440-2440(04)80050-1']}
+{'id': 'Q05', 'queueOrder': 5, 'pilotDomain': None, 'sourceFile': 'Sports-related Concussion V Genetic Factors copy.pdf', 'pages': 3, 'extractedCharacters': 17059, 'doiCandidatesInText': ['10.2217/cnc-']}
+{'id': 'Q06', 'queueOrder': 6, 'pilotDomain': None, 'sourceFile': 'Sprint running- from\xa0fundamental mechanics to\xa0practice—a review.pdf', 'pages': 15, 'extractedCharacters': 79100, 'doiCandidatesInText': ['10.1002/97804\u200b70693\u200b834.ch2', '10.1007/s00421-019-04139-0', '10.1007/s0042\u200b1-009-1339-4', '10.1007/s0042\u200b1-012-2379-8', '10.1007/s0042\u200b1-014-3086-4', '10.1007/s0042\u200b10100\u200b464']}
+{'id': 'Q07', 'queueOrder': 7, 'pilotDomain': None, 'sourceFile': 'Sprint vs isolated eccentric training - Comparative effects on hamstring architecture and performance in soccer players.pdf', 'pages': 19, 'extractedCharacters': 72608, 'doiCandidatesInText': ['10.1002/jum.14436', '10.1007/s00421-008-0980-7', '10.1007/s40279-016-0628-4', '10.1016/j.jbiomech.2015.01.012', '10.1016/j.jelekin', '10.1016/j.jsams.2016.08.005']}
+{'id': 'Q08', 'queueOrder': 8, 'pilotDomain': None, 'sourceFile': 'Sprinting - A key piece of the hamstring injury risk management puzzle.pdf', 'pages': 2, 'extractedCharacters': 12905, 'doiCandidatesInText': ['10.1136/bjsports-2022-105532']}

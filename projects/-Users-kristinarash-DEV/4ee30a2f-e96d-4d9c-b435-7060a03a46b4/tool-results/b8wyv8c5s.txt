@@ -1,0 +1,456 @@
+wrote Q54
+{
+ "id":"Q55",
+ "sourceFile":"The effect of Thursday night football on injuries in the National Football League.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text is 'The Effect of Thursday Night Football on Injuries in the National Football League', matching the filename.",
+ "confidence":"high",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Sports Medicine & Injury",
+ "domains":["Sports Medicine & Injury","Recovery & Readiness"],
+ "audiences":["Sports Medicine","Athletic Training","Performance"],
+ "sports":["American Football"],
+ "populations":["Professional / Elite","Injured Athletes"],
+ "evidenceSummary":"Descriptive epidemiological analysis of official NFL gamebook records of in-game injuries in regular-season games from 2011 to 2015, covering 27,712 injuries across 1,280 games (80 Thursday, 85 Monday, 1,115 Sunday). Mean injuries per game were 21.7 on Thursdays, 21.4 on Sundays and 18.2 on Mondays. Thursday and Sunday did not differ (p = 0.9264), but Monday games had fewer injuries than Sunday (p = 0.0028) and Thursday (p = 0.0214), and a team's injuries did not differ between the weeks before and after its Thursday game.",
+ "screeningLimitations":"This is a descriptive count from one league over five regular seasons, with only 80 Thursday games and no adjustment for player exposure or opponent. Injuries were recorded by league officials in gamebooks, so counts may be incomplete, and the design cannot show that the schedule causes injury differences.",
+ "synthesisCaution":"Staff could read the non-significant Thursday-Sunday difference as proof that short-week games carry no added injury risk, when the study had only 80 Thursday games and the authors say their small sample may explain why they found a slight increase where earlier studies found a decrease.",
+ "paper":{
+   "year":2023,
+   "citation":"Sharma A, Fletcher AN, Shah JK, Akoh CC, Parekh SG. The Effect of Thursday Night Football on Injuries in the National Football League. Journal of Orthopedics and Sports Medicine. 2023;5(3):304-310.",
+   "doi":"10.26502/josm.511500115",
+   "abstract":"Analysed NFL gamebook records of in-game injuries in regular-season games from 2011 to 2015, comparing injury counts by weekday, season week and position. Thursday games had about the same number of injuries as Sunday games, Monday games had fewer, and a team's injuries did not change in the weeks before or after its Thursday game.",
+   "tldr":"In NFL regular-season games from 2011 to 2015, Thursday games did not have significantly more in-game injuries than Sunday games, and Monday games had fewer. Injury counts rose later in the season.",
+   "methods":"Descriptive epidemiological study of official NFL gamebook data for regular-season games from 2011 to 2015. Injury counts per game were compared by weekday, season quarter and position with one-way ANOVA and Tukey's HSD tests, and each team's injuries were compared across the Thursday game and the weeks before and after it.",
+   "findings":"Mean in-game injuries per game were 21.4 on Sundays (1,115 games), 18.2 on Mondays (85 games) and 21.7 on Thursdays (80 games). Thursday versus Sunday gave p = 0.9264, and Monday had fewer injuries than Sunday (p = 0.0028) and Thursday (p = 0.0214). Injuries per team were 10.8 in the week before and 10.8 in the Thursday game, and 10.7 in the week after (p = 0.4971 and p = 0.7315). Week 17 had about twice the injury rate of Week 1 (31.1 vs 15.7 per game).",
+   "limitations":"The authors note that their sample of 80 Thursday games gave limited power, and that gamebook reporting may be inconsistent. The text gives the 2011 total as 4,467 while Table 2 gives 4,496, and it gives mean injuries per game for 2014 as 23.5 (13.3) while Table 2 gives 18.8 (4.7). The analysis is limited to regular-season games and does not adjust for exposure or opponent.",
+   "practicalImplications":"Staff planning short-week schedules should note that these data show no clear added injury count for Thursday games, but a small increase cannot be ruled out. The authors suggest education on tackling technique and strength and conditioning for defensive players, and they suggest alternating Thursday and Sunday games with Monday games.",
+   "athleteDev":"Performance Application: Staff can use these findings to think about how game spacing relates to in-game injury counts across a season, and to plan injury-prevention work for defensive positions. The study counted injuries only and did not measure performance, fatigue or recovery in individual players.",
+   "rtp":"Return to Sport Application: The study does not address individual return-to-play decisions, re-injury after return, or the timing of return. The finding of no residual effect on the following week's injury count applies to team-level counts and cannot guide when an injured player should return."
+ }
+}
+32289
+  Volume 5 • Issue 3  304
+
+
+
+
+Research Article
+
+
+
+
+The Effect of Thursday Night Football on Injuries in the National Football
+League
+Akhil Sharma MD1*, Amanda N Fletcher MD, MS2, Jay K Shah DO, MBA3, Craig C Akoh MD4, Selene G. Parekh MD,
+MBA5
+
+
+
+
+ Abstract
+ Background: This study aimed to determine the relationship of recovery
+ period length on overall injury patterns (rates and incidence) for athletes in
+ the National Football League.
+ Methods: Official NFL gamebooks were queried from 2011 to 2015,
+ and each in-game injury was analyzed for all regular season games. Data
+ included athlete name, position, season, week, date, weekday, teams, and
+ injured body part. ANOVA testing determined statistical significance of
+ injury rates across weekdays, season weeks, and positions.
+ Results: A total of 27,712 injuries were analyzed. On average, 21.4 (8.6;
+ 20.9-21.9) injuries were sustained per game on Sunday, 18.2 (6.9; 16.7-
+ 19.7) on Monday, and 21.7 (6.9; 20.2-23.3) on Thursday. The difference
+ between Sunday and Thursday games was negligible (p=0.9264), while
+ Monday games had fewer injuries than Sundays (p=0.0028) and Thursdays
+ (p=0.0214). There was no difference in number of injuries each team
+ sustained on Thursday compared to the week prior to (10.8 versus 10.8;
+ p= 0.4971) or week after (10.8 versus 10.7; p=0.7315) its Thursday game.  Affiliation:
+ Among positions, defensive linemen (p=0.0036), linebackers (p=0.0297),  Department of Orthopaedic Surgery, St. Luke’s
+  1
+
+  University Health Network, Fountain Hill, PA,
+ skilled running positions (p=0.0099), and wide receivers (p=0.0259)
+  USA
+ sustained fewer injuries on Mondays compared to Sundays, but no
+  Department of Orthopaedic Surgery, Duke
+  2
+ statistical difference existed between Thursdays and Sundays.  University Medical Center, Durham, NC, USA
+ Conclusion: Our analysis indicates that shortened recovery before  Department of Orthopaedic Surgery, UCSF
+  3
+
+  Medical Center, San Francisco, CA, USA
+ Thursday games does not have significant effect on injury rates compared
+ to Sunday games, while the additional rest day before Monday games  Department of Orthopaedic Surgery, Regenerative
+  4
+
+  Orthopaedics and Spine Institute, Stockbridge,
+ correlates to fewer injuries. Additionally, there was no residual effect of  GA, USA
+ reduced rest period affecting players' risk of injury the following week.  Department of Orthopaedic Surgery, Rothman
+  5
+
+ A general trend of greater injury rates occurs as the season progresses;  Orthopaedic Institute, Philadelphia, PA, USA
+ the incidence of injury during the final week of the season is nearly
+ double that of the first. Interestingly, although injury rates did not differ  *Corresponding Author:
+
+ among positions between Thursdays and Sundays, defensive positions  Akhil Sharma, Department of Orthopaedic
+  Surgery, St. Luke’s University Hospital, 801
+ and offensive ball-carrier positions saw reduced injuries on Mondays;  Ostrum Street, Fountain Hill, PA, USA
+ this effect is likely secondary to the nature of their positions being most
+ frequently involved in high-energy collisions during tackles.  Citation: Akhil Sharma, Amanda N Fletcher, Jay
+  K Shah, Craig C Akoh, Selene G. Parekh. The
+  Effect of Thursday Night Football on Injuries
+  in the National Football League. Journal of
+  Orthopedics and Sports Medicine. 5 (2023):
+  304 - 310.
+Level of Evidence: III
+  Received: June 23, 2023
+Keywords: Football; Injuries; National Football League; In-game injury;  Accepted: June 30, 2023
+Season games; ANOVA testing  Published: July 05, 2023
+  Volume 5 • Issue 3  305
+  Akhil Sharma MD, et al., J Ortho Sports Med 2023
+  DOI:10.26502/josm.511500115
+
+
+
+
+Introduction  Therefore, it becomes imperative to examine in greater
+  depth the effects of shorter weeks during the NFL’s regular
+  The first record of professional football in America was
+  season and the impact this has on player safety and health
+in 1892 [1]. Today, the National Football League, or NFL,
+  outcomes. The goal of this study is to determine the
+is the highest earning professional sports league in the world
+  relationship between Thursday Night Football and subsequent
+[2] – with a total revenue of nearly $17 billion in 2018 [3].
+  risk of injury to players when compared to games played on
+In 1970, the NFL introduced Monday Night Football, an
+  Sunday and Monday.
+extension of the league’s original model of having games
+every Sunday [4]. This was well received, as players received  Methods
+an extra recovery day and the league profited. However, the
+introduction of Thursday Night Football in 2006 was met  For this descriptive epidemiological study, data
+with less enthusiasm and remains a topic of controversy, as  was obtained from official NFL gamebooks queried by
+players and media personnel have been outspoken in their  TheFantasyDoctorsTM (Los Angeles, CA), a sports analytics
+rebuke of the shortened recovery period [5]. Another change  platform offering research tools, fantasy sports league
+raising concern for player safety is the NFL’s extension of  statistics, and projections for professional sporting leagues.
+the season by an additional week in 2021, to incorporate a  Each in-game injury was analyzed for all regular season
+seventeenth game during the regular season [6].  games across all 32 teams for five seasons (2011 to 2015).
+  Exclusion criteria consisted of injuries occurring during the
+  The debate on length of recovery and injury risk to
+  preseason (prior to Week 1) or postseason (after Week 17)
+athletes becomes especially relevant when considering
+  and injuries sustained during the Bye Week. Descriptive data
+the impact of professional football on players’ health.
+  collected included athlete name, position, season, week, date
+NFL players suffer from increased neurodegenerative
+  of game, day of the week, teams playing, and injured body
+disease mortality compared to the general population [7].
+  part.
+A landmark study found over 99% of former NFL players
+had developed Chronic Traumatic Encephalopathy (CTE)  To better understand injury patterns, positions were
+by time of death [8]. NFL players also suffer from elevated  categorized into the following: quarterbacks; offensive
+all-cause mortality, including cardiovascular and neurologic  linemen (offensive linemen, center, guard, left guard, right
+etiologies, compared to athletes in Major League Baseball  guard, tackle, offensive tackle, right tackle, left tackle); wide
+[7]. During NFL players’ careers, the most common sites  receivers; tight ends; skilled running positions (runningback,
+of injury are the ankle, shoulder, knee, spine, and hand [9].  halfback, fullback); linebackers (inside linebacker, linebacker,
+Injuries amassed from careers in professional football also  outside linebacker); defensive backs (safety, strong safety,
+have indirect consequences, such as increased risk for opioid  free safety, center back, defensive back); defensive linemen
+misuse that can develop into psychosocial issues [10].  (defensive tackle, nose tackle, defensive end, defensive
+  The NFL has gradually accommodated the sport over  linemen); and special teams positions (kicker, kick returner,
+the last 35 years to enhance safety in light of new research  long snapper, punter, and others).
+documenting player outcomes [11]. While this has led to  Statistical analysis:
+significant changes, the economic and health merits of
+Thursday Night Football have been routinely weighed against  Continuous variables were first analyzed for normality
+each other since its advent and have resulted in a relative  using histograms, box plots, and the Kolmogorov-Smirnov
+standstill due to a dearth of available evidence. For example,  test. Homogeneity of variance was determined using the
+the NFL released data from the 2017 season, indicating that  Levene test. Descriptive statistics were summarized using
+players averaged 6.9 injuries per Thursday game compared  means, standard deviations (SD), and 95% confidence
+to 6.3 on other days [12]. While this data came with its own  intervals (CI) for continuous variables reported as: mean
+limitations, it was (and still is) one of the only sources of data  (SD; lower limit CI - upper limit CI). Categorical variables
+on the topic of Thursday Night Football outcomes.  were summarized with frequency and percentages. The
+  primary outcome measure was the observed injury rates
+  Consequently, players complained about the perceived  between Sunday, Monday, and Thursday night football
+correlation between Thursday games and greater injury risk,  games. One-way analysis of variance (ANOVA) tests were
+while the NFL refrained from denigration – claiming instead  used to determine if injury rates differed across different
+that this data was unsubstantial and that players benefited  days of the week (Sunday, Monday, Thursday), weeks of the
+from the extended 10 day recovery period following
+  season, and athlete positions. Nine position categories were
+Thursday night games [12]. Proponents of Thursday Night
+  analyzed, as outlined above. The season was divided into
+Football point at financial benefits – these games have “been
+  four quarters (weeks 1-4; weeks 5-9; weeks 10-13; weeks
+especially beneficial for NFL teams in smaller media markets
+  14-17) for analyses. When ANOVA demonstrated a significant
+that do not consistently receive national broadcasting [5].”
+  difference, the Tukey’s HSD multiple comparison test was
+
+Citation: Akhil Sharma, Amanda N Fletcher, Jay K Shah, Craig C Akoh, Selene G. Parekh. The Effect of Thursday Night Football on Injuries in the
+  National Football League. Journal of Orthopedics and Sports Medicine. 5 (2023): 304-310.
+  Volume 5 • Issue 3  306
+  Akhil Sharma MD, et al., J Ortho Sports Med 2023
+  DOI:10.26502/josm.511500115
+
+
+
+
+used to determine which groups were significantly different.  Table 3: Injuries per weekday.
+An alpha level of p < 0.05 was used for statistical significance  Injury  Average injuries per
+  Day  Games
+for all tests. All statistical analyses were performed using  Frequency  game
+SAS, version 9.2 (Cary, North Carolina).  Sunday  24435 (88.2)  1115  21.4 (8.6; 20.9-21.9)
+  Monday  1541 (5.6)  85  18.2 (6.9; 16.7-19.7)
+Results
+  Thursday  1736 (6.3)  80  21.7 (6.9; 20.2-23.3)
+  42,953 NFL injuries were included in the database,  Total/
+occurring during the 2011 to 2015 seasons. Injuries sustained  27712 (100.0)  1280  21.2 (8.4; 20.7-21.6)
+  Average
+during pre- and post-season games were excluded (n=15,231),  Values in No. (%) or mean (SD; lower limit CI-upper limit CI)
+resulting in a total of 27,712 injuries for analysis. The NFL
+season consists of 256 games, where each team (32 total)
+plays 16 games during a 17-week period, allowing for one bye  Weekday
+week per team. Thus, there were a total of 1,280 games for  The number of injuries per weekday across the five seasons
+which player injury data was available. Table 1 demonstrates  are organized in Table 3. There was an average of 21.4 (8.6;
+the distribution of weekday games per season.  20.9-21.9) injuries per game sustained in the 1115 Sunday
+Season  games, 18.2 (6.9; 16.7-19.7) injuries sustained per game in
+  the 85 Monday games, and 21.7 (6.9; 20.2-23.3) injuries
+  Injuries sustained per season are outlined in Table 2.
+  sustained per game in the 80 Thursday games. The injury
+There were 4467 (16.0%) injuries in 2011, 6841 (24.7%) in
+  rate was statistically different across weekdays (p=0.0037).
+2012, 5428 (19.6%) in 2013, 4937 (17.8%) in 2014, and 6010
+  When adjusting for multiple comparisons, Monday games
+(21.7%) in the 2015 season. The mean number of injuries per
+  resulted in fewer injuries than Sunday (p=0.0028) and
+game was 17.6 (5.3; 16.9-18.2) in 2011, 25.3 (7.5; 24.4-26.2)
+  Thursday (p=0.0214) games. The slightly higher injury rate
+in 2012, 20.7 (5.8; 20.0-21.4) in 2013, 23.5 (13.3; 21.8-25.1)
+  for Thursday games compared to Sunday games (21.7 vs.
+in 2014, and 23.5 (13.3; 21.8-25.1) in 2015. When adjusting
+  21.4) did not reach statistical significance (p=0.9264).
+for multiple comparisons, the 2012 season had a higher
+injury rate compared to the 2011, 2013, and 2014 seasons  Season Week
+(all p < 0.0001). The 2011 season had the least injuries  Each NFL season consists of 17 weeks. Figure 1 displays
+sustained per game, significantly less than the 2012, 2013,  the trend of injuries as the season progressed for all five
+and 2015 seasons (all p<0.0001).  seasons combined. Week 1 had the lowest injury rate (15.7;
+  6.0; 14.4-17.1), whereas Week 17 had the highest injury rate
+  Table 1: Number of games played per weekday.  (31.1; 20.8; 26.5-35.8). The first (weeks 1-4), second (weeks
+  5-9), third (weeks 10-13), and fourth (weeks 14-17) quarters
+Day  2011  2012  2013  2014  2015  Total
+  of the season had a mean of 18.5 (6.2; 17.8-19.2), 21.3 (6.1;
+Sunday*  229  223  222  220  221  1115  20.7-21.9), 21.6 (6.5; 20.9-22.4), and 23.2 (12.5; 21.9-24.6)
+Monday  17  16  17  18  17  85  injuries per game (p <0.0001) respectively. When adjusting
+  for multiple comparisons, there were fewer injuries per game
+Thursday**  10  17  17  18  18  80  in the first quarter of the season (weeks 1-4) relative to all
+Total  256  256  256  256  256  1280  other quarters (all p <0.0001). Significantly more injuries
+  were sustained per game in the last quarter (weeks 14-17)
+Values in No. * Saturday games (n=14 in 2011; n=1 in 2012; n=2 in
+2014; n=2 in 2015) were combined with Sunday ** One Wednesday  than the first (p <0.0001) and second (p=0.0140) quarters,
+game in 2012 was combined with Thursday  but not the third (p=0.0768). Thus, there was a general trend
+  of increasing injury rates as the season progressed, with the
+  Table 2: Injuries per season.  highest risk of injury occurring during the final four weeks.
+
+Season
+  Injury  Games per  Average injuries per  Additionally, the average number of injuries each team
+  Frequency  season  game  recorded per Thursday night game was compared to the
+2011  4496 (16.2)  256  17.6 (5.3; 16.9-18.2)  average number of injuries that the team recorded the week
+2012  6841 (24.7)  256  25.3 (7.5; 24.4-26.2)  before and the week after its Thursday game. No difference
+2013  5428 (19.6)  256  20.7 (5.8; 20.0-21.4)  was observed in the number of injuries each team sustained
+2014  4937 (17.8)  256  18.8 (4.7;18.3-19.4)  on Thursday compared to the week prior to (10.8 versus 10.8;
+2015  6010 (21.7)  256  23.5 (13.3; 21.8-25.1)
+  p= 0.4971) or the week after (10.8 versus 10.7; p=0.7315)
+  its Thursday game. The winning team of the Thursday game
+Total  27712 (100)  1280  21.2 (8.4; 20.7-21.6)
+  did report fewer injuries than the opponent (10.1 versus 11.5;
+Values in No. (%) or mean (SD; lower limit CI-upper limit CI)
+  p= 0.0493).
+
+Citation: Akhil Sharma, Amanda N Fletcher, Jay K Shah, Craig C Akoh, Selene G. Parekh. The Effect of Thursday Night Football on Injuries in the
+  National Football League. Journal of Orthopedics and Sports Medicine. 5 (2023): 304-310.
+  Volume 5 • Issue 3  307
+  Akhil Sharma MD, et al., J Ortho Sports Med 2023
+  DOI:10.26502/josm.511500115
+
+
+
+  Table 4: Injuries sustained by position.
+  Sunday  Monday  Thursday
+  P-value*
+Position  All Injuries  Injuries  Injury Rate  Injuries  Injury Rate  Injuries  Injury rate
+  4.5  4.3  4.8
+Defensive backs  5911 (21.3)  5247 (88.8)  307 (5.2)  357 (6.0)  0.392
+  (2.6; 4.4-4.7)  (2.1; 3.8-4.8)  (2.4; 4.3-5.3)
+Defensive  3.1  2.4  3.1
+  4001 (14.4)  3534 (88.3)  219 (5.5)  248 (6.2)  0.0056**
+linemen  (2.1; 3.0-3.2)  (1.9; 2.0-2.8)  (1.9; 2.7-3.5)
+  3.2  2.7  3.2
+Linebackers  4189 (15.1)  3707 (88.5)  235 (5.6)  247 (5.9)  0.0391***
+  (2.0; 3.1-3.4)  (2.0; 2.2-3.1)  (1.9;2.8-3.6)
+  2.8  2.4  2.5
+Offensive Line  3591 (13.0)  3154 (87.8)  214 (6.0)  223 (6.2)  0.1092
+  (1.9; 2.7-2.9)  (1.6; 2.0-2.7)  (1.6; 2.2-2.9)
+  0.8  0.7  1.1
+Quarterback  1063 (3.8)  944 (88.8)  51 (4.8)  68 (6.4)  0.0459****
+  (0.9; 0.8-0.9)  (0.9; 0.5-0.9)  (0.8;0.9-1.2)
+Special (K, KR,  0.3  0.3  0.3
+  412 (1.5)  363 (88.1)  20 (4.9)  29 (7.0)  0.582
+LS, P, others)  (0.6; 0.3-0.4)  (0.5; 0.3-0.4)  (0.5; 0.1-0.4)
+Skilled running  2.2  1.7  2.3
+  2843 (10.3)  2528 (88.9)  142 (5.0)  173 (6.1)  0.0122*****
+positions  (1.5; 2.1-2.3)  (1.3;1.4-2.0)  (1.6;1.9-2.6)
+  1.4  1.4  1.5
+Tight End  1867 (6.7)  1672 (89.6)  92 (4.9)  103 (5.5)  0.8443
+  (1.2; 1.4-1.5)  (1.1;1.2-.1.6)  (1.2 (1.2-1.8)
+  3  2.4  3
+Wide Receiver  3835 (13.8)  3389 (88.4)  211 (5.5)  235 (6.1)  0.0330******
+  (1.9;2.9-3.1)  (1.4; 2.1-2.7)  (1.8;2.6-3.4)
+Total  27712 (100)  24538 (88.5)  1491 (5.4)  1683 (6.1)
+Values in No. (%) or mean (SD; lower limit CI-upper limit CI)
+* P-values represent one-way ANOVATukey’s Multiple Comparisons: Tests:
+**Defensive Linemen: Fewer injuries on Monday compared to Sunday (p=0.0036)
+***Linebackers: Fewer injuries on Monday compared to Sunday (p=0.0297)
+****Quarterbacks: More injuries were sustained on Thursday however, this did not reach statistical significance compared to Monday
+(p=0.0559) or Sunday (p=0.0602) when adjusted for multiple comparisons
+***** Skilled Running Positions: Fewer injuries on Monday compared to Sunday (p=0.0099) and Thursday (p=0.0461)
+****** Wide Receivers: Fewer injuries on Monday compared to Sunday (p=0.0259)
+
+Injuries by Position  Table 5: Frequency of injury by anatomical region.
+  Anatomical region injured  N  %
+  The majority of the injuries reported pertained to
+defensive backs (n=5911, 21.3%), linebackers (n=4189,  Abdomen  203  0.73
+15.1%), and defensive linemen (n= 4001, 14.4%) (Table  Achilles  143  0.52
+4). Defensive linemen (p=0.0036), linebackers (p=0.0297),  Ankle  3671  13.25
+skilled running positions (p=0.0099), and wide receivers  Arm  123  0.44
+(p=0.0259) sustained fewer injuries during Monday games  Back  1118  4.03
+compared to Sundays. Skilled running positions also recorded
+  Calf  756  2.73
+fewer injuries on Monday games compared to Thursdays
+  Chest  239  0.86
+(p=0.0461). Quarterbacks were the only position showing a
+higher injury rate for Thursday games, with a mean of 1.1  Clavicle  53  0.19
+injuries per game compared to 0.8 injuries during Sundays  Concussion  1314  4.74
+and 0.7 injuries during Mondays (p=0.0459). However, when  Elbow  400  1.44
+adjusting for multiple comparisons using Tukey’s, this no  Face  73  0.26
+longer reached statistical significance for Monday (p=0.0559)
+  Finger  512  1.85
+or Sunday (p=0.0602).
+  Foot  1445  5.22
+Injured Body Part  Forearm  68  0.25
+  Injuries grouped by anatomical region are outlined in  Glute  15  0.05
+Table 5. The most common sites involved the lower extremity,  Groin  1293  4.67
+including 18.5% (n=5133) knee injuries, 13.3% (n=3671)
+  Hamstring  2773  10.01
+ankle injuries, and 10.0% (n=2773) hamstring injuries.
+  Hand  443  1.6
+Shoulder injuries were the most common upper extremity
+injury reported, comprising 8.1% (n=2233) of total injuries.  Head  320  1.15
+
+
+Citation: Akhil Sharma, Amanda N Fletcher, Jay K Shah, Craig C Akoh, Selene G. Parekh. The Effect of Thursday Night Football on Injuries in the
+  National Football League. Journal of Orthopedics and Sports Medicine. 5 (2023): 304-310.
+  Volume 5 • Issue 3  308
+  Akhil Sharma MD, et al., J Ortho Sports Med 2023
+  DOI:10.26502/josm.511500115
+
+
+
+
+Hip  779  2.81  seasons [15]; Baker et al. [5] included a fifth season, but
+Illness  746  2.69
+  simply performed a head-to-head comparison of all-cause
+  injury numbers between Thursday games and “weekend”
+Knee  5133  18.52
+  (Sunday and Monday combined) games [5]. Both reports
+Leg  181  0.65
+  reviewed far fewer injuries than ours, at 2,846 and 9,621,
+Miscellaneous  837  3.02  respectively. This study is the first comprehensive assessment
+Neck  579  2.09  on the matter, which examined every reported injury for all
+Pectoral  70  0.25  five seasons and included four levels of subgroup stratification
+Pelvis/Tailbone  15  0.05  (weekday, season week, player position, and anatomical
+Quad  389  1.4
+  region).
+Rib  481  1.74  Both aforementioned studies reported a decrease in
+Shoulder  2233  8.06  injuries on games played on Thursday [5,15]. We found the
+Thigh NOS  486  1.75  opposite to be true; we saw a slight increase in the average
+  number of injuries for Thursday games relative to Sunday,
+Toe  555  2
+  though this did not reach statistical significance. The most
+Wrist  266  0.96
+  likely reason for this discrepancy lies in the power of our
+Total  27712  100  study. It is plausible that the previous authors would not have
+Values in No. (%)  seen a statistical difference between Thursday and Sunday
+  games if they had access to a greater number of injuries, or
+  included injuries that did not cause game stoppage, at the
+  time of analysis.
+  When evaluating by position, we observed that the
+  majority of injuries throughout a season occurred among
+  defensive positions (53.8%). This makes sense as defensive
+  backs, linebackers, and defensive linemen are positions
+  which require making high-energy collision contact with the
+  player carrying the ball on the offensive side in order to stop
+  progression of the football. Interestingly, when surveying
+  which positions benefited most from reduced injury rates
+  on Monday games, it is again those players involved most
+  frequently in head-on collisions during tackles – defensive
+Figure 1: Aggregate of Injuries per Game by Week in the NFL,
+2011-2015 seasons. As the season progresses, there is an increase in  players (defensive linemen and linebackers) and offensive
+number of injuries sustained per game.  ball carriers (wide receivers and skilled running players). In
+  contrast, we found that quarterbacks had a higher number of
+Discussion  injuries on Thursdays compared to weekend games, but that
+  this did not reach statistical significance. This finding was
+  Among professional leagues in the US, the NFL is
+  consistent with that of a previous study [15].
+the most violent, carrying rates of injury nearly five times
+greater than those of the National Basketball Association,  With regard to anatomical region of injury, our results
+National Hockey League, and Major League Baseball  were similar to many other studies on football injury data at
+[13,14]. Accordingly, the NFL’s institution of Thursday  the high school, collegiate, and professional level [16-20].
+Night Football has been met with concern by opponents who  The most frequently injured body parts involved the lower
+claim that shorter rest leading up to the game poses a greater  extremity (41.8%) and the shoulder (8.1%). One explanation
+risk of injury to players. Therefore, we sought to assess the  for this observation is that they correlate directly with the
+relationship between recovery period and injury patterns of  body parts impacted during a tackle. In a tackle, the defensive
+NFL athletes. We found no difference between injury rates  player often lowers the shoulder into the lower extremity of the
+for games played on Thursday compared to Sunday, although  offensive player carrying the football. Furthermore, we report
+Monday games saw significantly fewer injuries.  that concussions and head injuries only comprised 5.9% of all
+  Prior studies on outcomes of Thursday Night Football  injuries for the 2011 to 2015 seasons. This indicates that the
+have been limited by their inclusion criteria and endpoints  NFL’s implementation of policies to enhance player safety
+of their research goals. Perez et al. [15] identified only those  and their focus on improving concussion protocol appears to
+injuries that caused stoppage time during a game across four  be working [21]. However, it is important to keep in mind
+
+
+Citation: Akhil Sharma, Amanda N Fletcher, Jay K Shah, Craig C Akoh, Selene G. Parekh. The Effect of Thursday Night Football on Injuries in the
+  National Football League. Journal of Orthopedics and Sports Medicine. 5 (2023): 304-310.
+  Volume 5 • Issue 3  309
+  Akhil Sharma MD, et al., J Ortho Sports Med 2023
+  DOI:10.26502/josm.511500115
+
+
+
+
+that the data evaluated by this study was limited to reported  References
+injuries in official NFL gamebooks, which may introduce
+  1. Jable JT. The Birth of Professional Football: Pittsburgh
+bias in terms of overreporting or underreporting of certain
+  Athletic Clubs Ring in Professionals in 1892. Western
+injuries.
+  Pennsylvania History 62 (1979): 131-147.
+  Aside from number of injuries analyzed, a major strength
+  2. Quinn KG. The Economics of the National Football
+of this study is that it is the first of its kind to perform a direct
+  League: The State of the Art. 1st ed. New York: Springer
+comparison of injuries each team sustained during the weeks
+  Science and Business Media, 2011. The Economic
+directly before and after Thursday games. This allowed
+  Structure of the NFL 7-31.
+for greater context by which to interpret the significance
+of the aggregate finding that Thursday games did not have  3. Colangelo M. The NFL Made Roughly $16 Billion in
+more injuries than Sunday games. The lack of difference in  Revenue Last Year. USA Today, 2019 July 15. https://
+number of injuries a team faced on Thursday compared to the  touchdownwire.usatoday.com/2019/07/15/nfl-revenue-
+week prior to or the week after its Thursday game indicates  owners-players-billions/. Accessed January 12 2020.
+that the shorter recovery period not only does not lead to  4. Paul RJ, Weinbach AP. The Uncertainty of Outcome and
+greater injury risk – it also does not have a residual effect  Scoring Effects on Nielsen Ratings for Monday Night
+the following week. Our finding can be explained by what is  Football. J Econ Bus 59 (2007): 199-211.
+currently known about the biodynamics of musculoskeletal
+injury, in that skeletal muscle rehabilitation can take as little  5. Baker HP, Young-Hoon K, Lee K, et al. Thursday Night
+as three days of rest to prevent stretching before more active  Football’s Impact on All-Cause Injuries in NFL Players
+use c

@@ -1,0 +1,1333 @@
+# Evidence Library screening + synthesis (v2)
+
+You screen sports-science PDFs and, if eligible, write a library record for Baylor Athletics performance, medical, rehab, nutrition and research staff.
+
+Inputs: `inputs.json` gives each paper an ID, the filename it was catalogued under (`sourceFile`), page count, and DOI strings found anywhere in the text (`doiCandidatesInText`; most are from the reference list). Full extracted text is at `text/<ID>.txt`. Read it fully, in chunks if large. Controlled vocabularies are in `taxonomy.json`. Use ONLY those exact values. Base everything ONLY on the extracted text, never on outside knowledge of the paper.
+
+## Decision
+- `INCLUDE`: the text is the article the filename names, AND it is athlete health/performance evidence of one of these types: original research (any design, including case reports and validation studies), systematic review/meta-analysis, narrative or clinical review, or consensus/position statement.
+- `EXCLUDE` (give `exclusionReason`):
+  - (a) source identity mismatch: the text is a different article from what the filename names. Compare the filename title with the title in the text carefully.
+  - (b) editorial, commentary, letter, or opinion piece without original methods or a structured review of evidence. Also (b): a study protocol with no results (decided by Eric 2026-10-10; no listed reason fits exactly, so use (b) and say "study protocol, no results" in the reason).
+  - (c) not relevant to athletes, sport, exercise performance or athlete health.
+- `DEGRADED` (give `degradedReason`): the text is unreadable or truncated, critical sections are missing, or **the article's own DOI is not printed in the text**. Reference-list DOIs do not count. If the DOI is missing but everything else is fine, still fill in all fields and set `doiMissing: true`. The operator may verify the DOI externally and upgrade the decision.
+
+## Output: write `drafts/<ID>.json`
+```
+{
+ "id":"<ID>", "sourceFile":"...", "decision":"INCLUDE|EXCLUDE|DEGRADED",
+ "exclusionReason":"", "degradedReason":"", "doiMissing":false,
+ "identityCheck":"one sentence: title found in text vs filename",
+ "confidence":"high|medium|low",
+ "studyDesign":"<one studyDesigns value>",
+ "primaryDomain":"<one domains value>", "domains":[...must include primaryDomain], "audiences":[...], "sports":[...], "populations":[...],
+ "evidenceSummary":"2-3 sentences: design, sample, main results, as the authors report them",
+ "screeningLimitations":"1-2 sentences: key limits on what this evidence can support",
+ "synthesisCaution":"1 sentence: the most likely way staff could over-read this paper",
+ "paper":{
+   "year":2020, "citation":"Authors. Title. Journal. Year;vol(issue):pages.", "doi":"10.xxxx/...",
+   "abstract":"", "tldr":"", "methods":"", "findings":"", "limitations":"",
+   "practicalImplications":"", "athleteDev":"", "rtp":""
+ }
+}
+```
+For EXCLUDE, the taxonomy, summary and `paper` fields may be null.
+
+## Field rules
+- `year`: the journal issue/publication year from the citation line or the journal header. NOT the received, accepted or online-first date. If only an online-first date exists, use that year.
+- `doi`: the article's own DOI, exactly as printed, lowercase prefix "10.". Never use a DOI from the references.
+- `citation`: list authors as printed (surname + initials; use "et al." after 6 authors). Include volume, issue and pages only if they are printed for this article. Do not invent them.
+- `populations`: add `Male Athletes` and/or `Female Athletes` when the sample is athletes and their sex is stated. Do not use athlete tags (sex or `Healthy Athletes`) for non-athlete samples such as recreationally active adults, patients, staff or students; use `Adult / Recreational` or `Mixed / Unspecified`. Add `Healthy Athletes` or `Injured Athletes` when health status is stated. Add the competition level (Professional / Elite, Collegiate, Youth / Adolescent, Adult / Recreational). Use `Mixed / Unspecified` only when the level really is mixed or unstated.
+- `studyDesign`: code scoping reviews with a described systematic search as `Systematic Review / Meta-analysis` (library precedent). Use `Narrative Review` only when no search method is described.
+- `primaryDomain`: the domain staff would browse to find this paper. Use Monitoring & Technology for papers whose main contribution is a measurement tool, test, device or monitoring method, including reliability, validity and test profiling.
+- If the abstract and the results/tables disagree, report the results/table values and note the conflict in `limitations`.
+
+## Writing standard (critical)
+- Every claim must be directly supported by the text. Report sample sizes, designs, effect directions and significance accurately. Never invent numbers.
+- Distinguish within-group change from between-group difference. Distinguish association from causation. Do not overstate observational or small-sample findings.
+- Each paper field: 1-3 plain sentences. `tldr`: one or two practitioner sentences. `athleteDev` = Performance Application. `rtp` = Return to Sport Application. If the study cannot inform return to sport, say what it cannot be used for.
+- Practical fields must follow from the findings. No generic advice the paper does not support.
+- Plain language, no em dashes.
+
+## Files
+Write only to `drafts/<ID>.json` and your own `helpers/<your-folder>/`. Never write anywhere else, including the filesystem root.
+-----
+[
+ {
+  "id": "Q01",
+  "queueOrder": 1,
+  "pilotDomain": null,
+  "sourceFile": "Sports Medicine - Nutritional Sciences and Nutritional Biochemistry, Focusing on Nutritional Supplements from the FFNFO Framework to Contamination.pdf",
+  "pages": 4,
+  "extractedCharacters": 18093,
+  "doiCandidatesInText": [
+   "10.3390/life14111392"
+  ]
+ },
+ {
+  "id": "Q02",
+  "queueOrder": 2,
+  "pilotDomain": null,
+  "sourceFile": "Sports concussions- can head impact sensors help biomedical engineers to design better\u00a0headgear\uf025.pdf",
+  "pages": 2,
+  "extractedCharacters": 9684,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2019-101300"
+  ]
+ },
+ {
+  "id": "Q03",
+  "queueOrder": 3,
+  "pilotDomain": null,
+  "sourceFile": "Sports injuries and game stakes - Concussions in the National Football League.pdf",
+  "pages": 19,
+  "extractedCharacters": 80403,
+  "doiCandidatesInText": [
+   "10.1016/j.cor.2006.11.005",
+   "10.1016/j.ejor.2013.06.025",
+   "10.1016/j.jsams.2006.02.009",
+   "10.1016/j.socscimed.2015.04.011",
+   "10.1016/j.socscimed.2020.113491",
+   "10.1016/s0001\u20104575(02)00131\u20108"
+  ]
+ },
+ {
+  "id": "Q04",
+  "queueOrder": 4,
+  "pilotDomain": null,
+  "sourceFile": "Sports performance - is there evidence that the body clock plays a role.pdf",
+  "pages": 12,
+  "extractedCharacters": 59347,
+  "doiCandidatesInText": [
+   "10.1007/BF00235173",
+   "10.1007/s00421-003-0793-7",
+   "10.1007/s00421-004-1059-8",
+   "10.1007/s00421-009-1066-x",
+   "10.1016/S1087-0792(99)90004-7",
+   "10.1016/S1440-2440(04)80050-1"
+  ]
+ },
+ {
+  "id": "Q05",
+  "queueOrder": 5,
+  "pilotDomain": null,
+  "sourceFile": "Sports-related Concussion V Genetic Factors copy.pdf",
+  "pages": 3,
+  "extractedCharacters": 17059,
+  "doiCandidatesInText": [
+   "10.2217/cnc-"
+  ]
+ },
+ {
+  "id": "Q06",
+  "queueOrder": 6,
+  "pilotDomain": null,
+  "sourceFile": "Sprint running- from\u00a0fundamental mechanics to\u00a0practice\u2014a review.pdf",
+  "pages": 15,
+  "extractedCharacters": 79100,
+  "doiCandidatesInText": [
+   "10.1002/97804\u200b70693\u200b834.ch2",
+   "10.1007/s00421-019-04139-0",
+   "10.1007/s0042\u200b1-009-1339-4",
+   "10.1007/s0042\u200b1-012-2379-8",
+   "10.1007/s0042\u200b1-014-3086-4",
+   "10.1007/s0042\u200b10100\u200b464"
+  ]
+ },
+ {
+  "id": "Q07",
+  "queueOrder": 7,
+  "pilotDomain": null,
+  "sourceFile": "Sprint vs isolated eccentric training - Comparative effects on hamstring architecture and performance in soccer players.pdf",
+  "pages": 19,
+  "extractedCharacters": 72608,
+  "doiCandidatesInText": [
+   "10.1002/jum.14436",
+   "10.1007/s00421-008-0980-7",
+   "10.1007/s40279-016-0628-4",
+   "10.1016/j.jbiomech.2015.01.012",
+   "10.1016/j.jelekin",
+   "10.1016/j.jsams.2016.08.005"
+  ]
+ },
+ {
+  "id": "Q08",
+  "queueOrder": 8,
+  "pilotDomain": null,
+  "sourceFile": "Sprinting - A key piece of the hamstring injury risk management puzzle.pdf",
+  "pages": 2,
+  "extractedCharacters": 12905,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2022-105532"
+  ]
+ },
+ {
+  "id": "Q09",
+  "queueOrder": 9,
+  "pilotDomain": null,
+  "sourceFile": "Sprinting - A potential vaccine for hamstring injury.pdf",
+  "pages": 2,
+  "extractedCharacters": 10259,
+  "doiCandidatesInText": [
+   "10.1007/s40279-013-0097-y",
+   "10.1016/j.jsams.2016.08.005",
+   "10.1136/bjsm.2002.002352",
+   "10.1136/bjsports-2014-",
+   "10.1136/bjsports-2015-095359",
+   "10.1136/bjsports-2015-095559"
+  ]
+ },
+ {
+  "id": "Q10",
+  "queueOrder": 10,
+  "pilotDomain": null,
+  "sourceFile": "Sprinting and hamstring strain injury - Beliefs and practices of professional physical performance coaches in Australian football.pdf",
+  "pages": 8,
+  "extractedCharacters": 47948,
+  "doiCandidatesInText": [
+   "10.1016/j.ptsp.2020.12.007"
+  ]
+ },
+ {
+  "id": "Q11",
+  "queueOrder": 11,
+  "pilotDomain": null,
+  "sourceFile": "Sprinting technique and hamstring strain injuries - A concept mapping study.pdf",
+  "pages": 7,
+  "extractedCharacters": 39324,
+  "doiCandidatesInText": [
+   "10.1016/j.jsams.2021.09.007"
+  ]
+ },
+ {
+  "id": "Q12",
+  "queueOrder": 12,
+  "pilotDomain": null,
+  "sourceFile": "Squatting Biomechanics After Femoroacetabular Impingement Surgery - A Systematic Review and Meta-Analysis.pdf",
+  "pages": 12,
+  "extractedCharacters": 50702,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000001371"
+  ]
+ },
+ {
+  "id": "Q13",
+  "queueOrder": 13,
+  "pilotDomain": null,
+  "sourceFile": "Stability of salivary microRNA measures across an NCAA Division 1 football season - Implications for microRNA as a biomarker of concussion.pdf",
+  "pages": 11,
+  "extractedCharacters": 37892,
+  "doiCandidatesInText": [
+   "10.1001/jamapediatrics.2017.3884",
+   "10.1006/meth.2001.1262",
+   "10.1007/s00415-021-10566-x",
+   "10.1007/s40279-017-0813-",
+   "10.1016/j.celrep.2021.108946",
+   "10.1016/j.ijpsycho.2017.09.011"
+  ]
+ },
+ {
+  "id": "Q14",
+  "queueOrder": 14,
+  "pilotDomain": null,
+  "sourceFile": "Stingers\u2014A Review of Current Understanding and Management.pdf",
+  "pages": 14,
+  "extractedCharacters": 58932,
+  "doiCandidatesInText": [
+   "10.3390/app15073510"
+  ]
+ },
+ {
+  "id": "Q15",
+  "queueOrder": 15,
+  "pilotDomain": null,
+  "sourceFile": "Strength and power training in rehabilitation - Underpinning principles and practical strategies to return athletes to high performance.pdf",
+  "pages": 14,
+  "extractedCharacters": 69676,
+  "doiCandidatesInText": [
+   "10.1007/s40279-019-01195-6"
+  ]
+ },
+ {
+  "id": "Q16",
+  "queueOrder": 16,
+  "pilotDomain": null,
+  "sourceFile": "Strength training - In search of optimal strategies to maximize neuromuscular performance.pdf",
+  "pages": 55,
+  "extractedCharacters": 82872,
+  "doiCandidatesInText": [
+   "10.1249/JES.0000000000000234"
+  ]
+ },
+ {
+  "id": "Q17",
+  "queueOrder": 17,
+  "pilotDomain": null,
+  "sourceFile": "Strength training with intermittent blood flow restriction improved strength without changes in neural aspects on quadriceps muscle.pdf",
+  "pages": 11,
+  "extractedCharacters": 47246,
+  "doiCandidatesInText": [
+   "10.1016/j.scispo.2018.10.012"
+  ]
+ },
+ {
+  "id": "Q18",
+  "queueOrder": 18,
+  "pilotDomain": null,
+  "sourceFile": "Strength, conditioning, and nutritional considerations for high-level performers.pdf",
+  "pages": 10,
+  "extractedCharacters": 57401,
+  "doiCandidatesInText": [
+   "10.1007/BF00421711",
+   "10.1007/s40279-013-0042-0",
+   "10.1016/j.jand",
+   "10.1042/bj0040420",
+   "10.1042/bj0070445",
+   "10.1042/bj0140290"
+  ]
+ },
+ {
+  "id": "Q19",
+  "queueOrder": 19,
+  "pilotDomain": null,
+  "sourceFile": "Stress Relaxation and Targeted    Nutrition to Treat Patellar Tendinopathy.pdf",
+  "pages": 18,
+  "extractedCharacters": 31949,
+  "doiCandidatesInText": [
+   "10.1002/jor.1100180403",
+   "10.1007/s001670100224",
+   "10.1016/j.jbiomech.2014.12.021",
+   "10.1016/j.joca.2011.01.001",
+   "10.1016/j.jsams.2015.11.006",
+   "10.1016/j.matbio.2009.04.001"
+  ]
+ },
+ {
+  "id": "Q20",
+  "queueOrder": 20,
+  "pilotDomain": null,
+  "sourceFile": "Stretch imposed on active muscle elicits positive adaptations in strain risk factors and exercise-induced muscle damage.pdf",
+  "pages": 11,
+  "extractedCharacters": 50183,
+  "doiCandidatesInText": [
+   "10.1111/sms.13251"
+  ]
+ },
+ {
+  "id": "Q21",
+  "queueOrder": 21,
+  "pilotDomain": null,
+  "sourceFile": "Strong and stringent hamstring strain science - trials and error.pdf",
+  "pages": 2,
+  "extractedCharacters": 10345,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2020-102213"
+  ]
+ },
+ {
+  "id": "Q22",
+  "queueOrder": 22,
+  "pilotDomain": null,
+  "sourceFile": "Structural brain differences in professional Australian rules footballers following mild traumatic brain injury - When head size matters.pdf",
+  "pages": 11,
+  "extractedCharacters": 64356,
+  "doiCandidatesInText": [
+   "10.1001/jama.2014.3313",
+   "10.1001/jamaneurol.2015.0206",
+   "10.1002/hbm.25591",
+   "10.1006/nimg.2002.1040",
+   "10.1007/s00234-021-02862-0",
+   "10.1007/s00401-023-02540-w"
+  ]
+ },
+ {
+  "id": "Q23",
+  "queueOrder": 23,
+  "pilotDomain": null,
+  "sourceFile": "Subclinical brain mainfestations of repeated mild traumatic brain injury are changed by chronic exposure to sleep loss, caffeine, and sleep aids.pdf",
+  "pages": 15,
+  "extractedCharacters": 107970,
+  "doiCandidatesInText": [
+   "10.1016/j.expneurol.2024.114928"
+  ]
+ },
+ {
+  "id": "Q24",
+  "queueOrder": 24,
+  "pilotDomain": null,
+  "sourceFile": "Subconcussive is a dangerous misnomer - Hits of greater magnitude than concussive impacts may not cause symptoms.pdf",
+  "pages": 3,
+  "extractedCharacters": 18676,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2023-107413"
+  ]
+ },
+ {
+  "id": "Q25",
+  "queueOrder": 25,
+  "pilotDomain": null,
+  "sourceFile": "Subjective wellness acute-chronic workloads and injury risk in college football.pdf",
+  "pages": 7,
+  "extractedCharacters": 37502,
+  "doiCandidatesInText": []
+ },
+ {
+  "id": "Q26",
+  "queueOrder": 26,
+  "pilotDomain": null,
+  "sourceFile": "Subsequent musculoskeletal injury after concussion in National Football League players.pdf",
+  "pages": 7,
+  "extractedCharacters": 45954,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2023-107970"
+  ]
+ },
+ {
+  "id": "Q27",
+  "queueOrder": 27,
+  "pilotDomain": null,
+  "sourceFile": "Substance misuse in elite athletes - Early detection, brief intervention and referral to treatment.pdf",
+  "pages": 18,
+  "extractedCharacters": 62301,
+  "doiCandidatesInText": [
+   "10.1007/978-3-031-08364-8_14",
+   "10.1016/j.csm.2023.06.008",
+   "10.1080/07448481.2021.1897014",
+   "10.1097/JSM.0000000000001077",
+   "10.1111/imj"
+  ]
+ },
+ {
+  "id": "Q28",
+  "queueOrder": 28,
+  "pilotDomain": null,
+  "sourceFile": "Substantiating the use of ultrasound tissue characterization in the analysis of tendon structure - A systematic review.pdf",
+  "pages": 15,
+  "extractedCharacters": 60108,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000000624",
+   "10.1097/JSM.0000000000000625",
+   "10.1097/JSM.0000000000000644",
+   "10.1097/JSM.0000000000000749"
+  ]
+ },
+ {
+  "id": "Q29",
+  "queueOrder": 29,
+  "pilotDomain": null,
+  "sourceFile": "Subtypes of sport-related concussion - A systematic review and meta-cluster analysis.pdf",
+  "pages": 14,
+  "extractedCharacters": 55792,
+  "doiCandidatesInText": [
+   "10.1007/s40279-020-01321-9",
+   "10.1007/s4027\u200b9-020-01321\u200b-9",
+   "10.1097/JSM.00000\u200b00000\u200b00062\u200b9",
+   "10.1136/bmjse\u200bm-2018-00035\u200b5",
+   "10.1177/03635\u200b46510\u200b39201\u200b6"
+  ]
+ },
+ {
+  "id": "Q30",
+  "queueOrder": 30,
+  "pilotDomain": null,
+  "sourceFile": "Sudden cardiac death in young athletes - JACC State of the Art Review.pdf",
+  "pages": 21,
+  "extractedCharacters": 98334,
+  "doiCandidatesInText": [
+   "10.1001/jama.296.13.1593",
+   "10.1001/jamacardio.2023",
+   "10.1007/s00428-020-",
+   "10.1007/s11897-022-00580-z",
+   "10.1007/s11936-018-0678-z",
+   "10.1016/j"
+  ]
+ },
+ {
+  "id": "Q31",
+  "queueOrder": 31,
+  "pilotDomain": null,
+  "sourceFile": "Summary of the 2024 Professionals in Nutrition for Exercise and Sport \u201c10 Questions -10 Experts\u201d Session\u2014Hot Topics for the Paris Olympic Games.pdf",
+  "pages": 10,
+  "extractedCharacters": 61413,
+  "doiCandidatesInText": [
+   "10.1002/fsn3.4075",
+   "10.1007/s00394-015-0838-9",
+   "10.1007/s00394-022-03037-0",
+   "10.1007/s00726-010-0749-2",
+   "10.1007/s40279-017-0690-6",
+   "10.1007/s40279-022-01757-1"
+  ]
+ },
+ {
+  "id": "Q32",
+  "queueOrder": 32,
+  "pilotDomain": null,
+  "sourceFile": "Superior labrum anterior-posterior      tears in the NFL.pdf",
+  "pages": 6,
+  "extractedCharacters": 30100,
+  "doiCandidatesInText": [
+   "10.1177/0363546516673350"
+  ]
+ },
+ {
+  "id": "Q33",
+  "queueOrder": 33,
+  "pilotDomain": null,
+  "sourceFile": "Supplement use in patients undergoing anterior cruciate ligament reconstruction - A systematic review.pdf",
+  "pages": 27,
+  "extractedCharacters": 51213,
+  "doiCandidatesInText": [
+   "10.1016/j.arthro.2020.04.047"
+  ]
+ },
+ {
+  "id": "Q34",
+  "queueOrder": 34,
+  "pilotDomain": null,
+  "sourceFile": "Surgically treated pectoralis major tears impact the play and performance of National Football League athletes.pdf",
+  "pages": 6,
+  "extractedCharacters": 19653,
+  "doiCandidatesInText": [
+   "10.1016/j.asmr.2022.07.009"
+  ]
+ },
+ {
+  "id": "Q35",
+  "queueOrder": 35,
+  "pilotDomain": null,
+  "sourceFile": "Sweat characteristics of cramp-prone and cramp-resistant athletes.pdf",
+  "pages": 11,
+  "extractedCharacters": 52753,
+  "doiCandidatesInText": [
+   "10.1007/s00421-017-3619-8",
+   "10.1007/s40279-",
+   "10.1007/s40279-016-0527-8",
+   "10.1016/S1440-2440(03",
+   "10.1055/s-0029-",
+   "10.1055/s-2007-971982"
+  ]
+ },
+ {
+  "id": "Q36",
+  "queueOrder": 36,
+  "pilotDomain": null,
+  "sourceFile": "Swifter higher stronger - What's on the menu.pdf",
+  "pages": 8,
+  "extractedCharacters": 58040,
+  "doiCandidatesInText": [
+   "10.1126/science.aau2093"
+  ]
+ },
+ {
+  "id": "Q37",
+  "queueOrder": 37,
+  "pilotDomain": null,
+  "sourceFile": "Synthetic peptides in doping control - A powerful tool for an analytical challenge.pdf",
+  "pages": 14,
+  "extractedCharacters": 83907,
+  "doiCandidatesInText": [
+   "10.1016/B978-0-323-18907-1.00024-X",
+   "10.1016/b978-0-12-813442-9.00005-5",
+   "10.1021/acsomega.2c05296",
+   "10.1057/978-1-137-53535-1_11",
+   "10.1159/000460680",
+   "10.1159/000460722"
+  ]
+ },
+ {
+  "id": "Q38",
+  "queueOrder": 38,
+  "pilotDomain": null,
+  "sourceFile": "Systematic review of pre-injury migraines as a vulnerability factor for worse outcome following sport-related concussion.pdf",
+  "pages": 16,
+  "extractedCharacters": 83689,
+  "doiCandidatesInText": [
+   "10.1001/jama.2016.1203",
+   "10.1001/jamaneurol.2019.4552",
+   "10.1001/jamapediatrics.2015.2374",
+   "10.1001/jamapediatrics.2016.0294",
+   "10.1016/S0140-6736(02)08336-8",
+   "10.1016/S1474-4422(16)30293-9"
+  ]
+ },
+ {
+  "id": "Q39",
+  "queueOrder": 39,
+  "pilotDomain": null,
+  "sourceFile": "THE RELATIONSHIP OF INFRARED THERMOGRAPHY WITH THE IDENTIFICATION OF CHANGES IN BIOLOGICAL MARKERS AFTER EXERCISE - A SYSTEMATIC REVIEW.pdf",
+  "pages": 28,
+  "extractedCharacters": 43375,
+  "doiCandidatesInText": [
+   "10.1007/978331947410-69",
+   "10.1007/s10439-009-",
+   "10.1007/s11332-017-0394-1",
+   "10.1016/j.expthermflusci.2015.10.006",
+   "10.1016/j.infrared.2015.02.007",
+   "10.1016/j.jbmt.2025.04.018"
+  ]
+ },
+ {
+  "id": "Q40",
+  "queueOrder": 40,
+  "pilotDomain": null,
+  "sourceFile": "THEDEV~1.PDF",
+  "pages": 9,
+  "extractedCharacters": 41638,
+  "doiCandidatesInText": [
+   "10.1186/s13102-022-00520-3"
+  ]
+ },
+ {
+  "id": "Q41",
+  "queueOrder": 41,
+  "pilotDomain": null,
+  "sourceFile": "THEMAN~1.PDF",
+  "pages": 11,
+  "extractedCharacters": 25907,
+  "doiCandidatesInText": [
+   "10.1002/jcu.23525",
+   "10.1007/s00167-015-3669-6",
+   "10.1007/s00264-020-04510-3",
+   "10.1007/s40279-022-01693-0",
+   "10.1016/S0140-",
+   "10.1016/j.jsams.2016.05.010"
+  ]
+ },
+ {
+  "id": "Q42",
+  "queueOrder": 42,
+  "pilotDomain": null,
+  "sourceFile": "Tackle Height and Tackle Success\u2014An Analysis of 52,204 Tackle Events.pdf",
+  "pages": 11,
+  "extractedCharacters": 60435,
+  "doiCandidatesInText": [
+   "10.1002/ejsc.70003",
+   "10.1007/s40279\u2010021\u201001603\u2010w",
+   "10.1007/s40279\u2010023\u2010",
+   "10.1016/j",
+   "10.1016/j.jsams.2018.04.003",
+   "10.1016/j.ssci.2011.08.061"
+  ]
+ },
+ {
+  "id": "Q43",
+  "queueOrder": 43,
+  "pilotDomain": null,
+  "sourceFile": "Tackle and ball carrier demands of rugby league - A seven-year league-wide study including over 1,000,000 tackle events.pdf",
+  "pages": 11,
+  "extractedCharacters": 49979,
+  "doiCandidatesInText": [
+   "10.1186/s40798-024-00696-7"
+  ]
+ },
+ {
+  "id": "Q44",
+  "queueOrder": 44,
+  "pilotDomain": null,
+  "sourceFile": "Tackle characteristics associated with concussion in elite men's rugby union - Unpicking the differences between tacklers and ball-carriers.pdf",
+  "pages": 7,
+  "extractedCharacters": 40003,
+  "doiCandidatesInText": [
+   "10.1136/bmjsem-2025-002612"
+  ]
+ },
+ {
+  "id": "Q45",
+  "queueOrder": 45,
+  "pilotDomain": null,
+  "sourceFile": "Tackle techniques and characteristics associated with a concussion in tackling players in the National Football League.pdf",
+  "pages": 10,
+  "extractedCharacters": 39698,
+  "doiCandidatesInText": [
+   "10.1177/03635465251321005"
+  ]
+ },
+ {
+  "id": "Q46",
+  "queueOrder": 46,
+  "pilotDomain": null,
+  "sourceFile": "Tackler and ball carrier technique during moderate and severe injuries compared with player-matched and team-matched injury free controls in elite Rugby Union.pdf",
+  "pages": 10,
+  "extractedCharacters": 59470,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2019-101557",
+   "10.1136/bjsports-2019-101885",
+   "10.1136/bjsports-2020-103759"
+  ]
+ },
+ {
+  "id": "Q47",
+  "queueOrder": 47,
+  "pilotDomain": null,
+  "sourceFile": "Tacklers' head inertial accelerations can be decreased by alterning the way they engage in contact with ball carriers torsos.pdf",
+  "pages": 46,
+  "extractedCharacters": 85558,
+  "doiCandidatesInText": [
+   "10.1249/MSS.0000000000002931"
+  ]
+ },
+ {
+  "id": "Q48",
+  "queueOrder": 48,
+  "pilotDomain": null,
+  "sourceFile": "Tackling rugby safety through a collective approach.pdf",
+  "pages": 2,
+  "extractedCharacters": 14178,
+  "doiCandidatesInText": [
+   "10.1136/bjsports-2023-107020"
+  ]
+ },
+ {
+  "id": "Q49",
+  "queueOrder": 49,
+  "pilotDomain": null,
+  "sourceFile": "Taking the plunge - When is best for hot water immersion to complement exercise in heat and hypoxia.pdf",
+  "pages": 8,
+  "extractedCharacters": 42486,
+  "doiCandidatesInText": [
+   "10.1007/BF00421168",
+   "10.1007/s00421-002-0580-x",
+   "10.1007/s00421-008-0749-z",
+   "10.1007/s00421-010-1429-3",
+   "10.1007/s00421-014-2883-0",
+   "10.1016/j.jsams.2006.06.009"
+  ]
+ },
+ {
+  "id": "Q50",
+  "queueOrder": 50,
+  "pilotDomain": null,
+  "sourceFile": "Techniques to derive and clean acceleration and deceleration data of athlete tracking technologies in team sports - A scoping review.pdf",
+  "pages": 17,
+  "extractedCharacters": 64357,
+  "doiCandidatesInText": [
+   "10.1007/s40279-019-01170-1",
+   "10.1016/j.gaitpost.2020.06.009",
+   "10.1016/j.jbiomech.2021.110323",
+   "10.1016/j.jsams.2009.09.002",
+   "10.1016/j.jsams.2013.05.001",
+   "10.1055/s-0032-1316315"
+  ]
+ },
+ {
+  "id": "Q51",
+  "queueOrder": 51,
+  "pilotDomain": null,
+  "sourceFile": "Telling the Whole Story - Bibliometric network analysis to evaluate impact of media attention on chronic traumatic encehalopathy research.pdf",
+  "pages": 7,
+  "extractedCharacters": 25454,
+  "doiCandidatesInText": [
+   "10.1001/jama.2017.8334",
+   "10.1001/jamaneurol.2015",
+   "10.1002/alz.12338",
+   "10.1002/ana.25747",
+   "10.1007/s00401-015-1502-4",
+   "10.1016/j.jalz.2014.04.003"
+  ]
+ },
+ {
+  "id": "Q52",
+  "queueOrder": 52,
+  "pilotDomain": null,
+  "sourceFile": "Ten word list performance in healthy athletes and athletes at 3 to 5 days following concussion.pdf",
+  "pages": 7,
+  "extractedCharacters": 33066,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000000941",
+   "10.1136/bjsports-2020-102072"
+  ]
+ },
+ {
+  "id": "Q53",
+  "queueOrder": 53,
+  "pilotDomain": null,
+  "sourceFile": "Tendon and Ligament Injuries in   Elite Rugby- The Potential Genetic Influence.pdf",
+  "pages": 27,
+  "extractedCharacters": 103335,
+  "doiCandidatesInText": [
+   "10.3390/sports7060138"
+  ]
+ },
+ {
+  "id": "Q54",
+  "queueOrder": 54,
+  "pilotDomain": null,
+  "sourceFile": "Terminology and Interpretation Across Neuromuscular Profiling Methods - A Systematic Review.pdf",
+  "pages": 31,
+  "extractedCharacters": 174670,
+  "doiCandidatesInText": [
+   "10.1007/s40279-025-02330-2"
+  ]
+ },
+ {
+  "id": "Q55",
+  "queueOrder": 55,
+  "pilotDomain": null,
+  "sourceFile": "Test and evaluation of heart rate derived core temperature algorithms for use in NCAA Division I football athletes.pdf",
+  "pages": 14,
+  "extractedCharacters": 51803,
+  "doiCandidatesInText": [
+   "10.3390/jfmk5030046"
+  ]
+ },
+ {
+  "id": "Q56",
+  "queueOrder": 56,
+  "pilotDomain": null,
+  "sourceFile": "Testing Limb Symmetry and Asymmetry After Anterior Cruciate Ligament Injury - 4 Considerations to Increase Its Utility.pdf",
+  "pages": 9,
+  "extractedCharacters": 46074,
+  "doiCandidatesInText": []
+ },
+ {
+  "id": "Q57",
+  "queueOrder": 57,
+  "pilotDomain": null,
+  "sourceFile": "The 11 evidence-informed and inferred principles of microcycle periodization in elite football.pdf",
+  "pages": 23,
+  "extractedCharacters": 87868,
+  "doiCandidatesInText": [
+   "10.1007/s40279-012-",
+   "10.1007/s40279-020-01315-7",
+   "10.1055/s-0034-1398578",
+   "10.1080/02640414.2010.546424",
+   "10.1080/02640414.2020.1845439",
+   "10.1080/02640414.2023.2296741"
+  ]
+ },
+ {
+  "id": "Q58",
+  "queueOrder": 58,
+  "pilotDomain": null,
+  "sourceFile": "The 4R's framework of nutritional strategies for post-exercise recovery - A review with emphasis on new generation of carbohydrates.pdf",
+  "pages": 19,
+  "extractedCharacters": 96802,
+  "doiCandidatesInText": [
+   "10.3390/ijerph18010103"
+  ]
+ },
+ {
+  "id": "Q59",
+  "queueOrder": 59,
+  "pilotDomain": null,
+  "sourceFile": "The 4Rs Framework of Sports Nutrition - An Update with Recommendations to Evaluate Allostatic Load in Athletes.pdf",
+  "pages": 31,
+  "extractedCharacters": 113576,
+  "doiCandidatesInText": [
+   "10.3390/life15060867",
+   "10.5281/zenodo.15377939"
+  ]
+ },
+ {
+  "id": "Q60",
+  "queueOrder": 60,
+  "pilotDomain": null,
+  "sourceFile": "The ALR\u2010RSI score can be used to evaluate psychological readiness to return to sport after acute Achilles tendon tear.pdf",
+  "pages": 8,
+  "extractedCharacters": 34034,
+  "doiCandidatesInText": [
+   "10.1007/s00167-023-07548-z",
+   "10.1093/ptj/pzab226",
+   "10.1136/bjsports-2016-096106"
+  ]
+ },
+ {
+  "id": "Q61",
+  "queueOrder": 61,
+  "pilotDomain": null,
+  "sourceFile": "The Algorithmic Athlete - A Call to Standardize Assessment of Sensor Technologies and Artificial Intelligence.pdf",
+  "pages": 2,
+  "extractedCharacters": 10756,
+  "doiCandidatesInText": [
+   "10.1038/s41746-020-0260-4",
+   "10.1123/ijspp.2025-0547",
+   "10.1136/bmj-2023-078378",
+   "10.1186/s13102-023-00783-4",
+   "10.3389/fpubh.2024.1484848",
+   "10.3390/bioengineering12080887"
+  ]
+ },
+ {
+  "id": "Q62",
+  "queueOrder": 62,
+  "pilotDomain": null,
+  "sourceFile": "The Association Between Age of First Exposure to American Football at a Young Age and Later-Life Health Issues in Healthy, Community-Dwelling Adults.pdf",
+  "pages": 13,
+  "extractedCharacters": 58370,
+  "doiCandidatesInText": [
+   "10.1007/s40279-025-02239-w"
+  ]
+ },
+ {
+  "id": "Q63",
+  "queueOrder": 63,
+  "pilotDomain": null,
+  "sourceFile": "The Association Between Central Nervous System Function and Core Body Temperature in Patients With Exertional Heat Stroke.pdf",
+  "pages": 7,
+  "extractedCharacters": 35898,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000001383"
+  ]
+ },
+ {
+  "id": "Q64",
+  "queueOrder": 64,
+  "pilotDomain": null,
+  "sourceFile": "The Association Between Early Sport Specialization and Injury and Career Outcomes Among National Football League Athletes.pdf",
+  "pages": 12,
+  "extractedCharacters": 64397,
+  "doiCandidatesInText": [
+   "10.1002/ejsc.70120",
+   "10.1007/s12178\u2010018\u20109453\u20108",
+   "10.1007/s12178\u2010023\u201009851\u20101",
+   "10.1016/j.ocl.2020.06.006",
+   "10.1038/s41598\u2010021\u201087920\u20106",
+   "10.1080/00913847"
+  ]
+ },
+ {
+  "id": "Q65",
+  "queueOrder": 65,
+  "pilotDomain": null,
+  "sourceFile": "The Association Between Training Load and\u00a0Performance in\u00a0Team Sports- A\u00a0Systematic Review.pdf",
+  "pages": 32,
+  "extractedCharacters": 132160,
+  "doiCandidatesInText": [
+   "10.1007/s40279-018-0982-5",
+   "10.1080/24733\u200b938.2018.14290\u200b14",
+   "10.1123/ijspp\u200b.2017-0565",
+   "10.1123/ijspp\u200b.2017-0843",
+   "10.1123/ijspp\u200b.2018-0086",
+   "10.1186/1479-5868-5-56"
+  ]
+ },
+ {
+  "id": "Q66",
+  "queueOrder": 66,
+  "pilotDomain": null,
+  "sourceFile": "The Athlete's Heart - Allometric considerations on published papers and relation to cardiovascular variables.pdf",
+  "pages": 10,
+  "extractedCharacters": 42746,
+  "doiCandidatesInText": [
+   "10.1007/s00421-024-05449-8"
+  ]
+ },
+ {
+  "id": "Q67",
+  "queueOrder": 67,
+  "pilotDomain": null,
+  "sourceFile": "The Benefits of Research-Embedded Training Camps in Sport Sciences.pdf",
+  "pages": 5,
+  "extractedCharacters": 29354,
+  "doiCandidatesInText": [
+   "10.1002/ejsc.12161",
+   "10.1007/s40279-",
+   "10.1111/sms.14268",
+   "10.1123/IJSPP.2015-0781",
+   "10.1123/ijsnem.2023-0037",
+   "10.1123/ijsnem.2024-0091"
+  ]
+ },
+ {
+  "id": "Q68",
+  "queueOrder": 68,
+  "pilotDomain": null,
+  "sourceFile": "The Braking Performance Framework - Practical Recommendations and Guidelines to Enhance Horizontal Deceleration Ability in Multi-Directional Sports.pdf",
+  "pages": 31,
+  "extractedCharacters": 139531,
+  "doiCandidatesInText": [
+   "10.47206/ijsc.v4i1.351"
+  ]
+ },
+ {
+  "id": "Q69",
+  "queueOrder": 69,
+  "pilotDomain": null,
+  "sourceFile": "The British Athletics Muscle Injury Classification grading system as a predictor of return to play following hamstrings injury in professional soccer players.pdf",
+  "pages": 27,
+  "extractedCharacters": 39656,
+  "doiCandidatesInText": [
+   "10.1016/j.ptsp.2022.08.002"
+  ]
+ },
+ {
+  "id": "Q70",
+  "queueOrder": 70,
+  "pilotDomain": null,
+  "sourceFile": "The Concurrent Validity of Session-Rating of Perceived Exertion Workload Obtained Face-to-Face Versus Via an Online ApplicationA Team Case S.pdf",
+  "pages": 4,
+  "extractedCharacters": 17080,
+  "doiCandidatesInText": [
+   "10.1123/ijspp.2013-0410",
+   "10.1123/ijspp.2013-0418",
+   "10.1123/ijspp.2016-0395",
+   "10.1123/ijspp.2017-0707",
+   "10.1123/ijspp.2019-0908",
+   "10.14198/jhse.2020.151.20"
+  ]
+ },
+ {
+  "id": "Q71",
+  "queueOrder": 71,
+  "pilotDomain": null,
+  "sourceFile": "The Correlations Between Training Load Parameters and Physical Performance Adaptations in Team Sports - A Systematic Review and Meta-analysis.pdf",
+  "pages": 26,
+  "extractedCharacters": 121217,
+  "doiCandidatesInText": [
+   "10.1186/s40798-025-00952-4"
+  ]
+ },
+ {
+  "id": "Q72",
+  "queueOrder": 72,
+  "pilotDomain": null,
+  "sourceFile": "The Current State of Subjective Training Load Monitoring\u2014a Practical Perspective and Call to Action.pdf",
+  "pages": 10,
+  "extractedCharacters": 48856,
+  "doiCandidatesInText": [
+   "10.1007/s00167-",
+   "10.1007/s00421-005-1319-2",
+   "10.1007/s40279-015-0459-8",
+   "10.1007/s40279-017-0694-2",
+   "10.1007/s40279-017-0714-2",
+   "10.1007/s40279-017-0823-y"
+  ]
+ },
+ {
+  "id": "Q73",
+  "queueOrder": 73,
+  "pilotDomain": null,
+  "sourceFile": "The Deceleration Dilemma - Leveraging The Relationship Between Quadriceps Function and Deceleration to Optimize Return to Sport.pdf",
+  "pages": 4,
+  "extractedCharacters": 15456,
+  "doiCandidatesInText": [
+   "10.1007/s00167-019-05513-3",
+   "10.1016/j.ptsp.2019.05.004",
+   "10.1519/JSC.0000000000003856",
+   "10.2519/jospt.2012.3768",
+   "10.26603/001c.137030"
+  ]
+ },
+ {
+  "id": "Q74",
+  "queueOrder": 74,
+  "pilotDomain": null,
+  "sourceFile": "The Deceleration Index - Is it the missing link in rehabilitation.pdf",
+  "pages": 5,
+  "extractedCharacters": 18242,
+  "doiCandidatesInText": [
+   "10.1007/s12662-018-0502-7",
+   "10.1007/s402",
+   "10.1007/s40279-021-0158",
+   "10.1007/s40279-022-016",
+   "10.1177/0363546",
+   "10.1177/19417381145"
+  ]
+ },
+ {
+  "id": "Q75",
+  "queueOrder": 75,
+  "pilotDomain": null,
+  "sourceFile": "The Doctor is (Not) In - Implications of Increased Medical Malpractice Litigation on Team Physicians in the National Football League.pdf",
+  "pages": 46,
+  "extractedCharacters": 155173,
+  "doiCandidatesInText": []
+ },
+ {
+  "id": "Q76",
+  "queueOrder": 76,
+  "pilotDomain": null,
+  "sourceFile": "The Dose\u2013Response Relationship of Exercise-Based Injury Prevention Programmes - Implications for Research and Practice.pdf",
+  "pages": 10,
+  "extractedCharacters": 44641,
+  "doiCandidatesInText": [
+   "10.1007/s40279-025-02298-z"
+  ]
+ },
+ {
+  "id": "Q77",
+  "queueOrder": 77,
+  "pilotDomain": null,
+  "sourceFile": "The Dose\u2013Response of the Nordic Hamstring Exercise on Biceps Femoris Architecture and Eccentric Knee Flexor Strength_- A Randomized Interventional Trial.pdf",
+  "pages": 9,
+  "extractedCharacters": 36411,
+  "doiCandidatesInText": [
+   "10.1002/tsm2.58",
+   "10.1007/s40279-016-0638-2",
+   "10.1016/j.jbiomech.2009.03.005",
+   "10.1016/j.jbiomech.2009.07.011",
+   "10.1111/j.1469-",
+   "10.1111/sms"
+  ]
+ },
+ {
+  "id": "Q78",
+  "queueOrder": 78,
+  "pilotDomain": null,
+  "sourceFile": "The Efect of\u00a0Nordic Hamstring Exercise Intervention Volume on\u00a0Eccentric Strength and\u00a0Muscle Architecture Adaptations- A\u00a0Systematic Review and\u00a0Meta\u2011analyses.pdf",
+  "pages": 17,
+  "extractedCharacters": 56085,
+  "doiCandidatesInText": [
+   "10.1007/s40279-019-01178-7"
+  ]
+ },
+ {
+  "id": "Q79",
+  "queueOrder": 79,
+  "pilotDomain": null,
+  "sourceFile": "The Efectiveness of\u00a0Resisted Sled Training (RST) for\u00a0Sprint Performance- A\u00a0Systematic Review and\u00a0Meta\u2011analysis.pdf",
+  "pages": 23,
+  "extractedCharacters": 86442,
+  "doiCandidatesInText": [
+   "10.1007/s40279-018-0947-8"
+  ]
+ },
+ {
+  "id": "Q80",
+  "queueOrder": 80,
+  "pilotDomain": null,
+  "sourceFile": "The Effect of A Flywheel Hip Extension Vs A Traditional Hip Extension Exercise on Hamstring Strength.pdf",
+  "pages": 9,
+  "extractedCharacters": 41912,
+  "doiCandidatesInText": [
+   "10.1007/s00421-010-1575-7",
+   "10.1016/j.jsams.2009.08.003",
+   "10.1016/j.jsams.2017.03.004",
+   "10.1016/j.jsams.2020.04.007",
+   "10.1034/j.1600-0838.2003.00312.x",
+   "10.1055/s-0029-1202822"
+  ]
+ },
+ {
+  "id": "Q81",
+  "queueOrder": 81,
+  "pilotDomain": null,
+  "sourceFile": "The Effect of Bye Weeks on Injury Event Rates in the Canadian Football League.pdf",
+  "pages": 6,
+  "extractedCharacters": 29331,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000001272"
+  ]
+ },
+ {
+  "id": "Q82",
+  "queueOrder": 82,
+  "pilotDomain": null,
+  "sourceFile": "The Effect of Sport Specialization on Injury Risk in NCAA Athletes - Results From the SAFE Consortium.pdf",
+  "pages": 5,
+  "extractedCharacters": 27259,
+  "doiCandidatesInText": [
+   "10.1097/JSM.0000000000001225"
+  ]
+ },
+ {
+  "id": "Q83",
+  "queueOrder": 83,
+  "pilotDomain": null,
+  "sourceFile": "The Effect of a Synthetic-Grass Sport Surface on Physiology and Perception During Intermittent Exercise in Hot Conditions.pdf",
+  "pages": 7,
+  "extractedCharacters": 35092,
+  "doiCandidatesInText": [
+   "10.1002/cphy.c150040",
+   "10.1007/s00484-017-1357-6",
+   "10.1007/s00484-024-02679-5",
+   "10.1016/0013-",
+   "10.1016/j",
+   "10.1016/j.apenergy.2016.04.072"
+  ]
+ },
+ {
+  "id": "Q84",
+  "queueOrder": 84,
+  "pilotDomain": null,
+  "sourceFile": "The Effect of the Number of Carries on Injury Risk and Subsequent Season\u2019s Performance Among Running Backs in the National Football League.pdf",
+  "pages": 5,
+  "extractedCharacters": 24512,
+  "doiCandidatesInText": [
+   "10.1177/2325967117691941"
+  ]
+ },
+ {
+  "id": "Q85",
+  "queueOrder": 85,
+  "pilotDomain": null,
+  "sourceFile": "The Effectiveness of    Photobiomodulation Therapy Versus Cryotherapy for Skeletal Muscle   Recovery-  A Critically Appraised Topic.pdf",
+  "pages": 7,
+  "extractedCharacters": 31202,
+  "doiCandidatesInText": [
+   "10.1007/s00421-011-1924-1",
+   "10.1007/s00421-013-2693-9",
+   "10.1007/s10103-011-1039-2",
+   "10.1007/s10103-013-1371-9",
+   "10.1007/s10103-014-1616-2",
+   "10.1007/s10103-016-2071-z"
+  ]
+ },
+ {
+  "id": "Q86",
+  "queueOrder": 86,
+  "pilotDomain": null,
+  "sourceFile": "The Efficacy of Nutritional Strategies and Ergogenic Aids on Acute Responses and Chronic Adaptations to Exertional-Heat Exposure - A Narrative Review.pdf",
+  "pages": 25,
+  "extractedCharacters": 104528,
+  "doiCandidatesInText": [
+   "10.3390/nu16223792"
+  ]
+ },
+ {
+  "id": "Q87",
+  "queueOrder": 87,
+  "pilotDomain": null,
+  "sourceFile": "The Epidemiology of Ankle Injuries Identified at the National Football League Combine, 2009-2015.pdf",
+  "pages": 8,
+  "extractedCharacters": 40969,
+  "doiCandidatesInText": [
+   "10.1177/2325967118786227"
+  ]
+ },
+ {
+  "id": "Q88",
+  "queueOrder": 88,
+  "pilotDomain": null,
+  "sourceFile": "The Evolving Treatment Patterns of                        NCAA Division I Football Players by Orthopaedic Team           Physicians      Over     the     Past Decade, 2008-2016.pdf",
+  "pages": 10,
+  "extractedCharacters": 36516,
+  "doiCandidatesInText": [
+   "10.1177/1941738117745488",
+   "10.1177/1941738117745488Carver"
+  ]
+ },
+ {
+  "id": "Q89",
+  "queueOrder": 89,
+  "pilotDomain": null,
+  "sourceFile": "The Fitness\u2013Fatigue Model - What\u2019s in the Numbers_.pdf",
+  "pages": 4,
+  "extractedCharacters": 22122,
+  "doiCandidatesInText": [
+   "10.1055/s-2002-19276",
+   "10.1080/02640410500244697",
+   "10.1111/j.1600-0838.2010.01184.x",
+   "10.1123/IJSPP.2017-0208",
+   "10.1123/ijspp",
+   "10.1123/ijspp.2020-0662"
+  ]
+ },
+ {
+  "id": "Q90",
+  "queueOrder": 90,
+  "pilotDomain": null,
+  "sourceFile": "The Fragility Index of Risk Factors for Hamstring Injuries.pdf",
+  "pages": 7,
+  "extractedCharacters": 39215,
+  "doiCandidatesInText": [
+   "10.1007/s40279-021-01567-x",
+   "10.1016/j",
+   "10.1016/j.jsams.2006.01.004",
+   "10.1016/j.spinee.2015.06.004",
+   "10.1055/s-0043-103016",
+   "10.1080/02640414.2021.1875613"
+  ]
+ },
+ {
+  "id": "Q91",
+  "queueOrder": 91,
+  "pilotDomain": null,
+  "sourceFile": "The Functional Movement Screen\u2019s Ability to Detect Changes in Movement Patterns After a Training Intervention.pdf",
+  "pages": 6,
+  "extractedCharacters": 18702,
+  "doiCandidatesInText": [
+   "10.1123/jsr.2013-0146",
+   "10.1519/JSC.0b013e318"
+  ]
+ },
+ {
+  "id": "Q92",
+  "queueOrder": 92,
+  "pilotDomain": null,
+  "sourceFile": "The Hidden Cardiovascular Crisis Among Former NFL Athletes - After the HUDDLE.pdf",
+  "pages": 3,
+  "extractedCharacters": 12963,
+  "doiCandidatesInText": [
+   "10.1001/jama.2018.0140",
+   "10.1016/j.amjcard",
+   "10.1016/j.jacc.2021.08.003",
+   "10.1016/j.jacc.2024.03.403",
+   "10.1136/bjsports-2022-106553",
+   "10.1212/WNL"
+  ]
+ },
+ {
+  "id": "Q93",
+  "queueOrder": 93,
+  "pilotDomain": null,
+  "sourceFile": "The Impact of Daylight Exposure on Injured Athletes - Implications for Rehabilitation.pdf",
+  "pages": 15,
+  "extractedCharacters": 82679,
+  "doiCandidatesInText": [
+   "10.1007/s00421-",
+   "10.1007/s00421-019-04104-x",
+   "10.1007/s00521-018-3909-z",
+   "10.1007/s11739-018-1900-4",
+   "10.1007/s11999.0000000000000085",
+   "10.1007/s12020-020-02482-3"
+  ]
+ },
+ {
+  "id": "Q94",
+  "queueOrder": 94,
+  "pilotDomain": null,
+  "sourceFile": "The Impact of Weekly Acceleration and Deceleration Loads on Neuromuscular Performance in Soccer - A Session-to-Session Analysis.pdf",
+  "pages": 10,
+  "extractedCharacters": 52746,
+  "doiCandidatesInText": [
+   "10.1007/s12662-024-00988-w",
+   "10.1007/s40279-019-01170-1",
+   "10.1016/j.clinbiochem.2008.04.008",
+   "10.1016/j.jbiomech.2018.11.044",
+   "10.1080/24733938.2022.2090600",
+   "10.1111/apha.13533"
+  ]
+ },
+ {
+  "id": "Q95",
+  "queueOrder": 95,
+  "pilotDomain": null,
+  "sourceFile": "The Influence of Exercise Modality on Training Load Management.pdf",
+  "pages": 4,
+  "extractedCharacters": 22140,
+  "doiCandidatesInText": [
+   "10.1007/BF00865035",
+   "10.1007/s40279-014-0253-z",
+   "10.1016/0021-9290(90)90352-4",
+   "10.1046/j",
+   "10.1080/17461391.2020.1773934",
+   "10.1097/00005768-200112000-00018"
+  ]
+ },
+ {
+  "id": "Q96",
+  "queueOrder": 96,
+  "pilotDomain": null,
+  "sourceFile": "The Influence of Post-Exercise        Cold-Water Immersion on Adaptive Responses to Exercise- A Review of   the      Literature.pdf",
+  "pages": 19,
+  "extractedCharacters": 93517,
+  "doiCandidatesInText": [
+   "10.1007/s40279-018-0910-8",
+   "10.1101/151035",
+   "10.1101/151100",
+   "10.14814/phy2.12670"
+  ]
+ }
+]-----
+total 128
+drwxr-xr-x@  10 kristinarash  staff    320 Oct 10 10:36 .
+drwx------+ 159 kristinarash  staff   5088 Oct 10 10:36 ..
+drwxr-xr-x@   2 kristinarash  staff     64 Oct 10 10:36 drafts
+-rw-r--r--@   1 kristinarash  staff  35776 Oct 10 10:36 inputs.json
+-rw-r--r--@   1 kristinarash  staff   5435 Oct 10 10:36 INSTRUCTIONS.md
+-rw-r--r--@   1 kristinarash  staff  10446 Oct 10 10:36 list.txt
+-rw-r--r--@   1 kristinarash  staff   1322 Oct 10 10:36 taxonomy.json
+drwxr-xr-x@  98 kristinarash  staff   3136 Oct 10 10:36 text
+drwxr-xr-x@   2 kristinarash  staff     64 Oct 10 10:36 verified
+-rw-r--r--@   1 kristinarash  staff   2167 Oct 10 10:36 VERIFY.md

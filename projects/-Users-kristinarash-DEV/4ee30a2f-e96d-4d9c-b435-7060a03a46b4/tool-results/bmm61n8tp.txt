@@ -1,0 +1,506 @@
+{
+ "id": "Q41",
+ "sourceFile": "THEMAN~1.PDF",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "The filename is truncated to THEMAN~1.PDF; the title in the text, 'The management of a professional footballer recovering from a surgical repair of the proximal adductor longus tendon through a return-to-performance pathway. A case report', begins with the same words, so the identity is consistent.",
+ "confidence": "medium",
+ "studyDesign": "Case Report / Case Series",
+ "primaryDomain": "Rehabilitation & Return to Sport",
+ "domains": [
+  "Rehabilitation & Return to Sport",
+  "Sports Medicine & Injury"
+ ],
+ "audiences": [
+  "Rehabilitation",
+  "Sports Medicine",
+  "Athletic Training"
+ ],
+ "sports": [
+  "Soccer"
+ ],
+ "populations": [
+  "Male Athletes",
+  "Professional / Elite",
+  "Injured Athletes"
+ ],
+ "evidenceSummary": "Case report of one 23-year-old professional footballer with a full-thickness proximal adductor longus avulsion (tendon retracted 3.9 cm on MRI) treated with surgical reattachment five days after injury. He completed an eleven-phase criteria-based return-to-performance pathway, reached 94% of peak speed in grass phase 3, and completed a 45-minute U23 match at 12 weeks, with full regular match play from week 14.",
+ "screeningLimitations": "This is a single case with no comparison group and no outcome measures beyond the team's own criteria, so the result describes one course of care rather than an effect of the pathway. Table 1 and Figure 2 values are not fully reproduced in the extracted text, so the numeric criteria could not be checked against the tables.",
+ "synthesisCaution": "Staff could read the 12-week U23 match and 14-week full return as a typical timeline for surgical adductor longus repair, when it is one professional player's course under one club's criteria-based pathway.",
+ "paper": {
+  "year": 2024,
+  "citation": "Mitchell A, Holding C. The management of a professional footballer recovering from a surgical repair of the proximal adductor longus tendon through a return-to-performance pathway. A case report. Research in Sports Medicine. 2024.",
+  "doi": "10.1080/15438627.2024.2399005",
+  "abstract": "A 23-year-old professional footballer had a rupture of the proximal adductor longus tendon, was treated with surgical reattachment, and completed an eleven-phase return-to-performance pathway that combined clinical, performance and sport-specific criteria. The player returned to competitive play 12 weeks after surgery. The authors describe the shared decision-making process used by the interdisciplinary team.",
+  "tldr": "A single professional footballer returned to competitive play at 12 weeks after surgical adductor longus reattachment using a phase-gated, criteria-based pathway. The case shows how the criteria were sequenced, but it cannot show what typical recovery looks like.",
+  "methods": "Single-case clinical report. The player was managed through three gym phases and six grass phases, with progression gated by pain (2/10 or less), a confidence rating (80% or more), and objective measures such as adductor squeeze, hip range of motion, hop tests, force plate jumps, and GPS-monitored running loads.",
+  "findings": "Hip range of motion, adductor squeeze and hop measures were within 10% of pre-injury values at weeks 6.5 to 7, when running was introduced. In grass phase 3 he reached 94% of peak speed, 96% of peak acceleration intensity and 84% of peak deceleration intensity. He completed a 45-minute U23 match at 12 weeks and joined the regular match schedule from week 14.",
+  "limitations": "One player with no comparison group, so the pathway's effect cannot be separated from the player's own recovery. The abstract states return to competitive play at 12 weeks, while the body describes a U23 match at 12 weeks and full match play from week 14. Figure 2 and Table 1 values are not reproduced in the extracted text. Strength thresholds are taken from earlier studies by the same group and were not validated here.",
+  "practicalImplications": "Staff managing a surgical adductor longus repair can use this phase structure as a worked example of gating progression on pain, confidence and objective profiling. The case does not justify fixed return dates; the timeline came from one player's responses at each gate.",
+  "athleteDev": "The pathway sequenced gym-based profiling (hop battery, force plate jumps, adductor and abductor strength) alongside GPS-limited running, acceleration and kicking progressions. Kicking distance rose from 2 m to 10 m in grass phase 1 and to 40 m in grass phase 2, alongside high-speed running and agility work.",
+  "rtp": "This case describes one professional footballer's return after surgical adductor longus reattachment, with a U23 match at 12 weeks and full match play from week 14. It cannot establish expected return times for other players, other repair types, or other clubs, and it cannot show that the pathway caused the outcome."
+ }
+}
+----
+      Research in Sports Medicine
+      An International Journal
+
+
+
+
+      ISSN: (Print) (Online) Journal homepage: www.tandfonline.com/journals/gspm20
+
+
+
+
+The management of a professional footballer
+recovering from a surgical repair of the proximal
+adductor longus tendon through a return-to-
+performance pathway. A case report
+
+Andrew Mitchell & Craig Holding
+
+To cite this article: Andrew Mitchell & Craig Holding (20 Sep 2024): The management of a
+professional footballer recovering from a surgical repair of the proximal adductor longus
+tendon through a return-to-performance pathway. A case report, Research in Sports Medicine,
+DOI: 10.1080/15438627.2024.2399005
+
+To link to this article: https://doi.org/10.1080/15438627.2024.2399005
+
+
+
+
+       Published online: 20 Sep 2024.
+
+
+
+       Submit your article to this journal
+
+
+
+       View related articles
+
+
+
+       View Crossmark data
+
+
+
+
+                      Full Terms & Conditions of access and use can be found at
+            https://www.tandfonline.com/action/journalInformation?journalCode=gspm20
+RESEARCH IN SPORTS MEDICINE
+https://doi.org/10.1080/15438627.2024.2399005
+
+
+
+
+The management of a professional footballer recovering from
+a surgical repair of the proximal adductor longus tendon
+through a return-to-performance pathway. A case report
+Andrew Mitchella and Craig Holdingb
+a
+Medical Department, RasenBallsport Leipzig GmbH, Leipzig, Germany; bIrish Football Association, Belfast,
+Northern, Ireland
+
+
+    ABSTRACT                                                                       ARTICLE HISTORY
+    This case report details the management of a 23-year-old profes­               Received 24 June 2024
+    sional footballer who sustained a rupture of the proximal adductor             Accepted 27 August 2024
+    longus (AL) tendon. Following surgical reattachment of the tendon,             KEYWORDS
+    the player completed an eleven-phase return to performance                     Criteria based; return to
+    (RTPerf) pathway designed to ensure a rapid and safe return to play            performance pathway;
+    (RTPlay). The pathway uses distinct phases that incorporate clinical,          professional football; surgical
+    performance, and sport-specific criteria to guide decision-making              repair; adductor longus
+    throughout the process. This case report outlines the phases and               tendon
+    criteria used in conjunction with shared decision-making by the
+    interdisciplinary team (IDT) to ensure a successful RTPlay. The effec­
+    tiveness of this pathway was demonstrated by the player’s return to
+    competitive play 12 weeks post-surgery.
+
+
+
+Introduction
+Groin injuries are extremely common in football, accounting for 18% of all injuries (Mosler
+et al., 2018). In addition, the AL muscle is reported to be involved in two-thirds (Mosler
+et al., 2018) of all cases and 17% of these are classified as grade 3 injuries (rupture or
+avulsion) (Serner et al., 2018). For grade 3 injuries, both conservative and surgical manage­
+ment have provided solid RTPlay outcomes. Conservative management potentially pro­
+vides shorter RTPlay times (10–12 weeks) (Dimitrakopoulou et al., 2008; Ueblacker et al.,
+2016) and is better suited for small tendon retraction lengths (<2 cm), but carries the risk
+of uncontrolled tendon healing, weakness and residual pain (Best et al., 2020). In contrast,
+surgical management results in longer RTPlay times (12–16 weeks) (Best et al., 2020), but is
+better suited to high-performance athletes that have suffered larger tendon retraction
+lengths (>2 cm) and/or damage to other structures such as the pyramidalis muscle, the
+anterior pubic ligament, and in some cases the pectineus muscle (Lempainen et al., 2021).
+   The purpose of this case report is to describe how a professional footballer successfully
+progressed through an RTPerf pathway following a proximal AL tendon reattachment. This
+report will use the previously cited RTPerf pathway, which has 11 clear phases (Figure 1)
+with clear progressions and objective criteria to help inform a shared decision-making
+
+
+CONTACT Andrew Mitchell        andrew.mitchell@redbulls.com    Medical Department, RasenBallsport Leipzig GmbH,
+Cottaweg 3, Leipzig 04177, Germany
+© 2024 Informa UK Limited, trading as Taylor & Francis Group
+                                                                                                                                                                     2
+
+
+
+
+                                                                                                                                                                     A. MITCHELL AND C. HOLDING
+
+
+
+
+Figure 1. Shows the return-to-performance pathway for a proximal adductor longus tendon reattachment. Abbreviations: ACCs, accelerations; CMJ, counter­
+movement jump; COD, change of direction; DECs, decelerations; Hams, hamstrings; LSG, large-sided games; M, metres; Max, maximum; MSG, medium-sided games;
+Mins, minutes; Ms, milliseconds; NWB, non-weight bearing; RFD, rate of force development; SL, single leg; SSG, small-sided games; non-weight bearing; RFD, rate of
+force development; SL, single leg; SSG, small-sided games.
+                                                           RESEARCH IN SPORTS MEDICINE      3
+
+
+process (Mitchell & Gimpel, 2024). The pathway has three distinct gym-based phases to
+prepare the player for the subsequent grass phases. In conjunction with the grass phases,
+the player will also complete more advanced gym profiling (power and reactive strength)
+to ensure he is ready to resume team training (Grass Phase 4) and ultimately RTPlay (Grass
+phase 5). The RTPerf pathway is completed (Grass Phase 6) when the player is deemed to
+be performing at or above his previous level of performance.
+
+
+
+Discussion
+Case presentation
+This previously healthy 23-year-old professional footballer was playing centre-back in
+a game when he attempted to clear a ball with his left foot. He immediately experienced
+an audible “pop” and pain in the adductor region of the kicking limb. The injury mechan­
+ism was established as abduction, extension and external rotation of the hip prior to
+kicking the ball. This particular movement places a high eccentric load on the AL
+(Charnock et al., 2009), with this particular mechanism accounting for 29% of all AL
+ruptures (Serner et al., 2018). After attempting the clearance, the player was unable to
+continue and was immediately removed from the field for clinical evaluation.
+   From the outset, the player presented with common signs and symptoms of a proximal
+AL tendon rupture. Initially, clinical assessment revealed a palpable defect/dip, swelling,
+and reproduction of pain in the region of the adductor origin on outer range resistance
+testing (Abate et al., 2023). Within 72 hours, the player underwent Magnetic resonance
+imaging (MRI), which revealed a full-thickness avulsion of the AL origin and fibrocartilage
+footprint. The tendon and fibrocartilage retracted distally 3.9 cm. Accompanying this
+report, the player had developed an antalgic gait and gross swelling in the adductor
+region. Compared to pre-injury metrics, he was significantly impaired in hip range of
+movement (flexion, abduction and internal rotation), and strength output (resisted
+adduction) at 0°, 45° and 90° of hip flexion. A shared decision-making process was
+undertaken by key stakeholders (doctors, orthopaedic surgeon, physiotherapists, and
+coaches), with the player (Dijkstra et al., 2017) electing for a proximal AL tendon reattach­
+ment with a RTPlay goal of 12–16 weeks (Best et al., 2020).
+
+
+
+Surgical management and acute phase
+Five days post-injury the player underwent surgery, where a 3–5 cm incision was made 3
+cm distal to the pubic tubercle over the adductor region. The retracted AL tendon was
+located and reattached to the pubic tubercle with 2 suture anchors. The subcutaneous
+tissue was then closed with absorbable sutures and the skin was closed with non-
+absorbable sutures (Lempainen et al., 2021). Immediately after surgery, appropriate
+nutritional support, wound care, rest, and the use of cryotherapy were priorities. At 7
+days postoperatively, the player was able to stop using crutches as he was able to adopt
+a normal gait pattern and started a modified conditioning programme in the gym for the
+upper body and the contralateral limb.
+4      A. MITCHELL AND C. HOLDING
+
+
+Gym phase 1 - early loading and normal movement
+During weeks 3–4 the player completed Gym Phase 1, regaining confidence in normal
+movements such as squats and basic lunge patterns, first in the pool and then on land. In
+the gym, regaining hip range of motion was prioritized along with the introduction of
+adductor exercises using ball squeezes at 0°, 45° and 80–90° of hip flexion (Thorborg,
+2023). These isometric exercises are believed to be beneficial for tendon loading and pain
+reduction while promoting function (Hölmich et al., 1999). Prophylactic core stability
+exercises were also introduced including basic plank positions, standing squat positions
+and single leg (SL) balance-type exercises. Throughout this and subsequent phases, the
+player used a numeric pain rating scale (0–10) to rate their pain, with 0 being no pain and
+10 being the worst perceived pain. A score of 2 or less was considered acceptable for
+exercise progression (Thorborg, 2023). Complementary to this, a global confidence rating
+was used by the player to guide progression and ensure ongoing communication
+between the player and the IDT (0% being no confidence and 100% being complete
+confidence, with 80% required for progression) (Mitchell & Gimpel, 2024).
+
+
+Gym phase 2 – reconditioning pathways
+Once the player had demonstrated the basic movement patterns of Gym Phase 1, they
+began Gym Phase 2, which focused on reconditioning pathways (Figure 1). This phase
+lasted two and a half weeks as the player progressed through the various reconditioning
+pathways in preparation for the return to running profiling in Gym Phase 3. Crucially,
+adductor rehabilitation was a priority because of the surgical reattachment and its role in
+football-related movements such as kicking and change of direction activities. Adductor
+exercises included concentric and eccentric banded adduction, abduction, hip flexion,
+and an introduction of multiplane combinations (Serner et al., 2020). Similarly, short lever
+Copenhagen and standing slide board exercises were performed as pain and confidence
+allowed (Serner et al., 2014). These, and the player’s overall reconditioning, were sup­
+ported by exposure to the other pathways of this phase (Figure 1).
+   The running preparation pathway included exercises such as wall drives, marching
+patterns and low-level sled pushes. Player engagement and confidence was enhanced by
+the indoor ball skills pathway, which used a stepwise approach to grading ball exercises
+from seated foot contacts to 1-2 m passes, in this case. The plyometric pathway developed
+the players’ ability to absorb and produce force through the stretch-shortening cycle
+(SSC). This started in the pool with first double leg, and then SL exercises (squat jumps, to
+countermovement to drop jump techniques), and progressed on a soft surface and,
+towards the end of the phase, the normal gym floor (Mitchell et al., 2023).
+   As with all the exercises in this phase, linear actions were performed first, followed by
+the introduction of multidirectional patterns to gradually load the adductor region. The
+injury specifics pathway inevitably included adductor progressions but also the develop­
+ment of lumbo-pelvic control. Emphasis was placed on gluteal activation, avoidance of
+anterior pelvic tilt and control of trunk stability to optimize load distribution through the
+hip and groin region (King et al., 2018). Having progressed along the reconditioning
+pathways of Gym Phase 2, the player was profiled in the return to running criteria (Gym
+Phase 3) at weeks 6.5–7 to determine his readiness to run.
+                                                                                 RESEARCH IN SPORTS MEDICINE                      5
+
+
+    a                                                                    b
+
+
+
+
+             Gym                        Gym           Gym                     Gym                   Gym            Gym
+            Phase 1                    Phase 2       Phase 3                 Phase 1               Phase 2        Phase 3
+
+    c                                                                    d
+
+
+
+
+             Gym                        Gym           Gym                     Gym                   Gym            Gym
+            Phase 1                    Phase 2       Phase 3                 Phase 1               Phase 2        Phase 3
+
+    e                                                                    f
+
+
+
+
+                         Soft                                                            Soft
+                Pool    Surface                                                  Pool   Surface
+                Based                                                           Based
+
+
+                              Gym                 Gym          Grass                      Gym                 Gym       Grass
+                             Phase 2             Phase 3       Phase 1                   Phase 2             Phase 3    Phase 1
+
+
+
+Figure 2. Demonstrates the monitoring of key objective criteria during the return-to-performance
+pathway. a, adductor squeeze (mmHg) b, hip flexion ROM (degrees); c, hip abduction ROM (degrees) d,
+hip internal rotation ROM (degrees). e, SL medial hop (cm). f SL lateral hop (cm). Black line recovering
+limb, grey line preinjury baseline measurements. Abbreviations: cm, centimetres; SL, single leg.
+
+
+
+
+Gym phase 3 – return to running `criteria checklist´
+From the RTPerf pathway (Figure 1), Gym Phase 3 specifically profiles the player’s ability to
+begin running and the introduction of sport-specific actions in Grass Phase 1. Minimum
+standards surrounding the theme of return to running have been previously documented
+(Mitchell & Gimpel, 2024) and were sufficiently met by this player during weeks 6.5–7. For
+example, the player completed low-intensity running preparation sessions consisting of
+A-skips, B-skips, butt kicks, and ankle bounds etc., in addition to an antigravity treadmill
+session at 95% of the player’s body weight. The SSC was further evaluated by plyometric
+profiling, which included a hop battery (profiled by distance achieved) and force plate
+jumps (profiled by eccentric, concentric and performance variables such as jump height
+and reactive strength index) (Mitchell et al., 2021, 2022). Player confidence, movement
+proficiency and achieving 80% of pre-injury metrics were sufficient as 100% recovery of
+6      A. MITCHELL AND C. HOLDING
+
+
+SSC qualities is not possible at this point in the process. Injury specific criteria such as
+adductor squeeze and hip range of motion were all within 10% of pre-injury metrics
+(Figure 2), which was further supported by players’ pain levels not exceeding 2/10. At 7
+weeks post-surgery, an IDT decision based on the available date allowed the player to
+progress to Grass Phase 1.
+
+
+Grass phase 1 – reloading and technical reintroduction
+At 7 weeks, the player began Grass Phase 1 (reloading and technical reintroduction),
+which included the reintroduction of running, low-intensity sport-specific skills and the
+completion of power profiling in the gym (Figure 1). Using live data monitoring (Global
+Positioning System [GPS]), speeds were limited to <65% of a player’s maximum and
+included a combination of pitch length runs (100 m), box-to-box runs (70 m) and football
+specific dribbling circuits such as the Hoff Drill (Mitchell et al., 2023). Similarly, accelera­
+tions (ACCs) and decelerations (DECs) were introduced (<65% of his maximal intensity)
+but were confined to small spaces (≤4 m) to limit any exposure to high-speed running
+(HSR) or high-intensity ACCs and DECs (Harper et al., 2022). In the gym, the player
+continued to develop his power qualities and was profiled through the hop battery (SL
+horizontal and triple hop techniques) and force plate (SL countermovement and drop)
+jumps. Specific to this injury, underlying strength (adductor/abductor ratio and outer
+range adductor strength, obtained from isometric profiling) (Mosler et al., 2017; Serner
+et al., 2020), and dynamic power (SL medial and lateral hop techniques) were targeted in
+conjunction with kicking actions using a resistance band. The normalization of these,
+together with a meticulous progression of kicking loads (2 m to 10 m distances) on the
+grass, improved player confidence, motivation and skill retraining.
+
+
+Grass phase 2 – high speed running and agility drills
+At 8 weeks, the player progressed to Grass Phase 2, which involved completing HSR and
+intensive agility drills, including exercises with reactive decision-making. Running speeds
+were increased to <85% of the player’s maximum speed, and the intensity of ACCs and
+DECs was further increased by expanding the drill distances (Figure 1) (Harper et al., 2022).
+The kicking distance was systematically increased from 10 m to 40 m while closely mon­
+itoring the clinical signs, symptoms, and players’ ratings of self-confidence. In the gym,
+reactive strength was profiled using the SL drop jump reactive strength index. Additionally,
+the adductor strength was specifically targeted for recovery from this injury. The minimum
+standards that needed to be met before entering Grass Phase 3 were an inner range
+adductor/abductor strength ratio of 1.2 (±0.2) N (Mosler et al., 2017), and an outer range
+isometric adductor strength >3.0 (±0.7) N·m/kg (Serner et al., 2020) in addition to other
+sports-specific grass and gym-based metrics (Table 1) (Mitchell & Gimpel, 2024).
+
+
+Grass phase 3 – maximum speed and positional drills
+From weeks 9–10, the player completed the maximum speed and positional drills of Grass
+Phase 3. Drills were often enhanced by the support of a technical coach or additional players
+to replicate exercises that were chaotic and highly variable by design. Defending drills
+Table 1. The grass and gym-based metrics collected during gym phase 3 (return to running) and the subsequent grass phases.
+
+
+
+
+Scores in brackets for the grass criteria are the absolute values attained, expressed as a percentage of match values. Scores in brackets for the gym-based criteria are the left leg (injured leg)
+  scores expressed as a percentage of the highest preinjury score of either the right or left leg. Abbreviations: cm, centimetres; N, newtons; N.m/kg, newtons per kilogram of body mass; m/s,
+  metres; RSI, reactive strength index.
+                                                                                                                                                                                                      RESEARCH IN SPORTS MEDICINE
+
+
+
+
+                                                                                                                                                                                                      7
+8       A. MITCHELL AND C. HOLDING
+
+
+involved long passing, clearing actions and blocking movements to enhance player con­
+fidence in the injury. This was matched physically by the player achieving 94% of peak speed,
+96% of peak ACC intensity, and 84% of peak DEC intensity (Table 1). In the gym, he continued
+to work on hip and pelvic strength exercises (King et al., 2018) and adductor-specific exercises
+(Serner et al., 2020), (Table 1) seeking further improvements and for prophylaxis. At the end of
+Grass Phase 3, in addition to physical characteristics, the player expressed a confidence level
+of over 90% in resuming team training (Grass Phase 4) in week 10.
+
+
+Comparative outcomes
+At 10 weeks, the IDT decision permitted the player to return to team training (Grass
+Phase 4) and was reintroduced to passing drills, phases of play and small (4 vs 4),
+medium (5 vs 5 to 8 vs 8) and large practice games (9 vs 9 to 11 vs 11). The player
+was also exposed to peak running speeds (97%) and peak ACCs and DECs inten­
+sities (98% and 99%, respectively) in training situations, helping him to replicate
+match demands. Subsequently, at 12 weeks, he completed 45 min in a U23 match
+without any complications (Grass Phase 5). Further match exposure was increased
+over the next 2 weeks, allowing the player to participate fully in the regular match
+schedule from 14 weeks (Grass Phase 6). Complementing these grass progressions
+was the continuity of gym-based strength, power and reactive strength exercises,
+helping to mitigate the risk of future injury (Lauersen et al., 2014).
+
+
+Conclusion/Clinical implication
+This case report demonstrates a successful RTPerf for a professional footballer who
+sustained a rupture of the proximal AL tendon. Following an acute injury, the player
+was effectively managed through surgical reattachment and adherence to a progressive
+rehabilitation pathway. During the process, the player followed the RTPerf pathway, which
+required him to meet phase-based clinical, psychological, and sports-specific criteria. The
+RTPerf pathway was underpinned by the IDT’s shared decision-making, which aimed to
+ensure a positive outcome and successful RTPerf.
+
+
+Disclosure statement
+No potential conflict of interest was reported by the author(s).
+
+
+
+Patient/Data sharing involvement
+Patient Signed Consent.
+
+
+
+Author contributions
+All authors take full responsibility for the writing, drafting and revisions of the manuscript. No other
+external contributors are involved.
+                                                                       RESEARCH IN SPORTS MEDICINE             9
+
+
+References
+Abate, M., Sammarchi, L., Calà, R., Milesi, G., Poerio, C. S., Del Vescovo, R., Corvino, A., Delli Pizzi, A.,
+   Cocco, G., & Salini, V. (2023). Isolated adductor longus avulsion in a young semi‐professional
+   football player: Imaging contribution and therapeutic considerations. Journal of Clinical
+   Ultrasound, 51(7), 1223–1230. https://doi.org/10.1002/jcu.23525
+Best, R., Gild, A., Huth, J., & Beckmann, J. (2020). Patient-related outcome measurements after
+   operative and conservative management of traumatic proximal adductor longus avulsion
+   injuries. International Orthopaedics, 44(5), 965–971. https://doi.org/10.1007/s00264-020-04510-3
+Charnock, B. L., Lewis, C. L., Garrett, W. E., & Queen, R. M. (2009). Adductor longus mechanics during
+   the maximal effort soccer kick. Sports Biomechanics, 8(3), 223–234. https://doi.org/10.1080/
+   14763140903229500
+Dijkstra, H. P., Pollock, N., Chakraverty, R., & Ardern, C. L. (2017). Return to play in elite sport: A shared
+   decision-making process. British Journal of Sports Medicine, 51(5), 419–420. https://doi.org/10.
+   1136/bjsports-2016-096209
+Dimitrakopoulou, A., Schilders, E. M. J., Talbot, J. C., & Bismil, Q. (2008). Acute avulsion of the
+   fibrocartilage origin of the adductor longus in professional soccer players: A report of two
+   cases. Clinical Journal of Sport Medicine, 18(2), 167–169. https://doi.org/10.1097/JSM.
+   0b013e318164f40b
+Harper, D. J., McBurnie, A. J., Santos, T. D., Eriksrud, O., Evans, M., Cohen, D. D., Rhodes, D., Carling, C.,
+   & Kiely, J. (2022). Biomechanical and neuromuscular performance requirements of horizontal
+   deceleration: A review with implications for random intermittent multi-directional sports. Sports
+   Medicine, 52(10), 2321–2354. https://doi.org/10.1007/s40279-022-01693-0
+Hölmich, P., Uhrskou, P., Ulnits, L., Kanstrup, I.-L., Nielsen, M. B., Bjerg, A. M., & Krogsgaard, K. (1999).
+   Effectiveness of active physical training as treatment for long-standing adductor-related groin
+   pain in athletes: Randomised trial. Lancet, 353(9151), 439–443. https://doi.org/10.1016/S0140-
+   6736(98)03340-6
+King, E., Franklyn-Miller, A., Richter, C., O’Reilly, E., Doolan, M., Moran, K., Strike, S., & Falvey, É. (2018).
+   Clinical and biomechanical outcomes of rehabilitation targeting intersegmental control in ath­
+   letic groin pain: Prospective cohort of 205 patients. British Journal of Sports Medicine, 52(16),
+   1054–1062. https://doi.org/10.1136/bjsports-2016-097089
+Lauersen, J. B., Bertelsen, D. M., & Andersen, L. B. (2014). The effectiveness of exercise interventions
+   to prevent sports injuries: A systematic review and meta-analysis of randomised controlled trials.
+   British Journal of Sports Medicine, 48(11), 871–877. https://doi.org/10.1136/bjsports-2013-092538
+Lempainen, L., Hetsroni, I., Kosola, J. A., Sinikumpu, J. J., Mazzoni, S., & Orava, S. (2021). Proximal
+   adductor longus tendon repair with a concomitant distal fascial release for complete hip
+   adductor tendon tears: Surgical technique and outcomes in 40 male athletes. Orthopaedic
+   Journal of Sports Medicine, 9(10), 232596712110420. https://doi.org/10.1177/23259671211042024
+Mitchell, A., & Gimpel, M. (2024). A return to performance pathway for professional soccer: A
+   criteria-based approach to return injured professional players back to performance. JOPST-
+   Open, (May), 1–42. https://doi.org/10.2519/josptopen.2024.1240
+Mitchell, A., Holding, C., & Greig, M. (2021). The influence of injury history on countermovement
+   jump performance and movement strategy in professional soccer players: Implications for
+   profiling and rehabilitation foci. Journal of Sport Rehabilitation, 30(5), 768–773. https://doi.org/
+   10.1123/jsr.2020-0243
+Mitchell, A., Holding, C., & Greig, M. (2022). Factors influencing optimum countermovement jump
+   performance and movement strategy in championship professional football players: Implications
+   for player profiling. Research in Sports Medicine, 30(1), 30–40. https://doi.org/10.1080/15438627.
+   2020.1860049
+Mitchell, A., Waite, O., Holding, C., & Greig, M. (2023). The development of a return to performance
+   pathway involving a professional soccer player returning from a multi-structural knee injury:
+   A case report. International Journal of Sports Physical Therapy, 18(2). https://doi.org/10.26603/
+   001c.73317
+10       A. MITCHELL AND C. HOLDING
+
+
+Mosler, A. B., Crossley, K. M., Thorborg, K., Whiteley, R. J., Weir, A., Serner, A., & Hölmich, P. (2017). Hip
+  strength and range of motion: Normal values from a professional football league. Journal of
+  Science & Medicine in Sport, 20(4), 339–343. https://doi.org/10.1016/j.jsams.2016.05.010
+Mosler, A. B., Weir, A., Eirale, C., Farooq, A., Thorborg, K., Whiteley, R. J., Hӧlmich, P., & Crossley, K. M.
+  (2018). Epidemiology of time loss groin injuries in a men’s professional football league: A 2-year
+  prospective study of 17 clubs and 606 players. British Journal of Sports Medicine, 52(5), 292–297.
+  https://doi.org/10.1136/bjsports-2016-097277
+Serner, A., Jakobsen, M. D., Andersen, L. L., Hölmich, P., Sundstrup, E., & Thorborg, K. (2014). EMG
+  evaluation of hip adduction exercises for soccer players: Implications for exercise selection in
+  prevention and treatment of groin injuries. British Journal of Sports Medicine, 48(14), 1108–1114.
+  https://doi.org/10.1136/bjsports-2012-091746
+Serner, A., Weir, A., Tol, J. L., Thorborg, K., Lanzinger, S., Otten, R., & Hölmich, P. (2020). Return to sport
+  after criteria-based rehabilitation of acute adductor injuries in male athletes: A prospective cohort
+  study. Orthopaedic Journal of Sports Medicine, 8(1), 232596711989724. https://doi.org/10.1177/
+  2325967119897247
+Serner, A., Weir, A., Tol, J. L., Thorborg, K., Roemer, F., Guermazi, A., Yamashiro, E., & Hölmich, P.
+  (2018). Characteristics of acute groin injuries in the adductor muscles: A detailed MRI study in
+  athletes. Scandinavian Journal of Medicine & Science in Sports, 28(2), 667–676. https://doi.org/10.
+  1111/sms.12936
+Thorborg, K. (2023). Current clinical concepts: Exercise and load management of adductor strains,
+  adductor ruptures, and long-standing adductor-related groin pain. Journal of Athletic Training, 58
+  (7–8), 589–601. https://doi.org/10.4085/1062-6050-0496.21
+Ueblacker, P., English, B., & Mueller-Wohlfahrt, H.-W. (2016). Nonoperative treatment and return to
+  play after complete proximal adductor avulsion in high-performance athletes. Knee Surgery,
+  Sports Traumatology, Arthroscopy, 24(12), 3927–3933. https://doi.org/10.1007/s00167-015-3669-6
+

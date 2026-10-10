@@ -1,0 +1,324 @@
+ 2010) and ‘clubSandwich’ (Pustejovsky, 2022)                           variables appear. This importance value represents the over-
+packages in the R programming language (R Core Team,                           all support for each variable across all the candidate mod-
+2021). The included studies reported outcomes across sev-                      els. Finally, conclusions were made about the predictors by
+eral subgroups (from repeated measures taken on the same                       considering their relative weights and looking at all possible
+sample). To account for this hierarchical structure, particu-                  models. This helped us make informed inferences about the
+larly the within-subject correlation, data were analysed using                 programming factors.
+multi-level mixed-effects meta-analysis. Here, dependency                         Standardised mean changes corrected for small sample
+was accounted for by replacing the variance with the vari-                     bias (Hedges G) were analysed for all outcomes. Addi-
+ance–covariance matrix of the estimates for outcomes under                     tionally, to aid the practical context of our results and
+the same study. Block-diagonal covariance-matrices were                        accounting for the consistency of data collection method-
+estimated with an assumed correlation of r = 0.50 [12].                        ology between different studies for 10 and 20 m sprint (s),
+   To conduct the meta-analysis, a simple model (intercept-                    VO2max (ml·kg−1·min−1) and YYIR1 (m), mean changes
+only), using restricted maximum likelihood, was constructed                    (i.e. raw units) were additionally analysed where appro-
+to serve as a baseline model. In this model, we treated each                   priate. Uncertainty was expressed using 90% confidence
+study as a random effect, and grouped them within studies.                     intervals (CI), calculated based on a t-distribution, with
+Meta-regression was then used to determine how different                       denominator degrees of freedom given by the inner level of
+programming variables influenced the outcomes, by adding                       the random effects structure. Prediction intervals (PI) were
+the programming variables to the baseline model as fixed                       computed alongside the estimates to convey the likely range
+effects. The programming variables included were: training                     of the true change in similar future studies. Between-study
+                                                                                                                               F. Thurlow et al.
+
+heterogeneity was estimated with Cochran’s Q and Higgins                     3 Results
+& Thompson’s I2 statistics.
+    To provide interpretations on the effect of RST on                       Following the screening process (Fig. 1), 40 publications
+changes in our outcomes and the moderating effects of pro-                   were included in our investigation, with data from 48 RST
+gramming variables, we visually scaled standardised effects                  groups and 19 active control groups. Across all studies, there
+(Hedges G) against threshold values reported specific to                     were 754 athlete inclusions (541 from RST groups).
+strength and conditioning outcomes. These were 0.25, 0.50
+and 0.75 for small, moderate and large effects, respectively
+[43]. Coverage of the upper and lower CI against these                       3.1 Study Characteristics
+thresholds was considered when interpreting RST effects.
+When the upper and lower CI fell entirely or predominantly                   The most common study design across all studies was par-
+outside the trivial region [i.e. ≥ − 0.25 (impairment), ≥ 0.25               allel-group, controlled trials (n = 27 studies, 68%), while
+(improvement)], we declared an effect substantial. When                      parallel-group, non-controlled trials were represented in 13
+the upper and lower CI were inside the region bound by                       (32%) studies. Where a control group was used, participants
+a trivial impairment and a trivial improvement (i.e. − 0.25                  maintained ‘regular’ training throughout the intervention
+to 0.25), the effect was deemed as non-substantial. If there                 (i.e. active control group). Random allocation of participants
+was equal coverage between a non-substantial change and                      was conducted in 33 (82%) of studies. The most investigated
+at least a small improvement or impairment, the effect was                   sport across all studies was soccer (n = 20, 50%), followed
+declared compatible with both (a trivial change and a sub-                   by basketball (n = 9, 23%), futsal, volleyball and a mixture
+stantial impairment/improvement). When the width of the CI                   of sports (i.e. athletes were involved in a variety of different
+crossed both a small improvement and a small impairment                      sports (n = 2, 5%, respectively). Field hockey, tennis, hand-
+(i.e. ≤ − 0.25 and ≥ 0.25), the effect was deemed inconclu-                  ball, rugby and taekwondo were represented in one study
+sive. To facilitate consistent interpretation of standardised                each. Nineteen (47.5%) studies involved highly trained/
+effects, the sign of time-based estimates and their CI were                  national level athletes, and 21 (52.5%) studies involved
+reversed, such that a negative value was indicative of an                    trained/development level athletes. Twenty-five (62.5%)
+impairment and vice-versa.                                                   studies involved adult athletes, while 15 (37.5%) studies
+
+
+
+
+Fig. 1  Displays the strategy for the study selection process used in our review
+Effects of Repeated-Sprint Training on Physical Fitness and Physiological Adaptation in Athletes
+
+involved youth athletes. Female athletes were represented in                   prediction intervals for these effects suggested compatibility
+only four (10%) studies. A summary of the participants and                     with improvements across the range of RST programs simi-
+study characteristics of included publications are provided                    lar to those included in our meta-analysis, although 20 m
+in Supplementary Table S6.                                                     sprint time, VO2max, RSA, CMJ height and COD ability may
+                                                                               have some compatibility with no substantial change.
+3.2 Outcomes for the Assessment of Reporting
+     Quality and Risk of Bias                                                  3.6 Moderating Effects of Study Design
+
+Supplementary Table S4 summarises the outcomes of the                          There was a further small improvement 10 m sprint time
+modified Downs and Black scale for the assessment of                           (G − 0.48, 90% CI − 0.93 to − 0.03) and further moderate
+reporting quality and risk of bias. Results ranged from 8 to                   improvement in VO2max (G 0.57, 90% CI 0.13–1.00) for
+12, with a mean score of 10.5 ± 0.9.                                           randomised studies when compared with non-randomised
+                                                                               studies. Conversely, compared with non-randomised studies,
+3.3 Outcomes for the Overall Certainty of Evidence                            there was a small impairment in RSA decrement (G 0.34,
+                                                                               90% CI − 0.14 to 0.82) and moderate impairment in YYIR1
+The GRADE tool for assessing the overall certainty of evi-                     distance (G − 0.50, 90% CI − 0.90 to − 0.10) for randomised
+dence is presented in Supplementary Table S5. The certainty                    studies. There was no substantial difference in RSA average
+of evidence was downgraded to moderate (i.e. we believe                        time between randomised and non-randomised studies (G
+that the true effect is probably close to the estimated effect)                − 0.22, 90% CI − 0.55 to 0.10) and CMJ height (G 0.09, 90%
+for 10 m sprint, 20 m sprint, VO2max, RSA average, RSA                         CI − 0.16 to 0.33), and the differences between 20 m sprint
+decrement, CMJ height and COD ability.                                         time (G − 0.11, 90% CI − 0.64 to 0.41) and COD ability (G
+                                                                               − 0.06, 90% CI − 0.46 to 0.35) were inconclusive.
+3.4 Study Outcomes
+                                                                               3.7 Moderating Effects of Programming Variables
+A summary of the training protocols and study outcomes                              on the Effects of Repeated‑Sprint Training
+of included publications are provided in Supplementary
+Table S7. A RST program duration of 6 weeks was most                           The moderating effects of programming variables on the
+implemented (n = 13 RST groups, 27%), while the most                           RST outcomes when compared with the reference training
+assigned training frequency was twice per week (n = 27,                        program are shown in Fig. 11. The efficacy of manipulat-
+56%). The average weekly training volume across all RST                        ing a single moderator was considered for all measures as a
+groups was 1200 m. Across all RST sessions (n = 567), the                      group, where compatibility with impairment in at least one
+most common prescription for each programming variable                         outcome (including any effects that were inconclusive) was
+were straight-line sprints (n = 268 RST sessions, 47%),                        considered as insufficient for recommendation. The effects
+performed over 30 m (n = 224, 40%), with a passive inter-                      of manipulating training frequency (+ 1 session per week),
+repetition recovery (n = 521, 92%) lasting 20 s (n = 333,                      program duration (+ 1 extra training week), RST volume
+59%). Three sets (n = 340, 60%) of six repetitions (n = 220,                   (+ 200 m per week), number of reps (+ 2 per set), number
+39%) were most implemented. Multi-set protocols were pre-                      of sets per session (+ 1 set) or rep distance (+ 10 m per rep)
+scribed across 537 sessions, with a passive inter-set recovery                 were either non-substantial or comparable with an impair-
+(n = 465, 87%) lasting 4 min (n = 295, 55%) most prescribed                    ment in at least one outcome measure per programming
+in these instances. The complete distribution of RST pre-                      variable.
+scription across all sessions is shown in Fig. 2.
+                                                                               3.8 Model Selection
+3.5 Meta‑Analysed Effects of Repeated‑Sprint
+     Training                                                                  A comparison of univariate meta-regression models, naïve
+                                                                               multivariate models and the unconditional models for the
+The meta-analysed effects of RST on physical adaptation are                    effects of programming variables on the RST outcomes are
+presented in Table 2 (standardised units) and Table 3 (raw                     provided in Supplementary Tables S8–S13. In these tables,
+units). Individual forest plots for each outcome are shown                     importance is a measure of how often a moderator appears
+in Figs. 3, 4, 5, 6, 7, 8, 9 and 10. Repeated-sprint training                  relative to all candidate models, with higher values repre-
+elicited moderate improvement in VO2max, YYIR1 distance,                       senting greater importance. The top five models for each
+and RSA decrement, as well as small improvements in short                      outcome (excluding intercept-only models) are provided
+sprint performance (10 and 20 m sprint times), RSA aver-                       in Supplementary Tables S14–S21. The number of repeti-
+age time, CMJ height and COD ability. Coverage of the                          tions per set appears in the top model for predicting change
+                                                                                                                                             F. Thurlow et al.
+
+
+                                       1           44 (8%)
+                                       2                         107 (19%)
+              Sets per
+                                       3                                                                       350 (63%)
+              session
+                                       4               49 (9%)
+              [1 6]
+                                       5    2 (0.4%)
+                                       6    3 (0.5%)
+                                       3         33 (6%)
+                                       5                   76 (14%)
+                                       6                                              214 (39%)
+               Repetitions
+                                       7                    81 (15%)
+               per set
+               [3 15]                  8                54 (11%)
+                                      10                   80 (14%)
+                                   Other       20 (4%)
+                                      18      16 (3%)
+                                      20                            115 (21%)
+                                      22      18 (3%)
+               Repetition
+               distance               30                                         202 (36%)
+               [10 50-m]              35       24 (4%)
+                                      40                                 152 (27%)
+                                   Other        28 (5%)
+                                      10        26 (5%)
+                                      15        26 (5%)
+
+               Inter-rep              20                                                                  330 (59%)
+               rest time              25      18 (3%)
+               [10 60-s]              30                 68 (12%)
+                                      60          37 (7%)
+                                   Other               50 (9%)
+
+             Inter-rep            Active           46 (8%)
+             rest mode        Passive                                                                                                    509 (92%)
+                      Multi-directional                 60 (11%)
+             Sprint
+                                  Shuttle                                              227 (41%)
+             Mode
+                           Straight-line                                                          280 (50%)
+
+
+
+Fig. 2  The distribution of RST prescription across all 567 sessions.           with different combinations of a programming variable (e.g. 20 m
+Data are given as the total number of protocols represented (percent-           sprints in set one, and 30 m sprints in set two)
+age) [range]. Note: ‘various’ indicates sessions that were prescribed
+
+
+
+Table 2  Meta-analysed                 Outcome                     Number of…                       Pooled effects (Hedges G)
+effects of repeated-sprint
+training on physical adaptation                                    Studies       Samples            Estimate          90% CI                 90% PI
+(standardised units)
+                                       10 m sprint                 15            22                 − 0.34            − 0.47 to − 0.21       − 0.5 to − 0.19
+                                       20 m sprint                 9             14                 − 0.45            − 0.69 to − 0.21       − 0.99 to 0.09
+                                       VO2max                      8             8                  0.63              0.36 to 0.91           0.14 to 1.13
+                                       YYIR1 distance              16            22                 0.60              0.43 to 0.77           0.24 to 0.96
+                                       RSA average                 23            27                 − 0.34            − 0.49 to − 0.18       − 0.78 to 0.11
+                                       RSA decrement               17            21                 − 0.63            − 0.86 to − 0.40       − 1.36 to 0.09
+                                       CMJ height                  20            25                 0.27              0.14 to 0.39           0.14 to 0.39
+                                       COD ability                 13            20                 − 0.32            − 0.53 to − 0.12       − 0.85 to 0.20
+
+                                       CI confidence interval, PI prediction interval, VO2max maximal oxygen consumption, RSA repeated-sprint
+                                       ability, CMJ counter-movement jump, COD change of direction, YYIR1 Yo-Yo Intermittent Recovery Test
+                                       Level 1
+Effects of Repeated-Sprint Training on Physical Fitness and Physiological Adaptation in Athletes
+
+Table 3  Meta-analysed effects         Outcome                         Number of…                  Pooled effects (raw units)
+of repeated-sprint training on
+physical adaptation (raw units)                                        Studies       Samples       Estimate      90% CI              90% PI
+
+                                       10 m sprint (s)                 15            22            − 0.04        − 0.05 to − 0.02    − 0.08 to 0.00
+                                       20 m sprint (s)                 9             14            − 0.06        − 0.09 to − 0.02    − 0.14 to 0.03
+                                       VO2max (ml·kg−1·min−1)          8             8             2.6           1.7 to 3.5          1.7 to 3.5
+                                       YYIR1 (m)                       16            22            225           1534 to 296         3 to 447
+
+                                       Pooled effects (raw units) for RSA average time, RSA decrement, CMJ height and COD ability are unavail-
+                                       able due to the concerns of comparing results between different testing methods and protocols
+                                       CI confidence interval, PI prediction interval, VO2max maximal oxygen consumption, YYIR1 Yo-Yo Inter-
+                                       mittent Recovery Test Level 1
+
+
+
+
+Fig. 3  The effects of repeated-sprint training on 10 m sprint time. The shaded zone indicates a trivial effect. Dashed lines indicate small, moder-
+ate and large effects, respectively
+
+
+
+
+in five outcomes; 20 m sprint time, YYIR1 distance, RSA                          4 Discussion
+decrement, CMJ height and COD ability. Additionally,
+weekly volume and training frequency appear in the top                           From 754 athlete inclusions across 48 intervention groups
+models for predicting change in 10 m sprint time and RSA                         and 19 active control groups, our systematic review and
+average time, respectively.
+                                                                                                                                    F. Thurlow et al.
+
+
+
+
+Fig. 4  The effects of repeated-sprint training on 20 m sprint time. The shaded zone indicates a trivial effect. Dashed lines indicate small, moder-
+ate and large effects, respectively
+
+
+
+
+Fig. 5  The effects of repeated-sprint training on VO2max. *ml·kg−1·min−1. The shaded zone indicates a trivial effect. Dashed lines indicate small,
+moderate and large effects, respectively
+
+
+meta-analysis demonstrates that RST enhances a range of                     and COD ability in athletes. Our meta-analysis is also the
+physical qualities that are fundamental to sports perfor-                   first to isolate the effects of manipulating programming
+mance. Pooled effect estimates indicate that RST causes                     variables on the physical adaptations to RST. Performing
+a moderate improvement in VO2max, YYIR1 distance and                        three sets of 6 × 30 m straight-line sprints with 20 s of pas-
+RSA decrement, as well as small improvements in 10 and                      sive inter-repetition rest, twice per week for 6 weeks, is
+20 m linear sprint time, RSA average time, CMJ height                       an effective program to achieve the established benefits of
+Effects of Repeated-Sprint Training on Physical Fitness and Physiological Adaptation in Athletes
+
+
+
+
+Fig. 6  The effects of repeated-sprint training on distance achieved in the Yo-Yo Intermittent Recovery Test Level 1. The shaded zone indicates a
+trivial effect. Dashed lines indicate small, moderate and large effects, respectively
+
+
+
+RST. However, caution should be taken when manipulat-                          values reported specific to strength and conditioning out-
+ing programming variables, as the current evidence is sug-                     comes. However, as is typical with prediction intervals, they
+gestive of impairment in some physical qualities. Since our                    are often wider than our CIs and therefore suggest less cer-
+findings do not provide conclusive support for the manipu-                     tainty in some outcomes. Specifically, based on our predic-
+lation of RST variables, further work is needed to better                      tion intervals, the outcomes may have some compatibility
+understand how programming factors can be manipulated                          with no substantial change. Given that none of our predic-
+to augment training-induced adaptations. Overall, our                          tion intervals were compatible with an impairment in any
+results support the application of RST as a time-efficient                     outcome measure, practitioners can take confidence when
+conditioning method that concurrently improves an array                        interpreting our findings, which suggest a largely beneficial
+of distinct physical qualities.                                                effect of RST for a multitude of physical qualities.
+   A practical way to consider heterogeneity within meta-                         Our meta-analysis presents evidence of a substantial
+analysis is via a prediction interval, which provides the likely               effect of running-based RST on aerobic capacity in ath-
+effect size of a new (similar) study based on the included                     letes. From eight RST groups, there was a mean improve-
+studies and informs practitioners about the expected results                   ment from baseline of 4.0%, which equated to an increase
+in future training interventions [44]. Accordingly, prediction                 in VO2max of 2.2 ml·kg−1·min−1, from an average baseline
+intervals for the meta-analysed effects of RST on physical                     of 52.9 ml·kg−1·min−1 (Fig. 5). A considerable improve-
+adaptation are reported in Tables 2 and 3, and Figs. 3, 4, 5,                  ment (i.e. a standardised effect of ≥ 0.25) in aerobic
+6, 7, 8, 9 and 10. These largely concur with our interpreta-                   capacity was observed in seven of the eight RST groups
+tions of the effect size, which are based on the point estimate                included in our investigation (Fig. 5), with considerably
+and coverage of the upper and lower CI against threshold                       greater improvements found compared with active control
+                                                                                                                                  F. Thurlow et al.
+
+
+
+
+Fig. 7  The effects of repeated-sprint training on repeated-sprint ability average time. The shaded zone indicates a trivial effect. Dashed lines
+indicate small, moderate and large effects, respectively
+
+
+groups, which recorded an average decline in VO2max of                    athletes, RST should be considered a productive method of
+− 1.2 ml·kg−1·min −1. [31, 33, 45–48]. Evidence about                     conditioning.
+the underlying physiological reasons for how increases                       A meta-analysis of the effects of RST on trained par-
+in VO2max are achieved with RST is lacking, but its brief                 ticipants was conducted in 2014 by Taylor et al. [2]. Since
+duration may be insufficient to elicit significant increases              that time, 32 new studies have been included in our review,
+in cardiac output, which tends to respond best to prolonged               but several findings remain similar, despite the addition of
+bouts of sub-maximal exercise [49–51]. Rather, RST                        new studies. These include the magnitude of improvement
+induced improvement in VO2max is more likely to arise from                in linear sprint times, CMJ height and intermittent running
+an enhanced ability to extract and utilise oxygen due to                  performance. For the first time, we also investigated the
+increased muscle oxidative handling capacity (i.e. a greater              effect of RST on COD ability, which is a key physical com-
+arterio-venous oxygen difference) [50, 52]. We also found                 ponent of many sports [5]. We found evidence for a small
+a substantial effect of RST on YYIR1 distance and RSA,                    improvement, however, there was also compatibility with
+two physical performance tests that require a large aero-                 no substantial change. The wide disparity between COD
+bic contribution [1, 53]. These findings demonstrate that                 tests included in our analysis (see Sect. 2.3 for details) may
+RST improves the ability to perform intermittent bouts of                 have affected the precision of this outcome. Improvement in
+high-intensity running and sprinting. Thus, for practition-               explosive physical qualities following RST likely arises from
+ers who wish to develop high-intensity running ability in                 both neuromuscular and morphological adaptations. Neural
+Effects of Repeated-Sprint Training on Physical Fitness and Physiological Adaptation in Athletes
+
+
+
+
+Fig. 8  The effects of repeated-sprint training on repeated-sprint ability decrement. The shaded zone indicates a trivial effect. Dashed lines indi-
+cate small, moderate and large effects, respectively
+
+
+adaptations may involve greater muscle fibre recruitment,                      manipulation of programming factors may indeed influence
+firing frequency, and motor unit synchronisation [54, 55],                     RST outcomes.
+while morphological changes could include a shift toward                          To examine the effects of program duration, training
+type IIa muscle and an increase muscle cross-sectional area                    frequency, weekly volume, repetition distance, number
+[56, 57]. Collectively, our findings lend further support                      of repetitions per set and number of sets per session on
+to the application of RST as a multi-component training                        10 and 20 m sprint time, VO2max, YYIR1 distance, RSA,
+method.                                                                        CMJ height and COD ability, we used a multiple, multi-
+                                                                               level mixed meta-regression against a reference program
+                                                                               of three sets of 6 × 30 m straight-line sprints performed
+4.1 Moderating Effects of Programming Variables                               twice per week for 6 weeks. The effects of a single pro-
+                                                                               gramming factor on a given outcome were then evaluated
+As per sound training theory and in particular principles                      while holding all others constant. However, we opted for
+such as progressive overload, practitioners implementing                       a pragmatic decision framework when interpreting mod-
+RST will naturally seek to manipulate programming vari-                        erators, considering each ‘as a whole’ on the entire set
+ables to maximise training outcomes across a program. We                       of outcome measures. For example, if the effects of a
+previously demonstrated that the manipulation of program-                      programming variable were compatible with at least a
+ming variables such as rest duration, rest modality, sprint                    small improvement [G > or < 0.25] in at least one outcome
+modality, number of repetitions and sprint distance have a                     measure and not compatible with an impairment in any
+substantial effect on acute RST demands [8]. Since train-                      other, we intended to recommend its implementation for
+ing load is a causal component of both acute and chronic                       enhancing the effects of RST. However, if at least one
+training effects [58], it is reasonable to assume that the                     programming factor was compatible with an impairment
+                                                                                                                                  F. Thurlow et al.
+
+
+
+
+Fig. 9  The effects of repeated-sprint training on countermovement jump height. The shaded zone indicates a trivial effect. Dashed lines indicate
+small, moderate and large effects, respectively
+
+
+or inconclusive, we opted to not recommend its imple-      

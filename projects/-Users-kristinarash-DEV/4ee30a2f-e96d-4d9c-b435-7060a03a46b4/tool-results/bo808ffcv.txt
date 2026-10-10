@@ -1,0 +1,435 @@
+{
+ "id":"Q60",
+ "sourceFile":"The ALR‐RSI score can be used to evaluate psychological readiness to return to sport after acute Achilles tendon tear.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title 'The ALR-RSI score can be used to evaluate psychological readiness to return to sport after acute Achilles tendon tear' in the text matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Methodological / Validation Study",
+ "primaryDomain":"Monitoring & Technology",
+ "domains":["Monitoring & Technology","Rehabilitation & Return to Sport","Brain Health & Psychology"],
+ "audiences":["Rehabilitation","Sports Medicine","Athletic Training"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Injured Athletes","Mixed / Unspecified"],
+ "evidenceSummary":"Validation study following COSMIN methodology of the French ALR-RSI psychological readiness score, adapted for Achilles tendon repair, in 50 patients (42 men, 8 women) assessed 6 to 9 months after open surgical repair. The score correlated with EFAS (r = 0.68), FAAM Sport (r = 0.70), FAAM AVQ (r = 0.60) and VISA-A (r = 0.54), and was lower in the 39 patients who did not return to sport than in the 11 who did (60.7 vs 83.2, p = 0.001).",
+ "screeningLimitations":"Small single-series sample with only 11 returners, so the discrimination estimates and the 77.5-point cut-off are imprecise and were derived in the same patients. Reproducibility rests on a test-retest in 10 patients, and the score was adapted from ankle instability without the Achilles-specific ATRS for comparison.",
+ "synthesisCaution":"Staff may read the ALR-RSI as a validated predictor of who will return to sport, but this is a cross-sectional validity study at 6 to 9 months with no prospective prediction or independent cut-off check.",
+ "paper":{
+   "year":2023,
+   "citation":"Shitrit E, Valentin E, Baudrier N, Bohu Y, Rauline G, Lopes R, et al. The ALR-RSI score can be used to evaluate psychological readiness to return to sport after acute Achilles tendon tear. Knee Surgery, Sports Traumatology, Arthroscopy. 2023;31:4961-4968.",
+   "doi":"10.1007/s00167-023-07548-z",
+   "abstract":"The study validated the ALR-RSI, a psychological readiness to return to sport score, after Achilles tendon repair in 50 patients using COSMIN methods. The score correlated strongly with EFAS, FAAM and VISA-A, discriminated patients who returned to sport from those who did not, and showed excellent reproducibility and internal consistency.",
+   "tldr":"The French ALR-RSI psychological readiness score appears valid and reproducible after Achilles tendon repair in a small series of 50 patients. It may help flag patients who need psychological support, but it has not been tested for prediction in a new group.",
+   "methods":"Validation following COSMIN methodology in patients who played sport at least monthly and had open Achilles repair at three centres. Patients completed the ALR-RSI, VISA-A, EFAS and FAAM 6 to 9 months after surgery, and 10 patients repeated the ALR-RSI after 15 days.",
+   "findings":"11 of 50 patients (22%) returned to sport at a mean of 6.8 months, 4 at their pre-injury level and 7 at a lower level. ALR-RSI correlated strongly with EFAS (r = 0.68), FAAM Sport (r = 0.70), FAAM AVQ (r = 0.60) and VISA-A (r = 0.54). Scores were lower in non-returners (60.7 vs 83.2, p = 0.001), with an AUC of 0.83; a cut-off of 77.5 gave 82% sensitivity and 79% specificity, and none of the AUCs differed significantly between scores. Test-retest ICC was 0.99 in 10 patients and Cronbach alpha was 0.95. Sport type and level were not associated with return to sport.",
+   "limitations":"The sample is small, with only 11 returners, and the authors note that a 12-month follow-up could have improved discrimination. The study only covered open repairs and sport-specific effects could not be tested, which the authors attribute to low power. The reproducibility sample is 10 patients.",
+   "practicalImplications":"Clinicians could use the ALR-RSI alongside physical scores during Achilles repair rehabilitation to track psychological readiness and identify patients who may need psychological support. The 77.5 cut-off needs confirmation in an independent group before it is used to make return decisions.",
+   "athleteDev":"Performance Application: The study measures no performance outcomes after return. Its use for performance staff is limited to a psychological readiness check during rehabilitation.",
+   "rtp":"Return to Sport Application: The score can track psychological readiness to return to sport 6 to 9 months after Achilles repair. It cannot show when an athlete is physically ready, cannot predict who will return, and was validated against questionnaires rather than objective return criteria."
+ }
+}
+
+Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968
+https://doi.org/10.1007/s00167-023-07548-z
+
+ ANKLE
+
+
+
+The ALR‑RSI score can be used to evaluate psychological readiness
+to return to sport after acute Achilles tendon tear
+E. Shitrit1 · E. Valentin1 · N. Baudrier2 · Y. Bohu1 · G. Rauline3 · R. Lopes4,5 · T. Bauer6 · A. Hardy1
+
+Received: 12 February 2023 / Accepted: 10 August 2023 / Published online: 23 August 2023
+© The Author(s) 2023
+
+
+Abstract
+Purpose The return to sport is one of the main goals following Achilles tendon tear repair. Several psychological factors
+inluence the return to sport after a sports injury. The traditional tools to assess the return to sport do not take into account
+psychological factors. The ankle ligament reconstruction-return to sport injury (ALR-RSI), validated for ankle instability,
+is a score to evaluate psychological readiness to return to sport. The goal of this study was to validate the ALR-RSI score
+for the assessment of the readiness to return to sport after Achilles tendon repair.
+Methods The ALR-RSI score, adapted from the anterior cruciate ligament-return to sport injury (ACL-RSI) score used fol-
+lowing knee ligament reconstruction, was validated according to the international COSMIN methodology. Patients operated
+for Achilles tendon repair responded to the questionnaire during the rehabilitation period. The EFAS, FAAM and VISA-A
+scores were used as reference questionnaires.
+Results A total of 50 patients were included. The ALR-RSI score was strongly (r > 0.5) correlated to the EFAS score:
+r = 0.68 [0.50–0.80] the FAMM sport score: r = 0.7 [0.52–0.84] the FAAM AVQ score (r = 0.6 [0.35–0.78]), and the VISA-
+A score (r = 0.54 [0.26–0.76]). The discriminant validity was good with the ALR-RSI, which was signiicantly lower in the
+patients that did not return to sport: 60.7 (40–81.4) compared to those that did: 83.2 (64.3–100) p = 0.001. Reproducibility
+was excellent with an intra-class correlation coeicient ρ of 0.99 [097–1.00]. The internal consistency was excellent (alpha
+coeicient = 0.95).
+Conclusion The ALR-RSI score provides a valid, reproducible assessment of the psychological readiness to return to sport
+in patients who undergo surgical Achilles tendon suture repair.
+Level of evidence III.
+
+Keywords Achilles tendon tear · Achilles repair · ALR-RSI · Return to sport · Psychological
+
+ Abbreviations
+ ALR-RSI Ankle ligament reconstruction-return to sport
+ injury
+* A. Hardy
+ alexandre.hardy@me.com ACL-RSI Anterior cruciate ligament-return to sport
+ injury
+1
+ Clinique Du Sport, 28 Boulevard Saint-Marcel, 75005 Paris, VISA-A Victorian institute of sport
+ France assessment-Achilles
+2
+ Clinique Jouvenet, 6 Sq. Jouvenet, 75016 Paris, France EFAS European Foot and Ankle Society
+3
+ 34 Rue Michal, 75013 Paris, France FAAM Foot ankle ability measurement
+4
+ chirurgie orthopedique, Pied cheville Nantes ROC Receiver operating characteristic
+ Atlantique, sante Atlantique, avenue Claude-Bernard, AUC Area under the curve
+ 44800 Saint-Herblain, France
+5
+ Clinique Brétéché, 3, rue de la Béraudière, BP 54613,
+ 44046 Nantes Cedex 1, France
+6
+ Service de chirurgie orthopedique et traumatologique,
+ hopital Ambroise Paré, universite Paris-Saclay, Assistance
+ publique-Hôpitaux de Paris, 9, avenue Charles-de-Gaulle,
+ 92100 Boulogne-Billancourt, France
+
+
+ 1 3
+ Vol.:(0123456789)
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+4962 Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968
+
+
+Introduction score to evaluate the psychological readiness to return to
+ sport following an Achilles tendon tear.
+The Achilles tendon is the largest, most powerful tendon The hypothesis was that the ALR-RSI score could dis-
+in the human body. Achilles tendon tears mainly occur in criminate the readiness to return to sport in patients operated
+middle-aged patients during sports. The number and the for an Achilles tendon tear.
+incidence of Achilles tendon tears have increased in the past
+decades [14]. The therapeutic options include conservative,
+functional treatment and surgical repair. Although there is Materials and methods
+no consensus on the optimal management of acute Achilles
+tendon ruptures, surgical repair seems to decrease the risk of This study was approved by the ethics committee
+re-tear and is the most reliable therapeutic option in a young (COS-RGDS-2022-10-003-HARDY-A).
+and active population [11, 13, 24].
+ The return to sport is one of the main considerations Patient characteristics
+in this population. Although the results of surgical repair
+of the Achilles tendon are good, recent studies in the lit- All patients who engaged in sports activities, at least once
+erature report that 20 to 25% of patients cannot return to a month, and who underwent surgery for Achilles tendon
+sport [15, 35]. Although physical factors such as muscu- repair in three surgical units between April 2021 and April
+lar weakness [22] or reduced endurance [5] can explain 2022 were included. The exclusion criteria were: age under
+the failure to return to sport, several psychological factors 18 years old, patients who did not practise a sport before
+seem to inluence recovery during the post-injury period the injury, treated by mini-open of percutaneous procedures.
+(including the rehabilitation period and the re-athletization Open surgical repair of a recent Achilles tendon tear was
+phase) and play a major role in this process [10]. performed in all patients of diferent centres. Patients were
+ Clement et al. [8] analysed the psychosocial responses immobilised in a boot-with-heel lifts and no weight-bear-
+of athletes who sufered an injury that restricted their sport ing for 3 weeks, then, in same position with weight-bearing
+participation (ACL reconstruction, fractures, rotator cuf allowed. Afterwards, they followed an equivalent rehabilita-
+repair, and elbow lesion). According to the authors [8], tion protocol, including joint range of motion recovery and
+there are three phases to the period of rehabilitation. Dur- muscle strengthening. Fifty patients were included, 8 women
+ing the acute post-injury period, athletes express negative and 42 men. Regarding the level of sports activity of the
+emotions that are correlated to the severity of the injuries patients: Five patients (10%) were professional athletes (1
+and the supposed delay before the return to sport. During the basket, 2 handball, 2 football), 20 patients (40%) practised a
+reeducation phase, the cognitive reactions are ambivalent, sport at the competitive level, and 25 (50%) at the amateur
+and frustration is the main emotion. During the return to level. The distribution of diferent types of sports is detailed
+sport phase, athletes express doubt about their capacity to in the table (Table 1).
+return to sport at the desired level of play, become nervous
+and anxious and are afraid of injuring themselves again [8]. The ALR‑RSI score
+ The traditional tools to assess the return to sport do not
+take into account psychological factors. Webster et al. [33] The French version of ALR-RSI was adapted and validated
+developed a questionnaire with 12 items (anterior cruciate in a French speaking population [2, 4]. The questionnaire
+ligament-return to sport injury (ACL-RSI)) to evaluate the has substituted the word “knee” for “ankle” in questions 2,
+psychological readiness before the return to sport follow- 4, 5, 6, 7, 8, and 9. For example, question 2 “Do you think
+ing anterior cruciate ligament reconstructions. This score you are likely to re-injure your knee by participating in your
+has been adapted to other sports-related diseases: shoul- sport?” was altered to “Do you think you are likely to re-
+der instability (SIRSI) [12], femoroacetabular impinge- injure your ankle by participating in your sport?” (Fig. 1).
+ment (Hip-RSI) [34], and ankle instability (ankle ligament The score was validated in ankle instability injuries,
+reconstruction-return to sport injury ALR-RSI) [2, 26, whether treated by repair [26] or arthroscopic ligament
+29]. There is no tool, to date, to analyse the psychological reconstruction [29]. There were no modiications in the use
+readiness to return to sport after Achilles tendon repair. of the ALR-RSI score for Achilles rupture compared to the
+ To our knowledge, this is the irst study that evaluates one used ankle instability.
+a score taking into account psychological factors, after This score is based on 3 psychological factors correlated
+repair of the Achilles tendon. to the return to sport: emotions, such as fear, conidence and
+ The main goal of this study was to validate the ankle self-esteem [27].
+ligament reconstruction-return to sport injury (ALR-RSI) Factors inluencing the return to sport such as the type or
+ level of sport, have been searched.
+
+13
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968 4963
+
+Table 1 Baseline characteristics Parameters Values N
+
+ Gender Female 8 16%
+ Male 42 84%
+ Age 50 36.5 (± 10.7)
+ Follow-up (months) 50 6.8 (6; 9)
+ ALR-RSI total 50 65.6 (3.3; 98.3)
+ VISA total 50 77.3 (35.0; 100.0)
+ FAAM Sport 50 75.1 (31.3; 100.0)
+ FAAM AVQ 50 93.4 (28.6; 100.0)
+ EFAS total 50 76.7 (27.5; 100.0)
+ Sport recovery Yes 11 22%
+ No 39 78%
+ If yes Inferior level 7 63.6%
+ Same level 4 36.4%
+ Sport level Casual leisure level 3 6%
+ Regular leisure level 22 44%
+ Competitive 20 40%
+ Professional 5 10%
+ Sport With impulsion Running 5 10%
+ Tennis 6 12%
+ Basketball 7 14%
+ Football 16 32%
+ Handball 6 12%
+ Volley 2 4%
+ Others 6 12%
+ Without impulsion Walking 1 2%
+ Ski 1 2%
+
+
+
+Validity and reproducibility of the ALR‑RSI unless mentioned otherwise. All questionnaire scores
+ were reported out of 100, with 0 being very poor and
+The reference scores used were the Victorian Institute of 100 excellent. The Spearman correlation coefficient was
+Sport Assessment (VISA-A) [9], the European Foot and used to estimate the correlation between the ALR-RSI,
+Ankle Society (EFAS) [28] and the Foot Ankle Ability the EFAS, the VISA and the FAAM scores. This coef-
+Measurement (FAAM) [21] scores. ficient was considered to be “weak” r < 0.3, “moderate”
+ The patients were seen between 6 and 9 months after sur- 0.3 < r < 0.5 or “strong” r > 0.5. The discriminant valid-
+gery in consultation with a physical therapist, and completed ity of the ALR-RSI between the group of patients that
+the ALR-RSI, VISA-A, EFAS, and FAAM scores as well as “returned to sport” and the group that “did not return
+questions concerning the return to sport: Did you resume the to sport” was tested by the Wilcoxon test. The validity
+sport you were practising before the injury? Yes/No. If yes, of the ALR-RSI and the other questionnaires to deter-
+at which level? Same level/Inferior level. In order to evaluate mine the readiness to return to sport was evaluated and
+reproducibility of ALR-RSI score, a test/retest has been per- assessed by receiver operating characteristic (ROC)
+formed in 10 patients chosen randomly at 15-day intervals. curve statistics. In general, an AUC of 0.5 suggests no
+ discrimination, 0.7–0.8 is considered acceptable, 0.8–0.9
+Statistical methods is considered excellent, and more than 0.9 is consid-
+ ered to be outstanding. The feasibility was estimated by
+In this study, a sample size of 50 participants resulted in the missing responses, as well as the ceiling and floor
+a two-sided 95% confidence interval with a width < 0.33 effects. To determine internal consistency, the Cronbach
+when the estimated Spearman’s rank correlation is > 0.70. alpha was calculated and the correlation between the 12
+The number of events and their percentages were used to items of the ALR-RSI was considered to be “excellent”
+describe qualitative variables, whilst means, minima and if α > 0.90. The reliability was evaluated by the ρ intra-
+maxima were was used to describe quantitative variables class correlation coefficient (ICC). The reproducibility
+
+
+ 13
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+4964 Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968
+
+
+
+
+Fig. 1 The English version of ALR-RSI score
+
+
+
+was “excellent” if ρ ≥ 0.75, “good” if 0.40 < ρ < 0. 75 and handball for one, tennis for one, itness for one, walking for
+“weak” if ρ ≤ 0.40. A p value < 0.05 was considered to one (Table 1).
+be statistically significant. All statistical analyses were No correlation was found between the type, level of sport,
+performed using R software (version 4.2). and the return to sport (Table 2).
+
+
+Results
+ Table 2 Correlation between level and type of sport, and return to
+ sport
+Return to sport
+ Return to sport P-value
+Eleven of the 50 patients (22%) had returned to sport at Yes No
+6.8 months of follow-up. Four (36.4%) of these patients
+ Level of sport n.s
+returned to sport at the preinjury level of play and 7 patients
+ Competitive or professional 3 (12%) 22 (88%)
+(63.6%) at a lower level of play (Table 1).
+ Regular or occasional 8 (32%) 17 (68%)
+ Amongst the patients who resumed sports, one patient
+ Type of sport n.s
+was competing in football and was able to return to the ield
+ With impulsion 9 (20%) 36 (80%)
+after 9 months. The others were regular leisure level athletes
+ Without impulsion 1 (50%) 1 (50%)
+who practised running for four patients, basketball for two,
+
+
+13
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968 4965
+
+Table 3 Correlation between Coeicient ALR-RSI EFAS/100 FAAM sport FAAM AVQ VISA
+the ALR-RSI and the other
+questionnaires 65.6 (22.2) 76.7 (16.6) 75.1 (18.7) 93.4 (11.5) 77.3 (18.2)
+ Spearman 0.68 [0.50–0.80] 0.70 [0.52–0.84] 0.60 [0.35–0.78] 0.54 [0.26–0.76]
+
+
+
+ Table 4 Reproducibility of the ALR-RSI score with the test–retest
+ Coeicient ALR-RSI 1 (/100) ALR-RSI 2 (/100)
+
+ 56.5 ( 32.5; 83.3) 57.1 (33.3; 83.3)
+ ICC ρ = 0.99 [0.97–1.00]
+
+
+
+ and the ceiling efect, corresponding to the percentage of
+ patients with the highest score for each question varied
+ between 0 and 10% depending on the questions, but none of
+ the patients presented with a complete score of 100%.
+
+ Reliability
+
+ The reliability was evaluated by the intra-class correlation
+ coeicient ρ (ICC). In the present study, the reproducibility
+Fig. 2 Receiver operating characteristic (ROC) curves for ALR-RSI,
+VISA, EFAS and FAAM to identify patients who returned to sport. was «excellent» with an intra-class correlation coeicient ρ
+None of the AUC (Area Under the Curve) were statistically diferent of 0.99 [0.97–1.00]. During the irst test, the median ALR-
+ RSI score was 56.5 (32.5–83.3), and 57.1 (33.3–83.3) for
+ the retest (Table 4).
+Construct validity
+
+The ALR-RSI was strongly (r > 0.5) and signiicantly cor- Internal consistency
+related to the EFAS: r = 0.68 [0.50–0.80] and FAMM sport
+scores: r = 0.7 [0.52–0.84] as well as to the FAAM AVQ The Cronbach alpha coefficient was 0.95, which signi-
+(r = 0.6 [0.35–0.78]), and VISA-A (r = 0.54 [0.26–0.76]) ies that the internal consistency of the scale measuring
+scores. (Table 3). the strength of the correlation between the 12 items was
+ «excellent».
+Discriminant validity
+
+The ALR-RSI score was signiicantly lower in the popula- Discussion
+tion of patients that did not return to sport: 60.7 (40–81.4),
+compared those who returned to sport: 83.2 (64.3–100) The main result of this study was that the ALR-RSI score
+p = 0.001. is a valid and reproducible score to evaluate psychological
+ A Youden index of 0.62 was observed for a cut-of score readiness to return to sport after an Achilles tendon tear.
+of 77.5 points corresponding to a sensitivity of 82% and a In our series, sport was resumed by 22% of the patients
+speciicity of 79%. after an average of 6.8 months. A systematic review in the
+ The ALR-RSI score had a high discriminant capacity literature reported that 80% of patients were capable of
+(AUC = 0.83) that was comparable to the other scores: EFAS returning to sport 6 months after an Achilles tendon tear
+(AUC = 0.77), FAAM AVQ (AUC = 0.83), FAAM sport [35]. However, large variations amongst the included studies
+(AUC = 0.86), VISA-A (AUC = 0.82) (Fig. 2). were observed. The rate of return to sport varied between
+ 18.6 and 100% according to the studies. However, in most
+Feasibility studies, the postoperative follow-up was 2 years [35], which
+ explains the higher rate of return to sport than in our series.
+All the participants responded to all the questions. In the literature, the delay to the return to sport varies
+ The floor effect, corresponding to the percentage of between 9 and 12 months depending on the studies [6, 17,
+patients with the lowest score for each questions, was 0%, 23].
+
+
+ 13
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+4966 Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968
+
+ In this study, 6- and 9-month follow-ups were chosen primarily fear new injuries or the recurrence of previ-
+to improve the discriminant capacity of ALR-RSI score ous ones, enduring lifelong pain, inability to return to
+by attempting to obtain a similar number of patients who their sport at the same level, and the overall impact on
+have returned to sport and patients who have not returned to their lives. It is crucial for athletes to have time to make
+sport. However, a 12-month follow-up could have been more informed decisions regarding treatment, career choices,
+appropriate to improve discriminant capacity. and risk assessment for future pain and disability. Whilst
+ Trofa et al. [32] reported results in a population of 62 quick decisions and interventions are crucial for profes-
+athletes (basketball, baseball and US football) at 1 year and sional athletes, most non-professionals should focus on
+2 years of follow-up. In their series, 30.6% of the players tissue healing and realistic recovery timeframes [19].
+did not return to high level sports. When athletes returned to Accessing accurate information about injuries, treatment
+sport, their playing time was considerably reduced and their options, and recovery requirements is vital. Some athletes
+athletic performance was signiicantly poorer than before may choose to quit sports to minimise the risk of new
+the injury [32]. injuries, whilst others may opt for less risky activities.
+ In our study, no correlation was found between the type For those who decide to return to their sport, eforts must
+and level of sports and the return to sports. This observa- be made to alleviate the fear of re-injury as fear itself can
+tion could be explained by a lack of power due to the small increase the risk and hinder rehabilitation progress. Inabil-
+number of patients. ity to return to sports negatively impacts long-term quality
+ ALR-RSI score was initially developed to assess the of life, and psychological interventions, physical rehabili-
+return to sports after ankle instability surgery. Some factors tation, and support from coaches, friends, therapists, and
+are common to instability and Achilles rupture, such as the doctors play essential roles in reducing fear and promoting
+fear of re-injury and conidence in the ankle. However, some recovery [19].
+factors are speciic to Achilles rupture, notably the loss of The discriminant capacity of the ALR-RSI score was
+propulsion that can impact the return to sports, especially proven. The score was much lower in the population that
+sports requiring jumps. did not return to sport. Thus, it is an efective tool to ana-
+ Numerous scores exist to evaluate Achilles tendon repair. lyse the return to sport after an Achilles tendon tear. The
+The EFAS, VISA-A, and FAAM scores were used because discriminant validity of the VISA-A score in Achilles ten-
+they are the most frequent scores in the literature. [1, 7, 18, dinopathies was evaluated by Kaux et al. [16]. The score
+20, 31]. Nevertheless, these scores only evaluate physical was evaluated in diferent categories of the population:
+recovery and do not take into account the psychological healthy, pathological and at risk. The authors found a weak
+aspects of the return to sport. Indeed, during postoperative and moderate correlation and concluded that the discrimi-
+rehabilitation, patients describe a gradual decrease in nega- nant validity of the VISA-A score needed to be conirmed
+tive emotions linked to the initial injury (depression, anger, [16]. The FAAM score was shown to have good discrimi-
+and anxiety) and progress to positive emotions, such as con- nant validity [21].
+idence and the feeling of being ready to return to sports Compared to open questioning, the use of a quantitative
+[3]. Ardern et al. [3] identiied the factors inluencing the score provides a more reproducible and standardised eval-
+return to sport such as motivation, self-esteem, and coni- uation of the return to sport. The ALR-RSI score seems to
+dence. One of the main negative emotions is fear which may be an interesting tool in daily practice because the patient’s
+have several aspects. Athletes can be afraid to reproduce the progress can be evaluated. Moreover, patients with poten-
+movement that caused the original injury. In these cases, a tial diiculties can be identiied and psychological support
+discussion can be helpful so that athletes can express their can be provided to optimise the return to sport.
+apprehension or fears and refocus their attention on the posi- ALR-RSI score was initially developed to assess the
+tive aspects of competing [25]. Thus, the ALR-RSI can be return to sports after ankle instability surgery. Some fac-
+used to evaluate the patient’s feelings and help guide them tors are common to instability and Achilles rupture, such
+in the return to sport. as the fear of re-injury and conidence in the ankle. How-
+ Recently, Slagers et al. [30] evaluated associations ever, some factors are speciic to Achilles rupture, notably
+between psychological factors during rehabilitation and the loss of propulsion that can impact the return to sports,
+functional outcomes 12 months after Achilles tendon rup- especially sports requiring jumps.
+ture. They showed that psychological readiness and coni- Nevertheless, this study has certain limitations, in
+dence to return to sport increased over time and kinesiopho- particular the small patient population. Furthermore,
+bia decreased over time whilst motivation levels remained the ATRS (Achilles Tendon Total Rupture) score could
+high [30]. have been used, which speciically evaluates patients with
+ Kvist et al. [19] have suggested guidelines to improve Achilles tendon rupture.
+the management of athletes after an injury. Athletes
+
+
+13
+ 14337347, 2023, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1007/s00167-023-07548-z by Ohio State University Ohio Sta, Wiley Online Library on [02/01/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Knee Surgery, Sports Traumatology, Arthroscopy (2023) 31:4961–4968 4967
+
+
+Conclusion 8. Clement D, Arvinen-Barrow M, Fetty T (2015) Psychosocial
+ responses during diferent phases of sport-injury rehabilitation:
+ a qualitative study. J Athl Train 50(1):95–104
+The results of this series show that the ALR-RSI score is 9. Comins J, Siersma V, Couppe C, Svensson RB, Johansen F,
+a valuable tool to assess the psychological readiness to Malmgaard-Clausen NM, Magnusson SP (2021) Assessment
+return to sport in patients who undergo surgical Achilles of content validity and psychometric properties of VISA-A for
+ Achilles tendinopathy. Rushton A. Plos One 16(3):e0247152
+tendon suture repair. 10. Crossman J (1997) Psychological rehabilitation from sports
+ injuries. Sports Med 23(5):333–339
+ 11. Deng S, Sun Z, Zhang C, Chen G, Li J (2017) Surgical treat-
+Funding No funding were available for this study. ment versus conservative management for acute Achilles tendon
+ rupture: a systematic review and meta-analysis of randomized
+Declarations controlled trials. J Foot Ankle Surg 56(6):1236–1243
+ 12. Gerometta A, Klouche S, Herman S, Lefevre N, Bohu Y (2018)
+Conflict of interest All authors declare that they have no conlict of The Shoulder instability-return to sport after injury (SIRSI): a
+interest. valid and reproducible scale to quantify psychological readiness
+ to return to sport after traumatic shoulder instability. Knee Surg
+Ethical approval IRB approvable was obtained as mentioned. Sports Traumatol Arthrosc 26(1):203–211
+ 13. Holm C, Kjaer M, Eliasson P (2015) Achilles tendon rupture—
+Open Access This article is licensed under a Creative Commons Attri- treatment and complications: a systematic review: treatment of
+bution 4.0 International License, which permits use, sharing, adapta- Achilles tendon ruptures. Scand J Med Sci Sports 25(1):e1–e10
+tion, distribution and reproduction in any medium or format, as long 14. Järvinen TAH, Kannus P, Mafulli N, Khan KM (2005) Achilles
+as you give appropriate credit to the original author(s) and the source, tendon disorders: etiology and epidemiology. Foot Ankle Clin
+provide a link to the Creative Commons licence, and indicate if changes 10(2):255–266
+were made. The images or other third party material in this article are 15. Johns W, Walley KC, Seedat R, Thordarson DB, Jackson B, Gon-
+included in the article's Creative Commons licence, unless indicated zalez T (2021) Career outlook and performance of professional
+otherwise in a credit line to the material. If material is not included in athletes after Achilles tendon rupture: a systematic review. Foot
+the article's Creative Commons licence and your intended use is not Ankle Int 42(4):495–509
+permitted by statutory regulation or exceeds the permitted use, you will 16. Kaux J-F, Delvaux F, Oppong-Kyei J, Dardenne N, Beaudart C,
+need to obtain permission directly from the copyright holder. To view a Buckinx F, Croisier J-L, Forthomme B, Crielaard J-M, Bruyère
+copy of this licence, visit http://creativecommons.org/licenses/by/4.0/. O (2016) Validity and reliability of the French translation of the
+ VISA-A questionnaire for Achilles tendinopathy. Disabil Rehabil
+ 38(26):2593–2599
+ 17. Keating JF, Will EM (2011) Operative versus non-operative
+ treatment of acute rupture of tendo Achillis: a prospective ran-
+References domised evaluation of functional outcome. J Bone Jt Surg Br
+ 93(8):1071–1078
+ 1. Ahmad J, Repka M, Raikin SM (2013) Treatment of myotendi- 18. Klein EE, Weil L, Baker JR, Weil LS, Sung W, Knight J (2013)
+ nous achilles ruptures. Foot Ankle Int 34(8):1074–1078 Retrospective analysis of mini-open repair versus open repair for
+ 2. Ajaka N, Bouché P-A, Dagher M, Lopes R, Bauer T, Hardy acute Achilles tendon ruptures. Foot Ankle Spec 6(1):15–20
+ A (2022) The French ankle ligament reconstruction—return to 19. Kvist J, Silbernagel KG (2022) Fear of movement and reinjury in
+ sport after injury (ALR-RSI-Fr) is a valid scale for the French sports medicine: relevance for rehabilitation and return to sport.
+ population. J Exp Ortop 9(1):27. https:// doi. org/ 10. 1186/ Phys Ther 102(2):pzab272
+ s40634-022-00463-1 20. Mafulli N, Tallon C, Wong J, Peng Lim K, Bleakney R (2003)
+ 3. Ardern CL, Taylor NF, Feller JA, Webster KE (2013) A Early weightbearing and ankle mobilization after open repair of
+ systematic review of the psychological factors associated acute midsubstance tears of the Achilles tendon. Am J Sports Med
+ with returning to sport following injury. Br J Sports Med 31(5):692–700
+ 47(17):1120–1126 21. Martin RL, Irrgang JJ, Burdett RG, Conti SF, Swearingen JMV
+ 4. Bohu Y, Klouche S, Lefevre N, Webster K, Herman S (2015) (2005) Evidence of validity for the foot and ankle ability measure
+ Translation, cross-cultural adaptation and validation of the (FAAM). Foot Ankle Int 26(11):968–983
+ French version of the anterior cruciate ligament-return to sport 22. Olsson N, Nilsson-Helander K, Karlsson J, Eriksson BI, Thomée
+ after injury (ACL-RSI) scale. Knee Surg Sports Traumatol R, Faxén E, Silbernagel KG (2011) Major functional deicits per-
+ Arthrosc 23(4):1192–1196 sist 2 years after acute Achilles tendon rupture. Knee Surg Sports
+ 5. Bostick GP, Jomha NM, Suchak AA, Beaupré LA (2010) 

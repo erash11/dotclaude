@@ -1,0 +1,326 @@
+{
+ "id":"Q81",
+ "sourceFile":"The effects of regular cold-water immersion use on training-induced changes in strength and endurance performance - A systematic review with meta-analysis.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The Effects of Regular Cold-Water Immersion Use on Training-Induced Changes in Strength and Endurance Performance: A Systematic Review with Meta-Analysis' matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Systematic Review / Meta-analysis",
+ "primaryDomain":"Recovery & Readiness",
+ "domains":["Recovery & Readiness","Training & Performance"],
+ "audiences":["Performance","Athletic Training","Coaching"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Adult / Recreational"],
+ "evidenceSummary":"Systematic review and meta-analysis of 8 controlled trials (470 volunteers, healthy men classed as trained, physically active, recreationally active or sedentary) in which regular post-training cold-water immersion at 15 C or below was compared with passive or active recovery for 3 weeks or more. In 5 resistance training studies, cold-water immersion was associated with smaller gains in 1RM, maximal isometric strength, strength endurance and ballistic efforts (overall SMD -0.60, 95% CI -0.87 to -0.33). In 4 endurance training studies, it had no effect on maximal aerobic power or time-trial performance (overall SMD -0.07, 95% CI -0.54 to 0.53).",
+ "screeningLimitations":"Only 8 studies were pooled, with 4 to 5 per training type, and mean PEDro quality was moderate (5.3), with high risk of bias for randomisation and blinding. The pooled results cannot separate the effects of water temperature, immersion duration and frequency, and most participants were not competitive athletes.",
+ "synthesisCaution":"Staff could read the null endurance result as showing that regular cold-water immersion is harmless or neutral for all endurance training, when it rests on 4 small studies of recreationally active men.",
+ "paper":{
+  "year":2020,
+  "citation":"Malta ES, Dutra YM, Broatch JR, Bishop DJ, Zagatto AM. The Effects of Regular Cold-Water Immersion Use on Training-Induced Changes in Strength and Endurance Performance: A Systematic Review with Meta-Analysis. Sports Medicine. 2020.",
+  "doi":"10.1007/s40279-020-01362-0",
+  "abstract":"Meta-analysis of 8 controlled studies of regular post-training cold-water immersion (CWI) during resistance or endurance training. CWI was associated with smaller strength gains, but did not change endurance performance gains.",
+  "tldr":"Regular cold-water immersion after resistance training appears to blunt strength gains. After endurance training it did not change aerobic performance gains in these studies.",
+  "methods":"PRISMA systematic review of MEDLINE, CENTRAL and SPORTDiscus searched to 25 November 2019, registered on PROSPERO (CRD42018098898). Included controlled trials with CWI at 15 C or below after training of at least 3 weeks, with baseline and post-training strength or aerobic performance measures; quality was rated with the PEDro scale and risk of bias with the Cochrane tool, and effects were pooled as standardised mean differences.",
+  "findings":"In resistance training, CWI reduced gains in 1RM, maximal isometric strength, strength endurance and ballistic efforts (overall SMD -0.60, 95% CI -0.87 to -0.33; p < 0.0001). In endurance training, CWI had no effect on maximal aerobic power or time-trial performance (overall SMD -0.07, 95% CI -0.54 to 0.53; p = 0.71).",
+  "limitations":"Eight studies with 470 volunteers, mean PEDro quality 5.3 (moderate), no studies blinded, and most with unclear or high risk of bias for randomisation. Water temperature and duration varied widely across studies, and the endurance and resistance subgroups were small (4 to 5 studies each). Participants were trained, physically active, recreationally active or sedentary men rather than competitive athletes.",
+  "practicalImplications":"The authors suggest avoiding regular cold-water immersion during training blocks focused on strength, hypertrophy or power, and say it may be most useful around competition when heavy resistance training is not typical. They note the optimal temperature and duration for training adaptation is unknown.",
+  "athleteDev":"For strength, hypertrophy or power blocks, avoid scheduling regular post-session cold-water immersion. For endurance blocks, regular immersion did not change aerobic gains in these studies, so the decision should rest on recovery needs rather than expected adaptation.",
+  "rtp":"Cannot inform return-to-sport decisions: all participants were healthy and the outcomes were training adaptations, not injury recovery, rehabilitation or readiness after injury."
+ }
+}
+Sports Medicine
+https://doi.org/10.1007/s40279-020-01362-0
+
+    SYSTEMATIC REVIEW
+
+
+
+The Effects of Regular Cold‑Water Immersion Use on Training‑Induced
+Changes in Strength and Endurance Performance: A Systematic
+Review with Meta‑Analysis
+Elvis S. Malta1 · Yago M. Dutra1 · James R. Broatch2,3 · David J. Bishop2 · Alessandro M. Zagatto1
+
+
+© Springer Nature Switzerland AG 2020
+
+
+Abstract
+Background Cold-water immersion (CWI) is one of the main recovery methods used in sports, and is commonly utilized
+as a means to expedite the recovery of performance during periods of exercise training. In recent decades, there have been
+indications that regular CWI use is potentially harmful to resistance training adaptations, and, conversely, potentially ben-
+eficial to endurance training adaptations. The current meta-analysis was conducted to assess the effects of the regular CWI
+use during exercise training on resistance (i.e., strength) and endurance (i.e., aerobic exercise) performance alterations.
+Methods A computerized literature search was conducted, ending on November 25, 2019. The databases searched were
+MEDLINE, Cochrane Central Register of Controlled Trials, and SPORTDiscus. The selected studies investigated the effects
+of chronic CWI interventions associated with resistance and endurance training sessions on exercise performance improve-
+ments. The criteria for inclusion of studies were: (1) being a controlled investigation; (2) conducted with humans; (3) CWI
+performed at ≤ 15 °C; (4) being associated with a regular training program; and (5) having performed baseline and post-
+training assessments.
+Results Eight articles were included before the review process. A harmful effect of CWI associated with resistance train-
+ing was verified for one-repetition maximum, maximum isometric strength, and strength endurance performance (overall
+standardized mean difference [SMD] = − 0.60; Confidence interval of 95% [CI95%] = − 0.87, − 0.33; p < 0.0001), as well
+as for Ballistic efforts performance (overall SMD = − 0.61; CI95% = − 1.11, − 0.11; p = 0.02). On the other hand, selected
+studies verified no effect of CWI associated with endurance training on time-trial (mean power), maximal aerobic power
+in graded exercise test performance (overall SMD = − 0.07; CI95% = − 0.54, 0.53; p = 0.71), or time-trial performance
+(duration) (overall SMD = 0.00; CI95% = − 0.58, 0.58; p = 1.00).
+Conclusions The regular use of CWI associated with exercise programs has a deleterious effect on resistance training adapta-
+tions but does not appear to affect aerobic exercise performance.
+Trial Registration PROSPERO CRD42018098898.
+
+
+                                                                   Key Points
+
+                                                                   Regular use of cold-water immersion decreases strength
+                                                                   performance parameters (i.e., one-repetition maximum,
+                                                                   maximal isometric strength, strength endurance, and bal-
+* Alessandro M. Zagatto
+                                                                   listic effort performance).
+  azagatto@yahoo.com.br
+1
+                                                                   Cold-water immersion does not affect aerobic exercise
+     Laboratory of Physiology and Sport Performance‑LAFIDE,
+     Postgraduate Program in Movement Sciences, School
+                                                                   performance (i.e., time-trial performance and maximal
+     of Sciences, Department of Physical Education, São Paulo      aerobic power).
+     State University-UNESP, Av. Eng. Luiz Edmundo Carrijo
+     Coube, 14‑01, Vargem Limpa, Bauru, SP 17033‑360, Brazil       Studies involving the regular use of cold-water immer-
+2
+                                                                   sion present moderate methodological quality.
+     Institute for Health and Sport (iHeS), Victoria University,
+     Footscray, VIC, Australia
+3
+     Australia Institute of Sport, Bruce, ACT​, Australia
+
+
+                                                                                                              Vol.:(0123456789)
+                                                                                 E. S. Malta et al.
+
+Graphic Abstract
+
+
+
+
+Abbreviations                         MAP	Maximal aerobic power
+1RM	One-repetition maximum           mRNA	Messenger ribonucleic acid
+CI95%	Confidence interval of 95%     PGC-1α	Peroxisome proliferator-activated receptor-γ
+CWI	Cold-water immersion                     coactivator-1α
+DOMS	Delayed onset muscle soreness   SMD	Standardized mean difference
+Effect of Regular Cold-Water Immersion on Performance Adaptations
+
+
+1 Introduction                                                      resistance and endurance training, thereby providing robust
+                                                                    evidence-based guidelines for practitioners and/or future
+Cold-water immersion (CWI) is a widespread method used              research direction.
+by athletes and non-athletes in an attempt to aid muscle
+repair and performance recovery after the stress of exercise
+[1]. The procedure involves total or partial immersion of           2 Methods
+the body in ~ 10–15 °C water for 5–20 min [2], preferably
+immediately after physical efforts [3]. In addition, CWI may        The present systematic review was guided by the Preferred
+also be done as either one continuous [4] or multiple, inter-       Reporting Items for Systematic reviews and Meta-Analy-
+mittent sessions [5].                                               ses (PRISMA) statement [34] and registered in an interna-
+   The proposed effects of CWI have been attributed to              tional database of systematic reviews in health and social
+local vasoconstriction and hydrostatic pressure caused by           care (PROSPERO CRD42018098898). A computerized
+cold water temperature and water depth [1], respectively.           literature search was conducted, ending on November 25,
+These effects may contribute to physiological alterations           2019. The databases searched were MEDLINE, Cochrane
+such as decreases in metabolic activity [6], hormone secre-         Central Register of Controlled Trials (CENTRAL), and
+tion [7], infiltration of immune cells [8], and limb blood          SPORTDiscus.
+flow [9–11]. Although there is no consensus [12, 13], these             To optimize the search, a strategy of combining the fol-
+alterations may acutely decrease markers associated with            lowing keyword groups was used: (1) performance OR exer-
+exercise-induced muscle damage and inflammation [3, 7,              cise performance OR exercise OR trial; AND (2) cold-water
+14–16], reduce delayed onset muscle soreness (DOMS) [14,            immersion OR cold water immersion OR cold water OR
+17, 18], and maintain muscle function [16, 19, 20], thereby         ice-water immersion OR ice water immersion OR cooling
+improving muscle recovery.                                          OR ice bath OR ice-bath; AND (3) chronic OR long-term
+   Several studies have investigated the effects of regular         OR long term OR regular; NOT (4) animal OR animals. The
+CWI use (i.e., chronic effect) on training-induced muscle           restrictions on language (i.e., articles published in English
+and performance adaptations, including mitochondrial bio-           language only) was adopted, while the searches were con-
+genesis, muscle protein synthesis, and muscle repair [4,            ducted only on the titles, abstracts, and keyword topics. No
+21–25]. Initial findings suggested that the effects of regu-        year restriction was placed on the search. In addition, refer-
+lar post-exercise CWI may be task dependent. For exam-              ences of the selected studies were examined for identifica-
+ple, regular CWI may attenuate training-induced anabolic            tion of further eligible studies.
+responses, protein synthesis, and satellite cell activation             The selected studies were clinical controlled studies that
+[23–25], thereby contributing to an attenuation in muscle           investigated the effects of the regular use of CWI associ-
+hypertrophy and strength development, when used during              ated with exercise training programs on performance gains
+resistance training programs. Conversely, regular CWI may           (i.e., strength or aerobic exercise performance) in humans.
+have little to no effect on oxidative signaling pathways when       Therefore, books, theses, dissertations, reviews, and con-
+used during endurance training programs [4, 22], consistent         ference papers that passed through the initial filter were
+with the lack of effect on aerobic exercise performance [4,         subsequently excluded. The criteria for inclusion of stud-
+26–28].                                                             ies were: (1) being a controlled investigation, (2) conducted
+   Most sports incorporate both endurance and resistance            with healthy humans, (3) with CWI performed at ≤ 15 °C
+training to develop both strength/power and aerobic capac-          (after training sessions), (4) being associated with a regu-
+ity, as these attributes are associated with sport-specific         lar training program (≥ 3 weeks), and (5) having performed
+skills and consequently physical performance [29–31].               baseline and post-training assessments of strength or aerobic
+The regular use of CWI following training sessions may              exercise performance.
+have important implications for modifying physical perfor-              The study selection process was conducted in two stages
+mance. However, despite the growing number of reviews in            by two researchers (ESM and YMD). In the first stage, the
+recent years investigating methodological aspects of CWI            title and abstract of the selected studies were checked for
+[1, 18], and the acute effects of CWI on muscle recovery            relevance. In the second stage, the full article text was
+[1, 32], only one narrative review has summarized findings          retrieved and considered for inclusion. If any difference
+regarding the regular use of CWI in the training routine            in opinion between researchers was present, the study was
+on long-term muscle adaptations and exercise performance            discussed in depth until a consensus was achieved. The
+gains [33]. The aim of the present investigation was to sys-        software Mendeley Desktop 1.17.13 (Elsevier, NY, USA)
+tematically review existing research that has investigated          was used for management of the papers and exclusion of
+the effects of regular CWI on performance adaptations to            duplicates.
+                                                                                                                E. S. Malta et al.
+
+Fig. 1  Flow chart for the
+selection of studies. CENTRAL
+Cochrane Central Register of
+Controlled Trials
+
+
+
+
+2.1 Data Extraction                                            criteria. The methodological quality of studies was clas-
+                                                                sified according to their respective scores as high quality
+Study data were similarly extracted by two researchers          (scores ≥ 7), moderate quality (scores 5–6), or poor qual-
+(ESM and YMD), and disagreements between the research-          ity (scores ≤ 4). The quality assessment was not used as
+ers were mediated as per above. The primary variable/s of       an inclusion criterion. In addition, the risk of bias anal-
+interest were exercise performance, namely the change in        ysis for all and individual single studies was calculated
+performance from pre- to post-training, for the intervention    according to the Cochrane Collaboration guidelines (Rev-
+(CWI) and control (CON) conditions. The variables related       Man software, version 5.3, Copenhagen, DK). The bias
+to strength performance were one-repetition maximum             risk was judged as high, low, or unclear, considering five
+(1RM), maximal isometric strength, strength endurance           methodological domains (selection, performance, attrition,
+(number of lifts), and ballistic efforts (force measured dur-   reporting, and other) [35]. The risk of bias analysis and
+ing jump performance and rate of force development), while      methodological quality evaluation were performed by two
+those related to aerobic exercise performance were time-        authors (ESM and YMD). As per above, if any difference
+trial duration, mean power in a time-trial, and maximal         in opinion between researchers was present, the risk of
+aerobic power (MAP) in a graded exercise test. In addition,     bias analysis and methodological quality evaluation was
+details such as the study design, intervention methods, and     discussed until a consensus was achieved.
+training description were also extracted. Relevant data not
+reported in the manuscript were requested directly from the     2.3 Data Analysis
+corresponding author by e-mail and/or via ResearchGate
+private messaging.                                              The software Review Manager 5.3 was also used in the sta-
+                                                                tistical analyses and to generate forest plot figures. For all
+                                                                variables, the standardized mean difference (SMD) and 95%
+2.2 Quality and Risk of Bias Assessments                       confidence intervals (CI95%) were calculated.
+The methodological quality of all studies included
+was assessed using the PEDro-scale considering 11
+Effect of Regular Cold-Water Immersion on Performance Adaptations
+
+Fig. 2  Individual and sum-
+marized results for risk of bias
+of included studies. * “Other
+bias” in the present study refers
+to risk of bias associated with
+study design (with possible
+cross-talk effect)
+
+
+
+
+3 Results                                                          reference review process. Figure 1 shows the schematic pro-
+                                                                    cess of the study selection.
+In total, 697 articles were identified in the database search          In general, the selected studies presented a high risk of
+(i.e., 195 articles in MEDLINE, 470 in Cochrane Cen-                bias, mainly in the randomization and blinding process. The
+tral Register of Controlled Trials (CENTRAL), and 32 in             majority of the investigations did not present explicit infor-
+SPORTDiscus). Next, duplicates were excluded, resulting             mation about the method used in the randomization (e.g.,
+in a total of 604 articles. After analysis of the titles and        coin tossing, shuffling cards or envelopes, throwing dice, and
+abstracts, 11 studies were selected for full text analysis.         drawing lots) and the allocation concealment. In addition,
+Finally, 8 studies were included in the final review pro-           no investigations were blinded (i.e., single-blinding or dou-
+cess and data extraction. No studies were added after the           ble-blinding) and only two presented explicit information
+Table 1  Characteristics and results of the included studies
+Study, year; Funding    Study design      CWI and CON configuration      No. of training          Training description     Performance assess-   Performance changes (mean dif-   Data source       PEDro
+                                                                         sessions/duration                                 ment                  ference to pre)                                    scale
+                                                                         (frequency)                                                                                                                score
+
+Resistance training
+ Frohlich et al. [5],   Crossover group   CWI: 3 × 4 min (intervals:      ~ 15 sessions/5 weeks   Unilateral leg           1RM knee extension    CWI: + 7.2 ± 7.3 kg              Provided by the   5
+   2014; NF                                30 s) in 12.0 ± 1.5 °C; stand-   (1–3 × /week)          exercises: 3 sets of                                                             author
+                                           ing, 1-leg immersion                                    8–12 repetitions
+                                          CON: passive recovery                                    with 3 min of rest at                         CON: + 9.3 ± 7.8 kg
+                                                                                                   75–80% of 1RM
+ Roberts et al. [23],   Parallel groups   CWI: 10 min in 10.1 ± 0.3 °C; 24 sessions/12 weeks      Leg extensions and       1RM knee extension    CWI: + 17.8 ± 9.2 kg             Provided by the   6
+  2015; GIF                                seated, both legs immersed     (2 × /week)              flexions: 3–6 sets of                                                            author
+                                                                                                   8–12 repetitions
+                                          CON: active recovery                                                                                   CON: + 33.8 ± 8.5 kg*
+                                                                                                  Plyometric exercises: 3 1RM Leg press          CWI: + 133.0 ± 43.5 kg
+                                                                                                    sets of 12 repetitions
+                                                                                                                                                 CON: + 201.0 ± 65.2 kg*
+                                                                                                                           Maximal isometric     CWI: + 2.5 ± 3.9 kg
+                                                                                                                            knee-extension
+                                                                                                                            strength
+                                                                                                                                                 CON: + 6.6 ± 3.3 kg*
+                                                                                                                           Knee-extension RFD    CWI: + 115.1 ± 79.6 Nm/s
+                                                                                                                            impulse
+                                                                                                                                                 CON: + 301.4 ± 134.5 Nm/s*
+ Yamane et al. [36],    Parallel groups   CWI: 20 min in 10 ± 1 °C;      12 sessions/4 weeks      Wrist-flexion exer-      Maximal isometric     CWI: + 0.69 ± 3.5 kg             Provided by the   5
+  2015; GIF                                arm horizontal, 1 lower arm     (3 × /week)             cises: 5 sets of 8 rep-  strength for wrist                                      author
+                                                                                                   etitions at 70–80%       flexion
+                                                                                                   of 1RM;
+                                          CON: passive recovery (1                                                                               CON: + 6.04 ± 3.6 kg*
+                                           lower arm of the same
+                                           volunteer)
+                                                                                                                           Number of lifts of    CWI: + 14.1 ± 9.4 lifts
+                                                                                                                            wrist flexion
+                                                                                                                                                 CON: + 19.4 ± 6.3 lifts
+ Yamane et al. [28],    Crossover Group   CWI: 20 min in 10 ± 1 °C;      12 sessions/4 weeks      Handgrip exercises: 3    Maximal isometric     CWI: + 4.1 ± 4.45 kg             Provided by the   5
+  2006; EF and           (part III)        arm horizontal, 1 lower arm     (3 × /week)             sets of 8 RM with        strength for wrist                                      author
+  GIF                                                                                              2-min rest periods       flexion
+                                          CON: passive recovery (1                                                                               CON: + 5.86 ± 5.25 kg
+                                           lower arm of the same
+                                           volunteer)
+                                                                                                                           Number of lifts of    CWI: + 16.2 ± 34.0 lifts
+                                                                                                                            wrist flexion
+                                                                                                                                                 CON: + 53.1 ± 46.1 lifts*
+                        Parallel groups   CWI: 20 min in 10 ± 1 °C;      12 sessions/4 weeks      Handgrip exercises: 3    Maximal isometric     CWI: + 0.21 ± 3.7 kg
+                          (part IV)        arm horizontal, lower arms      (3 × /week)             sets of 8 RM with        strength for wrist
+                                                                                                   2-min rest periods;      flexion
+                                                                                                                                                                                                            E. S. Malta et al.
+Table 1  (continued)
+Study, year; Funding    Study design      CWI and CON configuration     No. of training          Training description     Performance assess-     Performance changes (mean dif-   Data source       PEDro
+                                                                        sessions/duration                                 ment                    ference to pre)                                    scale
+                                                                        (frequency)                                                                                                                  score
+
+                                          CON: passive recovery                                                                                   CON: + 0.75 ± 5.0 kg
+
+                                                                                                                          Number of lifts of      CWI: + 43.8 ± 26.1 lifts
+                                                                                                                           wrist flexion
+                                                                                                                                                  CON: + 72.8 ± 56.8 lifts
+ Fyfe et al. [24],      Parallel groups   CWI: 15 min in 10 °C; seated, 21 sessions/7 weeks      Lower- and upper-        1RM Leg press           CWI: + 39.2 ± 25.1 kg            Provided by the   6
+   2019; GIF                               whole-body immersion (up       (3 × /week)             limb extensors and                                                                 author
+                                           to sternum)                                            flexors: 3 sets of 12
+                                                                                                  repetitions at 12-RM
+                                          CON: 23 °C for 15 min                                                                                   CON: + 37.9 ± 18.8 kg
+                                                                                                                          1RM Bench press         CWI: + 11.7 ± 12.2 kg
+                                                                                                                                                  CON: + 8.6 ± 8.4 kg
+                                                                                                 Abdominal: 3 sets        Ballistic push-up       CWI: + 0.9 ± 59.9 N
+                                                                                                  of 20 repetitions at
+                                                                                                  20-RM
+                                                                                                                                                  CON: + 3.4 ± 54.2 N
+                                                                                                                                                                                                             Effect of Regular Cold-Water Immersion on Performance Adaptations
+
+
+
+
+                                                                                                 Back squat and barbell   CMJ                     CWI: − 61.8 ± 103.3 N
+                                                                                                  bench press: 5 sets
+                                                                                                  of 12 repetitions at
+                                                                                                  12-RM
+                                                                                                                                                  CON: + 98.0 ± 101.9 N
+                                                                                                                          SJ                      CWI: − 21.1 ± 223.5 N
+                                                                                                                                                  CON: + 131.7 ± 240.4 N
+Endurance training
+ Halson et al. [27]],   Parallel groups   CWI: 15 min in 15 ± 3° C;     39 sessions              SIT + specific cycling 10-min time-trial         CWI: + 5.4 ± 3.7%                Extracted from    5
+  2014; GIF                                whole-body immersion (up       / ~ 5.5 weeks (7 × /     efforts [2 repetitions mean power                                                the text
+                                           to shoulder)                   week)                    of 4-min maximal
+                                          CON: passive recovery                                    effort following                               CON: + 5.9 ± 2.8%
+                                                                                                   by short repeated
+                                                                                                   sprints (6–20 s),
+                                                                                                   pursuit and time-trial
+                                                                                                   efforts)
+ Aguiar et al. [21],    Parallel groups   CWI: 15 min in 10 ± 1 °C;     12 sessions/4 weeks      Long HIIT: 1-min         MAP in a Graded         CWI: + 23.4 ± 13.4 W             Provided by the   5
+  2016; GIF                                standing, both legs            (3–4 × /week)           cycling effort fol-      exercise test                                             author
+                                           immersed                                               lowed by 75 s of rest
+                                          CON: passive recovery                                                                                   CON: + 6.6 ± 33.6 W
+                                                                                                                          15-km time-trial        CWI: − 4.7 ± 1.8 min
+                                                                                                                                                  CON: − 4.2 ± 2.0 min
+                                                                                                                          15-km time-trial mean   CWI: + 17.2 ± 7.7 W
+                                                                                                                            power
+Table 1  (continued)
+Study, year; Funding   Study design      CWI and CON configuration      No. of training       Training description   Performance assess-     Performance changes (mean dif-   Data source       PEDro
+                                                                        sessions/duration                            ment                    ference to pre)                                    scale
+                                                                        (frequency)                                                                                                             score
+
+                                                                                               
