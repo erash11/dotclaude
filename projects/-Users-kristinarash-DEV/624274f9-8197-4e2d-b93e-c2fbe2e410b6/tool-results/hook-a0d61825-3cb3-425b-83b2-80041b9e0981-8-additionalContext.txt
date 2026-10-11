@@ -1,0 +1,125 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Key Decisions
+- I approve you to make decisions on My behalf, using your best judgment
+
+## Files Modified
+STATUS.md, INSTRUCTIONS.md, taxonomy.json, inputs.json, Q01.txt, Q02.txt, Q03.txt, Q04.txt, Q05.txt, Q06.txt, Q07.txt, Q09.txt, Q10.txt, Q12.txt, Q14.txt, Q08.txt, Q25.txt, Q33.txt, Q16.txt, Q15.txt, Q18.txt, Q33.json, Q18.json, Q25.json, Q34.txt, Q27.txt, Q11.txt, Q13.txt, Q19.txt, Q34.json, Q27.json, Q35.txt, Q19.json, Q28.txt, Q20.txt, Q35.json, Q20.json, Q36.txt, Q28.json, Q29.txt, Q21.txt, Q58.txt, Q57.txt, Q64.txt, Q60.txt, Q21.json, Q29.json, Q36.json, Q37.txt, Q22.txt, Q30.txt, Q37.json, Q22.json, Q61.txt, Q30.json, Q59.txt, Q65.txt, Q38.txt, Q31.txt, Q23.txt, Q62.txt, Q09.json, Q10.json, Q63.txt, Q31.json, Q11.json, Q23.json, Q38.json, Q32.txt, Q12.json, Q39.txt, Q65.json, Q24.txt, Q13.json, Q32.json, Q14.json, Q15.json, Q24.json, Q39.json, Q16.json, Q66.json, Q17.txt, Q40.txt, Q93.txt, Q92.txt, Q90.txt, Q96.txt, Q67.json, Q68.json, Q91.txt, Q94.txt, Q40.json, Q95.txt, Q89.txt, Q17.json, Q01.json, Q02.json, Q69.json, Q03.json, Q04.json, Q05.json, Q70.json, Q06.json, Q57.json, Q07.json, Q58.json, Q08.json, Q71.json, Q59.json, Q60.json, Q26.txt, Q61.json, Q62.json, Q89.json, Q72.json, Q90.json, Q91.json, Q63.json, Q92.json, Q93.json, Q26.json, Q64.json, Q94.json, Q95.json, Q96.json
+
+## Unresolved Errors
+- {"stdout":"* batch-100-staged\n  master\n  remotes/origin/HEAD -> origin/master\n  remotes/origin/ask-library-drafter\n  remotes/origin/backup/pre-...
+- {"stdout":"4352f28 Merge pull request #24 from erash11/batch-99-staged\n77cc584 Shortlist builder: named-sport swap pass (gate stays at 22); rebuil...
+- {"stdout":"  Critical Review\n\n\n\n\nTime of Season and Game Segment Is Not Related to\nLikelihood of Lower-Limb Injuries: A Meta-Analysis\nTim L....
+- {"stdout":"5:The Interplay of Sports and Nutrition in Neurological Health\n11:                                          1   Faculty of Sports Scien...
+- {"stdout":"Review\n\nTired of ACL Injures: A Review of Methods and Outcomes of\nNeuromuscular Fatigue as a Risk Factor for ACL Injuries\nJoshua L. ...
+
+## Git
+log, pull, branch, add, fetch
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, batch-100/INSTRUCTIONS.md, batch-100/taxonomy.json, batch-100/inputs.json, text/Q01.txt, text/Q02.txt, text/Q03.txt, text/Q04.txt, text/Q05.txt, text/Q06.txt, text/Q07.txt, text/Q09.txt, text/Q10.txt, text/Q12.txt, text/Q14.txt, text/Q08.txt, text/Q25.txt, text/Q33.txt, text/Q16.txt, text/Q15.txt, text/Q18.txt, text/Q34.txt, text/Q27.txt, text/Q11.txt, text/Q13.txt, text/Q19.txt, text/Q35.txt, text/Q28.txt, text/Q20.txt, text/Q36.txt, text/Q29.txt, text/Q21.txt, text/Q58.txt, text/Q57.txt, text/Q64.txt, text/Q60.txt, text/Q37.txt, text/Q22.txt, text/Q30.txt, text/Q61.txt, text/Q59.txt, text/Q65.txt, text/Q38.txt, text/Q31.txt, text/Q23.txt, text/Q62.txt, text/Q63.txt, text/Q32.txt, text/Q39.txt, text/Q24.txt, text/Q17.txt, text/Q40.txt, text/Q93.txt, text/Q92.txt, text/Q90.txt, text/Q96.txt, text/Q91.txt, text/Q94.txt, text/Q95.txt, text/Q89.txt, text/Q26.txt, drafts/Q34.json
+
+## Subagent Tasks
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+- [completed] You are a drafter in a screening pipeline. Read /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/I...
+
+## Environment
+cwd: /Users/kristinarash/.claude/jobs/624274f9/tmp/batch-100/drafts
+model:claude-haiku-5-5
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- <agent-message from="a0cc39fea2a7ed17a">
+[Subagent hand-back] The text below is the final report of a subagent this session delegated to. It is mod… (1135 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- interrupted:false stderrBytes:0
+- <agent-message from="ac644b6cb251ef826">
+[Subagent hand-back] The text below is the final report of a subagent this session delegated to. It is mod… (1639 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- interrupted:false stderrBytes:0
+- … 103 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<rules>
+Follow these decisions:
+- I approve you to make decisions on My behalf, using your best judgment
+</rules>
+
+<session_mode>implement</session_mode>
+
+</session_state>
