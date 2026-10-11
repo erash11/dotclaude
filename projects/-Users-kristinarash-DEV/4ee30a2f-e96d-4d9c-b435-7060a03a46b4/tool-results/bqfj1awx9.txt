@@ -1,0 +1,569 @@
+{
+ "id":"Q33",
+ "sourceFile":"The relationship between mulitple concussions and multidimensional sleep quality in collegiate-aged, active athletes.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title 'The relationship between multiple concussions and multidimensional sleep quality in collegiate-aged, active athletes' in the text matches the filename (filename has the typo 'mulitple').",
+ "confidence":"high",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Brain Health & Psychology",
+ "domains":["Brain Health & Psychology","Sports Medicine & Injury","Recovery & Readiness"],
+ "audiences":["Sports Medicine","Athletic Training","Research & Analytics"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Collegiate","Healthy Athletes","Male Athletes","Female Athletes"],
+ "evidenceSummary":"Cross-sectional study of 212 collegiate-aged athletes (mean age 21.0; 62.7% male) who completed retrospective interviews on concussion and contact-sport history and the Pittsburgh Sleep Quality Index. Each additional prior concussion (ACRM definition) was associated with a higher global PSQI score (B = 0.50, p < .001) and higher odds of poor sleep (PSQI > 5; OR = 1.52, p < .001). Repetitive head impact measures (years of contact sport, age of first exposure, TES criteria, contact vs noncontact sport) were not associated with any sleep measure.",
+ "screeningLimitations":"The design is cross-sectional and concussion history was recalled retrospectively, so the direction of the association cannot be established; the authors note poor sleep may also predispose athletes to concussion. Sleep was self-reported only, and the sample was homogeneous and strictly screened.",
+ "synthesisCaution":"Staff could read this as proof that concussion causes poor sleep, when it is a single cross-sectional association with self-reported sleep and per-concussion odds ratios of about 1.3 to 1.6.",
+ "paper":{
+   "year":2024,
+   "citation":"Van Bortel KM, Hamill KE, Goeckner BD, Mayer AR, Brett BL, Meier TB. The relationship between multiple concussions and multidimensional sleep quality in collegiate-aged, active athletes. Sleep Health. 2024.",
+   "doi":"10.1016/j.sleh.2024.04.005",
+   "abstract":"Objectives: to determine the association of cumulative concussion and repetitive head impacts with self-reported sleep quality in healthy collegiate-aged athletes. Methods: 212 athletes completed semistructured interviews on sport and concussion history and the PSQI. Concussions were counted under ACRM criteria, with CISG and LOC/PTA definitions as secondary metrics; repetitive head impact was measured by years of contact sport, age of first exposure and TES criteria. Results: more prior concussions were associated with higher PSQI global scores and poor sleep, with subscale effects on quality, latency, disturbances, medication use and daytime dysfunction; no repetitive head impact metric was associated with sleep. Conclusions: concussion history, not repetitive head impact exposure, is associated with worse self-reported sleep, mainly through subjective quality rather than duration.",
+   "tldr":"In 212 healthy collegiate-aged athletes, each additional prior concussion was linked to worse self-reported sleep, while contact-sport exposure was not. Sleep is worth asking about in athletes with a concussion history, but this cross-sectional study cannot show that concussion causes poor sleep.",
+   "methods":"Cross-sectional study of 212 athletes aged 18 to 26 (62.7% male) in an active, healthy collegiate-aged cohort. Concussions were counted retrospectively from semistructured interviews under ACRM, CISG and LOC/PTA definitions, and repetitive head impact was estimated from years of contact sport, age of first exposure and TES criteria. Sleep was measured with the PSQI and analysed with general linear and logistic models adjusted for sex.",
+   "findings":"More prior concussions (ACRM) were associated with higher global PSQI scores (B = 0.50, p < .001) and poor sleep (OR = 1.52, p < .001). Concussions were associated with poorer sleep quality, longer latency, more disturbances, more sleep medication use and more daytime dysfunction, but not with sleep duration or efficiency. Years of contact sport, age of first exposure, TES criteria and contact vs noncontact sport were not associated with any sleep measure. Alternative concussion definitions gave similar results.",
+   "limitations":"The cross-sectional design cannot show direction, and reverse causation is possible. Concussion and exposure histories were recalled retrospectively, and sleep was self-reported with the PSQI rather than measured objectively. PSQI subscales were binarized on the response distribution, not clinical cut-offs. Secondary and exploratory analyses were not corrected for multiple comparisons. The authors note the sample was homogeneous and strictly screened; the results text reports the main effects, and the discussion cites the same values.",
+   "practicalImplications":"When an athlete has a concussion history, ask about sleep latency, disturbances and daytime dysfunction, not only total hours slept. Do not use years of contact sport as a marker of sleep risk in this group, since it was not associated with sleep.",
+   "athleteDev":"Sleep quality questions can sit alongside concussion history in athlete profiles, since prior concussions tracked with worse subjective sleep in healthy collegiate athletes. Contact-sport years did not track with sleep, so they should not be used alone to flag sleep problems.",
+   "rtp":"This study can support asking about sleep when an athlete has a concussion history, but it cannot set return-to-sport timing. It excluded athletes concussed within the past 6 months, so it does not describe sleep during recovery."
+ }
+}
+
+ Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+ Contents lists available at ScienceDirect
+ Sleep Health: Journal of the National Sleep Foundation
+ journal homepage: www.sleephealthjournal.org
+The relationship between multiple concussions and multidimensional
+sleep quality in collegiate-aged, active athletes
+Kearnin M. Van Bortel, BS a, Keeley E. Hamill, BS a, Bryna D. Goeckner, MA b,
+ ⁎
+Andrew R. Mayer, PhD c, Benjamin L. Brett, PhD a,d, Timothy B. Meier, PhD a,e,f,
+a
+ Department of Neurosurgery, Medical College of Wisconsin, Milwaukee, Wisconsin, USA
+b
+ Department of Biophysics, Medical College of Wisconsin, Milwaukee, Wisconsin, USA
+c
+ The Mind Research Network/Lovelace Biomedical and Environmental Research Institute, Neurology and Psychiatry Departments, University of New Mexico School
+of Medicine, Department of Psychology, University of New Mexico, Albuquerque, New Mexico, USA
+d
+ Department of Neurology, Medical College of Wisconsin, Milwaukee, Wisconsin, USA
+e
+ Department of Biomedical Engineering, Medical College of Wisconsin, Milwaukee, Wisconsin, USA
+f
+ Department of Cell Biology, Neurobiology and Anatomy, Medical College of Wisconsin, Milwaukee, Wisconsin, USA
+a r t i c le in fo a bstr ac t
+Article history: Objectives: Determine the association of cumulative concussion and repetitive head impacts with self-re­
+Received 12 October 2023 ported sleep quality in healthy collegiate-aged athletes.
+Received in revised form 10 April 2024 Methods: Collegiate-aged athletes (N = 212; mean age 21.00, 62.7% male) completed semistructured in­
+Accepted 19 April 2024
+ terviews for sport and concussion history and the Pittsburgh Sleep Quality Index (PSQI). Number of con­
+ cussions was retrospectively determined based on the 1993 American Congress of Rehabilitation Medicine
+Keywords:
+ (ACRM) criteria; repetitive head impact was measured based on the cumulative years of contact sport
+Mild traumatic brain injury
+Pittsburgh Sleep Quality Index exposure. Associations of number of concussions and repetitive head impact exposure with global PSQI
+Sleep score, overall poor (PSQI > 5) vs. good sleep, and binarized subscale scores were tested. Secondary analyses
+Sport were conducted using alternative concussion criteria and metrics of repetitive head impact.
+ Results: The number of prior concussions was associated with higher PSQI global scores (B(SE) = 0.50(0.13),
+ p < .001). Participants with more concussions were more likely to be poor sleepers (OR = 1.52, p < .001),
+ report poorer sleep quality (OR = 1.29, p = .037), longer sleep latency (OR = 1.34, p = .005), more sleep
+ disturbances (OR = 1.56, p = .001), increased use of sleep medications or sleep aids (OR = 1.35, p = .008),
+ and more sleep-related daily dysfunction (OR = 1.38, p = .002). Similar results were observed for alternative
+ definitions of concussion. No metric of repetitive head impact was associated with any sleep quality metric.
+ Conclusions: More prior concussions, but not repetitive head impact exposure, are associated with worse
+ self-reported sleep, with subscale analyses showing concussion history associated with multiple aspects of
+ subjective sleep quality rather than sleep quantity. Sleep represents an important factor to consider for
+ future research aimed at characterizing and ultimately preventing adverse long-term health outcomes
+ associated with concussion history.
+ © 2024 National Sleep Foundation. Published by Elsevier Inc. All rights are reserved, including those for text
+ and data mining, AI training, and similar technologies.
+Introduction sport athletes. Sleep, including sleep quality, is inherently inter­
+ twined with brain health, with poor sleep representing both a risk
+ Over the last decade, there has been rising concern over the factor for and consequence of a variety of neurological and psy­
+potential cumulative and long-lasting effects of prior concussions, chiatric conditions that have been associated with repeat concussion
+also known as mild traumatic brain injuries (mTBI), and repetitive and RHI.1-4 However, despite the important health implications of
+head impact (RHI) exposure on neurological health among contact dysregulated sleep, potential associations of sleep quality with RHI
+ and cumulative concussions remain relatively unexplored (e.g., in
+ contrast to cognition or mood-related outcomes).
+ ⁎
+ Corresponding author: Timothy B. Meier, PhD, Department of Neurosurgery, Sleep-related problems such as sleep disturbance or chronic
+Medical College of Wisconsin, 8701 Watertown Plank Rd., Milwaukee, WI 53226, USA. sleep disorders are a common consequence of traumatic brain
+ E-mail address: tmeier@mcw.edu (T.B. Meier).
+https://doi.org/10.1016/j.sleh.2024.04.005
+2352-7218/© 2024 National Sleep Foundation. Published by Elsevier Inc. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+injuries (TBI) of all severity (i.e., mTBI and moderate-to-severe TBI), neuroendocrine, severe neurological, or severe autoimmune diseases;
+observed both acutely following TBI and even years postinjury.5-9 use of neuroactive medication; history of moderate or severe TBI;
+Acute sleep abnormalities are also well-documented following concussion within the past 6 months or incomplete recovery from
+concussion, particularly in the context of persistent symptom previous concussion; excessive alcohol or substance use (defined as
+burden.10 Postconcussion sleep disturbances and poor sleep quality scores ≥2 on the CAGE Questions Adapted to Include Drug Use, CAGE-
+are also associated with prolonged injury recovery,11 worse con­ AID); contra-indication to study procedures; and injury/illness pre­
+cussion-related symptoms,12,13 and even abnormalities in white cluding participation in study protocol. This study was approved by the
+matter microstructure.14 Moreover, greater acute sleep disturbances Institutional Review Board at the Medical College of Wisconsin; all
+are also observed in patients with repeat concussion in a dose-de­ participants gave written informed consent.
+pendent manner.15
+ As previously mentioned, however, fewer studies have investigated Interviews for prior concussion and RHI exposure
+the chronic or cumulative effects of concussion or RHI on sleep. In one
+such study, concussion history was predictive of sleep quality in former A detailed history of sport exposure and head injury across the
+collegiate American football players16; in another, there was an asso­ lifespan was collected from semistructured interviews, as previously
+ciation between younger age at first exposure (AFE) and sleep dis­ described.22,24 The primary criteria for retrospectively diagnosing
+turbances in former NFL players who had at least 1 prior concussion.17 concussions for the current study was broadly based on criteria
+RHI was identified as a potential risk factor for developing rapid eye consistent with the 1993 definition of mTBI provided by the American
+movement (REM) sleep disorders within former American football Congress of Rehabilitation Medicine (herein referred to as the ACRM
+players diagnosed with chronic traumatic encephalopathy (CTE) post­ definition).25 Specifically, injuries were included in the final count if
+mortem.18 Most relevant to the current study, a study in student-athletes they were accompanied by loss of consciousness (≤30 minutes; LOC);
+found that those with 3 or more concussions reported more sleep dis­ post-traumatic amnesia (≤24 hours; PTA); retrograde amnesia; or
+turbances than athletes with no prior concussion.19 alteration in mental status (e.g., being dazed or confused). The
+ Given the relative dearth of studies investigating this topic, many number of prior concussions based on criteria consistent with the
+questions remain. First, much of the prior work has focused on retired 2016 International Conference on Concussion in Sport Group defini­
+athletes, typically male former American football players; less work has tion (CISG definition)26 was also obtained as a secondary metric of
+examined these associations in younger, active male and female athletes concussion history. In this definition, any prior injury with LOC
+across a variety of sports. In addition, the limited prior evidence linking (≤30 minutes), PTA (≤24 hours), retrograde amnesia, alteration in
+poor sleep with RHI and/or concussion has used various alternative mental status (i.e., being dazed or confused), or at least two symp­
+methods to retrospectively quantify concussion and RHI history. This toms from the SCAT-5 symptom checklist was included in the final
+could have important implications, as findings could conceivably depend count. The main difference in this definition compared to the ACRM
+on the diagnostic criteria used by the study to operationalize concussion definition is that the presence of symptoms alone without alteration
+(e.g., symptom-based diagnosis vs. the need for alterations in mental in mental status or consciousness is sufficient for diagnosis. Finally,
+status),20 as well as the specific metric of RHI obtained (e.g., total years of because prior work has demonstrated that concussions associated
+contact sport participation and the age of first exposure to contact with LOC or PTA result in greater acute physiological injury (e.g.,
+sport).21-23 Finally, most prior studies assessing the association of con­ greater acute elevation of blood biomarkers and abnormalities in
+cussion or RHI history with subjective measures of sleep have used a brain structure)27,28 and increased risk of postinjury sleep dis­
+global metric of sleep quality. Overall sleep quality, however, can be turbances,29 the total number of concussions with LOC and/or PTA
+impacted or driven by a variety of factors, such as exposure to dis­ (concussions with LOC/PTA) was also determined for each participant.
+turbances, inability to fall asleep in a timely manner, and short durations To quantify cumulative exposure to RHI, detailed information
+of sleep. It is conceivable that concussion history and RHI are associated regarding participation in contact/collision sports (e.g., American
+with specific subcomponents of sleep; however, to our knowledge, this football, rugby, wrestling, soccer, men’s lacrosse, men’s ice hockey,
+has not been previously investigated. Thus, the full extent to which and combat sports) was collected for each participant across the
+concussion and RHI are associated with sleep problems is still unknown. lifespan (i.e., youth through collegiate sports). For the current study,
+ The goal of this work was to assess the association of lifelong the cumulative number of years of exposure across all contact/col­
+concussion history and RHI exposure with subjective reporting of lision sports (years of exposure) serves as the primary metric of RHI.
+overall sleep quality in a cohort of active, healthy collegiate-aged In addition, two additional metrics of RHI were calculated as pre­
+athletes. It was hypothesized that a greater history of concussion and viously described.22 First, AFE to contact sport has been linked with
+RHI would independently be associated with poorer subjective sleep adverse outcomes in former athletes, with AFE occurring before
+quality. The second goal was to explore the extent to which individual 12 years of age being identified as a potential criteria age cut-
+aspects of sleep are associated with prior concussion and RHI ex­ off.21,30,31 Therefore, for the current study, AFE was categorized as
+posure. Finally, as previously stated, there is currently no consensus occurring before 12 years of age (< 12) or either occurring after 12 or
+method for characterizing RHI exposure (e.g., using total years of having no contact sport experience (AFE 12+/none). Finally, exposure
+exposure vs. age of first exposure), and even the retrospective diag­ criteria have been recently proposed for traumatic encephalopathy
+nosis of concussion relies upon the operational definition used. syndrome (TES), the clinical syndrome proposed to be associated
+Therefore, an exploratory goal was to compare the association of sleep with chronic traumatic encephalopathy, as follows: “extensive”
+quality with varying definitions of concussion and RHI metrics. being > 11 years of contact sport exposure including ≥2 years at high
+ school or later levels; “substantial” being ≥5 years of contact sport
+Participants and methods exposure including ≥2 years at high school or later levels; and
+ “nonsubstantial.”23 In the current study, a binary TES variable was
+ Participants were enrolled between December 2018 and January derived from the cumulative years of exposure for each participant
+2023 as part of a project aimed at assessing the chronic effects of based on distribution of groups (“extensive” vs. “nonextensive”).
+concussion and contact sport exposure in collegiate-aged athletes
+(Project ChronEx). Participants were eligible for the study if aged 18- Subjective sleep assessment
+26 years, actively involved in a sport within 12 months, and proficient
+in English. Exclusion criteria included self-reported psychiatric, neu­ Subjective sleep quality was assessed using the Pittsburgh Sleep
+rodevelopmental (including attention-deficit/hyperactivity disorder), Quality Index (PSQI). The PSQI is composed of seven subcomponents
+ 2
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+of sleep that together create a global composite sleep score. The
+seven subcomponents are subjective sleep quality; latency (time in
+minutes it takes to fall asleep); sleep duration (total hours spent
+asleep); sleep efficiency (ratio of hours spent in bed vs. asleep); sleep
+disturbances; use of sleep medication or sleep aids to fall asleep; and
+sleep-related daily dysfunction. A score from zero to three is com­
+puted for each subscale, with higher scores indicating worse sleep/
+more sleep difficulties. These 7 subscores are totaled to create a
+global score from zero to 21, with higher scores again indicating
+worse sleep/more sleep difficulties. A cutoff score of more than 5 on
+the global score was originally proposed as the cutoff to identify
+significantly poorer sleep, with a sensitivity of 89.6% and specificity
+of 86.5% in validation studies.32
+Statistical analysis
+ Data analyses were run using IBM SPSS Statistics Software
+Version 26. General linear models tested associations of number of
+prior concussions and cumulative RHI with global PSQI scores. The
+primary model included the number of concussions based on the
+ACRM definition and the years of exposure as the RHI metric. A Fig. 1. Enrollment flow chart. Consort diagram for the study. Participants could have
+secondary binary logistic regression was conducted to determine if multiple reasons for exclusion at each step. Other* includes individuals not contacted
+the number of prior concussions and years of exposure were asso­ by staff in error or to avoid cohort imbalance. Screen failures were due to disclosure of
+ exclusionary factors during the study visit that were not disclosed initially. Alc./subs.,
+ciated with poor sleep based on a PSQI cutoff > 5. Similarly, separate
+ alcohol/substance use; Cn. < 6 m; incom. Rec., concussion within the last 6 months or
+logistical regression models were fit to investigate the association of incomplete recovery from prior concussion; Neurodev., neurodevelopment; neu­
+the number of prior concussions and years of exposure with in­ roend., neuroendocrine, mod. or sev; TBI, moderate or severe traumatic brain injury;
+dividual subscales of the PSQI (i.e., quality, latency, duration, effi­ < 12 m, less than 12 months
+ciency, disturbances, use of sleep medications, and daily
+dysfunction). Subscale scores were positively skewed and zero-in­
+flated; thus, subscales were binarized based on the distribution of Table 1
+responses for analyses (see Supplementary Materials for distribu­ Study demographics
+tions and cut-offs used for subscales). Sex was included as a cov­
+ Demographic variable Full sample
+ariate for all models.
+ Similar models were used to examine the association of PSQI N %
+ Number of participants 212 –
+scores with prior concussion based on varying diagnostic criteria. Age M(SD) 21.00(1.69) –
+Two alternative sets of models were fit for prior concussion as above Sex
+using (1) the number of concussions based on CISG definition and (2) Female 79 37.3
+the number of prior concussions with either LOC or PTA. For each of Male 133 62.7
+ Race
+these models, years of contact sport exposure and sex were included
+ White 189 89.2
+as covariates. The association of alternative metrics of RHI (the ca­ Black or African-American 17 8.0
+tegorial AFE and TES variables defined above, as well as current sport Native Hawaiian or Other Pacific Islander 1 0.5
+categorized as contact sport (CS) or noncontact sport (NCS)) were Asian 1 0.5
+assessed using similar models as above, with prior concussion Other 4 1.9
+ Ethnicity
+(ACRM definition) and sex included as covariates. A nominal p-value Not Hispanic or Latino 195 92.0
+of .05 (two-tailed) was used to determine significance for all models. Hispanic or Latino 16 7.5
+ Finally, sensitivity analyses were conducted to determine if (a) Unknown 1 0.5
+exclusion of current noncontact sport athletes, (b) exclusion of Number of concussion, median [min, max]
+ ACRM Criteria 1[0,8] –
+athletes with no prior concussion, or (c) the inclusion of additional
+ CISG Criteria 1[0,9] –
+potential confounding variables in the statistical models impacted Post-traumatic amnesia or loss of consciousness 0[0,4] –
+observed results. As reported and discussed in the Supplement, Age of first exposure
+these sensitivity analyses showed only minor differences from the Younger than 12 145 68.4
+main analyses reported in the manuscript. None or 12 or older 67 31.6
+ Traumatic encephalopathy syndrome criteria
+ Extensive 117 55.2
+ Not extensive 95 44.8
+Results Current sporta
+ Contact 139 65.6
+ A total of 212 collegiate-aged athletes are included in this study Noncontact 73 34.4
+(see Fig. 1). The average participant age was 21.00 years (SD = 1.69), Pittsburg Sleep Quality Index Total Score M(SD) 4.58 (2.75) –
+ Pittsburg Sleep Quality Index Scores > 5
+and the sample was 62.7% male. Most participants reported their race
+ Yes 61 28.8
+as white (89%), and their ethnicity as not Hispanic or Latino (92%). No 151 71.2
+Represented current sports included American football, soccer, rugby,
+ Abbreviations: ACRM, American Congress of Rehabilitation Medicine; CISG,
+lacrosse, ice hockey, softball, baseball, basketball, volleyball, track and Concussion in Sport Group; M, mean; SD, standard deviation.
+field, cross country, golf, tennis, cheerleading, water polo, swim/dive, a
+ For the current study, contact sports included American football, soccer, rugby,
+and wrestling. See Table 1 for complete demographics. wrestling, men’s lacrosse, and men’s ice hockey.
+ 3
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+Table 2
+Association between number of concussions and Pittsburgh Sleep Quality Index global score
+ General linear modela Logistic regression modelb
+ B SE t p B SE p OR 95% CI
+ Primary model (ACRM)
+ Number of concussions 0.50 0.13 4.00 < .001 0.42 0.11 < .001 1.52 1.23,1.88
+ Contact sport exposure 0.03 0.03 1.02 .31 − 0.01 0.02 .78 0.99 0.95,1.04
+ Secondary model (CISG)
+ Number of concussions 0.44 0.11 4.04 < .001 0.39 0.10 < .001 1.48 1.23,1.79
+ Contact sport exposure 0.03 0.03 0.99 .33 − 0.01 0.02 .75 0.99 0.95,1.04
+ Secondary model (PTA/LOC)
+ Number of concussions 0.71 0.24 2.96 .003 0.48 0.19 .011 1.62 1.12,2.36
+ Contact sport exposure 0.03 0.03 1.24 .22 0.00 0.02 .98 1.00 0.96,1.05
+Abbreviations: ACRM, American Congress of Rehabilitation Medicine; CI, confidence interval; CISG, Concussion in Sport Group; LOC, loss of consciousness; OR, odds ratio; PTA,
+post-traumatic amnesia; SE, standard error.
+p-values < .05 are bolded.
+ a
+ Global PSQI score is a continuous outcome variable.
+ b
+ Global PSQI score is a binarized outcome variable using a cut-off score of more than 5 to identify poor vs. good sleepers.
+Primary model: ACRM definition of concussion and years of exposure additional concussion, there was a 52% increase in the odds for ex­
+ periencing poor sleep (odds ratio [OR] = 1.52). Again, there was no
+ A total of 105 participants had no history of concussion based on association between years of exposure and sleep (Table 2).
+the ACRM definition; the remaining 107 participants had a history of A greater number of prior concussions was also significantly as­
+concussion ranging from 1 to 8 concussions. Consistent with our sociated with multiple PSQI subcomponents (see Table 3 for all as­
+hypothesis, a greater number of prior concussions was significantly sociated statistics), including poorer sleep quality (p = .037,
+associated with higher global PSQI scores, p = < .001, standardized OR = 1.29); longer sleep latency (p = .005, OR = 1.34); more sleep
+beta = 0.27 (see Table 2 for associated statistics). The association of disturbances (p = .001, OR = 1.56); increased use of sleep medications
+years of exposure with global PSQI scores was not significant. Si­ or sleep aids (p = .008, OR = 1.35); and more sleep-related daily
+milarly, the logistic regression model showed that a greater number dysfunction (p = .002, OR = 1.38). The number of prior concussions
+of prior concussions was associated with increased risk of being a was not significantly associated with sleep duration or sleep efficiency
+poor sleeper (PSQI global score of more than 5), p < .001. For each (ps > .05). There were no effects of years of exposure (ps > .05).
+Table 3
+Association between concussion and Pittsburgh Sleep Quality Index subscales
+ Number of concussions primary (ACRM) Contact sport exposure
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality 0.25 0.12 .037 1.29 1.02,1.63 0.03 0.03 .35 1.03 0.97,1.09
+ Latency 0.30 0.10 .005 1.34 1.10,1.65 0.00 0.02 .89 1.00 0.95,1.04
+ Duration 0.11 0.10 .27 1.12 0.92,1.37 0.02 0.02 .36 1.02 0.98,1.07
+ Efficiency 0.03 0.10 .76 1.03 0.85,1.25 0.02 0.02 .44 1.02 0.98,1.06
+ Disturbances 0.45 0.14 .001 1.56 1.19,2.05 0.00 0.04 .94 1.00 0.93,1.07
+ Medication 0.30 0.11 .008 1.35 1.08,1.68 0.01 0.03 .82 1.01 0.96,1.06
+ Daily Dys. 0.32 0.10 .002 1.38 1.13,1.69 0.00 0.02 .90 1.00 0.96,1.04
+ Number of concussions secondary (CISG) Contact sport exposure
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality 0.25 0.11 .019 1.29 1.04,1.59 0.03 0.03 .36 1.03 0.97,1.09
+ Latency 0.23 0.09 .012 1.25 1.05,1.50 0.00 0.02 .92 1.00 0.95,1.04
+ Duration 0.12 0.09 .19 1.12 0.94,1.34 0.02 0.02 .37 1.02 0.98,1.07
+ Efficiency 0.09 0.09 .29 1.10 0.93,1.30 0.01 0.02 .50 1.02 0.97,1.06
+ Disturbances 0.31 0.12 .011 1.36 1.07,1.73 0.00 0.04 .96 1.00 0.93,1.08
+ Medication 0.31 0.10 .002 1.36 1.12,1.65 0.01 0.03 .86 1.01 0.95,1.06
+ Daily Dys. 0.21 0.09 .017 1.23 1.04,1.45 0.00 0.02 .96 1.00 0.96,1.04
+ Number of concussions secondary (LOC/PTA) Contact sport exposure
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality 0.40 0.22 .07 1.49 0.97,2.29 0.03 0.03 .30 1.03 0.97,1.09
+ Latency 0.29 0.19 .13 1.33 0.92,1.94 0.00 0.02 .92 1.00 0.96,1.05
+ Duration 0.19 0.19 .32 1.21 0.83,1.77 0.02 0.02 .33 1.02 0.98,1.07
+ Efficiency 0.04 0.19 .82 1.04 0.72,1.51 0.02 0.02 .43 1.02 0.98,1.06
+ Disturbances 0.55 0.25 .025 1.73 1.07,2.81 0.01 0.04 .87 1.01 0.94,1.08
+ Medication 0.38 0.20 .06 1.46 0.98,2.18 0.01 0.03 .69 1.01 0.96,1.06
+ Daily Dys. 0.38 0.19 .043 1.46 1.01,2.12 0.00 0.02 .92 1.00 0.96,1.04
+Abbreviations: ACRM, American Congress of Rehabilitation Medicine; CI, confidence interval; CISG, Concussion in Sport Group; Daily Dys., daily dysfunction; LOC/PTA, loss of
+consciousness or post-traumatic amnesia; OR, odds ratio; PSQI, Pittsburgh Sleep Quality Index; SE, standard error.
+p-values < .05 are bolded.
+ 4
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+Alternative definitions of concussion Discussion
+ A total of 87 participants had no history of concussion based on Previous literature has identified increased prevalence of sleep
+CISG criteria; the remaining 125 participants had a history of con­ disorders and complaints as a common consequence of TBI,5-9 but
+cussion ranging from 1 to 9 concussions. As in the primary model, a the cumulative impact of repeat concussion and RHI on subjective
+greater number of prior concussions was significantly associated sleep quality in otherwise young, healthy, and active athletes has not
+with higher global PSQI scores, p = < .001, standardized beta = 0.27 been definitively established. In the current study, a greater number
+(see Table 2 for associated statistics). Similarly, logistic regression of prior concussions in young-adult athletes was significantly asso­
+showed that a greater number of prior concussions was associated ciated with worse self-reported overall sleep quality. Analysis of
+with increased risk of being a poor sleeper (PSQI score of more than subcomponents of the PSQI found that athletes with a greater his­
+5), p < .001, OR = 1.48. Further investigation of subcomponents (see tory of concussion reported worse sleep quality, greater sleep la­
+Table 3) showed that a greater number of prior concussions based on tency, more sleep disturbances or waking, increased use of sleep aids
+CISG criteria was significantly associated with poorer sleep quality or medication, and increased reports of daily dysfunction. Prior
+(p = .019, OR = 1.29); longer sleep latency (p = .012, OR = 1.25); concussion was not associated with actual sleep duration or sleep
+more sleep disturbances (p = .011, OR = 1.36); increased use of sleep efficiency. Similar results were observed when using varying defi­
+medications or aids (p = .002, OR = 1.36); and more sleep-related nitions for retrospectively identifying prior concussion, though ef­
+daily dysfunction (p = .017, OR = 1.23). As in the primary model, the fect sizes were qualitatively larger for diagnostic criteria based on
+number of prior concussions was not significantly associated with the presence of more severe acute injury characteristics (e.g., al­
+sleep duration or sleep efficiency (ps > .05). terations in consciousness vs. symptoms alone). In contrast, RHI
+ A total of 160 participants had no history of concussion with exposure was not associated with sleep quality, regardless of the
+either LOC or PTA; the remaining 52 participants reported 1 to 4 metric used (i.e., cumulative years, AFE, TES criteria). Overall, results
+concussions with either LOC or PTA. As in the primary model, a demonstrate that cumulative history of concussion, not RHI ex­
+greater number of prior concussions with PTA or LOC was sig­ posure, affects sleep quality in a multifaceted manner, even among
+nificantly associated with higher global PSQI scores, p = .003, stan­ younger, active athletes.
+dardized beta = 0.20 (see Table 2). Similarly, logistic regression Current results demonstrating an association of concussion his­
+showed that a greater number of prior concussions with PTA or LOC tory with worse self-reported sleep quality in active (i.e., not
+was associated with increased risk of being a poor sleeper (PSQI former), non-recently concussed athletes are consistent with the
+score of more than 5), p = .011, OR = 1.62. Further investigation of only prior study, to our knowledge, to directly address this issue.
+subcomponents (see Table 3) showed that a greater number of prior Specifically, Blake and colleagues assessed self-reported sleep dis­
+concussions with PTA or LOC was significantly associated with turbances (i.e., fatigue, sleeping too much or too little, restlessness,
+greater sleep disturbances (p = .025, OR = 1.73) and more daily difficulty falling or staying asleep) and found that athletes with 3 or
+dysfunction (p = .043, OR = 1.46). more concussions reported significantly more disturbances than
+ those with no prior concussion.19 Our results demonstrate a poten­
+ tial dose-dependent effect of the number of prior concussions with
+Alternative metrics of RHI sleep, an effect that was observed both when treating sleep as a
+ continuous measure and when comparing poor vs. good sleepers
+ To further explore possible associations with RHI exposure, ad­ based on recommended cut-offs. Sleep quality is a fundamental
+ditional analyses were conducted using AFE and extent of exposure component of overall health, and poor sleep quality is associated
+delineated using recently proposed TES criteria as the proxy for RHI. with a variety of adverse health outcomes, including those that have
+A total of 145 athletes reported an AFE younger than the age of 12 been previously associated with TBI, such as major depressive dis­
+and the remaining 67 athletes reported an AFE equal to or greater order and neurodegenerative disease.1,4 Directly related to concus­
+than the age of 12, or no AFE history (noncontact athletes). Based on sion, poor sleep (e.g., insomnia and daytime sleepiness) has been
+TES criteria, 117 athletes were found to have extensive exposure and proposed to be a significant and underappreciated indicator of future
+the remaining 95 athletes were found to have nonsubstantial or not concussion risk.33 Together, these results suggest a bidirectional
+extensive exposure. Finally, 139 athletes were contact sport athletes relationship between concussion and sleep where prior concussion
+and 73 were noncontact sport athletes. AFE, TES, and current sport is associated with poor sleep which in turn may predispose in­
+(CS vs. NCS) were not significantly associated with global sleep score dividuals to suffering additional concussions. It is worth noting,
+or any subcomponents (see Tables 4 and 5). however, that given the cross-sectional nature of the current study,
+Table 4
+Association between additional repetitive head impact metrics and Pittsburgh Sleep Quality Index global score
+ General linear modela Binary logistic regression modelb
+ B SE t p B SE p OR 95% CI
+ Traumatic encephalopathy syndrome (TES) model
+ TES 0.17 0.40 0.44 .66 − 0.03 0.34 .94 0.98 0.50,1.90
+ Number of concussions 0.51 0.12 4.09 < .001 0.41 0.11 < .001 1.51 1.23,1.87
+ Age of first exposure (AFE) model
+ AFE 0.16 0.41 0.38 .71 0.06 0.36 .87 1.06 0.53,2.14
+ Number of concussions 0.51 0.12 4.12 < .001 0.42 0.11 < .001 1.51 1.23,1.87
+ Contact vs. Noncontact sport (CS/NCS) model
+ CS/NCS 0.35 0.41 0.85 .40 − 0.06 0.36 .86 0.94 0.47,1.89
+ Number of concussions 0.50 0.12 4.04 < .001 0.41 0.11 < .001 1.51 1.22,1.86
+Abbreviations: CI, confidence interval; CS,contact sport; OR, odds ratio; NCS, noncontact sport; SE, standard error.
+p-values < .05 are bolded.
+ a
+ Global PSQI score is a continuous outcome variable.
+ b
+ Global PSQI score is a binarized outcome variable using a cut-off score of more than 5 to identify poor vs. good sleepers.
+ 5
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+Table 5
+Association between additional repetitive head impact metrics and Pittsburgh Sleep Quality Index subscales
+ Traumatic encephalopathy syndrome criteria Number of concussions
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality − 0.07 0.45 .88 0.93 0.38,2.27 0.27 0.12 .028 1.30 1.03,1.65
+ Latency − 0.07 0.34 .84 0.93 0.48,1.83 0.29 0.10 .005 1.34 1.09,1.64
+ Duration − 0.07 0.34 .85 0.94 0.48,1.81 0.12 0.10 .23 1.13 0.93,1.38
+ Efficiency − 0.06 0.32 .85 0.94 0.51,1.76 0.04 0.10 .70 1.04 0.86,1.26
+ Disturbances 0.25 0.54 .64 1.29 0.44,3.74 0.45 0.14 .001 1.57 1.20,2.06
+ Medication − 0.08 0.40 .85 0.93 0.42,2.04 0.30 0.11 .007 1.35 1.08,1.68
+ Daily Dys. − 0.07 0.31 .81 0.93 0.51,1.70 0.32 0.10 .002 1.38 1.12,1.68
+ Age of first exposure Number of concussions
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality − 0.25 0.50 .61 0.78 0.29,2.07 0.27 0.12 .028 1.31 1.03,1.65
+ Latency − 0.16 0.36 .67 0.86 0.42,1.75 0.29 0.10 .005 1.34 1.09,1.64
+ Duration − 0.03 0.36 .94 0.97 0.49,1.95 0.13 0.10 .22 1.13 0.93,1.38
+ Efficiency 0.13 0.33 .69 1.14 0.59,2.20 0.04 0.10 .68 1.04 0.86,1.27
+ Disturbances − 0.29 0.58 .62 0.75 0.24,2.33 0.45 0.14 .001 1.56 1.19,2.04
+ Medication − 0.20 0.44 .66 0.82 0.35,1.94 0.30 0.11 .007 1.35 1.09,1.68
+ Daily Dys. − 0.12 0.33 .71 0.89 0.47,1.68 0.32 0.10 .002 1.38 1.12,1.68
+ Contact vs. Noncontact sport Number of concussions
+ B SE p OR 95% CI B SE p OR 95% CI
+ Quality − 0.11 0.48 .83 0.90 0.35,2.32 0.26 0.12 .029 1.30 1.03,1.65
+ Latency − 0.05 0.36 .90 0.96 0.47,1.93 0.29 0.10 .005 1.34 1.09,1.64
+ Duration − 0.60 0.37 .10 0.55 0.26,1.13 0.11 0.10 .29 1.12 0.91,1.36
+ Efficiency − 0.30 0.34 .38 0.74 0.38,1.45 0.03 0.10 .76 1.03 0.85,1.25
+ Disturbances 0.66 0.55 .23 1.93 0.66,5.68 0.47 0.14 .001 1.60 1.21,2.12
+ Medication 0.08 0.42 .86 1.08 0.47,2.47 0.30 0.11 .007 1.35 1.09,1.69
+ Daily Dys. − 0.02 0.32 .95 0.98 0.52,1.84 0.32 0.10 .002 1.38 1.12,1.69
+Abbreviations: CI, confidence interval; Daily Dys., daily dysfunction; OR, odds ratio; SE, standard error.
+p-values < .05 are bolded.
+we cannot rule out the possibility that the observed association at night). It should be noted, however, that PSQI subcomponents
+between prior concussion and sleep quality is due to individuals scores in the current study were binarized for analysis based on the
+with poor sleep being predisposed for increased risk of concussion. distribution of collected responses. While this is a parsimonious
+Certainly, additional research is needed to determine the complex approach, we do not suggest that these are true cutoffs to reliably
+interrelationship of concussion, sleep, and adverse health outcomes reflect “impaired” and “nonimpaired” groups, but rather this should
+observed in some athletes later in life.2,34 be interpreted as a two-level variable that reflects severity of the
+ Current results also extend upon the current literature by in­ measured sleep construct in this cohort.
+vestigating the association of concussion and RHI history with spe­ Current findings also demonstrate that the observed associations
+cific subcomponents of self-reported sleep. In the primary analyses, of prior concussion and sleep were largely consistent across multiple
+concussion history was associated with worse overall sleep quality, operational definitions of concussion that differed based on their
+greater sleep latency, more sleep disturbances or waking, increased reliance on symptoms alone (in conjunction with injury mechan­
+use of sleep aids or medication, and increased reports of daily dys­ isms) vs. the presence of alterations in mental status or conscious­
+function. In contrast, there was no association of concussion history ness. We have previously found that using the more conservative
+with self-reported total hours of sleep or sleep efficiency (i.e., the definition requiring alteration in mental status (i.e., presence of
+ratio of hours spent in bed vs. hours asleep), even though partici­ symptoms alone is not sufficient for diagnosis) results in stronger
+pants with more concussions felt they take longer to fall asleep and associations of prior concussion with symptoms as well as hippo­
+wake up more throughout the night. This pattern of findings is campal volumes.24 Similarly, acutely, injuries with either LOC or PTA
+consistent with factor analyses of PSQI subcomponent scores that have been shown to result in greater elevation in blood-based TBI
+have found that sleep efficiency and sleep duration generally load biomarkers and hippocampal volumes, suggesting more severe
+together (e.g., a “sleep efficiency” factor), while the other sub­ physiological injury.27,28,38 In the current study, it is noteworthy that
+components load together as either one or two additional factors.35- qualitatively, higher ORs were generally observed for the ACRM
+37
+ Thus, current results suggest that cumulative concussions are definition (i.e., requiring alteration in mental status) compared to
+associated with perceived sleep quality and disturbances. From a the CISG definition (i.e., symptoms alone sufficient). ORs were even
+research perspective, these results demonstrate that questions re­ higher in models investigating number of prior concussions with
+garding how many hours a participant slept last night are not suf­ either LOC or PTA, though they were only significantly associated
+ficient when attempting to determine the sleep-related sequelae of with sleep disturbances and daily dysfunction, likely due to the
+cumulative concussion. Moreover, these results also highlight the fewer number of total injuries meeting this set of criteria. Regard­
+need for future studies aimed at determining if specific components less, current results highlight the importance of efforts aimed at
+of sleep quality are more predictive of adverse long-term outcomes reducing concussion risk in athletes, such as changes to preseason
+observed in some former athletes with extensive concussion his­ practice guidelines, age-appropriate rule changes, and coaching
+tory,34 and if so, identifying candidate interventions to potentially aimed at developing safe techniques for tackling and related high-
+improve sleep quality in these individuals (e.g., limiting disturbances risk activities.39
+ 6
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+ In contrast to our findings on concussion history, this study found Author contributions
+no evidence for a relationship between RHI and sleep quality, re­
+gardless of how RHI was operationalized (e.g., AFE vs. years of ex­ Kearnin M. Van Bortel: Conceptualization, Writing – original
+posure). Younger AFE was recently associated with greater sleep draft, Review & editing, Visualization, Project administration, Formal
+disturbances in former NFL players,17 while RHI was identified as a analysis, Investigation. Keeley E. Hamill: Writing – review & editing,
+risk factor for REM sleep disorders in CTE.18 It is possible that RHI Project administration, Validation, Investigation. Bryna D.
+exposure effects do not manifest until later in life or only emerge Goeckner: Writing – review & editing, Validation. Andrew R. Mayer:
+with aging in conjunction with various lifestyle or other moderating Writing – review & editing. Benjamin L. Brett: Conceptualization,
+factors, and thus were not observable in the current younger cohort. Writing – review & editing. Timothy B. Meier: Conceptualization,
+Longitudinal studies are needed to determine the trajectory of sleep Writing – original draft, Review & editing, Supervision, Funding ac­
+quality as it relates to RHI exposure in active and former athletes. quisition, Formal analysis, Methodology.
+Strengths and limitations Declaration of conflicts of interest
+ The current results should be interpreted within the contexts of Dr Meier receives compensation as a member of the Clinical and
+the strengths and limitations of the study. First, the current study Scientific Advisory Board for Quadrant Biosciences Inc. All other
+had strict exclusion criteria. While this may limit generalizability of authors report no disclosures.
+findings to some extent, it also limits the possibility that current
+associations are observed by underlying comorbidities (e.g., mood Acknowledgments
+disorders). Second, this study included male and female athletes
+from a variety of sports, with varying levels of RHI exposure and The authors thank Amy Nader for study coordination, Daniel
+concussion history. Both RHI and concussion history were de­ Huber and Lezlie España for database management, all Brain Injury
+termined retrospectively and are potentially impacted by recall bias. Research staff at the Medical College of Wisconsin for overall project
+Semistructured interviews, however, allowed retrospective quanti­ support, and the participants, without whom this research would
+fication of concussion and RHI history based on different operational not be possible.
+definitions. This, in theory, should provide accurate estimates of
+both measures, while also allowing the effects of RHI and concussion Appendix A. Supporting information
+on sleep to be modeled separately. One limitation of the current
+study is that the study population is relatively homogenous, and Supplementary data associated with this article can be found in
+future studies in more diverse (i.e., racial, ethnic, and age) cohorts the online version at doi:10.1016/j.sleh.2024.04.005.
+are needed to determine the generalizability of current fundings. In
+addition, sleep quality was assessed based on self-report using the References
+PSQI. The PSQI has been shown to be reliable and valid with high
+convergence with sleep diary data,37,40 but it has lower correspon­ 1. Besedovsky L, Lange T, Haack M. The sleep-immune crosstalk in health and disease.
+ Physiol Rev. 2019;99(3):1325–1380. https://doi.org/10.1152/physrev.00010.2018
+dence to lab-based polysomnography data.41 Ultimately, future
+ 2. Brett BL, Walton SR, Kerr ZY, et al. Distinct latent profiles based on neurobeha­
+studies assessing relationships of cumulative concussion with more vioural, physical and psychosocial functioning of former National Football League
+objective measures of sleep quality are needed. Finally, secondary (NFL) players: an NFL-LONG Study. J Neurol Neurosurg Psychiatry.
+ 2021;92(3):282–290. https://doi.org/10.1136/jnnp-2020-324244
+and exploratory analyses were purposely conducted without strict
+ 3. Montenigro PH, Alosco ML, Martin BM, et al. Cumulative head impact exposure
+correction for multiple comparison correction due to their com­ predicts later-life depression, apathy, executive dysfunction, and cognitive im­
+plementary nature, reducing the likelihood of type II error at the risk pairment in former high school and college football players. J Neurotrauma.
+for type I error. 2017;34(2):328–340. https://doi.org/10.1089/neu.2016.4413
+ 4. Riemann D, Krone LB, Wulff K, Nissen C. Sleep, insomnia, and depression.
+ Neuropsychopharmacology. 2020;45(1):74–89. https://doi.org/10.1038/s41386-
+Conclusions 019-0411-y
+ 5. Al-Ameri LT, Mohsin TS, Abdul Wahid AT. Sleep disorders following mild and
+ moderate traumatic brain injury. Brain Sci. 2019;9(1):10. https://doi.org/10.3390/
+ Healthy, collegiate-aged athletes with more prior concussions brainsci9010010
+report worse sleep in a dose-dependent manner. Investigation of 6. Kempf J, Werth E, Kaiser PR, et al. Sleep-wake disturbances 3 years after traumatic
+specific subcomponents of sleep suggests that concussion history is brain injury. J Neurol Neurosurg Psychiatry. 2010;81(12):1402–1405. https://doi.
+ org/10.1136/jnnp.2009.201913
+associated with multiple aspects of subjective sleep quality rather 7. Makley MJ, English JB, Drubach DA, et al. Prevalence of sleep disturbance in closed
+than sleep quantity. Sleep represents an important factor to consider head injury patients in a rehabilitation unit. Neurorehabil Neural Repair.
+for future research aimed at characterizing and ultimately pre­ 2008;22(4):341–347. https://doi.org/10.1177/1545968308315598
+ 8. Ouellet MC, Savard J, Morin CM. Insomnia following traumatic brain injury: a
+venting adverse long-term health outcomes that have been reported
+ review. Neurorehabil Neural Repair. 2004;18(4):187–198. https://doi.org/10.1177/
+in current and former athletes with repeated concussion. 1545968304271405
+ 9. Theadom A, Cropley M, Parmar P, et al. Sleep difficulties one year following mild
+ traumatic brain injury in a population-based study. Sleep Med.
+Funding
+ 2015;16(8):926–932. https://doi.org/10.1016/j.sleep.2015.04.013
+ 10. Patricios JS, Schneider KJ, Dvorak J, et al. Consensus statement on concussion in
+ This work was supported by the National Institute of sport: the 6th International Conference on Concussion in Sport-Amsterdam,
+Neurological Disorders and Stroke of the National Institutes of October 2022. Br J Sports Med. 2023;57(11):695–711. https://doi.org/10.1136/
+ bjsports-2023-106898
+Health under Award Number R01NS102225. The content is solely the 11. Murdaugh DL, Ono KE, Reisner A, Burns TG. Assessment of sleep quantity and
+responsibility of the authors and does not necessarily represent the sleep disturbances during recovery from sports-related concussion in youth
+official views of the National Institutes of Health. The REDCap elec­ athletes. Arch Phys Med Rehabil. 2018;99(5):960–966. https://doi.org/10.1016/j.
+ apmr.2018.01.005
+tronic database used for this project was supported by the National 12. Hoffman NL, Weber ML, Broglio SP, et al. Influence of postconcussion sleep
+Center for Advancing Translational Sciences, National Institutes of duration on concussion recovery in collegiate athletes. Clin J Sport Med. 2020(30
+Health, Award Number UL1TR001436. B.L.B. acknowledges support Suppl 1):S29–S35. https://doi.org/10.1097/JSM.0000000000000538
+ 13. Trbovich AM, Howie EK, Elbin RJ, et al. The relationship between accelerometer-
+from the National Institute of Neurological Disorders and Stroke measured sleep and next day ecological momentary assessment symptom report
+(award number L30NS113158) and the National Institute on Aging during sport-related concussion recovery. Sleep Health. 2021;7(4):519–525.
+(award number K23AG073528) of the National Institutes of Health. https://doi.org/10.1016/j.sleh.2021.03.006
+ 7
+K.M. Van Bortel et al. Sleep Health: Journal of the National Sleep Foundation xxx (xxxx) xxx–xxx
+14. Lima Santos JP, Kontos AP, Holland CL, et al. The role of sleep quality on white 28. McCrea M, Broglio SP, McAllister TW, et al. Association of blood biomarkers with
+ matter integrity and concussion symptom severity in adolescents. Neuroimage acute sport-related concussion in collegiate athletes: findings from the NCAA and
+ Clin. 2022;35:103130. https://doi.org/10.1016/j.nicl.2022.103130 Department of Defense CARE Consortium. JAMA Netw Open. 2020;3(1):e1919771.
+15. Oyegbile TO, Dougherty A, Tanveer S, et al. High sleep disturbance and longer https://doi.org/10.1001/jamanetworkopen.2019.19771
+ concussion duration in repeat concussions. Behav Sleep Med. 2020;18(2):241–248. 29. Riegler KE, Guty ET, Thomas GA, et al. Functional outcomes, injury variables, and
+ https://doi.org/10.1080/15402002.2019.1578223 athlete characteristics associated with post-concussion sleep disturbance. Arch
+16. Brett BL, Meier TB, Savitz J, et al. Research Letter: sleep mediates the association Clin Neuropsychol. 2023;38(2):182–195. https://doi.org/10.1093/arclin/acac074
+ between prior concussion and depressive symptoms. J Head Trauma Rehabil. 30. Stamm JM, Bourlas AP, Baugh CM, et al. Age of first exposure to football and later-
+ 2021;36(4):E284–E288. https://doi.org/10.1097/HTR.0000000000000663 life cognitive impairment in former NFL players. Neurology.
+17. Lempke LB, Walton SR, Brett BL, et al. Relating American football age of first ex­ 2015;84(11):1114–1120. https://doi.org/10.1212/WNL.0000000000001358
+ posure to patient-reported outcomes and medical diagnoses among former 31. Stamm JM, Koerte IK, Muehlmann M, et al. Age at first exposure to football is
+ National Football League Players: an NFL-LONG study. Sports Med. associated with altered corpus callosum white matter microstructure in former
+ 2023;53(5):1073–1084. https://doi.org/10.1007/s40279-022-01795-9 professional football players. J Neurotrauma. 2015;32(22):1768–1776. https://doi.
+18. Adams JW, Alosco ML, Mez J, et al. Association of probable REM sleep behavior org/10.1089/neu.2014.3822
+ disorder with pathology and years of contact sports play in chronic traumatic 32. Buysse DJ, Reynolds CF, Monk TH, et al. The Pittsburgh Sleep Quality Index: a new
+ encephalopathy. Acta Neuropathol. 2020;140(6):851–862. https://doi.org/10.1007/ instrument for psychiatric practice and research. Psychiatry Res.
+ s00401-020-02206-x 1989;28(2):193–213. https://doi.org/10.1016/0165-1781(89)90047-4
+19. Blake AL, McVicar CL, Retino M, et al. Concussion history influences sleep dis­ 33. Raikes AC, Satterfield BC, Killgore WDS. Evidence of actigraphic and subjective
+ turbances, symptoms, and quality of life in collegiate student-athletes. Sleep sleep disruption following mild traumatic brain injury. Sleep Med. 2019;54:62–69.
+ Health. 2019;5(1):72–77. https://doi.org/10.1016/j.sleh.2018.10.011 https://doi.org/10.1016/j.sleep.2018.09.018
+20. Mayer AR, Quinn DK, Master CL. The spectrum of mild traumatic brain injury. 34. Manley G, Gardner AJ, Schneider KJ, et al. A systematic review of potential long-
+ Neurology. 2017;89(6):623–632. https://doi.org/10.1212/WNL.0000000000004214 term effects of sport-related concussion. Br J Sports Med. 2017;51(12):969–977.
+21. Alosco ML, Kasimis AB, Stamm JM, et al. Age of first exposure to American football https://doi.org/10.1136/bjsports-2017-097791
+ and long-term neuropsychiatric and cognitive outcomes. e1236-e1236 Transl 35. Cole JC, Motivala SJ, Buysse DJ, et al. Validation of a 3-factor scoring model for the
+ Psychiatry. 2017;7(9) https://doi.org/10.1038/tp.2017.197 Pittsburgh sleep quality index in older adults. Sleep. 2006;29(1):112–116. https://
+22. Amadon GK, Goeckner BD, Brett BL, Meier TB. Comparison of various metrics of doi.org/10.1093/sleep/29.1.112
+ repetitive head impact exposure and their associations with neurocognition in 36. DeGutis J, Chiu C, Thai M, et al. Trauma sequelae are uniquely associated with
+ collegiate-aged athletes. Arch Clin Neuropsychol. 2023;38(5):714–723. https://doi. components of self-reported sleep dysfunction in OEF/OIF/OND Veterans. Behav
+ org/10.1093/arclin/acac107 Sleep Med. 2018;16(1):38–63. https://doi.org/10.1080/15402002.2016.1173550
+23. Katz DI, Bernick C, Dodick DW, et al. National Institute of Neurological Disorders and 37. Mollayeva T, Thurairajah P, Burton K, et al. The Pittsburgh sleep quality index as a
+ Stroke Consensus Diagnostic Criteria for traumatic encephalopathy syndrome. screening tool for sleep dysfunction in clinical and non-clinical samples: a sys­
+ Neurology. 2021;96(18):848–863. https://doi.org/10.1212/WNL.0000000000011850 tematic review and meta-analysis. Sleep Med Rev. 2016;25:52–73. https://doi.org/
+24. Meier T, Espana L, Kirk A, et al. Association of prior concussion with hippocampal 10.1016/j.smrv.2015.01.009
+ volume and symptoms in collegiate-aged athletes. J Neurotrauma. 38. Meier TB, Huber DL, Bohorquez-Montoya L, et al. A prospective study of acute
+ 2021;38(10):1358–1367. https://doi.org/10.1089/neu.2020.7143 blood-based biomarkers for sport-related concussion. Ann Neurol.
+25. Kay T, Harrington DE, Adams R, et al. Definition of mild traumatic brain injury. J 2020;87(6):907–920. https://doi.org/10.1002/ana.25725
+ Head Trauma Rehabil. 1993;8(3):86–87. https://doi.org/10.1097/00001199- 39. Benson BW, McIntosh AS, Maddocks D, et al. What are the most effective risk-
+ 199309000-00010 reduction strategies in sport concussion? Br J Sports Med. 2013;47(5):321–326.
+26. McCrory P, Meeuwisse W, Dvorak J, et al. Consensus statement on concussion in https://doi.org/10.1136/bjsports-2013-092216
+ sport-the 5(th) international conference on concussion in sport held in Berlin, 40. Dietch JR, Taylor DJ, Sethi K, et al. Psychometric evaluation of the PSQI in U.S.
+ October 2016. Br J Sports Med. 2017;51(11):838–847. https://doi.org/10.1136/ college students. J Clin Sleep Med. 2016;12(8):1121–1129. https://doi.org/10.5664/
+ bjsports-2017-097699 jcsm.6050
+27. Mayer AR, Meier TB, Dodd AB, et al. Prospective study of gray matter atrophy 41. Backhaus J, Junghanns K, Broocks A, et al. Test-retest reliability and validity of the
+ following pediatric mild traumatic brain injury. Neurology. 2023;100(5): Pittsburgh Sleep Quality Index in primary insomnia. J Psychosom Res.
+ e516–e527. https://doi.org/10.1212/WNL.0000000000201470 2002;53(3):737–740. https://doi.org/10.1016/s0022-3999(02)00330-6
+ 8
+

@@ -1,0 +1,326 @@
+Newton’s second law (with a certain mass, accelerations             from a biomechanical perspective [46].
+are proportional to the external forces acting on the body)
+is more feasible. The availability of low-cost inertial sen-
+sors has led to the integration of accelerometers in com-           3 Monitoring Internal Load
+mercially available GPS units, and this in turn has led to an
+expansion of the literature towards evaluating the relia-           From a physiological perspective, if the external load is
+bility of accelerometry-based variables [20–23] and their           increased by running further and faster, then that will lead
+utility to assess training load in various situations [24–27]       to increased metabolic energy cost [47, 48]. This metabolic
+and sporting populations [23, 24, 28–30].                           energy is needed to drive muscle contractions, which
+Accelerometers provide a continuous signal at a high             mainly require the provision of carbohydrates, fats and
+measuring frequency (currently 100 Hz in most commer-               proteins, and the provision of oxygen in the case of aerobic
+cially available units) and, therefore, providing a summative       energy-burning processes. These are primarily challenges
+measure of this signal is needed to represent the extent to         to the cardiorespiratory system and therefore measures of
+which the body has been ‘shaken up’. A number of these              internal physiological load are most often related to oxygen
+summative measures have been proposed, such as ‘Dynamic             consumption and cardiac output. The various techniques
+Stress Load’ [31], ‘New Body Load’[32] or ‘Force Load’              and measures of internal load have recently been reviewed
+[33], yet arguably the most commonly reported measure has           elsewhere [49, 50], and here we will focus on some of the
+been Player LoadTM [20, 28]. The premise of these sum-              most commonly used ones. For example, cardiorespiratory
+mative measures is that an estimate of the external biome-          output is easily assessed in the field by recording HRs or
+chanical load can be provided through accumulating the rates        related outcome variables (e.g. training impulse [TRIMP],
+of acceleration. Recent studies have used PlayerLoadTM              as in Borresen and Lambert [51]), and has seen more
+values to monitor training load in season and between mat-          interest than oxygen consumption, which needs semi-in-
+ches [34, 35], and some studies determined typical profiles in      vasive laboratory-based techniques. Both cardiorespiratory
+various team sports [34, 36–39]. Scientists have attempted to       measures ignore the anaerobic contributions, for which
+relate this to the physiological load (external or internal         blood lactate values have been assessed [52, 53]. Blood
+measures), similar to what is commonly done in physical             lactate values reflect an accumulation of previous efforts
+activity monitoring (as reviewed by Chen and Bassett [40]           rather than a measure of the last bout of anaerobic contri-
+and Yang and Hsu [41]). For example, one study demon-               bution [23]. Second, a less direct measure of internal
+strated moderate to high relationships between Play-                physiological load is the subjective RPE. This is seen as an
+erLoadTM and distance covered [29, 42], while other studies         index for training stress and has seen great popularity in the
+demonstrated a moderate to high relationship between                field because of its ease of administration [51, 54, 55].
+PlayerLoadTM and ratings of perceived exertion (RPE)                Despite the subjective nature of RPE, it has been shown to
+[42–44] and a trivial to moderate relationship between              correlate well with a number of HR-based internal load
+PlayerLoadTM and oxygen uptake ( _    VO2 Þ or heart rate (HR)      indicators when multiplied by the duration of the session
+data, respectively [20, 42, 45]. These relationships between        [56], which could justify its use as an estimate of internal
+123
+                                                                                                        J. Vanrenterghem et al.
+physiological load. Altogether, a number of techniques to      indicator for accumulated tissue damage is that its mea-
+monitor internal physiological load, albeit indirectly, have   surement is difficult, that a single acute macro trauma
+become established in running-based team sports, which is      likely overrides the measure of accumulated micro trauma,
+not yet the case for monitoring internal biomechanical         and that there is still a similar repeated bout effect as with
+load.                                                          measures of muscle soreness. In summary, internal loads
+Monitoring mechanical stresses on the musculoskeletal       can be difficult to measure directly, both from a physio-
+system requires measurement of variables such as joint         logical and biomechanical perspective, but subjective
+contact forces or muscle–tendon forces. Advanced               assessments through, for example, differential RPEs may
+biomechanical work is currently being undertaken to esti-      well be a suitable indirect alternative.
+mate such forces in a laboratory environment through
+musculoskeletal modelling approaches (e.g. Saxby et al.
+[57]). At present this is impossible in a field context, and   4 Adaptation
+the relationship between the aforementioned measures of
+external load (e.g. from trunk accelerometry) and tissue-      Principles of load and the assumed consequent adaptation
+specific mechanical stresses are insufficiently understood;    are generally accepted in a physiological context of train-
+therefore, the question is whether indirect measures of        ing-load monitoring, both centrally (heart, lungs, nervous
+mechanical stresses to musculoskeletal tissue are available.   system) or peripherally (capillarization, fibre subtypes,
+A first candidate is in fact RPE, which was earlier proposed   molecular, oxidative, glycolytic). In the context of team
+as a measure of internal physiological load. We would          sports, these have been reviewed extensively elsewhere
+argue that the biomechanical load can also lead to a per-      (e.g. Wallace et al. [48], Howatson and Milak [63], and
+ception of how hard a session was, and that a generic RPE      Gamble [65]). However, to our knowledge, this principle
+probably reflects both types of internal load (biochemical     has not yet been formulated in an explicitly biomechanical
+and mechanical stress). In one study, the session-based        context. While a recent editorial [66] and review [54] have
+RPE (RPE multiplied by the duration of the session) was        already alluded to this, we believe that with more detailed
+actually explained by acceleration-based measures, at least    biomechanical understanding the distinct biomechanical
+to the same extent as by measures of energy expenditure,       load-adaptation pathway in the proposed framework can be
+which would suggest that it veers towards internal             further justified.
+biomechanical load [31]. By asking the player to be               Biomechanical adaptations take place through mechan-
+specific in how much their ‘breathing’ was affected or how     ical stresses to the various musculoskeletal tissues. Mus-
+much their ‘legs’ were affected, one may well be able to       cular adaptations are perhaps best known and the most
+separate their perceptions of physiological and biome-         responsive to mechanical stimuli, with considerable adap-
+chanical load. The idea of differential RPEs is not novel,     tations to mechanical properties such as fascicle length,
+with ‘breathlessness’ and ‘leg exertion’ closely reflecting    pennation angle, and muscle thickness (for an excellent
+the distinction between physiological and biomechanical        review on this matter, see Wisdom et al. [67]). Similar to
+load, respectively [58]. Other measures of how mechani-        how muscle properties depend on mechanical stimuli, the
+cally damaging training activities have been for the mus-      synthesis of other soft tissues and their molecular turnover
+culoskeletal system is the rating of muscle soreness           depends on the mechanical stresses to which they are
+[59, 60], the Profile of Moods (POMS) questionnaire, or        exposed. For example, articular cartilage that is regularly
+the Recovery-Stress Questionnaire (REST-Q) [61]. How-          exposed to high levels of stress has a higher cell volume
+ever, important disadvantages of these measures is that        [68], a higher content of proteoglycans for better synthesis
+these are best measured 1 or 2 days after the session took     [69, 70], and is stiffer [71]. Similarly, tendons undergo
+place rather than immediately after the session, taking into   structural adaptations that change their modulus [72], as
+account the principle of delayed onset of muscle soreness      well as size adaptations based on habitual loading patterns
+(DOMS), and that the repeated bout effect quickly leads to     [73]. While it is commonly known that excessive
+less detectable or absence of muscle soreness [62].            mechanical load accumulation can generate structural
+Therefore, a more direct indicator of muscle damage is         failure in the form of chronic injuries (e.g. stress fractures,
+desired and this is possible through measuring serum cre-      tendinitis), the more subtle biomechanical adaptations are
+atine kinase (CK) levels [63]. In fact, increased CK levels    often overlooked. This is probably because they are less
+have been shown to moderately relate to acceleration-based     obvious to observe, and they tend to have a slower response
+player load in rugby league [60] and Australian rules          rate than physiological adaptations.
+football [64], evidencing the relationship between accu-          Differences in response rates can have important con-
+mulated tissue trauma (internal load) and external biome-      sequences, as demonstrated in Fig. 2. In the top part of
+chanical loads. However, a limitation of CK levels as an       Fig. 2, a sequence of physiological and biomechanical
+123
+Monitoring Physiological and Biomechanical Load Adaptation in Team Sports
+Fig. 2 Theoretical example of
+how different time frames
+between physiological and
+biomechanical adaptation may
+need different periodization
+between physiological and
+biomechanical load. The dotted
+blocks represent an alternative
+biomechanical load
+periodization, leading to an
+improved biomechanical
+adaptation profile, as shown by
+the dotted line. The star
+indicates a theoretical time
+point where critical weakness
+and tissue failure could more
+likely occur
+internal loading is delivered to the system in the form of          5 Differentiating Physiological and Biomechanical
+training sessions with a certain amount of load, for                  Load
+example with 2-day intervals in between sessions. In the
+bottom part of Fig. 2, the associated changes to the state of       Separate modification of physiological and biomechanical
+physiological and biomechanical systems is shown through            load is already common practise in the rehabilitation of
+the solid lines, which could be glycogen availability within        lower extremity musculoskeletal injuries. Aqua jogging
+the muscle (physiological), and stiffness of a tendon               exercises and, more recently, exercises on an anti-gravity
+(biomechanical), to name two. When hypothetically taking            (also called lower-body positive pressure) treadmill have
+a biomechanical response rate that is twice as long as the          become common practice during the rehabilitation of ath-
+physiological response rate, the physiological adaptation           letic injuries [74]. Such exercises aim to provide physio-
+has reached supercompensation and the next training ses-            logical load with reduced biomechanical load, and, for both
+sion comes at the right time to achieve gradual improve-            types of exercises, ground reaction forces are reduced by
+ment of the system. However, due to its slower response             up to 20% depending on modality [75, 76]. The benefit of
+rate, biomechanical adaptation is still incomplete, meaning         these exercises is that despite low biomechanical load, they
+that the next biomechanical load arrives at a time when the         involve walking or running locomotion that in the case of
+tissue is still weakened, causing gradual degeneration until        aqua jogging is only slightly altered due to water resistance
+a critical weakness and tissue failure may be reached (as           [77], therefore these are favoured against cycling exercises,
+indicated by the star in Fig. 2). Perhaps the amount of             even if tissue loading due to impact is known to be neg-
+biomechanical load should be reduced at times of weakness           ligible during cycling. Another example of load differen-
+(dashed biomechanical load block with dashed biome-                 tiation can be found in the load alterations, as observed
+chanical adaptation line at time point 2), allowing for             when playing small-sided games. Studies have found that
+supercompensation in the tissue properties to take place            reducing pitch size reduces the physiological load [78, 79]
+before a higher biomechanical load is delivered at time             but likely increases the biomechanical load [79, 80].
+point 3. This theoretical example of how periodization              Another example is the use of high-intensity interval
+could pursue optimal sequencing of load is only possible if         training (HIT) which delivers a high physiological load but
+one is able to separately control physiological and biome-          with low biomechanical load. As suggested in a recent
+chanical load. In the next section, we will discuss a couple        review on HIT [81], this could therefore be a practical
+of examples of how this can be achieved in running-based            example of the alternative training session that one may
+team sports.                                                        wish to schedule at time points 2 and 4 in Fig. 2. A final
+example is running on sand, where it was found to be
+123
+                                                                                                                        J. Vanrenterghem et al.
+possible to perform maximal intensity sprints involving                       measuring movement demands of team sports. J Sports Med Phys
+high physiological load but reduce the biomechanical load                     Fit. 2015;55(5):471–7.
+8. MacLeod H, Morris J, Nevill A, Sunderland C. The validity of a
+(impact) considerably compared with what is typically                         non-differential global positioning system for assessing player
+experienced on a harder surface (e.g. concrete or grass)                      movement patterns in field hockey. J Sports Sci.
+[82].                                                                         2009;27(2):121–8.
+9. Portas MD, Harley JA, Barnes CA, Rush CJ. The validity and
+reliability of 1-Hz and 5-Hz global positioning systems for linear,
+multidirectional, and soccer-specific activities. Int J Sports
+6 Conclusions                                                                 Physiol Perform. 2010;5(4):448–58.
+10. Varley MC, Fairweather IH, Aughey RJ. Validity and reliability
+Huge amounts of data can be monitored on a daily basis.                       of GPS for measuring instantaneous velocity during acceleration,
+deceleration, and constant motion. J Sports Sci.
+Turning these data into relevant information for players,                     2012;30(2):121–7.
+coaches and therapists can be an extremely daunting                       11. de Koning JJ, Bobbert MF, Foster C. Determination of optimal
+challenge for a novice sports scientist entering the profes-                  pacing strategy in track cycling with an energy flow model. J Sci
+sional sporting environment. With this paper, we would                        Med Sport. 1999;2(3):266–77.
+12. De Koning JJ, Foster C, Lampen J, Hettinga F, Bobbert MF,
+like to encourage not only sport scientists to pursue further                 Koning D, et al. Experimental evaluation of the power balance
+research according to a framework that differentiates                         model of speed skating. J Appl Physiol. 2005;98:227–33.
+physiological and biomechanical load-adaptation path-                     13. di Prampero PE. Sprint running: a new energetic approach. J Exp
+ways, but also the broader coaching and sports medical                        Biol. 2005;208(14):2809–16.
+14. Osgnach C, Poser S, Bernardini R, Rinaldo R, Di Prampero PE.
+staff in running-based team sports to venture into some of                    Energy cost and metabolic power in elite soccer: a new match
+the biomechanical literature reviewed in this paper and                       analysis approach. Med Sci Sports Exerc. 2010;42(1):170–8.
+sharpen their views on how monitoring training load can be                15. Gaudino P, Iaia FM, Alberti G, Strudwick AJ, Atkinson G,
+a valuable tool for improving performance while prevent-                      Gregson W. Monitoring training in elite soccer players : sys-
+tematic bias between running speed and metabolic power data. Int
+ing injury.                                                                   J Sports Med. 2013;34(11):963–8.
+16. Sheppard JM, Young WB, Doyle TLA, Sheppard TA, Newton
+Compliance with Ethical Standards                                             RU. An evaluation of a new test of reactive agility and its rela-
+tionship to sprint speed and change of direction speed. J Sci Med
+Funding No financial support was received for the conduct of this             Sport. 2006;9(4):342–9.
+study or preparation of this article.                                     17. Akenhead R, French D, Thompson KG, Hayes PR. The accel-
+eration dependent validity and reliability of 10 Hz GPS. J Sci
+Conflict of interest Jos Vanrenterghem, Niels Nedergaard, Mark                Med Sport. 2014;17(5):562–6.
+Robinson, and Barry Drust declare that they have no conflicts of          18. Stevens TGA, De Ruiter CJ, Van Niel C, Van De Rhee R, Beek
+interest relevant to the views shared in this article.                        PJ, Savelsbergh GJP. Measuring acceleration and deceleration in
+soccer-specific movements using a local position measurement
+(l pm) system. Int J Sports Physiol Perform. 2014;9(3):446–56.
+References                                                                19. Bloomfield J, Polman R, O’Donoghue P. Physical demands of
+different positions in FA Premier League soccer. J Sport Sci Med.
+2007;6(1):63–70.
+1. Bompa TO, Buzzichelli C. Periodization training for sports. 3rd
+20. Barrett S, Midgley A, Lovell R. PlayerLoadTM: reliability, con-
+ed. Champaign, Il: Human Kinetics; 2015.
+vergent validity, and influence of unit position during treadmill
+2. Wang T, Lin Z, Day RE, Gardiner B, Landao-Bassonga E,
+running. Int J Sports Physiol Perform. 2014;9(6):945–52.
+Rubenson J, et al. Programmable mechanical stimulation influ-
+21. Boyd LJ, Ball K, Aughey RJ. The reliability of MinimaxX
+ences tendon homeostasis in a bioreactor system. Biotechnol
+accelerometers for measuring physical activity in Australian
+Bioeng. 2013;110(5):1495–507.
+football. Int J Sport Physiol Perform. 2011;6:311–21.
+3. Cummins C, Orr R, O’Connor H, West C. Global positioning
+22. Kelly SJ, Murphy AJ, Watsford ML, Austin D, Rennie M.
+systems (GPS) and microtechnology sensors in team sports: a
+Reliability and validity of sports accelerometers during static and
+systematic review. Sport Med. 2013;43(10):1025–42.
+dynamic       testing.   Int   J     Sports   Physiol     Perform.
+4. Duffield R, Reid M, Baker J, Spratford W. Accuracy and relia-
+2015;10(1):106–11.
+bility of GPS devices for measurement of movement patterns in
+23. Barron D, Atkins S, Edmundson C, Fewtrell D. Accelerometer
+confined spaces for court-based sports. J Sci Med Sport.
+derived load according to playing position in competitive youth
+2010;13(5):523–5.
+soccer. Int J Perform Anal Sport. 2014;14(3):734–43.
+5. Gray AJ, Jenkins D, Andrews MH, Taaffe DR, Glover ML.
+24. Cormack SJ, Smith RL, Mooney MM, Young WB, O’Brien BJ.
+Validity and reliability of GPS for measuring distance travelled in
+Accelerometer load as a measure of activity profile in different
+field-based team sports. J Sports Sci. 2010;28(12):1319–25.
+standards of netball match play. Int J Sports Physiol Perform.
+6. Johnston RJ, Watsford ML, Pine MJ, Spurrs RW, Sporri D.
+2014;9(2):283–91.
+Assessment of 5 Hz and 10 Hz GPS units for measuring athlete
+25. Page R, Marrin K, Brogden C, Greig M. Biomechanical and
+movement       demands.      Int   J   Perform      Anal    Sport.
+physiological response to a contemporary soccer match-play
+2013;13(1):262–74.
+simulation. J Strength Cond Res. 2015;29(10):2860–6.
+7. Köklü Y, Arslan Y, Alemdaroglu U, Duffield R. The accuracy
+26. Wundersitz DWT, Gastin PB, Richter C, Robertson SJ, Netto KJ.
+and reliability of Spi ProX global positioning system devices for
+Validity of a trunk-mounted accelerometer to assess peak
+123
+Monitoring Physiological and Biomechanical Load Adaptation in Team Sports
+accelerations during walking, jogging and running. Eur J Sport       46. Nedergaard NJ, Robinson MA, Eusterwiemann E, Drust B, Lis-
+Sci. 2015;15(5):382–90.                                                  boa PJ, Vanrenterghem J. The relationship between whole-body
+27. Wundersitz DWT, Gastin PB, Robertson S, Davey PC, Netto KJ.              external loading and body-worn accelerometry during team sports
+Validation of a trunk-mounted accelerometer to measure peak              movements. Int J Sports Physiol Perform. 2017;12(1):18–26.
+impacts during team sport movements. Int J Sports Med.               47. Di Prampero PE, Atchou G, Brückner J-C, Moia C. The ener-
+2015;36(9):742–6.                                                        getics of endurance running. Eur J Appl Physiol Occup Physiol.
+28. Boyd LJ, Ball K, Aughey RJ. Quantifying external load in aus-            1986;55(3):259–66.
+tralian football matches and training using accelerometers. Int J    48. Wallace LK, Slattery KM, Coutts AJ. A comparison of methods
+Sports Physiol Perform. 2013;8(1):44–51.                                 for quantifying training load: relationships between modelled and
+29. Polglaze T, Dawson B, Hiscock DJ, Peeling P. A comparative               actual training responses. Eur J Appl Physiol. 2014;114(1):11–20.
+analysis of accelerometer and time—motion data in elite men’s        49. Cardinale M, Varley MC. Wearable training monitoring tech-
+hockey training and competition. Int J Sports Physiol Perform.           nology: applications, challenges and opportunities. Int J Sports
+2015;10(4):446–51.                                                       Physiol Perform. 2017. doi:10.1123/ijspp.2016-0423.
+30. Terje D, Jørgen I, Gertjan E, Geir Håvard H, Ulrik W. Player        50. Impellizzeri FM, Rampinini E, Marcora SM. Physiological
+load, acceleration, and deceleration during 45 competitive mat-          assessment of aerobic training in soccer. J Sports Sci.
+ches of elite soccer. J Strength Cond Res. 2015;30(2):1–28.              2005;23(6):583–92.
+31. Gaudino P, Iaia FM, Strudwick AJ, Hawkins RD, Alberti G,             51. Borresen J, Lambert MI. The quantification of training load, the
+Atkinson G, et al. Factors influencing perception of effort (ses-        training response and the effect on performance. Sport Med.
+sion-RPE) during elite soccer training. Int J Sports Physiol Per-        2009;39(9):779–95.
+form. 2015;10(7):860–4.                                              52. Bangsbo J, Iaia FM, Krustrup P. The Yo-Yo intermittent recovery
+32. Ehrmann FE, Duncan CS, Sindhusake D, Franzsen WN, Greene                 test. Sport Med. 2008;38(1):37–51.
+DA. GPS and injury prevention in professional soccer. J Strength     53. Ekblom B. Applied physiology of soccer. Sport Med.
+Cond Res. 2016;30(2):360–7.                                              1986;3(1):50–60.
+33. Colby MJ, Dawson B, Heasman J, Rogalski B, Gabbett TJ.               54. Gabbett TJ. The training-injury prevention paradox: should ath-
+Accelerometer and GPS-derived running loads and injury risk in           letes be training smarter and harder? Br J Sports Med.
+elite Australian footballers. J Strength Cond Res.                       2016;50:273–80.
+2014;28(8):2244–52.                                                  55. Mclaren SJ, Weston M, Smith A, Cramb R, Portas MD. Vari-
+34. Kempton T, Sullivan C, Bilsborough JC, Cordy J, Coutts AJ.               ability of physical performance and player match loads in pro-
+Match-to-match variation in physical activity and technical skill        fessional rugby union. J Sci Med Sport. 2015;19(6):493–7.
+measures in professional Australian Football. J Sci Med Sport.       56. Impellizzeri FM, Rampinini E, Coutts AJ, Sassi A, Marcora SM.
+2015;18(1):109–13.                                                       Use of RPE-based training load in soccer. Med Sci Sports Exerc.
+35. Scott BR, Lockie RG, Knight TJ, Clark AC, Janse de Jonge XA.             2004;36(6):1042–7.
+A comparison of methods to quantify the in-season training load      57. Saxby DJ, Bryant AL, Modenese L, Gerus P, Killen B, Konrath J,
+of professional soccer players. Int J Sports Physiol Perform.            et al. Tibiofemoral contact forces in the anterior cruciate liga-
+2013;8(2):195–202.                                                       ment–reconstructed      knee.      Med     Sci    Sports    Exerc.
+36. Chandler PT, Pinder SJ, Curran JD, Gabbett TJ. Physical                  2016;48(11):2195–206.
+demands of training and competition in collegiate netball players.   58. Weston M, Siegler J, Bahnert A, McBrien J, Lovell R. The
+J Strength Cond Res. 2014;28(10):2732–7.                                 application of differential ratings of perceived exertion to Aus-
+37. Polley CS, Cormack SJ, Gabbett TJ, Polglaze T. Activity profile          tralian Football League matches. J Sci Med Sport.
+of high-level Australian lacrosse players. J Strength Cond Res.          2015;18(6):704–8.
+2015;29(1):126–36.                                                   59. McNamara DJ, Gabbett TJ, Naughton G, Farhart P, Chapman P.
+38. Scanlan AT, Wen N, Tucker PS, Dalbo VJ. The relationships                Training and competition workloads and fatigue responses of
+between internal and external training load models during bas-           elite junior cricket players. Int J Sports Physiol Perform.
+ketball training. J Strength Cond Res. 2014;28(9):2397–405.              2013;8(5):517–26.
+39. Sullivan C, Bilsborough JC, Cianciosi M, Hocking J, Cordy JT,        60. McLellan CP, Lovell DI, Gass GC. Biochemical and endocrine
+Coutts AJ. Factors affecting match performance in professional           responses to impact and collision during elite rugby league match
+Australian football. Int J Sport Physiol Perform. 2014;9:561–6.          play. J Strength Cond Res. 2011;25(6):1553–62.
+40. Chen KY, Bassett DR. The technology of accelerometry-based           61. Bresciani G, Cuevas MJ, Garatachea N, Molinero O, Almar M,
+activity monitors: current and future. Med Sci Sports Exerc.             De Paz JA, et al. Monitoring biological and psychological mea-
+2005;37(11 Suppl.):S490–500.                                             sures throughout an entire season in male handball players. Eur J
+41. Yang CC, Hsu YL. A review of accelerometry-based wearable                Sport Sci. 2010;10(6):377–84.
+motion detectors for physical activity monitoring. Sensors.          62. McHugh MP, Connolly DA, Eston RG, Gleim GW. Exercise-
+2010;10(8):7772–88.                                                      induced muscle damage and potential mechanisms for the repe-
+42. Casamichana D, Castellano J, Calleja-Gonzalez J, San Roman J,            ated bout effect. Sports Med. 1999;27(3):157–70.
+Castagna C. Relationship between indicators of training load in      63. Howatson G, Milak A. Exercise-induced muscle damage fol-
+soccer players. J Strength Cond Res. 2013;27(2):369–74.                  lowing a bout of sport specific repeated sprints. J Strength Cond
+43. Gallo T, Cormack S, Gabbett T, Williams M, Lorenzen C.                   Res. 2009;23(8):2419–24.
+Characteristics impacting on session rating of perceived exertion    64. Young WB, Hepner J, Robbins DW. Movement demands in
+training load in Australian footballers. J Sports Sci.                   Australian rules football as indicators of muscle damage.
+2015;33(5):467–75.                                                       J Strength Cond Res. 2012;26(2):492–6.
+44. Weston M. Difficulties in determining the dose-response nature       65. Gamble P. Strength and conditioning for team sports: sport-
+of competitive soccer matches. J Athl Enhanc. 2013;2(1):1–2.             specific physical preparation for high performance. 2nd ed.
+45. Walker EJ, McAinch AJ, Sweeting A, Aughey RJ. Inertial sen-              London: Routledge; 2013.
+sors to estimate the energy expenditure of team-sport athletes.      66. Bahr R. Demise of the fittest: are we destroying our biggest tal-
+J Sci Med Sport. 2016;19(2):177–81.                                      ents? Br J Sports Med. 2014;48(17):1265–8.
+123
+                                                                                                                         J. Vanrenterghem et al.
+67. Wisdom KM, Delp SL, Kuhl E. Use it or lose it: multiscale              75. Haupenthal A, Ruschel C, Hubert M, De Brito Fontana H,
+skeletal muscle adaptation to mechanical stimuli. Biomech Model            Roesler H. Loading forces in shallow water running at two levels
+Mechanobiol. 2015;14(2):195–215.                                           of immersion. J Rehabil Med. 2010;42(7):664–9.
+68. Eggli PS, Hunzinker EB, Schenk RK. Quantitation of structural          76. Raffalt PC, Hovgaard-Hansen L, Jensen BR. Running on a lower-
+features characterizing weight- and less-weight-bearing regions            body positive pressure treadmill: VO2max, respiratory response,
+in articular cartilage: a stereological analysis of medical femoral        and vertical ground reaction force. Res Q Exerc Sport.
+condyles in young adult rabbits. Anat Rec. 1988;222(3):217–27.             2013;84(2):213–22.
+69. Kiviranta I, Jurvelin J, Tammi M, Säämänen AM, Helminen HJ.         77. Kato T, Onishi S, Kitagawa K. Kinematical analysis of under-
+Weight bearing controls glycosaminoglycan concentration and                water walking and running. Sport Med Train Rehabil.
+articular cartilage thickness in the knee joints of young beagle           2001;10(3):165–81.
+dogs. Arthritis Rheum. 1987;30(7):801–9.                               78. Hill-haas SV, Dawson B, Impellizzeri FM, Coutts AJ. Physiology
+70. Slowman SD, Brandt KD. Composition and glycosaminoglycan                   of small-sided games training in football: a systematic review.
+metabolism of articular cartilage from habitually loaded and               Sport Med. 2011;41(3):199–220.
+habitually unloaded sites. Arthritis Rheum. 1986;29(1):88–94.          79. Gaudino P, Alberti G, Iaia FM. Estimated metabolic and
+71. Swann AC, Seedhom BB. The stiffness of normal articular car-               mechanical demands during different small-sided games in elite
+tilage and the predominant acting stress levels: implications for          soccer players. Hum Mov Sci. 2014;36:123–33.
+the      aetiology       of      osteoarthrosis.     Rheumatology.     80. Hodgson C, Akenhead R, Thomas K. Time-motion analysis of
+1993;32(1):16–25.                                                          acceleration demands of 4v4 small-sided soccer games played on
+72. Kubo K, Yata H, Kanehisa H, Fukunaga T. Effects of isometric               different pitch sizes. Hum Mov Sci. 2014;33(1):25–32.
+squat training on the tendon stiffness and jump performance. Eur       81. Buchheit M, Laursen P. High-intensity interval training, solutions
+J Appl Physiol. 2006;96(3):305–14.                                         to the programming puzzle. Part II: anaerobic energy, neuro-
+73. Couppé C, Kongsgaard M, Aagaard P, Hansen P, Bojsen-Moller                muscular load and practical applications. Sport Med.
+J, Kjær M, et al. Habitual loading results in tendon hypertrophy           2013;43:927–54.
+and increased stiffness of the human patellar tendon. J Appl           82. Gaudino P, Gaudino C, Alberti G, Minetti AE. Biomechanics and
+Physiol. 2008;105:805–10.                                                  predicted energetics of sprinting on sand: hints for soccer train-
+74. Prins J, Cutner D. Aquatic therapy in the rehabilitation of athletic       ing. J Sci Med Sport. 2013;16(3):271–5.
+injuries. Clin Sports Med. 1999;18(2):447–61.
+123
+

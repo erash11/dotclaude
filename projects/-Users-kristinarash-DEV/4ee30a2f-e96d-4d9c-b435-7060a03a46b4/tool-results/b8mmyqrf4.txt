@@ -1,0 +1,625 @@
+{
+ "id": "Q73",
+ "sourceFile": "Tirzepatide in Sport - A comprehensive review of its metaoblic impacts and potential applications for athletes.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Text title 'Tirzepatide in Sport: A Comprehensive Review of its Metabolic Impacts and Potential Applications for Athletes' matches the filename (the filename has a typo, 'metaoblic').",
+ "confidence": "medium",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Nutrition & Hydration",
+ "domains": [
+  "Nutrition & Hydration",
+  "Training & Performance",
+  "Sports Medicine & Injury"
+ ],
+ "audiences": [
+  "Nutrition",
+  "Sports Medicine",
+  "Performance"
+ ],
+ "sports": [
+  "Mixed / General Sport",
+  "Endurance Sport",
+  "Combat Sports"
+ ],
+ "populations": [
+  "Mixed / Unspecified"
+ ],
+ "evidenceSummary": "Narrative review of tirzepatide pharmacology, its effects on weight and body composition, and anti-doping considerations for athletes. The sources are mainly clinical trials and preclinical studies in people with type 2 diabetes or obesity, not athletes. The authors describe possible benefits for fat oxidation, lean mass, inflammation and recovery, and note that tirzepatide is not currently on the WADA prohibited list.",
+ "screeningLimitations": "No athlete trials are reviewed, so every athletic benefit is inferred from non-athlete data and mechanism. Databases and search terms are listed, but no inclusion criteria or systematic selection process is reported, so it is coded as a narrative review.",
+ "synthesisCaution": "Staff could read the review as showing that tirzepatide improves athletic performance or is safe for athletes, when the text offers only mechanistic and non-athlete evidence and calls for more research.",
+ "paper": {
+  "year": 2025,
+  "citation": "Biesiada W, Kopczyńska E, Kulej P, Woźniak J, Kmieć JW, Chernysh AM, et al. Tirzepatide in Sport: A Comprehensive Review of its Metabolic Impacts and Potential Applications for Athletes. Quality in Sport. 2025;37:57025.",
+  "doi": "10.12775/QS.2025.37.57025",
+  "abstract": "Tirzepatide is a GIP and GLP-1 receptor dual agonist used for type 2 diabetes and obesity. This review examines its pharmacology, its effects on body composition, its possible use by athletes in endurance, strength and recovery, and the ethical and anti-doping questions it raises. The authors judge the athletic benefits promising but unproven and call for more research, especially on long-term effects on performance and muscle mass in healthy people.",
+  "tldr": "The review suggests tirzepatide could support body-composition goals and recovery in athletes, but it cites no athlete trials. Any athletic use would need medical oversight and anti-doping review before it is considered.",
+  "methods": "Narrative review of literature from PubMed, Scopus, Web of Science, Embase and Google Scholar, using search terms on tirzepatide, GLP-1/GIP agonism, metabolic therapy, sports performance, body composition, endurance and recovery. No inclusion criteria or systematic selection process are reported.",
+  "findings": "The authors describe large weight and fat loss in trials of people with obesity or type 2 diabetes, and argue from mechanism and preclinical work that lean mass may be preserved. They also propose anti-inflammatory and glycogen-sparing effects that could help endurance and recovery. These are presented as hypotheses, not as effects tested in athletes.",
+  "limitations": "The review reports no search protocol, inclusion criteria or quality appraisal. Most cited evidence comes from people with type 2 diabetes or obesity, and several performance claims, such as improved mitochondrial biogenesis and muscle power, are stated as established without athlete data.",
+  "practicalImplications": "Athletes and staff should not treat tirzepatide as a performance aid on the basis of this review. Any use would need medical oversight, a check of WADA status at the time, and attention to gastrointestinal side effects and hypoglycemia risk.",
+  "athleteDev": "Performance Application: The review shows no tested performance effect in athletes. It is useful only as background for a medical and anti-doping review when an athlete asks about tirzepatide, and it does not support changes to training or nutrition plans.",
+  "rtp": "Return to Sport Application: Cannot inform return to sport. The review does not study injured athletes or rehabilitation and should not guide return-to-play decisions."
+ }
+}
+
+BIESIADA, Wiktor, KOPCZYŃSKA, Ewelina, KULEJ, Piotr, WOŹNIAK, Justyna, KMIEĆ, Justyna Weronika, CHERNYSH, Anna-
+Mariia, DUSIŃSKA, Aleksandra, WASZCZYŃSKI, Jakub, FUCZYŁO, Kamila and STANKEVIČ, Karolina. Tirzepatide in Sport: A
+Comprehensive Review of its Metabolic Impacts and Potential Applications for Athletes. Quality in Sport. 2025;37:57025. eISSN 2450-
+3118.
+https://doi.org/10.12775/QS.2025.37.57025
+https://apcz.umk.pl/QS/article/view/57025
+
+
+
+
+The journal has been 20 points in the Ministry of Higher Education and Science of Poland parametric evaluation. Annex to the announcement
+of the Minister of Higher Education and Science of 05.01.2024. No. 32553.
+Has a Journal's Unique Identifier: 201398. Scientific disciplines assigned: Economics and finance (Field of social sciences); Management and
+Quality Sciences (Field of social sciences).
+Punkty Ministerialne z 2019 - aktualny rok 20 punktów. Załącznik do komunikatu Ministra Szkolnictwa Wyższego i Nauki z dnia 05.01.2024 r.
+Lp. 32553. Posiada Unikatowy Identyfikator Czasopisma: 201398.
+Przypisane dyscypliny naukowe: Ekonomia i finanse (Dziedzina nauk społecznych); Nauki o zarządzaniu i jakości (Dziedzina nauk
+społecznych).
+© The Authors 2025;
+This article is published with open access at Licensee Open Journal Systems of Nicolaus Copernicus University in Torun, Poland
+Open Access. This article is distributed under the terms of the Creative Commons Attribution Non-commercial License which permits any non-
+commercial use, distribution, and reproduction in any medium, provided the original author (s) and source are credited. This is an open access
+article licensed under the terms of the Creative Commons Attribution Non-commercial license Share alike.
+(http://creativecommons.org/licenses/by-nc-sa/4.0/) which permits unrestricted, non-commercial use, distribution and reproduction in any
+medium, provided the work is properly cited.
+The authors declare that there is no conflict of interests regarding the publication of this paper.
+Received: 15.12.2024. Revised: 08.01.2025. Accepted: 12.01.2025 Published: 20.01.2025.
+
+
+
+
+Tirzepatide in Sport: A Comprehensive Review of its Metabolic Impacts and Potential
+Applications for Athletes
+
+
+1. Wiktor Biesiada
+Gromkowski Regional Specialist Hospital, Koszarowa 5, 51-149 Wrocław
+https://orcid.org/0009-0002-2662-5300, wiktor122333@gmail.com
+
+
+2. Ewelina Kopczyńska
+Gromkowski Regional Specialist Hospital, Koszarowa 5, 51-149 Wrocław
+https://orcid.org/0009-0006-5665-6043, ewekop13@gmail.com
+
+
+3. Piotr Kulej
+Regional Specialist Hospital in Wrocław Research and Development Center, H. M.
+Kamieńskiego 73a, 51-124 Wrocław
+https://orcid.org/0009-0004-6655-6877, piotrek.kulej@gmail.com
+
+
+
+
+                                                                      1
+4. Justyna Woźniak
+Independent Public Healthcare Institution of the Ministry of Interior and Administration,
+Kronikarza Galla 25, 30-053 Kraków
+https://orcid.org/0009-0009-7785-4665, justynawozniak512@gmail.com
+
+
+5. Justyna Weronika Kmieć
+Gromkowski Regional Specialist Hospital, Koszarowa 5, 51-149 Wrocław
+https://orcid.org/0009-0001-0570-9575, kmiecjustyna12345@gmail.com
+
+
+6. Anna-Mariia Chernysh
+Regional Specialist Hospital in Wrocław Research and Development Center, H. M.
+Kamieńskiego 73a, 51-124 Wrocław
+https://orcid.org/0009-0008-6900-1593, annamaria.chernysh@gmail.com
+
+
+7. Aleksandra Dusińska
+Uniwersity Clinical Hospital in Wrocław, Borowska 213, 50-556 Wrocław
+https://orcid.org/0000-0001-5197-9683, oladusinska1@gmail.com
+
+
+8. Jakub Waszczyński
+PCK Marine Hospital in Gdynia, Powstania Styczniowego 1, 81-519 Gdynia
+https://orcid.org/0009-0003-4156-2253, waszczynski.jakub@gmail.com
+
+
+9. Kamila Fuczyło
+Lower-Silesian Center of Oncology, Pulmonary and Hematology in Wrocław, pl. Hirszfelda 12,
+53-413 Wrocław
+https://orcid.org/0000-0002-3443-8663, kamilafuczylo@gmail.com
+
+
+10. Karolina Stankevič
+Lower-Silesian Center of Oncology, Pulmonary and Hematology in Wrocław, pl. Hirszfelda 12,
+53-413 Wrocław
+https://orcid.org/0009-0008-3572-1066, karolina.stan97@gmail.com
+
+
+
+
+                                            2
+Correspondence: wiktor122333@gmail.com
+
+
+Abstract
+
+
+Introduction
+Tirzepatide, a dual agonist of glucose-dependent insulinotropic peptide (GIP) and glucagon-
+like peptide-1 (GLP-1) receptors, has emerged as a transformative metabolic therapy with
+exceptional efficacy in weight management and glycemic control. Its relevance in sports science
+is growing, with potential benefits in weight optimization, energy balance, and recovery. By
+influencing glucose homeostasis, fat oxidation, and systemic inflammation, tirzepatide may
+enhance athletic performance. This review examines its pharmacological effects, impact on
+body composition, and implications for endurance, strength, and recovery in athletes, while
+addressing ethical and regulatory considerations, including anti-doping concerns.
+
+
+Purpose of the Work: To analyze tirzepatide’s pharmacological actions, clinical effects, and
+potential applications in optimizing sports performance, recovery, and body composition.
+
+
+Materials and Methods: A comprehensive review of scientific literature was conducted across
+databases including PubMed, Scopus, Web of Science, Embase, and Google Scholar. Search
+terms encompassed tirzepatide, GLP-1/GIP dual agonist, metabolic therapy, sports performance,
+body composition, endurance, and athlete recovery. Relevant studies were synthesized to
+compile findings.
+
+
+Results: Tirzepatide provides significant metabolic benefits, such as enhanced fat oxidation,
+improved glucose regulation, and reduced systemic inflammation. Its effects on body
+composition include substantial fat mass reduction, particularly visceral adiposity, while
+preserving lean muscle mass. These attributes suggest its potential to enhance endurance via
+glycogen-sparing mechanisms and improve recovery after exercise. However, concerns about
+misuse in competitive sports underline the need for regulatory oversight. Further research is
+necessary to evaluate tirzepatide’s long-term effects on athletic performance and address
+associated ethical challenges.
+
+
+
+
+                                               3
+Keywords: Tirzepatide, GIP/GLP-1 dual agonist, metabolic therapy, sports performance, body
+composition, anti- doping, endurance, athlete recovery
+
+
+
+
+Introduction
+
+
+Tirzepatide is a first-in-class dual agonist that stimulates glucagon-like peptide-1 (GLP-1) and
+glucose-dependent insulinotropic peptide (GIP) receptors, offering synergistic benefits in
+glycemic control, appetite suppression, and energy expenditure. Initially developed for
+managing type 2 diabetes (T2D) and obesity, tirzepatide has demonstrated unprecedented
+clinical efficacy, with patients achieving weight losses of up to 22.5%—surpassing the effects
+of traditional GLP-1 receptor agonists like semaglutide [1,3,5].
+In sports medicine, interest in tirzepatide has grown due to its potential to optimize body
+composition, enhance recovery, and improve performance. Metabolic flexibility, or the ability
+to switch efficiently between fat and carbohydrate utilization, is a critical determinant of athletic
+success, especially in endurance sports [7,8]. By promoting fat oxidation and improving insulin
+sensitivity, tirzepatide may enable athletes to achieve superior metabolic efficiency.
+This review evaluates the pharmacological mechanisms, effects on body composition,
+implications for sports performance, and ethical considerations of tirzepatide use in competitive
+environments.
+
+
+Pharmacodynamics and Mechanism of Action
+
+
+Tirzepatide exerts its unique therapeutic effects through its dual agonism of GLP-1 and GIP
+receptors, targeting two distinct incretin pathways. This dual mechanism facilitates metabolic
+outcomes that surpass those achievable with monotherapy, positioning tirzepatide as a highly
+effective agent for addressing complex metabolic challenges such as obesity and type 2 diabetes
+[4,6].
+
+
+GLP-1 Receptor Agonism
+
+
+
+
+                                                  4
+The glucagon-like peptide-1 (GLP-1) receptor pathway is central to tirzepatide’s glucose-
+regulatory and weight- reducing effects. Activation of the GLP-1 receptor enhances glucose-
+stimulated insulin secretion in pancreatic β- cells while concurrently suppressing glucagon
+release in α-cells, thereby stabilizing blood glucose levels. This glucose-dependent mechanism
+minimizes the risk of hypoglycemia, a common concern in diabetes management [2,4].
+
+
+Furthermore, GLP-1 receptor agonism delays gastric emptying, which slows the rate of nutrient
+absorption and mitigates postprandial glucose excursions. This delay also contributes to
+enhanced satiety and a reduction in caloric intake, as shown in trials where tirzepatide reduced
+hunger ratings more effectively than GLP-1 monotherapy [3,4,6].
+
+
+Notably, GLP-1 receptor activation exerts significant effects on the central nervous system,
+particularly in the hypothalamus. Tirzepatide influences hypothalamic neural circuits by
+reducing activity in orexigenic pathways (e.g., neuropeptide Y and agouti-related peptide
+neurons) and enhancing anorexigenic signaling (e.g., pro- opiomelanocortin neurons). This
+modulation reduces hunger perception and promotes sustained satiety, contributing to the drug’s
+profound impact on body weight and energy intake [7,11].
+
+
+GIP Receptor Modulation
+Glucose-dependent insulinotropic peptide (GIP) receptor activation represents a novel and
+complementary mechanism in tirzepatide’s pharmacological profile. Unlike GLP-1, GIP
+influences both glucose metabolism and lipid utilization. Tirzepatide’s agonism of the GIP
+receptor enhances insulin secretion in response to hyperglycemia, improving glucose disposal
+and peripheral insulin sensitivity [4,8].
+
+
+In addition to its glucose-lowering effects, GIP receptor activation uniquely promotes fat
+oxidation and thermogenesis. Preclinical studies suggest that tirzepatide modulates adipose
+tissue metabolism by increasing lipolysis and reducing adipogenesis, leading to substantial
+reductions in fat mass. These effects are especially prominent in visceral adipose depots, which
+are closely associated with cardiometabolic risk [5,8].
+
+
+
+
+                                               5
+Importantly, GIP receptor activity may also play a role in preserving lean muscle mass during
+weight loss. This feature is critical for athletes, where maintaining muscle strength and function
+is paramount to optimizing performance [5,7]. Tirzepatide’s ability to promote fat-specific
+weight loss while sparing muscle tissue provides a distinct advantage over other weight-
+reduction therapies.
+
+
+Anti-inflammatory Properties
+Chronic low-grade inflammation is a hallmark of metabolic disorders and a significant factor
+influencing athletic recovery and performance. Elevated levels of pro-inflammatory cytokines,
+such as interleukin-6 (IL-6) and tumor necrosis factor-alpha (TNF-α), are associated with
+insulin resistance, impaired muscle repair, and increased oxidative stress[11,17]
+Tirzepatide exhibits notable anti-inflammatory effects, reducing systemic markers of
+inflammation in clinical trials. By lowering IL-6 and TNF-α levels, tirzepatide enhances insulin
+sensitivity and mitigates the negative effects of oxidative stress on muscle tissue. This
+mechanism may be particularly beneficial for athletes undergoing intense training, as it
+facilitates faster recovery, reduces muscle soreness, and enhances overall metabolic health
+[3,11,17].
+
+
+Hypothalamic Regulation of Energy Balance
+The hypothalamus is a key regulator of energy homeostasis, integrating peripheral signals such
+as leptin, ghrelin, and insulin to maintain energy balance. Tirzepatide’s central effects extend
+beyond appetite suppression to include modulation of hypothalamic pathways involved in
+energy expenditure.
+
+
+By decreasing orexigenic signals (e.g., neuropeptide Y) and increasing anorexigenic pathways
+(e.g., melanocortin signaling), tirzepatide helps suppress excessive food intake and promote
+adherence to dietary regimens. This is particularly advantageous for athletes in weight-class
+sports or those aiming to optimize body composition without compromising performance [4,7].
+
+
+Additionally, tirzepatide’s hypothalamic actions may enhance metabolic efficiency by
+coordinating peripheral energy utilization with central appetite regulation. These effects further
+
+
+
+
+                                                6
+amplify the drug’s capacity to promote fat oxidation while preserving lean mass, making it a
+valuable tool for achieving and maintaining peak physical condition [4,7,8].
+
+
+Effects on Body Composition and Weight Loss
+
+
+Weight Loss Outcomes
+Tirzepatide has demonstrated remarkable efficacy in achieving substantial weight reduction,
+surpassing the results of conventional therapies targeting obesity and type 2 diabetes. Clinical
+trials consistently report an average weight loss of 15–20% of initial body weight among
+participants, with some individuals achieving reductions as high as 22.5%. These
+unprecedented outcomes are driven by tirzepatide’s multifaceted mechanisms of action, which
+include appetite suppression, enhanced fat oxidation, and increased energy expenditure
+[10,13,15].
+
+
+Appetite suppression, mediated through GLP-1 receptor activation, reduces caloric intake by
+modulating hypothalamic pathways responsible for hunger and satiety. Simultaneously, GIP
+receptor activation promotes fat- specific energy utilization and thermogenesis, leading to
+improved overall metabolic efficiency. Such outcomes represent a significant advancement in
+weight-loss pharmacology, offering a powerful tool for athletes managing weight-sensitive
+goals in sports like wrestling, lightweight rowing, or mixed martial arts [11,15].
+
+
+Fat Oxidation and Lean Mass Preservation
+Unlike traditional caloric restriction, which often results in concurrent loss of muscle mass,
+tirzepatide selectively targets adipose tissue, thereby preserving or even enhancing lean mass.
+This property is of particular relevance in sports where body composition critically influences
+performance, such as cycling, bodybuilding, or combat sports. Clinical studies indicate that
+tirzepatide facilitates reductions in both subcutaneous and visceral adipose tissue, with visceral
+fat reductions being especially pronounced. The decrease in visceral fat not only improves
+aesthetic outcomes but also has profound implications for metabolic health, reducing markers
+of inflammation, enhancing cardiovascular function, and increasing endurance capacity [15,18].
+
+
+
+
+                                                7
+Preservation of lean mass during weight loss is attributed to tirzepatide’s ability to enhance
+insulin sensitivity and reduce systemic inflammation. By improving glucose uptake in skeletal
+muscle and minimizing catabolic stressors, tirzepatide supports muscle integrity and function
+during periods of caloric deficit. This makes it a potentially valuable adjunct for athletes aiming
+to achieve fat loss without compromising strength or recovery [14,18,19].
+
+
+Impact on Muscle Quality
+Emerging evidence suggests that tirzepatide may directly enhance muscle quality by promoting
+anabolic pathways and inhibiting catabolic processes. GLP-1 receptor activation has been
+shown to augment muscle protein synthesis by improving insulin signaling and nutrient
+delivery to muscle tissues. Additionally, tirzepatide’s anti- inflammatory properties play a
+crucial role in maintaining muscle health. Chronic inflammation, often exacerbated by intense
+training regimens, impairs muscle recovery and increases the risk of overtraining syndromes.
+By reducing pro-inflammatory cytokines such as interleukin-6 (IL-6) and tumor necrosis factor-
+alpha (TNF-α), tirzepatide supports faster recovery and improves muscle resilience [11,14,17].
+
+
+Further, preclinical and emerging clinical data suggest that tirzepatide may improve muscle
+contractile function and power metrics. This is potentially mediated by enhanced mitochondrial
+efficiency and reduced intramuscular fat infiltration, both of which contribute to superior
+muscle performance. For athletes in strength- and power- based disciplines, these effects may
+translate to improved metrics such as sprint times, lifting capacity, and explosive force
+generation [13,20].
+
+
+Potential Implications for Athletic Performance
+
+
+Enhanced Endurance
+Tirzepatide holds significant promise for endurance athletes due to its ability to optimize fat
+metabolism, a critical determinant of prolonged aerobic performance. By promoting fat
+oxidation, tirzepatide delays the depletion of glycogen stores, a limiting factor in sustained
+exercise. This glycogen-sparing effect allows athletes to maintain higher intensities over longer
+durations. Mechanistically, tirzepatide enhances mitochondrial function and stimulates
+mitochondrial biogenesis—key processes in efficient energy production. Improved
+
+
+                                                 8
+mitochondrial density and activity increase the capacity for oxidative phosphorylation, the
+primary energy system utilized during endurance events such as long-distance running, cycling,
+and swimming [22,26].
+
+
+Studies further suggest that GIP receptor activation contributes to increased thermogenesis and
+lipid utilization, effectively shifting the body's energy preference toward fat substrates during
+prolonged activity. This adaptation improves not only the athlete's capacity to perform but also
+overall metabolic efficiency, which is essential in sports requiring consistent output over
+extended periods [23].
+
+
+Improved Recovery
+Recovery is a cornerstone of athletic performance, particularly for athletes engaged in high-
+intensity or repeated competition. Tirzepatide’s dual anti-inflammatory and metabolic effects
+position it as a valuable adjunct for optimizing recovery. By reducing systemic inflammation,
+including markers such as interleukin-6 (IL-6) and tumor necrosis factor-alpha (TNF-α),
+tirzepatide mitigates muscle damage and oxidative stress caused by intense physical exertion
+[24,25].
+
+
+In addition, improved glucose uptake and glycogen replenishment are critical for rapid recovery.
+GLP-1 receptor activation facilitates insulin-mediated glucose transport into muscle cells,
+accelerating the restoration of energy reserves post-exercise. This is particularly relevant for
+athletes who undergo multiple training sessions per day or compete in tournaments requiring
+short recovery windows. Enhanced recovery not only reduces fatigue but also minimizes the
+risk of overtraining syndrome, a condition detrimental to performance and long-term athletic
+health [25].
+
+
+Metabolic Flexibility
+Metabolic flexibility, or the ability to efficiently transition between energy substrates such as
+fats and carbohydrates, is a critical determinant of athletic success. Tirzepatide’s ability to
+improve insulin sensitivity directly enhances this metabolic adaptability. For athletes, this
+translates into seamless shifts between aerobic and anaerobic energy systems during varying
+intensities of exercise, such as interval training or sports requiring frequent bursts of power [27].
+
+
+                                                  9
+By enhancing substrate utilization, tirzepatide allows for more efficient ATP production under
+both oxidative and glycolytic conditions. This is particularly advantageous in mixed sports,
+such as soccer, basketball, and CrossFit, where athletes must sustain prolonged aerobic effort
+while executing short bursts of anaerobic activity. Additionally, the reduction in visceral
+adiposity observed with tirzepatide therapy reduces the metabolic burden on insulin signaling
+pathways, further improving the athlete's capacity to utilize energy efficiently under
+competitive conditions [23,27,28].
+
+
+Ethical Considerations and Use in Sports
+
+
+Potential for Misuse
+Athletes without medical justification might use tirzepatide to gain a competitive edge,
+exploiting its benefits in
+weight loss, fat oxidation, and endurance enhancement. However, such off-label use raises
+considerable risks, including gastrointestinal side effects, metabolic dysregulation, and
+potential interference with the body’s natural hormonal balance. Long-term misuse could also
+predispose individuals to health complications, such as hypoglycemia or impaired gut motility,
+especially in the absence of clinical oversight [30,31].
+
+
+Beyond physiological risks, widespread misuse of tirzepatide in sports could create systemic
+problems, such as normalization of pharmacological performance enhancement. This could lead
+to pressures on athletes to adopt similar measures to remain competitive, fostering a cycle of
+dependence on unregulated use of metabolic drugs [31].
+
+
+Regulatory Status
+Tirzepatide is not currently classified as a prohibited substance by the World Anti-Doping
+Agency (WADA). However, its profound metabolic benefits and potential to influence
+performance metrics could prompt future regulatory scrutiny. WADA's consideration of
+tirzepatide for inclusion on the prohibited list would depend on its classification as a
+performance-enhancing agent, specifically whether its effects significantly alter competitive
+fairness.
+
+
+                                                10
+The dual agonism of GLP-1 and GIP receptors is not inherently associated with performance
+enhancement but could be viewed as providing an "unfair advantage" in disciplines where body
+composition and recovery play pivotal roles. Should clinical evidence confirm performance-
+enhancing effects in healthy athletes, regulatory bodies may respond by introducing restrictions,
+requiring clear demarcation of therapeutic versus non-therapeutic use. This situation would
+parallel earlier discussions surrounding other metabolic enhancers like erythropoietin (EPO) or
+beta-2 agonists [30,32].
+
+
+Equity and Fairness
+The availability of tirzepatide introduces profound ethical questions about equity in sports.
+Access to such pharmacological aids could disproportionately benefit athletes with greater
+financial or institutional support, particularly in weight-class disciplines like boxing, wrestling,
+and mixed martial arts. By enabling significant fat loss and improved recovery, tirzepatide could
+amplify disparities between those with access to advanced medical treatments and those without.
+
+
+Moreover, reliance on pharmacological interventions for performance enhancement
+undermines the fundamental principles of sport, including natural ability, discipline, and effort.
+The normalization of tirzepatide use among healthy athletes risks eroding the integrity of
+competition, creating a landscape where success is increasingly dependent on biomedical
+interventions rather than training or talent. This challenges not only fairness but also the spirit
+of sport as defined by international regulatory frameworks [31,32].
+
+
+Conclusion
+Tirzepatide represents a groundbreaking advancement in the treatment of type 2 diabetes,
+obesity, and metabolic health, with potential applications in athletic performance. Its dual action
+on the GLP-1 and GIP receptors allows it to target multiple metabolic pathways simultaneously,
+offering significant benefits in body composition, weight loss, and insulin sensitivity. While
+tirzepatide's effects on athletic performance are promising, ethical concerns regarding its use in
+competitive sports must be addressed, particularly with regard to anti-doping regulations.
+Further research is needed to fully understand the drug's long-term impact on athletic
+performance, muscle mass, and overall metabolic health in healthy individuals.
+
+
+                                                 11
+Disclosures
+
+
+Author’s contribution:
+
+
+Conceptualization: Wiktor Biesiada, Justyna Woźniak, Justyna Weronika Kmieć
+Methodology: Wiktor Biesiada, Justyna Woźniak, Justyna Weronika Kmieć
+Software: Ewelina Kopczyńska, Jakub Waszczyński
+Check: Kamila Fuczyło
+Formal Analysis: Piotr Kulej, Anna-Mariia Chernysh, Karolina Stankevič
+Investigation: Wiktor Biesiada, Justyna Woźniak, Justyna Weronika Kmieć, Ewelina
+Kopczyńska, Jakub Waszczyński, Kamila Fuczyło, Karolina Stankevič, Anna-Mariia Chernysh,
+Piotr Kulej, Aleksandra Dusińska
+Resources: Aleksandra Dusińska, Justyna Woźniak, Piotr Kulej, Wiktor Biesiada
+Data Curation: Karolina Stankevič, Kamila Fuczyło
+Writing-Rough Preparation: Wiktor Biesiada, Justyna Woźniak, Justyna Weronika Kmieć,
+Ewelina Kopczyńska, Jakub Waszczyński, Kamila Fuczyło, Karolina Stankevič, Anna-Mariia
+Chernysh, Piotr Kulej, Aleksandra Dusińska
+Writing-Review and Editing: Wiktor Biesiada, Justyna Woźniak, Justyna Weronika Kmieć,
+Ewelina Kopczyńska, Jakub Waszczyński, Kamila Fuczyło, Karolina Stankevič, Anna-Mariia
+Chernysh, Piotr Kulej, Aleksandra Dusińska
+Visualization: Jakub Waszczyński, Ewelina Kopczyńska
+Supervision: Aleksandra Dusińska, Anna-Maria Chernysh
+Project Administration: Wiktor Biesiada
+
+
+Receiving Funding: not applicable
+
+
+All authors have read and agreed with the published version of the manuscript.
+
+
+Funding Statement: This Research received no external funding.
+
+
+Institutional Review Board Statement: Not applicable.
+
+
+                                             12
+Informed Consent Statement: Not applicable.
+
+
+Data Availability Statement: The authors confirm that the data supporting the findings of this
+study are available within the article's bibliography.
+
+
+Conflicts of Interests: The authors declare no conflict of interest.
+
+
+References
+1.     Drucker DJ. Mechanisms of action and therapeutic applications of GLP-1 receptor
+agonists. Cell Metabolism.2020;31(1):233–253.
+2.     Nauck MA, et al. Glucagon-like peptide 1 as a regulator of food intake and body weight.
+Physiol Rev. 2021;101(3):1–34.
+3.     Aroda VR, et al.        Long-term efficacy of tirzepatide in glycemic    management.
+Diabetes Care. 2022;45(2):456–462.
+4.     Campbell JE, et al. GIP and GLP-1 receptor dual agonists: Evolving therapies for
+metabolic diseases. Nat Rev Endocrinol. 2023;19(4):127–139.
+5.     Gabbay RA, et al. Tirzepatide versus GLP-1 receptor agonists: A comparative review.
+Diabetes Obes Metab. 2021;23(10):2201–2210.
+6.     Rosenstock J, et al. Efficacy and safety of tirzepatide in type 2 diabetes: SURPASS-1
+trial. Lancet Diabetes Endocrinol. 2021;9(9):573–585.
+7.     Fineman MS, et al. The role of incretin hormones in exercise metabolism. Curr Opin
+Endocrinol Diabetes Obes. 2020;27(2):102–109.
+8.     Khalaf KI, et al. Metabolic therapies in elite sports: Current evidence and future
+directions. Sports Med. 2022;52(3):413–426.
+9.     Lee YC, et al. Effects of GLP-1 receptor agonists on fat metabolism. Metabolism.
+2021;120(1):154774.
+10.    Ferrannini E, et al. GLP-1 receptor agonists and their impact on energy metabolism:
+Emerging evidence. Diabetologia. 2022;65(7):1178–1190.
+11.    Zhang X, et al. Anti-inflammatory      properties of tirzepatide: A systematic review.
+Front Endocrinol. 2023;14(1):1123.
+
+
+
+
+                                                13
+12.    Redman LM, et al. The impact of GLP-1 receptor agonists on exercise recovery: A
+narrative review. Sports Sci Health. 2022;18(4):475–487.
+13.    Davies MJ, et al. Tirzepatide in patients with type 2 diabetes and obesity: A randomized
+controlled trial. Lancet. 2022;400(10360):1131–1144.
+14.    Cummings DE, et al. Targeting insulin resistance in athletes: Mechanisms and therapies.
+J Clin Endocrinol Metab. 2019;104(5):1669–1684.
+15.    Buse JB, et al. Efficacy of tirzepatide in improving body composition and metabolic
+control in patients with type 2 diabetes. Diabetes Obes Metab. 2021;23(4):729–738.
+16.    Naylor BA, et al. Glucose metabolism and recovery in athletes using incretin mimetics.
+Sports Med. 2020;50(7):1121–1135.
+17.    Kolb H, et al. Anti-inflammatory effects of tirzepatide and implications for metabolic
+diseases. Eur J Clin Invest. 2023;53(2):1–12.
+18.    Neumann T, et al. Reduction of visceral fat and inflammation with tirzepatide in patients
+with obesity. Obesity. 2022;30(4):777–787.
+19.    Shulman GI, et al. Muscle-specific insulin signaling: A role in recovery and endurance.
+Am J Physiol Endocrinol Metab. 2021;320(2):E218–E231.
+20.    NCD Risk Factor Collaboration. The effects of physical activity and metabolic health
+on sports performance. J Physiol. 2022;600(1):15–28.
+21.    Smith E,       et al. Ethical implications    of pharmacological interventions in sport. J
+Sports Ethics. 2021;13(1):34–48.
+22.    Gannon MA, et al. The role of tirzepatide in enhancing fat metabolism for athletic
+performance. Endocrinol Metab. 2022;37(8):2031–2045.
+23.    Stolar M, et al. Impact of dual incretin-based therapies on fat oxidation in metabolic
+disorders. J Obes. 2023;44(5):739–749.
+24.    Lyssiotis CA, et al. Gastrointestinal side effects of GLP-1 receptor agonists: A
+comparative study of tirzepatide. Diabetes Obes Metab. 2021;23(3):1562–1571.
+25.    Harder T, et al. Assessing tirzepatide’s cardiovascular      safety in metabolic health. J
+Clin Cardiol. 2022;40(2):209–215.
+26.    Gribble FM, et al. Role of gut hormones in regulating energy expenditure and glucose
+metabolism. Nat Metab. 2023;5(5):445–460.
+27.    Jenson RE, et al. Long-term safety of tirzepatide in patients with type 2 diabetes and
+metabolic risk. JAMA. 2021;325(8):854–863.
+
+
+                                                14
+28.    Kim M, et al. The impact of tirzepatide on kidney function in diabetic and obese
+populations. Diabetes Metab Res Rev. 2023;39(7):e3708.
+29.    Ali M, et al. Renal safety    of tirzepatide: A meta-analysis of clinical trial data.
+Kidney Int. 2022;101(6):1174–1184.
+30.    Slafer LA, et al. Role of GLP-1 and GIP agonism in enhancing post-exercise recovery.
+Front Physiol. 2023;14(5):257.
+31.    Forbes A, et al. Impact of tirzepatide on glucose control and body composition in type
+2 diabetes patients. Diabetes Metab J. 2022;46(4):555–568.
+32.    Bergenstal RM, et al. Comparative outcomes of dual incretin therapies in glycemic and
+weight management. Curr Diab Rep. 2023;23(3):265–276.
+
+
+
+
+                                             15
+

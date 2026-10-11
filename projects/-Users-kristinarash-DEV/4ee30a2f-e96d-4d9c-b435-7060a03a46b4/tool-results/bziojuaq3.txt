@@ -1,0 +1,567 @@
+{
+ "id": "Q01",
+ "sourceFile": "The impact of injury severity on sleep quality in soccer players.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Text title 'The Impact of Injury Severity on Sleep Quality in Soccer Players' matches the filename.",
+ "confidence": "medium",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Recovery & Readiness",
+ "domains": ["Recovery & Readiness", "Sports Medicine & Injury", "Rehabilitation & Return to Sport"],
+ "audiences": ["Sports Medicine", "Rehabilitation", "Athletic Training", "Performance"],
+ "sports": ["Soccer"],
+ "populations": ["Injured Athletes", "Mixed / Unspecified"],
+ "evidenceSummary": "This narrative review synthesizes literature on how injury severity, pain, inflammation and psychological stress relate to sleep quality in soccer players, and how poor sleep may affect recovery and reinjury risk. It also covers sleep hygiene, relaxation, nutrition and sleep monitoring strategies. The text describes no search method, inclusion criteria or new data.",
+ "screeningLimitations": "No search strategy or selection process is described, so the evidence base cannot be checked or reproduced. Several supporting claims draw on non-soccer or non-athlete populations (such as cancer survivors and chronic low back pain), and the review does not test any sleep intervention in injured soccer players.",
+ "synthesisCaution": "Staff could read the proposed pathway from injury to poor sleep to slower recovery and higher reinjury risk as established causal chains in soccer players, when the review does not describe how its sources were chosen and many links rest on non-soccer work.",
+ "paper": {
+   "year": 2025,
+   "citation": "Malliou VJ, Pafis G, Ispirlides I, Daskalaki K, Katsikas C. The Impact of Injury Severity on Sleep Quality in Soccer Players. European Journal of Sport Sciences. 2025;4(3).",
+   "doi": "10.24018/ejsport.2025.4.3.230",
+   "abstract": "A narrative review of how injury severity relates to sleep quality in soccer players. It discusses pain and inflammation, psychological stress, the effect of poor sleep on recovery and reinjury risk, and practical sleep strategies including pain management, sleep hygiene, relaxation, nutrition and monitoring.",
+   "tldr": "Injuries in soccer players are linked to poorer sleep through pain, inflammation and stress, and poor sleep may slow recovery. This narrative review proposes sleep hygiene, relaxation, pain management and monitoring as ways to address it.",
+   "methods": "Narrative review. The text does not describe a search strategy, databases, inclusion criteria or study selection.",
+   "findings": "The authors argue that pain, inflammation and psychological stress disrupt sleep in injured athletes, and that disrupted sleep can impair muscle repair, immune function and reaction time. They report that sleep-related strategies such as CBT-I, relaxation training and sleep hygiene are suggested to help, but the review does not quantify these effects in soccer players.",
+   "limitations": "The review is narrative, with no described search or appraisal of study quality. Many cited findings come from adolescent, general-population, clinical or non-soccer samples, and some are reported as definitive without supporting detail in the text.",
+   "practicalImplications": "Staff managing injured soccer players can screen sleep quality alongside pain and mood during rehabilitation and use sleep hygiene and relaxation advice as low-cost additions to the recovery plan. The text does not establish which specific measures change outcomes in this population.",
+   "athleteDev": "The review's sleep hygiene, relaxation and monitoring suggestions could be used in the recovery plan of a developing soccer player who is injured, but the text gives no evidence that these change development or performance outcomes.",
+   "rtp": "The review supports screening sleep during rehabilitation as a possible part of the return-to-play process. It cannot show that improving sleep shortens return to play or lowers reinjury risk, because no outcome data are reported."
+ }
+}
+----
+European Journal of Sport Sciences
+Vol 4 | Issue 3 | May 2025
+ISSN 2796-0048
+
+REVIEW
+
+
+
+
+       The Impact of Injury Severity on Sleep Quality
+                     in Soccer Players
+                                    Vasiliki J. Malliou1, * , George Pafis2 , Ioannis Ispirlides2 ,
+                                         Katerina Daskalaki2 , and Christos Katsikas1
+
+
+  ABSTRACT
+     Soccer players are particularly vulnerable to musculoskeletal injuries, which                                   Submitted: February 14, 2025
+     not only impact their performance but also significantly affect sleep quality.                                  Published: May 01, 2025
+     Pain, inflammation, and psychological stress from injuries frequently lead
+     to sleep disturbances, disrupting essential recovery processes. Moreover,                                           10.24018/ejsport.2025.4.3.230
+     poor sleep can increase the risk of reinjury, creating a cycle that hampers
+     long-term athletic performance. This review synthesizes existing literature                                     1 National and Kapodistrian University of
+     on the complex relationship between injury severity and sleep quality in
+                                                                                                                     Athens, Department of Physical Education
+     soccer players. It explores how pain and inflammation contribute to sleep                                       and Sport Science (D.P.E.S.S), Greece.
+     disturbances, how disrupted sleep alters recovery mechanisms, and how                                           2 Democritus University of Thrace, Depart-
+     psychological stress exacerbates both injury outcomes and sleep disruptions.                                    ment of Physical Education and Sport
+     Additionally, it examines the long-term effects of poor sleep on recovery                                       Science (D.P.E.S.S) Greece.
+     rates and reinjury risk, emphasizing its impact on career longevity. To
+     address these challenges, this review highlights practical strategies for                                       *Corresponding Author:
+     optimizing sleep, including effective pain management, improved sleep                                           e-mail: bmalliou@phed.uoa.gr
+     hygiene, relaxation techniques, and targeted nutritional interventions.
+     The integration of sleep monitoring tools and individualized approaches
+     can help coaches, trainers, and medical professionals prioritize sleep as a
+     fundamental component of injury recovery. By acknowledging sleep as a key
+     factor in both injury prevention and rehabilitation, this review underscores
+     the need for a holistic approach to athlete care. Enhancing sleep quality
+     can significantly improve recovery outcomes, reduce reinjury risks, and
+     ultimately support sustained performance and well-being in soccer players.
+
+     Keywords: Musculoskeletal injuries, sleep quality, soccer players.
+
+                                                                        1. Introduction
+     A growing body of evidence underscores the profound impact that injuries have not only on an
+  athlete’s immediate physical well-being but also on their overall recovery process and subsequent
+  performance levels. Soccer, as a high-intensity sport, is associated with a broad spectrum of injuries,
+  ranging from mild sprains to severe musculoskeletal damage that can prove career-threatening for ath-
+  letes. While the direct physiological consequences of injuries are well-documented, emerging research
+  highlights the often-overlooked role of sleep quality in the rehabilitation and return-to-play process.
+  Athletes suffering from injuries frequently report disrupted sleep patterns, characterized by increased
+  sleep latency, frequent nocturnal awakenings, and reduced sleep efficiency, which collectively hinder the
+  body’s natural recovery mechanisms. Sleep plays a crucial role in muscle protein synthesis, tissue repair,
+  immune function, and hormonal balance, all of which are essential for injury recovery. Inadequate sleep
+  following an injury has been linked to prolonged healing times, increased perception of pain, and higher
+  rates of reinjury. Research by Fullagar et al. (2015a) emphasizes the bidirectional relationship between
+  injury and sleep disruption, suggesting that injured athletes who fail to achieve sufficient sleep are
+  more susceptible to chronic inflammation, delayed muscle regeneration, and impaired neuromuscular
+  function. Furthermore, Watson (2017) found that sleep deprivation negatively affects reaction time,
+  cognitive function, and physical endurance, thereby compromising an athlete’s ability to return to
+  peak performance levels efficiently. Notably, a study by Milewski et al. (2014) reported that adolescent
+
+              Copyright: © 2025 Malliou et al. This is an open access article distributed under the terms of the Creative Commons Attribution License, which permits
+  unrestricted use, distribution, and reproduction in any medium, provided the original source is cited.
+
+
+                                                                                                                            Vol 4 | Issue 3 | May 2025          1
+The Impact of Injury Severity on Sleep Quality in Soccer Players                                  Malliou et al.
+
+athletes who consistently slept less than 8 hours per night had a 1.7 times higher risk of injury compared
+to those who met recommended sleep durations. Moreover, sleep disturbances following an injury
+are often exacerbated by psychological factors, including anxiety, stress, and depressive symptoms,
+which are commonly observed in athletes during rehabilitation periods. Haack and Mullington (2005)
+demonstrated that sleep restriction amplifies pain sensitivity, suggesting that poor sleep not only affects
+tissue healing but also exacerbates pain perception, further hindering the recovery process. Given these
+insights, it becomes imperative for sports medicine professionals to incorporate sleep optimization
+strategies into injury rehabilitation protocols. Implementing personalized sleep hygiene interventions,
+adjusting training loads, and promoting mindfulness-based relaxation techniques can play a pivotal
+role in accelerating recovery and improving return-to-play outcomes. Sleep performs a vital function
+in facilitating muscle repair, enhancing immune function, and supporting mental health, which makes
+any disruption to this essential state a critical and pressing concern for athletes who find themselves
+injured (Fullagar et al., 2015b). When athletes endure injuries, the repercussions extend well beyond the
+physical pain itself, deeply affecting their overall well-being, emotional state, and capacity to perform
+at the highest levels. This interconnectedness between physical injuries and sleep disruption illustrates
+the urgent need for comprehensive care strategies that address both aspects to help athletes regain their
+full potential (Charest & Grandner, 2020; Chennaoui et al., 2021; Dobrosielski et al., 2021).
+   Numerous studies consistently underscore the highly significant role that sleep plays in the intricate
+process of recovery of injury. Sleep disturbances have been linked with increasing pain perception,
+delaying muscle repair, and extending recovery times considerably (Bonnar et al., 2018). Furthermore,
+in addition to these physical impacts, sleep deprivation has been found to correlate directly with
+impaired cognitive function, diminished concentration, and reduced reaction times, which conse-
+quently heightens the risk of experiencing reinjury during rehabilitation (Driller et al., 2018). It is
+therefore essential to thoroughly understand that maintaining proper and consistent sleep patterns can
+greatly influence not only physical recovery but also overall mental performance during the crucial
+rehabilitation process. Prioritizing quality sleep should be an integral part of any recovery plan to
+optimize both physical and cognitive outcomes (Andreucci et al., 2021; Chennaoui et al., 2021; Longo
+et al., 2021). It is becoming increasingly evident that adequate sleep plays an invaluable role in the
+rehabilitation journey, and addressing sleep deficiencies should be a priority for optimizing recovery
+outcomes.
+
+
+                            2. The Impact of Injury Severity on Sleep Quality
+   Injury severity in soccer varies widely, with factors such as match intensity, player workload, and
+playing position influencing the risk and recovery duration. Recent studies highlight that lower limb
+injuries, particularly hamstring strains and anterior cruciate ligament (ACL) tears, account for a
+significant proportion of severe injuries, often leading to prolonged absence from play (Ekstrand et al.,
+2023). Additionally, research suggests that the incidence of severe injuries is higher in competitive
+matches than in training, with fatigue and inadequate recovery playing key roles (Brito et al.,
+2021). Beyond physical consequences, severe injuries can significantly impact sleep quality, as pain,
+inflammation, and psychological distress contribute to disrupted sleep patterns and poor recovery.
+Sleep disturbances following severe injuries can further delay healing and increase the risk of reinjury,
+highlighting the need for integrated rehabilitation approaches that address both physiological and
+sleep-related factors. Preventive strategies, including neuromuscular training, load management, and
+sleep hygiene interventions, have been shown to mitigate injury severity and enhance overall recovery
+in elite soccer players (Van Dyk et al., 2020). Given the critical role of sleep in muscle repair and
+neuromuscular function, integrating sleep assessments and interventions into rehabilitation protocols
+could enhance recovery outcomes and reduce reinjury risk (Fullagar et al., 2015b).
+
+  2.1. Disruptions in Sleep Patterns
+   Athletes suffering from severe injuries experience significant disruptions in their sleep cycles, leading
+to detrimental consequences for both their physical and mental health. Numerous studies indicate
+that sleep fragmentation, frequent nighttime awakenings, and prolonged sleep latency are commonly
+reported among injured individuals, as noted by Nédélec et al. (2015). These issues can severely impact
+recovery and overall well-being. Severe injuries, particularly those requiring surgical intervention or
+immobilization, are associated with more pronounced disruptions due to pain, inflammation, and
+discomfort, which can exacerbate sleep disturbances (Irwin et al., 2016).
+   Furthermore, a comprehensive study by Sahin et al. (2025) examined the persistent effects of
+concussions on sleep quality in adolescent athletes. The findings revealed that athletes with a history of
+concussions exhibited later bedtimes, reduced total sleep time, increased sleep disturbances, prolonged
+sleep latency, and higher levels of daytime dysfunction compared to their non-concussed peers. These
+
+                                                                                 Vol 4 | Issue 3 | May 2025   2
+Malliou et al.                                      The Impact of Injury Severity on Sleep Quality in Soccer Players
+
+results underscore the necessity for targeted interventions aimed at improving sleep quality in athletes
+with a history of concussions, emphasizing the critical role that adequate sleep plays in their recovery
+and overall well-being. Such insights highlight the importance of proactively addressing sleep health
+in the context of athletic injuries.
+   In soccer, where high-intensity physical exertion, rapid directional changes, and frequent physical
+contact place athletes at risk of injuries (particularly concussions, muscle strains, and ligament tears),
+sleep disruptions can significantly hinder performance and rehabilitation. Studies have shown that elite
+soccer players experiencing inadequate sleep demonstrate decreased reaction times, impaired decision-
+making, and reduced physical endurance, all of which are critical for optimal on-field performance.
+Moreover, sleep loss has been linked to an increased likelihood of sustaining injuries, creating a vicious
+cycle of poor recovery and heightened risk (Fullagar et al., 2016). Given the sport’s demanding nature,
+incorporating sleep-focused recovery strategies, such as optimizing sleep hygiene, monitoring sleep
+patterns, and implementing structured rest protocols, could play a pivotal role in enhancing both
+short-term recovery and long-term athletic longevity. Addressing sleep disturbances in soccer players is
+therefore not only essential for post-injury rehabilitation but also for overall performance maintenance
+and injury prevention.
+
+  2.2. Influence of Injury Type on Sleep Quality
+   Research indicates that individuals with chronic musculoskeletal pain often experience significant
+sleep problems. A systematic review and meta-analysis by Scholten-Peeters et al. (2023) suggests that
+sleep problems are associated with an increased risk of chronic musculoskeletal pain, highlighting a
+bidirectional relationship between sleep disturbances and musculoskeletal discomfort. Additionally, a
+narrative review focusing on the impact of sleep on athletes’ performance and injury risk found that
+obtaining less than 7 hours of sleep is consistently associated with an increased risk of musculoskeletal
+injury. Athletes experiencing such sleep patterns for at least 14 days had a 1.7 times higher risk of injury
+(Dinges et al., 2018). These findings underscore the importance of adequate sleep in preventing injuries
+and managing pain among athletes. Addressing sleep disturbances through proper sleep hygiene and
+interventions is crucial for optimizing recovery and overall well-being.
+   This discomfort caused by such injuries may compel individuals to adopt awkward sleeping posi-
+tions, which in turn can exacerbate underlying pain and lead to further sleep disruptions. Additionally,
+concussions and traumatic brain injuries (TBI) are also well-documented to result in considerable sleep
+disturbances. These disturbances typically manifest as hypersomnia, insomnia, and a range of issues
+associated with circadian rhythm dysregulation (Leeder et al., 2012). The relationship between injury
+and sleep is complex, as the pain associated with the injury often leads to difficulties in falling asleep
+and staying asleep, creating a cycle of unrest that can have lasting effects on both physical health and
+overall quality of life (Chennaoui et al., 2021; Ressler et al., 2022).
+   Comprehensive research underscores that athletes who are in the process of recovering from head
+injuries demonstrate altered sleep architecture, which includes significant reductions in essential stages
+of sleep such as REM sleep and slow-wave sleep. This impairment is critical because it directly impacts
+cognitive functions, complicates emotional regulation, and hinders physiological recovery processes
+(Fullagar et al., 2015a). The interrelation between sleep and recovery emphasizes the need for proper
+management of these intricate conditions. Employing targeted sleep therapy, maintaining appropriate
+light exposure, and instituting controlled rest periods are absolutely vital for optimizing rehabilitation
+outcomes. These strategies not only enhance the quality of sleep but also play a crucial role in ensuring
+a timely return to normalcy in athletic performance and overall well-being (Hirshkowitz et al., 2019).
+
+  2.3. Pain and Sleep Deprivation
+   Pain continues to serve as a central factor in the occurrence of sleep disturbances that often follow
+various types of injuries sustained by individuals in different walks of life. When acute pain manifests
+in the body, it triggers the stress response, activating the fight-or-flight mechanism. This reaction leads
+to an increase in cortisol levels, a hormone released during times of stress. This excessive hormonal
+surge can significantly disrupt the normal production of melatonin, a crucial hormone responsible for
+regulating sleep cycles, which ultimately results in poor sleep quality overall (Milewski et al., 2014).
+Moreover, chronic pain conditions tend to exacerbate these sleep-related disruptions, leading to pro-
+longed episodes of sleep deprivation, which can further prolong the healing processes and complicate
+recovery efforts for individuals suffering from pain (Mah et al., 2011). In a comprehensive study,
+Mohammed et al. (2021) investigated the impact of Mindfulness-Based Stress Reduction (MBSR) on
+injured athletes experiencing both pain and psychological distress. Over an eight-week intervention,
+participants practicing mindfulness meditation reported significant improvements in pain tolerance
+and mental health. These findings suggest that incorporating MBSR into rehabilitation programs
+can effectively enhance both physical and psychological recovery in injured athletes, highlighting the
+
+                                                                                     Vol 4 | Issue 3 | May 2025   3
+The Impact of Injury Severity on Sleep Quality in Soccer Players                                 Malliou et al.
+
+importance of a holistic approach to treatment. These encouraging findings suggest that psychological
+interventions can, in fact, be quite effective in managing sleep disturbances that are closely related to
+pain. Such outcomes emphasize the importance of addressing mental well-being alongside physical
+recovery efforts, underscoring the necessity of a holistic approach to treatment and rehabilitation.
+
+
+                     3. Long-Term Implications of Poor Sleep on Injury Recovery
+   Chronic sleep disturbances stemming from injury often result in significant long-term performance
+deficits that can hinder an athlete’s success. Sleep deprivation is strongly linked to various issues,
+including delayed reaction times, impaired cognitive judgment, and an increased susceptibility to new
+injuries (Milewski et al., 2014). Athletes who are enduring consistent sleep disruptions due to injuries
+frequently exhibit slower healing processes and an increase in psychological distress, which further
+complicates their ability to return to play effectively (Mah et al., 2011).
+   Research indicates that long-term sleep deprivation has the potential to greatly and negatively
+affect muscle recovery processes by significantly reducing the production of growth hormones. This
+hormone is extremely important because it plays a crucial role in tissue repair and regeneration
+(Hirshkowitz et al., 2019). Furthermore, when sleep patterns are disrupted, they have been linked
+to weakened immune function. This decline in immune response leads to increased susceptibility to
+infections and prolonged inflammation within the body, both of which can considerably delay and
+hinder rehabilitation efforts (Fullagar et al., 2015b). Maintaining proper sleep hygiene is essential for
+enhancing recovery and supporting overall health.
+   A comprehensive systematic review by Gupta et al. (2017) examined the relationship between elite
+sport participation and sleep quality. The study found that elite athletes often experience high levels
+of sleep disturbances, characterized by longer sleep onset latency, increased sleep fragmentation, non-
+restorative sleep, and excessive daytime fatigue. These sleep issues are prevalent across various sports
+and are influenced by factors such as training demands, travel schedules, and competition stress. The
+findings underscore the critical importance of addressing sleep-related problems to maintain optimal
+performance and well-being in athletes.
+
+
+                     4. Mechanisms Linking Injury Severity to Sleep Disruptions
+  4.1. Pain and Discomfort
+   Pain is undeniably a primary factor that significantly disrupts sleep patterns in injured athletes.
+Numerous studies firmly indicate that pain-related disturbances in sleep can drastically reduce sleep
+efficiency and delay the onset of deep sleep, which is critically important for the recovery process
+(Nédélec et al., 2015). Injuries, particularly those that involve soft tissue damage or fractures, often
+result in prolonged discomfort, which in turn leads to frequent nighttime awakenings that can severely
+impact overall rest. Furthermore, inflammation, which is a natural and biological response to injury,
+only exacerbates discomfort and contributes to chronic sleep fragmentation experienced by many
+athletes (Samuels, 2008). This continuous cycle can hinder the recovery journey, making it vital to
+address both pain management and sleep quality.
+
+  4.2. Inflammatory Responses
+   Injury-induced inflammation significantly elevates the production of cytokines, particularly
+interleukin-6 and tumor necrosis factor-alpha, both of which are well-documented for their impact
+on disrupting normal sleep cycles (Samuels, 2008). The body’s natural inflammatory response plays
+a crucial role in the healing process, but it can inadvertently prolong the experience of discomfort,
+making it challenging for athletes to achieve a truly restful and restorative sleep (Leeder et al., 2012).
+Furthermore, persistent inflammation has been closely associated with an increased likelihood of
+developing various sleep disorders, such as insomnia, which can complicate and hinder the recovery
+process even further (Milewski et al., 2014). This cycle of inflammation and sleep disruption can create
+a significant barrier to optimal athletic performance and overall health.
+
+  4.3. Psychological Stress
+   Anxiety and depression that occur following injuries can serve to further exacerbate the difficulties
+experienced in achieving restorative sleep. Various studies suggest that athletes who are subject to
+heightened stress levels tend to experience lower overall sleep quality, along with an increased frequency
+of nocturnal awakenings throughout the night (Leeder et al., 2012). The psychological stress related to
+various factors, including performance expectations, fear of reinjury, and uncertainty about recovery
+timelines, significantly contributes to the development of sleep-onset insomnia as well as issues
+
+                                                                                Vol 4 | Issue 3 | May 2025   4
+Malliou et al.                                     The Impact of Injury Severity on Sleep Quality in Soccer Players
+
+with poor sleep maintenance. In light of these challenges, cognitive behavioral therapy (CBT) and
+relaxation techniques have been suggested as effective methods to help alleviate these stress-induced
+sleep disturbances and improve overall sleep quality (Clemente et al., 2021; Mah et al., 2011; Montero
+et al., 2022).
+
+
+                 5. Practical Strategies to Enhance Sleep Quality in Injured Athletes
+   Effective pain management strategies, which encompass various methods, including medication,
+physiotherapy, and alternative techniques such as cryotherapy, play a significant role in enhancing
+sleep quality (Watson, 2017). The use of non-steroidal anti-inflammatory drugs (NSAIDs) and
+muscle relaxants can alleviate discomfort, promoting restful sleep. Emerging modalities such as
+transcutaneous electrical nerve stimulation (TENS) therapy have shown promise in improving sleep
+quality in individuals with chronic low back pain (Afolalu et al., 2018). Additionally, acupuncture has
+been associated with rapid pain relief among cancer survivors with insomnia, contributing to decreased
+sleep disturbances (Hirshkowitz et al., 2019). New and groundbreaking research increasingly suggests
+that adopting a multimodal approach to pain management, which thoughtfully integrates physical
+therapy alongside psychological interventions, not only provides comprehensive pain relief but also
+enhances the overall quality of sleep experienced by patients (Hirshkowitz et al., 2019). Additionally,
+innovative treatments are under exploration, such as utilizing virtual reality (VR) pain distraction
+techniques, which are designed to assist injured athletes in managing discomfort more effectively
+while simultaneously improving sleep outcomes, presenting a novel avenue for intervention in pain
+management (Smith et al., 2020). The combination of these diverse strategies highlights the importance
+of a holistic approach to pain management, emphasizing the interconnectedness of pain, recovery, and
+quality sleep.
+
+  5.1. Optimizing Sleep Hygiene
+   Establishing consistent and reliable sleep schedules, reducing screen exposure and engagement with
+electronic devices before bedtime, and creating a comfortable and soothing sleeping environment are
+all crucial interventions for significantly improving sleep quality among injured athletes. Research by
+Vitale et al. (2019) emphasizes that maintaining a stable sleep routine and limiting blue light exposure
+before bed can enhance sleep efficiency, reduce sleep onset latency, and improve overall recovery
+outcomes. Moreover, Doherty et al. (2019) highlight that optimizing sleep hygiene by controlling
+bedroom temperature, reducing noise, and establishing pre-sleep relaxation techniques can mitigate
+the negative effects of sleep disturbances on recovery and performance. Strategies such as adjusting
+room temperature to an optimal level, limiting caffeine intake during later parts of the day, and
+incorporating calming wind-down routines into the evening have been found effective in promoting
+better overall sleep quality (Fullagar et al., 2015a). Recent findings have begun to emphasize the
+importance of personalized sleep hygiene practices tailored to individual needs, such as using weighted
+blankets specifically designed to reduce anxiety-related sleep disturbances and blue-light-blocking
+glasses to effectively mitigate the negative effects of electronic device exposure in the hours leading up
+to sleep (Watson et al., 2015). Additionally, research highlights that athletes who engage in consistent
+pre-sleep relaxation rituals, such as taking warm baths, practicing mindfulness exercises, or utilizing
+aromatherapy with calming scents, often report experiencing higher sleep efficiency as well as faster
+sleep onset (Bonnar et al., 2018).
+
+  5.2. Relaxation Techniques
+   Mindfulness practices, progressive muscle relaxation, and guided breathing exercises can be effective
+tools in mitigating stress and enhancing sleep quality for individuals of various backgrounds (Mah
+et al., 2011). An increasing body of research suggests that the integration of yoga and meditation
+into a regular routine can significantly reduce cortisol levels while also improving the ability to fall
+asleep more quickly in athletes who are in the process of recovering from injury (Nédélec et al.,
+2015). In fact, a comprehensive meta-analysis has shown compelling evidence that athletes who
+actively incorporate structured relaxation techniques into their training regimens not only experience
+improved sleep patterns but also see a notable reduction in levels of chronic pain and inflammation
+that can hinder performance (Leeder et al., 2012). Specifically, progressive relaxation training has
+demonstrated remarkable benefits for athletes who struggle with high levels of stress that are linked to
+sleep disturbances, ultimately contributing to deeper and more restorative sleep that enhances overall
+recovery and well-being (Dinani et al., 2024; Milewski et al., 2014; Riegler et al., 2023).
+
+                                                                                    Vol 4 | Issue 3 | May 2025   5
+The Impact of Injury Severity on Sleep Quality in Soccer Players                                 Malliou et al.
+
+  5.3. Nutritional Support
+   Proper nutrition, which includes a variety of foods that are particularly rich in essential nutrients
+such as tryptophan, magnesium, and omega-3 fatty acids, has been found to significantly support
+better sleep quality in athletes (Fullagar et al., 2015a). Moreover, the supplementation with melatonin
+has been studied extensively for its potential benefits in effectively regulating circadian rhythms
+and improving overall sleep efficiency in injured players (Bonnar et al., 2018). Emerging research
+increasingly indicates that hydration status plays a critical and indispensable role in the regulation of
+sleep, as studies have shown that dehydration can be linked to the occurrence of nocturnal muscle
+cramps as well as fragmented sleep patterns, leading to various sleep disturbances Nédélec et al. (2015).
+In addition to hydration, the timing of nutrient intake is another crucial aspect to consider; for example,
+consuming protein-rich meals before bedtime has been shown to enhance overnight muscle repair
+and recovery processes, thereby contributing positively to improved sleep outcomes (Watson, 2017). A
+comprehensive and holistic approach to nutrition for the optimization of sleep should indeed include
+individualized dietary assessments and targeted supplementation strategies, ensuring that athletes
+receive the optimal micronutrient support that is specifically tailored to their unique recovery needs
+and overall health objectives (Hirshkowitz et al., 2019). By addressing these components thoughtfully,
+athletes may experience enhanced recovery and performance through improved sleep quality.
+
+  5.4. Sleep Monitoring and Intervention
+   Sleep monitoring plays a pivotal role in recovery from injuries and the optimization of athletic
+performance, making it a crucial element for athletes seeking to improve their capabilities and health.
+The advent of wearable technology has transformed the landscape of sleep analysis, as devices such
+as actigraphy monitors, sleep tracking rings, and smartwatches have made it possible to gather
+valuable insights into critical aspects, including sleep duration, efficiency, and various disturbances
+that can significantly impact an athlete’s recovery and overall well-being (Watson, 2017). Through
+these innovative technologies, athletes can better understand their sleep patterns and make informed
+decisions to enhance their daily training routines and performance levels.
+   In clinical settings, the utilization of polysomnography stands out as an advanced method that
+enables a detailed and comprehensive analysis of sleep architecture. This technique not only helps
+in identifying potential sleep disorders such as obstructive sleep apnea, which, if left unchecked, can
+severely affect athletic performance and recovery, but it also provides essential data that can guide
+treatment and intervention strategies for athletes (Leeder et al., 2012). Such thorough assessments can
+reveal critical insights necessary for optimizing training regimens.
+   Several validated questionnaires have been meticulously developed to assess the quality of sleep in
+athletes. These tools are designed to offer structured and systematic ways to understand sleep issues
+and their impact on performance levels among athletes. Among these are:
+
+  5.4.1. Athlete Sleep Behavior Questionnaire (ASBQ)
+   Developed by Driller et al. (2018), this particular tool is designed to identify maladaptive sleep
+behaviors in athletes, such as inconsistent sleep schedules and poor sleep hygiene practices. It has
+garnered widespread use in sports research to evaluate sleep patterns comprehensively and pinpoint
+areas where improvement is necessary (Driller et al., 2018).
+
+  5.4.2. Pittsburgh Sleep Quality Index (PSQI)
+   This questionnaire is aimed at assessing the quality of sleep over a one-month period, taking into
+account important factors such as sleep latency, total duration, and various disturbances that may
+occur. This tool has been validated within athletic populations and is commonly employed to evaluate
+sleep quality, specifically in injured athletes, thereby providing essential insights into their recovery
+(Buysse et al., 1989; Gwyther et al., 2022).
+
+  5.4.3. Insomnia Severity Index (ISI)
+   This particular tool is vital for measuring the severity of insomnia symptoms. It evaluates significant
+issues, including difficulty in falling asleep, challenges in maintaining sleep and experiencing early
+morning awakenings. The ISI is particularly beneficial for athletes who are experiencing chronic sleep
+disturbances that can hinder their performance and recovery (Bastien et al., 2001).
+
+ 5.4.4. Epworth Sleepiness Scale (ESS)
+  This questionnaire assesses daytime sleepiness, which can often indicate issues with sleep quality
+or reveal underlying sleep disorders that may not be immediately apparent. Typically, it is used in
+conjunction with other sleep assessment tools, enhancing the overall understanding of an athlete’s sleep
+health (Johns, 1991).
+
+                                                                                Vol 4 | Issue 3 | May 2025   6
+Malliou et al.                                                   The Impact of Injury Severity on Sleep Quality in Soccer Players
+
+  Studies suggest that athletes who consistently track their sleep patterns and make necessary adjust-
+ments to their training schedules experience not only improved recovery rates but also a noticeable
+reduction in the risks of injuries. This highlights the critical nature of sleep in athletic performance,
+underscoring its importance in maintaining optimal health and peak performance levels (Mah et al.,
+2011; Nobari et al., 2023). Personalized sleep interventions, which can include tailored cognitive-
+behavioral therapy for insomnia (CBT-I) along with innovative biofeedback techniques, have been
+shown to significantly enhance sleep quality among injured athletes. Research indicates that these
+methods offer promising results in improving both the duration and quality of sleep (Coel et al.,
+2023; Milewski et al., 2014). By effectively integrating these advanced strategies into comprehensive
+rehabilitation programs, sports professionals are empowered to better address and rectify sleep
+deficiencies. This proactive approach allows for the acceleration of the entire healing and recovery
+process for athletes, ultimately leading to enhanced performance and reduced injury recurrence in the
+long run.
+
+
+                                                        6. Conclusion
+   The bidirectional relationship between the severity of injuries sustained and the quality of sleep
+experienced by athletes underscores the critical need for comprehensive and well-rounded strategies
+within the dynamic field of sports medicine. It is essential to approach the issue of sleep disturbances in
+a multifaceted and holistic manner, which includes the implementation of effective pain management
+techniques, the establishment of good and consistent sleep hygiene practices, and the incorporation of
+various relaxation techniques. Moreover, it is equally important to pay close attention to nutrition and
+to maintain consistent monitoring of sleep patterns and quality. All of these interconnected factors can
+significantly enhance recovery outcomes for athletes. By prioritizing sleep as an integral and crucial
+component of injury rehabilitation, soccer players can not only optimize their recovery processes but
+also minimize the various risks associated with reinjury. In doing so, they can ultimately improve their
+overall athletic performance, which can lead to better results on the field and a greater quality of life
+off the field, enhancing both their physical capacities and mental well-being.
+
+
+                                                    Conflict of Interest
+   The authors declare that they do not have any conflict of interest.
+
+
+                                                          References
+Afolalu, E. F., Ramlee, F., & Tang, N. K. Y. (2018). Effects of sleep changes on pain-related health outcomes in the general
+      population: A systematic review of longitudinal studies with meta-analysis. Pain, 159(11), 1979–1997.
+Andreucci, A., Groenewald, C. B., Rathleff, M. S., & Palermo, T. M. (2021). The role of sleep in the transition from acute to
+      chronic musculoskeletal pain in youth—a narrative review. Children, 8(3), 241.
+Bastien, C. H., Vallières, A., & Morin, C. M. (2001). Validation of the Insomnia severity index as an outcome measure for
+      insomnia research. Sleep Medicine, 2(4), 297–307.
+Bonnar, D., Bartel, K., Kakoschke, N., & Lang, C. (2018). Sleep interventions designed to improve athletic performance and
+      recovery: A systematic review of current approaches. Sports Medicine, 48(3), 683–703.
+Brito, J., Figueiredo, P., Seabra, A., & Verhagen, E. (2021). Physical activity levels of adult virtual football players. Frontiers in
+      Psychology, 12, 596434.
+Buysse, D. J., Reynolds, C. F., Monk, T. H., Berman, S. R., & Kupfer, D. J. (1989). The Pittsburgh sleep quality index: A new
+      instrument for psychiatric practice and research. Psychiatry Research, 28(2), 193–213.
+Charest, J., & Grandner, M. A. (2020). Sleep and athletic performance: Impacts on physical performance, mental performance,
+      injury risk and recovery, and mental health. Sleep Medicine Clinics, 15(1), 41–57.
+Chennaoui, M., Vanneau, T., Trignol, A., Arnal, P., Gomez-Merino, D., Baudot, C., Perez, J., Pochettino, S., Eirale, C., &
+      Chalabi, H. (2021). How does sleep help recovery from exercise-induced muscle injuries? Journal of Science and Medicine
+      in Sport, 24(10), 982–987.
+Clemente, F. M., Afonso, J., Costa, J., Oliveira, R., Pino-Ortega, J., & Rico-González, M. (2021, June). Relationships between
+      sleep, athletic and match performance, training load, and injuries: A systematic review of soccer players. Healthcare, 9(7),
+      808.
+Coel, R. A., Pujalte, G. G., Applewhite, A. I., Zaslow, T., Cooper, G., Ton, A. N., & Benjamin, H. J. (2023). Sleep and the young
+      athlete. Sports Health, 15(4), 537–546.
+Dinani, M. M., Afshar Jahanshahi, A., Madavani, A. N., Mendoza, M. I. R., & Soltani, S. (2024). Mental resilience in crisis:
+      Examining the mental health and well-being of iranian athletes during the COVID-19 pandemic. Journal of Public Affairs,
+      24(4), e2950.
+Dinges, D. F., Pack, F., Williams, K. R., Gillen, K. A., Powell, J. W., Ott, G. E., & Belenky, G. (2018). The role of sleep in
+      athletic performance and injury risk: A systematic review. Quarterly Sports Science, 12(1), 45–61.
+Dobrosielski, D. A., Sweeney, L., & Lisman, P. J. (2021). The association between poor sleep and the incidence of sport and
+      physical training-related injuries in adult athletic populations: A systematic review. Sports Medicine, 51(4), 777–793.
+Doherty, R., Madigan, S., Warrington, G., & Ellis, J. (2019). Sleep and nutrition interactions: Implications for Athletes.
+      Nutrients, 11(4), 822.
+Driller, M. W., Mah, C. D., & Halson, S. L. (2018). Development of the athlete sleep behavior questionnaire: A tool for
+      identifying maladaptive sleep practices in elite athletes. Sleep Science, 11(1), 37–44.
+
+
+                                                                                                     Vol 4 | Issue 3 | May 2025    7
+The Impact of Injury Severity on Sleep Quality in Soccer Players                                                      Malliou et al.
+
+Ekstrand, J., Bengtsson, H., Waldén, M., & Davison, M. (2023). Hamstring injury rates have increased during recent seasons
+     and now constitute 24% of all injuries in men’s professional football: The UEFA Elite Club Injury Study from 2001/02 to
+     2021/22. British Journal of Sports Medicine, 57(5), 292–298.
+Fullagar, H. H. K., Skorski, S., Duffield, R., Hammes, D., Coutts, A. J., & Meyer, T. (2015a). Sleep and athletic performance:
+     The effects of sleep loss on exercise performance, and physiological and cognitive responses to exercise. Sports Medicine,
+     45(2), 161–186.
+Fullagar, H. H. K., Skorski, S., Duffield, R., Hammes, D., Coutts, A. J., & Meyer, T. (2015b). Sleep and recovery in team
+     sport: Current sleep-related issues facing professional team-sport athletes. International Journal of Sports Physiology and
+     Performance, 10(8), 950–957.
+Fullagar, H. H. K., Skorski, S., Duffield, R., & Meyer, T. (2016). The effect of an acute sleep hygiene strategy following a
+     late-night soccer match on recovery of players. Chronobiology International, 33(5), 490–505.
+Gupta, L., Morgan, K., & Gilchrist, S. (2017). Does elite sport degrade sleep quality? A systematic review. Sports Medicine
+     (Auckland, N.Z.), 47(7), 1317–1333.
+Gwyther, K., Rice, S., Purcell, R., Pilkington, V., Santesteban-Echarri, O., Bailey, A., & Walton, C. C. (2022). Sleep interventions
+     for performance, mood and sleep outcomes in athletes: A systematic review and meta-analysis. Psychology of Sport and
+     Exercise, 58, 102094.
+Haack, M., & Mullington, J. M. (2005). Sustained sleep restriction reduces emotional and physical well-being. Pain, 119(1–3),
+     56–64.
+Hirshkowitz, M., Whiton, K., Albert, S. M., Alessi, C., Bruni, O., DonCarlos, L., Hazen, N., Herman, J., Katz, E. S.,
+     Kheirandish-Gozal, L., Neubauer, D. N., O’Donnell, A. E., Ohayon, M., Peever, J., Rawding, R., Sachdeva, S.,
+     Setters, B., Vitiello, M. V., Ware, J. C., & Adams Hillard, P. J. (2019). National sleep foundation’s sleep time duration
+     recommendations: Methodology and results summary. Sleep Health, 1(1), 40–43.
+Irwin, M. R., Olmstead, R., & Carroll, J. E. (2016). Sleep disturbance, sleep duration, and inflammation: A systematic review
+     and meta-analysis of cohort studies and experimental sleep deprivation. Biological Psychiatry, 80(1), 40–52.
+Johns, M. W. (1991). A new method for measuring daytime sleepiness: The epworth sleepiness scale. Sleep, 14(6), 540–545.
+Leeder, J., Glaister, M., Pizzoferro, K., Dawson, J., & Pedlar, C. (2012). Sleep duration and quality in elite athletes measured
+     using wristwatch actigraphy. Journal of Sports Sciences, 30(6), 541–545.
+Longo, U. G., Candela, V., De Salvatore, S., Piergentili, I., Panattoni, N., Casciani, E., Faldetta, A., Marchetti, A., De Marinis,
+     M. G., & Denaro, V. (2021). Arthroscopic rotator cuff repair improves sleep disturbance and quality of life: A prospective
+     study. International Journal of Environmental Research and Public Health, 18(7), 3797.
+Mah, C. D., Mah, K. E., Kezirian, E. J., & Dement, W. C. (2011). The effects of sleep extension on the athletic performance of
+     collegiate basketball players. Sleep, 34(7), 943–950.
+Milewski, M. D., Skaggs, D. L., Bishop, G. A., Pace, J. L., Ibrahim, D. A., Wren, T. A., & Barzdukas, A. (2014). Chronic lack of
+     sleep is associated with increased sports injuries in adolescent athletes. Journal of Pediatric Orthopaedics, 34(2), 129–133.
+Mohammed, W. A., Pappous, A., & Sharma, D. (2021). Perceptions of injured athletes after eight weeks of mindfulness-based
+     stress reduction program. Journal of Psychological Research, 3(2), 42–52.
+Montero, A., Stevens, D., Adams, R., & Drummond, M. (2022). Sleep and mental health issues in current and former athletes:
+     A mini review. Frontiers in Psychology, 13, 868614.
+Nobari, H., Banihashemi, M., Saedmocheshi, S., Prieto-González, P., & Oliveira, R. (2023). Overview of the impact of sleep
+     monitoring on optimal performance, immune system function and injury risk reduction in athletes: A narrative review.
+     Science Progress, 106(4), 00368504231206265.
+Nédélec, M., Halson, S., Abaidia, A. E., Ahmaidi, S., & Dupont, G. (2015). Stress, sleep and recovery in elite soccer: A critical
+     review of the literature. Sports Medicine, 45(10), 1387–1400.
+Ressler, K. J., Berretta, S., Bolshakov, V. Y., Rosso, I. M., Meloni, E. G., Rauch, S. L., & Carlezon, W. A. Jr. (2022). Post-
+     traumatic stress disorder: Clinical and translational neuroscience from cells to circuits. Nature Reviews Neurology, 18(5),
+     273–288.
+Riegler, K. E., Guty, E. T., Thomas, G. A., Bradson, M. L., & Arnett, P. A. (2023). Prospective implications of insufficient
+     sleep for athletes. Journal of Athletic Training, 58(5), 414–422.
+Sahin, S., Erdman, A. L., Loewen, A., Miller, S. M., Jones, J. C., Chung, J. S., Janosky, J., & Ulman, S. (2025). Concussion history
+     is associated with poor sleep quality in adolescent athletes: A cross-sectional study. Journal of Clinical Sleep Medicine,
+     21(1), 129–135.
+Samuels, C. (2008). Sleep, recovery, and performance: The new frontier in high-performance athletics. Neurologic Clinics, 26(1),
+     169–180.
+Scholten-Peeters, G. G. M., Verhagen, A. P., & van der Windt, D. A. (2023). Sleep problems and chronic musculoskeletal pain:
+     A systematic review and meta-analysis. Pain Medicine, 24(3), 395–411.
+Smith, V., Warty, R. R., Sursas, J. A., Payne, O., Nair, A., Krishnan, S., Costa, F. D. S., Morrison, E. W., & Vollenhoven,
+     B. (2020). The effectiveness of virtual reality in managing acute pain and anxiety during medical procedures: Systematic
+     review. Journal of Medical Internet Research, 22(11), e17980.
+Van Dyk, N., Behan, F. P., & Whiteley, R. (2020). Including the Nordic hamstring exercise in injury prevention programs halves
+     the rate of hamstring injuries: A systematic review and meta-analysis of 8459 athletes. Sports Medicine, 50(10), 1835–1847.
+Vitale, K. C., Owens, R., Hopkins, S. R., & Malhotra, A. (2019). Sleep hygiene for optimizing recovery in athletes: Review and
+     recommendations. International Journal of Sports medicine, 40(8), 535–543.
+Watson, A. M. (2017). Sleep and athletic performance. Current Sports Medicine Reports, 16(6), 413–418.
+Watson, N. F., Badr, M. S., Belenky, G., Bliwise, D. L., Buxton, O. M., Buysse, D., Dinges, D. F., Gangwisch, J., Grandner, M.
+     A., Kushida, C., Malhotra, R. K., Martin, J. L., Patel, S. R., Quan, S. F., & Tasali, E. (2015). Recommended amount of
+     sleep for a healthy adult. Sleep, 38(6), 843–844.
+
+
+
+
+                                                                                                   Vol 4 | Issue 3 | May 2025    8
+

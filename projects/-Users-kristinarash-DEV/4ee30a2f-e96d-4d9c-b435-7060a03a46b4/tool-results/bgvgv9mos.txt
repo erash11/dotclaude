@@ -1,0 +1,265 @@
+                                                                                 demonstrate which TL methods best reﬂect the stochastic nature of
+Caen https://orcid.org/0000-0002-2116-7438                                       cycling. It was hypothesized that the load of the training sessions
+Bourgois https://orcid.org/0000-0001-8972-1573                                   would be estimated differently depending on the TL metric used
+Boone (Jan. Boone@UGent.be) is corresponding author,   https://orcid.org/0000-   and that the internal TL metrics would better reﬂect the APD
+0002-8485-6169                                                                   induced by the training sessions.
+                                                                                                                                                          1
+                                                                                                            Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+2     Vermeire et al
+
+
+                             Methods                                          environmental conditions (18–19 °C, 50% relative humidity).
+                                                                              The subjects were asked to keep their nutritional intake at the
+Subjects                                                                      same level for all sessions and were asked to limit caffeine intake
+                                                                              preceding the sessions. During all sessions, HR (H10 Sensor,
+Eleven healthy physically active men (26.9 [4.2] y, 182.8 [4.6] cm,           Polar) and power output (Cyclus2 ergometer, RBM Electronics)
+72.6 [6.9] kg) participated voluntarily for this study. They were all         were continuously monitored in order to quantify TL. Pulmonary
+recreationally active as cyclists (1500–5000 km·y−1). The partici-            gas exchange (oxygen uptake [V̇O2 ], V̇CO2 ) was measured breath
+pants were informed about the risks of the study, and written                 by breath (Jaeger Oxycon Pro, Viasys Healthcare GmbH), and La−
+informed consent was obtained before participation. They under-               was sampled (Biosen C-line, EKF Diagnostics GmbH) at regular
+went a medical examination and were declared to be in good health.            intervals during every training session.
+This study was approved by the Ethical Committee of the Ghent
+University Hospital (Ghent, Belgium).                                         Exercise Test. The subjects performed a step incremental test to
+                                                                              assess their ﬁtness level and to individualize the training sessions.
+Experimental Procedures                                                       The test started at 80 W, and every 3 minutes, the power output was
+                                                                              increased by 40 W. The participants were instructed to keep their
+Overview. A randomized, crossover, within-subjects design was                 preferred cadence constant. The protocol was terminated at volun-
+used whereby participants visited the lab on 7 occasions, separated           tary exhaustion, that is, the inability to maintain their preferred
+by at least 48 hours in a 3-week period. Session 1 consisted of a step        cadence minus 10 rpm for more than 5 consecutive seconds, despite
+incremental exercise test, and sessions 2 and 3 were 2 baseline               strong verbal encouragement.
+3-km TTs. During sessions 4 to 7, the participants completed a                     Peak oxygen uptake was deﬁned as the highest 30-second
+training session immediately followed by a TT (Figure 1). All tests           average achieved during the test. The aerobic threshold (AT) was
+and training sessions took place in the Sport Science Laboratory—             determined as the ﬁrst visual rise on the La−/power output curve above
+Jacques Rogge (Ghent University, Belgium), under controlled                   resting values.16 The anaerobic threshold (ANT) was determined as
+
+
+
+
+Figure 1 — Overview of the study design. ANT indicates power output at the anaerobic threshold; AT, power output at the aerobic threshold;
+LongDurInt, long-duration interval; LowIntense, low-intensity training; MedIntense, medium-intensity training; Pmax, maximal power output produced during
+exercise test; ShortDurInt, short-duration interval; TT, time trial. *The training sessions were randomized for visits 4, 5, 6, and 7.
+
+                                                                    (Ahead of Print)
+                                                                                                           Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+                                                                                                       Training Load and Performance            3
+
+
+the second deﬂection point in the La−/power output curve. Both          Data Analysis
+thresholds were determined by 3 independent researchers. Next to
+La−, different variables (HR, V̇O2 , and RPE) were also taken into      Eight different TL methods were used, 5 internal and 3 external TL
+account when determining this threshold.17 Consensus was sought         metrics.
+when discrepancies occurred. The V̇O2 corresponding with the                 All training sessions were equal for luTRIMPpo where the
+thresholds was also determined. Maximal HR (HRmax) was deter-           time under AT was multiplied by 1, the time between the
+mined as the highest HR obtained during this test. Resting HR was       thresholds by 2, and the time above ANT by 3. This is a slightly
+deﬁned as the lowest 5-second average HR when subjects were lying       adapted version from the original luTRIMP that has been used
+in a supine position for 10 minutes in a quiet room.                    before.10,11 Training Stress Score (TSS) was selected as a second
+                                                                        external TL measure. TSS is calculated using the following
+                                                                        formula19:
+Time Trials. The gear settings for the 3-km TT were selected for
+every participant so that the power output during the ﬁrst 250 m                      TSS= ðt×NP×IFÞ=ðFTP×3600Þ×100,
+of every TT equaled 105% of the maximal power output (Pmax)
+                                                                        where t is the time, NP is normalized power, and IF is the
+achieved during the exercise test at their preferred cadence. The
+                                                                        intensity factor (= NP/FTP). FTP is an individual’s functional
+subjects had to keep the cadence constant for the ﬁrst 250 m and
+                                                                        threshold power. For this study, FTP was assumed to be equal to
+could thereafter cycle freely; this was done in order to help the
+                                                                        the determined ANT.
+participants pace in a similar manner over the different TTs. The
+                                                                             As a last external TL measure, the total work done (TWD), or
+ﬁrst 2 TTs were preceded by a short warm-up of 6 minutes
+                                                                        mechanical energy spent (in kilojoules), was calculated from the
+wherein they had to perform 3 blocks of 1 minute at the power
+                                                                        power output.
+output corresponding to ANT. The other TTs were performed
+                                                                             Four HR-based TL methods were used. The Banister
+immediately after the training session. The subjects were encour-
+                                                                        TRIMP (bTRIMP) was calculated using the training duration,
+aged to complete the TT as fast as possible. The only feedback
+                                                                        average HR, and an intensity factor (IF) using the following
+they received was cadence and remaining distance.
+                                                                        equation5:
+Training Sessions.     Four different training sessions were com-       bTRIMP= Duration training ðin minutesÞ×ΔHR×0.64e1.92x ,
+pleted. All were equalized for Lucia’s TRIMP based on power
+output (luTRIMPpo) with a total luTRIMPpo of 90 (see the “Data          where ΔHR = (HRmean − resting HR)/(HRmax − resting HR), e
+Analysis” section). The training sessions were completed in a           is the exponential constant, 1.92 and 0.64 are generic constant
+randomized order (Figure 1). For every session, the warm-up             for males, and x = ΔHR.
+and all recovery blocks were equal to 90% of the power output                Five predeﬁned zones (zone 1, 50%–59% HRmax, IF = 1; zone
+associated with AT.                                                     2, 60%–69% HRmax, IF = 2; zone 3, 70%–79% HRmax, IF = 3; zone
+                                                                        4, 80%–89% HRmax, IF = 4; zone 5, 90%–100% HRmax, IF = 5)
+   • The short-duration interval (ShortDurInt) consisted of 3 blocks
+                                                                        were used to calculate the Edwards TRIMP. The time spent in each
+     of 10 minutes. During these blocks, a constant repetition of
+                                                                        zone was multiplied by the respective IF and then summated in
+     30 seconds at Pmax and a 30-second recovery was performed.
+                                                                        order to compute the total Edwards TRIMP score.20
+     Recovery between the blocks was again 5 minutes, and the
+                                                                             For the calculation of the Lucia TRIMP based on HR, 3
+     warm-up and cooldown were 10 minutes. The total duration
+                                                                        predeﬁned HR zones were used. Zone 1 (IF = 1) was deﬁned as
+     was 60 minutes.
+                                                                        below AT, zone 2 (IF = 2) between AT and ANT, and zone 3
+   • The long-duration interval (LongDurInt) consisted of 5 blocks of   (IF = 3) above ANT. Again, the time in each zone was multiplied
+     4 minutes at 105% ANT, with a 4-minute recovery. The warm-         by its respective IF and then summed to provide a total Lucia
+     up was 4 minutes, and the cooldown was 10 minutes. The total       TRIMP based on HR.21
+     duration was 50 minutes.                                                Calculation of the individualized TRIMP (iTRIMP) was per-
+   • The medium-intensity training (MedIntense) consisted of 3          formed using the individual’s La−–ΔHR relationship as an expo-
+     blocks of 10-minute power output in between the thresholds         nential IF using the best ﬁtting method. This exponential IF was
+     (at Δ70 [ANT − AT] × 0.7 + AT) interspersed with 5 minutes         used to weight every measured HR.12
+     of recovery. The warm-up and cooldown were each 10 min-                 The TL was also calculated according to the method of
+     utes. The total duration was 60 minutes.                           Foster,18 as a subjective measure of internal TL (TLrpe). After
+   • The low-intensity training (LowIntense) consisted of 90 minutes    every session, the subjects were asked to rate their session RPE
+     of the power output associated with AT.                            (sRPE) using the CR-10 scale. TLrpe was then calculated by
+                                                                        multiplying this sRPE by the session duration.
+     All training sessions were immediately followed by a TT in
+order to determine APD. The TT was performed immediately after a
+10-minute cooldown in order to ensure the measurement of APD            Statistical Analysis
+caused by the whole training rather than measuring the effect of the
+last intensity block. After every training segment, the participants    The data are presented as mean (SD). A repeated-measures analysis
+were asked to give an RPE score using the Category-Ratio (CR-10)        of variance was used to analyze differences within TL methods for
+scale,18 and a blood sample was taken from the ﬁngertip and             the different training sessions and to check for differences between
+analyzed for La− (Biosen C-line, EKF Diagnostics GmbH). Prior           the different TTs. Effect sizes (ESs; Cohen d) were calculated for
+to every TT, the participants were asked to score their motivation      differences between the TTs, and values were interpreted as
+level on a 0 to 10 scale. The APD was deﬁned as the percentage          follows: 0 to 0.19, trivial; 0.20 to 0.59, small; 0.6 to 1.19, moderate;
+change in the average power output of the TTs relative to their best    1.20 to 1.99, large; and ≥2.00 very large. All statistical analyses
+baseline TT (baseline).                                                 were performed with SPSS Statistics (version 28), and statistical
+                                                                        signiﬁcance was set at P < .05.
+                                                              (Ahead of Print)
+                                                                                                   Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+4     Vermeire et al
+
+
+                               Results                                          1.26, large) compared with the baseline. The TTs after LongDurInt
+                                                                                (+12.8 [4.1] W, P = .012; ES: 0.88, moderate), MedIntense (+ 12.8
+Subject Overview                                                                [5.3] W, P = .036; ES = 0.88, moderate), and LowIntense (+ 15.6
+                                                                                [5.8] W, P = .022; ES: 1.04, moderate) were all better than for
+The Pmax from the step incremental exercise test was 312 (34) W                 ShortDurInt, but did not differ from each other and from the baseline.
+with a corresponding peak oxygen uptake of 4.1 (0.5) L·min−1                    An overview of the individual differences is given in Figure 4. An
+(57.3 [7.1] mL·kg−1·min−1). The power output associated with the                overview of the group-averaged power output for every 500-m
+AT and ANT were 149 W (22) and 231 W (23), respectively.                        segment is shown in Figure 5, where differences in pacing can be
+                                                                                seen. Before the start of every TT, motivation was equal; HRmax
+Training Sessions                                                               and RPE from the TTs did not differ either (Table 2).
+The luTRIMPpo showed no differences between training sessions,
+since the sessions were designed to be equal for luTRIMPpo.                                                 Discussion
+     Within the TL metrics, there were signiﬁcant (P < .05) differ-
+ences between the different training sessions (Figure 2). The main              The aim of this study was to assess the relationship between
+ﬁndings are that ShortDurInt was highest for iTRIMP, TSS, and                   existing TL methods and the APD induced by 4 commonly used
+TLrpe (P < .05). ShortDurInt was equal to MedIntense and LowIntense             training sessions in cycling. If this relationship is clear, it could
+for bTRIMP (P = .112; P = .055), Edwards TRIMP (P = .172;                       help coaches and sport scientists in answering the questions as to
+P = .838), and Lucia TRIMP based on HR (P = .106; P = .163),                    which TL methods should be used in order to monitor athletes in
+but higher than LongDurInt for all of these methods (P < .05).                  the best way, as they best represent the load of sessions. Already,
+LowIntense was lowest only for TSS and iTRIMP (P < .05). TWD                    here it should be mentioned that the use of APD is only one of the
+was the only metric where all sessions differed from each other                 methods that can partly explain the usefulness of different TL
+(P < .01), and this in the following order: LowIntense > ShortDurInt >          methods. This method is not superior to other methods trying to
+MedIntense > LongDurInt.                                                        elucidate the TL concept, but serves as an addition to other
+     An overview of the psychophysiological data registered dur-                methods, and the ﬁndings should be put in this perspective.
+ing the different training sessions is given per training (Figure 3).                First, it is clear that using different TL quantiﬁcation methods
+ShortDurInt and LongDurInt induced a higher maximal (P < .001) and              leads to different patterns in the load of the training sessions in this
+end (P < .05) La− value compared with MedInt and LowIntense, with               study (Figure 2), as well as when comparing within the internal
+MedInt also inducing higher values compared with LowIntense                     and external TL methods. The APD for ShortDurInt was larger than
+(P < .001). Furthermore, the relative contribution of time spent                for the other training sessions, which is reﬂected by the TLrpe,
+at a V̇O2 above ANT was higher in ShortDurInt and LongDurInt                    iTRIMP, and TSS methods, but not in the rest. These were the
+compared with MedIntense (P = .011 and P = .001) and LowIntense                 only methods that assessed the TL of the ShortDurInt session as
+(P = .009 and P = .001) (Table 1).                                              being higher than for the other training sessions, thus reﬂecting the
+                                                                                APD measured. However, TL calculated by iTRIMP and TSS also
+                                                                                show a smaller load for the LowIntense session compared with
+Time Trials
+                                                                                MedIntense and LongDurInt, which is not compatible with the APD.
+Only the TT performed after the ShortDurInt training showed a                   This implies that for those 2 methods, the intensity of the training
+signiﬁcant decrease in performance (5.3% [3.9%], P = .003; ES:                  sessions is weighted even more than necessary. Also, in an earlier
+
+
+
+
+Figure 2 — Overview of the differences between TL values. Identical letters indicate that there are no signiﬁcant differences between training sessions
+within the TL method. Different classiﬁcations of training sessions can be seen depending on the TL method used. A.U. indicates arbitrary units;
+LongDurInt, long-duration interval training; LowIntense, low-intensity training; MedIntense, medium-intensity training; ShortDurInt, short-duration interval
+training; TL, training load; TLrpe, TL using rating of perceived exertion; TRIMP, training impulse; TSS, Training Stress Score; TWD, total work done.
+
+                                                                     (Ahead of Print)
+                                                                                                             Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+                                                     (Ahead of Print)
+§Signiﬁcant difference from the ShortDurInt TT at that segment. $Signiﬁcant difference from bestTT at that segement.
+
+6                                                                             (Ahead of Print)
+                                                                                                                              Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+                                                                                                                          Training Load and Performance                 7
+
+
+Table 2       Overview of Time Trial Characteristics
+                                       Best                       ShortDurInt                   LongDurInt                    MedIntense                    LowItense
+Mean power, W                      342.6 (15.9)                 323.8* (13.9)                  336.6 (15.3)                  336.6 (15.3)                 339.4 (15.8)
+HRmax, bpm                           187 (9.8)                    187 (9.6)                     188 (9.5)                     188 (8.9)                    188 (8.6)
+RPE, 0–10                           9.72 (0.62)                  9.8 (0.39)                     9.8 (0.39)                     10 (0.0)                    9.9 (0.16)
+Motivation, 0–10                    7.5 (0.63)                    6.9 (0.5)                      7.1 (0.4)                    7.3 (0.5)                     7.3 (0.4)
+Abbreviations: bpm, beats per minute; HR, heart rate; HRmax, maximal HR; LongDurInt, long-duration interval training; LowIntense, low-intensity training; MedIntense,
+medium-intensity training; RPE, rating of perceived exertion; ShortDurInt, short-duration interval training. Note: Mean power during the time trials, maximal measured HR
+during the time trials, RPE given at the end of the time trials and motivation scored before the start of the time trials, all values are presented as mean (SD).
+*Signiﬁcant difference from other TTs (P < .05).
+
+
+
+study, it was already shown that TSS is inﬂuenced more by                             assumption made before that sRPE would be similar after a longer
+and V̇O2 are related to each other. Nevertheless, according to our                    duration is typically ∼80% to 85% aerobic in nature,29 the
+results, it would be better to match efforts based on TLrpe, at least                 relationship shown in this study can only be translated to APD
+in study designs where similar modalities are used, as in the                         in this type of exercise. Furthermore, during this high-intensity
+present study.                                                                        trial (109% [5%] Pmax), a large proportion of type II ﬁbers will be
+     Hypothetically, for this group of subjects, this would imply                     activated. In contrast, during the LowIntense session, mostly type I
+that, on average, a LowIntense session of 2 hours and 17 minutes (2.5                 ﬁbers will have been activated, partly depleting the glycogen in
+[average sRPE for LowIintense] × 137 min = 343 arbitrary unit)                        those muscle ﬁbers without hampering the type II ﬁbers15 that are
+would result in a load similar to the average load of our subjects                    activated for the TT, thus preserving much of the performance
+for the 60-minute ShortDurInt (344 arbitrary unit) training used in                   capacity, which may hide a fatiguing effect at other levels. The
+this study, and these training sessions would then be matched for                     data from our lab (unpublished data) also show that using a 15-
+TL in a better way than when using TWD. However, here, the                            second isokinetic sprint does not show any APD following these
+rather strong assumption is made that the sRPE (2.5) of the                           training sessions, indicating again that the choice of the perfor-
+LowIntense session would not be different after a session of 137 min-                 mance assessment plays an important role in further elucidating
+utes compared with 90 minutes at the same intensity and would                         this relationship.
+thus merely act as an IF. Still, it was shown before that sRPE does                         Together, the ﬁndings of this study show that the duration of
+not only merely act as an IF, but also includes a duration effect.27 This             training sessions is overemphasized in most, but not all, TL metrics
+effect is also visible for this study in Figure 3 where RPE (assessed                 (ie, the fact that LIT is equal or higher in load than the high-
+every 15 min during training) rises throughout the LowIntense session                 intensity sessions), with TLrpe showing a similar pattern to the
+without a rise in power output and V̇O2 (∼intensity). So the                          APD found. Although the training sessions used in this study are
+                                                                           (Ahead of Print)
+                                                                                                                      Unauthenticated | Downloaded 01/31/23 02:08 PM UTC
+8       Vermeire et al
+
+
+also often used in the ﬁeld, they are still somewhat limited, since                 Perform. 2021;16(4):535–543. PubMed ID: 33059328 doi:10.1123/
+these are sessions performed indoors. Future studies should thus                    ijspp.2020-0072
+investigate this relationship again in longer training sessions, with            8. Kesisoglou A, Nicolò A, Howland L, Passﬁeld L. Continuous versus
+varying intensity and with a more stochastic nature, as to represent                intermittent running: acute performance decrement and training load.
+the typical outdoor training sessions and races. Also, different                    Int J Sports Physiol Perform. 2021;16(12):1794–1803. doi:10.1123/
+performance measures should be used, and in this regard, studies                    ijspp.2020-0844
+assessing the relationship between TL metrics and measures of                    9. Vermeire KM, van de Casteele F, Gosseries M, Bourgois JG, Ghijs
+central and peripheral fatigue would be of great beneﬁt in further                  M, Boone J. The inﬂuence of different training load quantiﬁcation
+elucidating the meaning of TL methods.                                              methods on the ﬁtness-fatigue model. Int J Sports Physiol Perform.
+                                                                                    2021;16(9):1261–1269. PubMed ID: 33691278 doi:10.1123/ijspp.
+                                                                                    2020-0662
+                    Practical Applications                                      10. Vermeire KM, Vandewiele G, Caen K, Lievens M, Bourgois JG,
+It is important for practitioners to understand that using a different              Boone J. Training progression in recreational cyclists: no linear dose-
+TL quantiﬁcation method leads to differences in the load calcu-                     response relationship with training load. J Strength Cond Res.
+lated, even when using the same input variable (HR for TRIMPs,                      2021;35(12):3500–3505. PubMed ID: 31498226 doi:10.1519/JSC.
+power output for TSS and TWD). It is also important to understand                   0000000000003340
+that these differences in calculation may often be hidden in practice           11. Sanders D, Abt G, Hesselink MKC, Myers T, Akubat I. Methods of
+when looking at correlations between TL methods for a lot of data                   monitoring training load and their relationships to changes in ﬁtness
+and much longer training sessions10,22,24; still, this does not mean                and performance in competitive road cyclists. Int J Sports Physiol
+that these differences are to be overlooked. Also, we discourage the                Perform. 2017;12(5):668–675. PubMed ID: 28095061 doi:10.1123/
+use of TWD as a basis for matching and comparing efforts between                    ijspp.2016-0454
+or within groups. We also want to point out that the use of APDs to             12. Manzi V, Iellamo F, Impellizzeri F, D’Ottavio S, Castagna C.
+assess the validity of TL metrics should not be seen as being the                   Relation between individualized training impulses and performance
+gold standard method; it is merely one of the possible methods that                 in distance runners. Med Sci Sports Exerc. 2009;41(11):2090–2096.
+can provide us with more information on the different TL methods.                   PubMed ID: 19812506 doi:10.1249/MSS.0b013e3181a6a959
+Therefore, the results of these studies should be complemented                  13. Akubat I, Patel E, Barrett S, Abt G. Methods of monitoring the
+with other research that investigates the usefulness of TL methods                  training and match load and their relationship to changes in ﬁtness in
+in different ways.                                                                  professional youth soccer players. J Sports Sci. 2012;30(14):1473–
+                                                                                    1480. PubMed ID: 22857397 doi:10.1080/02640414.2012.712711
+                                                                                14. Mitchell LJG, Rattray B, Fowlie J, Saunders PU, Pyne DB. The
+                             Conclusion                                             impact of different training load quantiﬁcation and modelling meth-
+                                                                                    odologies on performance predictions in elite swimmers. Eur J Sport
+We conclude that using different TL metrics will lead to a different                Sci. 2020;20(10):1329–1338. doi:10.1080/17461391.2020.1719211
+ranking of training sessions as assessed by the TL. Moreover, some              15. Black MI, Jones AM, Blackwell JR, et al. Muscle metabolic and
+of the TL metrics (TLrpe, iTRIMP, and TSS) were able to reﬂect                      neuromuscular determinants of fatigue during cycling in different
+the APD induced by the heavier session, while the other metrics                     exercise intensity domains. J Appl Physiol. 2017;122(3):446–459.
+overemphasized duration.                                                            PubMed ID: 28008101 doi:10.1152/japplphysiol.00942.2016
+                                                                                16. Kindermann W, Simon G, Keul J. The signiﬁcance of the aerobic-
+                                                                                    anaerobic transition for the determination of work load intensities

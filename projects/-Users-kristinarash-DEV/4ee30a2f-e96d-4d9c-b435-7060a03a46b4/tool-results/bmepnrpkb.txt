@@ -1,0 +1,332 @@
+{
+ "domains": [
+  "Training & Performance",
+  "Sports Medicine & Injury",
+  "Rehabilitation & Return to Sport",
+  "Recovery & Readiness",
+  "Nutrition & Hydration",
+  "Brain Health & Psychology",
+  "Athlete Wellbeing",
+  "Monitoring & Technology"
+ ],
+ "audiences": [
+  "Performance",
+  "Athletic Training",
+  "Sports Medicine",
+  "Rehabilitation",
+  "Nutrition",
+  "Research & Analytics",
+  "Coaching"
+ ],
+ "sports": [
+  "Mixed / General Sport",
+  "American Football",
+  "Soccer",
+  "Basketball",
+  "Baseball / Softball",
+  "Rugby",
+  "Volleyball",
+  "Track & Field",
+  "Swimming & Diving",
+  "Gymnastics",
+  "Tennis",
+  "Golf",
+  "Ice Hockey",
+  "Combat Sports",
+  "Endurance Sport",
+  "Other Sport"
+ ],
+ "populations": [
+  "Professional / Elite",
+  "Collegiate",
+  "Youth / Adolescent",
+  "Adult / Recreational",
+  "Female Athletes",
+  "Male Athletes",
+  "Injured Athletes",
+  "Healthy Athletes",
+  "Mixed / Unspecified"
+ ],
+ "studyDesigns": [
+  "Systematic Review / Meta-analysis",
+  "Randomized Controlled Trial",
+  "Cohort Study",
+  "Cross-sectional Study",
+  "Case-control Study",
+  "Consensus / Position Statement",
+  "Narrative Review",
+  "Case Report / Case Series",
+  "Laboratory / Experimental Study",
+  "Qualitative Study",
+  "Methodological / Validation Study",
+  "Internal Evidence Synthesis",
+  "Other"
+ ]
+}{"id": "Q17", "queueOrder": 17, "pilotDomain": null, "sourceFile": "The interplay of sports and nutrition in neurological health and recovery.pdf", "pages": 39, "extractedCharacters": 184001, "doiCandidatesInText": ["10.3390/jcm13072065"]}
+{"id": "Q18", "queueOrder": 18, "pilotDomain": null, "sourceFile": "The maximal intensity period - Rationalizing its use in team sports practice.pdf", "pages": 9, "extractedCharacters": 50668, "doiCandidatesInText": ["10.1186/s40798-022-00519-7"]}
+{"id": "Q19", "queueOrder": 19, "pilotDomain": null, "sourceFile": "The mechanism of anterior cruciate ligament injuries in the National Football League - A systematic video review.pdf", "pages": 8, "extractedCharacters": 29970, "doiCandidatesInText": ["10.1002/rcs.1815", "10.1007/s00167-009-0813-1", "10.1016/j.jbiomech.2006.05.004", "10.1016/j.jbiomech.2011.04.010", "10.1016/j.jbiomech.2013.02.017", "10.1016/j.jbiomech.2015.11.022"]}
+{"id": "Q20", "queueOrder": 20, "pilotDomain": null, "sourceFile": "The mechanism of hamstring injuries - A systematic review.pdf", "pages": 21, "extractedCharacters": 80859, "doiCandidatesInText": ["10.1186/s12891-020-03658-8"]}
+{"id": "Q21", "queueOrder": 21, "pilotDomain": null, "sourceFile": "The multifaceted nature of recovery after exercise - A need for individualization.pdf", "pages": 9, "extractedCharacters": 37713, "doiCandidatesInText": ["10.1016/j.orthtr.2023.10.006"]}
+{"id": "Q22", "queueOrder": 22, "pilotDomain": null, "sourceFile": "The muscle morphology of elite sprint running.pdf", "pages": 47, "extractedCharacters": 75046, "doiCandidatesInText": ["10.1249/MSS.0000000000002522"]}
+{"id": "Q23", "queueOrder": 23, "pilotDomain": null, "sourceFile": "The new challenge of sports nutrition - Accepting insect food as dietary supplements in professional athletes.pdf", "pages": 12, "extractedCharacters": 57346, "doiCandidatesInText": ["10.3390/foods10051117", "10.3390/foods10051117/s1"]}
+{"id": "Q24", "queueOrder": 24, "pilotDomain": null, "sourceFile": "The perceptions and applications of cluster sets in strength and conditioning.pdf", "pages": 10, "extractedCharacters": 41727, "doiCandidatesInText": ["10.1123/ijspp.2015-0602", "10.1177/17479541251403877"]}
+== Q17
+{
+ "id":"Q17",
+ "sourceFile":"The interplay of sports and nutrition in neurological health and recovery.pdf",
+ "decision":"EXCLUDE",
+ "exclusionReason":"(c) not relevant to athletes: a narrative review of exercise and diet in neurological patients (Parkinson's, multiple sclerosis, stroke, dementia, traumatic brain injury). Athletes appear only in one short sports-psychology section (section 12), so the paper is not athlete health or performance evidence.",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The Interplay of Sports and Nutrition in Neurological Health and Recovery' matches the filename.",
+ "confidence":"medium",
+ "studyDesign":null,
+ "primaryDomain":null,
+ "domains":null,
+ "audiences":null,
+ "sports":null,
+ "populations":null,
+ "evidenceSummary":null,
+ "screeningLimitations":null,
+ "synthesisCaution":null,
+ "paper":null
+}
+
+== Q18
+{
+ "id":"Q18",
+ "sourceFile":"The maximal intensity period - Rationalizing its use in team sports practice.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The Maximal Intensity Period: Rationalising its Use in Team Sports Practice' matches the filename (spelling differs only in rationalising/rationalizing).",
+ "confidence":"high",
+ "studyDesign":"Narrative Review",
+ "primaryDomain":"Training & Performance",
+ "domains":["Training & Performance","Monitoring & Technology"],
+ "audiences":["Performance","Coaching","Athletic Training","Research & Analytics"],
+ "sports":["Soccer","Rugby","Other Sport"],
+ "populations":["Professional / Elite"],
+ "evidenceSummary":"This conceptual review describes how the maximal intensity period (MIP) is calculated and compares MIP with whole-match averages in soccer, rugby, Australian football, Gaelic football, hurling and basketball, using figures from prior studies. The authors report that MIP values are far higher than match means, for example 160 to 251 percent greater for total distance across four codes.",
+ "screeningLimitations":"No systematic search is described, so the evidence base is a selected set of studies that the authors chose. The comparisons mix devices, speed thresholds and populations, and the paper contains no training intervention data.",
+ "synthesisCaution":"Staff could treat the match MIP as a training target for every session, when the authors say it suits some sport-specific drills only and is not a benchmark for interval, repeated sprint or linear speed work.",
+ "paper":{
+   "year":2022,
+   "citation":"Weaving D, Young D, Riboli A, Jones B, Coratella G. The Maximal Intensity Period: Rationalising its Use in Team Sports Practice. Sports Medicine - Open. 2022;8:128.",
+   "doi":"10.1186/s40798-022-00519-7",
+   "abstract":"This conceptual review describes how the maximal intensity period (MIP) is determined in team sports, compares it with whole-match averages, and sets out when MIP can and cannot guide training. The authors conclude that MIP is far above match averages and does not capture internal load.",
+   "tldr":"Match MIP values are much higher than averages, so they can help set the intensity of some technical-tactical drills such as small-sided games. They should not be used to set intensity for interval, repeated sprint or linear speed training.",
+   "methods":"Conceptual review with no described search strategy. The authors summarise MIP calculation methods (fixed epochs, moving averages and a power-law model) and compare MIP with whole-match means using data from earlier studies.",
+   "findings":"MIP for total distance was about 160 to 251 percent greater than whole-match means in rugby union, rugby league, Australian football and Gaelic football. In elite soccer, about 61 percent of total distance was covered above the match mean. Small-sided games in Ligue 1 and Premier League soccer generally sat below match MIP values for the same durations.",
+   "limitations":"The review is narrative and its study selection is not systematic. The comparisons rely on different devices, speed thresholds and populations. MIP does not account for internal load, and the authors note that the effect of MIP-based training on physiological determinants has not been tested.",
+   "practicalImplications":"Compare a drill's average and high-speed distance per minute with the match MIP for the same duration to judge whether technical-tactical drills such as small-sided games are under- or over-loading players. Do not use match MIP to prescribe interval, repeated sprint or linear speed work; use individual measures such as maximal aerobic speed or critical speed instead.",
+   "athleteDev":"Use match MIP for the exact duration of a drill to check whether small-sided games reach the match peak demands for high-speed running. Do not use it as the target speed for conditioning intervals or sprint work.",
+   "rtp":"This review does not address return to sport and cannot be used to set rehabilitation running intensities. The authors state that MIP does not reflect maximal aerobic capacity or maximal speed, so it should not replace those measures in rehab running."
+ }
+}
+
+== Q19
+{
+ "id":"Q19",
+ "sourceFile":"The mechanism of anterior cruciate ligament injuries in the National Football League - A systematic video review.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The Mechanism of Anterior Cruciate Ligament Injuries in the National Football League: A Systematic Video Review' matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Case Report / Case Series",
+ "primaryDomain":"Sports Medicine & Injury",
+ "domains":["Sports Medicine & Injury","Training & Performance"],
+ "audiences":["Sports Medicine","Athletic Training","Performance","Coaching"],
+ "sports":["American Football"],
+ "populations":["Professional / Elite","Injured Athletes"],
+ "evidenceSummary":"Descriptive video analysis of 53 publicly available videos of NFL players' ACL injuries, drawn from 429 ACL injuries on NFL injured reserve lists from 2007 to 2016. Most injuries occurred during deceleration (60%), with contact (58%), heel strike (60%), knee flexion of 0 to 30 degrees (62%) and valgus knee collapse (53%). Defensive backs (26%) and wide receivers (23%) were most often injured.",
+ "screeningLimitations":"Only 12 percent of the injuries had usable public video, and fan-recorded footage may over-represent players on camera. With no comparison group and no force measurement, the design can describe injury patterns but cannot establish causes or risk factors.",
+ "synthesisCaution":"Staff could read the heel-strike and knee-angle patterns as proven ACL risk factors for football, when they are descriptive findings from a small, selected set of videos.",
+ "paper":{
+   "year":2023,
+   "citation":"Schick S, Cantrell CK, Young B, Mosher Z, Ewing M, Elphingstone JW, et al. The Mechanism of Anterior Cruciate Ligament Injuries in the National Football League: A Systematic Video Review. Cureus. 2023;15(1):e34291.",
+   "doi":"10.7759/cureus.34291",
+   "abstract":"Video footage of NFL players with ACL injuries from 2007 to 2016 was coded for movement, contact and joint position. Most injuries involved deceleration, contact, heel strike, shallow knee flexion and valgus collapse.",
+   "tldr":"Most NFL ACL injuries seen on public video happened during deceleration, often with contact and heel strike, at shallow knee flexion. Video cannot show the forces on the ligament, so these are patterns rather than proven causes.",
+   "methods":"NFL injured reserve lists (2007 to 2016) identified 429 ACL injuries, and publicly available videos were found for 53 through a systematic Google search. Three reviewers independently coded speed, maneuver, contact, foot strike, joint angles and collapse direction, with 96 percent agreement before reconciliation.",
+   "findings":"Deceleration was present in 32 of 53 injuries (60 percent) and 31 (58 percent) involved contact, 20 of them direct to the knee. Heel strike occurred in 32 (60 percent), knee flexion was 0 to 30 degrees in 33 (62 percent), and valgus collapse in 28 (53 percent). Defensive backs (14, 26 percent) and receivers (12, 23 percent) were most often injured.",
+   "limitations":"Only 53 of 429 injuries (12 percent) had usable video, so the sample is selected. The videos were made for fan viewing, not for kinematic analysis, and camera focus on the ball may under-record linemen. The authors state that video alone cannot assess ligament forces, and the design has no causation analysis.",
+   "practicalImplications":"Movement patterns seen in these injuries, namely brisk deceleration, contact in the lower body or upper body, and landing with heel strike at shallow knee flexion, can be used to choose drills for football-specific ACL prevention work. The paper does not test any prevention programme, so the drills themselves remain unproven in this population.",
+   "athleteDev":"Use these patterns to check whether football drills include brisk decelerations, cutting and contact in shallow knee positions, the situations linked to injury here. Use them to guide drill selection, not to set loads or targets.",
+   "rtp":"This study cannot inform return-to-sport decisions. It describes how injuries happened and does not report recovery, readiness or outcome data."
+ }
+}
+
+== Q20
+{
+ "id":"Q20",
+ "sourceFile":"The mechanism of hamstring injuries - A systematic review.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The mechanism of hamstring injuries - a systematic review' (Danielsson et al., BMC Musculoskeletal Disorders 2020) matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Systematic Review / Meta-analysis",
+ "primaryDomain":"Sports Medicine & Injury",
+ "domains":["Sports Medicine & Injury"],
+ "audiences":["Sports Medicine","Athletic Training","Performance","Rehabilitation"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Mixed / Unspecified"],
+ "evidenceSummary":"A PRISMA systematic review of 26 original studies (from 2,841 screened after removing duplicates) on how hamstring injuries occur, drawing on retrospective injury reports, kinematic studies and kinematic studies with EMG, with 444 participant entries across studies (some individuals in more than one study). The authors conclude that stretch-type injuries follow extensive hip flexion with an extended knee, and that sprint-related injuries most likely result from eccentric strain in the late swing phase.",
+ "screeningLimitations":"Most included studies estimated the mechanism in uninjured people rather than observing injuries. Only three studies recorded an actual injury in real time, and two of them analysed the same runner. Study quality was low (median modified Downs and Black score 8 of 20).",
+ "synthesisCaution":"Staff could treat the late-swing eccentric mechanism as established and build all sprint hamstring work around it, when the authors say it rests mainly on estimates and on very few recorded injuries.",
+ "paper":{
+   "year":2020,
+   "citation":"Danielsson A, Horvath A, Senorski C, Alentorn-Geli E, Garrett WE, Cugat R, et al. The mechanism of hamstring injuries - a systematic review. BMC Musculoskeletal Disorders. 2020;21:641.",
+   "doi":"10.1186/s12891-020-03658-8",
+   "abstract":"A PRISMA systematic review of how hamstring injuries occur, searching PubMed, EMBASE and the Cochrane Library. Twenty-six studies were included and grouped by method, and the authors conclude that stretch-type injuries follow extensive hip flexion with an extended knee, and sprint injuries most likely occur in the late swing phase.",
+   "tldr":"Stretch-type hamstring injuries are linked to extensive hip flexion with a straight knee. For sprinting, the review points to eccentric strain in the late swing phase, but this rests mainly on estimates rather than recorded injuries.",
+   "methods":"PRISMA systematic review of PubMed, EMBASE and the Cochrane Library, searched on 21 February 2017 and updated to July 2019, for English-language original studies on hamstring injury mechanism. Two authors screened and extracted data in duplicate and rated quality with a modified Downs and Black checklist (maximum 20). Results were synthesised qualitatively by study method.",
+   "findings":"Three stretch-type studies (dancers and water skiers, 12 to 30 subjects each) all reported injury with extensive hip flexion and knee extension. Of 10 kinematic studies, seven reported late swing phase, two stance phase and one both phases. Of 10 kinematic-EMG studies, five reported swing phase, one stance phase, two both phases and two other tasks. Three studies recorded an actual injury in real time, and two of these concerned the same runner. The median quality score was 8 (range 7 to 14) of 20.",
+   "limitations":"The abstract reports 2,372 screened studies, while the Results report 2,841 screened after 1,423 duplicates were removed from 4,264 identified; the methods figure is used here. Most conclusions are estimates from uninjured participants, and the injury-recording evidence is limited to three case reports. Conditions varied, with some treadmill studies at slow speeds and few studies on grass. Quality was low, and the inclusion criterion depended on the authors' own extrapolation. The authors call for further research to confirm the findings.",
+   "practicalImplications":"Treat late-swing eccentric loading as a working hypothesis for sprint hamstring injury, and consider eccentric hamstring work and sprint mechanics that limit late-swing strain. For kicking or dance-type movements that combine hip flexion with a straight knee, check for that position. Because the evidence is mostly estimates, monitor athletes rather than assuming the mechanism applies to each person.",
+   "athleteDev":"Use the review to frame hamstring risk in sprinters around late-swing eccentric load, and in kicking or dance around extensive hip flexion with a straight knee. It can guide exercise selection, but the mechanism evidence is largely estimated.",
+   "rtp":"The review describes how injuries happen, not how to rehabilitate them. The authors suggest the stretch-type findings could inform programmes with hip and core strengthening, but the review gives no return-to-sport criteria or timelines."
+ }
+}
+
+== Q21
+{
+ "id":"Q21",
+ "sourceFile":"The multifaceted nature of recovery after exercise - A need for individualization.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The multifaceted nature of recovery after exercise: A need for individualization' matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Narrative Review",
+ "primaryDomain":"Recovery & Readiness",
+ "domains":["Recovery & Readiness","Training & Performance"],
+ "audiences":["Performance","Athletic Training","Sports Medicine","Coaching"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Mixed / Unspecified"],
+ "evidenceSummary":"A narrative review of recovery after exercise, covering the time course of fatigue and recovery, a classification of recovery methods, and meta-analytic effect sizes for common methods such as cold water immersion, compression, massage, foam rolling, creatine, BCAA and protein. The authors argue that group-mean evidence from randomised trials may not transfer to individual athletes, and they illustrate this with a small trial in which 32 participants were randomly allocated to cold water immersion, percussive massage or passive rest.",
+ "screeningLimitations":"No systematic search is described, so the selection of studies is not reproducible. Most effect sizes are taken from earlier meta-analyses, and the review offers no new athlete data beyond its illustrative example.",
+ "synthesisCaution":"Staff could take the table of recovery effect sizes as a ranked guide to which methods to buy or apply, when the effects differ by outcome and time point and the authors recommend individual monitoring over group averages.",
+ "paper":{
+   "year":2023,
+   "citation":"Rappelt L, Javanmardi S, Heinke L, Baumgart C, Freiwald J. The multifaceted nature of recovery after exercise: A need for individualization. Sports Orthop Traumatol. 2023.",
+   "doi":"10.1016/j.orthtr.2023.10.006",
+   "abstract":"This review argues that recovery after exercise involves physical and psychological processes that vary across individuals and time spans, so group-mean evidence may not guide individual decisions. It summarises common recovery methods and their meta-analytic effects and calls for individualised, repeatedly measured approaches.",
+   "tldr":"Recovery methods do not act the same way across outcomes, time points or athletes, so choose them by the sport, the time until the next session and what the individual's markers show. Repeated individual monitoring is needed to check whether a method works for a given athlete.",
+   "methods":"Narrative review with no described search strategy. The authors summarise recovery definitions, the Bishop recovery time spans, a classification of recovery methods, and meta-analytic effect sizes from earlier studies (Table 1). They also present a small randomised trial comparing cold water immersion, percussive massage and passive rest after depth jumps.",
+   "findings":"Table 1 reports that cryotherapy reduces delayed onset muscle soreness (trivial to large effects, 0 to 96 h) and that compression garments increase muscular strength within 24 h (small to large). BCAA reduce creatine kinase at 48 h (moderate) and creatine at 48 to 96 h (large). Protein shows small to medium strength effects. In the illustrative trial (cold water immersion n=11, percussive massage n=11, passive rest n=10), method-by-time interactions were large, especially immediately after the protocol, and individual time courses differed markedly from the group means.",
+   "limitations":"No systematic search is described, and the effect sizes are taken from earlier meta-analyses with differing protocols. The illustrative trial is small and single, so it cannot establish individual responses. The authors note that the effects of cold water immersion on long-term strength adaptation remain uncertain.",
+   "practicalImplications":"Choose recovery methods by sport, the time until the next session and the outcome that matters, and track individual markers such as strength, jump height and creatine kinase over repeated sessions. Do not assume a method that helps the group average will help every athlete.",
+   "athleteDev":"Use the time course of each outcome to decide when to test readiness after hard training, for example jump or strength checks at 24 to 72 h, and record each athlete's response over repeated sessions. Do not use group effect sizes to decide which recovery method every athlete receives.",
+   "rtp":"The review describes recovery after exercise in general and does not address injury or return to sport. It should not be used to set rehabilitation or return-to-sport criteria."
+ }
+}
+
+== Q22
+{
+ "id":"Q22",
+ "sourceFile":"The muscle morphology of elite sprint running.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The Muscle Morphology of Elite Sprint Running' matches the filename.",
+ "confidence":"high",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Training & Performance",
+ "domains":["Training & Performance"],
+ "audiences":["Performance","Athletic Training","Research & Analytics","Coaching"],
+ "sports":["Track & Field"],
+ "populations":["Professional / Elite","Male Athletes","Healthy Athletes"],
+ "evidenceSummary":"A cross-sectional study comparing MRI muscle volumes and isometric strength in 5 elite sprinters (100 m season's best 10.10 s), 26 sub-elite sprinters (10.80 s) and 11 untrained controls, all healthy young men. Total lower-body muscle volume was 48 percent higher in elite and 20 percent higher in sub-elite sprinters than controls. Hip extensor volume (+32 percent absolute vs sub-elite) and gluteus maximus volume (+45 percent) distinguished elite from sub-elite sprinters and were strongly associated with 100 m times, while isometric strength did not differ between the two sprint groups.",
+ "screeningLimitations":"The elite group has only five athletes, so its estimates are imprecise. Seven of 26 sub-elite times were estimated from 60 m or 200 m results. Measurements and performance were taken at different times, and the cross-sectional design cannot establish cause.",
+ "synthesisCaution":"Staff could read the hip extensor and gluteus maximus associations as proof that building these muscles will make a sprinter faster, when the study is cross-sectional, in five elite athletes, and shows association only.",
+ "paper":{
+   "year":2020,
+   "citation":"Miller R, Balshaw TG, Massey GJ, Maeo S, Lanza MB, Johnston M, et al. The Muscle Morphology of Elite Sprint Running. Medicine & Science in Sports & Exercise. 2020.",
+   "doi":"10.1249/MSS.0000000000002522",
+   "abstract":"Muscle volumes (MRI) and isometric strength were compared in elite sprinters, sub-elite sprinters and untrained controls, and related to 100 m performance. Total lower-body muscle volume differed across all three groups, hip extensor and gluteus maximus volumes distinguished elite from sub-elite sprinters and tracked sprint times, and isometric strength did not separate the sprint groups.",
+   "tldr":"Elite sprinters had larger hip extensor and gluteus maximus volumes than sub-elite sprinters, and these muscles tracked 100 m times. With only five elite athletes and a cross-sectional design, the finding is an association and does not show that building these muscles causes faster sprinting.",
+   "methods":"Cross-sectional study of 5 elite sprinters, 26 sub-elite sprinters and 11 untrained controls. Muscle volumes were measured from 3T MRI for 23 lower-limb muscles and 5 functional groups, and isometric strength was measured with dynamometers for 5 muscle groups. Groups were compared by one-way ANOVA with Bonferroni post hoc tests. Within the sprint cohort, Pearson correlations (Benjamini-Hochberg corrected) and stepwise regression related volume and strength to 100 m season's best equivalent.",
+   "findings":"Total lower-body volume was controls below sub-elite (+20 percent) below elite (+48 percent). Elite sprinters had greater absolute volume than sub-elite sprinters in four functional groups, with the largest difference in hip extensors (+32 percent absolute, +15 percent relative). Gluteus maximus (+45 percent), TFL (+57 percent) and sartorius (+47 percent) were larger in elite sprinters. Across all sprinters, total volume correlated with 100 m time (r = -0.629), and hip extensor volume explained 47.5 percent of the variance in absolute terms. Isometric strength was greater than controls in some groups for both sprint groups, but it did not differ between sprint groups and was not related to sprint time.",
+   "limitations":"Only five elite sprinters were included, and the authors acknowledge the small elite sample for strength. Seven of 26 sub-elite 100 m times were estimated from 60 m or 200 m results. Strength was tested once without familiarisation, and isometric tests may lack specificity to sprinting. The cross-sectional design cannot show cause, although the authors argue a causal component is likely.",
+   "practicalImplications":"In this sample, hip extensor and gluteus maximus size tracked sprint times, so coaches may track these muscle groups as part of lower-body planning for sprinters. The study does not show that increasing them causes faster sprinting, and isometric strength did not separate the groups, so it should not be the only marker of elite potential.",
+   "athleteDev":"Use the hip extensor and gluteus maximus findings to prioritise hypertrophy-oriented lower-body work with sprinters, and consider tracking muscle size in those groups. The evidence is associative and comes from a small sample, so review progress against sprint times rather than assuming a direct effect.",
+   "rtp":"The study compares healthy, uninjured men and does not address injury, rehabilitation or return to sport. It should not be used to set rehabilitation loads or muscle-size targets."
+ }
+}
+
+== Q23
+{
+ "id":"Q23",
+ "sourceFile":"The new challenge of sports nutrition - Accepting insect food as dietary supplements in professional athletes.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The New Challenge of Sports Nutrition: Accepting Insect Food as Dietary Supplements in Professional Athletes' matches the filename.",
+ "confidence":"medium",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Nutrition & Hydration",
+ "domains":["Nutrition & Hydration"],
+ "audiences":["Nutrition","Performance","Research & Analytics"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Professional / Elite","Male Athletes","Female Athletes"],
+ "evidenceSummary":"A questionnaire study of 61 Italian professional athletes (27 women, aged 19 to 39), recruited from one sports centre, that measured supplement use, nutrition knowledge, food neophobia, and willingness to taste and endorse a cricket-flour protein bar before and after an information text. Before the text, 26 athletes were willing to taste, 7 uncertain and 28 unwilling; the authors report a significant increase in willingness after the text (z = 4.16, p < 0.001), and 37.7 percent were willing to endorse the bar.",
+ "screeningLimitations":"Small convenience sample from one centre, measured by self-report questionnaire, with no actual tasting or product consumption. The authors acknowledge that the sample limits generalisation and that willingness was not converted into observed behaviour.",
+ "synthesisCaution":"Staff could read the rise in willingness after the information text as proof that athletes will accept insect-based supplements, when the study measured stated intention in one small sample and did not test the product's nutrition, safety or doping risk.",
+ "paper":{
+   "year":2021,
+   "citation":"Placentino U, Sogari G, Viscecchia R, De Devitiis B, Monacis L. The New Challenge of Sports Nutrition: Accepting Insect Food as Dietary Supplements in Professional Athletes. Foods. 2021;10:1117.",
+   "doi":"10.3390/foods10051117",
+   "abstract":"Sixty-one Italian professional athletes completed a questionnaire on supplement use, nutrition knowledge, food neophobia and willingness to taste and endorse a cricket-flour protein bar. Willingness to taste rose after a short information text, and athletes who were willing to taste were more willing to endorse the product.",
+   "tldr":"Athletes in this small sample took supplements mainly on medical or dietitian advice and had weak sports nutrition knowledge. Protein content and curiosity about texture were the main reasons to try an insect bar, while disgust drove refusal.",
+   "methods":"Cross-sectional questionnaire study of 61 professional athletes recruited on a voluntary basis at the Italian Air Force Sports Centre in Rome. The questionnaire covered supplement use, nutrition knowledge (adapted A-NSKQ), food neophobia (FNS), and willingness to taste and endorse an insect protein bar on a 7-point scale, before and after a short information text. Analysis used descriptive statistics, correlation, regression and repeated-measures tests.",
+   "findings":"Every athlete reported using supplements; 88.5 percent named qualified personnel as their main information source. Nutrition knowledge was poor (47.8 percent overall). Before the information text, 26 athletes were willing, 7 uncertain and 28 unwilling to taste the bar; the willing share rose after the text (z = 4.16, p < 0.001), mainly among unwilling athletes (z = 3.88, p < 0.001). Forty-three athletes (70.5 percent) were willing to taste after the text. Only 37.7 percent were willing to endorse the bar, and tasters endorsed it more than non-tasters (4.67 vs 2.22, p < 0.001). Men were more willing to endorse than women (4.47 vs 3.3, p = 0.006). Age was positively associated with food neophobia (r = 0.3, p < 0.05).",
+   "limitations":"The sample is small and convenience-based, from one centre and mainly track and field, fencing and beach volleyball athletes. Willingness was self-reported, and no product was tasted or consumed. The questionnaire used the FNS rather than an insect-specific attitude scale. The authors also note that the product's doping risk, as a hidden-substance issue, was not tested.",
+   "practicalImplications":"Any trial of an insect-based protein bar with athletes should lead with its protein content and include clear information, because the authors found that information increased willingness to taste. Endorsement is limited, so do not assume athletes will promote the product. Check anti-doping status before any product is offered, because the authors flag this as a risk they did not test.",
+   "athleteDev":"Performance nutrition staff can use these results to frame a novel protein bar around protein content and explain its benefits before asking athletes to try it. The study does not show that the bar supports performance or recovery.",
+   "rtp":"This study does not address injury, rehabilitation or return to sport and should not be used to set nutrition plans for injured athletes."
+ }
+}
+
+== Q24
+{
+ "id":"Q24",
+ "sourceFile":"The perceptions and applications of cluster sets in strength and conditioning.pdf",
+ "decision":"INCLUDE",
+ "exclusionReason":"",
+ "degradedReason":"",
+ "doiMissing":false,
+ "identityCheck":"Title in text 'The perceptions and applications of cluster sets in strength and conditioning' matches the filename.",
+ "confidence":"medium",
+ "studyDesign":"Cross-sectional Study",
+ "primaryDomain":"Training & Performance",
+ "domains":["Training & Performance"],
+ "audiences":["Performance","Coaching","Research & Analytics"],
+ "sports":["Mixed / General Sport"],
+ "populations":["Mixed / Unspecified"],
+ "evidenceSummary":"An online survey of 46 strength and conditioning professionals (39 men, 7 women) about how they perceive and programme cluster sets, with closed and open questions analysed by frequency counts and thematic analysis. Thirty-seven (80 percent) reported using cluster sets, most often in the strength-power phase (84 percent of users), and most used percentage of 1RM to set load; the authors judge practice broadly consistent with published recommendations.",
+ "screeningLimitations":"The sample is small, self-selected and recruited through chain sampling, and the survey records coaches' reported perceptions and practice, not athlete training data or outcomes. The authors note that more experienced coaches may differ from those surveyed.",
+ "synthesisCaution":"Staff could read the finding that practice aligns with recommendations as evidence that cluster sets improve athlete performance, when the survey measures what coaches report doing and believing, not athlete results.",
+ "paper":{
+   "year":2025,
+   "citation":"Nagatani T, Vial S, Kendall KL, Comfort P, Yang J, Haff GG. The perceptions and applications of cluster sets in strength and conditioning. International Journal of Sports Science & Coaching. 2025.",
+   "doi":"10.1177/17479541251403877",
+   "abstract":"Forty-six strength and conditioning professionals completed an online survey on their perceptions of cluster sets and how they programme them. The authors report general alignment with published recommendations, with some practices, such as heavy bench press and squat variants, differing from the recommended approach.",
+   "tldr":"Most coaches surveyed use cluster sets, mainly in strength-power phases, and they report increasing load by about 5 to 15 percent for cluster sets. Logistics such as supervising large groups and added training time are the main barriers.",
+   "methods":"Cross-sectional online survey of 46 strength and conditioning professionals, recruited by email, social media and chain sampling. Closed-ended questions were analysed by frequency counts, and open-ended responses were analysed by six-stage thematic analysis.",
+   "findings":"37 of 46 respondents (80 percent) used cluster sets. Strength-power phase use was reported by 31 of 37 users (84 percent), compared with 13 (35 percent) for hypertrophy or strength-endurance. Percentage of 1RM was the most common load method (23 of 37, 62 percent). Bench press and squat variants were the most common exercises. Nineteen of 37 users (51 percent) reported no concerns; the most common concerns were extended training duration (27 percent) and supervision of large groups (24 percent).",
+   "limitations":"Perceptions and self-reported practice only, with no athlete data. Small, self-selected sample recruited through chain sampling. The authors note that the questionnaire did not capture whether the programmes used were evidence based or the athletes' training histories,.",
+   "practicalImplications":"Cluster sets are most often used in strength-power blocks with load increases of about 5 to 15 percent, so programmes that use them should plan the added rest and supervision needed for the session. The survey cannot show whether those choices improve performance, so test them on your own athletes before relying on them.",
+   "athleteDev":"Coaches can use these survey patterns to plan cluster sets in strength-power phases with a load increase and longer rest, and to check that the session time and supervision are realistic for the group. The paper does not show performance gains from these choices.",
+   "rtp":"The study does not address rehabilitation or return to sport and should not be used to set return-to-sport loads."
+ }
+}
+

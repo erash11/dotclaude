@@ -1,0 +1,330 @@
+Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+BJSM Online First, published on October 27, 2016 as 10.1136/bjsports-2016-096309
+Original article
+Training loads and injury risk in Australian
+football—differing acute: chronic workload
+ratios inﬂuence match injury risk
+David L Carey,1 Peter Blanch,1,2,3 Kok-Leong Ong,4 Kay M Crossley,1 Justin Crow,1,2
+Meg E Morris1
+▸ Additional material is             ABSTRACT                                                          risk models may be possible by varying the way the
+published online only. To view       Aims (1) To investigate whether a daily acute:chronic             acute:chronic workload ratio is calculated.
+please visit the journal online
+(http://dx.doi.org/10.1136/          workload ratio informs injury risk in Australian football            The acute:chronic workload ratio has previously
+bjsports-2016-096309).               players; (2) to identify which combination of workload            been quantiﬁed using different internal and external
+1                                    variable, acute and chronic time window best explains             workload variables.12 13 15 Hulin et al13 15 used
+La Trobe Sport and Exercise
+Medicine Research Centre,            injury likelihood.                                                balls bowled and session duration×rating of per-
+College of Science, Health and       Methods Workload and injury data were collected                   ceived exertion (session-RPE)16 in cricket;13 studies
+Engineering, La Trobe                from 53 athletes over 2 seasons in a professional                 of rugby league used total distance run.12 15
+University, Melbourne, Victoria,     Australian football club. Acute:chronic workload ratios           The relationships between different acute:chronic
+Australia
+2
+Essendon Football Club,            were calculated daily for each athlete, and modelled              workload ratios and injury risk are yet to be explored
+Melbourne, Victoria, Australia       against non-contact injury likelihood using a quadratic           in Australian football. It is possible that different
+3
+School of Allied Health            relationship. 6 workload variables, 8 acute time windows          internal or external workload variables may have
+Sciences, Grifﬁth University,        (2–9 days) and 7 chronic time windows (14–35 days) were           greater inﬂuence on injury likelihood than others.
+Gold Coast, Queensland,
+considered (336 combinations). Each parameter combination            Acute workloads were deﬁned as the total
+Australia
+4
+SAS Analytics Innovation Lab,      was compared for injury likelihood ﬁt (using R2).                 amount of training load in the previous calendar
+La Trobe Business School, La         Results The ratio of moderate speed running workload              week, and chronic loads as the mean weekly load
+Trobe University, Melbourne,         (18–24 km/h) in the previous 3 days (acute time                   in the preceding 3–4 weeks.12 13 15 However, the
+Victoria, Australia                  window) compared with the previous 21 days (chronic               rationale for these time windows are based on
+Correspondence to                    time window) best explained the injury likelihood in              studies of swimmers tapering for performance1 2
+Professor Kay M Crossley, La         matches (R2=0.79) and in the immediate 2 or 5 days                and it is not known if varying these time periods
+Trobe Sport and Exercise             following matches (R2=0.76–0.82). The 3:21 acute:                 will increase or decrease the accuracy of injury risk
+Medicine Research Centre,            chronic workload ratio discriminated between high-risk            models. Furthermore, previous studies have mod-
+College of Science, Health and
+and low-risk athletes (relative risk=1.98–2.43). Using            elled workload ratios against injury likelihood in
+Engineering, La Trobe
+University, Plenty Road &            the previous 6 days to calculate the acute workload time          the current and subsequent weeks.12 13 It is not
+Kingsbury Drive, Melbourne,          window yielded similar results. The choice of acute time          known if workload ratios calculated on a daily
+Victoria 3086, Australia;            window signiﬁcantly inﬂuenced model performance and               basis can explain injury likelihood in individual
+k.crossley@latrobe.edu.au            appeared to reﬂect the competition and training                   training sessions and matches.
+Accepted 30 September 2016           schedule.                                                            This study aimed to: (1) investigate whether
+Conclusions Daily workload ratios can inform injury               daily acute:chronic workload ratios can inform
+risk in Australian football. Clinicians and conditioning          non-contact injury risk in training sessions and
+coaches should consider the sport-speciﬁc schedule of             matches, as well as the subsequent 2 and 5 days in
+competition and training when choosing acute and                  Australian football, and (2) identify which combin-
+chronic time windows. For Australian football, the ratio          ation of workload variable (athlete training loads
+of moderate speed running in a 3-day or 6-day acute               monitored using Global Positioning System (GPS)
+time window and a 21-day chronic time window best                 devices, accelerometers and session-RPE), acute and
+explained injury risk.                                            chronic time window (varying between 2–9 days and
+2–5 weeks) best explained the variation in injury
+likelihood.
+INTRODUCTION                                                      METHODS
+Training loads can inﬂuence performance1–3 and                    Participants
+injury risk4–9 in team sport athletes. The acute:                 All participants involved in the study were from
+chronic workload ratio is deﬁned as the ratio of an               one professional Australian football club competing
+athlete’s short-term (acute) training load to the mean            in the Australian Football League (AFL). The club
+of their long-term (chronic) training load.10–12 The              ﬁelded 45 athletes in the 2014 season and 45 in
+acute:chronic workload ratio appears to be a valid                the 2015 season, giving a total of 90 player-seasons
+tool to assess an athlete’s level of readiness to                 from 53 unique athletes (mean±SD 22.9±4.0 years,
+train or compete and their risk of injury.10–15                   188.2±6.7 cm, 85.7±8.1 kg). Informed consent
+To cite: Carey DL, Blanch P,
+Ong K-L, et al. Br J Sports
+Blanch and Gabbett10 reported a quadratic relation-               was received from the club for collection and ana-
+Med Published Online First:      ship (R2=0.53) between the 1-week (acute) to                      lysis of de-identiﬁed training and injury data. The
+[please include Day Month        4-week (chronic) workload ratio and injury risk in                project was approved by the La Trobe University
+Year] doi:10.1136/bjsports-      a pooled set of athletes from cricket, rugby union                Faculty of Health Sciences Human Ethics
+2016-096309                      and Australian football. Improvements in injury                   Committee (FHEC14/233).
+Carey DL, et al. Br J Sports Med 2016;0:1–7. doi:10.1136/bjsports-2016-096309                                  1
+Copyright Article author (or their employer) 2016. Produced by BMJ Publishing Group Ltd under licence.
+                          Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+Original article
+Data collection                                                       workload of an athlete on day i as wi , the acute:chronic work-
+All players wore commercially available 10 Hz GPS devices and         load for that day (ri ) is calculated:
+100 Hz triaxial accelerometers (Catapult Optimeye S5) during
+all outdoor training sessions and matches. The technology used                                         X
+i1      X wj
+wj i1
+has been previously validated for use as an athlete monitoring                                    ri ¼        =                                   ð1Þ
+a j¼ic c
+tool in Australian football.17–19 Session-RPE data were recorded                                      j¼ia
+in all sessions that GPS devices were used.16 While session-RPE
+is able to monitor loads in other training modalities (eg, resist-    where a and c represent the time windows (in days) over which
+ance training and cross-training), these data were not available.     the acute and chronic workloads are calculated. This formula
+Seasons were structured with a precompetition phase                calculates the workload ratio each day by taking the average
+(15 weeks), followed by a competitive phase (27 weeks) with           daily workload in the previous a days (ie, not including what
+regularly scheduled matches usually between 6 and 8 days apart.       was done on that day) and dividing it by the average daily load
+The weekly training schedule during the competitive phase             in the previous c days.
+varied depending on the number of days turnaround between                In deﬁning the above acute:chronic workload ratio, there is
+matches. In general, the 2 days postmatch were dedicated to           freedom of choice in the parameters a and c as well as the work-
+recovery and the main training session was held 2 or 3 days           load variable w. In this study, we investigated the effect of
+prior to the next match, the main training session was                varying the acute and chronic time windows on the ability of
+never held within the recovery period. When the schedule              the acute:chronic workload ratio to inform injury risk. We
+permitted, an additional accessory training session was               allowed parameters to vary such that: a ∈{2, 3, 4, 5, 6, 7, 8, 9}
+included in between the recovery period and the main training         and c ∈{14, 18, 21, 24, 28, 32, 35} and considered each of the
+day. The competitive phase of the season was deﬁned to begin          56 possible combinations.
+once the team started playing matches against competing                  The set of workload variables considered in this study is pre-
+clubs. Thus interclub practice matches were treated the same          sented in table 1. For each of the 6 workload variable choices,
+as regular season matches in all injury risk analyses and pre-        we examined 56 combinations of acute and chronic time
+competition training sessions were included in chronic load           windows, giving a total of 336 unique parameter combinations.
+calculations.                                                         The discrete velocity bands used in this study (18–24 and 24+
+km/h) were chosen to represent the speeds at which Australian
+Injury deﬁnition                                                      football players reached their anaerobic threshold and sprinting
+Injuries were recorded and classiﬁed by club medical staff using      threshold, respectively (unpublished data). Individualised vel-
+the Orchard Sports Injury Classiﬁcation System (OSICS).20 All         ocity bands can offer a different interpretation of running
+injuries were classiﬁed according to the mechanism by which           demands;22–24 however, these data were not available in the
+they occurred (contact or non-contact) as well as severity (transi-   studied cohort.
+ent or time loss). Time-loss injuries were deﬁned as those
+causing a player to be unavailable for training or competition.21     Data analysis
+In this study, we focused on time-loss non-contact injuries.          For each combination of acute time window, chronic time
+Transient injuries and traumatic injuries caused by collisions and    window and load variable {a, c, w}, we calculated the acute:
+other contact events were excluded from injury risk models.           chronic workload ratio (r) for each player, each day. Workload
+ratios were binned into quantile groups and injury likelihood in
+Injury lag periods                                                    each bin calculated as the proportion of match or training ses-
+To account for possible delay effects in injury occurrence and        sions resulting in injury.10 To account for possible effects intro-
+reporting, we considered three different injury lag periods           duced by choosing the number of quantile bins, models were
+(ﬁgure 1). On each training or match day, we observed whether         generated for 7, 9 and 11 bins and results averaged to give a
+an injury occurred: (1) that day (no lag time), (2) that day or the   more robust assessment of the strength of relationship between
+following 2 days, or (3) that day or the following 5 days. These      workload ratio and injury risk. All ﬁgures were produced using
+periods were chosen to represent risk in: (1) a single session, (2)   11 quantile bins for clarity of presentation.
+a short period postsession not including the next main session           Workload ratios were modelled against injury risk using a
+and (3) a longer period incorporating the next main session but       quadratic regression similar to Blanch and Gabbett.10 The inde-
+not overlapping with more than one competitive match.                 pendent variable was taken to be the mean of workload ratio
+within each bin and the dependent variable the associated injury
+Daily acute:chronic workload ratio                                    likelihood. The ability of each workload ratio to explain injury
+We propose a method of daily acute:chronic workload calcula-          likelihood was assessed using the R2 statistic. All models were
+tion using moving averages of daily loads. Deﬁning the                created using the R statistical programming language (R Core
+Figure 1 The deﬁnition of acute and
+chronic workloads and injury lag
+periods on a given day during the
+season (highlighted in red). Note the
+separation between workload and
+injury outcome periods.
+2                                                                        Carey DL, et al. Br J Sports Med 2016;0:1–7. doi:10.1136/bjsports-2016-096309
+                                Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+Original article
+Team. R: a language and environment for statistical computing.                     (mean R2=0.91; ﬁgure 2A). However, when the relationship
+Vienna, Austria, 2014).                                                            was decomposed by session type (ﬁgure 2B), we observed con-
+Injured players were included in risk analyses as soon as they                  siderably different injury risk proﬁles. Matches were associated
+began rehabilitation at the club. Their workloads in rehabilita-                   with higher injury likelihood than training sessions, irrespective
+tion training were recorded and their ratio calculations did not                   of the athlete workload ratio (relative risk (RR)=4.04, 95% CI
+differ from other players. To avoid extreme spikes in workload                     2.86 to 5.70). Thus, while it is appropriate to group matches
+ratio for players with abnormally low chronic loads (ie, players                   and training sessions together for load calculations, it may not
+returning from injury or after a scheduled break), a data prepro-                  be so when analysing injury likelihood. Since results suggested
+cessing step was applied to remove observations when the                           that most injury risk is contained within competitive matches,
+chronic workload was <2 SDs below the mean.12 This did not                         we have focused our injury risk analyses on matches. The fol-
+interfere signiﬁcantly with match observations due to a selection                  lowing sections exclude injuries sustained during the precompe-
+process that restricted players from participating in matches if                   tition phase (n=65) and injuries by players completing
+they did not have a sufﬁcient ﬁtness base.                                         rehabilitation of previous injuries (n=16).
+RESULTS                                                                            Best predictors of match injury risk
+Injuries                                                                           Figure 3 shows the best performing (highest mean R2) risk
+Over the two seasons, monitored players experienced a total of                     models for each injury lag period in matches only. The ratio of
+178 time-loss non-contact injuries. A breakdown of the injuries                    3:21 days moderate speed running load (highlighted cells) was
+by injury site and activity performed on the date the injury was                   observed to consistently explain injury likelihood for each time
+recorded is shown in online supplementary table S1. The major-                     period considered (mean R2=0.76–0.82). This compared
+ity of injuries were recorded in matches (n=59) and main train-                    favourably with the 7:28 distance ratio (mean R2=0.04–0.41),
+ing sessions (n=68). The distribution of match turnaround                          and with previous studies using workload ratios calculated
+times and injury rates is shown in table 2. Similar rates of injury                weekly (R2=0.53).10
+(∼3%) were observed for 6, 7, 8 and 9+day gaps between                                The best performing injury risk models displayed similar
+matches. Table 2 also shows that players were very rarely                          shapes to those seen in previous studies.10 11 13 Irrespective of
+required to play consecutive matches without at least a 6-day                      the acute time window, chronic time window or workload vari-
+break. It is likely that this distribution of turnaround times is                  able, the risk proﬁles suggested that athletes minimised their
+representative of other professional Australian football teams                     likelihood of non-contact injury when they approached matches
+since the sport’s governing body gives consideration to match                      with workload ratios around 0.8–1.0. Injury likelihood was
+turnaround times when creating the competition schedule.                           greater for athletes with lower or higher ratios.
+To investigate the different levels of risk, a RR analysis was
+performed on injury likelihood for workload ratios in the range
+Acute:chronic workload ratio and injury risk
+0.8–1.2 versus all observations outside of this range. The signiﬁ-
+The ratio of 6:14 days distance load best explained the variation
+cant RR values for matches (95% CIs excluding 1) are shown in
+in injury likelihood in matches and training sessions combined
+table 3. RR values including a 2-day or 5-day injury lag period
+are included in online supplementary tables S2–S3. These data
+quantify the level of risk associated with being outside of the
+Table 1 Workload variables considered in workload ratio                           ‘safe’ range (0.8–1.2) for different acute:chronic workload par-
+modelling                                                                         ameter combinations.
+Variable                  Definition                                                 Similar to ﬁgure 3, the RR analysis identiﬁed moderate speed
+running with a 3-day acute time window as able to discriminate
+Distance (m)              Distance above 3 km/h                                   between high-risk and low-risk athletes in matches and the sub-
+Session-RPE (arbitrary    Athlete rating of perceived exertion×session duration   sequent 2–5 days (RR=2.29–2.59). High speed running work-
+units)
+load ratios were also highlighted by the RR analysis in table 3;
+Player load (arbitrary    Custom metric measuring the magnitude of rate of
+units)                    change of acceleration17
+however, the magnitude of risk was not signiﬁcantly higher
+Distance-load             Distance×mean speed
+(RR=2.74 vs 2.59) than for moderate speed running and R2
+(m2 min-1)                                                                        values were lower (R2=0.24 vs 0.65). This suggested that while
+HSR (m)                   Distance above 24 km/h                                  high speed running workload ratios appear to inﬂuence injury
+MSR (m)                   Distance between 18 and 24 km/h                         risk, moderate speed running may be a better choice to track in
+Australian football.
+HSR, high speed running; MSR, moderate speed running.
+Effects of varying acute and chronic time window
+Figure 4 shows the effects of varying the acute and chronic time
+Table 2 Distribution of times between player matches and injury                   windows on the ability of moderate speed running workload
+rates                                                                             ratio to explain non-contact injury risk in Australian football
+matches (ﬁgure 4A) and the subsequent 2 (ﬁgure 4B) or 5 days
+Time between                Count (player          Time-loss non-contact injury
+matches (days)              matches)               rate (%)                       (ﬁgure 4C). Moderate speed running was chosen for the work-
+load variable due to it appearing as a top 3 workload parameter
+5                             8                    0.0                            more than any other choice (ﬁgure 3).
+6                           321                    3.4                               Peaks in model R2 for acute windows of 3 days and chronic
+7                           557                    3.8                            windows of 21 days are clear for each injury lag period, and cor-
+8                           345                    3.5                            responded to the highlighted workload ratios in ﬁgure 3. The
+9+                          454                    3.3                            model performance contours suggested that acute time windows
+of 3 and 6 days generated better performing injury risk models,
+Carey DL, et al. Br J Sports Med 2016;0:1–7. doi:10.1136/bjsports-2016-096309                                                                      3
+                           Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+Original article
+Figure 2 Relationship (with 95% CI)
+between 6:14 distance-load ratio and
+non-contact injury likelihood for: (A)
+matches and training sessions
+combined (mean R2=0.91) and (B)
+matches (mean R2=0.54) and training
+sessions (mean R2=0.53) separately.
+Figure 3 Injury likelihood proﬁles
+(with 95% CIs) of the top 3
+performing parameter combinations for
+explaining: (A) match injuries, (B)
+match injuries and following 2 days,
+and (C) match injuries and the
+following 5 days. HSR, high speed
+running (>24 km/h); MSR=moderate
+speed running (18–24 km/h).
+4                                                                         Carey DL, et al. Br J Sports Med 2016;0:1–7. doi:10.1136/bjsports-2016-096309
+                              Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+Original article
+Table 3 Relative risk of non-contact time-loss injury in matches
+Acute window (days)                   Chronic window (days)                    Variable                        Relative risk (95% CI)             Mean R2
+5                                     14                                       High speed running              2.74 (1.19 to 6.33)                0.24
+3                                     28                                       Moderate speed running          2.59 (1.18 to 5.66)                0.65
+5                                     24                                       High speed running              2.49 (1.08 to 5.76)                0.11
+3                                     21                                       Moderate speed running          2.43 (1.11 to 5.32)                0.79
+3                                     32                                       Moderate speed running          2.24 (1.03 to 4.90)                0.66
+5                                     14                                       Moderate speed running          2.18 (1.05 to 5.47)                0.26
+9                                     18                                       Session-RPE                     1.97 (1.17 to 3.31)                0.46
+9                                     28                                       Session-RPE                     1.69 (1.02 to 2.81)                0.08
+Figure 4 Effects of varying acute and chronic time window on model R2 performance for: (A) match injuries, (B) match injuries and following
+2 days, and (C) match injuries and the following 5 days. Moderate speed running used as the workload variable.
+and that performance was highly sensitive to the choice of an                          minimum injury risk when their workload ratios are in the
+acute time window. The optimal choice of a chronic time                                range 0.8–1.0. Risk increases as players have ratios on either
+window was less clear, but 21 or 28 days (3 or 4 weeks)                                side of this region. Using the ratio of 3:21 days moderate speed
+appeared to be a valid choice.                                                         running, the model predicted that match injury risk doubled
+(from 1.8% to 3.6%) if the workload ratio deviated from 1 to
+Effects of including injury lag periods                                                1.4 or 0.5. This result, using a daily workload ratio, extends
+The similarity in model performance across each injury lag                             conclusions from previous studies11 that rapid changes in train-
+period (best R2=0.76–0.82, mean R2=0.26–0.28 and peak                                  ing loads are associated with increased injury likelihood. The
+RR=2.29–2.74) suggested that the daily acute:chronic workload                          rate of increase in injury risk may differ for different parameter
+ratio can inform injury risk in Australian football matches and                        combinations, evidenced by the divergence of the curves in
+that including a forward looking injury lag period does not sig-                       ﬁgure 3. However, a lack of data for athletes with very high
+niﬁcantly improve the ability to explain variations in match                           workload ratios leading into matches prevented the identiﬁca-
+injury rates.                                                                          tion of particular workload ratios as more ‘risky’ than others
+(due to a large overlap of CIs).
+DISCUSSION
+Daily acute:chronic workload ratio and injury risk
+Acute:chronic workload ratios using moderate speed running, a                          Choice of acute and chronic time window
+3-day or 6-day acute time window and a 21-day or 28-day                                Figure 4 shows that the choice of an acute window signiﬁcantly
+chronic time window were best able to explain non-contact                              inﬂuences the ability of workload ratios to explain injury likeli-
+injury risk in the following three time periods: (1) matches, (2)                      hood in matches and the days following. Moderate speed
+matches and the next 2 days, and (3) matches and the next                              running ratios captured with acute time windows of 3 or 6 days
+5 days. The performance of injury risk models suggests that it is                      and chronic time windows of 3 or 4 weeks were best able to
+valid to track Australian football player workload ratios on a                         explain injury likelihood. Injury models using previously
+daily basis. This extends previous studies that found workload                         reported parameters of 7-day acute and 28-day chronic distance
+ratios, calculated on a weekly basis, and explained injury risk in                     loads12 explained less of the variance (mean R2=0.04–0.41) in
+cricketers13 and rugby players.12 15                                                   this study population. We suggest that teams model their own
+Non-contact injury risk was signiﬁcantly higher in competitive                      data so that over a period of years they will ﬁnd which ratio is
+matches compared with training sessions (RR=4.04, 95% CI                               most useful for them.
+2.86 to 5.70), suggesting that injury risk models can be strength-                        The structure of a professional Australian football season
+ened by modelling match injuries separately to training injuries.                      means that 3-day acute periods include the main training ses-
+Previous studies10 12 using weekly workload ratios avoided this                        sions prior to matches but never the previous match. Results
+issue by considering time spans that covered multiple training                         highlighting 3-day acute time windows may reﬂect this speciﬁc
+sessions and potentially multiple matches.                                             structure. Similarly, 6-day acute windows will include the previ-
+Injury likelihood proﬁles in ﬁgure 3 have consistent shape to                       ous match when teams are scheduled for a short turnaround
+previous study ﬁndings,10 11 13 suggesting that athletes are at                        between matches but will not for longer breaks.
+Carey DL, et al. Br J Sports Med 2016;0:1–7. doi:10.1136/bjsports-2016-096309                                                                                5
+                            Downloaded from http://bjsm.bmj.com/ on November 3, 2016 - Published by group.bmj.com
+Original article
+These observations suggest that it may be best practice to          CONCLUSION
+choose an acute time window that reﬂects the schedule of an         Daily acute:chronic workload ratios were able to explain the
+athlete’s competition and training when monitoring injury risk      variation in non-contact injury likelihood in Australian football
+(ie, different windows may be optimal in sports with different      players. The 3:21 days moderate speed running ratio was the
+schedules such as basketball, soccer or cricket).                   combination that performed best—it provided a better model ﬁt
+than the commonly used 7:28 days ratio. The results suggested
+that the best choices of acute and chronic time windows may
+need to be identiﬁed sport by sport or team by team and it may
+Choice of workload variable                                             depend on the speciﬁc structure of an athlete’s competition and
+Moderate speed running was the workload variable that                   training schedule.
+explained a quadratic variation in injury likelihood (R2=0.76–
+0.82) and discriminated between high-risk and low-risk athletes
+(RR=2.3–2.6). While parameter combinations using other                       What are the ﬁndings?
+workload variables were able to generate models with high R2
+and RR, none appeared as consistently as moderate speed
+running. Thus, in professional Australian football, distance              ▸ The acute:chronic workload ratio, calculated on a daily
+covered at a velocity of between 18 and 24 km/h is an appropri-             basis, can explain variations in non-contact injury risk in
+ate choice of workload variable when using the acute:chronic                Australian football players.
+workload ratio to monitor injury risk. This is potentially a con-         ▸ The ratio of moderate speed running loads in a 3-day or
+sequence of the speciﬁc demands of the sport and physiological              6-day acute time window and a 21-day or 28-day chronic
+characteristics of competing athletes and alternative workload              time window best explained injury risk in matches and the
+variables may be more suited to other sports.                               following 2–5 days. Including a forward looking injury lag
+period did not signiﬁcantly improve the ability to explain
+variations in injury rates.
+Choice of injury lag period                                               ▸ The size of an acute time window showed strong inﬂuence
+Figures 3 and 4 show the differences between injury models for              over the ability of the workload ratio to inform injury risk.
+the likelihood of injury in: (1) matches, (2) matches and the fol-
+lowing 2 days, and (3) matches and the following 5 days.
+Models showed similar ability to explain variation in injury like-
+lihood (ﬁgure 3) and similar changes in performance when
+varying acute and chronic time windows (ﬁgure 4). This sug-                  How might it impact on clinical practice in the future?
+gests that managing one choice of athlete workload ratio (using
+an appropriate acute and chronic time window) may be effective            ▸ Daily monitoring of the acute:chronic workload ratio is a
+in reducing injury risk in matches and the days immediately                 valid tool for injury risk management in Australian football.
+following.                                                                ▸ The schedule of training and competition should be
+considered when choosing the size of acute and chronic
+Limitations and extensions                                                  monitoring periods.
+The study considered injuries classiﬁed as non-contact and
+causing the athlete to be unavailable for training or competition.
+Injury data also contained more detailed subclassiﬁcations by           Twitter Follow David Carey at @dlcarey88
+type of pathology (muscle, tendon, bone, ligament or joint
+Competing interests None declared.
+injury); however, an examination of injury risk within each sub-
+class was beyond the scope of this study. A larger sample of            Ethics approval La Trobe University Faculty of Health Sciences Human Ethics
+Committee (FHEC14/233).
+injuries may enable future studies to examine the relationships
+between acute and chronic time windows, workload variables              Provenance and peer review Not commissioned; externally peer reviewed.

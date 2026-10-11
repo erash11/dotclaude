@@ -1,0 +1,313 @@
+{
+ "domains": [
+  "Training & Performance",
+  "Sports Medicine & Injury",
+  "Rehabilitation & Return to Sport",
+  "Recovery & Readiness",
+  "Nutrition & Hydration",
+  "Brain Health & Psychology",
+  "Athlete Wellbeing",
+  "Monitoring & Technology"
+ ],
+ "audiences": [
+  "Performance",
+  "Athletic Training",
+  "Sports Medicine",
+  "Rehabilitation",
+  "Nutrition",
+  "Research & Analytics",
+  "Coaching"
+ ],
+ "sports": [
+  "Mixed / General Sport",
+  "American Football",
+  "Soccer",
+  "Basketball",
+  "Baseball / Softball",
+  "Rugby",
+  "Volleyball",
+  "Track & Field",
+  "Swimming & Diving",
+  "Gymnastics",
+  "Tennis",
+  "Golf",
+  "Ice Hockey",
+  "Combat Sports",
+  "Endurance Sport",
+  "Other Sport"
+ ],
+ "populations": [
+  "Professional / Elite",
+  "Collegiate",
+  "Youth / Adolescent",
+  "Adult / Recreational",
+  "Female Athletes",
+  "Male Athletes",
+  "Injured Athletes",
+  "Healthy Athletes",
+  "Mixed / Unspecified"
+ ],
+ "studyDesigns": [
+  "Systematic Review / Meta-analysis",
+  "Randomized Controlled Trial",
+  "Cohort Study",
+  "Cross-sectional Study",
+  "Case-control Study",
+  "Consensus / Position Statement",
+  "Narrative Review",
+  "Case Report / Case Series",
+  "Laboratory / Experimental Study",
+  "Qualitative Study",
+  "Methodological / Validation Study",
+  "Internal Evidence Synthesis",
+  "Other"
+ ]
+}
+=== Q41
+{
+ "id": "Q41",
+ "sourceFile": "The role of strength-related factors on psychological readiness for return to sport following anterior cruciate ligament reconstruction.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Role of Strength-Related Factors on Psychological Readiness for Return to Sport Following Anterior Cruciate Ligament (ACL) Reconstruction', matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Cross-sectional Study",
+ "primaryDomain": "Rehabilitation & Return to Sport",
+ "domains": ["Rehabilitation & Return to Sport", "Brain Health & Psychology"],
+ "audiences": ["Rehabilitation", "Sports Medicine", "Athletic Training", "Performance"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Injured Athletes", "Collegiate", "Male Athletes", "Female Athletes"],
+ "evidenceSummary": "Cross-sectional study of 12 university athletes (6 male, 6 female) tested more than 9 months after primary ACL reconstruction, split by ACL-RSI score into cases (n = 7, below 81.4%) and controls (n = 5). The authors report that quadriceps RTD at 100 ms (60 deg/s), time since surgery and hamstring RTD at 50 ms (60 deg/s) were significant predictors of ACL-RSI score (r2 = 0.915). Compared with controls, cases had lower quadriceps torque at 30 and 40 degrees from full extension and lower quadriceps RTD100, with no difference in peak torque.",
+ "screeningLimitations": "Twelve participants, with 7 and 5 in the two groups, is too few to estimate associations reliably, and the cross-sectional design cannot show that strength or power deficits come before low psychological readiness. Rehabilitation content and sport history were not captured, and the sample came from several sports.",
+ "synthesisCaution": "Staff could read the RTD and angle-specific findings as proof that power training raises psychological readiness, when this study shows only an association in 12 athletes.",
+ "paper": {
+  "year": 2023,
+  "citation": "Lee OT, Williams MA, Shaw CD, Delextrat A. The Role of Strength-Related Factors on Psychological Readiness for Return to Sport Following Anterior Cruciate Ligament (ACL) Reconstruction. Healthcare. 2023;11:2787.",
+  "doi": "10.3390/healthcare11202787",
+  "abstract": "Twelve athletes more than nine months after ACL reconstruction completed the ACL-RSI questionnaire and isokinetic testing of the hamstrings and quadriceps at 60 and 180 deg/s. Athletes were split into cases and controls by ACL-RSI score. RTD and time since surgery were determinants of psychological readiness, and cases showed lower quadriceps torque near full knee extension and lower RTD than controls, with no peak torque difference.",
+  "tldr": "In 12 athletes after ACL reconstruction, lower quadriceps rate of torque development and lower torque near full knee extension went with lower psychological readiness for return to sport. The study is small and cross-sectional, so it suggests targets for rehabilitation rather than proven causes.",
+  "methods": "Cross-sectional study. Participants completed the ACL-RSI questionnaire, then isokinetic testing (Biodex System 4) of the operated and non-operated legs at 60 and 180 deg/s. Cases were ACL-RSI below 81.4% (n = 7) and controls above it (n = 5). Stepwise linear regression was run on the whole sample, and a repeated-measures mixed ANOVA compared groups across velocities.",
+  "findings": "Quadriceps RTD100 at 60 deg/s, time since surgery and hamstring RTD50 at 60 deg/s were significant predictors of ACL-RSI score (r2 = 0.915). Cases had lower quadriceps torque at 40 and 30 degrees from full extension (Qcon40 and Qcon30) than controls, and lower quadriceps RTD100 (95% CI 763 to 1003 vs 979 to 1315 N.m.s-1 for cases vs controls). Peak torque did not differ between groups.",
+  "limitations": "Only 12 participants, so the group comparisons and the regression are unstable. Rehabilitation type, volume and sport participation were not recorded. The text gives 81.4% as the group threshold but describes controls as scoring above 81.5, a minor inconsistency. The 0-10 degree range was dropped for lack of data.",
+  "practicalImplications": "Rehabilitation staff may wish to measure RTD and torque near full knee extension alongside peak strength when assessing readiness after ACL reconstruction. The study does not show that training these qualities changes ACL-RSI scores.",
+  "athleteDev": "For athletes after ACL reconstruction, the study suggests including power and rate-of-force work and strength near full extension in training. These are hypotheses from a small cross-sectional sample, not tested training effects.",
+  "rtp": "The study can inform return-to-sport planning by highlighting RTD and near-extension quadriceps strength as points to assess in athletes with low psychological readiness. It cannot establish readiness thresholds or clearance criteria."
+ }
+}
+
+=== Q42
+{
+ "id": "Q42",
+ "sourceFile": "The role of virtual reality in the management of football injuries.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Role of Virtual Reality in the Management of Football Injuries' (Medicina 2024), matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Systematic Review / Meta-analysis",
+ "primaryDomain": "Sports Medicine & Injury",
+ "domains": ["Sports Medicine & Injury", "Rehabilitation & Return to Sport", "Brain Health & Psychology"],
+ "audiences": ["Sports Medicine", "Athletic Training", "Rehabilitation", "Performance"],
+ "sports": ["Soccer"],
+ "populations": ["Mixed / Unspecified", "Male Athletes", "Female Athletes", "Healthy Athletes", "Injured Athletes"],
+ "evidenceSummary": "The authors describe this as a narrative review, but it used a described search of PubMed, Scopus and Web of Science with two reviewers screening and extracting data. It summarizes virtual reality studies in football across prevention (cognition, biomechanics, heading), post-injury care (low back pain, concussion education, kinesiophobia), with summary tables of small, mostly single-session laboratory studies (samples of 2 to 60 participants). The authors report that VR can reproduce sport-specific movements, showed gains in passing decisions and heading goals, reduced pain and kinesiophobia in some studies, and that evidence is limited by a lack of standardized protocols and randomized trials.",
+ "screeningLimitations": "The review has no pooled effect estimates, uses a single author-chosen search, and relies on small studies, several with no control group. The evidence is mostly from laboratory or short-term studies, so it cannot show that VR reduces injury incidence or speeds return to play.",
+ "synthesisCaution": "Staff could read the favourable VR findings as proof that VR lowers injury risk or speeds rehabilitation, when the included studies are small, short and mostly not randomized.",
+ "paper": {
+  "year": 2024,
+  "citation": "Demeco A, Salerno A, Gusai M, Vignali B, Gramigna V, Palumbo A, et al. The Role of Virtual Reality in the Management of Football Injuries. Medicina. 2024;60:1000.",
+  "doi": "10.3390/medicina60061000",
+  "abstract": "The review summarizes virtual reality (VR) approaches for football injuries, covering prevention (biomechanical risk assessment, perceptual-cognitive training, heading), rehabilitation (low back pain, return to sport, kinesiophobia) and concussion education. It is framed around the high injury burden in football and the need for individualized prevention and rehabilitation.",
+  "tldr": "VR can recreate sport-specific movements and has shown early benefits for decision-making, heading, low back pain and fear of movement in small studies. Its effect on injury rates and return to play has not been established.",
+  "methods": "Narrative review of PubMed, Scopus and Web of Science from inception to 10 February (year not stated), using lesion, rupture or injury terms combined with virtual, mixed or extended reality terms and soccer or football. Two reviewers screened titles and abstracts and extracted data; a third resolved disagreements. Reference lists were also searched.",
+  "findings": "The review's tables list 14 studies, mostly single-session laboratory work with 2 to 60 participants. Reported results include VR training improving passing decisions and visual search in young players (Fortes et al., 2021), VR-trained players scoring more headed goals than controls over 10 days (Marshall et al., 2023), and VR reducing pain and kinesiophobia in players with chronic low back pain (Nambi et al.). A single-session VR concussion education study in children (Sullivan et al., 2024) found no significant change in attitudes toward reporting or reporting intentions.",
+  "limitations": "The authors state that there is no standardized VR protocol and no randomized controlled trial of VR exercise efficacy, and that the reliability of VR movement analysis in sport is unproven. Most included studies are small, short and single-session, and the review does not pool results.",
+  "practicalImplications": "Sports medicine and performance staff may consider VR as a supplement for perceptual-cognitive or biomechanical training and for low back pain or fear-of-movement work, where the evidence is preliminary. Its use for injury prevention or return-to-play decisions is not supported by the evidence reviewed.",
+  "athleteDev": "VR is a possible training aid for decision-making and heading skills in footballers, based on small studies with short follow-up. Coaches should not expect large or proven performance gains from it.",
+  "rtp": "VR may support post-injury rehabilitation for low back pain and kinesiophobia, and may be used to simulate sport-specific tasks during the late rehabilitation phase. The review does not establish VR as a return-to-play test, and clearance decisions should not rely on it."
+ }
+}
+
+=== Q43
+{
+ "id": "Q43",
+ "sourceFile": "The sleep and recovery practices of athletes.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Sleep and Recovery Practices of Athletes' (Nutrients 2021, 13, 1330), matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Cross-sectional Study",
+ "primaryDomain": "Recovery & Readiness",
+ "domains": ["Recovery & Readiness", "Nutrition & Hydration"],
+ "audiences": ["Performance", "Sports Medicine", "Nutrition", "Athletic Training", "Research & Analytics"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Professional / Elite", "Mixed / Unspecified", "Male Athletes", "Female Athletes"],
+ "evidenceSummary": "Online survey of 338 athletes from Ireland and the UK: 115 elite (74 male, 41 female) and 223 sub-elite (129 male, 94 female) across many team and individual sports. Using the PSQI, 64% of elite and 65% of sub-elite athletes scored 5 or more (poor sleep), and excessive daytime sleepiness (ESS 10 or more) was reported by about 21%. Elite athletes scored higher on sport-specific recovery (3.22 vs 2.91, p < 0.001), and whey was the most used recovery supplement in both groups; supplement and alcohol use did not differ significantly between groups. Sleep diary data covered one training day and one rest day only.",
+ "screeningLimitations": "Self-report questionnaires and a two-day diary, with no objective sleep measurement, so sleep may be over- or under-reported. The sub-elite group was older and the authors describe a convenience sample with no healthy control group, so the elite-sub-elite comparisons cannot be read as causal.",
+ "synthesisCaution": "Staff could read the high rates of poor sleep as diagnosed sleep disorders, when the study used a questionnaire cut-off and did not test for sleep disorders.",
+ "paper": {
+  "year": 2021,
+  "citation": "Doherty R, Madigan SM, Nevill A, Warrington G, Ellis JG. The Sleep and Recovery Practices of Athletes. Nutrients. 2021;13:1330.",
+  "doi": "10.3390/nu13041330",
+  "abstract": "A survey of 338 elite and sub-elite athletes from many sports used validated questionnaires and a sleep diary to assess sleep, recovery and nutrition practices. Most athletes in both groups reported poor sleep quality, and elite athletes reported higher sport-specific recovery. Whey was the most commonly used recovery supplement, and sub-elite athletes reported more alcohol use.",
+  "tldr": "Most athletes in this survey scored in the poor-sleep range on the PSQI, and about one in five reported excessive daytime sleepiness. Elite athletes reported better sport-specific recovery, so sleep and recovery support should be individualized, especially for sub-elite athletes.",
+  "methods": "Cross-sectional online survey (Qualtrics) completed by 338 athletes, 115 elite and 223 sub-elite, recruited through Sport Ireland, national governing bodies and social media. Measures included the PSQI, Epworth Sleepiness Scale, RESTQ-Sport, Athlete Morningness/Eveningness Questionnaire, EQ-5D-5L, a two-night Consensus Sleep Diary (one training day and one rest day) and supplement and alcohol questions. Groups were compared with t-tests, chi-square, Mann-Whitney U and one-way ANOVA.",
+  "findings": "Global PSQI of 5 or more: 64% of elite (n = 74) and 65% of sub-elite (n = 146) athletes. About 21% (n = 70) had ESS scores of 10 or more, with no group difference. Sport-specific recovery was higher in elite athletes (3.22 vs 2.91, p < 0.001), with differences in four sport-specific subscales. Sleep diaries showed total sleep time of 8.01 h (elite) vs 8.2 h (sub-elite) on training days (p = 0.049), and more awakenings on rest days in sub-elite athletes (1.52 vs 1.03, p = 0.012). Whey was the most used recovery supplement (22 elite, 48 sub-elite). For alcohol, 9% of elite and 5% of sub-elite athletes reported 1 to 4 drinking sessions in the last month, 10% vs 2% reported 5 to 9, and 3% vs 5% reported more than 10. Units per session above 10 were reported by 3% of elite and 5% of sub-elite athletes. A Mann-Whitney U test found no significant group differences in supplementation or alcohol use.",
+  "limitations": "Self-report only, with a sleep diary covering a single training day and rest day. Sub-elite athletes were older, the sample was a convenience sample, and there was no healthy control group. The authors note that caffeine use was probably under-reported because it was not captured as a supplement. The abstract and discussion say sub-elite athletes drank more alcohol, but the reported proportions show more elite athletes drinking at the lower frequency bins, so that claim is not clearly supported by the table values. The sleep-quality cut-off is a general one, and athlete-specific thresholds are debated.",
+  "practicalImplications": "Staff may wish to screen athletes for poor sleep and daytime sleepiness and to consider late training times and rest-day sleep patterns. The study cannot identify which athletes have a sleep disorder, so screened athletes need follow-up assessment.",
+  "athleteDev": "Athletes training late in the day, and those reporting poor sleep, may benefit from individualized sleep and recovery plans. Evidence from this survey is descriptive and does not show that any specific plan improves performance.",
+  "rtp": "The study does not address return to sport. Pain was reported by half the sample, but injury status was not analysed as a grouping, so the findings cannot guide return-to-play decisions."
+ }
+}
+
+=== Q44
+{
+ "id": "Q44",
+ "sourceFile": "The sleep parameters of Olympic athletes - Characteristics and assessment instruments.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Sleep Parameters of Olympic Athletes: Characteristics and Assessment Instruments' (Int J Sports Med), matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Systematic Review / Meta-analysis",
+ "primaryDomain": "Recovery & Readiness",
+ "domains": ["Recovery & Readiness", "Monitoring & Technology"],
+ "audiences": ["Performance", "Sports Medicine", "Athletic Training", "Research & Analytics"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Professional / Elite"],
+ "evidenceSummary": "Systematic review following PRISMA, searching PubMed, Scopus and Web of Science to February 2023. The authors include 11 studies (the abstract; the results text also refers to 12 included articles), with 596 Olympic athletes from 26 sports. Pooled objective estimates were total sleep time of 6 h 10 min, sleep efficiency of 84%, sleep onset latency of 28 min and WASO of 49 min, and about 51% of athletes reported poor sleep quality. Actigraphy was the most used objective method, with the PSQI the most used subjective measure.",
+ "screeningLimitations": "The pooled values are weighted averages across small, heterogeneous studies (5 to 146 athletes), and the review applied STROBE for reporting, not a risk-of-bias tool. Study counts differ between the abstract (11) and the results text (12), and the Halson sample is given as 130 and 131 in different places.",
+ "synthesisCaution": "Staff could read the pooled values as a reliable benchmark for Olympic athletes, when they average small studies, mostly actigraphy-based, and many were run around the Rio 2016 Games.",
+ "paper": {
+  "year": 2024,
+  "citation": "de Mello MT, Stieler E, Grade I, Chaves Filho AF, Mendes G, Ituassu N, et al. The Sleep Parameters of Olympic Athletes: Characteristics and Assessment Instruments. Int J Sports Med. 2024.",
+  "doi": "10.1055/a-2233-0323",
+  "abstract": "Systematic review (PRISMA) of studies on the sleep of Olympic athletes, searched to February 2023 in PubMed, Web of Science and Scopus. Eleven studies with 596 athletes were included. Olympic athletes had a pooled total sleep time of 6 h 10 min, sleep efficiency of 84%, sleep onset latency of 28 min and WASO of 49 min, with about half reporting poor sleep quality. Actigraphy was the most used objective instrument.",
+  "tldr": "Olympic athletes in the reviewed studies slept about 6 h 10 min a night with 84% efficiency, below the recommended values, and about half reported poor sleep quality. Actigraphy was the most common way of measuring it.",
+  "methods": "Systematic review under PRISMA. Searches of PubMed, Scopus and Web of Science (February 2023) used population terms for Olympic athletes and outcome terms for sleep. Eligible studies were original peer-reviewed articles with at least one Olympic athlete group and at least one sleep parameter. Two reviewers screened records, with a third consulted when needed. Pooled values were weighted averages of studies using objective measures; STROBE was used to guide reporting, not to assess risk of bias.",
+  "findings": "The review included 11 studies with 596 athletes from 26 Olympic sports, aged 19 to 29. Pooled objective values were TST 6 h 10 min (SD 37 min), SE 84%, SOL 28 min and WASO 49 min. Two studies reported indifferent chronotype in 78% and 64% of athletes. Poor subjective sleep quality was 49% and 53% in two studies (about 51% of 263 athletes combined). Sleep complaints were reported by 53% of 146 athletes, and daytime sleepiness by 22% in one study. Actigraphy was used in eight studies and polysomnography in one.",
+  "limitations": "Few studies, a range of designs and instruments, and no formal risk-of-bias assessment. Many studies used a single Olympic cycle or Games and the sport coverage is incomplete (the authors note 20 Olympic sports unexplored). The text gives 12 included articles against 11 in the abstract, and Halson et al. is described with two different sample sizes. The pooled sleep values are weighted averages, so they do not describe any single population.",
+  "practicalImplications": "Performance and medical staff preparing Olympic-level athletes may use these pooled values as a rough reference for the pattern of short, less efficient sleep and for indifferent chronotype. Sleep screening with actigraphy and a questionnaire may help identify athletes for follow-up. The review does not establish a target for any individual athlete.",
+  "athleteDev": "Training and competition timing, travel and camps are named as factors shaping Olympic athletes' sleep, so planning these around sleep may support performance. Interventions discussed (light therapy, sleep hygiene, ramelteon) each rest on one or two studies, and the authors cite a meta-analysis showing only small clinical effects for short-term hypnotics.",
+  "rtp": "The review does not address injury or return to sport. Its sleep data come from Olympic athletes in training and competition, so it cannot inform return-to-play decisions."
+ }
+}
+
+=== Q45
+{
+ "id": "Q45",
+ "sourceFile": "The state of the science for potential contributors to musculoskeletal injury following concussion - Mechanisms, gaps, and clinical considerations.pdf",
+ "decision": "EXCLUDE",
+ "exclusionReason": "(b) Commentary: the article describes itself as a commentary that briefly reviews the literature, with no original methods and no structured review of evidence (no search or selection method is described).",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The state of the science for potential contributors to musculoskeletal injury following concussion: Mechanisms, gaps, and clinical considerations' (Musculoskeletal Science and Practice), matches the filename.",
+ "confidence": "medium",
+ "studyDesign": null,
+ "primaryDomain": null,
+ "domains": null,
+ "audiences": null,
+ "sports": null,
+ "populations": null,
+ "evidenceSummary": null,
+ "screeningLimitations": null,
+ "synthesisCaution": null,
+ "paper": null
+}
+
+=== Q46
+{
+ "id": "Q46",
+ "sourceFile": "The top 100 most impactful articles on the Achilles tendon according to altmetric attention score and number of citations.pdf",
+ "decision": "EXCLUDE",
+ "exclusionReason": "(c) Not relevant to athlete health or performance evidence: the article is a bibliometric cross-sectional analysis of citation counts and Altmetric attention for Achilles tendon papers (study type, topic and geography of the articles). It reports on how research is cited and shared, not on athletes' health, injury or performance.",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Top 100 Most Impactful Articles on the Achilles Tendon According to Altmetric Attention Score and Number of Citations' (Orthop J Sports Med), matches the filename.",
+ "confidence": "medium",
+ "studyDesign": null,
+ "primaryDomain": null,
+ "domains": null,
+ "audiences": null,
+ "sports": null,
+ "populations": null,
+ "evidenceSummary": null,
+ "screeningLimitations": null,
+ "synthesisCaution": null,
+ "paper": null
+}
+
+=== Q47
+{
+ "id": "Q47",
+ "sourceFile": "The training of short distance sprint performance in football code athletes - A systematic review and meta-analysis.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Training of Short Distance Sprint Performance in Football Code Athletes: A Systematic Review and Meta-Analysis' (Sports Medicine), matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Systematic Review / Meta-analysis",
+ "primaryDomain": "Training & Performance",
+ "domains": ["Training & Performance"],
+ "audiences": ["Performance", "Coaching", "Research & Analytics", "Athletic Training"],
+ "sports": ["Soccer", "Rugby", "American Football", "Other Sport"],
+ "populations": ["Mixed / Unspecified", "Youth / Adolescent", "Male Athletes", "Female Athletes", "Healthy Athletes"],
+ "evidenceSummary": "Systematic review and random-effects meta-analysis (PRISMA, registered on OSF) of 121 training studies with 3419 healthy, non-injured football code athletes (soccer, rugby, American football, Australian rules and futsal), measuring 0-5, 0-10 and 0-20 m sprint performance. The authors report significant small-to-large improvements after combined, secondary and tertiary training, and after combined-specific training for 0-5 and 0-10 m only (not 0-20 m), with no significant effect for primary or sport-only training. Football code, age and phase of season moderated the effects, but sex and playing standard did not, and small-study effects and asymmetry suggested publication bias.",
+ "screeningLimitations": "Pooled effects are heterogeneous (I2 about 84% in one distance-specific analysis), many subgroups have few studies, and the authors report asymmetric funnel plots and publication bias. Most included trials were parallel-group studies in male soccer players, so the evidence for other codes and for women is thin.",
+ "synthesisCaution": "Staff could read the combined and tertiary methods as the best way to improve sprint speed for their sport, when the authors state that no individual method was clearly superior and subgroup support is uneven across codes.",
+ "paper": {
+  "year": 2020,
+  "citation": "Nicholson B, Dinsdale A, Jones B, Till K. The Training of Short Distance Sprint Performance in Football Code Athletes: A Systematic Review and Meta-Analysis. Sports Med. 2020.",
+  "doi": "10.1007/s40279-020-01372-y",
+  "abstract": "Systematic review and random-effects meta-analysis of short-sprint training studies (0-20 m) in football code athletes, with moderator analyses. The review included 121 studies and 3419 athletes. Combined, secondary and tertiary training improved short-sprint performance, combined-specific training did so for 0-5 and 0-10 m, while primary and sport-only training did not. Football code, age and phase of season moderated the effects.",
+  "tldr": "Across 121 studies of football code athletes, sprint training that combined methods, or added resisted/assisted sprints or strength, power and plyometric work, improved short-sprint times. Sprinting or sport practice alone did not show a significant gain.",
+  "methods": "PRISMA systematic review, registered on OSF, searching PubMed, Cochrane, MEDLINE, SPORTDiscus and CINAHL to 14 October 2019. Eligible studies were controlled or uncontrolled training interventions in healthy football code athletes with pre-post sprint outcomes at 20 m or less. Interventions were classified as sport-only, primary, secondary, tertiary, combined or combined-specific. Study quality was rated with the McMaster scale. Random-effects meta-analysis used standardised mean differences, with moderators for football code, sex, age, playing standard and phase of season.",
+  "findings": "The review included 121 studies with 3419 athletes. Significant improvements were found for combined, secondary and tertiary methods, and for combined-specific methods at 0-5 and 0-10 m only, with no significant effect for primary or sport-only training. No single training mode was clearly most effective. Football code, age and phase of season moderated the effect; sex and playing standard did not. The authors report evidence of small-study effects and publication bias.",
+  "limitations": "The reviewed studies were mostly parallel-group trials in male soccer players, and some subgroups had very few studies. Training classification into six groups does not capture prescription detail or the normal training of control groups, which the authors note is a gap. Pooled heterogeneity was high and there was evidence of publication bias.",
+  "practicalImplications": "Coaches and performance staff of football code athletes may use combined, secondary (resisted or assisted sprinting) or tertiary (strength, power, plyometric) work to develop short-sprint speed. Sprint-only or primary sprint technique work alone did not show a significant average gain in these data.",
+  "athleteDev": "For football code athletes, short-sprint development is best addressed with combined programmes that include resisted or assisted sprinting and strength, power or plyometric training. The gains reported are averages, and individual responses varied.",
+  "rtp": "The review includes only healthy, non-injured athletes, so it cannot inform return-to-sport sprint training or clearance. It says nothing about the safety or effectiveness of these methods after injury."
+ }
+}
+
+=== Q48
+{
+ "id": "Q48",
+ "sourceFile": "The use of acute exercise interventions as game day priming strategies to improve physical performance and athlete readiness in team-sport athletes - A systematic review.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "Title in text, 'The Use of Acute Exercise Interventions as Game Day Priming Strategies to Improve Physical Performance and Athlete Readiness in Team-Sport Athletes: A Systematic Review' (Sports Medicine), matches the filename.",
+ "confidence": "high",
+ "studyDesign": "Systematic Review / Meta-analysis",
+ "primaryDomain": "Training & Performance",
+ "domains": ["Training & Performance", "Recovery & Readiness"],
+ "audiences": ["Performance", "Coaching", "Athletic Training", "Research & Analytics"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Mixed / Unspecified"],
+ "evidenceSummary": "Systematic review (PRISMA) of SPORTDiscus, PubMed and CENTRAL to February 2020, including 29 randomised and non-randomised comparative studies of healthy adults aged 18 to 40 in team sports, with an acute exercise intervention 1 to 12 h before outcome testing. The authors report that heavy, low-volume resistance training 4 to 6 h beforehand improved strength and power, that running sprints improved subsequent sprint and repeat-sprint performance after 5 to 6 h, and that cycling and endurance running or cycling showed little or no benefit. Study-level PEDro scores were modest (the examples in the review's quality table are 5 or 6 out of 10).",
+ "screeningLimitations": "The included studies used different exercise types, recovery windows and outcomes, and the authors could not pool them, so the conclusions are narrative. Samples were small, few studies were designed to test priming, and the study-level PEDro scores were modest.",
+ "synthesisCaution": "Staff could read the timing windows as validated game-day protocols, when the 1 to 12 h effects come from scattered small studies in healthy adults, mostly not run in real competition.",
+ "paper": {
+  "year": 2020,
+  "citation": "Mason B, McKune A, Pumpa K, Ball N. The Use of Acute Exercise Interventions as Game Day Priming Strategies to Improve Physical Performance and Athlete Readiness in Team-Sport Athletes: A Systematic Review. Sports Med. 2020.",
+  "doi": "10.1007/s40279-020-01329-1",
+  "abstract": "Systematic review of acute exercise interventions, applied 1 to 12 h before competition, as priming strategies for team-sport athletes. Twenty-nine studies were included. Heavy, low-volume resistance training improved strength and power after 4 to 6 h, running sprints improved subsequent sprint performance after 5 to 6 h, and evidence for endurance running or cycling was limited.",
+  "tldr": "Heavy, low-volume resistance training done 4 to 6 hours before a match improved strength and power in the included studies. Maximal sprint running may help sprint performance, while endurance work showed little benefit as priming.",
+  "methods": "PRISMA systematic review of SPORTDiscus, PubMed and CENTRAL, with the last search on 26 February 2020. Eligible studies were randomised or non-randomised comparative studies in healthy adults aged 18 to 40 with pre-post outcomes and an exercise intervention 1 to 12 h before testing. Studies using nutrition, supplements, heat or cold priming, stretching, massage, vibration or altitude were excluded. Two reviewers screened; PEDro scores were assigned, and studies were grouped into resistance training, cycling, running and other interventions.",
+  "findings": "Twenty-nine studies were included. Resistance training with heavy loads at low volume increased strength and power after a 4 to 6 h recovery, with limited improvement after 1 to 3 h or 6 to 12 h. Running-based sprint priming improved subsequent sprint and repeat-sprint performance after 5 to 6 h. Cycling improved counter-movement jump height in one study only. No significant differences were reported after endurance running or cycling. Hormone and blood lactate responses were mixed, and in one study (Saez de Villareal et al.) loaded countermovement jump height improved only after a loaded countermovement jump protocol.",
+  "limitations": "Methodological approaches differed too much for direct comparison, and sample sizes were small relative to the large inter- and intra-individual variation in hormone responses. Few studies were designed to test a priming intervention, and most measured responses to different exercise bouts across a 1 to 12 h period.",
+  "practicalImplications": "Team-sport practitioners who want heavy strength or power work to carry over to a match may consider low-volume heavy resistance training 4 to 6 h before competition, provided total volume is kept low. The review does not support endurance running or cycling as a priming strategy.",
+  "athleteDev": "Low-volume, heavy resistance work and maximal sprints done several hours before a session may improve strength, power and sprint performance in team-sport athletes. The effect windows and loads are drawn from small studies and should be tested in each squad.",
+  "rtp": "The review includes only healthy adults with no pain, injury or illness, so it cannot inform return-to-sport priming or clearance decisions."
+ }
+}
+
