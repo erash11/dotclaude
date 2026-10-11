@@ -1,0 +1,69 @@
+# Memory Index
+
+One line per memory: title, file, and a hook that says when to open it.
+Never put memory content here — the file itself holds the facts.
+
+- [Printing Press spec traps](project_printing-press-spec-traps.md) — writing a CLI spec
+- [zsh shell traps](project_zsh-shell-traps.md) — a zsh script misbehaves
+- [Status report sourcing](project_status-report-sourcing.md) — building the status report
+- [Fireflies CLI on Mac](project_fireflies-cli-broken-on-mac.md) — Fireflies CLI errors or renames
+- [gws Google Forms API](project_gws-forms-api.md) — creating or editing a Google Form
+- [Kenny Boyd doc review](project_kenny-boyd-doc-review-preferences.md) — writing a review doc for Kenny
+- [Kenny Boyd writing voice](project_kenny-boyd-writing-voice.md) — writing to, for, or like Kenny; SAS Leadership meeting
+- [Terminal Fluency workspace](project_terminal-fluency-workspace.md) — resuming Terminal Fluency
+- [PATH shadowing and cleanup](project_path-shadowing-and-cleanup.md) — PATH questions; before deleting any binary
+- [Backup/sync system](project_backup-sync-system.md) — backup routing or verification
+- [CFB Analytics Lab](project_cfb-analytics-lab.md) — resuming CFB Analytics Lab
+- [CFB forecast capture](project_cfb-forecast-capture.md) — weekly Big 12 forecast capture
+- [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
+- [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
+- [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
+- [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems
+- [memsearch index path drift](project_memsearch-index-path-drift.md) — memsearch indexes fewer paths
+- [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — memsearch slow or timing out
+- [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
+- [Morning briefing retired](project_morning-briefing-retired.md) — old morning-briefing code or config
+- [graphify runtime setup](project_graphify-runtime-setup.md) — installing or rebuilding graphify
+- [graphify semantic extraction](project_graphify-semantic-extraction.md) — graphify quota or 429 errors
+- [Automation cadence](project_automation-cadence.md) — when a scheduled job or ritual runs
+- [S2 Cognition analysis](project_s2-cognition-analysis.md) — S2 Cognition work
+- [Sports teams](user_sports-teams.md) — an ambiguous WNBA ask
+- [Working-conditions bottleneck](user_working-conditions-bottleneck.md) — deciding whether to act unasked
+- [Zero-edit YouTube pipeline](reference_zero-edit-youtube-pipeline.md) — Claude Code video pipeline
+- [DEV layout and discovery](project_dev-layout-and-discovery.md) — moving or adding folders in ~/DEV
+- [KeystoneOS verification habits](project_keystoneos-verification-habits.md) — before asserting KeystoneOS state
+- [Portfolio registry provenance](project_portfolio-registry-write-provenance.md) — changing portfolio.json
+- [Command centre](project_command-centre.md) — retired 10-03 (board replaced it); localhost web-service security rules
+- [Vendored skill install](project_vendored-skill-install.md) — installing a vendored skill
+- [Vendored skill repair](project_vendored-skill-repair.md) — a skill returns empty output
+- [Personal site build routes](project_personal-site-build-routes.md) — building the personal site
+- [Book scan page ordering](project_book-scan-page-ordering.md) — scanned book pages out of order
+- [Ingest review gate](feedback_ingest-review-gate.md) — before ingest-book or other costly atomization
+- [Dormant threads](project_dormant-threads.md) — resuming Tezino CampPrep or FaceComps
+- [RTP CLA course](project_rtp-cla-course.md) — RTP CLA course work
+- [Post-merge cleanup](feedback_post-merge-cleanup.md) — after a merge; deleting worktrees or branches
+- [SCN sprint course](project_scn-sprint-course.md) — SCN sprint course work
+- [ATH Tech framework](project_ath-tech-framework.md) — ATH Tech framework work
+- [Supervisor log pipeline](project_supervisor-log-pipeline.md) — supervisor log or Kenny/Chris report
+- [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was blocked
+- [Headless tool-deny gap](project_headless-claude-tool-deny-gap.md) — before calling a headless run read-only
+- [Config encoding damage from Windows](project_settings-json-bom-trap.md) — "hook missing" or garbled statusline
+- [Tech inventory refresh](project_tech-inventory-refresh.md) — refreshing the tech inventory
+- [Brain audit loop](project_brain-audit-loop.md) — scoring the second brain
+- [Hook two-copies trap](project_hook-two-copies-trap.md) — a hook patch "reverts"
+- [Child dental plan](user_child-dental-plan.md) — child dental care
+- [ELI5 output style](user_eli5-output-style.md) — output-style rules
+- [GitHub consolidation](project_github-consolidation.md) — ~/DEV repo layout or merge traps
+- [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder
+- [Prioritization slate](project_prioritization-slate.md) — Eric proposes a new project or idea
+- [Baylor department names](user_baylor-department-names.md) — writing staff-facing text
+- [Git Bash MSYS/AD stall](project_git-bash-msys-ad-stall.md) — Windows bash dies with `add_item errno 1`
+- [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — Windows backup exit 3221225786
+- [Sport-science thought partner](user_sport-science-thought-partner.md) — performance, S&C or rehab questions
+- [Third-party skill install](project_third-party-skill-install.md) — installing a third-party skill
+- [Admin docs house style](feedback_admin-docs-house-style.md) — building any doc for administration; Baylor_Doc_Style only, ask before breaking a page limit
+- [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector, use the local Box Drive folder
+- [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
+- [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
+- [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
+- [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix outside Friday's slot

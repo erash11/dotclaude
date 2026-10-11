@@ -1,0 +1,3461 @@
+##### 2019-03-11_SQV3o7g_l8A_skating-for-gold-using-wearable-technology-to-maximize-prepa
+meta.json
+transcript.md
+{
+ "id": "SQV3o7g_l8A",
+ "title": "SSAC19: Skating for Gold: Using Wearable Technology to Maximize Preparation for Elite Hockey Players",
+ "channel": "42 Analytics",
+ "upload_date": "20190311",
+ "duration": 1529,
+ "view_count": 789,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "end_time": 29,
+   "title": "<Untitled Chapter 1>"
+  },
+  {
+   "start_time": 29,
+   "title": "Adam Douglas",
+   "end_time": 152
+  },
+  {
+   "start_time": 152,
+   "title": "Does Practice Adequately Prepare Our Teams for Performance",
+   "end_time": 402
+  },
+  {
+   "start_time": 402,
+   "title": "Player Load per Minute",
+   "end_time": 1092
+  },
+  {
+   "start_time": 1092,
+   "title": "Main Takeaways",
+   "end_time": 1158
+  },
+  {
+   "start_time": 1158,
+   "title": "Data Collection versus Data Action",
+   "end_time": 1529
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC19: Skating for Gold: Using Wearable Technology to Maximize Preparation for Elite Hockey Players"
+video_id: SQV3o7g_l8A
+url: https://www.youtube.com/watch?v=SQV3o7g_l8A
+channel: 42 Analytics
+upload_date: 2019-03-11
+duration: 25:29
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [sports-science]
+---
+
+# SSAC19: Skating for Gold: Using Wearable Technology to Maximize Preparation for Elite Hockey Players
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:02]
+good afternoon welcome to day 2 of the
+Sloan Sports analytics conference
+competitive and talks presented by
+Ticketmaster my name is Gerardo
+guardiana I'm a first year and be a
+student at MIT Sloan and is my pleasure
+to be introducing our presentation today
+skating for gold using wearable
+technology to maximize preparation for
+elite hockey players presented by
+catapult sports please join me in
+welcoming our speaker Adam Douglas
+applied sports Sciences at supplied
+
+[00:32]
+sports scientist at catapult
+thank you very much thank you everybody
+and thank you very much for having me
+here to to talk to you guys about our
+wearable technology and more importantly
+about our application in the sport of
+ice hockey I'm really excited to be up
+here today because my talk today is
+going to cover basically three spheres
+of my professional and academic career
+as we mentioned I'm an applied sport
+scientist with catapult sports I work
+with our ice hockey clients to maximize
+
+[01:03]
+their information in their education
+about the data that they're collecting
+I'm also a PhD student I'm gonna have
+some of my work that I've been working
+on over the last few years with hockey
+Canada's national women's team in my
+presentation but also I'm a nun plied
+practitioner I work with Hockey Canada
+still so I'm very much boots on the
+ground with a lot of this and really my
+my presentation today is about
+conversations that have come up with
+coaches and coaching staffs that I've
+worked with in the past and how we've
+
+[01:33]
+used that information and some of the
+data we've collected to help those
+coaches better prepare our players first
+and foremost as I said with Hockey
+Canada we have one goal at the onset of
+any tournament and that's to win we are
+essentially a gold medal or bust
+team sometimes we bust sometimes you win
+hopefully more times than not we're
+gonna win now the thing to remember is
+the tournaments that we prepare our
+athletes for a short term competition
+it's five or six games in about ten days
+
+[02:05]
+which is different than an 82-game
+season of preparation like the National
+Hockey League or some of our other
+leagues that we're all familiar with
+we need to be to maximize our
+performance in a very short window of
+time of teams that don't always play
+together so we try to do everything that
+we possibly can to get our players in
+the best positions to succeed the two
+things I'm going to talk about today I'm
+going to use two different examples for
+you the first one is does practice
+adequately prepare our teams for
+
+[02:36]
+performance now one of the things that
+you need to remember is the sport of ice
+hockey doesn't have a lot of applied
+literature in the research field if a
+team came to me as a practitioner and
+said okay you know what does a game look
+like in terms of what's happening on the
+ice we can turn a tie motion analysis
+there's some heartrate information out
+there but from workload perspective
+there's very few information out there
+which actually led us with Hockey Canada
+becoming clients of catapults three
+
+[03:07]
+years ago because we didn't have a good
+enough way to measure the actual work
+that the players were doing on the ice
+the second question here is then once we
+understand what the players are going to
+do how can we use that to maximise their
+performance as I said I'm a strength
+coach by trade so I I know and
+understand how the body responds to
+volume and intensity changes through
+load a lot of times throughout the
+
+[03:40]
+course of a season a lot of the load the
+players get exposed to is on ice so
+let's try to maximize what they're doing
+on the ice as it fits into our technical
+tactical plan to better prepare those
+athletes so those are the two questions
+we're gonna talk about today just so
+everybody understands catapult is
+wearable technology okay so it's an
+accelerometer
+it's a gyroscope and it's a magnetometer
+that is worn between the athletes
+shoulder plates while they're on the ice
+
+[04:10]
+we can calculate force direction and
+body position while those athletes are
+doing ice hockey movements it's
+essentially catapult is well known as a
+GPS based company for our outdoor sports
+we just don't use the GPS
+inside but what we can do is through
+some of the algorithms that catapult has
+done in some of the filtering really get
+a good understanding of the mechanical
+work that the athletes are being put
+under and they're performing while
+
+[04:41]
+they're playing their sport because at
+the end of the day that's what matters
+to me is that flag goes up our athletes
+have a gold medal around their neck
+because it was based on the sport that
+they play so let's get into our
+performance questions stack up here so
+number one is practice adequately
+prepare our athletes for game
+performance I'm going to use an example
+of our women's national team they came
+away with a silver in Korea at the 2018
+Olympic Games about a just a little over
+a year ago sudo loss but I worked with
+
+[05:15]
+that staff that coaching staff to try to
+understand how we can best prepare our
+athletes for those Olympic Games our
+women's team centralizes meaning that
+all of the staff all of the full-time
+staff all of the players moved to one
+city in Canada and they they train they
+play games together in the six-month
+lead-up to the Olympic Games I am I'm
+consult consult with them so I'm not a
+full-time member of staff but our
+coaches came to us and said halfway
+
+[05:45]
+through they weren't happy with the way
+our defense and were playing the game
+why can they not sustain intensity
+across all three periods of play why are
+they getting worse as the game
+progresses now a lot of people might
+think that's a fitness issue well I can
+stand here and tell you that our
+athletes on the Olympic team are fit
+okay it's not necessarily a fitness from
+an aerobic anaerobic standpoint they're
+fit athletes but is there something from
+that data that we can then turn to these
+
+[06:15]
+coaches and help them with help them
+better understand what's happening so we
+turn to the research field saw that
+there is nothing out there no comparable
+so we said we had to look at our data so
+the first question we did is what do
+games and practices look like almost
+every other sport you can go to that has
+a lot of information on wearable
+technology you could easily find
+comparables we needed to look internally
+at what our athletes were doing so what
+you see here is player load per minute
+player load is a well sited
+
+[06:47]
+well-researched load variable that
+catapult has essentially player load per
+minute can tell us the intensity of the
+work that those athletes are doing in
+games and practices per minute the EE
+they're that explosive efforts is a
+frequency count of the number of
+explosive movements that the athletes do
+on the ice okay so clearly you can tell
+and we know from other sports that
+there's a difference in intensity and
+practices and games okay that's clearly
+
+[07:18]
+seen in this graph now what's
+interesting is the distribution of
+intensity per minute across the whole
+defensive you know seven players but
+more importantly when we compare it to
+two forwards the key thing I want you to
+look at here is the difference between
+practices and practices from our
+defenseman and forwards that might not
+look like much but that's a significant
+difference in the intensity output of
+the same practices sure there's a
+
+[07:51]
+difference between practices and games
+for forwards as well we know that but
+what we decided and what we looked at
+was if there's a difference in intensity
+outputs of practice for our defense but
+maybe that's something we need to start
+looking deeper at so then we started to
+look at some simple game models and we
+looked at what happens in games that we
+that we win in games that we lose now
+looking at those at the top when they're
+that explosive efforts clearly there's a
+
+[08:21]
+downward trend they're not able to
+maintain their explosive output across
+all three periods so while fitness might
+be an issue that's pretty standard
+across a lot of sports it's just the
+slope of the line that we want it we
+want to try to try to figure out but
+also if you look at what happens in
+games you win versus games you lose
+we're trying to probably push the pace a
+lot maybe playing from behind there's a
+it's a multifactorial element of games
+that win versus games you lose but the
+key here is there's something is
+
+[08:51]
+happening that our deep
+obviously aren't maintaining that play
+right so our data is backing up what our
+coaches are saying now we need to figure
+out why well if we go back to that
+previous slide what we started to look
+at was our defense just weren't getting
+exposed to the same amount of explosive
+intensity that our forwards were now we
+that we we looked at forwards they're a
+little bit flatter now they're a little
+bit flatter because there's more of them
+so they can maintain their explosive
+
+[09:22]
+effort that you usually get a little bit
+more rest than our defenseman do but
+really what we wanted to see is we want
+to try them to answer this question so
+we took this information back to the
+coaching staff we said listen there is
+something here so we we talked to them
+about what happens when you plan a
+practice well like most coaches they
+think technical tactical first we need
+to work on our neutral zone forecheck
+okay let's drop some drills with our
+
+[09:53]
+neutral zone for check oh we also got
+scored on on our power on our PK twice
+last game so we need to do some penalty
+kill I tried to get our coaches to think
+about the physical element of our drills
+okay so what exposure does that neutral
+zone floor check have for our D well
+they get a puck and then they regroup
+and they come back and that's not the
+intensity you want them to have to play
+with in a game when you want them to
+snap into jumping the rush etc etc so
+what we tried to do is we tried to get
+them to focus on our defenseman in our
+
+[10:23]
+drills or when they split into offensive
+and defensive positional specific work
+instead of just standing at the blue
+line and having them take 50 slap shots
+or one-timers we got them skating and
+what's really interesting is just in
+three months I looked at our gameplay
+after our in-game explosive efforts went
+up 44% now obviously there's a lot of
+arousal as the games at the end were in
+
+[10:53]
+the Olympics so there's obviously an
+arousal and a big stage play there than
+just kind of regular season exhibition
+game play but you know certainly as an
+applied sport scientist I was very proud
+of our coaches that they Embry
+this information and again we all we all
+want to win we all want to try to win so
+I was very proud of our coaches to take
+that information feed it back into the
+practice and into the players and have a
+marked difference in their improvement
+and our coaches will say yes our defense
+did play better towards the end of the
+year so the second question I want to
+
+[11:26]
+talk about now is now that we start to
+understand what games and practices are
+like how does that feed into a different
+element of our player preparation and
+I'm going to talk about some of the work
+I do with our men's world junior team or
+our under-20 men's program and again my
+job with them is to help better prepare
+our our physical you know perspective I
+try to get those coaches to understand
+the drills that we do on the ice feed
+into the physical performance of our
+
+[11:56]
+players the physical pillars is you know
+there to support the technical tactical
+elements and this is a term I stole from
+a presentation colleague of mine Ben
+Rosenblatt who works with English soccer
+and they do a lot of tournament
+preparation but essentially we need to
+prepare athletes to best sustain
+whatever the coaches need to do when
+they need them it doesn't matter if it's
+the gold medal game the quarter-final
+game we need to put our players in the
+
+[12:26]
+best position to succeed from both a
+mental skills side of things so that's
+one of our pillars of performance
+physical side of thing as well so what I
+do is I take our calendar our
+pre-competition calendar and I put in
+our what I think our estimated practice
+volumes and intensity should be so our
+coaches plan when we want to practice
+and we have our games but I'll make
+recommendations so this is from last
+year's tournament so if you look on
+December 18th there that says that's a
+short medium day
+
+[12:56]
+well that short is about 30 minutes or
+less of a medium intensity we can
+measure that through our wearable
+technology through using our catapult
+data knowing what our coaches averages
+intensities are versus a day on the 25th
+there where we want a short duration
+high intensity
+we want a high intensity right before a
+game we're coming off an off day
+we want to give them our players some
+exposure to intensity so they have an
+understanding of playing at game pace
+
+[13:27]
+before we put them into a back-to-back
+scenario now the one question I always
+get is you know that's all well and good
+but do coaches follow through on it and
+the good part is if you measure it you
+can then feed that information back to
+them so one of the things that I do is I
+plot it and say okay how did we do in
+relation to what we wanted and I find
+this is a very key visual to give back
+to our coaches of so they can start to
+
+[13:58]
+understand which days were hard and
+which days were easy now I'm gonna walk
+you through this just a little bit so
+this was last year's tournament we had a
+unique schedule and that the games on
+the 26th 27th 29th and 30th so double
+back to backs that's our round-robin
+what's cutoff here is is January 2nd is
+when they the metal round started so
+this is just our round-robin but the
+game on the 26th that was against
+
+[14:31]
+Finland one of our tougher opponents
+first game of the tournament obviously
+high arousal state everybody's excited
+these games were in Buffalo New York so
+not far from the border so we had a very
+good crowd you can see some fatigue
+present on that second day game day
+loads were down a little bit more our
+coaches did a better job of distributing
+the load okay so they played we had we
+played a little bit of a weaker opponent
+so they could distribute the load a
+
+[15:01]
+little bit so our average player load
+was down the game on the 29th was
+outdoors
+that was a game against the Americans
+outdoors we lost in a shootout it's our
+highest loaded day we played an extra
+period plus a shootout ok but what's
+interesting is look at that that as much
+planning and as much preparation as you
+do that our lowest load was that 4th
+game so one of the things I always say
+is we can prepare as much as we want but
+the players the output is what matters
+the most we still won again it was
+
+[15:31]
+fortunately for us against a weaker
+opponent our coaches could distribute
+the load a little bit more across the
+game now the one thing I do want to tell
+you with all of this information that we
+do we do measure it is only one key
+piece of our preparation in our
+performance one of the things that that
+I do with my job is I take all of our
+data streams that come in from our
+subjective wellness questionnaires from
+our internal load monitoring we use a
+simple HRV app our women's team wears
+
+[16:02]
+heartrate system on the ice that can
+code with our catapult system and I put
+I put it all together to then feed this
+information to the coaches this is my
+dashboard nobody else sees this
+dashboard on it on the coaching staff
+because it's too confusing for them I
+take this information i pare it down and
+I give considerations and summaries and
+I always say to the coaches I'm gonna
+give you here's my considerations and
+aren't my recommended changes that we
+should possibly make and I say it that
+way and I frame it that way
+
+[16:33]
+because I'm not the one that needs to
+face the media at the end of the day
+they need to decide if they want to push
+their players hard in practice or not
+but because we have a good dialogue and
+good structure of reporting in place and
+good trust with each other a lot of
+times they'll be like yes we'll go with
+that way or no we're gonna go this way
+and that's fine it and as a support
+person my job is to accept that and then
+make any changes or suggestions to
+previous days if our loads ran hot today
+or not now the one last example I want
+
+[17:04]
+to leave you with here this is this
+year's tournament and one of the things
+we believe in is front-loading to allow
+our athletes to peek and and I will be
+lying to say if that not all tournaments
+come out as nicely as you want from a
+data visualization and data management
+perspective this worked out perfectly
+our athletes were starting to peak and
+trend upwards as we head headed into the
+medal round I don't know how many of
+Canadians are here right now but you
+will know that this year tournament
+
+[17:35]
+didn't work out like we want it to we
+ended up losing as much as I talked
+about player performance player
+readiness we still play a sport
+okay you can't control for a puck
+bouncing off a player shim pad hitting
+the post rolling up the goalie and going
+in to tie the game with 30 seconds left
+nor can you control for an athlete
+missing a penalty shot in overtime which
+would have won the game or a stick
+breaking with an open net they going
+down to score it doesn't matter it's
+there's still a human element that that
+
+[18:06]
+can't get accounted for for all of all
+of what we do so two main takeaways I
+want to leave you with the first one is
+we can now start to understand what is
+happening on the ice the use of
+technologies that gets smaller and gets
+more reliable and valid can now get us
+to understand what 25 athletes are doing
+down to an individual level more
+
+[18:37]
+importantly we can feed that information
+back to our coaches to help prepare our
+athletes better the end of the day we
+are performance based industry we need
+to win we need to perform so everybody
+needs to do everything in their power
+they can to set those athletes up for
+success and as I say there that was a
+big win that was a big win for our
+coaches that was a big win for our
+athletes everybody understood it we had
+been tracking information for three
+years we had three years worth of data
+
+[19:07]
+on our athletes to be able to show them
+but that was our biggest win to feed it
+enough for another three years of
+technology and tracking for athletes and
+then the second thing is data collection
+versus data action this is a big thing
+that I talked to a lot of sport
+scientists and coaches about if you're
+going to collect something please use it
+we collect daily for our athletes to
+feed that information back to our
+coaches to better prepare our athletes
+because we measure it we can manage it
+
+[19:37]
+there's a big disconnect between what a
+coach thinks the intensity of a session
+is and what an athlete's actual
+interpretation of that session is as
+well but if you have an objective
+measure of the work that is being
+performed on the ice through technology
+now everybody is on the same page
+thank you very much I hope you enjoyed
+my presentation and we'll open the floor
+to questions now yeah
+
+[20:17]
+no it's it becomes a comfort thing just
+like anything the way an athlete feels
+is really important
+my strategy is I'll have a conversation
+about why it's important for them to
+wear and I will then tell them to wear
+it or ask them to wear it and I'll say
+hey listen I'm gonna come check with you
+about 15 minutes in the practice
+see if it's still bothering you so when
+they come over for a water drink I'll be
+like hey so how you feeling today is
+
+[20:47]
+everything okay you'll be like yeah like
+what are you doing out here why are you
+talking to me they'll forget about it
+it's just like when they get new shin
+pads they feel weird and then when they
+go out into their sport they forget that
+it's there unless of course they take
+some hit or something to it but that's
+very infrequent yeah
+I have tried to present some of that
+
+[21:20]
+information to our coaches more from a
+theoretical base because one of the
+things I in my role as the sport
+performance guy I take care of
+everything off the ice and leave a lot
+of what happens on the ice we don't have
+a true dedicated analytics team I've
+tried to present some of those concepts
+to coaches but as they say to me when it
+comes down to what I'm putting my best
+players on the ice you know one of the
+things we've tried to theoretically talk
+about is each player has a finite loan
+to where we can maximize their measured
+
+[21:51]
+explosive output and then too much load
+starts to drop that ratio down so what
+is that maximal load well if I ate and
+I'm just gonna make this up if I know
+for me that's 300 units I don't want to
+burn through 200 units in the first
+period right I might not play my best
+player as often but again coaches from a
+technical tactical element they're the
+Masters of their domain and and really
+in my role we've tried to kind of have a
+real clear delineation between what we
+
+[22:21]
+do off the ice and feed information to
+them versus dictating what they do I
+know you like a traditionally you know
+there's whatever your your strategy of
+loading can be a catapult can be used in
+other sports because you can measure
+what happens in practices and games and
+then the manipulation of volume and
+
+[22:52]
+intensity is up to the practitioner so
+what I do would be different than maybe
+what these guys do within their own
+sport but you know there's concepts of
+tactical periodization out there that
+look at hard days easy days each day has
+a different goal to it and as long as
+you're measuring those kind of high-low
+moments from from an actual objective
+point then it can be applied in any
+sport
+
+[23:23]
+so the question the reasoning of lack of
+research on hockey players it's a great
+question I have no idea a lot of it
+might be just the Applied Research in
+North America is still an emerging field
+I would say of actual true applied
+research compared to some of the other
+countries out there that have a lot more
+easier access to to athletes and teams
+and high-level teams
+certainly I think the barrier base
+
+[23:56]
+nature of the sport behind boards and
+glass along with the closed environment
+that a lot of teams kind of in North
+America have here a little bit I
+fortunately with our relationships you
+know I've been working talking unit
+since 2010 so we have those
+relationships that ability to break down
+those barriers but it's certainly
+something I would like to see grow
+certainly female I talk to you at all of
+my academic work is using our
+world-class subsets data from our early
+female athlete so I'm trying to push
+
+[24:26]
+that information out there as well
+question
+yes so the question was the HRV that we
+measure so we we start measuring our
+guys in August and we measure them all
+
+[24:58]
+the way through until the end of the
+tournament which is in January so we get
+our just a baseline warning measurement
+again we're trying to figure something
+that's non-invasive easy for them to do
+they're under 20 so they have a lot
+going on and sometimes I think they
+forget to tie their shoes if they didn't
+have laces in them so we try to keep it
+as simple and easy as possible for them
+okay that's all we have today thank you
+very much really appreciate you coming
+to hear the talks today thank you
+##### 2019-03-11_z_6M5r7031A_the-true-cost-of-tommy-john-surgery-in-major-league-baseball
+meta.json
+transcript.md
+{
+ "id": "z_6M5r7031A",
+ "title": "SSAC19: The True Cost of Tommy John Surgery in Major League Baseball",
+ "channel": "42 Analytics",
+ "upload_date": "20190311",
+ "duration": 1729,
+ "view_count": 467,
+ "description": "",
+ "chapters": [
+  {
+   "start_time": 0,
+   "end_time": 7,
+   "title": "<Untitled Chapter 1>"
+  },
+  {
+   "start_time": 7,
+   "title": "The True Cost of Tommy John Surgery",
+   "end_time": 47
+  },
+  {
+   "start_time": 47,
+   "title": "Sandy Koufax",
+   "end_time": 96
+  },
+  {
+   "start_time": 96,
+   "title": "Collateral Ligament of the Elbow",
+   "end_time": 656
+  },
+  {
+   "start_time": 656,
+   "title": "Dollars of Salary per Wins above Replacement",
+   "end_time": 679
+  },
+  {
+   "start_time": 679,
+   "title": "Impact on the Team Level",
+   "end_time": 953
+  },
+  {
+   "start_time": 953,
+   "title": "Expected Value Decision Analysis",
+   "end_time": 1075
+  },
+  {
+   "start_time": 1075,
+   "title": "Conclusion",
+   "end_time": 1175
+  },
+  {
+   "start_time": 1175,
+   "title": "Challenge with Pitching",
+   "end_time": 1729
+  }
+ ],
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC19: The True Cost of Tommy John Surgery in Major League Baseball"
+video_id: z_6M5r7031A
+url: https://www.youtube.com/watch?v=z_6M5r7031A
+channel: 42 Analytics
+upload_date: 2019-03-11
+duration: 28:49
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [injury-health,policy]
+---
+
+# SSAC19: The True Cost of Tommy John Surgery in Major League Baseball
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+So, welcome to Competitive Advantage
+Talks, presented by Ticketmaster. My
+name is Sam Fetter, and I'm a second
+year here at MIT Sloan, and it's my
+pleasure to introduce the next
+presentation, The True Cost of Tommy
+John Surgery.
+Our presenter, Dr. Eric McNally, is a
+sports medicine orthopedic surgeon at
+the Henry Ford Health Center. He's the
+team physician for the Detroit Lions,
+and is a proud MIT alum. Please join me
+in welcoming our speaker, Dr. Eric
+McNally.
+Thanks.
+And this is the clicker right here.
+Do I need the microphone? No. Okay.
+
+[00:35]
+All right. Good afternoon, everybody.
+It's my pleasure today to be here to
+discuss our research on Tommy John
+surgery and its impact on professional
+baseball, and I want to thank the
+conference organizers for allowing us
+this opportunity.
+Sandy Koufax was one of the greatest
+pitchers ever played the game.
+When he was inducted into the Hall of
+Fame, he was the younger youngest player
+ever to receive that honor.
+Even though he played 12 years in the
+majors, his career was cut short at the
+young age of 30 because of elbow
+arthritis in his throwing arm.
+
+[01:06]
+Many of us today think that his career
+could have been prolonged if he had had
+a surgery that was just a few years away
+from being invented.
+You see, the throwing motion in
+baseball, in particular, is one of the
+most dynamic motions in all of modern
+sports, and it relies on a series of
+ligaments and other structures in the
+body, especially the shoulder and the
+elbow, to allow for stability to throw
+at such high velocities and accuracy.
+In particular, one of the most important
+of those ligaments is the ulnar
+
+[01:36]
+collateral ligament of the elbow, and it
+runs on the inside part of the elbow,
+and it's the main stabilizing ligament
+of the throwing motion.
+Without it, pitchers cannot pitch with
+accuracy or with velocity.
+So, what happens when this ligament is
+injured?
+If you're lucky, it's a small tear or a
+a low-grade tear, and a period of rest,
+physical therapy, and maybe some
+injections can get you along without
+needing any surgery.
+But for many others who have a complete
+tear of that ligament or a high-grade
+
+[02:07]
+injury,
+they can't get back without a surgery.
+And unfortunately, the ligament cannot
+just be sewn back together. It actually
+has to be reconstructed or replaced with
+a tendon from the player's arm,
+leg, or even a cadaver source. And we
+put that ligament through the bones in
+bone tunnels, and this is what we call a
+UCL reconstruction procedure.
+Now, many of you, of course, know this
+surgery by a very different name, and it
+was named after the first player to ever
+undergo this procedure.
+In 1974,
+
+[02:38]
+the legendary late Dr. Frank Jobe
+diagnosed Tommy John with a deficiency
+of his ulnar collateral ligament.
+At that time, it was a career ender, and
+this may have been what was going on
+with Sandy Koufax a few years prior.
+But Tommy John desperately wanted to go
+back to playing, and so he told Dr.
+Jobe,
+"Make this better." And Dr. Jobe told
+him, "Well, there is no treatment for
+this, but I could give you a new
+ligament, and I have no idea how it's
+going to work. It could make you worse.
+You could have nerve damage, and you may
+
+[03:09]
+not get back to playing."
+And Tommy John said, "Sure, sign me up."
+So, he did the surgery,
+and 2 years later, Tommy John got back
+to pitching, and he actually had a very
+long career afterwards.
+Since then, however, Major League
+Baseball has seen a rash of Tommy John
+surgeries.
+And this is a typically This is
+basically an overuse injury of the
+elbow. And we're seeing the numbers of
+pitchers undergoing the surgery rise
+year by year by year.
+In fact, there's been 900 professional
+
+[03:39]
+pitchers and counting who have undergone
+the surgery.
+25% of all Major League Baseball
+pitchers playing today have undergone
+Tommy John surgery. So, it is very safe
+to say that Dr. Frank Jobe literally
+saved the game of baseball as we know
+it.
+The big question is, from a clinical
+perspective, why are we still seeing
+these injuries? We're really good at
+preventing injuries when we know about
+them, and we know a lot about Tommy John
+injuries, but we can't curb them.
+And I think there are basically two main
+reasons why we are continuing to see
+
+[04:09]
+this injury, and it's not going
+anywhere.
+The first is that pitchers are throwing
+harder than they've ever thrown before.
+The average fastball velocity is
+climbing up year after year after year.
+And what we're doing now is that we're
+studying what the impact of that
+velocity is on stress at the elbow. Our
+group at Henry Ford is actually using
+new wearable technology that detects
+elbow stress and elbow torque at the
+medial elbow, right where the UCL is,
+and we're trying to figure out what the
+link is between velocity and elbow
+stress.
+
+[04:39]
+And what we found in study after study
+using this technology is that the faster
+you throw,
+the more stress there is at the elbow.
+And this is not arm speed, this is pitch
+speed. And it used to be that we would
+tell our kids, "Don't throw curveballs
+or change-ups. Don't throw off-speed
+pitches. That's too much stress at the
+elbow. Just stick with straight
+fastballs."
+Well, what we're finding is, whether
+you're a 12-year-old youth pitcher or a
+professional pitcher,
+those fastballs that have high velocity
+impart greater stress to the elbow. And
+
+[05:10]
+this has been borne out in numerous
+different studies of independent studies
+from our group.
+We wanted to take it one step further.
+Maybe fatigue is playing into this, cuz
+this is an overuse injury. And so, we
+did a study recently where we took a
+bunch of pitchers, and we put them
+through a simulated game, a seven-inning
+game. And after each inning, we said,
+"How tired are you on a score of 1 to
+10?"
+And naturally, that score went up inning
+by inning, which is not surprising.
+What we found also was that the peak
+fastball velocity around inning five
+
+[05:40]
+started to dip. Again, that in of itself
+is not that surprising.
+What we were surprised to see was that
+when that stress should have come down,
+it actually went up. So, unlike the
+pitchers that we tested that were not
+fatigued,
+the velocity-stress relationship totally
+broke down in our fatigued players. And
+this is a real link to how we can
+decipher the the connection between
+fatigue, velocity, and elbow stress.
+The second reason why we're not seeing
+any drop in Tommy John surgeries at the
+
+[06:10]
+professional level has nothing to do
+with professional sports. It's actually
+far more sinister.
+One of my colleagues sent me this
+picture of his kid and his Little League
+team.
+And it doesn't take a doctor to know
+that kids of this age should not be
+using ice bags to ice down their elbows
+after playing.
+It used to be back in the day that
+baseball players would play baseball in
+the spring, but then they'd play
+football in the fall, and basketball in
+the winter. And we talked about this
+actually at the the Gladwell-Epstein
+
+[06:40]
+uh discussion just an hour ago.
+But now,
+people are playing sports at an earlier
+age year-round. So, for the baseball
+players who are obviously using the
+muscles of their shoulder and elbow,
+they're not getting that rest. They're
+playing fall ball, winter ball, spring
+ball, summer ball, weekend ball, high
+school ball, travel ball,
+and they're pitching year-round. I give
+talks to a lot of facilities and
+leagues, junior leagues, 12-year-olds,
+14-year-olds, and their parents, and
+these kids are playing non-stop. In
+
+[07:10]
+fact, there's a foot of snow in
+Michigan, there's snow right now, and
+there are kids all over the area playing
+in indoor facilities when they should be
+doing something else. And what happens
+is this single sport specialization at
+an early age, before kids are skeletally
+mature, is causing a burnout of their
+muscles and their tendons.
+We did a study where we took 200 healthy
+youth baseball players. These are kids
+that are playing. They're not
+complaining of pain. And we did a survey
+with them when I was in residency in New
+York City.
+What we found is that 75% of players
+admitted to having arm pain.
+
+[07:41]
+25% of the kids had symptoms that were
+suggestive of a legitimate overuse
+injury. And this was the worst part. 50%
+of players
+felt that they were pressured to play
+despite admitting they had arm pain.
+They felt pressured by coaches and
+parents to keep playing, and this is why
+we're having these injuries. A colleague
+of mine, Chris Camp from the Mayo
+Clinic, just came out with this study.
+He found that players in the draft,
+before they are professionals, are
+undergoing Tommy John surgery at a
+
+[08:11]
+increased rate year by year by year. In
+fact, up to 10% of pitchers getting
+drafted have already undergone Tommy
+John surgery. This is in high school and
+college. So, this single sport
+specialization, this overuse, this
+burnout is manifesting as surgeries
+happening earlier and earlier. My
+youngest baseball player I've done
+surgery on for Tommy Tommy John repair
+was 12. That's crazy.
+So, the question we wanted to ask, and
+why we're here today, is what is this
+toll on professional sports? What is
+this cost to the league? This is just
+one injury, one injury to predominantly
+
+[08:42]
+one position.
+And it's easy to see that there are
+costs to the players and the teams, but
+there are other stakeholders as well.
+Fans that are paying premium dollar to
+go see their favorite pitcher not play,
+and instead rehab in Arizona or Florida.
+And society who actually bears the cost
+and resources for taking care of these
+players.
+But let's focus on the players. What
+happens to these pitchers?
+Now, thankfully in baseball, this is a
+very data-driven league, and a lot of
+this data is publicly accessible, and
+this is what helped us learn about these
+
+[09:13]
+injuries. We were told early on that
+Tommy John surgery works for everybody.
+If you have a pitcher, go get Tommy John
+surgery. In fact, there were studies
+that showed that kids wanted to get
+Tommy John surgery even if they didn't
+have pain, cuz they wanted to come back
+stronger.
+So, we looked at it. We took 150
+baseball players in the in Major League
+Baseball who had Tommy John surgery, and
+we took a look at how they did. We
+looked at the 140 that were established,
+meaning that they pitched in 10 games or
+more in a given season. So, these are
+durable guys.
+And we found that 20% of these
+
+[09:43]
+established pitchers never made it to
+the mound in the majors ever again.
+And these are guys pitching in 10 games
+at least per year.
+One out of three of those guys
+came back, but not at that same level of
+durability. They may have pitched in one
+or two games and that was about it, but
+they never made that 10 games a year.
+So, that's not good.
+How about the guys that came back? How
+did they do?
+We found that there was a statistically
+significant decline in numerous pitching
+metrics
+
+[10:13]
+for the players that came back. So,
+maybe Tommy John surgery is good but not
+so good.
+We've recently started to look at other
+metrics. Wins above replacement is a
+very good metric that tells us about the
+value of a player.
+And you can see in the 3 years leading
+up to Tommy John surgery that wins above
+replacement goes lower and lower and
+lower. And it takes 3 years after the
+player comes back to get to the level it
+was before surgery. This is not 3 years
+after surgery.
+The recovery for a Tommy John surgery is
+
+[10:43]
+to get back to the majors is 12 to 18
+months.
+So, you're looking at four or four and a
+half years to get back to where they
+were before they got injured, which was
+not where they were before.
+How about their economic value?
+Let's look at the dollars of salary per
+wins above replacement. Now, naturally
+speaking, it balloons after surgery, but
+again, not until 3 years after they
+return
+do they get to the levels they were
+before surgery. So, economically their
+value tanks.
+And these have real implications
+
+[11:13]
+especially for teams that are trying to
+deal with these injuries.
+So, the next question we had
+is what is this impact on the team
+level?
+What should GMs and executives think
+when they have a player that might need
+Tommy John surgery?
+If you look at the per player cost alone
+just the medical cost, and this is
+conservative, it's about $50,000.
+But, as I said, there's 12 to 18 months
+of salary that are wasted before that
+player gets on the mound for a major
+league game.
+So, you can do the math.
+
+[11:44]
+Well, our follow-up question was, "Okay,
+let's see how that pans out." Now, keep
+in mind that the number I gave you
+doesn't include a lot of the other
+direct costs for taking care of these
+players and doesn't include a lot of
+indirect costs. So, what happens to
+their trade value?
+Less wins for the team?
+Increased roster strain for the other
+players?
+More payroll to get other guys in?
+So, how is this bearing out on a
+league-wide level?
+So, we have a study now that's under
+review
+and we took a 10-year period of time
+from 2004 to 2014. And that gives the
+
+[12:14]
+time for some players who had surgery in
+'14 to get back to playing. And what we
+wanted to know was which players had
+surgery
+how long it took them to get back, and
+how much salary was wasted in the time
+frame.
+Again, this is all public data, and
+again, that's the nice thing about
+baseball, there's a lot of data out
+there. So, we were able to do the study
+pretty reasonably well.
+And we had about There was about 200
+surgeries in that study time frame.
+And on average, there was 180 days
+missed of MLB time, MLB calendar, not
+regular calendar, MLB calendar.
+
+[12:44]
+About half the players were starters,
+half were relievers, and a small
+proportion of closers.
+And as expected, the number of surgeries
+trended upwards throughout the study
+time frame. This we know.
+If you look at the salary impact when we
+adjusted it to 2017 levels half a
+billion dollars over the time frame that
+is lost to salary for guys to just rehab
+from these Tommy John injuries. Half a
+billion dollars.
+This didn't count any medical costs,
+travel costs, rehab costs. These guys
+are flying around the country for their
+aftercare.
+
+[13:14]
+Doesn't include any of the downtime they
+had before the surgery.
+Oftentimes, these guys are injured
+before they go on and off the DL with a
+forearm strain and bicep strain and
+muscle soreness, and then they finally
+realize, "Okay, fine, let's get the
+Tommy John surgery." Any big profile
+injury that we've heard about in the
+last couple years has gone through this
+path.
+So, this doesn't include any of that
+downtime. This is just from T0 from
+surgery. This doesn't impact it doesn't
+include the loss of wins on the team and
+also the trade value of player.
+So
+what is that number? Is it a half a
+
+[13:44]
+billion dollars?
+What if we start thinking about the
+minor league players? We didn't include
+a single minor league player.
+All those teams have rich farm systems,
+and those guys are getting Tommy John,
+too. So, is the cost 1 billion over that
+10 years? Is it 1 and 1/2 billion? Is it
+more? And I don't know, but these are
+really big numbers.
+So, where are we going? How can we curb
+this number? Now, my job as a surgeon is
+to try to figure out how we can
+get these guys better after surgery, but
+more importantly, get them away from the
+table to begin with. And that's what our
+
+[14:14]
+research is doing. A lot of our research
+on wearable tech. I give a lot of talks
+to kids and their parents about pitching
+mechanics and proper rest, and we're
+doing these things to try to help curb
+injury rates.
+But what if there are some other tools
+we can use from a business perspective
+to think about injury and how we can
+manage them. So, as I told you, not
+everybody with a UCL injury needs have
+surgery.
+Sometimes, if it's a low-grade injury,
+we can do a period of rest, physical
+therapy, maybe some injections, and it's
+about a 40 to 80% success rate depending
+
+[14:45]
+on the case, but it's at most a 3-month
+downtime, and maybe you can avoid
+surgery.
+For those who have higher grade injuries
+or who have failed the above, they need
+surgery. Now, even though it's not a
+perfect treatment, it's still pretty
+reliable, okay, with 80 to 80 to 100%
+success rates in different studies.
+But like I said, it's a year to year and
+a half of downtime.
+So, I guess the question is, why not
+just let everybody try non-operative
+treatment? That would seem to make
+sense. Give them all a chance and see if
+they get better, and if you avoid
+surgery, that's a win.
+
+[15:15]
+My question back to you is, "What if it
+doesn't work?"
+So, now you've burned 3 months
+of rest and activity modification and
+physical therapy
+and now they still need surgery. And
+instead of losing one season, which
+would have been the case if you just did
+surgery right away, you've now lost two.
+And that's a big problem.
+So, the question becomes, "How do we
+know who can benefit from surgery and
+who won't?"
+Now, obviously, this is a clinical
+problem. So, most of this is done from
+clinical decision-making. Okay. But we
+have other tools at our disposal to look
+
+[15:46]
+at how we can model these scenarios and
+maybe think a little bit outside the box
+with how we manage these injuries.
+One technique we're starting to use is
+expected value decision analysis. And
+we've written a number of studies of
+expected value decision analysis in
+other parts of orthopedic surgery. So,
+now we're going to apply it to baseball
+sports medicine.
+What we can do is take a make a model
+with known values, unknown values, and
+see how we can maximize our outcomes.
+So, we can input some of the data I've
+showed you.
+What's the likelihood of this healing
+
+[16:16]
+with surgery or without surgery? What
+their likely performance is coming back?
+And also when the injury happened.
+This is a very different injury if it's
+happening now in spring training versus
+a few months before playoffs. It's a
+different injury for a team with a with
+their ace pitcher but with no chance of
+making the playoffs
+versus being right on the bubble for
+playoffs. So, this whole stuff you can
+model.
+And you can build that model and
+optimize for any outcome you want. So,
+in our example, we took two treatment
+options. The top wing is if you have
+surgery, the bottom wing is if you try
+
+[16:47]
+non-operative treatment. Okay? And what
+we want to maximize is pitcher wins
+above replacement. So, we did a sample
+model with some of the inputs we put in.
+Okay? And what we found in our sample
+model for
+our case scenario, and this is just one
+representative scenario, is that for
+this player
+his expected wins above replacement is
+1.6 versus 1.3 if he did surgery. So, in
+this case, we would say from this model,
+maybe non-operative treatment might
+work. Again, this does not take the
+place of clinical decision-making, but
+it's another tool to use.
+
+[17:19]
+The best part about this modeling is
+that we can do two-way sensitivity
+analyses and take a graphical
+representation of these different
+scenarios.
+And here you'll see the blue tiles where
+surgery produces a better wins above
+replacement.
+The green tiles are where non-operative
+treatment
+brings in a better wins above
+replacement. And you can look at the
+different threshold values for success
+with non-operative and operative
+treatment based on clinical
+characteristics, prior attempts
+tear characteristics and you can see
+where does it make sense to try surgery
+versus non-surgery. And it gives us a
+
+[17:49]
+little bit way to toggle with the inputs
+on our unknown data to try to make sense
+of what's going to happen.
+So, in conclusion UCL injuries and Tommy
+John surgery is truly an epidemic not
+only of professional baseball but of all
+baseball.
+These injuries have significant cost
+burdens to multiple stakeholders, the
+least of which being the players
+and the teams. And maybe we can use
+decision analysis to try to think about
+things a little bit differently as an
+adjunct to our clinical care.
+Thank you, and I'll take any questions
+
+[18:19]
+if we have them.
+Yes.
+Um
+in the performance
+before and after the UCL reconstruction
+did you control the WAR metric for
+the different reliever starter
+cumulative statistics, so it's harder
+for relievers to
+Right.
+For the
+for the first set of data, we controlled
+it with age-match controls. For the
+second set, it wasn't controlled, but
+that's a good point.
+
+[18:50]
+I Yes, I
+in the front here. So, you mentioned
+they have a 4-year
+uh roughly a 4-year recovery window.
+Pitchers for what they earn and
+the last thing
+after 4
+Is that different Is that on average or
+is it different for older players
+Well, the numbers would not allow us
+when you're getting that far out to
+tease apart age-ranked age-matched, but
+when we did our original studies on the
+larger cohort, it did seem to commence
+it with their natural trend with age.
+So, it did seem to be irrespective of of
+
+[19:20]
+player age.
+Yeah. Any any recommendations to avoid
+the Tommy John
+that we heard earlier on in the pitching
+career?
+So, that's the big thing, and that's
+what we talked about or at least we
+heard about with
+Gladwell and Epstein and the single
+sport specialization. The challenge with
+pitching is this.
+What the theory is that if we get them
+doing multiple sports in the beginning,
+that's going to be healthier for their
+arms. That That makes sense.
+One challenge with pitching in
+particular is that the arm undergoes
+remodeling as as child. So, if you never
+
+[19:51]
+threw a ball, you're not going to be
+able to throw it like a pitcher does uh
+if you started late on late later on
+your life. So, as a kid, there's soft
+tissue with the capsule um and the
+rotator cuff, and there's bony
+remodeling. Believe it or not, the
+humerus actually remodels as a kid. And
+so, they're able to get I played tennis
+throughout um my childhood and college,
+and I'm able to reach back farther than
+I would have if I did not start at such
+a young age. So, part of it's necessary
+cuz you cannot take a someone who never
+pitched and then at the age of 12 say,
+
+[20:21]
+"Okay, you're going to start pitching."
+They're not going to be able to get that
+rotation. If you look at these pitchers,
+if you go on Google and see imaging of
+pitchers, their arm is way back there.
+That's a remodeling that's happened over
+time since they were kids. So, the
+challenge is giving some rest.
+And that's what we're preaching, and
+we're doing a lot with pitch counts.
+The problem is if you abide by your
+pitch count in your high school league
+and your travel league, you're not
+really abiding by it, right? So, that's
+part of it. Warm-up pitches.
+Fine, you can throw 70 pitches, but if
+you're throwing 15 warm-up pitches
+between innings, that's a problem. Um
+
+[20:52]
+and then education our research on the
+the stress. So, we're now doing wearable
+tech research on weighted balls,
+which Justin Verlander made pretty
+famous, on uh the fatigue aspect and
+also on different training regimens and
+rehab programs. So, that's how we get to
+it, but it's a grassroots effort. Yeah.
+For hitters, so we've actually used the
+sleeve on hitters, and I've have friends
+um
+uh that are other major league baseball
+
+[21:23]
+physicians who have players with
+injuries uh that do want to bat. The
+these devices are rely lying on a
+throwing motion, so we can't measure
+elbow stress yet uh for hitters in this
+way.
+Yeah.
+
+[21:54]
+Yeah, so you know, when I have kids with
+uh two years So, the question was or the
+comment was, well, you know, when you're
+batting, it may not have that same
+stress on the elbow. So,
+I have kids come in with little league
+elbow, overused elbow. I'll say, "Look,
+don't throw, but if you want to bat and
+if it doesn't bother you, I'm okay with
+that." So, there is definitely not the
+same stress. In fact, these UCL injuries
+really you're treating one position of
+one sport. Some other players get it,
+javelin throwers, you know, gymnasts,
+but it's really one position of one
+sport. That's why pitchers
+overwhelmingly are the ones who need the
+surgery. Yeah.
+
+[22:33]
+We they There have been studies that
+look at arm slot in particular and the
+release point, and that's what our next
+stage is to look at if that release
+point affects torque and also affects
+injury risk. So, the slot is one big
+thing, and some of the submarine
+throwers the device won't pick that up,
+but the slot so far has not shown
+increased elbow stress.
+Yeah.
+
+[23:10]
+Believe it or not, I think the
+um the the media pressure now is
+is really sinking in. The first time I
+used to give these talks maybe six,
+seven years ago at these baseball
+facilities, and you could see coaches
+saying, "Okay, pitch counts." Now, when
+you talk to a coach, they're very
+attuned to it because of all this
+publicity. All those headlines, that's
+just one iota of all the headlines that
+are on this. So, I think that's our best
+way of doing it um
+educating, but the coaches now are
+getting very attuned to pitch count
+guidelines, and they are trying to
+adhere more at least that's what I'm
+
+[23:40]
+seeing.
+Yeah.
+So, if you
+uh I'll use an example from tennis. Um
+so, when I when I was playing tennis
+growing up,
+when I use it when I play um hit a
+serve,
+I found that the lower I bent my knees
+and shot up, more of my force from um to
+my serve is coming from my legs and
+core. So, when we My my hypothesis is
+
+[24:11]
+that when we're fatiguing, we're not
+getting the rest of the kinetic chain.
+Throwing is relying relying on the
+shoulder and elbow, but it the kinetic
+chain of throwing starts from the toes,
+back, core. And as those muscles fatigue
+and you're trying to keep that velocity
+up, the arm's doing everything.
+And that's when most people get tired is
+when the rest of the body. So, what we
+tell our A lot of kids will ask me or
+their parents, "Well, what can my kid
+do? He's 13. What can he weightlift? Can
+he not?" And what I tell them is core
+body exercises, body weight exercises,
+not lifting like heavy weights, but
+planks, that kind of stuff. And that's
+
+[24:42]
+also what we're going to start looking
+into as well, but that's a big thing.
+That's why I think the the um
+that relationship breaks down.
+Yes.
+Yeah, it does um because that factors
+into It depends what you're measuring.
+If you want to look at dollars per wins
+above replacement, it would matter, but
+if you want to look at just what happens
+when they come back, it shouldn't
+matter.
+
+[25:12]
+Yes.
+Yeah.
+There's a reason why a lot of the
+research on
+overuse injuries is coming from Japan.
+That's how I would answer it. I don't
+
+[25:42]
+want to be unfair that I don't know the
+answer exactly, but a lot of the
+research, if you look at it on youth
+baseball players with elbow cartilage
+defects, a lot of it's coming from
+Japan. So, I don't know if that has a
+bearing on it, but it really doesn't
+help.
+Yeah.
+Yeah, so if you look at an MRI of an
+
+[26:13]
+elbow for a professional baseball
+pitcher,
+there's all kinds of problems. There's
+all kinds of defects. And there's all
+kinds of pathology that builds
+up. So, if the average pitcher elbow at
+that level does have pathology.
+And a lot of the time it's a question
+when it's going to give. And these Tommy
+John tears in kids often they can be
+acute avulsions where they just peel off
+and they snap off and you can put them
+back on.
+Um largely for most of the adults and
+professionals, it's an attritional
+thing.
+So, it's a slow wearing down process,
+
+[26:43]
+and what happens actually, believe it or
+not, the elbow compensates.
+That's where these bone spurs come from,
+that arthritis that we were talking
+about in the beginning may have been
+reaction. And so, the elbow will
+stabilize itself by making bone spurs on
+the other bone spurs on the other side
+of the body.
+Yes.
+
+[27:22]
+So, I think at the major league level
+it's a little different um because the
+pitch count by then their elbows are
+what they are.
+And I they've had their whole lives to
+kind of develop the pathology of
+whatever it's going to be, and I think
+that's why uh you see that injury rate
+similar there.
+Um
+But also, there's probably more I I
+don't know the number if there's more
+relievers uh than starters. I don't know
+that number, but that was just an
+absolute number that we saw that was
+getting them. So, there may be a
+difference in the denominator there as
+well.
+And pitch counts really I think they're
+
+[27:53]
+most talked about as a pitcher
+recovering from injury. So, we all or
+innings, right? And remember when
+Strasburg came back from his UCL, there
+was a whole lot of talk on
+um do we exceed the inning count cuz
+they're on the verge of playoffs, right?
+So, that's that they try to limit that,
+but you know, it's hard uh at that level
+when the damage if it's already done is
+already done.
+Yes.
+Yeah.
+
+[28:27]
+Well, it wasn't adjusted, but I think
+our assumption was that the wins above
+replacement would be that calculation
+would be factored in on their efficacy,
+and then you could just simply divide
+the salary by that. But it was
+relatively back of the envelope
+calculation.
+All right, thank you.
+##### 2020-03-11_GoTHz4wdg2o_making-the-right-play-optimizing-the-nba-s-season-structure
+meta.json
+transcript.md
+{
+ "id": "GoTHz4wdg2o",
+ "title": "SSAC20: Making the Right Play: Optimizing the NBA’s Season Structure",
+ "channel": "42 Analytics",
+ "upload_date": "20200311",
+ "duration": 3206,
+ "view_count": 1085,
+ "description": "",
+ "chapters": null,
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC20: Making the Right Play: Optimizing the NBA’s Season Structure"
+video_id: GoTHz4wdg2o
+url: https://www.youtube.com/watch?v=GoTHz4wdg2o
+channel: 42 Analytics
+upload_date: 2020-03-11
+duration: 53:26
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [basketball,policy]
+---
+
+# SSAC20: Making the Right Play: Optimizing the NBA’s Season Structure
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+good evening and hope you're enjoying
+the 2020 Sloan Sports analytics
+conference my name is Dan Ford and I'm a
+first year MBA student it is my pleasure
+to introduce our next panel making the
+right play optimizing the NBA's season
+structure our panelists today starting
+closest to me are Evan wash senior vice
+president of basketball strategy and
+analytics for the NBA Steve Koonin CEO
+of the Atlanta Hawks Gerson Rose US
+
+[00:32]
+president of basketball operations for
+the Minnesota Timberwolves Shane Battier
+vice president of basketball development
+and analytics for the Miami Heat and a
+former player NCAA champion and two-time
+NBA champion and moderating our panel
+today is Kevin Arne Yvette's and be a
+writer for ESPN and frequent guest on
+ESPN's the jump the panel will last of
+45 minutes and be followed by ten
+minutes of Q&A audience please tweet
+
+[01:03]
+your questions using the hashtag NBA
+schedule with that I'll kick it off to
+Kevin thanks so the premise of this
+panel is that the current 82 game
+regular season is is just ill-suited to
+the modern age I gave a talk about this
+last year you know just the way that the
+league is structured and you know the
+way teams qualify for the playoffs the
+idea that there's just there 82 games
+and at the end of it you know there are
+no spikes in this whoever wins the most
+
+[01:34]
+games the 16 teams they advance this is
+boring and I think we're starting to see
+that in viewership numbers I think we're
+starting to see that in the demographics
+of who watches games um so here's what
+I'd like to do for the next 45 minutes
+let's think of this as a constitutional
+convention we're going to scrap the
+current structure of the NBA season and
+we're gonna start from scratch and we're
+gonna rebuild it and what's great here
+is we have all most of the major
+constituencies represented
+I mean Evans our league mouthpiece here
+
+[02:07]
+Steve is the CEO of an NBA team and also
+ran Turner
+works for 14 years so broadcast partners
+a major part of this there's one of our
+largest streams of revenue and we can't
+do anything without the blessing and
+support of broadcast networks gerson
+basketball operations I mean he is the
+guy who you know want one of the thirty
+who oversees the actual playing of the
+game so maybe they should have a say
+right
+Shane also worked for an NBA team but
+
+[02:38]
+also he played in the league for many
+many years and you're not gonna do
+anything without the players support so
+and a little later we're gonna bring on
+a fan representative because I mean we
+can sit here and pontificate about what
+the season should be but at the end of
+the day it's the consumer right I mean
+that's the person who's going to
+determine whether the NBA you know
+survives or prospers and they should
+probably have a say in the product
+they're consuming since they will be
+paying for it so here's what I'd like to
+do at first I want this exercise to
+
+[03:10]
+consider some practical concerns we want
+to be at least revenue neutral because I
+think it's fair to say that we can sit
+here and play fantasy basketball but if
+the answer is yes and all of your teams
+are gonna lose tens of millions of
+dollars a year the reforms probably not
+going to go through as deficient as we
+think that this current 82-game season
+is and let's start with Evan because
+you're the guy I often call when people
+say who's Evan I say he is the minister
+of thinking about new stuff like if the
+
+[03:40]
+NBA has a thought that maybe we should
+change things whether it's the the
+overtime or the rather the fourth
+quarter at the all-star game
+Evans usually the guy who is thinking
+most broadly about this stuff so Evan
+you and I had a conversation in in the
+office recently and the one thing I
+think we agreed on is whether you're
+someone who thinks that we should reduce
+the number of games or add a play in
+tournament or add a midseason tournament
+what we're trying to get at is we want
+there twelve hundred and thirty games
+right now
+and not enough of them have meaning and
+so I just wanted to kind of before we
+
+[04:11]
+start sort of lobbying the ideas what do
+we mean by meaning like what is that
+premise yeah so maybe if you'll permit
+me edit a few things you said there so
+okay I don't think as a league
+mouthpiece we don't
+view the the 82-game schedule is
+ill-suited and accidentally don't that's
+me what that's purely me right and i
+think a lot of our fans would say it's
+not boring either right there's there's
+a lot going on every night that is
+exciting in our league so I'll start
+with that but that doesn't mean that
+
+[04:41]
+there can't be improvement and so I
+think none of the ideas that we're
+talking about now are new ideas right so
+if you go back and look at what Bill
+Simmons was writing for page 2 15 years
+ago you'll see his entertaining as hell
+tournament where you have different
+qualification for the playoffs people
+been talking about shorter seasons for
+as long as I can remember as a
+basketball fan and so the the question
+is not are we just reacting to what's
+happening with ratings or what's
+happening with injury player player load
+
+[05:11]
+things like that it's a question of can
+you make a better product and I think
+the general consensus is that our
+playoffs are a really entertaining
+competitive product and teams are going
+all out in those games and fans are
+engaging with it in a way that's
+commensurate with that that maybe isn't
+the case for each one of our twelve
+hundred and thirty regular season games
+and so for us the conversation is not
+just about do you cut games for the sake
+of cutting games it's is there a way to
+use the rest of our calendar that's not
+the playoff time to create a more
+
+[05:41]
+exciting product more exciting game of
+basketball and that could include fewer
+games
+it could include new tournaments or it
+could include entirely rethinking the
+way that we structure the season right
+to determine who makes the playoffs or
+what the rewards are what the incentives
+for competition are but that any product
+should always be thinking about how can
+you innovate the product to better
+engage your fans improve player health
+make our content more valuable for our
+network partners and so that's that's
+been the genesis of the work that's
+
+[06:11]
+really really gained steam over the past
+year all right so Steve you're the CEO
+you're accountable for revenue before I
+we love a bunch of cockamamie ideas what
+do we need to consider in terms of the
+bottom line like like what if I'm going
+to propose something what do I need to
+know from a revenue standpoint well what
+you don't want to do is do things for
+the sake of doing them you want to
+enhance your revenue lines but to come
+through media
+come through box office they come
+
+[06:41]
+through sponsorships and a big piece of
+what we'll get to we jump into ideas
+because you don't have to reinvent the
+wheel to enhance ratings sometimes
+moving away from competition is a great
+way to grow ratings you know if King
+Kong is at your door you might go out
+the back door
+rather than open the door and get in a
+hand-to-hand fight with King Kong and
+many times the start of the NBA season
+we're competing with arguably the best
+Thursday Night Football game with the
+
+[07:11]
+NBA on TNT our marquee broadcast and we
+get crushed and we wonder why and it's
+because at the beginning of the season
+there's very low relevance for the NBA
+the relevance is now that's when people
+are talking about it so relevance equals
+revenue and so we've got to create the
+most relevance and the revenue will fix
+itself okay so let's put a thumbtack in
+that I mean I think one of our first
+proposals I want to get to it's one of
+the considerations first but let's start
+the season December November Christmas
+
+[07:43]
+Day you know maybe after Thanksgiving in
+college football all right so so late
+early mid December I'm from a basketball
+operation standpoint if we're talking
+about the reduction in number of games
+if we're talking about a midseason
+tournament if we're talking about
+playing tournaments if we're talking
+about like sort of maybe even and I want
+to spitball some ideas of just like the
+structure of one through 82 or one
+through 70 whatever it is is being maybe
+we cut the season into halves or
+quarters or or some other structure the
+season what do we need to know from the
+
+[08:13]
+front office standpoint what do I need
+to consider as I round with totally
+restructuring this season Evan is there
+immunity here yes I've asked for it
+you know Steve talks about relevance I
+think from a operations perspective its
+purpose and one of the big things as we
+look at an upcoming season everybody
+plays the same number of games but how
+does that schedule look and what stage
+are you in as a team you know if for us
+
+[08:44]
+were a younger team we're building who
+we are you know for other teams the
+Lakers Milwaukee's of the world
+they're contending teams and we look at
+the current schedule and we give the NBA
+credit because they're often looking at
+different ways of how we can make it
+better but we're stretched you know long
+road trips not as many back to backs but
+we are in situations now we were losing
+practice days and for a young team a
+practice day is critical it's
+development for a veteran team that's
+
+[09:14]
+contending it's rest and recovery so for
+us as we look at every facet of what
+that schedule looks like
+no back-to-backs is a big positive but
+we're stretched out where every other
+day you're doing something and depending
+on what stage your team is that you're
+losing something valuable and it's tough
+on the players it's tough on plan and
+it's tough on execution but it's
+something that I think we're all trying
+to work through right so let me ask you
+a question
+you're a team that you know struggle in
+the first half of the season what if I
+said after 40 or 41 games we reset
+
+[09:44]
+everyone goes back to zero and zero we
+take say the first the top four teams in
+each conference they qualify for half
+one of the season anyone remembers the
+81 baseball season where there was this
+strike you know this is essentially
+would happen and it turned out great
+and we started zero and zero game 42
+Minnesota Timberwolves
+is that is that give a pep in the step
+of your locker room of your practices
+absolutely I mean you want every game to
+count you want every game to have
+meaning and for our guys I mean we we
+did that in a personnel development
+
+[10:14]
+process where we turned nine of the
+thirteen nine of the 15 roster spots at
+the trade deadline and it was a restart
+and we know it's not only is it about
+today but it's about tomorrow how do we
+build our identity how do we build our
+character on offense on defense on the
+court off the court so I think our
+players and our teams they care about
+every game it's always nice to have
+multiple things to play for to win for
+but it's how the structure is in place
+to either grow and develop or if you're
+contending to get to the end of the
+
+[10:44]
+season playing your best basketball
+being as healthy as possible so Shana
+I'll ask you as we consider how to muck
+up the season and try these new novelty
+items or ever we want to characterize
+them what I need to know from players I
+once had an interesting conversation
+with a member of the PAS aboard and and
+I was sort of representing this at this
+point of view I
+in 64 games be better and and you guys
+have more and it's on board or boy we
+talk for 10 minutes he's like by the way
+if you cut my paycheck you think I'll
+
+[11:15]
+play a hundred games if you'll pay me
+more you know so from a player
+standpoint as we as the Reformers really
+think about how are we gonna restructure
+this season or should we restructure
+season what do I need to know I mean
+what essentially is the players concern
+about all this ah
+number one is money okay absolutely so
+we're in a safe space this is revenue
+neutral move right we um you know what
+what the general population does not see
+is an NBA player trying to get out of
+bed at four game sixty three after a
+
+[11:47]
+road trip to level a Salt Lake City
+flying cross-country and getting getting
+in bed as the Sun comes up an NBA season
+is it's grueling
+it is tough after you've been in a few
+times
+you understand the grind and you prepare
+your body in your mind for it but it
+doesn't make it any easier and so you
+know we got a glimpse of of a shortened
+season albeit a condensed season back in
+in 11/12 12/13 with the the lockout we
+
+[12:17]
+played 6070 1112 oh sorry I'm old it all
+blends together when we played 66 games
+albeit you know in a few months and we
+even had a back to back to back game but
+it was it was fun because every game
+meant a little bit more and every in
+every NBA season
+there are probably a handful of games
+you know for the for the teams at the
+bottom of the standings maybe like 10 or
+12 the teams at the top of the standings
+5 or 6 where after a loss and it's bad
+
+[12:49]
+loss maybe to a team you shouldn't have
+lost to the coach won't go crazy you
+won't throw chairs I'll come in the
+locker room and say guys we didn't have
+it bring it in one two three team and
+you leave so the more we can eliminate
+those games as a player and make
+everything a little more the better all
+right so a good place to start all right
+here let's design our season obviously
+when does it start and I want to go back
+to to Steve's idea and
+
+[13:19]
+I mean it's a radical move I mean to the
+entire the entire NBA is just as long as
+we've known it starts sometime in
+October actually member as a kid it was
+like early November maybe and it's
+finals are in June that's what we do and
+what you're basically suggesting is we
+kind of move everybody move eight nine
+weeks this way a skeptic might say ooh
+over the summer there's some often a
+general belief that people don't watch
+television people are on vacation kids
+are you know it's a it's a less
+
+[13:50]
+structured part of the family life so
+but you also said something interesting
+earlier which is in some ways the way we
+do it now is based on arcane rather
+archaic sort of realities of the
+marketplace that just don't exist
+anymore I mean you were saying that car
+sales any television launches in the
+fall because that's when the new models
+of cars used to be introduced the reason
+the finals are in June is because
+there's more ad dollars in the second
+quarter why it doesn't exist anymore
+it's the hutt levels houses using
+
+[14:22]
+television the variance between second
+and third quarter is 3 percent this
+coming summer hopefully there's gonna be
+an Olympics they've attracted over 1.25
+billion dollars in ad revenue why
+because people are coming to live sports
+we have built the architecture of our
+season based on the ad market not based
+on the consumer and what I'm saying is
+look at the spring look at the summer
+look at baseball versus competing with
+
+[14:53]
+the NFL create more days create time for
+practice create longer training camps
+use time is your friend rather than this
+artificial compression of second quarter
+ad dollars being the arbiter for setting
+up the season how bad is the cup like in
+your in a southeastern market like where
+I grew up and I just SEC but is it I
+mean in terms of revenue lost revenue or
+not actualized revenue I imagine it's
+battle burned November Miami Orlando
+Atlanta Charlotte Memphis Washington all
+
+[15:25]
+tremendously impacted not Dallas and
+Houston also by football college
+football high school football
+professional
+football let football have its time
+let's have our time and let's go after
+because our jump if we were at a
+baseball conference the audience
+wouldn't look like this we're young
+we're diverse we're different let's be
+different let's go where the consumer
+wants to watch us all right Evan you're
+the league the Kunin proposal I mean are
+
+[15:55]
+we is that something that can at least
+be discussed in a substantive way
+absolutely I mean we certainly have no
+no issue with moving they're
+reconsidering the calendar I think to
+Steve's point it's you have to think
+about the other stakeholders so our
+network partners need to get comfortable
+with the idea of a playoffs and finals
+in August as opposed to June where
+traditionally the household viewership
+TV viewership is a lot lower but the
+flip side of that argument is that there
+hasn't been a whole lot of premium
+
+[16:25]
+content on in that window so that
+explains why the viewership is lower so
+I think we're we're open to that the
+dominoes that fall from something like
+that are significant right reimagining
+the arena business for all of our teams
+and when they host events when they host
+concerts throughout the year but but
+there's no magic to Steve so there's no
+magic to October to June by the way
+pardon me for interrupting Evan actually
+this benefits the arena's yeah because
+we usually compete against outdoor
+amphitheaters in the summer and have
+very slow summers we now would have
+
+[16:55]
+basketball in the fall and winter when
+tours aren't going outside it would be a
+creative to our business agree meaning
+more than just their hurdles of change
+for the entire business plan to put
+another plug yep excellent all right
+like I need a gavel motion passes all
+right we are now starting the NBA season
+in early mid-december
+I love this I don't have kids now I get
+to go to Europe during the shoulder
+season where I'm not competing against
+like Europeans and in August so that
+
+[17:25]
+this is wonderful um okay so I want to
+go to you know and actually this is kind
+of an interesting one both both you know
+player and team you know every knew and
+I had interesting conversations my
+favorite part of our conversation was
+just imagining not so much is there
+gonna be 66 or 64 or 78 or
+but the idea that we count games 1
+through X and the standings never change
+we just kind of tally up the wins eight
+teams in each conference the idea that
+
+[17:55]
+and I hadn't even thought about it until
+you know our conversation was we don't
+have to do it that way
+what if quadrants haves legs what are
+some what did you want to your favorite
+just sort of fan it and again I want to
+recognize we're just having kind of a
+workshop here that this is not I mean
+this is not it's not like that these are
+all contingencies and I and I just want
+to kind of stress that we're just having
+where's guys spitballing so do I have
+
+[18:25]
+immunity too
+so I yeah I think when we think about
+this season structure it's probably not
+realistic to say that every game between
+every pair of teams on every night is
+gonna be life or death for playoff for
+championship odds right but there are
+ways that you can maybe create tears in
+the standings which you know if you look
+at other leagues around the world it's
+not just finishing first it's not Justin
+
+[18:55]
+for example in our league finishing in
+the top eight in your conference that
+when you create tiers in the standings
+there's always an incentive to be one
+spot higher and you currently are and so
+our playing tournament proposal that
+that's you know been publicized whereby
+the seven eight nine ten seeds in each
+conference would play for the last two
+spots there's a really fantastic job of
+creating those tiers so now it's not
+just that race for eight at the end of
+the season there's a race to be top six
+there's a race to be seven eight nine
+ten you bring a lot more teams in fan
+bases into the fold with that so I
+actually think that very Steve and I
+
+[19:25]
+were talking backstage it's a fairly
+easy change to make and one that we
+think would have tremendous impact
+especially in the second half of the
+season but then you go and say okay how
+do you create the meaning that you might
+want early in the season and part of it
+can come from tradition so I look at
+Christmas day for example which
+traditionally has our highest fan
+engagement viewership throughout the
+season it's not because fans think that
+those games have any more impact on the
+playoff qualification than any other
+games it's because we built the
+
+[19:55]
+tradition around Christmas day that the
+NBA owns that day we put premium
+chips on and people want to watch it so
+if you can create spikes like that
+throughout the season and build that
+tradition over time we think that that
+can be pretty powerful so you know what
+Kevin is talking about is imagine a
+world where instead of just the top
+teams over 82 or 78 or whatever the
+number is or in playoff spots what if
+you divided the season into four chunks
+and that in each one of those four
+chunks or segments or legs whatever you
+name it there's either playoff spots up
+
+[20:26]
+for grabs or there's points up for grabs
+that ultimately lead to that outcome so
+now you have sort of these four or eight
+or as many as you want many seasons
+where this spikes in interest interest
+throughout the year and maybe teams and
+fan bases that think themselves out of
+the playoff race in our current system
+actually would say you know what as long
+as I play really well for the last bit
+of the season there's something on the
+line for me so we've we've kicked around
+those sorts of more extreme ideas and
+think about how you could be structure
+this yeah Shane I'm always curious about
+the incentive for players and I think
+
+[20:58]
+and I've had enough conversations in 12
+years of kind of covering the league
+where I know not every night is is
+meaningful I don't think it's to say the
+guys dog it but I just think it's it's
+natural human instinct that one of
+eighty you know again if we meaning
+effort are gonna be correlated if we
+will entered a world where after 20
+games like basically that's a playoff
+spot 40 do you feel like you probably
+run some kind of 500 ish teams in your
+in the course of your career is that
+something I mean with that impact would
+
+[21:28]
+players respond to a world where game 58
+59 and 60 are now possibly play off I
+think so coaches have to get really
+creative there there are so many
+artificial motivators that are created
+during the year by the by the coaches
+because it's hard to look at an 82-game
+season and say okay guys let's let's go
+82 and so coaches are always creating
+new mo hills and and challenges with
+within the season so if you create
+
+[21:59]
+something that's structurally measurable
+and it has consequence yeah you know
+that's great for the player is great for
+the coaches and it be positive and I
+mean I imagine
+yeah and I'd give I give the players a
+little bit more credit like I think
+we're at a stage where they understand
+if the organization wins they're gonna
+benefit from it and I think that leaves
+the continuity and stability and any
+time where we create more opportunities
+for organizations to win and for fans to
+
+[22:30]
+rally around and feel good about I think
+those are all win-win situations for
+everybody
+yeah and Steve I'm thinking about the
+Hawks last March who displayed
+incredible basketball for four or five
+weeks in a world where a games 61
+through 80 determined I mean you'd have
+an arena in potentially local viewership
+numbers I imagine if the team is
+essentially right on the cusp of a
+playoff spot despite having a rotten 460
+games I mean that's I mean that's
+tangible well what I would I like about
+what you're talking about it has to be
+
+[23:00]
+balanced with the draft this could in
+tanking which is a problem you know if
+if it's a reset every time and if you
+lose four quarters if you will you're
+not rewarded with the first pick in the
+draft maybe there's some punitive maybe
+all of a sudden there is a different
+incentive for four people again you've
+got to create points of relevance
+Christmas Day works because we make it
+work you know MLK Day works because we
+make it work how do we foster weekend
+
+[23:31]
+worked because they had a brand new idea
+that was put together so quickly you
+really didn't get a lot of opinions
+except let's do it that's your secret
+heaven just don't listen to anybody just
+in that now the way before Rio who
+genius we didn't have debates about it
+you did it and you delivered not a
+12-minute quarter but a 15-minute
+quarter of basketball that was amazing
+basketball and it showcased our best
+players on the biggest stage and it was
+wonderful so sometimes you know you
+
+[24:02]
+you've got to just make a decision and
+go for it
+yeah I mean one of the things it seems
+like the success of that reform is kind
+of embolden the one thing that listen I
+like that reform and it also was
+indicative something I've always really
+liked about the NBA of the big leagues
+in this in North America they're always
+the one that's less wet tradition that
+this notion that you can't change the
+the architecture of the game
+or for that matter the terms of a
+victory is is not sacrosanct in in in
+the NBA
+and it seems like the success of that
+
+[24:32]
+might actually encourage or empower more
+wholesale change that era absolutely and
+you know Steve is being nice about the
+timing of our announcement it left
+enough time for people to criticize it
+in advance of the all-star game and I
+would say maybe not unanimous but near
+unanimous praise after the all-star game
+having seen it now there was probably a
+lot of luck involved in that that the
+game was closed and the perfect storm of
+situation that we were faced with plus
+
+[25:04]
+the charity elements which helped and so
+we got this incredibly competitive
+quarter which to me speaks to the fact
+that you can create incredible
+basketball competitive meaning even when
+there's nothing traditional on the line
+right there's there's no no massive
+trophy for the all-star and there's an
+all-star MVP but it's not the Larry
+O'Brien and our players have not always
+taken that game as seriously as they did
+a few weeks ago and so that to me
+actually speaks to our ability to build
+new traditions and not trying to silence
+naysayers but at least opening people's
+
+[25:35]
+mind to say there are different ways to
+do things that the best corollary for me
+is the the mid-season or in season
+tournament we've talked about that
+there's a lot of pushback on that to say
+what are we playing for why would
+players try why would teams invest in
+this and I think our view is that it
+takes time to build tradition now again
+we got lucky that this all-star change
+in the first year of the change had this
+incredible competition I don't think
+we're confident that that's exactly what
+we would see every year but we want to
+keep exploring that the same thing could
+happen with a midseason tournament we
+could see two teams who maybe aren't in
+
+[26:07]
+the don't see themselves in the hunt for
+the Larry O'Brien saying you know what
+I'm I don't think I can make it through
+four seven game seven-game playoff
+rounds this year but I can win a
+knockout tournament I can get hot for
+two weeks it's gonna mean something to
+my players my fans and so we look at
+all-stars as a great example of what
+could happen in a tournament setting in
+a league where there's very little to
+win and if we can create that that's
+that's just more value Shane does the
+tournament pass the smell test to you in
+terms of that that's been the biggest
+criticism of these guys gonna play for
+
+[26:38]
+there's not an incentive
+yeah they make too much money for for a
+you know sort of a small royalty to make
+a difference yeah I imagine that for 34
+year old guys who didn't grow up with
+the tournament it might seem hokey I
+also imagine if you do it for a few
+years and you're a kid and you come into
+the league and it's already a reality I
+mean is the tournament something that
+would inspire you know I've come around
+on it when I first heard the tournament
+I gotta be honest I was hit that takes
+away from the reason why we're here
+to host the Larry O'Brien trophy but as
+a fan of European soccer and when you
+
+[27:10]
+watch you know whether it's the FA Cup a
+carbonyl cop or or Champions League your
+Europa League players are really excited
+about being part of this and it's not
+the main championship but it's a
+championship and watching the soccer
+model really changed my mind that you
+know yes players have to be socialized
+players have to be compensated but one
+thing the league does is is marketing
+and in promoting its players and if this
+
+[27:42]
+becomes a prestigious enough event or
+yet you know what I'm I'm a stern Cup
+champion right what I like about it you
+just said the promotion like it just
+dawns on me yeah
+the rules of the Hawks don't have a hell
+of a lot of national games the by the
+way Carl and DeAngelo and Tre and
+everybody else you're getting nationally
+televised for what essentially is
+they're not your brackets are gonna be
+out there people gonna watch this
+product and you'll want to be on like
+these are gonna be your six if you're
+not one of the marquee teams that's on
+
+[28:12]
+every week this is a chance for you to
+essentially steal the show I mean you
+get to be the one shining moment guy you
+know for a week and a half turn I've
+been in the meetings with Evan we said
+if we're gonna do it we want new
+uniforms we want a different looking
+ticketing we want to change it you know
+my first year in the NBA in 2014-15
+season the Hawks won the Southeastern
+Conference I wanted to hang a banner pop
+champagne and get a ring and I was told
+we don't celebrate this and it's and
+
+[28:42]
+that's part of the problem we don't have
+enough winning I mean we won our
+division we won xD games that's 160
+games we won multiple playoff rounds
+but yet we lost and so when you have one
+winner in 29 losers it doesn't feel like
+there's enough positive stuff for the
+teams you know that do that so another
+opportunity whether it's architected the
+way it's currently presented or some
+variants of it well and more winning
+
+[29:13]
+this is not everyone gets up
+participation vert no okay do you not
+get that everyone gets a ribbon no cuz
+it's winning not for competition and the
+competition we can create different
+competitions I like to what Steve's
+talking about you can make a tournament
+that doesn't feel like the NBA playoffs
+and doesn't feel like the NBA regular
+season we don't have a lot of winter go
+home games right we have the randomness
+of a game 7 which is gonna happen every
+you know third or fourth playoff series
+so in a season of 15 playoff series
+you'll get a handful of game sevens
+other than that we don't have the
+
+[29:44]
+single-elimination excitement that March
+Madness has for example we can create
+that with a tournament we can even play
+with different formats we could use our
+winning score like our score target from
+all-star put that into a knockout phase
+of a tournament it has different rules
+that would be really cool right so
+there's so that so that affords this
+opportunity that we're not undermining
+the traditional competition we're not
+changing the value of the Larry O'Brien
+we're not changing the value of the
+regular season competing for that but
+you're adding things to win you're
+adding excitement you're adding an
+opportunity for players to showcase
+skills in a different format that they
+
+[30:15]
+don't get to see every day now according
+to us we're doing really well up here
+yes one quick think have to me it's you
+know one a couple of our most
+knowledgeable bases our players and our
+fans and I do think and it's been said
+here before but change is hard for all
+sport especially for our league and we
+got to be comfortable with and I'll be
+fair I'm not a big fan of either one of
+those platforms but it doesn't mean we
+shouldn't try and it doesn't mean we
+shouldn't be afraid to fail because if
+that doesn't work we've got to figure it
+out we have a base of players and a base
+
+[30:47]
+of fans that are very knowledgeable and
+you look at European only football but
+also basketball and they've created
+areas where players live and die for
+their cups and it's very important to
+them and we have to figure out what
+those cups mean to us how do we
+structure it you know whether it's a
+point
+system or a tournament or whatever the
+case may be but there's a lot of
+opportunity there because our guys are
+at a stage where they know if you play
+you win there's benefits and we just
+have to create more markers more
+opportunities for that to happen
+
+[31:18]
+speaking of which we I want to bring up
+our designated fan because again these
+are all ideas we all work inside the
+league in some capacity the consumers
+gonna decide right so so we're Dan do we
+have our we have our fan come fan please
+hither you're a Timberwolves fan so this
+is particularly relevant so you've heard
+the ideas right I mean we're talking I
+
+[31:49]
+mean by the way does a December start
+impact your viewing
+you know if there's already a lull after
+the the whirlwind of free agency so
+another couple months of football
+doesn't seem like too big of a deal for
+me as a fan uh and um where are you on
+the tournament I mean is that something
+as a fan if you've got brackets and and
+the NBA could generate the kind of just
+well frankly madness quite literally
+around around it's 32 team bracket maybe
+we bring in a couple international teams
+Evan let's bring over the top like euro
+
+[32:20]
+league team to be 31 in the top I don't
+know Australian team to be 32 why don't
+we why don't we do that I mean is this
+engaging - yeah I hear a lot of things I
+like with the tournament I mean you
+mentioned the bracket the March Madness
+bracket I think as a fan it's easy to
+get behind building another bracket you
+know we don't get enough of that with
+March Madness and I think the winner go
+home nature of it that got mentioned I
+think back as a Timberwolves fan to a
+couple years ago when we had the
+elimination game against the Denver
+Nuggets that was the best regular-season
+game we've seen in years it's phenomenal
+
+[32:51]
+and I mean this is a different sport but
+the twins have had a couple of game 163
+typically two so that winner go home
+mentality that brings a lot out on the
+players I see me and the people I talked
+to really rally around that idea adding
+one more thing that I've been thinking
+about as you guys have talked a lot of
+my friends are like oh you know NBA's
+awesome but I love college so much more
+the players are so much more into it
+I'll just watch the NBA during the
+playoffs so I think knowing that there's
+a lot of fans out there
+that bring in in season tournament would
+
+[33:22]
+just be another way to bring out that
+emotional side of the basketball game
+and bring in more NBA fans and grow that
+game that way evidence I think I've been
+thinking about that you said in one of
+our conversations is spikes I mean
+thinking about the notion of spikes make
+- Steve talked about it a little bit
+this is the idea that you just need more
+moments over the course of that calendar
+where there's just something really
+important to be watching on the floor
+not just one great matchup or but but
+that just we need more Christmases yeah
+yeah and and it just seems like a lot of
+
+[33:53]
+these things just to appeal to that
+notion yeah I mean the counter to the
+the crowd that just wants to reduce the
+season right so either for player health
+reasons or scarcity whatever the case is
+we're probably on a part of the demand
+curve where small changes in the number
+of games are not going to have
+significant impacts in the relative
+value of each of those games either
+competitively or economically right
+there might be some increase but it's
+not going to be proportional to the
+reduction and we're not the NFL who
+plays 16 games we have 82 right even in
+an extreme world where we went down to
+
+[34:23]
+the 60s or even the 50s that's still a
+lot of games and so that's still a lot
+you're asking your fans to engage with
+so it's not just about marginally
+increasing each game across the season
+it has to be about these these bigger
+events and temp holes that dry
+viewership because that's what drives
+our season if you know if you ask a
+basketball fan they think about the
+season in these based on these temples
+opening opening day opening week
+Christmas Day MLK all-star weekend race
+to the playoffs playoffs I'd like to
+have five more things on that list right
+
+[34:53]
+and if I have a tournament and I've got
+the spikes at the end of these mini
+seasons or whatever that model is now
+every week I'm tuning in for something
+new and exciting that's happening in the
+league as opposed to just the
+traditional games can I indulge you for
+a second to introduce my favorite crazy
+idea yes the octopus please tell
+everybody about the octa this is my
+favorite specifically uh a season
+structure and I want and I want your
+opinion on this as are I am because and
+actually I want all your opinions on
+this all right this is my new crazy
+favorite NBA idea really yes absolutely
+
+[35:28]
+so the octopus is an eight leg season
+octopus and in each leg you would pair
+up divisions against each other so
+Atlantic versus southeast
+you know Southwest versus Pacific and
+you'd play a home in a way against each
+team in the division you're paired up
+again so you'd be playing a ten game leg
+essentially and the number of points
+that you earn in that leg would be a
+function of the number of wins but it
+would grow exponentially so essentially
+
+[35:58]
+your first win in the leg would be worth
+one point but if you got all the way to
+ten wins that tenth win is actually
+worth five points and so there the way
+the math works out there's a maximum of
+twenty five points to be earned in any
+leg if you win all ten games and so the
+incentive there is that our best teams
+need to go all-out every night because
+any game you lose in any leg cost you
+the opportunity to go get those five
+points and four teams that are
+struggling early in the season they now
+have the opportunity late in the season
+to make up more ground because they
+
+[36:28]
+could win exponentially increasing
+points if they get hot for one or two
+legs so there are incredible
+complexities that come with it and
+probably some scheduling and
+feasibilities but in the in the idea and
+the bucket of crazy things that we've
+put on paper that's one of them I think
+it could be like a septa push or like a
+cesta push I mean I'm not only early and
+I want the admitting them but I want the
+tournament so we'd have to cut down we'd
+have to cut off a we can just have
+shorter legs or shorter legs sure I have
+short legs that's is it like I want to
+ask like in terms of the regular season
+
+[36:58]
+this notion especially being a wolves
+fan and I'm not trying to pile it but
+it's like you know the team's out of the
+playoffs it's kind of like I mean is
+this is this notion correct that look
+anything we can do to regenerate the
+season or kind of a let a team go back
+to zero and zero I imagine this is
+useful if you were a beleaguered fan
+yeah it's so relevant to me as a wolves
+fan I mean I got the notification couple
+days ago that we beat the Bulls and I
+was like awesome and then like ah crap
+like lower lottery odds right so you
+don't have this inner content your team
+
+[37:28]
+win and you know we just changed our
+course and said yeah
+any general manager share your
+frustration of morning person is trying
+as hard as he can every night to win
+game that's right Evan tell oh you are
+yeah I mean we as fans of the wolves we
+have to take the long view too
+but I think I forgot what the question
+was but I heard a lot I liked I love the
+octopus idea
+I love the octave but you got to be
+careful we saw NASCAR rewrite all their
+
+[38:00]
+rules all the time so frenetic and so
+hokey that they've had a hard time
+getting the credibility back so it's got
+to be simple I mean I thought that's why
+you know that's almost like a new store
+where di-did right it's not something so
+where are we like quadrants or haps are
+you for that help me when I'm for is
+relevance you know I don't know if we
+have the precision of the idea you
+talked about race for the playoffs I've
+never seen another sport we're preempted
+
+[38:30]
+on our main broadcaster TMT for three
+weeks by our own sport basketball for
+March Madness so we go straight for
+March Madness to the NBA playoffs but
+they get to go first
+you create the relevance and the NBA's
+relegated to another night that people
+don't even know and so again I I think
+you have to look at all of it
+holistically and Evans challenge and all
+of our challenge is one piece can't be
+moved with impacting several other
+pieces and it's complex because it's
+
+[39:00]
+become tradition and remember the
+league's all expanded baseball when 262
+games for 154 for revenue so I think
+we're all agreeing that more doesn't
+make more revenue but finding the right
+mix and combination to a consumer who is
+so radically different today than we've
+ever seen before
+you know the Reed Hastings chairman of
+Netflix who's your competition sleep
+that's true you only have so much time
+
+[39:31]
+how do you dedicate it to this you're
+heading on an interesting point which is
+finally
+entire panel you have hit on interesting
+points the inner the interconnectedness
+of the ideas and that you can have a
+whole menu of things you might want to
+do but then you need to figure out which
+ones actually fit together right so for
+example in my head say we go to a world
+where we push back the start of the
+season and now we're running roughly
+post-thanksgiving to July or August well
+a midseason tournament that currently
+
+[40:03]
+might fall in a quieter time in the
+sports calendar now falls in March which
+is right in the middle of March Madness
+so now you're moving that to try to find
+the right absolutely a perfect
+accompanying on Monday and Tuesday night
+but potentially right and so you have a
+patent it's all week instead of just the
+week and and you know similarly if you
+go to a model where you're dividing up
+the season into segments or legs and
+you're awarding playoff spots well what
+does that mean for your playing
+tournament if you have that so you can't
+just pick and choose all of these things
+and throw them it's got to make sense
+it's got to have the relevant Steve said
+but but most of all it's got to serve
+the goals that we're trying to
+
+[40:33]
+accomplish here which is which is one of
+the things there from a mechanical
+aspect from a management side is how
+does that affect our draft you know
+college season ends at a certain time
+when do you pick players how do you you
+lose that window of development or maybe
+you get them into the G League at some
+point but I think those are critical
+areas that we've talked about I know if
+we've talked in the past about our model
+with having the draft before free agency
+and some of the arguments on both sides
+of that I think to your Octopus idea
+
+[41:04]
+that's his idea the claiming that yeah
+overvaluing divisions like for a long
+time divisions were rivals and some
+divisions still are the Texas triangles
+very powerful but like for us you know
+Minnesota Denver all the different teams
+that are there like it's it's lost some
+relevance and it's lost some value that
+we need to study and look at and say how
+you know is there a place for divisions
+or is it just conferences or how do we
+look at things going back to revenue for
+a second because again I I love we all
+
+[41:34]
+love these ideas some of us like these
+ideas and we need to make them revenue
+neutral at the very least and hopefully
+i enhance the product enough that
+they're you know the revenue positive
+down the road I mean the reason I like a
+tournament is it's something we can sell
+I like a play in tournament because it's
+something that can sell
+then that's how you can ultimately
+compensate for what I still believe you
+know what Avenue and I've talked about
+scarcity forever by virtue of having
+these games that are playings and in in
+tournaments you get to reduce the number
+
+[42:04]
+of regular-season games that obviously
+impacts Steve I mean that impacts
+revenue greatly but now you have a well
+of extra revenue to draw from to
+compensate teams for whatever losses
+they have only having 35 home games I
+don't think we really care if it comes
+in the local pocket or the national
+pocket I think the point is though you
+to eliminate games for the sake of
+eliminating games doesn't make a lot of
+sense because the Shane's point if our
+revenue goes down the we don't have a
+
+[42:36]
+set salary with the players we have a
+scale 50.1% of basketball related income
+we cut that down it's gonna go down and
+so it's important that when we come up
+with ideas they are creative to the pot
+to the pot and so because we're partners
+were truly 5050 partners so it's not we
+can lose and they win or they can win
+and we lose it has to grow together in
+the way that matters is we can create it
+we probably can sell it will you watch
+it will you consume it will you care
+
+[43:07]
+about it you know baseball introduced
+the wild card we bought those for Turner
+years ago when we got lucky the first
+wild card game involved the Yankees and
+in went to extra innings and it was you
+know a success but that was incremental
+spending at a time when Kaiba was at 102
+million homes now cables going under 80
+million and there's not the word
+incremental spending happening on the
+television landscape so the wild card in
+baseball is interesting how skeptical
+was the network how skeptical was
+
+[43:37]
+ownership in baseball I mean was it
+considered this is gonna be a slam dunk
+or was it will see this will say ok it
+was well sync and again I think the
+first for which we also started on
+Turner and launched one true TV not sure
+that's ever caught on and you've had
+teams go from the first four to the
+sweet 16 you've had play success but you
+haven't had consumer success in fact
+most marked Madness grids don't even
+cover
+you know the the first four and we're in
+
+[44:09]
+the year ten this year what do you think
+happened I think it was too wonky too
+Octopussy gonna take some questions I
+didn't uh are they here
+I don't see any questions but let's
+[Music]
+let's not take any questions cuz there
+are no questions oh here we go
+
+[44:42]
+start with Evan and I'd love to hear but
+I'd love to hear everyone's opinions um
+do you think the LM ending could have a
+place in the NBA in the future beyond
+the all-star game whether it's in season
+tournament what about you know I would
+say even regular season is this
+something like we've talked about
+restructuring the the season but I'm
+just curious like how sacrosanct is
+forty-eight minutes
+how sacrosanct should 48 minutes the way
+we know it be in games that are actually
+part of NBA's historical archives the
+
+[45:12]
+games that quote matter
+yeah not nothing is sacrosanct I mean
+Adam is an incredible champion of an
+innovation and trying new things we can
+use the G League for that for a number
+of years we talked about the possibility
+of shooting one free-throw worth two
+points in the jeely because of what that
+would do for game length and fan
+engagement we're doing that this season
+for those those who are fans of the G
+League that's it's really sped up that
+game the the Elam ending for all-star
+there's there's certainly no reason we
+couldn't expand that to other special
+events right a G League showcase the N
+
+[45:43]
+in season tournament I think you
+wouldn't jump straight to saying hey
+we're gonna do this for 1230
+regular-season games but everything is
+on the table as we look at this and I
+think that's that's the beauty of our
+league is we're open to all of these
+ideas and you see a lot of them come to
+fruition and across all of our
+properties we have a regular season we
+have an all-star game a summer league we
+have the W we have the G League it's a
+lot of opportunity to test out new
+things it's showing how open I always
+get the sense just talking to players
+dorks like me like talking about there's
+a lot more than those guys I mean is
+
+[46:14]
+there I mean yeah although what was
+great is has that been said I mean what
+was so amazing about the all-star game
+was
+there was no incentive these guys were I
+mean we totally these guys will actually
+risking injury I mean there was nothing
+on the line other than competitive juice
+yeah and I wish I was frankly shocked I
+didn't I thought it'd be interesting as
+a novelty standpoint I had no impression
+or expectation that players would just
+go all out yeah and I'm just wondering
+in a world if we change the terms of the
+
+[46:46]
+game itself what what players respond
+positively would they roll their eyes
+they would react as the fans would react
+that we're messing with a sacred cow
+here but guess what there's no MBA do
+you know where every NBA player would be
+after work at the YMCA whooping right
+all right so the game will always be the
+most important part whatever rule you
+slice it up all right so there may be
+consternation about changing the formula
+
+[47:17]
+players are all just because the game
+will always win I agree I think
+competition is valued I think the layers
+of pressure that build up to Evans point
+is how do you build it in change his
+heart is charged it's hard in our game
+but at the same time our audience has
+changed our partners have changed how do
+we grow our game and I love the
+creativity of you're not gonna succeed
+and you're not gonna hit on everything
+but what works and what doesn't work I
+mean 40-minute games has worked in
+
+[47:48]
+Europe you know they do it there they're
+able to keep a competitive point systems
+we should look at everything by the way
+what it here's a question what any of
+these radical changes impact the way you
+evaluate players or their players that
+are more elem ending players and they
+would be 48 minutes like oh he wouldn't
+would a player be valued differently
+it's an interesting question but I think
+at the end of the day Shane said it goes
+back to the game basketballs basketball
+you could set rules and structures in
+place but Talon stands out oh this one
+
+[48:20]
+you are actually interesting answered
+how would an NBA schedule where you play
+two or three game series against each
+other team it's on our list we looked at
+a model where
+we essentially moved to a baseball model
+of playing three game series against
+each team in in particular market so you
+significantly cut down on travel you
+could award you know a point for the
+winner of the series and track those
+points over the season it's just a more
+
+[48:50]
+significant departure I mean Steve could
+speak to the challenge of selling three
+straight games against a lower tier
+opponent I see him shaking his head
+already he was not just realized that
+Los Angeles is here in Atlanta's good
+yeah that's that's that's a potential
+option it's a big advantage Shane who
+will have the biggest problems but this
+is a good question
+owners players our broadcast partners
+what do we want to put arenas that would
+
+[49:21]
+they be part of owners or alright
+owners players broadcast partners who
+are the biggest hurdles in wide-scale
+schedule reform not the players except
+if they're revenue revenue additive oh
+yeah yeah not the players my opinion is
+probably the broadcaster's because they
+follow a model that's been set in stone
+for decades so it's gonna take some
+
+[49:52]
+really visionary thinkers like Jimmy
+potaro and Jeff Zucker I'm trying to
+suck up to him right now but it's gonna
+take somebody who's willing to
+understand listen to the arguments and
+say we can do better because the only
+reason to do it is to do better we're
+doing great
+can we do better what when you when you
+were at Turner and you had the contract
+like what kept you up at night well your
+
+[50:22]
+sweeps you don't like four-game sweeps
+because the playoffs you're paying a
+significant amount of your premium and
+you're earning a significant amount of
+your ad revenue from the playoffs now a
+lot of its offset by cable fees that you
+get 12 months a year but you you want
+and and it's interesting this year is
+the first year in a long time we haven't
+had a dynasty dynasty's are really good
+for tell
+you know people hate them they love them
+they watch them and so this year there's
+
+[50:52]
+not a dynasty and I think that dynasties
+have been very good for the NBA I mean I
+just want to finish with this okay this
+is fun
+I love these thought exercises we all
+love these thought exercises what is the
+process like like I'm just a bill I want
+to be a law right like so what how does
+this happen if in 12 years we're up here
+saying wow let's evaluate the good bad
+and ugly of the new season format of the
+
+[51:23]
+NBA how did it come to fruition what has
+to happen for the bill to become a law
+yeah what has to happen is we need to
+get alignment among those three
+stakeholder groups you just mentioned
+right if we can get our teams our
+broadcast partners and our players
+aligned on change that makes sense and
+grows the pie for all of them then the
+answer is there's there's no roadblock
+we can get that done now threading that
+needle and finding what that set of
+changes is that works for those three
+stakeholders and we all agree is going
+to grow the pie is challenging but I
+
+[51:54]
+think you know as I as I mentioned from
+our conversation earlier there's there's
+some easy wins in there I had a plan
+tournament is a pretty easy win maybe
+it's a little harder to get an in-season
+tournament and maybe it's a little
+harder to change the structure of the
+season I mean things have increasing
+level of difficulty I don't know where
+to put on the how difficult it would be
+to shift the calendar around but I think
+we are very very confident that we're
+gonna come up with a plan that that
+works and that you know some time it
+won't be 12 years from now but I can't
+say exactly what it is but sometime in
+
+[52:24]
+the near future we will have a proposal
+to bring to our those three constituents
+to to fundamentally change some aspect
+of the season and in my mind change
+comes with contracts expiring we have
+the players contract in the broadcast
+contract expiring simultaneously 24 25
+seats and I give Adam great credit for
+having Evan and senior leadership
+because we have somebody who's thinking
+about this this is a fun theoretical
+exercise but there's actually a very
+senior job working on this and I think
+
+[52:55]
+that gets us a big part of the way there
+league-wide these conversations being
+had over the last 12 to 18 months so
+it's not something that's new our
+leadership is very progressive very
+forward-thinking but it's hard to get
+everybody on the same page and that's
+what we're going through right now
+closing thoughts Shane let's do it
+[Laughter]
+thanks everybody for hanging around for
+this one thanks

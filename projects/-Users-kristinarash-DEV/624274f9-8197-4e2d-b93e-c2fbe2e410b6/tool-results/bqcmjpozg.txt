@@ -1,0 +1,330 @@
+Scandinavian Journal of Medicine & Science in Sports
+  ORIGINAL ARTICLE  OPEN ACCESS
+Validity of Four Consumer-­Grade Optical Heart Rate
+Sensors for Assessing Volume and Intensity Distribution of
+Physical Activity
+Michael Neudorfer1  | Devender Kumar2  | Jan David Smeddinck 2  | Stefan Tino Kulnik 2 | Josef Niebauer1,2,3 |
+Gunnar Treff 2,3  | Mahdi Sareban1,2
+1University Institute of Sports Medicine, Prevention and Rehabilitation, University Hospital Salzburg, Paracelsus Medical University, Salzburg,
+Austria | 2Ludwig Boltzmann Institute for Digital Health and Prevention, Salzburg, Austria | 3Institute of Molecular Sports and Rehabilitation Medicine,
+Paracelsus Medical University, Salzburg, Austria
+Correspondence: Mahdi Sareban (m.sareban@salk.at)
+Received: 27 June 2024 | Revised: 4 September 2024 | Accepted: 14 October 2024
+Funding: The authors received no specific funding for this work.
+Keywords: Garmin | mHealth | physical activity | physical medicine and rehabilitation | polar | telemedicine | validation | wearables
+  ABSTRACT
+  Consumer-­grade optical heart rate (HR) sensors emerged as promising tools to monitor volume and intensity of physical ac-
+  tivity (PA). However, no validation study of optical HR sensors included recent comprehensive validation recommendations,
+  required for facilitating usage for medical purposes. Validity of HR data measured with four consumer-­grade optical sensors, the
+  wrist-­worn Garmin Venu 2S and Polar Vantage M2, and the upper arm-­worn Polar Verity Sense and Scosche Rhythm24 were
+  assessed in 32 participants over 24 h including various laboratory-­based and free-­living activities. Furthermore, validity of time
+  at moderate or vigorous PA intensity zones was analyzed. A medical-­grade ECG served as a reference. Reliability was assessed
+  by analyzing data of laboratory-­based activities during two visits. Across activities, the mean absolute percentage error ranged
+  from 2.2% to 4.7% and intraclass correlation coefficients ranged from 0.91 to 0.98, indicating high validity for all optical sensors.
+  All sensors validly detected time spent at moderate or vigorous intensities (mean error < 10%), except Polar M2 for moderate PA
+  (mean error 12.8%) and Garmin V2 for vigorous PA (mean error −15.9%). Sensor day-­to-­day reliability was high, indicated by a
+  mean absolute error of < 5 beats/min. Upper arm-­worn sensors consistently outperformed wrist-­worn sensors, particularly in ac-
+  tivities involving increased arm movement and at higher intensities. Our findings identified an overall high validity of these four
+  consumer-­grade optical HR sensors, also for assessing time spent at higher PA intensities. However, differences were observed
+  between sensors regarding activity subtypes and intensity levels. These data support informed decisions when selecting optical
+  sensors for PA monitoring and intervention.
+  Trial Registration: The study was performed in compliance with the Declaration of Helsinki and its current amendments and
+  was prospectively registered at Clini​calTr​ials.​gov (ID NCT05525000).
+1   |   Introduction  million new cases of non-­communicable diseases will occur if
+  the amount of physical activity does not increase [3].
+Physical inactivity is a major modifiable risk factor for non-­
+communicable diseases, which are the leading cause of death  The World Health Organization currently recommends
+worldwide [1, 2]. Projections indicate that by 2030 about 499  150–300 min per week of moderate-­intensity aerobic physical
+This is an open access article under the terms of the Creative Commons Attribution-NonCommercial License, which permits use, distribution and reproduction in any medium, provided the
+original work is properly cited and is not used for commercial purposes.
+© 2024 The Author(s). Scandinavian Journal of Medicine & Science In Sports published by John Wiley & Sons Ltd.
+Scandinavian Journal of Medicine & Science in Sports, 2024; 34:e14756  1 of 12
+https://doi.org/10.1111/sms.14756
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+activity (MPA) or 75–150 min per week of vigorous-­intensity  a medical-­grade ECG employed as the reference measure and
+physical activity (VPA), or an equivalent combination of mod-  monitored the participants for approximately 24 h. This period
+erate-­and vigorous-­intensity physical activity (MVPA) for sub-  included two sessions of standardized laboratory activities, in-
+stantial health benefits [4]. More recent studies advocate more  cluding cycling at different intensity levels, treadmill running,
+personalized exercise intensity recommendations for addi-  and simulated activities of daily living, as well as an ambula-
+tional health benefits, even for public health purposes [5]. This  tory free-­living period. The Ethics Committee of the State of
+approach emphasizes the use of a polarized exercise intensity  Salzburg approved the study protocol and informed consent
+distribution and is favored by many endurance athletes. It is de-  forms (No. 1017/2022). The study was performed in compli-
+fined by a high volume spent at low-­intensity exercise followed  ance with the Declaration of Helsinki and its current amend-
+by a relatively large proportion spent at high intensity, with me-  ments [19].
+dium or moderate intensity clearly the smallest proportion [6].
+In light of these advancements, it becomes crucial to precisely  2.2   |   Participants
+measure both the volume and intensity of PA throughout a 24 h
+period to even capture short bouts of moderate or vigorous PA  We invited healthy employees and patients with diverse under-
+[7, 8]. Wearable devices have emerged as powerful tools for con-  lying health conditions, all of whom were either currently at-
+tinuously monitoring an individual's PA behavior and its popu-  tending or intending to attend a medically supervised exercise
+larity is increasing [9]. Among the sensors commonly integrated  training program at the University Institute of Sports Medicine,
+into these devices, accelerometers and optical HR sensors are the  Prevention and Rehabilitation of the University Hospital
+most common ones. Unlike accelerometers, optical HR sensors  Salzburg to participate in the study. Inclusion criteria comprised
+are particularly useful for prescribing and monitoring exercise  an age of 35–80 years, while exclusion criteria encompassed
+based on physiological markers such as metabolic thresholds or  signs of acute infections or diseases, atrial fibrillation, clinical
+maximum HR (HR max) [10]. Unsurprisingly, optical HR sensors  signs of chronic venous insufficiency ≥ grade 1 at upper extrem-
+are increasingly used for applications in mobile health and tel-  ities, physical limitations for carrying out the planned exam-
+erehabilitation interventions [10].  inations and tests, skin wounds or tattoos at sensors placement
+  sites, or pregnancy.
+However, it is important to note that most of these devices are
+marketed with general consumer electronics device safety mark-  Prior to data collection, informed consent was obtained from
+ing (e.g., CE) intended for use as wellness/fitness devices only,  all participants. The sample size calculation was based on intra-
+since they lack the rigorous validation procedures when address-  class correlation coefficient (ICC), calculated according to the
+ing a medical purpose, such as primary or secondary prevention  formula proposed by Bujang et al. (2017) [20]. With an accept-
+of non-­communicable diseases [11]. As a consequence, they are  able agreement (R0) set at 0.90, an expected agreement (R1) at
+currently conservatively deployed by health experts in the medical  0.95, and an alpha level at 0.05, the calculated sample size to
+domain [12]. Furthermore, recent scientific studies that validated  achieve a power of 80% was 29 participants. To account for po-
+optical HR sensors reveal a heterogeneous methodology with lim-  tential dropouts, we recruited 32 participants who completed
+ited comparability and conflicting results, ranging from poor to  the entire study protocol.
+good [13–15]. In addition, the product cycles from industry are
+much faster than the validation cycles. This highlights an acute
+need for comprehensive but also actionable validation standards  2.3   |   Selection of Index and Reference Measures
+[16]. Notably, comprehensive recommendations and standards for
+assessing the validity of consumer-­grade optical HR sensors have  The selection of consumer-­  g rade optical HR sensors was
+recently been published [17, 18]. However, to date and to the best  guided by specific criteria, which were discussed within the
+of our knowledge, there is no study that implemented these stan-  study team and retrieved from manufacturers' specifications:
+dards to evaluate the measurement quality of optical HR sensors.  CE marking, a battery life exceeding 24 h, a minimum HR
+To this end, we aimed to fill this gap by investigating the validity  sampling rate of 1 Hz, a data storage buffer of at least 24 h,
+and reliability of four widely used consumer-­grade optical HR sen-  and a cost below € 350. In addition, we focused on sensors
+sors using an electrocardiogram (ECG) as the reference criterion.  that are widely used and available in the wearable market, fur-
+The key focus of the investigation lay in evaluating the validity of  thermore limiting our selection to those that can be positioned
+cumulative amounts of PA, commonly referred to as activity min-  on either the wrist or upper arm due to their ease of use and
+utes, and their distribution into respective exercise intensity zones.  acceptance.
+Further study aims were to investigate the validity of minimum
+HR (HRmin)/HRmax measurement and user experience.  Following sensors were finally selected: Garmin Venu 2S
+  (Garmin V2, Garmin Ltd., Olathe, Kansas, USA, firmware
+  version 11.16, wrist-­worn), Polar Verity Sense (Polar VS,
+2   |   Materials and Methods  Polar Electro Oy, Kempele, Finland, firmware version 1.1.5,
+  wrist-­worn), Polar Vantage M2 (Polar M2, Polar Electro Oy,
+2.1   |   Study Design  Kempele, Finland, firmware version 2.0.12, upper arm-­worn),
+  and Scosche Rhythm24 (Scosche, Scosche Industries, Oxnard,
+In this prospective validation study, we equipped 32 partici-  California, USA, firmware version 6.4, upper arm-­  worn).
+pants with four consumer-­grade photoplethysmography (PPG)-­  Despite the Scosche having an internal memory duration of
+based optical HR sensors (serving as index measures) alongside  only 13 h, we chose to include it due to its widespread usage in
+2 of 12  Scandinavian Journal of Medicine & Science in Sports, 2024
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+upper arm-­worn sensors. The reference criterion was a mobile
+3-­lead Holter ECG (ECG, Type: EP830, Amedtec ECGpro, Aue,
+Germany).
+2.4   |   Study Protocol
+2.4.1   |   Medical Examination
+All study examinations were performed at the University
+Institute of Sports Medicine, Prevention and Rehabilitation,
+University Hospital Salzburg, Salzburg, Austria. A senior phy-
+sician screened the participants for inclusion and exclusion cri-
+teria, including eligibility for maximal exercise testing. In the
+case of inclusion, skin type was assessed using the Fitzpatrick-­
+Score [21].
+2.4.2   |   Sensor Placement
+First, the 3-­lead Holter ECG device was placed on the partici-
+pant in accordance with recommendations from medical societ-
+ies and the manufacturer's instructions [22]. Subsequently, the
+four optical HR sensors were placed according to the respective
+manufacturer's instructions. The placement of the Garmin V2
+and the Polar M2 were randomized on either the dominant or
+the non-­dominant wrist, while the Polar VS and Scosche were
+randomly positioned on the dominant and non-­dominant upper
+arm, respectively. Notably, the Scosche sensor was applied
+  FIGURE 1    |    Placement of optical HR sensors, 3-­lead Holter ECG and
+during laboratory sessions only, due to its 13 h limited internal
+  12-­lead ECG during laboratory sessions.
+memory. Thus, free-­living data do not include the Scosche de-
+vice. In addition to the optical sensors and the Holter device, a
+12-­lead ECG (Amedtec ECGpro, Aue, Germany) was attached  after termination of the exercise test perceived exertion was
+during all laboratory tests to evaluate electrocardiographic pa-  assessed by the BORG scale [24]. Test termination was fol-
+thologies during exercise and to immediately identify HR max  lowed by a 5-­m in cool-­down period at walking speed (3 km/h)
+after termination of the maximal treadmill running, which  on the treadmill.
+were subsequently used to derive personalized intensity zones
+during the following submaximal ergometer cycling. Figure 1  2.4.3.3   |   Determination of Intensity Zones. Based on
+indicates sensor placement during a laboratory session.  the treadmill running test we determined HR max. Therefrom
+  we calculated the intensity zones according to current medical
+  guidelines, as 57%–63%, 64%–76%, and 77%–95% of measured
+2.4.3   |   Laboratory Testing Day 1  HR max for light, moderate, and vigorous intensity, respectively
+  [25].
+2.4.3.1   |   Activities of Daily Living. First, a laboratory
+activities of daily living (ADLs) protocol was performed in accor-  2.4.3.4   |   Ergometer Cycling. Participants remained seated
+dance with the expert statement of the INTERLIVE Network  quietly on the cycle ergometer until the HR dropped below
+[17]. In addition, activities of daily living were selected based on  the light-­intensity zone. Then, exercise on the cycle ergometer
+recommendations from the Consumer Technology Association  (Ergoline, Ergoselect 200, Bitz, Germany) was performed as out-
+[18] as shown in Figure 2.  lined in Figure 2.
+2.4.3.2   |   Treadmill Running. Following the ADLs
+protocol, participants performed an incremental tread-  2.4.4   |   Free-­Living and Laboratory Testing Day 2
+mill (Venus 200/75, h/p/cosmos sports & medical GmbH,
+Nussdorf-­  T raunstein, Germany) test using the modified  After completion of the laboratory session on day 1, the 12-­lead
+Bruce protocol with stepwise increase of speed and slope  ECG was removed, and participants left the department with
+[23]. Participants were free to choose whether to walk or run  the 3-­lead Holter ECG and the three optical HR sensors. They
+and were encouraged to exercise to voluntary exhaustion.  were instructed to resume their daily routines and return to the
+A breath-­by-­breath metabolic analyzer (Metalyzer 3B, Cor-  laboratory the next day at the same time as on day 1. During
+tex Biophysik GmbH, Leipzig, Germany) measured ventila-  the laboratory session on day 2, the ADLs and ergometer cycling
+tion and gas exchange during the exercise test. Immediately  were repeated (Figure 2).
+  3 of 12
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+FIGURE 2    |    Summary of all activities for validity and reliability assessment. Adapted from Mühlen JM et al., 2021 [17] and Consumer Technology
+Association, ANSI/CTA-­2 065, 2018 [18]. Duration of Laboratory testing day 1 approx. 2 h, duration of free-­living testing approx. 22 h, and duration of
+laboratory testing day 2 approx. 1.5 h. Upper body activities consisted of washing the hands and taking shoes on and off; Full body activities consisted
+of stacking boxes, carrying a box, and sweeping the floor; CPET, Cardiopulmonary exercise testing; HR, Heart rate; LPA, Light physical activity;
+MPA, Moderate physical activity; VPA, Vigorous physical activity.
+2.4.4.1   |   Questionnaire. Finally, participants were asked  complexes. If two or more heartbeats were falsely detected
+to complete a questionnaire addressing their user experi-  within a span of 10 heartbeats, we excluded it from further anal-
+ence with the sensors. The questionnaire was derived from  yses due to its biasing effect on HR calculations. Second, we
+the IDEA-­Fast Technology Experience Questionnaire (ITEQ)  deleted all zero values after reporting their quantity. These oc-
+[26].  currences of zero values were a result of the processing method
+  applied to the ECG signal in GNU Octave. After step one and
+  two, isolated artifact QRS-­complexes remained. Therefore and
+2.5   |   Data Collection and Processing  third, we determined the HR min and HR max for each participant.
+  HR min was derived from the lowest HR recorded at nighttime,
+Before placement, each optical sensor was reset to factory set-  while HR max was determined from the highest HR observed
+tings. After completion of data collection, the Garmin V2 was  during maximal treadmill running. All ECG values outside of
+connected to a desktop computer, and the .fit-­file was down-  the interval (HR min, HR max) were rated implausible, and their
+loaded. Similarly, both Polar sensors were connected to a desk-  quantity was reported and deleted. Implausibly high HR values
+top computer, all activity data were transferred to Polar Flow  in the ECG occurred primarily during periods of significant
+and the .csv-­f iles were downloaded. As for the Scosche sensor,  movement, particularly during the free-­  living phase and to
+the companion app Rhythm SYNC (version 2.19) was used to  some extent during treadmill running. In total, 1267 values ex-
+download a .fit-­f ile from the session. The .fit files from Garmin  ceeding HR max were deleted, Whenever an ECG data point was
+V2 and Scosche sensor were parsed using a Python package  deleted due to implausibility, the corresponding data from all
+[27] to obtain the second-­by-­second timestamped HR data. The  four sensors were removed, too. Datapoints removed during the
+exported .csv-­f iles for Polar sensors from Polar Flow were also  cleaning steps are summarized in Table S1.
+timestamped based on the recording start time given in the file.
+No manufacturer disclosed the specific sampling frequency rou-
+tine or the filters used despite further queries from the study  2.7   |   Synchronization
+team. HR data from the Holter-­  ECG device (sampling rate:
+250 Hz; 12-­bit resolution; transmission rate: 65 Hz after data  To assess validity and reliability of each optical sensor relative to
+compression; no filtering applied) were exported from ECGpro  the ECG serving as reference criterion, it is imperative to com-
+(Version 5.10.005, Amedtec ECGpro, Aue, Germany) as .qrs file  pare two continuous time series accurately aligned in time, as
+and subsequently imported into GNU Octave (Copyright 1998–  highlighted in previous studies [17, 28]. To address this issue, we
+2021 John W. Eaton), where second-­  by-­
+  second timestamped  cross-­correlated the entire recording period on the per second
+ECG HR data were obtained. All the timestamps were converted  timestamped cleaned dataset obtained from the previous steps
+from Coordinated Universal Time to local time. For further  [28]. In addition, a complementary method for time shift cor-
+analysis of the time series dataset, a 10-­s average of the second-­  rection, namely RMSE (root-­mean-­square error), was applied
+by-­second ECG HR data was employed.  for verification [28]. Considering that both methods yielded
+  consistent results and based on recent recommendations [17],
+  the cross-­correlation method was selected for time-­shift correc-
+2.6   |   Data Cleaning  tion. For each participant the time shift with the highest cross-­
+  correlation value was applied (see Table S3). To ensure accuracy,
+Three steps of data cleaning were implemented to obtain ECG HR  the shifts were further validated visually, cross-­referencing with
+data with the highest possible quality. First, we visually screened  HR landmarks such as HR max during the maximal treadmill
+each ECG-­recorded heartbeat for artifacts and undetected QRS  running.
+4 of 12  Scandinavian Journal of Medicine & Science in Sports, 2024
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+2.8   |   Statistics  TABLE 1    |    Baseline characteristics of (N = 32 participants, 11
+  female).
+Descriptive statistics are given as arithmetic means ± standard
+  Mean ± SD  Min/Max
+deviation (SD) or numbers and percentages. Various statistical
+measures were computed to assess the validity and reliability of  Age (years)  59.1 ± 10.1  38/74
+index optical HR sensors relative to the ECG. Data for validity
+  Body height (cm)  173.3 ± 7.8  159.5/191.0
+testing was derived from laboratory testing day 1 and free-­living
+period, whereas data for reliability testing was derived from lab-  Body mass (kg)  79.0 ± 16.5  50.0/118.0
+oratory testing day 1 and day 2.
+  BMI (kg/m2)  26.1 ± 4.4  19.5/36.4
+Statistical measures for validity of HR included mean absolute  HR min (beats/min)  50.7 ± 7.5  37/69
+error (MAE, expressed as mean absolute difference of all data  HR max (beats/min)  156.7 ± 20.3  122/190
+points between reference and index measure) [29], mean abso-
+lute percent error (MAPE, expressed as the mean absolute per-  ⩒O2max (mL/kg/min)  32.8 ± 7.8  17.5/52.2
+centage error between the reference and index sensor across all  Note: Data as mean ± SD, n, Min, and Max.
+recorded seconds) [17, 18], Pearson correlation coefficient (r), co-  Abbreviations: ⩒O2max, maximum oxygen uptake; BMI, Body Mass Index;
+  HR max, maximum heart rate; HR min, minimum heart rate; Max, maximum
+efficient of variation (CV, defined as the ratio of standard devi-  value; Min, minimum value.
+ation divided by the mean) [30], and the two-­way mixed model,
+absolute agreement intraclass correlation coefficient (ICC) [31].
+Bland–Altman plots were employed to provide a graphical rep-  various cardiovascular conditions, including coronary ar-
+resentation of the agreement and potential systematic biases be-  tery disease (n = 11), chronic heart failure (n = 1), valvular
+tween the reference and index measures [17]. Validity for HR  heart disease (n = 1), and congenital heart disease (n = 1).
+measurements was considered high if the MAPE was ≤ 5% [13].  Additionally, one participant had a metabolic disease, one had
+The classification of validity based on ICC involved four thresh-  an oncologic disease, and four suffered from a post-­COVID-­19
+olds: poor < 0.50, moderate 0.50–0.75, good 0.75–0.90, or excel-  condition. Eleven participants were taking HR limiting medi-
+lent > 0.90 [31].  cation (10 taking Beta Blockers, 1 taking Ivabradine). The me-
+  dian score of the skin color tone on the Fitzpatrick Scale was 3
+Statistical measures for validity of PA volume spent at different  (20 participants), with 81% (26 participants) with lighter skin
+intensities included mean error (expressed as mean difference  (Fitzpatrick 1–3) and 19% (6 participants) with darker skin
+between activity minutes from reference and index measure)  (Fitzpatrick 4–6). All participants successfully completed the
+and presented as absolute values and percentages. Validity for  laboratory sessions on day 1, the free-­living session, and the
+classifying activity minutes to intensity zones light physical ac-  laboratory sessions on day 2.
+tivity (LPA), MPA, VPA, and MVPA was considered high if the
+mean percentage error was less than 10% (for justification see
+discussion).  3.2   |   Description of Data Set
+Validity for detecting HR min and HR max by the optical sensors  After removing artifacts and implausible values from the ECG
+was considered high if the mean error between reference and  on average 94.1% of the initially recorded ECG data set re-
+index measure was ≤ 3 bpm [32].  mained. After removing missing data from the optical sensors,
+  data availability was as follows: 99.1% for Garmin V2, 99.5%
+Reliability or within-­sensor variability was evaluated using HR  for Polar VS, 98.5% for Polar M2, and 100% for Scosche. With
+data from laboratory day 1 and day 2 of ADLs and cycle ergome-  Scosche, one session of one participant was not recorded for un-
+ter sessions. This evaluation included calculating the mean error  known reasons, and consequently, all statistics for this sensor
+between the index sensor and the reference sensor on both days  are based on 31 participants. Descriptive statistics of missing
+separately and subsequently calculating the MAE between day  values of each sensor are summarized in Table S2.
+1 and day 2 [33].
+Statistical significance was set at p < 0.05. All analyses were  3.3   |   Validity of Optical-­Based Heart Rate
+conducted using IBM SPSS (Version 29.0.1.0, Armonk, NY,
+IBM Corp).  The validity of HR between the optical sensors compared to
+  the ECG based on MAPEs across all activities is illustrated in
+  Figure 3. More comprehensive statistical measures can be found
+3   |   Results  in the tables S4–S6. Overall, each optical sensor remained below
+  the predefined validity cut-­off of ≤ 5% MAPE, with values ranging
+3.1   |   Participants  from 2.2% (Polar VS) to 4.7% (Polar M2). Additionally, they demon-
+  strated high ICCs, ranging from 0.91 to 0.98. Upper arm-­worn sen-
+A total of 32 subjects participated in the study and their base-  sors outperformed wrist-­worn sensors consistently during all five
+line characteristics are outlined in Table 1. Participants' age  activities (Figure 3). However, when evaluating each activity indi-
+ranged from 38 to 74 years. Among participants enrolled or  vidually, notable differences in validity became apparent among
+scheduled for facility-­based medically supervised exercise  the sensors. During ADLs MAPE for both wrist-­sensors, Garmin
+training, there were 12 healthy subjects and 14 patients with  V2 (5.6%; ICC: 0.88) and Polar M2 (7.2%; ICC: 0.80) were higher
+  5 of 12
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+FIGURE 3    |    Validity of optical HR sensors. HR (arithmetic mean ± SD) of electrocardiogram and optical sensors for Overall (Panel A: Encompassing
+laboratory testing day 1 and free-­living period), ADLs (Panel B), Treadmill Running (Panel C), Ergometer Cycling (Panel D), and Free Living (Panel
+E). Validity is considered high, if MAPE is below 5%, with † indicating a MAPE ≥ 5%. MAPE, mean absolute percentage error; bpm, beats per min.
+than 5%. During treadmill running, only Polar M2 exceeded the  LPA, MPA, VPA, and MVPA on laboratory activities on day 1
+MAPE cut-­off value of 5% (6.1%; ICC: 0.86). For the free-­living  and the free-­living period. All four optical sensors remained
+phase, for the entire ergometer cycling as well as for each inten-  below the predefined cut-­off of 10% mean percentage error when
+sity on the cycle ergometer, all optical sensors remained below  compared to the ECG, except Polar M2 (12.8%, +15.3 min) for
+5% MAPE (see Figure 3 and Table S5). Further, the MAPE of the  MPA and Garmin V2 (−15.9%, −5.5 min) for VPA. The Polar VS
+upper arm-­worn optical sensors decreased with increasing work  showed less than half the error as the wrist-­worn sensors with
+intensity on the cycle ergometer, indicating higher validity at high-­  regard to the validity of activity minutes within MPA and MVPA
+intensity zones compared to wrist-­worn optical HR sensors (see  intensity zones. The Polar M2, however, was more accurate than
+Table S5). The MAE ranged from 1.0 for Scosche at ergometer cy-  the Polar VS sensor (see Figure 5) in the VPA zone. The validity
+cling (moderate and vigorous intensity) to 7.0 for Polar M2 at tread-  of the Scosche was high in each intensity zone, with a maximum
+mill running (see Tables S5 and S6).  error of 2.6% for VPA (see Figure 5), notably being based on lab-
+  oratory recordings only.
+The Bland–Altman plots for all laboratory activities on day 1,
+encompassing ADLs, treadmill running, and ergometer cycling
+are shown in Figure 4. While the systematic error remained  3.5   |   Validity of HRmin and HRmax Detection
+below 2 bpm for all optical sensors, it was more than four-­fold
+higher for wrist-­worn sensors compared to upper arm-­worn sen-  Table 2 presents the validity of the optical sensors in detect-
+sors. Additionally, the limits of agreement were twice as wide for  ing HR min and HR max. With regard to HR min, Garmin V2 and
+wrist-­worn sensors compared to their upper arm-­worn. Bland–  Polar VS exhibited a mean error to the ECG of less than 3 bpm,
+Altman plots for activity minutes (min) at different PA intensi-  while Polar M2 showed a mean error more than twice as high
+ties across all activities are shown in Figures S1–S4.  as −7.2 bpm. The validity in detecting HR max generally exceeded
+  that of HR min, showing a mean error of no more than 2.8 bpm.
+  The Polar M2 exhibited a considerably large error for HR max
+3.4   |   Validity of Detecting Physical Activity  (−10.9 bpm). Polar VS stood out by detecting HR min and HR max
+Volume at Different Intensities  with an error ≤ 3 bpm for more than 80% of all participants. In
+  contrast, Garmin V2, Polar M2, and Scosche achieved an error
+Figure 5 illustrates the total activity minutes of each optical  of less than or equal to 3 bpm in 45%–59% for HR min and 53%–
+sensor and the ECG separated for the following intensity zones:  68% for HR max.
+6 of 12  Scandinavian Journal of Medicine & Science in Sports, 2024
+  16000838, 2024, 11, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/sms.14756 by Ohio State University Ohio Sta, Wiley Online Library on [18/11/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+FIGURE 4    |    Bland–Altman plots of HR for all lab activities on day 1. Each sensor (Panel A, Garmin V2; Panel B, Polar VS; Panel C, Polar M2;
+Panel D, Scosche) is compared to the electrocardiogram. The gray line indicates the systematic error (bias), and the red lines indicate 95% limits of
+agreement.
+3.6   |   Reliability  acknowledging and adhering to contemporary and compre-
+  hensive validation standards that include the measurement of
+Table 3 shows mean error between sensors and ECG and MAE be-  various daily activities and exercise routines over a 24 h period
+tween mean error on day 1 and day 2 indicating day-­to-­day reliabil-  [17, 18]. Additional study aims were assessing the validity of ac-
+ity of ADLs and ergometer cycling. Both upper arm-­worn sensors,  tivity minutes and their distribution across PA intensity zones,
+Polar VS and Scosche, demonstrated higher reliability than the  investigating the validity of HR min/HR max measurement, and
+wrist-­worn sensors, exhibiting a MAE of ≤ 1 bpm. In contrast, wrist-­  obtaining data on user experience. Our findings suggest that
+worn optical sensors Polar M2 and Garmin V2 had a wider range of  the measurement quality of optical HR sensors and the detec-
+MAE from 1.5 bpm to 4.6 bpm, indicating a lower reliability.  tion of moderate-­and vigorous-­intensity PA volume were gen-
+  erally valid and reliable. Nevertheless, relevant differences were
+  observed between the optical sensors investigated and across
+3.7   |   User Experience  activity subtypes, with upper arm-­worn sensors consistently
+  outperforming wrist-­worn sensors, particularly in activities in-
+Participants rated all optical sensors similarly in terms of com-  volving increased arm movement.
+fortability. With regard to suitability for everyday use and visual
+appeal, both wrist-­worn sensors achieved higher scores com-  To the best of our knowledge, our validation study on optical
+pared to their upper arm-­worn sensors. This is also reflected in  HR sensors is the first taking into account the latest validation
+the overall evaluation, where wrist-­worn sensors scored better  recommendations [17]. Notably, these standards recommend
+than upper arm-­worn sensors (see Table 4).  utilizing MAPE as the primary statistical measure for assessing
+  the validity of optical HR sensors [17]. While no specific cut-­off
+  is explicitly provided by the INTERLIVE Network, it indicates

@@ -1,0 +1,297 @@
+# 42 Analytics intake (staged 2026-10-01)
+
+Source: YouTube channel @42analytics (MIT Sloan Sports Analytics Conference talks, 2012-2026). Text corpus built in `DEV/42Analytics` (private repo `erash11/42Analytics`); this note records what is staged for Flint.
+
+## What is staged
+
+- `staging/sources/42analytics/<folder>/` (local only, gitignored): `transcript.md` (auto-captions, 30 s timestamp markers), `summary.md`, `applications.md`, `meta.json`. 128 talks. `staging/sources/42analytics/manifest.tsv` lists id, date, title, event, topics, confidence, URL.
+- Atomized 2026-10-01: the 23 `supported` talks became 152 entries in `staging/library/sports-analytics-and-decision-making/ssac-talks--42analytics/` (26 supported, 119 untested, 7 contested). Independent Opus review of a 50-entry sample (14 GO, 36 FIX, 0 NO-GO) found confidence set too high, Q&A attributions beyond the captions, smoothed garbles and dropped baseline tags; all fixed, plus a pattern sweep of the other 102. Reports: `staging/review_42analytics_r0.md` to `r3.md`. Not promoted: a second independent review round is still needed. Not in the vault.
+- Regenerate the staged copy from the repo: copy each `42Analytics/videos/<folder>/` (use `baylor_application.md` as `applications.md` in the pilot folder `2025-03-18...7G9AKDKHVlA` if present).
+
+## Quality state (read before atomizing)
+
+- Summaries were mechanically checked (time locators inside transcript range and near a marker; numbers present in caption text) and a 15-video Opus adversarial pass found about 45 defects, all fixed. The other 113 got the mechanical check and the baseline-line check only.
+- Confidence: 23 `supported` (talks that show a method plus results), 104 `untested` (vendor pitches, panels without data, single cases, book promotions, policy talks), 1 pilot summary without frontmatter tag.
+- Captions are auto-generated: names and numbers are often garbled and speakers are unlabeled. Treat attributions to named people as unverified unless the speaker states them aloud.
+- `applications.md` follows the voice rules: "Eric's baseline:" lines were checked against `docs/method-baseline.md` (82 fixes, mostly missing Inferred tags). Baseline lines tagged Inferred carry the course-team, speaker-unconfirmed caveat. `method-baseline.md` contradicts itself on speed re-exposure (line ~99 vs ~150); resolve before relying on it.
+- Not covered: 6 tier A talks not yet fetched (YouTube rate limit) and 5 with no captions; tier B (about 117 lower-priority talks) not started.
+
+## Atomization plan (first pass done; promotion pending)
+
+1. Start with the 23 `supported` talks (list below); entries cite `summary.md` and transcript locators, with the talk as the author voice and `untested` for anything the speaker only asserts.
+2. Follow `docs/ATOMIZE_BRIEF.md` and the ingest review gate (independent reviewer before promotion).
+3. Dedup against the vault library before each entry; `untested` talks mostly add Related links or case-studies rather than principles.
+
+## `supported` talks
+
+| Date | Title | Folder id |
+|---|---|---|
+| 20120423 | 2012 SSAC - EOS Concussion Technology.m4v | npgdKKdJSww |
+| 20150310 | SSAC15: Analytics of the Tommy John Injury Epidemic with Glenn Fleisig | AgouMNTeyo4 |
+| 20170314 | SSAC17: NFL Player Assessment Test: Using Psychological Tests to Predict Player Performanc | 40NV3_u9tYY |
+| 20170314 | SSAC17: Truths and Myths of the Three Point Revolution in Basketball | BJkCqf6Fj2w |
+| 20170314 | SSAC17: The Science of Sleep | J7smyg1Czik |
+| 20170314 | SSAC17: Avoiding Tommy John: How the MLB has Used Better Data and Training Methods | sHXuxj3-rbQ |
+| 20180301 | SSAC18: Preparing for the Game Optimizing Player Performance | QLdbKUiNadg |
+| 20180302 | SSAC18: Volume and Intensity in Injury Incidence in Football Athletes | TbYgc6_qQzo |
+| 20190310 | SSAC19: DeepQB Deep Learning with Player Tracking to Quantify Quarterback Decision Makin P | EeBgUCYhezc |
+| 20190310 | SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks | SIn6IyYQEVI |
+| 20190310 | SSAC19: Training Schedule Confounds the Relationship between Acute Chronic Workload Ratio  | TIRINmtZOu0 |
+| 20190311 | SSAC19: The True Cost of Tommy John Surgery in Major League Baseball | z_6M5r7031A |
+| 20200317 | SSAC20: Playing Catchup: Estimating Player & Positional Value in (American) Football | oZsFyPGij0U |
+| 20200325 | SSAC20: A No-Tanking Draft Allocation Policy | -6pe_zOKCig |
+| 20220401 | SSAC22: Using Tracking and Charting Data to Better Evaluate NFL Players: A Review | Q3i3FOC-dPE |
+| 20230315 | SSAC23: Creating an NFL Player Tracking Metric presented by ESPN | teg9SfzpMy0 |
+| 20240320 | SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in | 1nt8hK2oYrE |
+| 20240320 | SSAC24: The Strain of Success: A Predictive Model for Injury Mitigation and Team Success i | K5a7C4b1Cwc |
+| 20250318 | SSAC25: Lessons in Chemistry: Impact of Teammate Familiarity on Shooting in the NBA | o4rMbhsdk0I |
+| 20250318 | SSAC25: Causal Impact of Offensive Linemen on Pass Plays | pcp9h_M6Ir8 |
+| 20260409 | SSAC26: Tackling Causality: Estimating Frame Level Defensive Impact | JHgeEo3n1do |
+| 20260409 | SSAC26: Deep Reinforcement Learning for NBA Player Valuation | JjeFktc4QLM |
+| 20260409 | SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Ath | an7u-tVP5Xc |
+# Atomization brief (shared by every Flint ingest agent)
+
+Read this whole file before writing anything. It holds the rules the Harries review taught (2026-09-26: 25 of 35 files needed fixes). The review gate will check every rule here.
+
+## Schema
+
+Follow `C:\Users\eric_rash\.claude\skills\ingest-book\SKILL.md` exactly: `_domain.md`, `_book.md` (map and resume checkpoint, updated after EACH chapter or unit), and entries named `<kind>--<kebab-slug>.md` with kind one of principle, framework, case-study, heuristic, claim. Use the frontmatter keys exactly as the skill gives them. The body has **What it is** / **Why it works** / **When to apply** / **When NOT to apply** (mandatory, non-trivial) / **Example** / **Related**.
+
+Style reference, read before writing: `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library\strength-and-conditioning\fundamentals-of-sprinting--moyer\case-study--isometric-sprinter-and-hurdler.md`, plus one principle file in the same folder.
+
+## Voices: label every one
+
+- **The source author's statements are plain text.**
+- **Eric's views** (from `docs/method-baseline.md` or his reviews) are prefixed "Eric's baseline:" or "Eric's review:".
+- **Your own reasoning, application or synthesis** is prefixed "Inference:".
+- **Nothing unlabeled that the author did not say.** The most common failures: a judgment from Eric's review written as if the author said it; a mechanism the author never gave presented as "why it works" (write "The author gives no mechanism. Inference: ..."); an invented example.
+
+## Lessons from the Supertraining Chapter 1 review (2026-09-26: 30 FIX, 1 NO-GO of 41)
+
+- **Keep the source's internal contradictions.** When a book says X on one page and not-X on another, record both with their pages and set `contested`. Never pick one side silently. The NO-GO entry reversed the book's SJ-CMJ strength-deficit rule because the book states it both ways.
+- **Name the right voice.** In co-authored books, write "the authors" unless a passage clearly belongs to one author. A passage that names Verkhoshansky in the third person is Siff writing.
+- **Keep `proven` rare and scoped.** Scope it to the replicated core (for example, "Hill's force-velocity curve"), never the whole entry, and mark any disputed sentence inside it. Four of eight `proven` ratings were lowered.
+- **No mechanism the source does not give.** About a dozen "Why it works" sections supplied physiology the book never states. Label it "Inference:" or leave it out.
+- **Do not add "well established" or "modern research shows" without a citation.** Name the paper, or delete the phrase.
+
+## Lessons from the 2026-09-27 review wave (Supertraining Ch2-3, Issurin Ch3, Bondarchuk, Evans, Old Bull)
+
+- **Invented Examples are the most common failure.** 34 of 36 Supertraining Ch2-3a Examples were unlabelled inventions. Use the source's own example where it gives one; otherwise start the Example with "Inference:".
+- **"Verified against the page image" means you opened the image.** Four Issurin Ch3 entries claimed it for figures they had misread (Fig 3.7 inverted, a Table 3.7 row swapped). Sparse slides are not "bare diagrams" until you have looked.
+- **Name the population and method the source gives.** Bondarchuk's data are 7,000+ native and foreign athletes, questionnaires, r >= 0.349, steroid-free; entries that said "Soviet athletes" were wrong everywhere.
+- **Check what a cited paper actually says.** Issurin 2016's critique targets Verkhoshansky's concentrated-unidirectional model, not Issurin's A-T-R; Herzog & Leonard 2000 shows force enhancement, against the book's sentence. When the book misreports a study, record both.
+- **No review history in entries.** "Prior version", "corrected from a NO-GO finding" and similar belong in `staging/fixes_*_applied.md`, never in the entry body.
+- **Fix logs must match the files.** One fixer log claimed fixes that were not made. Fixers run their own grep checks and paste the output.
+- **Section headers use the vault form** `**What it is** —` (with the em dash). Do not add suffixes such as ": mandatory". Em dashes are banned only in titles and body text. Never wrap a `[[wikilink]]` across lines.
+
+## Evidence
+
+- Every number, definition and quote carries a checkable locator: PDF page (and printed page if it differs), or file plus timestamp. Never write "confirmed in PDF" unless you opened that page.
+- Never invent a number. Keep ambiguity visible: mark unclear audio or OCR as unclear, and do not harmonize two conflicting numbers from the source; record both with their locators.
+- OCR sources (`staging/ocr/*.md`): pages listed as low_confidence in the header must be checked against the page image before any number from them is cited. Use the Read tool on the PDF page, or render it.
+- **OCR confidence scores miss the worst errors** (checked 2026-09-27). Zatsiorsky 2e: the OCR interleaves the two columns and the sidebars line by line, so its text is not readable prose; use it only to find content, and read and quote from the page image. *CFTS*: single-column prose that mostly reads in order, but upside-down lines come out as gibberish, some lines are dropped, and figures are scrambled, all at "0 low-confidence pages". For any OCR source, quote only after checking the page image, and read every figure and table from the image.
+
+## Confidence
+
+- Practitioner courses and lectures: ceiling `supported`.
+- Books: `proven` only for established, widely replicated physiology or mechanics. Soviet-era or single-lab empirical findings and training prescriptions: `supported` at most. `untested` for single cases and anecdotes. `contested` where another library source or modern evidence disagrees (say which).
+
+## Dedup and converge
+
+Before each entry, grep `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library` and the staging library (`C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\staging\library`) for the concept. If it is covered, add a new entry only for a genuinely new angle, and link the existing one in Related. List reciprocal-link suggestions in your final report. Never edit files in the vault or another agent's staging folder.
+
+## Baylor context
+
+Read `C:\Users\eric_rash\Desktop\DEV\Flint\.claude\worktrees\step1-triage\docs\method-baseline.md` (approved). Use it in When to apply, labelled "Eric's baseline:". Department names: Athletic Performance, Athletic Medicine, Applied Performance. Plain style, no em dashes. Use commas, colons and parentheses.
+
+## Scope and output
+
+- Write ONLY into your assigned staging folder. No git, no vault edits.
+- Stop at a chapter or unit boundary. It is better to finish fewer chapters well; the `_book.md` checkpoint lets the next batch resume.
+- Final reply: entries by kind and by confidence; chapters or units done and pending with page ranges; reciprocal-link suggestions; unclear or contradictory spots in the source; anything you could not read.
+# Atomizer prompt: 42 Analytics SSAC talks
+
+You are an atomizer for Flint, a sport-science knowledge base for Eric Rash (Director of Applied Performance, Baylor Athletics). Turn conference talks into atomized, citable library entries.
+
+## Read first (all of it)
+1. `C:\Users\eric_rash\Desktop\DEV\Flint\docs\ATOMIZE_BRIEF.md` (voices, evidence, confidence, dedup rules; the review gate checks every rule). Its "book" language applies to a talk, and "PDF page" to a `[mm:ss]` locator in `transcript.md`.
+2. `C:\Users\eric_rash\.claude\skills\ingest-book\SKILL.md` (entry schema: frontmatter keys, body sections; "When NOT to apply" is mandatory and non-trivial).
+3. Style references named in the brief (the Moyer entries in the SecondBrain library).
+4. `C:\Users\eric_rash\Desktop\DEV\Flint\docs\method-baseline.md` (for "Eric's baseline:" lines).
+
+## Source material, per talk
+Folder: `C:\Users\eric_rash\Desktop\DEV\Flint\staging\sources\42analytics\<folder>\` with `transcript.md` (auto-captions, `[mm:ss]` markers every 30 s; names and numbers often garbled), `summary.md` (reviewed digest, with locators), `applications.md` (Baylor applications, already voice-labeled), `meta.json`. Atomize from the transcript; use summary.md to find the main ideas and to cross-check numbers. Every number, quote and definition in an entry carries a locator: `<video-id> [mm:ss]`. Never invent a number or name; keep garbled caption spellings and say they are caption spellings.
+
+## Entry rules specific to this source
+- Voices: the speaker's statements are plain text, attributed to "the speaker" or the named presenters (only names stated aloud or in the title; auto-captions have no speaker labels, so attribute panel statements to "a panelist"). Eric's baseline lines: prefix "Eric's baseline:" and take them only from method-baseline.md, keeping the Inferred / course-team-speaker-unconfirmed tag where the baseline has it. Your reasoning: "Inference:". The author gives no mechanism: write "The speaker gives no mechanism. Inference: ..." Never "modern research shows" without a citation.
+- Front matter: `book: ssac-talks--42analytics`, `domain: sports-analytics-and-decision-making`, `chapter: "<video-id>"`, `ingest-tier: full-text`, `created: 2026-10-01`. Add an extra key `source: "<video-id>, SSAC<yy>, <title>"`.
+- Confidence: ceiling `supported`, never `proven`. `supported` = the speaker reports a method with results you cite. `untested` = the speaker's assertion, a single case, or a model result with no validation shown. `contested` where another library entry or the talk itself disagrees (say which).
+- One idea per entry; 4 to 8 entries per talk; kinds: principle, framework, case-study, heuristic, claim. Prefer frameworks (how to build or check a model) and claims with their numbers over generalities. Include limits the speaker or data impose in "When NOT to apply" (sample size, dataset, sport, level of play: college vs NFL vs Baylor).
+- Plain style, no em dashes; use commas, colons, parentheses. Department names: Athletic Performance, Athletic Medicine, Applied Performance.
+- Dedup: before each entry, grep `C:\Users\eric_rash\Desktop\SecondBrain\Knowledge\library` and `C:\Users\eric_rash\Desktop\DEV\Flint\staging\library` for the concept. If covered, write a new entry only for a genuinely new angle and link the existing one in Related. List reciprocal-link suggestions in your report.
+- Write ONLY into your assigned batch folder (given below). No git, no vault edits, no other agent's folder. Filename `<kind>--<kebab-slug>.md`; prefix nothing else.
+
+## Final reply
+Entries by kind and by confidence; talks done; reciprocal-link suggestions; unclear or contradictory spots in a transcript; anything you could not read. Under 400 words.
+You fix library entries for Flint after an independent review. Entries: `C:\Users\eric_rash\Desktop\DEV\Flint\staging\library\sports-analytics-and-decision-making\ssac-talks--42analytics\`. Sources: `...\staging\sources\42analytics\<folder>\transcript.md` (find the folder by the entry's `chapter:` video id). Rules: `...\docs\ATOMIZE_BRIEF.md`, `...\staging\atomize_42analytics_prompt.md`, and `...\docs\method-baseline.md` for "Eric's baseline:" lines. Edit only entry files with the Edit tool or an exact-string Python replace (read each file first). Never edit sources, the vault, or `_book.md`. No git. Plain style, no em dashes (the `**Section** —` header form is fine).
+
+Defect patterns the reviewers found (apply to every entry in your scope, verifying against the transcript at the cited locator, not from memory):
+1. Confidence too high: `supported` only if the entry cites a method AND a result the speaker reports. Single case, uncited second-hand study, model result without stated validation, procedure without outcome: `untested`. `contested` only for a real conflict that the speaker has not reconciled himself; add the reason. If a sibling entry in the folder conflicts, say so in Related and set `contested`.
+2. Speaker attribution: auto-captions have no speaker labels. Q&A answers and panel lines go to "the speaker" (single-speaker talks) or "a panelist"; never a named person, "the same speaker", or "the speaker's own" unless the caption names them aloud. A questioner's wording is not the presenter's mechanism. Do not give a person pronouns the captions do not give.
+3. Caption smoothing: if a number or phrase is garbled, say it is garbled (quote the caption), do not smooth it. Do not turn a garbled number into a different unit. Locators one 30-second block off: fix to the block where the words appear.
+4. Eric's baseline lines: quote from method-baseline.md and keep its tag (Explicit, Inferred, course team position speaker unconfirmed, interview-confirmed). Put a baseline fact outside any "Inference:" sentence.
+5. Unlabelled claims the speaker did not make (counterfactual rationale, mechanisms, "advises X company", dataset scope) get "Inference:" or are removed. A count "for context" is not the full dataset; check what the speaker says the figure covers.
+6. "No sample size" or similar negative claims: check the transcript; the speaker may state one.
+Reply: one line per edited file (short slug, what changed), then totals. Under 300 words.
+---
+type: domain-index
+domain: sports-analytics-and-decision-making
+advisor: ""
+books: [ssac-talks--42analytics]
+created: 2026-10-01
+---
+
+# Sports Analytics & Decision-Making — domain index
+
+Conference talks (MIT Sloan Sports Analytics Conference) on how data changes decisions in football, basketball, baseball and soccer: injury and workload modeling, player valuation, tracking-data metrics, front-office policy. Baylor terms: Athletic Performance, Athletic Medicine, Applied Performance. Applied Performance's role is to supply information that supports Athletic Medicine's and Athletic Performance's decisions; this domain gives that support outside methods to compare against.
+
+## Books in this domain
+
+- **[[ssac-talks--42analytics/_book|SSAC talks (42 Analytics channel)]]** — `ssac-talks--42analytics`. 23 talks whose summaries show a method plus results, atomized 2026-10-01. Conference talks: confidence capped at `supported`.
+
+## Miss-log
+
+_The `advisor` skill appends one line here each time it answers a question the library could not ground. Feeds `library-review`._
+---
+type: book-index
+book: ssac-talks--42analytics
+title: SSAC talks from the 42 Analytics channel (23 talks)
+author: various (MIT Sloan Sports Analytics Conference speakers; see each entry's source key)
+domain: sports-analytics-and-decision-making
+ingest-tier: full-text
+source: "Flint/staging/sources/42analytics/ (auto-caption transcripts, summaries; text corpus in DEV/42Analytics, YouTube @42analytics)"
+created: 2026-10-01
+---
+
+# SSAC talks (42 Analytics channel): ingest map
+
+Locator convention: `<video-id> [mm:ss]` against `transcript.md` in `staging/sources/42analytics/<folder>/`. Transcripts are auto-captions: names and numbers are often garbled, speakers are unlabeled, and slides are not visible. Entries say so where it matters.
+
+**Confidence rule for this book: ceiling `supported`, never `proven`.** Conference talks; `supported` only where the speaker reports a method with results, `untested` for assertions and single cases, `contested` where the talk or another library source disagrees.
+
+Status: atomized 2026-10-01 and review-gated once: 50 of 152 entries (every third file) got an independent Opus falsify review (14 GO, 36 FIX, 0 NO-GO); all 36 fixes applied, and the other 102 entries got a pattern sweep by Sonnet against the transcripts. **No second independent review round has run, so do not promote yet.** Reports: `staging/review_42analytics_r0.md` to `r3.md`. 152 entries: kinds {'case-study': 14, 'claim': 67, 'framework': 37, 'heuristic': 21, 'principle': 13}; confidence {'supported': 26, 'untested': 119, 'contested': 7}. After the review fixes most entries are `untested` because auto-caption talks rarely give checkable values.
+
+| Date | Talk | Video id | Status | Entries |
+|---|---|---|---|---|
+| 20120423 | 2012 SSAC - EOS Concussion Technology.m4v | npgdKKdJSww | done | 6 |
+| 20150310 | SSAC15: Analytics of the Tommy John Injury Epidemic with Glenn Fleisig | AgouMNTeyo4 | done | 7 |
+| 20170314 | SSAC17: The Science of Sleep | J7smyg1Czik | done | 8 |
+| 20170314 | SSAC17: NFL Player Assessment Test: Using Psychological Tests to Predict Player  | 40NV3_u9tYY | done | 7 |
+| 20170314 | SSAC17: Truths and Myths of the Three Point Revolution in Basketball | BJkCqf6Fj2w | done | 7 |
+| 20170314 | SSAC17: Avoiding Tommy John: How the MLB has Used Better Data and Training Metho | sHXuxj3-rbQ | done | 7 |
+| 20180301 | SSAC18: Preparing for the Game Optimizing Player Performance | QLdbKUiNadg | done | 8 |
+| 20180302 | SSAC18: Volume and Intensity in Injury Incidence in Football Athletes | TbYgc6_qQzo | done | 7 |
+| 20190310 | SSAC19: DeepQB Deep Learning with Player Tracking to Quantify Quarterback Decisi | EeBgUCYhezc | done | 5 |
+| 20190310 | SSAC19: Analytics for the Front Office: Valuing Protections on NBA Draft Picks | SIn6IyYQEVI | done | 5 |
+| 20190310 | SSAC19: Training Schedule Confounds the Relationship between Acute Chronic Workl | TIRINmtZOu0 | done | 6 |
+| 20190311 | SSAC19: The True Cost of Tommy John Surgery in Major League Baseball | z_6M5r7031A | done | 7 |
+| 20200317 | SSAC20: Playing Catchup: Estimating Player & Positional Value in (American) Foot | oZsFyPGij0U | done | 6 |
+| 20200325 | SSAC20: A No-Tanking Draft Allocation Policy | -6pe_zOKCig | done | 7 |
+| 20220401 | SSAC22: Using Tracking and Charting Data to Better Evaluate NFL Players: A Revie | Q3i3FOC-dPE | done | 6 |
+| 20230315 | SSAC23: Creating an NFL Player Tracking Metric presented by ESPN | teg9SfzpMy0 | done | 8 |
+| 20240320 | SSAC24: The Strain of Success: A Predictive Model for Injury Mitigation and Team | K5a7C4b1Cwc | done | 7 |
+| 20240320 | SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Sta | 1nt8hK2oYrE | done | 5 |
+| 20250318 | SSAC25: Causal Impact of Offensive Linemen on Pass Plays | pcp9h_M6Ir8 | done | 6 |
+| 20250318 | SSAC25: Lessons in Chemistry: Impact of Teammate Familiarity on Shooting in the  | o4rMbhsdk0I | done | 6 |
+| 20260409 | SSAC26: Deep Reinforcement Learning for NBA Player Valuation | JjeFktc4QLM | done | 7 |
+| 20260409 | SSAC26: Tackling Causality: Estimating Frame Level Defensive Impact | JHgeEo3n1do | done | 6 |
+| 20260409 | SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for  | an7u-tVP5Xc | done | 8 |
+2017-03-21_Y7pm-79ZvjE_marijuana-as-medicine/
+2018-02-28_mL12UviYkeY_draft-day-analytics/
+2018-03-01_8UNq1Wu88No_life-behind-the-curtain-an-inside-look-at-working-nfl-front-/
+2018-03-01_JuUBObeNGfc_using-lab-science-and-field-analytics-to-maximize-performanc/
+2018-03-01_LILw3eb4HQ0_risky-business-sports-science-and-injury-prevention/
+2018-03-01_QLdbKUiNadg_preparing-for-the-game-optimizing-player-performance/
+2018-03-01__HqxMC9h938_machine-learning-in-performance-analytics/
+2018-03-01_kSYUQBcTpRU_wearable-technology-to-refine-return-to-play-in-the-nba/
+2018-03-01_p43NDXHxQAQ_sleep-science-hacking-your-biological-clock-to-win/
+2018-03-02_E7m6QvYWUf8_the-currency-of-the-nfl-winning/
+2018-03-02_TbYgc6_qQzo_volume-and-intensity-in-injury-incidence-in-football-athlete/
+2018-03-04_ghrWAiUb9zk_athlete-monitoring-analytics-presented-by-fusion-sport/
+2019-03-08_ZNIVzarJwPg_the-performance-precaution-tradeoff-player-health/
+2019-03-09_OhyCbBfJpJA_built-to-outlast-youth-athlete-development-for-performance-a/
+2019-03-09_f3HTL6XOmw4_performance-optimization-stratagies-that-helped-win-a-champi/
+2019-03-10_EeBgUCYhezc_deepqb-deep-learning-with-player-tracking-to-quantify-quarte/
+2019-03-10_SIn6IyYQEVI_analytics-for-the-front-office-valuing-protections-on-nba-dr/
+2019-03-10_TIRINmtZOu0_training-schedule-confounds-the-relationship-between-acute-c/
+2019-03-11_SQV3o7g_l8A_skating-for-gold-using-wearable-technology-to-maximize-prepa/
+2019-03-11_z_6M5r7031A_the-true-cost-of-tommy-john-surgery-in-major-league-baseball/
+2020-03-11_GoTHz4wdg2o_making-the-right-play-optimizing-the-nba-s-season-structure/
+2020-03-11_R2Lm027t2kQ_no-industry-is-safe-the-opioid-epidemic-in-sports-and-societ/
+2020-03-11__rPWvkmRvRY_basketball-analytics-nothin-but-net-rating/
+2020-03-13_9rh-AScDN8k_defending-the-pass-using-player-tracking-data-to-gain-new-in/
+2020-03-13_kEjRVwJrzl0_the-sports-learning-curve-why-teams-are-slow-to-learn-and-ad/
+2020-03-13_l66rQZgaQtc_moving-the-chains-advancing-football-analytics/
+2020-03-17_oR2S_GTatSQ_numbers-don-t-lie-using-data-in-the-weight-room-to-enhance-o/
+2020-03-17_oZsFyPGij0U_playing-catchup-estimating-player-positional-value-in-americ/
+2020-03-17_otCKz1OBpTg_instant-feedback-using-real-time-data-to-improve-training-ca/
+2020-03-25_-6pe_zOKCig_a-no-tanking-draft-allocation-policy/
+2020-03-25_n9kauB2PWW4_analyzing-data-and-film-concurrently-to-get-an-upper-hand/
+2020-03-25_yz-O706SNck_tackling-name-image-and-likeness-in-college-sports/
+2021-06-04_-nyTn7E2pKw_fact-or-fiction-basketball-mythbusting/
+2021-06-11_9KAWW96SuGQ_making-a-qb1-the-science-behind-qb-evaluations/
+2021-06-11_IOYQJJF6xi0_say-goodbye-to-the-40-yard-dash-the-future-of-nfl-roster-bui/
+2022-03-16_ZBa5bik6tHY_in-the-trenches-of-football-analytics/
+2022-03-17_4dTGHEHQLwM_the-reformation-of-the-ncaa-the-impact-of-new-legislation-re/
+2022-03-17_VWROSDVKims_on-a-finger-roll-where-the-basketball-analytics-movement-goe/
+2022-03-25_QCewshG-Wz8_the-next-frontier-of-data-analytics-in-sport-integrating-per/
+2022-03-25_Rn7sZ5kNsNw_using-technology-to-monitor-workload-in-elite-figure-skating/
+2022-03-25_VZEYQU2-Oc8_how-data-journey-started-for-the-indianapolis-colts/
+2022-03-25_mtdVRx3t1eo_the-biomechanics-of-buckets-the-next-revolution-in-basketbal/
+2022-04-01_Q3i3FOC-dPE_using-tracking-and-charting-data-to-better-evaluate-nfl-play/
+2023-03-10_RqOXn9ynQK0_the-ultimate-team-sport-building-better-football-rosters-wit/
+2023-03-15_4kPyFrX2T4o_hard-cap-constrains-roster-construction-in-the-hard-cap-era-/
+2023-03-15_O-EXwmHvBho_lessons-from-the-edge-understanding-humans-in-the-pursuit-of/
+2023-03-15_knZ8ImMzBX4_leveling-up-how-basketball-teams-deploy-analytics-to-develop/
+2023-03-15_m7vJ7ozZj3U_data-centered-decision-making-how-to-implement-process-that-/
+2023-03-15_tRnkF9eTWWg_mind-body-machine-the-role-of-ai-ml-in-the-future-of-sports/
+2023-03-15_teg9SfzpMy0_creating-an-nfl-player-tracking-metric-presented-by-espn/
+2023-03-15_wVUwt2A_xi0_an-analytical-framework-for-winning-the-super-bowl-presented/
+2024-03-20_1nt8hK2oYrE_feeling-the-pressure-a-unified-framework-for-automating-pass/
+2024-03-20_4oKByRaArVs_research-collectives-the-call-for-large-scale-open-science-i/
+2024-03-20_6zBmxq4L6nc_evolution-of-basketball-analytics-20-years-of-nerds-data-eff/
+2024-03-20_7X0KYV8N6yE_a-new-generation-the-next-era-of-college-athletics/
+2024-03-20_9YbQIqOGF6E_the-sumersports-draft-dashboard/
+2024-03-20_BuZ1iXhlCSE_the-numbers-game-football-analytics-from-combines-to-champio/
+2024-03-20_K5a7C4b1Cwc_the-strain-of-success-a-predictive-model-for-injury-mitigati/
+2024-03-20_Y_vQd0MIzrk_future-of-football-innovation-on-the-gridiron/
+2024-03-20_tPgCcRc7rR0_using-data-to-support-college-athlete-mental-health/
+2025-03-18_4hhp-rHMSms_cutting-through-the-static-model-driven-decision-marking/
+2025-03-18_7G9AKDKHVlA_how-ai-and-this-one-metric-can-reshape-nfl-roster-decisions/
+2025-03-18_D-b-69QzdFI_the-new-age-nfl-front-office/
+2025-03-18_MyfHUiOnsSY_the-analytics-driven-franchise-building-a-modern-nba-team/
+2025-03-18_PrhTJAeDbFA_chasing-greatness-a-conversation-with-gms-across-sports/
+2025-03-18_RZNLXU2O0WM_minding-the-college-football-analytics-gap/
+2025-03-18_fPMr4R76roU_reception-perception-using-data-to-grade-nfl-receivers-and-p/
+2025-03-18_lxVBVVCbfPI_the-ncaa-s-newest-power-players-the-rise-of-the-gm/
+2025-03-18_o4rMbhsdk0I_lessons-in-chemistry-impact-of-teammate-familiarity-on-shoot/
+2025-03-18_pcp9h_M6Ir8_causal-impact-of-offensive-linemen-on-pass-plays/
+2025-03-18_sNWvAaLVS1s_have-the-nerds-ruined-basketball-a-conversation-on-competiti/
+2025-03-18_v-BOAaqS01c_ncaa-2-0-what-s-next/
+2025-03-18_x2zr5kmoFJU_modeling-injury-risk-at-the-tennessee-titans/
+2026-04-09_31Aze6mlRBA_heat-safety-in-professional-sport-aligning-data-physiology-a/
+2026-04-09_6QCe9Gndj44_from-tool-sprawl-to-competitive-advantage-rebuilding-coheren/
+2026-04-09_8qKJw2Dh7dk_setting-the-edge-how-analytics-are-rewriting-football-strate/
+2026-04-09_AZlacK4gE4k_the-history-of-progress-in-football-analytics/
+2026-04-09_JHgeEo3n1do_tackling-causality-estimating-frame-level-defensive-impact/
+2026-04-09_JjeFktc4QLM_deep-reinforcement-learning-for-nba-player-valuation/
+2026-04-09_PnhmgBIlcbs_should-i-stay-or-should-i-go-the-biggest-question-in-college/
+2026-04-09_RdXWJRKMWqY_redefining-limits-how-elite-athletes-achieve-and-sustain-pea/
+2026-04-09_WB_FDxZKv-M_leveraging-data-for-athlete-health-and-performance/
+2026-04-09_XaKYxZc12J4_when-the-model-meets-human-the-future-of-basketball-decision/
+2026-04-09_Ydm3fWet554_surgery-and-sports-how-data-inform-decision-making-when-the-/
+2026-04-09_an7u-tVP5Xc_from-noise-to-knowledge-building-high-quality-data-driven-re/
+2026-04-09_nRoPOxRWCaQ_the-missing-variable-menstrual-cycles-injury-risk-and-the-co/
+2026-04-09_s6aL0BW9ZUg_reimagining-the-ncaa-data-as-the-new-competitive-advantage/
+2026-04-09_sehodnyt3ko_the-future-of-peak-performance-clara-wu-tsai-and-john-donaho/
+manifest.tsv

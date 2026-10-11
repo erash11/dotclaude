@@ -1,0 +1,356 @@
+  International Journal of Kinesiology & Sports Science
+  ISSN: 2202-946X
+  www.ijkss.aiac.org.au
+Validity and Reliability of StriveTM Sense3 for Muscle Activity Monitoring During the Squat
+­Exercise
+Samaneh Davarzani1, Daniel Helzer2, Jennifer Rivera2, David Saucier3*, Edward Jo2, Reuben F. Burch V3, Harish Chander4,
+Lesley Strawderman1, John E. Ball5, Brian K. Smith1, Tony Luczak6, Logan Ogden7, Collin Crane8, David Bollwinkel9, Bill Burgos10,
+Adam Petway11
+1
+  Department of Industrial & Systems Engineering, Mississippi State University, Mississippi State, MS 39762, USA
+2
+  Department of Kinesiology and Health Promotion, California State Polytechnic University Pomona, Pomona, CA 91768, USA
+3
+  Department of Human Factors & Athlete Engineering, Center for Advanced Vehicular Systems (CAVS), Mississippi State University,
+Starkville, MS 39759, USA
+4
+  Department of Kinesiology, Mississippi State University, Mississippi State, MS 39762, USA
+5
+  Department of Electrical & Computer Engineering, Mississippi State University, Starkville, MS 39759, USA
+6
+  National Strategic Planning and Analysis Research Center (NSPARC), Mississippi State University, Starkville, MS 39759, USA
+7
+  Olympic Sport Strength and Conditioning, Utah State University, Logan, UT 84322
+8
+  Strength and Conditioning, Mississippi State University, Mississippi State, MS 39762, USA
+9
+  Scout Player Personnel, Chicago Bulls, 1901 West Madison St., Chicago, IL 60612, USA
+10
+  Strength and Conditioning, Minnesota Timberwolves, 600 Hennepin Avenue, Suite 300, Minneapolis, MN 55403, USA
+11
+  Strength and Conditioning, Philadelphia 76ers, 3601 S Broad St, Philadelphia, PA 19148, USA
+*Corresponding Author: David Saucier, E-mail: dns105@msstate.edu
+  ARTICLE INFO  ABSTRACT
+  Article history  Background: Recent innovations in surface electromyographic (sEMG) technology have
+  Received: August 02, 2020  enabled the measurement of muscle activity using smart textiles. Objective: In this study,
+  Accepted: October 06, 2020  the StriveTM Sense3 performance monitoring system is evaluated against a research-grade
+  Published: October 31, 2020  system, NoraxonTM, in measuring activity during the back squat exercise. Method: Seventeen
+  Volume: 8 Issue: 4  participants performed three total trials of the squat exercise with a progressive load for
+  individual trials equal to 30%, 60%, and 80% of their estimated maximum 1RM (one-repetition
+  Conflicts of interest: None.  maximum). sEMG measurements from the rectus femoris were captured for the left and
+  Funding: This research did not receive right leg by both systems. Pearson product-moment correlation coefficient (r) and intraclass
+  any specific grant from funding  correlation coefficient (ICC) values were computed for each trial to assess concurrent validity
+  and interrater reliability of the StriveTM Sense3 device. Additionally, five coaches at the
+  agencies in the public, commercial, or
+  collegiate- and professional-level of Men’s Basketball speak from an autoethnographic frame
+  not-for-profit sectors.
+  to the findings from this study. Results: Results ranged from “Poor” to “Excellent” validity
+  and “Poor to Moderate” to “Excellent” reliability, with a majority of trials achieving “Good” or
+  better results across all loads [93% trials: r >= 0.7; 87% trials: lower ICC 95% CI bound >= 0.75
+  (absolute sEMG); 98% trials: lower ICC 95% CI bound >= 0.75 (normalized sEMG)]. Higher
+  validity and reliability for medium and heavy loads were observed in comparison to the light
+  load, and several outliers indicate the need for coaches to lubricate sensors and ensure proper
+  fit to collect accurate data. Conclusion: Examining results alongside practitioner feedback
+  indicate the StriveTM Sense3 system is capable of tracking sEMG activity in comparison to a
+  research-grade system.
+  Key words: Surface Electromyography, Wearable Electronic Devices, Reliability and Validity,
+  Muscle Contraction, Correlation of Data
+INTRODUCTION  (Massó et al., 2010), each with their own advantages and dis-
+The generalized aims of electromyography (EMG) are to  advantages. Intramuscular EMG is generally used in clinical
+analyze the function and coordination of muscles during  settings and is considered more precise, but since a needle
+different movements and activities, in different populations,  electrode is required, it is invasive and sometimes painful
+under laboratory conditions as well as during activities of  to the wearer (Massó et al., 2010). Surface EMG (sEMG)
+daily living (Clarys, 2000). Multiple systems exist for both  requires more skin preparation and accurate positioning
+surface and intramuscular EMG to assess muscle activation  to avoid muscle cross-talk but has the advantage of being
+Published by Australian International Academic Centre PTY.LTD.
+Copyright (c) the author(s). This is an open access article under CC BY license (https://creativecommons.org/licenses/by/4.0/)
+http://dx.doi.org/10.7575/aiac.ijkss.v.8n.4p.1
+2  IJKSS 8(4):1-18
+noninvasive and more appropriate for dynamic activities  Schwanbeck et al., 2009; Slater & Hart, 2017; Yuen et al.,
+(Massó et al., 2010). Consequently, sEMG has become a  2019). Additionally, sEMG was reported to be a reliable
+popular solution for insights and evidence-based decisions  method for assessing reproducibility of muscle activation
+in sport applications, such as detecting movement technique,  during controlled dynamic ballistic movements including
+abnormal muscle activation, evaluating injury risk, pre-  jump landings and cutting (Fauth et al., 2010). Previous
+dicting performance as well as in recovery from injury and  validity research in wearable sEMG shorts have measured
+return to sport (Ball & Scurr, 2013; Clarys & Cabri, 1993;  muscle activity in the quadriceps during isometric and
+Lynn et al., 2018; Massó et al., 2010; Türker & Sözen, 2013;  dynamic activities (Finni et al., 2007; Lynn et al., 2018;
+Vigotsky et al., 2018).  Smith, 2019).
+  Research grade (RG) sEMG systems from companies  Findings from studies of these systems as well as
+such as Noraxon, Biopac, and Motion Lab Systems have  validation methodologies were mixed. Research on the
+become the gold-standard for measuring muscle activi-  MyontecTM system reported good agreement with tradition-
+ty (Desmarais & Giess, 2017; Lynn et al., 2018; Smith,  al electrodes during knee extension in a seated position and
+2019). However, these systems are often limited to a lab-  was also found to be feasible to measure in real-time during
+oratory environment due to the additional hardware need-  a treadmill test (Finni et al., 2007). This solution has also
+ed to amplify and perform computations on the signals.  been noted to be reliable during activities of daily living
+Conversely, wireless, wearable sEMG devices can aid in  such as stair descent, stair ascent, and repeated unloaded
+conveniently capturing muscle activity in various popu-  squats (Bengs et al., 2017). One study of the Athos® sys-
+lations and in various scenarios, especially outside of a  tem was reported to be consistent when compared against
+laboratory. Implementation of wearable body sensor net-  RG system Biopac over a range of dynamic activities, in-
+works has paved the way for much smaller, more feasible,  dicating good validity and reliability (Lynn et al., 2018).
+less complex, and affordable sEMG systems (Lynn et al.,  Another study concluded that the Athos® system was not
+2018). Wireless sensors do have their limitations, such  consistent in its measurements and did not match up with
+as sensor range, battery life, and continuous monitoring  the NoraxonTM system during dynamic activities such as
+(Fong & Chan, 2010; Vigotsky et al., 2018). The advent of  bilateral hamstring curls and box step-ups (Desmarais &
+wearable technology and wearable EMG devices are suc-  Giess, 2017). The only existing study of the Strive™ sys-
+cessfully bridging these limitation gaps, but still require  tem was reported not to be a valid EMG acquisition sys-
+appropriate validation and refinement. In the field, coach-  tem for dynamic activities (Smith, 2019). However, in both
+es and practitioners have expressed a general distrust of  studies that concluded this form of sEMG was not valid, a
+certain types of novel wearable technology due to a lack  major limitation was identified in that consistent care was
+of transparency in the representation of the data as well  not taken to properly lubricate the sEMG system prior to
+as an inconsistency in recording of values (Luczak et al.,  data collection (Desmarais & Giess, 2017; Smith, 2019).
+2019). As such, further research and cross-validation of  Additional limitations were identified in the study of the
+these novel wearable systems, especially in dynamic tasks,  StriveTM system. The first limitation was that no formal
+are warranted.  analysis was conducted on dynamic activities recorded be-
+  Novel types of wearable sEMG devices have been  cause “Sense3 did not acquire enough successful trials to
+previously proposed (Jang et al., 2018; Lynn et al., 2018;  do proper EMG analysis” and “the inability to record an
+Shafti et al., 2016; Smith, 2019) and some have been tested  acceptable EMG signal during the movement correlates to
+for validity and reliability during static isometric and dy-  a fail if Sense3 were to be used in a real world, dynamic
+namic activities against traditional RG systems (Desmarais  scenario” (Smith, 2019). This conclusion warrants further
+& Giess, 2017; Finni et al., 2007; Lynn et al., 2018; Smith,  investigation as the author notes an inconsistency in the
+2019). Among the novel wearable sEMG systems specif-  preparation of the surface electrodes:
+ic to lower extremity athletic activities are the MyontecTM  “Aside for the fitting of the shorts, Strive advised ap-
+system (Finni et al., 2007), the Athos® wearable EMG  plying water to the electrodes before testing to optimize
+system (Lynn et al., 2018), and the Strive Sense3™ sys-  results. Applying water was not implemented until after
+tem (Smith, 2019). These systems are incorporated into  the first couple of participants. This continued for a few
+compression athletic shorts, predominantly analyzing  participants, but then was aborted for the remaining par-
+lower extremity thigh muscles (Finni et al., 2007; Lynn  ticipants. Nevertheless, a noticeable difference between
+et al., 2018; Smith, 2019). sEMG measurements collect-  results were not seen between the middle participants
+ed from the quadriceps individually from the three vastii  with the beginning and ending participants” (Smith,
+muscles and from the rectus femoris are commonly used  2019).
+to quantify performance in voluntary isometric contrac-  This inconsistency indicates that the poor results were
+tions (Caterisano et al., 2002; Clarys & Cabri, 1993; Jang  more likely due to poor contact that resulted from a lack
+et al., 2018; Schwanbeck et al., 2009). Moreover, different  of proper lubrication of sensors. Both studies that reported
+types of squats such as the back squat, free weight squat,  positive results of Athos® and MyontecTM speak specifi-
+Smith machine squat, and wall sit squat have also been an-  cally to the importance of the electrodes being wet when
+alyzed using sEMG recordings from the quadriceps group  collecting measurements to ensure proper conduction
+of muscles (Ebben & Jensen, 2002; Nishiwaki et al., 2006;  (Finni et al., 2007; Lynn et al., 2018). Inconsistencies in
+Validity and Reliability of StriveTM Sense3 for Muscle Activity Monitoring During the Squat ­Exercise  3
+results of the Strive Sense3TM system indicate the need for  a light warm-up using a self-selected load, which was 30%
+further ­investigation with proper implementation of an ex-  of their estimated one repetition maximum (RM). After
+periment. Moreover, a thorough literature review revealed  three minutes of rest, participants performed the back
+there are no existing studies comparing traditional and tex-  squat using a load equal to 30% (light weight), 60% (me-
+tile-based sEMG system concurrently for the squat exer-  dium weight), and 80% (heavy weight) of their estimated
+cise over a progressive load. Therefore, the purpose of this  RM in the listed order. Each load was performed for 3 con-
+study is to compare the Strive™ Sense3 wearable sEMG  tinuous repetitions and two minutes of rest was provided
+system against an RG sEMG system during the squat ac-  between each load. RG and Strive™ sEMG data were col-
+tivity at different loads. From a practical standpoint, five  lected concurrently during each load trial and transmitted
+coaches at the collegiate- and professional-level of Men’s  wirelessly to their corresponding data acquisition system
+basketball speak to the findings from an autoethnographic  for further analysis.
+frame based on previous experience using the StriveTM sys-
+tem in the field.
+  Procedures
+  Back squat protocol
+MATERIALS AND METHODS
+  The back squat protocol was executed using a standard
+Participants  squat rack, 20kg barbell, and Olympic weight plates
+Seventeen participants including twelve males (n=12,  (Rogue Fitness, Columbus, OH, USA). Selection for each
+age=23.3±5.8y, mass=82.7±10.3kg, height=179.1±4.3cm)  load was based on a percentage of the participant’s esti-
+and five females (n=5, age=21.2±1.5, mass=58.3±3.0kg,  mated 1RM (one-repetition maximum). Given the back
+height=160.5±6.6cm) were recruited for this study.  squat experience, as confirmed during pre-screening, par-
+Participants were screened via a pre-participation question-  ticipants were confident in their estimation, and no issues
+naire to determine any physical contraindications to partic-  pertaining to the absolute load were observed during any
+ipation and exercise training history. The participants were  of the trials. During the back squat warm-up, feet place-
+recreationally trained and the inclusion criteria consisted of  ment was marked with tape to ensure replication across all
+the following: (a) at least 18 years of age and (b) a resis-  three trials. Participants were instructed to perform each
+tance training history of three bouts per week for at least six  repetition with a constant tempo of 2s eccentric and 1s
+months with at least two months of back squat experience  concentric phases. Tempo was aided using a metronome
+and having no physical limitations to exercise. Participants  set at 60 beats per minute. Participants were instructed to
+were excluded if they had metabolic, cardiovascular, and or  refrain from performing extraneous contractions such as
+musculoskeletal conditions that would affect their perfor-  “squeezing” quadriceps at the end of the concentric phase,
+mance. All participants signed an informed consent form pri-  and participants completed the eccentric portion of the lift
+or to participation. The study was approved by the California  to 90 degrees of knee flexion. A physical blockade was
+State Polytechnic University, Pomona (CPP) Institutional  positioned behind the participant to provide a landmark
+Review Board.  for the participant to stop the descent of the back squat.
+  The height of the landmark was adjusted for each partic-
+  ipant during the warm-up, and a goniometer was used to
+Experimental Design
+  determine the landmark height in which 90 degree of knee
+This was a within-subjects design study to validate the  flexion was achieved.
+accuracy of the Strive™ Sense3 in capturing sEMG mea-
+surements during the back squat exercise with progressive
+  Surface electromyography
+loading. Participants were required to attend one testing
+session at the CPP Human Performance Laboratory. After  The sEMG measurements from the rectus femoris on both
+eligibility was confirmed via questionnaire, participants  limbs were collected concurrently with Strive™ Sense3
+underwent basic anthropometry measurements (height,  and the Noraxon™ DTS EMG system, i.e. the RG sys-
+weight, leg length and circumference). The participants  tem. The RG system captured sEMG amplitude data us-
+were then asked to wear the Strive™ garment of an ap-  ing bipolar adhesive sEMG electrodes (Noraxon™ Dual
+propriate size. The embedded electrodes were to be in  Electrodes, Ag-AGCL, spacing 2.0cm, Noraxon USA Inc.,
+good contact with the skin on the rectus femoris of the  Scottsdale, AZ). The RG system used herein was utilized
+quadriceps muscle. Then the leg opening of the Strive™  by multiple prior studies (Ebersole et al., 2006; Ekstrom
+garment was folded to the bottom edge of the garment’s  et al., 2012) for assessing sEMG amplitude during exercise.
+embedded electrodes. The exposed skin directly below the  Strive™ garments were fit to each participant such that the
+bottom edge of the Strive electrodes was prepared for the  embedded electrodes of the wearable device were exactly
+sEMG electrodes of the criterion measure research grade  positioned over the rectus femoris. The leg opening of the
+(RG) device (Noraxon™ DTS EMG system). Afterwards,  Strive garment was then folded such that the RG system
+participants completed 10 minutes of treadmill walking  electrode could be placed immediately below the Strive™
+or jogging followed by dynamic stretching. Then, partici-  electrodes. For acquiring the sEMG measurements by the
+pants performed the back squat protocol which began with  Strive™ system, there were no skin preparations at the site
+4  IJKSS 8(4):1-18
+of contact as this is not a required procedure during practi-  2019). Due to this poor response, the data from StriveTM
+cal settings; however, the electrodes were dampened with  and NoraxonTM could not be properly aligned. After ob-
+water to facilitate conductivity as end-users would do in  serving the measurements collected from participant 14, it
+real-world situations (via sweat). For data collection via  was noted that the data from the right and left limb were
+the RG system, the electrode site was prepared directly be-  switched. Therefore, to assure data accuracy, the measure-
+neath the bottom edge of the Strive™ electrode according  ments from participant 14 were also discarded. The plots of
+to previous methods SENIAM (Hermens et al., 2000). The  preprocessed data for all participants are presented in the
+site was first shaved and then cleansed, abraded, and dried  Appendix.
+prior to RG electrode placement. The RG system sampled
+at a frequency of 1500 Hz while the Strive™ Sense3 ac-
+  Statistical Analysis
+quired data at 21.33 Hz using a mobile device wirelessly
+interfaced to the garment and native software application  Validity
+developed by Strive™ for the Sense3 product. Although  To assess concurrent criterion validity of Strive™ Sense3
+Strive™ Sense3 has the capability to acquire data at  in acquiring sEMG measurements, the Pearson’s prod-
+1000 Hz frequency, in this study, the data was captured at  uct-moment correlation coefficient value (r) was comput-
+21.33 Hz for concordance with real-world cases in which  ed (Düking et al., 2018). Calculations for r can be seen
+end-users would monitor the data at this frequency for run  in Equation 1, where xi is the ith NoraxonTM sample, yi is
+time and efficiency purposes.  the ith StriveTM sample, and n is the sample size, or num-
+  ber of pairs of samples for a given trial (Mukaka, 2012).
+Data Preparation  Pearson’s correlation coefficient is a unitless value report-
+  ed on the scale of -1 to 1, with a higher absolute value of
+PythonTM was utilized to perform data preparation and
+  the result indicating a stronger association between the
+data analysis. The first preparation step was to account for
+  two data sets. Correlation coefficient values were assessed
+the different sampling rates from each EMG system. The
+  in determining the association between the measurements
+Noraxon™ data were down sampled by the rate of 1500 /
+  of Strive™ and Noraxon™ electrodes for each trial with
+(21 + 1/3) meaning that, for every 70 samples acquired by
+  a specific weight (light, medium, or heavy) and specific
+the Noraxon™ system, only the measurement for the first
+  limb (right or left) for each participant. Results were in-
+sample was considered for the following analysis. The re-
+  terpreted based on guidance suggested by Mukaka: 0.0
+maining 69 data points were discarded.
+  < r <= 0.3—no correlation; 0.3 < r <= 0.5—poor cor-
+  After matching the sampling rates, data from Strive™
+  relation; 0.5 < r <= 0.7—moderate correlation; 0.7 < r
+and Noraxon™ were time-aligned such that any possible
+  <= 0.9—good correlation; 0.9 < r <= 1.0—excellent cor-
+delays due to beginning data capture at different times be-
+  relation (Mukaka, 2012).
+tween systems would be mitigated in the analysis. Data
+alignment was performed using time-lagged cross-correla-
+tion (Rhudy, 2014). The Strive™ data for each trial was
+  r=
+  ∑x y ) − (∑x )(∑y )
+  n(  i i  i
+  (1)
+  i
+lagged (shifted) repeatedly from the range of -200 to 200  n∑x − (∑x ) n∑ y − (∑ y )
+  2  2  2  2
+  i  i  i  i
+samples for both the left and right limb. The correlation
+between the Noraxon™ and the shifted Strive™ data was
+calculated in each step to find the optimal amount of lag,
+n. Under the assumption that data collected for both limbs  Reliability
+are already synchronized within its respective system, the  To assess the interrater reliability of StriveTM in compari-
+best of the two correlations was used to align both limbs for  son to NoraxonTM when measuring muscle activity, the in-
+each weight. Then, the original Strive™ data for both the  traclass correlation coefficient (ICC) and 95% confidence
+left and the right limb was shifted by n samples to synchro-  intervals (CI) were computed for each trial. The ICC is
+nize the Noraxon™ and Strive™ data (Figure 1) (Rhudy,  reported as a value between 0 and 1, with results closer to
+2014; Saucier et al., 2019).  1 indicating a higher reliability (Koo & Li, 2016). When
+  After the preprocessing steps were completed, each  determining the quality of interrater reliability between the
+trial was visually inspected to ensure proper alignment.  StriveTM and NoraxonTM measurement systems, ICC values
+If any trials were observed to not be properly aligned, the  are rated accordingly: 0.0 < r <= 0.5—poor reliability; 0.5
+researchers revised the preprocessing approach according-  < r <= 0.75—moderate reliability; 0.75 < r <= 0.9 good
+ly. Consequently, the data collected for participants 3 and  reliability; 0.9 < r <= 1.0—excellent reliability (Koo & Li,
+14 were removed prior to analysis. For participant three, it  2016). Further, individual trials are rated based on their
+was observed that the Strive™ sensor mounted on the right  95% CI, rather than the ICC value itself since this value
+limb showed no response for most samples (i.e. sEMG  is an estimate. Therefore, trials can be rated as “Good to
+amplitude=0 µV). For these trials, it is likely that this was  Excellent reliability” if the CI spans multiple categories
+a result of insufficient lubrication and consequently poor  (Koo & Li, 2016). For example, in Figure 4, the “Poor
+electrode contact with the skin, which has been observed  to Moderate ICC” category in the stacked bar chart indi-
+in other studies analyzing sEMG embedded into cloth-  cates a trial where the lower end of the 95% CI achieved
+ing (Desmarais & Giess, 2017; Lynn et al., 2018; Smith,  a Poor rating (0-0.5 ICC), and the upper end of the 95%
+Validity and Reliability of StriveTM Sense3 for Muscle Activity Monitoring During the Squat ­Exercise  5
+  a  b
+  c  d
+Figure 1. The preprocessing steps on a randomly selected trial corresponding to the measurements from participant 8, left leg with
+heavy weight. (a) Indicates original data from NoraxonTM, (b) Down-sampled data of NoraxonTM electrodes, (c) StriveTM and
+NoraxonTM data before cross-correlation, and (d) StriveTM and NoraxonTM data after cross-correlation
+CI achieved a Moderate rating (0.5-0.75 ICC). Thus, the  observed bias between the two systems for some trials, ICC
+corresponding category encompasses both ICC ranges for  analysis was performed for both normalized and absolute
+the trial. In the case of the “Good ICC” category, both ends  sEMG data. The data from both systems will be normalized
+of the 95% CI were within the Good rating range (0.75-  based on the maximal voluntary contraction (MVC) of each
+0.9 ICC), so only one range of ICC values are account-  trial.
+ed for in this category. ICC values were calculated using
+Pingouin, a PythonTM-based statistical package (Vallat,
+2018). Further, both absolute and normalized sEMG data  MSR − MSE
+  ICC (3,1) =
+have been analyzed.  MSR + ( K − 1) MSE (2)
+  A single-rating, consistency, two-way mixed-effects
+model was selected (Koo & Li, 2016). The formula for com-
+puting this form of the ICC model along with its respec-  RESULTS
+tive Shrout and Fleiss Convention is denoted in Equation 2,  Pearson correlation coefficient analysis produced results
+where MS_R is mean square for rows (in this case, pairs  ranging from “Poor” correlation to “Excellent” correla-
+of samples from both systems), MS_E mean square for er-  tion. ICC analysis of the 95% CI produced results ranging
+ror, and k is the number of measurements collected during  “Poor to Moderate” reliability to “Excellent” reliability.
+a trial. For the Shrout and Fleiss Convention (ICC (3,1)),  Normalizing the sEMG for both datasets improved the re-
+the number 3 indicates the model, while the number 1 indi-  sults to range from “Moderate” to “Excellent”. The StriveTM
+cates the model type (Koo & Li, 2016). A single rater type  Sense3 device proved to be both valid and reliable for most
+was used as the NoraxonTM system is considered a research  participants (93% of trials with “Good” correlation or high-
+grade tool that functions as a baseline for the experiment, so  er; 87% of absolute sEMG trials with “Good” reliability or
+the researchers are consequently not interested in the mean  higher, 98% of normalized sEMG trials with “Good” re-
+of the two rating systems. Consistency was chosen over ab-  liability or higher). Figure 2 depicts the range of r values
+solute agreement since there was an inherent bias observed  across each weight-limb combination, summarizing all par-
+between the two systems during the preprocessing phase  ticipants included in analysis. Figures 3 illustrates the mean
+(i.e. NoraxonTM output was generally higher than StriveTM  and standard deviations of the estimated ICC values across
+output). Lastly, the two-way mixed-effects model was se-  all weight-limb combinations, while Figure 4 demonstrates
+lected since the two rating systems are the only systems of  a distribution of each trial’s 95% ICC CI for all weight-limb
+interest for this study (Koo & Li, 2016). Since there was an  combinations.
+6  IJKSS 8(4):1-18
+Validity
+Figure 2. Boxplots of range of Pearson correlation coefficient (r) among weight and limb across all trials. Outlier trials are denoted by
+participant
+Reliability
+Figure 3. Mean ICC estimate, 95% CI lower and upper bounds for all trials measuring absolute and normalized sEMG. Note:
+Visualization is constricted to ICC >= 0.8 to depict relative differences between limb segments and weight amounts
+  a  b
+Figure 4. Stacked bar chart representing proportions of trials falling within certain ICC ratings based on upper and lower bounds of 95%
+CI when measuring (a) absolute sEMG data and (b) normalized sEMG data. Categories including ratings such as “Poor to Moderate”
+indicate CI spanned across multiple ICC ratings
+Validity and Reliability of StriveTM Sense3 for Muscle Activity Monitoring During the Squat ­Exercise  7
+DISCUSSION  could have been a result of displacement of the sensor in the
+  right leg in which it was unable to accurately detect muscle
+Pearson Correlation Coefficient (r) Analysis—Validity
+  activity until a certain muscle intensity was reached (Massó
+Strive™ measurements revealed a great capability in ex-  et al., 2010). Four percent of trials resulted in poor correla-
+plaining the variation among the Noraxon™ measurements  tion, which is likely either due to poor contact with the sen-
+evaluated by the r measurement. When observing individual  sor or improper fit of the shorts to the participant. This can
+trials, r values ranged from poor to excellent correlation. For  be expected as other studies have noted poor participant data
+the one trial that resulted in “Poor” correlation, it was appar-  due to poor contact with the skin (Desmarais & Giess, 2017;
+ent that there was poor contact between the sensor and the  Lynn et al., 2018; Saucier et al., 2019). For the purposes of
+muscle, which was likely a result of insufficient lubrication  this study, the researchers elected to keep these results in the
+of the sensor (Lynn et al., 2018; Smith, 2019). Pearson cor-  overall calculations as these issues will still be prevalent in a
+relation coefficient values for participants averaged across  real-world setting and need to be factored in when perform-
+all six weight-limb combinations showed an average r > 0.7,  ing analysis of sEMG data.
+indicating good correlation among all participants. The over-
+all mean r was equal to 0.883 when accounting for all trials
+  Application for Coaching Practitioners
+across all participants, indicating good correlation overall
+between the StriveTM and RG sEMG data. There is little to  Often in the validation of newer technology, the perspective
+compare to other literature as similar studies did not collect  of the practitioner is most critical as they are the frequent users
+measurements from two systems concurrently (Desmarais  of the solution. The last five authors of this study are coaches
+& Giess, 2017; Smith, 2019) and only compared peak, 95th  at the collegiate- and professional-level of Men’s Basketball
+percentile, and sum values rather than values collected over  and will use an autoethnographic frame to speak as practi-
+an entire movement (Lynn et al., 2018; Smith, 2019). Mean  tioners to the research findings, Strive™ Sense3 technolo-
+r values were lower for both limbs when participants squat-  gy, and human performance data collected from wearables
+ted with the light weight in comparison to the medium and  (Brown et al., 2020; Luczak, Burch V, Smith, Lamberth, &
+heavy weights. This could indicate that the StriveTM sensors  Carruth, 2020; Luczak, Burch V, Smith, Lamberth, Carruth,
+more accurately measure muscle activity when the partic-  et al., 2020; Luczak, Burch, et al., 2020; Shelly et al., 2020).
+ipant’s squat load is greater. Though this study is the first  The goal for any strength and conditioning coach (S&CC)
+of its kind in comparing two forms of sEMG concurrently  working with elite-level athletes is to design a program reg-
+over a progressive load during the squat exercise, previous  imen that best compliments and builds upon their existing
+research indicates that overall sEMG output increases with  skills and strengths while minimizing weaknesses and mit-
+higher loads, consequentially supporting the notion that  igating injuries. Coaches at this level should be experts in
+there is a greater amount of muscle activity to detect at high-  both their craft and the science behind human performance.
+er loads (Alkner et al., 2000).  Wearable solutions such as Strive combined with expertise
+  from data scientists will likely never replace the S&CC as
+  good coaches understand the context of the training and the
+Intraclass Correlation Coefficient (ICC) Analysis—
+  uniqueness of how each of their athletes are built and per-
+Reliability
+  form. Wearables and the data they produce are instead addi-

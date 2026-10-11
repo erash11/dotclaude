@@ -1,0 +1,1792 @@
+===== scripts/aliases.py
+"""Name normalization map for the Athletics Technology Inventory.
+
+EDIT THIS FILE, not the parser. Everything here is a judgement call about
+whether two strings are the same product. Keep it explicit so the mapping is
+reviewable and the whole pipeline is re-runnable when a fresh export lands.
+
+ALIAS: lowercased raw string (after light cleanup) -> canonical vendor name.
+PRODUCT_OF: canonical vendor -> category.
+UNCERTAIN: merges that are probably right but should be eyeballed by a human.
+"""
+
+# --- canonical vendor lookup -------------------------------------------------
+# key: lowercase, punctuation-stripped raw token. value: canonical vendor.
+ALIAS = {
+    # VALD
+    "vald": "VALD",
+    "vald hub": "VALD",
+    "vald dynamo": "VALD",
+    "vald forcedecks": "VALD",
+    "vald forcedecks app": "VALD",
+    "vald forcedecks jump app": "VALD",
+    "vald forceframe": "VALD",
+    "vald nordbord": "VALD",
+    "vald smartspeed": "VALD",
+    "vald forcedecks jump": "VALD",
+    "forcedecks": "VALD",
+    "forceframe": "VALD",
+    "nordbord": "VALD",
+    "nord board": "VALD",
+    "smartspeed": "VALD",
+    "force plate": "VALD",
+    "force frame": "VALD",
+    "hand held dynamometer": "VALD",
+    "dynamo": "VALD",
+
+    # Catapult
+    "catapult": "Catapult",
+    "catapult openfield cloud": "Catapult",
+    "catapult openfield console": "Catapult",
+    "catapult vector s7": "Catapult",
+    "thunder": "Catapult",
+    "thundercloud": "Catapult",
+    "hub pro": "Catapult",
+    "vault": "Catapult",
+    "vault catapult": "Catapult",
+
+    # Kitman
+    "kitman": "Kitman Labs",
+    "kitman labs": "Kitman Labs",
+    "kitman emr": "Kitman Labs",
+
+    # Teamworks
+    "teamworks": "Teamworks",
+    "teamworks suite": "Teamworks",
+    "teamworks suite hub compliance  recruiting": "Teamworks",
+    "teamworks player personnel": "Teamworks",
+    "arms": "Teamworks",
+    "telemetry": "Teamworks",
+    "hub": "Teamworks",
+
+    # other performance tech
+    "perch": "Perch",
+    "perch vbt": "Perch",
+    "kinexon": "Kinexon",
+    "polar": "Polar",
+    "polar team pro": "Polar",
+    "gymaware": "GymAware",
+    "tmg": "TMG",
+    "first beat": "Firstbeat",
+    "firstbeat": "Firstbeat",
+    "trackman": "Trackman",
+    "track man": "Trackman",
+    "hit trax": "HitTrax",
+    "hittrax": "HitTrax",
+    "s2 cognition": "S2 Cognition",
+    "blaze pods": "BlazePod",
+    "blazepod": "BlazePod",
+    "suji bfr units": "Suji BFR",
+    "light force unit laser therapy": "LightForce Laser",
+    "piezowave unit shockwave therapy": "PiezoWave",
+    "sfma": "SFMA",
+    "shiftwave": "Shiftwave",
+
+    # medical / EMR
+    "epic hospital emr platform": "Epic EMR",
+    "aegis drug testing": "Aegis",
+    "aegis": "Aegis",
+
+    # video / analytics
+    "dvsport": "DVSport",
+    "dvsport ingame video ncaa tv copies": "DVSport",
+    "synergy": "Synergy Sports",
+    "synergy sports": "Synergy Sports",
+    "pff": "Pro Football Focus",
+    "pro football focus": "Pro Football Focus",
+    "643 charts": "6-4-3 Charts",
+    "643": "6-4-3 Charts",
+    "6 4 3": "6-4-3 Charts",
+    "awre": "AWRE",
+    "verified athletics": "Verified Athletics",
+    "vytio": "Vytio",
+    "ansrs": "Ansrs",
+    "cognilize": "Cognilize",
+    "uc report": "UC Report",
+    "8k solutions": "8K Solutions",
+    "whistle dataviz": "Whistle",
+    "whistle": "Whistle",
+    "yakertech": "YakkerTech",
+    "kenpom": "KenPom",
+    "statspass opta stats": "StatsPass (Opta)",
+    "statspass": "StatsPass (Opta)",
+    "hd intelligence": "HD Intelligence",
+
+    # comms / media / marketing
+    "sidearm sports administration": "Sidearm Sports",
+    "ncaa live stats genius": "NCAA Live Stats (Genius)",
+    "ncaa live stats": "NCAA Live Stats (Genius)",
+    "presto sports": "PRESTO Sports",
+    "statbroadcast": "StatBroadcast",
+    "statinput": "StatInput",
+    "statcrew": "StatCrew",
+    "ncaa in arena utility": "NCAA In-Arena Utility",
+    "wsc sports arena": "WSC Sports",
+    "refquest": "RefQuest",
+    "spotlight": "Spotlight",
+    "fanword": "FanWord",
+    "inflcr": "INFLCR",
+    "greenfly": "Greenfly",
+    "listserv": "Listserv",
+    "qualtrics": "Qualtrics",
+    "topaz denoise": "Topaz DeNoise",
+    "canva": "Canva",
+
+    # compliance / admin / academic
+    "docusign": "DocuSign",
+    "slate admissions software": "Slate",
+    "slate": "Slate",
+    "ncaa apps lsdbi rsro cai etc": "NCAA Apps (LSDBi/RSRO/CAi)",
+    "ncaa apps": "NCAA Apps (LSDBi/RSRO/CAi)",
+    "prohibet gambling software": "Prohibet",
+    "hire right": "HireRight",
+    "banner": "Banner",
+    "donation exchange": "Donation Exchange",
+    "sic em compliance shared drive": "Sic Em Compliance Shared Drive",
+    "retain": "Retain",
+    "navigate": "Navigate",
+    "uachieve": "uAchieve",
+    "university advising system": "University Advising System",
+    "kahoot": "Kahoot",
+    "box": "Box",
+
+    # equipment / football ops
+    "equipment manager from sportsoft": "Sportsoft Equipment Manager",
+    "labelprintutility by sportsoft": "Sportsoft LabelPrintUtility",
+    "coachcomm x system": "CoachComm",
+    "coachcomm cobalt practice system": "CoachComm",
+    "gsc coach 2 player radios": "GSC Radios",
+    "riddell verifyt app": "Riddell InSite/Verifyt",
+    "muscocontrollink app": "Musco ControlLink",
+    "zebra zd220 label printer": "Zebra Label Printer",
+
+    # general office / AI
+    "microsoft excel": "Microsoft Office",
+    "microsoft word": "Microsoft Office",
+    "microsoft powerpoint": "Microsoft Office",
+    "microsoft office": "Microsoft Office",
+    "microsoft office suite": "Microsoft Office",
+    "microsoft power bi": "Microsoft Power BI",
+    "adobe photoshop": "Adobe Creative Suite",
+    "adobe indesign": "Adobe Creative Suite",
+    "adobe creative suite": "Adobe Creative Suite",
+    "adobe cloud": "Adobe Creative Suite",
+    "adobe suite express pro": "Adobe Creative Suite",
+    "adobe suite": "Adobe Creative Suite",
+    "firefox": "Firefox",
+    "apple music": "Apple Music",
+    "claude": "Claude",
+    "chatgpt": "ChatGPT",
+
+    # hardware
+    "laptop": "Laptop (generic)",
+    "macbook": "Laptop (generic)",
+    "surface pro": "Laptop (generic)",
+    "ipad": "Tablet (generic)",
+    "iphone": "Phone (generic)",
+    "baylor cell phones": "Phone (generic)",
+    "brother hp ricoh wireless printers": "Printer (generic)",
+    "brother hp wired printers": "Printer (generic)",
+}
+
+# --- category per canonical vendor -------------------------------------------
+CATEGORY = {
+    "VALD": "performance",
+    "Catapult": "performance",
+    "Kitman Labs": "athlete-management",
+    "Teamworks": "athlete-management",
+    "Perch": "performance",
+    "Kinexon": "performance",
+    "Polar": "performance",
+    "GymAware": "performance",
+    "TMG": "performance",
+    "Firstbeat": "performance",
+    "Trackman": "performance",
+    "HitTrax": "performance",
+    "S2 Cognition": "performance",
+    "BlazePod": "performance",
+    "Suji BFR": "medical",
+    "LightForce Laser": "medical",
+    "PiezoWave": "medical",
+    "SFMA": "medical",
+    "Shiftwave": "performance",
+    "Epic EMR": "medical",
+    "Aegis": "medical",
+    "DVSport": "video-analytics",
+    "Synergy Sports": "video-analytics",
+    "Pro Football Focus": "video-analytics",
+    "6-4-3 Charts": "video-analytics",
+    "AWRE": "video-analytics",
+    "Verified Athletics": "video-analytics",
+    "Vytio": "video-analytics",
+    "Ansrs": "video-analytics",
+    "Cognilize": "video-analytics",
+    "UC Report": "video-analytics",
+    "8K Solutions": "video-analytics",
+    "Whistle": "video-analytics",
+    "YakkerTech": "performance",
+    "KenPom": "video-analytics",
+    "StatsPass (Opta)": "video-analytics",
+    "HD Intelligence": "video-analytics",
+    "Sidearm Sports": "comms-media",
+    "NCAA Live Stats (Genius)": "comms-media",
+    "PRESTO Sports": "comms-media",
+    "StatBroadcast": "comms-media",
+    "StatInput": "comms-media",
+    "StatCrew": "comms-media",
+    "NCAA In-Arena Utility": "comms-media",
+    "WSC Sports": "comms-media",
+    "RefQuest": "comms-media",
+    "Spotlight": "comms-media",
+    "FanWord": "comms-media",
+    "INFLCR": "comms-media",
+    "Greenfly": "comms-media",
+    "Listserv": "comms-media",
+    "Qualtrics": "admin",
+    "Topaz DeNoise": "comms-media",
+    "Canva": "comms-media",
+    "DocuSign": "admin",
+    "Slate": "admin",
+    "NCAA Apps (LSDBi/RSRO/CAi)": "admin",
+    "Prohibet": "admin",
+    "HireRight": "admin",
+    "Banner": "admin",
+    "Donation Exchange": "admin",
+    "Sic Em Compliance Shared Drive": "admin",
+    "Retain": "academic",
+    "Navigate": "academic",
+    "uAchieve": "academic",
+    "University Advising System": "academic",
+    "Kahoot": "academic",
+    "Box": "admin",
+    "Sportsoft Equipment Manager": "equipment-ops",
+    "Sportsoft LabelPrintUtility": "equipment-ops",
+    "CoachComm": "equipment-ops",
+    "GSC Radios": "equipment-ops",
+    "Riddell InSite/Verifyt": "equipment-ops",
+    "Musco ControlLink": "facility",
+    "Zebra Label Printer": "hardware",
+    "Microsoft Office": "office-general",
+    "Microsoft Power BI": "office-general",
+    "Adobe Creative Suite": "office-general",
+    "Firefox": "office-general",
+    "Apple Music": "office-general",
+    "Claude": "ai-general",
+    "ChatGPT": "ai-general",
+    "Laptop (generic)": "hardware",
+    "Tablet (generic)": "hardware",
+    "Phone (generic)": "hardware",
+    "Printer (generic)": "hardware",
+}
+
+# Categories that plausibly touch student-athlete information. This is the
+# screening list that feeds the Detailed (17-question) form second pass.
+ATHLETE_DATA_CATEGORIES = {
+    "performance",
+    "medical",
+    "athlete-management",
+    "video-analytics",
+    "academic",
+}
+
+# Merges worth a human eyeball before they go in a report.
+UNCERTAIN = {
+    "6-4-3 Charts": "Merged '643 Charts' (Baseball) and '6-4-3' (Softball). "
+                    "Confirm these are the same product.",
+    "VALD": "Athletic Medicine listed 'Force Plate', 'Force Frame', "
+            "'Nord Board', 'Hand Held Dynamometer' as sub-bullets under VALD. "
+            "Read as VALD products, not separate vendors.",
+    "Whistle": "Written as 'Whistle (DataViz)'. Confirm vendor name.",
+    "Riddell InSite/Verifyt": "Written 'Riddell Verifyt App'. Confirm product name.",
+}
+
+# =============================================================================
+# Additions from the 2026-08-29 export (37 responses, up from 15).
+# Kept as a separate block so the first-pass mapping stays readable.
+# =============================================================================
+
+ALIAS.update({
+    # --- Adobe -------------------------------------------------------------
+    "adobe": "Adobe Creative Suite",
+    "after effects": "Adobe Creative Suite",
+    "illustrator": "Adobe Creative Suite",
+    "indesign": "Adobe Creative Suite",
+    "photoshop": "Adobe Creative Suite",
+    "premiere": "Adobe Creative Suite",
+
+    # --- Microsoft ---------------------------------------------------------
+    "microsoft": "Microsoft Office",
+    "microsoft suite": "Microsoft Office",
+    "excel": "Microsoft Office",
+    "word": "Microsoft Office",
+    "powerpoint": "Microsoft Office",
+    "one note": "Microsoft Office",
+    "onenote": "Microsoft Office",
+    "outlook": "Microsoft Office",
+    "teams": "Microsoft Teams",
+    "onedrive": "Microsoft OneDrive",
+    "microsoft copilot": "Microsoft Copilot",
+
+    # --- other general / productivity --------------------------------------
+    "google drive": "Google Drive",
+    "tableau": "Tableau",
+    "zoom": "Zoom",
+    "notion": "Notion",
+    "asana": "Asana",
+    "todoist": "Todoist",
+    "padlet": "Padlet",
+    "sling": "Sling",
+    "teamup master calendar": "TeamUp",
+    "teamup": "TeamUp",
+    "groupme": "GroupMe",
+    "whatsapp": "WhatsApp",
+    "gemini": "Gemini",
+
+    # --- performance / sports science ---------------------------------------
+    "catapult gps": "Catapult",
+    "dynamo lite": "VALD",
+    "suji": "Suji BFR",
+    "boost treadmills": "Boost Treadmills",
+    "calera core device": "Calera CORE",
+    "nix": "Nix Biosensors",
+    "polaris gps": "Polaris GPS",
+    "xps": "XPS Network",
+    "tw nutrition": "Teamworks",
+    "teamworks hub": "Teamworks",
+
+    # --- medical ------------------------------------------------------------
+    "c3 logix": "C3 Logix",
+    "point n click": "Point N Click",
+    "point n click electronic medical records software": "Point N Click",
+    "xo armor": "XO Armor",
+    "hologic": "Hologic DXA",
+    "dxa machine and hologic software": "Hologic DXA",
+
+    # --- video / analytics ---------------------------------------------------
+    "hudl statsbomb": "Hudl",
+    "hudl wyscout": "Hudl",
+    "hudl focus": "Hudl",
+    "hudl": "Hudl",
+    "kinovea": "Kinovea",
+    "spiideo": "Spiideo",
+    "onform": "OnForm",
+    "3 step sports uc report": "UC Report",
+    "dataviz": "Whistle",
+    "gps dataviz": "Whistle",
+
+    # --- recruiting / results databases --------------------------------------
+    "athletic net hs results": "Athletic.net",
+    "athletic net": "Athletic.net",
+    "milesplit": "MileSplit",
+    "tilastopaja": "Tilastopaja",
+    "tgs recruiting": "TGS Recruiting",
+    "alliance athletes": "Alliance Athletes",
+    "atheltone": "AthleteOne",
+    "athleteone": "AthleteOne",
+
+    # --- ticketing / revenue / marketing --------------------------------------
+    "paciolan": "Paciolan",
+    "fevo": "FEVO",
+    "shift4shop": "Shift4Shop",
+    "salesforce": "Salesforce",
+    "eloqua": "Eloqua",
+    "sidearm website management": "Sidearm Sports",
+
+    # --- admin / operations ---------------------------------------------------
+    "concur": "Concur",
+    "helper helper": "HelperHelper",
+    "helperhelper": "HelperHelper",
+    "door dash": "DoorDash",
+    "doordash": "DoorDash",
+    "ez cater": "ezCater",
+    "ezcater": "ezCater",
+    "sportsoft to help track orders and inventory of apparel":
+        "Sportsoft Equipment Manager",
+    "box folder for practice video storage": "Box",
+
+    # --- facility -------------------------------------------------------------
+    "musco lighting control": "Musco ControlLink",
+    "earth networks": "Earth Networks",
+    "sound director": "Sound Director",
+    "web based control systems cbord access control": "CBORD Access Control",
+    "cbord access control": "CBORD Access Control",
+
+    # --- social media ---------------------------------------------------------
+    "instagram": "Social Media Platforms",
+    "social media apps primarily": "Social Media Platforms",
+    "discontinued accounts for tiktok and x": "Social Media Platforms",
+    "greenfly app": "Greenfly",
+    "capcut app": "CapCut",
+    "capcut": "CapCut",
+
+    # --- hardware -------------------------------------------------------------
+    "apple laptops": "Laptop (generic)",
+    "laptops": "Laptop (generic)",
+    "dell": "Laptop (generic)",
+    "dell computers": "Laptop (generic)",
+    "mac": "Laptop (generic)",
+    "mac computer": "Laptop (generic)",
+    "ipads": "Tablet (generic)",
+    "ipads for video": "Tablet (generic)",
+    "tablets": "Tablet (generic)",
+    "cell phones": "Phone (generic)",
+    "various iphone recording devices": "Phone (generic)",
+})
+
+CATEGORY.update({
+    "Microsoft Teams": "productivity",
+    "Microsoft OneDrive": "productivity",
+    "Microsoft Copilot": "ai-general",
+    "Google Drive": "productivity",
+    "Tableau": "office-general",
+    "Zoom": "productivity",
+    "Notion": "productivity",
+    "Asana": "productivity",
+    "Todoist": "productivity",
+    "Padlet": "productivity",
+    "Sling": "productivity",
+    "TeamUp": "productivity",
+    "GroupMe": "productivity",
+    "WhatsApp": "productivity",
+    "Gemini": "ai-general",
+
+    "Boost Treadmills": "performance",
+    "Calera CORE": "performance",
+    "Nix Biosensors": "performance",
+    "Polaris GPS": "performance",
+    "XPS Network": "athlete-management",
+
+    "C3 Logix": "medical",
+    "Point N Click": "medical",
+    "XO Armor": "medical",
+    "Hologic DXA": "medical",
+
+    "Hudl": "video-analytics",
+    "Kinovea": "video-analytics",
+    "Spiideo": "video-analytics",
+    "OnForm": "video-analytics",
+
+    "Athletic.net": "recruiting",
+    "MileSplit": "recruiting",
+    "Tilastopaja": "recruiting",
+    "TGS Recruiting": "recruiting",
+    "Alliance Athletes": "recruiting",
+    "AthleteOne": "athlete-management",
+
+    "Paciolan": "ticketing",
+    "FEVO": "ticketing",
+    "Shift4Shop": "ticketing",
+    "Salesforce": "admin",
+    "Eloqua": "admin",
+
+    "Concur": "admin",
+    "HelperHelper": "admin",
+    "DoorDash": "food-travel",
+    "ezCater": "food-travel",
+
+    "Earth Networks": "facility",
+    "Sound Director": "facility",
+    "CBORD Access Control": "facility",
+
+    "Social Media Platforms": "social-media",
+    "CapCut": "comms-media",
+})
+
+# Categories that plausibly touch student-athlete information, extended.
+ATHLETE_DATA_CATEGORIES |= {"recruiting"}
+
+# Free-text that is not a technology name: section headers the respondent typed,
+# sentence fragments, physical equipment, and parse leftovers. Routed to an
+# explicit "excluded" bucket so clean/unmapped_review.csv keeps meaning
+# "a real product I could not identify".
+NOISE = {
+    "software", "hardware", "devices", "phone apps", "etc", "dance",
+    "two 11 inch and one 13 inch", "footwear", "helmets", "jerseys",
+    "all staff members have a laptop and monitor to hook up at their desk we "
+    "have 2 tvs in our practice gym helps with airplay and feedback during "
+    "practices",
+    "everything we have has gone through its approval",
+    "trying to get onform approved",
+}
+
+# Merges and readings from the 2026-08-29 pass that want a human eyeball.
+UNCERTAIN.update({
+    "Whistle": "Written as 'Whistle (DataViz)' by Athletics Performance, and as "
+               "bare 'DataViz' / 'GPS DataViz' by others. Assumed to be the same "
+               "product. Confirm.",
+    "Hudl": "Merged 'HUDL Statsbomb', 'HUDL WyScout' and 'HUDL Focus'. Same "
+            "vendor, three different products. Split if the distinction matters.",
+    "Teamworks": "'TW Nutrition' and 'Teamworks Hub' folded in as Teamworks "
+                 "modules. Confirm TW = Teamworks.",
+    "VALD": "'Dynamo Lite' folded in as a VALD product, alongside the earlier "
+            "sub-bullet reading.",
+    "UC Report": "Written '3 Step Sports (UC Report)'. 3 Step Sports is the "
+                 "vendor; UC Report the product.",
+    "Point N Click": "Two spellings, one with 'Electronic medical records "
+                     "software' appended.",
+    "Social Media Platforms": "Bucketed Instagram, TikTok, X and 'social media "
+                              "apps primarily' together. Split if named "
+                              "platforms matter.",
+})
+
+# Products named but not identifiable from the response text alone.
+# Left unmapped on purpose so they show up in clean/unmapped_review.csv.
+# Eric is checking what SCRL app and JABA are (Brand Engagement, 2026-08-29).
+UNIDENTIFIED_NOTE = {
+    "JABA", "SCRL app",
+}
+
+# Identified by Eric, 2026-08-29: a stipend service that gives student-athletes
+# meal money to spend at selected local vendors. It therefore carries athlete
+# identity and spending records, which is why it gets its own category rather
+# than sitting under food-travel with DoorDash and ezCater.
+ALIAS.update({"red card": "Red Card"})
+CATEGORY.update({"Red Card": "athlete-stipend"})
+ATHLETE_DATA_CATEGORIES |= {"athlete-stipend"}
+UNCERTAIN.update({
+    "Red Card": "Student-athlete meal-money stipend, redeemable at selected "
+                "local vendors. Holds athlete identity and transaction records, "
+                "so it belongs in the detailed second pass even though it is "
+                "not a performance system.",
+})
+
+# -----------------------------------------------------------------------------
+# Broadcast and big-screen stack. Recovered only after the comma splitter was
+# taught to ignore separators inside parentheses -- before that, this entire
+# response collapsed into one unparsed blob.
+#
+# Note: the respondent wrote one run-on list, so the group labels do not all
+# hold. Grass Valley, Calrec, Adder, EditShare, Riedel, Daktronics and ANC are
+# their own vendors, not Evertz products. Each is mapped explicitly rather than
+# inherited from the 'Evertz systems:' prefix.
+# -----------------------------------------------------------------------------
+ALIAS.update({
+    "ross video": "Ross Video",
+    "xpression": "Ross Video",
+    "tessera": "Ross Video",
+    "piero": "Ross Video",
+    "evertz": "Evertz",
+    "routing": "Evertz",
+    "replay": "Evertz",
+    "grass valley switchers and cameras": "Grass Valley",
+    "grass valley": "Grass Valley",
+    "calrec audio consoles": "Calrec",
+    "calrec": "Calrec",
+    "adder kvm": "Adder",
+    "editshare": "EditShare",
+    "riedel simply live": "Riedel",
+    "riedel": "Riedel",
+    "daktronics displays and control systems": "Daktronics",
+    "daktronics": "Daktronics",
+    "anc displays": "ANC",
+    "haivision": "Haivision",
+    "vyvx": "Vyvx",
+    "ltn": "LTN",
+    "switch": "Switch",
+
+    # stragglers
+    "3 step sports": "UC Report",
+    "championship analytics": "Championship Analytics",
+    "tracking football": "Tracking Football",
+    "athelteone": "AthleteOne",
+})
+
+CATEGORY.update({
+    "Ross Video": "broadcast",
+    "Evertz": "broadcast",
+    "Grass Valley": "broadcast",
+    "Calrec": "broadcast",
+    "Adder": "broadcast",
+    "EditShare": "broadcast",
+    "Riedel": "broadcast",
+    "Daktronics": "broadcast",
+    "ANC": "broadcast",
+    "Haivision": "broadcast",
+    "Vyvx": "broadcast",
+    "LTN": "broadcast",
+    "Switch": "broadcast",
+    "Championship Analytics": "video-analytics",
+    "Tracking Football": "recruiting",
+})
+
+NOISE |= {"so they have the list already"}
+
+UNCERTAIN.update({
+    "Evertz": "Only 'Routing (Magnum)' and 'replay (Dreamcatcher)' are read as "
+              "Evertz. The rest of that run-on list is mapped to its own vendor.",
+    "Switch": "Listed among video transport vendors alongside Haivision, Vyvx "
+              "and LTN. Assumed to be Switch Media, not the word 'switch'.",
+})
+
+===== scripts/build_docx.py
+#!/usr/bin/env python3
+"""Build the full findings report for the technology inventory.
+
+Run (open Microsoft Word first, so the PDF can be exported from the .docx):
+    uv run --with python-docx --with pypdfium2 python3 scripts/build_docx.py
+
+This is the analyst's working document - the long one. The one-page executive
+summary that gets forwarded is built by scripts/build_exec_summary.py.
+
+Every table is read from clean/*.csv so the document cannot drift from the
+data. Prose lives here rather than being parsed out of the HTML report, because
+the two formats want different phrasing.
+
+The look comes from ~/DEV/Baylor_Doc_Style, which is measured from
+Software_and_Technology_Management_Framework_DRAFT.docx - the house style Eric
+chose on 2026-08-30. Do not restyle this file directly; change the module.
+
+House rules from Kenny Boyd's review history still apply:
+  - Document status visible on every page. The house style carries it in the
+    footer and the meta block rather than a running header.
+  - No language implying the department was previously incompetent. Findings
+    are written as capability the framework would add, not as failure.
+  - Neutral, descriptive labels. Nothing that ranks a unit.
+"""
+
+import csv
+import os
+import subprocess
+import sys
+
+sys.path.insert(0, "/Users/kristinarash/DEV/Baylor_Doc_Style")
+from baylor_docstyle import BaylorDoc  # noqa: E402
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CLEAN = os.path.join(ROOT, "clean")
+DELIV = os.path.join(ROOT, "deliverables")
+STEM = "Tech_Inventory_FINDINGS_ER_2026-08-29"
+
+TITLE = "Athletics Technology Inventory"
+DECK = ("Thirty-seven submissions across the department. The finding is not "
+        "that there is too much technology — it is that almost none of it is "
+        "shared.")
+STATUS = "Interim — collection open to 29 September 2026"
+
+PRETTY = {"video-analytics": "Video & analytics", "comms-media": "Comms & media",
+          "office-general": "Office general", "equipment-ops": "Equipment ops",
+          "athlete-management": "Athlete management", "ai-general": "AI tools",
+          "food-travel": "Food & travel", "social-media": "Social media",
+          "athlete-stipend": "Athlete stipend", "uncategorised": "Unidentified"}
+
+
+# --------------------------------------------------------------------------
+# data
+# --------------------------------------------------------------------------
+def load():
+    def rd(name):
+        with open(os.path.join(CLEAN, name), encoding="utf-8") as f:
+            return list(csv.DictReader(f))
+
+    master = [r for r in rd("tech_master.csv") if r["category"] != "excluded"]
+    long = [r for r in rd("tech_inventory_long.csv") if r["category"] != "excluded"]
+    return (master, long, rd("coverage.csv"), rd("stopped_using.csv"),
+            rd("unmapped_review.csv"))
+
+
+# --------------------------------------------------------------------------
+def main():
+    master, long, cov, stopped, unmapped = load()
+
+    n_resp = len({r["response_id"] for r in long}) + 1   # + the prose response
+    units_total = len(cov)
+    units_in = len([r for r in cov if r["status"] in ("responded", "MULTIPLE")])
+    units_out = [r["unit"] for r in cov
+                 if r["status"] == "NO RESPONSE" and r["unit"] != "Other"]
+    n_products = len(master)
+    n_athlete = len([r for r in master if r["athlete_data_likely"] == "Y"])
+    n_single = len([r for r in master if int(r["unit_count"]) == 1])
+    n_mentions = len(long)
+
+    d = BaylorDoc(TITLE, deck=DECK, status=STATUS)
+
+    d.meta([
+        ["Status", "**Interim** — collection stays open to the department "
+                   "soft deadline of 29 September 2026"],
+        ["Date", "29 August 2026"],
+        ["Source", "Microsoft Forms — Quick Inventory (5 questions), "
+                   "export of 29 August 2026"],
+        ["Prepared by", "Applied Performance, Baylor Athletics"],
+        ["Companion", "Athletics Technology Inventory — Executive Summary "
+                      "(one page)"],
+    ])
+
+    d.callout(
+        "Two deadlines, not one",
+        "29 August was Applied Performance's own deadline. The all-staff "
+        "meeting on 24 August set a department-wide soft deadline of "
+        "**29 September**, with unit leaders assigning staff to complete the "
+        "survey. Every figure in this document is an interim read at the "
+        "earlier date, and the units still to respond have a month to run.")
+
+    # --- 1 -----------------------------------------------------------------
+    d.section("At a glance — where the inventory stands")
+    d.table(
+        ["Measure", "Figure", "Note"],
+        [["Submissions to date", n_resp,
+          "36 listed technology; one was a new hire awaiting equipment"],
+         ["Units responding", "{} of {}".format(units_in, units_total),
+          "Interim — five units still outstanding, one month to run"],
+         ["Distinct products", n_products,
+          "Resolved from {} separate mentions".format(n_mentions)],
+         ["Products touching athlete data", n_athlete,
+          "{}% of the estate, by category — a screening list, not a "
+          "confirmed count".format(round(100 * n_athlete / n_products))],
+         ["Products used by a single unit", n_single,
+          "{}% of the estate".format(round(100 * n_single / n_products))]],
+        widths=[2.0, 0.9, 3.8], numeric_cols=(1,))
+
+    # --- 2 -----------------------------------------------------------------
+    d.section("Coverage — who has responded")
+    d.para("Twenty-seven of thirty-three units have responded so far. Five are "
+           "still outstanding, and one of them holds the contract records.")
+
+    d.subhead("Still outstanding")
+    d.para("  ·  ".join("**{}**".format(u) for u in units_out), space_after=4)
+    d.para("The Business Office is the one worth a direct ask. It holds the "
+           "contract records this inventory is designed to be read against.")
+
+    d.subhead("Units that submitted more than once")
+    multi = [(r["unit"], r["responses"]) for r in cov if r["status"] == "MULTIPLE"]
+    d.para(", ".join("{} ({})".format(u, n) for u, n in multi) + ".",
+           space_after=4)
+    d.para("These are different people describing different slices of the same "
+           "unit. They are kept and tagged rather than merged.")
+
+    d.subhead("The unit list differs from the original form spec")
+    d.para("The live Microsoft Form offers units the written spec does not, and "
+           "spells two of them differently — which is why Track & Field / Cross "
+           "Country and Acrobatics & Tumbling initially appeared as "
+           "non-responses. Those spellings are reconciled here. The working "
+           "list is {} units and is worth confirming against the live form."
+           .format(units_total))
+
+    # --- 3 -----------------------------------------------------------------
+    d.section("Coverage detail — response count by unit")
+    rows = []
+    for r in cov:
+        n = int(r["responses"])
+        label = ("Not yet in" if n == 0 else
+                 "Responded" if n == 1 else "{} people".format(n))
+        rows.append([r["unit"], n, label])
+    d.table(["Unit", "Responses", "Status"], rows,
+            widths=[3.4, 1.0, 2.3], numeric_cols=(1,))
+
+    # --- 4 -----------------------------------------------------------------
+    d.section("The estate — three quarters of it sits with one unit")
+    d.para("{} of {} products were named by a single unit. That long tail — not "
+           "the vendor overlap — is the finding. It is the population no "
+           "central process currently sees.".format(n_single, n_products))
+    d.para("It includes AI tools adopted locally (Claude, ChatGPT, Gemini, "
+           "Microsoft Copilot), a scatter of productivity apps (Notion, Asana, "
+           "Todoist, Padlet, Sling, GroupMe, WhatsApp, TeamUp), and one-off "
+           "athlete-facing systems (Nix Biosensors, Calera CORE, Boost "
+           "Treadmills, C3 Logix, XO Armor, Hologic DXA).")
+
+    d.subhead("Distinct products by category")
+    cats = {}
+    for r in master:
+        cats[r["category"]] = cats.get(r["category"], 0) + 1
+    d.table(["Category", "Products"],
+            [[PRETTY.get(k, k.capitalize()), v]
+             for k, v in sorted(cats.items(), key=lambda x: -x[1])],
+            widths=[3.0, 1.0], numeric_cols=(1,))
+
+    d.subhead("Products used by three or more units")
+    d.table(["Product", "Units", "Category"],
+            [[r["canonical"], int(r["unit_count"]),
+              PRETTY.get(r["category"], r["category"].capitalize())]
+             for r in master if int(r["unit_count"]) >= 3],
+            widths=[2.6, 0.9, 2.2], numeric_cols=(1,))
+    d.para("**Teamworks, at twelve units, is the only thing close to a "
+           "department-wide system.** Everything below it is departmental at "
+           "best.", space_before=3)
+
+    # --- 5 -----------------------------------------------------------------
+    d.section("Overlap — four vendors, one job")
+    d.para("The consolidation conversation is now answerable with counts "
+           "rather than estimates.")
+    d.table(["Job", "Vendors in use"],
+            [["Athlete tracking",
+              "Catapult (6 units), Kinexon (3), Polar (1); Firstbeat arriving"],
+             ["Force & speed testing", "VALD (6), Perch (3), GymAware, TMG"],
+             ["Athlete management",
+              "Teamworks (12), Kitman Labs (6), XPS Network"],
+             ["Video & analytics",
+              "Hudl, DVSport, Synergy, Spiideo, Kinovea and 14 more"]],
+            widths=[1.9, 4.8])
+
+    # --- 6 -----------------------------------------------------------------
+    d.section("Open items — seven products retired, no recorded disposition")
+    d.para("Every retirement in the last twelve months left athlete data "
+           "somewhere. The short form did not ask where, so the answer is "
+           "simply not captured anywhere yet. Confirming what each vendor "
+           "retained is the most concrete, closeable action in this dataset.")
+    d.table(["Unit", "Product", "Vendor retention"],
+            [[r["unit"], r["canonical"], "Not asked"] for r in stopped],
+            widths=[2.3, 2.3, 2.1])
+
+    d.subhead("Polar is retired by two units and still running in a third")
+    d.para("Athletics Performance and Basketball (W) both stopped using Polar "
+           "Team Pro. Basketball (M) lists Polar as currently in use. Surfacing "
+           "that automatically, and confirming what a vendor retains when a "
+           "unit stops using a product, are two capabilities the framework "
+           "would add.")
+
+    d.subhead("Coming online")
+    d.bullets([
+        "**Softball** — Trackman, about to be installed.",
+        "**Athletics Performance** — Firstbeat, purchased, not yet in use.",
+    ])
+    d.para("Neither can be confirmed against a documented vetting step, "
+           "because the short form did not ask.")
+
+    # --- 7 -----------------------------------------------------------------
+    d.section("Signal — one unit answered the underlying question unprompted")
+    d.quote("Everything we have has gone through ITS approval, so they have "
+            "the list already.")
+    d.para("Broadcast and Big Screens, who then listed thirteen vendors: "
+           "Ross Video, Evertz, Grass Valley, Calrec, Adder, EditShare, "
+           "Riedel, Daktronics, ANC, Haivision, Vyvx, LTN and Switch.")
+    d.para("That list is worth checking against the ITS IDEA form history. If "
+           "it matches, it is a working baseline for what full compliance "
+           "looks like in practice.")
+
+    # --- 8 -----------------------------------------------------------------
+    d.section("Limits — what this data cannot answer")
+    d.para("The short form asked five questions. Four things the framework "
+           "needs were not among them.")
+    d.bullets([
+        "**Does it involve student-athlete information, and what kind?** The "
+        "{}-product figure is a category inference, not a respondent answer. "
+        "Treat it as a screening list.".format(n_athlete),
+        "**How is it paid for, and when does the contract end?** Not asked, so "
+        "no cross-check against Business Office records is possible from this "
+        "data alone.",
+        "**Did it go through the ITS IDEA form?** Not asked, so the bypass "
+        "rate remains an estimate rather than a measured number.",
+        "**Does a vendor still hold data from a discontinued product?** Not "
+        "asked. Seven retirements, no dispositions recorded.",
+    ])
+    d.para("The seventeen-question detailed form was written to close exactly "
+           "these four gaps. It has not run yet.")
+
+    # --- 9 -----------------------------------------------------------------
+    d.section("Next — recommended steps")
+    d.numbered([
+        "**Follow up with five units before 29 September.** Golf (M), "
+        "Tennis (M), Tennis (W), Volleyball and the Business Office.",
+        "**Close the Polar loop.** Two units retired it, a third still runs "
+        "it, and what the vendor retained is not recorded. Small, concrete, "
+        "demonstrable.",
+        "**Run the detailed form as a targeted second pass.** Aimed at the {} "
+        "athlete-data candidates this analysis identifies, rather than at all "
+        "{} products or at every unit again.".format(n_athlete, n_products),
+        "**Ask ITS for the IDEA form history and compare.** That produces the "
+        "bypass number from two independent sources instead of a survey "
+        "question.",
+        "**Decide on the long tail.** {} single-unit products is a policy "
+        "question rather than a data question, and it is the one this exercise "
+        "exists to raise.".format(n_single),
+    ])
+
+    # --- 10 ----------------------------------------------------------------
+    d.section("Method — how to read these numbers")
+    d.para("Free-text answers were parsed mechanically. Every decision about "
+           "whether two strings name the same product is written down and "
+           "reversible, and unrecognised names are held for review rather than "
+           "assigned to a guess.")
+
+    d.subhead("Judgement calls worth confirming")
+    d.bullets([
+        "**Hudl** — “HUDL Statsbomb”, “HUDL WyScout” and “HUDL Focus” merged. "
+        "Same vendor, three products. This is why Soccer appears as both using "
+        "and having stopped Hudl.",
+        "**Whistle** — one unit wrote “Whistle (DataViz)”, others wrote bare "
+        "“DataViz”. Assumed to be the same product.",
+        "**Teamworks** — “TW Nutrition” and “Teamworks Hub” folded in as "
+        "modules.",
+        "**6-4-3 Charts** — Baseball's “643 Charts” and Softball's “6-4-3” "
+        "merged.",
+        "**Red Card** — the student-athlete meal-money stipend. It carries "
+        "athlete identity and transaction records, so it is counted as athlete "
+        "data despite not being a performance system.",
+        "**Evertz** — the broadcast answer was one run-on list. Only two items "
+        "read as Evertz; the rest map to their own vendors.",
+    ])
+
+    d.subhead("Names still to be identified")
+    if unmapped:
+        d.table(["Named", "By"],
+                [[r["raw_item"], r["unit"]] for r in unmapped],
+                widths=[2.4, 2.6])
+        d.para("Out of {} raw mentions, these are the only names that could "
+               "not be resolved to a known product."
+               .format(n_mentions + 14), space_before=2)
+    else:
+        d.para("None outstanding.")
+
+    d.small("Every figure in this document regenerates from the raw export. "
+            "Respondent names and email addresses remain in the source file "
+            "and appear nowhere in this report.")
+
+    os.makedirs(DELIV, exist_ok=True)
+    docx_path = d.save(os.path.join(DELIV, STEM + ".docx"))
+    print("wrote", docx_path)
+    print("units {}/{} · products {} · athlete-data {} · single-unit {}"
+          .format(units_in, units_total, n_products, n_athlete, n_single))
+
+    pdf_path = os.path.join(DELIV, STEM + ".pdf")
+    n = word_pdf(docx_path, pdf_path)
+    if n is None:
+        print("[warn] Word did not answer, so no PDF was exported and the .pdf "
+              "beside this file is stale. Open Microsoft Word and re-run.")
+    else:
+        print("wrote", pdf_path, "(from Word) ->", n, "page(s)")
+
+
+def word_pdf(docx_path, pdf_path):
+    """Export the PDF from Word so it matches the .docx exactly.
+
+    Word blocks on an invisible dialog when the app is not already open, so
+    this is best-effort: None means the PDF was not refreshed.
+    """
+    script = '''
+    tell application "Microsoft Word"
+      open POSIX file "{docx}"
+      set d to active document
+      set n to (compute statistics d statistic statistic pages)
+      save as d file name POSIX file "{pdf}" file format format PDF
+      close d saving no
+      return n
+    end tell
+    '''.format(docx=docx_path, pdf=pdf_path)
+    try:
+        r = subprocess.run(["osascript", "-e", script],
+                           capture_output=True, text=True, timeout=180)
+    except subprocess.TimeoutExpired:
+        return None
+    if r.returncode != 0:
+        return None
+    try:
+        return int(r.stdout.strip())
+    except ValueError:
+        return None
+
+
+if __name__ == "__main__":
+    main()
+===== scripts/build_exec_summary.py
+#!/usr/bin/env python3
+"""Build the one-page executive summary of the technology inventory.
+
+Run (open Microsoft Word first - see below):
+    uv run --with python-docx --with pypdfium2 python3 scripts/build_exec_summary.py
+
+This is the leadership-facing document. It exists because Kenny Boyd asked, in
+the 13 August technology review, for "the more simple and concise, almost like
+one page checklist". The findings report stays as the analyst's working
+document; this is the one that gets forwarded.
+
+Two outputs, one source:
+
+    content()  ->  the document, as data
+       |-> render_docx()   the Word file, in the house style
+       |-> render_html()   a print twin, used only when Word is unavailable
+
+Every number is read from clean/*.csv, and the prose is written once in
+content(), so the .docx and the .pdf cannot disagree with each other or drift
+from the findings report.
+
+The look comes from ~/DEV/Baylor_Doc_Style - see that module for where the
+house style is measured from and what not to change.
+
+ONE PAGE IS ENFORCED, NOT TRUSTED
+---------------------------------
+Open Microsoft Word before running this. The build asks Word for the page count
+and exports the PDF from the .docx itself, so the two files match exactly. If
+Word is closed it blocks on a dialog the script cannot see; the build then falls
+back to the HTML twin and says so. Do not believe the twin's page count - an
+earlier version of this document passed the twin at one page and was two pages
+in Word.
+"""
+
+import csv
+import os
+import subprocess
+import sys
+
+sys.path.insert(0, "/Users/kristinarash/DEV/Baylor_Doc_Style")
+from baylor_docstyle import BaylorDoc  # noqa: E402
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CLEAN = os.path.join(ROOT, "clean")
+DELIV = os.path.join(ROOT, "deliverables")
+STEM = "Tech_Inventory_EXEC_SUMMARY_ER_2026-08-29"
+
+TITLE = "Athletics Technology Inventory"
+DECK = ("What the department runs, who runs it, and what is still outstanding "
+        "at the interim date.")
+STATUS = "Interim — collection open to 29 September 2026"
+
+TEXT_WIDTH = 6.7        # Letter less the house 0.90in side margins
+
+# "Other" was an option on the form that nobody ever selected, and it looks
+# like a leftover from the draft list. It is not a unit that owes a response.
+PHANTOM_UNITS = {"Other"}
+
+
+# --------------------------------------------------------------------------
+# data
+# --------------------------------------------------------------------------
+def figures():
+    def rd(name):
+        with open(os.path.join(CLEAN, name), encoding="utf-8") as f:
+            return list(csv.DictReader(f))
+
+    master = [r for r in rd("tech_master.csv") if r["category"] != "excluded"]
+    long = [r for r in rd("tech_inventory_long.csv") if r["category"] != "excluded"]
+    stopped = rd("stopped_using.csv")
+    cov = [r for r in rd("coverage.csv") if r["unit"] not in PHANTOM_UNITS]
+
+    units_total = len(cov)
+    units_in = len([r for r in cov if r["status"] in ("responded", "MULTIPLE")])
+    outstanding = [r["unit"] for r in cov if r["status"] == "NO RESPONSE"]
+
+    n_products = len(master)
+    n_athlete = len([r for r in master if r["athlete_data_likely"] == "Y"])
+    n_single = len([r for r in master if int(r["unit_count"]) == 1])
+    top = max(master, key=lambda r: int(r["unit_count"]))
+
+    # One respondent wrote prose rather than a product list - a new hire still
+    # waiting on a laptop - so submissions is one more than parsed responses.
+    n_sub = len({r["response_id"] for r in long}) + 1
+
+    return dict(
+        units_total=units_total, units_in=units_in, outstanding=outstanding,
+        n_outstanding=len(outstanding),
+        pct_units=round(100 * units_in / units_total),
+        n_sub=n_sub, n_mentions=len(long), n_products=n_products,
+        n_athlete=n_athlete, pct_athlete=round(100 * n_athlete / n_products),
+        n_single=n_single, pct_single=round(100 * n_single / n_products),
+        top_name=top["canonical"], top_units=int(top["unit_count"]),
+        n_stopped=len(stopped),
+    )
+
+
+# --------------------------------------------------------------------------
+# the document, as data
+# --------------------------------------------------------------------------
+def content(f):
+    """Everything the reader sees. Both renderers consume this and nothing else.
+
+    ** ** marks inline bold in every string.
+    """
+    return dict(
+        title=TITLE, deck=DECK, status=STATUS,
+
+        meta=[
+            ["Status", "**Interim** — collection stays open to the department "
+                       "soft deadline of 29 September 2026"],
+            ["Date", "29 August 2026"],
+            ["Prepared by", "Applied Performance, Baylor Athletics"],
+            ["Companion", "Athletics Technology Inventory — Findings "
+                          "(full report)"],
+        ],
+
+        sections=[
+            dict(kind="para", head="What we asked, and where it stands",
+                 body="Every unit was asked a five-question survey naming the "
+                      "technology it uses. **{units_in} of {units_total} units "
+                      "have answered so far**, describing **{n_products} "
+                      "distinct products**. Collection stays open to 29 "
+                      "September, so these are interim figures."
+                      .format(**f)),
+
+            dict(kind="table", head="The inventory in eight numbers",
+                 headers=["Measure", "As of 29 August 2026"],
+                 widths=[2.95, 3.75],
+                 rows=[
+                     ["Units that have responded",
+                      "**{units_in} of {units_total}**  ({pct_units}%)".format(**f)],
+                     ["Units still to respond",
+                      "**{}** — {}".format(f["n_outstanding"],
+                                           ", ".join(f["outstanding"]))],
+                     ["Submissions received", "**{n_sub}**".format(**f)],
+                     ["Distinct products named",
+                      "**{n_products}**, from {n_mentions} mentions".format(**f)],
+                     ["Products that likely involve athlete information",
+                      "**{n_athlete}**  ({pct_athlete}% of products)".format(**f)],
+                     ["Products named by one unit only",
+                      "**{n_single}**  ({pct_single}% of products)".format(**f)],
+                     ["Most widely shared system",
+                      "**{top_name}**, used by {top_units} units".format(**f)],
+                     ["Products retired in the last 12 months",
+                      "**{n_stopped}**".format(**f)],
+                 ],
+                 # The findings report counts 33 units, because that is how many
+                 # options the form carried. Saying so here keeps the two
+                 # documents from appearing to disagree when read side by side.
+                 caption="The survey list carried 33 options. One of them, "
+                         "“Other”, was never selected and is not counted "
+                         "as a unit here."),
+
+            dict(kind="bullets", head="Three things the numbers show",
+                 items=[
+                     "**Most software sits with a single unit.** {n_single} of "
+                     "the {n_products} products were named by one unit only. A "
+                     "shared record of what is in use is the capability that "
+                     "makes this population visible.".format(**f),
+
+                     "**One system is close to department-wide.** {top_name}, "
+                     "at {top_units} units. There is no comparable second, so a "
+                     "single place to look does not exist yet — which is what "
+                     "this inventory begins to build.".format(**f),
+
+                     "**{n_stopped} products were retired in the last year.** "
+                     "What each vendor still holds was not asked on the short "
+                     "form, so it is not recorded anywhere yet. This is the "
+                     "smallest and most closeable gap in the dataset."
+                     .format(**f),
+                 ]),
+
+            dict(kind="checklist", head="Checklist",
+                 headers=["", "Action", "Owner", "By"],
+                 widths=[0.28, 3.62, 1.70, 1.10],
+                 rows=[
+                     ["", "Collect the {n_outstanding} outstanding unit "
+                          "responses.".format(**f),
+                      "Unit leaders", "29 Sept 2026"],
+                     ["", "Confirm what each vendor retained for the "
+                          "{n_stopped} retired products.".format(**f),
+                      "Applied Performance", "Oct 2026"],
+                     ["", "Compare the inventory against the ITS IDEA form "
+                          "history.",
+                      "Applied Performance / ITS", "Oct 2026"],
+                     ["", "Run the detailed review form on the {n_athlete} "
+                          "products that involve athlete information."
+                          .format(**f),
+                      "Applied Performance", "Nov 2026"],
+                     ["", "Decide how single-unit products are handled going "
+                          "forward.",
+                      "Senior staff", "Nov 2026"],
+                 ]),
+        ],
+    )
+
+
+# --------------------------------------------------------------------------
+# renderer: Word, in the house style
+# --------------------------------------------------------------------------
+def render_docx(c, out):
+    d = BaylorDoc(c["title"], deck=c["deck"], status=c["status"])
+    d.meta(c["meta"])
+    for s in c["sections"]:
+        d.section(s["head"])
+        if s["kind"] == "para":
+            d.para(s["body"])
+        elif s["kind"] == "bullets":
+            d.bullets(s["items"])
+        else:
+            d.table(s["headers"], s["rows"], widths=s["widths"],
+                    caption=s.get("caption"), compact=True)
+    return d.save(out)
+
+
+# --------------------------------------------------------------------------
+# renderer: print twin, used only when Word will not answer
+# --------------------------------------------------------------------------
+def esc(text):
+    out = (str(text).replace("&", "&amp;").replace("<", "&lt;")
+           .replace(">", "&gt;"))
+    return "".join(p if i % 2 == 0 else "<b>{}</b>".format(p)
+                   for i, p in enumerate(out.split("**")))
+
+
+def render_html(c, out):
+    def cells(row, widths, tag="td"):
+        return "".join('<{t} style="width:{w}in">{v}</{t}>'.format(
+            t=tag, w=widths[i], v=esc(v)) for i, v in enumerate(row))
+
+    blocks = ['<p class="eyebrow">BAYLOR ATHLETICS &nbsp;·&nbsp; APPLIED '
+              'PERFORMANCE</p>',
+              "<h1>{}</h1>".format(esc(c["title"])),
+              '<p class="deck">{}</p>'.format(esc(c["deck"])),
+              '<table class="kv">{}</table>'.format("".join(
+                  "<tr><th>{}</th><td>{}</td></tr>".format(esc(k), esc(v))
+                  for k, v in c["meta"]))]
+
+    for i, s in enumerate(c["sections"], start=1):
+        blocks.append("<h2>{}.&nbsp;&nbsp;{}</h2>".format(i, esc(s["head"])))
+        if s["kind"] == "para":
+            blocks.append("<p>{}</p>".format(esc(s["body"])))
+        elif s["kind"] == "bullets":
+            blocks.append("<ul>{}</ul>".format("".join(
+                "<li>{}</li>".format(esc(x)) for x in s["items"])))
+        else:
+            blocks.append('<table class="grid"><tr>{}</tr>{}</table>'.format(
+                cells(s["headers"], s["widths"], "th"),
+                "".join("<tr>{}</tr>".format(cells(r, s["widths"]))
+                        for r in s["rows"])))
+            if s.get("caption"):
+                blocks.append('<p class="caption">{}</p>'.format(
+                    esc(s["caption"])))
+
+    footer = "   ·   ".join([c["title"], c["status"], "Baylor Athletics"])
+    with open(out, "w", encoding="utf-8") as fh:
+        fh.write(HTML_SHELL.format(title=esc(c["title"]), body="\n".join(blocks),
+                                   footer=esc(footer), width=TEXT_WIDTH))
+    return out
+
+
+HTML_SHELL = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>{title}</title>
+<style>
+  /* Mirrors ~/DEV/Baylor_Doc_Style. Word has no running header and puts the
+     footer in the bottom margin, so the twin does the same. */
+  @page {{ size: Letter portrait; margin: 0.80in 0.90in 0.80in 0.90in; }}
+  * {{ box-sizing: border-box; }}
+  html, body {{ margin: 0; padding: 0; }}
+  body {{
+    font-family: Calibri, Carlito, "Helvetica Neue", sans-serif;
+    font-size: 10.5pt; line-height: 1.079; width: {width}in;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }}
+  p {{ margin: 0 0 6pt; }}
+  .eyebrow {{ font-size: 9pt; font-weight: 700; color: #B8860B; margin-bottom: 1pt; }}
+  h1 {{ font-size: 19pt; font-weight: 700; color: #154734; margin: 0 0 2pt; }}
+  .deck {{ font-size: 11pt; font-style: italic; color: #595959; margin-bottom: 10pt; }}
+  h2 {{ font-size: 13pt; font-weight: 700; color: #154734;
+        margin: 14pt 0 5pt; border-bottom: 0.75pt solid #154734;
+        padding-bottom: 3pt; }}
+  table {{ border-collapse: collapse; width: {width}in; margin: 0 0 2pt; }}
+  .kv {{ margin-bottom: 4pt; }}
+  .kv th, .kv td {{ border: none; font-size: 9pt; padding: 0 6pt 2pt 0;
+                    text-align: left; vertical-align: top; }}
+  .kv th {{ width: 1.5in; font-weight: 700; }}
+  .grid td, .grid th {{ border: 0.5pt solid #000; padding: 0 4pt;
+                        vertical-align: top; text-align: left;
+                        font-size: 9.5pt; }}
+  .grid th {{ background: #154734; color: #fff; font-weight: 700; }}
+  ul {{ margin: 0 0 4pt; padding-left: 0.4in; }}
+  li {{ font-size: 10.5pt; margin-bottom: 4pt; }}
+  .caption {{ font-size: 9.5pt; color: #595959; margin: 0 0 6pt; }}
+  .runfoot {{ position: fixed; left: 0; bottom: -0.5in; width: {width}in;
+              text-align: center; font-size: 7.5pt; color: #595959; }}
+</style></head><body>
+{body}
+<div class="runfoot">{footer}   ·   Page 1 of 1</div>
+</body></html>
+"""
+
+
+# --------------------------------------------------------------------------
+# rendering and the one-page gate
+# --------------------------------------------------------------------------
+def chrome_pdf(html_path, pdf_path):
+    chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    subprocess.run(
+        [chrome, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+         "--print-to-pdf=" + pdf_path, "file://" + html_path],
+        check=True, capture_output=True, text=True, timeout=120)
+    return pdf_path
+
+
+def word_pdf(docx_path, pdf_path):
+    """Export through Word and ask it how many pages it laid out.
+
+    Word is the authority: it is what the reader opens, and its layout is
+    measurably taller than the twin's. Returns the page count, or None when
+    Word cannot be driven - it blocks on a dialog if the app is not already
+    open, so this is best-effort by design.
+    """
+    script = '''
+    tell application "Microsoft Word"
+      open POSIX file "{docx}"
+      set d to active document
+      set n to (compute statistics d statistic statistic pages)
+      save as d file name POSIX file "{pdf}" file format format PDF
+      close d saving no
+      return n
+    end tell
+    '''.format(docx=docx_path, pdf=pdf_path)
+    try:
+        r = subprocess.run(["osascript", "-e", script],
+                           capture_output=True, text=True, timeout=90)
+    except subprocess.TimeoutExpired:
+        return None
+    if r.returncode != 0:
+        return None
+    try:
+        return int(r.stdout.strip())
+    except ValueError:
+        return None
+
+
+def page_count(pdf_path):
+    import pypdfium2 as pdfium
+    return len(pdfium.PdfDocument(pdf_path))
+
+
+def main():
+    c = content(figures())
+
+    docx_path = os.path.join(DELIV, STEM + ".docx")
+    html_path = os.path.join(DELIV, STEM + ".html")
+    pdf_path = os.path.join(DELIV, STEM + ".pdf")
+
+    render_docx(c, docx_path)
+    print("wrote", docx_path)
+    render_html(c, html_path)
+
+    n = word_pdf(docx_path, pdf_path)
+    if n is not None:
+        source = "Word"
+        print("wrote", pdf_path, "(from Word) ->", n, "page(s)")
+    else:
+        chrome_pdf(html_path, pdf_path)
+        n = page_count(pdf_path)
+        source = "the HTML twin"
+        print("wrote", pdf_path, "(from the HTML twin) ->", n, "page(s)")
+        print("[warn] Word did not answer, so this page count is the twin's, "
+              "not Word's. Open Microsoft Word and re-run to confirm.")
+
+    if n != 1:
+        sys.exit("[error] the executive summary must fit one page; {} laid out "
+                 "{}. Cut a checklist row or a bullet.".format(source, n))
+    print("one page confirmed by", source)
+
+
+if __name__ == "__main__":
+    main()
+===== scripts/clean_inventory.py
+#!/usr/bin/env python3
+"""Clean the Athletics Technology Quick Inventory export into tidy CSVs.
+
+Run:
+    uv run --with openpyxl python3 scripts/clean_inventory.py
+
+Input:  raw/Quick_Inventory_export_<date>.xlsx  (newest file wins)
+Output: clean/*.csv
+
+The parser is mechanical. Every judgement call lives in scripts/aliases.py.
+Anything the alias map does not recognise lands in clean/unmapped_review.csv
+instead of being silently guessed.
+"""
+
+import csv
+import glob
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from aliases import (  # noqa: E402
+    ALIAS, CATEGORY, ATHLETE_DATA_CATEGORIES, UNCERTAIN, NOISE,
+)
+
+import openpyxl  # noqa: E402
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CLEAN = os.path.join(ROOT, "clean")
+
+# The unit list.
+#
+# The first 26 come from the Google Form spec in docs/INVENTORY_FORMS_LINKS.md.
+# The live Microsoft Form clearly differs: the 2026-08-29 export contains unit
+# answers that are not on that list at all. Those observed units are added below
+# and marked, so the coverage denominator reflects the form people actually
+# filled in rather than the spec it was written from.
+#
+# CONFIRM AGAINST THE LIVE FORM. Two open questions:
+#   - "Marketing" (spec) vs "Marketing and Fan Experience" (observed) — same
+#     unit under a new name, or two units? Currently counted as two.
+#   - "Other" never appears in responses. It may have been dropped from the
+#     live form once real units were added.
+SPEC_UNITS = [
+    "Baseball", "Basketball (M)", "Basketball (W)", "Football", "Golf (M)",
+    "Golf (W)", "Soccer", "Softball", "Tennis (M)", "Tennis (W)",
+    "Track & Field / Cross Country", "Volleyball", "Acrobatics & Tumbling",
+    "Equestrian", "Applied Performance", "Athletics Performance",
+    "Athletic Medicine", "Athletic Mental Health Services",
+    "Performance Nutrition", "Student-Athlete Services", "Business Office",
+    "Communications", "Marketing", "Compliance", "Operations", "Other",
+]
+
+# Real units seen in responses that the spec's 26-option list does not contain.
+OBSERVED_EXTRA_UNITS = [
+    "Development",
+    "Brand Engagement",
+    "Spirit (Cheer, Dance, Mascots)",
+    "Student Athlete Formation",
+    "External/Revenue/Ticketing",
+    "Equipment",
+    "Broadcast and Big Screens",
+]
+
+EXPECTED_UNITS = SPEC_UNITS + OBSERVED_EXTRA_UNITS
+
+# Spelling variants of the same unit. Left side is norm_key()'d.
+UNIT_FIX = {
+    "athletics communications": "Communications",
+    "athletic performance": "Athletics Performance",
+    # The live form spells these with "and" and no spaces around the slash.
+    "track and field cross country": "Track & Field / Cross Country",
+    "acrobatics and tumbling": "Acrobatics & Tumbling",
+    # Confirmed by Eric 2026-08-29: this is what the Marketing department is
+    # called now. Same unit, new name - so Marketing is not a coverage gap.
+    "marketing and fan experience": "Marketing",
+}
+
+PLANNED_HINTS = ("about to be installed", "not in use yet", "will receive",
+                 "have not yet received", "not yet")
+
+# A response that is prose, not a list. Flagged, never parsed into products.
+PROSE_MIN_WORDS = 12
+
+
+def norm_key(s):
+    """Lowercase and strip punctuation so alias lookup is forgiving."""
+    s = s.lower().strip()
+    s = re.sub(r"[^\w\s&/-]", " ", s)
+    s = re.sub(r"[-_/]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def strip_qty(item):
+    """'MacBook x11' -> ('MacBook', 11). 'iPad x over 10' -> ('iPad', 10)."""
+    m = re.search(r"\s+x\s*(?:at least\s*|over\s*)?(\d+)\s*$", item, re.I)
+    if m:
+        return item[: m.start()].strip(), int(m.group(1))
+    return item.strip(), 1
+
+
+def split_top_level(text, seps=",", split_sentences=False):
+    """Split on separators that sit outside parentheses and brackets.
+
+    A naive text.split(",") breaks 'Routing (Magnum), replay (Dreamcatcher)'
+    in the wrong places, and the old guard skipped comma-splitting entirely
+    whenever a line contained a bracket. This does it properly.
+
+    With split_sentences, a period followed by whitespace also ends a segment.
+    A period with no space after it does not, so 'Athletic.net' survives.
+    """
+    out, buf, depth, i = [], [], 0, 0
+    while i < len(text):
+        ch = text[i]
+        if ch in "([":
+            depth += 1
+            buf.append(ch)
+        elif ch in ")]":
+            depth = max(0, depth - 1)
+            buf.append(ch)
+        elif depth == 0 and ch in seps:
+            out.append("".join(buf))
+            buf = []
+        elif (split_sentences and depth == 0 and ch == "."
+              and i + 1 < len(text) and text[i + 1].isspace()):
+            out.append("".join(buf))
+            buf = []
+            i += 1
+        else:
+            buf.append(ch)
+        i += 1
+    out.append("".join(buf))
+    return [p.strip(" .,;") for p in out if p.strip(" .,;")]
+
+
+def split_items(text):
+    """Split one free-text answer into candidate technology strings.
+
+    Handles, in order:
+      - newline-separated lists
+      - '-' sub-bullets, which attach to the vendor on the line above
+      - 'Vendor (A, B, C)'  -> Vendor A / Vendor B / Vendor C
+      - 'Vendor - A, B, C'  -> Vendor A / Vendor B / Vendor C
+      - plain comma lists
+    Returns list of (raw_item, parent_vendor_or_None).
+    """
+    out = []
+    lines = [ln.strip() for ln in text.split("\n")]
+    last_parent = None
+
+    for line in lines:
+        if not line:
+            continue
+
+        # sub-bullet: belongs to the vendor named on a previous line
+        if line.startswith("-"):
+            item = line.lstrip("- ").strip()
+            if item:
+                out.append((item, last_parent))
+            continue
+
+        # Vendor (A, B, C)
+        m = re.match(r"^(.+?)\s*\((.+)\)\s*$", line)
+        if m and "," in m.group(2):
+            vendor, inner = m.group(1).strip(), m.group(2)
+            last_parent = vendor
+            for part in inner.split(","):
+                part = part.strip()
+                if part:
+                    out.append((part, vendor))
+            continue
+
+        # Vendor - A, B, C
+        m = re.match(r"^(.+?)\s+-\s+(.+)$", line)
+        if m and "," in m.group(2):
+            vendor, inner = m.group(1).strip(), m.group(2)
+            last_parent = vendor
+            for part in inner.split(","):
+                part = part.strip()
+                if part:
+                    out.append((part, vendor))
+            continue
+
+        # slash list of single words: 'Claude/ChatGPT/FanWord'
+        if "/" in line and "," not in line:
+            parts = [p.strip() for p in line.split("/")]
+            if len(parts) > 1 and all(p and " " not in p for p in parts):
+                for p in parts:
+                    out.append((p, None))
+                last_parent = parts[-1]
+                continue
+
+        # General case. Split into sentence-ish segments first, then into
+        # comma-separated items inside each segment. Both splits ignore
+        # separators inside parentheses, so 'Routing (Magnum), replay
+        # (Dreamcatcher)' splits into two items rather than staying whole.
+        for segment in split_top_level(line, seps=";", split_sentences=True):
+            parent = None
+            # 'Ross Video systems: Xpression, Tessera, Piero'
+            if ":" in segment:
+                label, rest = segment.split(":", 1)
+                label, rest = label.strip(), rest.strip()
+                if not rest:
+                    # a bare header the respondent typed, e.g. 'Software:'
+                    out.append((label, None))
+                    continue
+                parent = re.sub(r"\s+(systems?|devices?|apps?|software)$", "",
+                                label, flags=re.I).strip() or None
+                segment = rest
+
+            items = split_top_level(segment, seps=",")
+            for part in items:
+                # a colon nested inside one item, e.g.
+                # 'video transport transmission devices: Haivision'
+                if ":" in part:
+                    lab, rest = part.split(":", 1)
+                    if rest.strip():
+                        parent = re.sub(r"\s+(systems?|devices?|apps?|software)$",
+                                        "", lab.strip(), flags=re.I).strip() or None
+                        part = rest.strip()
+                if part:
+                    out.append((part, parent))
+                    last_parent = part
+
+    return out
+
+
+def strip_notes(item):
+    """Drop respondent asides so the product name is left.
+
+    'First Beat (not in use yet)' -> 'First Beat'
+    'Track Man is about to be installed' -> 'Track Man'
+    """
+    item = re.sub(r"\s*\([^)]*\)\s*$", "", item).strip()
+    item = re.split(r"\s+is about to be\b|\s+will be\b", item, flags=re.I)[0]
+    return item.strip(" .,")
+
+
+def resolve(raw_item, parent):
+    """Map a raw string to (canonical, category, how_resolved)."""
+    base, _qty = strip_qty(raw_item)
+    base = strip_notes(base)
+    k = norm_key(base)
+
+    if k in NOISE:
+        return "(excluded - not a technology)", "excluded", "noise"
+
+    if k in ALIAS:
+        c = ALIAS[k]
+        return c, CATEGORY.get(c, "uncategorised"), "alias"
+
+    # try 'Parent Item' e.g. parent='Catapult', item='Vault'
+    if parent:
+        pk = norm_key(f"{parent} {base}")
+        if pk in ALIAS:
+            c = ALIAS[pk]
+            return c, CATEGORY.get(c, "uncategorised"), "alias+parent"
+        ppk = norm_key(parent)
+        if k in ALIAS:
+            c = ALIAS[k]
+            return c, CATEGORY.get(c, "uncategorised"), "alias"
+        if ppk in ALIAS:
+            c = ALIAS[ppk]
+            return c, CATEGORY.get(c, "uncategorised"), "parent-fallback"
+
+    return None, None, "unmapped"
+
+
+def main():
+    files = sorted(glob.glob(os.path.join(ROOT, "raw", "Quick_Inventory_export_*.xlsx")))
+    if not files:
+        sys.exit("No raw export found in raw/")
+    src = files[-1]
+    print(f"input: {os.path.basename(src)}")
+
+    # Not read_only: Microsoft Forms exports declare a bogus sheet dimension
+    # (A1:A1), which the read-only reader trusts and then returns nothing.
+    wb = openpyxl.load_workbook(src)
+    rows = list(wb.active.iter_rows(values_only=True))
+    header, data = rows[0], [r for r in rows[1:] if any(c not in (None, "") for c in r)]
+
+    # Columns are located by header text, not position. Microsoft Forms adds and
+    # reorders its own system columns between exports ("Last modified time"
+    # appeared in the 2026-08-29 export and shifted everything right by one).
+    def col(*matches):
+        for idx, h in enumerate(header):
+            h = str(h or "").strip().lower()
+            for m in matches:
+                if h == m or h.startswith(m):
+                    return idx
+        sys.exit(f"[error] no column matching {matches!r}. Header was: {header}")
+
+    C_NAME = col("your name")
+    C_ROLE = col("your role")
+    C_UNIT = col("sport or unit")
+    C_USING = col("what technology")
+    C_STOPPED = col("has your department stopped")
+    print(f"columns -> name:{C_NAME} role:{C_ROLE} unit:{C_UNIT} "
+          f"using:{C_USING} stopped:{C_STOPPED}")
+
+    long_rows, unmapped, prose_flags, stopped_rows = [], [], [], []
+    units_seen = []
+
+    for i, r in enumerate(data, start=1):
+        unit_raw = (r[C_UNIT] or "").strip()
+        unit = UNIT_FIX.get(norm_key(unit_raw), unit_raw)
+        role = (r[C_ROLE] or "").strip()
+        units_seen.append(unit)
+
+        using = (r[C_USING] or "").strip()
+        if using:
+            words = len(using.split())
+            if words >= PROSE_MIN_WORDS and "\n" not in using and using.count(",") < 2:
+                prose_flags.append({
+                    "response_id": i, "unit": unit, "role": role,
+                    "text": using,
+                    "note": "Prose answer, not a technology list. Needs a follow-up.",
+                })
+                continue
+
+            for raw_item, parent in split_items(using):
+                base, qty = strip_qty(raw_item)
+                base = strip_notes(base)
+                canon, cat, how = resolve(raw_item, parent)
+                status = "planned" if any(h in raw_item.lower() for h in PLANNED_HINTS) else "in_use"
+                if canon is None:
+                    unmapped.append({
+                        "response_id": i, "unit": unit, "raw_item": base,
+                        "parent": parent or "",
+                        "note": "Not in aliases.py. Add a mapping or confirm it is real.",
+                    })
+                    canon, cat = base, "uncategorised"
+                long_rows.append({
+                    "response_id": i,
+                    "unit": unit,
+                    "role": role,
+                    "raw_item": base,
+                    "canonical": canon,
+                    "category": cat,
+                    "qty": qty,
+                    "status": status,
+                    "athlete_data_likely": "Y" if cat in ATHLETE_DATA_CATEGORIES else "N",
+                    "resolved_by": how,
+                })
+
+        stopped = (r[C_STOPPED] or "").strip()
+        if stopped and norm_key(stopped) not in ("n a", "na", "none", "no"):
+            for raw_item, parent in split_items(stopped):
+                base, _ = strip_qty(raw_item)
+                base = strip_notes(base)
+                canon, cat, how = resolve(raw_item, parent)
+                stopped_rows.append({
+                    "response_id": i, "unit": unit, "role": role,
+                    "raw_item": base,
+                    "canonical": canon or base,
+                    "category": cat or "uncategorised",
+                    "resolved_by": how,
+                    "vendor_data_status": "UNKNOWN - not asked on Quick form",
+                })
+
+    os.makedirs(CLEAN, exist_ok=True)
+
+    def write(name, rows_, fields):
+        p = os.path.join(CLEAN, name)
+        with open(p, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            w.writerows(rows_)
+        print(f"  wrote {name}: {len(rows_)} rows")
+
+    write("tech_inventory_long.csv", long_rows,
+          ["response_id", "unit", "role", "raw_item", "canonical", "category",
+           "qty", "status", "athlete_data_likely", "resolved_by"])
+
+    # master: one row per canonical technology
+    master = {}
+    for row in long_rows:
+        c = row["canonical"]
+        m = master.setdefault(c, {
+            "canonical": c, "category": row["category"],
+            "athlete_data_likely": row["athlete_data_likely"],
+            "units": set(), "raw_variants": set(), "review_note": UNCERTAIN.get(c, ""),
+        })
+        m["units"].add(row["unit"])
+        m["raw_variants"].add(row["raw_item"])
+    master_rows = sorted(
+        ({"canonical": m["canonical"], "category": m["category"],
+          "athlete_data_likely": m["athlete_data_likely"],
+          "unit_count": len(m["units"]),
+          "units": "; ".join(sorted(m["units"])),
+          "raw_variants": " | ".join(sorted(m["raw_variants"])),
+          "review_note": m["review_note"]} for m in master.values()),
+        key=lambda x: (-x["unit_count"], x["canonical"]),
+    )
+    write("tech_master.csv", master_rows,
+          ["canonical", "category", "athlete_data_likely", "unit_count",
+           "units", "raw_variants", "review_note"])
+
+    # coverage: who answered, who did not, who answered twice
+    counts = {}
+    for u in units_seen:
+        counts[u] = counts.get(u, 0) + 1
+    cov = []
+    for u in EXPECTED_UNITS:
+        cov.append({"unit": u, "responses": counts.get(u, 0),
+                    "status": "responded" if counts.get(u, 0) == 1
+                    else ("MULTIPLE" if counts.get(u, 0) > 1 else "NO RESPONSE")})
+    for u, n in counts.items():
+        if u not in EXPECTED_UNITS:
+            cov.append({"unit": u, "responses": n, "status": "OFF-LIST ANSWER"})
+    write("coverage.csv", cov, ["unit", "responses", "status"])
+
+    write("stopped_using.csv", stopped_rows,
+          ["response_id", "unit", "role", "raw_item", "canonical", "category",
+           "resolved_by", "vendor_data_status"])
+    write("unmapped_review.csv", unmapped,
+          ["response_id", "unit", "raw_item", "parent", "note"])
+    write("prose_responses_review.csv", prose_flags,
+          ["response_id", "unit", "role", "text", "note"])
+
+    print(f"\nresponses: {len(data)}")
+    print(f"technology mentions: {len(long_rows)}")
+    print(f"distinct technologies: {len(master_rows)}")
+    print(f"unmapped needing review: {len(unmapped)}")
+    print(f"units with no response: {sum(1 for c in cov if c['status'] == 'NO RESPONSE')}")
+
+
+if __name__ == "__main__":
+    main()

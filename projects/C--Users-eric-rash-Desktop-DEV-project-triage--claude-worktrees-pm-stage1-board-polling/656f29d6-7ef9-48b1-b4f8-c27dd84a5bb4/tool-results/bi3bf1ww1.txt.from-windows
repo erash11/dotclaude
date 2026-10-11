@@ -1,0 +1,660 @@
+=================== ingest-book
+---
+name: ingest-book
+description: >-
+  Ingest a book (PDF/EPUB full-text, Kindle highlights, or framework-only from a
+  physical book) into the SecondBrain library as atomized, citable advisor entries. Use
+  when the user wants to "ingest a book", "add a book to my library/advisors",
+  "/ingest-book", or points at a book file for the advisor system. Do not use for
+  articles, transcripts, or general resources (use ingest-resource).
+argument-hint: "[book file or title] [domain]"
+---
+
+# Ingest Book
+
+Turn a book into atomized, citable entries under the library subtree, grouped by domain and book, ready for the `advisor` skill.
+
+**Library root:** `vault_library` in the selected platform config
+**Paths:** canonical vault locations live in `~/.claude/skills/_shared/config.<platform>.json` (`vault_library`, `vault_root`) — load it if unsure; if a literal path here ever disagrees, the config wins.
+**Extractors:** `~/.claude/skills/ingest-book/lib/extract_epub.py`, `extract_pdf.py`
+Run extractors inside the context-mode sandbox (`ctx_execute`, language python) so raw book text never enters the conversation — only the atomized entries you write do.
+
+## Model split (cost vs quality)
+
+This skill mixes three kinds of work with very different model needs:
+- **Extraction & structure mapping** (probe, chapter map, text cleanup) — deterministic
+  Python in the sandbox. **Zero model tokens; model choice irrelevant.**
+- **Orchestration** (searches, `_book.md` updates, dedup checks) — mechanical.
+  **Haiku-tier is fine.**
+- **Atomization** (Phase 2/3: distilling prose into accurate entries with correct
+  mechanism-vs-claim, honest confidence, and a real "when NOT to apply") — this is where
+  the advisor's entire value is created. **Run on Sonnet or stronger. Do NOT use Haiku
+  for atomization** — a weak distillation becomes a permanent low-quality entry, and the
+  generated output is only ~3K tokens/chapter, so quality-per-token matters far more than
+  price-per-token. Cost levers that DON'T hurt quality: atomize only chapters you'll
+  consult, and checkpoint + `/clear` between chapter batches (see Rules) so context
+  doesn't compound across the book.
+
+## Schema for every entry note
+
+Filename: `<kind>--<kebab-slug>.md`, `kind ∈ {principle, framework, case-study, heuristic, claim}`.
+
+```yaml
+---
+type: library-entry
+kind: principle
+domain: <domain-slug>
+book: <book-slug>
+chapter: "N"            # or section label; "" if highlights with no location
+topic: <2-5 word topic>
+category: [tag, tag]
+confidence: proven      # proven | supported | untested | contested
+ingest-tier: full-text  # full-text | highlights | framework-only
+created: <YYYY-MM-DD>
+---
+
+# <Human title of the idea>
+
+**What it is** — one tight paragraph.
+**Why it works** — mechanism, not restatement.
+**When to apply** — concrete triggers.
+**When NOT to apply** — scope limits. (MANDATORY — never omit.)
+**Example** — one concrete instance.
+```
+
+**Confidence is bounded by tier:** full-text ≤ proven; highlights ≤ supported;
+framework-only ≤ untested. Set `contested` by hand when sources conflict.
+
+## Phase 1 — Intake
+
+1. Identify: book title, author, source type (PDF/EPUB | Kindle highlights | physical), target domain.
+2. Compute `<book-slug>` = `kebab(title)--kebab(lastname)` (e.g. `supertraining--verkhoshansky`).
+3. If the domain folder/`_domain.md` doesn't exist, create them (mirror the S&C `_domain.md` format).
+4. Build `_book.md` chapter map:
+   - EPUB/PDF: run the extractor with `--list` / `--probe` to get the chapter or page structure.
+   - Physical: ask the user for the chapter list, or assemble from a verified public listing.
+   Write `_book.md` (template below) with every chapter `status: pending`.
+
+`_book.md` template:
+```markdown
+---
+type: book-index
+book: <book-slug>
+title: <full title>
+author: <author>
+domain: <domain-slug>
+ingest-tier: full-text | highlights | framework-only
+source: "<file path or 'physical' or 'kindle-highlights'>"
+created: <YYYY-MM-DD>
+---
+
+# <title> — ingest map
+
+| # | Chapter | Status | Entries |
+|---|---------|--------|---------|
+| 0 | <title> | pending | 0 |
+```
+
+## Phase 2 — Extract (by tier)
+
+**Full-text (PDF/EPUB):**
+- First run `extract_pdf.py --probe`. If `scanned: true`, STOP the full-text path:
+  tell the user the PDF is image-only, and fall back to framework-only tier (set
+  `ingest-tier: framework-only`, cap confidence at untested). Never emit full-text-
+  confidence entries from a scanned file.
+- Work **one chapter at a time** (EPUB `--chapter N`; PDF `--pages A-B`, where A and B are
+  0-based PDF indexes and the range is inclusive: `--pages 12-20` returns 9 pages). Each page
+  comes back with `page` (0-based index) and `viewer_page` (what a PDF viewer shows, index + 1).
+  Cite pages one way throughout a book and state the convention in `_book.md`. For each:
+  extract candidate ideas → atomize per the schema → write entry notes.
+- **After each chapter**, update that row in `_book.md` to `status: done` with the
+  entry count. This is the resume checkpoint — never batch this update.
+
+**Kindle highlights:**
+- Parse `My Clippings.txt` or the highlights export in the sandbox. Cluster highlights
+  by theme; write one entry per theme. `ingest-tier: highlights`, confidence ≤ supported.
+- Attribute `chapter` from the highlight's location metadata when present, else "".
+
+**Framework-only (physical / scanned):**
+- Briefly interview the user for their takeaways. Supplement with *verified* public
+  chapter summaries. Write 5–15 framework-level entries. `ingest-tier: framework-only`,
+  confidence ≤ untested.
+
+## Phase 3 — Quality gate (run before writing each batch)
+
+- One idea per note. If an extracted point is compound, split it.
+- "When NOT to apply" present and non-trivial.
+- **Dedup + converge:** before writing, `memsearch search` the library for the same
+  concept. If an existing entry (any book) covers it, DON'T duplicate — instead add a
+  `[[wikilink]]` + one line to both notes recording the agreement, and only add a new
+  note if it contributes a genuinely new angle.
+- Never overwrite an existing file; on slug collision append `-2`.
+
+## Phase 4 — Close-out
+
+1. Set all done rows in `_book.md`; if partial, leave pending rows for next session.
+2. Add the book to `_domain.md`'s `books:` list and the "Books in this domain" section.
+3. Add the book-slug to the advisor persona's `books:` list (`advisors/<domain>.md`)
+   if an advisor exists.
+4. Run `memsearch index "<vault_library>"` using the selected platform config
+   so entries are searchable immediately (don't wait for the SessionEnd hook).
+5. Commit the vault using `vault_root` from the selected platform config: `git -C "<vault_root>" add Knowledge/library && git commit -m "ingest(<book-slug>): <N> entries, ch X-Y"`.
+6. Report: entries by kind and confidence, links created, chapters remaining.
+
+## Rules
+- Raw book text stays in the sandbox; only atomized entries enter context/the vault.
+- Resumable by design: `_book.md` is the source of truth for "where am I".
+- A 300-page book is a multi-session job — stop at a chapter boundary, never mid-chapter.
+=================== research-in-5
+---
+name: research-in-5
+description: "Build a \"Research in 5\" weekly paper review for Baylor Athletics staff: a 5-slide deck (dark and light), a Teams post, and a staff email from one paper. Use when the user says \"/research-in-5\", \"research in 5 on this paper\", \"weekly research review\", \"review this paper for the staff\", \"make the slides for this paper\", hands over a paper (PDF, DOI, URL, Zotero item), or wants a review rebuilt or versioned (#001, v2). Do not use for a sport-science question (use sports-science-research-grounding), a deck with no single paper (use five-slides-generator), or a plain Zotero search."
+---
+
+# Research in 5
+
+The procedure, content rules, and build tooling live in the project repo, not here.
+This skill gets you into the repo and carries the lessons that are easy to relearn
+the hard way.
+
+## Start
+
+1. Project root: `~/Desktop/DEV/Weekly_Research_Review` (Windows) or
+   `~/DEV/Weekly_Research_Review` (Mac). Missing on this machine:
+   `gh repo clone erash11/Weekly_Research_Review` into DEV.
+2. `git pull`, then read `docs/STATUS.md`, `AGENTS.md`, `docs/WORKFLOW.md`, and
+   `docs/CONTENT_SPEC.md`. Follow WORKFLOW.md step by step; it owns the process.
+3. Background session: work in a worktree of that repo, open a PR, merge only when
+   Eric says so.
+
+Build and QA: `pwsh tools/publish.ps1 reviews/NNN_slug -NoDrive`, read every
+`dark-slideN.png` and `light-slideN.png`, then publish without `-NoDrive`.
+Deliverables land in `07_EDUCATION/Research_in_5/NNN_slug/` on the Google Drive
+primary storage drive.
+
+## Gotchas
+
+- **Check Zotero for the full text before settling for an abstract.** A new item's PDF may not be indexed yet: run `sync_zotero_library` with `include_fulltext: true`, then `get_paper` and look at `attachments`. #001 was first built from the abstract while the PDF sat in Zotero.
+- **Article-in-press papers often have no public PDF.** Springer's PDF URL 404s even in Chrome. Ask Eric for the PDF or check Zotero; set `paper.full_text: false` only as a last resort and say so in the post.
+- **Every number comes from the paper's tables, with a page, as reported.** Write `notes.md` first. Plot and tabulate exact values; never display a computed difference. Flag contradictions inside the paper (a conclusion stronger than its own limitations, a mislabeled table) in notes.md.
+- **Slides carry one idea each; detail goes to the post.** Slide-facing fields have tight limits that build.js enforces (question 90, fact 26, summary 110, role line 70, takeaway 60, bottom line 55). Write those short first. `did.bullets`, `results.bullets`, extra limitations, and the discussion question are post-only.
+- **Department names:** Athletic Performance (not strength and conditioning), Athletic Medicine (not sports medicine), Applied Performance (not sport science). build.js rejects others.
+- **Baylor Bears Font has only A to Z, 0 to 9, space and `. : ! - #`.** It sets display text only; `headline` must fit that set. Section titles are caps statements because there is no `?`. Agency FB sets everything people read and has no `→`.
+- **"Calibri" in the PDF font list is expected.** PowerPoint cannot embed Bears (OpenType-CFF) and draws it as outlines with a Calibri-tagged text layer. Only `Agency FB embedded: False` is a real failure. Both fonts must be installed before building on a new machine (`DEV/Baylor_Fonts`).
+- **Run the humanizer skill on the audience copy before the final build.** Keep facts, pages, and limits; cut rule-of-three lists, "not X, but Y" lines, and stacked rhetorical questions.
+- **Revisions get a new `version`** (outputs `_vN`) so the files Eric may already have shared stay on Drive. Only overwrite in place for a same-day correction, and say so.
+- **The deck is checked against the paper before it can publish.** Step 5 runs `pwsh tools/verify.ps1 reviews/NNN_slug`; `publish.ps1` runs it again and refuses to copy anything to Drive on a real finding. Three outcomes: **VERIFY FAIL** means a claim is fabricated, contradicted, unsupported, or on the wrong page, so fix review.json and rebuild. **VERIFY PASS** may still name claims needing a human read - those are the `[REVIEW]` lines, where the model was not confident enough to decide, and you read them against notes.md. **VERIFY DEGRADED** means the check could not run at all (it needs the `TypeSafe_Sandbox` clone, its venv, and `~/.claude/typesafe.env`); it does not block, but report it like a DEGRADED image QA - the deck went out unchecked. `-SkipVerify` bypasses the gate; only use it after checking by hand, and say so.
+- **publish.ps1 needs Windows PowerShell COM (installed PowerPoint) for the PDF export.** On the Mac, `node tools/build.js` still builds the pptx files and posts; export and publish from the Windows laptop.
+- **Eric prefers the dark deck.** Both themes build every run; send the dark PDF first.
+- **Loop until verify passes.** VERIFY FAIL or a bad PNG: fix review.json, rebuild, and run `verify.ps1` and the image read again — never publish on a fix that hasn't been re-checked.
+- **Propose a rule when one was missing.** If a problem got past build.js and verify.ps1 (caught in the PNG read, the humanizer pass, or by Eric), end the run by proposing one new gotcha line here or one new check in `CONTENT_SPEC.md`, with the reason. Add it only on Eric's yes.
+
+## Examples
+
+```
+User: "Research in 5 on this one: Saraee 2026, J Orthop Surg Res, alignment and jumper's knee"
+→ cd into the repo, pull, read STATUS
+→ Zotero: search, sync with full text, read every page; write notes.md
+→ review.json (next number), humanizer pass, publish.ps1 -NoDrive, verify.ps1, read all PNGs
+→ publish, commit on a branch, PR; send the dark PDF, teams.md, email.txt
+```
+
+```
+User: "Make #001 less busy" / "use our department names" / "make a v2"
+→ edit review.json or tools/build.js, bump version, rebuild both themes, QA, PR
+```
+=================== memory-write
+---
+name: memory-write
+description: >-
+  Writes, updates, removes, and recalls facts in the two-tier memory system
+  (~/.claude/global-memory/ and ~/.claude/projects/<slug>/memory/). Use for write
+  requests such as "remember this", "note that", "update memory", "save this", and
+  "forget about", and for recall requests such as "did we already…?", "what did we
+  decide about X?", and "do you remember…?". Picks the tier, dedups, and enforces caps;
+  recall checks the injected snapshot, then memsearch. Do not use for a story or lesson
+  worth a vault note (use capture-insight) or an article to keep (use ingest-resource).
+---
+
+# Memory Write
+
+## Outcome
+- Fact added to, updated in, or removed from the correct memory tier
+- Tier-B caps enforced (2,500 chars for MEMORY.md, 1,375 for USER.md)
+- Confirmation: "Saved — will be active from next session."
+
+## Pick the tier first
+
+Ask: "Will this fact still be true and useful in 3 months, across multiple projects?"
+
+**Tier A — `~/.claude/projects/<slug>/memory/`** (one file per fact, indexed by MEMORY.md)
+- Durable user facts → `user_*.md` (metadata.type: user)
+- Stable project conventions / gotchas → `project_*.md` (metadata.type: project)
+- Behavioral feedback rules → `feedback_*.md` (metadata.type: feedback)
+- External-system pointers → `reference_*.md` (metadata.type: reference)
+
+**Tier B — `~/.claude/global-memory/`** (single capped file)
+- Active threads (in-progress work) → `MEMORY.md` `## Active Threads`
+- Current env notes (URLs, tool versions, project structure in play) → `MEMORY.md` `## Environment Notes`
+- Pending decisions → `MEMORY.md` `## Pending Decisions`
+- Durable user profile updates → `USER.md`
+
+## Steps
+
+1. **Decide tier** using the rule above.
+2. **Read** the target file in full.
+3. **Dedup check** — substring scan; if the fact already exists, skip or update in place.
+4. **Cap check** for Tier B — `wc -c < ~/.claude/global-memory/MEMORY.md` (or USER.md). If over cap, consolidate (merge similar entries, prune stale) before adding.
+5. **Write** the change.
+   - Tier A: create a new file with proper frontmatter (name, description, metadata.type) and add a one-line pointer to that slug's `MEMORY.md` index. `name:` follows the rule below.
+   - Tier B: append under the correct `##` section.
+6. **Confirm** in one line: `Saved — will be active from next session.`
+
+## The `name:` field — bare kebab slug
+
+**`name:` = the filename stem minus its leading type token, kebab-cased.** The type
+already lives in `metadata.type` and the filename already carries the prefix; repeating
+it in `name:` is the third copy.
+
+| File | `name:` |
+|---|---|
+| `project_automation-cadence.md` | `automation-cadence` |
+| `user_sports-teams.md` | `sports-teams` |
+| `reference_baylor-house-style.md` | `baylor-house-style` |
+| `feedback_project_idea_capture.md` | `project-idea-capture` |
+
+Note the last row: strip only the **leading** token. `feedback_project_idea_capture.md`
+is a feedback memory *about* project-idea capture — its name keeps the word `project`.
+
+`[[links]]` target this bare name, never the filename and never a prefixed variant.
+
+This rule exists because it was previously unwritten: an audit on 2026-09-02 found the
+corpus split 59 bare / 58 prefixed, which broke 37 links. Both forms look right in
+isolation, so without a stated rule the split regrows on every write.
+
+## Actions
+
+- **add** — append (default)
+- **replace** — substring match + swap. Preferred over add when updating an existing fact.
+- **remove** — confirm with the user before deleting.
+
+## Retrieval — the tiered ladder
+
+When the user asks about past context, decisions, or "did we already…?", climb in order and stop as soon as the question is answered. Do not run memsearch when the answer is already in the injected snapshot.
+
+1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
+2. **L1** — `memsearch search "query" --top-k 5`. Hybrid vector + keyword across all indexed paths: Tier A files (including the Windows-machine slugs), daily logs, transcripts.
+3. **L2** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+4. **L3** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+5. **Fallback** — say "I don't have a record of that."
+
+## Daily compiled logs — read-only
+
+`~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md` is produced by `claude-memory-compiler` through its own SessionEnd/PreCompact hooks, and injected by its own SessionStart hook.
+
+- **Never hand-edit these files.** The compiler owns them.
+- **Never read them eagerly.** Treat the injected snapshot as the source of truth.
+
+## What is loaded at session start
+
+`~/.claude/global-memory/USER.md` and `MEMORY.md` are read once at session start and are a **frozen snapshot**. Mid-session writes persist to disk but only take effect next session — this is deliberate, to preserve the prefix cache. Never load more than the startup set proactively.
+
+## Rules
+
+- Never exceed Tier B caps. Consolidate first.
+- Always dedup before adding.
+- For Tier A, the slug is the current cwd with `/` and `.` replaced by `-` (so `~` → `-Users-kristinarash`, `~/DEV` → `-Users-kristinarash-DEV`, `~/.claude/skills` → `-Users-kristinarash--claude-skills`). The harness injects the correct slug each session — use that, don't reconstruct it.
+- **Write only to the current machine's slug.** Both machines are active as of 2026-09-10: Mac slugs are `-Users-kristinarash-*`, Windows slugs are `C--Users-eric-rash-*`. A fact written to the other machine's slug is never auto-injected here (memsearch still finds it). Durable project facts belong in the repo's `docs/` so both machines see them.
+- Never announce the write mid-session beyond the one-line confirmation. The injected snapshot is frozen — the new fact appears next session, not this one.
+
+## Verification Gate
+
+After every write:
+
+1. Read the exact destination back and require the intended fact to appear once in the intended tier.
+2. Re-run the Tier B character cap check after the write.
+3. Check the surrounding section for an unresolved contradiction or stale duplicate. Resolve it or report `FAIL`.
+4. For Tier A, verify the new file has valid frontmatter and the memory index pointer resolves to it.
+5. Distinguish persisted state from activation: the write can pass now, but next-session injection remains unverified until a later session observes it.
+
+Report `PASS` only when persistence, uniqueness, tier placement, caps, and pointers are verified. Report `FAIL` with the target path and failed check otherwise. Do not emit “Saved” before read-back succeeds.
+=================== claude-stack-doctor
+---
+name: claude-stack-doctor
+description: >-
+  Health-check Eric's automation/memory stack in one pass and verify the Mac-to-Windows
+  handoff works: launchd agents / Windows scheduled tasks, Python venvs, memsearch, the memory-compiler flush
+  pipeline, backup freshness, and context budget. Use when the user says
+  "/claude-stack-doctor", "stack doctor", "is my stack healthy", "did my scheduled jobs
+  run", "check the memory pipeline", "why didn't the backup run", or when
+  closeout/morning sessions should verify automation health. Do not use to run the
+  backup itself (use backup) or to audit context-engineering practice (use doctor-plus).
+---
+
+# Claude Stack Doctor
+
+One command surfaces every known silent-failure class in the automation/memory stack. Run it before debugging anything by hand.
+
+## Quick start
+
+```bash
+/opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1   # Mac
+pwsh -NoProfile -File $HOME\.claude\skills\claude-stack-doctor\scripts\stack-check.ps1                 # Windows
+```
+
+The same script runs on both machines and picks its checks by OS (see **Two machines** below). On Windows use `pwsh` 7, not `powershell` 5.1, which reports false `memsearch-run` / `backup-cloud-check` failures.
+
+Exit 0 = all clear. Exit 1 = the VERDICT line lists issue codes. Report the findings to the user, then apply the matching fix below.
+
+## Cross-machine handoff (runs on BOTH machines)
+
+`scripts/handoff-check.ps1` is called at the end of `stack-check.ps1`, and it can also be run on its own:
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File $HOME\.claude\skills\claude-stack-doctor\scripts\handoff-check.ps1
+```
+
+It answers a question nothing else here asked: did state actually make the trip between the two machines? Every other check verifies a component. This verifies the path.
+
+The failure it exists to catch: `daily-backup` pushes `global-memory` nightly and, until 2026-09-12, nothing on the receiving machine ever pulled it. The Windows laptop was found 4 commits behind with every other signal reading healthy, because the backup section measures `ahead` only — which catches a broken push and is blind to a missing pull.
+
+Issue codes:
+
+- `handoff-memory-stale` — `global-memory` is behind origin. This is the serious one: memory written on the other machine is on GitHub and not here, so this session is running on stale context. Fix with `/startup`, or `git -C ~/.claude/global-memory pull --no-rebase`.
+- `handoff-behind:<repo>` — config, skills or notes behind origin. Same fix, lower stakes.
+- `handoff-unpushed:<repo>` — this machine is more than 3 commits ahead. The other machine cannot see this work; run `/closeout`.
+- `handoff-fetch:<repo>` — offline, or GitHub auth has rotted.
+- `handoff-repo-gone:<repo>` — the folder is present but is not a git repo. Something replaced a synced repo with a plain folder and its contents are going nowhere.
+- A repo absent from the machine entirely is skipped, not failed. `SecondBrain` is Mac-only and its absence on Windows is correct.
+
+The "memory flow" line reports how long since `origin/main` on `global-memory` last advanced. Over 14 days it says so without failing: it cannot distinguish "quiet fortnight" from "the other machine's backup stopped pushing", and a check that cries wolf during the first gets ignored during the second.
+
+## Two machines
+
+`stack-check.ps1` tests `$env:OS -eq 'Windows_NT'` and swaps the machine-specific sections. Everything else (memsearch, flush pipeline, memory repos, cloud receipt, context budget, handoff) is shared.
+
+| Section | Mac | Windows laptop |
+|---|---|---|
+| Jobs | launchd `com.keystone.*` agents | Task Scheduler: `Backup AI Sessions to Drive`, `DailyGmailDigest`, `CFB-ForecastCaptureReminder` (disabled tasks are skipped) |
+| venv | `.venv/bin/python` | `.venv\Scripts\python.exe` |
+| memsearch backend | — | Docker Desktop `milvus-standalone` must be `(healthy)` |
+| Backup state | `backup-state.json` (daily-backup) | `backup-ai-sessions-state.json` (daily). `Desktop\DEV` itself is a Drive for Desktop synced root; its weekly robocopy task was retired 2026-09-22 (XML in `~/.claude/scripts/retired/`) |
+| SecondBrain | checked | skipped, it is Mac-only |
+
+Windows issue codes:
+- `task:<name>`: the last run exited non-zero. `3221225786` (0xC000013A, sleep/shutdown kill) only warns; the age check decides whether the job is really behind.
+- `task-stale:<name>`, `task-never-run:<name>`, `task-missing:<name>`: the job is behind, has never run, or was deleted. Tasks live under `\Eric\`. Re-run with `Get-ScheduledTask -TaskName '<name>' | Start-ScheduledTask`; a bare `Start-ScheduledTask -TaskName` fails with "cannot find the file specified".
+- `task-dual-run:<name>`: a `KeystoneOS-*` task is enabled on Windows. The Mac owns those jobs and the data pulls; disable the Windows copy.
+- `milvus-docker` / `milvus-down`: start Docker Desktop; memsearch hooks time out without it.
+- `backup-missing:<tag>`, `backup-stale:<tag>`, `backup-error:<tag>`: read `G:\My Drive\00_Primary_Storage_Drive\05_SYSTEMS\AI_Sessions_Backup\<COMPUTERNAME>\_backup_log.txt`. The script silences robocopy, so re-run the robocopy line in the foreground to see which files failed (codes below 8 are success).
+
+On the Windows laptop the weekly run is Task Scheduler task `\Eric\KeystoneOS-StackDoctor` (Mondays 10:30, pwsh 7). It is the one `KeystoneOS-*` task that stays enabled on Windows.
+
+**Mac notes.** Jobs are **launchd user agents** in `~/Library/LaunchAgents/`. The script is PowerShell because `pwsh` runs it natively on both machines. PowerShell on macOS normalises `\` inside a path string to `/`, so the script's mixed separators resolve correctly — verified 2026-08-29. Do not "fix" them.
+
+Useful launchd commands:
+```bash
+launchctl list | grep keystone                                    # loaded jobs + last exit code
+launchctl print gui/$(id -u)/com.keystone.<name>                  # live schedule and state
+launchctl bootout  gui/$(id -u)/com.keystone.<name>               # unload
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.<name>.plist   # reload
+```
+Edit a schedule with `/usr/libexec/PlistBuddy -c "Set :StartCalendarInterval:Hour <n>" <plist>`, then bootout + bootstrap. **A plist edit alone does nothing until it is reloaded.**
+
+## Weekly scheduled run
+
+launchd agent `com.keystone.stackdoctor` (Mondays 10:30) runs `scripts/weekly-check.ps1`: the same read-only check, unattended. On failure it appends a one-line summary to `~/.claude/global-memory/transcripts/.errors.log` (surfaced at every session start per CLAUDE.md) and the full output is always in `scripts/last-weekly-run.log`. When a session surfaces such an entry, run this skill interactively to diagnose and fix, then clear the entry from `.errors.log`.
+
+**Clearing `.errors.log`:** shell truncation (`: > file`) anywhere under `$HOME` is blocked by dcg rule `core.filesystem:redirect-truncate-root-home`. Use `cp /dev/null <file>`. There is no `truncate` binary on this machine. Archive first — the lines are often live issues, not stale history:
+```bash
+cp ~/.claude/global-memory/transcripts/.errors.log ~/.claude/global-memory/transcripts/.errors.log.archived-$(date +%Y-%m-%d)
+cp /dev/null ~/.claude/global-memory/transcripts/.errors.log
+```
+
+## Known failure classes and fixes
+
+These four classes have each bitten more than once (evidence: daily logs 2026-04 → 2026-07). Match the issue code to its fix:
+
+### `task:*` / `task-stale:*` — launchd agent failed or didn't run
+1. Read the `action:` line the script printed and run that exact command **manually in a foreground terminal** — launchd discards stdout unless the plist sets `StandardOutPath`; foreground shows the real error.
+2. Known root causes: executable referenced without a full path (launchd agents get a minimal PATH — always use full paths like `/opt/homebrew/bin/pwsh`, and set `EnvironmentVariables:PATH` in the plist); a plist edited but never `bootout`+`bootstrap`ed, so the old schedule is still live; the job firing at an hour the required volume is unmounted (see `backup-*`).
+3. `launchctl list | grep keystone` shows each job's **last exit code** in column 2. A non-zero there with no output means the script's own log is the only evidence — check `~/.claude/scripts/logs/` and for a `*.log` beside the script.
+
+### `venv-missing` / `venv-broken` — Python venv rot
+The script checks `~/.claude/claude-memory-compiler/.venv/bin/python`.
+macOS root causes: a Homebrew `python3` major-version bump orphans venvs built against the old interpreter; a `uv` reinstall or relocation breaks tools that hardcode `/Users/kristinarash/.local/bin/uv` (CLAUDE.md forbids relocating it for this reason).
+Fix: recreate the venv (`uv sync` in the project, or `python3 -m venv .venv` + reinstall from its pyproject), then run the dependent agent once by hand to confirm.
+*History (Windows box, retired 2026-08-14): Python Install Manager migrations deleted `C:\Python31x` twice, silently killing morning-briefing for 6 days. The lesson transfers — an interpreter move breaks every venv built on it — the paths do not.*
+
+### `memsearch-path` / `memsearch-run` — memsearch CLI broken
+memsearch is a **uv tool** on this machine: binary at `/Users/kristinarash/.local/bin/memsearch`, environment at `/Users/kristinarash/.local/share/uv/tools/memsearch/`.
+- Not on PATH or the binary errors → reinstall with `uv tool install --force memsearch`, not pip.
+- Import failures inside the tool env (e.g. `onnxruntime`) are testable directly:
+  `/Users/kristinarash/.local/share/uv/tools/memsearch/bin/python -c "import onnxruntime; print(onnxruntime.__version__)"`
+- **After ANY reinstall/upgrade of memsearch the local flush patch is stripped.** Re-apply it (notes in `~/.claude/claude-memory-compiler/`), then confirm `.errors.log` stays empty for a session.
+- `INDEX full set: Indexed 0 chunks` in the nightly log is **usually not an indexer fault** — it means nothing new arrived. Check `flush-stale` first; a dead flush pipeline starves the indexer and looks identical (confirmed 2026-08-29).
+
+### `recall-coverage` / `recall-regress` — memory search can't find what it should
+- `recall-coverage`: a root in `KeystoneOS/data/memory-index-paths.json` doesn't exist on this machine, so it is never indexed (the hooks skip missing roots; `memsearch-sync.js` lists them at the top of `.memsearch-index.log`). Paths take `{HOME}`, `{DEV}` and `{VAULT}`; a machine-specific location needs a token, not a hardcoded path. The other machine's Tier A slug is the one expected miss.
+- `recall-regress`: hit@5 fell by 2+ between this machine's last two runs of a backend in `~/.claude/audits/recall-eval/ledger.md`.
+- **The eval:** `python ~/.claude/audits/recall-eval/recall-eval.py --label "<model or change>"` (add `--backends fts5,rg` when Docker is down or RAM is short). Known-answer cases live in `questions.jsonl`. Rerun after a model change, a memsearch/context-mode upgrade, or any edit to the index paths. **Scheduled (Windows):** Task Scheduler `\Eric\memsearch-drain-weekly` (Sundays 02:00) runs reindex → eval (all four backends, label `weekly`) → `audits/recall-eval/after-run.ps1`, which commits+pushes the results, writes `LATEST.md`, and only on a problem appends to `.errors.log`. Spec and decision rule: `~/.claude/audits/2026-09-30-memory-infra-audit.md` §6.
+
+### `errors-log` / `flush-stale` / `flush-error` / `flush-missing` — memory pipeline
+- `.errors.log` non-empty → read the entries **before clearing**; they are frequently live unresolved issues rather than stale history. Common causes: the stripped memsearch flush patch (above), or an Agent SDK timeout ("Control request timeout: initialize" — transient, but recurring daily means the hook environment is broken).
+- `last-flush.json` stale >48h → check `~/.claude/claude-memory-compiler/scripts/flush.log` tail for the real error. `last-flush.json` is written by `flush.py` **only on success**, so a stale timestamp means flushes are dying, not that the hook never fired.
+- **Stranded context files are the tell.** `session-end.py` writes `scripts/session-flush-<session>-<stamp>.md` then spawns `flush.py`, which **deletes that file on success**. So every leftover `session-flush-*.md` in `~/.claude/claude-memory-compiler/scripts/` is a flush that died, and its date maps to a missing `daily/<date>.md`.
+  Recover one by re-running it by hand (~1 min, writes into the daily log):
+  ```bash
+  /Users/kristinarash/.local/bin/uv run --directory ~/.claude/claude-memory-compiler \
+    python ~/.claude/claude-memory-compiler/scripts/flush.py <context-file> <session-id>
+  ```
+  Success looks like `Result: FLUSH_OK` + `Flush complete` in `flush.log`.
+- No `SessionEnd fired` lines in `flush.log` for days, yet the hook works when run by hand → sessions are being closed rather than exited cleanly. Self-verifying: end one session normally and re-check the tail.
+- FLUSH_ERROR in dailies → same investigation; `flush.log` is ground truth.
+
+### `backup-*` — daily backup rot
+launchd agent `com.keystone.dailybackup` (**21:00 daily** since 2026-09-24; 09:00 from 2026-08-29) runs `~/.claude/scripts/daily-backup.ps1`: auto-commits+pushes the memory repos (SecondBrain, dotclaude, claude-skills, claude-global-memory), **rsync**-snapshots `~/.claude/projects`, `~/.codex`, `~/.gemini` and non-repo DEV folders to Google Drive at `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/…`, captures the same set to the **CRASHBOX SSD** at `/Volumes/CRASHBOX/AssistantBackup/` when it is mounted, runs an uncapped full memsearch reindex, and resets the hook's timeout-streak counter. Restore procedure: `~/.claude/RESTORE.md`.
+
+**The SSD layer's signature failure — a clean exit code is not evidence.** If CRASHBOX is unmounted the run logs `TARGET SSD … NOT MOUNTED … SKIPPED` and still ends `OK (0 errors)`. The schedule moved 00:30 → 09:00 on 2026-08-29 precisely because the drive was never attached at 00:30. **Verify an SSD capture only by a fresh receipt** at `/Volumes/CRASHBOX/AssistantBackup/_receipts/run-*.txt`. Never by directory mtimes (`rsync -a` preserves source mtimes, and a parent dir's mtime moves only when an entry is added or removed — top-level SSD dirs legitimately show weeks-old dates after a perfect capture) and never by `du`. `-DryRun` runs `rsync -n` and proves nothing about writes.
+- `backup-missing` / `backup-stale` → job didn't run; re-run foreground (~6 min): `/opt/homebrew/bin/pwsh -File ~/.claude/scripts/daily-backup.ps1`. There is no SSD-only switch, and one should not be added.
+- `backup-error` → read `~/.claude/scripts/logs/daily-backup.log`; a `repo-diverged:*` entry means a memory repo has both remote and local changes — reconcile manually (the script refuses to merge from automation).
+- `backup-repo-drift:*` → pushes failing (>3 unpushed commits); usually gh/git auth rot — run `gh auth status`.
+- `backup-cloud-*` → the Drive-API heartbeat (gws CLI queries RESTORE.md's cloud modifiedTime). `-check` = gws auth rot; re-auth needs explicit full scope URLs: `gws auth login --scopes "https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/calendar.readonly"` (the `-s drive` shorthand silently grants NO scopes, v0.22.5 bug). After re-auth delete `~/.config/gws/token_cache.json` or it serves the stale token. The login is interactive — Eric must run it himself via `!` while at the machine, then open the printed URL directly; terminal copy/paste truncates it at line-wrap. `-stale`/`-missing` = files reach the local CloudStorage cache but Google Drive for Desktop isn't syncing — check that Google Drive is running and signed in.
+- Drive is a **FUSE CloudStorage mount**: it rounds mtimes it did not write, so `rsync -a` re-sends identical files forever. Use `--modify-window=5`; never `--size-only`.
+
+## Not covered by the script (check manually if symptoms point there)
+
+- **MCP/plugin auth rot** (9 manual fix-it sessions on record): run `claude doctor` / `claude mcp list` and re-auth any claude.ai connectors showing failures (Supabase, Vercel, Google Calendar have all rotted before).
+- **Catapult OpenField token expiry**: see the auth section of `pp-catapult-openfield-connect`.
+
+## Gotchas
+
+- **`flush.py` always writes into *today's* daily log.** Recovering a weeks-old stranded `session-flush-*.md` files old facts under today's date, and the compiler then treats them as current. Recover only recent ones. Move old ones to `scripts/_stranded-archive/` so a file left in `scripts/` still means a flush that died recently (3 files from June archived 2026-09-22).
+- **Drive's `name contains` is token matching, not substring.** The cloud check's `run-2` query also returned `jev_run2.jsonl`, so results are filtered to `run-*.txt` on the client.
+- **Desktop Commander MCP times out at session start on Windows.** It starts through `npx -y …@latest`, which checks the npm registry every time: 23s alone, 30–46s alongside the other servers, against a 30s default. `MCP_TIMEOUT=90000` in `~/.claude/settings.json` `env` fixes it (set 2026-09-22). If it times out again, raise the timeout; don't edit the synced plugin's `plugin.json`, which is re-synced on the next launch.
+- **Stale `.git/worktrees/<name>` dirs that `git worktree prune` can't delete ("Permission denied") are not locked.** Their empty `logs`/`refs` subfolders are read-only; `Remove-Item -Recurse -Force <dir>` clears them (2026-09-22, with Drive quit and prune still failing).
+- **`flush.log` "SKIP: transcript missing" is not a fault.** It comes from sessions that were opened and closed before any message was sent, so there is nothing to flush.
+
+## Rules
+
+- Read-only by default: the script never mutates state. Fixes are applied by you, deliberately, after reporting findings.
+- Don't assume the obvious culprit — a signal that pattern-matches a known failure may have a different cause (lesson: 6/25 Milvus/ETIMEDOUT misdiagnosis). Confirm with the foreground re-run before fixing.
+- When a fix is applied, re-run the script to verify the issue code clears, and note the incident in memory if it's a new failure class.
+=================== doctor-plus
+---
+name: doctor-plus
+description: >-
+  Runs Claude Code's built-in /doctor health check, then audits the workspace against
+  the 6 then-and-now context-engineering shifts Anthropic shipped with the Claude 5
+  models (rules to judgement, examples to interfaces, upfront to progressive disclosure,
+  repeats to tool descriptions, CLAUDE.md memory to auto-memory, simple specs to rich
+  references). Reports findings first, fixes only on approval. Use when the user says
+  "/doctor-plus", "doctor plus", "doctor-plus", "extended doctor", "then and now audit",
+  "context checkup". Do not use to check launchd jobs, the memory pipeline, or backups
+  (use claude-stack-doctor).
+---
+
+# Doctor Plus
+
+The standard /doctor checkup, plus a workspace audit for the 6 then & now shifts from Anthropic's context-engineering article (Thariq @trq212, Jul 2026 - they cut ~80% of the Claude Code system prompt for the Claude 5 models). Read the article if a check needs the original reasoning: https://x.com/trq212/status/2080710971228918066
+
+## Trigger Phrases
+- "/doctor-plus", "doctor plus"
+- "run the extended checkup"
+- "then and now audit", "context checkup"
+
+## The 6 shifts (the principles part 2 audits against)
+
+| # | Then | Now | The principle |
+|---|---|---|---|
+| 1 | Give Claude rules | Let Claude use judgement | constrain Claude only where a wrong call is genuinely costly; judgement covers the rest |
+| 2 | Give Claude examples | Design interfaces | a well-designed parameter, name, or field teaches use better than worked examples |
+| 3 | Put it all upfront | Use progressive disclosure | the right context at the right time; always-loaded files must earn every line |
+| 4 | Repeat yourself | Simple tool descriptions | every instruction has one authoritative home; everything else points there |
+| 5 | Memory in CLAUDE.md | Auto-memory | facts about the user and the work belong in the memory system, not guidance files |
+| 6 | Simple specs | Rich references | the highest-fidelity reference wins: code, test suites, HTML mockups, rubrics |
+
+## Workflow
+
+### Part 1 - the standard checkup
+1. Run `claude doctor` via Bash with a 60s timeout. If it completes, summarize its findings.
+2. If it hangs or needs an interactive screen, note "run /doctor in your session for the built-in half" and move on. Never block on it.
+
+### Part 2 - the 6 shift checks
+Scope: whatever the workspace actually loads as context - guidance files (CLAUDE.md and kin), skills, rules, memory indexes. Map that set first; don't assume the workspace's layout. Always exclude version-control internals, sync backups, node_modules, caches, temp folders, and generated output.
+
+**Audit the principles, not surface patterns.** This audit itself follows shift 1: judge each file against the principle, don't pattern-match for keywords. Read the context the way Claude receives it - what loads always, what loads on demand - and ask per shift: is this workspace still living in the THEN column? The smells below are illustrations, not definitions; something can smell fine and still break the principle, and vice versa.
+
+1. **Judgement over rules** - is Claude constrained where judgement would serve better? Smell: absolute directives about matters of taste or style, or two directives that pull against each other. Safety and money rules are legitimately hard - never flag those.
+2. **Interfaces over examples** - do skills teach by boxing Claude into worked examples where a clearer interface (better parameters, names, structure) would carry it?
+3. **Progressive disclosure over upfront loading** - does every always-loaded line earn its place? Smell: detail that's only occasionally needed sitting in files that load every session instead of a tree read on demand.
+4. **One home over repetition** - does each instruction have one authoritative home? Smell: the same guidance restated in several places, especially copies that have drifted apart.
+5. **Auto-memory over guidance-file memory** - are facts about the user or the work (preferences, dates, decisions) living as prose in guidance files instead of the memory system?
+6. **Rich references over simple specs** - are active builds steered by plain markdown descriptions where a higher-fidelity reference (code, a test suite, an HTML mockup, a rubric) exists or would be cheap to make?
+
+### Part 3 - report, then wait
+Output one findings table: shift, verdict (PASS or FLAG), worst offender, suggested fix. Mirror /doctor's manner: **show everything first, change nothing until the user approves.** After approval, apply fixes one shift at a time and re-verify.
+
+## Rules
+- Every finding cites the actual file and the actual passage that breaks the principle. No vibes, no trend commentary.
+- A zero-hit search at root is not proof of absence - look again narrowed before reporting PASS.
+- Most workspaces keep some hard rules on purpose (approvals, backups, destructive actions, money). Never recommend softening those.
+=================== backup
+---
+name: backup
+description: Run the KeystoneOS daily backup on demand (git-push the memory repos, rsync state to Google Drive and the CRASHBOX SSD, reindex memsearch), then report what was saved and what was skipped. Use when the user says "/backup", "run the backup", "back up now", "back my stuff up", "did the backup run", "the backup failed", "I left the laptop off — catch up the backup", or when a session-start HOOK FAILURE names daily-backup. The scheduled launchd job only fires if the Mac is awake at 21:00, so this is the manual catch-up path. NOT FOR whole-stack health checks (use claude-stack-doctor).
+---
+
+# Backup
+
+Runs `~/.claude/scripts/daily-backup.ps1` right now. Same script the `com.keystone.dailybackup`
+launchd agent runs at 21:00 daily (moved from 09:00 on 2026-09-24, when the Mac became the evening machine) — this is the on-demand path for when the Mac was shut at 21:00.
+
+## Run it
+
+Do not pre-check anything. Run first, report after.
+
+```bash
+/opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/scripts/daily-backup.ps1 2>&1 | tail -40
+```
+
+Use a Bash `timeout` of at least `600000` (10 min). The memsearch INDEX step is ~75s of a ~85s
+healthy run; the default 2-min timeout can survive it, but a grown corpus will not.
+
+## Read the verdict from state, not from the tail
+
+```bash
+cat ~/.claude/scripts/logs/backup-state.json
+```
+
+`status` is `OK` or `ERROR`; `errors` lists the failed job codes. That file is the authority.
+The tail is for diagnosing, not for deciding.
+
+**`status: OK` is not "everything was saved" — read `okCount` too.** A run that skipped the
+SSD still ends `OK` with 0 errors. See the SSD gotcha below for what the count means.
+
+## Then clear the stale hook error, if any
+
+A failed run appends a line to `~/.claude/global-memory/transcripts/.errors.log`, which is surfaced
+as a HOOK FAILURE at every session start. A later successful run does **not** clear it. If `status`
+is now `OK` and the file contains only `daily-backup:` lines, archive and empty it:
+
+```bash
+cp ~/.claude/global-memory/transcripts/.errors.log ~/.claude/global-memory/transcripts/.errors.log.archived-$(date +%Y-%m-%d)
+cp /dev/null ~/.claude/global-memory/transcripts/.errors.log
+```
+
+If any non-`daily-backup` line is present, leave the file alone and tell the user what else is in it.
+Shell truncation (`: > file`) under `$HOME` is blocked by dcg rule
+`core.filesystem:redirect-truncate-root-home`, and there is no `truncate` binary here — use `cp /dev/null`.
+
+## Report
+
+Three lines, plain: did it work, what was skipped, what to do next. Never report "backup complete"
+without naming a skipped target — a silent partial backup is the failure this skill exists to prevent.
+
+## Gotchas
+
+**Safe to ignore — expected on a healthy run:**
+- `SNAP skip (missing): ~/.codex/memories` — that path has never existed.
+- `TARGET baylor deprecated in manifest - snapshots to it SKIPPED` — deliberate.
+
+**Real gaps — always surface these to the user:**
+- `TARGET SSD /Volumes/CRASHBOX/AssistantBackup NOT MOUNTED - orphan and working-tree capture SKIPPED`
+  — the run still reports `OK` with 0 errors, but **untracked, gitignored, and uncommitted-modified
+  files were not saved anywhere.** GitHub and Google Drive cover only committed and pushed work.
+  Tell the user to plug in CRASHBOX and run again. This is the most likely way to lose real work.
+
+  **Cross-check with `okCount`, because the error count cannot see this.** `okCount` in
+  `backup-state.json` is the number of jobs that ran, and two whole job classes — `CAPTURE`
+  (per-project working-tree files) and `STATE-SSD` — exist only when the SSD is mounted. So:
+  - **~31 jobs** = SSD captured. **~9-10 jobs** = SSD was absent; only the 4 `REPO` pushes and
+    6 Drive `SNAP`s ran (verified against runs on 2026-09-04 and 2026-09-05).
+  - A single-digit `okCount` with `status: OK` is the silent partial backup. Say so out loud.
+  - Do not derive this from the error count or the exit code — both read `OK` either way.
+- `TARGET ... NOT MOUNTED - is Google Drive for Desktop running?` — the Drive app is not running.
+  Start it, then re-run.
+- `PUSH ERR ... Could not resolve host: github.com` — a network blip, not a repo problem. Confirm
+  with `ping -c1 github.com`, then just re-run; the commits are already made locally and will push.
+  (Seen 2026-09-04 09:05: both `global-memory` and `skills` failed this way and a re-run fixed both.)
+- `repo-diverged:<name>` — automation will never merge. Reconcile that repo by hand. For
+  `dotclaude` and `global-memory` this almost always means the other machine pushed; `/dev-sync`
+  Step 1 merges and pushes both (seen 2026-09-15).
+- `STATE-SSD .codex : FAILED` with `rsync: error: skills/<name>: unlinkat: Directory not empty`
+  just above it in `daily-backup.log` (the error only reaches the log file, not stdout). Cause:
+  `sync-to-codex.sh` turned `~/.codex/skills/<name>` into a symlink, but the SSD copy is still a
+  real folder. The copy is additive (no `--delete`, no `--force`), so rsync cannot swap a
+  non-empty folder for a link — and it reports only some names per run, so fixing one reveals the
+  next. List them all at once:
+  `cd ~/.codex/skills && for e in *; do [ -L "$e" ] && [ -d "/Volumes/CRASHBOX/AssistantBackup/codex/skills/$e" ] && [ ! -L "/Volumes/CRASHBOX/AssistantBackup/codex/skills/$e" ] && echo "$e"; done`
+  Move each one (literal paths — dcg blocks `mv` with `$VAR` paths) into
+  `/Volumes/CRASHBOX/AssistantBackup/_OLD_codex-skills-dirs-<date>/`, then re-run. Never `rm`:
+  the skills also live in the `claude-skills` repo, but the move is free. (Seen 2026-09-15:
+  `dev-sync`, `new-project`, `startup`, `closeout`.)
+
+**Other:**
+- Every log line appears **twice** for launchd runs and once for manual runs. The script both writes
+  to the log file and prints to stdout, and the plist captures stdout to the same file. Not a bug —
+  do not "fix" it, and do not read doubled lines as two attempts.
+- The script is PowerShell only because `pwsh` runs it natively. It manages launchd, not Task
+  Scheduler; the Windows original is parked at `daily-backup.ps1.win-orig`.
+- `-DryRun` is the only parameter. Use it to preview without writing.
+
+## Examples
+
+**Example 1: routine catch-up**
+```
+User: "run the backup"
+→ Runs the script, reads backup-state.json (status OK, 0 errors)
+→ "Backup done, no errors. Everything pushed and copied to Drive.
+   CRASHBOX SSD wasn't plugged in, so uncommitted files were not saved.
+   Plug it in and run /backup again if you have unsaved work."
+```
+
+**Example 2: session start shows a hook failure**
+```
+User: "the backup failed this morning — fix it"
+→ Greps daily-backup.log for the error codes → DNS failure on both pushes
+→ Confirms github.com reachable, re-runs the script → status OK
+→ Archives and empties .errors.log so the warning stops appearing
+```

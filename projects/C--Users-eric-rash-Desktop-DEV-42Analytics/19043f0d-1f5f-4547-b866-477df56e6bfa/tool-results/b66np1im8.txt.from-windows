@@ -1,0 +1,2319 @@
+##### 2023-03-15_wVUwt2A_xi0_an-analytical-framework-for-winning-the-super-bowl-presented
+{
+ "id": "wVUwt2A_xi0",
+ "title": "SSAC23: An Analytical Framework For Winning The Super Bowl presented by SumerSports",
+ "channel": "42 Analytics",
+ "upload_date": "20230315",
+ "duration": 1523,
+ "view_count": 700,
+ "description": "Jack Jones breaks down the analytical challenges of football and discuss how SumerSports is using optimization to help NFL front offices tackle one of football’s hardest problems: roster building.",
+ "chapters": null,
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC23: An Analytical Framework For Winning The Super Bowl presented by SumerSports"
+video_id: wVUwt2A_xi0
+url: https://www.youtube.com/watch?v=wVUwt2A_xi0
+channel: 42 Analytics
+upload_date: 2023-03-15
+duration: 25:23
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [football]
+---
+
+# SSAC23: An Analytical Framework For Winning The Super Bowl presented by SumerSports
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+hi everyone welcome to the 2023 Sloan
+Sports analytics conference competitive
+Advantage talks presented by kager it is
+my pleasure to introduce you to Jack
+Jones the co-founder and Chief Operating
+Officer of Sumer Sports who will be
+presenting an analytical framework for
+winning the Super Bowl
+please join me in welcoming Jack to the
+stage
+thank you
+
+[00:36]
+good morning ladies and gentlemen can
+you imagine all the fuss that's made
+over this object in my right hand
+or pieces of leather stitched together
+into a spherical form that we call a
+football
+it's the reason why half of America
+three weeks ago was fixated on the Super
+Bowl and why each and every one of you
+are in your seats listening to me today
+gladiatorial sport has always been a
+part of human history from the ancient
+times in the Roman Coliseum to jousting
+matches between Medieval Nights to its
+
+[01:07]
+modern manifestation professional
+football and what a game it is 22
+players at a time clashing at full speed
+roughly 150 times a game and a
+choreographed feat of unrivaled
+athleticism
+on the surface football is a physical
+and violent battle laced with joy
+frustration Elation and sadness
+but beneath that there's another Clash
+often invisible that is equally as
+important in determining who hoists the
+Lombardi trophy
+
+[01:37]
+and that's analytical battle
+today I want to introduce to you a
+framework that conceptualizes football
+analytically and explain how we at Super
+Sports operate within this framework to
+help clubs solve some of their greatest
+intellectual challenges
+just as this football can be stripped
+down into four pieces of leather the
+analytical game of football can be
+deconstructed into four distinct
+quadrants
+these quadrants include Personnel
+selection
+performance maximization
+
+[02:08]
+play design
+and in-game decision making
+Bill Belichick said every single player
+matters every single player can change
+the context of the game
+before any workouts are scheduled before
+any plays are drawn up and before any
+fourth down decisions are made NFL clubs
+must ensure they get the right people in
+the building
+the first quadrant Personnel selection
+can be broken down into two components
+football players and football staffers
+
+[02:38]
+each year a general manager is tasked
+with ensuring each of these positions
+are properly filled including
+constructing a roster of 53 players
+now roster building might not seem so
+challenging on the surface with
+thousands of free agents and hundreds of
+draft prospects available each year
+but when you take into account the other
+31 teams the injuries the players
+contract and salary cap and the varying
+player scale this problem becomes
+increasingly more complex and
+
+[03:08]
+challenging
+just how complex well let's try and
+quantify it let's assume a GM has to
+fill 18 spots in a given season because
+the other 35 spots are filled by under
+contract players let's assume that 11
+out of these 18 players will be filled
+in free agency with the remaining seven
+to be filled out in this year's draft
+our hypothetical GM has a targeted
+selection pool that is 100 and 150 for
+free agents and draft prospects
+respectively
+using combinatorics we have a hundred
+
+[03:40]
+choose 11 times
+1527 possible rosters rgm could
+construct in a year
+that amounts to 41 septillion possible
+rosters which is on the magnitude of 10
+to the 25th
+the second quadrant performance
+maximization is a science of getting the
+most out of every player
+to that point bum Phillips once said he
+can take his in and beat Yorn or take
+Yorn and beat hisen he was referring to
+
+[04:10]
+Bear Bryant who was known as creating
+some of the most process driven grueling
+practices in football history
+a head coach must create a process that
+gets players to perform beyond what they
+can mentally and physically
+so how do you find that space in a
+player's mind that maximizes his mental
+mental capabilities on the field
+well there are approximately 100
+trillion synapses in the brain that can
+fire multiple times in a second
+you can imagine how hard it is to find
+
+[04:40]
+the right ones at the right time for
+every player on the field
+similarly when it comes to physical
+capabilities how do you find the right
+biomechanical combinations to maximize
+the athletic output of a player on the
+field
+with over six with roughly 600 muscles
+in the body 300 joints roughly four
+movements for joints with an average of
+90 degrees excuse me with an average of
+90 degrees of range of motion there are
+roughly 60 uh oh excuse me 65 million
+
+[05:12]
+possible ways an athlete can execute his
+tasks on the field adding that to the
+mental search space
+you get 100 trillion 65 million possible
+ways to improve a player both mentally
+and physically
+the risk of dropping the ball is so
+great estimate the practice extremely
+hazardous and its desirability doubtful
+the New York Times said this in a 1906
+editorial when the Ford pass was first
+legalized
+like most Innovation at its time it was
+
+[05:43]
+dismissed as a gimmick
+but in 1913 Newt Rockne's Fighting Irish
+scored five passing touchdowns and fast
+forward 110 years to today and the
+forward pass is a staple of the game
+the third quadrant play design getting
+all 11 players on each side onto the
+right spaces to impact the game has many
+possibilities
+consider offensive passing plays we
+combine personnel
+with pre-snap movement with quarterback
+
+[06:13]
+hand dominance with quarterback
+alignment with pass actions and past
+protections and 10 to the fifth possible
+routes the available and appropriate
+five receivers can run where we identify
+these nine routes as the possible routes
+and include an other to encapture the
+rest and you end up with 36 million
+offensive passing plays
+if you add in running plays categorize
+like this you get 17 280 Run Place
+combining the two you end up with 36
+
+[06:45]
+million 17 200 offensive passing plays
+alone and that's considering a limiting
+route tree
+like the other two quadrants play design
+is massive
+and it's income incomprehensibly large
+and it's constantly beset by the
+challenge of innovation it's an it's a
+growing search space that constantly
+grows and there's a continuous expansion
+as Newt Rock new taught us long ago
+there's always room for ingenuity
+
+[07:17]
+Bruce Aryans once said players win games
+coaches lose them
+the fourth and final quadrant is in-game
+decision making
+and what co-chairs was referencing was
+just how Monumental a tasks coaches face
+during the game
+play calling Personnel choices and clock
+management are decisions that need to be
+made in seconds
+and they depend on fluid factors such as
+down and distance the score injuries and
+weather
+so how do we quantify the enormous
+
+[07:47]
+challenge that is in-game decision
+making
+well let's use another game that is
+quite similar as a proxy
+chess
+chess has 16 pieces aside football has
+11. but in chess each of the pieces
+within their positions have uniform
+power your Pawn is the same as my Pawn
+but in football players within positions
+have varying degrees of skill just ask
+Michael Parsons
+in on average in chess there are 40
+turns per game where each player in each
+
+[08:17]
+turn moves one piece and it's estimated
+the average number of moves for a given
+piece in a turn is 30. but in football
+there are 154 plays or turns in a game
+all 22 players or pieces can move
+dynamically and simultaneously
+and we just Quantified that there are
+over 36 million possible plays or moves
+on the offensive side of the ball alone
+I bring this up because in 1950 Cloud
+
+[08:47]
+Shannon famously derived the number of
+possible chess outcomes in a game and it
+was 10 to the 120th
+to put this into perspective the average
+number of atoms in the in the
+autonomical universe is 10 to the 80th I
+don't even know how high the variations
+of plays in a football game would go and
+I doubt Cloud Shannon could figure this
+one out either but I do know we'd be
+needing to count atoms in other
+universes like the one Patrick Mahomes
+is from because he's clearly not from
+ours
+so it's clear that even portions of
+
+[09:19]
+these four quadrants are insanely
+complex with massive search spaces at
+least 10 to the 25th possible rosters a
+hundred trillion 65 million different
+ways to improve a player mentally and
+physically over 36 million offensive
+plays alone
+and at least 10 to the 120th in-game
+play calling sequences
+again most people think of football as a
+physical contest but when you look at
+the enormity of these search spaces it's
+every bit as much an analytical contest
+
+[09:50]
+and that's why I have the utmost respect
+for GMS and coaches every day they must
+make decisions from a search space that
+no human could possibly explore in a
+lifetime
+no wonder they work 100 hour weeks no
+wonder they get Monday Morning
+Quarterback at every turn and no wonder
+the average lifespan of a GM is 2.1
+years over the past five years and the
+average tenure of a head coach is four
+years
+the problems they face are frankly
+overwhelmingly complex
+
+[10:22]
+in January 2022 we formed Sumer Sports
+to help fund offices navigate these
+search spaces we took our name from
+Sumer the ancient Mesopotamian
+civilization that first used numbers in
+4000 BC to quantify and measure the
+world around us
+we use numbers to convert the dizzying
+of NFL front office information into
+precise and actionable data
+we started in Quadrant One Personnel
+selection focusing all of our time and
+
+[10:52]
+energy on roster building our goal was
+and is clear to make the infinite finite
+to enable decision makers to navigate
+that incomprehensibly large number of
+roster possibilities each year both
+quickly and exhaustively so that they
+can make more efficient roster decisions
+Peter Drucker known as the father of
+modern management once said you can't
+manage what you can't measure
+we all know that numbers are king and of
+course quantifying Sports is nothing new
+
+[11:22]
+but there is one number that no one's
+talking about one number that we at
+Sumer Sports thinks should be driving
+NFL decision making
+and no club or third party to our
+knowledge is making a serious effort to
+calculate this number
+we call it roster value a measure of the
+overall strength of a roster
+think about it a GM's goal is not to
+sign the best wide receiver his or her
+goal is to build the best possible
+roster and yet we have so many metrics
+built to evaluate wide receivers but no
+
+[11:54]
+metrics built to evaluate a single
+roster
+and maybe it's not surprising because we
+know the identities of all the wide
+receivers AJ Brown will still be AJ
+Brown next year even if his skill
+diminishes somewhat
+however we can assemble new rosters that
+no one has ever seen before hypothetical
+rosters about which we don't have any
+historical data
+it is less natural to build a metric for
+measuring something that doesn't exist
+yet
+but it is critical to do so as Peter
+
+[12:24]
+Drucker said you can't manage what you
+can't measure if you can't measure a
+whole roster how are you expected to
+manage it
+the Marvel approach to roster building
+can be summarized in three steps one
+develop a process for evaluating any
+proposed roster with a single number we
+call roster value
+two identify all rosters that could be
+built given player availability and the
+salary cap constraints
+and three among all these feasible
+
+[12:55]
+rosters find the one with the highest
+value
+this approach to roster building seems
+simple but each of these steps is very
+challenging
+to evaluate any proposed roster player
+evaluation is critical but you also need
+to understand the relative importance of
+positions as well of how Snaps are going
+to be distributed among players on that
+roster
+these three factors player grades
+positional importance and snaps are
+combined to create a player's
+performance value
+
+[13:25]
+to get roster value we add up all of the
+performance values on the roster
+once we have identified the possible
+rosters we calculate the roster value
+for each
+excuse me sorry I fumble the ball here
+let me recover
+um
+to list all possible rosters we need to
+know which players will be available and
+cost of acquiring them in both free
+agency and the draft
+once availability and costs are known we
+must consider a variety of contract
+
+[13:55]
+structures and transactions that could
+be used to retain players under the
+salary cap
+if we cannot find a main a means of
+building a roster within the salary cap
+constraints it is not feasible and we do
+not include it in the list of possible
+rosters
+so once we know our feasibility space we
+then can calculate roster value for each
+the roster the highest value is Marvel's
+top recommendation
+the engine that Marvel uses to create a
+list of possible rosters and find the
+
+[14:26]
+one with the highest value is called an
+optimizer
+there are two broad categories of
+optimization continuous and discrete
+in continuous optimization problems the
+variables may have an infinite number of
+possible values
+but in discrete optimization there are
+only a small number of fixed values
+the variables of Interest may only for
+example when considering whether you
+want to sign a player or not you could
+only sign him or not sign him there's
+not 62 percent you could sign with a
+
+[14:57]
+player
+discrete optimization problems are often
+more difficult to solve than continuous
+optimization problems because you
+sometimes have to enumerate all
+possibilities
+at present we view roster building as an
+integer programming problem a kind of
+discrete optimization
+but the set of possible rosters as I
+mentioned earlier it's so large that
+it's impossible to enumerate through all
+of them
+so we carefully formulate the problem to
+make it a convex and linear optimization
+
+[15:27]
+that allows us to solve the problem much
+more quickly in seconds
+we Define
+excuse me once we have uh once we've
+formulated the problem in our
+formulation the objective is to uh is a
+club's Ross value that is the thing we
+are trying to maximize
+we Define two major types of decision
+variables stint paths and role
+assignments a stint path is a player's
+route a club may choose for navigating a
+stint with them for example drafted
+
+[15:58]
+player 53rd overall and cut him in the
+third season pre-june one role
+assignments is a player's position and
+depth on the field quarterback one for
+example we have over 200 000 decision
+variables in Marvel
+the optimization solver considers many
+possible syn paths and role assignments
+for every player it might sign
+it then selects a specific set of these
+paths and assignments to pack as much
+value as possible into the roster that
+is maximize roster value
+
+[16:28]
+it does this in seconds taking into
+consideration the constraints of the
+salary cap fixed roster size and finite
+draft picks and much more
+stem path selected by the optimizer
+cover not only the upcoming season but
+also future Seasons that is there's a
+Time dimension in our optimizations
+we project complete rosters throughout
+multiple future seasons
+and we call this out to the projection
+Horizon which in this case would be the
+
+[16:59]
+25th season
+but priorities vary from Club to Club
+out to this projection Horizon are you
+contending for a Super Bowl now or are
+you in a rebuilding phase these
+questions are critical because they
+determine how you want to construct your
+uh your roster
+so we allow users to wait
+the seasons out to the projection
+housing and these drive very different
+roster scenarios
+once Marvel has created a multi-year
+
+[17:30]
+roster scenario it evaluates each of
+these proposed rosters in each season
+and combines them to create the final
+metric we call roster value the
+objective of our optimizer
+of course no automated system is perfect
+how do you account for the intangibles
+or qualitative information when building
+a holistic system
+our solution is to give the user direct
+control over the system Marvel is
+flexible enough to take in user input
+for example users can tell you not to
+
+[18:02]
+sign a player for any given roster
+scenarios or draft a player until the
+fourth round
+this allowed these kind of assumptions
+make sure that Marvel is not outputting
+unrealistic or undesirable outputs
+so putting everything together efficient
+formulation of the problem utilization
+of state-of-the-art optimization
+techniques flexible user control and
+most importantly holistic roster
+evaluation where you got a system that
+can synthesize the output of all of our
+
+[18:32]
+models into an actionable real-time
+recommendation system
+Marvel puts the power of modern
+Computing at the fingertips of GMS
+enabling them to make uh excuse me
+augmenting their human decision making
+we are just scratching the surface on
+what is a colossal Endeavor and roster
+optimization is just one half of one
+quadrant of what is seemingly an
+infinitely complex game
+today I introduced suma's four quadrant
+
+[19:02]
+analytical framework for football to
+make the analytical challenge more
+comprehensible to those of you who are
+determined to gain a competitive
+advantage
+and here's the good news
+each of these quadrants all the demand
+in these quadrants all of those zeros
+spell job security for you in the NFL if
+you want it
+seriously the task excuse me the task of
+the tasks in each of these quadrants is
+to make the infinite finite to transform
+internal buffets into useful bites your
+
+[19:32]
+expertise your knowledge can help the
+decision makers make better decisions
+each of you needs to ask in which of
+these quadrants can I add the most value
+where can I help make the infinite
+finite and when you answer that question
+you'll be poised to bring incalculable
+value to the club of your choice and
+maybe just maybe get your fingerprints
+on the Lombardi trophy thank you
+[Applause]
+
+[20:04]
+questions
+yep
+have you oh thank you have you uh
+considered working with some of the
+other leagues like um possibly the NBA
+yeah no that's that's a great question
+currently we are primarily focused on
+football because as you can see it's
+such a it's such a daunting task that we
+we love handling but eventually down the
+road that is definitely something we
+would consider
+yep
+
+[20:37]
+I'm curious about your um the teams that
+you work with are there some teams that
+are more data driven or some that are
+more resistant do you deal with all the
+NFL teams yeah it's a great question so
+currently we're actually piloting with
+two clubs in a developmental beta that's
+going to be coming out actually during
+the draft but it is very interesting
+because there's a wide variety of
+Interest among NFL teams because some
+are more analytically inclined than
+others but what's really interesting is
+
+[21:07]
+the way we've constructed this system is
+we really want to use Club IP and be
+able to take in their information and
+then make optimal decisions around that
+um so that that's definitely been a
+major tenet of us right where it's we
+want to be able to optimize your
+information not tell you what you should
+be optimizing
+yep
+just a quick question about you were
+talking about your optimization problem
+
+[21:37]
+that you guys formulate and you
+mentioned that you take it from an
+integer programming problem uh and
+linearize it and convexify it does that
+mean that your results are sub-optimal
+in some way or
+um or or is it a good is it a good
+substitution yeah no that's a great
+question I think there's always a
+trade-off for for performance versus
+output right um granted I'm not the
+optimization guy but uh I'm happy to
+coordinate with our team after this and
+definitely could answer your question a
+little bit yeah just be curious about
+that yeah for sure it's a great question
+
+[22:11]
+yep
+National value is one of the bottom of
+the triangle is that something that's
+dictated by your uh the teams you work
+with because obviously running like
+Tampa two cornerback is less important
+than if you're running a man-to-man
+heavy scheme exactly yeah well that
+that's the beauty about football right
+there's so many different ways you could
+compete and get to the playoffs or the
+Super Bowl right that's why we want to
+really Leverage The club's positional
+screens because the recommendations that
+we're going to be providing to clubs
+
+[22:41]
+have to be driven based on how they want
+to run their organization right if
+you're a team like the Ravens or the
+Niners you have a fullback right whereas
+if you're you know more of a West Coast
+team with no fullback the optimizer
+needs to understand that so we have
+default positional importances but we
+really try to Leverage What the club's
+telling us through uh you know in an
+interactive survey that they provide us
+yep
+that's a great question so currently
+
+[23:12]
+we're we're mainly focusing on the draft
+right now as our beta but that's
+definitely something that we're working
+on internally to make this a 365 day
+tool that includes you know both the the
+off season as well as the 90-man cut
+down into the End season but
+um currently right now no but it's it's
+in the works
+one more question yep
+hey there thank you
+um
+when building a roster obviously
+um you need to consider how much uh
+
+[23:43]
+player it's going to cost to acquire a
+player and so when you're talking about
+a binary choice between either not
+signing a player or signing a player
+um you have to compute some sort of
+market value that you're going to need
+to give to them to know how much you are
+able to acquire of other players for
+instance how do you do that calculating
+certain you know market-based factors
+and then also sometimes in terms of
+money versus years that can also play a
+role so I'm just curious on sort of the
+economic calculation that you're
+performing yeah no that's that's a great
+
+[24:14]
+question so two parts I'll answer the
+first part so those thin paths I brought
+up right within each stem path you have
+to understand the the salary cap
+implications of those so we have someone
+on our team who actually was uh you know
+working for a club for 10 years who you
+know provides a lot of domain expertise
+on that to be able to calculate the cap
+implications around those sin paths to
+make sure that you're actually able to
+create that combination of paths that
+fit under the salary cap as for future
+years that's a great question so all of
+
+[24:47]
+our all of the financials are going to
+so there's inflation right but all of
+the financials are going to be
+calculated in this year's cap through a
+cap percentage right so what we do is
+anything beyond the projection Horizon
+uh we obviously can't measure that but
+we Factor it into roster value through
+assets and liabilities so assets for
+instance would be cap carryover what
+your what how much money you're bringing
+in to pass a rising liabilities would be
+something like dead money right and that
+kind of behind the scenes also factors
+
+[25:17]
+into roster value
+good all right thank you everybody
+##### 2024-03-20_1nt8hK2oYrE_feeling-the-pressure-a-unified-framework-for-automating-pass
+{
+ "id": "1nt8hK2oYrE",
+ "title": "SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in NFL Games",
+ "channel": "42 Analytics",
+ "upload_date": "20240320",
+ "duration": 1437,
+ "view_count": 107,
+ "description": "Research Paper Title: Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in NFL Games\n\nAbstract: In spite of the importance of the pass rush in professional football, pass rushing statistics only include the final outcomes of a play, e.g., sack and pass-made. They do not capture the dynamics of the pass rush or fine-grained insights throughout a play on how much pressure a rusher generates during the rush. In this paper, we propose a unified framework that enables the estimation of defensive pressure scores throughout a play with high accuracy and performance for rusher and blocker identification, rusher-blocker match-up and pressure score estimation and show the real-world applications of our framework including enriched analytics.",
+ "chapters": null,
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in NFL Games"
+video_id: 1nt8hK2oYrE
+url: https://www.youtube.com/watch?v=1nt8hK2oYrE
+channel: 42 Analytics
+upload_date: 2024-03-20
+duration: 23:57
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [football]
+---
+
+# SSAC24:Feeling the Pressure: A Unified Framework for Automating Pass Rushing Statistics in NFL Games
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+all right our next speaker is ready to
+go um his name is s Hong s Min Hong and
+um he's here to present um his paper
+feeling the pressure a unified framework
+for automating pass rushing
+statistics yeah thank you oh no it's
+okay okay yeah thank you very much for
+the introduction uh I'm s Hong I'm an
+appli scientist from the AWS and today
+I'm going to present about our great
+collaboration with our partner NFL the
+next test team about automating the pass
+
+[00:32]
+rush statistics in the alpha games so
+the as my uh title suggest that I tend
+to bore out my audience a lot and my
+colleagues gave me a fair warning not to
+do that so that we decided to go with a
+little bit more exciting example of the
+N Clip from the N game so you can see in
+here is the clip from the NFA game
+between the Jets and the uh the Cowboys
+and the mikup person is getting a sack
+of the quarterback that the end of the
+
+[01:02]
+play but uh when you look at this the
+statistics or the analytics that you're
+are going to get at the moment is that
+the is that only the end result that the
+meup person gets the gets a sack to the
+quarterback but uh uh event uh what we
+are what we wanted to do with our
+framework is that can we measure some
+kind of a pressure that is continuously
+applied throughout a play so we can give
+a proper credit to a player about the
+defensive player that that he he or she
+
+[01:34]
+cat applies this pressure throughout a
+play in a way that the the multiple um
+uh analytic kind of analytic scores or
+the statistics can be derived from our
+framework so that this is the uh current
+P pass rush statistics that are
+available in the NFL games that you can
+see that uh you actually cannot see it
+from here but it is the list of pass
+rush and how many sacks that the
+defensive player got and how many his it
+
+[02:05]
+got or how many Rush how many Rush that
+he uh he caused but we want to go uh go
+be behind that so for for example in
+this uh in this example you can see that
+there are two players that are getting
+sack at the end of the day but you can
+also see uh you can also see that the uh
+it's not going back you can also see
+that there are some other players that
+are getting close to the quarterback as
+well so we want to give a credit for
+them as well during the throughout of
+
+[02:38]
+play so oh oh so playing again so I'm
+going to go there so that we want to
+capture the Dynamics of the pass rush uh
+as I continuously I'll say it over and
+over again a pass rush throughout a play
+and they give a proper credits to a
+player so to do that there are technical
+challenges that we had to solve so first
+uh to among all those players out there
+uh we we need to identify who are
+actually blockers and who are actually
+rushers because all the players among
+
+[03:10]
+this field Sometimes some of them are
+blockers and me but some of them are
+rushers but some of them are also the
+rush toward the toward the to to the end
+uh to the uh to to get the pass at the
+end of day so that we want to identify
+the who are actually the blockers and
+rushers and we also want to identify
+that uh the who blocker and russer
+matching to know that the who blocks who
+so for example Russia can be double
+teamed by uh by the offensive team and
+
+[03:42]
+sometimes um Russia can can be just open
+that can that he can just rush to the
+quarterback without any resistance and
+uh and lastly we want to estimate the
+robust and reliable inlay uh pressure
+score uh in playay of pressure score
+that we can can measure this pressure uh
+across uh throughout a
+play so the for the data that we use for
+our framework uh we use
+
+[04:12]
+the okay we use the data from the big
+data ball that the N team uh n of an
+exchange test team uh collected and
+organized and also publish size to the
+Internet so that you can also access
+this data set uh uh oh sorry
+oh sorry
+um okay you can also uh access this data
+set in the internet uh with the
+
+[04:42]
+collaboration with the AWS oh actually
+right so the it provides the reach
+information about the game and play like
+where what what the what is the game ID
+when it happened and which teams were
+playing and also the yard line what each
+play uh happened and also the outcome of
+the play and also it also provides the
+rich information on the tracking data of
+individual players as well uh about the
+player ID like a who played on the who
+played act played in a play and where
+
+[05:14]
+the the players were in the position
+over the time and also the players
+velocity and acceleration so the and and
+Etc so that there is a rich information
+that you can also work on the deriving
+the interesting analytical scores of or
+the statistic that you can play around
+that you can access in the the link
+provided in this
+presentation so the first uh first uh
+technical hudle that we wanted to solve
+
+[05:44]
+was the blocker rusher identification
+and matchups so the main goal of this
+abler rusher identification and matchup
+was to identify the uh defensive rushers
+and offensive blockers and their
+matchups within the first few seconds of
+the play so we can know that who matches
+who who blocks who uh at the beginning
+of the play and the at least the first
+part first half part of the play so we
+can all take into take that into account
+so the this framework aims to automate
+the previously a manual previously a
+
+[06:15]
+manual process that the human labelers
+actually had to go through the each
+individual video clip and manually label
+the who who blocks Who and the who
+blockers and the who are rushers so the
+this framework is to um expedite that
+the process by automating it and uh also
+to save the cost and the manual labor
+that it
+incurs so that we use the uh both the
+statist static and the dynamic features
+provided in the uh the C data set the
+
+[06:46]
+Big Data B data set like uh for the
+static features like a normalized
+initial positions as snap and offensive
+defense players roles and so on for
+dynamic dynamic features that are
+changing over time throughout a play
+like a positions velocity acceleration
+so on and also the player directions and
+so much information that we use and all
+those features was kind of standardized
+to before it it was fed into the uh the
+machine learning model to uh to optimize
+
+[07:17]
+the uh to optimize the machine learning
+model training
+process so we uh we actually triy the
+multiple models get the good performance
+of the model and there were two two
+models that show the promising results
+and we finally we eventually went on
+with the Orum model so the actually the
+orl model we model the the two different
+task individually so the black so the
+each each Auto on autum model uh models
+
+[07:47]
+the block of rusher identification first
+and sequentially there's another a model
+that uh estimates the blocker rusher of
+matching about the who blocks who so
+each shows a very uh great performance
+on the with the Fon score of the 0.99
+for the identification and also the
+close 0.91 for the matchup uh another
+another model that showed the promising
+results was based on the gra neur
+Network GNN so the although that it
+
+[08:17]
+didn't show as good as the performance
+as the autog glom model uh we kind of
+liked it because it is a combined
+framework that can solve both task with
+a single model by modeling the players
+as a nose and their relationship as an
+NES so I think we think that it can be
+an interesting direction that we can we
+can pursue uh for the as a future
+Direction uh so the next model or next
+framework that we uh we uh try to model
+
+[08:47]
+is the this a continuous pressure score
+like how the pressure score how the pr
+how much the pressure is applied to a
+quarterback throughout a play the way
+that we do is that we model this as a
+pressure kind of a probability uh with
+the machine learning model or the tree
+based model that about how many how much
+of a Poss probability that a a pass
+rusher is pass rusher can get uh can get
+the hit early or a
+sack so the main objective is to
+
+[09:19]
+quantify the uh instantaneous Pro
+Pressure generated by a p ressure on a
+standard scale from 0 to one uh at any
+point in time during the play and uh the
+outcome of it is to provide your
+granular visibility into how pressure
+evolves throughout the rush throughout
+the play and uh also to allow for the
+fine grain analysis of pass rushing and
+the blocking
+performance so we use the similar data
+features that we use for the uh that we
+
+[09:51]
+use for the blocker rusher
+identification and the matchups like a
+static features and the dynamic features
+that we got from the Big Data B
+uh and also the one interesting feature
+that that we engineered is called we
+named it as a blocker uh interference uh
+that is used to detect offensive
+blockers for each defender in the area
+of Interest so the for each pass rusher
+and for between the pass rusher and the
+uh and the passer and the quarterback so
+
+[10:23]
+we calculated the uh kind of we kind of
+designated the area of Interest based on
+the distance and the angle and set the
+and count how many blockers there are
+going to be in this area of interest to
+measure the potential resistance that a
+that a rusher may get uh during the play
+uh for the Target variable we used the
+manually label the PFF labels for hurry
+hidden sack and also we used the
+engineered variable that is based on the
+
+[10:54]
+uh uh distance from a passer to a rusher
+uh at the certain time at the certain
+time point of the play or the certain
+event of the
+play so the as you can as you can might
+as you may already know that since the
+pressure score estimation is a
+continuous score estimation it is kind
+of hard to it's kind of hard to evaluate
+the performance of it so that we use the
+appr proxy evaluation based on the
+maximum pressure that a passer or a team
+
+[11:26]
+applies to applies to a passer
+uh and compare the uh and it measures
+its accuracy based on the uh the PF PFF
+labels of a heat hurrian sack so the the
+we final we went on we finally choose
+the random forest model uh which show
+great accuracy for the all Defenders or
+the all or only the blockers and we had
+a better accuracy uh when we measured
+this accuracy uh against the Heat and
+
+[11:58]
+heat and Sack
+but there is a little bit of the of the
+parties are kind of responsible for the
+disparity of the model performance so
+there is a room for improvement of this
+modeling but uh in the but basically the
+model itself showed a pretty good
+performance and one another thing that
+is important for this continuous score
+continuous score estimation is the model
+collabration and it is also the one of
+the biggest reason why we went on with
+the random forest model instead of a
+
+[12:28]
+comple complex neural network based up
+or Transformer based model because
+issued a better calibration network of
+for the expected calibration error and
+the max maximum calibration uh in the in
+the sorry maximum calibration
+error so uh I will show you the example
+of the how this op pressure probability
+is going to work for a real play so the
+on the right hand side this is the
+sample play where the three players are
+
+[13:00]
+getting a high pressure uh generate the
+pressure over the course of the play and
+you can see I'm going to just play
+again you can see that the two players
+are getting generating the high pressure
+at the be at the earlier part of the
+play and there is another player that is
+that is uh that generated the high
+pressure at the later part of the play
+who eventually get the C sack so this
+shows that how our frame can estimate
+the uh how can estimate this continuous
+
+[13:32]
+pressure that was that that was applied
+to a passer or a quarterback uh
+throughout a play uh instead of just
+giving you the end result of the play
+whether the quarterback got sacked or
+not another example
+that sorry okay so the another example
+in here is that you can see that the
+there's a passer is kind of forced uh
+forced to the first to be out of the out
+of the sideline because he he got to a
+
+[14:04]
+lot of pressure during the play and in
+the in this example you can see the
+models give a high
+up yeah so in this example you can see
+the models give credit to the two
+players about uh about creating a lot of
+pressure to the botel and uh uh and when
+a human label was just uh assign the K
+credit to the one player oh I actually
+
+[14:34]
+miscalculated my time and I'm going to
+move faster than that so the practical
+application of this framework is that we
+can generate a lot of we can derive a
+lot of analytics based on this framework
+for example that how how long this
+passer get a pressure c c the pressure
+time also the high pressure Zone that it
+when the when the threshold is above the
+75 % we C it to the pressure Jone and
+there are so many other dment analytics
+
+[15:04]
+that can be uh that can use that can be
+used to enriched analytics of an Alpa
+games uh so that this is example that we
+showed about the M Parson generating a
+floor uh generating the pressure score U
+since you saw it already I'm going to
+pass it for the sake of time so to
+conclude uh our framework enabled your
+pressure pressure estimation throughout
+a play by addressing three technical
+challenges with the machine learning
+models blacker rusher identification and
+the blacker Rush rusher matchup
+
+[15:34]
+estimation and the inlay pressure score
+estimation so there are a lot of
+potential future directions that we can
+take uh but two of the things that we
+thought that we wanted to share with you
+is that we can improve the regality of
+the Insight uh based on the specific
+pling and rushing uh strategies of the
+each team kind of employed so the it can
+be an interesting D direction that the
+model didn't account for and also that
+we can reflect on average player
+performance to compare with the actual
+
+[16:05]
+players performance in a specific
+scenario of the game so this is what we
+prepared thank you very much for your
+attention and uh we open the floor for a
+question for judges I'm sorry I spent
+four minutes of your qate time but I'll
+be fast no you're fine you're fine um
+first of I thought that you did really
+well you definitely got my attention you
+know with you know the subject matter
+you know feeling the pressure you know
+
+[16:35]
+with the past rush part I'm just going
+to more less ask you like an
+introspective question because obviously
+you know you comb through a lot of data
+but what would you say is is more
+essential like having like a really
+effective pass blocker or a really
+effective like pass rusher like let's
+say for example NFL draft is coming up
+you know April the 25th and we know that
+it's much harder to find you know really
+good quarterback as let's say as opposed
+to a running back you know there were 12
+you know NFL running backs that rush for
+a th000 yards only three of them were
+
+[17:06]
+drafted in the first round so in other
+words you can find them but when it
+comes to you know Elite protection as
+opposed to also a really good Edge or
+outside linebacker what would you say
+you know is harder to find like if you
+have somebody from a player Personnel
+that's a decision maker to ask hey you
+know I have this pick I have an
+essential pass blocker I have an
+essential um pass russer mhm they're
+both equal out what would you say it's
+harder to find based on the data that
+you've gone through so you are asking
+
+[17:37]
+that what could what was the most
+definitive factors that contributed to
+the pressure score generation correct
+yeah okay so the the as you could
+imagine that the players relative
+position like the rushers the relative
+position to a passer is a one one
+definite Factor because of the closure
+they get it is a it is a more likely
+that the the quarterback is going to get
+a pressure and also that there are the
+multiple kind of features maybe we did a
+little bit of the feature analysis like
+which features contributed to generate
+
+[18:08]
+this uh the pressure was the obviously
+velocity and the acceleration and also
+the players initial positions like the
+who were kind of a close to the
+quarterback or the who were who are
+close to the quarterback tends to
+generate more pressure and also that it
+is also affected by the how many regist
+this rushers the got during the play so
+that you can imagine when there's when a
+rusher is open to approach to the
+quarterback then the it is more likely
+
+[18:38]
+that the quarterback is going to get
+more pressure so uh about uh the more
+explanation that you you gave me about
+like all these different positions so
+that we didn't uh um we didn't uh
+actively account for those kind of
+complex features uh in the like the
+positions and the allowing the position
+those kind of things and I believe it
+would uh improve the performance of the
+model at the end of the day so it is
+interesting visal direction that we can
+
+[19:08]
+take for later um exploration MH what
+was the what did you use for data uh as
+far as the kind of ground Truth for who
+is blocking who oh who's blocking who so
+the for the F blocking who uh we got the
+the hand label the manual label data
+from the from our part NFL and the PFF
+so the so human labeled about the who
+blocks who yeah yeah just curious there
+um and it it would handle double teams
+
+[19:38]
+oh yeah they could go double teams yeah
+or triple teams yeah uh this is more of
+a maybe a suggestion that a question but
+I think
+um ask it anyway um so in terms of a
+player metric I would think that you
+would want to Target probability of a
+pressure you know hurry hit sack
+Whatever by a certain time rather than
+like at any point in the play like you
+know the the speed of being able to get
+to the quarterback and reducing the
+
+[20:09]
+amount of time he has is you know so
+like a a hurry at 3 seconds is is
+superior to hurry at five and a half
+right that's actually a great point so
+the so in the the target variable so we
+use the PF labels of the hit and hit har
+and Sack that the uh represent did the
+and play results but uh uh we also added
+one more Target variable that was
+engineer uh that about the how about
+
+[20:39]
+with the threshold of the distance
+between the passer and the rusher like
+when a passer gets gets within the one
+yard of the one yard of the quarterback
+before the 1 second of the time play
+then we also took that into account yeah
+MH really interesting I'm going to be
+fast okay I have two but it's they're
+going to be fast the first is just is a
+clarification which is um so um so when
+you're learning the pressure
+probabilities you have a feature set of
+
+[21:09]
+feature Vector which includes like
+position and velocities of all the
+players and then you're predicting on um
+sack uh hurry Etc right um but then you
+showed uh this plot where you where you
+attributed the pressure to different
+players so did you show was that like so
+in the end you were you were you were
+saying okay we want to be able to
+attribute which of these players is um
+sort of is uh is this pressure coming
+from right so given that you have so I'm
+imagining if I'm evaluating a certain
+play I put in the positions and velocity
+
+[21:40]
+of the players I have you have your
+pressure variable which is going up
+which is like the probability of the
+sack how do you disentangle which
+players the pressure is coming from oh
+okay so the we didn't actually try to
+dis disentangle about the which which
+pressure is coming from which specif big
+player uh so the it's actually related
+to the previous question that we didn't
+only uh account for the uh end results
+so that we also accounted for this
+engineered feature of we call the NGS
+
+[22:12]
+label so the in this way that uh so that
+it is not uh it is not always the one
+player gets a sack uh so the target
+variable is more kind of a forgiving in
+a way that when the players uh when the
+rushers get into the certain threshold
+the area then it gets credit for that so
+the this is how we dealt with this uh
+dealt with this of the pressure score
+estimation so the the reason why we did
+that is that we didn't uh want to
+
+[22:43]
+calculate the pressure individual
+players pressure score as the
+contribution of the this defensive Play
+Rather we want to have more
+individualized pleasure score that it
+can be estimated based on this features
+so the is the reason why we chose this
+direction but the your direction can be
+very interesting too I see and then and
+really quick so so one way to sort of
+validate this pressure score is you
+could imagine can I check if it's
+correlated with other things that I
+think it a pressure would be correlated
+
+[23:13]
+with and one thing that pressure might
+be correlated with is quarterback motion
+and you have the velocity of the
+quarterback so if you look and you just
+and you just check if there's a
+correlation between quarterback velocity
+and the the pressure score have you
+checked something like that uh we didn't
+do the correlation analysis but uh in
+the features I kind of skipped over it
+very fast but uh we took it uh we kind
+of took account the took it took account
+for the uh the relative positions of
+those passers to the quarterback and and
+
+[23:43]
+also the rative velocity and the
+relative acceleration to take into
+account that effect yeah got it great
+thanks okay thank you very
+much
+##### 2024-03-20_4oKByRaArVs_research-collectives-the-call-for-large-scale-open-science-i
+{
+ "id": "4oKByRaArVs",
+ "title": "SSAC24: Research Collectives: The Call for Large-Scale, Open Science Initiatives in Sports Science",
+ "channel": "42 Analytics",
+ "upload_date": "20240320",
+ "duration": 1655,
+ "view_count": 94,
+ "description": "Teams, schools, and leagues are spending money, time, and human resources on technology to improve player performance and mitigate injury risk. But are these technologies really moving the needle for athlete health? This talk will go from exploring important case study evidence in sports science to discussing the pressing need to form research collectives to develop large-scale, systematic, and open approaches to methodically answer questions involving health, performance, and technology.",
+ "chapters": null,
+ "tags": []
+}
+---
+type: video-transcript
+title: "SSAC24: Research Collectives: The Call for Large-Scale, Open Science Initiatives in Sports Science"
+video_id: 4oKByRaArVs
+url: https://www.youtube.com/watch?v=4oKByRaArVs
+channel: 42 Analytics
+upload_date: 2024-03-20
+duration: 27:35
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [sports-science]
+---
+
+# SSAC24: Research Collectives: The Call for Large-Scale, Open Science Initiatives in Sports Science
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+all right thank everyone for being here
+uh thanks for joining us in the 2024
+Sloan Sports analytics conference
+competitive Advantage room presented by
+kager the craft analytics group my name
+is Grant anhorn I'm a first year MBA
+student here at MIT Sloan and could not
+be more excited to introduce Natalie uh
+her talk today is called the research
+collectives the call for large scale
+open science initiatives and sports
+Sciences uh Natalie uh welcome to stage
+thank you
+
+[00:30]
+[Applause]
+hello thank you for having me it's
+always a pleasure to be here at soul and
+sports analytics I'm always excited when
+there's a fellow Wahoo uh inviting me up
+on stage uh so today I'm going to talk
+to you like he said about research
+collectives and the call for large-scale
+open science initiatives in sports
+science and specifically today I'll be
+speaking about collectives around
+athlete health and safety so I first
+also want to speak a little bit about
+
+[01:00]
+what do I mean by collectives um when I
+think about collectives I'm thinking how
+do we bring together brain power
+resources and data to answer questions
+that we can't answer on our own and
+answer questions that really are going
+to move the state forward and you know
+make a positive impact in
+sports so during the talk I'm going to
+first start with a brief history of
+research in athlete monitoring so we're
+all kind of on the same page of where
+this has in the past uh then we're going
+
+[01:31]
+to take a quick divot and look at um or
+pivot I should say uh and look at uh
+what daily athlete monitoring looks like
+at UVA men's basketball and then last
+we'll talk about the call for research
+collectives in sports um my vision at
+UVA and what we're doing uh amongst us
+peers in the ACC to move this
+forward so around
+2015 we saw the emergence of wearable
+techn technology in the United States
+
+[02:01]
+and have been going on overseas for a
+while uh but about 2015 is is where we
+saw uh specifically teams in the United
+States take on wearable Technologies
+these uh wearable companies were telling
+us things like oh you know it's going to
+help you improve player performance
+you're going to be able to track athlete
+workloads oh and you're going to be able
+to predict injury coaches are salivating
+everybody wants to predict injury at the
+same time as the where are coming up
+
+[02:31]
+we're seeing um democratization of
+machine learning through programs like s
+kit learn which is making it so people
+with a data set can you know do a little
+Python and get machine learning results
+pretty easily without much Technical
+Training uh the convergence of these
+wearables and machine learning brought
+us a lot of research articles that
+confirmed You can predict injury with
+wearables however there's a lot of
+concerning things within these papers so
+
+[03:03]
+myself and uh Jay hurdle set out to
+analyze the research that was out there
+we specifically looked at GPS uh
+Technologies on team um team-based Field
+Sports so a very Nish sport population
+and looking through all these articles
+um we found no conclusive evidence that
+there was any reason we should be using
+wearable Technologies uh to predict
+injury it wasn't happening like these
+research articles were saying they were
+
+[03:33]
+so why why did we make this conclusion
+uh first was because of disperate
+methods of injury tracking teams were
+tracking injuries extremely differently
+um across these papers so we couldn't
+really say that uh the results were
+similar across teams uh next was
+statistical analysis and I mentioned
+this with the machine learning
+uh uh in sports injury is not a peer
+prediction problem but yet we had people
+try trying to make it a peer prediction
+problem using things like machine
+
+[04:03]
+learning and that's not the best way to
+approach injury uh humans are highly
+probabilistic and so are their injuries
+uh and then next was just over ambitious
+claims of a new technology from a
+relatively small sample size we were
+looking at you know single sports teams
+of like 15 people for one season which
+isn't a large sample size uh so we had
+over ambitious claims from the
+technology companies we had
+overambitious claims from researchers
+and that has a lot to do with how
+publishing Works often researchers are
+
+[04:33]
+asked to make really ambitious claims in
+their studies whether or not that's what
+the data really says and we could have a
+whole conference on academic publishing
+and the problems there but that's all
+I'll say um but then you're think so now
+you're looking at me and you're saying
+well Natalie you're telling me that
+wearables don't help us predict injury
+however I've maybe seen some of your
+work I know that every day you are using
+wearable tech Technologies with the
+teams that you work with and you are
+absolutely correct so in my role at UVA
+
+[05:05]
+I sit on the faculty of data science uh
+but I also work as a sports scientist
+with many of the athletic teams there
+and I walk into coach's offices and I
+ask them you know what's working for you
+and they always talk with technology
+something is working for them and they
+feel like it's helping them prevent
+injuries it's helping them train their
+athletes on and off the field and I
+think that that anotal research or that
+anal stories are so important to helping
+us guide the hypotheses and ideas and
+
+[05:35]
+that we need to be
+researching so we're going to take a
+little divot here a little I keep saying
+divot I must like want to go gol that's
+how my golf game is lots of divots um
+take a little pivot here um so I worked
+a lot with the men's basketball team and
+I'd love to show you kind of an injury
+profile with technology uh but given
+some uh privacy issues I'm going to show
+you a uh uh
+a performance uh uh kind of story in the
+basketball team uh and at UVA we really
+
+[06:06]
+feel like if we can optimize somebody's
+Readiness and performance the trickle
+down effect is going to be Mitigation Of
+of injuries specifically fatigue and
+overuse injuries um so many of you
+probably know who this is on the screen
+this is DeAndre Hunter he was one of the
+great basketball players um that have
+come out of UVA um he was with us for a
+couple years and was on the 2019 uh
+championship team DeAndre came to UVA
+with a lot of uh basketball prowess he
+
+[06:37]
+was a great basketball player everyone
+knew it however he had a lot of physical
+capabilities he could improve upon
+especially if he wanted to go to the MBA
+so over his years with us he was able to
+put on 24 pounds of basically pure
+muscle uh decrease his body fat and
+increase his vertical uh jump despite
+putting on extra mass and he did this
+because of his work ethic and all of the
+work he put in to making himself a
+better athlete but also with the help of
+
+[07:08]
+our performance coaches and um
+technology that we use at
+UVA where this dat is collected is
+called the good stewards um basketball
+performance center that's the entrance
+right here so I'm going to talk you
+through kind of what a
+daily monitoring session looks like for
+us on a day where we are both collecting
+data I'm not sorry we're always
+collecting data on a day where we're
+lifting and a day when we are also
+practicing in the afternoon so athletes
+will come in in the morning they first
+
+[07:38]
+fill out a wellness questionnaire this
+questionnaire will ask them where are
+you sore it asks them how much they
+perceived they slept uh and different
+Dimensions of Wellness many of our
+athletes opt into wearing an AA ring so
+at this time the data is downloaded and
+we put everything into dashboards we're
+really uh dashboard crazy at UVA coaches
+really like dashboards um and so it goes
+into dashboards that look like this so
+our coaches specifically our performance
+coaches can take a quick look and get an
+idea of where the team is at for that
+
+[08:09]
+day they move on with their warm-ups oh
+let me step back in addition to a daily
+look we're also tracking these Trends um
+over time to see what they look like
+over
+time so the guys go warm up then they
+come back over and they're going to do
+counter movement jumps on Force plates
+uh counter movement jumps allow us to
+assess neuromuscular Readiness so many
+of everyone here works with athletes
+knows athletes or was an athlete is an
+athlete uh athletes are extremely
+adaptable and even if they are feeling
+
+[08:39]
+really fatigued if I tell them to jump
+as high as they can they're going to
+jump as high as they can um so we can't
+always look at fatigue from are they
+just not jumping as high what the force
+plates allow us to do is look at
+strategy changes so how are they
+changing their jump strategy to achieve
+that Max output and in those strategy
+changes we can assess assess different
+kinds of
+fatigue again it goes into a dashboard
+um that is you know colorcoded for the
+coaches get allows them to get quick
+looks at the data so now our performance
+
+[09:09]
+coaches are taking all of this into
+account as the athletes are moving to
+their their weight racks um if the
+coaches feel like there needs to be
+changes to the weight routine um let's
+say a guy wakes up slept really well he
+maybe he slept really well the last few
+nights he's feeling great we don't have
+a game for a few days maybe they're
+going to push him a little harder that
+day increase the weight increase the
+intensity of his lift and on the the
+opposite of that a guy could come in um
+not being not feeling so great maybe
+
+[09:39]
+he's feeling um you know a bit anxious a
+bit antsy we realize that he's having
+some Central Nervous fatigue so we're
+going to maybe take out any Olympic
+weightlifting moves that are in his his
+um weightlifting routine for that day to
+help give his CNS a rest um the circles
+there show some of the technology that's
+in our racks um at the top there is a
+perch camera
+uh that's tracking barbell uh speed and
+velocity uh we use this both for goal
+setting but then also to track fatigue
+while they're lifting and then there's a
+couple iPads that are giving them their
+
+[10:09]
+next exercises they're marking off what
+they're doing um and then it's also
+giving them the data from the perch
+camera there's also we have uh Force
+plates in the the racks too if we need
+to um so the guys finish their lifting
+routine they go eat breakfast they go
+off and do the student part of being a
+student athlete uh the performance
+coaches and sports coaches are now maybe
+having a quick phone call how are the
+guys feeling today what was practiced
+like yesterday maybe the day before
+what's coming up next what should
+
+[10:39]
+practice look like today and usually the
+coaches want to know things like how
+many minutes can I practice today
+without you know burning or you know
+burying the guys in a hole they can't
+get out of before the next game uh so
+the guys come back after classes maybe
+watch film do that type of stuff they
+warm up again before they enter the
+court they're putting on their catapult
+devices uh UVA we're still wearing our
+catapult devices uh between the shoulder
+blades I know many teams have moved to
+the hip uh they practice we have gas
+doing all the data collection during
+
+[11:09]
+practice uh and at night it's put into a
+database for the performance coaches to
+look at to start making adjustments and
+recommendations for the next coming days
+and also to look back to see did we hit
+the benchmarks we wanted to in the
+practice
+session okay so we have all this data
+and so now kind of back in the research
+side we're trying to now fit this into
+different modeling models that we know
+of injury and Readiness so um on the Le
+hand side here is a model of overuse
+
+[11:39]
+injury by koven it's really small up
+there but it's I think it's open source
+if you want to look at it yourself what
+I like about this is that it takes into
+account individual physiology injury and
+adaptation and all of the biomechanical
+uh stresses that are imposed upon
+athletes on the other side is um a model
+that we use at UVA to talk to athletes
+and it focuses mostly on optimal
+Readiness what are all the things that
+need to uh come together to make you an
+
+[12:09]
+optimal athlete um and we really feel
+like if we're focusing on optimal
+Readiness and from a modeling
+perspective I feel like there's more
+signal and Readiness than an injury um
+that's going to have a trickle down
+effect to decreasing your likelihood of
+overuse or fatigue related related
+injuries um so now you're thinking you
+have all this data you have models that
+you can start to work the data with and
+understand how it works together why
+can't you make any evidence-based
+recommendations and that comes to uh
+
+[12:41]
+what we call the hierarchy of evidence
+and any of the other academics in the
+room are probably very familiar with
+this
+pyramid so as we move up the pyramid we
+have better evidence so the very bottom
+is is background and expert opinion
+that's me standing up here telling you
+what I think and then we move up from
+there in sports we often have a lot of
+um observational research so athletes go
+they do stuff we're tracking them and
+then we kind of just hope we can see
+
+[13:11]
+something just observationally watching
+them maybe we have two athletes diverge
+and there can be some kind of natural
+experiment there uh but Sports is not a
+place where we can do randomized control
+trials um it's really hard for me to go
+to a coach and say I'm just gonna hold
+this guy out because I want to see
+what's going to happen I'm going to get
+laughed at um uh so we it's hard to do
+randomize control trials was at the top
+of that bottom part um so then all of
+our research when it comes to
+observational is kind of in that cohort
+
+[13:41]
+study region but that's usually small
+sample sizes and again we're not great
+at sharing the methods and sharing the
+data so it's really hard to move up um
+collectively into systematic reviews and
+Meta analyses Meta analyses are where we
+can kind of add data together from
+across Ross different studies U but we
+make that really hard in the sports
+literature but this is where collectives
+can really come in and
+help so at uh UVA I run something called
+
+[14:11]
+the sports science and analytics
+Collective this Collective is a little
+broader than just athlete Health at UVA
+we're bringing together all the faculty
+who have interest in sports our
+athletics department our students our
+industry Partners to think about ways
+that we can uh bring all of those re the
+brain power the resources the data uh
+together to move forward everything from
+ticketing and marketing to uh Athlete
+Performance to tactics one of the
+biggest projects we're working on right
+now is the portal for basketball um
+
+[14:43]
+which if anyone knows portal data it's a
+not the easiest and most fun project but
+it's an amazing data project which I
+love um so now how can we take this and
+look at it in athlete Health um so one
+of the things we're working on at UVA
+also is working with our peers in the
+ACC to talk about can we start to now
+bring together the biometric data that
+we're collecting on our athletes for
+their health for their performance for
+their safety and find ways to bring that
+
+[15:13]
+data together forget about competitive
+Advantage let's just focus on making our
+athletes in the ACC the the most ready
+and optimally an optimal athletes that
+we
+can uh and so we've started these
+convers and hopefully stuff will move
+move forward so what do we get besides
+research papers uh when we put
+collectives together um because even
+though I'm faculty and Publishing papers
+supposed to be something I think about a
+lot it's actually the thing I think
+about the least um I would much rather
+
+[15:45]
+the work I do positively affect athletes
+and give products back to athletes and
+the clinicians and practitioners that
+work with them versus a paper that maybe
+2% of this room reads obscurely on
+whatever ever uh site you found it on um
+and
+so it's going to be more than this
+research papers but when I put research
+in the word people often think oh you
+just want to like study us um so what do
+we get first and foremost I think best
+practices I talk to a lot of people who
+
+[16:16]
+are using wearables and they say you
+know what I don't even know what best
+practices are in collecting data on our
+athletes how how do we clean the data
+how what variables are important what
+Ables are we making you know beyond
+what's given to us um and like where do
+I get started and that leads into um
+Fair principles if we have best
+practices out there that also allows
+athletes to understand best practices
+and has conversation starters um with
+people collecting data about are you
+
+[16:47]
+using best practices when you're
+collecting data on me in terms of
+privacy and um use cases of that data um
+it also allows for um I should also say
+what fair means means for those of you
+who aren't familiar Fair stands for
+findable accessible interoperable and
+reusable data and so this is if we're
+all kind of collecting data in a similar
+way and I me and my students might have
+code that helps model that data we might
+not be able to make uva's data
+accessible but we can make the code that
+
+[17:17]
+we use to run our models for athlete
+Readiness accessible for everybody so
+you don't have to have a team of faculty
+and students you can go to our website
+and find that data um find that code and
+run your own
+models it um also brings together
+multi-site research so how can we now
+not think about adding our data together
+later on but how can we come up with
+ideas and hypotheses together and
+systematically uh collect and research
+that data together and then longitudinal
+
+[17:48]
+research so this has become even more
+important in the era of the portal uh
+often we only have an athlete for a
+little bit they can easily now bounce to
+other institutions and then we lose that
+data
+uh we don't you know have four years of
+a full data set on an athlete any longer
+um it's also important that that athlete
+you know has some ideas that can they
+Port that data with them when they move
+on um and then also looking over the
+lifespan so we have athletes who go on
+to the pros that's great their data
+should go with them there but what about
+the athletes who we don't just don't
+want to have arthritis in their knees
+
+[18:19]
+when they're 35 how can we start to
+track our athletes long term and make
+sure that they're healthy and active you
+know throughout their
+lifespan so all sounds great how do we
+do it first and foremost is funding and
+funding drives allot these other other
+areas um we'll need data architecture
+and data agreements research oversight
+and consent I'm all about transparency
+amongst researchers and amongst the the
+participants that we use in our research
+um and then the data architecture is
+really important we need data governance
+
+[18:49]
+metadata um and understand really who's
+looking at that data and how we make it
+all transparent um and then hopefully
+put together our really big IDE ideas
+talk about them and put them out there
+for everyone including the athletes uh
+to
+use uh so a big thank you to all my all
+my collaborators and funders and that's
+my contact information um but I'm happy
+to take questions now
+[Applause]
+
+[19:26]
+also thank you um so two questions one
+is what what do the coaches and athletic
+department think of this do they think
+you're giving away secrets that you
+shouldn't be and then second do you
+think um this sort of model I could see
+this actually working very well at the
+pro level where the players associations
+yeah might could negotiate for this and
+kind of mandate this with the leagues
+yeah so for your first question how do
+athletic departments feel uh that's
+usually we've been talking about these
+concepts for years now and that's
+usually the hang up is oh we don't want
+
+[19:56]
+to give away competitive Advantage but I
+think now we're at a point where we've
+had this type of data for a long time
+and we've realized by the time that the
+academics get to it the competitive
+Advantage is gone especially when we're
+just looking at the biometric data for
+health and safety and I think we could
+create some some use cases for people to
+see that we don't have any competitive
+Advantage by putting this together it's
+actually only making us more competitive
+because I'm a big I'm a big believer in
+you know high tide makes all boats rise
+so if we have if the ACC has their best
+
+[20:26]
+athletes on the court on the field all
+the time that's better for everyone it's
+better for competition um and then your
+second question with the pro leagues the
+pros are already doing something similar
+to this they do some research um at the
+league level um and then they work with
+the the players associations and often
+have uh like research companies
+contracted to do to do that work how
+that feeds back to athletes individually
+or teams individually is different
+between the leagues but yeah yeah hi uh
+great presentation C SC us say swimming
+
+[20:58]
+um um I was wondering I think this is
+really awesome this is a really cool
+initiative uh what I kind of see coming
+is this sort of we're like looking at
+all of this technological data all this
+biometric information is becoming more
+and more and more about the digital
+athlete um I was wondering how kind of
+the human element fits into your vision
+for This research Collective and how we
+can use this to enhance conversations
+between coaches athletes practitioners
+rather than replace them yeah so you're
+talking about the like the digital
+
+[21:28]
+athlet as and like the simulations that
+we can run to look at the different
+scenarios or just in the sense of it's
+rare to see a piece of technology
+outperform a wellness questionnaire or
+even a very well-guided conversation
+between practitioner coach and athlete
+is how do we make sure that we're not
+getting farther away from all of the
+insights from that human connection yeah
+as opposed to just sitting with the iPad
+and the coach sees the iPad then has
+their Insight without talking totally
+and so the the wellness data that we are
+
+[21:59]
+collecting at UVA um I would love to say
+that I get tons of insights from it and
+it is it's never made it into any of our
+models because it doesn't look great but
+what does it do it's a great
+conversation starter we're like oh you
+marked this like what's what's going on
+and so I agree that a lot of the
+Technologies are better conversation
+starters than they are like pieces of
+the puzzle and so what we what we think
+about a lot in my lab too is how do we
+start to quantify those conversations um
+
+[22:29]
+but that's why we all love sports right
+there's a big intuition intuition piece
+and uh we talk a lot about you know how
+do we start to you know quantify grit
+and all of these other things and it is
+so hard but sometime like I often wonder
+are those things we want to solve are
+those kind of the mysteries of sport
+that Mak sport so so amazing
+um so I I don't know I AI is hard I
+don't know how fast AI is going to move
+uh but I can see where where we get less
+and less human
+
+[23:01]
+um I hope it doesn't happen that way and
+I always want to keep that human
+connection and I think I think uh you
+know keeping the human in the loop on
+many of this is is a a crucial a crucial
+part of the of the of the whole
+ecosystem
+yeah hey so I'm Christy Boer I'm a there
+I was like I can't see hey I'm a
+computer science professor at the
+University of Florida I might be your
+counterpart at the University of Florida
+doing a similar thing um I have so many
+thoughts about the previous question but
+I'll just ask my question which is could
+
+[23:31]
+you say a little more about what stage
+you are in this like how much is this an
+idea versus something that's happening
+on the ground already which the
+collective part yes it is an idea we've
+put in for funding from a few different
+sources um everyone's more willing to
+talk when I can say that no one has to
+put in money um and then the some of our
+counterparts in ACC are hoping to meet
+in person once the season slow down to
+actually talk about the legitimacy of
+doing this um we've been talking about
+
+[24:02]
+it for probably four years and this will
+be the first year where maybe are
+actually going to sit down and say is
+this even a feasible thing to do yeah
+but um like I said I think we're not the
+point with the technology where people
+are willing to have those conversations
+and we're less worried about competitive
+Advantage I think we've all had it long
+enough to realize there's not a lot of
+competitive Advantage issues when we
+look at this data yeah yeah hi um my
+name's Brad Brad stinger I'm a
+researcher at the University of Vermont
+could you talk a little bit about
+
+[24:32]
+privacy and the steps you're taking to
+preserve athletes um personal
+information and privacy yeah
+so a lot of that is still a thought if
+we do collectives and add it together
+how we are going to do that and I think
+um we're more at the stage where we'll
+bring in a partner who already has
+really good data governance policies in
+place uh to help us with that versus
+trying to build something ourselves I
+think it be much more scalable if we
+bring in a partner that already does
+some of that work um and then because
+
+[25:05]
+because we can't just dentify it and
+pull it in right it's longitudinal data
+so we still have to have some kind of
+marker that allows us to connect the
+athlete over time um and then there's I
+mean data governance is at the top of of
+that and I think that will cover the
+privacy issues um we've also talked
+about like ideas of Federated learning
+uh to do this um but again I think we'
+have to use uh a partner to help us do
+that to to scale it I mean we could
+build it on Prem at UVA but I don't know
+
+[25:35]
+how scalable it will be then if it's
+just just me and the the servers at
+UVA thank you yeah hi uh similar to the
+question before about keeping the human
+in the loop something that I think about
+a lot is making sure research and data
+goes back into implementation and usage
+yeah by the coaches and athletes how do
+you think about that in your work with
+the basketball team yeah so so like
+similar what I said um I think a lot I
+think a lot less about publishing papers
+and I think a lot more about products I
+can make that people use every single
+
+[26:07]
+day um and we do a lot of you know
+immediate feedback with coaches so we
+build things and we want to get
+immediate feedback from the users to
+keep developing those I don't know they
+love they love a dashboard so how do we
+develop those dashboards and they're
+using them and you know I really should
+do some like AB testing on the
+dashboards when I have more time um and
+then
+uh sorry I lost my lost my train of
+thought there uh so yeah I think that is
+the most important part is building
+something that the people at the end
+
+[26:38]
+user is going to use whether the end
+user is a performance coach a sport
+coach or or an athlete I think more and
+more we're thinking about how can the
+athletes leverage their data I don't
+think they need to be out of the loop on
+these conversations anymore we have
+super bright super intellectual athletes
+who are curious about their data and so
+how are we also building products for
+them
+um to a you know make themselves uh
+better to do whatever they want to do
+next in their career um but also keep us
+in check and say hey I don't understand
+
+[27:08]
+why you're making decisions based on my
+data like this when I'm looking at it
+from this angle um I think that's super
+important to have that um those
+conversations and uh you know
+healthy the word banter is coming to
+mind that's not what I'm looking for the
+healthy discourse there we go yeah all
+right well thank you so much Natalie um
+yeah if you have any further questions
+she'll be in the
+hallway

@@ -1,0 +1,1272 @@
+{
+ "id": "an7u-tVP5Xc",
+ "title": "SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes",
+ "channel": "42 Analytics",
+ "upload_date": "20260409",
+ "duration": 2174,
+ "view_count": 38,
+ "description": "This talk will discuss the landscape of female athlete-specific health and performance research; the need for expert collaboration and careful protocols to enhance the validity and reliability of data-driven research; and the importance of maintaining high standards to ensure meaningful results and positive change for women across the lifespan.",
+ "chapters": null,
+ "tags": []
+}---
+type: video-summary
+video_id: an7u-tVP5Xc
+title: "SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes"
+event: SSAC26 (MIT Sloan Sports Analytics Conference)
+speakers: ["Kate Ari (caption spelling), director, co-founder and president of the Women's Health and Sports Performance Institute"]
+topics: [sports-science, injury-health, policy, decision-making]
+confidence: supported
+caption_source: auto
+status: draft
+---
+
+## Summary
+
+The speaker, a sports medicine physician and endocrinologist who co-founded a women's health and sports performance institute, argues that research on female athletes is thin and often poorly built. She gives the history of excluding women from research, the health burdens female athletes face, and the results of literature audits that score studies on population, athlete caliber, menstrual status method, journal and sample size. She warns about unvalidated wearables, weak hormone measurement, survey bias and AI repeating errors, and offers a workflow for validating wearable data. Her answer to closing the gap is teamwork across clinicians, athletes and data analysts.
+
+## Key claims
+
+- Women's sport is growing: Title IX, women now have 44% of sport opportunities, more than 160 female sports leagues exist, and fandom has risen, but gaps remain in media investment and prize money. [03:06] [03:35] [04:07] [06:40]
+- Female athletes face higher rates of concussion, ACL tears and bone stress injuries, and relative energy deficiency in sport is very prevalent, partly through inadvertent under-fueling. [06:40] [07:10]
+- Team USA athletes asked for research on pregnancy and postpartum, menstrual cycle symptoms, birth control, fueling across the cycle, mental health, recovery and more female coaches. [07:42] [08:12] [08:43]
+- It is not known when sex differences change training, because they are not studied enough or studied well. [08:43] [09:14]
+- Women of childbearing potential were excluded from early drug trials from 1977 until the early 1990s; drugs in common use have different pharmacokinetics and adverse reactions in women. [09:14] [10:16] [10:46]
+- Women's health gets a small share of private health investment despite an estimated return on investment, and research funding does not match burden of disease (obstetric complications affect 33% of birthing women worldwide, yet only 2% of US registered trials address obstetrics). [11:48] [12:20] [12:51]
+- Sports medicine textbooks historically treated female athletes as a "special population," and the speaker refused to write such a chapter, asking instead for each chapter to say what is known and unknown in women. [13:21] [13:51]
+- Only 6% of articles in top sports medicine and science journals from 2014 to 2020 focused solely on women. [14:21]
+- Her group audits the literature on population, athlete caliber (tiers 0 to 5), menstrual status method, research theme, journal impact and sample size. [14:53] [15:23] [15:54] [16:25] [16:56]
+- Asking about menstrual status is not the same as testing hormones, and a withdrawal bleed on a birth control pill is not a natural cycle. [16:25]
+- Audit results: 99.5% of supplement research did not categorize or standardize menstrual cycle; female participation rose from 39% to 44% between audit periods while female-only studies did not improve. [16:56] [18:30] [19:00]
+- The Women's Health Initiative hormone trial was stopped in 2002 after harms, and a 2016 reanalysis found the problem was women who started therapy after age 60 or more than 10 years after menopause, which left a generation of women without treatment. [21:03] [22:06] [22:36] [23:07]
+- Surveys are cheap and good for prevalence and early ideas but cross-sectional, with selection, recall and non-response bias. [27:41] [28:12]
+- Wearables vary in what they measure and their validity, and they need testing against a gold standard; they also raise equity, algorithm bias and privacy issues. [28:44] [29:14] [29:44] [30:16]
+- AI can repeat and reinforce errors in numbers and citations while sounding more confident. [30:46] [31:17]
+- Hormone testing methods each have limits: saliva needs many samples and has weaker assays, blood is precise but time-sensitive, dried blood spot needs repeated sampling, and urine is well validated against serum but suited to profiling patterns. [31:47] [32:17] [32:48]
+- Her research approach is audit, observational studies, intervention studies, repeat, then advocacy and education, because it takes about 17 years from discovery to common practice. [27:10]
+- The answer to the data gap is teamwork among endocrinologists, sports physicians, athletes and data analysts. [34:53] [35:24]
+
+## Numbers and definitions
+
+- Title IX in 1972: more than 3 million more high school girls and 200,000 collegiate women playing each year; 44% of sport opportunities now go to women. [03:06] [03:35]
+- More than 160 female sports leagues; 57% increase in fandom over 5 years (McKinsey survey, caption spelling "McKenzie"). [03:35] [04:07]
+- 9% of sports media investment goes to women's sports; the Women's World Cup prize pool is a quarter of the men's. [06:40]
+- Concussion 1.4 times; ACL tears 2 to 8 times; bone stress injuries 3 times (women versus men). [06:40] [07:10]
+- 1977 exclusion; 1990 NIH Office of Research on Women's Health; 1993 reversal; 1994 FDA Office of Women's Health; 1998 demographic rule; 2002 pregnancy registries guidance; 2016 NIH both-sexes requirement; 2024 White House initiative. [09:14] to [11:48]
+- 6% of private healthcare investment goes to women's health; estimated three-time return. [11:48]
+- 33% versus 2%: obstetric complications versus trials addressing obstetrics. [12:20] [12:51]
+- 6% of articles solely on women, top journals, 2014 to 2020. [14:21]
+- Athlete caliber: tier 0 sedentary, tier 1 moving a little, tier 2 working out at least three times a week with intent to compete at least once a year, up to tier 5 world class. [15:23] [15:54]
+- 99.5% of supplement studies not standardizing menstrual cycle. [16:56]
+- Audits (2011 to 2013 versus 2021 to 2023): 39% to 44% with female participants; female-only 8.76 to 7.15 (unit not stated); male-only about 28% to about 19%; menstrual status reporting from none to about 5.6%; 7% silver and 0.5% gold classification. [18:30] [19:00] [19:30]
+- Women's Health Initiative: 161,000 women, about 70,000 in the randomized trial. [21:03] [21:35]
+- $220 million initiative and $50 million institute funding; 15,000 square feet. [23:37] [25:40]
+- 17 years from discovery to common practice. [27:10]
+- Possible caption garbles: "Kate Ari" and "Dr. Arian," "Elena Myers Taylor," "Cali Humphre," "Michaela Shiffren," "Claroo" and "Clara Woo," "Joseph Sai," "Satchin," "Dave and Jane Aught," thalidomide spellings, and "gender parody." [00:00] [02:04] [06:09] [09:14] [23:37] [25:40]
+
+## Methods and frameworks named
+
+- Standardized literature audit: topic search, screening, then population, athlete caliber, menstrual status, research theme, journal impact and sample size. [14:53] to [16:56]
+- Gold, silver and bronze classification of menstrual status reporting. [19:00]
+- Research pipeline: audit, observational and prevalence studies, intervention studies, replication, advocacy and education. [27:10]
+- Wearable validation workflow: check data fit and question impact, prepare data (sensor accuracy, missing data, outliers), validate against a trusted reference, reproduce known values or trends, analyze, then share only if conclusions hold. [33:19] [33:51] [34:22]
+
+## Limits and open questions
+
+- Much of the talk is context and history, not data analysis; the audit figures are from her group's work, and sources for several statistics (ratios, investment share, 17 years) are not named.
+- The female-only figures lack units and the audit topic coverage is not stated. [18:30]
+- Injury risk ratios are given without ranges or sources. [06:40] [07:10]
+- She says we do not know when cycle effects matter in training; no training recommendation is offered. [08:43]
+- The speaker leads an institute that receives philanthropic funding, and her recommendations (teamwork, more research) are institutional views. [25:40]
+- The political remark about the White House initiative is her opinion. [11:48]
+- No Q&A: the session ran out of time. [35:55]
+
+## Q&A
+
+No Q&A; the host said there was no time and invited attendees to meet the speaker outside. [35:55]
+---
+type: video-applications
+video_id: an7u-tVP5Xc
+status: draft
+---
+
+# Applications for Eric Rash: From Noise to Knowledge, Research for Female Athletes
+
+## Where this applies
+
+1. Inference: A validation check before adopting any wearable or sleep and cycle-tracking product with Baylor women's teams. The speaker's workflow asks whether the device has been validated against a trusted standard, whether it reproduces known values, and whether the sample is diverse [33:19][33:51]. Write that as a one-page checklist and apply it to each consumer device a sport coach or athlete proposes.
+2. Inference: Recording how menstrual status is determined (asked, hormone-tested, on a birth control pill with withdrawal bleed) in any internal monitoring for women's teams. The speaker says asking is not the same as testing, and that a withdrawal bleed is not a natural cycle [16:25]. Any internal analysis that groups athletes by cycle phase needs that field first.
+3. Inference: Applying her audit fields to the Zotero library for any women's-sport question: population, athlete caliber tier, menstrual status method, research theme, journal, sample size [15:23][16:56]. This lets Eric see quickly whether a study's athletes resemble collegiate athletes (her tier scale runs 0 to 5, with tier 2 at three workouts a week with intent to compete [15:54]).
+4. Inference: Routing under-fueling and low energy availability questions to Athletic Medicine and Performance Nutrition, with Applied Performance supplying monitoring data. The speaker names relative energy deficiency in sport as very prevalent and partly inadvertent under-fueling [07:10].
+5. Inference: Survey design for any staff survey of women athletes, using her listed weaknesses (cross-sectional, selection, recall and non-response bias) as the critique list [27:41][28:12].
+
+## Eric's baseline
+
+- Eric's baseline: daily subjective wellness surveys rolled out from summer 2022 were dropped after about a year because athletes learned to game them; they are kept for return-to-play and chronic conditions. The talk extends this: it lists different survey weaknesses (bias types) and still treats surveys as useful for prevalence and early ideas [27:41]. It does not mention athletes gaming answers.
+- Eric's baseline: modified reactive strength index from daily CMJ was chosen over surveys because it is objective, consistent and actionable. The talk agrees with preferring validated measures, and adds that validity has to be shown against a gold standard [29:14].
+- Eric's baseline: "Inconsistent data from a good test is still bad data." The talk agrees: poor data in with poor analysis gives a poor conclusion [34:22].
+- Eric's baseline: Performance Nutrition owns body composition, bone density and fueling; the playbook states no nutrition rules for Applied Performance. The talk agrees that fueling belongs with specialists: she calls for endocrinologists, sports physicians and data analysts to work together [35:24].
+- Eric's baseline (author uncertain): body composition testing capped at 4 times a year. The talk does not address frequency.
+- Eric's baseline: no formal injury-risk model is attributed to him. The talk gives risk ratios (ACL 2 to 8 times, bone stress injuries 3 times [07:10]) but offers no screening method, so there is no conflict and no new tool.
+
+## What would have to be true
+
+- Baylor women's programs would need the same metrics recorded the same way across seasons (the repeatability point in Eric's baseline; Inferred, course-team position, speaker unconfirmed).
+- Athletic Medicine and Performance Nutrition agree on who records cycle and fueling information and where it is stored, since it is health data.
+- For any wearable claim, the validation study would have to involve athletes similar to Baylor's (age, caliber, sport), not general-population samples.
+
+## Do not apply when
+
+- Reading the ratios (concussion 1.4 times, ACL 2 to 8 times, bone stress 3 times [06:40][07:10]) as individual risk for one athlete. They are group comparisons; the talk gives no sources or ranges for them.
+- Treating her audit percentages (for example, 5.6% reporting menstrual status, 99.5% of supplement studies not standardizing it [19:00][16:56]) as current for every topic. They come from her group's audits of specific literatures.
+- Using the talk as guidance for football. The speaker works on female athletes; the methods advice (validation, standardized terms, team science) generalizes, but the health findings do not.
+- Acting on any cycle-based training change. She says explicitly that we do not know when sex differences matter because it is not studied enough [08:43].
+
+## First step
+
+List every device, app and survey currently used or proposed with a women's team, and mark each as validated, unvalidated or unknown (with the source). Share the list with Athletic Medicine only if the gaps look real. Reversible; it is a document.
+---
+type: video-transcript
+title: "SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes"
+video_id: an7u-tVP5Xc
+url: https://www.youtube.com/watch?v=an7u-tVP5Xc
+channel: 42 Analytics
+upload_date: 2026-04-09
+duration: 36:14
+caption_source: auto
+retrieved: 2026-09-30
+tier: A
+tags: [decision-making]
+---
+
+# SSAC26: From Noise to Knowledge: Building High Quality Data Driven Research for Female Athletes
+
+Captions: YouTube auto-generated (en). Expect misspelled names and jargon.
+
+[00:00]
+Compitive advantage talks presented by
+Kager also known as craft analytics
+group. My name is Sarah Buck and I'm a
+MBA student at MIT Sloan. It is my
+pleasure to introduce the presentation
+from noise to knowledge building
+highquality datadriven research for
+female athlete per health and
+performance. Please join me in welcoming
+our speaker Kate Ari director co-founder
+and president of Women's Health and
+Sports Performance Institute to the
+stage.
+
+[00:30]
+>> [applause]
+>> Hello. Thank you, Sarah.
+So, we're going to talk a little bit
+about um all the different noise that
+can happen when you're talking about
+data and what we want to do when we're
+actually approaching research for our
+female athletes so we can make sure that
+the information that we're getting out
+there is actually useful and applicable.
+Here's some of my disclosures. Um, I'm
+an associate professor at Harvard
+Medical School and we just started the
+
+[01:01]
+Women's Health Sports and Performance
+Institute, which I'm going to talk to
+you a little bit about. I'm also the uh
+co-chair of the USOPC Women's Health
+Task Force and here's some of my um
+funding.
+So, we all recognize that women in sport
+are truly having their moment. It's just
+been a a burgeoning thing to watch on TV
+and to watch in the media. And it's been
+exciting. Those of us who are huge
+female athlete sports fans or been
+female athletes ourselves, um we love
+seeing this this um advancement. So,
+
+[01:32]
+we're seeing more women pushing
+boundaries, competing in the Olympics
+while they're pregnant, breaking
+records, and it's an exciting time. Just
+in the Winter Olympics, you know, we're
+seeing this career longevity,
+motherhood, and comebacks. Um it was the
+most gendered balanced Winter Olympics
+in history. So, there were nine moms on
+Team USA and seven of those nine got
+medals at the Olympics, which is really
+unheard of and it's fantastic. Um, two
+examples, um, the five-time Olympians
+
+[02:04]
+and sixtime medalists, Elena Myers
+Taylor and Cali Humphre. So, Elena is 41
+years old. Callie is 40. Um, and each of
+them came back with medals. Elena
+finally got the gold medal that she's
+been seeking during all these different
+Olympics over the years. Um, then we
+have Michaela Shiffren. Everybody's
+heard of Michaela. Uh, she is the
+winningest alpine skier of all time. So,
+Michaela has three Olympic golds, one
+silver, and 108 World Cup wins, more
+World Cup wins than any skier ever. And
+
+[02:35]
+then we have Lindsey Vaughn. And a lot
+of people thought, "Oh, this is a tragic
+story." But when you put that whole arc
+of her career into perspective, Lindsay
+made a comeback. She retired from skiing
+at the age of 34. And then she came
+back, she got seven podium wins out of
+eight attempts during World Cup races
+leading into the Olympics. So anybody
+who thought she might not have been
+qualified to be there, they didn't get
+it right. So she might have had not the
+ending that she wanted, but she
+demonstrated these boundaries that women
+can push.
+
+[03:06]
+So let's go back Title Nine. I'll be
+transparent. I was born the year of
+Title Nine. So this arc that's happening
+with Title Nine is always exciting for
+me to watch. Since the introduction of
+Title 9 in 1972, there have been more
+than three million more high school and
+girl opportunities, or I should say
+greater than three million more high
+school girls and 200,000 collegiate
+women having opportunities to play
+sports each year. So, this is just a
+whole different realm than what our moms
+
+[03:36]
+and our grandmothers um had before them.
+They didn't have these opportunities.
+Today, they're 44% of the opportunities
+in sports are going to women. So, this
+is a great increase, but it's not
+enough. So, you know, we're seeing this
+increase in pro leagues. We're seeing an
+increase in in investment, and people
+are starting to realize that women are
+actually fun to watch. It's fun to watch
+women doing sports, and these leagues
+are just popping up. There are over 160
+female sports leagues right now, and
+they continue to rise. This is all great
+
+[04:07]
+news. And we know that it's actually
+beneficial to invest in women's sports.
+So there was a survey that McKenzie did
+and they asked people when did you start
+following sports, men's sports, women's
+sports and by following they meant they
+watched live, they followed on social
+media, um they kept up with the news,
+watch highlights or clips and you can
+see in the last 5 years there has been
+this really big increase. There's been a
+57%
+uh increase in fandom for the women's
+sports. So it would be crazy for people
+
+[04:39]
+not to invest in women's sports. On the
+right you can see we have another
+example of what's been happening in
+terms of investment and how it pays off.
+So if you look at match day broadcast
+and commercial uh financial revenue this
+has been just skyrocketing. So it's good
+to invest in all of these different
+areas.
+So some of the people are getting it
+especially a lot of our women. Thank
+goodness some of the female athletes are
+giving back to sport and they're
+investing in sport. We have the OG the
+
+[05:09]
+mother of all sports. We have Billy Jean
+King. She invested in an entire league.
+So, the professional women's hockey
+league, which some of you heard about
+earlier today from Angela Rojiro and
+others. She invested in professional
+women's hockey. Um, we have people like
+Clara Woo, who you heard from yesterday,
+somebody I have been lucky to receive
+funding from, and she invested in New
+York Liberty, and I'll tell you about
+some of her other investments later. You
+have Michelle Kang, who's given a
+generous amount of money for women's
+soccer and owns a team herself. You have
+people like Alex Morgan who started
+
+[05:39]
+Tribe Ventures so she can invest in a
+lot of different um areas including
+indoor golf. Um and now we have the
+fleet coming to Boston or not the fleet
+uh sorry the legacy coming to Boston. We
+also have the fleet. So we in Boston
+have a really exciting time too with all
+these different sports and different
+teams coming up. But think about where
+we are in 2025 and how recently some of
+these changes. Where are we? 2026,
+sorry. And how recently these changes
+happened. 2020 was the first female
+
+[06:09]
+specific soccer cleat. So till 2020,
+women were wearing smaller cleats. That
+was it. We have women's sneakers, but we
+didn't have women's cleat. In 2024, that
+was the first Olympic Games that had
+gender parody. In 2026, Nordic combined
+is still excluded at the Olympics for
+women. This is a pretty tragic
+situation. So, that woman right there,
+her name is Anukica Melazinski. Her
+brother got to go compete, but she
+didn't. Even though she's incredibly
+talented and deserved to be at the
+
+[06:40]
+Olympics, but there just wasn't an
+event. Only 9% of sports media
+investment is going to women's sports.
+And the W women's World Cup prize pool
+is still only a quarter of the men's. So
+we're not there.
+And then we have to talk about the
+health issues in the environments in
+which these women are competing. So when
+we look at some of the stats,
+concussions, for example, 1.4 times
+greater incident of concussion in women
+versus men in comparable sports. ACL
+
+[07:10]
+tears, there's been talk about that
+throughout this conference. Two to eight
+times greater risk in females versus
+males. Bone stress injuries, three times
+greater incidence versus the men.
+relative energy def deficiency in sport.
+We see this is very prevalent in our
+female athletes whether it's a full
+eating disorder or just inadvertent
+under fueling. It's very common and a
+lot of that is societal because of the
+pressure that we're putting on our
+female athletes about how they look in
+addition to just a lot of the
+environments um that they're
+participating in. So we did a project
+
+[07:42]
+looking at our team USA athletes and
+asked them what they cared about and
+what we should be researching. And these
+were some of the things that were
+important to them. In addition to those
+other topics, they said, "How about
+pregnancy and postpartum guidelines?
+What am I supposed to do? I want to
+continue to compete into my 30s and my
+40s. What about menstrual cycle
+symptoms? How am I supposed to manage
+these? What are the effects of birth
+control? What pill should I be on?
+Should I be on a pill? Should I have an
+IUD? Should I have an implant? I'm
+confused." Uh, fueling in the menstrual
+cycle. There's so much noise out there
+
+[08:12]
+about what you should eat on what day.
+Um, is it real? Where is that data
+coming from? Mental health struggles,
+um, recovery after workouts. How about
+male-dominated spaces? Some of the
+athletes said that the male-dominated
+spaces, the percent of women coaches is
+so small in the world that they're
+living in, that that does have an
+effect. They want to see more people who
+can relate to them. They want to have,
+even though we have lots of he for she's
+in this audience, they want to make sure
+that there are opportunities for women.
+Um, because some of them are more
+comfortable talking to women at this
+
+[08:43]
+point.
+So females and males are different. We
+know that there's a lot of physiological
+differences in terms of our height, in
+terms of our body composition, in terms
+of our lungs and our cardiovascular
+system and on and on and on. There are
+lots of different things. Does it mean
+we have to do something differently in
+terms of our training for every one of
+these issues? Well, we don't know. We
+don't know when it matters because we're
+not studying it enough. It may be that
+you don't have to do anything
+differently during your menstrual cycle
+
+[09:14]
+if you don't have symptoms, but we're
+not studying enough and we're not
+studying it in a really responsible way.
+So, we need to be looking at women to
+decide what's relevant and what's not,
+but do it well. So, just to give you a
+little historical perspective, back in
+1977, the FDA officially excluded women
+of child birthing potential from phase
+one and two trials. And the reason for
+this was because of theomide. So
+theolyomide was a medication that some
+people took as an anesthetic and it
+caused birth defects. So if a woman who
+
+[09:45]
+was pregnant took this medication, she
+had um potentially a child who had these
+upper extremity birth defects. It was a
+really sad situation that happened even
+though theomide wasn't used routinely in
+the US. It was used in Canada and other
+countries. And so the decision was well
+let's just keep childbearing age women
+out of research. And that happened for
+any kind of drug up until 1990 when the
+Office of Research of Women's Health was
+established by the NIH. Then there was
+the NIH Revitalization Act in 1993 and
+
+[10:16]
+the FDA finally reversed the exclusion
+of women from the clinical evaluation of
+drugs 1993. So we're talking about drugs
+before that that weren't even tested in
+women and now we know that they have
+different pharmacocinetics. And there
+are very few things that are listed in
+terms of intake that are listed
+differently for a woman versus a man.
+Think about drugs like aspirin, Tylenol,
+ambient,
+uh, propranol, prennazone. They have
+different pharmacocinetics and different
+um, adverse reactions. And yet we use
+
+[10:46]
+them routinely and never say well you
+know are you a woman or you man? You
+just say oh take two. So this is only
+beginning to change. In 1994 the FDA
+established the office of women's
+health. So the OW
+1998 there was a demographic rule. So
+new drug applications must present
+safety and effectiveness by gender,
+race, and age. But the drugs that were
+approved before then didn't have to do
+that. In 2002, the FDA issued guidance
+for pregnancy exposure registries. By
+
+[11:17]
+2016, the NIH um mandates pre-clinical
+studies that included both sexes. It
+wasn't until 2016 that studies had to
+include both sexes. And now if somebody
+applies for an NIH grant, they have to
+explain why they might only pick one of
+the sexes rather than both. They have to
+have a reason. Otherwise, they have to
+make sure they have a branch of this
+study that's going to account for men
+and women. Um, and then finally, we had
+the White House in 2024 start this
+initiative on women's health research.
+
+[11:48]
+Fantastic. Except now it's 2026 and
+there's somebody else in the White
+House. So, are we going forward? Are we
+going backward? Are we going up and
+down?
+So if we think about all this, let's see
+where we are now in terms of the gender
+and funding gaps in in medical care and
+research. So 6% of private healthcare
+investment goes to women's health. This
+is modern day. There's an estimated
+three return three time return on
+investment for women's health though.
+Like it is a good thing to do and it
+
+[12:20]
+makes money. So when we're talking about
+data, this is a good way to use data to
+get people to invest. it actually is a
+beneficial thing to do. But right now,
+the women's health research funding
+doesn't match the burden of disease. So,
+there have been studies looking at what
+are the things that are most commonly
+affecting women, what are the things
+that are most commonly affecting men,
+and then where are the research dollars
+going? And it's very skewed. Just as a a
+big example, if you think about um
+obstetric complications. So, obstetric
+complications happen to 33% of
+
+[12:51]
+childbearing women um or birthing women.
+So, while they're going through their
+pregnancy and having a child, 33% of
+women worldwide. Guess what percent of
+uh US clinical trials, US registered
+clinical trials address obstetrics?
+2%.
+That makes no sense. We know that if you
+actually invest in the diseases that are
+the biggest burden, that's going to be
+financially smart. And yet, we're
+ignoring the data.
+
+[13:21]
+So, I'm a sports doctor and an
+endocrinologist. My focus is on female
+athletes. And so, I did my training
+internal medicine, sports medicine,
+endocrinology, research. And I read the
+sports medicine textbooks. The first one
+I ever got was back in the 1990s, Oxford
+textbook of sports medicine. The number
+of words, the number of times I saw the
+woman female or woman was I could count
+on both hands. As we go forward with all
+those textbooks, they started making
+
+[13:51]
+these chapters called special
+populations. Female athletes were
+special population.
+Two years ago, I was asked to write a
+chapter about the special population in
+an updated version of a sports textbook.
+I refused. I knew the guy who asked me,
+and I said, "Here, here's the deal. I
+would like you to take each one of your
+chapters and talk about what we know and
+what we don't know in female athletes
+because we exist. We're 50% of the
+population. Women are 50%. Why are we a
+special population over here? It just
+
+[14:21]
+shows that all of the protocols, all of
+the things we're basing our
+decision-making on are mostly based in
+men. So this is a number that has been
+thrown a lot uh around a lot in the news
+and I just want to explain where this 6%
+comes from. So in the top sports
+medicine and sports science jour
+journals from 2014 to 2020 just looking
+at the top few only 6% of the articles
+focus solely on women. That's where that
+number comes from 6%.
+I said it again. So what we've been
+
+[14:53]
+wanting to do is audit the literature
+and audit it really well. So we can talk
+about oh there's some studies. Why is
+she talking and saying there's not
+enough studies? We're hearing that
+there's studies out there. But one of
+the things my group and our
+collaborators around the world are doing
+is setting standards and determining how
+often were those standards met. What is
+what are we asking and how is this work
+being done? So we start by looking pick
+a topic. You look at all of the papers
+that exist on that topic using search
+terms. So you do an initial screening.
+
+[15:23]
+Then you want to ask the population were
+these studies done in men? Were they
+done in women? Were they done in
+females? Biological females biological
+males? How did they define the
+population? How did they confirm the
+population? Then we get to athlete
+caliber. So this is another um way to be
+considering this. So athlete caliber. So
+in the yellow we have the very bottom of
+the caliber that would be tier one.
+These are people that are just
+sedentary. Um then you have or that's
+tier zero. Then you have tier one. These
+
+[15:54]
+are people that are moving a little bit.
+Tier two. Tier two is somebody who works
+out at least three times a week with the
+intention of competing at least once a
+year. Not a big step. And then you get
+all the way up to tier five and these
+are worldclass athletes. So did the
+paper even talk about the physical
+activity level of the people that
+they're studying. So they just said
+women or men. Then we get to menstrual
+status. So here how did they determine
+the menstrual status? Did they say are
+you childbearing age? Are you in your
+
+[16:25]
+follicular phase? Are you in your early
+follicular? Did you ovulate? And I know
+there was already an earlier study by
+one of my colleagues about how to think
+about the menstrual cycle. Asking
+somebody is not the same as actually
+testing the hormone levels. And
+sometimes people will say, "Yeah, I'm on
+my period, but they're on a birth
+control pill. So, they have a withdrawal
+bleed, but they're taking exogenous
+hormones." So, that's not the same as
+having a natural menstrual cycle. What
+was the research theme? Was it about
+performance? Was it about health? What
+was the study impact? So this is the
+
+[16:56]
+impact factor of the journal. Was it in
+nature or was it in a small journal
+where somebody was paid to write an
+article and it was already rejected by
+seven other um organizations, seven
+other major impact journals? And that
+was the sample size. Was it nine women?
+Was it 9,000 women? So we've been doing
+these audits on a lot of different
+topics. And it turns out, for example,
+99.5%
+of supplement research didn't categorize
+or standardize menstrual cycle even when
+
+[17:27]
+they were studying women. So there's a
+lot for us to learn. So here we are
+thinking about menstrual status, journal
+study impact, research theme,
+population, athlete caliber, sample
+size. And the reason we're doing this is
+to understand how well female athletes
+are represented in that literature and
+to uncover key metrics including
+performance level, the menstrual status
+that we should be and which has been
+included in research and then highlight
+the strengths and the problems. We're
+not dissing on all the work that came
+before us. There's still some great
+pearls in that work and it's a good way
+
+[17:58]
+to um stimulate questions that we need
+to be looking into. There's a lot of
+theories that can come out of the past
+work that's been done and then we want
+to it also allows analysis of
+differences between subd disciplines or
+across time see what some of the trends
+have been. So in a different way when we
+actually do this audit the way we're
+talking about this was done in 2011 to
+2013 looking back historically on papers
+that were done back then and then it was
+done more recently in papers that were
+2021 to 2023. And so, you know, 2011 to
+
+[18:30]
+2013, 39% female participants in
+studies. Not bad. Um, more recently, 44%
+um had female participants.
+But female only studies didn't improve
+all that much. So, went from 8.76 to
+7.15.
+So, despite the overall increase in
+female participation, the the bigger N
+and the bigger um group of people that
+were being studied, the percentage
+wasn't all that much better. And
+certainly the female only didn't get
+
+[19:00]
+better at all. It actually declined.
+Male only studies went from about 28% to
+18.6 or 19%.
+Menstrual status reporting, it went from
+not being reported at all in those
+papers from 2011 to 2013 to about 5.6%
+of those more recent papers. And then
+when we gave them a gold or silver
+classification or bronze, gold and
+silver is where we're actually seeing
+that they did hormonal measurements a
+bit and they actually reported and asked
+
+[19:30]
+about it. It turns out only those those
+recent studies 7% were silver and.5%
+were gold. So we have to do a better
+job.
+So the key is we have to think about the
+population. Who are we talking about?
+Are we talking about women? Are we
+talking about white women? Are we
+talking about white women soccer
+players? You know, who are we talking
+about? Those are a lot of the people
+that are giving us data, but what about
+other parts of the globe? What about
+other types of women? And are we ask
+
+[20:01]
+asking the question of who is being
+represented in these studies? The study
+design is key. You know, it's so
+exciting to come to conferences like
+this and see that people want to collect
+data. They want to analyze data. They
+want to make sure that they're paying
+attention to certain populations, but we
+have to do it carefully. We have to make
+sure that we're using the same
+terminology. So, I just explained
+menstrual cycle. Menstrual cycle can
+have different phases. Are we all
+talking about the same thing? Are we
+talking about a withdrawal bleed from a
+birth control pill? Are we talking about
+
+[20:32]
+a naturally menstruating women woman? Or
+are we talking about somebody who
+ovulated and actually has um has a
+normal cycle? Those are all very
+different things. And then what are the
+things we're using to measure this? What
+is the validity? So when we talk about
+getting information um from a survey or
+from a lab, has that thing been
+validated? Is that wearable validated?
+So if it's not validated, meaning it's
+been tested against the gold standard,
+we're making a lot of assumptions. And
+
+[21:03]
+when you make assumptions, scary things
+can happen. So the women's health
+initiative is a very good example. The
+women's health initiative was an amazing
+concept. It started in the 1990s when
+they had that office of women's health
+established and basically they got
+161,000 women to participate in these
+studies. My mom was one of the the
+people that was in one of these studies
+because we were based in Buffalo and the
+study originated in Boston at Harvard,
+but it had a lot of different satellites
+throughout the country. And so the study
+
+[21:35]
+had a randomized control trial component
+to it. 70,000 women comp um participated
+in that and they were put on things like
+a low-fat diet or hormone replacement
+therapy. And the hormone replacement
+therapy arm used an estrogen pill, not a
+patch, and it used a um conjugated
+ecquin estrogen, which is not something
+that we use anymore. Now, when we do
+hormone replacement therapy, we do
+something called 17 beta estradiol. It's
+more bioididentical. It's worn as a
+
+[22:06]
+patch. It is metabolized differently
+than you would have estrogen that's
+taken orally that's metabolized in the
+liver. And they also use something
+called um hydroxy progesterone versus
+what we use now, which is micronized
+progesterone. So this study was stop was
+started in the 90s and then by 2002
+they stopped it and they stopped it
+because they started to see side effects
+and bad outcomes more than just minor
+side effects. Some of these women who
+were on hormone replacement were having
+strokes. They were having clots. They
+
+[22:36]
+were having um pulmonary emblei. They
+were having cardiovascular events. So
+people got really nervous and everybody
+panicked. They stopped the study.
+hormone replacements, prescriptions
+plummeted.
+But then in 2016, they realized, oh, we
+analyzed the data wrong. Actually, it
+was just the women who started HRT
+uh over age 60 or greater than 10 years
+out from going through menopause. So,
+there was an entire generation of women
+
+[23:07]
+who were told, you know what, just suck
+it up. Deal with your menopausal
+symptoms because there's nothing we can
+do for you. Definitely don't take HRT.
+And so that was a disservice because of
+how the data were looked at. So now we
+use a different type of estrogen. We use
+a different type of progesterone and we
+need to be studying the effects. So if
+these are the kind of stories that get
+picked up in the news initially like
+they did back in 2002, look at the
+ramifications. We have to be careful
+when we're putting things out in the
+media about different studies and we
+
+[23:37]
+have to slice the data different ways to
+make sure that we're getting the right
+answer and we have to repeat the studies
+to make sure that they are um
+reproducible.
+So this is where I bring in Clara Woo. A
+lot of you saw her speak yesterday. I
+was very fortunate to be brought into
+the Wooi Human Performance Alliance 5
+years ago. Um and so this is a a group
+of us from six different institutions.
+Originally, I was at um two of the
+Boston uh Harvard hospitals when I
+received our funding. And this a $220
+
+[24:07]
+million initiative that Claroo and
+Joseph Sai um started and here are the
+six leaders. There's a lot of
+differences in the people that are on
+that slide. Um at the time I was the
+youngest, still am, had the most hair,
+still do, although Satchin's a close
+second. Um I was not a full professor. I
+was not already start running an
+institute and I was the only one
+shouting about women. I was a little
+quiet then I was a little little more
+shy. I was just getting to know my my
+buddies here. But the what I saw when I
+
+[24:37]
+saw that um Clara and Joe wanted to
+study human performance and study
+athletes and study human performance
+from a really high level. There wasn't a
+lot of talk about women. And as I got to
+know Clara, I started to let her know
+about the this huge data gap. um and she
+got really excited. Wow, there really
+should be a focused attention on female
+athletes and a focused attention on
+women's health. So, we're trying to
+improve um sports performance and human
+
+[25:08]
+health overall, but I get to be that
+little person on the side saying don't
+forget to study it in women, even with
+Satchin, who mostly studies animal
+models. Don't forget to study it in in
+female rats. So, we have to make sure
+that we're always reminding people
+because it's so easy to just slip into
+let's study the male model. It's a
+little bit easier. They don't have the
+the same kind of hormonal fluctuations.
+Um they're not we're not thinking about
+what could happen to the fetus. But
+there are a lot of studies we can
+include women in and we really should.
+So, fast forward because of that funding
+
+[25:40]
+and that encouragement that I got from
+Clara. Over time, we got more funding.
+We got funding from Dave and Jane Aught
+and we were able to launch the Women's
+Health Sports and Performance Institute
+just in January. So we just launched
+this with $50 million more from Dave and
+Jane. And this has been an amazing
+opportunity because in Boston now with
+15,000 square feet, we have
+interdisciplinary clinical care. We have
+research attached to that clinical care
+model and we have a training facility to
+
+[26:10]
+be doing these studies. And we're
+studying women across the lifespan.
+And I should say I I skipped it. I don't
+know how to go back. Can I go back?
+Yeah. I also was really fortunate to
+have at our launch and have supporting
+us and in our corner Governor Healey,
+um, Angela Roiro, Jess Galman who are
+all saying it is about time. Let's do
+this. And we need more people to be
+collaborating to get work done for
+female athletes and women in general. So
+here are our research priorities. Just a
+
+[26:40]
+small task. We're studying effects
+across the lifespan, mental health
+issues in female athletes, relative
+energy deficiency in sport, injury
+prevention and recovery, sex and
+menstrual cycle effects on sports
+performance strategies, the
+intersections of race, gender, um sexual
+orientation and class, pregnancy and
+postpartum. Just a few just a few
+topics, but this is obviously going to
+take an army to do it really well.
+And here's our approach. We have audit
+
+[27:10]
+the literature. What do we know and
+where are the gaps? And let's make sure
+we're using a standardized audit. Then
+we do the observational, correlational,
+pre uh prevalence studies. What can we
+learn from current patterns in practice?
+Then we have the intervention studies.
+Now that we have theories, now that
+we've looked at big groups of data, now
+we actually have to do prospective
+studies. We have to test the theories
+and the treatments and the protocols.
+And then when we get findings, repeat
+them. And then finally, this advocacy
+and education. It takes about 17 years
+
+[27:41]
+from discovering something to getting it
+to be in common practice. So, we want to
+share that info and promote optimal pra
+uh practice with real data, not just
+hype.
+So, just a few more words about some of
+the things a lot of people are using.
+Surveys. You got to start with surveys.
+Surveys can be helpful, but be careful
+how you build the survey. Strengths,
+they're cheap. early dissemination,
+large cohorts. They assess prevalence.
+The results can demonstrate correlations
+to inspire future investigations.
+
+[28:12]
+Weaknesses, they're cross-sectional, so
+there's no causal conclusion, there's
+selection bias, there's recall bias,
+there's non-response bias.
+And what about wearables? I bet there's
+been a lot of talk at this conference
+about wearables. So, if you think about
+wearables, there's so many different
+ways that we can be testing things. Um,
+people now can wear a watch. They can
+wear a ring. There are clothes that can
+monitor things. They can wear bands.
+They can be looking at sweat rate. They
+can look at skin conductance. They can
+do heart rate variability. Um pulse ox
+
+[28:44]
+sleep patterns. Um knowing when
+somebody's moving to try to determine
+what's going on with sleep. But there's
+still some risks to this information. So
+even with all of this light, pressure,
+sound, uh respiratory weight rate,
+there's still variability in the
+sensors. So, I've had people say, "Oh,
+just plug in your wearable data." And I
+ask, "Which wearable?" "Oh, any
+wearable. Just plug it in." But there
+it's like apples and oranges because
+they may not be measuring the same
+thing. And there might be different
+valid validity with the different
+
+[29:14]
+wearables. There might be no validity of
+the wearables at all because you need to
+test the wearable against the gold
+standard to see if you can make
+assumptions about it. Now, this isn't to
+say that wearables are bad. They're
+actually awesome. But the key here is we
+have to be working on these projects
+together so that the person who's the
+amazing MIT graduate who's doing the
+data analytics is also working with the
+endocrinologist is also working with the
+athlete. We have to be doing this
+project together.
+
+[29:44]
+So let's think about also some of the
+things with wearables and digital
+health. What is the data quality? Is
+there health equity? How many people in
+an underresourced country are wearing a
+wearable? Probably not a lot. So, you're
+getting this bias already from the
+population that you're studying. There's
+algorithm biases as well. So, there can
+be this positive feedback. You know, is
+it fair that we're making decisions
+about health based on the people that
+can afford the wearable? You know, some
+people now try to encourage people not
+
+[30:16]
+to go to the doctor because they can use
+the wearable. Even some doctors are
+suggesting you should just have a
+virtual appointment rather than coming
+into the office. There can be a a time
+and a place for that, but some people
+might not have the resources to get to
+the doctor's office because they've been
+told, "Oh, this can all be done
+virtually." So, we have to be careful
+with that. And then there's the privacy
+part. We have companies that are selling
+that data. Um, and there are people that
+are getting way too much access to
+individual people's data. So, we have to
+be thinking about all of these as we're
+coming up with research projects, as
+
+[30:46]
+we're coming up with algorithms. And
+don't forget when you add in then
+another layer and you put AI into it, AI
+is going to basically over time just
+keep repeating what's out there in the
+ether. So, how many of you have ever put
+a talk together and you threw a slide
+into AI to make it prettier? Anybody
+ever do that? Ever see that it screwed
+up the information when you actually
+read it? they screwed up the citation or
+they got the numbers a little bit wrong.
+That gets out there, that gets repeated,
+and that gets reinforced. And AI feels
+
+[31:17]
+more confident about the decision it's
+giving you. So, while we're going to be
+replaced by computers and AI for a lot
+of things, we still need our human lens
+when we're doing this research to
+doublech checkck the work. And that's
+where the education, that's where the
+hard work comes in, which is why we're
+not actually fully replaceable
+hormonal testing. when you add all that
+in. So then people say, "Well, it's okay
+because my wearable has been validated
+against these hormones." And I actually
+sent my blood to this place. They
+charged me $1,000 and they checked all
+
+[31:47]
+the things. I get that in my clinic all
+the time. Here's my print out. They
+checked all the things. What assay was
+used? How did they test it? How did they
+store that that sample? So saliva, it's
+pretty cheap. It's not it it but to do
+saliva, you have to do many many
+measures on multiple days. So you might
+have to do frequent sampling and there's
+not as good of um validation in saliva.
+Those assays aren't that great yet. What
+about blood? Blood's a little more
+expensive. Yes, you have to get stuck by
+a needle. You're probably not going to
+
+[32:17]
+do it every day, but it does give you
+precise hormone quantification. Um so
+there's there's some time u misalignment
+if you say, "Oh, I had my estrogen
+checked. Well, where were you in your
+menstrual cycle phase?" Um, or maybe
+it's a hormone that actually is really
+cyclical and you're going to get a
+different level in the morning than
+you're going to get in the afternoon.
+How about dried blood spot? We all know
+what happened to the Theronos
+experiment. You cannot check a thousand
+different hormones from a blood spot
+right now. We're not that. We're not
+there. Maybe we'll get there. Um, but
+
+[32:48]
+you need repeated sampling. It performs
+well with some moderate concentrations
+of certain hormones, but we still have
+to be cautious. And then there's urine.
+So to test someone's urine, doing that
+every day, it's not hard to pee in a
+cup. Um it is pretty expensive though to
+analyze the urine every single day.
+That's been extensively validated
+against serum, so it's pretty good. But
+it's good for a profiling tool. So
+basically looking at a pattern over the
+course of a month or two months rather
+than the exact concentration. So you're
+seeing general patterns.
+
+[33:19]
+So when we talk about wearables, we want
+to think about the wearable validated
+against the hormone used with a survey
+that asks baseline information about the
+person wearing the wearable. And you
+want to get a diverse group of people
+that are actually using it. So you can
+say, I've got this wearable. I've got a
+research question. Start with are the
+data appropriate for the question? Is it
+a high impact question? If it's no, go
+back to the drawing board. If it's yes,
+now you want to prepare the data. We
+want to address sensor accuracy, missing
+
+[33:51]
+data, outliers, and try to validate that
+that wearable against some things that
+you can trust. Then can you reproduce
+the known values or the trends? No.
+Better look at things again. Yes. Okay,
+cool. Now you can analyze that data to
+answer a research question. Um, if you
+do that, were there robust conclusions
+that address your research question?
+Yes. Okay, now you can start sharing
+your results. No. Okay, that wasn't a
+waste of your time. You learn something
+in the process about what's missing so
+that you can go back and you can nuance
+
+[34:22]
+the question and you can nuance how you
+collect information prospectively.
+Wearables are great if we use multiple
+wearables. We try to validate them
+against hormones. We tweak the wearable
+and then we ask questions over time.
+Those are the studies that are going to
+be really powerful. So, we want to make
+sure that we're standardizing what we're
+doing because we all know poor data in
+with poor analysis leads to a poor
+conclusion. We should not be spending
+our research dollars or our time with
+garbage in, garbage out. We have to make
+sure that we're doing this well. So, how
+
+[34:53]
+do we close the data gap and move the
+needle effectively? The million-dollar
+question, maybe the billion-dollar
+question. And the answer is teamwork.
+So, there's so many smart people in this
+room. There's so many smart people at
+this conference. There's so many smart
+people in the world, but we all have
+different strengths and we have
+different biases. And this is why
+projects work better when there's a team
+involved. So, some of the projects I'm
+involved in involve people from all over
+the globe. And that's not even fully
+representative because there are parts
+of the world that aren't represented
+
+[35:24]
+there yet. But you want the
+endocrinologist, you want the sports
+physician, you want the athlete input,
+you want the data analytics expert, you
+want these people that have an area of
+expertise that you might not have to
+help you think of things that you didn't
+even know were on the radar. And if we
+do that, we're really going to be able
+to advance women's sports and women's
+health. So, thank you. And I can take a
+few questions. [applause]
+We unfortunately don't have enough time
+
+[35:55]
+for questions, but if you would like to
+talk to Dr. Arian, you can meet her
+outside the room. Um, but can we give a
+final round of applause? [applause]

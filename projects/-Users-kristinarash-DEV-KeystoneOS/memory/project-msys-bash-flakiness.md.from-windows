@@ -1,0 +1,21 @@
+---
+name: msys-bash-flakiness
+description: "Root cause + fix for intermittent Git Bash 'add_item errno 1' failures and silent bash exit-1s — MSYS shared-region init times out under heavy load; KeystoneOS-MsysKeepAlive task holds the region warm"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 010026e9-e4eb-489e-a5f3-954f81b046be
+  modified: 2026-07-25T22:19:57.484Z
+---
+
+**Git Bash's intermittent failures on this machine are load-induced MSYS shared-memory init timeouts — fixed 2026-07-25 by the `KeystoneOS-MsysKeepAlive` scheduled task.**
+
+Symptom: `bash.exe: *** fatal error - add_item ("\??\C:\Program Files\Git", "/", ...) failed, errno 1`, and more generally bash exiting 1 with empty output (the long-standing "Bash frequently fails silently" note in CLAUDE.md). Non-blocking: the underlying git command usually succeeded; Claude Code hooks (spawned via Git Bash) report failure.
+
+Mechanism (msys2-users list): the MSYS mount table lives in a shared-memory region initialized once by the first MSYS process and destroyed when the last exits. A spinlock guarding init times out (~15 s). Under heavy load (e.g. two 9 GB R fits with <1 GB free RAM), the first bash after a quiet gap can't finish init in time → every concurrent/next spawn fails.
+
+Proof: 0/50 spawn failures idle; **5/30 failures under CPU starvation; 0/30 under the same starvation with a keep-alive bash holding the region**.
+
+Fix: scheduled task `KeystoneOS-MsysKeepAlive` (logon trigger, hidden, no time limit) runs `"C:\Program Files\Git\bin\bash.exe" -c "exec sleep infinity"` so the region never needs re-init. If bash flakiness returns, first check that this task/process is alive. Not a username-with-period issue (that's a different known MSYS bug) — single msys-2.0.dll on disk, runtime 3.6.7, Git 2.54.
+
+Related: [[speedprofiling-data-gotchas]] (the same load bursts silently OOM-killed concurrent R runs — one pipeline run at a time).

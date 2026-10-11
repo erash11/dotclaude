@@ -1,0 +1,636 @@
+=================== weekly-review
+---
+name: weekly-review
+description: >-
+  Friday close-of-week synthesis ritual. Pulls the last 7 days of meetings, interview
+  notes, and permanent notes from the SecondBrain vault and produces a single weekly
+  review note covering themes, project status, decisions, stale action items, essay
+  angles, and next-week priorities. Use when user says "/weekly-review", "weekly
+  review", "Friday review", "let's do this week's review", "weekly synthesis", or "what
+  should I work on next week?". Do not use for the end-of-day interview (use
+  interview-me) or the biweekly supervisor report (use status-report).
+---
+
+# Weekly Review
+
+End-of-week synthesis. This is the user's **project prioritization surface** — the artifact that names what's progressing, what's drifting, and what earns priority next week.
+
+## Vault location
+
+Use `vault_root` from the selected platform config.
+
+**Paths:** canonical vault locations live in `~/.claude/skills/_shared/config.<platform>.json` — load it if unsure; if a literal path here ever disagrees, the config wins.
+
+- Inputs: `Inbox/meetings/*.md` (last 7d), `Inbox/*-interview.md` (last 7d), `Notes/*.md` (modified last 7d)
+- Output: `Inbox/weekly-review/YYYY-MM-DD-review.md`
+- Template: `Templates/weekly-review.md`
+
+## Step 1 — Refresh meeting summaries
+
+Invoke the `meeting-sync` skill first. If it reports auth failure, stop and surface the same auth message to the user. The review can't run without current meeting data.
+
+Then run the filename drift audit — this is its weekly home, since it's too slow for every sync:
+
+```bash
+python ~/.claude/skills/meeting-sync/scripts/audit_filenames.py --since <90 days ago>
+```
+
+Report only the `regression_count` and `semantic_count` in the review note, as a one-line health check (e.g. *"Meeting filenames: 4 regressions, 39 semantic diffs — see meeting-sync drift audit"*). Do **not** rename anything as part of the review; regressions get fixed upstream in Fireflies and semantic diffs need a human call. See the Drift audit section of `meeting-sync` for what each class means.
+
+Then run the registry drift check, the weekly count of projects that live outside the one list:
+
+```bash
+python <dir of portfolio_json>/portfolio.py crosswalk --json
+```
+
+(`portfolio_json` is in the platform config.) Count `problems` by `kind` and report one line, e.g. *"Registry drift: 2 DEV folders with no row, 1 Drive project with no row, 5 blank STATUS — run `portfolio.py crosswalk`"*. `drive_unreachable` means the Drive half did not run; say that rather than reporting zero. Do not fix anything as part of the review. A folder with no row is a project that was started outside the list; name it in **Next week — priorities** if it is real work.
+
+## Step 2 — Gather inputs
+
+Use Glob + filesystem mtime to collect:
+1. `Inbox/meetings/*.md` created in the last 7 days
+2. `Inbox/*-interview.md` from the last 7 days
+3. `Notes/*.md` modified in the last 7 days
+
+Also pull this week's aggregate view from Fireflies for cross-meeting signal:
+```bash
+fireflies-pp-cli digest --since 7d --processed-only --json --agent
+fireflies-pp-cli action-items list --from 30 --json --agent
+fireflies-pp-cli topics list --from 7 --json --agent
+```
+
+(`action-items list --from 30` gives you stale-item detection — anything older than 14 days that's still open is "stale".)
+
+## Step 3 — Read and synthesize
+
+Read each input file. As you go, build up:
+- **Theme map:** what topics/concepts appear in 2+ sources?
+- **Project map:** which named projects/clients show up? For each: did they progress (decision made, work shipped), drift (mentioned but no movement), or stick (blocked, awaiting input)?
+- **Decision log:** any decision sentences across all sources
+- **Stale action items:** anything > 14d old still open
+- **Essay clusters:** linked Notes that form a 2–4 note thread on a single idea
+- **Threads worth carrying forward**
+- **Unlabeled-speaker meetings:** while reading `Inbox/meetings/*.md`, grep for `Speaker 1`, `Speaker 2`, `Speaker 3` (etc.) patterns. Track which meeting files still have unnamed speakers. The user labels speakers manually in the Fireflies web UI — no API for it — so the review's job is just to flag them.
+
+**Curation rule:** if you can't name a theme/project/decision in one sentence with a source citation, drop it. The review is for the user's working memory, not for completeness.
+
+## Step 4 — Write the review note
+
+File: `Inbox/weekly-review/YYYY-MM-DD-review.md` (use today's date — Friday or whenever invoked).
+
+Start from `Templates/weekly-review.md` and fill it in. Sections:
+
+1. **Themes recurring this week** — bulleted, each with source citation `[[file]]` or `(meeting: X, date)`.
+2. **Active projects — status snapshot** — markdown table with columns: Project | Status (progressing / drifting / stuck / decided / new) | Last touched | Note. Be ruthless about marking "drifting" — that's the value of this whole exercise.
+3. **Decisions made this week** — bulleted, quote the decision in the user's words if available, with source citation.
+4. **Open action items (stale > 14d flagged)** — from `action-items list`. Each line: owner — task — age — source meeting. Flag stale items with `⚠`.
+5. **Essay angles emerging** — each angle: working title, 1-sentence thesis, list of 2–4 `[[Note]]` links that support it. These are candidates for moving into `Drafts/`.
+6. **Next week — priorities and why** — three items, ranked. One sentence per item on why this beats the alternatives. **This is the most important section.** Push back on the user if their answer here is generic ("keep working on X").
+7. **Open threads to revisit** — anything noticed but not actioned.
+8. **Pipeline hygiene** (only include if there's something to flag):
+   - Unlabeled speakers in this week's meetings — list the affected meeting files with a single-line action: *"Open in Fireflies UI and assign names to Speaker N entries."*
+   - Generic-titled meetings still in the local DB — suggest running `/name-meetings` if any appeared this week.
+   - Registry drift — the Step 1 one-liner, if the count is above zero.
+   - Friday sweep — the Step 4b line.
+   - Skip this section entirely if all of these are clean.
+
+Update frontmatter counts: `meetings_reviewed`, `interviews_reviewed`, `notes_touched`.
+
+## Step 4b — Friday sweep (paused projects that went quiet)
+
+PM system design Decision 6: paused projects untouched for 30+ days get a decision, 10 a week, oldest first, so the paused backlog clears instead of growing. Run:
+
+```
+python <dir of portfolio_json>/portfolio.py sweep
+```
+
+It prints up to 10 rows with lane, receiver and last-known date, plus how many are pending in all (the live board's header shows the same count). Put the list to Eric in one message and take his answer for each, in one reply:
+
+- **revive**: back on the board. Needs a concrete next step, and for job/side/tool a receiver (a name, or `me: <why>`). The slate cap and the 7-day clock apply.
+- **keep**: stays paused; out of the sweep for 90 days.
+- **archive**: retired.
+
+Apply each with `portfolio.py sweep-decide <name> revive|keep|archive [--next-action "<step>"] [--receiver "<who>"]`. A revive refused for the cap or a missing receiver: tell Eric and ask again, never fill a receiver in for him. Anything he doesn't decide comes back next week on its own; do not chase it. Commit the registry in project-triage as `data: sweep <YYYY-MM-DD>` and push. Add one line to the note's **Pipeline hygiene**: `Sweep: N revived, N kept, N archived, N still pending`.
+
+## Step 5 — Sign off
+
+Brief summary to user (3–5 lines):
+- File written: path
+- Headline number: N meetings, M interviews, K notes synthesized
+- The three priorities you proposed for next week
+- One open question worth them thinking about before next Monday
+
+## Step 6 — Offer (don't take) the next move
+
+After delivering the review, offer:
+> "Want me to start a `Drafts/<essay-slug>.md` from one of the essay angles? Or carry any of the stale action items into a tomorrow-morning agenda?"
+
+Do not auto-create drafts. The user picks.
+
+## What NOT to do
+
+- **Don't generate a review without meeting-sync running first.** Stale data = wrong priorities.
+- **Don't pad sections to fill the template.** A short, honest review beats a long, padded one. If "decisions made" is empty, write "None this week." and move on.
+- **Don't include items you can't cite.** Every claim → source.
+- **Don't write to `Drafts/` automatically.** Drafts are a deliberate user choice.
+- **Don't run weekly-review more than once per week** unless the user explicitly asks (e.g., "redo the review with X added"). Repeated runs erode the ritual.
+=================== meeting-sync
+---
+name: meeting-sync
+description: >-
+  Sync new Fireflies transcripts into the SecondBrain vault; audit vault filenames for
+  drift against Fireflies titles. Idempotent. Use when the user says "sync meetings",
+  "pull latest meetings", "/meeting-sync", "update meeting notes", "any new meetings?",
+  or when invoked by weekly-review. Also for filename drift — "are any meeting files
+  misnamed?", "did a meeting get renamed after export?", "why is this meeting titled
+  differently in Fireflies than in the vault?", "audit the meeting filenames". Do not
+  use to rename generic titles inside Fireflies (use name-meetings) or to search what
+  was said in transcripts (use pp-fireflies).
+argument-hint: "[days-back]"
+---
+
+# Meeting Sync
+
+Pull new Fireflies transcripts into the SecondBrain vault. Each meeting becomes one markdown file at `Inbox/meetings/YYYY-MM-DD_<title>.md`.
+
+## Paths — shared config
+
+Vault and state-file paths live in `~/.claude/skills/_shared/config.<platform>.json` (single source of truth):
+- `vault_inbox_meetings` — platform-specific export target
+- `meeting_sync_state_file` — idempotency ledger (`.sync-state.json` in that folder)
+- `meeting_lookback_days` — default window (14)
+
+`scripts/sync.py` reads these itself; don't hardcode paths elsewhere. If the vault ever moves, edit the config only.
+
+sync.py passes `--limit 100000` to `transcripts find` — the CLI's default is 100, which silently truncates large backfills. Don't remove that flag.
+
+## Prerequisite — one-time auth
+
+Auth is the `FIREFLIES_API_KEY` environment variable (see the `pp-fireflies` skill's Auth Setup). Verify with `fireflies-pp-cli doctor --agent` — the JSON must show `"auth": "configured"`. `scripts/sync.py` runs this check itself and exits with code 4 if auth is missing. In that case, stop and tell the user:
+
+> Fireflies isn't authenticated yet. Set `FIREFLIES_API_KEY` in your environment (System Properties → Environment Variables on Windows), then restart your terminal. After that, `/meeting-sync` will work.
+
+Do not try to fix auth yourself (no `auth set-token` — the env var is the canonical mechanism). Then exit.
+
+## Sync flow
+
+### 1. Run the pipeline script
+
+The deterministic pipeline (doctor check → CLI sync → find → state diff → export → state update) is fully implemented in `scripts/sync.py`. Two-phase invocation:
+
+**Phase A — list pending, check titles:**
+```bash
+python scripts/sync.py --list-only [--days-back N]
+```
+Prints a JSON array of not-yet-exported transcripts: `[{"id", "title", "date"}]`. Diagnostics go to stderr.
+
+**Phase B — export:**
+```bash
+python scripts/sync.py --no-sync [--days-back N]
+```
+Prints a JSON array of newly exported absolute file paths (`--no-sync` skips the redundant DB refresh Phase A just did). Exports are detected by diffing the vault directory listing before/after each export — never "most recent .md" — so a no-op export can't claim an unrelated file.
+
+`[days-back]` argument from the user maps to `--days-back N`; otherwise the config default applies.
+
+### 2. Between phases: generic-title judgment (model's job)
+
+The user does not name their Fireflies meetings consistently. Generic titles produce useless filenames in the vault. Check each pending `title` from Phase A against the generic patterns documented in the `name-meetings` skill (empty, `Zoom Meeting`, `Recording`, `Meeting`, date-only, etc.).
+
+- **0 generics:** run Phase B immediately, silently.
+- **1–3 generics:** use `AskUserQuestion` once — question: "N of the new meetings have generic titles. Name them before exporting?" with options **[Propose names first / Export as-is]**. If "Propose names first", invoke the `name-meetings` skill scoped to just these IDs, then re-run Phase A to pick up renamed titles before Phase B.
+- **4+ generics:** report the count and suggest: *"Several new meetings have generic titles. Run `/name-meetings` to clean them up — I'll proceed with the export either way."* Then run Phase B without blocking.
+
+This keeps the rename loop tight at sync-time without blocking the pipeline.
+
+### 3. Augment each exported file (model's job)
+
+For each path in Phase B's JSON output, the file is raw Fireflies markdown. Insert the fixed 5-section header from `assets/meeting-header.md` (this skill's folder) at the top — after frontmatter, before any existing content. Read the asset and prepend it verbatim.
+
+Leave the Fireflies-generated transcript and summary below this block intact. This gives the user **5 fixed sections to fill in or curate** during interview-me / weekly-review, on top of the raw Fireflies content.
+
+### 4. Tag each exported file with its project (script's job)
+
+After the header is in place, pass the same paths to the tagger:
+
+```bash
+python scripts/tag_project.py <path> [<path> ...]
+```
+
+It asks TypeSafe's Jev which `portfolio.json` project each meeting is mainly about, and adds `- project/<PortfolioName>` under `## Project tags` only when the answer is confident. It always adds one `<!-- jev-project: ... -->` line recording what was asked and answered, which is also how a rerun knows to skip the note. `meeting-prep` reads the `- project/` line to find a project's meetings.
+
+It never blocks the sync: no key, no network or no transcript just leaves the note untagged and logs to stderr. Relay any `WARNING` lines. Run it only after step 3, because notes without a `## Project tags` header are skipped.
+
+## Drift audit (periodic, not every sync)
+
+A vault filename is a snapshot of the Fireflies title at export time. Titles get renamed afterwards, so the two drift apart. `scripts/audit_filenames.py` detects this by asking the export CLI to regenerate every filename into a scratch dir and diffing against the ledger — **the slug algorithm is never reimplemented**, the CLI is the authority.
+
+```bash
+python scripts/audit_filenames.py [--since YYYY-MM-DD] [--skip-linkcheck] [--report PATH]
+```
+
+Run it from `weekly-review`, or on demand — **not** on every sync (it spawns one CLI call per ledger entry, ~2-4 min for a full vault). Same exit codes as sync.py; drift itself is not an error, read the counts in the JSON.
+
+It classifies every mismatch, and the classes need different responses:
+
+- **`regression`** — the vault name is good and Fireflies has reverted to an auto-generated stamp (`Jan_19_0445_PM`, `Untitled`, `Audio_Message`). **Never re-export these — it destroys the good name.** Fix the title upstream in Fireflies instead. Note the API refuses title updates on some older meetings; if so, say so and leave the vault alone (the ledger already protects it).
+- **`semantic`** — the title genuinely differs in meaning. Usually two generations of AI naming rather than rot, so it needs a human call, not an automatic rename. Surface it, don't act.
+- **`cosmetic`** — same words, different separators (`RTP_UpperExtremity` vs `RTP___Upper_Extremity`). Ignore; re-exporting is pure churn.
+
+Before proposing any rename, check `inbound_links` in the output. Renaming a vault file breaks `[[wikilinks]]` from weekly-review notes and `GRAPH_REPORT.md`. Rewrite those links in the same pass or leave the file alone.
+
+## Output to user
+
+When done, report:
+- N transcripts found in the window (stderr line from sync.py)
+- M new exports written, K tagged with a project
+- Path: `Inbox/meetings/`
+- If 0 new: just say "No new meetings since last sync."
+
+Keep it to 3 lines.
+
+## Error handling
+
+sync.py exit codes: 0 ok, 2 usage/config, 3 sync/find failure, 4 auth not configured.
+
+- **Exit 4 (auth):** deliver the auth message from Prerequisite above, stop.
+- **Exit 3 (sync/find):** report the stderr error verbatim, do not try to recover. The user may need to refresh their API key.
+- **Export fails for one transcript:** sync.py logs a warning to stderr and continues with the rest; relay which one failed.
+- **State file corrupted:** sync.py backs it up to `.sync-state.json.bak` and recreates fresh automatically (re-export is idempotent on the filesystem because filenames are deterministic per CLI); flag this in the report if the warning appears.
+
+## Gotchas
+
+- **Two tag vocabularies share `## Project tags`.** Hand tags are topic words (`project/rtp`, `project/load-monitoring`). Jev tags are exact `portfolio.json` names (`project/Sport_Tech_Vetting`). The tagger only appends and never edits or removes a hand tag.
+- **Measured before shipping, so don't tune the question here.** The question wording and the 0.60 threshold in `tag_project.py` were tested blind on 40 meetings (TypeSafe_Sandbox `docs/FIREFLIES_PROJECT_TAG.md`, 2026-09-22). Jev was confident on 36, and right on 33 of those. It never confidently tagged a non-project meeting, but it found only 7 of 11 real project meetings. OKRs_2026-27 was the repeat miss. Judge any wording change against meetings the test didn't use.
+- **A missing tag is not evidence the meeting is unrelated.** The marker line says `none of these` or `(unsure)`. Callers still fall back to text search.
+- **Probabilities wobble by a few points between runs** (for example 0.83 vs 0.81 on the same note). Notes near 0.60 can go either way, which is one reason the marker is written once and not re-asked.
+- **Vault notes can mix CRLF and LF lines.** The tagger splices in its lines and never re-encodes the file. Don't "clean up" line endings in this script: an earlier draft did, and rewrote about 50 lines of one note.
+
+## What NOT to do
+
+- **Don't re-implement steps the script owns** — doctor, CLI sync, find, state diff, export, state update all live in `scripts/sync.py`.
+- **Don't identify exports by "newest .md file"** — that's the exact bug the directory-diff in sync.py fixes.
+- **Don't detect filename drift by pattern-matching for "generic-looking" names** — that both misses real drift and invents fake drift. Use `audit_filenames.py`, which compares against what the export CLI actually produces.
+- **Don't bulk re-export to "clean up" filenames.** Most mismatches are cosmetic or a second valid naming generation, and the `regression` class gets actively worse. Re-export only what a human approved.
+- **Don't modify the Fireflies-generated content** of the exported file — only PREPEND the header from `assets/meeting-header.md`. The transcript and AI summary stay untouched.
+- **Don't sync every interaction.** Run sync only when explicitly invoked OR when called by weekly-review / fireflies-intake.
+=================== meeting-prep
+---
+name: meeting-prep
+description: >-
+  Pre-meeting readiness brief for a project — what changed, what's open, every
+  deliverable path. Use when the user says "/meeting-prep <project>", "I have a meeting
+  with <person> — are we in a good spot on <project>?", "verify we're up to speed before
+  the meeting", "get me ready for this afternoon's meeting", or names an upcoming
+  coach/staff meeting. Do not use for the biweekly supervisor report (use status-report)
+  or to sync meeting transcripts (use meeting-sync).
+argument-hint: "[project]"
+---
+
+# Meeting Prep
+
+Answers one question before the user walks into a room: **"Is everything I said I'd do actually reflected in the artifacts, and what do I need to raise?"**
+
+The argument (or conversation context) names the project — e.g. FaceComps, RTP presentation, AppPerformance brief. If no project is named and none is obvious from context, ask which meeting this is for; that is the only question to ask.
+
+## Step 1 — Reconstruct the "last agreed state"
+
+Pull the most recent decisions about this project, cheapest source first:
+
+1. Project memory files (`~/.claude/projects/<slug>/memory/`) and global `MEMORY.md` active threads.
+2. The most recent SecondBrain meeting note(s) for the project. First grep the meeting notes for the line `- project/<PortfolioName>`, matching the name case-insensitively (written by `meeting-sync` step 4). Then also search for notes that mention the project, because untagged meetings are common: only about 2 in 3 project meetings get a tag. (the meeting-sync output in the vault — **Paths:** canonical vault locations live in `~/.claude/skills/_shared/config.<platform>.json`, e.g. `vault_inbox_meetings`; load it if unsure — if a literal path here ever disagrees, the config wins).
+3. If still thin, `memsearch search "<project> decision" --top-k 5`.
+
+Produce a short internal list: what was decided, what was promised, by when.
+
+## Step 2 — Verify the artifacts match
+
+For each decided/promised item, check the actual artifact — not the conversation:
+
+- Open the current deliverable files (deck, PDF, calendar, spreadsheet, app) and confirm the agreed change is present.
+- `git log --since="<last meeting date>"` in the project repo to see what actually shipped.
+- Note any artifact that is stale, locked, or missing.
+
+Mark each item ✅ implemented / ⚠️ partially / ❌ not reflected.
+
+## Step 3 — The brief
+
+Output one screen, in this order:
+
+```
+## Meeting Prep — <project> (<meeting date/person if known>)
+
+**Bottom line:** ready / ready with caveats / gaps found
+
+**Since last meeting:** <2-4 bullets of what changed/shipped>
+
+**Decision check:**
+✅ <decision> — in <file path>
+❌ <decision> — NOT reflected; <where it should be>
+
+**Bring up in the meeting:** <open questions, items awaiting their input>
+
+**Deliverables & paths:** <every file they might present or reference, full paths>
+```
+
+## Rules
+
+- Verify against files, never against memory of the conversation — the whole point is catching drift between "we decided" and "it's in the deck."
+- If a gap is small and mechanical (a label, a date), offer to fix it now in one line — don't just report it.
+- Do not restructure or "improve" deliverables uninvited; this is a readiness check, not an editing pass.
+- Brevity is the deliverable: the user is reading this minutes before a meeting.
+=================== fireflies-intake
+---
+name: fireflies-intake
+description: >-
+  One-command Fireflies pipeline — sync new meeting transcripts into the SecondBrain
+  vault, rename generically-titled meetings, then report exactly what was ingested. Use
+  when the user says "/fireflies-intake", "ingest my recent fireflies meetings", "sync
+  meetings that aren't in the second brain yet", "pull in the new meetings", "meeting
+  ingestion", or asks whether all recent meetings have been ingested. Do not use to
+  search what was said in transcripts (use pp-fireflies).
+argument-hint: "[since-date]"
+---
+
+# Fireflies Intake
+
+Replaces the recurring hand-typed sequence: "ingest my recent fireflies meetings" → "some have generic names, rename them" → "is everything from <date> in the second brain?" Runs the full chain in order, unattended, then reports.
+
+This is an orchestrator — the actual work lives in existing skills. Invoke them, don't reimplement them.
+
+## Step 1 — Rename first
+
+Invoke the **name-meetings** skill in its **Unattended mode** (declare it explicitly when invoking) to find meetings with generic titles (empty, "Zoom Meeting", "Recording", date-only) and apply structured names. Renaming BEFORE sync means the vault notes are created under their proper names — no cleanup pass later.
+
+- Unattended mode applies only HIGH-confidence renames without approval; anything with weak evidence (vague gist, missing summary) is written to the `review[]` array of the pending-renames file (`pending_renames_file` in `~/.claude/skills/_shared/config.<platform>.json`) for later interactive review — never guessed and applied.
+
+## Step 2 — Sync
+
+Invoke the **meeting-sync** skill to pull all transcripts not yet in the SecondBrain vault. It is idempotent — run it over the full recent window rather than trying to compute the delta yourself.
+
+## Step 3 — Verify completeness
+
+Compare the Fireflies meeting list for the sync window against the vault's meeting notes (the pp-fireflies CLI's local database is the cheapest source for the meeting list; the vault folder is `vault_inbox_meetings` and the export ledger is `meeting_sync_state_file`, both in `~/.claude/skills/_shared/config.<platform>.json`). Every meeting must be accounted for: ingested now, ingested previously, or intentionally skipped (with the reason).
+
+## Step 4 — Report
+
+```
+## Fireflies Intake — <date>
+
+**Renamed:** <n> meetings (<old → new>, one line each; or "none needed")
+**Ingested:** <n> new meetings → <vault folder path>
+   - <meeting name> (<date>)
+**Already in vault:** <n>
+**Skipped/failed:** <list with reasons, or "none">
+**Queued for review:** <n> low-confidence rename proposals in .pending-renames.json (omit line if 0)
+```
+
+If the user also wants the new notes graphed into the knowledge graph, they'll say so — offer `/graphify` as a one-line follow-up only when new meetings were actually ingested.
+
+## Rules
+
+- Never duplicate a vault note; trust meeting-sync's idempotency and say "already in vault" rather than re-ingesting.
+- If the Fireflies API or CLI auth fails, report which step failed and stop — don't half-ingest silently.
+- An empty run is a valid result: "No new meetings since <date>" is the complete report.
+=================== name-meetings
+---
+name: name-meetings
+description: >-
+  Detects Fireflies meetings with generic titles (empty, "Zoom Meeting", "Recording",
+  date-only, etc.), proposes structured names based on AI summary + participants, and
+  applies approved renames via the Fireflies API. Use when user says "/name-meetings",
+  "name my meetings", "rename untitled meetings", "fix meeting titles", "my meetings
+  have no names", or when invoked by meeting-sync. Do not use to sync transcripts or
+  audit vault filenames (use meeting-sync).
+argument-hint: "[days-back]"
+---
+
+# Name Meetings
+
+The user does not name their Fireflies meetings. Without names, exported filenames are useless for retrieval (`2026-05-20_meeting.md`). This skill proposes structured titles from existing AI summaries and applies them via `scripts/rename.py`, which writes back to Fireflies as source-of-truth and verifies each write by read-back.
+
+Detail lives in [REFERENCE.md](REFERENCE.md) — load the section you need, not the whole file.
+
+## Prerequisite
+
+Auth is the `FIREFLIES_API_KEY` env var (see `pp-fireflies` → Auth Setup; do not use `auth set-token`). Verify:
+
+```bash
+fireflies-pp-cli doctor --agent
+```
+
+If the JSON does not show `"auth": "configured"`, halt and tell the user:
+> Fireflies isn't authenticated. Set `FIREFLIES_API_KEY` in your environment (System Properties → Environment Variables on Windows), then restart your terminal.
+
+## Resume mode — check this FIRST
+
+Before anything else, check the pending-renames file (`pending_renames_file` in `~/.claude/skills/_shared/config.<platform>.json`). If `pending[]` has entries, tell the user you're resuming and apply them; if only `review[]` has entries, run them through the approval flow. Full loop: [REFERENCE.md → Resume mode](REFERENCE.md#resume-mode--full-loop).
+
+Only proceed to the flow below if the file is absent or both arrays are empty.
+
+## Flow
+
+### 1. Refresh and list candidates
+
+```bash
+fireflies-pp-cli sync --full --resources transcripts --agent
+fireflies-pp-cli transcripts find --from 30 --processed-only --limit 100000 --json --agent
+```
+
+`--full` is required: an incremental sync leaves the DB stale and `find` then under-reports candidates. `--limit 100000` overrides the CLI default of 100. See [REFERENCE.md → CLI gotchas](REFERENCE.md#cli-gotchas).
+
+Default lookback is 30 days. Adjust `--from` if the user says "last 60 days" / "all meetings" (omitting it means all-time — warn that high-volume rename is slow).
+
+### 2. Detect generics, then check they're editable
+
+Match each title against the patterns in [REFERENCE.md → Generic-title patterns](REFERENCE.md#generic-title-patterns). Skip everything else — **don't rename what the user has already curated.** A date *prefix* followed by content (`2026-01-30_BAIR_Steering_Approval`) is curated; only date-and-time-*only* titles are generic.
+
+**Expect ghosts.** `sync --full` doesn't prune transcripts deleted from the Fireflies cloud, so `find` can list meetings that no longer exist. They fail at step 5 with `Transcript not found` — literally true, and permanent. Reads don't detect them (`transcripts get` returns full data for a deleted transcript on both `live` and `local`), so you can't pre-filter; the write is the only reliable signal. Don't skip candidates by age — see [REFERENCE.md → Deleted transcripts](REFERENCE.md#deleted-transcripts-linger-in-the-local-db).
+
+### 3. Propose titles
+
+For each candidate, pull the content before proposing anything:
+
+```bash
+fireflies-pp-cli summary <id> --format gist --json --agent
+```
+
+The gist, keywords, overview, and the speaker names in `action_items` are enough to build a title. Follow [REFERENCE.md → Title construction rules](REFERENCE.md#title-construction-rules). If the gist is too vague, propose `[skip — gist too vague]` and tell the user it needs manual naming in the Fireflies UI.
+
+If several candidates come from one event, offer a shared prefix so they group — ask what the event was rather than guessing.
+
+### 4. Present batch for approval
+
+Display a markdown table with columns `# | Date | Current | Proposed | Action` (`✓` to apply, `—` to skip). Then `AskUserQuestion`: "How should I apply these renames?" with **[Approve all / Edit rows / Apply subset / Cancel]**:
+
+- **Approve all** → apply all non-skipped rows
+- **Edit rows** → ask which rows and what titles, confirm the revised table, then apply
+- **Apply subset** → ask which rows ("1,3,5" / "rows 1-2" / "skip 2,4"), apply only those
+- **Cancel** → exit without applying
+
+### 5. Apply approved renames
+
+```bash
+python3 ~/.claude/skills/name-meetings/scripts/rename.py <id> "<new title>"
+```
+
+**Never use `fireflies-pp-cli transcripts update`, and never use the Fireflies MCP tool `fireflies_update_meeting_title`.** Both are broken, and the MCP one lies — it returns `success: true` without reliably writing. `scripts/rename.py` calls the API directly and **verifies every write by reading the title back**, so it cannot report a silent failure as a success. Full diagnosis: [REFERENCE.md → Why renames bypass the CLI and MCP](REFERENCE.md#why-renames-bypass-the-cli-and-mcp).
+
+The script spaces its own writes and verifies each one. Run it once per meeting, or `python3 ~/.claude/skills/name-meetings/scripts/rename.py --pending` to apply a whole approved batch and prune the ledger as each one verifies. Trust its `OK` / `FAIL` lines — never a bare success flag. On a 429, stop and persist the rest to `pending[]`.
+
+**Classify every other failure before queuing it — the ledger is for transient errors only.**
+- *Transient* (timeout, blocked call, 5xx, connection reset) → retry once, then append to `pending[]`
+- *Permanent* (`Transcript not found`, or a title under 5 / over 256 characters) → **do not queue.** Resume mode auto-applies `pending[]`, so a permanent failure there retries forever and can never succeed. Report it as unrenamable, with the reason.
+- A `read-back mismatch` from `rename.py` is **transient** — the write did not land. Retry once, then queue it.
+
+Report each result inline. Mechanics and fallbacks: [REFERENCE.md → Rate limits and the retry ledger](REFERENCE.md#rate-limits-and-the-retry-ledger).
+
+### 6. Re-sync — must be `--full`
+
+```bash
+fireflies-pp-cli sync --full --resources transcripts --agent
+```
+
+**Plain `sync --agent` fails silently here** — it skips already-seen transcripts, so title edits never land, and it still exits 0 reporting `total: 0`. **Verify by re-running the step-1 `find` and confirming the new titles**, not by reading the exit code.
+
+If the verification `find` surfaces generics you never proposed, the earlier DB was stale — say so and offer to name them rather than ending the run silently.
+
+**Fireflies' list endpoint lags its single-transcript endpoint by minutes.** `sync` and `find` read the list; `rename.py` verifies against the single transcript. So immediately after a rename it is normal and expected for `find` to still show the old title while the rename is genuinely applied. Do **not** re-issue the rename — that is how a good title gets clobbered. Wait ~4 minutes, re-run `sync --full`, and check again. This matters most when `meeting-sync` runs next: it builds vault filenames from the synced title, so exporting too early bakes the stale title into the filename, and a later re-export creates a *second* file rather than fixing the first.
+
+**If the sync fails**, retry once. If it fails again the renames are NOT lost — Fireflies is source-of-truth and they already succeeded there; only the local DB is stale. Report explicitly: *"Renames applied in Fireflies, but the local DB re-sync failed — titles will look stale to meeting-sync/weekly-review until you run `fireflies-pp-cli sync --full --resources transcripts --agent`."* Never end with a silent DB/Fireflies mismatch.
+
+### 7. Report
+
+3–5 lines: N scanned / M generic · K applied · F queued in `.pending-renames.json` (next run auto-resumes) · S skipped for manual naming · re-sync status (OK, or the stale-DB warning).
+
+## When invoked by `meeting-sync`
+
+- Detect generics only in the **new-since-last-sync** subset (the IDs meeting-sync passes), not the full 30-day window
+- If 0 generics: return silently
+- meeting-sync has already asked the user, so go straight to proposing, then the normal approval flow
+
+## Unattended mode
+
+Only when an orchestrating skill explicitly declares it (`fireflies-intake` does): apply HIGH-confidence renames without approval, queue everything else to `review[]`. Rules: [REFERENCE.md → Unattended mode](REFERENCE.md#unattended-mode). This is the only sanctioned exception to the approval rule.
+
+## What NOT to do
+
+- **Don't rename meetings the user already titled.** Curated titles are sacred.
+- **Don't propose without seeing the gist.** Without content you'll guess wrong; if `summary` fails, mark as skip.
+- **Don't auto-apply without approval** — except Unattended mode, and there only HIGH-confidence.
+- **Don't trust a sync's exit code.** Verify with `find`.
+- **Don't include the date in the title.** Filenames already prefix dates.
+- **Don't pad titles to meet length.** Concise > complete.
+- **Don't rename in bulk if Fireflies rate-limits** — back off and report applied vs pending.
+=================== decision-audit
+---
+name: decision-audit
+description: "Decision Drain Audit: sort the decisions Eric has been avoiding into four buckets (decide now, needs one piece of information, waiting on someone, not mine), name why they are stuck, give 3 tiny next actions, then optionally decide them and record each answer where it lives. Use when the user says \"/decision-audit\", \"decision drain audit\", \"what decisions am I avoiding\", \"what's stuck\", \"fill out my pending decisions\", or \"let's work through the decisions\". Do not use for the Friday synthesis (use weekly-review), ranking projects (use project), or the biweekly report (use status-report)."
+---
+
+# Decision Audit
+
+Turns a vague sense of "too many open loops" into a sorted list, a short plan, and
+decisions recorded in the repos. First run: 2026-10-02 (`runs.md`).
+
+Files in this folder:
+- `checklist.md` — the run checklist. Tick it as you go.
+- `templates/audit-report.md` — the exact output shape for Steps 2-4.
+- `references/mining-prompt.md` — the subagent prompt for Step 1 (mine mode).
+- `runs.md` — one line per run. Append at the end of every run.
+
+## Step 1 — Get the list (8-20 items, one line each)
+
+Two modes. Ask which only if the user hasn't said.
+
+- **Ask mode:** ask for 8-20 pending decisions, big or small, work or personal, one
+  line each. Offer 3-4 seeds from `## Pending Decisions` and `## Active Threads` in the
+  injected Tier B `MEMORY.md`.
+- **Mine mode** ("go through our recent work"): spawn ONE general-purpose subagent with
+  `references/mining-prompt.md` (fill in the window, default 30 days). Keep only its
+  findings in context.
+
+Then **stale-check before sorting.** On 2026-10-02, 4 of 22 mined items were already
+settled (a merged PR, an ownership call made two weeks earlier, a format shipped by a PR,
+a promotion done that morning). For each candidate, grep the latest `docs/STATUS.md` and
+`gh pr view` where a PR is named. Drop or mark settled ones; say so in one line.
+
+Keep choices, drop chores. "Rotate the credential" is a chore; "rotate now or accept the
+risk" is a choice. Never read `DexaProject`, never quote ContextVault detail.
+
+## Step 2 — Sort into exactly four buckets, then name 1-2 hidden reasons
+
+Use `templates/audit-report.md`. Bucket rules:
+
+| Bucket | Goes here when |
+|---|---|
+| Ready to Decide Now | Eric already has everything; only the choice is missing. Default bucket when unsure. |
+| Needs One Piece of Information | Exactly one named fact, check, or answer unblocks it. Name the piece. |
+| Waiting on Someone Else | A named person must act first. Name them. If Eric owes a nudge, say so. |
+| Not Actually Mine to Decide | Someone else owns the choice (funding, membership, another unit's policy). Name Eric's sliver, e.g. "you own the recommendation and which dataset is authoritative". |
+
+Hidden reasons: 1-2, drawn from the pattern in *this* list, stated plainly ("sharpened,
+not soothed"). Patterns seen before (check these first, don't force them):
+- **Built but not shipped.** The last step needs another person to see it (post, send,
+  merge, walkthrough). Building feels like progress; exposure doesn't.
+- **Options with no default.** "X or Y?" with no recommended answer and no date, so every
+  option stays live and the same question resurfaces.
+- **One root, many items.** Several entries are the same undecided direction (2026-10-02:
+  four TypeSafe/Jev items were one "maintenance or keep hunting" call).
+
+## Step 3 — Next 60 Minutes + mantra
+
+Exactly 3 actions, each under 10 minutes, each with a time estimate and a concrete
+artifact (a call booked, a line in a named STATUS file, a one-question message with a
+reply-by date). Pick the most *draining* items, not the easiest: oldest, personal, or
+most-recurring first. Close with one calm one-sentence mantra.
+
+## Step 4 — Decide in rounds (when the user says "let's work through them")
+
+1. Pull context for each Ready item first (grep its STATUS, open questions, memory) so
+   every option is grounded. Re-run the stale check here; it catches more.
+2. `AskUserQuestion`, max 4 questions per call, recommended option first with
+   "(Recommended)", one-line trade-off per option. Use `multiSelect` for batch
+   keep/archive calls.
+3. Restate the answers in one line after each round.
+
+## Step 5 — Record every decision where it lives
+
+A decision only counts once it is written where the next session will look:
+
+| Decision type | Where |
+|---|---|
+| Project question | That repo's `docs/STATUS.md`: rewrite the open question as `ANSWERED YYYY-MM-DD: <question>? <answer>.`; if none, a dated bullet at the top of Current state. |
+| Project status (done, parked, paused) | `project-triage/portfolio.json` via `python portfolio.py add-update <name> "<note>"`; status changes via `portfolio.load_registry`/`save_registry` (no CLI verb). Separate commit, subject `data: ...`. |
+| Cross-project pending decision | Tier B `MEMORY.md` `## Pending Decisions` (remove when closed; cap 2,500 chars). |
+| Personal / durable user fact | Tier A file via the `memory-write` skill. |
+| Method or content position | The doc itself (e.g. Flint `docs/method-baseline.md` tension marked RESOLVED). |
+
+Batch the repo writes to one general-purpose subagent with an explicit per-repo list.
+It commits only the files it changed, never force-pushes, never moves folders. Archive
+means *recorded*, not moved, unless the user says move. **Ask before the first commit
+and push** unless the user already said go this session.
+
+Verify, then report:
+```bash
+cd ~/DEV  # Windows: ~/Desktop/DEV
+for r in <repos>; do printf "%-30s %s | %s\n" "$r" "$(git -C $r status -sb | head -1)" "$(git -C $r log -1 --format='%h %s' | cut -c1-60)"; done
+```
+Every line must show `main...origin/main` (or `master`) with no ahead/behind, and a
+dated commit subject.
+
+## Step 6 — Close
+
+Append one line to `runs.md` (date, mode, item count, bucket counts, decided count, the
+hidden reasons in 5 words each). Report: what was decided, where each lives, anything
+the subagent did beyond scope, and what is left for Eric (actions only he can take).
+
+## Gotchas
+
+- Edit may be blocked in shared checkouts during background jobs; the recording
+  subagent can fall back to a small Python string-replace that keeps line endings.
+- Tier B `MEMORY.md` runs near its cap. Replacing a line is cheaper than adding one;
+  check `wc -c` after every write.
+- A repo named in docs may not exist (2026-10-02: `baylor-football-analytics` was never
+  pushed). Verify with `gh repo view` before offering "fold it in".
+- Machine-specific repos (e.g. `Website` lives only on the Mac): record in memory now
+  and list "record in repo on the Mac" as a leftover.

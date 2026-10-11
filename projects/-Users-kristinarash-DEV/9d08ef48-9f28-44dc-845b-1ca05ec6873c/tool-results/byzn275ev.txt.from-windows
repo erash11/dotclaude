@@ -1,0 +1,247 @@
+  100163 total
+=================== framework--five-criteria-of-dynamic-correspondence.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3"
+topic: dynamic correspondence criteria
+category: [specificity, exercise-selection, transfer, special-strength]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The Principle of Dynamic Correspondence: Five Criteria for Choosing Special Strength Exercises
+
+**What it is** — The authors open section 4.3 by arguing that "All sporting movement is specific and goal-directed," so the strength shown in each movement is also specific, and "One should not refer to strength in general, but only in the context of the given task." The means and methods of strength training should therefore give "an adequate conditioning regime for the motor system in the special exercises." The foundation is the principle of dynamic correspondence: training means for a given sport should be chosen to enhance the required motor qualities in terms of five criteria (PDF p. 252 / printed p. 241):
+1. the amplitude and direction of movement (4.3.1);
+2. the accentuated region of force production (4.3.2);
+3. the dynamics of the effort (4.3.3);
+4. the rate and time of maximum force production (4.3.4);
+5. the regime of muscular work (4.3.5).
+
+Section 4.3.6 closes the set by stating that the character of muscular work is learned from analysis of the athlete's movements, and that "success in selecting the means of special strength training is determined by a thorough knowledge of the biomechanics of the movements" (PDF p. 259 / printed p. 248).
+
+**Why it works** — The authors' reasoning is the specificity argument above: strength is always expressed in a particular task, so a training means only transfers to the extent that it reproduces the task's conditions on these five dimensions. They do not give a physiological mechanism for transfer in this section; each sub-criterion gives its own reasoning (see Related). Inference: the five criteria read as the exercise-selection version of the broader specificity dimensions the book lists in 1.4, narrowed to features a coach can inspect in a movement.
+
+**When to apply** — Use the five criteria as a checklist when choosing or designing a special strength exercise for a sport skill: check each criterion in turn rather than judging transfer by whether the exercise "looks like" the sport. Eric's baseline: "The Principle of Dynamic Correspondence (Verkhoshansky), matching amplitude/direction of movement, region of force production, dynamics of effort, rate/timing of force production, and regime of muscular work to the sport skill, governs whether an exercise actually transfers, rather than surface resemblance to the sport." Tagged **Explicit (interview 2026-09-28, Q1)** (`docs/method-baseline.md`, line 103). Inference: this entry is the primary-source version of the list Eric already teaches in HHPR 5355, so it can be cited directly for the criteria's original wording.
+
+**When NOT to apply** — The criteria select special strength exercises; the authors say in the opening of the next chapter that this selection is "only part of the process" and that methods are a separate task (cross-reference only, PDF p. 266 / printed p. 255). They are not an argument against general preparation: the text gives no rule here for how much general work an athlete needs. The authors offer the criteria as reasoned principles with illustrative examples, not as the result of controlled transfer studies, so a high correspondence score does not by itself prove that an exercise will transfer. Inference: when the criteria conflict (for example, matching amplitude may require an awkward position that breaks the regime of work, as the authors' own Fig 4.22 discussion shows, PDF p. 256 / printed p. 245), the text gives no ranking among them.
+
+**Example** — The authors' own examples for each criterion: the rower and shot putter whose shoulder movements have similar amplitude but opposite force direction (Fig 4.17, PDF p. 253 / printed p. 242); the standing hip-flexor machine that misses the sprinter's range (PDF p. 253 / printed p. 242); the boxer and shot putter who should do the same pulley thrust with different loads and tempos (PDF p. 258 / printed p. 247).
+
+**Related** — [[principle--specificity-of-training-ten-dimensions]] (Ch1.4, the general specificity dimensions these criteria narrow down), [[heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport]], [[heuristic--train-force-at-the-accentuated-joint-angle]], [[principle--training-effort-must-match-or-exceed-sport-effort-judged-by-movement-speed]], [[heuristic--rfd-as-correspondence-criterion-and-impulse-cannot-compare-movements]], [[heuristic--same-exercise-different-regime-boxer-vs-shot-putter]], [[heuristic--phasic-biomechanical-analysis-before-selecting-special-strength-means]], [[elite-sports-performance--evans/case-study--dynamic-correspondence-applied-to-wrestling-takedown]] (Evans applies the same five criteria to a wrestling takedown; agreement), [[elite-sports-performance--evans/claim--weight-room-transfer-limited-without-dynamic-correspondence]], [[transfer-of-training-in-sports--bondarchuk/framework--three-viewpoints-on-training-transfer]], [[fundamentals-of-sprinting--moyer/framework--soviet-lineage-of-sprint-training-ideas]].
+=================== heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.1"
+topic: amplitude and direction correspondence
+category: [specificity, exercise-selection, sprinting, resisted-training]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Match the Exercise's Range, Force Direction and Line of Resistance to the Sport, Not Just the Muscles
+
+**What it is** — The first correspondence criterion, amplitude and direction of movement, "determines which muscles are involved in the work and allows for anatomical peculiarities and the external conditions of work" (PDF p. 253 / printed p. 242). The authors give four illustrations:
+- A rower's and a shot putter's shoulder movements have about the same amplitude, but the force direction differs: the oar pull is shoulder extension, the put is shoulder flexion against the shot's inertia (Fig 4.17, verified against the page image).
+- Sprinters and jumpers who train hip flexors standing on a hip-flexor machine (pad against the front of the thigh) do not reproduce the sport, because thigh amplitude in running and jumping is "significantly greater" and "begins at an angle of about 210° in the hip joint, relative to the torso." Changing the athlete's position (Fig 4.18, verified against the page image: the athlete lies back on an inclined bench with the working leg swinging up through an arc from below the line of the board) meets the criterion because the resistance "imitates the inertial resistance of the mass of the leg rotating about the hip joint." Load, repetitions and tempo then set whether force or strength-endurance is developed.
+- A knapsack of sand or a weight belt, used in middle-distance running, skiing and skating, loads "the muscles which bear the load are those which resist the weight of the body": it can raise tolerance of vertical loading and general strength-endurance "but does not strengthen those muscles which propel the body horizontally."
+- A skater's one-leg jumps on the floor or from a bench strengthen the supporting leg and back static-endurance but do not reproduce the push-off, "where the force is directed backward"; skaters should change the direction of resistance instead (Fig 4.19, Verkhoshansky 1977, verified against the page image: a partner-held tether, a weighted sled, and a partner seated on a sled, each pulled in a skating posture). (PDF pp. 253-254 / printed pp. 242-243.)
+
+The rule the authors draw: "select the exact starting position and posture of the athlete, as well as to calculate the direction of action of the forces associated with the working links of the system and the additional load," and take into account "the line of action of the applied external resistance" (PDF p. 253 / printed p. 242).
+
+**Why it works** — The authors' reasoning is mechanical: the muscles that work are the ones that oppose the resistance along its line of action, so a load acting vertically trains anti-gravity muscles, not horizontal propulsors, and a range that starts at the wrong hip angle trains the wrong part of the movement. They give no further physiological mechanism.
+
+**When to apply** — When choosing resisted drills or special strength exercises: trace the line of action of the resistance and the joint range it loads, and compare both with the sport action. Use it to screen weighted vests, belts and limb loads before calling them "speed" work. Eric's baseline: Dynamic Correspondence, "matching amplitude/direction of movement ... to the sport skill, governs whether an exercise actually transfers, rather than surface resemblance to the sport." **Explicit (interview 2026-09-28, Q1)** (`docs/method-baseline.md`, line 103). Inference: a sled or partner-resisted start loads horizontally, which by this criterion fits acceleration better than a vertical vest load; the book does not discuss sleds for sprinters here.
+
+**When NOT to apply** — The authors do not dismiss vertical loading: they say it can still build tolerance of vertical loading and general strength-endurance, so a vest or belt has a general role even though it fails this criterion for horizontal propulsion. The 210° hip figure is given without a source or measurement method and should not be read as a measured norm. Matching range and direction is one of five criteria; it does not settle load, speed or regime (see [[framework--five-criteria-of-dynamic-correspondence]]).
+
+**Example** — The book's own: the standing hip-flexor machine against the inclined-bench hip-flexion exercise of Fig 4.18, for sprinters and jumpers (PDF p. 253 / printed p. 242).
+
+**Related** — [[framework--five-criteria-of-dynamic-correspondence]], [[heuristic--train-force-at-the-accentuated-joint-angle]] (4.3.2 continues the same hip-flexor example), [[claim--joint-angle-and-limb-position-changes-force-output]] (Ch3, the sartorius correlation at 210° hip angle), [[framework--functional-vs-nonfunctional-resistance-machines]] (4.2.7, the machine-design side of the same problem), [[fundamentals-of-sprinting--moyer/claim--wearable-resistance-kinetic-energy-sprint]].
+=================== heuristic--train-coupled-hip-flexion-extension-without-heavily-loaded-simulation.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.1"
+topic: coupled hip action special exercises
+category: [specificity, exercise-selection, sprinting, jumping]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Train the Coupled Flexion-Extension of Both Hips with Special Exercises, Not with the Sport Movement Under Heavy Load
+
+**What it is** — The authors state that sporting force comes from "the simultaneous coordinated tension of the muscle groups which move the various segments of the body," and name as the most characteristic case "the simultaneous flexion and extension at the two hip joints (e.g. in running, jumping, fencing, figure skating, basketball or tennis), where the angular movement of one leg enhances the push-off movement of the other." It is "useful to imitate this combination with special strength exercises which take into account the working amplitude of the movement and the direction of the opposing force" (Fig 4.20, Verkhoshansky 1977, "Complex exercise for simultaneous strengthening of the hip flexors and extensors, and knee extensors"; verified against the page image: eight small drawings of split-leg exercises, on a vaulting horse, on a box with a partner holding the athlete, and hanging from wall bars and from rings; the drawings do not show loads). In contrast, "it is usually inappropriate to perform the actual sporting movements with significantly large added loads in an attempt to provide exact simulation, since the added loading invariably alters the centres of gravity and rotation of the limbs and body, thereby altering the underlying motor patterns and dispositions of joints relative to one another." (PDF p. 254 / printed p. 243.)
+
+**Why it works** — The authors give the mechanism for the warning: heavy added load shifts the centres of gravity and rotation, which changes the motor pattern and the relative joint positions. They give no mechanism for why the coupled exercise transfers beyond its match on amplitude and force direction. Inference: the coupled exercise keeps the reciprocal timing of the two legs, which a single-leg machine cannot, while staying light enough not to distort the pattern.
+
+**When to apply** — When building special strength work for sprinting, jumping or change-of-direction athletes: prefer exercises in which one hip flexes while the other extends, with resistance aligned to the sport's force direction, over loading the full sport movement (for example, heavy loaded running or jumping drills). Eric's baseline: Dynamic Correspondence governs "whether an exercise actually transfers, rather than surface resemblance to the sport." **Explicit (interview 2026-09-28, Q1)** (`docs/method-baseline.md`, line 103). Inference: in football, this points toward split-stance, scissor-type resisted hip work for skill players rather than heavy resisted full sprints, though the book names no football example.
+
+**When NOT to apply** — The warning is about "significantly large added loads"; the authors elsewhere accept small resistance over the full range (Ch1.4, printed 27, quoted in [[principle--specificity-of-training-ten-dimensions]]) and they discuss light parachute resistance in the same section. The book gives no load threshold at which "significant" begins, and no outcome data for the Fig 4.20 exercises.
+
+**Example** — The book's own: the Fig 4.20 complex hip flexor-extensor exercises (PDF p. 254 / printed p. 243), set against heavily loaded sport movements.
+
+**Related** — [[framework--five-criteria-of-dynamic-correspondence]], [[heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport]], [[principle--specificity-of-training-ten-dimensions]] (Ch1.4, the earlier statement of the same simulation warning; agreement), [[claim--multiarticular-muscle-action-cannot-be-predicted-from-joints-spanned]].
+=================== heuristic--parachute-resistance-sizing-progression-and-contrast-release.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.1"
+topic: parachute resisted running prescription
+category: [resisted-sprint, speed, contrast-training, programming]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Parachute Resistance: Choose Parachute Size by the Speed Quality, Progress Over Weeks, and Use the Quick Release as a Contrast Method
+
+**What it is** — Under the heading "Parachute Resistance Training" the authors describe small parachutes of different sizes attached to the trunk with a quick-release harness as "a low-inertia form of resistance" (Popov 1966). They note claims that the parachutes were developed secretly in Moscow in 1988 (Brunner & Tabachnik 1990) and say the Popov reference shows such research "more than 20 years earlier" (PDF p. 254 / printed p. 243). Their prescription (PDF p. 255 / printed p. 244):
+- Drag "increases rapidly with velocity (actually the square of the velocity)." The drag force "characteristically varies between 5 - 200 Newtons for running speeds of 6 - 10 metres per second, depending on the size of the parachute (Zatsiorsky, 1995)."
+- Size by quality: "smaller parachutes are more suited for speed development, medium parachutes for speed-endurance and large parachutes for speed-strength and acceleration-strength." Since speed sets drag, the athlete should try "to run at maximum speed for as long as possible," using fartlek or interval methods.
+- Distances "commonly vary between 30m and 150m, with smaller parachutes being used for the longer distances."
+- Quick release at maximum velocity is "a special contrast method in enhancing speed and stride frequency" (also PDF p. 254 / printed p. 243, citing acceleration strength, 7.1).
+- Progression: "gradual progressive overloading ... with larger parachutes being used over a period of weeks," with periodic decreases in loading within a workout or microcycle, plus the sudden-release contrast method (see 1.16.3). Within a workout, "it is common to progress rapidly after the warm-up to the use of large resistance parachutes, then conclude with a few repetitions using smaller parachutes."
+- To avoid after-effects on normal skill, "precede and follow all parachute sessions with the same exercises performed without parachutes."
+- In preparatory weekly microcycles, sessions are "typically" two or three times a week on alternate days, and more frequent "nearer the later stage of the preparatory phase immediately preceding the competitive season."
+- Users can include distance runners, sprint or distance cyclists, and swimmers.
+
+The authors add that in the West the parachutes "generally have been applied fairly randomly with little knowledge of periodising them," and that "Appropriateness of use depends on an understanding of which strength qualities are required by the athlete at a given stage of training" (PDF p. 254 / printed p. 243).
+
+**Why it works** — The physics the authors give (drag rising with the square of velocity) explains why parachute size and running speed together set the load: drag in fluid flow scaling with velocity squared is standard fluid mechanics. Inference: that physical relation is the `proven` core here; the size-to-quality mapping, distances, frequencies and progression are the authors' practice recommendations with no cited trial, so the entry as a whole is `supported`. The authors give no mechanism for why the quick-release contrast enhances stride frequency.
+
+**When to apply** — When adding resisted running for speed qualities: pick the parachute size for the quality targeted (small for speed, large for acceleration-strength), keep efforts near maximal speed, bracket the parachute runs with unresisted runs of the same drill, and place the sessions in the later preparatory phase. Eric's baseline: speed residuals drive programming: "I believe Issurin. It drives our speed programming in the off-season and what drives sprinting recommendations in season." **Explicit (interview 2026-09-28, Q16)** (`docs/method-baseline.md`, line 97). Inference: the authors' "more frequently nearer the later stage of the preparatory phase" fits an off-season speed block that ends close to camp, but the book gives no in-season guidance for parachutes.
+
+**When NOT to apply** — The authors say parachute training "plays no role in the development of starting strength" (PDF p. 254 / printed p. 243), so it is not a starting-strength tool. They warn it can disrupt skill and correspondence (see [[claim--parachute-resistance-tradeoffs-for-dynamic-correspondence]]). The 5-200 N range is a secondary citation (Zatsiorsky 1995) without the parachute sizes that produce each value, so it cannot be used to choose a specific parachute. No frequency, distance or progression figure here comes from a reported controlled study.
+
+**Example** — The book's own: within a workout, progress quickly after the warm-up to a large parachute, then finish with a few runs on a smaller parachute, with unresisted runs of the same exercise before and after (PDF p. 255 / printed p. 244).
+
+**Related** — [[claim--parachute-resistance-tradeoffs-for-dynamic-correspondence]], [[framework--five-criteria-of-dynamic-correspondence]], [[framework--strength-speed-continuum-five-zones]], [[research-papers/petrakos-2016-resisted-sled-sprint-training-to-improve-sprint-performance-a-systematic-review]] (sled rather than parachute; the modern resisted-sprint evidence in the vault).
+=================== claim--parachute-resistance-tradeoffs-for-dynamic-correspondence.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.1"
+topic: parachute resistance tradeoffs
+category: [resisted-sprint, specificity, injury-risk, speed]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Parachutes Avoid Extra Vertical Loading, but Resist the Flight Phase and Alter Landing Positions, Reducing Dynamic Correspondence
+
+**What it is** — The authors give one advantage and several limits of parachute resistance.
+- Advantage: parachutes "offer a safer alternative to the use of weights added to the extremities or body, or dragged behind the athlete (e.g. a car tyre or sled), because they do not increase the vertical reaction forces acting on the body" (PDF pp. 254-255 / printed pp. 243-244).
+- Limit 1: "parachutes offer the same degree of resistance during both the support and non-support phases of running, thereby disrupting speed and acceleration of limb and body movement during flight."
+- Limit 2: "parachutes alter the relative position of the joints during landing, especially during hurdling and jumping."
+- Together: "All of this can adversely affect several aspects of the degree of dynamic correspondence of the training means to the actual sporting movements (as discussed throughout Ch 4.3)." (PDF p. 255 / printed p. 244.)
+- Scope: parachute training "plays no role in the development of starting strength, which is produced under isometric conditions" (PDF p. 254 / printed p. 243).
+
+**Why it works** — The authors' stated reasons are mechanical: no added mass means no extra vertical reaction force, while a drag force acting through the whole stride also acts in flight, where the sport has no external resistance. They give no data on injury rates for parachutes against sleds or limb weights. Inference: the safety claim rests on the vertical-force argument alone.
+
+**When to apply** — When choosing between parachute, sled and worn-weight resistance: if vertical loading is the concern (heavy athletes, athletes returning from lower-limb injury), the authors' argument favours the parachute; if preserving flight-phase and landing mechanics is the concern (hurdlers, jumpers), it counts against it. Eric's baseline: Dynamic Correspondence governs "whether an exercise actually transfers." **Explicit (interview 2026-09-28, Q1)** (`docs/method-baseline.md`, line 103). Inference: a coach weighing a parachute block can use these two limits as the checklist for what to watch on film.
+
+**When NOT to apply** — The safety advantage is asserted, not measured, in the text; the book cites no comparison of injury or tissue loading. The sled is named only in the safety sentence, and the book does not compare sled and parachute on dynamic correspondence. Inference: modern sled studies (see Related) address performance, not this book's safety claim, so they neither confirm nor refute it.
+
+**Example** — The book's own: hurdlers and jumpers whose joint positions at landing are altered by the parachute (PDF p. 255 / printed p. 244).
+
+**Related** — [[heuristic--parachute-resistance-sizing-progression-and-contrast-release]], [[framework--five-criteria-of-dynamic-correspondence]], [[heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport]] (the weighted-belt example: vertical loading trains anti-gravity muscles), [[fundamentals-of-sprinting--moyer/claim--wearable-resistance-kinetic-energy-sprint]] (limb-worn resistance, which the authors call less safe), [[research-papers/petrakos-2016-resisted-sled-sprint-training-to-improve-sprint-performance-a-systematic-review]].
+=================== heuristic--train-force-at-the-accentuated-joint-angle.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.2"
+topic: accentuated region of force production
+category: [specificity, joint-angle, isometrics, exercise-selection]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Train Peak Force at the Joint Angle Where the Sport Movement Peaks (the Accentuated Region)
+
+**What it is** — "Muscular effort changes during the course of every movement and maximum force is developed at the most appropriate instant for a given action." In ballistic movements that instant is "the beginning part of the working amplitude"; in movements of mixed regimes it is "the instant of switching from one regime to another" (Verkhoshansky 1977). So "the working amplitude always has an accentuated region where the maximum dynamic force occurs close to a specific joint angle," and the criterion of correspondence "includes the need to produce the required force at a specific joint angle" (PDF p. 255 / printed p. 244). For the hip-flexor example of 4.3.1, the accentuated region is near the beginning of the leg's swing, shown by Fig 4.21 (verified against the page image: torque rises to a peak of about 700 N.m within roughly the first 0.02-0.03 s, falls below about 200 N.m by about 0.06-0.08 s, and stays low to 0.160 s). Athletes "who run with loads or use hip flexor machines regularly" thus fail twice: they miss the full amplitude and "lose the ability to train the muscles to generate the necessary force at the appropriate hip joint angle" (PDF p. 256 / printed p. 245). The exercise "should not only reproduce the full amplitude of the movement but also the specific direction of resistance to the pull of the muscles." Isometrics or quasi-isometrics can target the required angles (see 4.2.4), and "the selection of these exercises should be based on the joint angle at which maximal torque is developed in the special exercise" (PDF p. 256 / printed p. 245).
+
+The authors also show a partner exercise (Fig 4.22, verified against the page image: one partner on the athlete's shoulders, another pulling the athlete's back leg, the athlete against wall bars) where trying to meet the criteria gives "incongruous and artificial" positions. Its caption says the accentuated regions "can be incorrectly resisted and posture can be inappropriately held"; the text says it "may be appropriate if applied carefully," but incorrect positioning "can reduce its effectiveness markedly" (PDF p. 256 / printed p. 245).
+
+**Why it works** — The authors' reasoning is that the force peak of a sport action is tied to a joint angle, so training that peaks elsewhere in the range does not prepare that angle. They give no physiological mechanism here. Inference: this is the same angle-specific transfer question treated in Ch2 and 4.2.4 (see Related), applied to exercise choice.
+
+**When to apply** — Before choosing a special strength or isometric exercise: identify where in the sport action peak force occurs (early in a ballistic action, or at the switch between regimes), then set the starting position, range and resistance direction so the exercise peaks at that angle. Use isometric or quasi-isometric holds at that angle when the dynamic exercise cannot be positioned correctly. Eric's baseline: the isometric seated calf raise is run on ForceDecks at a "90-degree ankle/knee position." Tagged **Inferred (protocol)** (`docs/method-baseline.md`, line 78). Inference: that is a fixed-angle test, not a training choice; by this criterion, an isometric training angle would be chosen from where the sport action peaks, which may not be 90 degrees.
+
+**When NOT to apply** — Source mismatch on Fig 4.21: the running text calls it "the graph of hip flexion torque in the air," while the caption reads "Change in the moment of the force during repetitive flexion-extension of the leg during the take-off for the triple jump" (PDF p. 255 / printed p. 244). Inference: the take-off caption does not obviously describe a swing-leg hip flexion torque, so use the figure as an illustration of an early peak, not as hip-flexor data. The book's other sections qualify strict angle matching: isometric gains spread up to about 15 degrees either side of the training angle and further when the muscle trains lengthened (4.2.4), and Ch2 reports that training at a shortened angle transfers less across the range. Inference: training only at the accentuated angle may give less carryover to the rest of the range, so the criterion fits a supplementary exercise better than a whole program.
+
+**Example** — The book's own: sprinters' hip flexor work, where peak torque falls near the start of the leg's forward swing, so standing hip-flexor machines and loaded running miss it (PDF pp. 255-256 / printed pp. 244-245).
+
+**Related** — [[framework--five-criteria-of-dynamic-correspondence]], [[heuristic--match-amplitude-direction-and-line-of-resistance-to-the-sport]], [[claim--isometric-regional-specificity-not-strictly-angular]] (4.2.4, regional rather than angular specificity), [[claim--joint-angle-specific-strength-training-narrows-transfer]] (Ch2, angle and transfer; qualifies this criterion), [[heuristic--isometric-priming-and-external-internal-classification]], [[claim--regime-switching-ability-decides-mixed-regime-events]] (the regime-switch instant this entry names).
+=================== principle--training-effort-must-match-or-exceed-sport-effort-judged-by-movement-speed.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.3"
+topic: dynamics of effort correspondence
+category: [specificity, load-selection, maximal-strength, speed-strength]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Training Effort Should Not Fall Below the Sport's Effort, and Movement Speed Decides Which Kind of Maximal Effort Counts
+
+**What it is** — The criterion of dynamic effort is "the quantitative correspondence of the dynamics of the training means to the specific sports movement": "the intensity of the training stimulus should not be less than that encountered in the given exercise at the corresponding level of sports proficiency and should even exceed it" (PDF p. 256 / printed p. 245). The authors then ask "whether the maximum value or the mean value should be considered as the criterion of correspondence of strength." Maximal strength shows in two forms, moving heavy loads or light loads, and peak force can be larger with the light load "since the lighter load can be rapidly accelerated (remembering that F = ma)." Yet "it is unnecessary to exercise only with light loads, even if the maximum achieved corresponds closely to the dynamics of the special exercise," because the two forces are "qualitatively different: in the first, maximum force is determined by the absolute strength of the muscles, and in the second by the speed of contraction," so their training effects differ too. The athlete should know the type of strength needed and match "the amount of effort and the movement time"; "correspondence with respect to the maximum and mean magnitude of strength can be determined only by calculating the speed of movement" (PDF p. 256 / printed p. 245). Their two examples: a special exercise against "a large resistance at a relatively low speed" calls for training "aimed primarily at developing maximal strength"; one with "a small resistance" at maximal speed calls for "a moderate amount of effort" with "particular attention to the duration of the movement" (PDF p. 257 / printed p. 246).
+
+**Why it works** — The authors give the mechanical reason (F = ma: a light load accelerated hard can produce a high peak force) and a qualitative one (heavy-load force is limited by absolute strength, light-load force by contraction speed). They give no physiological detail beyond that here.
+
+**When to apply** — When setting loads for a special strength exercise: first estimate the sport action's resistance and speed (or movement time), then pick heavy, slow loading for high-resistance, low-speed actions and moderate, fast loading with attention to movement time for low-resistance, high-speed actions. Eric's baseline: "Training time is deliberately weighted toward high motor-unit-recruitment core/ballistic movements (squats, cleans, jumps, throws, sprints)." Tagged **Inferred (transcript + slides)** (`docs/method-baseline.md`, line 104). Eric's baseline: the dynamic strength index (CMJ against IMTP) is used "to determine whether we need more plyometric training or more max-strength training." **Explicit (interview 2026-09-28, Q21)** (`docs/method-baseline.md`, line 76), tagged in the baseline as [contested] by the evidence check. Inference: the DSI decision is an athlete-side version of this criterion's task-side question (is the limiting force set by absolute strength or by speed of contraction).
+
+**When NOT to apply** — An ambiguity in the text: the criterion says training effort "should not be less than" the sport's and "should even exceed it," while the light-fast example prescribes "a moderate amount of effort" (PDF pp. 256-257 / printed pp. 245-246). Inference: the two fit if "effort" means force magnitude relative to the sport's own (moderate in a light, fast sport), but the authors do not say so. The text gives no method for "calculating the speed of movement" or a threshold that separates the two cases, so the rule is qualitative.
+
+**Example** — The book's own pair: overcoming a large resistance at low speed (train maximal strength) against moving a small resistance at maximal speed (moderate effort, attention to movement duration) (PDF p. 257 / printed p. 246).
+
+**Related** — [[framework--five-criteria-of-dynamic-correspondence]], [[principle--force-time-profile-determines-strength-vs-power-training-target]] (Ch2, the same choice argued from the force-time curve; agreement), [[framework--two-force-regimes-overcoming-weight-vs-inertia]] (4.2.2), [[principle--force-velocity-relationship-and-training-specificity]], [[heuristic--rfd-as-correspondence-criterion-and-impulse-cannot-compare-movements]] (4.3.4, which the authors say complements this criterion).
+=================== claim--power-equals-force-times-velocity-only-when-force-is-constant.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "4.3.4"
+topic: power formula and force-time analysis
+category: [biomechanics, power, rate-of-force-development, testing]
+confidence: proven
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# P = F x V Holds Only When Force Is Constant; Explosive Actions Need the Force-Time Curve, a Force Plate or High-Speed Video
+
+**What it is** — Scope of the `proven` rating: only the mathematical point that P = dW/dt reduces to P = F.V when force is constant. The claim that "many strength training texts" misuse it, and the advice on force plates and video, are the authors' judgment. The authors define power as the instantaneous rate of doing work, P = dW/dt, with work W = ∫F(t).ds, and note that "if F is constant over the interval concerned" this reduces to "the familiar basic expression for power": P = F.V, where V is the velocity of the object (PDF p. 257 / printed p. 246; the equations are images, verified against the page image). In italics: "this basic definition is applied without qualification in many strength training texts and can lead to serious misunderstanding of training theory and methods." When force is not constant, one must use the general form (equation 4.1) and look at how force and velocity vary over time, "most conveniently" from F-V, F-t and V-t graphs. "It is inadequate to refer to average or peak force alone." In plyometric actions "the force changes very rapidly as a complicated transient spike function and cannot be regarded as a constant throughout the rebound phase," so "it is better to rely on a force plate or high speed video methods to analyse the movement than to attempt to apply elementary biomechanical calculations that will inevitably produce grave errors." (PDF p. 257 / printed p. 246.)
+
+**Why it works** — This is calculus, and the authors state it: P = F.V is the special case of P = dW/dt with constant force, so using it with a time-varying force gives a wrong instantaneous picture. Scope of `proven`: the mathematical relation only (P = dW/dt reduces to F.V under constant force). The practical judgment that "many strength training texts" misuse it is the authors' assessment, with no citations.
+
+**When to apply** — When reporting or comparing power or explosive strength: use instantaneous force-time and velocity-time data rather than one average force times one average velocity, and read the shape of the force-time curve, not just its peak or mean. For plyometric and rebound actions, measure on a force plate or with high-speed video. Eric's baseline: the force-plate reporting framework adds "'fluffy' metrics (peak power, average power, RFD) only with a specific, defensible rationale." Tagged **Adopted practice, framework not Eric's own** (`docs/method-baseline.md`, line 79). Inference: the authors' point gives one reason for that caution: single power numbers hide how force changed over the action.
+
+**When NOT to apply** — Source oddities in the equations (verified against the page image, PDF p. 257 / printed p. 246): the text introduces equation (4.1), P = d/dt ∫F(t).ds, with "if F is constant over the interval concerned, we obtain," although (4.1) is the general form and the constant-force form is the one beside it, P = F.d/dt ∫ds; and the impulse is written F.Δt "where s is the displacement," though s does not appear in F.Δt. The physics is sound; the wording around it is loose. The instruction to use force plates is general and gives no sampling rate or analysis method.
+
+**Example** — The book's own: a plyometric rebound, where force is a transient spike, so elementary average-force calculations "will inevitably produce grave errors" (PDF p. 257 / printed p. 246).
+
+**Related** — [[heuristic--rfd-as-correspondence-criterion-and-impulse-cannot-compare-movements]], [[principle--rate-of-force-development-as-independent-limiter]] (Ch1), [[framework--force-time-curve-adaptation-pattern-by-movement-type]], [[claim--power-output-peaks-then-declines-with-load-jump-vs-leg-press]], [[framework--four-component-model-of-explosive-force]].

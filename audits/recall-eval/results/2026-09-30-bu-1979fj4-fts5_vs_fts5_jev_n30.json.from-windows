@@ -1,0 +1,934 @@
+{
+ "date": "2026-09-30",
+ "machine": "bu-1979fj4",
+ "label": "fts5 vs fts5+jev n30",
+ "roots": [
+  "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts",
+  "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs",
+  "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash\\memory",
+  "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory",
+  "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily",
+  "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge",
+  "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge",
+  "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings",
+  "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\morning-briefings",
+  "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory",
+  "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory",
+  "C:\\Users\\eric_rash\\Desktop\\DEV\\KeystoneOS\\decisions",
+  "C:\\Users\\eric_rash\\.codex\\memories"
+ ],
+ "missing_roots": [],
+ "coverage_pct": 100.0,
+ "uncovered": [],
+ "fts5_build_s": 1.3,
+ "summary": {
+  "fts5": {
+   "n": 30,
+   "hit1": 21,
+   "hit5": 25,
+   "mrr": 0.767,
+   "p50_ms": 1,
+   "p95_ms": 3,
+   "fail_pct": 0.0,
+   "by_layer": {
+    "compiled": "1/1",
+    "dev-docs": "0/1",
+    "tierA": "12/14",
+    "transcript": "1/1",
+    "vault": "11/13"
+   }
+  },
+  "jev": {
+   "n": 30,
+   "hit1": 19,
+   "hit5": 27,
+   "mrr": 0.756,
+   "p50_ms": 408,
+   "p95_ms": 745,
+   "fail_pct": 0.0,
+   "by_layer": {
+    "compiled": "1/1",
+    "dev-docs": "0/1",
+    "tierA": "13/14",
+    "transcript": "1/1",
+    "vault": "12/13"
+   }
+  }
+ },
+ "results": {
+  "fts5": [
+   {
+    "id": "p01",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash\\memory\\project_memsearch_setup.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_memsearch-index-path-drift.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-index-path-drift.md"
+    ]
+   },
+   {
+    "id": "p02",
+    "layer": "transcript",
+    "rank": 2,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\PFF_Data_Project\\handoffs\\2026-09-22-db-off-drive-and-parquet-snapshots.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-22.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-07-18.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-07-18.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\speedprofiling-velocity-project.md"
+    ]
+   },
+   {
+    "id": "p03",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 3,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_status-report-sourcing.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_status-report-sourcing.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\handoffs\\2026-09-14-prioritization-system.md"
+    ]
+   },
+   {
+    "id": "p04",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_milvus-lock-misdiagnosis.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_milvus-lock-misdiagnosis.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_memsearch-index-path-drift.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-index-path-drift.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\claude-code-environment-maintenance.md"
+    ]
+   },
+   {
+    "id": "p05",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_fireflies-cli-broken-on-mac.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_fireflies-cli-broken-on-mac.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\MEMORY.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\MEMORY.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-08-29.md"
+    ]
+   },
+   {
+    "id": "p06",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\user_child-dental-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\user_child-dental-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-06-25.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\user_personal_constitution.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-09.md"
+    ]
+   },
+   {
+    "id": "p07",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\_archive\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_keystoneos-verification-habits.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_keystoneos-verification-habits.md"
+    ]
+   },
+   {
+    "id": "p08",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\feedback_ingest-review-gate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\feedback_ingest-review-gate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_book-scan-page-ordering.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_book-scan-page-ordering.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\plans\\2026-06-12-book-advisors.md"
+    ]
+   },
+   {
+    "id": "p09",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\user_baylor-department-names.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\user_baylor-department-names.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\AppliedNewsletter_2026\\context.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_kenny-boyd-doc-review-preferences.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_kenny-boyd-doc-review-preferences.md"
+    ]
+   },
+   {
+    "id": "p10",
+    "layer": "tierA",
+    "rank": 2,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\CFB_Victory_Model\\handoffs\\2026-09-23-week3-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_cfb-forecast-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_cfb-forecast-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\connections\\hindsight-leakage-and-pregame-freeze-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\cfb-victory-model-evaluation.md"
+    ]
+   },
+   {
+    "id": "v01",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\framework--hill-equation-curvature-ratio-and-force-velocity-testing-limits.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\framework--maximal-muscular-performance-and-parametric-relations.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\_book.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--force-velocity-curve-limitations-and-in-vivo-deviations.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\claim--strength-speed-correlation-depends-on-external-resistance.md"
+    ]
+   },
+   {
+    "id": "v02",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--realization-mesocycle-taper-prescription.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--accumulation-transmutation-realization-mesocycles.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--prolonging-residual-effects-with-mini-blocks.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--pre-competitive-microcycle-tuning.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--training-stage-and-multi-peak-annual-cycle.md"
+    ]
+   },
+   {
+    "id": "v03",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 0,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\claim--sympathetic-vs-parasympathetic-overtraining-and-omegawave-readiness-case.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\framework--overtraining-continuum-for-nfor-ots.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\claim--no-definitive-diagnostic-tool-for-overtraining-syndrome.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\_book.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\claim--big-data-monitoring-without-training-theory-is-noise.md"
+    ]
+   },
+   {
+    "id": "v04",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--kots-electrostimulation-strength-claims-not-replicated.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\case-study--reding-electrostimulation-protocol-siff-account.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--ratov-functional-electrostimulation-emg-triggered-sport-specific.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--clinical-physiological-effects-of-electrostimulation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--strength-detraining-and-retention-timelines.md"
+    ]
+   },
+   {
+    "id": "v05",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--stretching-matrix-system-reverse-of-contraction-action.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--movement-matrix-system-for-multiarticular-exercise-selection.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\heuristic--dedicated-stretching-may-be-unnecessary-with-progressive-movement-preparation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--stretch-reflex-types-and-neuromuscular-control-of-flexibility.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--tendon-insertion-transitional-stiffness-gradient-disrupted-by-steroids.md"
+    ]
+   },
+   {
+    "id": "v06",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--kaigi-decision-meeting-structure.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--decision-log-owner-action-date-review.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--meeting-typology-decide-diagnose-inform-build.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-09-24.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--stoplight-storytelling-format.md"
+    ]
+   },
+   {
+    "id": "v07",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\heuristic--sensitive-periods-by-motor-ability-and-sex.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\periodization--bompa\\heuristic--biological-vs-training-age.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\case-study--troup-swimmers-maturation-timing-and-longevity.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\case-study--concurrent-training-interference-and-decay.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\case-study--sedykh-hammer-throw-explosive-strength-microcycle.md"
+    ]
+   },
+   {
+    "id": "v08",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\career-strategy\\research-strategy-framework-baylor-health-performance.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\BAIR_Steering_Committee\\program\\teams-setup-walkthrough.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2025-10-16_BAIR_SteeringCommittee_10162025.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\BAIR_Steering_Committee\\context.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2025-11-19_2025_11_19_BAIR_SteeringMeeting.md"
+    ]
+   },
+   {
+    "id": "v09",
+    "layer": "vault",
+    "rank": 2,
+    "ms": 0,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-04-08_CalebKruger_Planning_Meeting.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-08_EOY_Kitman_Utilization.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-09_Athletic_Training_Utilization_Metrics_Standardization.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-10_CRS_AthMed_Brief_06102026.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-06-09.md"
+    ]
+   },
+   {
+    "id": "v10",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\_book.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\handoffs\\2026-09-24-course-review-and-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-24.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\_domain.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\heuristic--time-box-recurring-meetings.md"
+    ]
+   },
+   {
+    "id": "s01",
+    "layer": "vault",
+    "rank": null,
+    "ms": 3,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--ratov-functional-electrostimulation-emg-triggered-sport-specific.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\heuristic--nine-reasons-electrostimulation-research-conflicts.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--clinical-physiological-effects-of-electrostimulation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\principle--neuromuscular-stimulation-drives-early-strength-gains.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--four-mechanisms-of-stimulating-muscular-tension.md"
+    ]
+   },
+   {
+    "id": "s02",
+    "layer": "vault",
+    "rank": null,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\research-papers\\webster-2021-a-longitudinal-investigation-of-landing-biomechanics-following-anterior-cruciate-ligament.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--four-methods-of-enhancing-rom-ranked-by-effectiveness.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--accumulation-mesocycle-duration-and-monitoring.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--transmutation-mesocycle-duration-and-overtraining-monitoring.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--training-stage-and-multi-peak-annual-cycle.md"
+    ]
+   },
+   {
+    "id": "s03",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--meeting-typology-decide-diagnose-inform-build.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--kaigi-decision-meeting-structure.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\heuristic--time-box-recurring-meetings.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\00_what_this_is.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--decision-gate-five-elements.md"
+    ]
+   },
+   {
+    "id": "n01",
+    "layer": "dev-docs",
+    "rank": null,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\PP_Recruiting\\2026-09-22-jev-recruiting-pilot.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\handoffs\\2026-09-25-answers-self-audit-myelin-cleanup.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\agent-skill.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\cookbooks\\semantic_find.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\cookbooks\\consistency_noul_cookbook.md"
+    ]
+   },
+   {
+    "id": "n02",
+    "layer": "tierA",
+    "rank": null,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\Bucket\\AGENT-FIX-PROMPT.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\specs\\2026-08-03-machine-migration-and-backup-contract-design.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-11.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\handoffs\\2026-09-24-mac-evening-split.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-08-03.md"
+    ]
+   },
+   {
+    "id": "n03",
+    "layer": "compiled",
+    "rank": 2,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.codex\\memories\\rollout_summaries\\2026-09-08T20-03-30-9ogz-fast_modernization_private_repo_and_installer_inspection.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\sleep-scheduler-project.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\research-papers\\lever-2024-a-preliminary-investigation-of-the-relationship-between-sleep-and-nap-behavior-of-ncaa-div.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\_archive\\project_backup-task-sleepkill-signature.md"
+    ]
+   },
+   {
+    "id": "n04",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_command-centre.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_command-centre.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\claude-ai-skill-porting.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\printing-press-library\\plans\\2026-05-25-001-feat-prediction-goat-learn-loop-backport-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\SprintLab\\desktop_app.md"
+    ]
+   },
+   {
+    "id": "n05",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\STATUS.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\superpowers\\specs\\2026-09-14-prioritization-system-design.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\printing-press-library\\plans\\2026-05-15-001-feat-superhuman-cli-major-overhaul-plan.md"
+    ]
+   },
+   {
+    "id": "n06",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 2,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_box-access-via-box-drive.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-09-30.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-30.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\MEMORY.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\handoffs\\2026-09-20-apparatus-strip-and-perch-writer.md"
+    ]
+   },
+   {
+    "id": "n07",
+    "layer": "tierA",
+    "rank": null,
+    "ms": 1,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.codex\\memories\\rollout_summaries\\2026-09-14T17-47-53-xTit-read_only_dev_repository_project_context_audit.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\specs\\2026-06-09-keystoneos-phase6-project-intake-design.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_printing-press-spec-traps.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_printing-press-spec-traps.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\okr-review-facilitation-framework.md"
+    ]
+   }
+  ],
+  "jev": [
+   {
+    "id": "p01",
+    "layer": "tierA",
+    "rank": 2,
+    "ms": 652,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\system-health-check-remediation.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\memsearch-tool-maintenance.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-index-path-drift.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p02",
+    "layer": "transcript",
+    "rank": 2,
+    "ms": 208,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\PFF_Data_Project\\handoffs\\2026-09-22-db-off-drive-and-parquet-snapshots.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-22.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-07-18.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-07-18.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\speedprofiling-velocity-project.md"
+    ],
+    "pool_rank": 2
+   },
+   {
+    "id": "p03",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 366,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_status-report-sourcing.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_status-report-sourcing.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\project-jd-okr-2026.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash\\memory\\feedback_daily-brief-and-execution-partner.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\handoffs\\2026-09-14-prioritization-system.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p04",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 479,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_milvus-lock-misdiagnosis.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_milvus-lock-misdiagnosis.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_memsearch-hook-timeout-cap.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\model-agnostic-repo-dual-context-files.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p05",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 377,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_fireflies-cli-broken-on-mac.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_fireflies-cli-broken-on-mac.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\MEMORY.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\MEMORY.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-08-29.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p06",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 207,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\user_child-dental-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\user_child-dental-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-06-25.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\user_personal_constitution.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-09.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p07",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 380,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\_archive\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_keystoneos-verification-habits.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_keystoneos-verification-habits.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p08",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 382,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\feedback_ingest-review-gate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\feedback_ingest-review-gate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_rtp-cla-course.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_rtp-cla-course.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\plans\\2026-06-12-book-advisors.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p09",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 379,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\user_baylor-department-names.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\user_baylor-department-names.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\AppliedNewsletter_2026\\context.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_kenny-boyd-doc-review-preferences.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_kenny-boyd-doc-review-preferences.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "p10",
+    "layer": "tierA",
+    "rank": 3,
+    "ms": 561,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\CFB_Victory_Model\\handoffs\\2026-09-23-week3-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\project-cfb-forecast-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_cfb-forecast-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_cfb-forecast-capture.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\connections\\hindsight-leakage-and-pregame-freeze-capture.md"
+    ],
+    "pool_rank": 2
+   },
+   {
+    "id": "v01",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 745,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\framework--hill-equation-curvature-ratio-and-force-velocity-testing-limits.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--force-velocity-curve-limitations-and-in-vivo-deviations.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--strength-deficit-scales-with-resistance-fraction.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\claim--strength-speed-correlation-depends-on-external-resistance.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\framework--explosive-strength-deficit-and-rate-of-force-development-indices.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v02",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 668,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--accumulation-transmutation-realization-mesocycles.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--realization-mesocycle-taper-prescription.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--training-stage-and-multi-peak-annual-cycle.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--pre-competitive-microcycle-tuning.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\case-study--issurin-kaverin-canoe-kayak-block-periodization.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v03",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 648,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\claim--sympathetic-vs-parasympathetic-overtraining-and-omegawave-readiness-case.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\claim--no-definitive-diagnostic-tool-for-overtraining-syndrome.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--heterochronic-biochemical-adaptation-sequence.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\elite-sports-performance--evans\\heuristic--monitoring-is-a-compass-not-a-gps.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\research-papers\\shaffer-2017-an-overview-of-heart-rate-variability-metrics-and-norms.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v04",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 680,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--kots-electrostimulation-strength-claims-not-replicated.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--clinical-physiological-effects-of-electrostimulation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\heuristic--nine-reasons-electrostimulation-research-conflicts.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--macs-mics-integrated-theory-of-electrostimulation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--ratov-functional-electrostimulation-emg-triggered-sport-specific.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v05",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 656,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--stretching-matrix-system-reverse-of-contraction-action.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--stretch-reflex-types-and-neuromuscular-control-of-flexibility.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\fundamentals-of-sprinting--moyer\\heuristic--pails-rails-close-active-passive-gap-sprint.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--shock-method-and-plyometric-terminology.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\science-and-practice-of-strength-training--zatsiorsky\\framework--stretch-shortening-cycle-mechanisms-and-tendon-elastic-storage.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v06",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 422,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--kaigi-decision-meeting-structure.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--meeting-typology-decide-diagnose-inform-build.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--stoplight-storytelling-format.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-09-24.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--decision-log-owner-action-date-review.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v07",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 742,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\heuristic--sensitive-periods-by-motor-ability-and-sex.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\periodization--bompa\\heuristic--biological-vs-training-age.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--prolonging-residual-effects-with-mini-blocks.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--long-term-preparation-four-stage-model-and-directions.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\case-study--troup-swimmers-maturation-timing-and-longevity.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v08",
+    "layer": "vault",
+    "rank": null,
+    "ms": 197,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\BAIR_Steering_Committee\\program\\teams-setup-walkthrough.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2025-10-16_BAIR_SteeringCommittee_10162025.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\BAIR_Steering_Committee\\context.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2025-11-19_2025_11_19_BAIR_SteeringMeeting.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "v09",
+    "layer": "vault",
+    "rank": 2,
+    "ms": 216,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-04-08_CalebKruger_Planning_Meeting.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-08_EOY_Kitman_Utilization.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-09_Athletic_Training_Utilization_Metrics_Standardization.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\2026-06-10_CRS_AthMed_Brief_06102026.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-06-09.md"
+    ],
+    "pool_rank": 2
+   },
+   {
+    "id": "v10",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 675,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\_book.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\handoffs\\2026-09-24-course-review-and-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-24.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--stoplight-storytelling-format.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\heuristic--assign-meeting-ownership-to-develop-staff.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "s01",
+    "layer": "vault",
+    "rank": 2,
+    "ms": 940,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\heuristic--nine-reasons-electrostimulation-research-conflicts.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--kots-electrostimulation-strength-claims-not-replicated.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--clinical-physiological-effects-of-electrostimulation.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\principle--specificity-of-training-ten-dimensions.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\claim--force-velocity-curve-limitations-and-in-vivo-deviations.md"
+    ],
+    "pool_rank": 17
+   },
+   {
+    "id": "s02",
+    "layer": "vault",
+    "rank": 2,
+    "ms": 637,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\claim--residual-training-effect-durations-by-motor-ability.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--prolonging-residual-effects-with-mini-blocks.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\block-periodization--issurin\\framework--transmutation-mesocycle-duration-and-overtraining-monitoring.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\supertraining--verkhoshansky\\framework--four-methods-of-enhancing-rom-ranked-by-effectiveness.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\strength-and-conditioning\\periodization--bompa\\heuristic--fatigue-fitness-3to1-ratio.md"
+    ],
+    "pool_rank": 13
+   },
+   {
+    "id": "s03",
+    "layer": "vault",
+    "rank": 1,
+    "ms": 553,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--meeting-typology-decide-diagnose-inform-build.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--kaigi-decision-meeting-structure.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\framework--decision-log-owner-action-date-review.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\00_what_this_is.md",
+     "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library\\performance-technology-and-leadership\\old-bull-performance-course--old-bull\\heuristic--time-box-recurring-meetings.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "n01",
+    "layer": "dev-docs",
+    "rank": null,
+    "ms": 4,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\PP_Recruiting\\2026-09-22-jev-recruiting-pilot.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\RunningTheRoom\\handoffs\\2026-09-25-answers-self-audit-myelin-cleanup.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\agent-skill.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\cookbooks\\semantic_find.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\vendor\\typesafe\\cookbooks\\consistency_noul_cookbook.md"
+    ],
+    "pool_rank": 6
+   },
+   {
+    "id": "n02",
+    "layer": "tierA",
+    "rank": null,
+    "ms": 316,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\Bucket\\AGENT-FIX-PROMPT.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\specs\\2026-08-03-machine-migration-and-backup-contract-design.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-11.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\handoffs\\2026-09-24-mac-evening-split.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-08-03.md"
+    ],
+    "pool_rank": 6
+   },
+   {
+    "id": "n03",
+    "layer": "compiled",
+    "rank": 2,
+    "ms": 200,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.codex\\memories\\rollout_summaries\\2026-09-08T20-03-30-9ogz-fast_modernization_private_repo_and_installer_inspection.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\sleep-scheduler-project.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_backup-task-sleepkill-signature.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\project-msys-bash-flakiness.md"
+    ],
+    "pool_rank": 2
+   },
+   {
+    "id": "n04",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 408,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_command-centre.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_command-centre.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash\\memory\\project_memsearch_setup.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\printing-press-library\\plans\\2026-05-25-001-feat-prediction-goat-learn-loop-backport-plan.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\SprintLab\\desktop_app.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "n05",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 401,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_prioritization-slate.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\STATUS.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\project-triage\\superpowers\\specs\\2026-09-14-prioritization-system-design.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\printing-press-library\\plans\\2026-05-15-001-feat-superhuman-cli-major-overhaul-plan.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "n06",
+    "layer": "tierA",
+    "rank": 1,
+    "ms": 206,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_box-access-via-box-drive.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\daily\\2026-09-30.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\transcripts\\2026-09-30.md",
+     "C:\\Users\\eric_rash\\.claude\\claude-memory-compiler\\knowledge\\concepts\\bu-cheer-summer-2026-training.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\TypeSafe_Sandbox\\handoffs\\2026-09-20-apparatus-strip-and-perch-writer.md"
+    ],
+    "pool_rank": 1
+   },
+   {
+    "id": "n07",
+    "layer": "tierA",
+    "rank": 3,
+    "ms": 338,
+    "error": null,
+    "top": [
+     "C:\\Users\\eric_rash\\.codex\\memories\\rollout_summaries\\2026-09-14T17-47-53-xTit-read_only_dev_repository_project_context_audit.md",
+     "C:\\Users\\eric_rash\\.claude\\global-memory\\dev-docs\\KeystoneOS\\superpowers\\specs\\2026-06-09-keystoneos-phase6-project-intake-design.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\-Users-kristinarash-DEV\\memory\\project_dev-layout-and-discovery.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV\\memory\\project_dev-layout-and-discovery.md",
+     "C:\\Users\\eric_rash\\.claude\\projects\\C--Users-eric-rash-Desktop-DEV-KeystoneOS\\memory\\project-morning-briefing-pipeline.md"
+    ],
+    "pool_rank": 13
+   }
+  ]
+ }
+}

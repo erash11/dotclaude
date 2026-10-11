@@ -1,0 +1,43 @@
+---
+name: memsearch-index-path-drift
+description: "the SessionEnd memsearch hook read its path config from a Windows-era ~/Desktop/DEV path and silently fell back, indexing 4 of 10 memory paths for months after the Mac migration"
+metadata: 
+  node_type: memory
+  type: project
+  modified: 2026-08-15T04:07:30.329Z
+  originSessionId: 75381393-88b6-4b65-960d-6613e08f7060
+---
+
+`~/DEV/KeystoneOS/data/memory-index-paths.json` is the single source of truth for which directories memsearch indexes. Three writers read it: the SessionEnd hook `~/.claude/hooks/memsearch-sync.js`, `~/.claude/scripts/daily-backup.ps1` (nightly; 09:00 since 2026-08-29), and the Codex hook `KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1`.
+
+**Found 2026-08-14:** the JS hook pointed at `~/Desktop/DEV/KeystoneOS/data/memory-index-paths.json` — the pre-migration Windows layout. DEV lives at `~/DEV` on this Mac, so the read threw, the `catch` returned a hardcoded fallback, and the hook indexed **4 paths instead of 10** for months. The fallback itself was also stale (`~/Desktop/SecondBrain/...`, which does not exist since the vault move). `daily-backup.ps1` used `$U/DEV` and was already correct; the Codex hook self-locates from its own script path and was fine. So only the JS hook drifted — and it is the one wired into `settings.json` (`SessionEnd`, 50s timeout).
+
+Unindexed as a result: `SecondBrain/Knowledge`, `SecondBrain/Inbox/meetings`, `SecondBrain/morning-briefings`, the Mac memory slug `-Users-kristinarash-DEV/memory`, `KeystoneOS/decisions`, `.codex/memories`. Incremental recall for all of those depended entirely on that nightly.
+
+**Why:** the failure mode was invisible. A silent `catch → fallback` means a migration-broken config path degrades into a quieter, smaller, still-succeeding job — no error, no log line, no failed run. Nothing surfaces until someone asks "why didn't that turn up in search?" The bug was not the wrong path; it was that the wrong path cost nothing to have.
+
+**How to apply:**
+- Any config-file fallback in this stack must log to `.errors.log` when it fires. The JS hook now does. A fallback that never announces itself is a silent outage with a long tail.
+- When auditing post-migration breakage, grep for `Desktop/DEV` and `Desktop/SecondBrain` — those two strings mark Windows-era assumptions. Do not trust that a script "works" as evidence its paths resolved; check what it actually resolved to.
+- Verify path config by resolving it in isolation (`node -e` reading the same JSON, printing EXISTS/MISSING per entry) rather than by running the indexer — that proves the fix without taking the Milvus Lite write lock.
+- Paths in the JSON that do not exist yet are harmless; every writer filters through an existence check before passing them to memsearch.
+
+**There were TWO copies of this hook, and fixing one did not fix the other (2026-08-15).** A Codex review found `~/.codex/hooks.json` wires its *own* copy at `~/.codex/hooks/memsearch-sync.js`, separate from the Claude copy at `~/.claude/hooks/memsearch-sync.js`. The Claude copy was repaired 2026-08-14; the Codex copy still pointed at `~/Desktop/DEV/...`, so **every Codex session-end indexed a stale 5-path fallback** that also referenced the old `~/Desktop/SecondBrain` — missing SecondBrain/Knowledge, Inbox/meetings, morning-briefings, KeystoneOS decisions and the Mac memory slug. Now fixed and verified resolving all 11 configured paths.
+
+Ordering trap in that repair: `const ERR_LOG` was declared *after* `const PATHS = resolvePaths()`. Adding a `logErr()` call inside `resolvePaths` therefore hit the const temporal dead zone, and `logErr`'s own `try/catch` swallowed the ReferenceError — reproducing the silent fallback the fix was meant to remove. `ERR_LOG` must be declared before `PATHS`.
+
+**How to apply:** when fixing a hook, first ask *which copy the harness actually wires* — check `~/.codex/hooks.json` and `~/.claude/settings.json`, not just the file you happened to open. Grep the whole home tree for the hook's basename before assuming there is one.
+
+**A THIRD hook had the same stale path, found 2026-09-01 during `/doctor-plus`.** `~/.claude/hooks/keystone-unified-snapshot.js` (SessionStart) read `~/Desktop/DEV/KeystoneOS/outputs/dashboard/unified-snapshot.md`, threw ENOENT, and its `catch (_) { emit(null) }` injected **nothing at all** — for every session since the migration. The snapshot file was being written correctly the whole time at `~/DEV/KeystoneOS/outputs/dashboard/`; only the reader was wrong. Zero symptoms: no error, no log, valid JSON on stdout, session starts normally.
+
+The 2026-08-14/15 sweep fixed the two `memsearch-sync.js` copies but did not catch this one, so **"grep for `Desktop/DEV`" must cover every file in `~/.claude/hooks/` and `~/.codex/hooks/`, not only the hook currently being repaired.** Run it as a sweep across the whole hooks tree, not per-file.
+
+That sweep then found a **fourth** copy — `~/.codex/hooks/keystone-unified-snapshot.js`, byte-identical and wired in `~/.codex/hooks.json`. Also fixed 2026-09-01.
+
+**A second signature the `Desktop/DEV` grep cannot catch:** `~/.codex/AGENTS.md` (dated 2026-08-08) had been through a bad `claude` to `Codex` find-replace, so it told Codex to read `~/.Codex/global-memory/`, `~/.Codex/projects/<slug>/memory/` and `~/.Codex/Codex-memory-compiler/daily/` — none of which exist. Grep for `.Codex` (capital C) as well as `Desktop/DEV` when auditing migration damage. Also check which AGENTS.md the harness actually reads: `~/.claude/AGENTS.md` was correct but referenced by nothing.
+
+Resolved 2026-09-01: `~/.codex/AGENTS.md` is now a symlink to `~/.claude/AGENTS.md`, so the pair has one home and cannot drift again. `setup-agents-symlinks.sh` was also sourcing `CLAUDE.md` for that link — the one thing `CLAUDE.md` explicitly forbids — and now sources `AGENTS.md`. Running that script used to recreate the bug.
+
+Repaired 2026-09-01: path corrected to `~/DEV`, required sources now push a visible "SessionStart hook could not read a required memory file" block into `additionalContext` instead of failing silently, and the hook now also injects `global-memory/USER.md` + `MEMORY.md` (replacing a prose rule in `CLAUDE.md` that nothing enforced). The KeystoneOS snapshot is pointed at, not pasted.
+
+Related: [[milvus-lock-misdiagnosis]] (found while fixing that), [[secondbrain-vault-location]] (the vault move that stranded the fallback), [[backup-sync-system]]

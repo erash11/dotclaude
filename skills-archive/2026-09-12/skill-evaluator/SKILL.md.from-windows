@@ -1,0 +1,144 @@
+---
+name: skill-evaluator
+description: Evaluate an existing skill package with evidence-backed integrity, correctness, quality, utility, and safety gates. Use when reviewing a skill before installation or publication, auditing a skill that produces or verifies outputs, checking whether a skill's declared resources exist, or assigning an objective PASS, FAIL, DEGRADED, or 0-10 grade.
+---
+
+# Skill Evaluator
+
+Evaluate skills from observable evidence. Fail closed when a package claims capabilities it cannot execute.
+
+## Workflow
+
+### 1. Inventory the package
+
+Read `SKILL.md` and list every declared or linked script, reference, asset, agent metadata file, external skill, command, and tool.
+
+Do not execute untrusted bundled code during inventory. Inspect it statically first.
+
+### 2. Run the integrity gate
+
+Use the active `skill-creator` package's `scripts/quick_validate.py <skill-folder>`.
+
+Require all of the following:
+
+- the folder name matches the skill name;
+- frontmatter parses and contains a clear `name` and trigger-rich `description`;
+- every declared local resource exists at the resolved path;
+- every referenced instruction is reachable without a broken chain;
+- instructions do not claim a command, script, or test was run when no such evidence exists.
+
+A missing `SKILL.md`, invalid frontmatter, or missing declared resource is an automatic `FAIL`.
+
+### 3. Identify the output contract
+
+Classify the skill as one or more of:
+
+- producer: creates or mutates an artifact;
+- evaluator: assigns a verdict or score;
+- operator: changes external or local state;
+- advisor: recommends decisions;
+- retriever: gathers information.
+
+For every producer or evaluator, identify:
+
+1. the correctness subject;
+2. the quality subject;
+3. the evidence required;
+4. the pass threshold;
+5. the fail threshold;
+6. the degraded state when verification cannot run.
+
+If those are absent, record a verification-contract finding.
+
+### 4. Borrow the domain verifier
+
+Use an installed domain skill instead of inventing a generic review:
+
+- code: `code-review` plus the repository's tests and standards;
+- Power BI: `reports:pbir-cli` plus `reports:review-report`;
+- presentations: `presentations:Presentations`;
+- browser interfaces: `impeccable`;
+- factual claims: `fact-checker`;
+- plans: `gsd-plan-review-convergence`.
+
+If the required verifier is unavailable, report `DEGRADED`. Do not substitute self-confidence for evidence.
+
+### 5. Score ten binary checks
+
+Award one point only when the report cites a file, line, command result, or observed artifact:
+
+1. Valid package structure and frontmatter
+2. All declared resources exist
+3. Correctness subject is explicit
+4. Correctness has a runnable or independently observable check
+5. Pass, fail, and degraded thresholds are explicit
+6. Quality criteria are observable rather than adjectives
+7. Requested-output coverage is checked
+8. Trigger, inputs, outputs, and boundaries are clear
+9. Failure and recovery behavior is defined
+10. Safety and external-state permissions match the risk
+
+Do not award partial credit. Missing evidence scores zero.
+
+Grade:
+
+- 10: A
+- 8-9: B
+- 6-7: C
+- 4-5: D
+- 0-3: F
+
+Report `PASS` only at 8/10 or higher with no critical finding. Report `FAIL` for any automatic-fail condition, critical safety issue, or unsupported evaluator verdict. Report `DEGRADED` when a required domain check could not run; include the numeric score but do not call it a pass.
+
+## Automatic caps
+
+- A producer with no final verification gate cannot score above 7.
+- An evaluator with unanchored subjective scores cannot score above 5.
+- A package that references missing resources is `FAIL` regardless of score.
+- A package whose examples contradict its rules cannot score above 7.
+- A package that requires destructive or external actions without an authorization gate is `FAIL`.
+
+## Output
+
+Use this compact report:
+
+```markdown
+# Skill Evaluation: <name>
+
+Verdict: PASS | FAIL | DEGRADED
+Grade: <0-10> (<A-F>)
+
+## Integrity
+- Validator: <command and result>
+- Declared resources: <present/missing with paths>
+
+## Score
+| # | Check | 0/1 | Evidence |
+|---|---|---:|---|
+| 1 | Package structure | | |
+...
+
+## Correctness
+- Subject:
+- Verification:
+- Result:
+
+## Quality
+- Criteria:
+- Result:
+
+## Findings
+- CRITICAL:
+- HIGH:
+- MEDIUM:
+- LOW:
+
+## Required fixes
+1. ...
+
+## Unverified
+- <check not run and why>
+```
+
+Keep correctness and quality separate. State what was observed, not what the evaluator assumes.
+

@@ -1,0 +1,417 @@
+=================== framework--early-history-of-periodisation-kotov-to-dyson.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: history of periodisation
+category: [periodization, history, annual-plan, transition-phase]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Early History of Periodisation: From Kotov's Three Stages to Dyson's Five Phases
+
+**What it is** — The authors trace training organisation from ancient practice to the first formal periodisation schemes (PDF p. 324-325 / printed p. 313-314, verified against the page images):
+- Ancient Greeks prepared for the Olympic Games with "a preparatory training period of at least 10 months a year" (PDF p. 324 / printed p. 313).
+- Kotov (*Olympic Sport*, 1917) divided training into general, preparatory and specific stages: the general stage developed the "vegetative (cardiovascular-respiratory) and muscular systems"; preparatory training of "about two months' duration" improved strength and muscle endurance; the specific stage had initial and main parts "both of about four months' duration," but "there was still no overall methodology of periodisation in the form of definite cycles" (PDF p. 324 / printed p. 313).
+- Gorinewsky (1922) and Birsin (1925) took "preliminary steps"; sport-specific applications followed in 1938-1940 (track and field, skiing, gymnastics, boxing, water sports).
+- Pikhala (*Athletism*, Finland, 1930) used "an undulating rhythm of training which alternates periods of work and rest" to prevent overtraining, but planned around "climatic seasons, rather than quantitatively determined phases of loading."
+- Grantyn (1939) split the year into preparatory, main and transitional periods, the transition being "a gradual detraining to rest, followed by active rest" with other sports such as gymnastics and jogging, which the authors call an early form of "combinational training" as restoration.
+- Ozolin (1949) stressed the competition calendar and climate, and active rest within the transition phase.
+- Letunov (1950) "strongly criticised the formulation of training regimes on the basis of the competition calendar alone," holding that stages follow biological processes, though "he failed to appreciate that these processes, in turn, were modified by the training loads" (PDF p. 325 / printed p. 314).
+- Dyson (*A New System of Training*, England, 1946) gave a five-phase athletics year: non-competitive preparation (5 months), pre-competitive (1 month), initial competitive (6 weeks), main competitive (6 weeks), post-competitive (6 weeks) (PDF p. 325 / printed p. 314).
+
+**Why it works** — This is a historical account, not a mechanism. The authors' through-line is that organisation moved from seasons and calendars toward phases set by biological adaptation, and they fault Letunov for missing that the loads themselves change those biological processes (PDF p. 325 / printed p. 314).
+
+**When to apply** — When explaining to staff or students where macro, meso and microcycle language came from, or when an older Russian or British source uses phase names that do not match current terms. Eric's baseline: "Macro/meso/microcycle structure is used as the standard planning language" (`docs/method-baseline.md`, line 179, Inferred (transcript + slides)).
+
+**When NOT to apply** — Not evidence that any one historical scheme works: the authors give no outcome data for Kotov, Grantyn or Dyson. Pikhala's "undulating rhythm" (1930) is about alternating work and rest, and is not the same thing as the modern undulating (daily or weekly varied) resistance model; Inference: do not cite it as an origin of that model without checking Pikhala. The authors themselves warn on the next page that this history "may create the impression that periodisation is the only type of organisation," which they call "far from the truth" (PDF p. 325 / printed p. 314).
+
+**Example** — The authors' own: Dyson's 1946 athletics year, 5 months of non-competitive preparation with "gym training and cross-country running," then 1 month of pre-competitive specific preparation, then three 6-week blocks (initial competitive, main competitive, post-competitive) (PDF p. 325 / printed p. 314).
+
+**Related** — [[claim--seasonal-trainability-hettinger-muller-ultraviolet]], [[framework--sport-alone-vs-sport-plus-supplementary-training-and-adjunct-modes]], [[framework--training-cycle-hierarchy-durations-and-russian-term-swap]], [[elite-sports-performance--evans/framework--evans-history-lineage-of-sport-science-giants]], [[fundamentals-of-sprinting--moyer/framework--soviet-lineage-of-sprint-training-ideas]]
+=================== claim--seasonal-trainability-hettinger-muller-ultraviolet.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: seasonal trainability
+category: [periodization, trainability, seasonality, environment]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Strength Trainability Was Lowest in Winter and Highest in Summer and Autumn (Hettinger and Muller, 1955)
+
+**What it is** — The authors cite Hettinger and Muller's 1955 research (reported in Hettinger, 1961) as support for Ozolin's view on seasons and active rest: "lowest trainability occurred during the winter months and highest trainability took place in summer and autumn, with a sharp drop in trainability at the onset of winter." The work "suggested that the changes seemed to coincide with changes in the levels of ultraviolet radiation, especially since exposure of athletes to artificial ultraviolet light during the winter eliminated the observed changes in trainability" (PDF p. 324-325 / printed p. 313-314, verified against the page images). The authors call Hettinger's *The Physiology of Strength* "one of the best pioneering texts on popularised scientific strength training."
+
+**Why it works** — The source offers only the ultraviolet association, worded as a suggestion ("seemed to coincide"), backed by the artificial-UV observation. No physiological pathway is given. Inference: the book gives no sample size, population, outcome measure or effect size, so the size of the seasonal swing cannot be judged from this page.
+
+**When to apply** — As a prompt to look for seasonal patterns in Baylor's own strength and force-plate data (winter versus summer and autumn) before attributing a winter dip to programming alone. Inference: football's winter off-season strength block falls in the window this finding marks as least trainable, which is a reason to check the data rather than a reason to change the calendar.
+
+**When NOT to apply** — Do not treat it as a settled modern finding: it is a single 1955 laboratory programme reported second-hand through Hettinger (1961), with no details on this page. Do not prescribe ultraviolet exposure from it; the book does not. Indoor, well-lit, year-round training environments differ from the conditions of a 1950s study (Inference).
+
+**Example** — The authors' own: athletes exposed to artificial ultraviolet light in winter did not show the winter drop in trainability (PDF p. 325 / printed p. 314). No numbers are given.
+
+**Related** — [[framework--early-history-of-periodisation-kotov-to-dyson]], [[claim--strength-training-threshold-stimulus]], [[claim--hettinger-four-features-that-stimulate-strength-gains]]
+=================== framework--sport-alone-vs-sport-plus-supplementary-training-and-adjunct-modes.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: ways of organising training
+category: [periodization, supplementary-training, programming, annual-plan]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Two Ways to Organise Training (Sport Alone, or Sport Plus Supplementary Work) and Three Ways to Add Strength Training
+
+**What it is** — The authors reject the idea that periodisation "is synonymous with the organisation or scheduling of training," saying "classical methods of periodisation may not necessarily offer the best approach" (PDF p. 325 / printed p. 314, verified against the page image). All sport training falls into two categories: "Use of the sport alone to develop fitness for the given sport" or "Use of the sport and supplementary activities" (resistance training, running, jumping, cross training). Most supplementary work comes "before the competitive season begins, with intermittent use of such training in small doses to maintain the specific fitness qualities." The balance is set by sport and individual: supplementary training "for speed-strength and strength sports should constitute about 50-60% of the total work, whereas in distance endurance events, this type of training should constitute no more than about 20-30%" (PDF p. 326 / printed p. 315, verified against the page image). The integrated system is "generally" more effective than sport alone, "although there seem to be notable exceptions in certain sports such as gymnastics." An adjunct strength system can be applied in three ways (PDF p. 326 / printed p. 315):
+1. Non-quantitative general preparatory exercises before a competitive period of mainly event-specific training; no intensity or volume calculations, though "sports results or 1RMs may be used to modify the programme."
+2. Non-quantitative general then special preparatory phases before the competitive phase; again no calculations.
+3. "Some form of long-term periodisation," with intensity and volume calculated to hit goals at given stages.
+
+Whatever the system, "the underlying principle to be applied is that of optimal stress and restoration" (PDF p. 325 / printed p. 314).
+
+**Why it works** — The authors' reason for the integrated system is "Considerable research and experience," not cited on the page; where sport-only training seems to win, it "more often than not ... reflects a lack of adequate information and experience" with strength training (PDF p. 326 / printed p. 315). No mechanism is given for the 50-60% and 20-30% shares.
+
+**When to apply** — When deciding how much of a team's or athlete's total work should be non-sport (weight room, sprinting, jumping), and whether planning needs full volume and intensity calculation or a simpler non-quantitative plan. Eric's baseline: "Training time is deliberately weighted toward high motor-unit-recruitment core/ballistic movements ... single-joint assistance work is kept to a small share of total volume" (`docs/method-baseline.md`, line 104, Inferred (transcript + slides)). Inference: football sits closer to the speed-strength end, so the 50-60% figure is the nearer reference, but the authors do not name team sports.
+
+**When NOT to apply** — The 50-60% and 20-30% figures are stated as recommendations with no source, population or definition of "total work" (time, sessions or load); treat them as rough Soviet-era guides. The authors flag gymnastics as an exception to the integrated system. Option 3 (calculated periodisation) is only one of three legitimate options in the authors' own scheme, so do not read the chapter as requiring it.
+
+**Example** — Inference: a distance runner whose weekly programme is 40% weights and jumps would sit above the authors' "no more than about 20-30%" for distance endurance events; a thrower at 30% supplementary work would sit below their 50-60% for speed-strength sports.
+
+**Related** — [[heuristic--choose-cross-training-by-fitness-qualities-and-phase-not-sport-label]], [[heuristic--keep-event-specific-competitive-stress-in-preparation]], [[framework--early-history-of-periodisation-kotov-to-dyson]], [[framework--six-broad-periodisation-schemes]], [[principle--specificity-of-training-ten-dimensions]]
+=================== heuristic--keep-event-specific-competitive-stress-in-preparation.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: event-specific training
+category: [periodization, specificity, competition-simulation, preparation]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Keep Event-Specific Training Under Competitive Stress in Both Preparatory and Competitive Phases
+
+**What it is** — The authors say the split of the year into preparatory and competitive phases "creates the false impression that no preparation occurs during the competitive phase and no competition occurs during the preparatory phase" (PDF p. 325-326 / printed p. 314-315, verified against the page images). In team sports or track and field the season is "often so prolonged that this distinction cannot always be applied with such purity," and competitions "may serve as a form of testing, controlled training or specific preparation." Applying specificity means "high intensity sport-specific training under competitive circumstances (known as *event-specific training*) during both the preparatory and competition phases." "It is inadequate to train conservatively throughout the preparatory stage and the early competitive phase, deliberately avoiding stressful competitive situations in an attempt to produce maximal supercompensation with minimum injury by a specific date" (PDF p. 326 / printed p. 315). They add: "It can also be misleading to state categorically that there is a generalised training model for each sport," and call for contingency plans for "injury, loss of motivation, premature stagnation, changes in the rules, changes in the competitive roster, and personal trauma."
+
+**Why it works** — The authors' reason: "Part of sport specific preparation is training under conditions which simulate those of the actual event so that one can cope efficiently with the demands of competition" (PDF p. 326 / printed p. 315). No physiological mechanism is given. The same chapter's technique section gives a related observation: low competitive reliability relative to training reliability points to difficulty performing "under conditions of high emotional excitement" (PDF p. 329 / printed p. 318).
+
+**When to apply** — When an off-season plan postpones all competitive or game-like stress until the season. Eric's baseline: "In football the target is a peak every Saturday" (`docs/method-baseline.md`, line 185, Explicit (interview 2026-09-28, Q14)). Inference: in a sport with weekly games, the authors' point argues for keeping competitive-intensity practice in the preparatory period rather than treating the season as the first exposure.
+
+**When NOT to apply** — The authors set no dose for event-specific work and do not say how it should be balanced against injury risk; they only reject avoiding it entirely. For athletes returning from injury, competitive-stress exposure is governed by return-to-play criteria, which this passage does not address (Inference).
+
+**Example** — The authors' own framing: competitions in a prolonged season used "as a form of testing, controlled training or specific preparation" rather than only as targets (PDF p. 326 / printed p. 315).
+
+**Related** — [[framework--sport-alone-vs-sport-plus-supplementary-training-and-adjunct-modes]], [[heuristic--progress-skills-only-at-70-80-percent-technical-reliability]], [[framework--eight-weaknesses-of-the-matveyev-model]], [[principle--specificity-of-training-ten-dimensions]]
+=================== claim--hettinger-four-features-that-stimulate-strength-gains.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: Hettinger strength stimulus features
+category: [strength, load-threshold, fatigue, frequency, history]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Hettinger's Four Features of Strength Training That Stimulate Supercompensation
+
+**What it is** — Within their "optimal stress and restoration" principle, the authors list "the following features of training which stimulate supercompensation" from Hettinger (1961), adding that "although these points have been modified and extended by more recent research, they still offer useful information" (PDF p. 325 / printed p. 314, verified against the page image):
+1. "Production of adequate muscle tension is central to all muscle training"
+2. "The maximum training benefits are derived by using muscle tension of no less than 40-50% of one's 1RM"
+3. "Maximum training effect does not require prolonging muscle tension to the point of fatigue"
+4. "One single maximal strength effort per day is sufficient to maintain progress"
+
+**Why it works** — The authors give no mechanism for the four points; they frame them within their summary of 1.16: each stimulus causes an acute and a delayed response, and supercompensation follows if intensity, duration, restoration and timing of the next stimulus are right (PDF p. 325 / printed p. 314).
+
+**When to apply** — As a historical anchor for two practical ideas: training to fatigue is not required for a strength effect (point 3), and brief maximal efforts can sustain progress (point 4). Eric's baseline: "Strength's residual training effect is treated as roughly 30 days; a minimal retention dose is still trained within that window" (`docs/method-baseline.md`, line 108, Inferred (transcript)). Inference: point 4 is consistent with a small retention dose, though Hettinger's statement concerns daily maintenance of progress, not a residual window.
+
+**When NOT to apply** — The authors themselves say the points "have been modified and extended by more recent research," and they cite none of it here. Point 2's 40-50% of 1RM is a different figure from the Chapter 1 threshold of "roughly one-third of maximal strength" (Hettinger and Muller, 1953; [[claim--strength-training-threshold-stimulus]], PDF p. 33-34): the 1953 figure is a minimum threshold for any gain in an average person, the 1961 figure is the level for "maximum training benefits." Inference: so they answer different questions and are not a contradiction. The Chapter 1 entry also records that the needed intensity rises to 80-95% as the athlete adapts, so 40-50% is not a ceiling for trained athletes. Inference: much of Hettinger's work was isometric, and the page does not say whether "1RM" here was measured isometrically or dynamically.
+
+**Example** — Inference: a novice on a once-daily single near-maximal effort, stopping well short of fatigue, would satisfy all four points as listed; the book gives no worked example.
+
+**Related** — [[claim--strength-training-threshold-stimulus]], [[claim--hettinger-muller-isometric-strength-gain-rate]], [[claim--seasonal-trainability-hettinger-muller-ultraviolet]], [[claim--adaptive-reconstruction-vs-supercompensation]], [[periodization--bompa/principle--supercompensation-cycle]]
+=================== claim--heavy-medium-light-alternation-beats-monotonic-increasing-loading.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.1"
+topic: load alternation
+category: [periodization, undulating, load-variation, recovery, overtraining]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Alternating Heavy, Medium and Light Days and Phases Aids Recovery Better Than Monotonic Increasing Loading
+
+**What it is** — Answering "the contention by some authorities that this cycled method of training organisation is unnecessary," the authors grant that "many athletes have excelled with other methods" but say "some Western research which regards periodisation as a special version of the progressive overload principle is now beginning to corroborate the findings of Russian workers" (PDF p. 326 / printed p. 315, verified against the page image). "The alternation of heavy, medium and light days and phases alone would appear to facilitate recovery and adaptation to heavy loading more effectively than the use of monotonic increasing loading from phase to phase" (Fry et al, 1994a, 1994b). Other research "has shown the importance of periodising variations in training, especially as the latter becomes more demanding" (Kraemer and Koziris 1992, 1994; Hakkinen 1989; Hakkinen and Komi 1986; Hakkinen and Pakarinen 1993a, 1993b). The authors repeat the point as a "preliminary recommendation" on PDF p. 329 / printed p. 318: workouts "should generally be alternated in terms of light, medium and heavy loading," and this variation "on a daily, microcyclic and mesocyclic basis is essential for avoiding stagnation." Figure 6.4's caption (PDF p. 333 / printed p. 322, verified against the page image) adds Ermakov (1974): a weekly pattern labelled L, M, L, S, L, M, ML, S "has been shown to be more effective than traditional schemes which gradually increase, then decrease the loading volume."
+
+**Why it works** — The authors' explanation: "the heavy training days would strongly activate the relevant muscles, while the alternate lower intensity days would minimise the chance of overtraining or impaired restoration" (PDF p. 326 / printed p. 315). Note the hedge "would appear to."
+
+**When to apply** — Eric's baseline: "Undulating/non-linear periodization (Parker/Miller/Panariello), waving volume week to week (e.g., medium-high, medium, high, low over four weeks) is stated as the personally preferred model over strict linear progression, specifically to avoid staleness while still building tolerance for higher loads." (`docs/method-baseline.md`, line 106, Explicit (interview 2026-09-28, Q1)). Inference: the authors' passage supports that preference, with the same anti-stagnation rationale. Also: "In-season programming deliberately waves volume and intensity even when the practice schedule looks repetitive" (line 181, Inferred (transcript)).
+
+**When NOT to apply** — The comparator is "monotonic increasing loading," not other varied programmes. Afonso et al. 2019 (vault research-papers entry) argue that much "periodized versus non-periodized" evidence compared planned variation with constant training rather than with alternative variation, so such evidence does not isolate periodisation's effect; Harries et al. 2015 (vault research-papers entry) found linear and undulating periodized programmes produce similar strength gains. Inference: the authors' claim fits those papers only for the narrow comparison against non-varied loading. Within this book, Siff reports that Verkhoshansky (1997) dismisses "'undulating models and 'wave models'" as "word play" (PDF p. 345 / printed p. 334); Inference: that is a complaint about relabelling classical periodisation, not a claim that load alternation fails, so it is a tension in emphasis rather than a contradiction. Bompa's 3:1 step loading ([[periodization--bompa/framework--step-loading-paradigm]]) is itself a wave pattern, not a monotonic one.
+
+**Example** — The authors' own: Ermakov's two-month weightlifting pattern in Fig 6.4, weeks labelled L, M, L, S, L, M, ML, S (the figure does not define the letters; Inference: large, medium, small), reported as more effective than a gradual rise-then-fall in volume (PDF p. 333 / printed p. 322). The bars carry labels only, no percentages.
+
+**Related** — [[heuristic--rule-of-sixty-percent-light-day-volume]], [[case-study--vorobyev-ermakov-weightlifting-load-distributions]], [[framework--six-broad-periodisation-schemes]], [[claim--periodisation-controversy-verkhoshansky-vs-zheljazkov]], [[research-papers/harries-2015-systematic-review-and-meta-analysis-of-linear-and-undulating-periodized-resistance-trainin]], [[research-papers/afonso-2019-a-systematic-review-of-meta-analyses-comparing-periodized-and-non-periodized-exercise-prog]], [[periodization--bompa/framework--step-loading-paradigm]]
+=================== framework--training-cycle-hierarchy-durations-and-russian-term-swap.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: training cycle hierarchy
+category: [periodization, microcycle, mesocycle, macrocycle, terminology]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The Training Cycle Hierarchy, Its Typical Durations, and the Meso/Macro Swap in Older Russian Texts
+
+**What it is** — Periodisation is "the overall long-term cyclic structuring of training and practice to maximise performance to coincide with important competitions" (PDF p. 327 / printed p. 316, verified against the page image). Its structural units: training session ("the fundamental unit"), training day, microcycle, mesocycle, macrocycle, Olympic (quadrennial) cycle, multi-year cycle.
+- **Microcycle**: sessions forming "a recurrent unit with a period of several days"; "Its minimum content is two different types of workout"; typically "about 5-10 days."
+- **Training day**: one or more interrelated sessions; "Bulgarian weightlifters commonly using in excess of 5 sessions per day, six days a week, each session comprising a few key exercises."
+- **Mesocycle**: microcycles recurring "over a period of several weeks or months"; typically "1-4 months."
+- **Macrocycle**: "a single competitive season," typically "10-12 months." A "large macrocycle" may mean the four years between Olympics or the years taken to move up one qualification Class.
+- **Multi-year plan**: longer than an Olympic cycle, usually a career stage or whole competitive lifespan.
+- Three conventional major phases: "preparation, competition and post-competition," with transition phases between them.
+
+Terminology warning: "earlier Russian literature, in contravention of the meaning of the prefixes meso- (middle) and macro- (large), used the term macrocycle to refer to what is now known as a mesocycle and vice versa"; this book uses the "linguistically corrected meanings" (PDF p. 327 / printed p. 316).
+
+**Why it works** — Definitional. The authors' design rule for every level: "The contents and characteristics of each cycle are determined by the specific goals or results desired at the end of the cycle," while avoiding units that develop abilities "which interfere with one another" or try to develop "too many or all types of fitness," which would contravene "the heterochronicity principle" (PDF p. 327 / printed p. 316).
+
+**When to apply** — When reading older Soviet sources, check which way they use meso and macro before comparing durations. Eric's baseline: "Macro/meso/microcycle structure is used as the standard planning language, with an explicit reminder that a "training week" does not have to equal 7 calendar days" (`docs/method-baseline.md`, line 179, Inferred (transcript + slides)). Inference: the authors' 5-10 day microcycle agrees with that reminder.
+
+**When NOT to apply** — The durations are typical ranges, not rules; the authors' own planning section later calls the microcycle "commonly a week long" (PDF p. 337 / printed p. 326), and Section 6.3 reports critics who object to fixing cycles at "an exact number of days or weeks" (PDF p. 344 / printed p. 333). The Bulgarian figure of more than 5 sessions a day applies to elite weightlifters and is not a general model (Inference).
+
+**Example** — The authors' own: a macrocycle of 10-12 months made of mesocycles of 1-4 months, each made of microcycles of 5-10 days, each containing at least two different types of workout (PDF p. 327 / printed p. 316).
+
+**Related** — [[framework--matveyev-microcycle-and-mesocycle-types-and-sequences]], [[claim--conversion-phase-is-a-misnomer]], [[framework--early-history-of-periodisation-kotov-to-dyson]], [[claim--heterochronicity-of-strength-quality-and-muscle-group-development-order]], [[block-periodization--issurin/framework--microcycle-types-and-load-wave-design]]
+=================== claim--conversion-phase-is-a-misnomer.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: conversion phase terminology
+category: [periodization, specificity, maximal-strength, speed-strength, sequencing]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# A "Conversion Phase" Does Not Convert Strength Into Power: Maximal Strength Is a Foundation, Not a Raw Material
+
+**What it is** — "Some authorities consider that one of the transition phases should be recognised as a *conversion phase* during which specialised training converts maximum strength either into speed-strength or strength-endurance. Although this terminology superficially seems attractive and descriptive, it is scientifically inaccurate, since one type of strength or motor ability cannot change into another, as has been shown by considerable research into the specificity of adaptation. It is more accurate to state that a prior stage of maximal strength training may serve as the *foundation* upon which later training for speed-strength or endurance is based, a sequence which is fundamental to some systems of training, e.g. the conjugate sequence system (see 5.3)" (PDF p. 327 / printed p. 316, verified against the page image).
+
+**Why it works** — The authors' reason is the specificity of adaptation; they cite "considerable research" without naming studies on this page. Inference: the practical difference is that a "foundation" view expects the later speed-strength phase to need its own specific training stimulus, whereas "conversion" implies the strength gained is transformed by the later phase.
+
+**When to apply** — When writing or reviewing a block sequence that labels a phase "conversion" or "strength to power." Eric's baseline: "The preparatory period is sequenced hypertrophy/work-capacity, then basic strength, then strength-to-power, each with defined intensity/volume bands" (`docs/method-baseline.md`, line 180, Inferred (transcript + slides)). Inference: the authors would accept that sequence but describe the strength block as a foundation for the strength-to-power block, not as something the later block converts.
+
+**When NOT to apply** — This is a terminology and framing correction; the authors do not say the sequence itself is wrong, and they endorse it within the conjugate sequence system. The passage gives no data, so it does not settle how much maximal strength work must precede speed-strength work.
+
+**Example** — The authors' own pointer: in the conjugate sequence system's speed-strength sequence, concentrated strength loading is followed by technique work "against a background of the delayed training effect of the strength block" (Section 5.3.3, PDF p. 304 / printed p. 293; see [[framework--conjugate-sequence-system-of-training-means]]).
+
+**Related** — [[framework--conjugate-sequence-system-of-training-means]], [[principle--specificity-of-training-ten-dimensions]], [[framework--training-cycle-hierarchy-durations-and-russian-term-swap]], [[block-periodization--issurin/framework--accumulation-transmutation-realization-mesocycles]]
+=================== framework--matveyev-microcycle-and-mesocycle-types-and-sequences.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: microcycle and mesocycle types
+category: [periodization, microcycle, mesocycle, planning, matveyev]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Matveyev's Microcycle and Mesocycle Types, and How Sequences of Them Build a Phase
+
+**What it is** — Following Matveyev (1981), the authors list microcycle types (PDF p. 327-328 / printed p. 316-317, verified against the page images): *ordinary* ("the usual scheme of uniformly increasing loading"), *introductory* ("bringing the athlete up to the competition stage"), *restorative* ("after heavy loading"), *competitive* ("immediately before and including the competition") and *shock* or stress ("stimulating the athlete out of a state of stagnation"). Sample mesocycles built from them:
+- ordinary > ordinary > shock > restorative
+- ordinary > introductory > competitive > restorative
+- shock > ordinary > shock > restorative
+- restorative > ordinary > ordinary > restorative
+
+Mesocycle types (Matveyev, 1981): *introductory* (beginning the preparatory period), *base* ("the main types for increasing specific functional abilities"), *control-preparatory* (between base and competitive), *pre-competitive*, *competitive*, and *intermediate* (restorative), the last sometimes split into restorative-preparatory and restorative-maintenance; the latter "is simply referred to as a maintenance phase." "Large mesocycles" are integrated systems of smaller ones. A phase is a sequence of mesocycles (PDF p. 328 / printed p. 317):
+- Long-duration endurance, preparatory phase: introductory > base (general preparatory, developing) > base (stabilising) > base (special preparatory, developing) > control-preparatory > base > pre-competitive.
+- Speed-strength, two options: introductory > base (developing > control-preparatory) > base (with pre-competitive elements); or introductory > base (general preparatory) > base (special preparatory) > pre-competitive.
+
+**Why it works** — Classification, not mechanism. The authors give each type its purpose (above); the restorative and intermediate types exist to "help the athlete recover after heavy loading" through "systematic active rest" (PDF p. 328 / printed p. 317).
+
+**When to apply** — As a vocabulary for writing a mesocycle as a string of purposeful weeks rather than a single load trend. Eric's baseline: "The in-season game week: Sunday off; Monday heavy lift; Tuesday and Wednesday heavy practice, with a lighter lift Wednesday; lifting and hard practice end 72 hours before a Saturday game" (`docs/method-baseline.md`, line 186, Explicit (interview 2026-09-28, Q15)). Inference: in Matveyev's terms each football game week is a competitive microcycle, and a bye week (baseline line 187, Explicit (interview 2026-09-28, Q17)) plays the role of a short intermediate or restorative unit with a top-up.
+
+**When NOT to apply** — The "ordinary" microcycle is defined as "uniformly increasing loading," which sits uneasily with the authors' own recommendation to alternate light, medium and heavy loading (PDF p. 326, 329; see [[claim--heavy-medium-light-alternation-beats-monotonic-increasing-loading]]); Inference: read "ordinary" as the default building week, not as a recommendation for monotonic loading. Section 6.3 reports critics of "the artificiality and clumsiness of classifying the various microcycles and mesocycles" (PDF p. 344 / printed p. 333). Issurin's microcycle typology differs in names and in its load-wave detail ([[block-periodization--issurin/framework--microcycle-types-and-load-wave-design]]); do not mix the two vocabularies without saying which is meant.
+
+**Example** — The authors' own: a mesocycle of ordinary > ordinary > shock > restorative microcycles (PDF p. 328 / printed p. 317).
+
+**Related** — [[heuristic--shock-microcycle-limits]], [[framework--training-cycle-hierarchy-durations-and-russian-term-swap]], [[principle--sporting-form-cannot-be-held-permanently-matveyev]], [[block-periodization--issurin/framework--microcycle-types-and-load-wave-design]], [[framework--conditions-for-concentrated-unidirectional-loading]]
+=================== heuristic--shock-microcycle-limits.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: shock microcycle limits
+category: [periodization, microcycle, overreaching, overtraining, restoration]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Shock Microcycles: Use for Stagnation, Follow With a Light Week, and Cap at 3-4 a Year
+
+**What it is** — "Shock microcycles typically are used if the current programme is not eliciting adequate strength gains. Generally, the microcycle following a shock microcycle is of low intensity, although, some elite athletes may employ two sequential shock microcycles (a *double shock microcycle*). It is inadvisable to use more than 3-4 shock microcycles a year or more than one double shock microcycle a year because of the serious risk of overtraining or injury. It must be stressed that, if any shock cycles are used, the application of formal restoration becomes even more important (Ch 8.6)" (PDF p. 327-328 / printed p. 316-317, verified against the page images).
+
+**Why it works** — The authors' reason for the caps is "the serious risk of overtraining or injury"; the purpose of a shock microcycle is "stimulating the athlete out of a state of stagnation" (PDF p. 327 / printed p. 316). No physiological mechanism or data for the 3-4 figure is given.
+
+**When to apply** — When a strength plateau persists and a planned overload week is being considered. Eric's baseline: "Progressions in exercise selection, volume, and intensity are kept smooth and gradual by design; abrupt, large changes are treated as a direct injury-risk driver" (`docs/method-baseline.md`, line 142, Inferred (transcript)). Inference: the authors' caps and mandatory low-intensity follow-up are one way to fit an occasional deliberate spike inside that caution.
+
+**When NOT to apply** — The trigger in the source is inadequate strength gains, not a routine calendar slot. The double shock microcycle is described for "some elite athletes" only. The 3-4 per year cap has no source or data on the page. The book defines no load size for a shock week, so "shock" must be set per athlete (Inference).
+
+**Example** — The authors' own sample mesocycles containing shocks: ordinary > ordinary > shock > restorative, and shock > ordinary > shock > restorative (PDF p. 328 / printed p. 317). Inference: the second pattern uses two of the year's 3-4 shock microcycles in one mesocycle.
+
+**Related** — [[framework--matveyev-microcycle-and-mesocycle-types-and-sequences]], [[periodization--bompa/principle--concentrated-loading-overreaching]], [[heuristic--allow-restoration-after-a-concentrated-block-before-the-next]], [[block-periodization--issurin/framework--microcycle-types-and-load-wave-design]]
+=================== heuristic--gpp-and-spp-form-one-unit-curtail-gpp-for-advanced-athletes.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: GPP and SPP
+category: [periodization, gpp, spp, preparatory-phase, advanced-athletes]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# GPP and SPP Form One Unit: Use SPP Work Inside GPP When Needed, and Curtail Standard GPP for Advanced Athletes
+
+**What it is** — The preparatory phase splits into GPP (General Physical Preparation) and SPP (Specialised Physical Preparation), but "the GPP and SPP always form an interconnected unit. In some cases, the GPP and SPP may even be concurrent or the GPP may be largely indistinguishable from the SPP (Bondarchuk, 1979)" (PDF p. 328 / printed p. 317, verified against the page image). GPP gives "balanced physical conditioning in endurance, strength, speed, flexibility and other basic factors," often through varied low-intensity activities (jogging, swimming, cycling, tennis, volleyball); it is the time to gain muscle or lose excess fat, and "an *hypertrophy phase* may be included" if functional bulk is needed, a decision "based on an assessment of the strength deficit." Adjustments (PDF p. 328 / printed p. 317):
+- Include "very specific SPP-type exercises during the GPP either to rehabilitate any existing injuries or to eliminate any structural or functional deficiencies or imbalances."
+- "curtail or eliminate standard types of GPP" for an advanced athlete or anyone who has trained regularly for a long time; GPP methods are "unsuitable for adequately or timeously stimulating improvements in performance among advanced athletes, whose trainability has already waned."
+- GPP-type exercises "may be appropriate for brief periods during the SPP to facilitate recovery or prevent stagnation."
+- In transition phases, "be careful not to allow prolonged GPP type training ... to diminish the sport specific fitness of the athlete" (PDF p. 329 / printed p. 318).
+
+Traditional schemes run GPP at high volume and low intensity, then shift to SPP with falling volume, rising intensity and growing emphasis on sport-specific qualities (PDF p. 329 / printed p. 318, Fig 6.1).
+
+**Why it works** — The authors' reason for curtailing GPP is waning trainability in advanced athletes, "whose continued growth depends on more specific or demanding methods" (PDF p. 328 / printed p. 317). No further mechanism is given.
+
+**When to apply** — When an experienced athlete's off-season still opens with weeks of generic conditioning, or when a returning athlete needs targeted corrective work early. Eric's baseline: "Off-season strength work prioritizes relative strength and technique first; already-strong athletes shift more time toward strength-speed/speed-strength work" (`docs/method-baseline.md`, line 105, Inferred (transcript + shared slides); the baseline notes this line was "Not claimed in the interview"). Inference: the authors' advanced-athlete rule points the same way.
+
+**When NOT to apply** — Not a case against GPP for novices or young athletes; the curtailment applies to advanced or long-trained athletes. The hypertrophy-phase decision rests on the strength-deficit assessment from Chapter 1, which carries its own contested status ([[heuristic--strength-deficit-sets-training-method-choice]]). Bondarchuk's transfer work sets general-preparation length by the sports-form cycle ([[transfer-of-training-in-sports--bondarchuk/heuristic--general-prep-stage-duration-must-match-sports-form-cycle]]); Inference: that is a duration rule, compatible with this one.
+
+**Example** — The authors' own cases: SPP-type rehabilitation exercises inside the GPP for an injured athlete, and brief GPP-type work inside the SPP to aid recovery (PDF p. 328 / printed p. 317).
+
+**Related** — [[heuristic--strength-deficit-sets-training-method-choice]], [[transfer-of-training-in-sports--bondarchuk/heuristic--general-prep-stage-duration-must-match-sports-form-cycle]], [[periodization--bompa/principle--multilateral-before-specialization]], [[heuristic--in-season-stabilisation-twice-weekly-30-minutes]], [[framework--eight-weaknesses-of-the-matveyev-model]]
+=================== heuristic--in-season-stabilisation-twice-weekly-30-minutes.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: in-season stabilisation
+category: [periodization, in-season, maintenance, strength-training, team-sport]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# In-Season Stabilisation: About Twice a Week, No More Than 30 Minutes, a Few Multi-Joint Lifts
+
+**What it is** — "Near the beginning of the competitive season, a *stabilisation phase* may be commenced to ensure that the various fitness qualities developed in the off-season are maintained throughout the season. It is important to remember that the average athlete usually has little desire to spend hours in a gymnasium or undertaking 'cross training'. Consequently, it is often recommended that stabilisation training generally needs to occupy a short period before or during practice or preferably twice a week for no more than 30 minutes in a gymnasium, using a limited number of major multi-joint exercises. Some of the basic strengthening and flexibility exercises may be integrated into normal practice sessions, using partners to offer resistance, if necessary" (PDF p. 329 / printed p. 318, verified against the page image).
+
+**Why it works** — The authors' reason is adherence: the average athlete "has little desire to spend hours in a gymnasium." They give no physiological basis for the twice-weekly, 30-minute dose; it is introduced as "often recommended."
+
+**When to apply** — Eric's baseline: "In-season, the stated rule is "maintain intensity, reduce volume" rather than trying to build strength while managing a full competition schedule" (`docs/method-baseline.md`, line 105, Inferred (transcript + shared slides); the baseline adds that the line was "Not claimed in the interview" and that "The in-season dose itself is unknown"). Inference: the authors' twice a week, under 30 minutes, few multi-joint lifts is a concrete starting dose for that gap, and it fits the baseline's game week of a Monday heavy lift and a lighter Wednesday lift (line 186, Explicit (interview 2026-09-28, Q15)).
+
+**When NOT to apply** — The passage gives frequency and duration but no intensity, so it does not by itself say whether heavy loads are kept in season. It is framed for "the average athlete"; the authors do not say it suffices for elite or strength-power specialists. Elsewhere the book warns that prolonged heavy strength volume can impair speed-strength and technique ([[claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique]]). Inference: that argues for keeping the dose small, but it is a separate point.
+
+**Example** — Inference: two 25-minute in-season sessions per week of trap-bar deadlift, front squat and bench press, plus partner-resisted strengthening during practice warm-ups, would fall inside the authors' description.
+
+**Related** — [[claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique]], [[heuristic--gpp-and-spp-form-one-unit-curtail-gpp-for-advanced-athletes]], [[block-periodization--issurin/framework--in-season-team-sport-mini-block-microcycle]], [[block-periodization--issurin/claim--residual-training-effect-durations-by-motor-ability]]
+=================== heuristic--rule-of-sixty-percent-light-day-volume.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: Rule of Sixty Percent
+category: [periodization, load-variation, volume, microcycle, overtraining]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The Rule of Sixty Percent: A Light Day or Week Carries About 60% of a Heavy One's Volume
+
+**What it is** — "The *gradual overload principle*, with periodic underloading days or microcycles, is constantly adhered to through all training cycles to ensure that an adequate, but not excessive, training stimulus is imposed on the body. A preliminary recommendation is that individual workouts should generally be alternated in terms of light, medium and heavy loading to guard against overtraining and to ensure optimal training and competitive efficiency. This variation in training load on a daily, microcyclic and mesocyclic basis is essential for avoiding stagnation. In this respect, it is common to observe the well-known empirical *Rule of Sixty Percent*, which states that the training volume of any stage (day or microcycle) with light loading should be approximately 60% of the volume of a stage with heavy (maximal or near-maximal) loading" (PDF p. 329 / printed p. 318, verified against the page image).
+
+**Why it works** — The authors call it "empirical" and give no mechanism or source. The surrounding rationale is guarding against overtraining and stagnation.
+
+**When to apply** — When writing a light day or deload week and needing a default size for it relative to the heavy unit. Eric's baseline: "Undulating/non-linear periodization ... waving volume week to week (e.g., medium-high, medium, high, low over four weeks)" (`docs/method-baseline.md`, line 106, Explicit (interview 2026-09-28, Q1)). Inference: the rule gives one number for the "low" week in that wave.
+
+**When NOT to apply** — It specifies volume only; the page says nothing about whether intensity also drops on the light stage. The rule is not tested on this page and no population is named. The authors give no figure for a "medium" stage. Inference: in Vorobyev's printed weekly distributions on PDF p. 333 the lightest week is well under 60% of the heaviest (for example 15% versus 37% of a month's load in Fig 6.3A, about 41%), so the book's own examples do not all follow the rule.
+
+**Example** — Inference: if a heavy microcycle totals 20,000 kg of squat and pull volume, the rule puts the following light microcycle at about 12,000 kg.
+
+**Related** — [[claim--heavy-medium-light-alternation-beats-monotonic-increasing-loading]], [[case-study--vorobyev-ermakov-weightlifting-load-distributions]], [[framework--volume-intensity-and-relative-intensity-calculation]], [[periodization--bompa/framework--step-loading-paradigm]]
+=================== heuristic--progress-skills-only-at-70-80-percent-technical-reliability.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.2"
+topic: reliability of technique
+category: [technique, skill-acquisition, monitoring, progression, competition-stress]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Track Reliability of Technique, and Progress Only When It Has Stabilised at 70-80% or Better
+
+**What it is** — "Even the most meticulous computation and prescription of load intensity, volume and sequencing ... is of little consequence to performance if changes in technical mastery are not constantly monitored." Lab tests "simply identify the potential offered by the athlete's work capacity and not functional preparedness" (PDF p. 329 / printed p. 318, verified against the page image). The tool is *reliability of technique*: the percentage of successes in executing the same specific skills, kept separately for training and competition. "A low competitive reliability relative to training reliability indicates that the athlete probably has difficulty in performing under conditions of high emotional excitement and needs to simulate those conditions during training"; "gym lifters" lift much more in training than on the platform, where emotional stress affects "not ... the obviously adequate levels of strength or power, but ... the technical skills required." Rule: "Progression to more difficult skills should not occur until the reliability at the preceding level of complexity or intensity has stabilised at a level of at least 70-80%," the "*zone-by-zone mastering of intensity* (Matveyev, 1977)." Technical-training dose is steered by a *feedforward method* ("the quantitatively planned long-term scheme") and a *feedback method* ("the ad hoc daily approach") because technical emphasis "can fluctuate rapidly" (PDF p. 330 / printed p. 319, verified against the page image).
+
+**Why it works** — The authors' reasoning: performance depends on "functional preparedness, which relies on the mastery of specific motor skills," and "loss of form is prematurely attributed to overtraining or deficient training" when the real problem is inadequate monitoring and cyclical variation of skills training (PDF p. 329-330 / printed p. 318-319).
+
+**When to apply** — Any skill progression with a clear success criterion (a lift made, a drill rep executed to standard). Inference: `docs/method-baseline.md` records no explicit technique-reliability metric, so this is a gap the passage could fill. The authors later add a coach-scored Rating of Technique column to the session log (PDF p. 339 / printed p. 328; see [[framework--cybernetic-periodisation-rpe-and-rating-of-technique]]).
+
+**When NOT to apply** — The 70-80% threshold has no cited data beyond the Matveyev label, and it needs "zones of intensity or complexity" to be "formally laid down for each aspect of a given sport" first. Inference: in open, reactive team-sport skills a success rate is harder to define than in a weightlifting attempt, so the threshold transfers best to closed skills. Inference: the third bullet in the source list ("the premature introduction of skills") reads as a factor to avoid, not one to stress; the source wording is ambiguous.
+
+**Example** — The authors' own: the "gym lifter" whose training lifts far exceed platform lifts, read as a technical and emotional problem rather than a strength deficit (PDF p. 329 / printed p. 318).
+
+**Related** — [[framework--cybernetic-periodisation-rpe-and-rating-of-technique]], [[heuristic--keep-event-specific-competitive-stress-in-preparation]], [[framework--eight-weaknesses-of-the-matveyev-model]], [[claim--plyometric-skill-is-cognitive-and-state-dependent]]

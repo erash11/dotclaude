@@ -1,0 +1,27 @@
+--- a/scripts/daily-backup.ps1
++++ b/scripts/daily-backup.ps1
+@@ -555,10 +555,24 @@
+         try {
+             $existingPaths = @($msPaths | Where-Object { Test-Path $_ })
+-            if ($existingPaths.Count -gt 0) {
+-                $r = & $msExe index $existingPaths 2>&1 | Select-Object -Last 1
+-                Log "INDEX full set: $r"
+-                if ($LASTEXITCODE -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:full-set") }
++            # memsearch prints only "Indexed N chunks." (its per-file/failed-file counts go to an
++            # unconfigured logger), and N counts NEW chunks only: memsearch dedups by content hash and
++            # the SessionEnd hook indexes the same set all day. So 0 is the normal result on a day with
++            # no sessions (2026-09-19). Log the scan size beside it so a no-op and a broken scan differ.
++            $mdCount = @($existingPaths | ForEach-Object { Get-ChildItem -LiteralPath $_ -Recurse -File -Filter *.md -ErrorAction SilentlyContinue }).Count
++            $why = "$($existingPaths.Count)/$($msPaths.Count) paths exist, $mdCount .md files scanned"
++            if ($existingPaths.Count -eq 0 -or $mdCount -eq 0) {
++                $msFail = $true; $Errors.Add('memsearch-index:no-input')
++                Log "INDEX full set: NOT RUN - nothing to index ($why)"
++            } else {
++                $r = & $msExe index $existingPaths 2>&1 | Select-Object -Last 1
++                $code = $LASTEXITCODE
++                if ($code -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:full-set") }
++                elseif ("$r" -notmatch '^Indexed \d+ chunks') { $msFail = $true; $Errors.Add('memsearch-index:unexpected-output') }
++                $note = if ("$r" -match '^Indexed 0 chunks') { 'no new content since last index' } else { '' }
++                Log ("INDEX full set: $r ($why" + $(if ($note) { "; $note" } else { '' }) + ", exit $code)")
+             }
+         }
