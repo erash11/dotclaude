@@ -1,0 +1,126 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Unresolved Errors
+- {"stdout":"16:Methods: All reported concussions were reviewed with all available video footage. Standardized terminology and associated def-\n60:di...
+- {"stdout":" 55 very similar for loads ranging from 50 to 70 % 1RM (▶Table 4). How-\n ever, these percentages of performed repetitions for a given m...
+- {"stdout":"44:The introduction of smart phone applications has allowed athletes and practitioners to record and\n54:monitoring their athletes befor...
+- {"stdout":"Subjects\n                                                         D\n       A sample consisting of 29 male and 8 female recreational at...
+- {"stdout":"Q41.txt:440:because of the inherent limitations of the data source. In                               leagues in the United States,13,33,...
+- {"stdout":"== Q56\nugrep: error: error at position 122\nbf][\\x80-\\xbf]*){0,30}\n                      \\___exceeds complexity limits\n\n\n4\n== Q...
+- {"stdout":"only trivial ES) were identified for eccentric deceleration AI (F = 2.327, p = 0.14,\nES = −0.15) and landing AI (F = 0.506, p = 0.48, E...
+- {"stdout":"{\n \"id\":\"Q21\",\n \"sourceFile\":\"Update on functional recovery process for the injured athlete- return to sport continuum redefine...
+- {"stdout":"    Perturbation training improves knee kinematics and reduces muscle              ligament? A study using combined in vivo/in vitro met...
+- {"stdout":"  International Journal of Kinesiology & Sports Science\n  ISSN: 2202-946X\n  www.ijkss.aiac.org.au\nValidity and Reliability of StriveT...
+- {"stdout":"1:  form. Wearables and the data they produce are instead addi-\n2:When observing trials among weight and limb for the ab-  tional tools...
+- {"stdout":"{\n \"id\":\"Q44\",\n \"sourceFile\":\"Velocity loss as a critical variable determing the adaptations to strength training.pdf\",\n \"de...
+- {"stdout":"-rw-r--r--@  1 kristinarash  staff  5858 Oct 10 21:46 Q31.json\n-rw-r--r--@  1 kristinarash  staff  4767 Oct 10 21:46 Q43.json\n-rw-r--r...
+- {"stdout":"Scandinavian Journal of Medicine & Science in Sports\n  ORIGINAL ARTICLE  OPEN ACCESS\nValidity of Four Consumer-­Grade Optical Heart Ra...
+- {"stdout":"-However, different team-sport disciplines (i.e., rugby league vs.\n+However, different team-sport disciplines (i.e., rugby union league...
+- {"stdout":"{\n \"id\": \"Q45\",\n \"sourceFile\": \"Velocity loss as a variable for    monitoring resistance exercise.pdf\",\n \"decision\": \"INCL...
+- {"stdout":"  Team Physician’s Corner\nValidity of Research Based on Public\nData in Sports Medicine\nA Quantitative Assessment of Anterior Cruciate...
+- {"stdout":"  TE/FB groups with skill positions.\n  TABLE 5\n  Percentage of Injuries in ACL POD Studies by Game Settinga\n  Dodson et al12  Johnsto...
+- {"stdout":"{\n \"id\": \"Q42\",\n \"sourceFile\": \"Validity of the Elite HRV Smart      Phone app for examining heart rate variability in a field ...
+- {"stdout":"increased the potential for the collection of ectopic beats and artifacts (29). Furthermore, HRV\nanalysis derived from shorter recordin...
+
+## Subagent Tasks
+- [completed] You are drafting Evidence Library screening records. Workdir: /Users/kristinarash/.claude/jobs/624274f9/t...
+- [completed] You are drafting Evidence Library screening records. Workdir: /Users/kristinarash/.claude/jobs/624274f9/t...
+- [completed] You are drafting Evidence Library screening records. Workdir: /Users/kristinarash/.claude/jobs/624274f9/t...
+- [completed] You are drafting one Evidence Library screening record. Workdir: /Users/kristinarash/.claude/jobs/624274f...
+- [completed] You are drafting one Evidence Library screening record. Workdir: /Users/kristinarash/.claude/jobs/624274f...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+- [completed] You are the Opus claim auditor for Evidence Library draft records. Workdir: /Users/kristinarash/.claude/j...
+
+## Environment
+cwd: $CLAUDE_JOB_DIR/tmp/batch-101
+
+## Data References
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- … 413 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<session_mode>implement</session_mode>
+
+</session_state>
