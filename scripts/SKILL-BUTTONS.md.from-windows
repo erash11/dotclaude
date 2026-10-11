@@ -1,0 +1,66 @@
+# Headless skill buttons
+
+**Built 2026-08-31.** Closes ARMS gap 4 (layer S, "no headless triggers").
+
+Before this, `claude -p` appeared on this machine in 11 files — every one of them
+documentation, a playwright dump, or Terminal_Fluency lesson HTML. Teaching
+material, not wiring. **No skill could fire without a human typing `/name`.**
+
+## Use it
+
+```
+~/.claude/scripts/skill-button.sh --list
+~/.claude/scripts/skill-button.sh claude-stack-doctor
+~/.claude/scripts/skill-button.sh project-triage
+~/.claude/scripts/skill-button.sh forecast-capture
+~/.claude/scripts/skill-button.sh closeout
+```
+
+Anything after the skill name is passed through to the skill.
+
+Output goes to `~/.claude/scripts/logs/skill-button-<skill>.log`, appended, with a
+timestamped header and an exit line per run. Nothing is printed to the terminal
+except an error line, so the script is safe to call from launchd or a Shortcut.
+
+| Exit | Meaning |
+|---|---|
+| 0 | ran clean |
+| 2 | skill is not on the allowlist, or no argument given |
+| 3 | environment problem (claude CLI missing, working dir gone) |
+| other | claude's own exit code |
+
+`SKILL_BUTTON_MODEL` overrides the model (default `claude-sonnet-5`).
+
+## The allowlist is the safety boundary
+
+A button runs with `--dangerously-skip-permissions` and **no tty**. Nobody is
+there to approve anything. So the allowlist holds only read-mostly reporting
+skills:
+
+| Button | Working dir |
+|---|---|
+| `closeout` | `~/DEV` |
+| `project-triage` | `~/DEV` |
+| `claude-stack-doctor` | `~/DEV` |
+| `forecast-capture` | `~/DEV/CFB_Analytics_Lab` |
+
+**Do not add a skill that sends mail, publishes, or deletes.** Add new buttons by
+editing the `BUTTONS` map at the top of `skill-button.sh`.
+
+## Two things that will bite you
+
+1. **stdin must be closed.** With no tty attached, any prompt the CLI issues
+   blocks forever with nobody to answer. The script passes `< /dev/null`.
+2. **The working directory decides which project's `CLAUDE.md` loads.** A skill
+   fired from the wrong directory reads the wrong instructions, which is why each
+   button carries its own `cwd` rather than inheriting the caller's.
+
+## Not done on purpose
+
+No launchd agent is installed for any button. Putting one of these on a schedule
+is a separate decision — it is ARMS gap 3 (always-on routines), which also needs
+the laptop-closed problem solved. These are **buttons**, not timers: something
+else decides when to press them.
+
+Verified 2026-08-31: `skill-button.sh claude-stack-doctor` exited 0 and produced a
+full stack report in its log.
