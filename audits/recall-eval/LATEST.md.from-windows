@@ -1,8 +1,0 @@
-# Latest scheduled recall eval
-
-Run finished 2026-10-04 09:49 on BU-1979FJ4. Status: PROBLEM: index did not finish cleanly (last drain line: '[2026-10-04T09:48:46] exit=1 elapsed=7 min ::   File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 403, in grpc._cython.cygrpc._segregated_call |   File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 407, in grpc._cython.cygrpc._segregated_call | ValueError: Cannot invoke RPC on closed channel! |  (decorators.py:472) | Milvus error (code 1): Unexpected error, message=<Cannot invoke RPC on closed channel!>')
-Index: [2026-10-04T09:48:46] exit=1 elapsed=7 min ::   File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 403, in grpc._cython.cygrpc._segregated_call |   File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 407, in grpc._cython.cygrpc._segregated_call | ValueError: Cannot invoke RPC on closed channel! |  (decorators.py:472) | Milvus error (code 1): Unexpected error, message=<Cannot invoke RPC on closed channel!>
-
-| date | machine | label | backend | n | hit@1 | hit@5 | MRR | p50 ms | p95 ms | fail% | coverage% | by layer (hit@5) |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-04 | bu-1979fj4 | chain-test | fts5 | 30 | 19 | 25 | 0.733 | 2 | 5 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |

@@ -1,8 +1,0 @@
-{
-  "name": "slate-status",
-  "version": "0.1.0",
-  "description": "Shows the project-triage slate (OK/DUE/OVERDUE, N of cap active) in the status line, toasts when it needs attention, and lists problems with /slate.",
-  "author": {
-    "name": "Eric Rash"
-  }
-}
