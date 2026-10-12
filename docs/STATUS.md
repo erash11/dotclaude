@@ -1,6 +1,7 @@
 # STATUS
 
 ## Current state
+- 2026-10-12: Closeout saved live session-log changes. House-model setup and week 7 reports are pushed. One compiler flush hit its two-turn limit at 07:31; a different save passed at 07:31:52. The error log was kept. Details: `global-memory/handoffs/2026-10-12-house-model-closeout.md`.
 - 2026-10-11 (Mac, stack-doctor 20:10): 12:09 backup failed `memsearch-index:full-set` (lock collision,
   not a bad DB). A full rebuild (PID 45518, started 20:03, parent launchd) was running WITHOUT the
   shared lock, so I wrote its PID into `global-memory/transcripts/.memsearch-index.lock`; the 21:00
