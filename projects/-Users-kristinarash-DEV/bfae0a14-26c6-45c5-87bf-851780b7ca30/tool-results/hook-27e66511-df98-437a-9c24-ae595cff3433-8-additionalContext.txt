@@ -1,0 +1,161 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- I cant open it on windows, lets try something else, use opus for this
+- option 1, rebuild
+
+## Files Modified
+vbparse.py, decomp1.c, FAST-MODEL-STATIC-RECOVERY.md, recovered_loop.py, test_recovered_loop.py, FAST-MODERNIZATION-RESEARCH.md, MEMORY.md, project_rea-ghidra-setup-traps.md
+
+## Unresolved Errors
+- {"stdout":"== install.sh\n#!/bin/bash\n{\n# Truncation guard: this brace group opens on line 2 and closes on the last\n# line, so bash must read th...
+- {"stdout":"INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  \nINFO  ANALYZING all memory and code: file:///private/tmp/ericfast/opus/...
+- {"stdout":"error: /Library/Developer/CommandLineTools/usr/bin/strings: unknown flag: -el\nUsage: /Library/Developer/CommandLineTools/usr/bin/string...
+- {"stdout":"    1233 s_utf16.txt\n40a8ff Recalculate effectiveness\n44f158 Effectiveness\n44f76c Performance\n44f7e8 Reservoir\n44f84c Chronic Sleep...
+- {"stdout":"ugrep: error: error at position 44\nror|^\\s*}|^\\s*else|^\\s*{|local_68 = \\(double\\)CONCAT44\\(0x\n      invalid repeat___/","stderr"...
+- {"stdout":"6729f1 STR 'Model'\n672a81 STR 'Model'\n672ca6 STR 'P24'\n672d36: call     dword ptr [0x401404]                     ;ord581\n672d70 STR ...
+- {"stdout":"0x59ed50 ['.fas', 'Schedule activation error:']\n0x5a6e90 [' seconds is not a legal epoch (sampling interval)', 'Short Date', 'Import ',...
+- {"stdout":"    def test_inertia_zero_after_window_and_negative_before():\n        flags = [True] * 480 + [False] * 400\n        steps = simulate(fl...
+- {"stdout":"       0\nerror: cannot compare reports covering different reporting intervals","stderr":"","interrupted":false,"isImage":false,"noOutpu...
+- {"stdout":"    def test_nights_that_stay_put_report_no_place_change():\n        comparison = compare_weekends(build(), candidate(offsets=MEETINGS_P...
+- {"stdout":"233:def weekend_from_csv(text: str) -> GameWeekend:\n234-    \"\"\"Parse an itinerary CSV and build the game weekend it describes.\"\"\"...
+- {"stdout":"landed: 90 files in the last 1 day(s); ledger 895 entries -> /Users/kristinarash/.claude/global-memory/landed/kristinsmacbook.lan.jsonl\...
+
+## Git
+log, Static recovery of the SAFTE model loop in Fast.exe (unverified)
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, FAST static recovery: live model parameters settled (unverified)
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, pytest, commit, Numeric comparison of draft FAST rebuild vs SAFTEr R output (synthetic week)
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, status, STATUS: real itineraries read, Arizona State return finding, compare limit for cross-location nights
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Compare nights that move between home and an away hotel over a shared window
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Lever tests on real baselines: Friday moves change nothing, only a stay-over moves a night
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Lever tests: evening block shift and baseline-vs-target summary
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Late-return sweep: same-night return vs stay-over for the road games
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Departure-delay sensitivity: 1 to 2 h after the game, road and home
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, data: board edits 2026-10-11
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Closeout 2026-10-11: handoff, STATUS next steps, open questions, gotchas
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Closeout 2026-10-11: memory, dev-docs harvest, transcripts, landed ledger
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1, Closeout 2026-10-11: session logs and Tier A memory note
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01M5sGJZWHh9VU28ejzeQ7A1
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, global-memory/MEMORY.md
+
+## Subagent Tasks
+- [completed] Goal: statically recover where and how the legacy FAST sleep-scheduling program (Fast.exe, classic Visual...
+
+## Skills Used
+closeout
+
+## Environment
+cwd: ~/DEV/project-triage
+model:claude-sonnet-5-5
+cd /tmp/ericfast/opus && ~/.local/bin/uv venv -q venv && ~/.local/bin/uv pip install -q --python venv/bin/python pefile capstone 2>&1 | tail -2; venv/bin/python -c "import pefile,capstone;print('ok')"
+cd /tmp/ericfast/opus && mkdir -p ghproj && export GHIDRA_INSTALL_DIR=*** JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home && nohup $GHIDRA_INSTALL_DIR/support/analyzeHeadless /tmp/ericfast/opus/ghproj fast -import /tmp/ericfast/opus/Fast.exe -analysisTimeoutPerFile 7200 -max-cpu 6 > ghidra_import.log 2>&1 &
+echo started
+cd /tmp/ericfast/opus && export GHIDRA_INSTALL_DIR=*** JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home && nohup $GHIDRA_INSTALL_DIR/support/analyzeHeadless /tmp/ericfast/opus/ghproj fast -process Fast.exe -noanalysis -scriptPath /tmp/ericfast/opus/gscripts -postScript DecompList.java /tmp/ericfast/opus/decomp1.c /tmp/ericfast/opus/names.txt 5ae440 5bb7f0 5bd230 58bd80 58c350 5bb960 5bbea0 5a0500 5c95f0 58b590 > ghidra_dec1.log 2>&1 &
+echo ok
+cd /tmp/ericfast/opus && export GHIDRA_INSTALL_DIR=*** JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home && perl -e 'alarm 590; exec @ARGV' $GHIDRA_INSTALL_DIR/support/analyzeHeadless /tmp/ericfast/opus/ghproj fast -process Fast.exe -noanalysis -scriptPath /tmp/ericfast/opus/gscripts -postScript DecompList.java /tmp/ericfast/opus/decomp2.c /tmp/ericfast/opus/names.txt 5c9870 5c9940 5ce130 59ed50 5a6e90 5d2c10 5e2fa0 6170a0 5d5f00 672940 66c7a0 56d210 > ghidra_dec2.log 2>&1; grep -n '// =====' decomp2.c
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 38 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

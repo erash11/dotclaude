@@ -1,0 +1,174 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Key Decisions
+- Read ~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/_FROM_WORK_LAPTOP/HANDOFF.md and ~/SecondBrain/Projects/work-laptop-handoff-...
+- 1. leave it
+2. NCAA and HPI and Eduction are being worked on still, the others are closed.
+- Keep the three partial zips in ~/Restore/_zips/ for now. Don't delete anything, and tell me if you still need my decision.
+- incldue it all, merge thme
+- 1. leave it
+2. Keept them
+3-5. fix these, use your judgement, approved
+- relax all dcg guards, approved
+- I ran the commands, open the file
+
+## Files Modified
+project_work-laptop-hands-off.md, 2026-10-10-work-laptop-restore.md, merge_windows.sh, list_missing.py, 2026-10-11-restore-merge.md, copy_missing.py, settings.json, config.toml, .memsearch-index.log
+
+## Unresolved Errors
+- {"stdout":"== /Users/kristinarash/DEV/_ARCHIVE/AI_Analyst\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for ...
+- {"stdout":"7:  conflicts, then read the repo's STATUS and latest handoff and report where the last\n8-  session left off. Use when Eric switches ma...
+- {"stdout":"dir: Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import json,os;c=json.load(open(os.path.expanduse...
+- {"stdout":"(eval):kill:1: kill 12215 failed: no such process\nfiles:    39558","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":f...
+- {"stdout":"repo: /Users/kristinarash/DEV/RTP_WorkingGroup\n--- manual files (recent)\n/Users/kristinarash/DEV/RTP_WorkingGroup/Docs/HPI_RTP_Manual_...
+- {"stdout":"Using keyring backend: keyring\n{\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Failed to read response chunk: error decoding ...
+- {"stdout":"Using keyring backend: keyring\n{\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Failed to read response chunk: error decoding ...
+- {"stdout":"--- errors.log:\n    2023\n[2026-10-10T10:39:50.672391-05:00] claude-files-digest: send failed for 2026-10-09 - see ~/.claude/scripts/lo...
+- {"stdout":"---\nname: memsearch-index-is-destructive\ndescription: \"`memsearch index <paths>` deletes every indexed source outside the given paths...
+- {"stdout":"/Users/kristinarash/.local/bin/memsearch\nmemsearch, version 0.4.17\ntotal 8\ndrwxr-xr-x@  7 kristinarash  staff   224 Oct 11 08:23 .\nd...
+- {"stdout":"total 104\ndrwxr-xr-x@  4 kristinarash  staff    128 Sep 10 17:32 .\ndrwx------+ 88 kristinarash  staff   2816 Oct  8 15:18 ..\n-rw-r--r...
+- {"stdout":"  File \"/Users/kristinarash/.local/share/uv/tools/memsearch/lib/python3.12/site-packages/memsearch/core.py\", line 86, in __init__\n   ...
+- {"stdout":"2026-10-11T20:54:54.817Z pid=87253\n--- log tail:\n  File \"/Users/kristinarash/.local/share/uv/tools/memsearch/lib/python3.12/site-pack...
+- {"stdout":"2026-10-10 21:08:28 INDEX path set: 13 paths from memory-index-paths.json\n2026-10-10 21:08:37 INDEX full set: RuntimeError: Failed to o...
+- {"stdout":"I1010 20:09:20.691842 1868103 chttp2_transport.cc:1393] ipv4:127.0.0.1:50298: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error cod...
+- {"stdout":"  PID ELAPSED COMMAND\n(eval):kill:1: kill 6848 failed: no such process\nstopped\nno memsearch index running","stderr":"","interrupted":...
+- {"stdout":"I1011 19:35:30.030510 4679492 chttp2_transport.cc:1393] ipv4:127.0.0.1:53105: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error cod...
+- {"stdout":"not running\nUsage: memsearch index [OPTIONS] PATHS...\nTry 'memsearch index --help' for help.\n\nError: Invalid value for 'PATHS...': P...
+- {"stdout":"45518 /Users/kristinarash/.local/share/uv/tools/memsearch/bi\nRuntimeError: Failed to open the local Milvus Lite database. If this datab...
+- {"stdout":"45518 /Users/kristinarash/.local/share/uv/tools/memsearch/bi\n45518 01:20:20 RN   278448\n--- log:\n       8\nI1011 21:09:07.454151 4776...
+
+## Git
+log, status, closeout 2026-10-10: commit leftover work
+
+$TR
+Claude-Session: https://claude.ai/code/session_01CTTjSJbpLB9S1Go35Taa8z, closeout 2026-10-10: work-laptop restore handoff, landed ledger
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CTTjSJbpLB9S1Go35Taa8z, closeout 2026-10-11: daily state and logs
+
+$TR;, closeout 2026-10-11: restore merge handoff
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CTTjSJbpLB9S1Go35Taa8z, closeout 2026-10-11 (evening): daily state and logs
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CTTjSJbpLB9S1Go35Taa8z
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, .claude/settings.json, transcripts/.memsearch-index.log
+
+## Skills Used
+memory-write
+
+## Environment
+cwd: ~/.claude
+model:claude-opus-5-5[1m]
+model:claude-haiku-5-5
+model:claude-haiku-5-5
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 62 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+## User Role
+you are approved to make the edits. I made the edit for you.
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<behavioral_directive>
+you are approved to make the edits. I made the edit for you.
+</behavioral_directive>
+
+<rules>
+Follow these decisions:
+- Keep the three partial zips in ~/Restore/_zips/ for now. Don't delete anything, and tell me if you s
+- incldue it all, merge thme
+- 1. leave it
+2. Keept them
+3-5. fix these, use your judgement, approved
+- relax all dcg guards, approved
+- I ran the commands, open the file
+</rules>
+
+<active_skills>
+Re-invoke if relevant: memory-write
+To reload: call the Skill tool with the skill name.
+</active_skills>
+
+<session_mode>implement</session_mode>
+
+</session_state>
