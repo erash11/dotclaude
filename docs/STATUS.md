@@ -1,6 +1,17 @@
 # STATUS
 
 ## Current state
+- 2026-10-11 (Mac, stack-doctor 20:10): 12:09 backup failed `memsearch-index:full-set` (lock collision,
+  not a bad DB). A full rebuild (PID 45518, started 20:03, parent launchd) was running WITHOUT the
+  shared lock, so I wrote its PID into `global-memory/transcripts/.memsearch-index.lock`; the 21:00
+  backup then skips the index step. Global MEMORY.md trimmed 98% → 92% (`3c558ab`).
+- 2026-10-11 (Mac, /doctor + dcg): Root cause of the returning dcg hook found: dcg's own
+  `self_heal_hook` (default on) re-adds the absolute-path entry on every run. Set
+  `self_heal_hook = false` in `~/.config/dcg/config.toml` (Mac only, not in any repo). Six noisy
+  dcg rules allowlisted in `~/Library/Application Support/dcg/allowlist.toml`; rm -rf and
+  branch -D stay guarded. /doctor cleanup: fixed `persistent-localhost` YAML, `articulation-skill`
+  name-only, removed `design-taste-frontend-v1` link, disabled 4 unused claude.ai connectors in
+  ~/DEV. Handoff: `global-memory/handoffs/2026-10-11-doctor-dcg.md`.
 - 2026-10-11 (Mac, doctor-plus): `claude doctor` clean (2.1.296; one failed auto-update today). Tier A
   `MEMORY.md` index de-duplicated (19.8 KB → 7.1 KB, `06dc069`; the 59 long lines came from
   `cb4ace5` Windows import merge). Duplicate dcg hook removed by Eric by hand; the backup commit
@@ -18,8 +29,9 @@
 - Windows and macOS share this configuration repo through GitHub. Managed skills remain authored in the separate `~/.claude/skills` repo and published to generated Windows views.
 
 ## Next
-- After restarting Claude, run `grep -c "local/bin/dcg" ~/.claude/settings.json`. It must print 1. If it prints 2, an open session wrote the old copy back (see Gotchas).
-- `stash@{0}` (the 2026-10-05 dcg removal) is now redundant. Drop it with `git -C ~/.claude stash drop` once the check above prints 1.
+- `/claude-stack-doctor` on 2026-10-12. If PID 45518 has finished, the next backup clears `backup-error`. Do NOT move `~/.memsearch/milvus.db` aside again. After one clean backup, delete the 4 old copies in `~/.memsearch/` (`.bak-*`, `.pre-3x-*`, `.broken-*`).
+- `git -C ~/.claude stash drop` — stash@{0} (2026-10-05 dcg removal) is redundant; the `grep -c "local/bin/dcg" ~/.claude/settings.json` check printed 1 on 2026-10-11 with self-heal off.
+- On Windows: decide whether dcg there also needs `self_heal_hook = false` (check `dcg config | grep -i self-heal`).
 - Check the startup hook timeouts again around 2026-10-17. Count `hook_cancelled` entries with `timedOut` in recent transcripts.
 - On Windows: `Get-Content ~\.claude\scripts\logs\nightly-digest.log -Tail 5` to get the real
   send error (`HARNESS_FIXES.md` #10), then the Milvus checks in #9.
@@ -34,8 +46,10 @@
   `HARNESS_FIXES.md` #3 and #4.)
 
 ## Gotchas
+- **A hand-run `memsearch index` takes no lock.** Only the SessionEnd hook and daily-backup use `.memsearch-index.lock`, so a manual rebuild collides with the next backup and Milvus Lite reports it as "older database". Write the rebuild's PID into the lock, or start it through the hook (2026-10-11).
 - **`.errors.log` syncs between machines.** A Windows failure shows up on the Mac. Look for
   `C:\Users\` in a traceback before debugging on the wrong machine (2026-10-07).
+- **dcg self-heal rewrites settings.json.** With `self_heal_hook = true` (the default) every dcg run re-adds the absolute-path hook. Keep it `false` in `~/.config/dcg/config.toml`; a dcg update may reset it (2026-10-11).
 - **Never run `dcg install` here.** `dcg doctor` only recognizes the absolute-path hook and
   will ask for it; the portable guarded entry already covers both machines. Installing
   re-adds a Mac-only line that then gets swept into a settings commit (e72c374).
