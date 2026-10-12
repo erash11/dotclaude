@@ -53,6 +53,12 @@ if (!process.argv.includes('--worker')) {
   // session's run, so skipping loses nothing.
   const entry = process.env.CLAUDE_CODE_ENTRYPOINT || '';
   if (process.env.CLAUDE_INVOKED_BY || entry.startsWith('sdk')) process.exit(0);
+  // Windows does not index (2026-10-12). The laptop went hands-off 2026-10-08
+  // and Docker/Milvus is being purged from it, so every run would fail with
+  // "Fail connecting to server", load a 2.5 GB model for nothing, and after 6
+  // session ends write a Milvus-unreachable alarm to .errors.log. The Mac
+  // indexes everything Windows commits. Set MEMSEARCH_ON_WINDOWS=1 to re-enable.
+  if (process.platform === 'win32' && !process.env.MEMSEARCH_ON_WINDOWS) process.exit(0);
   try {
     spawn(process.execPath, [__filename, '--worker'], {
       detached: true,
