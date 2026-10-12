@@ -1764,6 +1764,18 @@
    "captureOrphans": true,
    "captureWorkingTree": true,
    "note": "Added 2026-10-02. Baylor software/tech review for Erin; class mirrors SoftwareTechDocs."
+  },
+  {
+    "path": "DEV/house-model",
+    "class": "institutional",
+    "isRepo": true,
+    "remote": "https://github.com/erash11/house-model.git",
+    "destinations": [
+      "ssd",
+      "github"
+    ],
+    "captureOrphans": true,
+    "captureWorkingTree": true
   }
  ]
 }
