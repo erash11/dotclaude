@@ -37,3 +37,7 @@
 {"type":"bridge-session","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30","bridgeSessionId":"cse_01NYLoMJGLeBwazpm6dh7cwW","lastSequenceNum":591,"ownerAccountUuid":"416bef0f-da27-46f8-9a3c-18dedd0186a1","ownerOrganizationUuid":"507a61e7-48f7-48f7-8c5b-df28be667fa3"}
 {"type":"cost-state","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":534176,"startTime":1791803700311,"modelUsage":{},"hasUnknownModelCost":false}
 {"type":"cost-state","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":534589,"startTime":1791803700311,"modelUsage":{},"hasUnknownModelCost":false}
+{"type":"ai-title","aiTitle":"project-triage-status-review","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30"}
+{"type":"agent-name","agentName":"project-triage-status-review","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30"}
+{"type":"permission-mode","permissionMode":"bypassPermissions","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30"}
+{"type":"cost-state","sessionId":"8b21e7a2-457c-482f-8dfd-13e15becbb30","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":24539034,"startTime":1791803700311,"modelUsage":{},"hasUnknownModelCost":false}

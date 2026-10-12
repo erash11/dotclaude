@@ -1,0 +1,327 @@
+     646 total
+########## _book.md
+     1	---
+     2	type: book-index
+     3	book: deload-to-reload--morris
+     4	title: "Deload to Reload (slide deck)"
+     5	author: "unconfirmed (filename and PDF Title field read 'Buddy Morris'; not printed on any slide)"
+     6	format: slide-deck
+     7	author-status: unconfirmed
+     8	domain: strength-and-conditioning
+     9	ingest-tier: full-text
+    10	source: "staging/decks/Buddy-Morris.pdf"
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Deload to Reload (slide deck, author unconfirmed) - ingest map
+    15	
+    16	**This is a presentation (a slide deck), not a book.** Author unconfirmed. Eric decided to promote it as unconfirmed (2026-10-12). Slide 1 prints only "Deload to Reload" and "...and other stuff." No author, venue or date is printed on any of the 18 slides.
+    17	
+    18	**Identity evidence, none of it confirming.** The filename and the PDF Title field read "Buddy Morris." The PDF Author field reads "David Tate," and slide 17 lists "Dave Tate" among people thanked for the presenter's sanity, so the Author field probably records whoever saved or exported the file, and it does not establish authorship. Creator is PowerPoint, Producer is Mac OS X 10.4.6 Quartz PDFContext, creation and modification date 2006-06-27 (file metadata, not a printed presentation date). The text is first person ("Other stuff I believe," slide 8; "my sanity," slide 17) and the "stolen from" credits (Mike Boyle, slide 8; Jim Wendler, slide 9) show the presenter borrowing from the strength community. Every attribution in the entries is to the deck or to the names the deck prints, never to Buddy Morris.
+    19	
+    20	Source facts: 18 PDF pages, 792 x 612 pt, md5 71dc49f8b1fd1f10369b6eec3fd90371. "Slide N" in every entry is PDF page N; the slides carry no printed numbers. Cited in the deck by name only (nothing was opened): Hans Selye (slide 4), Omegawave (slide 4), Verkhoshansky (slides 4-5), Louie Simmons (slide 3), Jim Wendler's Elitefts article (slide 9), Christian Thibaudeau (slide 9), McGill (slide 10), Zatsiorsky (slide 11), Charlie Francis (slide 12), Mike Boyle (slide 8).
+    21	
+    22	**Special rules for this source.** Practitioner deck: ceiling `supported`; every entry is `untested` or `contested` because the slides give no data, no citations beyond names and no mechanisms. Where the deck gives no mechanism the entry says so. Three entries are `contested`, each on an internal contradiction in the deck (see below). No review history is recorded in entries.
+    23	
+    24	## How slides were read
+    25	
+    26	Text layer (pdftotext -layout, per page) for all 18 slides. Page images were opened for slides 1, 3 and 11 only (slide 11 for its week-by-week numbers). All other slides are plain bullet text on a dark template; none contains a chart or table in the text layer, and none was opened as an image, so nothing else is claimed as image-verified.
+    27	
+    28	## Slide-to-entry map
+    29	
+    30	| Slides | Content | Entry |
+    31	|---|---|---|
+    32	| 1 | Title | identity only |
+    33	| 2 | Body as bioelectrical, self-regulating, supercompensating system | claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording (contested) |
+    34	| 3 | Horse/Carrot; nothing works forever | principle--nothing-works-forever-programs-have-a-shelf-life |
+    35	| 4 | Selye GAS; stress accumulative; seven systems | claim--general-adaptation-syndrome-and-accumulating-stress; claim--training-hits-seven-biological-systems-that-do-not-adapt-at-the-same-time |
+    36	| 4-5 | Adaptation as disequilibrium (Verkhoshansky) | claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording (contested) |
+    37	| 6 | NOBODY has it figured out | claim--nobody-has-it-figured-out-versus-the-decks-own-prescriptive-weekly-template (contested) |
+    38	| 7 | Recovery; rest as method; deload in supercompensation | principle--rest-is-a-training-method-and-the-program-is-the-first-recovery-means; claim--a-deload-week-in-a-supercompensation-period-adds-up-to-a-stable-gain |
+    39	| 8 | Other stuff I believe | heuristic--raising-volume-or-intensity-must-raise-recovery (two concrete bullets only; opinion lines not carried) |
+    40	| 9 | Reasons for deloading (Wendler); overtraining types | framework--reasons-for-deloading-rest-the-mind-overtraining-injury-and-progress; claim--overtraining-from-too-much-volume-versus-too-much-intensity-as-printed |
+    41	| 10 | Injury; stabilize a PR; daily fluctuation | heuristic--after-a-pr-shut-it-down-and-let-the-body-accept-the-new-level; heuristic--max-effort-is-what-you-have-that-day-so-prs-will-not-come-every-time |
+    42	| 11 | Examples of deloads; Zatsiorsky 60%; max effort | framework--example-deload-schemes-four-week-waves-and-multi-week-unloads; heuristic--deload-every-four-weeks-in-the-3rd-or-4th-week; heuristic--zatsiorsky-unload-week-at-60-percent-of-peak-volume-with-lifting-moved-to-two-days; framework--max-effort-method-rotation-floor-press-to-weight-releasers |
+    43	| 12-15 | Weekly template Mon, Tue, Thu, Fri | framework--weekly-template-football-monday-tuesday-thursday-friday; heuristic--train-linemen-like-throwers-and-skill-players-like-sprinters; claim--speed-volume-of-300-500-yards-and-the-opening-hill-progression; heuristic--cap-strength-sessions-at-3-5-exercises-outside-rehab-and-prehab |
+    44	| 16 | Conclusion | principle--nothing-works-forever-programs-have-a-shelf-life; heuristic--train-optimally-not-maximally (contested) |
+    45	| 17 | Sanity (people thanked) | not carried; names appear above only as influence evidence |
+    46	| 18 | Websites list | not carried |
+    47	
+    48	Total: 21 entries (2 principle, 4 framework, 8 heuristic, 7 claim, 0 case-study): 18 `untested`, 3 `contested`.
+    49	
+    50	## Contradictions kept (recorded, not resolved)
+    51	
+    52	- Slide 3 "ALL programs work" against slide 6 "ALL programs are flawed" and "No one best exercise," set against the detailed template on slides 12-15 (contested entry).
+    53	- Slides 4-5 cite Verkhoshansky on non-equilibrium adaptation while slides 2, 7 and 9 use "supercompensation"; the library's Supertraining entry records that book's critique of the term (contested entry).
+    54	- Slide 16 "Train optimally not maximally" against the max-effort work on slides 10-13 (contested entry).
+    55	- Slide 4 "Body does NOT differentiate stressors" against the next bullet's seven separate systems.
+    56	- Slide 9: volume-type overtraining "usually occurs in endurance athletes" in a sentence about strength athletes.
+    57	- Slide 11: the "every 4 weeks, 4th or 3rd week" rule against schemes whose week 4 is the heaviest; the Zatsiorsky Mon-Wed-Fri tempo days against a template that has no Wednesday.
+    58	
+    59	## Unclear spots
+    60	
+    61	Slide 3 has an empty "Definition of adaptation" bullet and an unexplained "Horse/Carrot" title. Slide 9: "CAR" undefined, "addisonic" and "basedowic" undefined. Slide 11: notation like "70/6x4" unexplained, several schemes unlabelled, missing closing parenthesis on the weight-releasers line. Slides 12-15: "pap," "MB," "isomiometrics" undefined; no Wednesday; sport is never named. The slide 12 hill figures ("10/10 10sec rest-2mins-...") are ambiguous.
+    62	
+    63	## Not carried
+    64	
+    65	Slide 8's opinion lines (four opinions, "body is ALWAYS right," "flexible," change of mind) beyond the two concrete bullets; slide 17 (names thanked); slide 18 (website list).
+    66	
+    67	## Reciprocal-link suggestions (existing entry to new entry)
+    68	
+    69	- supertraining--verkhoshansky/claim--adaptive-reconstruction-vs-supercompensation to claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording
+    70	- supertraining--verkhoshansky/heuristic--rule-of-sixty-percent-light-day-volume to heuristic--zatsiorsky-unload-week-at-60-percent-of-peak-volume-with-lifting-moved-to-two-days
+    71	- science-and-practice-of-strength-training--zatsiorsky/claim--one-factor-supercompensation-theory-contested-by-the-authors to claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording
+    72	- overtraining-and-sleep--samuels/framework--sympathetic-and-parasympathetic-overtraining-signs to claim--overtraining-from-too-much-volume-versus-too-much-intensity-as-printed
+    73	- browns-strength-and-conditioning-2008--myslinski/framework--hi-lo-weekly-schedule-template to framework--weekly-template-football-monday-tuesday-thursday-friday
+    74	
+    75	## Checkpoint
+    76	
+    77	Done: slides 1-18 (all). Pending: none. Domain index line not added (staging scope); suggested text: "Deload to Reload (slide deck, author unconfirmed; 18 slides, 21 entries, untested or contested)."
+########## principle--nothing-works-forever-programs-have-a-shelf-life.md
+     1	---
+     2	type: library-entry
+     3	kind: principle
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slides 3, 16"
+     7	topic: no program works forever, so keep changing how the body is stimulated
+     8	category: [periodization, adaptation, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Nothing Works Forever: Programs Have a Shelf Life
+    15	
+    16	**What it is** — Slide 3 (headed "Horse/Carrot Theory"): "ALL programs work-they only work for so long-NOTHING works forever!" and "To adapt is not to adapt (Louie Simmons)." A third bullet reads only "Definition of adaptation" and the slide gives no definition (slides 4-5 supply one, see [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]). The deck never explains the "Horse/Carrot" title. Slide 16 (Conclusion): "Once the body stops learning the body stops growing," "How you perform or present an exercise to the body is oft times more important than the actual exercise," and "there are many means and methods. Use them all!"
+    17	
+    18	**Why it works** — The deck gives no mechanism and no data for the shelf-life claim. The nearest stated reason is slide 4's bullet that adaptation "is also NOT an equilibrium process (Verkoshansky)." Inference: if the body keeps adapting to a stimulus, the same stimulus eventually stops being a demand, which is the reading the slide invites but does not state.
+    19	
+    20	**When to apply** — When planning how often to change exercises, methods or loading patterns. Eric's baseline: undulating or non-linear periodization, waving volume week to week, is his stated preference "to avoid staleness while still building tolerance for higher loads" (`docs/method-baseline.md`, line 106, Explicit, interview 2026-09-28, Q1). Inference: that preference fits this slide's direction, but the deck does not describe a waving model itself, only 4-week deload examples (slide 11).
+    21	
+    22	**When NOT to apply** — The deck gives no period for "so long" and no sign for when a program has stopped working. Slide 3 ("ALL programs work") sits against slide 6 ("ALL programs are flawed"), see [[claim--nobody-has-it-figured-out-versus-the-decks-own-prescriptive-weekly-template]]. Slide 16's "once the body stops learning" is not defined. Confidence is untested: a practitioner's statement with a quoted attribution to Louie Simmons and no evidence.
+    23	
+    24	**Example** — None given. The deck offers no case of a program that stopped working.
+    25	
+    26	**Related** — [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]; [[claim--nobody-has-it-figured-out-versus-the-decks-own-prescriptive-weekly-template]]; [[framework--example-deload-schemes-four-week-waves-and-multi-week-unloads]]
+########## principle--rest-is-a-training-method-and-the-program-is-the-first-recovery-means.md
+     1	---
+     2	type: library-entry
+     3	kind: principle
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slide 7"
+     7	topic: rest is a training method and the program itself is the first means of recovery
+     8	category: [recovery, program-design, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Rest Is a Training Method, and the Program Is the First Recovery Means
+    15	
+    16	**What it is** — Slide 7 (Recovery): "REST at some point in time becomes an actual training methodic." "Recovery/ restoration begins with a well conceived program that allows for recovery. It is the first means of recovery!!!" The slide gives no list of other recovery means and no criterion for what makes a program "well conceived."
+    17	
+    18	**Why it works** — The author gives no mechanism on this slide. Inference: the claim is that recovery is designed into load, not added afterwards.
+    19	
+    20	**When to apply** — When deciding whether a recovery problem should be answered with a recovery service or with the plan. Eric's baseline: "Recovery is managed through training-load design alone; nothing objective is tracked, sleep included" (Eric, interview 2026-09-28, Q23; `docs/method-baseline.md`, line 153, Explicit). Eric's baseline also treats recovery technology as useful but not a substitute for managing stress and dose (line 151, Inferred from a course transcript). Inference: both match slide 7's ordering.
+    21	
+    22	**When NOT to apply** — Slide 7 does not say how much rest or where it goes; slides 9-11 carry the deload detail. "At some point in time" is not defined. Confidence is untested: an assertion with no evidence.
+    23	
+    24	**Example** — None on slide 7. Slide 11 lists deload weeks (see [[framework--example-deload-schemes-four-week-waves-and-multi-week-unloads]]).
+    25	
+    26	**Related** — [[claim--a-deload-week-in-a-supercompensation-period-adds-up-to-a-stable-gain]]; [[framework--reasons-for-deloading-rest-the-mind-overtraining-injury-and-progress]]; [[heuristic--raising-volume-or-intensity-must-raise-recovery]]
+########## claim--a-deload-week-in-a-supercompensation-period-adds-up-to-a-stable-gain.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slides 7, 10"
+     7	topic: an optimal load in a supercompensation period, the deload week, adds up and stabilizes the gain
+     8	category: [deload, supercompensation, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# A Deload Week in a Supercompensation Period Adds Up to a Stable Gain (Slide 7)
+    15	
+    16	**What it is** — Slide 7: "The optimal load applied during a period of supercompensation (deload week) creates a summation/ additive affect that aids in stabilizing the increase in performance." Slide 10 gives the practical version: after a PR, "STABILIZE new level of performance," "shut it down and do not train at that new PR immediately," "allow for the body to accept that new level of increase." The deck does not say how large the "optimal load" is for a deload week; slide 11 supplies examples (see [[framework--example-deload-schemes-four-week-waves-and-multi-week-unloads]]).
+    17	
+    18	**Why it works** — The author gives no mechanism for the "summation/ additive" effect and cites no study. The wording uses the supercompensation frame the deck also sets beside Verkhoshansky's critique (see [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]).
+    19	
+    20	**When to apply** — Only as a practitioner rationale for putting a lighter week after a hard block. Eric's baseline: in-season rule is "maintain intensity, reduce volume" (`docs/method-baseline.md`, line 105, Inferred from course material; the in-season dose is unknown, Q18). Inference: that is a volume cut like a deload, but not a labelled deload week.
+    21	
+    22	**When NOT to apply** — "Optimal load" and "summation/ additive affect" are undefined. The claim sits on the contested supercompensation frame. Confidence is untested.
+    23	
+    24	**Example** — None beyond the PR advice on slide 10; no athlete or result is given.
+    25	
+    26	**Related** — [[principle--rest-is-a-training-method-and-the-program-is-the-first-recovery-means]]; [[heuristic--after-a-pr-shut-it-down-and-let-the-body-accept-the-new-level]]; [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]
+########## claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slides 2, 4-5, 7, 9"
+     7	topic: adaptation as active disequilibrium (Verkhoshansky) beside the deck's own supercompensation wording
+     8	category: [adaptation, supercompensation, slide-deck]
+     9	confidence: contested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Adaptation as Active Disequilibrium, Beside the Deck's Supercompensation Wording
+    15	
+    16	**What it is** — Two frames appear in the deck.
+    17	- Slide 4: "Adaptation is also NOT an equilibrium process (Verkoshansky)." Slide 5: adaptation "Is a phenomenon of accommodation," "characterizes the organism's entire reaction," "reflects the specific features of the external influences," and "is the active maintenance of a definite level of disequilibrium between the organism and the environment." Slide 5 credits the last bullet, "The fundamental reason for the origin and development of accommodative reconstruction within the organism," to Verkhoshansky (spelling as printed).
+    18	- Supercompensation wording: slide 2 calls the body "self-regulating and supercompensating." Slide 7: "The optimal load applied during a period of supercompensation (deload week) creates a summation/ additive affect that aids in stabilizing the increase in performance." Slide 9: "take advantage of supercompensation."
+    19	
+    20	**Why it works** — The deck gives no mechanism for either frame and never says the two differ. Inference: slide 7 uses the classic recover-then-rise picture, while slides 4-5 name a source (Verkhoshansky) whose co-authored book in this library argues "adaptive reconstruction" is a better term than supercompensation.
+    21	
+    22	**When to apply** — Treat the deck's deload advice as practice, not as support for any one adaptation theory. Eric's baseline: no stated position on supercompensation versus adaptive reconstruction in `docs/method-baseline.md`.
+    23	
+    24	**When NOT to apply** — Marked contested: the deck uses the supercompensation word (slides 2, 7, 9) while citing a source (slides 4-5) that this library records as critiquing it (see the Related entries); the deck does not acknowledge the tension. Do not cite slide 7's "period of supercompensation" as evidence that supercompensation occurs.
+    25	
+    26	**Example** — None given.
+    27	
+    28	**Related** — [[supertraining--verkhoshansky/claim--adaptive-reconstruction-vs-supercompensation]]; [[science-and-practice-of-strength-training--zatsiorsky/claim--one-factor-supercompensation-theory-contested-by-the-authors]]; [[claim--a-deload-week-in-a-supercompensation-period-adds-up-to-a-stable-gain]]; [[claim--general-adaptation-syndrome-and-accumulating-stress]]
+########## claim--general-adaptation-syndrome-and-accumulating-stress.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slide 4"
+     7	topic: Selye's three stages and the deck's statements that stress is accumulative and the body only separates local from general
+     8	category: [adaptation, stress, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# General Adaptation Syndrome and Accumulating Stress (Slide 4)
+    15	
+    16	**What it is** — Slide 4 (Adaptation): "Hans Selye-GAS (Stress of Life)", "3 stages (Alarm-Resistance-Exhaustion)", "Body does NOT differentiate stressors-all stress is stress and is accumulative over time", "Only differentiates between Local and General", and "Stress response of the body is greater for training than it is for a broken bone (general vs. local)." No year, page or study for Selye is given.
+    17	
+    18	**Why it works** — The deck gives no mechanism beyond naming Selye's stages. Inference: the "all stress is accumulative" line is the slide's reason a hard week of training, other life stress and a deload belong in one load picture, but the slide does not say so.
+    19	
+    20	**When to apply** — As background for why non-training stress is counted. Eric's baseline: no position on non-training stress as an input; recovery is "handled through training-load design alone" (line 153, Explicit).
+    21	
+    22	**When NOT to apply** — The training-versus-broken-bone comparison is a bare assertion with no source or magnitude. "Body does NOT differentiate stressors" sits next to the slide's next bullet that training affects seven different systems (see [[claim--training-hits-seven-biological-systems-that-do-not-adapt-at-the-same-time]]); the slide does not reconcile the two. Confidence is untested, since the deck only names the source.
+    23	
+    24	**Example** — None given.
+    25	
+    26	**Related** — [[claim--training-hits-seven-biological-systems-that-do-not-adapt-at-the-same-time]]; [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]; [[framework--reasons-for-deloading-rest-the-mind-overtraining-injury-and-progress]]
+########## claim--nobody-has-it-figured-out-versus-the-decks-own-prescriptive-weekly-template.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slides 3, 6, 12-16"
+     7	topic: the deck says nobody has it figured out and all programs are flawed, while also giving a detailed weekly template and a 'use them all' conclusion
+     8	category: [program-design, humility, slide-deck]
+     9	confidence: contested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# "NOBODY Has It Figured Out" Versus the Deck's Own Prescriptive Template
+    15	
+    16	**What it is** — Slide 6 ("NOBODY has it figured out"): "ALL programs are flawed," "training is by nature incomplete," "No perfect training variable," "No two people respond the same to the same stimulus," "No one best exercise for anything - they are all stimulus' to be used." The slide's last bullet is a jibe: "There are those who the only difference between them and GOD is God knows he is not them." Against that:
+    17	- Slide 3: "ALL programs work-they only work for so long."
+    18	- Slides 12-15 give a day-by-day weekly template with specific exercises, set and distance numbers and rules ("NO MORE than 3-5 exercises," "Total volume of speed training is between 300-500 yards").
+    19	- Slide 16: "Always search for the Holy Grail and realize there is no magic formula or magical programs," and "Train optimally not maximally."
+    20	
+    21	**Why it works** — The author gives no mechanism. Inference: the apparent contradiction can be read as "all programs work somewhat and none is final," so the template is one example, but the deck does not say that, and it does not present the template as an example of anything.
+    22	
+    23	**When to apply** — Read the weekly template (see [[framework--weekly-template-football-monday-tuesday-thursday-friday]]) as one coach's practice. Eric's baseline: the baseline holds his own model (undulating periodization, Dynamic Correspondence and others) and no position on this deck (`docs/method-baseline.md`, line 106).
+    24	
+    25	**When NOT to apply** — Marked contested: slide 3 "ALL programs work" and slide 6 "ALL programs are flawed" are both stated, and slide 6 "No one best exercise" sits against slides 12-15 which name specific exercises without a rationale. The deck keeps both and does not reconcile them. Do not quote either slide as the author's final position.
+    26	
+    27	**Example** — Slide 6 and slides 12-15 are the two sides of it; no outside example.
+    28	
+    29	**Related** — [[principle--nothing-works-forever-programs-have-a-shelf-life]]; [[framework--weekly-template-football-monday-tuesday-thursday-friday]]; [[heuristic--train-optimally-not-maximally]]
+########## claim--overtraining-from-too-much-volume-versus-too-much-intensity-as-printed.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slide 9"
+     7	topic: two overtraining types, from too much volume and too much intensity, with the slide's own tension
+     8	category: [overtraining, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Overtraining From Too Much Volume Versus Too Much Intensity, as Printed (Slide 9)
+    15	
+    16	**What it is** — Slide 9: "Strength training athletes are prone to overtraining from too much volume (addisonic-sympathetic inhibition)-which usually occurs in endurance athletes and from too much intensity (basedowic-sympathetic over activity)." The slide credits the list to Wendler's article (see [[framework--reasons-for-deloading-rest-the-mind-overtraining-injury-and-progress]]) and sends readers to Christian Thibaudeau's T-nation articles "for more." It also says "Prevent overtraining-yes Joe Weider & the barbarian brothers there is such a thing."
+    17	
+    18	**Why it works** — The author gives no mechanism and defines neither term. Inference: "sympathetic inhibition" for volume and "sympathetic over activity" for intensity map to a parasympathetic-dominant and a sympathetic-dominant picture of overtraining, as the Samuels deck in this library describes them, but the Morris slide does not say so.
+    19	
+    20	**When to apply** — Do not apply from the slide alone. Eric's baseline: no overtraining classification in `docs/method-baseline.md`; recovery is handled by load design (line 153, Explicit).
+    21	
+    22	**When NOT to apply** — The sentence is internally awkward: it says strength athletes are prone to the volume type, "which usually occurs in endurance athletes." The slide does not resolve this, so this entry does not either. Confidence is untested.
+    23	
+    24	**Example** — None given.
+    25	
+    26	**Related** — [[framework--reasons-for-deloading-rest-the-mind-overtraining-injury-and-progress]]; [[overtraining-and-sleep--samuels/framework--sympathetic-and-parasympathetic-overtraining-signs]]
+########## claim--speed-volume-of-300-500-yards-and-the-opening-hill-progression.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slides 12, 14"
+     7	topic: speed training volume of 300 to 500 yards, opening with hills, with the interval figures as printed
+     8	category: [speed, volume, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Speed Volume of 300-500 Yards and the Opening Hill Progression (Slides 12, 14)
+    15	
+    16	**What it is** — Slide 12 (Monday): speed training from "Charlie Francis short to long program." "Example: 1st 3 weeks hills for acceleration 10/10 10sec rest-2mins- 10/20 20sec rest-2mins- 2/30 30sec rest (skill only)." "Total volume of speed training is between 300-500 yards." Slide 14 (Thursday): "Speed training-same volume of work as Monday (as they adapt to workout will change sets and reps)." The hill figures are ambiguous as printed: "10/10 10sec rest" could mean 10 runs of 10 yards with 10 seconds rest, which this entry does not assume, and the "2mins" could be the rest between groups.
+    17	
+    18	**Why it works** — The author gives no mechanism. The slide names Charlie Francis; slide 17 lists him among the influences. The deck gives no results.
+    19	
+    20	**When to apply** — As a pointer to a total-volume range. Eric's baseline: speed is re-exposed about every 5 days because it fades fastest (Issurin; Eric, interview 2026-09-28, Q16; `docs/method-baseline.md`, lines 97 and 184). Inference: a Monday-Thursday speed pair fits that five-day logic; the deck does not give that reason.
+    21	
+    22	**When NOT to apply** — "Skill only" restricts the hill example to skill players. The distance unit is yards, no per-rep speed or intensity is given, and volume is "between 300-500" with no rule for choosing a point in that range. Confidence is untested.
+    23	
+    24	**Example** — The hill example above, as printed.
+    25	
+    26	**Related** — [[framework--weekly-template-football-monday-tuesday-thursday-friday]]; [[heuristic--train-linemen-like-throwers-and-skill-players-like-sprinters]]
+########## claim--training-hits-seven-biological-systems-that-do-not-adapt-at-the-same-time.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: deload-to-reload--morris
+     6	chapter: "slide 4"
+     7	topic: training affects seven biological systems, attributed to Omegawave, that adapt at different times
+     8	category: [adaptation, systems, slide-deck]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-12
+    12	---
+    13	
+    14	# Training Affects Seven Systems That Do Not Adapt Together (Slide 4)
+    15	
+    16	**What it is** — Slide 4: "Training affects 7 different biological systems (omegawave)": Cardiac, Cardiopulmonary, Hormonal, Detoxification, Metabolic, CNS, neuromuscular. "All these systems DO NOT adapt at the same time." The deck gives no timelines for any system and no Omegawave source beyond the lowercase attribution.
+    17	
+    18	**Why it works** — No mechanism given. Inference: the claim supports using a block or wave that targets one quality at a time, but the slide draws no such conclusion.
+    19	
+    20	**When to apply** — As a reminder that one testing result rarely speaks for the whole athlete. Eric's baseline: daily mRSI from CMJ is the readiness marker, and he separates preparedness from readiness (`docs/method-baseline.md`, lines 64 and 74). Inference: that is a single-marker approach, so this slide argues for caution when reading it alone; the deck does not discuss CMJ.
+    21	
+    22	**When NOT to apply** — Seven is the deck's count with no definition of each category; "Detoxification" is not defined. Confidence is untested.
+    23	
+    24	**Example** — None given.
+    25	
+    26	**Related** — [[claim--general-adaptation-syndrome-and-accumulating-stress]]; [[claim--adaptation-as-active-disequilibrium-and-the-decks-supercompensation-wording]]
