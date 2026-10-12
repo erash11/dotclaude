@@ -512,6 +512,11 @@
   },
   "outputStyle": "ELI5",
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-haiku-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "advisorModel": "fable",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
