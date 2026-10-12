@@ -5,8 +5,24 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 80892ff4-3719-4a85-aa22-4eaf3500081d
-  modified: 2026-10-03T16:05:33.880Z
+  modified: 2026-10-12T02:00:01.358Z
 ---
+
+**Update 2026-10-11 — six noisy rules allowlisted (Eric's choice)** in
+`~/Library/Application Support/dcg/allowlist.toml`: `core.git:git-alias-semantic-unverified`,
+`core.filesystem:redirect-truncate-root-home`, `redirect-truncate-dynamic-path`,
+`mv-sensitive-source-root-home`, `mv-dynamic-path`, `heredoc.posix:pipeline-consumer`.
+So `> ~/x`, `> "$VAR/x"` and `mv ~/a ~/b` now pass — the rewrites below are no longer needed
+for those. Hard stops kept on purpose: `rm-rf-*`, `branch-force-delete`, `checkout-discard`,
+`restore-worktree`. Undo one with `dcg allowlist remove <rule>`. A Claude Code
+`permissions.allow` rule can NOT get past dcg — it is a hook, and hook blocks win.
+
+**Duplicate hook root cause (2026-10-11):** dcg's `self_heal_hook` (default true) re-adds a
+hardcoded `/Users/kristinarash/.local/bin/dcg` PreToolUse entry on every run when it doesn't
+see that exact string — that is why commits f17531c / 7387e7e "dropped" it three times and it
+kept coming back. Fixed by `self_heal_hook = false` in `~/.config/dcg/config.toml`; the guarded
+`if [ -x "$HOME/.local/bin/dcg" ]…` entry is the one to keep. If the duplicate reappears,
+check that setting first (a dcg update or `dcg install` may reset it).
 
 The `dcg` guard sits in front of Bash and rejects a command **before any of it runs**.
 It blocks the *whole* invocation, not the offending line — so a `set -e` script with
