@@ -290,7 +290,8 @@
     "to-prd": "off",
     "visual-explainer": "off",
     "watch": "off",
-    "web-scraping": "off"
+    "web-scraping": "off",
+    "articulation-skill": "name-only"
   },
   "hooks": {
     "UserPromptSubmit": [
@@ -387,10 +388,6 @@
       {
         "matcher": "Bash|PowerShell",
         "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/kristinarash/.local/bin/dcg"
-          },
           {
             "type": "command",
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
