@@ -1,6 +1,10 @@
 # STATUS
 
 ## Current state
+- 2026-10-11 (Mac, doctor-plus): `claude doctor` clean (2.1.296; one failed auto-update today). Tier A
+  `MEMORY.md` index de-duplicated (19.8 KB → 7.1 KB, `06dc069`; the 59 long lines came from
+  `cb4ace5` Windows import merge). Duplicate dcg hook removed by Eric by hand; the backup commit
+  `ff6a02b` carries it. Handoff: `~/DEV/docs/handoffs/2026-10-11-doctor-plus-context-audit.md`.
 - 2026-10-10 (Mac): `/doctor` check. Claude Code 2.1.296 is the latest. Background auto-updates turned on (`autoUpdates` in `~/.claude.json`). Two SessionStart hooks (`superpowers-quiet.mjs`, `keystone-unified-snapshot.js`) timeout raised 5s → 15s. Both run in about 0.1s by hand, so the cause of the 17 startup timeouts is unknown. Handoff: `global-memory/handoffs/2026-10-10-doctor-config.md`.
 - 2026-10-07 (Mac): mattpocock-skills 1.3.1 win every overlap (Tier A
   `feedback_defer-to-mattpocock-skills.md`). The memsearch Milvus and nightly-digest
@@ -14,13 +18,11 @@
 - Windows and macOS share this configuration repo through GitHub. Managed skills remain authored in the separate `~/.claude/skills` repo and published to generated Windows views.
 
 ## Next
-- Eric: decide the duplicate dcg hook. The committed `settings.json` still has two dcg entries. `stash@{0}` holds the 2026-10-05 removal. Pick one before the next `settings.json` commit.
+- After restarting Claude, run `grep -c "local/bin/dcg" ~/.claude/settings.json`. It must print 1. If it prints 2, an open session wrote the old copy back (see Gotchas).
+- `stash@{0}` (the 2026-10-05 dcg removal) is now redundant. Drop it with `git -C ~/.claude stash drop` once the check above prints 1.
 - Check the startup hook timeouts again around 2026-10-17. Count `hook_cancelled` entries with `timedOut` in recent transcripts.
 - On Windows: `Get-Content ~\.claude\scripts\logs\nightly-digest.log -Tail 5` to get the real
   send error (`HARNESS_FIXES.md` #10), then the Milvus checks in #9.
-- Eric: close all Claude sessions, run `git -C ~/.claude restore settings.json` (drops the
-  duplicate Mac dcg hook), then reopen and check `git -C ~/.claude diff --stat settings.json`.
-- Do not commit `settings.json` while it shows the extra `/Users/kristinarash/.local/bin/dcg` entry.
 - Everything else system-side: `HARNESS_FIXES.md`, Friday slot only.
 - Resume from `global-memory/handoffs/2026-09-24-sportsmith-video-workflow.md`.
 - Draft a portable video-processing and transcript-review skill in the canonical skills repo, then sync it to Codex and `.agents` views.
