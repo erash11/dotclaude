@@ -65,13 +65,12 @@ Never put memory content here — the file itself holds the facts.
 - [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
 - [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
-- [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix outside Friday's slot
+- [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
 - [Work laptop hands-off](project_work-laptop-hands-off.md) — anything that runs on the Windows laptop; scheduled tasks there
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [feedback_admin-docs-house-style.md](feedback_admin-docs-house-style.md) — Every document going to administration uses the Baylor house style (Baylor_Doc_Style) — no local sizes/margins; ask before breaking a page limit
 - [feedback_defer-to-mattpocock-skills.md](feedback_defer-to-mattpocock-skills.md) — Eric wants the mattpocock-skills plugin (1.3.1) used first when one fits; which Pocock skill beats which overlapping skill
-- [feedback_harness-time-budget.md](feedback_harness-time-budget.md) — Harness/system work is capped to a weekly Friday slot; outside it, defer fixes and steer to real work
 - [feedback_ingest-review-gate.md](feedback_ingest-review-gate.md) — Before any expensive, hard-to-inspect ingest (ingest-book atomization): a verification step plus an independent model review must pass first
 - [feedback_post-merge-cleanup.md](feedback_post-merge-cleanup.md) — Standing OK (2026-09-26) to delete worktrees and branches once merged, without asking; the verify-first rule and the Windows read-only trap
 - [project_42analytics-youtube-pipeline.md](project_42analytics-youtube-pipeline.md) — 42 Analytics YouTube channel to Flint pipeline; caption 429 throttling, subagent summary.md write block, empty TypeSafe key trap
@@ -128,3 +127,4 @@ Never put memory content here — the file itself holds the facts.
 - [user_sport-science-thought-partner.md](user_sport-science-thought-partner.md) — Why Eric feeds in Oldbull, SCN, SportSmith, CLA and other performance material — to build Claude into his sport-science / S&C / rehab thought partner
 - [user_sports-teams.md](user_sports-teams.md) — Sports teams the user follows — use for score, schedule, and game-summary requests
 - [user_working-conditions-bottleneck.md](user_working-conditions-bottleneck.md) — Eric's self-identified bottleneck is working conditions, not effort — he needs a thinking partner / sharing outlet, and lacking one he goes looking for people and loses time
+- [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
