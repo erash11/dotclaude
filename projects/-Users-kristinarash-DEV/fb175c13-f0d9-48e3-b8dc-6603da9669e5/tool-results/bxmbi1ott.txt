@@ -1,0 +1,164 @@
+=== framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2
+kind: framework
+chapter: "9.1"
+topic: general adaptation mechanism
+category: [adaptation, stress, endocrine, theory]
+confidence: untested
+
+# Small, Familiar Loads Stay Within Specific Homeostatic Reactions; Larger or Longer Loads Switch On the General (Stress) Adaptation Mechanism (Viru, Fig 2)
+
+**What it is** — Verkhoshansky, using Viru's scheme (9.1 Introduction, PDF 518-519 / p.507-508, checked against the page images): "Management of the adaptation process is done by the CNS (Figure 2)." Its first result is "the activation of specific homeostatic reactions." "When the strength (level) of the irritants is not high and the changes in the external and internal environment is not great, and in the presence of the previously worked out adaptation to a given action, the adaptational effect is limited to the specifics of the homeostatic reactions." As the strength and duration of the influence rise, the cells' own energy and plastic capabilities "require support from the side of general mobilization of the energy and plastic reserves of the body. This means mobilization of the non-specific component of adaptation or (according to Viru) inclusion of the general adaptation mechanism.
+
+**Why it works** — The hormonal division of labour he gives, citing Viru (32, 289) and Yakovlev (144): "In mobilization of the energy resources of the body and in the energy provision function, predominant importance is given to the sympatho-adrenal system," acting through "hormonal (adrenaline) and mediatory (noradrenaline) links." "Mobilization of the plastic reserve of the body under stress is a function of the hypophyseal-adrenocortical system," tied to "the creation of a free amino acid reserve" for adaptive protein synthesis (PDF 519 / p.508). In the adapted body "there is increased power of the mechanism of the hormonal - humoral regulation," which "increases the maximum reaction of the body to limit loads, that ensures maximum mobilization of its functional capabilities" (PDF 519 / p.508).
+
+**When to apply** — Inference: use the two branches to judge what a session asks for. A familiar, moderate session in a trained athlete stays in the specific branch and mostly maintains; a new, heavier or longer load recruits the general stress response, which is what funds new structure. This frames why Verkhoshansky ties progressive adaptation to a training influence that "brings about systematic disturbance of body homeostasis" (PDF 521 / p.510; see [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]]).
+
+**When NOT to apply** — The page gives no thresholds: "not high" and "not great" are not quantified, so the scheme cannot tell a coach where one branch ends. It is a cited model (Viru 1981), shown without data, so it is rated `untested`. The stress-state framing follows Selye (cited on PDF 516), so the same caution applies as in the 8.5 overtraining entry: "stress" here is a whole-body hormonal state, not only fatigue. Inference: modern work adds local signalling (mechanical tension, for example) that this hormone-centred scheme does not show.
+
+**Example** — Fig 2 (PDF 518 / p.507): the stressor reaches the CNS, which can answer through the specific homeostatic box alone or also through the three general-adaptation boxes, one of which leads on to "Ensuring the transition to the long term adaptation."
+
+**Related** — [[framework--bauer-kasnacheev-energy-and-plastic-flows-fig-1]], [[claim--acute-adaptation-runs-at-the-limit-and-long-term-adaptation-needs-protein-synthesis]], [[claim--car-volume-is-capped-and-shrinks-as-mastery-nears-the-genetic-limit]] (the same two hormonal systems cap the reserve), [[claim--overtraining-is-accumulated-stress-adaptation-imbalance-exhaustion-is-short-term]] (8.5, Selye's stress), [[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]] (6.9.4, the same specific-to-general-to-long-term sequence: "the fundamental condition for switching from the acute (specific) reaction ... to the general (non-specific) adaptive reaction, and then to the development of long-term adaptation", PDF 369 / p.358)
+=== claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation
+kind: claim
+chapter: "6.8.1"
+topic: compensatory and long-term adaptation
+category: [adaptation, long-term-development, theory, overtraining]
+confidence: supported
+
+# Compensatory Adaptation Is Temporary and Comes First; Stable Adaptation Builds on It, and Has a Limit
+
+**What it is** — The authors split adaptation into two layers (PDF p. 359 / printed p. 348, checked against the page image; the figure it refers to is on PDF p. 358):
+- **Compensatory adaptation.** The annual changes in functional indicators (Fig 6.22, graphs B and C) "are temporary, unstable and to a certain extent, reversible." Their basis is "compensatory mechanisms, i.e. reactions designed to maintain the necessary level of functioning for brief periods under demanding conditions which ultimately lead to stable adaptation." These "gradually fade as adaptation takes place," and "Insofar as these mechanisms precede adaptation, they should be designated pre-adaptation phenomena (Kuznyetsov, 1979)."
+- **Long-term, stable adaptation** (graph A). "compensatory adaptation is a prerequisite condition for the development of long-term, stable adaptation," which "can progressively increase if the functional reconstruction during the course of compensatory adaptation is sufficient to produce a noticeable effect on the external interactions of the body and increase its special work capacity."
+
+Three further statements on the same page:
+1. "adaptation cannot be considered an equilibrium process. Adaptation is the dynamic maintenance of a definite level of imbalance between the body and the environment" (Bauer, 1935; Bernstein, 1966).
+2. The systems involved improve at different rates. This heterochronicity "is determined by: the action of particular physiological systems in establishing long-term adaptation of a specific emphasis; differences in their reactiveness (or adaptive inertia); changes in the role of these systems at different stages of long-term adaptation."
+3. "Long-term compensatory adaptation cannot continue indefinitely." Its effect "diminishes with each repetition," described "by a parabola whose peak is eventually reached with time (Fig 6.22, graph A). This indicates that an athlete's general adaptation reserves have a limit that is genetically predetermined." The limit shows as "waves in the dynamics of special work capacity (graphs B and C)," caused partly by "traditional periodisation" but "a more important reason is the exhaustion of the so-called current adaptation reserves (CAR) of the body."
+
+**Why it works** — The authors' account is the one above: short-term compensations hold function under stress, and if they change performance enough, the body consolidates them. They state that the picture is clearest in explosive-strength sports, and that research on adaptation (Folbrot, Selye) "has to be taken much further in its application to the development of sporting mastery, especially in endurance sports"; until then they assume "the same, above-mentioned chief mechanisms, although at another level of the physiological systems" (PDF p. 359 / printed p. 348). Inference: the "genetically predetermined" limit is inferred from the shape of the curve, not from genetic data.
+
+**When to apply** — Inference: treat a season's gains in functional indicators as provisional until they hold through a lower-load period; a quality that survives the transition phase has become stable adaptation in the authors' terms. When a block stops producing gains, the authors' model points to exhausted current reserves before it points to a genetic ceiling (see [[principle--load-must-sit-within-the-current-adaptation-reserve-window]]).
+
+**When NOT to apply** — No data are given for the parabola or the genetic limit. Graph A's slope shrinks each year, consistent with the parabola, but no peak is drawn within the three years (PDF p. 358 / printed p. 347). The "imbalance" definition is a theoretical position (Bauer, Bernstein), not a measured one. Inference: it is closer to the allostasis model in Evans's course material (regulation that changes set points to meet demand; see Related) than to fixed-set-point homeostasis.
+
+**Example** — The authors' own: Fig 6.22, where the functional indicators B and C wave above and below the rising fitness state A within each year (PDF p. 358 / printed p. 347).
+
+**Related** — [[claim--four-observations-on-long-term-speed-strength-adaptation]], [[principle--load-must-sit-within-the-current-adaptation-reserve-window]], [[claim--adaptive-reconstruction-vs-supercompensation]], [[claim--heterochronic-biochemical-adaptation-sequence]], [[claim--heterochronicity-of-strength-quality-and-muscle-group-development-order]], [[claim--speed-barrier-is-genetic-ceiling-not-neural-block]], [[elite-sports-performance--evans/framework--homeostasis-vs-allostasis-mcewen-sterling]]. From 9.1: [[claim--acute-adaptation-runs-at-the-limit-and-long-term-adaptation-needs-protein-synthesis]] (9.1, the protein-synthesis mechanism of the transition), [[framework--bauer-kasnacheev-energy-and-plastic-flows-fig-1]].
+
+**Also in 9.1** — Verkhoshansky's own paper restates the two layers in 9.1 §1.1, "Understanding compensatory adaptation" (PDF 521 / p.510, checked against the page image). The compensatory mechanisms are "dynamic and quickly rising physiological means of breakdown in order to provide for the body in extreme conditions and to gradually extinguish these means according to the amount of development of stable long term adaptation," so "they can be looked at as pre-adaptation appearances (Kusnetzov, 68)." Long-term adaptation "can have a progressive character if the training influence is stressful and brings about systematic disturbance of body homeostasis," and if the restructuring is "sufficiently substantial." The mechanism of the transition is in [[claim--acute-adaptation-runs-at-the-limit-and-long-term-adaptation-needs-protein-synthesis]].
+=== framework--two-levels-of-the-constructive-effect-of-adaptation
+kind: framework
+chapter: "9.1"
+topic: constructive effect of adaptation
+category: [adaptation, supercompensation, delayed-training-effect, theory]
+confidence: contested
+
+# The Constructive Effect of Adaptation Has Three Bases and Works at Two Levels: Session Supercompensation and the Long-Term Delayed Training Effect
+
+**What it is** — In 9.1 section 1.5, "Essentials of the constructive effects of the adaptational process," Verkhoshansky (9.1 §1.5, PDF 530 / p.519, checked against the page image): "The foundation for the development of the adaptational process in sports activity is the strengthened synthesis of structural and enzymatic proteins in the actively functioning cells." Strengthened protein synthesis "appears as a constructive effect of the adaptational process." "The basis for the constructive effect of adaptation lies in three phenomena (Yakovlev, 144, Viru, 32, Viru, Kirge, 35, Verkhoshansky, Viru, 286):
+- specificity of protein synthesis in the after work period, conditioned by the character of the work executed, its intensity and means of energy provision,
+- supercompensation of the ingredients, that are used up during the time of work (substrates serving as sources of energy and different structural and enzymatic proteins),
+- a positive correlation between the catabolic and anabolic processes, brought about by the muscular work."
+
+From these he names "two levels of the constructive effect." "One of them is related to the well known phase of restitution that is inherent in the phenomenon of supercompensation of products and energy used up in external work (Yakovlev, 139, 144, Viru, 289). The other level is related to the long stages of training. It is expressed in the long and steady increase in the functional indices after their long decrease as a result of using concentrated training loads, is known as the long term delayed training effect (Verkhoshansky, 23, 24, 25, 280, 281, 282, 283)" (PDF 530 / p.519).
+
+**Why it works** — The short level rests on restitution: the phase after work "is characterized not only by increased metabolism but also a higher turnover speed of the muscle proteins which ensures the renewal of the molecular composition of the actin - myosin complex," clearing "'physiologically exhausted' structural 'footprints'" (Viru, 289, 291). "The program of biochemical changes ... determine the catabolic processes taking place in the muscles during the time of work. This program is realized during the time of rest" (PDF 530 / p.519). Inference: the long level is the same process summed over a concentrated block; the page says only that it "is related to the long stages of training" (see [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]]).
+
+**When to apply** — Inference: use the two levels to keep two time scales apart when judging a plan. A session or microcycle is judged by restitution over hours to days; a concentrated block is judged by the delayed rise weeks after the loading, not by how the athlete performs during it.
+
+**When NOT to apply** — Rated `contested` because the book contradicts itself on the second phenomenon. Here supercompensation covers "different structural and enzymatic proteins." In 1.16 the authors prefer "adaptive reconstruction," and the 1.16 text states "No supercompensation has yet been observed to occur among any of the other biochemicals" (PDF 99 / p.88; see [[claim--adaptive-reconstruction-vs-supercompensation]]). Same claim, same book. The page shows no data for either level. The link between the two levels (that the long-term effect is built from session-level restitution) is not stated on the page.
+
+**Example** — Verkhoshansky's own definition of the long level: "the long and steady increase in the functional indices after their long decrease as a result of using concentrated training loads" (PDF 530 / p.519), the pattern drawn as strategy C in Fig 4 (see [[framework--three-adaptation-strategies-low-uniform-high-and-concentrated-fig-4]]).
+
+**Related** — [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]] (6.10), [[claim--adaptive-reconstruction-vs-supercompensation]] (1.16), [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]], [[claim--metabolites-induce-and-hormones-amplify-adaptive-protein-synthesis]], [[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]] (4.1.2, the authors' names for effects on different time scales). From the next pages of 9.1: [[claim--yakovlev-glycogen-supercompensation-wave-fig-6]] (the short level, Fig 6), [[claim--restitution-scales-with-work-expenditure-and-sets-adaptive-biosynthesis]] (the third basis spelled out, PDF 535 / p.524), [[claim--supercompensation-laws-extend-to-concentrated-spp-stages-of-10-12-weeks]] (PDF 535 / p.524 states that the supercompensation laws also apply to concentrated SPP stages of 10-1
+=== framework--heterochronism-and-three-levels-of-adaptation-restructuring
+kind: framework
+chapter: "9.1"
+topic: heterochronism of adaptation
+category: [adaptation, heterochronicity, theory, time-course]
+confidence: untested
+
+# Adaptation Is Heterochronic and Runs on Three Levels: Quick Homeostatic Reactions, Compensatory Structural Change, Long-Term Systemic Restructuring
+
+**What it is** — 9.1 §1.6, "Heterochronism of the adaptational restructuring" (PDF 538 / p.527, checked against the page image). Verkhoshansky: "Development of the adaptation process is tied in with a definite heterochronicity in the formation of accommodative body restructuring. Heterochronicity appears first in the failure to coincide moments of time with the corresponding beginnings of the intense improvement of one or another functional system. Second, it appears in the specific consecutiveness of the adaptation reactions and development of morphofunctional restructuring of the body." The three levels, each with "its own specific character in regard to heterochronicity" (PDF 538-539 / pp.527-528):
+1. "level of biochemical processes ensuring energy and plastic functions at the time of work and immediately after its conclusion (level of quick homeostatic reactions)";
+2. "level of compensatory accommodation restructuring, in the foundation of which, are the structural (morphological) transformations in the body (level of compensatory adaptation)";
+3. "level of global functional-systemic restructuring (level of long term steady adaptation)."
+The first level is detailed by Fig 9 and Table 2 ([[framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9]], [[framework--restoration-times-by-biochemical-process-table-2]]); the second and third by Fig 10 ([[claim--function-leads-structure-and-power-precedes-capacity-and-economy-fig-10]]).
+
+**Why it works** — The stated causes of heterochronicity: "the changes in the external interactions of the body, a gradual increase in the intensity of the body work regime with an increase in sports mastery and with changes tied in with these roles in the maintenance of separate functional systems, and likewise with a definite inertness of different body systems (Verkhoshansky, 13, 17, Yakovlev, 144)" (PDF 538 / p.527).
+
+**When to apply** — When reading a monitoring trend: a fast marker (a session's metabolic response) and a slow one (structural or whole-system change) are expected to move at different times, so a lack of change in a slow marker after a few weeks is not by itself a failed block. Inference: the three levels map onto session, block and multi-year time scales; the page names the levels but gives no durations for them.
+
+**When NOT to apply** — Rated `untested`: a conceptual scheme with citations (Verkhoshansky 24, 25; Verkhoshansky and Viru 28, 286) and no data. The same three levels reappear in 1.10 on PDF 554 / p.543 (outside this batch); 9a's Viru scheme ([[framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2]]) is a related but separate sequence (specific, general, long-term). The page says more on heterochronicity is in "the section on laws of morphofunctional specialization" (PDF 540 / p.529), which is outside this batch.
+
+**Example** — Verkhoshansky's own level 1: "fast flowing biochemical processes activated in a definite consecutiveness during work and post work periods (Figure 9)" (PDF 539 / p.528).
+
+**Related** — [[claim--heterochronic-biochemical-adaptation-sequence]] (1.16), [[claim--heterochronicity-of-strength-quality-and-muscle-group-development-order]], [[framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2]], [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]], [[framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9]], [[framework--restoration-times-by-biochemical-process-table-2]], [[claim--function-leads-structure-and-power-precedes-capacity-and-economy-fig-10]]
+=== claim--car-volume-is-capped-and-shrinks-as-mastery-nears-the-genetic-limit
+kind: claim
+chapter: "9.1"
+topic: current adaptation reserve
+category: [adaptation, long-term-development, elite-athletes, loading]
+confidence: untested
+
+# The Current Adaptation Reserve Has a Ceiling Set by Two Factors, and It Shrinks as an Athlete Nears the Genetic Limit
+
+**What it is** — In 9.1 section 1.2, "Current adaptation reserves of the body," Verkhoshansky describes the compensatory phase as one of "intense mobilization of the energy and plastic reserves of the body. This phase cannot be long." After it, "the body recovers its functions up to a level which significantly surpasses the initial" (9.1 §1.2, PDF 521 / p.510, checked against the page image). "This is the beginning hypothesis of the current adaptation reserve (CAR), which the body always has available for extreme situations that may arise requiring maximum functional loading (Verkhoshansky, 1985- 24, 1988 - 282, 1993 - 27)." Two new points follow. First, "The volume of CAR has a definite limit, which is conditional (as determined from specialized studies) based on two factors: the adaptation (functional) reserve of the sympathetic-adrenal and hypophysial - adrenocorticoid systems (Viru, 
+
+**Why it works** — Verkhoshansky's mechanism: the first factor is hormonal, the same two systems that fund energy and plastic mobilisation under stress (see [[framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2]]). The second is how much restructuring has already happened. Inference: the more an athlete has already adapted, the less distance is left to the genetic limit, so each block can buy less.
+
+**When to apply** — Inference: when an advanced athlete's gains from a block are smaller than a younger athlete's from the same block, this account says that is expected, not a programming failure. It also argues for spending the reserve with care in elite athletes, since there is less of it.
+
+**When NOT to apply** — Verkhoshansky calls CAR a "hypothesis" ("the beginning hypothesis") and the "specialized studies" that set its two limits are not shown; no measure of CAR is given, so it cannot be tested or tracked from this page. The genetic-limit reading rests on his own books (refs 24, 27, 282). Rated `untested`; the existing 6.8.1 entry on dosing within CAR is rated `supported` on the authors' fuller Chapter 6 account.
+
+**Example** — Verkhoshansky's own evidence that a reserve exists is indirect: "the presence of the adaptation reserve in the body is seen in cases of accidents (wrecks)" (Yakovlev, Prokop, Beckman, Letunov, Garkavi; PDF 522 / p.511). He gives no sport example on these pages.
+
+**Related** — [[principle--load-must-sit-within-the-current-adaptation-reserve-window]] (6.8.1, the dosing rule), [[heuristic--concentrated-blocks-of-3-4-weeks-three-in-a-row-then-longer-recovery]] (how long it takes to exhaust CAR), [[claim--speed-barrier-is-genetic-ceiling-not-neural-block]] (another genetic-ceiling argument in the book), [[claim--acute-adaptation-runs-at-the-limit-and-long-term-adaptation-needs-protein-synthesis]], [[framework--three-adaptation-strategies-low-uniform-high-and-concentrated-fig-4]]
+=== principle--load-must-sit-within-the-current-adaptation-reserve-window
+kind: principle
+chapter: "6.8.1"
+topic: current adaptation reserves
+category: [adaptation, training-load, overtraining, programming]
+confidence: supported
+
+# Load Must Sit Inside the Current Adaptation Reserve Window: Too Little Wastes It, Too Much Exhausts It
+
+**What it is** — The authors make the current adaptation reserves (CAR) a programming rule (PDF p. 359 / printed p. 348, checked against the page image): "At any instant, the body has a definite reserve potential, i.e. a capability of responding to adapt to external influences and raise itself to a new functional level," limited by "definite physiological mechanisms." Hence "the intensity, volume and duration of the training influences determine the optimal development of the body's CAR. If the magnitude of these are below certain thresholds, the body will not fully utilise its CAR, whereas, if they exceed it, exhaustion of reserve potential will occur and the training effect will be low or negative."
+
+The goal follows: "one can consider training organisation to be effective when it produces the maximum growth of the body's CAR by means of the appropriate volume of loading." Useful programming therefore needs "means of assessing the body's CAR in each case, together with criteria for determining the contents and volume of the training loads," and a quantitative approach "is based, in particular, on assessments of a number of bio-chemical indicators of energy exchange processes (Beckman et al, 1961; Yakovlev, 1977)" (PDF p. 360 / printed p. 349, checked against the page image).
+
+The authors place this inside the older three-phase schemes of form: "(a) the growth of trainability, (b) sporting form, (c) loss of trainability (Letunov, 1952)"; "(a) adaptation, (b) the highest sport work-capacity, (c) re-adaptation (Prokor, 1959)," where re-adaptation is "decrease in work capacity as the limits of adaptability are exceeded" (PDF pp. 359-360 / printed pp. 348-349); and Matveyev's "acquisition, preservation and brief loss of sporting form (Matveyev, 1964)" (PDF p. 360 / printed p. 349). "Prokor" is the book's spelling.
+
+**Why it works** — The authors' reasoning is a threshold model: a reserve with a fixed size at any moment is under-used by small loads and depleted by large ones. They give no measured threshold. Inference: Bompa's threshold-of-adaptation entry (Related) sets out three outcomes of loading (an increasing, varied load, adaptation; an unchanging load, plateau; an excessive one, maladaptation) at the level of single loads; the authors apply it to a whole training phase.
+
+**When to apply** — Inference: when a block produces no gain, ask first whether the load was below threshold (too little) or beyond it (exhaustion); the remedy is opposite in the two cases. The authors' wave signal (see Related) is one way to tell: waves in special work capacity mark the reserve running out. Eric's baseline: the mRSI decision read uses individualized thresholds, "Percent change from baseline or a rolling average. We've used standard deviations and SWC to diagnose signal versus noise" (`docs/method-baseline.md` line 75, Explicit (interview 2026-09-28, Q2, Q2a)). Inference: that is a practical, non-biochemical stand-in for the "means of assessing the body's CAR" the authors ask for, read at the weekly scale.
+
+**When NOT to apply** — The page names biochemical indicators only in general and cites 1961 and 1977 work; no assay, threshold or validated CAR measure is given. Chapter 1 gives two conflicting definitions of CAR (the readily available energy versus the deep adaptation energy; see [[claim--adaptive-reconstruction-vs-supercompensation]]); this section does not settle which is meant. Inference: treat CAR as a planning concept, not a measurable quantity.
+
+**Example** — The authors' own application follows on the same page: the durations of continuous and concentrated loading blocks that they say maximally enhance the CAR (see [[heuristic--concentrated-blocks-of-3-4-weeks-three-in-a-row-then-longer-recovery]]).
+
+**Related** — [[claim--adaptive-reconstruction-vs-supercompensation]], [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]], [[framework--distributed-vs-concentrated-loading-two-forms-of-compensatory-adaptation]], [[heuristic--concentrated-blocks-of-3-4-weeks-three-in-a-row-then-longer-recovery]], [[elite-sports-performance--evans/framework--verkhoshansky-activation-levels-and-threshold-of-adaptability]], [[periodization--bompa/principle--progressive-overload-threshold]], [[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]] (6.9.4, volume as the "disturbance of the body's homeostasis"). From 9.1: [[claim--car-volume-is-capped-and-shrinks-as-mastery-nears-the-genetic-limit]] (9.1, what sets the size of CAR).
+
+**Also in 9.1** — Verkhoshansky restates the rule in 9.1 §1.2 (PDF 522 / p.511, checked against the page image): "If the strength (magnitude), volume and duration of the training influences are below the necessary (optimal) amounts, CAR will not be realized; if they go above it, it leads to extreme exhaustion of the reserve capabilities. In both cases, the resulting training effect will be low (Verkhoshansky,Viru, 28, 286)." New in 9.1 are the two factors that cap CAR and its shrinkage with mastery: see [[claim--car-volume-is-capped-and-shrinks-as-mastery-nears-the-genetic-limit]].
+=== framework--pasm-laws-of-adaptation-to-temporal-forms-of-training-fig-3
+kind: framework
+chapter: "9.1"
+topic: process of achieving sports mastery
+category: [training-theory, long-term-development, programming]
+confidence: untested
+
+# Training Theory as a Hierarchy: Laws of Adaptation, Then Laws of Sports Mastery, Then Principles, Then the Time Forms of Training (Fig 3)
+
+**What it is** — Verkhoshansky opens 9.1 with the "multi year Process of Achieving Sports Mastery (PASM)," which "was developed on a base of definite laws. Athletes can achieve the heights of sports mastery by different pathways and expend different amounts of time doing this. However, the path taken by each athlete will have general traits, inherent to all athletes," set by "genetically imposed abilities of the body to accommodate" (9.1 Introduction, PDF 515 / p.504, checked against the page image). "The general laws of PASM are first of all determined by the laws of development of the adaptational process related to sports activity (Figure 3)" (PDF 519 / p.508). Figure 3 ("The principal structure of the fundamentals of the Theory and Methodology of Sport Training," PDF 520 / p.509, read from the image; no source is given) stacks: "The laws of adaptation"; "General laws of PASM"; two br
+
+**Why it works** — His argument: "The general laws of the PASM reflect the necessary structure of multiyear training in an objective manner, including the order of development of all of its components and the principles of their interactions." The principles are "joined with the objective display of the practical realization of the laws of adaptation of the body to loaded muscular activity, to determine the organizational-temporal form of constructing sports training" (PDF 520 / p.509). Other drivers of mastery, "socio-economic conditions, effectiveness of the theoretical concept of training, professional mastery of the coach, the individual psycho-physiological personality traits of the athlete and so on," are, "even with the indubitable significance of these factors, ... secondary. They can be looked at (and realized) under the process of PASM, but do not determine the principle mechan
+
+**When to apply** — As an order of questions when building or auditing a plan: what adaptation is wanted, what the sport's specialisation and technical demands require, which principles follow, and only then how to lay out years, blocks, weeks, days and sessions. Inference: the figure puts the calendar last, which is the reverse of building a plan by filling a template of weeks.
+
+**When NOT to apply** — Verkhoshansky states that "It has been proven that the unique correct path to the formulation of effective practical principles of sports training is through the clarification of the laws of human body adaptation" (PDF 519 / p.508), but the page cites his own and colleagues' work, not a test of that claim; it is his position, rated `untested` here. The figure has no source line and no data. Inference: for a team-sport staff, the factors he calls "secondary" (coach skill, the athlete's personality, budgets and schedules) often set the real limits, so the hierarchy describes the logic of a plan, not what most constrains it.
+
+**Example** — Fig 3 (PDF 520 / p.509): the five time forms at the bottom, from "Yearly cycle" down to the single "Training seance," all hang from "The forms of the temporal organization of training," which hangs from the principles and, above them, the laws of adaptation.
+
+**Related** — [[framework--periodization-as-additive-chain-vs-programming-as-hierarchical-whole]], [[framework--bauer-kasnacheev-energy-and-plastic-flows-fig-1]], [[principle--programming-is-an-art-on-principles-not-an-algorithm]]
