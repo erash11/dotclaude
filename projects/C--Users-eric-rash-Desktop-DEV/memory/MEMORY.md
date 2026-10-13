@@ -70,3 +70,5 @@ Never put memory content here — the file itself holds the facts.
 - [Work laptop hands-off](project_work-laptop-hands-off.md) — anything that runs on the Windows laptop; scheduled tasks there
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
+- [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
+- [Cloud copy approval](project_cloud-copy-approval.md) — the daily all-DEV copy to personal Google Drive; athlete data approved; DBs and secrets stay local
