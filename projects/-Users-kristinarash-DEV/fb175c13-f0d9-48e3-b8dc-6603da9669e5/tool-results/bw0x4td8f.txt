@@ -1,0 +1,233 @@
+######## claim--yakovlev-glycogen-supercompensation-wave-fig-6.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: supercompensation wave after work
+     8	category: [supercompensation, recovery, glycogen, adaptation]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# After Work, Glycogen Does Not Just Return to Baseline: It Overshoots, Dips Below, Overshoots Less, Then Settles (Yakovlev, Fig 6)
+    15	
+    16	**What it is** — In 9.1 §1.5, after the Meerson paragraph that closes 9a, Verkhoshansky goes back to Yakovlev's earlier work (PDF 534 / p.523, checked against the page image): "Even before this it had been shown that in the process of physical work, the biochemical shifts that take place in the body during the period of rest become normalized, going through a series of phases which include the phase of supercompensation of those ingredients that were expended. This pertains to the substrates serving as sources of energy as well as the different structural and enzymatic proteins (Yakovlev, 138)." His example is glycogen, which "during the time of rest, increases not only to the initial, but to a higher level (Figure 6). After this, it decreases to the beginning level (and even somewhat lower), and a new but already smaller increase above the initial levels and finally, establishment of the level which existed before work (Yakovlev, 144)." Fig 6 ("The process of the energy supplying during muscular activity (I) and the rest (II) according to Jiakovlev, 1988"; the caption spells the name so, the text spells it Yakovlev) draws one curve over a horizontal baseline: it falls through phase I (labelled "Work"), bottoms at the dashed line that divides I from II, climbs back through phase II ("Recovery"), peaks well above the baseline, falls to just under it, and ends in a small hump. The caption numbers the parts "1- consummation, 2 - restitution, 3 - super compensation, 4 - the wave form returning to the initial level." The y-axis is "the level of the energy sources"; neither axis has a scale or unit.
+    17	
+    18	**Why it works** — The page gives a dose rule, not a mechanism: "the amount of super-compensation and the speed of its appearance, is directly related to the intensity of the expended products during the time of work, and the duration of maintaining this phase, from the absolute amounts of expenditure range from several hours to 1-2 days)" (PDF 534 / p.523; the parenthesis is unbalanced on the page). Its consequence: "after work, during the time of rest, not only is the pre-work state of the muscles restored (and the body as a whole) but for some period, conditions for increased workability are created." And: "The phase of supercompensation appears as a first step in adaptation of the body to muscular activity (Yakovlev, 138). Regardless of its short term (from several hours to 2-3 days), it is ensures execution of the following loads in conditions that are more favorable to the body" (same page).
+    19	
+    20	**When to apply** — As the classic one-factor picture of a single session's after-effect, when a coach asks why the next hard session should fall on a recovered rather than a depleted state. Inference: the wave shape in Fig 6 implies that a window above baseline is followed by a second, smaller dip, so "later" is not always "better" for the next load; the page does not give times for the dip.
+    21	
+    22	**When NOT to apply** — Rated `untested`: Yakovlev is cited (138, 144) but no study, population, load or data is described, and Fig 6 is an unscaled schematic. The same page gives two durations for the phase: "several hours to 1-2 days" and, three sentences later, "several hours to 2-3 days" (PDF 534 / p.523); quote whichever you use with its sentence. Within this book the claim is not settled. The next paragraph extends the "law of supercompensation" to "creatine phosphate, the enzymatic and structural proteins, to the phosolipids, and to a number of mitochondria in the muscle fibers - in a word, for all products and structures, which to one or another degree, were expended or destroyed" (PDF 534 / p.523), while the 1.16 text states "No supercompensation has yet been observed to occur among any of the other biochemicals" (PDF 99 / p.88). That contest is already recorded in [[claim--adaptive-reconstruction-vs-supercompensation]] and [[framework--two-levels-of-the-constructive-effect-of-adaptation]]; this entry does not reopen it. Inference: glycogen is the one substance both passages accept as overshooting, so the Fig 6 example is the least disputed part of the section.
+    23	
+    24	**Example** — Verkhoshansky's own: glycogen falls in work, rises above its initial level in rest, drops to or below that level, rises a little above it again, and then settles at the pre-work level (Yakovlev, 144; Fig 6, PDF 534 / p.523).
+    25	
+    26	**Related** — [[claim--adaptive-reconstruction-vs-supercompensation]] (1.16, the book's own reservation), [[framework--two-levels-of-the-constructive-effect-of-adaptation]] (9.1, supercompensation as the short level), [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]] (9.1, the same depress-then-overshoot shape for protein synthesis), [[claim--restitution-scales-with-work-expenditure-and-sets-adaptive-biosynthesis]], [[claim--trainedness-is-the-sum-of-session-after-effects-and-lowers-homeostatic-disturbance]], [[framework--restoration-times-by-biochemical-process-table-2]]
+######## claim--trainedness-is-the-sum-of-session-after-effects-and-lowers-homeostatic-disturbance.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: trainedness and homeostasis
+     8	category: [adaptation, trainedness, endurance, homeostasis]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# Trainedness Is the Summed After-Effect of Increasing Loads, and a Trained Body Is Disturbed Less by the Same Work
+    15	
+    16	**What it is** — Verkhoshansky (9.1 §1.5, PDF 534-535 / pp.523-524, checked against the page images): "In systematic execution of increasing loads, the after effects left by each of them are summed up, leading to stable adaptation of the body, a state of trainedness. A more general form of the latter (from a biochemical position) is characterized by an increase in the energy potential of the body and ability to use it in restoration. In the base of this is the increased activity of many enzymatic systems accommodating changes in the regulation of the metabolic processes, and likewise, maintaining homeostasis." The result: "the emerging adaptational changes from the muscular activity lead to fewer disturbances of the ATP balance and less disturbance of homeostasis in the trained body. In execution of these loads, according to their intensity or duration close to the limit (which, under the influence of training constantly moves further out) the trained body can withstand disturbances of homeostasis more easily. All of this ensures the ability to execute work at a given intensity longer, that is, greater endurance" (PDF 535 / p.524).
+    17	
+    18	**Why it works** — The stated basis is enzymatic: more active enzyme systems regulate metabolism and hold homeostasis, so a given load costs the ATP balance less (PDF 534-535). No study or data is given for this paragraph.
+    19	
+    20	**When to apply** — When explaining why the same session feels and measures easier as a block goes on, and why the ceiling of tolerable load rises with training. Inference: the claim pairs with the 1.7 economy argument later in 9.1 ([[framework--functional-economy-trained-vs-untrained-and-three-levels-fig-11]]): less disturbance at a fixed load, and a higher limit.
+    21	
+    22	**When NOT to apply** — Rated `untested`: the paragraph cites no study and shows no data; it is a summary statement. "Summed up" after-effects assume each load lands while the last one's effect is still present; the page does not say how close together loads must be. Inference: a falling disturbance at a fixed load is also what a load that has become too easy looks like, so it argues for raising the load, which the page builds in ("increasing loads"), not for holding it.
+    23	
+    24	**Example** — Verkhoshansky's own conclusion: the trained body can withstand disturbances of homeostasis "more easily," which "ensures the ability to execute work at a given intensity longer, that is, greater endurance" (PDF 535 / p.524).
+    25	
+    26	**Related** — [[claim--yakovlev-glycogen-supercompensation-wave-fig-6]], [[claim--restitution-scales-with-work-expenditure-and-sets-adaptive-biosynthesis]], [[framework--functional-economy-trained-vs-untrained-and-three-levels-fig-11]], [[framework--two-levels-of-the-constructive-effect-of-adaptation]], [[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]]
+######## claim--restitution-scales-with-work-expenditure-and-sets-adaptive-biosynthesis.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: catabolic-anabolic coupling
+     8	category: [recovery, adaptation, protein-synthesis, load-dose]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# The Bigger the Expenditure and Breakdown in Work, the Bigger the Restitution That Follows
+    15	
+    16	**What it is** — 9a recorded that one of the three bases of the constructive effect of adaptation is "a positive correlation between the catabolic and anabolic processes, brought about by the muscular work" (PDF 530 / p.519). On PDF 535 / p.524 Verkhoshansky spells out what it means (checked against the page image): "The intensity of the biochemical restitution in the after-work period, the same as the expressed phases of supercompensation of the maintained sources for movement, is spread out over the time of muscular activity, and positively correlates with the intensity of their dispersion. The greater the energy expenditure and breakdown of protein structures in the process of work, then to the greatest extent, will be the recovery that follows." He then ties it to adaptation: "the biochemical shifts in the muscle fibers brought out by the muscular activity, determines the following phasic changes in their energy exchange and the increase in the energy balance in the after-work period that appears initially for activation of the adaptational biosynthesis (Yakovlev, 143)." In 1.6 he repeats the rule for refilling stores: "the intensity of the flow of the restorative processes, and the periods of filling the energy reserves in the body, depends upon the intensity and duration of their expenditure during the time of muscular work (Yakovlev, 141, 142, 144, Volkov, 38)" (PDF 540 / p.529).
+    17	
+    18	**Why it works** — The page's logic: the work shifts set the programme that the rest period carries out, so the size of the after-work response follows the size of the shift (PDF 535). The translation is rough ("spread out over the time of muscular activity," "intensity of their dispersion"); Inference: "dispersion" most likely means expenditure.
+    19	
+    20	**When to apply** — When a coach wants a reason that a light session produces a small adaptive response, not just a small fatigue cost. Inference: it is the session-level version of the stage-level rule in [[heuristic--restorative-stage-length-scales-with-homeostatic-disturbance]]: more disturbance, more restoration needed and more rebound available.
+    21	
+    22	**When NOT to apply** — Rated `untested`: Yakovlev and Volkov are cited without any study described. The rule is stated without an upper limit on this page. Inference: read without one, "the greater the expenditure, the greater the recovery" invites overload; 9.1 itself sets the limit elsewhere: "Extreme intensification of training leads to depression of the catabolic and anabolic stages of the general adaptation reaction" and limits "the super-compensation of carbohydrate and plastic reserves" (PDF 545 / p.534; see [[claim--premature-intensification-harms-heart-mitochondria-and-support-motor-system]]).
+    23	
+    24	**Example** — Verkhoshansky's own wording of the rule: "The greater the energy expenditure and breakdown of protein structures in the process of work, then to the greatest extent, will be the recovery that follows" (PDF 535 / p.524).
+    25	
+    26	**Related** — [[framework--two-levels-of-the-constructive-effect-of-adaptation]] (9.1, the third basis of the constructive effect), [[claim--yakovlev-glycogen-supercompensation-wave-fig-6]], [[claim--trainedness-is-the-sum-of-session-after-effects-and-lowers-homeostatic-disturbance]], [[heuristic--restorative-stage-length-scales-with-homeostatic-disturbance]], [[claim--metabolites-induce-and-hormones-amplify-adaptive-protein-synthesis]], [[claim--premature-intensification-harms-heart-mitochondria-and-support-motor-system]]
+######## claim--supercompensation-laws-extend-to-concentrated-spp-stages-of-10-12-weeks.md
+     1	---
+     2	type: library-entry
+     3	kind: claim
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: supercompensation over training stages
+     8	category: [supercompensation, delayed-training-effect, concentrated-loading, periodization]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# Verkhoshansky Extends the Supercompensation Law From the Session to Concentrated Training Stages of 10-12 Weeks
+    15	
+    16	**What it is** — Verkhoshansky (9.1 §1.5, PDF 535 / p.524, checked against the page image): "Many complex studies (see the revues of 24 and 25) have convincingly shown that the laws of supercompensation of products and energy applies not only in short term muscular work but also to conditions of prolonged training as for example, when using methodological methods of concentrating SPP (specialized physical preparation) loads on time limited stages (10-12 weeks)." The studies were "directed to studying the capabilities of rationalizing the training in the yearly cycle," in "track and field running (Levchenko. 71, Dubinin, 51, Narskin. 87, Vrublevsky, 39) and jumping (Antonova. 1, Mironenko, 82, Nikitin, 88, Dushenkov 52. Umarov, 117) volleyball (Naraliev. 86), tennis (Verkhoshansky, 12), rowing (Turcheniuk. 114), judo (Koptev, 64), weightlifting (Ganchenko 40), and others." The finding: "there is a long decrease in the functional abilities of athletes during periods (or stages) of using concentrated (that is. concentrated in a limited time period) strength loads. After concluding the strength loads all the functional indices not only return to the initial level but substantially go above it (Figure 7). This phenomenon received the name of long term delayed training effect (LDTE)" (PDF 535 / p.524).
+    17	
+    18	**Why it works** — Verkhoshansky's framing: the LDTE is the same law as the session overshoot ([[claim--yakovlev-glycogen-supercompensation-wave-fig-6]]), acting over weeks. Inference: this sentence states the link between the two levels that [[framework--two-levels-of-the-constructive-effect-of-adaptation]] records as unstated on PDF 530; it is still an assertion, since no mechanism for the long level is given here.
+    19	
+    20	**When to apply** — When placing a concentrated strength or SPP block in the year and explaining to staff why the athlete will be flat during it. The list of sports gives the range the author claims: running, jumping, volleyball, tennis, rowing, judo, weightlifting.
+    21	
+    22	**When NOT to apply** — Rated `untested`: the page says the studies "convincingly" showed it but describes none of them (no populations, loads or data). Two durations sit a page apart: concentrated SPP stages of "10-12 weeks" here (PDF 535 / p.524) and, in the next list, "the tendency has been for the stages to last anywhere from 4-12 weeks" (PDF 536 / p.525). Keep each number with its locator. The loads in every case are "strength loads" or SPP, including in running and rowing. Inference: this is not evidence of an LDTE after aerobic or distance loading, which Chapter 6 says is documented only after altitude training ([[claim--ldte-in-endurance-training-documented-only-after-altitude-training]]); the two passages describe different loads, so they are not in conflict. Calling the LDTE "supercompensation" also inherits the book's internal dispute over that word ([[claim--adaptive-reconstruction-vs-supercompensation]]).
+    23	
+    24	**Example** — Verkhoshansky's own sport list for the finding, from running and jumping to weightlifting and judo (PDF 535 / p.524). The 9.1 restatement of the LDTE rules and Fig 7 is recorded on [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]]; the triple-jump case he gives with them is [[case-study--triple-jumper-annual-cycle-two-strength-blocks-fig-8]].
+    25	
+    26	**Related** — [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]] (6.10), [[framework--two-levels-of-the-constructive-effect-of-adaptation]], [[claim--ldte-in-endurance-training-documented-only-after-altitude-training]], [[claim--adaptive-reconstruction-vs-supercompensation]], [[case-study--triple-jumper-annual-cycle-two-strength-blocks-fig-8]], [[framework--conjugate-sequence-system-of-training-means]]
+######## case-study--triple-jumper-annual-cycle-two-strength-blocks-fig-8.md
+     1	---
+     2	type: library-entry
+     3	kind: case-study
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: triple jumper annual LDTE
+     8	category: [delayed-training-effect, concentrated-loading, jumps, case-study]
+     9	confidence: supported
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# One Triple Jumper's Year (Fig 8): Two Concentrated Strength-and-Bounding Blocks, Each Followed by a Rise in Strength and Jump Results
+    15	
+    16	**What it is** — Verkhoshansky gives Fig 8 as his example of the LDTE (9.1 §1.5, PDF 536 / p.525 text, PDF 537 / p.526 figure; figure read from a 300 dpi render of the page image). The caption: "Dynamics of the speed-strength parameters, the volumes of the carried out training loads and the sport results of the triple jumper during the yearly cycle (from October - to August)." Top panel: monthly "P0, maximal strength," "Fmax, magnitude of the maximal explosive effort," and "Jd., index of explosive strength," on a left axis in "Kg" (160 to 200) and a right axis in "Kg/sec" (350 to 550); the figure does not say which line uses which axis. Middle panel: triple-jump result in m. Bottom panel: monthly "barbell exercises (in tones - on the left axe)," "bounds" in km on the right axis, and "the whole competition exercises executions (number of repetitions - on the left axe)." Approximate readings from the image (months X to VIII):
+    17	- Barbell, tonnes: 35, 75, 16, 14, 1, 75, 58, 19, 4, 16, 2.
+    18	- Bounds, km: 7.3, 9.3, 1.8, 0.4, 1.0, 8.6, 5.0, 0.5, 0.6, 1.0, 0.6.
+    19	- Triple jumps, repetitions: 20, 34, 73, 44, 20, 36, 95, 60, 40, 50, 30.
+    20	- P0, kg: 170, 172, 178, 192, 190, 183, 192, 194, 200, 196, 200.
+    21	- Fmax and Jd, read on the left scale: Fmax about 166 to 188, dipping in III and VII; Jd about 165, 161, 168, 173, 175, 164, 160, 172, 174, 169, 177, its low point in IV.
+    22	- Triple jump, m (plotted from XII): 15.96, 16.22, 16.06, 16.04, 16.02, 16.46, 16.30, 15.98, 16.50.
+    23	
+    24	**Why it works** — Verkhoshansky's reading (PDF 536 / p.525): "after the concentrated specialized strength preparation loads in March-April, the LDTE acquired showed an increase in speed-strength and increased sports results in May-June. [H]owever, an insignificant increase in their volume in specialized strength preparation (by only a [f]ew percent) in order to 'maintain' the achieved level of specialized workability (as believed by [t]he athlete) led to a fast decrease in speed-strength and sports results. As a result of this, the ath[l]ete lost his chance to be selected in the qualifying competitions for a place on the national team." This quote is partly reconstructed: the left margin of the page is clipped in the scan, so the bracketed letters are missing on the page image. He uses it to illustrate his point 6: in the LDTE period "volume concentrated loads are handled by the body relatively easily ... but intense loads negatively react to the work volume" (same page).
+    25	
+    26	**When to apply** — As a worked picture of what the dip and rebound look like in one athlete's monthly numbers, when planning where a concentrated strength block ends relative to the main competitions. Inference: the figure shows the pattern twice, not once. A first block in X-XI (barbell 75 t and bounds 9.3 km in XI) is followed by P0 and the jump rising to a winter peak in I (192 kg, 16.22 m); the second block in III-IV (75 t and 8.6 km in III) is followed by the May-June peak the text names. The text mentions only March-April.
+    27	
+    28	**When NOT to apply** — One athlete, readings by eye, and no statistics, so `supported` here means a described case with printed data, not a tested rule. Three mismatches between text and figure: the text says "in triple jumpers" (plural) while the caption and the rest of the passage are singular; the text says the strength volume rose "by only a few percent," but the figure's barbell volume goes from about 4 t in VI to about 16 t in VII and bounds from about 0.6 to 1.0 km (Inference: that is a large relative rise from a small base, so the "few percent" may mean a share of total volume; the page does not say); and the August rebound to about 16.50 m, the best mark in the figure, is not discussed. Jump repetitions also rose from VI to VII (about 40 to 50), so the July drop cannot be laid on strength volume alone (Inference). Point 6 itself reads the other way round from Chapter 6, which is recorded as a contest in [[heuristic--time-technique-and-competition-strength-work-to-the-ldte-window]].
+    29	
+    30	**Example** — From the figure: in III the barbell volume is about 75 t and bounds about 8.6 km, Jd falls to its low in IV, and in V the jump rises from about 16.02 m to about 16.46 m with barbell volume cut to about 19 t (PDF 537 / p.526, approximate image readings).
+    31	
+    32	**Related** — [[heuristic--time-technique-and-competition-strength-work-to-the-ldte-window]] (6.10, which quotes the same text), [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]], [[claim--supercompensation-laws-extend-to-concentrated-spp-stages-of-10-12-weeks]], [[case-study--triple-jumper-plantarflexors-depressed-while-thigh-extensors-high]], [[framework--bi-cyclic-annual-model-for-explosive-strength-sports]] (two concentrated strength blocks a year)
+######## framework--heterochronism-and-three-levels-of-adaptation-restructuring.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: heterochronism of adaptation
+     8	category: [adaptation, heterochronicity, theory, time-course]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# Adaptation Is Heterochronic and Runs on Three Levels: Quick Homeostatic Reactions, Compensatory Structural Change, Long-Term Systemic Restructuring
+    15	
+    16	**What it is** — 9.1 §1.6, "Heterochronism of the adaptational restructuring" (PDF 538 / p.527, checked against the page image). Verkhoshansky: "Development of the adaptation process is tied in with a definite heterochronicity in the formation of accommodative body restructuring. Heterochronicity appears first in the failure to coincide moments of time with the corresponding beginnings of the intense improvement of one or another functional system. Second, it appears in the specific consecutiveness of the adaptation reactions and development of morphofunctional restructuring of the body." The three levels, each with "its own specific character in regard to heterochronicity" (PDF 538-539 / pp.527-528):
+    17	1. "level of biochemical processes ensuring energy and plastic functions at the time of work and immediately after its conclusion (level of quick homeostatic reactions)";
+    18	2. "level of compensatory accommodation restructuring, in the foundation of which, are the structural (morphological) transformations in the body (level of compensatory adaptation)";
+    19	3. "level of global functional-systemic restructuring (level of long term steady adaptation)."
+    20	The first level is detailed by Fig 9 and Table 2 ([[framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9]], [[framework--restoration-times-by-biochemical-process-table-2]]); the second and third by Fig 10 ([[claim--function-leads-structure-and-power-precedes-capacity-and-economy-fig-10]]).
+    21	
+    22	**Why it works** — The stated causes of heterochronicity: "the changes in the external interactions of the body, a gradual increase in the intensity of the body work regime with an increase in sports mastery and with changes tied in with these roles in the maintenance of separate functional systems, and likewise with a definite inertness of different body systems (Verkhoshansky, 13, 17, Yakovlev, 144)" (PDF 538 / p.527).
+    23	
+    24	**When to apply** — When reading a monitoring trend: a fast marker (a session's metabolic response) and a slow one (structural or whole-system change) are expected to move at different times, so a lack of change in a slow marker after a few weeks is not by itself a failed block. Inference: the three levels map onto session, block and multi-year time scales; the page names the levels but gives no durations for them.
+    25	
+    26	**When NOT to apply** — Rated `untested`: a conceptual scheme with citations (Verkhoshansky 24, 25; Verkhoshansky and Viru 28, 286) and no data. The same three levels reappear as the opening of 1.10 on PDF 554 (outside this batch); 9a's Viru scheme ([[framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2]]) is a related but separate sequence (specific, general, long-term). The page says more on heterochronicity is in "the section on laws of morphofunctional specialization" (PDF 540 / p.529), which is outside this batch.
+    27	
+    28	**Example** — Verkhoshansky's own level 1: "fast flowing biochemical processes activated in a definite consecutiveness during work and post work periods (Figure 9)" (PDF 539 / p.528).
+    29	
+    30	**Related** — [[claim--heterochronic-biochemical-adaptation-sequence]] (1.16), [[claim--heterochronicity-of-strength-quality-and-muscle-group-development-order]], [[framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2]], [[claim--compensatory-adaptation-is-temporary-and-precedes-stable-adaptation]], [[framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9]], [[framework--restoration-times-by-biochemical-process-table-2]], [[claim--function-leads-structure-and-power-precedes-capacity-and-economy-fig-10]]
+######## framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: work and recovery biochemistry
+     8	category: [recovery, bioenergetics, protein-synthesis, adaptation]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# The Work-Recovery Chain (Fig 9): ATP Breakdown and Metabolites in Work, Then Oxidation, ATP Production, CP and Glycogen Supercompensation, and Protein Synthesis in Recovery
+    15	
+    16	**What it is** — Fig 9, "The sequence of the reparative biosynthesises in the muscles during the work and recovery (N. Yakovlev, 1986)" (9.1 §1.6, PDF 538 / p.527, read from the page image). A double horizontal line splits "Work" (below) from "Recovery" (above). Work, from the bottom: "Muscular activity" leads to "Demolition of ATP," then "Changing in the ATP balance," then "Accumulation of metabolites." Two side paths feed in: "Consumption of glycogen and fat acids" leads to "Partial ATP re-synthesis," which feeds the ATP-balance box; and "Muscular activity" leads to "Oxygen deficit (working hypoxia)," which feeds "Accumulation of metabolites." Recovery, from the line upward: "Oxygenation of metabolites," "Increase in the ATP production," "Super compensation of CP and glycogen contents," "Synthesis of proteins." A side arrow also runs from "Increase in the ATP production" straight to "Synthesis of proteins." The text (PDF 539 / p.528, checked against the page image): in work, substrates fall ("creatine phosphate, glycogen, and during long term work even the lipids") and metabolism products rise; "The accumulation of these products and the stronger hormonal activity stimulates the oxidative processes in the tissues in the rest period after work. This serves to restore the intramuscular reserve of energy products, which leads to normalization of the water-electrolyte balance of the body and ensures the inductive synthesis of proteins in the organs that were subjected to the loads (Yakovlev, 141, 142, 144, Volkov, 38)."
+    17	
+    18	**Why it works** — In the scheme, the metabolites made in work are the trigger for the recovery chain: they drive oxidation, which powers the restoration of energy stores and then protein synthesis. Inference: this is the same metabolite-as-inducer idea 9a recorded ([[claim--metabolites-induce-and-hormones-amplify-adaptive-protein-synthesis]]), drawn as a sequence.
+    19	
+    20	**When to apply** — As the first-level picture in [[framework--heterochronism-and-three-levels-of-adaptation-restructuring]], when explaining why protein synthesis comes last in recovery, after energy stores. Inference: it supports the 9a caution that clearing metabolites during rest may blunt the later steps ([[claim--clearing-metabolites-during-rest-blunts-adaptive-protein-synthesis]]).
+    21	
+    22	**When NOT to apply** — Rated `untested`: a flow chart credited to Yakovlev (1986) with no data or timings; the times are in Table 2 ([[framework--restoration-times-by-biochemical-process-table-2]]). The box "Super compensation of CP and glycogen contents" asserts CP supercompensation, which the 1.16 text does not accept ([[claim--adaptive-reconstruction-vs-supercompensation]]).
+    23	
+    24	**Example** — The figure's recovery column in order: oxygenation of metabolites, increased ATP production, supercompensation of CP and glycogen, synthesis of proteins (PDF 538 / p.527).
+    25	
+    26	**Related** — [[framework--heterochronism-and-three-levels-of-adaptation-restructuring]], [[framework--restoration-times-by-biochemical-process-table-2]], [[claim--metabolites-induce-and-hormones-amplify-adaptive-protein-synthesis]], [[claim--clearing-metabolites-during-rest-blunts-adaptive-protein-synthesis]], [[claim--yakovlev-glycogen-supercompensation-wave-fig-6]], [[claim--adaptive-reconstruction-vs-supercompensation]]
+######## framework--restoration-times-by-biochemical-process-table-2.md
+     1	---
+     2	type: library-entry
+     3	kind: framework
+     4	domain: strength-and-conditioning
+     5	book: supertraining--verkhoshansky
+     6	chapter: "9.1"
+     7	topic: restoration time by process
+     8	category: [recovery, bioenergetics, glycogen, programming]
+     9	confidence: untested
+    10	ingest-tier: full-text
+    11	created: 2026-10-13
+    12	---
+    13	
+    14	# Restoration Times After Loaded Work, Process by Process (Table 2, Volkov 1986 and Fox 1981): Minutes for Phosphagens, Hours for Lactate and Glycogen, Up to 72 Hours for Protein Synthesis
+    15	
+    16	**What it is** — "The process of restoration, during the period of rest after muscular work, takes place at different speeds and ends at different times (Table 2)" (9.1 §1.6, PDF 539 / p.528). Table 2, "Time necessary for restoration of different biochemical processes in the period of rest after loaded muscle work (According to N. Volkov, 1986 and E. Fox, 1981)," as printed (checked against the page image), in the printed order:
+    17	- "Restoration of the phosphogens in the muscles (ATP and CP)": from 2-3 min.
+    18	- "Restoration of oxygen reserves in the body": from 10-15 sec.
+    19	- "Payback/recovery of alactic oxygen debt": from 3-5 min.
+    20	- "Clearance of lactic acid": active rest from 30 min to 1 hour; passive rest from 1-2 hr.
+    21	- "Restoration of inter muscular reserves of glycogen": after long term work from 10-46 hours; after non long term work from 5-24 hours.
+    22	- "Restoration of glycogen reserves in the liver": from 12-48 hours.
+    23	- "Strengthening of inductive synthesis of enzyme and structural proteins": from 12-72 hours.
+    24	
+    25	**Why it works** — The text's ordering (PDF 540 / p.529): "Oxygen reserves and creatine phosphate in the working muscles are the fastest to recover followed by inter muscular reserves of glycogen and liver glycogen and then the fat reserves that were used up during the protein structure work." The time depends on the dose: restoration "depends upon the intensity and duration of their expenditure during the time of muscular work" (same page). Inference: "inter muscular" is almost certainly intramuscular (the PDF 539 text says "intramuscular reserve"), and the fat-reserves clause is garbled in translation.
+    26	
+    27	**When to apply** — As a rough clock for spacing work of different kinds: repeat-effort rest for phosphagens in minutes, lactate clearance helped by active rest, and 1-3 days for glycogen and the protein-synthesis response. Eric's baseline: "Recovery is managed through training-load design alone; nothing objective is tracked, sleep included" (`docs/method-baseline.md`, line 153, Explicit (interview 2026-09-28, Q23)). Inference: a table of this kind is a load-design tool that fits that practice.
+    28	
+    29	**When NOT to apply** — Rated `untested`: a compiled summary from Volkov and a textbook (Fox), with no loads, populations or methods; the ranges are wide (glycogen after long work 10-46 hours). The table lists oxygen reserves (10-15 sec) after phosphagens (2-3 min) though it is the faster process; quote the printed order. The text's order puts fat reserves last, while the table's last and longest row is protein synthesis; fats are not in the table. The 12-72 hour protein-synthesis row should be read with Fig 5 in 9a, whose curves stay above baseline far longer ([[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]]).
+    30	
+    31	**Example** — From the table: lactic acid clears in 30 min to 1 hour in active rest but 1-2 hr in passive rest (PDF 539 / p.528).
+    32	
+    33	**Related** — [[framework--heterochronism-and-three-levels-of-adaptation-restructuring]], [[framework--yakovlev-work-and-recovery-biosynthesis-chain-fig-9]], [[claim--yakovlev-glycogen-supercompensation-wave-fig-6]], [[heuristic--start-the-next-session-as-the-previous-sessions-protein-synthesis-ends]], [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]], [[framework--positive-and-negative-sequences-of-endurance-loading]], [[claim--lactate-and-oxygen-debt-myths]]

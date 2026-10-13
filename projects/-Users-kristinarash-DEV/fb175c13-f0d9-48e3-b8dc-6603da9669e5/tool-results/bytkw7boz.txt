@@ -1,0 +1,270 @@
+######## claim--heterochronic-biochemical-adaptation-sequence.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.16"
+topic: sequence of biochemical adaptation
+category: [adaptation, detraining, overtraining]
+confidence: supported
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# Biochemical Adaptations Occur in a Fixed Order, and Reverse in the Opposite Order When Training Stops
+
+**What it is** — Citing Platonov (1988), the authors state biochemical adaptation to
+training follows a definite three-stage sequence, not a simultaneous shift: first,
+oxidative ATP resynthesis potential and glycogen level increase; next, structural muscle
+protein (myosin) and the intensity of non-oxidative ATP resynthesis (glycolysis) increase;
+only after that does creatine phosphate (CP) level rise. During overtraining specifically,
+these adaptations are lost "in an order that is the reverse of the order seen during
+training." The longer the training period, the more thorough the adaptation and the longer
+those biochemical changes persist after training stops (especially glycogen and CP levels).
+This gain/loss asymmetry across different systems is termed heterochronic (different
+tissues and processes change on different timelines). Overtraining specifically also shows
+a distinct pattern: reduced glycogenolytic activity, decreased ascorbic acid/glutathione/
+glycogen, blood plasma dysproteinaemia, and reduced sympathico-adrenal function tied to
+disrupted acid-base balance. (PDF pp. 96-97, printed pp. 85-86.)
+
+**Why it works** — Inference: different adaptations (enzymatic/oxidative capacity,
+structural protein synthesis, phosphagen system capacity) depend on different cellular
+mechanisms with different synthesis and degradation rates, so a uniform "the body adapts,
+then de-adapts" model misses that some qualities are gained early and lost late, while
+others are gained late and lost early. The author gives no such mechanism directly; this is
+this entry's own reading of the stated sequence.
+
+**When to apply** — **Eric's baseline:** the department's own conditioning material states
+that traits easiest to build (aerobic) are lost fastest under detraining, while traits
+hardest to build (alactic/speed) are lost slowest, and uses this ordering to sequence how
+often each quality needs re-exposure (`method-baseline.md`, "Conditioning and energy
+systems," citing `class-4-2026.md p.47`). **Inference:** the two share the idea that systems
+gain and lose adaptation on different timelines, but their orderings conflict: the baseline
+has aerobic lost fastest and alactic slowest, while Platonov's reverse order (stated for
+overtraining, printed 86) has CP lost first and oxidative/glycogen last. Record this as a
+tension, not a convergence.
+
+**When NOT to apply** — **Inference:** the specific ordering (oxidative/glycogen, then
+structural protein/glycolysis, then CP) is cited to one secondary source (Platonov, 1988)
+without the underlying primary data described in this text; do not treat this exact
+three-stage sequence as a settled, universally-timed protocol for monitoring detraining. Use
+it as a general principle (adaptation and loss are not uniform across systems) rather than
+a specific testing checklist. The source states the reverse-order loss for overtraining,
+not for simple layoffs; the entry's own extension to detraining/layoffs beyond what the
+text states is this entry's inference, not the authors' claim.
+
+**Example** — Inference: by the stated reverse order, CP-related qualities (gained last)
+would be lost first, and oxidative and glycogen qualities lost last. The source states this
+reverse order for overtraining, not for a training layoff; it separately notes that longer
+training makes the accompanying biochemical changes persist longer after cessation
+(printed 86), which is the closest the text comes to describing simple detraining.
+
+**Related** — [[claim--adaptive-reconstruction-vs-supercompensation]].
+######## claim--adaptive-reconstruction-vs-supercompensation.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "1.16"
+topic: adaptive reconstruction critique
+category: [adaptation, terminology, recovery]
+confidence: contested
+ingest-tier: full-text
+created: 2026-09-26
+---
+
+# "Adaptive Reconstruction" vs. "Supercompensation": Verkhoshansky/Siff's Sharper Critique
+
+**What it is** — The authors argue "adaptive reconstruction" is a more accurate term than
+"supercompensation" for the body's response to training load. One reason is stated
+directly alongside the term: enhanced performance "is not simply the result of increased
+stores of bioenergetic substances, but also of structural changes in muscle and other
+tissues, as well as enhanced efficiency and rates of bioenergetic and neuromuscular
+processing" (printed 84). A second reason comes not from that passage but from the
+separate single-factor-model critique in 1.16.3: ATP "has never been shown to deplete
+significantly, even after very strenuous exercise," and "no supercompensation has yet been
+observed to occur among any of the other biochemicals" besides glycogen; each substance
+returns to its initial level on its own timeline, so "the timing of subsequent loads to
+stimulate the appropriate type of supercompensation remains indeterminate" (printed 87-88).
+
+The book gives two different definitions of "Current Adaptation Reserves" (CAR) for
+opposite ends of the same distinction: printed 83 states "In Russian texts, the former
+[i.e. the readily-available, superficial] energy source is referred to as the Current
+Adaptation Reserves (CAR)," while the Fig 1.39 caption on printed 84 states "The Deep
+Adaptation Energy is often referred to as the Current Adaptation Reserves (CAR) by Russian
+authors." Both are recorded here rather than harmonized.
+
+The book also conflicts with itself on supercompensation: printed 85 (citing Platonov,
+1988) states "supercompensation of some of the energy sources takes place," while printed
+88 states "No supercompensation has yet been observed to occur among any of the other
+biochemicals." (PDF pp. 94-99, printed pp. 83-88.)
+
+**Why it works** — Inference: if supercompensation literally meant every adaptation-relevant
+substance or structure overshoots baseline on a predictable clock, timing the next training
+stimulus to "catch the peak" would be a precise science; the book's own admission that this
+overshoot pattern is not established for biochemicals besides glycogen undercuts that
+precision and supports treating "the next stimulus should land on a rebound" as a general
+heuristic, not a substance-by-substance timing rule.
+
+**When to apply** — This library already carries the supercompensation model in
+[[periodization--bompa/principle--supercompensation-cycle]], which itself notes
+"contemporary sport science largely prefers the fitness-fatigue (two-factor) model over
+literal supercompensation" and recommends treating supercompensation "as a useful mental
+model, not a measured prescription." **Inference:** this entry adds the specific mechanism
+for that caution (structural/efficiency changes beyond energy stores, and the
+glycogen-only overshoot finding) and the CAR terminology, which the Bompa entry does not
+include; use both together rather than duplicating either.
+
+**When NOT to apply** — This entry is rated `contested` because it is itself a critique of
+a still widely-taught model (supercompensation), argued from a mix of established fact
+(structural adaptation beyond energy stores) and an absence-of-evidence claim (no
+overshoot observed for other biochemicals) that could be revised by newer measurement
+techniques. **Inference:** don't treat "adaptive reconstruction" as a rejection of
+periodization practice built on supercompensation timing; the text itself notes
+supercompensation theory, despite its shortcomings, had a profound and still-useful impact
+on periodization design.
+
+**Example** — **Inference:** glycogen loading before an endurance event is a legitimate
+application of true supercompensation; assuming a similarly precise "peak window" exists
+for, say, connective tissue remodeling or neuromuscular efficiency gains is not supported
+by the same evidence.
+
+**Related** — [[periodization--bompa/principle--supercompensation-cycle]] (reciprocal link
+recommended there: note that Supertraining Ch1.16 sharpens the "useful mental model, not a
+measured prescription" caution with the specific glycogen-only-overshoot finding and the
+CAR/adaptive-reconstruction terminology). From 9.1: [[framework--two-levels-of-the-constructive-effect-of-adaptation]] (9.1), [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]] (9.1, Fig 5).
+
+**Also in 9.1** — Verkhoshansky's own paper uses supercompensation without the 1.16 reservation (both checked against the page images). One of the three bases of the constructive effect is "supercompensation of the ingredients, that are used up during the time of work (substrates serving as sources of energy and different structural and enzymatic proteins)" (9.1 §1.5, PDF 530 / p.519), and by the "rule of V.Engelgard," "in normal functioning biosystems the restorative process is always potentially greater and supersedes the processes of breakdown (the phenomena of supercompensation)" (PDF 533 / p.522). This adds a within-book contradiction to the contest recorded above. See [[framework--two-levels-of-the-constructive-effect-of-adaptation]] and [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]].
+######## principle--long-term-delayed-training-effect-from-volume-above-the-optimum.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.10"
+topic: long-term delayed training effect
+category: [delayed-training-effect, concentrated-loading, volume, periodization, speed-strength]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# The Long-Term Delayed Training Effect: Volume Well Above the Optimum Depresses Speed-Strength, Then a Timed Volume Cut Lets It Rise Above Baseline
+
+**What it is** — The authors report "a steady decrease in speed-strength preparedness during individual training stages of different length (from 5-12 weeks)" caused by "voluminous strength loading," after which "speed-strength returns to its initial level and significantly exceeds it" (Nikitin 1977; Mironenko 1979; Antonova 1982; Levchenko 1982). Because this "does not agree with established ideas which stipulate a continuous rise in special physical preparedness" and "is not accompanied by marked signs of overtraining," it became "a subject of special study" (PDF p. 374 / printed p. 363, checked against the page image). They then state a dose-response rule: "The volume of the training load has a definite optimum level for each athlete, above or below which the body reacts with diminished response." "If the volume of loading is lower than the optimum level, special work-capacity decreases after some initial rise. If the volume of loading significantly exceeds this level, a steady decrease in special work-capacity occurs which, however, rises intensely during the carefully-timed reduction in the volume. This intense rise in special work-capacity is the phenomenon known as the long-term delayed training effect (LDTE)" (same page).
+
+Their characterisation (Fig 6.31, PDF pp. 374-375 / printed pp. 363-364, checked against the page images), points 1, 2 and 4:
+1. "Concentration of strength loading is the basic condition for the beginning of the LDTE."
+2. "The lower the speed-strength levels fall (within an optimal range) during the concentration of strength loading stage, the higher they rise in the subsequent LDTE phase (graphs of F1 and F2). Excessive concentration of strength loading leads to a more significant drop in speed-strength and disruption of adaptation (graph F3)." In the figure, F3 dips lowest and only creeps back toward the baseline by the end of T2; F1 and F2 end above it.
+4. "A subsequent moderate volume of general developmental work, combined with special work of gradually increasing intensity contributes to eliciting the LDTE."
+
+Points 3 (non-intensive means) and 5 (T2 about equal to T1, observed 4-12 weeks, individualised) are already quoted in [[framework--conditions-for-concentrated-unidirectional-loading]] and [[heuristic--allow-restoration-after-a-concentrated-block-before-the-next]].
+
+**Figures.** Fig 6.29 (sprinters, PDF p. 374, read from the image): a shaded rectangle marks the loading period from month 0 to about month 2.5; three curves (starting, explosive and absolute strength, the dips not labelled separately) fall to about 85-96% of initial, recross 100% at about month 2, and at month 4 sit at about 125% (starting), about 119% (explosive) and about 112% (absolute). Fig 6.30 (middle-distance runners, Zhdanovich 1980, PDF p. 375): during a shaded block from about month 1.6 to about month 4.5 (read from a 300 dpi render of the page image), vertical jump rises to about 7% and then falls to about 4.5% by month 8; stride length and ten standing long jumps keep rising after the block, to about 11% and about 9-9.5%. The text says vertical jump falls in the competition stage and offers a hedged reason: "One may assume that the reason for this phenomenon is the increase in volume of intense distance work" (PDF p. 374). LDTE after concentrated strength loading is also reported in swimming (Rudokene 1981) and ice-skating (Kabachkova et al 1982).
+
+Two further points: athletes "invariably do not allow or do not have sufficient time for recuperation after extensive strength loading," which minimises the LDTE and forces the body "to unjustifiably deplete its current adaptation energy and sometimes draw upon its deep adaptation energy" (PDF p. 375 / printed p. 364). And "one must differentiate between maintenance of the training effect and the LDTE of loading": maintenance is "the retention of functional adaptation for a given period after training has ceased"; the LDTE is "the relatively prolonged increase in the functional indicators as a result of specially organised, concentrated volumes of loading" (PDF p. 377 / printed p. 366, checked against the page image).
+
+**Why it works** — The authors say the volume-performance link is "characteristically simple" but give no physiological mechanism for the delayed rise in 6.10's strength material; they note that the "physiological conditions, mechanisms and characteristics of the LDTE until recently have not been a subject of much research" (PDF p. 374). Inference: the library holds two readings of the same curve shape, supercompensation or adaptive reconstruction ([[claim--adaptive-reconstruction-vs-supercompensation]]) and fitness-fatigue, where fatigue masks fitness until volume drops ([[framework--fitness-fatigue-modeling-and-taper-timing]]); the book does not settle between them here.
+
+**When to apply** — Planning a concentrated strength block for an advanced athlete when the aim is a later rise in speed-strength, accepting a planned dip during the block. Inference: a dip in speed-strength during such a block is the expected path, not by itself a signal to stop. Eric's baseline: "Recovery is managed through training-load design alone; nothing objective is tracked, sleep included" (`docs/method-baseline.md`, line 153, Explicit (interview 2026-09-28, Q23)). Inference: the LDTE rests on one load-design move, the timed volume cut, so it fits that practice. Eric's baseline: "The mRSI decision read happens on Wednesdays, against individualized thresholds" (line 75, Explicit (interview 2026-09-28, Q2, Q2a)). Inference: during a deliberate block, an mRSI drop below an athlete's usual band would be expected; the authors' own rule separates a dip "within an optimal range" from the F3 case, but gives no threshold for telling them apart.
+
+**When NOT to apply** — The book gives no numbers for "optimum," "within an optimal range" or "excessive," and says the effect is individual (PDF p. 375). Figs 6.29-6.31 carry no sample sizes or statistics; Fig 6.31 is a "general scheme," not data. The 5-12 weeks on PDF p. 374 is the length of the loading stages; the 4-12 weeks on PDF p. 375 is how long the LDTE lasts. They are different quantities. The book uses 4-12 weeks for three things: how long unidirectional training stays effective (PDF p. 305 / printed p. 294, checked against the page image), how long the LDTE lasts (PDF p. 375), and, in Verkhoshansky's Addendum paper (9.1, translated by Yessis; PDF p. 515), the length of the concentrated stages themselves: "the tendency has been for the stages to last anywhere from 4-12 weeks" (PDF p. 536 / printed p. 525, checked against the page image). Both PDF p. 375 and the Addendum (PDF p. 536) say the LDTE lasts about as long as the loading stage (T2 about equal to T1). Inference: this reconciles those two readings, and the PDF p. 305 figure is a separate quantity. Keep the locator with the number. Inference: in-season, when performance is needed every week, a planned multi-week dip conflicts with Eric's baseline that "in football you want to peak every Saturday" (line 185, Explicit (interview 2026-09-28, Q14)); this is an off-season tool. The book's claim that the dip comes without "marked signs of overtraining" sits beside Bompa's framing of concentrated loading as planned overreaching ([[periodization--bompa/principle--concentrated-loading-overreaching]]); Inference: that is a difference of labels, not of the observed curve.
+
+**Example** — The authors' own: in sprinters (Fig 6.29), about 2.5 months of concentrated strength loading drove starting, explosive and absolute strength to about 85-96% of initial; by month 4 they stood at about 112-125% (values read from the image, PDF p. 374).
+
+**Related** — [[framework--conditions-for-concentrated-unidirectional-loading]], [[heuristic--allow-restoration-after-a-concentrated-block-before-the-next]], [[heuristic--time-technique-and-competition-strength-work-to-the-ldte-window]], [[claim--ldte-in-endurance-training-documented-only-after-altitude-training]], [[claim--concentrated-beats-distributed-loading-for-highly-qualified-athletes]], [[framework--conjugate-sequence-system-of-training-means]], [[claim--delayed-strength-training-effect-lag-before-gains-appear]], [[claim--strength-detraining-and-retention-timelines]] (maintenance, the other half of the 6.10 distinction), [[claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique]], [[framework--fitness-fatigue-modeling-and-taper-timing]], [[claim--adaptive-reconstruction-vs-supercompensation]], [[periodization--bompa/principle--concentrated-loading-overreaching]], [[block-periodization--issurin/claim--residual-training-effect-durations-by-motor-ability]], [[heuristic--concentrated-blocks-of-3-4-weeks-three-in-a-row-then-longer-recovery]]; [[case-study--antonova-and-levchenko-high-strength-volume-lowers-explosive-qualities]] (6.12.2, the Antonova and Levchenko studies cited here, with their take-off force-time data, muscle stiffness and the injury statement). From 9.1: [[framework--two-levels-of-the-constructive-effect-of-adaptation]] (9.1, LDTE as the long level of the constructive effect), [[framework--three-adaptation-strategies-low-uniform-high-and-concentrated-fig-4]] (9.1, strategy C).
+
+**Also in 9.1** — Verkhoshansky's own paper places the LDTE as the second of "two levels of the constructive effect" (9.1 §1.5, PDF 530 / p.519, checked against the page image): "The other level is related to the long stages of training. It is expressed in the long and steady increase in the functional indices after their long decrease as a result of using concentrated training loads, is known as the long term delayed training effect (Verkhoshansky, 23, 24, 25, 280, 281, 282, 283)." The first level is session supercompensation. See [[framework--two-levels-of-the-constructive-effect-of-adaptation]].
+######## heuristic--time-technique-and-competition-strength-work-to-the-ldte-window.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "6.10"
+topic: technique timing after strength blocks
+category: [delayed-training-effect, technique, competition-period, concentrated-loading, sequencing]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Put Technical Training in the Delayed-Effect Window, and Keep Competition-Period Strength Work Short, Intense and Small
+
+**What it is** — Three linked rules from 6.10:
+1. **Strength first, technique in the rebound.** "high-volume strength loads are detrimental to one's current level of speed-strength fitness and, consequently, to technical preparation. To avoid this, it is advisable in training high level athletes to structure the programme so that strength work precedes and does not interfere with technical training. Technical training should take place in the presence of the delayed training effect of the concentrated volume of strength work, i.e. when there is recovery of work capacity and an increase in the level of speed-strength." Technique then "rapidly adjusts to the athlete's higher level of specialised work capacity and there is much less likelihood of reinforcing errors" from the "lowered functional state, caused by high-volume loads" (PDF p. 376 / printed p. 365, checked against the page image).
+2. **Do not add volume while the effect emerges.** "The volume of training work, therefore, should not be increased during the period of emergence of the LDTE" (PDF p. 375 / printed p. 364, checked against the page image).
+3. **Competition period.** "One should be especially cautious with strength loading during the competition period. At this time, intensive and short-term strength work can be used in a small volume to tone the neuromuscular system during competition preparation, as well as to maintain the achieved level of speed-strength preparedness if the length of the competition period exceeds the duration of the LDTE of strength loading" (PDF pp. 375-376 / printed pp. 364-365).
+
+The authors also state that "the competitive action executed with maximal physical exertion represents the most specific of all the special training means," to be viewed "simultaneously as a highly intense means of strength training," so a strength programme should rise in intensity and be "combined with technique training so as to peak concurrently with the competitive act" (PDF p. 376). They give "the dominant role" in the strength-technique interaction to "special physical preparation, both in the yearly cycle and in long-term training" (same page).
+
+**Why it works** — The authors' reasons: a strength-depressed state reinforces technical errors, while a higher work capacity lets the athlete "concentrate his effort more effectively, increase range of movement, decrease the time of execution of movements, improve his stability, improve the strength of muscular control over all movements and increase his resistance to fatigue" (PDF p. 376). For rule 2 they report that during emergence "it is relatively easy and painless for the body to change to intensive loading, but it will react negatively to extensive work," seen as "slowed or even decreased growth of speed-strength" (PDF p. 375).
+
+**When to apply** — After a concentrated strength block, schedule the heaviest technical emphasis for the weeks when speed-strength is coming back up, and hold volume flat through that period. In a long competition period, keep a small dose of intense, brief strength work. Eric's baseline: "In-season, the stated rule is 'maintain intensity, reduce volume'" (`docs/method-baseline.md`, line 105, Inferred (transcript + shared slides); the baseline adds "Not claimed in the interview"). Inference: rule 3 says the same thing for the competition period. Eric's baseline: the in-season week has "lifting and hard practice end 72 hours before a Saturday game" (line 186, Explicit (interview 2026-09-28, Q15)). Inference: that sits with rule 3's "small volume" and "short-term" strength work; the authors give no day-level timing.
+
+**When NOT to apply** — **Contested inside the book.** Verkhoshansky's Addendum paper (9.1, "Dr. Yuri Verkhoshansky, Translated from the Russian by Dr. Michael Yessis"; PDF p. 515 / printed p. 504, checked against the page image) restates the emergence-period rule the other way round: "In the period of LDTE realization, volume concentrated loads are handled by the body relatively easily and without harm to the body, but intense loads negatively react to the work volume" (PDF p. 536 / printed p. 525, checked against the page image). Its own example then agrees with Chapter 6: an "insignificant increase" in specialised strength volume "(by only a few percent)" to "maintain" the achieved level "led to a fast decrease in speed-strength and sports results" (same page, checked against the page image). Inference: the Addendum sentence may be a translation slip: its own example fits Chapter 6, and the Addendum is a separate translation of Verkhoshansky's text, which makes a translation slip plausible. The book prints both. The authors give no number for "small volume" or for how long technical emphasis should wait. Inference: for skills that need daily practice (team-sport play), technique cannot simply wait for the strength block to end; the rule is written for "high level athletes" in events where the competitive action can be isolated, and they mention the conjugate system "successively introduces different modes of loading ... rather than separating them in time" (PDF p. 376), so the separation is a matter of emphasis.
+
+**Example** — Verkhoshansky's own, from the Addendum (PDF p. 536 / printed p. 525, checked against the page image): the text says its Figure 8 shows that "in triple jumpers," concentrated specialised strength loads in March-April were followed by a rise in speed-strength and results in May-June; raising strength volume "by only a few percent" to hold the gain then brought "a fast decrease in speed-strength and sports results." The page switches from plural to singular here: the volume rise was "as believed by the athlete," and "the athlete lost his chance to be selected in the qualifying competitions for a place on the national team." Inference: an off-season strength block ending in March would hand over to technical and speed emphasis in April with strength volume held, not raised.
+
+**Related** — [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]], [[heuristic--allow-restoration-after-a-concentrated-block-before-the-next]], [[claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique]], [[framework--conditions-for-concentrated-unidirectional-loading]], [[framework--conjugate-sequence-system-of-training-means]], [[heuristic--keep-event-specific-competitive-stress-in-preparation]], [[block-periodization--issurin/framework--realization-mesocycle-taper-prescription]], [[principle--technical-mastery-needs-competition-intensity-practice]], [[heuristic--technique-work-during-and-after-a-concentrated-strength-block]] (6.12.2, the same strength-then-technique question from a later passage); [[heuristic--loading-reduction-for-the-delayed-effect-must-outlast-1-2-weeks]] (6.12.2, the reduced-loading stage after large volumes must last far longer than the usual 1-2 week unload; its "no more volume" instruction is rule 2 here)
+######## claim--excess-heavy-strength-volume-impairs-speed-strength-and-technique.md
+---
+type: library-entry
+kind: claim
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "5.3.1"
+topic: heavy strength volume interference
+category: [interference, speed-strength, technique, volume, special-strength]
+confidence: supported
+ingest-tier: full-text
+created: 2026-10-03
+---
+
+# Too Much Heavy Strength Work Lowers Speed, Explosiveness and Technique; Speed-Strength Gains Stop After About 12-18 Weeks
+
+**What it is** — The authors grant that general heavy resistance exercises "enable the athlete to reach the necessary level of absolute strength, to provide general physical conditioning and to train the neuromuscular system non-specifically," but "it is undesirable to use them extensively during specialised training phases, since they can diminish speed and explosiveness. High volume strength loads used after a phase of specialised jump training can substantially reduce the existing level of explosive strength (by as much as 30%)" (PDF p. 302 / printed p. 291; all figures in this entry checked against the page image). Supporting reports, all cited without dates except Deniskin: Kotz, "prolonged, heavy workloads slow the contraction speed of trained muscles"; Filinov, "excessively heavy strength loads diminish the force and speed of boxers' punches"; Deniskin (1976), "prolonged use of high volume strength loads diminishes the power and speed of weightlifters, high jumpers and triple jumpers." On dose: "speed-strength and strength-speed cease to increase after a certain volume of heavy strength training has been executed. Deniskin observed this phenomenon after 18 weeks (54 workouts) of strength training. Other studies have also noted the same phenomenon after 50-60 training sessions or approximately 12 weeks of training." On technique, Siff writes (the passage names Verkhoshansky in the third person): "research by Verkhoshansky and colleagues has established that excessive maximum strength training can impair speed-strength and technical skill in boxers (Verkhoshansky, 1977). It can also lead to a deterioration of several months' duration in the technique of weightlifters and javelin throwers" (PDF p. 302 / printed p. 291).
+
+**Why it works** — The authors' explanation for the technique loss: "The negative influence of heavy strength training on sports technique may be due substantially to deterioration of the speed-strength qualities of the neuromuscular system," and "heavy training loads reduce one's ability to control movements, primarily of their most complex technical phases" (PDF p. 302 / printed p. 291). For the plateau they give a dose argument only: "there are certain volumes and durations of strength training that are essential for achieving an optimum training effect. Exceeding these optimal values renders any further increase in training volume not only unproductive, but detrimental." No cellular mechanism is given.
+
+**When to apply** — When a specialised speed or jump phase is running, keep high-volume heavy strength work out of it or small, as the authors advise. Inference: change the means of a heavy-strength emphasis before the 12-18 week mark the authors report, rather than waiting for the plateau. The authors also warn against prescribing heavy physical and technical work together for highly qualified athletes: a "literal interpretation of this concept of unified training by the concurrent prescription of physical and technical training leads to serious error," because it "contradicts the well-known need for the athlete to practise technical skills when he is fresh" (PDF p. 302 / printed p. 291). Eric's baseline: "In-season, the stated rule is "maintain intensity, reduce volume" rather than trying to build strength while managing a full competition schedule." (`docs/method-baseline.md`, line 105, Inferred). Inference: the authors' warning covers both prolonged high volume (Deniskin) and excessive heaviness (Filinov; "excessive maximum strength training"), so it supports the in-season "reduce volume" half of that rule but does not by itself endorse holding heavy intensity during specialised speed phases.
+
+**When NOT to apply** — The 30% figure is "as much as," with no study named for it. The Kotz and Filinov reports carry no dates or data here. The 12-18 week figures are for "heavy strength training" in speed-strength athletes; the authors do not say the same plateau applies to novices or to lower-volume strength work. The section does not argue against heavy strength work in general: it calls it necessary for absolute strength and general conditioning, and criticises only extensive use during specialised phases. The authors' wider complaint (PDF p. 302) that training means are applied in a "rubber-stamp way" in which "Virtually the only factors that change are the load and overall volume" is an opinion, not a finding.
+
+**Example** — The authors' own: Deniskin saw speed-strength and strength-speed stop rising after 18 weeks (54 workouts) of strength training; other studies saw it after 50-60 sessions, about 12 weeks (PDF p. 302 / printed p. 291).
+
+**Related** — [[block-periodization--issurin/case-study--concurrent-training-interference-and-decay]] (swimmers' explosive strength fell under concurrent endurance and strength work; agreement on interference, different cause), [[heuristic--replace-means-as-their-training-effect-fades]], [[heuristic--allow-restoration-after-a-concentrated-block-before-the-next]] (stiffness and loss of explosive strength after heavy blocks), [[claim--strength-detraining-and-retention-timelines]], [[principle--sequentially-introduce-means-of-greater-training-effect]], [[block-periodization--issurin/heuristic--exercise-sequencing-by-fatigue-state]] (technical skill needs a rested athlete)
+######## framework--two-levels-of-the-constructive-effect-of-adaptation.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "9.1"
+topic: constructive effect of adaptation
+category: [adaptation, supercompensation, delayed-training-effect, theory]
+confidence: contested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Constructive Effect of Adaptation Has Three Bases and Works at Two Levels: Session Supercompensation and the Long-Term Delayed Training Effect
+
+**What it is** — In 9.1 section 1.5, "Essentials of the constructive effects of the adaptational process," Verkhoshansky (9.1 §1.5, PDF 530 / p.519, checked against the page image): "The foundation for the development of the adaptational process in sports activity is the strengthened synthesis of structural and enzymatic proteins in the actively functioning cells." Strengthened protein synthesis "appears as a constructive effect of the adaptational process." "The basis for the constructive effect of adaptation lies in three phenomena (Yakovlev, 144, Viru, 32, Viru, Kirge, 35, Verkhoshansky, Viru, 286):
+- specificity of protein synthesis in the after work period, conditioned by the character of the work executed, its intensity and means of energy provision,
+- supercompensation of the ingredients, that are used up during the time of work (substrates serving as sources of energy and different structural and enzymatic proteins),
+- a positive correlation between the catabolic and anabolic processes, brought about by the muscular work."
+
+From these he names "two levels of the constructive effect." "One of them is related to the well known phase of restitution that is inherent in the phenomenon of supercompensation of products and energy used up in external work (Yakovlev, 139, 144, Viru, 289). The other level is related to the long stages of training. It is expressed in the long and steady increase in the functional indices after their long decrease as a result of using concentrated training loads, is known as the long term delayed training effect (Verkhoshansky, 23, 24, 25, 280, 281, 282, 283)" (PDF 530 / p.519).
+
+**Why it works** — The short level rests on restitution: the phase after work "is characterized not only by increased metabolism but also a higher turnover speed of the muscle proteins which ensures the renewal of the molecular composition of the actin - myosin complex," clearing "'physiologically exhausted' structural 'footprints'" (Viru, 289, 291). "The program of biochemical changes ... determine the catabolic processes taking place in the muscles during the time of work. This program is realized during the time of rest" (PDF 530 / p.519). Inference: the long level is the same process summed over a concentrated block; the page says only that it "is related to the long stages of training" (see [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]]).
+
+**When to apply** — Inference: use the two levels to keep two time scales apart when judging a plan. A session or microcycle is judged by restitution over hours to days; a concentrated block is judged by the delayed rise weeks after the loading, not by how the athlete performs during it.
+
+**When NOT to apply** — Rated `contested` because the book contradicts itself on the second phenomenon. Here supercompensation covers "different structural and enzymatic proteins." In 1.16 the authors prefer "adaptive reconstruction," and the 1.16 text states "No supercompensation has yet been observed to occur among any of the other biochemicals" (PDF 99 / p.88; see [[claim--adaptive-reconstruction-vs-supercompensation]]). Same claim, same book. The page shows no data for either level. The link between the two levels (that the long-term effect is built from session-level restitution) is not stated on the page.
+
+**Example** — Verkhoshansky's own definition of the long level: "the long and steady increase in the functional indices after their long decrease as a result of using concentrated training loads" (PDF 530 / p.519), the pattern drawn as strategy C in Fig 4 (see [[framework--three-adaptation-strategies-low-uniform-high-and-concentrated-fig-4]]).
+
+**Related** — [[principle--long-term-delayed-training-effect-from-volume-above-the-optimum]] (6.10), [[claim--adaptive-reconstruction-vs-supercompensation]] (1.16), [[claim--single-stress-depresses-then-raises-protein-synthesis-above-baseline-fig-5]], [[claim--metabolites-induce-and-hormones-amplify-adaptive-protein-synthesis]], [[framework--acute-delayed-particular-cumulative-training-effect-taxonomy]] (4.1.2, the authors' names for effects on different time scales)
