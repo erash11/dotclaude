@@ -1,0 +1,415 @@
+3:## 2026-10-13 (Mac, promotion): Supertraining Ch8 and Ch9 in the vault
+11:## 2026-10-13 (Mac, end): Supertraining Chapter 9 complete through the gate (staging only)
+26:## 2026-10-13 (Mac): Supertraining Ch8 Codex falsify review
+35:## 2026-10-13 (Mac, late): Ch9a fixes applied (staging only)
+41:## 2026-10-13 (Mac, end of week): Supertraining Ch9a written and reviewed; fixer waits for next week
+49:## 2026-10-13 (Mac): Replay folders cleaned to four files
+55:## Current state
+63:## Next
+## Current state
+- 2026-10-13 final sweep: another Claude session is actively adding the next Supertraining batch after the Ch9a checkpoint. Current new drafts are saved as work in progress, without review/promotion claims. Full-workspace sign-off remains o
+- 2026-10-13: All 16 Sport Science Network replays have four-file packages online: applications, MP4, full timestamped transcript and descriptive overview. Caption/text extras and the duplicate Contorno package are preserved in the extracti
+- Supertraining Ch8: the 97 new entries were promoted to the vault on 2026-10-13 (SecondBrain `38caea8`), after the Sol 6.1 falsify review (`staging/review_supertraining_ch8_sol61.md`, GO AFTER FIXES, 45 fixes applied first). Not promoted: 
+- The other session reports Ch9a's 12 required fixes applied, with zero scoped lint issues; its review/fix logs and staging files are saved during this closeout. Ch9b-9d are unstarted; contested entries and promotion still require Eric's re
+- Zotero: the bridge owns the SecondBrain queue and the research-papers folder. Its full-text index is at 1,437 records. Flint writes no Zotero tags.
+- Interface and harness work is parked. Ingestion comes first (decision of 2026-10-13).
+
+## Next
+1. Open `staging/review_supertraining_ch8a_opus.md` and the other Ch8 review logs before the required Codex falsifying review. The broad promotion dry run is already recorded; resolve the vault-content reconciliation question below before a
+2. Open `staging/fixes_supertraining_ch9a_applied.md` and the matching review before resuming Chapter 9. Ch9a fixes are reported applied; 9b-9d wait for Eric's timing/call-budget decision below.
+3. Recount the catalog (step 0 of `docs/INGEST-PLAN.md`). The two totals still disagree.
+
+## Open questions
+- Should Supertraining batches 9b, 9c and 9d proceed now beyond the weekly 15-call Opus cap or wait until next week? The other session reports 16 calls already used, with the extra Ch9a fixer explicitly authorized by Eric; the remaining bat
+- For the approved Supertraining Ch8 promotion, should the next step be (A) run the required Codex falsifying review on 8a-8d and then promote only new Ch8 files, or (B) reconcile existing vault content differences first? The other session'
+- ANSWERED 2026-10-13 (reported by the other session): Eric approved Ch8 promotion. Execution remains blocked by the required falsifying review and the existing-content reconciliation question above; approval is not a claim that files reach
+- Should the Data Architecture panel go into the agent library now? The source review is done (`docs/sources/2026-10-13-data-architecture-panel.md`). Stage 2 (falsifying review) runs only if you say yes.
+- Mobile build plan (`docs/flint-mobile-gaps-and-buildout-2026-10-12.md`): which VPS provider, OS and tailnet name to record; which disciplines the phone answers at launch; the model and monthly budget; host history retention; and whether v
+
+## Gotchas
+- Opus budget: 15 calls a week; the other session reports 16 used, with its extra Ch9a fixer authorized by Eric. Further calls need the timing decision above. Closeout preserves the staging/review/fix artifacts; it does not promote entries 
+- Lint the vault folders with `FLINT_VAULT=/Users/kristinarash/SecondBrain`.
+- The 8a split was a coordinator decision and was not re-reviewed. Check it before promoting that batch.
+- `staging/` is committed, but staging is not the vault. Promotion copies files out of staging into the vault, and the vault copy is canonical.
+
+## 2026-10-13 (Mac, late): Supertraining Chapter 8 complete through the gate (staging only)
+- **Chapter 8 is done: 97 entries**, all `untested` except 3 `supported` in 8.1-8.8 and 1 in 8.9-8.12 (the Farfel force-estimation case study). Book map: `staging/library/.../supertraining--verkhoshansky/_book.md`, row 8 = done.
+- Four batches, each through writer, independent Opus reviewer, fixer, lint (0 issues): 8a 16 entries (one compound 8.2 entry split by coordinator decision), 8b 31, 8c 21, 8d 29. Logs: `staging/fixes_supertraining_ch8{a,b,c,d}_applied.md`; 
+- **Not in the vault.** Nothing promoted. Promotion needs Eric's approval of the batch.
+- Carried to the coverage follow-up (not applied, by design): about 17 missing ideas across the four batches. The most important: the rehabilitation-stages entry (PDF 438 / p.427), the three phases of recovery (PDF 455), and the snatch vers
+- Deviations to know about: the 8a split was a coordinator decision and was not re-reviewed; the 8a splitter also cut one strength sentence; the Farfel rating is `supported` and is the most contestable call in 8d.
+- Opus calls this week: 13 of 15.
+- Next: Chapter 9 Addendum, four batches (9a-9d), gate brief rows already in `_gate_brief_supertraining_ch8-9.md`. Resume next week. Promotion waits for Eric.
+
+## 2026-10-13 (Mac, later): Supertraining Ch8a through the gate (staging only)
+- **8a (sections 8.1-8.3, PDF 432-443): done.** 16 entries, all `untested`, in `staging/library/strength-and-conditioning/supertraining--verkhoshansky/`. Scope: `staging/_scope_supertraining_ch8a.txt`.
+- Gate: writer, independent reviewer (GO AFTER FIXES, 8 content fixes plus one heading fix), fixer. Log: `staging/fixes_supertraining_ch8a_applied.md`. A compound 8.2 heuristic was split into two notes (`staging/fixes_supertraining_ch8a_spl
+- Two deviations to check at the 8b review: the splitter also cut a strength and plyometric sentence from the energy-system entry (it now sits nowhere), and it did not re-render PDF 438.
+- Not applied, carried to the coverage follow-up: three missing ideas on PDF 432-443. The strongest is rehabilitation following the same periodised stages (PDF 438 / p.427). It matters for the RTP synthesis.
+- Lint for the folder: 0 issues (run with `FLINT_VAULT=/Users/kristinarash/SecondBrain`).
+- Gate brief heading format fixed to match the exemplars and lint (`**Label** —`).
+- Opus calls this week: 4 of 15.
+- Remaining: 8b, 8c, 8d, then 9a-9d. About 3 calls per batch, so 8b and 8c fit this week and the rest roll into next week.
+
+## 2026-10-13 (Mac): Bridge fixes done
+- Vault path fixed in the bridge config (`secondbrain_dir` to `~/SecondBrain`). Backup beside it.
+- `zotero-bridge sync --fulltext`: 1,437 full-text records, 0 failed. Details in `docs/zotero-setup.md`.
+
+## 2026-10-13 (Mac): Eric chose the bridge as the Zotero layer (option A)
+- The bridge (`~/DEV/ZoteroInjestion`) owns the SecondBrain Queue and `Knowledge/library/research-papers`. Flint owns `Knowledge/library` (its domains and entries) and writes no Zotero tags.
+- `docs/PLAN.md` Phase 3 and `docs/zotero-setup.md` updated to match. Fixes 2 and 3 (bridge full-text sync, vault path) still wait for Eric's go.
+
+## 2026-10-13 (Mac): Zotero setup diagnosed; no changes made
+- Wrote `docs/zotero-setup.md`: current state, the three retrieval layers, fixes in order, and checks.
+- Findings: local PDFs all have full text (1,514 of 1,514). The "861 of 3,570" figure in `docs/PLAN.md` comes from a stale CLI cache (last sync 2026-09-02). The SecondBrain Queue holds 109 items, not 92.
+- Bridge (`~/DEV/ZoteroInjestion`) is the live layer. Its full-text index shows 0 records, and its `secondbrain_dir` points to a missing folder (`~/Desktop/SecondBrain`; the vault is `~/SecondBrain`).
+- Next (needs Eric's go): choose the bridge as the Flint layer; run `zotero-bridge sync --fulltext`; fix the vault path; agree the tag and state convention.
+- Open: one scratch copy of the Zotero database at `DEV/_scratch_zotero_probe/` needs manual deletion (a safety rule blocked it).
+
+## 2026-10-13 (Mac, later): Eric approved the ingest plan's two decisions
+- Approved: 10 candidates per weekly sitting; 15 Opus calls per week. Recorded in `docs/INGEST-PLAN.md` section 9.
+- Effect: the Supertraining Ch8-9 gate (about 30 to 40 calls) runs over about three weeks at the 15-call limit. Resuming now: 8a, then 8b, within this week's ceiling.
+
+## 2026-10-13 (Mac, later): Full ingest plan drafted; Ch8-9 gate paused for Eric's review
+- Wrote `docs/INGEST-PLAN.md`: tiers, pipeline, budget, cadence, growth control, sequence, two decisions for Eric.
+- Catalog numbers conflict: manifest (Sept 29) 62,072 files, 29,750 unique, 229 GB; build plan (Oct 12) 17,847, 11,644, 187 GB. Recount is step 0 of the plan.
+- Supertraining Ch8-9 gate: brief written at `staging/_gate_brief_supertraining_ch8-9.md`. No writer or reviewer agent started yet. Eric chose the full gate; resume after the plan is reviewed.
+
+## 2026-10-13 (Mac, later still): Supertraining Ch8-9 located; stage 1 check passes
+- The Ch8 and Ch9 Addendum extracts are not on Drive. The 16.5 MB Ch8 file on Drive is the 5th-edition split and is not the source. The full 6th-edition book is local: `staging/books/supertraining-6th-expanded.pdf` (591 pages, 34,611,138 by
+- Page check (1-based, pdftotext): Ch8 runs pages 433-492 (heading "Designing sport specific strength programmes" on 433). Addendum runs pages 515-591 (heading "9. Addendum" on 515; last page 591). Eric's extract ranges match these.
+- Stage 1 (identity against the full book): pass. Atomization and review not started; costly, so waiting on go-ahead.
+- Next: atomize Ch8 and Ch9 through the full gate if Eric approves.
+
+## 2026-10-13 (Mac, later still): Supertraining 4-7 and Bondarchuk Ch3 already in the vault
+- Eric chose Supertraining 4-7, then Bondarchuk Ch3. Both were already in the SecondBrain vault (Supertraining 4-7 on 2026-10-03; Bondarchuk Vol I Ch3 in `d35d418`). Dry run: 0 new files for both books. Correction: the earlier entry in this
+- One staged fix was not in the vault: `framework--functional-vs-structural-resistance-training.md` (balance boards point to 7.4). Carried into the vault by hand, one sentence only, as `01b9302`. Nine other Supertraining files differ from s
+- Still blocked: Supertraining Ch8 and Ch9 Addendum. The extracts are not on Drive yet (narrow search, 2026-10-13). Eric said he would upload them. On arrival: identity check, then the gate.
+- Next: Eric uploads the Ch8 and Ch9 extracts, or chooses another ingest batch.
+
+## 2026-10-13 (Mac): All remaining Sport Science Network replays processed
+- Eric authorized Luna and Sol for all remaining talks on the page. Processed 11: Mann, Spellman, Parr, French, Josse, Rimer, Troester, Singh, Moore, Thorpe and Winkelman. All 16 event talks now have extraction packages.
+- Used yt-dlp for 720p video/native English captions, Luna medium for five-application drafts, and Sol medium for transcript-based correction and review notes. Saved 55 new applications. Each package has six files; all 66 new cloud files ma
+- Source record and folder links: `docs/sources/2026-10-13-ssn-remaining-replays.md`. Parr's embedded ADI clip and a short Troester section contain muffled/untranscribed speech; these gaps are explicit. Audio/slides and external evidence re
+- No replay entries promoted. Next: source review, resolve material gaps, then the existing promotion gate if Eric requests ingestion. No remaining downloads from this event page; no extraction blockers.
+
+## 2026-10-13 (Mac, later still): Batches A and B: already in the vault
+- Eric approved batch A (Wave 1 decks W20, W21, W22, W24, W25, W27, W28, W29) and batch B (Issurin Principles and Basics). Both were already promoted to the SecondBrain vault on 2026-10-10 (commits `ca0d027`, `d0b8747`, `d35d418`). No copy 
+- Dry run for all nine books: 0 new files. Two files differ from staging: `framework--general-adaptation-syndrome-curve-with-fatigue-and-adaptation-factors.md` (Wagle) and `framework--long-term-variation-traditional-intensity-predominant-an
+- Promotion backlog from this batch: cleared. Remaining staged items awaiting approval: Supertraining chapters 4-7 and the other queue items named in the build plan.
+- Next: decide the next ingest batch. Optional: sync the two Wagle/Stone books back into staging (`scripts/sync_back_from_vault.py`) to match the vault.
+
+## 2026-10-13 (Mac, later still): Decision: ingestion before interface
+- Eric agreed: more work on getting data into Flint comes before any interface work. Interface and harness stay parked until the readiness check in the build plan is mostly true.
+- Next: clear the reviewed promotion backlog first (Wave 1 decks W20-W29, Issurin Principles and Basics, Supertraining 4-7), in small batches, each one gated as before. Eric approves each batch.
+- Open for Eric: which batch to approve first.
+
+## 2026-10-13 (Mac, later still): Mobile build plan added
+- Added the Flint on iPhone gaps and build-out notes (commit `893b0e0`, 2026-10-12) as the build plan: `docs/flint-mobile-gaps-and-buildout-2026-10-12.md`. Status: discussion notes, not started.
+- Order it sets: ingest first, interface second, harness third. Version 1 is ask only, on a VPS behind Tailscale Serve.
+- Open for Eric (from that file): VPS details to record (provider, OS, tailnet name, specs); which disciplines the phone answers at launch; model and budget; host history retention; whether version 2 adds capture or approvals.
+- Next: the file's own step 1 (promotion backlog and ingest batches) and step 6 (one cleanup pass on this plan and status file). No build starts until the readiness check in that file is mostly true.
+
+## 2026-10-13 (Mac): Luna summary pilot
+- Tested `gpt-6-luna` with requested medium reasoning on the full Kate Weiss transcript, withholding the existing Sol draft. Informal source-based assessment: 9/10, no critical failure; 14.6 seconds. Minor issues: speaker assertions labeled
+- Report and unedited output: `docs/evals/2026-10-13-luna-video-pilot/README.md`. Use Luna for reviewed single-transcript drafts; retain Sol for complex synthesis and validation review. One run does not establish relative cost, speed or gen
+- Existing Drive summary and library promotion gate unchanged. Next: apply this routing only if Eric chooses; no model setting changed. No open question blocks this test.
+
+## 2026-10-13 (Mac, later): Panel source review (stage 1)
+- Checked the Data Architecture panel source record against the Drive files: duration, file size, 765 cues and final timestamp all match. Details in `docs/sources/2026-10-13-data-architecture-panel.md` under "Source review".
+- Fixed on Drive: the application summary named panelists for four points, but captions carry no speaker labels. Those lines now say "A panelist". Speaker for the Kentucky point is still unverified; check the video before citing it.
+- Next: Eric decides whether to request agent-library integration. Stage 2 (falsifying review) runs only then. No entries promoted.
+
+## Current state
+- 2026-10-13: All 16 Sport Science Network replays on this event page have saved video/caption/transcript packages and five-application summaries on Drive. The 11-talk Luna/Sol batch has 66 cloud files verified by size and MD5.
+- Source records are in `docs/sources/`; latest folder links, processing decisions and source gaps are in `docs/sources/2026-10-13-ssn-remaining-replays.md`. Earlier five-package paths and closeout results are in `docs/handoffs/2026-10-13-s
+- Existing book/deck work and promotion gate remain as recorded in the latest cloud handoffs. This extraction request did not change that queue.
+
+## Next
+1. Replay extraction is complete for this event. Open `docs/sources/2026-10-13-ssn-remaining-replays.md` for package links and source limits before any requested ingestion.
+2. Before atomizing any saved replay, check source accuracy against the audio/slides and then follow the two-stage ingest gate.
+3. For the existing book/deck queue, open `docs/QUEUE.md` and the latest cloud handoff before selecting the next source.
+
+## 2026-10-13 (Mac): Data architecture panel processed
+- Processed the next replay after Ward: John Wagle, Chris Morris, and Josh Nelson, 32:37. Saved 720p video with audio, full native captions, timestamped Markdown, plain text, and five collegiate applications under `09_PRO_DEV/Continuing_Edu
+- Verified active stream identity, video duration/codecs, and all 765 caption cues (about 5,940 words). Source record: `docs/sources/2026-10-13-data-architecture-panel.md`.
+- Next: source review before future atomization/promotion. No entries promoted; no extraction questions remain.
+
+## 2026-10-12 (Mac): Patrick Ward replay and application summary
+- Extracted the 42:08 Sport Science Network replay with yt-dlp; saved 720p MP4 with audio, native captions, timestamped Markdown and plain text, and five collegiate applications in `09_PRO_DEV/Continuing_Education/SPORT SCIENCE NETWORK/Patr
+- Verified active player identity, video duration/codecs, and all 1,105 caption cues (about 8,433 words). Source record: `docs/sources/2026-10-12-ward-applied-analysis.md`.
+- Next: source review before future atomization/promotion. No entries promoted; no extraction questions remain.
+
+## 2026-10-12 (Mac): Eriksrud replay extracted for future ingest
+- Saved the 38:50 Sport Science Network replay and native English caption transcript with yt-dlp in the primary storage drive's `09_PRO_DEV/Continuing_Education/SPORT SCIENCE NETWORK/Ola Eriksrud - Multidirectional Speed/` folder, as Eric r
+- Full timestamped Markdown and plain text prepared; 642 cues, approximately 5,757 spoken words, coverage to 38:49.920. Source record: `docs/sources/2026-10-12-eriksrud-multidirectional-speed.md`.
+- Next: source review before atomization/promotion. No entries promoted; existing ingest queue unchanged. No extraction questions remain.
+
+## Where everything lives
+
+| What | Where |
+|---|---|
+| Drive outputs | `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/01_PROJECTS/_ACTIVE/2026-09-26_Flint` (Windows: `G:\My Drive\00_Primary_Storage_Drive\01_PROJECTS\_ACTIVE\2026-09-26_Flint`) |
+
+
+> **Latest handoff: `docs/handoffs/2026-10-10-wave1-w20-w29-cloud.md`** (cloud, 2026-10-10: Wave 1 decks W20, W21, W22, W24, W25, W27, W28, W29 through the full gate, 170 entries; W23 held for Eric; branch `ccr-4bb489bb-684hpi`, draft PR #8
+
+Read this first. Update it before ending every session.
+
+## 2026-10-10 (cloud): Wave 1 decks W20-W29 through the gate
+- **Branch:** `ccr-4bb489bb-684hpi`, started from `claude/zealous-feynman-bfc172` (PR #7), draft PR #8. Merge PR #6, then #7, then #8 (or fold them together).
+- **Why:** the previous session reported nothing reachable, but its search covered only its own prompt's items. The 2026-10-09 source check had eight more Wave 1 decks marked OK and under the connector's size limit: W20, W21, W22, W23, W25,
+- **Stage 1:** `docs/wave1-stage1-check-W20-W23-2026-10-10.md`, `docs/wave1-stage1-check-W25-W29-2026-10-10.md` (Haiku, plus coordinator decisions). No pages excluded for privacy in any of the seven atomized decks; contact details, collabor
+- **W23 Morris held for Eric:** no slide prints an author, venue or date; "Buddy Morris" is only the PDF metadata title, and the metadata author is a different person. Same handling as W16 and W17. PDF 17 (a personal remark about a named pe
+- **Gate per deck:** atomizer (Opus for W22, W25, W27, W28; Sonnet for W20, W21, W29), fresh Opus round 1, Opus fixer, fresh Opus round 2, then round-2 fixes (Opus fixer after checking the page, or the coordinator for quote-level fixes on W
+
+  | Item | Book folder | Atomizer | Entries | Confidence | Round 1 | Round 2 |
+  |---|---|---|---|---|---|---|
+  | W20 Schexnayder, Critical Factors in Training Design (2014) | `strength-and-conditioning/critical-factors-in-training-design--schexnayder` | Sonnet | 17 (21 written, 4 padded entries merged) | all untested | 5 GO / 13 FIX / 4 NO-GO | 15
+  | W21 Wagle, The Parable of Periodization (CSCCa 2018) | `strength-and-conditioning/parable-of-periodization--wagle` | Sonnet | 19 | 18 untested, 1 contested | 6 / 14 / 0 | 17 / 3 |
+  | W22 Riley and Wright, Houston Texans players manual | `strength-and-conditioning/houston-texans-players-manual--riley` | Opus | 28 | 23 untested, 5 contested | 17 / 12 / 0 | 26 / 3 |
+  | W25 Jordan, functional asymmetry and eccentric deceleration | `rehab-and-return-to-play/functional-asymmetry-and-eccentric-deceleration--jordan` | Opus | 16 | all untested | 7 / 10 / 0 | 14 / 3 |
+  | W27 Baar, Loading to Optimize Tendon Strength (2024) | `rehab-and-return-to-play/loading-to-optimize-tendon-strength--baar` | Opus | 18 | 17 untested, 1 contested | 7 / 12 / 0 | 16 / 3 |
+  | W28 Enoka, Neural Control of Lengthening Contractions | `strength-and-conditioning/neural-control-of-lengthening-contractions--enoka` | Opus | 11 | all untested | 3 / 9 / 0 | 10 / 2 |
+  | W29 Winkelman, The Language of Coaching (deck) | `strength-and-conditioning/language-of-coaching-deck--winkelman` | Sonnet | 19 | 18 untested, 1 contested | 4 / 16 / 0 | 13 / 7 |
+
+  Records: `staging/review_{schexnayder_W20,wagle_W21,riley_W22,jordan_W25,baar_W27,enoka_W28,winkelman_W29}_opus.md` and `..._opus_round2.md`; fix logs `staging/fixes_..._applied.md` (round-2 fixes appended). Reciprocal-link candidates (un
+- **`contested` calls, notable:** the domain rule (same claim, same sport domain, comparable population) lowered 9 of the atomizers' `contested` ratings (W21 2, W22 3, W28 1 after round 2; W20 none set). Kept: internal contradictions (W27 s
+- **Domains:** W25 and W27 are the first books in `rehab-and-return-to-play` after Harries. Neither `_domain.md` lists the new books yet (add at promotion).
+- **W24 Stone (Training Principles and Theory, USOC): gate closed, 42 entries (40 untested, 2 contested).** Book folder `strength-and-conditioning/training-principles-and-theory--stone`. No text layer at all (the source check's "noisy text"
+- **Wave 1 still unreachable here:** W1-W5, W11, W15 (over the connector limit, per the second session), W26 (19.8 MB), W31 (7.7 MB), W32 (12.3 MB), W12 (75 MB scan). W30 is a Google Doc of video links with little to atomize (left). W6 = W4
+- **Open for Eric (new):** promotion approval for W20, W21, W22, W24, W25, W27, W28, W29; confirm the W23 presenter; the W22 fat-loss-cap `contested` (internal contradiction only).
+
+## 2026-10-09 (cloud, third session): Issurin *Principles and Basics* Chapters 4-5, book complete
+- **Branch:** `claude/zealous-feynman-bfc172`, started from `origin/haiku-sweep-2026-10-09` (PR #6) and stacked on it. Merge PR #6 first, or merge this branch into it.
+- **Source:** re-downloaded from Drive id `1RtVYiCYhoPuzx4wOOGjAMqgVnoF4lGSw`, md5 `1893804a7c55feba7879d8c331a15dc4` matches. Staged at `staging/books/` (gitignored).
+- **Chapter 4 gate closed (32 entries):** 4a 10, 4b 9, 4c 13. Each through Opus round 1, Opus fixer, Opus round 2, then round-2 fixes by the coordinator after checking the page. Notable: Table 4.7 entry raised to `contested` on an internal 
+- **Chapter 5 gate closed (21 entries):** 5a 9 (5.1-5.3.1), 5b 12 (5.3.2-5.4). The 5b Summary entry was withdrawn as a duplicate (round-1 NO-GO); its one new sentence was folded into the 5a Figure 5.1 entry and its 7 inbound links retargete
+- **Privacy (5b):** Table 5.6 (PDF 218) gives individual body-mass/skinfold ratios for two named swimmers. The entry gives the method and pattern only: no names, values, coach or partner names, and no links to the Popov entries that would r
+- **Records:** `staging/review_issurin_principles_ch{4a,4b,4c,5a,5b}_opus*.md`, `staging/fixes_issurin_principles_ch{4a,4b,4c,5a,5b}_applied.md`, scope files `staging/_scope_issurin_principles_ch{4a,4b,4c,5a,5b}.txt`. Reciprocal-link candid
+- **Supertraining Ch8-9 extracts:** not on Drive yet (searched 2026-10-09). Still blocked here.
+- **Coverage-gap batch (Eric asked, 2026-10-09): done.** The four logged gaps (PDF 149, 158, 166, 189) were added to existing entries, no new entries (`staging/atomize_issurin_principles_gaps_notes.md`, scope `staging/_scope_issurin_princip
+- **Open for Eric (new):** promotion approval for Issurin I2 Ch4-5 and the gap additions.
+## 2026-10-12 (Mac, later): reciprocal links applied for Wave 1 and Issurin Ch5 candidates
+- **Table:** `staging/reciprocal_links_2026-10-12-wave1-issurin-ch5.md`. Built from the unreviewed candidate lists (`staging/reciprocal_links_candidates_wave1_W20-W29.md`, `staging/reciprocal_links_candidates_issurin_principles_ch5.md`). On
+- **Applied:** `scripts/apply_reciprocal_links.py --apply` (with `FLINT_VAULT=/Users/kristinarash/SecondBrain`). SecondBrain `6b37cd4`: 23 files changed.
+- **Not done:** no Opus spot-check on these rows yet. Rows marked as contrasts ("disagree", "opposing caution") were added as plain links. Prose-only candidates (no full target slug) were not added. The Issurin Ch5 numeric-entry candidates 
+- **Known cosmetic:** where a Related line ended in a period, the script dropped it and appended `; [[target]]` with no final period.
+
+## 2026-10-12 (Mac, later): W23 Morris through the gate; waiting on Eric's promotion approval
+- **Source:** found on Drive at `99_UNSORTED/From_REMOTE_DESK/Files from Bryant/Buddy-Morris.pdf`. Copied (not moved) to `staging/decks/Buddy-Morris.pdf`. Checksum matches. 18 slides, text layer present.
+- **Identity:** not confirmed. No author, venue or date printed. PDF author metadata reads "David Tate", not used. Promoted as "author unconfirmed" per Eric's answer.
+- **Atomize:** 21 entries + `_book.md` in `staging/library/strength-and-conditioning/deload-to-reload--morris/` (2 principle, 4 framework, 8 heuristic, 7 claim; 18 untested, 3 contested).
+- **Review:** Opus, GO AFTER FIXES (22 defects). Fixes: 21 of 22 applied; defect 19 partly fixed (folder slug still says `morris`, not renamed, to keep wikilinks working). Log: `staging/fixes_deload-to-reload-morris_applied.md`. Review: `st
+- **Promoted on Eric's approval:** dry run 22 new, 0 unresolved; applied. SecondBrain `57b3fc1` (21 entries + `_book.md`, domain index bullet added by hand). Memsearch re-index run (exit clean, total 43,384 chunks, nothing dropped). Recipro
+
+## 2026-10-12 (Mac): W23 Morris blocked, source not found on the Mac
+- Searched the Mac Drive mount (`GoogleDrive-eric.rash11@gmail.com/My Drive`) and the OneDrive-BaylorUniversity mount. The queue path (`Shared Reference Library/Golden, Mike/.../Various Presentations/Buddy Morris.pdf`) is not on either moun
+- Nothing was atomized. Next: Eric puts `Buddy-Morris.pdf` in `staging/decks/` on the Mac (or gives the full path). Then run stage 1, atomize, review, fix.
+
+## 2026-10-12 (Mac, held items): Eric's answers
+- **W23 Morris:** Eric's call is "promote as unconfirmed": the entries carry a label that the author is unknown and no name is credited. **Not yet atomized.** `staging/` has no W23 files. Run the full gate first (stage 1 check, reviewer pas
+- **W16, W17:** Eric will check each source by hand and report the author or venue. Still held.
+- **W13 (Hudy, KU basketball):** Eric asked who the named athletes are. The appendix holds 2005 heart-rate exports for named athletes (`docs/wave1-source-check-2026-10-09.md`, line 23). Names are not written into this repo. Still held: do n
+
+## 2026-10-12 (Mac, spot-check): Opus check of the new links
+- **Result:** 1 PASS / 2 FIX of 3 checked rows (rows 2, 11, 19). Pairings were sound in all three. Only the parenthetical glosses were wrong.
+- **Fixed:** row 2 (Zatsiorsky) gloss wrongly credited the Enoka finding; row 11 (Verkhoshansky) called the Jordan entry "opposing". SecondBrain `5790403`.
+- **Glosses checked (rows 1, 17, 20, 21, 22):** all five read against both files. All PASS: row 1 (isokinetic reflex contrast), row 17 (Vermeil vs Baar fast-loading contrast), row 20 (Harries case uses early isometrics), row 21 (Myslinski v
+- **Report:** `staging/review_reciprocal_links_2026-10-12_spotcheck_opus.md`.
+
+## 2026-10-12 (Mac): memsearch full re-index done
+- **Run:** `memsearch index` over the 12 existing paths in `~/DEV/KeystoneOS/data/memory-index-paths.json` (`.codex/memories` is missing on this Mac). Exit 0. Indexed 3,601 chunks. Total collection went from 35,833 to 39,218 chunks. Nothing
+- **Checks:** the Sport Science persona (`advisors/sport-science.md`) is searchable. The Issurin in-season mini-block entry ranks first for an in-season football query. The Baar tendon-loading entries still rank below Verkhoshansky and a Fl
+- **Log noise:** the run printed Milvus GOAWAY and too_many_pings warnings, plus one "Failed to start MilvusLite server" error from a second `stats` call made while the index held the lock. The index itself finished clean.
+- **Still open:** reciprocal links for the new books (Batch 1 and Batch 2); W13, W16, W17, W23 need Eric; Supertraining Ch8 and Ch9 Addendum wait on extracts on Drive.
+
+## 2026-10-10 (Mac, final): remaining approved batch promoted; 0 unresolved links
+- **Promoted under standing pre-approval (vault commit `d35d418`):** Vermeil (27 files), Myslinski (21), Issurin *Principles* Ch1-5 (110), Zourdos (22), Pfaff (25), Mann (23), Samuels (13), Bondarchuk Vol I Ch3 (21 new; `_book.md` updated f
+- **Batch 1 links now resolve** (the 119 from ca0d027 are closed).
+- **Still open:** W23 Morris (held); W13, W16, W17 (need Eric); Issurin I2 Ch4-5 is included in the Principles batch above, so confirm; reciprocal links for the new books; memsearch re-index (advisor and new books not searchable until a ful
+
+## 2026-10-10 (Mac, late): PRs 6-8 merged; six Wave 1 decks promoted
+- **Merged to main:** PR #6, #7, #8 (stacked; `STATUS.md` conflicts resolved by keeping both sessions' entries).
+- **Promoted on Eric's approval (vault commit `ca0d027`):** W20 Schexnayder (18 files), W21 Wagle (20), W22 Riley (29), W24 Stone (43), W25 Jordan (17), W28 Enoka (12). Domain indexes now list W27 Baar and W29 Winkelman too.
+- **119 unresolved links** from these six point to books not yet in the vault: Vermeil (17), Myslinski (9), Issurin *Principles* (10), Mann (7), Zourdos (6), Samuels (3), Pfaff (3), Bondarchuk (2). They resolve when those books promote. Tho
+- **Still open:** W23 Morris (held, presenter unconfirmed); W13, W16, W17 (need Eric); Issurin I2 Ch4-5 promotion; reciprocal-link candidates for the new books.
+- **Tooling:** on this Mac run `scripts/promote_to_vault.py` with `FLINT_VAULT=/Users/kristinarash/SecondBrain`. Zsh does not split unquoted variables, so pass bash arrays.
+
+## 2026-10-10 (Mac): Sport Science Assistant built; W27 and W29 promoted
+- **Sport Science Assistant:** new cross-domain advisor persona at `SecondBrain/Knowledge/library/advisors/sport-science.md` (vault, not this repo). It routes single-domain questions to the domain advisors and cites every claim to an entry.
+- **Promoted on Eric's approval:** W27 Baar (19 files) and W29 Winkelman (20 files) to the vault, commit `d0b8747`. Dry run showed 6 unresolved links to Myslinski, Vermeil and Issurin *Principles*; they resolve when those books promote.
+- **Re-indexed 2026-10-10:** memsearch index over the 12 existing configured paths, exit 0, 34,669 to 35,833 chunks. Persona file now searchable. Baar tendon entries still rank low (search tuning, accepted for now).
+- **Open:** add Baar and Winkelman lines to the two `_domain.md` files by hand; memsearch not re-indexed (advisor persona not yet searchable); Wave 1 branch `ccr-4bb489bb-684hpi` (PRs #6, #7, #8) still unmerged; W20, W21, W22, W24, W25, W28
+- **Gotcha:** on this Mac `promote_to_vault.py` needs `FLINT_VAULT=/Users/kristinarash/SecondBrain`. The shared config's `_comment` key is read as a vault path.
+
+## 2026-10-09 (cloud, second session): back-links reviewed; six Wave 1 decks through round 2; Bondarchuk Ch3 staged
+- **Ch6-7 back-link table (item 1): ready to apply.** Opus 10% spot-check (29 rows, seed 20261009): 19 PASS / 10 FIX (`staging/review_reciprocal_links_2026-10-09-ch6-7_spotcheck_opus.md`). 82 cross-book rows rewritten by script to `[[supert
+- **Supertraining Ch8 and Ch9 Addendum (item 2): skipped, this machine cannot reach the PDF.** The Drive connector downloads binaries up to about 5 MB (6.9 M base64 characters worked, 8.5 M failed); the 6th Expanded PDF is 34.6 MB and the t
+- **42 Analytics round 2 (item 3): already done before this session** (r4a/r4b and a Codex round on 2026-10-02; promoted). QUEUE.md line corrected.
+- **Wave 1 decks (item 4).** Too large for the connector here: W1-W5, W11, W15 (and W12 is a 75 MB scan). W6 = W4. W14 not found. Held for Eric: W13 (named athletes' heart-rate exports), W16 and W17 (identity check by hand). Done here, all 
+
+  | Item | Book folder | Atomizer | Entries | Confidence | Records |
+  |---|---|---|---|---|---|
+  | W7 Pfaff, Athletics Weekly interview 2008 | `athletics-weekly-interview--pfaff` | Opus | 24 | 22 untested, 1 supported, 1 contested | `review_pfaff_W7_opus*.md`, `fixes_pfaff_W7_applied.md` |
+  | W8 Vermeil deck 2004 | `philosophy-and-training-system--vermeil` | Sonnet | 26 | 22 untested, 4 contested | `review_vermeil_W8_opus*.md`, `fixes_vermeil_W8_applied.md` |
+  | W9 Mann, Tendo book 2009 | `developing-explosive-athletes--mann` | Opus | 22 | 9 supported, 10 untested, 3 contested | `review_mann_W9_opus*.md`, `fixes_mann_W9_applied.md` |
+  | W10 Myslinski, Browns 2008 deck | `browns-strength-and-conditioning-2008--myslinski` | Sonnet | 20 | all untested | `review_myslinski_W10_opus*.md`, `fixes_myslinski_W10_applied.md` |
+  | W18 Samuels, overtraining and sleep deck | `overtraining-and-sleep--samuels` | Sonnet | 12 | all untested | `review_samuels_W18_opus*.md`, `fixes_samuels_W18_applied.md` |
+  | W19 Zourdos, ISSN periodization lecture 2014 | `optimizing-periodization--zourdos` | Sonnet | 21 | 20 untested, 1 contested | `review_zourdos_W19_opus*.md`, `fixes_zourdos_W19_applied.md` |
+
+  Stage-1 checks: `docs/wave1-stage1-check-W7-W9-2026-10-09.md`, `docs/wave1-stage1-check-W10-W18-W19-2026-10-09.md`. Sources staged in `staging/decks/` (gitignored), byte sizes match Drive.
+  **Pages excluded for privacy (never opened by atomizers or reviewers):** W10 PDF 31-36 and 45-47 (player load charts by position and number); W18 PDF 29-54 and 58 (identifiable athletes' case histories and sleep diaries, clinic contacts).
+  The strength-and-conditioning `_domain.md` does not list these six books yet (add at promotion).
+- **Bondarchuk Vol I Chapter 3 (item 5): gate closed, waiting on Eric's promotion approval.** Source: Drive copy (5.2 MB, md5 `38960869...`), stage-1 OK (`docs/bondarchuk-ch3-stage1-check-2026-10-09.md`). Two Opus batches with no shared pag
+- **Rest of the queue (item 5), what this machine can reach:** B2 (Vol II, 7.0 MB and up), B3 text copy (15.8 MB; the 4 MB Drive copy is an image-only scan, so a different artifact), B4 (7.7 MB) and Zatsiorsky Z1/Z1b (36-54 MB) are over the
+- **Open for Eric:** (1) promotion approval for W7-W10, W18, W19, Bondarchuk Vol I Ch3 and Issurin I2 Ch1-3; (2) the 16 held back-links; (3) the brief (internal contradiction means `contested`) versus the 2026-10-03 domain rule: the brief's
+
+## 2026-10-09 (cloud session): Haiku sweep, script fix, Wave 1 source check
+- **Scripts read the vault path from config.** New `scripts/vault_path.py`: `FLINT_VAULT`, then `~/.claude/skills/_shared/config.<platform>.json` / `config.json` (first value naming SecondBrain), then the platform default. `promote_to_vault
+- **Staging cleanups (not yet in the vault):** the stray `</content>` line was in 31 Evans entries, not 2. In two of them a Related link had been appended after the tag; it is now joined back. `framework--functional-vs-structural-resistance
+- **Ch6-7 back-links:** of the 377 links, 23 already had a back-link, 48 point at vault-only files (Bompa 23, research-papers 22, Moyer 3; not in staging, still open), and 306 were written by five Haiku agents. 290 are in `staging/reciproca
+- **Wave 1 deck source check (W1-W32):** `docs/wave1-source-check-2026-10-09.md`. 23 OK to atomize, 5 check by hand, 1 needs OCR (W12), 2 not found (W6 = W4; W14 missing), 1 filename differs (W23). W13 holds named athletes' heart-rate expor
+- **Haiku's role (Eric asked to use it where possible):** extraction, source checks, link-back rows, lint. It does not atomize or review. Sonnet atomizers for sparse decks are the next throughput lever, with Opus reviewers kept.
+- **Branch:** `haiku-sweep-2026-10-09`, draft PR #6. In this cloud clone, local `main` still holds the same three commits; reset it to `origin/main` after the PR merges.
+
+## 2026-10-03 (Mac, late): *Supertraining* Chapters 6 and 7 promoted
+- **Gate, six parallel batches** (Opus atomizer, fresh Opus round-1 reviewer, Opus fixer, fresh Opus round-2 reviewer; last small round-2 fixes applied and page-checked by the coordinator; Codex not used):
+  - 6a 6.1-6.3 (28), 6b 6.4-6.8.2 (16), 6c 6.8.3-6.11 (19), 6d 6.12-6.17 (25): 88 entries. 7a lead-in and 7.1 (10), 7b 7.2-7.6 (14): 24 entries.
+  - Records: `staging/review_supertraining_ch{6a,6b,6c,6d,7a,7b}_opus*.md`, `staging/fixes_supertraining_ch{6a,...}_applied.md`, scope files `staging/_scope_supertraining_ch6{a,b,c,d}.txt`, `_ch7{a,b}.txt`.
+  - Notable calls: Fig 6.22 graph A is a decelerating curve (writer misread it as straight); block lengths sorted by what each measures (block 3-4 vs 4-8 weeks is the real conflict); Issurin 2016 does not name "jumping-type sports", it coun
+- **Addendum voice:** the Addendum (9.1-9.2, PDF 514-590) is Verkhoshansky's own paper translated by Yessis (PDF 515). Attribute it to him. The Ch5 allow-restoration entry fixed on Eric's call (SecondBrain `d41a087`).
+- **Promoted on Eric's approval:** SecondBrain `2708d36` (112 entries + `_book.md` Ch6-7 rows), `e0170a8` (33 reciprocal links from `staging/reciprocal_links_2026-10-03-ch6-7.md` plus 8 manual edits, incl. stale "6.7.1"/"7.1 not yet ingeste
+- **Open, small:** 377 links from the 112 new entries into older ones have no back-link yet (a later wave). Two Evans entries end with a stray `</content>` line. `framework--functional-vs-structural-resistance-training` says balance-board t
+- **Mac promote trick:** when unreviewed chapters share the book folder, `staging/_tmp/promote_mac_excl7.py` shows how to exclude files listed in scope files.
+- **Next for this book:** Chapter 8, Designing Sport Specific Strength Programmes, printed 421-480 / PDF idx 432-491 (60 pages); then Chapter 9 Addendum (Verkhoshansky's own, PDF 514-590).
+
+## 2026-10-03 (Mac, later): *Supertraining* Chapter 5 promoted, Bompa fix
+- **Gate, three parallel batches** (Opus atomizer, fresh Opus round-1 reviewer, Opus fixer, fresh Opus round-2 reviewer each; Codex not used):
+  - 5a, 5.1-5.2.3 (PDF 266-278): 19 entries. R1 GO AFTER FIXES 11/8/0; two renames (Ivanov, implement mass). R2 18/1/0, last fix applied by the coordinator.
+  - 5b, 5.2.4-5.2.5 (PDF 278-298, depth jumps and plyometrics): 30 entries. R1 GO AFTER FIXES 17/13/0; two `contested` lowered to `supported`. R2 28/2/0, both fixed by the coordinator. Wilson, Elliott & Wood 1991 (MSSE 23(3):364-370, PMID 2
+  - 5c, 5.3-5.6 (PDF 298-323): 26 entries. R1 GO AFTER FIXES 15/11/0; Fig 5.12 and 5.14 re-read at high resolution. R2 25/1/0, fixed by the coordinator.
+  - Records: `staging/review_supertraining_ch5{a,b,c}_opus*.md`, `staging/fixes_supertraining_ch5{a,b,c}_applied.md`, scope files `staging/_scope_supertraining_ch5{a,b,c}.txt`.
+- **Promoted on Eric's approval:** SecondBrain `3109157` (75 entries + `_book.md` Ch5 rows), `75f846d` (Bompa fix, below), `51ee50f` (68 reciprocal links from `staging/reciprocal_links_2026-10-03-ch5.md` plus 4 manual edits, incl. the stale
+- **Bompa fix (Eric's call):** `periodization--bompa/principle--concentrated-loading-overreaching` attributed "gains 4 to 12 weeks after the block" to Siff and Verkhoshansky. That is Bompa & Haff 5e's citation (printed p. 49, PDF idx 60 of 
+- **Line endings:** the link script rewrote the Issurin 2016 paper brief from CRLF to LF (only one real line added). Harmless; noted in case Windows shows it as changed.
+- **Zotero MCP failed on the Mac** ("MCP tenant gate is not configured"); the Wilson check used PubMed instead.
+- **Next for this book:** Chapter 6, Organisation of Training, printed 313-392 / PDF idx 324-403 (80 pages; split into 3-4 batches by section).
+
+## 2026-10-03 (Mac): *Supertraining* 4.3-4.4 promoted, Chapter 4 complete
+- **Source on the Mac:** the book is now staged at `staging/books/supertraining-6th-expanded.pdf` (copied from Drive `09_PRO_DEV/TB's Training Info (snapshot 2026-09-26)/Verkhoshansky/`, md5 `d3453c5e...` matches `_book.md`). Other staged b
+- **Gate:** Opus atomizer wrote 23 entries (4.3: 13, 4.4: 10). Round 1 (`staging/review_supertraining_ch4-3-4_opus.md`): GO AFTER FIXES, 15 GO / 8 FIX / 0 NO-GO; worst miss was the power entry rating a wrong physics claim `proven`. Fixes ap
+- **Promoted on Eric's approval:** SecondBrain `8d0909e` (23 entries + `_book.md`, Chapter 4 row now done, 64), then `104eb0e` (15 reciprocal links from `staging/reciprocal_links_2026-10-03.md` plus 4 manual edits, incl. the Evans wrestling
+- **Mac tooling gap:** `promote_to_vault.py`, `apply_reciprocal_links.py`, `sync_back_from_vault.py` and `lint_library.py` hard-code the Windows vault path. This session ran Mac-path copies from `staging/_tmp/` (gitignored); the repo script
+- **Source oddities recorded in entries, not resolved:** Table 4.2 Class 1 factor IV 2.7 (likely a misprint), the "6% ... only 7%" sentence (PDF 261), Pattengale & Holloszy 1967 is a treadmill study the book cites for strength training.
+- **Next for this book:** Chapter 5, The Methods of Special Strength Training, printed 255-312 / PDF idx 266-323 (58 pages, split into batches).
+
+## 2026-10-03: Drive reorganized (project-triage org pass, step 8)
+- Files moved out of `00_INBOX` (which the regex skipped) and two career roots moved inside the primary drive (`11_PERSONAL/`, `10_ARCHIVE/`), so `exclude_path_regex` in `config/roots.json` gained `/11_PERSONAL/`, the career roots unanchore
+- **Next for Eric:** re-run the catalog against the reorganized Drive (paths changed for ~100 items and 9 root folders).
+
+## 2026-09-29: DSI check, shortlists, wide catalog, Jev pass
+- **DSI evidence check done:** `docs/synthesis/_work/dsi-evidence-check.md`. Measuring DSI is fine. As a plyo-vs-strength switch it is contested: IMTP PF explains 56-72% of DSI variance (Suchomel 2020), the 0.60/0.80 cutoffs were never vali
+- Peaking revision log now covers rev 3 (`docs/synthesis/_work/review_peaking_synthesis_opus.md`).
+- memsearch drain (scheduled 9/28 17:31) finished: exit=0, 8,764 chunks, 232 min (estimate was about 10,100 chunks).
+- **Shortlists approved by Eric (all 14, first wave).** The 84 new files are **Wave 1** at the end of `docs/QUEUE.md`, after the current queue; answers are recorded in `docs/shortlists/README.md`. Decision 2 (Claude's call): papers already 
+- **Catalog re-run done (Eric ran it, 11:36 to 16:01).** 62,072 files catalogued, 29,750 unique (was 11,654). The growth is mostly `OneDrive-Import` (a migration copy of the primary drive), `01_PROJECTS` and `05_SYSTEMS`.
+- **Fixes after the re-run (no re-crawl needed):**
+  - `exclude_path_regex` tightened. It missed athlete and health records because of spelling: `FB_DEXA_Project`, the football injury reports and the 2025 injury project, roster files (incl. Cheer athlete photos), Baylor_Archive testing and 
+  - TB Training Info priority 4 to 2: a full TB copy now sits in `AP & Sports Science/.../Training Programs & Planners` and had become canonical. New `scripts/recanonicalize_manifest.py` re-picks canonical copies from roots.json without a r
+  - A labelled file now reaches the model pass even when a rule tags it, as the model-pass docstring promises. Before this, 16 approved tier-A files dropped out when their canonical copy moved to a rule-matching path. Tier A is back to 97; 
+- **Jev candidate pass done (Eric's "go", scoped).** Run record: `docs/jev-pass-2026-09-29.md`.
+  - Scoping: career roots excluded; project, code and frame trees skipped; OneDrive-Import, team and athlete-facing folders, `00_INBOX` and all data files held (never sent out); Eric's own project docs routed by path.
+  - Jev input: 284 files. Jev answered all 284, 0 failures. Claude labelled them with the unchanged brief, and one review round gave GO AFTER FIXES (fixes applied).
+  - Result: tier A 101 (97 approved + 4 new). **Wave 2 approved by Eric and queued (`docs/QUEUE.md`):** Gabbett 2018, Gabbett and Oetter 2024, the Munich consensus, Boyle. Verify-first pair **verified 2026-10-03** (`docs/QUEUE.md`, below Wa
+  - DONE 2026-10-01: Eric marked all 73 folders keep in `docs/onedrive-import-folders.md` (8,994 OneDrive-only files) and cleared all of them for Jev, Personnel, PERSONAL and HEALTH included. `HOLD_ROOTS` is now empty. **Run on Windows** (t
+- **Next:** roots decided (2026-10-01, keep all, all to Jev); run the Jev pass on Windows (commands above); Claude labels; Eric approves the shortlist.
+- Still waiting on Eric from the 9/28 handoff: the Jev blind audit, the CLA primer questions, CVASPS listening.
+
+## Method interview (2026-09-28): DONE, answers applied
+- Eric answered all 27 interview-prep questions and the 6 peaking questions (merged to 30): `docs/interview/2026-09-28-method-interview.md`, in his words.
+- Its last section lists every change for `method-baseline.md` and the peaking synthesis. Biggest: course positions are Eric's (Explicit); Assessment Manual V12 and the V4 schedule are legacy; no true 1RM testing; mRSI read on Wednesdays wi
+- DONE same day: answers applied to `method-baseline.md` and peaking synthesis rev 3 (`5545f06`, `4ac2693`); UE and LE rehab templates staged as text in `staging/rtp/` (gitignored; originals only in Downloads, should move to Drive); constra
+- Next: DSI evidence check done 2026-09-29 (above); Eric reads the primer and answers its three questions; ANSWERED 2026-10-02: the three open tensions from the interview (Wednesday vs daily mRSI, COD and FMS gates in the RTP templates vs Q
+- Jev Drive-triage pilot (TypeSafe_Sandbox PR branch `worktree-drive-triage-run`): FAIL on the 90% bar (76.5%), but Jev beat Haiku on every measure. **Eric's decision 2026-09-28: Jev does the Flint pass**, keeping Eric's shortlist approval 
+
+## Phase 2 triage (2026-09-28): shortlists drafted, waiting on Eric
+- All 3,998 files the rules left over are labelled (tier A 97, B 2,363, C 1,538). They passed round-1 review, a round-2 check (GO AFTER FIXES, applied) and a dedup.
+- Draft tier-A shortlists: `docs/shortlists/` (14 disciplines, 97 files, 84 new to the queue). The README holds totals, a throughput estimate and 8 decisions for Eric.
+- Handoff with the review record and gotchas: `docs/handoffs/2026-09-28-flint-triage.md`.
+- Done 2026-09-29: Eric approved the shortlists; the approved sources are Wave 1 in `docs/QUEUE.md`.
+
+## Day 3 (2026-09-28): gate done, promotion pending Eric
+- **Passed the gate, in staging only:**
+  - Issurin Ch4 (10 entries).
+  - Zatsiorsky 2e Ch1-2 (17 entries, new book).
+  - *Supertraining* 4.1 (6), 4.2a (15) and 4.2b (20).
+- **Review process:** each batch had an independent round-2 reviewer, not the fixer. Corrections were applied verbatim and are logged in `staging/fixes_*_applied.md`.
+- **Promotion dry run:** 69 new files. The only changed files are the two `_book.md`s. Unresolved links: 0.
+- **Ready to apply after promotion:**
+  - Reciprocal links: `staging/reciprocal_links_2026-09-28.md` (42 rows, 2 manual edits).
+  - `_domain.md` merge text: `staging/_domain_merge_sc_2026-09-28.md`.
+- **Vault:** unchanged. The last vault commit is still `aacbccd`.
+- **CVASPS transcript:** proposals are in `docs/cvasps-corroboration-proposals.md`. Its ASR check is not done: 47 flagged spots need listening before anything is cited.
+
+## Historical state (2026-09-27, end of day 2)
+- **In the vault (SecondBrain `aacbccd`, pushed 2026-09-27):** 269 entries across 6 sources, all through the two-stage review gate, plus 66 reciprocal links. Staging was synced back from the vault (a promote dry run shows 0 changed).
+
+  | Book | Entries | Gate |
+  |---|---|---|
+  | Harries *On-Field RTP* (`rehab-and-return-to-play/on-field-rtp--harries`) | 37 (33 + batch 2) | 2 rounds; batch 2: 1 round |
+  | Old Bull (`performance-technology-and-leadership/old-bull-performance-course--old-bull`), new domain | 37 | 2 rounds |
+  | Issurin *Block Periodization* Ch1-3 (`block-periodization--issurin`) | 28 | Ch1-2: 2 rounds; Ch3: 1 round |
+  | Bondarchuk *Transfer of Training* I, Ch1-2 (`transfer-of-training-in-sports--bondarchuk`) | 20 | 2 rounds |
+  | *Supertraining* Ch1-3 (`supertraining--verkhoshansky`) | 113 | Ch1: 3 rounds; Ch2-3a: 2; Ch3b: 1 |
+  | Landon Evans *Elite Sports Performance* (`elite-sports-performance--evans`) | 34 | 2 rounds |
+
+- **Search index:** memsearch re-indexed 2026-09-27; spot checks return the new Issurin, Evans, Old Bull and Supertraining Ch3 entries as top hits.
+- *Supertraining* is atomized through Chapter 3 (113 entries). Resume at Ch4 (printed 201, PDF idx 212).
+- CFTS OCR done 2026-09-27: `staging/ocr/cfts--francis.md` (218 pages, 0 low-confidence, 12 blank), so F3 in the queue is unblocked. Zatsiorsky 2e OCR (`bash scripts/ocr_zatsiorsky_2e_chunks.sh`, skips finished chunks) were rerun one at a t
+- All of this is on `main`: PR #1 merged 2026-09-27; the later `step1-triage` work (9/28-9/29) merged as PR #2 on 2026-10-01.
+
+- **OCR sources checked 2026-09-27.** Zatsiorsky 2e (`staging/ocr/science-practice-strength-2e--zatsiorsky--p*.md`, all 247 pages): the scan is missing about 2 printed pages in Ch10 (printed 205-214) and most of the Glossary and Suggested R
+
+## Earlier queue notes (retained for reference)
+0. 42 Analytics: 23 `supported` talks atomized to 152 staged entries (new domain `sports-analytics-and-decision-making`, book `ssac-talks--42analytics`); 50-entry Opus sample review done and fixes applied. **2026-10-02: second full round (r
+0. **From 2026-09-29, most important first:**
+   - ~~(Eric) Mark keep or drop on `docs/onedrive-import-folders.md`.~~ Done 2026-10-01: all 73 keep.
+   - ~~(Eric) Open "The System" and "Black Book Of Secrets" (verify-first).~~ Verified 2026-10-03 (see `docs/QUEUE.md`). Black Book approved and queued as X5, Enhanced Edition (Eric, 2026-10-03).
+   - Ingest in queue order: the current queue, then Wave 1 (W1-W84), then Wave 2 (X1-X4).
+1. **Promotion is done.** For the next book (or a book already in the vault), repeat the recipe: `scripts/promote_to_vault.py` (dry run, then `--apply`), merge `_domain.md` by hand, `scripts/apply_reciprocal_links.py`, commit and push Secon
+2. (Done: `step1-triage` merged into `main`, PR #1 on 2026-09-27 and PR #2 on 2026-10-01. Work on `main` or a fresh branch from now on; do not reuse `step1-triage`.)
+3. Add Eric's annotation to the vault Issurin 2016 brief: its "concentrated unidirectional" model is Verkhoshansky's, not Issurin's A-T-R (pp. 6-7, 11).
+4. Missing ideas logged by reviewers (in `staging/fixes_*_applied.md` and `staging/review_*.md`): a next atomizer batch per book. Biggest: Supertraining 3.3.3 strength and speed; Issurin's five Ch1-2 ideas; Harries speed prescription (kept 
+5. Continue the queue (`docs/QUEUE.md`): *Supertraining* Ch8-9 (Ch6-7 done 2026-10-03; resume printed 421 / PDF idx 432), Bondarchuk Vol I Ch3, then Zatsiorsky, Francis (CFTS once OCR is done), other Verkhoshansky books.
+6. CVASPS transcript: the draft exists, and the proposals are in `docs/cvasps-corroboration-proposals.md`. Next: listen to the 47 flagged ASR spots. After that, raise the 4 proposed Evans entries from `untested` to `supported` and atomize t
+
+## Open questions
+- Interview (when Eric has time): `docs/interview-prep.md`, 27 questions. New: slide U4 L1 p.16 (Evans) has "no more than 4x per year" body-composition testing, which may be the origin of the same rule in `method-baseline.md`.
+- Evans Verkhoshansky activation-levels entry: the slides contradict themselves on where the threshold of adaptability sits; both are recorded and the entry stays `untested` (the course ceiling) rather than `contested`. Eric's call.
+- Two-a-day entry (Issurin): confirm the current NCAA Division I preseason practice rule before using it for fall camp.
+
+## Answered
+- **Mike Golden library priority** (open question): not the same priority as TB and Landon (Eric, 2026-09-29). Its tier-A files are in Wave 1.
+- **How to edit this worktree** (open question from 2026-09-26): enter the existing worktree by path (`EnterWorktree` with `.claude/worktrees/step1-triage`). The local sources (`staging/books`, `staging/ocr`, `staging/audio`, `staging/sourc
+
+## Gotchas
+- Replay pages can retain earlier stream assets. Read the active `mux-player` playback ID and its shadow-DOM `mux-video` source, then verify caption content and video duration. Do not select the first stream from the asset inventory.
+- A file's presence under the Mac Drive mount does not prove online synchronization. Verify the final package in Drive web before giving the G: path as complete. Confirm all six files and avoid duplicate uploads if sync catches up.
+- **After promotion the vault copy is canonical.** Reciprocal links and `_domain.md` merges are written in the vault only, so staging is synced back from it (Next 1.5). When re-promoting a book that is already in the vault (Supertraining af
+- **Fixer logs can overstate.** One Bondarchuk fixer log claimed fixes that were not in the files. Round-2 reviewers check the files, and fixers paste grep output. Run the lint (`python scripts/lint_library.py staging/library/<domain>/<book
+- **Section headers** use the vault form `**What it is** —`. Agents drifted to `: mandatory` and `- mandatory` suffixes; normalized 2026-09-27.
+- **Reviewer "(verify)" citations** come from model memory. Never insert one unless the vault or the paper confirms it.
+- **Background jobs die with the session.** Run long OCR in `--pages` chunks to separate files (Zatsiorsky 2e is 247 pages, about 3 hours) so a death loses one chunk. CFTS: 218 pages, about 2.5 hours.
+- **Page numbers.** The ingest-book extractor's `--pages` is inclusive and has a `viewer_page` field (claude-skills PR #9). Entries cite the 0-based `page` (= `viewer_page` minus 1). The Mac needs `git pull` in `~/.claude/skills`, then the 
+- **Codex runs on Eric's ChatGPT plan cap.** When capped, reviews use fresh Opus agents with `staging/review_book_prompt.md`.
+- **Every atomizer follows `docs/ATOMIZE_BRIEF.md`**, which now carries the 2026-09-27 lessons.
+- **`staging/` tracking.** `library/`, `review_*.md`, `*_prompt.md`, `fixes_*.md`, `reciprocal_links_*.md` and `_scope_*.txt` are committed. Books, audio, sources and OCR stay local.
+- **`gws` output.** It prints "Using keyring backend" on stdout, and scripts filter that line out.
+- **TB attribution.** TB is shortcut-linked inside AP & Sports Science. The manifest skips shortcuts to other configured roots so TB keeps its own attribution.
+- **Triage patterns.** The rules match underscores as spaces, so folder-name patterns use `.` in place of `_`.
+- **After a catalog re-run** (or a roots.json priority change): `scripts/recanonicalize_manifest.py` if priorities changed, then `triage_rules.py`, `triage_model_pass.py`, `build_shortlists.py`, and confirm every labelled `candidate=yes` ke
+- **Nothing record-shaped goes to Jev.** Held paths live in `HOLD_PATH` and `HOLD_ROOTS` in `triage_model_pass.py`; data files are always held. Judge from folder names; do not open a file to check.
+
+## Latest closeout recap
+- 2026-10-13: All 16 replay folders verified at four files each; originals archived. Supertraining staging/review/fix work checkpointed, not promoted. Ch8 falsifying review and vault-content reconciliation remain before execution. Final rep
