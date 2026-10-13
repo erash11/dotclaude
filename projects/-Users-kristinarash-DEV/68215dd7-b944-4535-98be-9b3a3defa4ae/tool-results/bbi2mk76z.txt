@@ -1,0 +1,385 @@
+TRAINING, PREVENTION, AND REHABILITATION
+
+
+
+Focused Review of Sleep Wearable Technology
+and Its Application in Sports Performance
+Matthew W. Kaufman, MD;1,2 Maya Shetty, BS;2 Chantal Nguyen, MD;1,2 Jaden Abas, BS;3
+Michael Fredericson, MD, FACSM;1,2 and Jamie Zeitzer, PhD2,4
+
+
+ within competition, and may even return
+ Abstract from injury more effectively, which un-
+ Sleep is a critical component of quality of life, recovery, and performance derlines the key role that sleep can play
+ both physically and cognitively. Tracking sleep with wearables is increasingly in an athlete. The purpose of this review
+ prevalent among individuals; the data that are retrieved from these wear- is to highlight the previous literature on
+ ables, however, is of unclear relevance. To update this space, literature was actigraphy on sports performance, with
+ reviewed to examine the implications for good and bad sleepers, the current the majority of critical analysis highlight-
+ shortcomings of wearables, their current status usage and literature reports ing the benefits and risks of relying on
+ in sports medicine, and the future benefits that these devices may have for actigraphy for sleep wearable research.
+ athletes and nonathletes alike. Wearables have good performance in detecting
+ sleep but have greater difficulty in discerning between quiet wakefulness and
+ early stages of sleep. The use of summative scores in consumer wearables is Understanding the History and
+ opaque, which should make sports medicine providers skeptical of their clini- Further Context of Sleep Wearables
+ cal utility. There is ample opportunity for wearables to be clinically useful and To consider the validity and credibil-
+ research opportunities to better explore the bidirectional relationship between ity of the results listed, it is important
+ daytime athletic performance and sleep. to understand the history and underpin-
+ nings of actigraphies. Although it is a
+ crucial pillar to health for athletes and
+Introduction nonathletes alike, sleep is difficult to measure in an ecologi-
+ Adequate sleep is essential for athletes, contributing to im- cally relevant, longitudinal manner that would make resulting
+proved performance, faster recovery, and reduced risk of inju- data meaningful to athletes, clinicians, or researchers. The
+ries and illnesses (1,2). Previous research has underlined that gold standard for measuring sleep is polysomnography
+adequate sleep contributes to an athlete's overall health and (PSG), which can be used to quantitate sleep into stages (N1,
+can affect all phases of athletics, including training, perfor- N2, N3, rapid eye movement (REM)) using brain waves, mus-
+mance, and recovery (3). Improved sleep is associated with a cle activity, and eye movements (7,8). PSG studies, however,
+reduction in missed training sessions and improved aerobic ca- are very expensive, use burdensome equipment, and are depen-
+pacity, as well as directly impacting the testosterone and corti- dent on an expert interpreter to determine clinical significance.
+sol that are key regulators of tissue recovery (3). Similarly, sleep These limitations reduce the utility of recording sleep especially
+wearables have been used in studies that correlate to sport- over multiple days. Given the large night-to-night variability in
+specific metrics like free throw percentage, variations in run- sleep, especially among those with poor sleep, alternative
+ning performance of an ultramarathon, or recovery in the Tour methods for quantitating sleep have been sought. Since at least
+de France (4–6). By potentiating the benefits of adequate sleep, the early 1980s, wrist-worn wearables have been one of the
+athletes can feel better throughout training, perform better most commonly used devices to monitor longitudinal sleep pat-
+ terns as they are minimally intrusive to the patient and provide
+ more objective information than sleep journals (9,10).
+1Department of Orthopaedic Surgery, Stanford University, Redwood City,
+ The fundamental idea of a wrist-wearable is to track move-
+CA; 2Stanford Lifestyle Medicine, Redwood City, CA; 3School of Humanities
+ ment using accelerometry and to use this movement to determine
+and Sciences, Stanford University, Stanford, CA; and 4Department of Psy-
+chiatry and Behavioral Sciences, Stanford University, Stanford, CA whether somebody is awake or asleep (11). The basic algorithms
+ assume a period of sleep and determine when movement is of
+Address for correspondence: Matthew W. Kaufman, MD, 450 Broadway sufficient amplitude and/or duration to indicate a likely midsleep
+Avenue, Redwood City, CA 94063; E-mail: mattkauf@stanford.edu. awakening (11). With this information, wearables attempt to de-
+1537-8918/2406/171–176
+ scribe the quality and quantity of sleep. Newer devices, including
+Current Sports Medicine Reports most consumer devices, have integrated other signals into these
+Copyright © 2025 by the American College of Sports Medicine algorithms, including wrist skin temperature, proxies for heart
+
+www.acsm-csmr.org Current Sports Medicine Reports 171
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+rate and heart rate variability, and skin conductance, as well as The fundamental problem is that wearable data (e.g., move-
+using new machine learning models to discriminate sleep from ment, heart or breathing rate, muscle tone) during quiescent
+wake (11). These newer devices purport to use the additional wake are remarkably similar to sleep, especially stage N1. To
+data to determine not only sleep but also stage of sleep, with frame this with actual numbers, if a good sleeper had 95% sleep
+many providing a summary sleep score that reportedly com- efficiency and was trying to sleep for 8 h, the typical wearable
+ments on the quality of sleep of the user. These scores may (95% accurate determination of sleep, 55% accurate determi-
+gamify sleep and could prompt athletes to dedicate more effort nation of wake) would report that this sleeper had 7.4 h of sleep
+into achieving better sleep scores. Although these data could be (PSG = 7.6 h) and 36 min of wake (PSG = 24 min), slightly
+robust, it is often important to contextualize it with behavior, underestimating the actual amount of sleep. If, however, this
+health, or other daytime sequelae of interest, which wearables were a poor sleeper who has 75% sleep efficiency and was try-
+may not necessarily be able to do. ing to sleep for 8 h, the typical wearable (95% accurate deter-
+ Some athletes and team personnel may see these wearable mination of sleep, 55% accurate determination of wake) would
+devices as a practical solution to monitor sleep and provide report that this sleeper had 6.6 h of sleep (PSG = 6 h) and
+biofeedback in real time over an extended time; however, 84 min of wake (PSG = 120 min), greatly underestimating the
+there are benefits and limitations to the utility of wearables actual amount of wake.
+of which athletes and their teams should be cognizant. As ath- The quality of sleep staging also may be biased against poor
+lete, coach, and general consumer interest alike has expanded sleepers. Good sleepers follow a fairly well-established pattern
+in the use of sleep wearables, so has the research into sleep with a 90-min REM/NREM sleep cycle that occurs three to five
+wearables. Reviews have shown that wearables do confer times per night with more N3 early in the night and more REM
+some benefits, including increased interest in sleep and sleep sleep later in the night, a pattern described as early as the 1960s
+data, ease of collecting large amounts of data, as well as the (25–27). Recent evidence from poor sleepers, including those
+objective nature of the collected data (10). There have been with insomnia, is steadily emerging and indicates that this pat-
+many dozens of published reports validating the accuracy of tern does not always occur (28). Poor sleepers tend to have
+sleep detection in specific models of wrist wearables (12–19). microfragmentation of sleep that can impact the cyclicity of
+These studies have typically examined how closely the data NREM–REM (28). Thus, algorithms that assume a specific cy-
+from the wearable (i.e., epoch-by-epoch concurrence or clicity of sleep to improve accuracy in good sleepers may be un-
+whole-night summary statistic agreement) aligns with the crite- intentionally mislabeling sleep stages in those who have poor
+rion standard PSG (12–19). These studies conclude that wear- sleep. Those with poor sleep often have inconsistent sleep
+ables are reasonably accurate in the measurement of sleep stag- timing, which also can impact algorithmic assumptions about
+ing and certain parameters such as movement, heart rate (HR) sleep stages as inconsistent sleep timing can impact the circa-
+changes, total sleep time, and the amount of wake occurring af- dian clock, through varied light exposure patterns, which has
+ter sleep onset. A more in-depth discussion of how wearables a substantive impact on the timing of many aspects of sleep
+are able to measure some of these data can be found in Lujan most notably the occurrence of REM sleep (29). Given the lack
+et al. (20) and de Zambotti et al. (21). In essence, most studies of transparency, it is difficult to know whether algorithms in
+comparing the sleep detection capacity of a wearable find that, commercially available devices that predict sleep staging use
+at least at the level of dichotomizing between sleep and wake, the assumptions of a 90-min sleep cycle and circadian timing
+most consumer wearables can perform reasonably well in in their scoring rubric and whether this impacts the accuracy
+healthy individuals with good sleep. Good sleepers are those of scoring in the typical poor sleeper.
+that have efficient, unfragmented sleep, and poor sleepers spend Another limitation of actigraphs relates to one of the most
+time intermittently in sleep and wake throughout the night. important metrics for many users — how long does it take to
+That is, they appear valid for what they are designed to do fall asleep (sleep latency). Sleep latency is the time between
+(i.e., report on how much sleep you get). It is, however, impor- when one decides to “try” to go to sleep and actually falling
+tant to consider what the data can mean in the larger context asleep. Without user input, actigraphs are unable to determine
+and how wearables may be less reliable indicators of sleep for when someone is attempting to sleep, nor are they able to read-
+those who may need the technology most, that is, poor sleepers. ily discriminate the quiescent wakefulness that precedes sleep
+ There are many kinds of sleep that individuals might want onset and sleep onset itself. If a user is a good sleeper, this is
+to track, including ones that are healthy and others that are of little concern because they typically do not spend much time
+not. Less healthy sleep patterns can vary from the “ideal” in in a quiescent state prior to falling asleep. Actigraphs used in
+a number of ways (22), including difficulties getting enough individuals who spend long and varied time in bed prior to
+sleep, having sleep that is too erratic, having difficulties initiating attempting sleep (e.g., watching media, playing games, engag-
+sleep, waking up too often after initially falling asleep (n.b., you ing in social media) will by the very nature of their activity be
+may not even be aware of these midsleep awakenings because of inaccurate in framing the sleep period. In those who have diffi-
+retrograde amnesia [23,24]), waking up too early, or generally culty initiating sleep, who spend long periods of time in bed
+unsatisfactory sleep. Actigraphy has varying degrees of success without being asleep, or who have sleep that is fragmented
+in accurately tracking these patterns, and this success is mainly by interspersed wake will all have inaccurate measurements
+based on what the device does well. In comparing actigraphy of sleep. Actigraphs could yield reliable information, though,
+with the criterion standard PSG, the above studies highlight that in individuals who have consolidated sleep but may have other
+actigraphy has high sensitivity for detecting sleep and poor sen- issues with their sleep (e.g., traveling athletes, insufficient sleep
+sitivity for detecting wake (12–18). Most wearables identify duration, erratic schedule, early awakening).
+sleep with accuracy in the mid-1980s to high 1990s and accu- In considering the output of an actigraph, especially in con-
+racy in detecting wake ranging from 49% to 60% (12–18). sumer devices that generate a “sleep score,” one can imagine a
+
+172 Volume 24  Number 6  June 2025 Wearable Technology in Sports Performance
+
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+plausible 2 × 2 matrix of “good” and “bad” sleep with published algorithms. Companies are not incentivized to dis-
+actigraph reports of “good” and “bad” sleep (Table 1). The close their algorithm, nor disclose what changes to the algo-
+important divisions in the matrix are where there is discor- rithm are made and how that impacts sensitivity and specificity
+dance between the wearable and how the wearer is feeling of determining sleep stages. Algorithms are often proprietary
+about their sleep. software that may lend themselves to the competitive advan-
+ For bad sleepers, a mismatch between their perceived sleep tage of the company. Therefore, proprietary algorithms may
+and device feedback probably would not lead to harm but be different from published algorithms with different sensitivi-
+would likely make users think that the device does not work. ties and specificities. Although it can be assumed that changes
+When used in conjunction with therapy, poor sleepers who are inherently made for the better, sensitivity and specificity of-
+are told they have poor sleep could use the tracker to actually ten work as a tradeoff, and in this situation, it is not necessarily
+improve perceived sleep (30). If a tracker consistently reports clear what changes are made and how that relates to the accu-
+poor sleep despite someone feeling like they have good sleep, racy that is of value to the consumer.
+wearers can feel powerless and anxious, which can exacerbate
+poor sleep (31). For good sleepers, reaffirmation of sleep as Current State of Actigraphy in Sports Performance
+good is of dubious value and, in the worst-case scenario, could There have been numerous studies that show how sleep,
+lead to orthosomnia (10), the search for perfect sleep. Re- which is often tracked by wearables such as actigraphs given
+search into orthosomnia as a clinical etiology is currently in their less intrusive nature, can change an athlete's performance
+its infancy; however, it can be distressing and has increased and recovery. Good agreement (81%–90%) and sensitivity
+as wearables have become more prevalent (10,32). Given the (81%–92%) have been observed between actigraphy and PSG
+nature of the competitive athlete, it is likely that coaches in elite athletes, which also contribute to rising use of actigraphs
+should exercise caution when counseling an athlete regarding in athletes (4,35). With these statistics in mind, current wearables
+their sleep. Coaches and team staff should motivate athletes to can measure or grade an athlete's sleep longitudinally, through-
+seek opinions from professionals when discussing sleep and out the course of a season, thus allowing for standardized perfor-
+avoid feeding into the potential anxiety of orthosomnia. mance comparisons for athletes in preseason, in-season, and
+ One of the more opaque aspects of consumer wearables is offseason based on sleep (35). A study investigating sleep charac-
+the summative sleep score that is provided by many consumer teristics in 10 elite Spanish wheelchair basketball athletes wearing
+devices. How these scores are derived is typically not divulged. a triaxial accelerometer before, during, and after the playoffs
+Although it is plausible that these manufacturers have access showed no change in sleep parameters, training load (measured
+to more clinical data regarding their sleep scores and the by session rating of perceived exertion or sRPE), or recovery
+scores have clinical relevance, given the myriad of physiologic (measured by total quality recovery or TQR) despite changes in
+functions that can be enhanced by different aspects of sleep, the season, though this spanned just a 5-week period (36). This
+the idea of a singular sleep score is dubious at best. This does shows the role that actigraphs can play for measuring sleep in elite
+not necessarily mean that a sleep score is of no value, but with- athletes given variability in seasons. Game start times also may be
+out the context of the algorithm behind the score, it is difficult variable throughout the season, impacting sleep for athletes. A
+to determine whether this score adds to any clinical value associ- study of sleep via actigraphy in 24 elite volleyball players showed
+ated with the actigraphy data. This is of particular interest to less total sleep time, less sleep efficiency, and increased percep-
+athletes who likely are competitive in nature and are used to try- tion of recovery via TQR after an evening match versus before
+ing to maximize a score. There has not been a study to evaluate the match (37). In addition, for athletes traveling for competi-
+these summative sleep scores and therefore there is no identified tion, actigraphs are easily portable and can identify circadian
+correlation with summative sleep scores to any training, perfor- rhythm disorders that occur as a result of jet lag, which can neg-
+mance, or recovery benefits that are specifically correlated with a atively impact sports performance individually by impacting
+single sleep score. Despite the gamification of sleep in this man- cognition, mood, and muscle strength, but also can impact
+ner, it is potentially a game that may not be worth the cost. team performance (35,38,39).
+ However, as technology advances, there are questions Though actigraphs are well known for measuring over-
+about if the devices, with increasing complexity, may have im- night sleep quality, they also have been shown to have utility
+proved ability to predict sleep and wake cycles. Although one case during the daytime, especially for athletes. In a study of 41 en-
+series suggested that newer devices had better ability to predict durance-trained, recreational athletes, a PPG-based wearable
+sleep, another review found that newer complex machine- accurately measured heart rate and heart rate variability
+learning-based algorithms are not more accurate than simple when compared to a reference heart rate sensor, though data
+linear regression (33,34). This discrepancy highlights a crucial did not necessarily correlate sleep with the same daytime
+finding that there may be a difference between the devices and performance (40).
+
+
+Table 1.
+Tracker results for sleep and reactions.
+
+ Subjective Good Night of Sleep Subjective Bad Night of Sleep
+Tracker says good sleep No new information, affirmation of previous thoughts, Thoughts that tracker may not work properly,
+ minimal consumer benefits apathy to the tracker output
+Tracker says bad sleep Anxiety, insomnia, and potential orthosomnia No new information, perpetuates frustration
+ or anxiety for bad sleep/bad sleeper
+
+
+www.acsm-csmr.org Current Sports Medicine Reports 173
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+ Several drawbacks of actigraphs particular to athletes in- is not to suggest that investigators are improperly conducting
+clude naps during travel not counted as true sleep or late- studies or are morally compromised; however, it is important
+night exercise followed by shower falsely including the shower to acknowledge that there is an existing negative publication
+as part of sleep (41). bias (45), where negative resulting studies typically have a dif-
+ Thus, there is a role for wearables especially for athletes, as ficulty with publication, and there could be great financial and
+optimization of performance is essential, and because of further research incentives to generate a favorable study on a
+unique considerations including travel across multiple time new technology.
+zones, sleeping in novel places, and requirements for cognitive Another limitation is that this review is more narrative than
+and physical fortitude (42). From a diagnostic standpoint, structured. Although there are many manuscripts that describe
+wearables also may allow for identification of sleep distur- the validity of a specific actigraph, such validity can be called
+bances, which can help diagnose concussion severity, espe- into question when the hardware, firmware, or software of a
+cially for athletes engaging in contact sports (43). With the commercially available actigraph is changed. As such, the au-
+abundance of data from wearables, deep learning models have thorship did not feel that it was appropriate to conduct a struc-
+been shown to accurately predict sleep quality from actigraph tured review on such manuscripts. Although this may limit the
+data, and this growth in artificial intelligence can benefit the comprehensiveness of our analysis, we feel as though we have
+wearables sector in improving data analysis and outputs, espe- identified key considerations athletes, coaches, physicians, and
+cially for athletes (44). researchers should be aware of when buying sleep wearables
+ or utilizing their data to drive decisions at this time.
+Limitations
+ In the analysis of the current state of wearables on sleep and Future Directions for Wearables Measuring Sleep
+the greater context in which they live in, it is critical to under- Consumer alternates to PSG recording of sleep are not limited
+stand the limitations of this update as well as the current state to wrist wearables. The majority of popular wearables at this
+of literature on sleep wearables as a whole. Given that wear- stage are, however, wrist worn given their ease of use and mini-
+able sleep research only began in the 1980s, this is a brand mal invasiveness to sleep. There are emerging technologies such
+new field where technology and our understanding of sleep as ring-based wearables; however, these are newer and do not
+wearables will likely evolve and improve over time. With this have the robust data that wrist wearables currently have (46).
+being a newer field of study, there are currently few research As more data from nonwrist wearables or nearables become
+studies, and many of these are done with industry sponsor- available, the validity and utility of these devices can be assessed.
+ship. Examples of these industry-funded studies have been
+foundational to the validation of the wearables (12–19). Sleep wearables may be key in investigating how daily
+Industry-sponsored studies are not intrinsically flawed, as in- behaviors impact sleep and help providers make clinical
+dustry funding can promote investigators to research new recommendations from wearable data.
+technologies and innovation, but with industry-sponsored
+studies, there is an increased risk of biases. Specifically, there Wearables are a large technical advancement that may be a
+may be increased negative publication bias and sampling bias. generation-defining technology that could have clinical value
+Industry sponsorship of studies could potentially motivate in- in maximizing sleep and the benefits they can provide. At pres-
+vestigators, implicitly, to select participants who will likely ent, however, it is nebulous how they might be helpful and
+lead to a positive resulting study. In this case, this would be what information they can provide that would help people po-
+selecting good sleepers for validation studies. As a result, there tentiate their benefits for sleep. This seems to be an important
+is a possibility that study reports may over-report wearable entity to understand as there is not a clear alternative currently
+success given the sample of participants in these studies. This to wearables for reliable, objective, minimally intrusive sleep
+
+Table 2.
+Summary of recommendations.
+Finding in Regard to Sleep Wearables Sports Medicine Clinical Pearl
+1) The “Good” and “Poor” sleeper may be different entities. Some people have difficulty sleeping and athletes with
+ Poor sleep may confer to poor training, performance, busy schedules and traveling to different time zones,
+ and recovery may be susceptible to poor sleep.
+2) Wearables may be used over the course of a season or If unsure of a concussion, while likely not sensitive or specific,
+ to detect sleep disturbances. wearables represent an opportunity to try and detect sequelae
+ of concussion.
+3) An athlete's subjective feelings about their sleep are more Validate athlete's subjective feelings of poor sleep even if the
+ important than the wearable whether they report good wearable states that they are getting good sleep. There may be
+ or poor sleep. opportunities to improve sleep.
+4) There is no current data or clinical understanding of the Sleep wearables may help tell a story, but at this stage, it is unclear
+ important measurables with wearables including the what aspects change the scores and if they are clinically relevant.
+ summative scores
+5) Beware of orthosomnia and the search for perfect sleep. Reassure athletes that there is no need to search for perfect sleep
+ because these are flawed technologies.
+
+
+174 Volume 24  Number 6  June 2025 Wearable Technology in Sports Performance
+
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+data. One of the crucial points of improvement for clinical utility References
+will be understanding and quantifying how behavior can im- 1. Yarnell AM, Deuster P. Sleep as a strategy for optimizing performance. J. Spec.
+ Oper. Med. 2016 Spring; 16:81–5.
+pact sleep. A recent study surveying 176 sleep medicine health
+ 2. Wilkes JR, Walter AE, Chang AM, et al. Effects of sleep disturbance on func-
+care providers indicates that wearables are becoming increas- tional and physiological outcomes in collegiate athletes: a scoping review. Sleep
+ingly prevalent in sleep clinic patients, but they could not be Med. 2021; 81:8–19. doi:10.1016/j.sleep.2021.01.046.
+described as helpful or unhelpful in clinical practice (32). If 3. Cook JD, Charest J. Sleep and performance in professional athletes. Curr. Sleep
+we are able to impact sleep, then we may be able to better Med. Rep. 2023; 9:56–81. doi:10.1007/s40675-022-00243-4.
+counsel our athletes on behavior changes to maximize the po- 4. Sargent C, Jasinski S, Capodilupo ER, et al. The night-time sleep and autonomic
+ activity of male and female professional road cyclists competing in the Tour de
+tential benefits from sleep. For the athlete, there is potential France and Tour de France Femmes. Sports Med. Open. 2024; 10:39. doi:10.
+benefit in correlating training regimen and lifestyle behaviors 1186/s40798-024-00716-6.
+to sleep and how these can relate to athletic training, perfor- 5. Mah CD, Mah KE, Kezirian EJ, Dement WC. The effects of sleep extension on
+mance, and recovery. the athletic performance of collegiate basketball players. Sleep. 2011; 34:
+ 943–50. doi:10.5665/SLEEP.1132.
+
+A multitude of settings would benefit if wearable data's 6. Kisiolek JN, Smith KA, Baur DA, et al. Sleep duration correlates with perfor-
+ mance in ultra-endurance triathlon. Int. J. Sports Physiol. Perform. 2022; 17:
+clinical relevance were better understood. 226–33. doi:10.1123/ijspp.2021-0111.
+ 7. Rundo JV, Downey R. Polysomnography. Handb. Clin. Neurol. 2019; 160:
+ Although crucial to the athlete, it also is important to con- 381–92. doi:10.1016/B978-0-444-64032-1.00025-4.
+sider the widespread implications to other populations. 8. Berry RB, Brooks R, Gamaldo C, et al. AASM scoring manual updates for 2017
+Wearables also may be able to track the impact of sleep on (version 2.4). J. Clin. Sleep Med. 2017; 13:665–6. doi:10.5664/jcsm.6576.
+clinical outcomes in in-patient rehabilitation or a hospital set- 9. Mullaney DJ, Kripke DF, Messin S. Wrist-actigraphic estimation of sleep time.
+ Sleep. 1980; 3:83–92. doi:10.1093/sleep/3.1.83.
+ting after a major injury or illness, which could alter clinical
+ 10. Trabelsi K, BaHammam AS, Chtourou H, et al. The good, the bad, and the ugly
+focus and greatly change the practice of rehabilitation and of consumer sleep technologies use among athletes: a call for action. J. Sport
+clinical medicine. Although disrupted sleep has been observed Health Sci. 2023; 12:486–8. doi:10.1016/j.jshs.2023.02.005.
+in many different in-patient settings (e.g., intensive care unit 11. Cole RJ, Kripke DF, Gruen W, et al. Automatic sleep/wake identification from
+[47], postsurgical recovery [48]), the use of wearables in such wrist activity. Sleep. 1992; 15:461–9. doi:10.1093/sleep/15.5.461.
+cases could facilitate a greater understanding of sleep in the 12. de Zambotti M, Rosas L, Colrain IM, Baker FC. The sleep of the ring: compar-
+ ison of the ŌURA sleep tracker against polysomnography. Behav. Sleep Med.
+recovery process, possibly reducing hospital stay length and 2019; 17:124–36. doi:10.1080/15402002.2017.1300587.
+improving clinical outcomes. Similarly, wearables may be 13. de Zambotti M, Goldstone A, Claudatos S, et al. A validation study of Fitbit
+used to track changes in levels of consciousness such as ad- Charge 2™ compared with polysomnography in adults. Chronobiol. Int.
+vancing from a coma to a minimally conscious state, which 2018; 35:465–76. doi:10.1080/07420528.2017.1413578.
+would prognosticate brain injury severity and outcome. The 14. Dong X, Yang S, Guo Y, et al. Validation of Fitbit Charge 4 for assessing sleep in Chi-
+ nese patients with chronic insomnia: a comparison against polysomnography and
+clinical applications of sleep wearables are vast, and further actigraphy. PLoS One. 2022; 17:e0275287. doi:10.1371/journal.pone.0275287.
+research into such applications represents a reasonable next
+ 15. Lee XK, Chee NIYN, Ong JL, et al. Validation of a consumer sleep wearable de-
+step in their evolution. vice with actigraphy and polysomnography in adolescents across sleep opportunity
+ manipulations. J. Clin. Sleep Med. 2019; 15:1337–46. doi:10.5664/jcsm.7932.
+Conclusion 16. Menghini L, Yuksel D, Goldstone A, et al. Performance of Fitbit Charge 3
+ against polysomnography in measuring sleep in adolescent boys and girls.
+ The recent popularity of sleep wearables presents both pos- Chronobiol. Int. 2021; 38:1010–22. doi:10.1080/07420528.2021.1903481.
+sibilities and challenges within the field of both sleep medicine 17. Miller DJ, Lastella M, Scanlan AT, et al. A validation study of the WHOOP
+and sports medicine. For athletes, the current literature does strap against polysomnography to assess sleep. J. Sports Sci. 2020; 38:2631–6.
+suggest that there may be uses in tracking longitudinal sleep doi:10.1080/02640414.2020.1797448.
+throughout the season and efficacy in detecting sleep distur- 18. Miller DJ, Roach GD, Lastella M, et al. A validation study of a commercial
+ wearable device to automatically detect and estimate sleep. Biosensors. 2021;
+bances. However, given the flawed underpinnings of wearables 11:185. doi:10.3390/bios11060185.
+at this stage, they are not a substitute for clinical presentations 19. Cheung J, Leary EB, Lu H, et al. PSG validation of minute-to-minute scoring for
+and subjective reports on sleep. When discordance exists, there sleep and wake periods in a consumer wearable device. PLoS One. 2020; 15:
+may be faulty readings in the wearables, so it is advised to listen e0238464. doi:10.1371/journal.pone.0238464.
+to the patient over the device. Wearables' ability to engage ath- 20. Lujan MR, Perez-Pozuelo I, Grandner MA. Past, present, and future of multisen-
+ sory wearable technology to monitor sleep and circadian rhythms. Front. Digit.
+letes in monitoring and improving their sleep health is encour- Health. 2021; 3:721919. doi:10.3389/fdgth.2021.721919.
+aging; however, more extensive research and data are needed 21. De Zambotti M, Goldstein C, Cook J, et al. State of the science and recommen-
+to properly understand their reliability and clinical use. The dations for using wearable technology in sleep and circadian research. Sleep.
+small but growing issue of orthosomnia raises additional con- 2024; 47:zsad325. doi:10.1093/sleep/zsad325.
+cerns about the psychological issues that can be induced by 22. Buysse DJ. Sleep health: can we define it? Does it matter? Sleep. 2014; 37:9–17.
+ doi:10.5665/sleep.3298.
+sleep trackers. Athletes, in particular, may be a vulnerable pop-
+ulation given their erratic scheduling, training, and increased 23. Wyatt JK, Bootzin RR, Allen JJ, Anthony JL. Mesograde amnesia during the
+ sleep onset transition: replication and electrophysiological correlates. Sleep.
+demand for sleep matched with the personality of trying to 1997; 20:512–22.
+maximize a sleep score with unknown significance (3). The ben- 24. Baekeland F. Reported vs recorded sleep characteristics. Arch. Gen. Psychiatry.
+efits of understanding this technology and relating it to athletic 1971; 24:548. doi:10.1001/archpsyc.1971.01750120064011.
+performance though are a potential landmark finding in the 25. Hayashi Y, Kashiwagi M, Yasuda K, et al. Cells of a common developmental or-
+sports medicine community. As technology continues to ad- igin regulate REM/non-REM sleep and wakefulness in mice. Science. 2015; 350:
+ 957–61. doi:10.1126/science.aad1023.
+vance, ongoing investigations into the reliability, accuracy,
+ 26. Rosipal R, Lewandowski A, Dorffner G. In search of objective components for
+and clinical relevance of wearables in sleep monitoring are cru- sleep quality indexing in normal sleep. Biol. Psychol. 2013; 94:210–20. doi:
+cial. See Table 2 for a summary of recommendations. 10.1016/j.biopsycho.2013.05.014.
+
+
+www.acsm-csmr.org Current Sports Medicine Reports 175
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+27. Hartmann E. The 90-minute sleep-dream cycle. Arch. Gen. Psychiatry. 1968; 38. Vlahoyiannis A, Sakkas GK, Manconi M, et al. A critical review on sleep assess-
+ 18:280–6. doi:10.1001/archpsyc.1968.01740030024004. ment methodologies in athletic populations: factors to be considered. Sleep Med.
+28. Conte F, Malloggi S, De Rosa O, et al. Sleep continuity, stability and cyclic orga- 2020; 74:211–23. doi:10.1016/j.sleep.2020.07.029.
+ nization are impaired in insomniacs: a case–control study. Int. J. Environ. Res. 39. Lee A, Galvez JC. Jet lag in athletes. Sports Health. 2012; 4:211–6. doi:10.1177/
+ Public Health. 2023; 20:1240. doi:10.3390/ijerph20021240. 1941738112442340.
+29. Dijk DJ, Czeisler CA. Contribution of the circadian pacemaker and the sleep 40. Nuuttila O-P, Korhonen E, Laukkanen J, Kyröläinen H. Validity of the wrist-
+ homeostat to sleep propensity, sleep structure, electroencephalographic slow worn Polar Vantage V2 to measure heart rate and heart rate variability at rest.
+ waves, and sleep spindle activity in humans. J. Neurosci. 1995; 15(5 Pt 1): Sensors (Basel). 2021; 22:137. doi:10.3390/s22010137.
+ 3526–38. doi:10.1523/JNEUROSCI.15-05-03526.1995. 41. Sadeh A, Acebo C. The role of actigraphy in sleep medicine. Sleep Med. Rev.
+30. Willgerodt MA, Kieckhefer GM, Ward TM, Lentz MJ. Feasibility of using 2002; 6:113–24. doi:10.1053/smrv.2001.0182.
+ actigraphy and motivational-based interviewing to improve sleep among 42. Heller HC, Herzog E, Brager A, et al. The negative effects of travel on student
+ school-age children and their parents. J. Sch. Nurs. 2014; 30:136–48. doi:10. athletes through sleep and circadian disruption. J. Biol. Rhythms. 2024; 39:
+ 1177/1059840513489711. 5–19. doi:10.1177/07487304231207330.
+31. Soehner AM, Harvey AG. Prevalence and functional consequences of severe in- 43. Hoffman NL, Weber ML, Broglio SP, et al. Influence of postconcussion sleep du-
+ somnia symptoms in mood and anxiety disorders: results from a nationally rep- ration on concussion recovery in collegiate athletes. Clin. J. Sport Med. 2020; 30:
+ resentative sample. Sleep. 2012; 35:1367–75. doi:10.5665/sleep.2116. S29–35. doi:10.1097/JSM.0000000000000538.
+32. Addison C, Grandner MA, Baron KG. Sleep medicine provider perceptions and 44. Sathyanarayana A, Joty S, Fernandez-Luque L, et al. Sleep quality prediction
+ attitudes regarding consumer sleep technology. J. Clin. Sleep Med. 2023; 19: from wearable data using deep learning. JMIR Mhealth Uhealth. 2016; 4:
+ 1457–63. doi:10.5664/jcsm.10604. e125. doi:10.2196/mhealth.6562.
+33. Patterson MR, Nunes AAS, Gerstel D, et al. 40 years of actigraphy in sleep med- 45. Dwan K, Gamble C, Williamson PR, Kirkham JJ, Reporting bias group. System-
+ icine and current state of the art algorithms. NPJ Digit. Med. 2023; 6:51. doi:10. atic review of the empirical evidence of study publication bias and outcome
+ 1038/s41746-023-00802-1. reporting bias — an updated review. PLoS One. 2013; 8:e66844. doi:10.
+34. Chinoy ED, Cuellar JA, Huwa KE, et al. Performance of seven consumer sleep- 1371/journal.pone.0066844.
+ tracking devices compared with polysomnography. Sleep. 2021; 44(5):zsaa291. 46. Willoughby AR, Golkashani HA, Ghorbani S, et al. Performance of wearable
+ doi:10.1093/sleep/zsaa291. sleep trackers during nocturnal sleep and periods of simulated real-world
+35. Driller MW, Dunican IC, Omond SET, et al. Pyjamas, polysomnography and smartphone use. Sleep Health. 2024; 10:356–68. doi:10.1016/j.sleh.2024.02.
+ professional athletes: the role of sleep tracking technology in sport. Sports (Ba- 007.
+ sel). 2023; 11:14. doi:10.3390/sports11010014. 47. Zhang Q, Gao F, Zhang S, et al. Prophylactic use of exogenous melatonin and
+36. López-Flores M, Suárez-Iglesias D, Rodríguez-Marroyo JA. Actigraphy-based melatonin receptor agonists to improve sleep and delirium in the intensive care
+ sleep parameters in wheelchair basketball athletes: influence of training and units: a systematic review and meta-analysis of randomized controlled trials.
+ competition load. Sleep Sci. 2023; 16:97–101. doi:10.1055/s-0043-1767744. Sleep Breath. 2019; 23:1059–70. doi:10.1007/s11325-019-01831-5.
+37. Vitale JA, Banfi G, Galbiati A, et al. Effect of a night game on actigraphy-based 48. Zuraikat FM, Thomas E, Roeshot D, et al. Can healthy sleep improve long-term
+ sleep quality and perceived recovery in top-level volleyball athletes. Int. J. Sports bariatric surgery outcomes? Results of a pilot study and call for further research.
+ Physiol. Perform. 2019; 14:265–9. doi:10.1123/ijspp.2018-0194. Obesity (Silver Spring). 2019; 27:1769–71. doi:10.1002/oby.22601.
+
+
+
+
+176 Volume 24  Number 6  June 2025 Wearable Technology in Sports Performance
+
+
+ Copyright © 2025 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+

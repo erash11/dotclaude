@@ -1,0 +1,152 @@
+=================== framework--machine-safety-checklist-hazards-and-countermeasures.md
+
+# Machine Training Safety: A 24-Point Checklist of Hazards and Countermeasures, and Why Machines Need the Same Supervision as Free Weights
+
+**What it is** — Section 8.10 opens: "It is commonly believed that gymnasium machines are intrinsically safer than free weights and require far less skill in using them. This fallacy is one reason why injuries are still regularly sustained by those who rely solely on machines for training." Machines "must be operated correctly to ensure safety and effectiveness," which needs "an adequate knowledge of the merits, deficiencies and the principles underlying the design of each machine," and of how a machine exercise differs from its free-weight equivalent in "which muscles act as prime movers and stabilisers at all stages of the exercise, as well as which tendons and ligaments are significantly stressed" (PDF 480 / p.469, checked against the page image). The list that follows has 24 bullets (PDF 481-483 / pp.470-472, counted on the page images). Grouped here by hazard (the grouping is this entry's, the items are the authors'):
+- **Forced lumbar flexion or rounding**: seated vertical pressing machines (round the lower back, lean forward, hyperextend the lumbar spine; seated pressing loads the lumbar spine "as much as 90% more" than standing, Chaffin & Andersson, 1984, so these are not "basic exercises for novices"); seated leg press (backrests that "do not match the natural curvatures of the spine"; "Never allow the weight to return so rapidly that the momentum forces the lumbar spine to round"); lying inclined or vertical leg press (thighs to abdomen: "carefully limit the range of knee flexion and perform the movement slowly"); calf-raise machines; seated back extension (start flexed, end in "loaded hyperextension"; use "only a small range").
+- **Forced lumbar hyperextension**: prone leg curl, flat or rounded (place "a roll of firm sponge rubber or towelling under your hip joint"), and inclined (stabilise the hips "or rather use a standing leg curl or pulley machine"); standing leg raise (shift forward off the backrest, "crunching form of a gymnastics 'pike'"); seated bent-arm pullover ("restricting your range of movement").
+- **Weak or vulnerable start positions**: bench press machines ("start from your weakest biomechanical position with the bar at chest level," no pre-stretch: a partner helps you begin from extended elbows); pec decks (shoulder externally rotated at the start: a partner pulls the grips forward); a general bullet naming seated bench press, seated leg press, bench press machine and Smith machine: "always ask a partner to help you begin in a safer position and to 'spot' you."
+- **Shear, torsion or extra joint load**: hack squat ("excessive shearing force on the knee ... a poor, unsafe substitute for the free standing squat"); seated spinal twist ("strictly upright posture and severely limit range and speed"); standing spinal or hip twisting machines ("little more than useless for 'trimming the waist'"); standing hip adduction/abduction (simultaneous spinal rotation or flexion/extension); Smith vertical press (a larger load on "the spine, shoulders and wrists" than standing free-weight presses); hyperextension machines (hamstrings, popliteus and knee capsule; the knee "tends to be hyperextended").
+- **Trunk and hip flexors**: abdominal machines with heel, calf or thigh grips (rely more on iliopsoas; but "there is nothing intrinsically 'wrong'" with recruiting it, "what may be most risky is the inappropriate timing"); sit-up boards with ankle or foot grips (see [[heuristic--after-foot-anchored-sit-ups-stretch-the-iliopsoas-under-load]]).
+- **System-level bullets**: any machine that requires you to sit; seated pressing machines with foot rests that make the hips and lower back hard to stabilise ("keep your feet firmly on the ground"); immobilised joints shifting stress (see [[principle--a-machine-that-immobilises-one-joint-shifts-stress-to-adjacent-joints]]); circuits against the clock; poorly designed, maintained or lubricated machines ("report any such machines to the gym supervisor").
+
+The closing rule: the list "should suffice to increase your awareness that machines are not inherently safer than free weights and that all types of resistance training require learning of the appropriate technical skills for efficiency and safety"; the instructor "should never assume that a client does not need to be closely supervised at all times, even when using machines," because "*continuous observation and spotting are just as important for machines as for free weights exercises* if the safety claims of machine manufacturers are to be realised in practice" (PDF 483 / p.472, italics in the original).
+
+**Why it works** — The authors' recurring mechanism is that a machine fixes the path and the body position, so the user cannot use hips, knees and ankles "to absorb shock or redistribute loading," and "The posture of stable neutral pelvic tilt becomes far more difficult to maintain" (PDF 482 / p.471). Where the machine forces an end-range position or a weak start, the countermeasure is range limits, slower speed, or a partner.
+
+**When to apply** — Auditing a facility's machines, writing a machine circuit for general clients or injured athletes, or briefing new staff. Eric's review: the baseline's operating value is "safety first, keep things simple, teach basic movement skills and basic lifts before anything advanced, treat strength as the base, and require bodyweight competency before loaded work" (`docs/method-baseline.md`, line 41). Inference: the closing rule extends "teach before load" to machines, which staff often treat as needing no teaching.
+
+**When NOT to apply** — Each bullet is the authors' biomechanical judgment; only the 90% figure carries a citation, so `untested`. The authors say "The above list is by no means complete." The 90% figure here is seated versus standing ("seated pressing or lifting exercises impose larger stresses on the lumbar spine than their standing equivalents (as much as 90% more, Chaffin & Andersson, 1984)", PDF 481 / p.470); the 4.2.7 entry gives the same source's 90% for a seated back allowed to flex forward ([[heuristic--nfr-machine-limitations-safety-and-appropriate-use]]). Inference: these are two framings of one cited source, and this entry has not checked which is the original's. Machines built since the book may not share these design faults; check the machine in front of you rather than the category. The hyperextension-machine bullet adds a medical limit: "return to the upright posture after inversion can produce postural hypotension and consequent fainting ... Individuals with abnormally low or high blood pressure should avoid the use of such devices" (PDF 482 / p.471).
+
+**Example** — The hack squat bullet in full: it "can impose excessive shearing force on the knee and are a poor, unsafe substitute for the free standing squat: if you use them, you should ensure that a partner helps you start with your knees extended and that you control the movement carefully at all times" (PDF 481 / p.470).
+
+**Related** — [[heuristic--nfr-machine-limitations-safety-and-appropriate-use]] (4.2.7 and 8.3: machines not safer), [[principle--a-machine-that-immobilises-one-joint-shifts-stress-to-adjacent-joints]], [[heuristic--after-foot-anchored-sit-ups-stretch-the-iliopsoas-under-load]], [[claim--continuous-vs-interval-circuit-training-for-concurrent-goals]] (the circuits bullet)
+kind: framework
+chapter: "8.10"
+confidence: untested
+=================== principle--a-machine-that-immobilises-one-joint-shifts-stress-to-adjacent-joints.md
+
+# A Machine That Stops One Joint Moving Usually Raises the Stress on the Joints Next to It
+
+**What it is** — The last bullet of the 8.10 machine list: "It is important to know that, if a machine prevents any joint from moving, then there will usually be an increase in stress on adjacent joints. For instance, the seated leg extension machine tends to immobilise the hip joint, so that greater stress falls on the nearby knee joint. Similarly spinal stress generally increases for all machines which compel you to push against a load in a seated position. Besides changing to equivalent free weights exercises, you could carefully control the speed and transition accelerations throughout such exercises" (PDF 483 / p.472, checked against the page image). A companion bullet: "any machine which requires you to sit prevents you from using your hip, knee and ankle joints to absorb shock or redistribute loading" (PDF 482 / p.471).
+
+**Why it works** — In a free standing movement the load is shared and redistributed across a chain of joints; fix one link and the neighbouring joint takes what it would have shed. The seated-back-extension bullet gives the same reasoning for the spine: "the seated position does not allow the hip and knee joints any freedom to modify the magnitude or direction of loading on the lower back," so it "can impose a greater compressive and transverse loading on lower spinal structures than an equivalent deadlift" (PDF 481 / p.470).
+
+**When to apply** — Before choosing a machine exercise, ask which joints it fixes and which joint sits next to them; that neighbour is where the extra stress goes. Two remedies from the page: switch to the free-weight equivalent, or control speed and "transition accelerations." Useful when an athlete reports knee pain on leg extensions or back pain on seated presses.
+
+**When NOT to apply** — The authors say "usually," not always, and give no measurements, so `untested`. Inference: in rehabilitation, fixing a joint on purpose to protect it or to isolate a weak muscle can be the right call; the principle says where the cost lands, not that the cost is never worth paying. The 4.2.7 entry already gives the leg-extension knee-shear example with its reasoning ([[heuristic--nfr-machine-limitations-safety-and-appropriate-use]]); this entry is the general rule the 8.10 list states.
+
+**Example** — The authors' own: the seated leg extension "tends to immobilise the hip joint, so that greater stress falls on the nearby knee joint" (PDF 483 / p.472).
+
+**Related** — [[framework--machine-safety-checklist-hazards-and-countermeasures]], [[heuristic--nfr-machine-limitations-safety-and-appropriate-use]] (4.2.7: seated knee extension and knee shear)
+kind: principle
+chapter: "8.10"
+confidence: untested
+=================== heuristic--after-foot-anchored-sit-ups-stretch-the-iliopsoas-under-load.md
+
+# Foot-Anchored Sit-Ups Recruit the Hip Flexors Early: Curl Slowly, and Stretch the Iliopsoas Under Load Afterwards
+
+**What it is** — From the 8.10 machine list: "All sit-up boards with grips for the ankles or feet compel the hip flexor muscles to become involved from the earliest stages of the sit-up and increase spinal stress, unless one deliberately executes the curl-up phase of the trunk before hip flexion is attempted. If used for a specific training purpose, the average person generally should execute this type of sit-up as a very slow upward and downward curl-up. One of the most negative aspects of doing large volumes of these types of sit-up is their tendency to decrease the range of movement of the hip joint, thereby adversely affecting running, walking, jumping, jerking and kicking efficiency, and increasing lumbar spinal stress. If you do limited range sit-ups, afterwards you should always stretch the iliopsoas muscles under resistive loading to maintain mobility of the hip and lower spinal joints. Long, deep lunges with the trunk upright can be very helpful in this regard" (PDF 482 / p.471, checked against the page image; the clipped left-margin letters of "doing", "timing", "All", "earliest", "trunk", "should", "aspects" and "the hip" are partly reconstructed).
+
+**Why it works** — Anchoring the feet lets the hip flexors pull the trunk up before the abdominals have curled it, which the authors link to spinal stress. Repeated short-range hip flexion in volume, in their account, shortens the hip's range, which then costs running, jumping and kicking. Inference: the loaded lunge stretch restores hip extension range in the same muscle the sit-ups shortened.
+
+**When to apply** — Programmes that use anchored sit-ups or sit-up boards in volume, especially for runners, jumpers, kickers and weightlifters (the page names jerking). Cue the curl-up before hip flexion, keep it slow, and finish with long, deep upright lunges.
+
+**When NOT to apply** — Not a ban on hip-flexor work: the bullet just before says "the abdominal and hip flexor muscles are meant to function in an integrated fashion, so there is nothing intrinsically 'wrong' about doing abdominal exercises which also recruit the iliopsoas group; what may be most risky is the inappropriate timing of the involvement of the different muscles in any trunk exercises" (PDF 481-482 / pp.470-471). The range-loss claim has no data on the page, so `untested`. The page does not give a stretch dose.
+
+**Example** — The authors' remedy: "Long, deep lunges with the trunk upright" after limited-range sit-ups (PDF 482 / p.471).
+
+**Related** — [[framework--machine-safety-checklist-hazards-and-countermeasures]], [[claim--trunk-rotation-is-driven-by-the-obliques-not-the-erector-spinae]] (7.4.2: sit-up variants shift work between rectus abdominis, obliques and psoas)
+kind: heuristic
+chapter: "8.10"
+confidence: untested
+=================== claim--strong-muscles-protect-joints-only-when-contracted-in-the-right-pattern.md
+
+# Strong Muscles Protect a Joint Only When They Are Contracted in the Right Pattern; a Relaxed Big Muscle Protects Almost Nothing
+
+**What it is** — Section 8.11 opens: "Exercise texts often state that resistance training is valuable because stronger muscles protect the joints from injury. Electromyographic studies of many common activities show that this is a faulty belief, especially as protective reflexes do not operate or do not operate effectively during many movements involving forced flexion near the end range of movement of the joints." Then: "Muscles can protect only if they are adequately contracted in the appropriate pattern to control the imposed load. Yet, many texts on training for contact sports such as rugby and American football still argue that large, strong muscles prevent spinal injuries, in particular. A relaxed massive and powerful muscle is almost as useless as a relaxed small muscle in protecting a joint. When the muscles are relaxed, the ligaments associated with the joint have to prevent displacement, rupture or dislocation" (PDF 483 / p.472, checked against the page image). Their conclusion: "General strength training on its own is inadequate to guarantee improved muscular protection for the body" (PDF 483 / p.472).
+
+**Why it works** — Protection is an act, not a property: the muscle has to be on, in the right pattern, at the moment of loading. If reflexes are slow or absent near end range, size cannot help; the ligaments take the load instead. The factors that decide whether protection happens are in [[framework--factors-that-determine-muscular-protection-of-a-joint]].
+
+**When to apply** — In contact sports, when hypertrophy or maximal strength is sold as neck or spine injury protection. Inference: in American football, add work that trains the timing and pattern of contraction under unexpected or end-range loads (reactive and eccentric work, braced positions) alongside general strength, since the authors say general strength alone does not guarantee protection.
+
+**When NOT to apply** — The EMG studies are not cited on this page, so `untested`. The claim does not say strength is useless for protection; the authors call general strength "inadequate to guarantee" it, and the next paragraph lists eccentric, isometric and connective-tissue strength among the factors that decide it. It is a claim about joints under imposed load, not about performance.
+
+**Example** — The authors' contrast: "A relaxed massive and powerful muscle is almost as useless as a relaxed small muscle in protecting a joint" (PDF 483 / p.472), aimed at contact-sport texts that say large muscles prevent spinal injury.
+
+**Related** — [[framework--factors-that-determine-muscular-protection-of-a-joint]], [[claim--ligaments-carry-more-load-than-muscles-under-joint-traction-basmajian]]
+kind: claim
+chapter: "8.11"
+confidence: untested
+=================== framework--factors-that-determine-muscular-protection-of-a-joint.md
+
+# What Decides Whether Muscles Protect a Joint: Reflexes, Eccentric Qualities, Coordination, Connective Tissue, and the Initial State at Loading
+
+**What it is** — The authors: "Protection by the muscles is a function of the various extensor reflexes and the characteristics of the eccentric strength of the relevant muscles. It depends on many factors including starting strength, how rapidly the muscles are recruited to contract (the quality of reactive ability discussed in Section 5.3.3), the efficiency of coordinated action by appropriate muscle groups, the strength of the eccentric contraction, eccentric endurance, isometric strength and strength endurance after movement ceases, strength-flexibility, the elasticity of the muscle complex and the strength of the connective tissues involved" (PDF 483 / p.472, checked against the page image). A second dimension is timing: "The protective process also depends on the initial state of the major stabilisers and movers involved when the threatening load is imposed on the body. This load may be imposed on a part supported by isometric, concentric or eccentric movement, or even on a part completely at rest. In other words, depending on initial conditions at the moment of loading, adequacy of protection will be determined by isometric strength and endurance, and concentric or eccentric strength, strength-speed and strength-endurance, as well as by overflow or compensatory muscle activity to furnish supplementary support for the major stabilisers and movers" (PDF 483 / p.472).
+
+**Why it works** — Because protection depends on so many qualities and on the state the joint is in when the load arrives, no single quality can be trained to cover it. The authors draw that conclusion: "General strength training on its own is inadequate to guarantee improved muscular protection for the body. The large range of processes implicated in musculoskeletal protection emphasizes the importance of special strength training in the properly-sequenced, multi-faceted manner discussed earlier in this book" (PDF 483 / p.472).
+
+**When to apply** — As a checklist when a programme's stated aim is injury resilience: count which of the listed qualities it trains (starting strength, reactive ability, eccentric strength and endurance, isometric strength after movement stops, strength-flexibility, connective tissue) and in which initial states (moving, holding, at rest). Inference: the "part completely at rest" case argues for some training where load arrives unexpectedly on a relaxed or holding limb, not only on a muscle already braced.
+
+**When NOT to apply** — The list is the authors' synthesis with no study attached, so `untested`. It names qualities, not tests or doses. It is about protection under imposed load and does not rank the factors. "Overflow or compensatory muscle activity" is the same irradiation idea the book uses elsewhere; it is not separately evidenced here.
+
+**Example** — Inference: a defensive back hit while planting (eccentric state) needs eccentric strength and reactive recruitment; the same player hit while standing still needs isometric strength and quick onset. The authors' list covers both through "initial conditions at the moment of loading" (PDF 483 / p.472).
+
+**Related** — [[claim--strong-muscles-protect-joints-only-when-contracted-in-the-right-pattern]], [[claim--ligaments-carry-more-load-than-muscles-under-joint-traction-basmajian]], [[principle--condition-tendons-ligaments-and-bone-not-only-muscle]]
+kind: framework
+chapter: "8.11"
+confidence: untested
+=================== claim--ligaments-carry-more-load-than-muscles-under-joint-traction-basmajian.md
+
+# Under Joint Traction, Ligaments Carry More Load Than Is Believed Unless the Muscles Are Consciously Recruited (Basmajian)
+
+**What it is** — The authors: "Basmajian (1978) reports that *ligaments play a much greater part in supporting loads than is generally believed, unless conscious effort is made to recruit the relevant muscles*. In most situations where traction is exerted across a joint, muscles appear to play only a secondary role to ligaments. Thus, deadlifts, toe-touches and 'aerobic' activities involving flexion and rotation of the spine may rely more on the spinal ligaments than the erector spinae in stabilising the spine. Training to increase ligament hypertrophy and strength thus would appear to be just as important as muscle strengthening" (PDF 483 / p.472, checked against the page image; italics in the original). They add: "Basmajian also questions the validity of 'ligamento-muscular protective reflexes', since reflex muscle activity often fails to occur when a limb is loaded. Apparently a great deal still has to be learned about the mechanics of neuromuscular action" (PDF 484 / p.473, checked against the page image; the clipped left-margin letters of "often" and "neuromuscular" are partly reconstructed).
+
+**Why it works** — Under traction (a pull across the joint), passive tissue is already in line with the load, and muscle joins only if recruited. Inference: the qualifier "unless conscious effort is made" is what makes this a coaching point; deliberate bracing changes who carries the load.
+
+**When to apply** — Programming for spinal flexion and rotation exposure (deadlifts, toe-touches, the page's "aerobic" activities): cue deliberate muscle recruitment, and treat connective-tissue conditioning as a training aim in its own right.
+
+**When NOT to apply** — Basmajian (1978) is cited, not described (no method or data on the page), so `untested`. "Training to increase ligament hypertrophy" is the authors' "would appear," a hedge, and the page gives no method for it. Inference: the deadlift line can be misread as "deadlifts are ligament exercises"; the 3.7 entry gives the book's fuller account that a skilled lifter balances muscle and ligament load and that heavy spinal flexion can damage discs ([[claim--spinal-ligaments-share-load-with-erector-spinae-in-heavy-pulls]]). The reflex point is about limbs under load and is stated as a question, not a finding.
+
+**Example** — The authors' own list of activities that "may rely more on the spinal ligaments than the erector spinae": "deadlifts, toe-touches and 'aerobic' activities involving flexion and rotation of the spine" (PDF 483 / p.472).
+
+**Related** — [[claim--spinal-ligaments-share-load-with-erector-spinae-in-heavy-pulls]] (3.7), [[principle--condition-tendons-ligaments-and-bone-not-only-muscle]] (8.2), [[claim--strong-muscles-protect-joints-only-when-contracted-in-the-right-pattern]], [[claim--limb-loading-fatigue-is-often-ligament-and-capsule-tension-not-muscle-fatigue]]
+kind: claim
+chapter: "8.11"
+confidence: untested
+=================== claim--limb-loading-fatigue-is-often-ligament-and-capsule-tension-not-muscle-fatigue.md
+
+# What Feels Like Muscle Fatigue Under Limb Loading Is Often Painful Tension in the Joint Capsule and Ligaments
+
+**What it is** — The authors: "Moreover, what is often termed 'muscle fatigue' in many strenuous exercises involving loading of the limbs is frequently not due to fatigue of muscle. This 'fatigue' probably arises from the painful feeling of tension in the capsule and ligaments of the joint, not from overworked muscles. In fact, the muscles may not even be significantly contracting. It appears, too, as if the fatigue of back, legs and feet experienced during standing is not a muscular phenomenon (Basmajian, 1978)" (PDF 483-484 / pp.472-473, checked against the page images; on PDF 484 the left margin is clipped, so "capsule", "significantly" and "a muscular" are partly reconstructed from the visible letters).
+
+**Why it works** — It follows from the preceding Basmajian point: if ligaments, not muscles, carry much of a traction load, the discomfort comes from the passive tissue under strain ([[claim--ligaments-carry-more-load-than-muscles-under-joint-traction-basmajian]]). Inference: the sensation is a signal from connective tissue, so resting the muscle may not be what the athlete needs.
+
+**When to apply** — When an athlete reports "fatigue" in holds, carries, hangs or long standing that is not matched by a drop in muscular output, consider joint tension as the source. In long standing tasks, the page suggests the back, leg and foot discomfort is not muscular.
+
+**When NOT to apply** — Hedged twice on the page ("probably," "It appears"), with Basmajian (1978) cited, not described, so `untested`. Not a claim about metabolic fatigue in hard dynamic work; the page limits it to "strenuous exercises involving loading of the limbs" and standing. Do not use it to dismiss a fatigue complaint without checking performance.
+
+**Example** — The authors' standing case: the fatigue "of back, legs and feet experienced during standing is not a muscular phenomenon (Basmajian, 1978)" (PDF 484 / p.473).
+
+**Related** — [[claim--ligaments-carry-more-load-than-muscles-under-joint-traction-basmajian]]
+kind: claim
+chapter: "8.11"
+confidence: untested
+=================== claim--mental-state-and-goal-specific-visualisation-raise-strength-and-speed.md
+
+# Attitude and Goal-Specific Visualisation Change Strength and Speed; No Prescription Works Unless the Mind Lets the Body Use It
+
+**What it is** — Under "Non-Physical Factors" the authors write that "the central role played by non-physical factors must never be forgotten. Autogenic training, visualisation, hypnosis, biofeedback, motivational techniques and other psychological methods have formed an integral part of Russian and Eastern European training for many years," and that "even the most meticulous prescription of all the training means and methods in this book will not guarantee success unless the mind enables the body to utilise its full potential during training, restoration and competition" (PDF 484 / p.473, checked against the page image; the left margin is clipped, and "At", "visualisation", "integral", "the most" and "unless" are partly reconstructed). Evidence offered: "it has repeatedly been shown that one's attitude during training or competition has a profound effect on physical performance"; "Highly motivated subjects will usually produce superior performances, especially in the presence of spectators"; "*Visualisation techniques which require the athlete to fervently concentrate on accelerating the training load can increase power and speed of movement*"; and "athletes performed loadless weightlifting movements with a broomstick while imagining effort against maximal loads revealed improvements in strength and skill (Kovalik, 1978)" (PDF 484 / p.473, italics in the original). They predict that "highly motivated, mood-linked, goal-specific visualisation (or 'imagineering')" will "become recognised as a vital part of modern training" (PDF 484 / p.473).
+
+**Why it works** — The authors give no mechanism on this page beyond motivation and concentration. Inference: the "accelerating the training load" wording ties visualisation to intent to move fast, the same target as compensatory acceleration; the broomstick study ties imagined maximal effort to real strength gains without load.
+
+**When to apply** — Add a goal-specific cue to heavy or explosive sets ("drive the bar as fast as you can"), and use imagined maximal effort with an unloaded bar or stick when load is not available or not wanted. The authors point readers to specialised texts, naming "the extensive survey by Murphy and White (1978) of altered states associated with outstanding performances in different sports" (PDF 484 / p.473). Eric's review: "Constraints-led and external-cue coaching are not part of Eric's practice. Eric (interview 2026-09-28, Q25): 'I don't apply it, as I don't fully understand it. I want to know more.'" (`docs/method-baseline.md`, line 170). Inference: an "accelerate the load" cue is a cue about the bar, so it sits near the external-cue methods Eric names as a learning area, not in his current practice.
+
+**When NOT to apply** — Only Kovalik (1978) is cited, and only by name; "repeatedly been shown" has no references, so `untested`. The authors limit their own claim on the same page: it "does not imply invoking the vague notions of mind-body power which are helping to market hundreds of self-development courses of dubious validity," whose success "has a great deal to do with the placebo effect (or faith factor)" (PDF 484 / p.473). The steroid sentence ("The increase in aggression by anabolic steroids is also regarded as one of the reasons why these drugs can improve performance") is reported as a view, not a recommendation. The authors also note attitude is "a complicating factor when one attempts to compare the research done on different subjects by different scientists under different conditions."
+
+**Example** — Kovalik (1978), as the authors give it: loadless weightlifting movements with a broomstick while imagining maximal loads improved "strength and skill" (PDF 484 / p.473).
+
+**Related** — [[heuristic--loadless-training-broomstick-protocol]] (4.2.4: Kovalik's loadless training in detail), [[framework--kinaesthetic-system-and-feedforward-visualization]] (1.14), [[principle--train-athletes-to-cope-with-perceived-as-well-as-actual-load]] (8.1), [[heuristic--protect-the-training-mind-set-from-gym-distractions]], [[claim--placebo-and-therapist-rapport-carry-much-of-restoration-effect]]
+kind: claim
+chapter: "8.12"
+confidence: untested

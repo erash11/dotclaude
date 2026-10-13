@@ -1,0 +1,347 @@
+{
+ "id": "Q59",
+ "sourceFile": "The effects of electronic nicotine delivery systems on athletes.pdf",
+ "decision": "INCLUDE",
+ "exclusionReason": "",
+ "degradedReason": "",
+ "doiMissing": false,
+ "identityCheck": "The PDF title 'The Effects of Electronic Nicotine Delivery Systems on Athletes' (Current Sports Medicine Reports, pp. 146-150) matches the filename and crossrefTitle; the article's own DOI is not printed in the text, so the batch externalDoi is used.",
+ "confidence": "high",
+ "studyDesign": "Narrative Review",
+ "primaryDomain": "Athlete Wellbeing",
+ "domains": ["Athlete Wellbeing", "Recovery & Readiness", "Sports Medicine & Injury"],
+ "audiences": ["Sports Medicine", "Athletic Training", "Coaching"],
+ "sports": ["Mixed / General Sport"],
+ "populations": ["Mixed / Unspecified"],
+ "evidenceSummary": "Narrative review of electronic nicotine delivery systems (ENDS, or vaping) in athletes and the general population, covering prevalence, cardiovascular, pulmonary, sleep and injury-healing effects, and vaping-associated lung injury (VALI). No systematic search or original sample is described. The authors report that ENDS effects on the heart and lungs appear smaller than those of cigarettes but are not harmless, and that at the time of writing more than 805 VALI cases and 12 deaths had been reported from 46 states and one US territory.",
+ "screeningLimitations": "The review does not describe how sources were searched or selected, so the evidence base cannot be checked. The authors say athlete-specific data are very limited, and much of the cardiovascular, sleep and injury-healing evidence comes from non-athlete, small or preclinical studies.",
+ "synthesisCaution": "Staff could read the ENDS risks as established performance or recovery effects in athletes, when the authors say athlete performance research is very limited and the injury-healing evidence is largely preclinical.",
+ "paper": {
+   "year": 2020,
+   "citation": "Young SE, Henderson CA, Couperus KS. The Effects of Electronic Nicotine Delivery Systems on Athletes. Current Sports Medicine Reports. 2020;19(4):146-150.",
+   "doi": "10.1249/jsr.0000000000000705",
+   "abstract": "This narrative review covers the rise of electronic nicotine delivery systems (ENDS) and their effects on athletes, including cardiovascular, pulmonary and recovery outcomes. It also describes vaping-associated lung injury and its presenting features. The authors conclude that athlete-specific performance research is limited and that sports medicine providers should be familiar with these devices.",
+   "tldr": "ENDS appear to affect the heart and lungs less than cigarettes, but the effects are not harmless and the long-term consequences are unknown. Athletes who vape may face cardiovascular, respiratory, sleep and recovery risks, and the authors suggest discouraging use, especially in athletes at higher arrhythmia risk.",
+   "methods": "Narrative review of the literature on ENDS prevalence and on cardiovascular, pulmonary, sleep, injury-healing and performance effects in athletes, plus vaping-associated lung injury. The text does not describe a systematic search, inclusion criteria or quality appraisal.",
+   "findings": "About 47 million US adults (19.3%) use some tobacco or nicotine product, including nearly 7 million ENDS users. Nicotine from ENDS produces acute increases in blood pressure and heart rate, and habitual users show heart rate variability patterns similar to tobacco smokers. Short-term ENDS use was not shown to affect diastolic function in non-athletes, and daily male ENDS users had lower FEV1 than controls. The authors describe VALI with mostly pulmonary symptoms and with THC-containing products involved in most cases, and state that the cause is unclear.",
+   "limitations": "As a narrative review with no stated search method, the selection of evidence cannot be checked. Athlete-specific data are sparse, most athlete performance research is for nicotine rather than ENDS, and the authors say the cause of VALI is unclear.",
+   "practicalImplications": "Sports medicine providers and coaches should be able to recognise ENDS use and discuss nicotine dependence, explosion and burn risk, and VALI with athletes who vape. The authors suggest discouraging ENDS use more strongly in athletes at higher arrhythmia risk. Staff should not assume that ENDS are a safe option compared with cigarettes for athletes.",
+   "athleteDev": "The review offers little evidence on performance, so ENDS should not be treated as a performance aid. The authors note that the timing of nicotine use may matter for ergogenic or ergolytic effects, and that research on specific sports and events is needed.",
+   "rtp": "The review says ENDS use can impair sleep quality, and that nicotine may delay tendon and fracture healing, but the healing findings are largely from preclinical and tobacco studies rather than ENDS. It gives no return-to-sport criteria or timelines and cannot be used to clear an athlete for return to sport. It supports asking about ENDS use during rehabilitation."
+ }
+}
+ENVIRONMENTAL CONDITIONS
+
+
+
+The Effects of Electronic Nicotine Delivery
+Systems on Athletes
+Scott E. Young, DO; Colin A. Henderson, MD; and Kyle S. Couperus, MD
+
+
+                                                                                                 from predominately devices that look
+   Abstract                                                                                      similar to cigarettes (ciga-like) to more
+   The rapid rise in popularity of Electronic Nicotine Delivery Systems (ENDS),                  modular systems that have rechargeable
+   or vaping, has not eluded the athletic population. Increasing use of youth                    batteries and refillable tanks. The Juul
+   sports participants, as well as collegiate and professionals, means sports                    devices have had a rapid rise in use and
+   medicine providers and coaches alike should be familiar with the effects                      look similar to USB memory sticks. By
+   of these devices. Current evidence demonstrates an impact on both the                         2018, Juul accounted for more than 70%
+   cardiovascular and pulmonary systems. These effects appear less signifi-                      of electronic cigarette sales (4).
+   cant than smoking tobacco cigarettes, but the extent and longevity of the                        The concentration of nicotine found
+   consequences of ENDS use is unclear. Mechanisms for recovery, such                            in ENDS can vary widely depending on
+   as sleep and injury healing, also are affected. Lastly, the emergence of                      the brand. Most devices use a liquid solu-
+   life-threatening pulmonary disease associated with ENDS use may have                          tion with concentrations between 1.7%
+   devastating effects on an athlete. This article will highlight the recent liter-              and 4.8% (5). Typical ENDS deliver
+   ature on the impact of ENDS on athletes and athletic performance, as well                     nicotine more slowly than traditional
+   as the potentially life-threatening consequences of use.                                      cigarettes (TRC). However, the Juul
+                                                                                                 brand of ENDS uses nicotine salt crys-
+                                                                          tals with a concentration of 5% rather than a liquid alkalinized
+Introduction                                                              solution, providing a more efficient delivery system that ap-
+   Nicotine is one of the most widely used substances in the              proaches that of TRC (6). One Juul cartridge contains approx-
+world. Many athletes have joined the general population and               imately 40 mg of nicotine, equivalent to one pack of cigarettes.
+use nicotine in its numerous forms despite the known health-                 The Food and Drug Administration (FDA) regulates the
+related risks (1). Historically, nicotine has been used through           components of ENDS devices but not the solutions (7). These
+smoking tobacco but over time has taken many forms, includ-               nicotine solutions contain many different substances, and
+ing inhaled, chew, lozenges, and gum. Recently, a new form of             none are regulated by the FDA.
+nicotine consumption has skyrocketed in popularity, the Elec-                This article will review the prevalence of ENDS use in the
+tronic Nicotine Delivery System (ENDS).                                   general population, as well as the known data on athlete use.
+   The ENDS product was developed in China and entered the                The current evidence on the impact of ENDS on athletes will
+U.S. marketplace in 2006 (2). It is noncombustible, often reus-           be discussed, including cardiovascular, pulmonary, and recovery
+able, and comes in many different forms, including e-cigarettes,          effects. The recent outbreak of severe pulmonary illness asso-
+e-cigs, vaporizers, vape pens, vaping devices, Juuls, and dab             ciated with ENDS use also will be covered, including common
+pens. These devices generally consist of a battery, heating ele-          presenting symptoms and the general approach to treatment.
+ment, and a cartridge or reservoir for the e-liquid solution.             Finally, the areas in need of future research will be reviewed.
+This solution is heated into an inhalable gas using the heating
+element (3). The liquid used in ENDS typically contains pro-
+pylene glycol or vegetable glycerin, nicotine, and potentially            Epidemiology
+flavoring agents. They have evolved significantly over time                  Approximately 47 million (19.3%) adults in the United
+                                                                          States use some form of tobacco or nicotine product, including
+                                                                          nearly 7 million ENDS users (8). ENDS are still the most likely
+Madigan Army Medical Center, Tacoma, WA
+                                                                          form of nicotine consumption in middle and high school stu-
+Address for correspondence: Scott E. Young, DO, Madigan Army Medical      dents, with overall use rates estimated at 20.8% and 4.9%, re-
+Center, 9040 Jackson Ave., Tacoma, WA 98431; E-mail:                      spectively, in 2018 (9,10). This is a significant increase from
+emsportsmed@gmail.com.                                                    1.5% in high school students to 0.6% in middle school stu-
+1537-890X/1904/146–150
+                                                                          dents in 2011 (11). The recent sharp rise in use is thought to
+Current Sports Medicine Reports                                           be due in part to devices, such as Juul, that can be utilized dis-
+Copyright © 2020 by the American College of Sports Medicine               cretely and have a high nicotine content approaching TRC.
+
+146        Volume 19  Number 4  April 2020                                                            Effect of ENDS on Athletes and Performance
+
+
+             Copyright © 2020 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+   Data from 2014 to 2016 demonstrated an increase in first-                TRC are known to be proarrhythmic, thought to be due to
+time adult use from 12.6% to 15.3%, but a decrease in contin-            a hyperadrenergic state from catecholamine release at the ad-
+uous use from 3.7% to 3.2%. This would imply that despite                renergic nerve terminal (18). This sympathomimetic state is
+the overall rise of use, more adults are trying ENDS, but less           due to the direct effects of nicotine, which would likely lead
+are persistently using them (12). The current literature sug-            to similar effects with ENDS use. Moheimani et al. (23) dem-
+gests that only 12% to 14% of individuals that try ENDS                  onstrated that habitual ENDS users have the same decreased
+progress to daily use (2).                                               heart rate variability (HRV) patterns as TRC users, which has
+   Smoking cessation has historically been a significant reason          previously been shown to increase the likelihood of myocardial
+for ENDS use. Multiple publications in the recent literature             infarction and sudden death. This finding was not dependent
+have looked to define the best role for ENDS in smoking ces-             on preexisting cardiovascular risk factors. These same authors
+sation. Recent social media analysis suggests that utilization           reported that the decreased HRV commonly associated with
+for this purpose may be declining (13). Conversely, marketing            a hyperadrenergic state only occurred in ENDS liquids contain-
+for ENDS products has dramatically increased, leading to a               ing nicotine compared with both the same solution without nic-
+theory of social image as a primary reason for using these               otine and a sham control. Interestingly, the depression of HRV
+products. This use of social imagery likely has a stronger influ-        appears to improve toward baseline after 7 d of abstinence
+ence on younger populations, which may increase the likeli-              from nicotine exposure (18). Based on this information, it would
+hood of athletes trying ENDS products.                                   seem wise to more aggressively discourage ENDS use in athletes
+   Current information available on athlete use of ENDS is               at higher risk of arrhythmia.
+limited compared with the use of other forms of nicotine. Ath-              Systemic absorption of nicotine leading to cardiac effects
+letes report using nicotine for weight control, relaxation, improv-      can occur in athletes through secondhand exposure to ENDS
+ing reaction time, and concentration (1). General use is more            vapor. Melstrom et al. (24) reported nicotine in urine, saliva,
+common among skill sports than power and endurance sports                and blood of nonusers up to 6 hours after secondhand expo-
+(14). In 2019, the World Anti-doping Agency monitored but                sure to ENDS aerosol. Lee et al. (25) demonstrated that this
+did not prohibit the use of nicotine in any sport (15). The              absorption affects the sympathetic nervous system. Nonsmok-
+NCAA published data showing that 11% of student-athletes                 ing volunteers were exposed to ENDS emissions for 1 h while
+reported smoking cigarettes and 17% reported occasional ci-              their HRV was measured. A longer exposure was associated
+gar use, but only 8% reported using ENDS products (16).                  with decreased HRV as measured by the standard deviation
+Elite athletes have a lower incidence of smoking tobacco use             of NN intervals.
+than the collegiate population (0.85% to 15%), but the spe-                 ENDS use is associated with temporary oxidative stress, vas-
+cific use of ENDS among this cohort has not been reported                cular dysfunction, and activation of thrombogenic pathways
+(1). An evaluation of youth athletes showed that baseball,               (6). The short- and long-term ramifications of these small tran-
+softball, and wrestling were at higher risk and that participa-          sient changes of ENDS use on cardiovascular performance have
+tion in sports was not protective against ENDS use (17).                 not been evaluated. Nicotine alone does not appear to increase
+                                                                         cardiovascular risk significantly, and the effects of the other
+Cardiovascular Effects of ENDS                                           components of ENDS liquid is unknown (26). Overall, the ef-
+   Nicotine is well known to increase sympathetic activation             fects of ENDS use on cardiovascular performance appear to
+regardless of the delivery mechanism. Nicotine exposure, whether         be less than TRC but still pose a risk to the athlete.
+through TRC or ENDS, causes an acute increase in blood pressure
+and heart rate that peaks over 5 to 10 min (18). Tolerance de-           Pulmonary Effects of ENDS
+velops quickly, and these effects stabilize or decline even if nico-        Aerosolization of ENDS liquid results in exposure of the
+tine levels continue to rise. Previous literature has demonstrated       user to several nonnicotine compounds. Acrolein, formalde-
+that overall, nicotine has a limited effect on athletes with various     hyde, and acetaldehyde are the primary toxicants emitted in
+studies reporting mixed results from ergogenic, to ergolytic, to         ENDS vapor (6). Metals, such as nickel, lead, and chromium,
+no effect on strength, endurance, and sprint efforts (1). Nico-          also have been detected (27). The addition of flavoring agents
+tine obtained through the gum form was shown to have no ef-              and other solutions, such as tetrahydrocannabinol (THC), can
+fect on anaerobic performance as assessed by the Wingate test            add even more potentially harmful substances to the emission.
+in a randomized placebo controlled trial (19). Zandonai et al.           The effects of these toxicants on the lungs are unclear. How-
+(20) studied oral smokeless tobacco and found that it has no             ever, a previous review noted that byproducts of ENDS use
+effect on the perception of fatigue or time to exhaustion in             are significantly less concentrated than those of TRC, with be-
+moderate-intensity aerobic exercise.                                     tween 9 and 450 times lower acrolein, formaldehyde, and acet-
+   Nicotine and smoking have been shown to have a direct ef-             aldehyde levels (28). These authors also point out that exposure
+fect on the myocardium that can lead to diastolic dysfunction            to the metals in ENDS vapor, while not entirely harmless, are
+and potentially left ventricular hypertrophy in long-term use            still 4 to 40 times less than that accepted for impurities in me-
+(21). For short-term use, a small study evaluating similar ef-           dicinal products, even if 100% absorption occurred.
+fects of TRC smoking compared with ENDS on myocardial                       The effects of TRC smoking on pulmonary function are well
+function in nonathletes demonstrated that TRC causes a delay             known. Active smoking decreases forced expiratory volume in
+in myocardial relaxation. In this population, diastolic function         1 s (FEV1), forced vital capacity (FVC), and the FEV1/FVC ratio,
+was not affected in ENDS users. This limited study implies               an effect that has been demonstrated in elite athletes (14). The ef-
+that ENDS may not have the same negative effects that ciga-              fects of ENDS use on athlete pulmonary function are less well
+rettes do, but the implications for specific athletic performance        studied. Daily nonathlete male ENDS users have shown a signif-
+measures have not been evaluated (22).                                   icantly decreased FEV1 and FEV1/FVC compared with matched
+
+www.acsm-csmr.org                                                                                         Current Sports Medicine Reports   147
+
+            Copyright © 2020 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+controls (29). Perhaps, not surprisingly, individuals with               that begin, on average, 6 d prior to presentation (41). How-
+preexisting airway diseases, such as asthma, are at higher               ever, the range of presentation time is variable, anywhere from
+risk for these effects (30). Palamidas et al. demonstrated that          0 to 60 d, but 72% of the patients from this report presented
+10 min of ENDS use significantly increased airway resistance             within 7 d. Almost all (98%) patients had respiratory symp-
+and decreased airway conductance in both active smokers and              toms, including shortness of breath (87%), cough (83%), and
+nonsmokers (31). Interestingly, these same authors showed                chest pain (55%). Gastrointestinal symptoms included nausea,
+similar changes using ENDS liquid without nicotine, implying             vomiting, diarrhea, and abdominal pain. Subjective fever was
+that the liquid solution may be directly responsible, although           present in 81%. Forty-five percent of patients presenting to an
+this finding has been refuted by other data (32,33).                     outpatient setting received antibiotics, but all patients receiv-
+   Routine ENDS use may increase an athlete's risk of infectious         ing antibiotics had continued progression of their symptoms,
+pulmonary disease. Reduced cough sensitivity and decreased               leading to hospitalization. Vital sign patterns at presentation
+ciliary function have both been associated with ENDS vapor               demonstrated 64% with tachycardia, 43% with tachypnea,
+(34,35). The addition of alveolar macrophage dysfunction                 and only 29% with objective fever (53% had documented fe-
+and impaired neutrophil phagocytosis could significantly impair          ver at some point during their admission). Perhaps, most im-
+pulmonary immune function (27). High school aged and current             portantly, 69% had an oxygen saturation of less than 95%
+adult users of ENDS products report as much as a two-fold in-            on room air, with just over 30% having an oxygen saturation
+crease in bronchitis type symptoms, such as cough, phlegm                less than 89% (41). Ninety-one percent of patients had an ab-
+production, and dyspnea, compared with nonusers (36,37).                 normal chest x-ray on presentation. Most patients were treated
+These findings add to a host of factors that place the athlete           with supportive care focusing on oxygenation and pulmonary
+at risk for respiratory symptoms and illness, such as travel, im-        function. Systemic glucocorticoids were used in the majority
+paired sleep, and gastrointestinal health.                               of the cases.
+   In summary, the pulmonary effects of ENDS use are not as                 Overall, THC additives seem to play the most significant role
+significant as TRC, but are certainly not harmless. The long-            in VALI. Most patients present with respiratory complaints and
+term effects on athletic performance and lung function are un-           have unreliable vital sign changes (including the presence or ab-
+known and warrant further study.                                         sence of fever). These cases typically respond to intensive sup-
+                                                                         portive care with the addition of systemic glucocorticoids.
+Concern for Lethal Pulmonary Disease
+   As of this writing, there have been more than 805 cases of            Other Risks of ENDS Use
+vaping-associated lung injury (VALI) from 46 states and 1                   ENDS devices pose other risks to athletes. As of 2017, there
+US territory associated with ENDS use. More than 60% of                  were more than 800 injuries to users due to thermal burns and
+these cases are in the ages 18 to 34 years, and 16% are youn-            projectile injuries from exploding ENDS devices (42). The male
+ger than 18 years. Of the total, nearly 70% of the cases are             demographic younger than 45 years appears to be at the greatest
+male, and all patients have had a history of ENDS use. Twelve            risk. Significant side effects from gastrointestinal exposure to
+deaths have been reported from this cohort (38). The clinical            e-liquids, both unintentional and intentional, have been re-
+progression of the first reported death attributed to VALI was           ported. The most common symptoms of toxic e-liquid inges-
+a protracted course marked by several outpatient visits for pre-         tion include vomiting, altered mental status, and tachycardia.
+sumed recurrent pneumonia. This was followed by a prolonged              Some of these reported cases had seizures, acidosis, and even
+hospital course leading to acute respiratory distress syndrome           cardiac arrest (43).
+and, eventually, death on hospital day 25 (39).
+   The cause of this potentially lethal pulmonary injury is un-          Impact of ENDS Use on Injury and Recovery
+clear, but THC and cannabinoid (CBD) oil additives are thought              Sleep quality and duration have a direct impact on athlete
+to play a role. From the patient data available, 77% of VALI             recovery (44). Known side effects of nicotine exposure on
+cases reported the use of THC-containing products with the               sleep include suppressed rapid eye movement sleep, increased
+preceding 30 d, with 36% reporting exclusive use of THC-                 sleep latency, and sleep fragmentation (45). ENDS use has
+containing products. The first reported death discussed above            been shown to be detrimental to sleep quality, especially in
+was reported to be vaping CBD oil but was concealing it from             women and those that are dual users with TRC (46).
+others. This clandestine use of at-risk agents can increase the             TRC smoking impacts musculoskeletal injury healing. Pre-
+likelihood of delayed diagnosis. Additionally, the fluid used in         clinical evaluations have shown impaired intrasubstance ten-
+ENDS devices may contain several potentially toxic compounds,            don injury healing with nicotine exposure (47). Additional
+including carbonyls, benzene, toluene, and trace metal elements,         animal and nonhuman studies have demonstrated delayed
+depending on flavoring (40). However, no single substance                fracture healing (48). While both of these studies are preclini-
+has been clearly associated with all cases of VALI.                      cal data and not direct evidence associated with ENDS, it
+   The pathologic changes in these cases include acute eo-               would be reasonable to extrapolate that nicotine obtained
+sinophilic pneumonia, organizing pneumonia, lipoid pneu-                 through ENDS use could lead to similar complications.
+monia, hypersensitivity pneumonitis, diffuse alveolar damage,
+and rarely giant-cell interstitial pneumonitis (40). The findings        Future Areas of Research
+generally have been consistent with a toxic pneumonitis rather              As discussed above, the current data regarding the effects of
+than an infectious etiology.                                             nicotine on athlete performance is limited (1). The research
+   Not surprisingly, most cases of VALI have presented with              specific to the impact of ENDS on athletes is even more lim-
+pulmonary symptoms. Case reports from Illinois and Wisconsin             ited. Little data exist on the specific effects of ENDS on ath-
+describe a mix of pulmonary and gastrointestinal symptoms                letes in strength, short sprint, and endurance events. Timing
+
+148       Volume 19  Number 4  April 2020                                                            Effect of ENDS on Athletes and Performance
+
+
+            Copyright © 2020 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+of use may play a large role in the ergogenic and ergolytic ef-                           10. Gentzke AS, Creamer M, Cullen KA, et al. Vital signs: tobacco product use
+                                                                                              among middle and high school students—United States, 2011-2018. MMWR
+fects based on pharmacokinetics and systemic retention (49).                                  Morb. Mortal. Wkly Rep. 2019; 68:157–64.
+The impact of daily use may be different from using specifi-                              11. Cullen KA, Ambrose BK, Gentzke AS, et al. Notes from the field: Use of elec-
+cally before events as a performance aid. Focused research                                    tronic cigarettes and any tobacco product among middle and high school
+on the specific performance effects of ENDS on athletes of dif-                               students—United States, 2011-2018. MMWR Morb. Mortal. Wkly Rep. 2018;
+                                                                                              67:1276–7.
+ferent disciplines is much needed.
+                                                                                          12. Bao W, Xu G, Lu J, et al. Changes in electronic cigarette use among adults in the
+   Providing accurate and effective warnings to the public on                                 United States, 2014-2016. JAMA. 2018; 319:2039–41.
+the effects of ENDS presents many challenges (50). Nicotine                               13. Ayers JW, Leas EC, Allem JP, et al. Why do people use electronic nicotine deliv-
+addiction, explosion risk, the limited data on performance im-                                ery systems (electronic cigarettes)? A content analysis of Twitter, 2012–2015.
+pact, and the potential for VALI all must be communicated to                                  PLoS One. 2017; 12:e0170702.
+
+the athlete that utilizes ENDS. How best to deliver this impor-                           14. Šaranović SĐ, Vićić J, Pešić I, et al. The influence of tobacco use on pulmonary func-
+                                                                                              tion in elite athletes. Int. J. Environ. Res. Public Health. 2019; 16. pii: E3515.
+tant preventive medicine service to the sporting community is
+                                                                                          15. WADA publishes 2019 List of Prohibited Substances and Methods (28
+an important area of future research.                                                         September 2018) [Internet]. World Anti-Doping Agency. 2018 [cited 2019
+   There are no specific data on the long-term health conse-                                  Oct 14]. Available from: https://www.wada-ama.org/en/media/news/2018-09/
+                                                                                              wada-publishes-2019-list-of-prohibited-substances-and-methods.
+quences of ENDS use in the general population, much less
+amateur or elite athletes (51). Lifelong performance impacts of                           16. McDuff D, Stull T, Castaldelli-Maia JM, et al. Recreational and ergogenic
+                                                                                              substance use and substance use disorders in elite athletes: a narrative review.
+exposure to the substances in ENDS vapor on pulmonary func-                                   Br. J. Sports Med. 2019; 53:754–60.
+tion are unknown, including secondary exposure. While studies                             17. Veliz P, McCabe SE, McCabe VV, Boyd CJ. Adolescent sports participation,
+looking into the long-term effects of ENDS are likely ongoing                                 e-cigarette use, and cigarette smoking. Am. J. Prev. Med. 2017; 53:e175–83.
+for the general population, specific effects on amateur and elite                         18. Middlekauff HR, Park J, Moheimani RS. Adverse effects of cigarette and
+                                                                                              noncigarette smoke exposure on the autonomic nervous system: mecha-
+athletes would help sports medicine professionals give the best                               nisms and implications for cardiovascular risk. J. Am. Coll. Cardiol. 2014;
+guidance for safety regarding these potentially toxic substances.                             64:1740–50.
+                                                                                          19. Mündel T, Machal M, Cochrane DJ, Barnes MJ. A randomised, placebo-
+Conclusions                                                                                   controlled, crossover study investigating the effects of nicotine gum on strength,
+                                                                                              power and anaerobic performance in nicotine-naïve, active males. Sports Med.
+   The available evidence suggests that ENDS use is associated                                Open. 2017; 3:5.
+with fewer performance-related and long-term health effects                               20. Zandonai T, Tam E, Bruseghini P, et al. The effects of oral smokeless tobacco ad-
+on athletes than TRC. The threat of VALI, thought to primar-                                  ministration on endurance performance. J. Sport Health Sci. 2018; 7:465–72.
+ily be associated with THC-containing liquids, remains as                                 21. Nadruz W Jr., Claggett B, Gonçalves A, et al. Smoking and cardiac structure and
+much a threat to athletes as it does the general public. As use                               function in the elderly: the ARIC study (atherosclerosis risk in communities).
+                                                                                              Circ. Cardiovasc. Imaging. 2016; 9:e004950.
+by the youth population continues to increase, one of the most
+                                                                                          22. Farsalinos KE, Tsiapras D, Kyrzopoulos S, et al. Acute effects of using an elec-
+concerning features of ENDS is the lack of long-term data on                                  tronic nicotine-delivery device (electronic cigarette) on myocardial function:
+health and performance effects. Sports medicine professionals                                 comparison with the effects of regular cigarettes. BMC Cardiovasc. Disord.
+and coaching staff should continue to educate athletes on the                                 2014; 14:78.
+known risks of ENDS use, including VALI, as well as the po-                               23. Moheimani RS, Bhetraratana M, Yin F, et al. Increased cardiac sympathetic ac-
+                                                                                              tivity and oxidative stress in habitual electronic cigarette users: implications for
+tential for unknown consequences in the future.                                               cardiovascular risk. JAMA Cardiol. 2017; 2:278–84.
+                                                                                          24. Melstrom P, Sosnoff C, Koszowski B, et al. Systemic absorption of nicotine fol-
+  The authors declare no conflict of interest and do not have                                 lowing acute secondhand exposure to electronic cigarette aerosol in a realistic so-
+any financial disclosures.                                                                    cial setting. Int. J. Hyg. Environ. Health. 2018; 221:816–22.
+                                                                                          25. Lee MS, Rees VW, Koutrakis P, et al. Cardiac autonomic effects of secondhand
+                                                                                              exposure to nicotine from electronic cigarettes: an exploratory study. Environ.
+References                                                                                    Epidemiol. 2019; 3. pii: e033):e033.
+1. Mündel T. Nicotine: sporting friend or foe? A review of athlete use, performance
+   consequences and other considerations. Sports Med. 2017; 47:2497–506.                  26. Benowitz NL, Burbank AD. Cardiovascular toxicity of nicotine: implications for
+                                                                                              electronic cigarette use. Trends Cardiovasc. Med. 2016; 26:515–23.
+2. Hajek P, Etter JF, Benowitz N, et al. Electronic cigarettes: review of use, content,
+   safety, effects on smokers and potential for harm and benefit. Addiction. 2014;        27. Gotts JE, Jordt SE, McConnell R, Tarran R. What are the respiratory effects of
+   109:1801–10.                                                                               e-cigarettes? BMJ. 2019; 366:l5275.
+3. Cobb NK, Byron MJ, Abrams DB, Shields PG. Novel nicotine delivery systems              28. Farsalinos KE, Polosa R. Safety evaluation and risk assessment of electronic cig-
+   and public health: the rise of the “E-Cigarette.” Am. J. Public Health. 2010;              arettes as tobacco cigarette substitutes: a systematic review. Ther. Adv. Drug Saf.
+   100:2340–2.                                                                                2014; 5:67–86.
+4. King BA, Gammon DG, Marynak KL, Rogers T. Electronic cigarette sales in the            29. Meo SA, Ansary MA, Barayan FR, et al. Electronic cigarettes: impact on lung
+   United States, 2013-2017. JAMA. 2018; 320:1379–80.                                         function and fractional exhaled nitric oxide among healthy adults. Am. J. Mens
+                                                                                              Health. 2019; 13:1557988318806073.
+5. Palazzolo D, Nelson JM, Hudson Z. The use of HPLC-PDA in determining
+   nicotine and nicotine-related alkaloids from e-liquids: a comparison of five           30. Lappas AS, Tzortzi AS, Konstantinidi EM, et al. Short-term respiratory effects of
+   e-liquid brands purchased locally. Int. J. Environ. Res. Public Health. 2019;              e-cigarettes in healthy individuals and smokers with asthma. Respirology. 2018;
+   16. pii: E3015.                                                                            23:291–7.
+6. MacDonald A, Middlekauff HR. Electronic cigarettes and cardiovascular                  31. Gennimata SA, Palamidas A, Kaltsakas G, et al. Acute effect of e-cigarette
+   health: what do we know so far? Vasc. Health Risk Manag. 2019; 15:159–74.                  on pulmonary function in healthy subjects and smokers. Eur. Respir. J. 2012;
+                                                                                              40(Suppl. 56):P1053.
+7. US Food and Drug Administration. Vaporizers, e-cigarettes, and other electronic
+   nicotine delivery systems (ENDS). FDA [Internet]. 2019 Sep 12 [cited 2019              32. Palamidas A, Gennimata SA, Kaltsakas G, et al. Acute effect of an e-cigarette
+   Oct 7]. Available from: http://www.fda.gov/tobacco-products/products-ingredients-          with and without nicotine on lung function. Tob Induc Dis. 2014; 12:A34.
+   components/vaporizers-e-cigarettes-and-other-electronic-nicotine-delivery-             33. Boulay M-È, Henry C, Bossé Y, et al. Acute effects of nicotine-free and flavour-
+   systems-ends.                                                                              free electronic cigarette use on lung functions in healthy and asthmatic individ-
+8. Wang TW, Asman K, Gentzke AS, et al. Tobacco product use among adults—                     uals. Respir. Res. 2017; 18:33.
+   United States, 2017. MMWR Morb. Mortal. Wkly Rep. 2018; 67:1225–32.                    34. Carson JL, Zhou L, Brighton L, et al. Temporal structure/function variation
+9. Wang TW, Gentzke A, Sharapova S, et al. Tobacco product use among middle                   in cultured differentiated human nasal epithelium associated with acute sin-
+   and high school students—United States, 2011-2017. MMWR Morb. Mortal.                      gle exposure to tobacco smoke or E-cigarette vapor. Inhal. Toxicol. 2017;
+   Wkly Rep. 2018; 67:629–33.                                                                 29:137–44.
+
+
+www.acsm-csmr.org                                                                                                                   Current Sports Medicine Reports          149
+
+               Copyright © 2020 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+35. Dicpinigaitis PV, Lee Chang A, Dicpinigaitis AJ, Negassa A. Effect of e-cigarette         45. Jaehne A. Effects of nicotine on sleep during consumption, withdrawal and re-
+    use on cough reflex sensitivity. Chest. 2016; 149:161–5.                                      placement therapy. Sleep Med. Rev. 2009; 13:363–77.
+36. Wang JB, Olgin JE, Nah G, et al. Cigarette and e-cigarette dual use and risk of cardio-   46. Boddu S, Bojanowski CM, Scholten E, et al. Investigating the effects of different
+    pulmonary symptoms in the Health eHeart Study. PLoS One. 2018; 13:e0198681.                   forms of tobacco use on sleep quality and cough: a matter of gender? In: A26
+37. McConnell R, Barrington-Trimis JL, Wang K, et al. Electronic cigarette use                    Environmental Modifiers of Lung Disease [internet]. American Thoracic Society;
+    and respiratory symptoms in adolescents. Am. J. Respir. Crit. Care Med. 2017;                 2019 [cited 2019 Oct 16]. p. A1180–A1180. American Thoracic Society Interna-
+    195:1043–9.                                                                                   tional Conference abstracts. Available from: https://doi.org/10.1164/ajrccm-
+                                                                                                  conference.2019.199.1_MeetingAbstracts.A1180.
+38. Outbreak of lung injury associated with e-cigarette use, or vaping [Internet].
+    [cited 2019 Sep 29]. Available from: https://www.cdc.gov/tobacco/basic_                   47. Cheema AN, Newton JB, Boorman-Padgett JF, et al. Nicotine impairs intra-
+    information/e-cigarettes/severe-lung-disease.html.                                            substance tendon healing after full thickness injury in a rat model. J. Orthop.
+                                                                                                  Res. 2019; 37:94–103.
+39. Youmans AJ, Harwood J. Gross and histopathological findings in the first re-
+    ported vaping-induced lung injury death in the United States. Am. J. Forensic             48. Donigan JA, Fredericks DC, Nepola JV, Smucker JD. The effect of transder-
+    Med. Pathol. 2020; 41:1–4.                                                                    mal nicotine on fracture healing in a rabbit model. J. Orthop. Trauma. 2012;
+                                                                                                  26:724–7.
+40. Christiani DC. Vaping-induced lung injury. N. Engl. J. Med. 2020; 382:960–2.
+                                                                                              49. St Helen G, Havel C, Dempsey DA, et al. Nicotine delivery, retention and
+41. Layden JE, Ghinai I, Pray I, et al. Pulmonary illness related to e-cigarette use in           pharmacokinetics from various electronic cigarettes. Addiction. 2016;
+    Illinois and Wisconsin—preliminary report. N. Engl. J. Med. 2020; 382:903–16.                 111:535–44.
+42. Dohnalek HM, Harley EH. Analysis of electronic cigarette-related injury presenting        50. Wackowski OA, Hammond D, O’Connor RJ, et al. Considerations and future
+    to U.S. emergency departments, 2008-2017. J. Emerg. Med. 2019; 57:399–404.                    research directions for e-cigarette warnings—findings from expert interviews.
+43. Maessen GC, Wijnhoven AM, Neijzen RL, et al. Nicotine intoxication by                         Int. J. Environ. Res. Public Health. 2017; 14. pii: E781.
+    e-cigarette liquids: a study of case reports and pathophysiology. Clin. Toxicol.          51. Livingston CJ, Freeman RJ, Costales VC, et al. Electronic nicotine delivery sys-
+    (Phila.). 2019; 58:1–8.                                                                       tems or e-cigarettes: American College of Preventive Medicine's practice state-
+44. Watson AM. Sleep and athletic performance. Curr. Sports Med. Rep. 2017; 16:413–8.             ment. Am. J. Prev. Med. 2019; 56:167–78.
+
+
+
+
+150           Volume 19  Number 4  April 2020                                                                                   Effect of ENDS on Athletes and Performance
+
+
+                 Copyright © 2020 by the American College of Sports Medicine. Unauthorized reproduction of this article is prohibited.
+

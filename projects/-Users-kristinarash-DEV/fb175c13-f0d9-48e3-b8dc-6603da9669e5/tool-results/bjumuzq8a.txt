@@ -1,0 +1,197 @@
+######## framework--mcdougall-four-values-and-seven-characteristics-of-a-testing-programme.md
+1	---
+2	type: library-entry
+3	kind: framework
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: purpose of sport testing
+8	category: [testing, assessment, monitoring, programme-design]
+9	confidence: untested
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# McDougall's Four Values of Testing and Seven Characteristics of an Effective Testing Programme
+15	
+16	**What it is** — Section 8.7 opens by restating that "the most specific test of all is performance in the actual sporting event. All other tests have varying degrees of correlation with performance or selected actions in the given sport" (PDF 468 / p.457, checked against the page image). The author, writing in the first person ("my Canadian colleague, Dr Duncan Mc Dougall"), then summarises McDougall et al (1982). Four values of "suitable, well-planned tests": (1) "They identify individual strengths and weaknesses and provide data for determining the baseline for training programmes"; (2) "They provide feedback on the effectiveness of training programmes"; (3) "They provide information on the athlete's state of health"; (4) "They provide an educational process which teaches the athlete to understand more competently his/her body and the demands of the sport." Seven characteristics of an effective programme: (1) "The variables which are tested must be directly relevant to the given sport"; (2) "The tests must be valid (test what it claims to), reliable and reproducible"; (3) "The testing procedures must be as sport specific as possible"; (4) "The testing situation must be rigidly controlled"; (5) "Testing must be repeated at regular, appropriate intervals"; (6) "The tests must respect the athlete's human rights (including ethics, confidentiality and risks)"; (7) "The results must be interpreted in understandable language directly to the athlete and coach" (PDF 468 / p.457). The author then says the section will not "reiterate what has already been written" by testing authorities and will "simply ... provide information which is not readily available" (PDF 468 / p.457). The book prints the name both as "Mc Dougall" and "McDougall"; the OCR's "Me Dougall" is an artifact.
+17	
+18	**Why it works** — The book gives no separate mechanism; the lists rest on the opening point that every test other than competition is only a correlate of performance. Inference: items 1 and 3 keep that correlate as close to the sport as possible; items 2, 4 and 5 make a change between two test dates attributable to training rather than to noise or a changed protocol; item 7 makes the result usable by the people who change the programme.
+19	
+20	**When to apply** — When building or auditing a test battery, or deciding whether to keep a test. Eric's review: "If it doesn't answer a question anyone has, or a direct need, then it doesn't have a place." (`docs/method-baseline.md`, line 32, Explicit (interview 2026-09-28, Q3)). Eric's review: "Testing protocol has to be exactly repeatable over time ("how you do it in January needs to be the same as how you do it in April") or the resulting data cannot be trusted for comparison." (`docs/method-baseline.md`, line 57, Inferred (transcript)). Eric's review: "Inconsistent data from a good test is still bad data" (`docs/method-baseline.md`, line 34, Explicit). Inference: McDougall's items 1, 4 and 5 match these lines; the baseline lines quoted here say nothing about item 6 (ethics and confidentiality) or item 7 (explaining results directly to the athlete).
+21	
+22	**When NOT to apply** — The lists are a checklist, not evidence that testing improves results; McDougall et al (1982) is cited, not described, so `untested`. Inference: items 1 and 3 ("as sport specific as possible") pull against item 2 (reliability), since the most sport-like tests are often the hardest to control; Eric's own battery leans on general, reliable tests ("bodyweight, 60-yard dash, vertical jump, broad jump, back squat, push-up max", `docs/method-baseline.md`, line 58). The four values say what tests can "provide", not that every test must serve all four.
+23	
+24	**Example** — The author applies item 3 at once to the vertical jump: because results "correlate best with conditions which are most similar to that of the test", it is "useful to repeat the test with the non-dominant hand or in the frontal plane with the athlete using both hands" (PDF 468 / p.457). See [[heuristic--vertical-jump-test-five-start-conditions-and-knee-angle-profile]].
+25	
+26	**Related** — [[claim--laboratory-tests-cannot-predict-performance-or-select-talent]], [[heuristic--test-monthly-under-constant-conditions-and-compare-with-targets]] (constant conditions, monthly comparison, 6.16), [[heuristic--vertical-jump-test-five-start-conditions-and-knee-angle-profile]]
+######## claim--laboratory-tests-cannot-predict-performance-or-select-talent.md
+1	---
+2	type: library-entry
+3	kind: claim
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: limits of laboratory testing
+8	category: [testing, talent-identification, selection, physiology]
+9	confidence: untested
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# Laboratory Tests Cannot Predict Performance or Pick Talent; Physiology Should Only Augment Performance Data in Selection
+15	
+16	**What it is** — Three voices sit on this page. The author (first person) introduces McDougall's "remarks on the scope and limitations of testing, which so often tend to be ignored by sports scientists whose main role appears to be research publications rather than practical application of the data" (PDF 468 / p.457, checked against the page image). That jab is the author's. The quotation that follows is McDougall's (McDougall et al, 1982): "Laboratory testing is not a magical tool for predicting future gold medallists. It has severe limitations for identifying potential talent in that scientists still do not know how to determine 'genetic limits' and therefore cannot predict potential to improve. For example, the use of muscle biopsies to estimate muscle fiber types and thus predict endurance or power performance is highly questionable.... The complete performance of any athlete is a composite of many different factors of which physiological function is only one. It is therefore unwise to attempt to predict performance from any single physiological test or battery of physiological tests - especially in sports where technical, tactical, and psychological components may relegate physiology to a lesser role. Similarly, in the selection of athletes for competition or for teams, physiological tests should only augment information which is available on actual performances or field observations" (PDF 468 / p.457).
+17	
+18	**Why it works** — McDougall's reasons are given in the quote: no method yet sets an individual's "genetic limits", and physiology is one factor among technical, tactical and psychological ones. Inference: a test that captures only one component of a composite cannot rank athletes on the composite, and the less physiology matters in a sport, the weaker that ranking gets.
+19	
+20	**When to apply** — When a coach or administrator wants a test result to select, cut or project an athlete. The rule in the quote is concrete: performance and field observation lead, physiological tests "only augment". Inference: in team sports with large technical and tactical demands, treat a physiological battery as a check on the eye and the game record, not as the selector.
+21	
+22	**When NOT to apply** — This is expert opinion from a 1982 text, quoted without data, so `untested`. The quote is about predicting future performance and selecting talent, not about the other uses of testing (baseline, feedback, health, education) that the same author lists on the same page; see [[framework--mcdougall-four-values-and-seven-characteristics-of-a-testing-programme]]. Inference: "scientists still do not know how to determine 'genetic limits'" and the biopsy example reflect the state of the field in 1982; they should be rechecked against current literature before being cited as current. The author's line about sports scientists chasing publications is a judgment with no evidence offered.
+23	
+24	**Example** — McDougall's own: using "muscle biopsies to estimate muscle fiber types and thus predict endurance or power performance is highly questionable" (PDF 468 / p.457).
+25	
+26	**Related** — [[framework--mcdougall-four-values-and-seven-characteristics-of-a-testing-programme]], [[case-study--vorobyev-vertical-jump-rises-with-weightlifter-qualification-table-8-13]]
+######## heuristic--vertical-jump-test-five-start-conditions-and-knee-angle-profile.md
+1	---
+2	type: library-entry
+3	kind: heuristic
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: vertical jump test variants
+8	category: [testing, vertical-jump, starting-strength, reactive-ability]
+9	confidence: untested
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# Run the Vertical Jump Under Several Start Conditions and Knee Angles, Not One
+15	
+16	**What it is** — The usual vertical jump has the athlete "leap from a standing position with a preliminary dip and touch a measuring device sideways with one's dominant hand" (PDF 468 / p.457, checked against the page image). Because "the results of this test correlate best with conditions which are most similar to that of the test," the book advises repeating it "with the non-dominant hand or in the frontal plane with the athlete using both hands to reach for the target." It lists five start conditions: "1. Starting statically from an optimum knee flexed position using no arm swing; 2. Starting statically from an optimum knee flexed position using arm swing; 3. Starting statically from sitting on a low seat using (a) no arm swing, or (b) arm swing; 4. Starting dynamically with an optimal knee dip using no arm swing; 5. Starting dynamically with an optimal knee dip using arm swing" (PDF 468 / p.457). Two contrasts are drawn. Without arm swing the jump focuses "primarily on the role played by extension of the lower extremity and trunk, without the picture being confounded by the use of arm momentum." Without the dip, "the absence of an initial sharp dip allows one to focus more on starting strength and the role played by the contractile (actin-myosin) component of the muscle complex, instead of the more plyometric rebound action encouraged by the use of the dip. This can sometimes assist one in ascertaining whether the athlete needs more strength (or functional hypertrophy) training or more rebound, nervous system training" (PDF 468-469 / pp.457-458). Static jumps can also be run "from different initial knee angles to obtain a profile of individual jumping characteristics": "if the maximum vertical jump is attained for a fairly large knee angle, which is generally associated with a slower overall jumping time from start to finish of the action, then it is obvious that the athlete needs to concentrate on modifying his range and speed of maximal strength production" (PDF 469 / p.458; "profile of", "knee" and "then it is" sit on the compressed right margin and are partly reconstructed from the image).
+17	
+18	**Why it works** — The book's reasoning: each condition removes one contributor (arm momentum, the stretch-shortening rebound), so the difference between conditions points at the contributor. Inference: the static-versus-dip contrast is the same logic as the Ch 1 strength-deficit proxy, applied here as a diagnostic menu rather than a single comparison.
+19	
+20	**When to apply** — When a single jump number cannot say why an athlete jumps what they jump. Eric's review: "The standard CMJ family run on ForceDecks: hands-free squat, squat jump (quarter-squat start, 3s hold), countermovement jump (x3), hop test / repeated CMJ (10 reps total, n=5 pairs), and single-leg CMJ (x3 per leg)" (`docs/method-baseline.md`, line 77, Inferred (protocol; author uncertain); the line goes on to say each test has a scripted weigh-in, stabilization and rep protocol). Inference: the squat jump with a 3 s hold is close to the book's condition 1, and the CMJ to condition 4 or 5; the quoted line does not say whether arms are used in the CMJ. Eric's review: the DSI is used "to determine whether we need more plyometric training or more max-strength training" (`docs/method-baseline.md`, line 76, Explicit (interview 2026-09-28, Q21)), and the same line tags that use "[contested; the ratio tracks IMTP strength; one controlled trial (Pleša 2024, basketball, split at 0.90) supported only the strength arm; no football data]". Inference: the book's static-versus-dip contrast is a field cousin of that decision, and it carries the same caution.
+21	
+22	**When NOT to apply** — The book gives no norms, no data and no rule for which result means which training: it says the contrast "can sometimes assist one in ascertaining" the need, nothing more. Do not import a direction from Ch 1, where the book gives two conflicting rules for the static-versus-dip gap ([[framework--strength-deficit-jump-comparison-estimate]]). Inference: "a fairly large knee angle" is ambiguous, since the book does not say how the angle is measured; its link to "a slower overall jumping time" suggests a deeper start, but that is a reading, not the text. The book's "optimum" and "optimal" start positions are not defined.
+23	
+24	**Example** — The book's own reasoning for an athlete who jumps best from a deep static start (the large knee angle case above): the jump takes longer from start to finish, and the book says that athlete should work on the "range and speed of maximal strength production" (PDF 469 / p.458).
+25	
+26	**Related** — [[framework--strength-deficit-jump-comparison-estimate]], [[framework--mcdougall-four-values-and-seven-characteristics-of-a-testing-programme]], [[case-study--vorobyev-vertical-jump-rises-with-weightlifter-qualification-table-8-13]], [[case-study--vorobyev-jerk-dip-parameters-by-bar-weight-table-8-12]]
+######## case-study--vorobyev-jerk-dip-parameters-by-bar-weight-table-8-12.md
+1	---
+2	type: library-entry
+3	kind: case-study
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: jerk dip parameters
+8	category: [weightlifting, jerk, plyometrics, testing]
+9	confidence: supported
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# Vorobyev's Jerk Dip Parameters by Bar Weight (Table 8.12): Deeper, Longer Dips With Heavier Bars, Pause Never Over 0.25 s
+15	
+16	**What it is** — Table 8.12, "Parameters of the Jerk Phase of the Olympic Clean-and-Jerk (Vorobyev, 1978)" (PDF 469 / p.458, every cell read from the page image):
+17	
+18	| Weight of bar (kg) | Duration of dip (s) | Depth of dip (cm) | Duration of pause in dip (s) | Duration of jerk (s) |
+19	|---|---|---|---|---|
+20	| 120-140 | 0.15-0.20 | 5-8 | 0.00-0.15 | 0.15-0.20 |
+21	| 160-180 | 0.20-0.30 | 8-10 | 0.00-0.20 | 0.20-0.25 |
+22	| 200-220 | 0.40-0.50 | 10-15 | 0.00-0.25 | 0.25-0.35 |
+23	
+24	The book reads it as showing "that the dip characteristically is deeper for heavier loads or persons and that in all cases the pause during the dip should not last longer than 0.25 second" (PDF 469 / p.458; "the dip" and "should not" are on the compressed right margin, partly reconstructed). It draws a training use: "Herein lies the benefit of performing push jerks or jerks off racks with different weights as a form of supplementary plyometric training. After all, plyometric training is of little value if it fails to enhance adequately explosive strength or power over the range required in a given activity. The use of drills which do not correlate strongly with the functional needs of a given sport constitute one of the most common errors in popular plyometric training" (PDF 469 / p.458, partly reconstructed at the right margin: "different", "if it fails", "use of drills", "common"). Two caveats follow: the measurements used "an Olympic weightlifting bar, so that the values of the parameters during the pause and jerk phase will be different for other training bars," and "optimal interaction between bar and lifter occurs when the frequency of oscillation of the bar is twice that of the lifter's movement (Vorobyev, 1978)" (PDF 469 / p.458).
+25	
+26	**Why it works** — The book's logic: the jerk dip is a short eccentric-concentric reversal under load, so loading it at several weights trains rebound over the range a lifter actually uses. Inference: the 0.25 s ceiling on the pause is the same idea as keeping the amortization phase short so stored elastic energy is not lost (see [[principle--short-amortization-preserves-elastic-energy]]); the book does not make that link on this page.
+27	
+28	**When to apply** — When choosing a loaded plyometric for an athlete whose sport needs explosive leg drive over a short dip, or when coaching the jerk: keep the pause in the dip brief. Inference: push jerks or jerks from racks at varied weights are the book's suggested means; how much they transfer outside weightlifting is not tested here.
+29	
+30	**When NOT to apply** — The data are from weightlifters handling 120-220 kg, with no sample size, lifter bodymass or class given; the "or persons" part of the reading is not in the table, which lists bar weight only. Values apply to an Olympic bar, as the book itself warns. The bar-oscillation rule is stated without method or data. Inference: for team-sport athletes jerking far lighter loads, the dip depths and times in the table are not targets.
+31	
+32	**Example** — At 200-220 kg the dip lasts 0.40-0.50 s and goes 10-15 cm deep, against 0.15-0.20 s and 5-8 cm at 120-140 kg; the pause stays at 0.25 s or less in every row (PDF 469 / p.458).
+33	
+34	**Related** — [[principle--short-amortization-preserves-elastic-energy]], [[case-study--vorobyev-vertical-jump-rises-with-weightlifter-qualification-table-8-13]], [[heuristic--vertical-jump-test-five-start-conditions-and-knee-angle-profile]]
+######## case-study--vorobyev-vertical-jump-rises-with-weightlifter-qualification-table-8-13.md
+1	---
+2	type: library-entry
+3	kind: case-study
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: vertical jump by qualification
+8	category: [weightlifting, vertical-jump, testing, norms]
+9	confidence: supported
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# Vertical Jump Rises With Weightlifting Qualification: 57.3 cm in Novices to 85.5 cm in Elite (Table 8.13)
+15	
+16	**What it is** — Table 8.13, "Mean dynamic start Vertical Jump for Olympic Weightlifters from all divisions (Vorobyev, 1978)" (PDF 469 / p.458, every cell read from the page image): Novice 57.3 cm; Class III 58.1; Class II 65.3; Class I 67.8; Master of Sport 72.3; Elite 85.5. The book offers these as "Guidelines concerning the vertical jump height for different levels of competitive weightlifter." It also cites the best jumps of two named champions, a high jumper and a superheavyweight lifter, as "noteworthy," saying "these competitors displayed exceptional absolute vertical jumps, as well as excellent relative vertical jumps (height per unit bodymass) and leg power" (PDF 469 / p.458; "vertical" sits on the compressed right margin and is partly reconstructed). Their names and figures are not carried here.
+17	
+18	**Why it works** — The book gives no mechanism. Inference: the weightlifting classes are ranked by lifted totals that depend on explosive leg extension, so a rising jump with class is what one would expect if the jump and the lifts share that quality; the table is cross-sectional, so it shows association, not that training raised the jump.
+19	
+20	**When to apply** — As a rough reference when testing weightlifters with a dynamic-start jump (the book's condition 4 or 5 in [[heuristic--vertical-jump-test-five-start-conditions-and-knee-angle-profile]]). Inference: the biggest step is from Master of Sport to Elite (13.2 cm), while Novice to Class III differs by only 0.8 cm, so the jump separates the top of the sport far better than the bottom.
+21	
+22	**When NOT to apply** — Means only, with no spread, sample size or test details beyond "dynamic start"; whether arms were used is not stated. Weightlifters "from all divisions" are pooled, so heavy and light lifters sit in one mean, and the book's own point is that relative jump (per bodymass) matters. Inference: these 1978 Soviet norms are not norms for team-sport athletes or for force-plate jump height, which is computed differently from a reach test.
+23	
+24	**Example** — Elite weightlifters averaged 85.5 cm against 72.3 cm for Masters of Sport (PDF 469 / p.458).
+25	
+26	**Related** — [[claim--vorobyev-mean-training-weight-by-bodymass-and-qualification]] (Vorobyev's by-class training data), [[case-study--vorobyev-jerk-dip-parameters-by-bar-weight-table-8-12]], [[claim--laboratory-tests-cannot-predict-performance-or-select-talent]]
+######## claim--weightlifter-extensor-flexor-strength-ratios-far-exceed-the-1-5-norm.md
+1	---
+2	type: library-entry
+3	kind: claim
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: agonist-antagonist strength ratios
+8	category: [testing, strength-ratios, weightlifting, muscle-imbalance]
+9	confidence: supported
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# Weightlifters' Extensors Are About 2.9 Times Stronger Than Their Flexors, Far From the 1.5 "Norm"
+15	
+16	**What it is** — Under "Muscle Strength Ratios" the book takes on "the most commonly quoted" agonist-antagonist ratio, "the 60:40 ratio of knee extension to knee flexion strength (i.e. extensors 1.5 times stronger than flexors)," and refers back to Section 4.2.6.2 for its limitations (PDF 469 / p.458, checked against the page image). It adds that "these ratios not only vary with joint angle, joint velocity and type of movement, but also with muscle group and the type of athlete." Its data (Vorobyev, 1978): "the relative isometric strength (per 1kg bodymass) of the larger extensor muscles in Olympic weightlifters is 11.51 ± 1.78, and for the major flexors it is 4.02 ± 0.69 ... In general, their major extensors are on average 2.86 times stronger than their major flexors, a figure which is very different from the isokinetic value of 1.5 cited by sports physiotherapists for the average person (whatever this entity might be)" (PDF 469-470 / pp.458-459; "In general" and "different" sit on the compressed right margin of PDF 469 and are partly reconstructed). By region, "Among the best Russian weightlifters the relative maximum strength of extensors to flexors is as follows: arms 1.6:1, trunk 4.3:1, thighs 4.3:1, and lower leg 5.4:1" (PDF 470 / p.459). The conclusion: "The application of these findings on their own to sport or rehabilitation is incomplete and must be accompanied by the profile of strength produced at important joint angles in every given sport, in accordance with the principle of dynamic correspondence, especially the accentuated region of force production (Section 4.3)" (PDF 470 / p.459).
+17	
+18	**Why it works** — The book's reasoning is specificity: a ratio reflects the muscles a sport loads, so an athlete whose sport is dominated by extension will show high extensor-to-flexor ratios without being "imbalanced." Inference: 11.51 / 4.02 = 2.86, so the book's "2.86 times" is the ratio of the two group means.
+19	
+20	**When to apply** — Before calling an athlete "imbalanced" from a ratio: check which athlete type, muscle group, joint angle, speed and contraction type the reference ratio came from. Then, as the book says, pair the ratio with the strength profile at the joint angles the sport uses (see [[heuristic--train-force-at-the-accentuated-joint-angle]]).
+21	
+22	**When NOT to apply** — The 2.86 figure is isometric and for weightlifters; the 1.5 it is set against is isokinetic and for "the average person," so the book compares two different measures, which is part of its point. Inference: the 4.2.6.2 entry reports Vorobyev's isokinetic knee ratio of "nearer 80:20 for weightlifters" ([[heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity]]); 80:20 is 4:1, close to the thigh ratio of 4.3:1 here, and different in kind from the whole-body 2.86. These are different measurements, not a conflict, so not `contested`. No sample sizes, test positions or "larger extensor" and "major flexor" muscle lists are given. Weightlifter ratios are not targets for other sports.
+23	
+24	**Example** — The lower leg shows the most extreme ratio among the best Russian weightlifters, 5.4:1, against 1.6:1 for the arms (PDF 470 / p.459).
+25	
+26	**Related** — [[heuristic--isokinetic-strength-ratios-vary-by-angle-and-velocity]], [[heuristic--train-force-at-the-accentuated-joint-angle]]
+######## case-study--shtanga-functional-pressure-test-ulchenko-weightlifters.md
+1	---
+2	type: library-entry
+3	kind: case-study
+4	domain: strength-and-conditioning
+5	book: supertraining--verkhoshansky
+6	chapter: "8.7"
+7	topic: Shtanga pressure test
+8	category: [testing, overtraining, blood-pressure, weightlifting, monitoring]
+9	confidence: untested
+10	ingest-tier: full-text
+11	created: 2026-10-13
+12	---
+13	
+14	# The Shtanga Functional Pressure Test: Blood Pressure After a Forced Breath-Hold as an Overtraining Check in Weightlifters (Ulchenko)
+15	
+16	**What it is** — Under "Work Capacity and Functional Pressure Tests," which the book calls "an extension" of the Ch 6.2.2 tests, it describes "the cardiac function Shtanga Functional Pressure test to ascertain if the athlete is overtraining (described by Vyurberg, 1953)," regarded as "particularly suitable for athletes like Olympic weightlifters and wrestlers, whose sports require them to strain against heavy resistance" (PDF 470 / p.459, checked against the page image). Procedure: breathe in relaxed fashion for a few minutes, inhale maximally, hold "for 15-20 seconds before stopping the nose and exhaling as forcibly as possible for 2 seconds," which brings "a sharp rise in intrathoracic pressure and diminished flow of blood to the heart." Blood pressure is taken before (BP1), immediately after (BP2) and after 2 minutes of relaxed breathing (BP3). "If the contractile processes of the myocardium are normal, as in the well-prepared athlete who is not exhibiting chronic fatigue, the blood pressure decreases briefly by 5-10mm Hg." Ulchenko (1982) used it "among elite weightlifters during their specific preparation stage": Test 1, the three readings before training; Test 2, the same readings "during the most intense training loading." Grades: "1. BP decrease after Test 1 or no change after Test 2. This is regarded as an excellent reaction. 2. BP increase of up to 5mm Hg immediately after Test 2 and recovery of normal BP after 2 minutes rest. This is considered to be a good reaction. 3. BP increase of up to 7mm Hg after Test 2 and 5 minutes recovery time. This is regarded as satisfactory. 4. BP increase of 10mm Hg or more after Test 2 and prolonged elevation of BP afterwards. This is regarded as an unsatisfactory response and is associated with an overtraining state" (PDF 470 / p.459). One lifter who "reported feeling fit and strong" with low RPE scored: Test 1, BP1 130/70, BP2 140/75, BP3 135/70, a 10 mm rise "regarded as unsatisfactory"; Test 2, BP1 140/66, BP2 160/70, BP3 142/70, a 20 mm rise, also unsatisfactory. "This lifter and several others whose pressure tests were deemed to be unacceptable did not improve their results in the competition which followed," and their coaches were advised to modify training "until the pressure tests indicated a better functional state" (PDF 470 / p.459). Ulchenko "strongly advised the regular application of this pressure test," even "as an almost daily routine," and "stated that the underlying cause of this diminished functional state is certainly due to weakening of the heart's contractile ability" (PDF 471 / p.460, partly reconstructed at the right margin: "of this", "work", "weakening of", "routine to").
+17	
+18	**Why it works** — Ulchenko's reasoning as reported: strength sports involve "straining, breath-holding and high nervous tension which, in the presence of even small disturbances in functioning of the cardiovascular system, can aggravate the situation" (PDF 470-471 / pp.459-460), and a heart with weakened contractility handles the pressure challenge worse. Inference: the rises quoted are systolic (130 to 140, 140 to 160); diastolic barely moves.
+19	
+20	**When to apply** — The book's case: heavy strength or grappling athletes in a hard preparation block, when self-report looks fine but results stall. Read with [[principle--pair-objective-and-subjective-tests-because-rpe-can-miss-a-poor-functional-state]], which draws the book's general lesson from the same lifter.
+21	
+22	**When NOT to apply** — `untested`: the method is described, but no sample size, comparison group or statistics are given, and the competition outcome is "this lifter and several others." The printed grading is internally loose: the text first says systolic pressure "increases significantly during the recuperation stage" and then that normal pressure "decreases briefly by 5-10mm Hg"; grade 1 mixes Test 1 and Test 2; grade 3 uses "5 minutes recovery time" though BP3 is defined at 2 minutes; and the Test 1 rise of 10 mm is called unsatisfactory although the grades are written for Test 2. Ulchenko's "certainly due to weakening of the heart's contractile ability" is a causal claim with no measure of contractility on the page. The test is a forced strain against a closed airway; the book's own caution on prolonged breath-holding for people with cardiovascular disease is in 3.4.9 ([[principle--breath-holding-and-valsalva-support-spinal-stability-in-maximal-lifting]]). Inference: a cardiovascular stress test belongs with medical staff, not as a coach-run daily screen.
+23	
+24	**Example** — The anonymous lifter above: low RPE on clean pulls and back squats, a 20 mm systolic rise under peak loading, and no improvement at the next competition (PDF 470 / p.459).
+25	
+26	**Related** — [[principle--pair-objective-and-subjective-tests-because-rpe-can-miss-a-poor-functional-state]], [[heuristic--heart-rate-work-capacity-tests-for-lifters]] (the Ch 6.2.2 tests this extends), [[framework--supplementary-readiness-markers-hr-bp-ceff-palpation]] (morning blood pressure as a marker), [[principle--breath-holding-and-valsalva-support-spinal-stability-in-maximal-lifting]]

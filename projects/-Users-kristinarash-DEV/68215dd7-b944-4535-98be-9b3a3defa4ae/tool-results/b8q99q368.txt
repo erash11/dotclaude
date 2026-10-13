@@ -1,0 +1,383 @@
+Brief Review
+A Review of the Validity and Reliability of
+Accelerometer-Based Metrics From Upper
+Back–Mounted GNSS Player Tracking Systems for
+Athlete Training Load Monitoring
+Laura Dawson,1,2 Marco Beato,1 Gavin Devereux,1 and Stuart A. McErlain-Naylor1,3
+1
+School of Allied Health Sciences, University of Suffolk, Ipswich, United Kingdom; 2Faculty of Sport, Technology and Health Sciences,
+St Mary’s University, Twickenham, United Kingdom; and 3School of Sport, Exercise and Health Sciences, Loughborough University,
+Loughborough, United Kingdom
+Abstract
+Dawson, L, Beato, M, Devereux, G, and McErlain-Naylor, SA. A review of the validity and reliability of accelerometer-based metrics
+from upper back–mounted GNSS player tracking systems for athlete training load monitoring. J Strength Cond Res 38(8):
+e460–e475, 2024—Athlete load monitoring using upper back–mounted global navigation satellite system (GNSS) player tracking is
+common within many team sports. However, accelerometer-based load monitoring may provide information that cannot be
+achieved with GNSS alone. This review focuses on the accelerometer-based metrics quantifying the accumulation of accelerations
+as an estimation of athlete training load, appraising the validity and reliability of accelerometer use in upper back–mounted GNSS
+player tracking systems, the accelerometer-based metrics, and their potential for application within athlete monitoring. Reliability of
+GNSS-housed accelerometers and accelerometer-based metrics are dependent on the equipment model, signal processing
+methods, and the activity being monitored. Furthermore, GNSS unit placement on the upper back may be suboptimal for
+accelerometer-based estimation of mechanical load. Because there are currently no feasible gold standard comparisons for field-
+based whole-body biomechanical load, the validity of accelerometer-based load metrics has largely been considered in relation to
+other measures of training load and exercise intensity. In terms of convergent validity, accelerometer-based metrics (e.g., Play-
+erLoad, Dynamic Stress Load, Body Load) have correlated, albeit with varying magnitudes and certainty, with measures of internal
+physiological load, exercise intensity, total distance, collisions and impacts, fatigue, and injury risk and incidence. Currently,
+comparisons of these metrics should not be made between athletes because of mass or technique differences or between
+manufacturers because of processing variations. Notable areas for further study include the associations between accelerometer-
+based metrics and other parts of biomechanical load-adaptation pathways of interest, such as internal biomechanical loads or
+methods of manipulating these metrics through effective training design.
+Key Words: PlayerLoad, Dynamic Stress Load, Body Load, acceleration, biomechanical load
+Introduction  internal load measures, and training outcomes (100,114,144,201).
+These frameworks can be informed by research in physiology,
+Athletic training can have various intended and unintended effects
+biomechanics, and other areas (7,100,107,108). Determining ap-
+on the human system. The investigation, prescription, and moni-
+propriate measures of training load can provide application in the
+toring of these cause-and-effect relationships require the training
+and the outcome to be quantified. “Training load” is considered  prescription and monitoring of training sessions within an overall
+a multidimensional construct consisting of 2 causally related sub-  framework of physical training (72,74,102) and inform subsequent
+dimensions: “external training load” and “internal training load”  session design based on differences between prescribed and ach-
+(98–100), each of which can be subdivided into physiological or  ieved training loads (44).
+biomechanical load. For example, external physiological load  The past 2 decades have seen rapidly increasing use of wearable
+could include kinetic energy (i.e., distance covered), whereas in-  technologies to monitor athlete training loads (33,88). However,
+ternal physiological load could be oxygen uptake or cardiovascular  there is a need for practitioners to first refine their requirements
+demand (189). External biomechanical load may include ground  for a training load monitoring system within any causal frame-
+reaction forces (GRF) or center of mass (CoM) accelerations,  work and then evaluate available devices against those require-
+whereas internal biomechanical load may refer to joint contact  ments (8,37). One of the most well-known and commonly used
+forces or muscle-tendon forces (189). Identification of an appro-  areas of technology for this purpose is global positioning system
+priate measure or metric of training load ideally requires a frame-  (GPS) or global navigation satellite system (GNSS) technology
+work of causal relationships between external load measures,  (8,20–22,49). Global positioning system is 1 subsection of GNSS,
+with modern GNSS accessing a greater number of satellites and
+Address correspondence to Laura Dawson, L.Dawson2@uos.ac.uk.  therefore potentially providing greater precision and reliability
+Journal of Strength and Conditioning Research 00(00)/e1–e16  (101,123). Both GPS and GNSS are considered collectively in this
+ª 2024 National Strength and Conditioning Association  article as GNSS.
+e1
+  A Review of the Validity and Reliability of Accelerometers (2024) 00:00
+A GNSS player tracking unit can accurately report total and  accelerometer-based metrics estimating external biomechanical
+high-speed distance covered, and peak and average speeds (21)  load from the accumulation of instantaneous accelerations. Spe-
+but underestimates low-velocity high-impact events with minimal  cifically, this review aims in assessing the validity, reliability, and
+horizontal displacement, such as tackling, jumping, landing,  potential applications in monitoring athlete load, training pre-
+blocking, and other collisions (5,28). Frequent changes of di-  scription, and injury management as a general concept, through
+rection can also affect the validity and reliability of some GNSS  accumulating acceleration measurements from GNSS-housed
+metrics, such as total distance (140,155) and instantaneous ve-  accelerometers. This process involves applying manufacturer-
+locity (94). Applications of GNSS are further limited in indoor  specific algorithms to the accelerometer signal, reported as arbi-
+sports, although local positioning systems can be used (147,171)  trary units. Examples include Player Load (Catapult, Melbourne,
+and when activity is performed with relatively little translational  Australia), Dynamic Stress Load (STATSports, Newry, Northren
+movement (192). Consequently, an inertial measurement unit  Ireland) and Body Load (GPSports, Canberra, Australia).
+(IMU) comprising accelerometer, gyroscope, and magnetometer
+is often incorporated into the GNSS unit (9,58). The accelerom-
+eter provides the capability to monitor external biomechanical  Accelerometers
+load through instantaneous accelerations experienced by the
+athlete (123,193). As the trunk is the heaviest body segment and  Accelerometers measure linear acceleration and are typically
+positioned proximally on the body, these accelerations have been  uniaxial or triaxial, measuring accelerations in 1 or 3 (e.g.,
+proposed to represent whole-body CoM accelerations and  anterior-posterior, mediolateral, and vertical) axes, respectively
+therefore relate to the GRF or impact magnitudes experienced.  (203). Triaxial microelectromechanical system accelerometers
+However, it may not be possible to accurately predict whole-body  are the most common in sport, measuring acceleration magni-
+CoM accelerations and hence GRF from accelerations of a single  tudes in each axis (9,82). These devices can collect data at high
+or small number of segments (61,137,138,190,203). Such exter-  frequencies, are sensitive to rapid changes in acceleration (185),
+nal forces describe the biomechanical loading experienced by the  and can be used in indoor venues because of the lack of a re-
+musculoskeletal system and have been commonly investigated in  quirement for satellite connection.
+association with running performance (26,136,150) and injuries  Accelerometers are typically used to measure accelerations of
+(188,209). However, relationships between GRF and musculo-  a body segment (e.g., torso, shank) or an object (e.g., racket, stick)
+skeletal injuries are often unclear (188,209), and these external  (40). Investigations into optimal accelerometer placement have
+forces may not reflect internal biomechanical loads (126,210).  identified CoM (70,110,115,122) or ankle attachments
+From a training perspective, the monitoring of instantaneous  (53,90,125) to be most effective for estimating GRF and thus the
+accelerations is particularly useful for assessing external load in  external biomechanical load experienced by the athlete
+collision sports, such as rugby and some codes of football, given  (70,80,92,122). This is perhaps unsurprising due to the funda-
+the frequency of impacts (93,96,106). Accelerometer-based  mental relationship between GRF and CoM acceleration
+metrics include peak acceleration, number of accelerations  (69,111). However, accelerometers embedded in GNSS units are
+above a specified threshold, resultant vector quantities, and cu-  mounted on the upper back for optimal GNSS signal acquisition
+mulative acceleration metrics that estimate mechanical load (e.g.,  (18,123) and athlete comfort. Practitioners should consider that
+PlayerLoad, Dynamic Stress Load, Body Load) (30,153,189).  upper back–mounted accelerometer signals can be affected by
+Although coaches, sport scientists, and medical teams are using  factors, such as incidental harness or attachment movement
+accelerometer-based metrics to monitor components of perfor-  (61,132,206); therefore, sensor fixation should be as tight as is
+mance, training load, fatigue, and injury risk (3,43,49,120,200),  physically comfortable to minimize additional displacement
+it is less apparent which metrics have received adequate assess-  (32,95,118,186). In addition, trunk positioning (24,68) and gait
+ment of validity and reliability (30,97,121,139). To optimize  cycle features, including cadence, step length, and gait regularity
+training for a specific outcome within a causal framework, any  and symmetry (134,159), can affect the magnitude and timing of
+applied measure of training load should reflect the mediating  the postimpact elastic wave (propagation of impact-related en-
+mechanisms of the primary outcome (45,100,114). Therefore, the  ergy [i.e., measured accelerations] through body tissues and de-
+purpose of validating training load metrics is to assess the extent  creasing of amplitude with distance from the source). Finally,
+to which this is true for any given metric (100). If a training load  muscle damping by which sites further from impact are also less
+measure cannot be connected causally to a plausible mediator of  affected by the amplifying effect of greater GRF (35,129,194)
+the desired outcome, then it is likely of little practical use for  Therefore, the correlations between accelerations or
+purposes of training optimization (100). Because of the numerous  accelerometer-based metrics at different body positions may not
+performance or injury outcomes of interest, each with their own  be particularly high (80). It should also be considered that ac-
+set of mediators, there cannot be a single best metric that reflects  celeration signals comprise various frequencies, not all of which
+all causal pathways from athletic training to its outcomes. Ulti-  relate directly to the postimpact elastic wave (117,129,174).
+mately, the appropriateness of a metric may depend on what
+aspects of a causal framework it is intended to describe or predict,
+Accelerometer-Based Load Metrics
+its relationships with other aspects of the causal framework, the
+acceptability of its limitations, and whether the assumptions on  Sport and exercise science researchers and practitioners have
+which it is based are reasonable or testable (100). Given that  typically sought to convert continuous signals (e.g., an accelera-
+researchers and practitioners are using these metrics, it is im-  tion time-series signal) into discrete metrics such as mean or peak
+portant to know what they can and cannot do in a valid and  values, and durations (100). This often sees intensity and duration
+reliable manner as part of a causal framework.  combined to operationalize a single cumulative training load
+Therefore, the aim of this review is to appraise the literature  metric (39,100). However, practitioners often prefer automated
+regarding the validity and reliability of accelerometer use in upper  metrics from which meaning can be relatively easily inferred,
+back–mounted GNSS player tracking systems, with a focus on  rather than continuous data from an entire session that requires
+e2
+  A Review of the Validity and Reliability of Accelerometers (2024) 00:00  | www.nsca.com
+complex additional processing and lacks direct application.  0.15-m single-leg drop landings may not have been sufficient to
+Metrics would ideally represent an underlying (e.g., mechanical)  exceed the abovementioned thresholds in some individuals. This
+phenomena and relate to causal mechanisms of injury risk, tissue  is an area that speaks to the requirement for further research to
+remodeling, or training adaptations that can be tested as part of  better understand what is measured and included in the approx-
+a causal pathway through transparent calculation and processing  imation or accumulation of accelerations expressed in these ac-
+methods. Once an appropriate measure of training load is iden-  celerometer load metrics. Practitioners would be better able to
+tified, it is necessary to determine the relevant dimensions  make informed decisions with a better understanding of the
+(i.e., metrics) for its quantification and application (45,100).  quantification of these arbitrary unit metrics.
+Table 1 summarizes what is known of the equation and calcula-
+tion process for 3 of the most common accelerometer-based
+metrics: PlayerLoad, Body Load, and Dynamic Stress Load.  Validity and Reliability
+Since the introduction of PlayerLoad, the definition and
+equation used have become less clear. One study found Catapult’s  The manufacturers and metrics will be considered individually
+automatically derived PlayerLoad values to be 15.1 6 1.2%  because of differences in the algorithms, unknown variations in
+lower than those calculated manually using the stated equation  signal processing before metric calculation, or differences caused
+(139). Bredt et al. (30) identified 4 differing definitions and 4  by the application of the same algorithm to different manu-
+differing equations for PlayerLoad between publications  facturers’ accelerometers (139). The validity is therefore context
+(2,27,34,36,154,165,198). Hollville et al. (91) claimed to have  specific, in that any metric can be assessed for a specific purpose
+determined the manufacturer processing methods during a pilot  but not extrapolated to all possible applications of that metric
+analysis as low-pass filtering with a zero-phase-shifting third-  (64,170). In addition, data validity will depend on the technical
+order Butterworth filter at 1 Hz, applying a scaling factor of 4.  specifications of the sensor, the accuracy of sensor calibration,
+Despite these inconsistencies, PlayerLoad has been the most  sensor placement and fixation, and signal processing methods,
+commonly researched metric (81,189).  among other factors (95).
+Variation also exists in the equations reported for GPSports’  Within a causal framework, validation requires that the metric
+Body Load metric, as demonstrated in Table 1. As a result, it is not  is a valid reflection of the proposed causal mechanism linked to
+always clear which version of the metric has been used within the  the outcome (i.e., construct validity) and that the proposed causal
+literature. GPSports are now under the Catapult umbrella, and  mechanism is indeed causally related to the outcome of interest
+Body Load is less frequently used, but devices and systems remain  (100). Practitioners should additionally be aware of the reliability
+in circulation. Research using Body Load can still inform our  of the measurement system consisting of device, processing, and
+understanding of accelerometer-based metrics and their  calculation (169). Differences between individuals, sessions, or
+capabilities/limitations within causal frameworks of interest.  drills can only meaningfully be interpreted within the context of
+The 3 metrics differ in their apparent underlying assumptions  intraunit or interunit and intraindividual or /interindividual re-
+or their operationalization of the training load concept. Body  liability, which should help inform best practice for data collec-
+Load includes individual acceleration values, similar in some  tion and processing methods in both research and applied settings
+ways to the calculation of GRF impulse; Dynamic Stress Load  (1,10). As a result, it is important to review the validity of raw
+includes peak accelerations, similar in some ways to the calcula-  acceleration measures; the reliability of raw acceleration meas-
+tion of peak GRF; and PlayerLoad includes the change in accel-  ures; the reliability of any metrics calculated from the measured
+eration, similar in some ways to the calculation of GRF loading  accelerations; how these metrics relate to other parts of any po-
+rate. In reality, each metric is more complex than that with mul-  tential performance or injury-related causal framework; what
+tiple components, scaling factors, and nonlinear components.  such metrics can or cannot do as part of any such applied
+Nonetheless, it remains important to consider how the underlying  framework; and what additional research is necessary to inform
+equations may reflect any hypothetical relationships between  the design and application of these frameworks.
+“load” and subsequent outcomes of interest. As recently stated by  The intraclass correlation coefficient (ICC) assesses the agree-
+Impellizzeri et al. (100), it appears that the “burden of proof” has  ment between data (e.g., interunit, interday, relationship to a gold
+been reversed; non-theory-driven metrics of training load are  standard measure) (112). The coefficient of variation (CV) is the
+being commercially presented, requiring researchers and practi-  ratio of the standard deviation to the mean (172). Throughout
+tioners to investigate their relevance within any causal frame-  this review, ICC and other magnitudes of correlation will be
+works of interest. There is often no explicitly stated theoretical  interpreted as 0.0 # negligible , 0.3 # low , 0.5 # moderate ,
+framework underlying the equations used or linking them to the  0.7 # high , 0.9 # very high # 1.0 (89,135). Coefficient of
+mechanisms they are proposed to reflect.  variation will be interpreted as good # 5% , moderate # 10% ,
+The metrics also differ in their use, or not, of a particular  poor (168). However, the importance of context-specific evalu-
+threshold. For example, Dynamic Stress Load includes all peak  ation such as absolute differences and their practical significance
+resultant accelerations $ 2 g, whereas Body Load includes all time  for the intended application within a causal framework should
+points where resultant acceleration $ 1.25 g. This may be an  not be underestimated (87).
+attempt to avoid the inclusion of random noise or very low
+impacts within the cumulative calculations. The specificity of
+Validity of Upper Back–Mounted Global Navigation Satellite
+these thresholds to the between-scapulae measurement site should
+System–Housed Accelerometer Data
+be considered when interpreting studies that have applied the
+same processes at alternative body sites. For example, single-leg  Any upper back–mounted accelerometer should be evaluated
+drop landings from a height of 0.45 m have resulted in peak  against either true acceleration of the unit or an estimated accel-
+surface-measured accelerations on average of 68 g at the meta-  eration of the underlying structure it is intended to represent as
+tarsophalangeal joint but 4 g at the C6 vertebra (129). Peak  part of the causal framework (e.g., trunk segment or whole-body
+accelerations at the C6 vertebra level of 2.6 6 0.8 g following  CoM). Typically, upper back–mounted accelerometers have been
+e3
+A Review of the Validity and Reliability of Accelerometers (2024) 00:00
+Table 1
+Manufacturer-designed metrics derived from the triaxial accelerometers embedded in upper back–mounted global navigation satellite system player tracking technology. (g,
+acceleration due to gravity, 9.81 m·s22).
+Metric (manufacturer)  Equation  Details of calculation
+PlayerLoad (Catapult Sports)  Described as the square root of the sum of changes between adjacent time points in
+qﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ  acceleration in all 3 individual axes, divided by a scaling factor of 100 to give
+ðaxn 2 axn 2 1 Þ2 1 ðayn 2 ayn 2 1 Þ2 1 ðazn 2 azn 2 1 Þ2  a summation in arbitrary units (30,86,138,192)
+PL ¼ +
+100
+where ay,ax,az 5 acceleration in the x,y,z axes, and n 5 the
+time point (71,138)
+Body Load (GPSports)  Normalized Acceleration Vector ðNAVÞ  Some early studies report using the aforementioned PlayerLoad equation (2,87). In
+qﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ  others, a multiplication by subject body mass and a loading factor was used instead of
+¼ ax 2 1 ay 2 1 az 2 2 g  the division using a denominator of 100 (52,122). The loading factor ensured
+a nonlinear relationship between trunk-measured accelerations and Body Load, as
+this reflected the magnitude of resultant accelerations, e.g., 5.0 g # 6.0 g [light
+e4  impact] 5 1; 6.0 g # 6.5 g 5 2; 6.5 # 7.0 g [moderate impact] 5 3; 7.0 # 8.0 g
+[heavy impact] 5 4; 8.0 # 10.0 g 5 5; .10.0 g [severe impact] 5 6
+The manufacturers have since proposed “New Body Load,” which subtracts g from
+    the resultant acceleration before calculation, includes a linear and nonlinear
+NAV 1 NAV 3 4frequency  component, and is scaled by both the accelerometer sampling frequency and an
+Body Load ¼ +
+Exercise Factor  unknown manufacturer-determined “exercise factor” (83,146,191). This is summed
+for all time points with a resultant acceleration $1.25 g and reported in arbitrary units
+where ax, ay, az 5 acceleration in the x,y,z axes
+Dynamic Stress Load (STATSports)  Dynamic Stress Load calculates the accumulation of acceleration as a measure of
+n
+athlete load in arbitrary units, calculated from “the weighted sum of all impacts above
+DSL ¼ + peak accki 3 SF  or equal to 2 g” (20,22,193). These “impacts” are classified as “maximum
+i¼1  accelerometer magnitude values above 2 g in a 0.1 s period” to isolate the peak
+acceleration of each ground contact above the stated intensity threshold. The values
+where peak acc is the maximum resultant acceleration $2 g  are weighted using a nonlinear function, based on an assumed nonlinear relationship
+in a 0.1 s period. k is a weighting factor and SF is a scaling  between impact magnitude and the consequences of that impact within the body; for
+factor—both are proprietary factors of the manufacturer (20)  example, this assumes that a peak acceleration of 4 g is associated with more than
+twice the consequences of a 2 g peak acceleration. Instantaneous values are summed
+to provide Dynamic Stress Load (DSL) over defined time periods (78,83)
+  A Review of the Validity and Reliability of Accelerometers (2024) 00:00  | www.nsca.com
+Table 2
+Studies reporting validity of global navigation satellite system–housed accelerometers using raw and filtered raw data.*†
+Article  Device  Criterion  Activity  Filter cutoff  Error  Correlation
+Edwards et al.  GPSports SPI HPU  Full-body marker set—3D  All  Manufacturer proprietary  WA: CV 5 12.68%  ICC 5 0.22
+(61)  (100 Hz)  motion capture system (300 Hz)  filtering  (poor)  (negligible)
+P: CV 5 7.62%  ICC 5 0.61
+(moderate)  (moderate)
+Slow running (3.3 m·s21)  WA: CV 5 6.19%  ICC 5 0.89
+(moderate)  (high)
+P: CV 5 6.06%  ICC 5 0.86
+(moderate)  (high)
+Medium running (5.0 m·s21)  WA: CV 5 5.12%  ICC 5 0.94
+(moderate)  (very high)
+P: CV 5 6.10%  ICC 5 0.85
+(moderate)  (high)
+Fast running (6.7 m·s21)  WA: CV 5 16.20%  ICC 5 0.72
+(moderate)  (high)
+P: CV 5 13.12%  ICC 5 0.78
+(poor)  (high)
+Kelly et al.  GPSports SPI-ProX II ADXL345 triaxial sensor (100 Hz) Static (flat surface with no more  Raw  %Diff 5 27.5 to
+(109)  (100 Hz)  than 2˚ axis deviation)  30.5
+Dynamic (fixed oscillation point of  Raw  %Diff 5 32.0 to
+a vibration platform)  35.0
+Nedergaard  Catapult MinimaxX Ground reaction force–derived  Straight line run  Raw  r 5 0.26
+et al. (137)  S4 (100 Hz)  centre of mass acceleration  (negligible)
+45˚ CoD  Raw  r 5 0.42 (low)
+90˚ CoD  Raw  r 5 0.55
+(moderate)
+Roell et al.  Catapult OptimEye  Three markers on device—3D  Sport-specific movements (series Complementary (accel. and
+(162)  S5 (100 Hz)  motion capture system (200 Hz)  of drills involving acceleration gyroscope) filter
+and deceleration, 60˚, 80˚, 90˚, 100 Hz  Mean: CV 5 7.34%  r 5 0.99 (very
+and 360˚ CoD, and jumps)  (moderate)  high)
+Peak: CV 5 10.05%  r 5 0.97 (very
+(poor)  high)
+10 Hz  Mean: CV 5 7.46%  r 5 0.98 (very
+(moderate)  high)
+Peak: CV 5 10.63%  r 5 0.97 (very
+(poor)  high)
+5 Hz  Mean: CV 5  r 5 0.96 (very
+10.78% (poor)  high)
+Peak: CV 5 15.98%  r 5 0.95 (very
+(poor)  high)
+Kalman Filter
+100 Hz  Mean: CV 5 5.99%  r 5 0.99 (very
+(moderate)  high)
+Peak: CV 5 12.10%  r 5 0.95 (very
+(poor)  high)
+10 Hz  Mean: CV 5 8.90%  r 5 0.98 (very
+(moderate)  high)
+Peak: CV 5 12.74%  r 5 0.94 (very
+(poor)  high)
+5 Hz  Mean: CV 5  r 5 0.90 (very
+16.48% (poor)  high)
+Peak: CV 5 22.56%  r 5 0.85 (high)
+(poor)
+Wundersitz  Catapult MinimaxX  Single marker on unit—3D  Walk (1.5 m·s21)  10 Hz  CV 5 6.5%
+et al. (204)  S4 (100 Hz)  motion capture system (200 Hz)  (moderate)
+Jog (3.3 m·s21)  10 Hz  CV 5 7.5%
+(moderate)
+Run (5.0 m·s21 female, 5.9  10 Hz  CV 5 9.3%
+m·s21 male)  (moderate)
+Walk-jog-run  Raw  CV 5 15.8% (poor)
+20 Hz  CV 5 13.8% (poor)
+15 Hz  CV 5 11.5% (poor)
+10 Hz  CV 5 8.9%
+(moderate)
+8 Hz
+e5
+  A Review of the Validity and Reliability of Accelerometers (2024) 00:00
+Table 2
+Studies reporting validity of global navigation satellite system–housed accelerometers using raw and filtered raw data.*† (Continued)
+Article  Device  Criterion  Activity  Filter cutoff  Error  Correlation
+CV 5 8.2%
+(moderate)
+6 Hz  CV 5 8.2%
+(moderate)
+Wundersitz  Catapult MinimaxX  Single marker on unit—3D  Physical collisions  Raw  CV 5 15.1% (poor)
+et al. (205)  S4 (100 Hz)  motion capture system (500 Hz)  30 Hz  CV 5 12.0% (poor)
+25 Hz  CV 5 10.8% (poor)
+20 Hz  CV 5 9.6%
+(moderate)
+15 Hz  CV 5 9.5%
+(moderate)
+10 Hz  CV 5 14.5% (poor)
+8 Hz  CV 5 19.3% (poor)
+*CoD 5 change of direction; WA 5 weight acceptance phase; P 5 propulsion phase; %Diff 5 percentage difference.
+†Magnitude of correlations interpreted as 0.0 # negligible , 0.30; 0.3 # low , 0.50; 0.50 # moderate , 0.70; 0.70 # high , 0.90; very high $ 0.90 (93,139). Coefficient of variation (CV) interpreted as
+good # 5% , moderate # 10% , poor (173).
+evaluated against 3D motion capture (61,204,205). Table 2  purpose is not to track segmental kinematics but to monitor the
+summarizes studies evaluating the validity of upper back-  postimpact elastic wave accelerations, filtering decisions should
+–mounted accelerometers based on correlations between raw or  perhaps be made in relation to the frequency content of the signal
+filtered accelerometer data and 3D motion capture. Roell et al.  component of interest (84,103,129,174).
+(162) demonstrated that applying a complementary filter (com-
+bining accelerometer and gyroscope data) and resampling to 5 Hz
+decreased resultant acceleration root mean square error by 15%  Reliability of Global Navigation Satellite System–Housed
+(0.52–0.44 m·s22) for mean and 58% (3.30–1.40 m·s22) for peak  Upper Back–Mounted Accelerometer Data
+values in sport-specific movements. In summary, raw signal data
+Comparatively, studies investigating the reliability of GNSS-
+from upper back–mounted GNSS units are generally less valid
+housed upper back–mounted accelerometer raw data are rela-
+than filtered signal data for estimating trunk accelerations when
+tively scarce, with most studies preferring to evaluate manufac-
+assessed against 3D motion capture (Table 2) (89,135).
+turer accelerometer-based metrics. This could be attributed to the
+In addition, studies have assessed the capabilities of GNSS-
+relative ease of obtaining and interpreting manufacturer-
+embedded upper back–mounted accelerometers using correla-
+processed data as opposed to raw accelerometer data from the
+tions to GRF (Table 3), evaluating the relationship between ac-
+GNSS units. Nonetheless, Table 4 displays studies that have
+celerometer data and whole-body external biomechanical load
+reported the reliability of data from GNSS-housed accel-
+(i.e., GRF parameters). It is noteworthy that the trunk represents
+erometers. Overall, the reliability of GNSS-housed accelerometer
+the largest proportion of body mass (;50%), perhaps explaining
+data and metrics is largely high to very high, with predominantly
+why the segmental acceleration of the trunk often best represents
+good CV. However, some findings demonstrated only moderate
+the acceleration of whole-body CoM (137). Collectively, these
+correlations and moderate to poor CV. Therefore, practitioners
+studies demonstrate that although linear relationships between
+should always consider the potential implications of the type of
+upper back–mounted accelerations and whole-body external
+activity (e.g., static, dynamic, field-based) and surface (e.g.,
+biomechanical load may be present in team sports after appro-
+treadmill, track) on accelerometer data (27,79,80,109). If the
+priate processing (47), they are weak in some cases and so
+context-specific validity and reliability of acceleration data are
+assumptions of simple linear relationships should be made with
+deemed acceptable, these can then be used to calculate training
+caution (137). If a measure of upper back–mounted acceleration
+load metrics, which should themselves be assessed for reliability.
+is valid for its intended purpose, subsequent inferences depend on
+Table 5 displays studies reporting the reliability of
+the reliability of those measurements. Any training load algo-
+accelerometer-based metrics, demonstrated by controlled shaker-
+rithms will ideally be applied to valid and reliable input data.
+table, standardized treadmill running, multidirectional soccer-
+Overall, low-pass filtering at 8 Hz or 10 Hz for walking and
+specific tasks, and standardized soccer games. This review shows
+jogging (CV: 6.5–7.5%, moderate) (204), 15 Hz or 20 Hz for
+Catapult’s PlayerLoad metric has been the most extensively
+physical collisions (CV: 9.5% or 9.6%, moderate) (205), and
+assessed accelerometer-based metric for reliability. Overall find-
+20 Hz for continuous hopping, drop landing, and rebound jumps
+ings suggest that PlayerLoad and some of its derived metrics can
+(r 5 0.709 to 0.825, high) (176) have all been shown to improve
+be reliable provided that the same device is used for repeated tests
+the relationship between upper back–mounted accelerometers
+(15,16,139).
+and 3D motion capture (204,205) or GRF (176). The general
+indication is that upper back–mounted accelerometers embedded
+in GNSS units can provide valid estimations of trunk or CoM
+Convergent Validity of Accelerometer-Based Metrics
+accelerations when a complementary filter is applied or when the
+signal is filtered at 20 Hz for high-impact activities and 10 Hz for  It can be difficult to assess the validity of PlayerLoad, Dynamic
+lower-impact activities. However, filtering decisions are again  Stress Load, Body Load. or similar accelerometer-based metrics

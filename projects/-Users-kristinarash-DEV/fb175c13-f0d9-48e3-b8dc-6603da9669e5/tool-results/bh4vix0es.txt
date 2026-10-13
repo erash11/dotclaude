@@ -1,0 +1,431 @@
+=================== principle--separate-training-from-practice-and-justify-supplementary-time.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.1"
+topic: training versus practice
+category: [programming, coaching-roles, supplementary-training, specificity]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Keep Training and Practice Apart, and Make Every Supplementary Activity Earn Its Time Against Sport Practice
+
+**What it is**: This is the Chapter 8 lead-in, printed before the 8.1 heading. The authors split preparation into "two distinct conditioning aspects: *training* and *practice*." Training is "the process of enhancing the physical and mental condition of the athlete," and practice is "the process of perfecting the technical skills demanded by the particular sport." The two "are often confused," so sessions get "structured to provide both training and practice, a compromise which generally does not produce optimal results." Their example: Western "practice" has included "jogging around the field, push-ups, sit-ups and other military type activities before game practice," which "wastes a coach's expertise and time." Ideally the coach enhances game skills, "with the fitness conditioning handled by specific conditioning coaches" (PDF 432 / p.421, checked against the page image).
+
+**Why it works**: The authors' reasoning is that supplementary work can help or harm: "training for a specific sport may be either beneficial or detrimental to performance and ... practice may suffer as a result of inappropriate conditioning." "Arduous fitness training regimes ... may not necessarily result in superior competitive ability," while "avoidance of supplementary training may prevent an athlete from fulfilling his or her potential." So every supplementary activity and recuperation method "must be carefully selected, planned and sequenced to ensure that they contribute directly to enhancing sports performance" (PDF 432 / p.421). Inference: the split works because skill practice and physical loading compete for the same session time and the same fatigue budget; mixing them dilutes both.
+
+**When to apply**: When a sport coach adds conditioning drills to the start of practice, or when a strength coach is asked to fill practice time. The authors' test for any added activity: "One even has to pose the question whether or not the time spent on a particular supplementary activity could not be better spent on sport specific practice" (PDF 432 / p.421). They also name the risk of "cross training" from "fitness instructors with little experience in its use," producing "scientifically dubious combinations of cycling, circuit training, jogging, swimming and so forth" (same page). Eric's review: "Some assessments coaches already run inside practice should not be duplicated; use that existing data to triangulate rather than re-testing, and set objective criteria for coach-mandated tests when none exist." (`docs/method-baseline.md`, line 52, Legacy (interview 2026-09-28, Q8)). Inference: the same division of labour applies to testing: what practice already provides should not be rebuilt in the weight room.
+
+**When NOT to apply**: The authors also say fitness work can sit inside preparation sessions if it trains "the *specific fitness* qualities required in the actual sports event," for example "practice games or contests" (8.1 item 5, PDF 433 / p.422). So the rule bans general fitness drills in practice, not all conditioning in practice. Small programmes with one coach cannot separate the roles; the passage assumes "specific conditioning coaches, as is rapidly becoming the case with the more popular sports in the USA" (PDF 432). No data are given that mixed sessions underperform; "generally does not produce optimal results" is the authors' judgment.
+
+**Example**: The authors' own: a team that jogs laps and does push-ups and sit-ups before game practice is spending the skills coach's time on general fitness that a conditioning coach should handle elsewhere (PDF 432 / p.421).
+
+**Related**: [[framework--six-preliminary-factors-for-scientific-sport-specific-training]], [[framework--sport-alone-vs-sport-plus-supplementary-training-and-adjunct-modes]], [[heuristic--no-supplementary-sport-is-categorically-good-or-bad]], [[heuristic--choose-cross-training-by-fitness-qualities-and-phase-not-sport-label]], [[principle--minimax-principle-of-training-economics]]
+=================== framework--six-preliminary-factors-for-scientific-sport-specific-training.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.1"
+topic: preconditions for sport-specific training
+category: [programming, testing, coaching-roles, annual-planning]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Six Preconditions for Scientific Sport-Specific Training: Year-Round Work, a Coaching Team, Resistance Training, Testing, Skill-Led Sessions and Technical Analysis
+
+**What it is**: In 8.1 the authors list "the most important factors for introducing scientific sport specific training" (PDF 432-433 / pp.421-422, checked against the page images):
+1. "Sports training must be a year-round and multi-year process. An off-season lay-off followed by less than one month of moderate pre-season training can be a major cause of low levels of overall fitness among athletes and an increased incidence of injuries." The early off-season "is one period where popular cross training can be used successfully"; integrating supplementary or cross training "becomes increasingly difficult as the season progresses" (PDF 432).
+2. "*Specialist coaches* are required." "Very few single coaches are equipped to handle strategic skills, movement skills, physical conditioning, psychological preparation, biomechanical analysis, fitness assessment and rehabilitation routines"; "Just as there is a playing team, so there has to be an efficient coaching team" (PDF 432).
+3. "*Scientific fitness training* has to be integrated into every athlete's programme." "It is not possible to enhance adequately strength, hypertrophy, speed and flexibility without use of supplementary resistance training," best done in a gymnasium with exercises "sequenced carefully in terms of intensity, volume, muscle group, patterns of movement and restoration intervals." Programmes should come from "teams of experts" and be "supervised by accredited sports conditioning coaches" (PDF 432).
+4. "Periodic *scientific testing*": the season should begin with "a *pre-test phase* of a few weeks followed by a fitness screening session to test strength, speed, reaction time, muscle endurance, flexibility, psychological preparedness and other factors" (PDF 433).
+5. Preparation sessions "must be devoted largely to enhancing tactical and technical skills, rather than to improving *general physical fitness*"; any fitness work there must target "the *specific fitness* qualities required in the actual sports event" (PDF 433).
+6. "*Technological analysis* of movement and sporting skills must be performed regularly, because limitations to performance may lie in imperfect skills rather than deficiencies in physical or mental fitness": slow-motion video and, in more detail, "high speed video, force plate and electromyograph" (PDF 433).
+
+**Why it works**: The authors' closing reason: "efficiency of play and prevention of injury depend on acquisition of high levels of neuromuscular skill in all types of movement likely to be encountered in the specific sport" (PDF 433 / p.422). Inference: items 4 and 6 exist to find whether the limiter is fitness or skill before time is spent on either; item 2 exists because no one person covers all seven domains listed in item 2.
+
+**When to apply**: As an audit of a programme's structure before any exercise is chosen: is training year-round, is there a staff for each domain, is resistance training in the plan, is there a pre-test phase, are practice sessions skill-led, and is movement analysed. The authors also say athletes "should acquire the necessary general fitness in their own time or preferably under the control of a specialist strength coach" (PDF 433). Eric's review: "Weekly tracking is preferred over infrequent (e.g., once-a-phase) testing, specifically to catch plateaus or declines early enough to adjust programming." (`docs/method-baseline.md`, line 59, Inferred (transcript)). Inference: Eric's cadence is denser than the book's "periodic" testing with a pre-season screen; the book sets no frequency beyond that.
+
+**When NOT to apply**: The "less than one month" lay-off claim is given without a study or figures (PDF 432); treat it as the authors' observation. Item 3's "not possible ... without use of supplementary resistance training" is a strong claim stated without evidence on the page. Inference: it is also scoped to strength, hypertrophy, speed and flexibility, not to every quality. The list assumes a resourced setting ("every major sports complex should have its own conditioning gymnasium," PDF 432); in a small programme several roles in item 2 fall to one person.
+
+**Example**: The authors' pre-season sequence from item 4: a pre-test phase of "a few weeks," then a screening session covering strength, speed, reaction time, muscle endurance, flexibility and psychological preparedness, before "serious skills practice" begins (PDF 433 / p.422).
+
+**Related**: [[principle--separate-training-from-practice-and-justify-supplementary-time]], [[framework--eight-types-of-needs-analysis]], [[heuristic--test-monthly-under-constant-conditions-and-compare-with-targets]], [[claim--strength-detraining-and-retention-timelines]], [[heuristic--choose-cross-training-by-fitness-qualities-and-phase-not-sport-label]]
+=================== framework--sports-training-process-systems-model-fig-8-1.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.1"
+topic: training process systems model
+category: [adaptation, motor-control, systems-model, programming]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Sports Training Process as a Systems Model: Three Body Systems Adapt Function, Function Builds Structure, and Feedback Closes the Loop (Fig 8.1)
+
+**What it is**: Under "Review of Some Important Principles" in 8.1, the authors compare motor output in sport to "the production of a musical symphony by an orchestra": "The central nervous system acts as the conductor which controls the different systems that contribute to the final pattern"; if "the timing, intensities, duration and any other contributing factors are incorrect during any phase ... the final result will be less than optimal" (PDF 433 / p.422, checked against the page image). Perfection "depends on the ability to optimally use and integrate the contributions of every subsystem in space and time," practised "until each individual system can be used efficiently on their own and then in harmony with many other systems" (same page). Fig 8.1 (PDF 434 / p.423, read from the page image) draws the model: three boxes at the top, "Hormonal System", "Nervous System" and "Musculoskeletal System", feed two "Adaptation" arrows into "FUNCTION" and "STRUCTURE". A bold arrow runs from Function to Structure. "Motor Feedforward" and "Threshold Control" enter Function from the left; under Threshold Control the figure lists "Feedback, Feedforward, Actual Limits, Perceived Limits, Voluntary, Involuntary". Function drives "MOTOR PERFORMANCE", which returns "feedback" to Function, and Structure also sends "feedback" back. The caption: "The arrow from Function to Structure is in bold to emphasize the well-known fact that function precedes structure."
+
+**Why it works**: The authors' account: "the training process simply involves compelling the body to adapt to a higher level of functioning via the imposition of appropriate physical and mental stresses." Hormonal, neural and musculoskeletal integrity "have to be raised at a rate which is optimal for the individual at a given stage in his/his career" (printed so), using "a given intensity, volume and density of loading ... to alter both the actual and perceived thresholds of performance, a process that relies on feedforward and feedback mechanisms, as well as voluntary and involuntary methods of intervention" (PDF 433 / p.422).
+
+**When to apply**: As a checklist of levers when a programme stalls: is the limit structural (musculoskeletal), functional (neural coordination and timing), hormonal, or in the threshold-control box (perceived limits, feedforward)? The orchestra analogy argues for practising components alone and then together, which the authors tie to understanding "how the nervous and neuromuscular systems interact to produce certain motor qualities" for the sport (PDF 433).
+
+**When NOT to apply**: The figure is a conceptual diagram, not a fitted or tested model; it carries no data. "The well-known fact that function precedes structure" is stated, not shown. The book used the same words earlier as its gloss of Wolff's Law ("Wolff's Law states that function precedes structure," 7.3, PDF 422 / p.411, as quoted in [[claim--functional-training-means-sport-specific-and-no-exercise-is-non-functional]]). Inference: Wolff's Law in its usual form is about bone remodelling under load, so "function precedes structure" is the authors' generalisation of it. The model does not tell you how much of any load to give.
+
+**Example**: Inference: an athlete who has gained strength (structure) but whose sprint has not improved maps to the Function box and its timing inputs, which in the authors' terms points to coordination and technique work rather than more hypertrophy.
+
+**Related**: [[principle--train-athletes-to-cope-with-perceived-as-well-as-actual-load]], [[framework--kinaesthetic-system-and-feedforward-visualization]], [[framework--determinants-of-strength-structural-functional]], [[claim--core-stability-balance-training-has-no-shown-transfer-to-sport]] (the same "orchestration" idea in 7.4)
+=================== principle--train-athletes-to-cope-with-perceived-as-well-as-actual-load.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.1"
+topic: perceived versus actual load
+category: [psychology, perception, overload, motor-control]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Training Must Make Loads "Feel" Easier: Athletes Fail on Perceived Load, Not Only on Actual Load
+
+**What it is**: The authors say "excellence of performance is not simply a matter of strengthening the musculoskeletal system." "In producing limit performance, the athlete is strongly influenced by the psychological perception of the load involved, not simply the actual load. If the load 'feels' insurmountable or technically too demanding, despite the fact that the body is well-equipped to handle that given load, failure is highly likely. This is why the training process must teach the athlete to cope with both the perceived and actual load being undertaken" (PDF 433 / p.422, checked against the page image). They describe the athlete as working in "a type of 'virtual reality' in which *perceptions* of effort and *feedforward* images of the forthcoming effort strongly determine the final outcome" (PDF 434 / p.423).
+
+**Why it works**: The authors' mechanism is the threshold-control part of Fig 8.1, where "Actual Limits" and "Perceived Limits" sit beside feedback and feedforward (PDF 434, read from the figure). "Virtual reality" training "imparts to the athlete great skill in minimising the size of any detrimental differences between perceived and actual loading and technical skill." "After all, the goal of all sporting performance is to make the existing task feel easier and easier so that the existing level of performance may be raised" (PDF 434 / p.423).
+
+**When to apply**: When an athlete fails at loads that testing says they can handle, or freezes on technically demanding lifts. The authors' means: "optimal implementation of principles such as that of fluctuating gradual overload (not simply progressive gradual overload) and SAID (Specific Adaptation to Imposed Demands)," so that loads and skills "feel" progressively easier (PDF 434 / p.423). The same section lists "Cognitive/Mental techniques (such as visualisation and motivational strategies)" as one way to raise muscle tension (item 9, PDF 434). Inference: lighter days inside a wave let the athlete meet a given weight when it feels easy, which is one reading of why the authors prefer fluctuating to steadily rising overload.
+
+**When NOT to apply**: No study is cited; the passage is the authors' model. It does not say that perception can stand in for physical capacity: the body must already be "well-equipped to handle that given load." The book does not define "fluctuating gradual overload" here or give a dosage. Inference: a load that feels hard because the athlete is fatigued or injured is a different case; reading every high perceived effort as a confidence problem would hide real fatigue.
+
+**Example**: The authors' own case is the general one: a lifter who can handle a load physically but perceives it as "insurmountable or technically too demanding" is "highly likely" to fail, so the training process must close that gap (PDF 433 / p.422).
+
+**Related**: [[framework--sports-training-process-systems-model-fig-8-1]], [[framework--kinaesthetic-system-and-feedforward-visualization]], [[heuristic--instruction-type-and-verbal-framing-shape-strength-output]], [[claim--hypnosis-and-social-presence-alter-strength-output]], [[claim--heavy-medium-light-alternation-beats-monotonic-increasing-loading]], [[principle--return-to-play-incomplete-until-the-athlete-perceives-full-healing]] (the same perception point applied to return from injury)
+=================== framework--eight-types-of-needs-analysis.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: needs analysis
+category: [needs-analysis, testing, programming, sports-modelling]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Needs Analysis in Eight Layers: Sport, Event, Match, Position, Player, Injury, Movement, and Physiology-Anatomy
+
+**What it is**: 8.2 opens: "Conditioning programmes for most sports should involve several different, but related, types of analysis" (PDF 434 / p.423, checked against the page image). The eight, as defined on PDF 435 / p.424 (checked against the page image):
+- *Sport Analysis*: "identifying the most important fitness qualities required for anyone to play a given sport successfully," using "the pyramidal model of fitness (Ch 1)" to find the S-factor combination and "the precise type of strength-related qualities (e.g. strength-speed, strength-endurance or static strength)" that dominate.
+- *Event Analysis*: the athlete's event within a sport, "e.g. the shotput as a specific event within the overall sport of track-and-field."
+- *Match Analysis (Game Analysis)*: qualities "required for playing in a particular event at a particular venue under specific environmental and spectator conditions."
+- *Position Analysis*: "the specific qualities required for a player to operate efficiently and safely in a specific role or position in a team sport."
+- *Player Analysis*: "the particular balance of fitness factors which characterise a specific individual, whose build and other personal characteristics determine the appropriate type of fitness for that individual"; testing finds strengths and weaknesses.
+- *Injury Analysis*: "the most frequently occurring injuries, as well as the injuries sustained by specific players in certain positions."
+- *Movement (Kinesiological) Analysis*: "movement patterns, forces, velocities, and joint angles," and the muscles used; patterns "rely on developing the appropriate balance between *stability* of certain parts of the body and *mobility* of other parts," so some muscles need "high levels of static strength" and others "dynamic strength-speed or flexibility-speed."
+- *Physiological and Anatomical Analysis*: "which energy system, types of muscle fibre, nutritional regime, oxygen consumption and other bodily processes are characteristic of the athlete," plus kinanthropometry.
+"Match, position and player analysis follow the same general approach" as sport analysis, at a finer level (PDF 435).
+
+**Why it works**: The authors say the analyses make it "possible to devise more scientific training and practice sessions for the given sport in general and for specific players" (PDF 435 / p.424), and that needs analysis plus "periodic testing" is the basis of "*Sports Modelling* (see 6.12)" (PDF 437 / p.426). Inference: each layer narrows the target, from what any player of the sport needs down to what this athlete in this position, with this injury history, needs.
+
+**When to apply**: At the start of any new sport, position group or athlete. Movement analysis also serves to find "the safest and most efficient ways of producing every movement in the particular sport" and gives "valuable instructional feedback to coaches and players" (PDF 435). Eric's review: "The Baylor Sport Assessment Table (V4) assigns a specific battery per sport (movement screen, anthropometrics, CMJ, broad jump, weighted throw, upper/lower strength estimation, strength endurance, aerobic fitness, repeat sprint ability, linear sprint, change of direction) rather than testing every sport the same way. ... Eric (interview 2026-09-28, Q9): 'That assessment schedule was never used.'" (`docs/method-baseline.md`, line 68, Legacy (interview 2026-09-28, Q9)). Inference: a per-sport battery is the sport-analysis layer of this framework; the baseline says that layer was written but not run.
+
+**When NOT to apply**: The book defines the eight analyses but gives no method, test list or worked example for any of them on these pages. Inference: the match-analysis definition reads like a description of venue and conditions rather than of match demands, so for match demands (distances, efforts, contact counts) look outside this section. Doing all eight in full is a resourced-programme task; the book does not rank them for a small staff.
+
+**Example**: The authors' own event example: shot put analysed as an event within track-and-field, as distinct from the sport analysis of track-and-field as a whole (PDF 435 / p.424).
+
+**Related**: [[framework--multifactorial-fitness-profile-table-8-1]], [[framework--fitness-polygon-fig-8-2]], [[framework--s-factors-pyramidal-fitness-model]], [[framework--descriptive-and-prescriptive-training-models]], [[heuristic--phasic-biomechanical-analysis-before-selecting-special-strength-means]], [[framework--six-preliminary-factors-for-scientific-sport-specific-training]]
+=================== framework--multifactorial-fitness-profile-table-8-1.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: multifactorial fitness profile
+category: [needs-analysis, testing, fitness-profile, individualisation]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Multifactorial Fitness Profile (Table 8.1): Score the Sport's Demand and the Athlete's Level on 26 Qualities, Then Train the Gaps and Curtail the Surpluses
+
+**What it is**: After the needs analyses, "one may draw up for each athlete a *Multifactorial Fitness Profile (MFP)* derived from the pyramidal model (Table 8.1). This entails marking off on a scale of 1 to 5 the relative levels of each fitness factor required for world-class performance in the sport, alongside the corresponding level displayed by the athlete, based upon scientific tests of these abilities" (PDF 435 / p.424, checked against the page image). Table 8.1 (PDF 436 / p.425) has no text layer; everything below is read from the page image. It is a blank form with NAME, SPORT, BODYMASS and DATE boxes, a 1 to 5 scale, and 26 rows: strength (static, dynamic); power (strength-speed, speed-strength); strength-endurance (static, dynamic); muscle endurance (static, dynamic); speed-strength endurance; flexibility (static, dynamic); flexibility-strength; flexibility-speed; flexibility-endurance; skill; speed; speed-skill; strength-skill; skill-endurance; flexibility-skill; structure; cardiovascular endurance; explosive strength; reactivity coefficient; relative strength; acceleration-strength. The last four are bracketed "See 2.2.1". Each row has two bars: an open bar for "THE SPORT" and a filled bar for "THE INDIVIDUAL".
+
+**Why it works**: The decision rule: "If any fitness factor of the athlete displays a lower score than that required for top performance, it indicates that special training must be dedicated to enhancing that factor. Conversely, training devoted to developing a specific fitness factor must be curtailed if its score exceeds that required by the sport" (PDF 435 / p.424). Testing "should include measurement of any strength deficit so as to ascertain whether more attention needs to be devoted to hypertrophy or neuromuscular training (see Ch 1)" (same page). Inference: the curtail half of the rule is what frees time; surplus qualities are where training hours can be taken back.
+
+**When to apply**: When deciding where an athlete's training time goes in the next block, and when explaining that choice to the athlete or sport coach. The authors also put the MFP in the athlete's training journal as a graphical record of "overall fitness state" (PDF 438 / p.427). Eric's review: "The Baylor Sport Assessment Table (V4) assigns a specific battery per sport ... rather than testing every sport the same way." (`docs/method-baseline.md`, line 68, Legacy (interview 2026-09-28, Q9)). Inference: the sport bar in the MFP is the part a per-sport battery would fill.
+
+**When NOT to apply**: The table is printed blank: the book gives no sport's values, no test for each row, and no rule for turning a test score into a 1 to 5 rating. Setting the "world-class" bar for a sport is left to the user. Inference: with 26 rows and a coarse five-point scale, two raters can score the same athlete differently, so the MFP is a planning picture, not a measurement. Several rows are not independent (for example strength and relative strength), so a gap in one will show in others.
+
+**Example**: Inference, built on the authors' rule: if a thrower's filled bar for speed-strength sits at 2 while the open sport bar is at 4, speed-strength gets special training; if cardiovascular endurance sits at 4 against a sport bar of 2, that training is cut back (rule at PDF 435 / p.424; form at PDF 436 / p.425).
+
+**Related**: [[framework--eight-types-of-needs-analysis]], [[framework--fitness-polygon-fig-8-2]], [[framework--s-factors-pyramidal-fitness-model]], [[framework--descriptive-and-prescriptive-training-models]] (which points to the MFP "discussed later"; it is Table 8.1), [[heuristic--strength-deficit-sets-training-method-choice]], [[framework--reactivity-coefficient-and-depth-jump-test]], [[framework--dynamometric-and-functional-profile-for-weak-link-identification]]
+=================== framework--fitness-polygon-fig-8-2.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: fitness polygon
+category: [needs-analysis, testing, fitness-profile, athlete-education]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Fitness Polygon (Fig 8.2): Plot Current and Required Levels on Radial Axes to Show Where Training Time Should Go
+
+**What it is**: "Another way of depicting the fitness state of the athlete is to draw up a *Fitness Polygon* with all of the relevant qualities spaced equidistantly around the circumference of a circle, with the radius corresponding to the maximum value which each quality can have (Fig 8.2)." Tests set each quality's level as a dot on its radius; joining the dots gives "the athlete's fitness polygon," and a second polygon can show "the relative values of all the qualities required for proficiency in the given sport" (PDF 437 / p.426, checked against the page image). Fig 8.2, read from the page image, has eight axes: strength, speed-strength, speed, cardiovascular endurance, structure, skill, flexibility, strength-endurance. The solid polygon is the athlete now; the dashed polygon is the level wanted. The caption says the qualities "are solely for illustrative purposes and do not refer to any specific sport" and "Structure refers to size, bodymass, proportions etc."
+
+**Why it works**: "The athlete is then able to see clearly where his strengths and weaknesses lie, thereby enabling his coach to devise the appropriate training programme," and it "may also be used as a very effective teaching tool for individual athletes, teams and coaches" (PDF 437 / p.426). Inference: the picture works because the gap between the two outlines is visible at a glance, which a table of numbers does not give an athlete.
+
+**When to apply**: When showing an athlete or sport coach why the programme stresses some qualities and cuts others. The authors' variant replaces the qualities with test items, "such as vertical jump, 40m sprint, triple jump, 3RM bench press and power clean" (PDF 438 / p.427, checked against the page image). Inference: the test-item version suits a programme that already runs a fixed battery, since each axis is then a number the staff already collects.
+
+**When NOT to apply**: The levels are marked "approximately" (PDF 437); the book gives no scaling rule for putting different tests on a shared radius. Inference: the shape of a polygon depends on axis order and scaling, so two polygons drawn with different scales cannot be compared, and area is not a meaningful total. The example is illustrative and refers to no sport or athlete.
+
+**Example**: The authors' reading of Fig 8.2: "the athlete needs to improve strength, speed-strength, speed, skill, structure (e.g. by increasing lean bodymass and decreasing bodyfat) and flexibility, but has more than enough cardiovascular endurance and strength-endurance, so that he needs to spend less time on training these qualities" (PDF 438 / p.427). Checked against the figure: the solid outline lies outside the dashed one only on the cardiovascular endurance and strength-endurance axes, and inside it on the other six.
+
+**Related**: [[framework--multifactorial-fitness-profile-table-8-1]], [[framework--eight-types-of-needs-analysis]], [[framework--s-factors-pyramidal-fitness-model]], [[framework--four-documents-for-programming-and-controlling-training]] (the training journal that holds the polygon)
+=================== heuristic--field-sport-conditioning-favours-short-energy-systems-and-strength-before-endurance.md
+---
+type: library-entry
+kind: heuristic
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: field sport conditioning emphasis
+category: [concurrent-training, energy-systems, session-order, team-sports]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Field Sports: Do Not Let Endurance Work Undercut Strength and Power, and Bias Conditioning Toward the Short and Intermediate Energy Systems
+
+**What it is**: Under "General Fitness Issues" the authors write: "It is vital to devise a programme in which training for one motor quality does not interact negatively with training for other fitness qualities. For instance, any unnecessary or prolonged emphasis on cardiovascular conditioning may decrease strength, hypertrophy and explosive power. In the individual workout, it is usually inappropriate to perform endurance activities before strength and speed training (Fig 1.7)" (PDF 438 / p.427, checked against the page image). On energy systems: recovery from bursts "may be facilitated in part by the cardiovascular and circulatory mechanisms of the *long term energy system*," but "most activity in sports played on a field relies predominantly on the short and intermediate term non-oxidative energy systems. The *short term* (ATP-CP) system provides energy for explosive bursts of activity lasting for no longer than 2 or 3 seconds, while the *intermediate* energy system is mainly involved with furnishing fuel for fairly intense activity of up to about 45 seconds (see 1.13)" (same page).
+
+**Why it works**: The authors give the interference effect as the reason: prolonged cardiovascular emphasis "may decrease strength, hypertrophy and explosive power" (PDF 438). They give no mechanism here and point back to Fig 1.7 and 1.13. Inference: endurance work first in a session leaves the athlete fatigued for the high-force, high-speed work that needs a fresh nervous system.
+
+**When to apply**: Ordering a session (strength and speed before endurance) and setting the conditioning emphasis for field sports. After the energy-system choice, the authors turn to strength and speed: which fitness factors need training and "the main muscle groups which need strengthening in the different players"; "The introduction to more explosive training, especially plyometric methods, should be done cautiously and progressively, following the guidelines offered earlier (5.2.4)" (PDF 438 / p.427). Eric's review: "For football specifically, the stated priority stack is: Goal 1, alactic and aerobic capacity/power for fall-camp demands; Goal 2, the same two systems for game demands; glycolytic conditioning is treated as a 'worst case scenario' to be absorbed incidentally through camp and practice rather than programmed as a primary target." (`docs/method-baseline.md`, line 116, Explicit). Inference: Eric and the authors agree on ATP-CP priority, but differ on the intermediate (glycolytic) system, which the authors name as a main field-sport system and Eric leaves to practice. The book speaks of field sports in general and Eric of football, so this is a difference in emphasis and population, not a contested claim.
+
+**When NOT to apply**: Endurance sports, where the long-term system is the target. The words "usually" and "may" are the authors' own hedges; there is no data on these pages. The time limits (2 or 3 s; about 45 s) are rough bands, not cut-offs. Inference: the authors say the long-term system aids recovery between bursts, so "less cardiovascular emphasis" does not mean none.
+
+**Example**: The authors' session rule: in one workout, strength and speed training come before endurance activities, not after (PDF 438 / p.427).
+
+**Related**: [[claim--energy-system-contribution-by-sport-table]], [[principle--motor-system-leads-cardiorespiratory-adaptation-do-not-separate-them]], [[claim--continuous-vs-interval-circuit-training-for-concurrent-goals]], [[heuristic--depth-jump-weekly-frequency-and-seasonal-placement]]
+=================== principle--return-to-play-incomplete-until-the-athlete-perceives-full-healing.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: return to play readiness
+category: [rehabilitation, return-to-play, psychology, testing]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Return to Competition Is Not Complete Until the Athlete Perceives the Injury as Fully Healed, Whatever the Clinical Tests Show
+
+**What it is**: In the "Injuries" part of 8.2 the book says: "It is always vital to remember that *return to competitive preparedness is never complete until the athlete perceives the injury to be fully healed*, regardless of what any physical tests might indicate" (PDF 438 / p.427, checked against the page image; the OCR layer reads "injury>"). The conclusion: "one should always apply post-injury performance tests which examine not only the physiological and anatomical readiness for a return to competition, but also the psychological factors which may also affect one's preparedness" (PDF 439 / p.428, checked against the page image). The same paragraph sets the structure of rehab: "Rehabilitation must follow the same stages of periodised training as normal training," and the task "is usually left to the physical therapist, who often has little education in retraining an athlete for high level competition" (PDF 438).
+
+**Why it works**: The author's reason: "all the clinical tests may show that the athlete is 'back to normal', but the athlete's perception of his/her condition may be very different and that is what determines one's ability or willingness to exert oneself fully in any sport" (PDF 438-439 / pp.427-428). Inference: this is the return-to-play case of the perceived-load point in 8.1: hesitation limits output even when tissue capacity is there.
+
+**When to apply**: At the last step of return to play, after the physical criteria are met. Add a test that exposes hesitation under a sport-like demand. Eric's review: "Daily wellness-style subjective monitoring, dropped for general roster use, is explicitly kept in return-to-play scenarios specifically because subjective context still fills a gap objective testing can't." (`docs/method-baseline.md`, line 133, Explicit). Eric's review: "What Applied Performance actually contributes to RTP is testing and progression, with shared loading decisions, and the involvement has no fixed end point." (`docs/method-baseline.md`, line 130, Explicit (interview 2026-09-28, Q4)). Inference: both lines fit the book: subjective input stays in RTP, and progression through periodised stages is the performance staff's share.
+
+**When NOT to apply**: Perceived readiness is necessary in this principle, not sufficient: the book says tests should cover physiological and anatomical readiness as well. An athlete who says they feel fine has not passed the physical criteria by saying so. The jump test below is one colleague's practice, reported as an anecdote with no criteria for "trepidation or hesitation" and no outcome data. Inference: a drop from a high chair or table is itself a high landing load, so it belongs only at the very end of a lower-limb return, never as an early screen. The voice is first person singular ("One of my colleagues," PDF 438); the page does not name the author. Inference: probably Siff, as with the first-person passage in 7.3 ([[framework--four-forms-of-accelerated-powermetrics]]), but that is not stated.
+
+**Example**: The author's "personal tale": "One of my colleagues is a well-known physiotherapist for a national soccer team and his final test for any injured players is to have them stand on a high chair or table; he then requests them to jump to the floor, and, if he detects any trepidation or hesitation, he concludes that the overall rehabilitation is incomplete" (PDF 438 / p.427).
+
+**Related**: [[principle--train-athletes-to-cope-with-perceived-as-well-as-actual-load]], [[framework--eight-types-of-needs-analysis]] (injury analysis), [[claim--plyometric-injury-risk-comes-from-prescription-not-the-method]], [[principle--prepare-athletes-for-risky-movements-instead-of-avoiding-them]]
+=================== principle--prepare-athletes-for-risky-movements-instead-of-avoiding-them.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: training to avoid injury
+category: [injury-prevention, reactive-ability, skill, contact-sports]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Prepare Athletes for the Risky Movements Their Sport Contains Instead of Banning Them: Train Reaction, Anticipation and Falling
+
+**What it is**: Under "Training to Avoid Injury" the authors write: "Avoidance of certain exercises which are regarded as potentially harmful may sometimes be unwise, because those very movements may occur periodically in the sport or during practice. This well-meaning approach can predispose athletes to injury since they will not have acquired the necessary involuntary motor skills to cope with higher risk actions. Therefore, it can be valuable to progressively introduce skills intended to prepare the athlete to minimise the chance of accidents and injury" (PDF 439 / p.428, checked against the page image).
+
+**Why it works**: The authors' mechanism is skill: an athlete never exposed to a high-risk action lacks the "involuntary motor skills to cope" when the sport forces it. "Training of reactive ability can be extremely helpful in this regard, although too many athletes strengthen the body instead to achieve this end. It would be far better for them to improve speed of reaction, speed of movement, ability to anticipate impending dangers and to learn to manage dangerous events while they are happening" (PDF 439 / p.428).
+
+**When to apply**: When a movement is dropped from a programme as "dangerous" but the sport still produces it (contact, falls, awkward landings). Introduce it "progressively." The authors' contact-sport case: "It is surprising how few rugby and American football players never learn how to fall from their colleagues in judo and wrestling, yet falling and violent bodily contact are integral parts of their games" (PDF 439 / p.428; the double negative "how few ... never" is printed so, and the sense is that few learn to fall). Eric's review: "Progressions in exercise selection, volume, and intensity are kept smooth and gradual by design; abrupt, large changes are treated as a direct injury-risk driver, not just a training-quality issue." (`docs/method-baseline.md`, line 142, Inferred (transcript)). Inference: the book's "progressively introduce" matches that rule; exposure is graded, not sudden.
+
+**When NOT to apply**: The authors say avoidance "may sometimes be unwise," not always; a movement the sport does not contain is not covered. No injury data are given. "Too many athletes strengthen the body instead" sets reactive skill against strength, but the book does not say strength work is useless for injury risk. Inference: in a rehab or novice setting, holding back a high-risk movement until basic control is present is still graded exposure, not the avoidance the authors criticise.
+
+**Example**: The authors' own: teaching rugby and American football players the falling skills used in judo and wrestling, since falling and contact are part of their games (PDF 439 / p.428).
+
+**Related**: [[principle--return-to-play-incomplete-until-the-athlete-perceives-full-healing]], [[heuristic--no-unsafe-stretch-only-unsafe-execution-for-individual]], [[claim--reaction-time-mostly-fixed-movement-time-trainable]], [[heuristic--progressive-and-random-segmental-training]]
+=================== principle--condition-tendons-ligaments-and-bone-not-only-muscle.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.2"
+topic: soft tissue conditioning
+category: [connective-tissue, tendon, injury-prevention, hypertrophy]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Physical Training Must Prepare Tendons, Ligaments and Bone as Well as Muscle, With Heavy or Rapid Loads Doing Most of That Work
+
+**What it is**: Under "Training of the Soft Tissues" the authors write: "So far, only muscle training has been discussed. However, all movements, especially those executed at high speed, depend on the storage and release of elastic energy from the tendons. Moreover, passive stability, flexibility and protection of the joints depends on the integrity of the ligaments and other connective tissues around the joint." Hence "*physical training must prepare muscles, tendons, ligaments and other connective tissues, as well as the bones*, to meet the demands imposed by the given sport" (PDF 439 / p.428, checked against the page image).
+
+**Why it works**: The authors state: "Research has revealed that the development of the passive tissues of the body (such as tendons, ligaments and bones) depends on the intensity and duration of resistance imposed on the body, and that heavy or rapidly imposed loads can play a valuable role in developing all-round muscle and connective tissue integrity" (PDF 439 / p.428). No study is cited on the page. They add a nervous-system point: "proper *neuromuscular training* based on recruitment of reflexes in specific patterns, is a vital component of all training and practice" (same page).
+
+**When to apply**: When a programme is built only around muscle strength or size. Two dosing notes from the page: heavy or rapid loads for connective tissue integrity, and "The periodic use of low intensity, longer duration training can also play a useful role in improving capillarisation and recoverability of muscle tissue after strenuous exercise" (PDF 439). On hypertrophy: "Overemphasis on resistance training for purely bodybuilding reasons is inadvisable and unnecessary for the athlete, unless an analysis of strength deficit has revealed the need for increased hypertrophy during the general preparatory phase" (same page).
+
+**When NOT to apply**: `untested` because the page says "Research has revealed" without a reference; the earlier, cited material on tendon and ligament adaptation is in [[claim--ligament-tendon-adaptation-and-detraining-response]] and [[claim--collagen-loading-curve-and-injury-risk]], and this entry does not take its rating from them. "Heavy or rapidly imposed loads" gives no load, rate or volume. Inference: connective tissue adapts more slowly than muscle (see [[claim--differential-tissue-adaptation-rates]]), so the advice to add heavy or rapid loading does not license a fast increase in it.
+
+**Example**: The authors' hypertrophy rule in practice: an athlete gets extra bodybuilding-style work only if a strength-deficit analysis shows a need for size, and then in the general preparatory phase (PDF 439 / p.428).
+
+**Related**: [[heuristic--strength-deficit-sets-training-method-choice]], [[heuristic--tendon-stretching-must-preserve-elastic-energy-storage-capacity]], [[principle--loading-volume-disturbs-homeostasis-and-prepares-connective-tissue]], [[framework--series-and-parallel-elastic-components]]
+=================== framework--exercise-checklist-and-nine-p-factors-of-exercise-prescription.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.3"
+topic: exercise prescription checklist
+category: [exercise-selection, programming, prescription]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# Before Prescribing an Exercise: Six Questions (Necessary, Sufficient, Appropriate, Effective, Challenging, Safe) and Nine P-Factors of Prescription
+
+**What it is**: Under "Components of the Training Programme" in 8.3: "Before prescribing any exercise programme, it is useful to apply the following checklist: Is the given exercise and its method of execution: Necessary? Sufficient? Appropriate? Effective? Challenging? (or interesting, enjoyable?) Safe?" Then: "In addition, you must examine the following *P-factors of Exercise Prescription*: Purpose; Person (Player or athlete); Practitioner (coach or instructor); Principles (of training means and methods); Procedures (for using specific methods and exercises); Period or Phase of training; Place (and facilities); Position (of player or of joints); Pivots (joints involved)" (PDF 440 / p.429, checked against the page image).
+
+**Why it works**: The authors give no mechanism beyond the checklist itself. Inference: the six questions test an exercise against the goal (necessary, sufficient, effective), the athlete (appropriate, challenging) and the risk (safe); the nine P-factors force the context into view (who, by whom, when, where, with which joints).
+
+**When to apply**: Each time an exercise is added to a programme. After the checklists, "you may set up an encyclopaedia of resistance exercises for possible use by all the players," which "should also include activities for warming up (pre-event preparation) and enhancing *functional or sport specific flexibility*, because static stretches on their own are inadequate for meeting the dynamic full range movements of the given sport. Superior sport specific flexibility and flexibility-strength is produced by full range dynamic movements executed in specific patterns against heavy resistance or using hold-relax or contract-relax methods borrowed from PNF (see Ch 7)" (PDF 440 / p.429; the OCR layer reads "Junctional" and "frill range"; the image reads "functional" and "full range").
+
+**When NOT to apply**: These nine prescription P-factors are not the PNF "five P-factors" (Principles, Procedures, Patterns, Positions and Postures, with Pivots and Pacing) of 7.2; the two lists share some names but serve different purposes ([[framework--pnf-five-p-factors-and-principles-as-a-conditioning-system]]). The checklist has no scoring or thresholds; "Necessary?" and "Sufficient?" are judgments. The flexibility claim (static stretches "inadequate," loaded full-range work "superior") is stated without a study on this page.
+
+**Example**: Inference: applied to a pec-deck for a thrower, the 7.5 discussion already answers "Appropriate?" in the negative and offers a spiral-diagonal cable pattern instead (see [[heuristic--use-pulleys-and-dumbbells-for-spiral-diagonal-pnf-patterns]]); the 8.3 list adds the context checks (Period, Place, Practitioner) before the swap is made.
+
+**Related**: [[framework--general-and-specific-components-of-a-training-programme]], [[heuristic--dedicated-stretching-may-be-unnecessary-with-progressive-movement-preparation]], [[framework--flexibility-speed-strength-endurance-qualities]], [[framework--pnf-activation-and-relaxation-techniques]]
+=================== framework--general-and-specific-components-of-a-training-programme.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.3"
+topic: training programme components
+category: [programming, training-variables, periodisation, prescription]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Components of a Training Programme: Four General Components and Eleven Specific Ones, Down to Twenty Exercise Variables
+
+**What it is**: The authors say "You should now be ready to set up a training programme incorporating the following components that have been discussed in detail in preceding chapters" (PDF 440 / p.429, checked against the page image). *The General Components*: Means, Methods, Exercises, Techniques. *The Specific Components* (PDF 440-441 / pp.429-430, checked against the page images):
+1. Conditioning Purpose (bodybuilding, weightlifting, supplementary training, etc.)
+2. Type of Fitness (in terms of a fitness profile)
+3. Body Zones
+4. Muscle Groups
+5. Type of Muscle Tension (static, dynamic, etc.)
+6. Type of Movement (extension, flexion, adduction, etc.)
+7. Type of Resistance Modality or Apparatus
+8. The Specific Exercises
+9. Exercise Method (maximum load, pyramids, supersets, forced reps, etc.)
+10. Exercise Variables: speed of movement; acceleration; load; repetitions per set; number of sets; series (groups of sets); intensity of resistance (average load per workout); volume of resistance (a measure of total work done per workout); density of exercises (a measure of the number of exercises per unit time); sequence of exercises; frequency of workouts; pattern of movement; range of movement; duration of movement, set or series; rest periods (between movements, sets and workouts); duration of workouts; number of exercises per workout; variation of technique; warming-up and stretching activities; supplementary sports or manual labour.
+11. Organisation of the Training Programme: training session; training day; restoration means and methods; distributed/concentrated loading; microcycles; mesocycles; long mesocycles; macrocycle; long macrocycle.
+
+**Why it works**: The list is a summary of earlier chapters, not a new argument. Inference: its value is completeness; a programme that leaves a component unset (for example acceleration, or supplementary manual labour) has left it to chance.
+
+**When to apply**: As a final pass on a written programme, to check that every variable has a stated value or a reason to leave it open. Items 2 and 11 tie to the fitness profile of 8.2 and to periodisation in Ch 6. The authors also say the scheme should be planned from the macrocycle down, "not ... simply by drawing up a list of exercises for a given session or week (the microcycle level)" (8.2, PDF 437 / p.426).
+
+**When NOT to apply**: It is a list, not a method: it gives no values or priorities. Two definitions are the authors' own and differ from common usage: "Intensity of resistance (average load per workout)" and "Density of exercises (a measure of the number of exercises per unit time)" (PDF 441). Inference: many coaches use density for work-to-rest ratio, so state which definition is in use when writing a programme from this list.
+
+**Example**: Inference: for a box squat with bands (7.3), items 7 (apparatus: free weight plus elastic bands), 9 (method), and 10 (load, acceleration, range) all need stating, since the bar weight alone no longer describes the load ([[case-study--box-squat-with-free-weights-plus-elastic-bands]]).
+
+**Related**: [[framework--exercise-checklist-and-nine-p-factors-of-exercise-prescription]], [[framework--statute-of-fitness-limitations]], [[framework--training-cycle-hierarchy-durations-and-russian-term-swap]], [[framework--volume-intensity-and-relative-intensity-calculation]], [[framework--multifactorial-fitness-profile-table-8-1]], [[heuristic--build-the-annual-plan-backwards-from-competitions]]
+=================== framework--statute-of-fitness-limitations.md
+---
+type: library-entry
+kind: framework
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.3"
+topic: statute of fitness limitations
+category: [progression, overload, rehabilitation, rpe, autoregulation]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Statute of Fitness Limitations: Start Every Client With Ten Variables Limited, Then Lift the Limits One by One as RPE and Technique Allow
+
+**What it is**: The author, writing in the first person, offers "An overall scheme that can be extremely useful in planning any training or rehabilitation programme ... one which I call the *Statute of Fitness Limitations*. It is so named because it entails starting any client from an initial state which is limited in the following manner": Limited Intensity or Load; Limited Duration (of a movement or set); Limited Volume (of the entire exercise or session); Limited Density; Limited Acceleration (and deceleration); Limited Power; Limited Rate of Force (or Acceleration) Development (RFD); Limited Velocity; Limited Range; Limited Complexity (PDF 441 / p.430, checked against the page image). "Thus, one prescribes an exercise in which all of the above variables are limited initially, then, as the individual adapts, so you gradually decrease the limitations in a manner which optimally suits that person" (same page). Inference: the page names no author; the "I call" voice is probably Siff's, as with other first-person passages (see [[framework--four-forms-of-accelerated-powermetrics]]), but that is not stated.
+
+**Why it works**: The control rule uses "two ratings which we covered in Chapter 6: Rating of Perceived Effort - RPE (by the person); Rating of Technique (by the coach). If the decrease in limitation of any variable does not cause any deterioration in technique or an unnecessarily high RPE, then one can continue with at least that level of stress on the body" (PDF 441 / p.430). The author places it as an extension of "the well-known *Principle of Gradual Progressive Overload*": the scheme "prescribes a type of 'gradual overload' with respect to all of the above factors" (PDF 441-442 / pp.430-431, checked against the page images). Inference: overload on one variable (load) is the usual model; this scheme treats each of ten variables as its own overload channel, gated by the athlete's effort and the coach's eye.
+
+**When to apply**: Starting a novice, a returning athlete or a rehab client, and any time one variable is raised so that the others can be held down. The author's endgame: "some variables will eventually become constant, because, for example, the range of movement (ROM) of any joint cannot be increased indefinitely, while the acceleration, power (mean and peak), complexity, and RFD depend upon each different exercise. Eventually, the main variables which can be progressively increased (or have limitations decreased) are the load, the duration and the volume, with increases in loading being necessary for power and strength increase and duration and volume being more appropriate for developing local and general endurance. At a more detailed level, increase in volume of complex practice may be necessary for enhancing motor skill" (PDF 442 / p.431). Eric's review: "Progressions in exercise selection, volume, and intensity are kept smooth and gradual by design; abrupt, large changes are treated as a direct injury-risk driver, not just a training-quality issue." (`docs/method-baseline.md`, line 142, Inferred (transcript)). Inference: the Statute is a way to run that rule across more variables than volume and intensity.
+
+**When NOT to apply**: The scheme gives no starting values, step sizes or RPE thresholds; "unnecessarily high RPE" is undefined. Inference: lifting limits one at a time is slow for a trained athlete already working at full range and velocity, where most limits are already off; the scheme matters most at the start of training or rehab. The book offers no outcome data for it.
+
+**Example**: Inference, built from the list: a client returning to jumping starts with low drop heights (limited load and acceleration), few contacts (limited volume), long rests (limited density), and two-leg landings only (limited complexity); each limit is relaxed only when technique holds and RPE stays reasonable, following the author's rule (PDF 441 / p.430).
+
+**Related**: [[framework--cybernetic-periodisation-rpe-and-rating-of-technique]], [[framework--general-and-specific-components-of-a-training-programme]], [[principle--return-to-play-incomplete-until-the-athlete-perceives-full-healing]], [[heuristic--program-variable-complexity-scales-with-training-age]], [[heuristic--progress-skills-only-at-70-80-percent-technical-reliability]]
+=================== principle--minimax-principle-of-training-economics.md
+---
+type: library-entry
+kind: principle
+domain: strength-and-conditioning
+book: supertraining--verkhoshansky
+chapter: "8.3"
+topic: minimax training economics
+category: [exercise-selection, efficiency, programming, adjunct-methods]
+confidence: untested
+ingest-tier: full-text
+created: 2026-10-13
+---
+
+# The Minimax Principle: Pick the Programme Variant That Gets the Most Result for the Least Effort and Time
+
+**What it is**: Under "The Minimax Principle and Training Economics" the authors ask how to choose among programmes, "especially since so many people are now promoting adjunct training methods such as 'core training', 'stability training', 'functional training' and 'balance training'?" Besides tailoring a programme "to suitably interest, challenge and match individual characteristics and needs," they borrow from science and management "the *Minimax Principle*, which is one of the cornerstones of sound economics. Essentially this means using the minimum effort to achieve the maximum results, preferably in the least time. In science, it is similar to the principles of least action, least path or least energy" (PDF 442 / p.431, checked against the page image).
+
+**Why it works**: "It is vital that you carefully scrutinise every variation of a given training programme to ensure that you employ the one which best obeys the minimax principle, especially since time must be regarded as a precious commodity, not only in costly business ventures, but also in sports preparation" (PDF 442 / p.431). Inference: time spent on a low-yield drill is time not spent on practice or on a high-yield lift, which is the same opportunity-cost point as the Chapter 8 lead-in.
+
+**When to apply**: When an adjunct method is proposed. The authors' rule: "by all means use balancing balls, wobble boards and special supplementary drills if they enhance the economy of the training process; otherwise rely on using existing exercises which address several training needs at the same time" (PDF 442 / p.431). Eric's review: "Training time is deliberately weighted toward high motor-unit-recruitment core/ballistic movements (squats, cleans, jumps, throws, sprints); single-joint assistance work is kept to a small share of total volume." (`docs/method-baseline.md`, line 104, Inferred (transcript + slides)). Inference: that weighting is a minimax choice: multi-joint lifts cover several needs in one exercise.
+
+**When NOT to apply**: The principle names the goal but gives no way to measure "effort" or "results," so two coaches can apply it and choose differently. "Minimum effort" refers to programme cost, not to the athlete's effort in a set; it does not mean low-intensity training. The authors do not rule out balance or stability tools; they set a test for them. Inference: in rehab, a single-joint or balance drill can be the most economical choice because it addresses the limiting deficit directly.
+
+**Example**: The authors' contrast: a wobble-board drill earns its place only if it improves the economy of the training process; otherwise a lift that "address[es] several training needs at the same time" takes its slot (PDF 442 / p.431). Their own nearby case: "heavy overhead presses, squats and tricep push downs can produce higher levels of tension in the abdominal muscles (trunk stabilisers) than sit-ups" (same page, list introduction).
+
+**Related**: [[claim--core-stability-balance-training-has-no-shown-transfer-to-sport]], [[principle--separate-training-from-practice-and-justify-supplementary-time]], [[claim--muscle-isolation-is-load-dependent-mostly-illusory-under-heavy-load]], [[heuristic--identify-moved-stabilized-and-both-joints-before-selecting-exercises]]
