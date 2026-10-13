@@ -18,6 +18,7 @@ Never put memory content here — the file itself holds the facts.
 - [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
 - [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
+- [Zotero expert reference](reference_zotero-expert-reference.md) — any Zotero how-to, setup, import, sync, backup, or citation question
 - [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems
 - [memsearch index path drift](project_memsearch-index-path-drift.md) — memsearch indexes fewer paths
 - [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — memsearch slow or timing out
