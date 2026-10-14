@@ -1,0 +1,147 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- CR = Chris Ruf, KF = Kristin Fant,  CRS = Carrie Rubertino Shearer, Nancy = Nancy Post, Aaron = Erin Boyette.
+- Option A all major projects, that weve been working on in the past 180 days
+- A, all projects
+- I want a daily push, so if data is updated locally it gets pushed to the cloud also
+- we shouldnt skip anything, we can bypass the athlete data concerns.
+
+## Files Modified
+build_cost_workbook.py, TEAMS_README.md, STATUS.md, TEAMS_PLAN.md, 2026-10-12-teams-readme.md, build_its_tracker.py, verify_its.py, test_cost_build.py, survey.py, patch_ncaa.py, test_ncaa_paths.py, patch_tech.py, test_tech.py, feedback_no-baylor-onedrive.md, cloud_survey.py, cloud_list.py, cloud-push.py, com.keystone.clouddrivepush.plist, project_cloud-copy-approval.md, 2026-10-12-cloud-copy-and-option-a.md
+
+## Unresolved Errors
+- {"stdout":"---\nname: tech-inventory-refresh\ndescription: \"Baylor Tech Inventory survey — 09-15 baseline, how to pull the live responses, the ren...
+- {"stdout":"# STATUS\n\n## Current state\n- 2026-10-12: Committed 2026-10-09 edits left on the Windows laptop (exec summary .docx, Quick Inventory e...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import openpyxl\nModuleNotFoundError: No module named ...
+- {"stdout":"./Linda | dirty=0 | ahead=?\nProjects | dirty=0 | ahead=?\n./LibraryProject/ZoteroInjestion | dirty=0 | ahead=?\n./CLI_Dev/printing-pres...
+- {"stdout":"---\nname: backup-sync-system\ndescription: \"Nightly backup/sync architecture and its traps — two-writer root cause, manifest classific...
+- {"stdout":"---\nname: backup\ndescription: Run the KeystoneOS daily backup on demand (git-push the memory repos, rsync state to Google Drive and th...
+- {"stdout":"<class 'dict'> ['version', 'generated', 'note', 'destinations', 'paths']\n11:   \"note\": \"Nightly target. 500GB exFAT SSD attached 202...
+- {"stdout":"---\nname: drive-fuse-rsync-mtime-loop\ndescription: \"Google Drive CloudStorage rounds mtimes it didn't write, making rsync -a re-send ...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import sys; sys.path.insert(0,'scripts'); import build...
+- {"stdout":"patched build_plan.py\nTraceback (most recent call last):\n  File \"/Users/kristinarash/.claude/jobs/c9825473/tmp/patch_ncaa.py\", line ...
+- {"stdout":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/memory/project_backup-sync-system.md\n/Users/kristinarash/.claude/projects/...
+- {"stdout":"usage: portfolio.py [-h]\n                    {add-idea,add-update,set-stage,slate-check,week-report,crosswalk,seven-day,card-check,swee...
+
+## Git
+log, pull, commit, add, fetch, status, closeout 2026-10-12: landed ledger, transcript, dev-docs harvest
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, diff, scripts: NCAA builders save to Drive project folder by default
+
+Option A batch, group A (document outputs only, no athlete data).
+Mac and Windows paths. Tested path resolution only.
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, scripts: admin docs save to Drive with an overwrite guard
+
+Option A batch, group A. Builders write to SoftwareTechDocs/TechInventory_2026-08
+on Drive. refuse_overwrite stops a run if the same-name file exists.
+Nothing goes to Baylor OneDrive.
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, closeout 2026-10-12: transcript
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, docs: closeout 2026-10-12 — Option A and cloud copy handoff
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, data: board edits 2026-10-12
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, branch, push, data: link 15 registry rows to Drive folders; status answers 2026-10-12
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte, docs: correct 2026-10-12 handoff on Drive folder rows
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BHJSYbD5abV1MYrfP2qEte
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md
+
+## Skills Used
+memory-write
+
+## Environment
+cwd: ~/DEV/project-triage
+model:claude-haiku-5-5
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 37 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
