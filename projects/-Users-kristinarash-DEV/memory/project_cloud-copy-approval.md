@@ -15,3 +15,5 @@ On 2026-10-12 Eric stated that Baylor data governance approved copying ALL of `~
 **Why:** Eric is migrating to a VPS and wants everything in the cloud where possible. He wants a copy in the cloud now.
 
 **How to apply:** Under this approval, do not block athlete data from the personal-Drive copy. Keep databases and secrets excluded. Never send anything to Baylor OneDrive; that rule still holds (see [[no-baylor-onedrive]]). The governance approval document itself was not seen. Only Eric's statement is on record.
+
+**Widened 2026-10-14.** Eric stated cloud servers and schedulers are now approved too (VPS, Cloudroom cloud threads and cloud automations). The old "no cloud servers or schedulers without IT approval" rule is retired. Still kept off cloud: DexaProject (per ~/DEV/CLAUDE.md), database files, and secrets. Never Baylor OneDrive.

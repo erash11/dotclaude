@@ -14,4 +14,4 @@ Everything that lived only on the laptop was copied to `My Drive/_FROM_WORK_LAPT
 
 **Why:** Eric chose to stop running jobs on the Baylor machine.
 
-**How to apply:** Do not re-enable, create, or fix scheduled tasks or hooks on the Windows laptop. Port a needed job to the Mac instead (a VPS job that touches Baylor data needs IT approval). Treat Windows-side entries in [[automation-cadence]] as historical. The Mac is now the only machine that runs automation.
+**How to apply:** Do not re-enable, create, or fix scheduled tasks or hooks on the Windows laptop. Port a needed job to the Mac, a VPS, or a Cloudroom automation instead (cloud servers and schedulers approved 2026-10-14, see [[cloud-copy-approval]]). Treat Windows-side entries in [[automation-cadence]] as historical. The Mac is now the only machine that runs automation.

@@ -72,5 +72,5 @@ Never put memory content here — the file itself holds the facts.
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
-- [Cloud copy approval](project_cloud-copy-approval.md) — the daily all-DEV copy to personal Google Drive; athlete data approved; DBs and secrets stay local
+- [Cloud copy approval](project_cloud-copy-approval.md) — daily all-DEV copy to Drive; cloud servers/schedulers approved 10-14; DBs, secrets, Dexa stay local
 - [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — scheduled cloud-push fails "Operation not permitted"; run by hand
