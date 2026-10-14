@@ -140,7 +140,7 @@
       "/Users/kristinarash/DEV"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "skillOverrides": {
     "anthropic-skills:articulation-skill": "off",
     "anthropic-skills:closeout": "off",
@@ -518,6 +518,9 @@
     },
     "claude-sonnet-5-5": {
       "effortLevel": "medium"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
     }
   },
   "advisorModel": "fable",

@@ -1,0 +1,717 @@
+=================== agent-orchestration/goal-loop
+---
+name: goal-loop
+description: 'Draft /goal prompts and explain persistent agent loops. Use for goal or Ralph loops, autonomous run setup, monitoring, and troubleshooting.'
+---
+
+# Agent `/goal` Loop
+
+## What `/goal` is
+
+`/goal` makes an agent persist through `plan → act → test → review → iterate`.
+If a turn ends before the goal is met, it auto-continues instead of waiting for
+input. The loop ends at its stop condition, a user pause, or the token budget
+limit. It is also called the “Ralph loop”.
+
+Before giving runtime instructions, check goal support in the installed agent
+and interface through its help, exposed tools, or current official documentation.
+Verify feature flags, authentication, and limits; do not transfer one agent's
+requirements to another. Lifecycle states, budgets, and pause/resume vary by runtime.
+
+A goal enforces a contract through verification. It is not a budget command,
+a safety boundary, “run forever”, or a replacement for `/plan`.
+
+## When to use it
+
+Use for repeated autonomous work with a **verifiable stop condition**: passing tests, target coverage, eval ≥ X, or a green build. For code work, establish a working build and relevant checks first. No minimum task duration applies.
+
+Fits: migrations, coverage lifts, TDD feature builds, refactors with contract tests, prompt/eval optimization, deploy retry loops, bug-repro-then-fix.
+
+Bad fits: exploratory work, vague "improve this", anything without a "done" definition, prod credentials, destructive shared-infra ops.
+
+## The 4-part contract (every goal needs this)
+
+1. **Objective** — one sentence, one concrete outcome.
+2. **Constraints** — what must NOT change (public API, files, libs, conventions).
+3. **Validation command** — the exact shell command that proves progress (`pytest -q`, `pnpm test`, etc.).
+4. **Stop condition** — verifiable: "Stop when X passes" OR "when further changes need human/product input."
+
+Also specify what to read first, checkpoints, and a short progress log.
+
+## Writing a goal (the core deliverable)
+
+When asked for a goal prompt, return only the contract body as a Markdown block, one item per line. **Do not prefix it with `/goal`** — the user adds that command in the composer.
+
+```
+**Objective:** <one-sentence objective>
+**Read first:** <files/PLAN.md/issue>
+**Constraints:** <what not to change, libs, conventions>
+**Validate:** <relevant checks during work and final acceptance command>
+**Checkpoints:** work in checkpoints and log progress briefly
+**Stop when:** <verifiable condition>, OR when further changes require human/product input
+```
+
+### Example (migration)
+
+```
+**Objective:** Migrate this project from Pydantic v1 to v2.
+**Read first:** pyproject.toml, src/, tests/
+**Constraints:** no public API changes; keep imports backwards-compatible via shims if needed; no new dependencies
+**Validate:** run relevant tests during the migration; run `pytest -q` before declaring done
+**Checkpoints:** work in checkpoints; log progress briefly
+**Stop when:** full suite passes with zero deprecation warnings, OR when a change requires architecture decisions
+```
+
+### Example (coverage lift)
+
+```
+**Objective:** Raise coverage in src/auth/ from ~38% to ≥75%.
+**Read first:** src/auth/, tests/auth/, AGENTS.md
+**Constraints:** no new deps; mirror existing test style; do not modify production code unless strictly required for testability
+**Validate:** `pytest --cov=src/auth --cov-report=term-missing`
+**Checkpoints:** work in checkpoints; log coverage delta each one
+**Stop when:** coverage ≥75% AND all tests pass, OR when uncovered code needs design changes
+```
+
+### Writing rules
+- **One objective, one stop condition.** Not a backlog.
+- Update docs when behavior, setup, or usage needs explaining, or the task requires it.
+- Match checks to the change and final acceptance criteria; do not require the full suite after every edit.
+- **Never instruct the agent to create new ADRs** — ADRs require the user's explicit approval, so goal prompts must not pre-approve or encourage them.
+- **Forbid reward-hacking:** "Do not delete, skip, weaken, or narrow tests to make the goal pass."
+- Respect the runtime's length limit. Link longer detail in `PLAN.md`/`GOAL_BRIEF.md`.
+- Use exact paths, commands, and issue numbers.
+- Forbid scope creep explicitly: "Do not refactor unrelated code. Do not add dependencies."
+- Tell the agent when to pause: "If <condition>, pause and ask before proceeding."
+
+### Draft with another agent
+
+Give a second AI session access to the codebase. Ask it to inspect the code, surface assumptions, constraints, and edge cases, then produce the structured 4-part contract. Paste that contract into the goal agent.
+
+Claude Code cmux note: after Claude finishes, it may prefill a predicted next user message; that draft is Claude, not the user speaking.
+
+### Self-goal setting
+
+Use a supported goal-creation tool such as `create_goal` only when the user explicitly asks to set a goal. The user can give high-level intent: "Inspect this repo, then write yourself a `/goal` with a verifiable stop condition and pursue it." Supply files to read, constraints, and the validation command. If intent is underspecified, ask clarifying questions before setting the goal.
+
+## Launching and controlling a goal
+
+1. Identify the agent, version, interface, and intended working directory or session.
+2. Check its supported goal commands/tools and any setup or authentication requirements.
+3. Start the goal using that runtime's supported interface and the agreed contract.
+4. Verify it is active and know how to inspect, pause/stop, and resume it.
+
+Before resuming across sessions, verify where that runtime stores goal state and which session must be reopened. Do not assume server-side persistence, automatic pause on user input, replacement semantics, or resumption after a budget refresh.
+
+## When a goal drifts
+
+- **Minor drift:** send a correction and check that the agent incorporates it.
+- **Loose objective:** use the runtime's supported pause/stop control, inspect status, then tighten the objective before resuming.
+- **Bad mess:** stop the goal, review the diff, and undo only changes identified as belonging to that run. Preserve the user's and other agents' work; do not use a blanket reset or stash. Rewrite the goal before restarting.
+
+Correct or stop drift promptly.
+
+## Operational tips
+
+- Inspect status periodically with the runtime's supported command or tool. Every monitoring check must include a concise one-line update to the user: what the agent is doing and whether it is on track.
+- **Always review the diff before merging.** Human oversight remains essential.
+- Keep approvals/sandboxing tight; default permissions are correct.
+- Start with a small task to learn how the runtime stops before an overnight run.
+- Bake recurring policy into `AGENTS.md` so every goal inherits it without restating: adversarial self-review before declaring done, an extra QA pass even when tests pass, and the standard validation command. Saves repeating it in each goal paragraph.
+
+## Troubleshooting
+
+- **Missing goal command:** check support and setup for the installed agent and interface before suggesting updates or configuration changes.
+- **Will not start or continue:** inspect the actual error, goal status, authentication, and limits. Use that runtime's documented recovery steps.
+- **No saved goal:** verify the session and persistence behavior before creating a replacement.
+
+=================== agent-orchestration/handoff
+---
+name: handoff
+description: Capture session context for a fresh agent. Use for handoffs, context limits, switching focus, ending sessions, or splitting work across sessions.
+disable-model-invocation: true
+triggers: [user, model]
+---
+
+# Handoff
+
+Capture the context a fresh agent needs to continue without re-asking, re-discovering, or repeating mistakes.
+
+## Core Principles
+
+1. **Describe state.** Write "Auth is implemented; logout is not started," not "Implement logout next." The next agent chooses actions from the context.
+2. **Link existing artifacts.** Reference PRDs, plans, ADRs, issues, commits, diffs, and design docs by path or URL instead of copying their content.
+3. **Preserve why.** Capture decisions, rejected approaches, and failures that code alone cannot explain.
+4. **Require verification.** Present claims as context to check against the actual code, not facts to trust blindly.
+5. **Redact secrets and PII.** Never include keys, tokens, passwords, or personal data. Name credential locations (e.g. ".env.local, not committed"), never values.
+6. **Keep only useful context.** Omit obvious, redundant, or explanatory material recoverable from code or project configuration.
+
+## Procedure
+
+1. Read existing project instructions (AGENTS.md or equivalent). Keep the handoff session-specific; do not repeat those instructions.
+2. Read and update any prior handoff instead of starting from scratch.
+3. Treat user-supplied arguments as the next session's focus.
+4. Fill every template section; mark empty sections `None`.
+5. Output the handoff in one fenced code block and save the same content as described under **File Output**.
+
+## Output Format
+
+Use this template inside a single fenced code block:
+
+```
+# HANDOFF: <short title of the work>
+Generated: <timestamp> · Session focus: <one line>
+
+## 1. Goal
+<The overall objective in 1–3 sentences.>
+
+## 2. Why This Matters / Background
+<Motivation, intended users, timing, constraints, and hard requirements not already in project configuration.>
+
+## 3. Current State
+<What is DONE, PARTIAL, and NOT STARTED. Describe status, not actions:
+- DONE: OAuth login flow, tests passing locally
+- PARTIAL: Session storage wired up; refresh logic missing
+- NOT STARTED: Logout endpoint>
+
+## 4. Key Decisions (and why)
+<Choices and reasoning, especially what cannot be recovered from code.
+- Chose passport.js over custom OAuth — community support and less surface area
+- Stored tokens in httpOnly cookies — XSS mitigation>
+
+## 5. Traps & Dead Ends
+<Failed approaches and pitfalls the next agent might repeat, with reasons.
+- DB mocks made integration tests flaky; replaced with a test container
+- SDK v3 breaks the streaming API this project relies on>
+
+## 6. Relevant Files & Pointers
+<Paths with line ranges and specific contents; link external artifacts instead of copying them.
+- src/auth/oauth.ts:L40-L88 — provider config + token exchange
+- docs/adr/0007-auth.md — full rationale
+- PR #142 — in-progress session work
+- Issue #150 — logout requirements>
+
+## 7. Open Work (status, with dependencies)
+<Remaining work and dependencies, stated as status rather than commands.
+- Logout endpoint is not implemented
+- Session persistence depends on the logout endpoint
+- E2E auth tests are blocked until both are complete>
+
+---
+## Prompt for the Fresh Agent
+<A short prompt with background context. Use declarative statements such as "X is complete" or "Y has not started." Preserve this exact closing instruction:>
+
+Before responding, read every file listed under "Relevant Files & Pointers" above.
+Do not summarize, paraphrase, or claim you already have context — actually read each
+file. Treat every claim in this handoff as context to verify against the code, not
+facts to trust blindly. Then wait for my instructions before taking any action.
+```
+
+## File Output
+
+Save the same handoff outside the working tree, preferably in the OS temp directory: `$TMPDIR/handoff-<random-8-chars>.md` on macOS/Linux, or the system equivalent. If the user prefers an in-repo record, use `HANDOFF.md` in the project root.
+
+Report the absolute path. The user can start a fresh session with:
+
+```
+Read the file <absolute-path> to get the context, then wait for instructions.
+```
+
+=================== agent-orchestration/total-review
+---
+name: total-review
+description: 'Run five independent max-effort reviews (Fable 5.1, Opus 5.5, GPT-6 Astra, GPT-6.1 Sol, Muse Wonder), merge their findings, and fix only what the user approves. Manual only: run when a human types /total-review; agents must never invoke it on their own.'
+disable-model-invocation: true
+---
+
+# Total Review
+
+Five reviewers: the two best models from Anthropic and from OpenAI, plus Meta's Muse Wonder, all at their highest effort and in **full permission mode** (the harness maximum). Never swap or downgrade a model, effort, or permission mode. If one is unavailable, stop and tell the user.
+
+## Permissions
+
+Always spawn with full permission mode. That is Claude Code's bypass permissions and Codex's YOLO mode (no approvals, full-access sandbox). A child cannot exceed its parent, so if this thread is not in full mode, stop and tell the user.
+
+## Reviewers
+
+- **Fable 5.1**: `--provider claude-code --model claude-fable-5-1`
+- **Opus 5.5 (1M)**: `--provider claude-code --model 'claude-opus-5-5[1m]'`
+- **GPT-6 Astra**: `--provider codex --model gpt-6-astra`
+- **GPT-6.1 Sol**: `--provider codex --model gpt-6.1-sol`
+- **Muse Wonder**: `--provider pi --model openrouter/meta/muse-wonder` (Pi harness, OpenRouter). Only OpenRouter offers `max` for Muse; never use the `vercel-ai-gateway` route.
+
+## 1. Launch
+
+1. Confirm each model is listed with `max` in its supported reasoning efforts using the configured provider interface.
+2. Spawn all five in parallel, one thread each, using the reviewer settings plus max reasoning, full permission mode, and a title such as "Total review: <model>":
+   - **Local thread:** Use the configured local thread-spawn workflow.
+   - **Cloud thread:** Use the configured cloud thread-spawn workflow.
+   - **Fallback only:** Use the configured fallback thread-spawn workflow.
+3. Confirm in each thread's status that it runs the right model at its selected effort in full permission mode.
+
+## 2. Brief
+
+Send all five the same neutral brief: scope, paths, intended behavior, and diff/base revision.
+
+Ask for a thorough senior-developer review, including related code and tests. Review only; change no files. Report serious or critical issues with file and line, a fix, and merge readiness. Separate verified findings from guesses. Use plain English.
+
+Never hint at suspected bugs, mention the other reviewers, or share one reviewer's output with another.
+
+## 3. Collect
+
+Wait for each thread to finish, then collect its output. Idle status, timeouts, and queued retries are not completion. Report a failed reviewer; never pass off partial output as a review.
+
+## 4. Merge and report
+
+Read all five reports in full. Deduplicate. Keep only real bugs and risks; drop style preferences, theoretical edge cases, and non-issues. Agreement alone does not prove an issue is real.
+
+Show the user:
+
+- A numbered list, one line per issue: what + where.
+- Tags for who found it: `[fable]`, `[opus]`, `[astra]`, `[sol]`, `[muse]`. Most-reported first.
+- One line: how many findings were dropped.
+- Ask: approve these fixes, or adjust the list?
+
+Share full reports only if the user asks.
+
+## 5. Fix and ship
+
+Only after the user approves: fix the approved issues, then commit and push with the standard ship workflow.
+
+=================== agent-orchestration/nagent
+---
+name: nagent
+description: Launch a new bb worker thread with the right project, model, worktree, and task brief. Use for nagent, launching a bb session, or a standalone bb agent. Covers thread creation; use bb-cli for managing existing threads.
+---
+
+# nagent
+
+Read this before `bb thread spawn`. Use `bb-cli` for other thread operations.
+
+## Defaults
+
+Use Codex `gpt-5.6-sol`, reasoning `high`, service tier `fast` ("GPT 5.6 Sol High Fast"). Use `xhigh` for larger refactors. The user's explicit choices override these defaults.
+
+For a different requested model, use its catalog `defaultReasoningEffort` when unspecified, and enable fast only when asked. Do not infer a higher reasoning level from the model name.
+
+Prefer bare `bb`; `"$BB_CLI"` is also valid when set.
+
+## Look Up the Target
+
+```bash
+bb project list --json
+bb provider list --json
+bb provider models <provider-id> --json
+```
+
+- **Project:** Match the name and confirm `sources[].path` is the requested repository. Always pass `--project`; never hardcode an ID.
+- **Provider:** Look it up. Common mappings are Cursor CLI → `acp-cursor`, Codex/ChatGPT subscription → `codex`, and Claude Code → `claude-code`. Grok via Cursor is not `acp-grok`, which is Grok Build.
+- **Model:** Use the catalog ID. Match both `displayName` and `supportedReasoningEfforts[].description`; model IDs, reasoning labels, and service tiers are separate.
+
+For Cursor/Grok or Codex Max naming traps, read [provider details](references/providers.md). Verify examples against the current catalog; do not guess IDs or substitute a different provider.
+
+## Pi Agent: billing safety
+
+`--provider pi` selects the harness; the full `--model provider/model` selects the inference and billing route. ChatGPT subscription example:
+
+```bash
+--provider pi --model openai-codex/gpt-6-astra --reasoning-level xhigh
+```
+
+Query Pi's catalog on the target `--machine` or `--environment`. `openai-codex` uses the ChatGPT subscription; OpenRouter and Vercel AI Gateway bill separately. Never substitute routes without the user's approval; stop if unavailable. After spawning, verify the full model ID and reasoning in the `client/turn/requested` execution metadata, not just the display name.
+
+## Permission Checks
+
+The user's investigation/build workers default to `full`. A child cannot exceed the parent's permission mode, so verify the parent before requesting it and the child after spawning.
+
+Run the bundled script relative to this skill's directory:
+
+```bash
+scripts/permission-mode.sh "$BB_THREAD_ID"
+```
+
+For a `full` worker, this must print `full`. Otherwise, stop and report that the requested mode is unavailable under the parent's limits. Do not bypass those limits. If the user requests another mode, confirm the provider supports it.
+
+The modes are `accept-edits` (sandbox, human-reviewed escalations), `auto` (sandbox, automatic review), and `full` (no sandbox). A read-only brief must forbid writes regardless of mode. For Cursor permission issues, use the provider-details reference.
+
+## Spawn
+
+Use the resolved IDs and chosen settings. This example shows the default worker's reasoning, tier, and permissions; replace them when the user requests different settings.
+
+```bash
+bb thread spawn --json \
+  --project <project-id> \
+  --new-environment worktree \
+  --provider <provider-id> \
+  --model <model-id> \
+  --reasoning-level high \
+  --service-tier fast \
+  --permission-mode full \
+  --title "Short title" \
+  --prompt "$(cat <<'EOF'
+Objective: ...
+Constraints: ...
+Skills and files: ...
+Deliverable: ...
+Validation: ...
+Report back: ...
+EOF
+)"
+```
+
+Always include `--json`, `--title`, and a complete prompt. The quoted heredoc preserves quotes in the brief.
+
+## Parent and Sidebar Placement
+
+- Omit parent flags for a standalone, top-level thread: "not as your own subagent".
+- Use `--parent-self` when this thread coordinates the worker or the job is its subtask.
+- Use `--parent-thread <id>` to nest under another thread. Never combine the two parent flags.
+
+Do not nest unrelated one-off work by default.
+
+## Worktree
+
+Use `--new-environment worktree` for a bb-managed worktree. Do not create one manually unless the user asks.
+
+- Worktrees start with tracked files. Include required untracked files such as `.env` through the repo's `.worktreeinclude`; setup may also use `.bb-env-setup.sh`. See `bb guide environments`.
+- Omit `--base-branch` for the project default; specify it only when needed.
+- Do not combine `--machine` with an existing `--environment` ID.
+- A null `environmentId` in the spawn response can mean the worktree is still being created.
+
+## Task Brief
+
+**Preserve the user's scope**
+
+- Write a focused assignment preserving intent, constraints, and corrections. Never invent requirements, deliverables, permissions, or approval.
+- Model, machine, repository, and thread placement guide the launcher. Give each worker only its task and necessary context.
+- Before sending, remove copied conversation, launcher instructions, and unrelated assignments. Never prepend the full user prompt; quote exact wording only when explicitly requested.
+
+The worker does not see this conversation. State the objective, constraints, relevant skills/files, deliverable, validation, and expected report. Name the skills it must read rather than assuming your context carries over.
+
+For read-only jobs, explicitly say **no code changes, no Git writes, no database writes**. For implementation, specify the allowed scope and any Git or production restrictions. Ask for a concise report, including changed files and validation when relevant.
+
+## Verify and Report
+
+```bash
+scripts/permission-mode.sh <child-thread-id>
+```
+
+Confirm the child received the requested mode. If it differs or is unknown, report the mismatch rather than claiming a successful setup.
+
+Report the thread ID, title, project, provider/model/reasoning/tier, worktree yes/no, and read-only versus implementation scope. Then stop. Do not dump the prompt, open/focus the thread, poll, wait, or read work logs unless the user asks.
+
+## Blocked Workers and Lifecycle
+
+If bb reports a blocker, inspect it with `bb thread interactions list <id> --json`. Resolve routine input within the brief, and approve an action with `bb thread interactions approve <interactionId> <id>` only when it is authorized and safe. Ask the user about destructive actions, production access, unclear decisions, or work outside the brief. Do not monitor just to look for blockers.
+
+Use `bb-cli` for lifecycle commands. Archive only when the user asks, then stop the thread to release its runtime. Never delete without an explicit request, and do not use hiding as a substitute for archiving.
+
+=================== agent-orchestration/git-worktree
+---
+name: git-worktree
+description: Use Git worktrees to isolate parallel coding tasks. Use when setting up a task checkout, working in a shared repo, or managing existing worktrees.
+disable-model-invocation: true
+triggers: [user, model]
+---
+
+# Git Worktrees for Parallel Agents
+
+## Start here
+
+Detect where you are before editing:
+
+```bash
+[ "$(git rev-parse --path-format=absolute --git-dir)" = "$(git rev-parse --path-format=absolute --git-common-dir)" ] \
+  && echo "primary checkout" || echo "worktree"
+```
+
+- **Primary checkout** → create a task-named worktree, complete the setup below, and `cd` into it before editing.
+- **Worktree** (including one created by Cursor) → proceed with the task.
+
+## Working model
+
+Worktrees have separate working files and branches but share Git history, stashes, config, and refs.
+
+- **One task = one worktree = one agent session.** Never share a working directory between agents.
+- Keep the primary checkout on main, only for review, merging, and pushing.
+- Nothing auto-merges. The human reviews each diff before merging or discarding the worktree.
+- Keep task branches local and short-lived. Push only main unless the user explicitly asks to push a task branch.
+- Merge one worktree at a time. If main moved, rebase the task branch before merging.
+
+## Creating and removing
+
+```bash
+git worktree add ../myrepo-task-x          # new worktree + branch "myrepo-task-x"
+git worktree add ../fix-y -b fix-y main    # explicit branch off main
+git worktree list                          # see all worktrees
+git worktree remove ../myrepo-task-x       # delete when merged/abandoned
+git worktree prune                         # clean up stale registrations
+```
+
+A branch can be checked out in only one worktree, including main.
+
+In Cursor, use the Agents Window or `/worktree <task>`. `/apply-worktree` applies results to the main checkout; `/delete-worktree` discards them. `/best-of-n model1,model2 <task>` runs the same task in parallel worktrees, one per model. Cursor auto-deletes older worktrees, so preserve results promptly; pushing task branches still requires explicit approval.
+
+## Complete the setup
+
+A fresh worktree contains tracked files only. Bootstrap it before task work:
+
+1. **Env/secret files** — copy `.env`, `.env.local`, and similar files from the primary checkout. Never symlink them: edits would change the originals.
+2. **Dependencies** — install locally (`npm ci`, `pnpm install`, `uv sync`, `bundle install`). Never symlink `node_modules` from the primary checkout: bundlers such as Next.js/Turbopack reject paths outside the worktree. If it is a symlink, remove it with `rm -f node_modules` and install normally.
+3. **Databases and services** — choose shared or per-worktree state. For shared services, pin their identity to avoid duplicate instances and port conflicts. For shared Docker Compose services, pin the project name, for example with a top-level `name:`; otherwise each worktree's folder name creates a separate project. Copy or re-seed per-worktree state such as SQLite files.
+4. **Ports** — run dev/test servers and debuggers one at a time, or configure separate ports per worktree.
+5. **Generated files and caches** — rebuild gitignored output in the worktree (`npm run build`, codegen).
+6. **Git hooks** — `core.hooksPath` and `.git/config` are shared; verify hook scripts don't assume the primary checkout's path.
+
+## Automate setup
+
+In Cursor, `.cursor/worktrees.json` runs setup on creation (`$ROOT_WORKTREE_PATH` is the primary checkout):
+
+```json
+{
+  "setup-worktree": [
+    "npm ci",
+    "cp $ROOT_WORKTREE_PATH/.env.local .env.local"
+  ]
+}
+```
+
+Otherwise, put the checklist in `scripts/setup-worktree.sh` and run it first in each new worktree. Find the primary checkout from a worktree with:
+
+```bash
+dirname "$(git rev-parse --path-format=absolute --git-common-dir)"
+```
+
+## Merge and clean up
+
+```bash
+# from the primary checkout, after reviewing the worktree's diff:
+git merge --no-ff task-branch     # or: git merge --squash task-branch
+git worktree remove ../myrepo-task-x
+git branch -d task-branch
+```
+
+In Cursor, use `/apply-worktree`, then review and commit.
+
+- Delete merged worktrees to reclaim their files and dependencies.
+- Rebase or restart worktrees that have stalled for days.
+- Commit early and often. Deleting a worktree loses uncommitted work; commits remain in the shared repository.
+
+=================== thinking-and-docs/before-building
+---
+name: before-building
+description: Fire the moment the user proposes a build. Instantly surface the 1-3 consequential choices hidden in their idea. Can also be invoked with /before-building.
+disable-model-invocation: true
+triggers: [user, model]
+---
+
+Respond INSTANTLY, from the gut. Do NOT read files, search, or use any tool —
+your very next message is the answer, based only on what the user just said.
+List the 1-3 truly consequential choices hidden in their idea (fewer is better).
+For each: the options in a few words + your gut recommendation.
+Classics: one-off vs repeated later, few lines vs proper module, biggest thing
+it could break. Skip anything minor. Then stop and wait for the user's answers.
+
+=================== thinking-and-docs/4x4
+---
+name: 4x4
+description: 'Pull 16 fast decisions out of the user with 4 sets of 4 open questions, then present an implementation plan. Only for risky changes, large product decisions, or large refactors. Run when the user types /4x4. Agents may suggest it in one line but never start it on their own.'
+---
+
+# 4x4
+
+Get the user's judgment, taste, and decisions in 4 quick rounds. 16 open questions. A full run should take them 2–3 minutes.
+
+## The 4 sets
+
+These are defaults. Adapt their names and focus to pull the most judgment and taste out of the user for this topic.
+
+1. **Product** — what it does, who it's for, UI/UX, scope.
+2. **Software design** — architecture, data, boundaries, what to reuse or delete.
+3. **Practical** — execution order, rollout, what ships first.
+4. **Edge cases** — the 4 most likely ways this breaks or surprises users. Each question asks how to handle one.
+
+## Workflow
+
+1. **Load context fast.** Use what's already in the thread. Skim only the files and docs that matter (scopes, ADRs, the diff). No research, no subagents.
+2. **Pick the order.** Start with the set whose answers most change the others.
+3. **Pick 4 questions per set.** Choose the 4 decisions with the biggest impact that only the user can make. Never ask what the code, docs, or common sense already answer. Skip anything already decided.
+4. **Show one set at a time.** Never preview or list the other sets. Stop and wait. Show the next set only after the user answers.
+5. **Adapt.** Rewrite later sets based on earlier answers.
+6. **Present the plan.** After set 4, give plain step-by-step instructions to execute the work properly, built from the user's answers. Chat only. Then stop. Don't build or write docs until the user says go.
+
+## Message format
+
+```
+## Set 2/4 · Software design
+
+1. Where should X live?
+
+2. ...
+
+3. ...
+
+4. ...
+```
+
+Nothing else. No intro, no outro.
+
+## Rules
+
+- Open questions only. Never give options, picks, recommendations, or hints. The point is the user's own thinking.
+- One short sentence per question. Concrete, plain English, clear on first read.
+- No meta questions, like how to measure success or what to test first. Ask about the work itself.
+- Vague or skipped answer: move on and use your judgment.
+- If the user calls a question bad, replace it or drop it. Your call.
+- If an answer contradicts an ADR or scope, point it out in the plan.
+- If an answer opens a big new question, note it in the plan. Don't add a 5th question.
+
+=================== thinking-and-docs/decisions
+---
+name: decisions
+description: Ask the agent to list all choices it made during the current work that it is not confident of. Manual-only; the user must ask for it by name.
+disable-model-invocation: true
+triggers: [user, model]
+---
+
+While working on this, which important decisions / choices did you make, that you are not confident about? 
+
+Think about this deeply, reason about all the important decisions made, and think whether these decisions have any other great alternatives that we have not considered.
+
+DO NOT list out the choices / decisions where we already have the best possible solution.
+
+Only list out the decisions you are really unsure about.
+
+answer in short, in plain english. be very concise.
+
+=================== thinking-and-docs/stop-overthinking
+---
+name: stop-overthinking
+description: Manually-invoked skill that stops overthinking and forces a short, practical decision. Use only when the user explicitly invokes stop-overthinking.
+disable-model-invocation: true
+triggers: [user, model]
+---
+
+Stop overthinking and be practical.
+
+If there are any critical or serious issues, point them out. Otherwise, say we
+are good to proceed.
+
+Tell the user the next steps. Answer in short, plain English. Be very concise.
+Think like a practical entrepreneur would. No more overthinking for today.
+
+=================== ops-and-setup/risky-changes
+---
+name: risky-changes
+description: 'Verify assumptions before implementing large or risky changes to APIs, provider data, billing, pricing, quotas, or defaults. Use when a mistake could affect customers or the user asks if a change is safe to ship. Checks real-world impact beyond passing tests.'
+---
+
+# Risky Changes
+
+A filter once passed every test but disabled ~99% of the feature on live data. Tests check code correctness; research and live measurement check whether a change is useful.
+
+## When this applies
+
+Use for changes where being wrong is expensive or customer-visible:
+
+- Public API fields, filters, or response shaping
+- Dropping, transforming, or reordering upstream data
+- Billing, pricing, caps, or quotas
+- Defaults, thresholds, or provider request parameters
+- Unverified assumptions about external data or user behavior
+
+If unsure whether a change qualifies, apply this process.
+
+## 1. Identify assumptions
+
+List the assumptions the change depends on. Mark which have evidence and which are still unverified.
+
+## 2. Research before implementing
+
+Use available research tools and reliable sources. Investigate each distinct question separately, covering at least:
+
+- How do leading products handle this design decision?
+- What does real-world data look like: frequencies, shapes, and edge cases?
+- What do users or agents actually need?
+
+If evidence contradicts an assumption, reconsider the design before coding. If research is unavailable or inconclusive, state the gap; do not treat the assumption as verified. Do not ship while material assumptions remain unverified.
+
+## 3. Measure real behavior
+
+Run 10–20+ realistic cases against the real endpoint or provider:
+
+- Base cases on real usage; vary topics, parameters, languages, and edge conditions.
+- Define benchmarks per case: speed, quality, accuracy, and how often the new behavior occurs.
+- Use hard numbers where possible. For subjective quality, use blind, criteria-based judging.
+- Compare before and after when both can be measured.
+- Read-only production analysis also counts as measurement.
+
+Save the cases and results in the project's evals folder, e.g. `docs/evals/YYYY-MM-DD-<endpoint>-<focus>.md`. Create the folder if needed. Without this record, the change is not verified. Unit tests do not replace live measurement.
+
+## 4. Confirm product-owner approval before shipping
+
+Present decisions that affect what customers see or pay, with supporting research and measurements. Get the product owner's approval for those decisions; do not bury them in a plan or code default. Existing approval counts if it covers the actual behavior being shipped.
+
+## 5. Verify after deployment
+
+Within one day, measure the change on real traffic through read-only production analysis or a live sweep. Report results that differ from expectations immediately.
+
+=================== thinking-and-docs/ask-then-build
+---
+name: ask-then-build
+description: 'Clarify a feature, change, or refactor through questions, then write a build prompt for another agent. Use for /ask-then-build or requests to ask questions before producing an implementation prompt.'
+---
+
+Turn a feature idea into a build prompt for another agent, in two phases.
+
+## Phase 1 — Questions
+
+1. Identify the 3-6 most non-obvious open questions about the feature or
+   change: edge cases, where it lives in the UI, failure behavior, scope
+   boundaries, how it interacts with existing rules.
+2. Ask them ONE at a time. For each: the question, top options A-D, your
+   preferred pick with a one-line reason. Then stop and wait.
+   Use this exact layout. Put a blank line between EVERY block. Markdown
+   renderers (bb included) collapse single newlines into one paragraph, so
+   options written back-to-back render as one run-on blob.
+
+   **Question title?**
+
+   One line of context, if needed.
+
+   A. First option.
+
+   B. Second option.
+
+   C. Third option.
+
+   D. Fourth option.
+
+   My pick: A. One-line reason.
+
+   Never number questions as "1 of N" unless you truly know N. If the count
+   is open, keep it open and keep asking until you have the context you need.
+3. When the user answers, record the decision immediately — update the repo's
+   docs (product requirements, ADR, or README) if the project has them.
+4. If the user overrides an earlier documented decision, update the docs right
+   away and say what was superseded.
+
+## Phase 2 — Prompt
+
+After the last answer, deliver ONE concise paragraph prompt for another
+agent. It must include, in this order:
+
+1. Read-first files: the authoritative docs (AGENTS.md, requirements, ADRs).
+2. What to build: numbered implementation steps, concrete file-level where
+   useful.
+3. How to validate: build, lint, and a manual check with real data.
+4. Rules: don't commit, report back with files changed.
+
+## Style
+
+- Very concise, plain English, short sentences.
+- Never bundle questions. Never write the prompt before all answers are in.
+- Never put two options on one line. Always a blank line between A, B, C, D
+  and before "My pick".
+- Keep the prompt to a single paragraph — if it needs two, the scope is too
+  big; say so.

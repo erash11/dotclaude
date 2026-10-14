@@ -1,0 +1,163 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- go, and option (a) for Drive. for #2 I feel like we should keep these for now, assess there relevance after the other work is done.
+
+## Files Modified
+b7i5oh7sg.output, FILE-ORGANIZATION-PLAN.md, .gitignore, STATUS.md, run_task1.sh, drain_diff.py, run_reindex.sh, run_drive_diff.sh, 2026-10-14-file-organization-task1.md, README.md, PROGRAM.md, portfolio.json, 2026-10-14-file-organization-task2-3.md, project_drive-fuse-read-hang.md, MEMORY.md
+
+## Unresolved Errors
+- {"stdout":"drwxr-xr-x@   6 kristinarash  staff    192 Oct  5 08:08 _ARCHIVE\nlrwxr-xr-x@   1 kristinarash  staff    108 Sep 10 17:46 _DRIVE -> /Use...
+- {"stdout":"parses OK\n                parent = Path(rel).parent.name\n                match = by_parent_name.get(f\"{parent}/{base}\", \"\")\n     ...
+- {"stdout":"parses OK\ndiff-drive exit 143 Wed Oct 14 13:10:28 CDT 2026\ntask1 end Wed Oct 14 13:10:28 CDT 2026\n=== drive-diff\ndrive-diff start We...
+
+## Git
+pull, Add file organization plan (two layers, copy inventory, drain tasks)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Plan review fixes: park outside DEV, skip DexaProject, O(1) diff, path consumers
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Plan: add 99_UNSORTED (20k+ files) to the copy inventory
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Add drain_diff tool and Task 1 runner (file-organization plan)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Fix runner word-split; record Task 1 run in STATUS
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, drain_diff: add ~/.claude to canonical, atomic index write; reindex runner
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, drain_diff: parent/name match for NEWER flag; record local results, OneDrive placeholder finding
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Task 1 complete: names-only Drive diff, runners, logs; STATUS closeout
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, drain_diff: skip 99_UNSORTED from canonical; ignore drained from-*/ folders
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, STATUS: Task 2 local drain done, three copies parked
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Plan: Drive copies parked whole (_FROM_WORK_LAPTOP, OneDrive-Import); Backups is live, keep
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, diff, backup-manifest: drop twin checkouts DEV/Linda Projects and DEV/AppliedPerformance-Site (parked 2026-10-14); merge Linda note
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Twin checkouts parked (Linda Projects, AppliedPerformance-Site); 99_UNSORTED is filing work, not a copy
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, drain_diff: copy walks ignore SKIP_PREFIXES; skip 99_UNSORTED and 02_Raw_Tagging; STATUS afternoon closeout
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, data: point Website and Linda_Projects rows at surviving DEV folders (twin checkouts parked 2026-10-14)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, STATUS: registry dev_folder fix for parked twin checkouts
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Handoff: file organization Tasks 2-3 done; facts table for Eric's cluster picks
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, Plan: 99_UNSORTED count is an upper bound (02_Raw_Tagging excluded from index)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, memory: add drive-fuse-read-hang; index pointer
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ, MEMORY: Linda_Projects is the folder (twin parked 10-14); pointer to drive-fuse-read-hang
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Eb56G9gNeXPbG7JhSdVpQJ
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, global-memory/MEMORY.md
+
+## Skills Used
+superpowers:writing-plans, memory-write
+
+## Environment
+cwd: ~/.claude/global-memory
+model:claude-sonnet-5-5
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- type:text
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- … 35 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
