@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy all of ~/DEV to the Google Drive Cloud_Copy folder (one-way, never deletes).
+"""Copy all of ~/DEV to the Google Drive _MACHINE/Cloud_Copy folder (one-way, never deletes).
 
 Runs daily from launchd (com.keystone.clouddrivepush, 07:00 and 17:30) and can be run by hand.
 Builds the file list fresh each run, so new and changed files are picked up.
@@ -18,7 +18,7 @@ import sys
 
 DEV = os.path.expanduser("~/DEV")
 DEST = os.path.expanduser(
-    "~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/Cloud_Copy/DEV")
+    "~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/_MACHINE/Cloud_Copy/DEV")  # moved out of Primary 2026-10-14
 LOG = os.path.expanduser("~/.claude/scripts/logs/cloud-push.log")
 LIST = os.path.expanduser("~/.claude/scripts/logs/cloud-push-files0.bin")
 DB_EXT = (".duckdb", ".db", ".sqlite", ".sqlite3", ".db-wal", ".db-shm")

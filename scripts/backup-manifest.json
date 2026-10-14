@@ -19,7 +19,7 @@
    "note": "TRANSPORT ONLY - a USB flash stick used to carry the backup to the new Mac on 2026-08-04. Measured ~3 MB/s write; a nightly run would take over an hour and flash degrades under that workload. Never make this the recurring backup target. exFAT so macOS can read AND write it during the restore."
   },
   "drive": {
-   "root": "/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/Backups/Machine",
+   "root": "/Users/kristinarash/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/_MACHINE/Backups/Machine",
    "optional": false
   },
   "baylor": {

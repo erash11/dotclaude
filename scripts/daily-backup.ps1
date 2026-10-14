@@ -357,7 +357,7 @@ Sync-Repo "$U/.claude/skills"           'main'
 
 # --- 2a. Personal-context snapshots -> personal Google Drive (gmail) ---
 $GDrive = "$U/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive"
-$P = "$GDrive/Backups/Machine"
+$P = "$GDrive/_MACHINE/Backups/Machine"
 if (-not (Test-Path $GDrive)) {
     $Errors.Add('backup-target-offline:GoogleDrive')
     Log "TARGET $GDrive NOT MOUNTED - is Google Drive for Desktop running? Skipping personal snapshots."
@@ -572,9 +572,9 @@ if ($msExe -and -not $DryRun) {
 
 # --- 2d. Mirror the recovery guide to the cloud backup root ---
 if ((Test-Path $GDrive) -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
-    New-Item -ItemType Directory -Force -Path "$GDrive/Backups" | Out-Null
-    Copy-Item "$U/.claude/RESTORE.md" "$GDrive/Backups/RESTORE.md" -Force
-    Log "RESTORE.md mirrored to $GDrive/Backups/"
+    New-Item -ItemType Directory -Force -Path "$GDrive/_MACHINE/Backups" | Out-Null
+    Copy-Item "$U/.claude/RESTORE.md" "$GDrive/_MACHINE/Backups/RESTORE.md" -Force
+    Log "RESTORE.md mirrored to $GDrive/_MACHINE/Backups/"
 }
 
 # --- 3. State + escalation ---
