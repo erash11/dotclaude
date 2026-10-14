@@ -1,0 +1,171 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Unresolved Errors
+- {"stdout":"=================== claim--lifting-belt-cues-back-position-by-proprioception-but-does-not-keep-the-back-flat.md\n---\ntype: library-entr...
+- {"stdout":"=================== framework--machine-safety-checklist-hazards-and-countermeasures.md\n\n# Machine Training Safety: A 24-Point Checklis...
+- {"stdout":"## ./strength-and-conditioning/philosophy-and-training-system--vermeil/heuristic--limit-reliance-on-belts-wraps-lifting-suits-and-cushio...
+- {"stdout":"**What it is** — Drawing on neuroplasticity research (Rosenzweig, Diamond, Greenough,\ncortical reorganization in amputees and stroke pa...
+- {"stdout":"=== framework--factors-that-determine-muscular-protection-of-a-joint.md\n     1\t\n     2\t# What Decides Whether Muscles Protect a Join...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import fitz\nModuleNotFoundError: No module named 'fit...
+- {"stdout":"######## framework--bauer-kasnacheev-energy-and-plastic-flows-fig-1.md\n    13\t\n    14\t# Long-Term Adaptation Runs on Two Linked Func...
+- {"stdout":"######## claim--strength-hypertrophy-dilutes-mitochondria-and-speeds-endurance-fatigue.md\n\n# Strength-Training Hypertrophy Without Mat...
+- {"stdout":"Traceback (most recent call last):\n  File \"/Users/kristinarash/DEV/Flint/scripts/lint_library.py\", line 10, in <module>\n    from vau...
+- {"stdout":"ugrep: error: error at position 85\nstage|special stage|ad(v|)vanc.*morpho\nempty (sub)expression___/\n\n\n**When NOT to apply** — No sa...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import fitz\nModuleNotFoundError: No module named 'fit...
+- {"stdout":"######## claim--yakovlev-glycogen-supercompensation-wave-fig-6.md\n     1\t---\n     2\ttype: library-entry\n     3\tkind: claim\n     4...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import fitz\nModuleNotFoundError: No module named 'fit...
+- {"stdout":"=== framework--viru-general-adaptation-mechanism-specific-homeostatic-vs-general-fig-2\nkind: framework\nchapter: \"9.1\"\ntopic: genera...
+- {"stdout":"Traceback (most recent call last):\n  File \"/Users/kristinarash/DEV/Flint/scripts/lint_library.py\", line 10, in <module>\n    from vau...
+- {"stdout":"     190 review_supertraining_ch9c_opus.md\n# Review: Supertraining 6th ed, batch 9c (9.1, end: §1.10, Conclusions, Further perspectives...
+- {"stdout":"# Review: Supertraining 6th ed, batch 9c (9.1, end: §1.10, Conclusions, Further perspectives)\n\n- Reviewer: Claude Opus 5.5, independen...
+- {"stdout":"######## framework--shock-method-and-plyometric-terminology.md\nchapter: \"1.6\"\n# The Shock Method (Original Russian \"Udarnyi Metod\"...
+- {"stdout":"claim--eccentric-strength-and-energetics-vs-concentric.md\nclaim--reaction-time-mostly-fixed-movement-time-trainable.md\nframework--eigh...
+- {"stdout":"lint_library.py\nTraceback (most recent call last):\n  File \"/Users/kristinarash/DEV/Flint/scripts/lint_library.py\", line 10, in <modu...
+- {"stdout":"error: failed to push some refs to 'https://github.com/erash11/Flint.git'\n3a0f799 Flint STATUS: Supertraining Ch8 and Ch9 promoted to v...
+- {"stdout":"=== VAULT 69-73\n\n**Related** — [[heuristic--head-and-eye-position-cues-for-barbell-lifts]] (the preceding\nsubsection, same overall po...
+- {"stdout":"=== review_supertraining_ch8a_opus.md\n## Missing ideas (content on PDF 432-443 with no entry)\n\n1. **Rehabilitation must follow the sa...
+- {"stdout":"Traceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import fitz; d=fitz.open('books/supertraining-6th-expa...
+- {"stdout":"# Use Touch and Other Kinaesthetic Cues to Teach Positions, and Vary Them So Athletes Do Not Habituate\n\n**What it is** — Under \"Kinae...
+- {"stdout":"=== framework--future-adaptation-management-optimal-regimes-nonspecific-methods-and-selection.md\n6:chapter: \"9.1\"\n14:# Directing Ada...
+- {"stdout":"=================== heuristic--choose-exercises-by-load-features-not-only-by-muscle-group.md\n---\ntype: library-entry\nkind: heuristic\...
+- {"stdout":"=================== heuristic--choose-cross-training-by-fitness-qualities-and-phase-not-sport-label.md\n3f8b5d0 staging: Ch9 Sol 6.1 fal...
+- {"stdout":"8b-5:\nugrep: error: error at position 92\n\\n\\x80-\\xbf][\\x80-\\xbf]*){0,120}\n   exceeds complexity limits___/\n\n\n\"be aware of an...
+
+## Git
+diff, log, Flint STATUS: Supertraining Ch8 complete through gate (97 entries, staging)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, pull, status, Flint STATUS: Supertraining Ch9 complete through gate (64 entries, staging)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, library: Supertraining Ch9 entries (64) promoted from Flint; Farfel downgraded to untested
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, library: Supertraining _book index, Ch9 rows added (64 entries)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, Flint STATUS: Supertraining Ch8 and Ch9 promoted to vault
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, branch, library: Supertraining back-links to Ch9 merged from Flint staging (121 files; placeholder replaced)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, Flint STATUS: Ch9 back-link merge into vault (497b885)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, library: Supertraining missing-ideas follow-up (8 new entries, 11 cross-links) promoted from Flint
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, library: Supertraining _book index, follow-up row added
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, Flint staging: follow-up fixer edits and LDTE locator fixes (staging record)
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, Flint STATUS: Supertraining close-out
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, mac closeout 2026-10-13: session transcripts
+
+Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019io5KiUwMW4jf7JCgYianE, commit
+
+## Subagent Tasks
+- [completed] You are the FIXER for gate batch 8d of Flint's ingest of Supertraining (6th ed.). Apply the reviewer's re...
+- [completed] You are the WRITER for gate batch 9a of Flint's ingest of the Supertraining (6th ed.) Addendum. Your batc...
+- [completed] You are the independent REVIEWER for gate batch 9a of Flint's ingest of the Supertraining (6th ed.) Adden...
+- [completed] You are the FIXER for gate batch 9a of Flint's ingest of the Supertraining (6th ed.) Addendum, section 9....
+- [completed] You are the WRITER for gate batch 9b of Flint's ingest of the Supertraining (6th ed.) Addendum. Your batc...
+- [completed] You are the independent REVIEWER for gate batch 9b of Flint's ingest of the Supertraining (6th ed.) Adden...
+- [completed] You are the FIXER for gate batch 9b of Flint's ingest of the Supertraining (6th ed.) Addendum, section 9....
+- [completed] You are the WRITER for gate batch 9c of Flint's ingest of the Supertraining (6th ed.) Addendum. Your batc...
+- [completed] You are the independent REVIEWER for gate batch 9c of Flint's ingest of the Supertraining (6th ed.) Adden...
+- [completed] You are the FIXER for gate batch 9c of Flint's ingest of the Supertraining (6th ed.) Addendum, section 9....
+- [completed] You are the WRITER for gate batch 9d of Flint's ingest of the Supertraining (6th ed.) Addendum. Your batc...
+- [completed] You are the independent REVIEWER for gate batch 9d of Flint's ingest of the Supertraining (6th ed.) Adden...
+- [completed] You are the FIXER for gate batch 9d of Flint's ingest of the Supertraining (6th ed.) Addendum, section 9....
+- [completed] You are the WRITER for the missing-ideas follow-up of Flint's ingest of Supertraining (6th ed.), Chapters...
+- [completed] You are the independent REVIEWER for the missing-ideas follow-up of Flint's ingest of Supertraining (6th ...
+- [completed] You are the FIXER for the missing-ideas follow-up of Flint's ingest of Supertraining (6th ed.), Chapters ...
+
+## Environment
+cwd: /Users/kristinarash/DEV
+export FLINT_VAULT=*** && python3 scripts/promote_to_vault.py strength-and-conditioning/supertraining--verkhoshansky > "$TMPDIR/dry_st.txt" 2>&1; head -3 "$TMPDIR/dry_st.txt"; echo "..."; grep -c "^   changed:" "$TMPDIR/dry_st.txt"; grep "^== " "$TMPDIR/dry_st.txt"; echo "=== last lines"; tail -3 "$TMPDIR/dry_st.txt"
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- … 412 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

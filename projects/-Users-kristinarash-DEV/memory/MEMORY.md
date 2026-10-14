@@ -73,3 +73,4 @@ Never put memory content here — the file itself holds the facts.
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
 - [Cloud copy approval](project_cloud-copy-approval.md) — the daily all-DEV copy to personal Google Drive; athlete data approved; DBs and secrets stay local
+- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — scheduled cloud-push fails "Operation not permitted"; run by hand
