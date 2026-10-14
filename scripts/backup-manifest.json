@@ -336,18 +336,7 @@
    "captureOrphans": false,
    "captureWorkingTree": false
   },
-  {
-   "path": "DEV/BodyWeightWebApp",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/BodyWeightWebApp.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/BookInbox",
    "class": "personal",
@@ -702,30 +691,8 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/JumpReporting",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/JumpReporting.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
-   "path": "DEV/Jump_Dash",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/Jump_Dash.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
+
   {
    "path": "DEV/KeystoneOS",
    "class": "personal",
@@ -1064,30 +1031,8 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/SoftwareTechDocs",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/SoftwareTechDocs.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
-   "path": "DEV/SoftwareTech_Mgmt_Framework",
-   "class": "institutional",
-   "isRepo": false,
-   "remote": null,
-   "destinations": [
-    "ssd",
-    "baylor"
-   ],
-   "captureOrphans": false,
-   "captureWorkingTree": false
-  },
+
+
   {
    "path": "DEV/SpecialRequests",
    "class": "institutional",
@@ -1252,31 +1197,8 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/VALD_analytics",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/VALD_analytics.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
-   "path": "DEV/ValdReport",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/ValdReport.git",
-   "destinations": [
-    "ssd",
-    "github",
-    "baylor"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
+
   {
    "path": "DEV/Volleyball_GRID",
    "class": "institutional",
@@ -1289,18 +1211,7 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/WashingtonWebPage",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/WashingtonWebPage.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/Website",
    "class": "personal",
@@ -1408,18 +1319,7 @@
    "captureOrphans": false,
    "captureWorkingTree": false
   },
-  {
-   "path": "DEV/cmj-norms-app",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/cmj-norms-app.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/cmj-traffic-light",
    "class": "institutional",
@@ -1512,18 +1412,7 @@
    "captureOrphans": false,
    "captureWorkingTree": false
   },
-  {
-   "path": "DEV/shiny-vertical-jump",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/shiny-vertical-jump.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/skill-audit-2026-09-05",
    "class": "personal",
@@ -1766,18 +1655,7 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/BodWeightWeb",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/BodWeightWeb.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/claude-global-memory",
    "class": "personal",
