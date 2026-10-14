@@ -1776,6 +1776,66 @@
     ],
     "captureOrphans": true,
     "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/2026-3-18_BodyWeightNorms",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/2026-3-18_BodyWeightNorms.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/BodWeightWeb",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/BodWeightWeb.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/claude-global-memory",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/claude-global-memory.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/FootballWeightTargetTool",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/FootballWeightTargetTool.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/Linda_Projects",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Linda_Projects.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   }
  ]
 }
