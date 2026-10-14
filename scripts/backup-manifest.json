@@ -217,18 +217,7 @@
    "captureOrphans": true,
    "captureWorkingTree": true
   },
-  {
-   "path": "DEV/AppliedPerformance-Site",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/AppliedPerformance-Site.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
+
   {
    "path": "DEV/AppliedUtilization",
    "class": "institutional",
@@ -796,19 +785,7 @@
    "captureOrphans": false,
    "captureWorkingTree": false
   },
-  {
-   "path": "DEV/Linda Projects",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/Linda_Projects.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true,
-   "note": "Holds I-983 material: 02_SupervisorPlan_I983_CONFIDENTIAL.md, source/I983_page3.png, source/I983_page5.png. The 2026-08-19 entry routed this SSD-only and deliberately off github. Superseded: on 2026-09-09 the folder was put under git and pushed to the PRIVATE repo erash11/Linda_Projects (commit 031f96a), and on 2026-09-19 Eric confirmed private GitHub is acceptable and asked for this entry to match reality. KEEP THAT REPO PRIVATE. Folder name uses a space, the GitHub repo uses an underscore; that mismatch made /dev-sync clone a redundant DEV/Linda_Projects on 2026-09-19. Class left as 'personal' - no script reads it; Eric has still not classified it."
-  },
+
   {
    "path": "DEV/May_Meetings_Research",
    "class": "personal",
@@ -1835,7 +1812,8 @@
     "github"
    ],
    "captureOrphans": true,
-   "captureWorkingTree": true
+   "captureWorkingTree": true,
+   "note": "2026-10-14: the space-named twin DEV/Linda Projects was parked at ~/_PARKED_COPIES/DEV-twin-checkouts (identical content, HEAD 031f96a). Its entry's history: Holds I-983 material: 02_SupervisorPlan_I983_CONFIDENTIAL.md, source/I983_page3.png, source/I983_page5.png. The 2026-08-19 entry routed this SSD-only and deliberately off github. Superseded: on 2026-09-09 the folder was put under git and pushed to the PRIVATE repo erash11/Linda_Projects (commit 031f96a), and on 2026-09-19 Eric confirmed private GitHub is acceptable and asked for this entry to match reality. KEEP THAT REPO PRIVATE. Folder name uses a space, the GitHub repo uses an underscore; that mismatch made /dev-sync clone a redundant DEV/Linda_Projects on 2026-09-19. Class left as 'personal' - no script reads it; Eric has still not classified it."
   }
  ]
 }
