@@ -82,3 +82,7 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 
 `remarkable_extract.py` — USB-first with a `--cloud` fallback; Vision API key lives in
 `.env`.
+
+## Cloudroom cloud automations (since 2026-10-14)
+
+- **skills-health-check** — Cloudroom cloud automation `6d0487ca-3523-4aae-a5cb-84503972fcdb`, daily 07:00 America/Chicago, runs with the Mac off. Re-prompts cloud thread `thr_xq2fh4m8p3` (project skills, Opus 5.5 medium). Read-only: pulls main, checks SKILL.md frontmatter and dead paths, replies "OK <date> - no issues" or 3 sentences. Pause: `room-cli automation pause 6d0487ca-3523-4aae-a5cb-84503972fcdb`. Runs: `room-cli automation runs 6d0487ca-3523-4aae-a5cb-84503972fcdb`.
