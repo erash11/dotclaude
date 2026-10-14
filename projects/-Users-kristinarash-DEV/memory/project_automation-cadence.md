@@ -86,3 +86,4 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 ## Cloudroom cloud automations (since 2026-10-14)
 
 - **skills-health-check** — Cloudroom cloud automation `6d0487ca-3523-4aae-a5cb-84503972fcdb`, daily 07:00 America/Chicago, runs with the Mac off. Re-prompts cloud thread `thr_xq2fh4m8p3` (project skills, Opus 5.5 medium). Read-only: pulls main, checks SKILL.md frontmatter and dead paths, replies "OK <date> - no issues" or 3 sentences. Pause: `room-cli automation pause 6d0487ca-3523-4aae-a5cb-84503972fcdb`. Runs: `room-cli automation runs 6d0487ca-3523-4aae-a5cb-84503972fcdb`.
+- **drive-cloud-copy** — Cloudroom LOCAL script automation `auto_xeoiqyfly1q` (project DEV `proj_494djs26ru`), 18:00 and 21:00 America/Chicago, no model. Runs `~/.claude/scripts/cloud-push.py`; replaces the failing launchd `com.keystone.clouddrivepush`. Needs the Cloudroom app open; max script timeout is 15 min.
