@@ -249,6 +249,12 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
 
 function Snapshot($src, $dst, [string[]]$extraXD, [string[]]$extraArgs = @()) {
     if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
+    # Drive targets live under _MACHINE (2026-10-14). If the mount has not refreshed and cannot see that
+    # folder, rsync would mkdir a SECOND _MACHINE on Drive. Skip and flag instead.
+    if ($GDrive -and $dst.StartsWith("$GDrive/") -and -not (Test-Path "$GDrive/_MACHINE")) {
+        $Errors.Add('backup-target-offline:GoogleDrive/_MACHINE')
+        Log "SNAP skip (Drive _MACHINE not visible on the mount yet): $dst"; return
+    }
     $xd = @('node_modules', '.venv', '__pycache__', '.git', 'cache', 'tmp') + $extraXD
     $ok = Invoke-Rsync $src $dst $xd @() $extraArgs
     if ($ok -ne $true) {
@@ -571,7 +577,7 @@ if ($msExe -and -not $DryRun) {
 } elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch not found" }
 
 # --- 2d. Mirror the recovery guide to the cloud backup root ---
-if ((Test-Path $GDrive) -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
+if ((Test-Path "$GDrive/_MACHINE") -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
     New-Item -ItemType Directory -Force -Path "$GDrive/_MACHINE/Backups" | Out-Null
     Copy-Item "$U/.claude/RESTORE.md" "$GDrive/_MACHINE/Backups/RESTORE.md" -Force
     Log "RESTORE.md mirrored to $GDrive/_MACHINE/Backups/"
