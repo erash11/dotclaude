@@ -74,4 +74,4 @@ Never put memory content here — the file itself holds the facts.
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
 - [Cloud copy approval](project_cloud-copy-approval.md) — daily all-DEV copy to Drive; cloud servers/schedulers approved 10-14; DBs, secrets, Dexa stay local
-- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push fails under launchd; now a Cloudroom script automation
+- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push fails under launchd; run by hand until the VPS
