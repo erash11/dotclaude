@@ -1,6 +1,7 @@
 # STATUS
 
 ## Current state
+- 2026-10-16 (BayCap closeout maintenance): Preserved the existing `opus[1m]` settings change. Live `projects/` histories remain local, including pre-existing deletions and active transcript changes; do not publish them while the session-log GitHub decision is unresolved. Backup failures remain logged (Drive mount and unmanaged Cloudroom_Learning); no risky repair attempted.
 - 2026-10-12 (closeout 2): backup error fixed. `DEV/house-model` was missing from `scripts/backup-manifest.json` (default-deny). Declared it, commit `7e5bbaf`, pushed. Uncommitted and not from this session: `scripts/cloud-push.py` (new 17:58, needs an owner decision), deleted session transcripts (`projects/…jsonl`), and Tier A memory `MEMORY.md` plus `feedback_no-baylor-onedrive.md`. Left as they are.
 - 2026-10-12: Closeout saved live session-log changes. House-model setup and week 7 reports are pushed. One compiler flush hit its two-turn limit at 07:31; a different save passed at 07:31:52. The error log was kept. Details: `global-memory/handoffs/2026-10-12-house-model-closeout.md`.
 - 2026-10-11 (Mac, stack-doctor 20:10): 12:09 backup failed `memsearch-index:full-set` (lock collision,

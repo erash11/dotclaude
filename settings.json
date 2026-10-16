@@ -140,7 +140,7 @@
       "/Users/kristinarash/DEV"
     ]
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "skillOverrides": {
     "anthropic-skills:articulation-skill": "off",
     "anthropic-skills:closeout": "off",
