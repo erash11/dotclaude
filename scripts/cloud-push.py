@@ -24,7 +24,7 @@ LIST = os.path.expanduser("~/.claude/scripts/logs/cloud-push-files0.bin")
 DB_EXT = (".duckdb", ".db", ".sqlite", ".sqlite3", ".db-wal", ".db-shm")
 SECRET_PREFIX = (".env",)
 SECRET_PARTS = ("credentials", "secrets", "id_rsa", ".pem", ".key")
-REGEN_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next", "printing-press-library"}
+REGEN_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next", ".build", "printing-press-library"}
 JUNK = {".DS_Store"}
 
 

@@ -34,11 +34,12 @@ external service. A folder with a `CLAUDE.md` saying "local only" is in this cla
 
 Scripts write to Drive `_MACHINE/`. Humans browse `00_Primary_Storage_Drive/`. Nothing lives in both.
 
-- `_MACHINE/Cloud_Copy/DEV` — one-way mirror of `~/DEV`, minus databases and secrets.
+- `_MACHINE/Cloud_Copy/DEV` — one-way mirror of `~/DEV`, minus databases, secrets, and regenerable/catalog
+  caches (`printing-press-library`, `graphify-out/cache`, `.build`, `node_modules`, `.venv`, `__pycache__`).
   Written by `~/.claude/scripts/cloud-push.py` (07:00 and 17:30).
-- `_MACHINE/Backups/Machine` — nightly snapshots of `~/.claude/projects`, Codex, Gemini, LaunchAgents
-  and repo data git does not carry. Written by `~/.claude/scripts/daily-backup.ps1` from
-  `~/.claude/scripts/backup-manifest.json`.
+- `_MACHINE/Backups/Machine` — nightly `.tgz` snapshots of `~/.claude/projects`, Codex, Gemini, and LaunchAgents
+  uploaded directly by `gws` API (`daily-backup.ps1` `Snapshot-Gws`), plus SSD captures of repo data git does not
+  carry from `~/.claude/scripts/backup-manifest.json`.
 - External SSD `CRASHBOX` — second nightly copy when it is plugged in.
 
 Read a backup to restore. Edit only the true copy. To add a path to the backups, add it to
@@ -48,7 +49,7 @@ Read a backup to restore. Edit only the true copy. To add a path to the backups,
 
 - Read, list, move, and upload through the API: the `gws` CLI (`gws drive files …`), or the Drive MCP.
   Moves keep file IDs; use `gws drive files update` with `addParents`/`removeParents`.
-- The mount (`~/Library/CloudStorage/GoogleDrive-…`) is for Eric and for the backup scripts. Agent
+- The mount (`~/Library/CloudStorage/GoogleDrive-…`) is for Eric and for `cloud-push.py`. Agent
   reads through it can hang, and its view can lag the server by days. Before trusting the mount,
   compare its folder list with `gws drive files list`.
 - `gws --upload` only takes a path inside the current directory: `cd` to the file's folder first.
@@ -66,10 +67,12 @@ these, file it by the table above in the same session.
 
 ## Known gaps (2026-10-16)
 
-- The Mac's Drive mount went stale about 10-06. On 10-16 it showed `_MACHINE` but not `_MACHINE/Backups`
-  (still listed at the root). The mount is current when `ls ".../My Drive/_MACHINE"` lists `Backups` and the
-  root no longer does. Until then daily-backup skips Drive and logs `backup-target-offline:GoogleDrive/_MACHINE`.
-  A one-off copy was uploaded by API to `_MACHINE/Backups/gws-upload-2026-10-16/`.
+- The Mac's Drive mount went stale because DriveFS was choked on 68,000+ small files in
+  `_MACHINE/Cloud_Copy/DEV` (`printing-press-library`, `graphify-out/cache`, leftover `node_modules`).
+  Those folders were trashed on Drive via `gws` and excluded in `cloud-push.py` (cutting the file count
+  from 104,945 to ~33,735), and `daily-backup.ps1` now uploads its Drive `.tgz` snapshots, receipt, and
+  `RESTORE.md` directly via the `gws` API to `_MACHINE/Backups/Machine`, so a lagging local mount can
+  never block nightly backups.
 - `cloud-push.py` fails under launchd ("Operation not permitted"); it works when run by hand.
 - Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.

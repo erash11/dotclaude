@@ -247,6 +247,96 @@ function Invoke-Rsync($src, $dst, [string[]]$excludeDirs, [string[]]$excludeFile
     return ($code -eq 0)
 }
 
+$GwsExe = @('/opt/homebrew/bin/gws', '/usr/local/bin/gws') | Where-Object { Test-Path $_ } | Select-Object -First 1
+if (-not $GwsExe) { $GwsExe = (Get-Command gws -ErrorAction SilentlyContinue).Source }
+$DriveBackupsId  = '1uQrhPOPSrgBnR4bzH51xdw4Fd9v-GM0Q' # _MACHINE/Backups
+$DriveMachineId  = '1ALag3z9Ew5ihBZKjt_1yZzsNpX-K4UJn' # _MACHINE/Backups/Machine
+$DriveReceiptsId = '1uur-TnO4LMD91yYiPatTBb6DpnlyP89U' # _MACHINE/Backups/Machine/_receipts
+$DriveRestoreId  = '1yeDWZNXG-nR3RzmyCPEuEiW-07nYBAkf' # _MACHINE/Backups/RESTORE.md
+
+function Invoke-GwsJson([string[]]$gwsArgs) {
+    $out = & $GwsExe @gwsArgs 2>&1
+    $code = $LASTEXITCODE
+    $jsonLines = @($out | Where-Object { "$_" -notmatch '^Using keyring backend:' })
+    $text = ($jsonLines -join "`n").Trim()
+    if ($code -ne 0 -or -not $text) { return $null }
+    try { return ($text | ConvertFrom-Json) } catch { return $null }
+}
+
+function Snapshot-Gws($src, $archiveName, [string[]]$extraXD = @()) {
+    if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
+    if ($DryRun) {
+        Log "SNAP-GWS $src -> _MACHINE/Backups/Machine/$archiveName : [dry-run] would archive and upload via gws"
+        $Results.Add(@{ kind='snapshot'; name=$archiveName; status='OK' })
+        return
+    }
+    if (-not $GwsExe) {
+        $Errors.Add("snapshot:$archiveName")
+        Log "SNAP-GWS $src -> $archiveName : FAILED (gws binary not found)"
+        return
+    }
+    $tmpDir = Join-Path ([IO.Path]::GetTempPath()) "gws-snap-$([guid]::NewGuid().ToString('N'))"
+    New-Item -ItemType Directory -Force -Path $tmpDir | Out-Null
+    try {
+        $xd = @('node_modules', '.venv', '__pycache__', '.git', 'cache', 'tmp') + $extraXD
+        $tarArgs = @('-czf', "$tmpDir/$archiveName")
+        foreach ($d in $xd) { $tarArgs += "--exclude=$d" }
+        $tarArgs += @('-C', (Split-Path $src -Parent), (Split-Path $src -Leaf))
+        & /usr/bin/tar @tarArgs 2>$null
+        if (-not (Test-Path "$tmpDir/$archiveName")) {
+            $Errors.Add("snapshot:$archiveName")
+            Log "SNAP-GWS $src -> $archiveName : FAILED (tar archive not created)"
+            return
+        }
+        Push-Location $tmpDir
+        try {
+            $q = "name = '$archiveName' and '$DriveMachineId' in parents and trashed = false"
+            $params = @{ q = $q; fields = 'files(id,name)' } | ConvertTo-Json -Compress
+            $listObj = Invoke-GwsJson @('drive', 'files', 'list', '--params', $params)
+            $existingId = if ($listObj -and $listObj.files -and $listObj.files.Count -gt 0) { $listObj.files[0].id } else { $null }
+            if ($existingId) {
+                $upParams = @{ fileId = $existingId; fields = 'id,name,size' } | ConvertTo-Json -Compress
+                $resObj = Invoke-GwsJson @('drive', 'files', 'update', '--params', $upParams, '--upload', "./$archiveName")
+            } else {
+                $resObj = Invoke-GwsJson @('drive', '+upload', "./$archiveName", '--parent', $DriveMachineId)
+            }
+            if ($resObj -and $resObj.id) {
+                Log "SNAP-GWS $src -> _MACHINE/Backups/Machine/$archiveName : OK (id=$($resObj.id))"
+                $Results.Add(@{ kind='snapshot'; name=$archiveName; status='OK' })
+            } else {
+                $Errors.Add("snapshot:$archiveName")
+                Log "SNAP-GWS $src -> $archiveName : FAILED (gws upload failed)"
+            }
+        } finally {
+            Pop-Location
+        }
+    } finally {
+        Remove-Item -LiteralPath $tmpDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+
+function Write-DriveReceiptGws($runId) {
+    if ($DryRun) { return $true }
+    if (-not $GwsExe) { return $false }
+    $tmpDir = Join-Path ([IO.Path]::GetTempPath()) "gws-rcpt-$([guid]::NewGuid().ToString('N'))"
+    New-Item -ItemType Directory -Force -Path $tmpDir | Out-Null
+    try {
+        $fname = "run-$runId.txt"
+        Set-Content -LiteralPath (Join-Path $tmpDir $fname) -Value "run=$runId written=$(Get-Date -Format 'o') host=$(hostname)" -Encoding UTF8
+        Push-Location $tmpDir
+        try {
+            $resObj = Invoke-GwsJson @('drive', '+upload', "./$fname", '--parent', $DriveReceiptsId)
+            return [bool]($resObj -and $resObj.id)
+        } finally {
+            Pop-Location
+        }
+    } catch {
+        return $false
+    } finally {
+        Remove-Item -LiteralPath $tmpDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+
 function Snapshot($src, $dst, [string[]]$extraXD, [string[]]$extraArgs = @()) {
     if (-not (Test-Path $src)) { Log "SNAP skip (missing): $src"; return }
     # Drive targets live under _MACHINE/Backups (2026-10-14). If the mount has not refreshed and cannot see
@@ -268,7 +358,7 @@ function Snapshot($src, $dst, [string[]]$extraXD, [string[]]$extraArgs = @()) {
 }
 
 function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
-    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', 'dist', '.pytest_cache') + $CredDenyDirs + $extraXD
+    $xd = @('node_modules', '.venv', 'venv', '__pycache__', '.next', '.build', 'dist', '.pytest_cache') + $CredDenyDirs + $extraXD
     $ok = Invoke-Rsync $src $dst $xd $CredDenyFiles
     if ($null -eq $ok) { return $false }
     return $ok
@@ -277,7 +367,7 @@ function Snapshot-Additive($src, $dst, [string[]]$extraXD) {
 # Capture what git will never carry. Authoritative source is git itself, not a
 # path regex - an approximated .gitignore will drift from the real rules.
 function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
-    $skipRe = '(^|/)(node_modules|\.venv|venv|__pycache__|\.next|dist|\.pytest_cache)(/|$)' + '|' + $CredDenyRe
+    $skipRe = '(^|/)(node_modules|\.venv|venv|__pycache__|\.next|\.build|dist|\.pytest_cache)(/|$)' + '|' + $CredDenyRe
     $copied = 0
     $denied = 0
 
@@ -362,30 +452,17 @@ Sync-Repo "$U/.claude/global-memory"    'main'
 Sync-Repo "$U/.claude"                  'main'
 Sync-Repo "$U/.claude/skills"           'main'
 
-# --- 2a. Personal-context snapshots -> personal Google Drive (gmail) ---
+# --- 2a. Personal-context snapshots -> personal Google Drive via gws API ---
+# Uploaded directly as .tgz archives to _MACHINE/Backups/Machine (1ALag3z9Ew5ihBZKjt_1yZzsNpX-K4UJn)
+# via gws API so a stale or wedged CloudStorage FUSE mount can never block nightly backups.
 $GDrive = "$U/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive"
-$P = "$GDrive/_MACHINE/Backups/Machine"
-if (-not (Test-Path $GDrive)) {
-    $Errors.Add('backup-target-offline:GoogleDrive')
-    Log "TARGET $GDrive NOT MOUNTED - is Google Drive for Desktop running? Skipping personal snapshots."
-}
-Snapshot "$U/.claude/projects"  "$P/claude-projects"  @('worktrees')
-Snapshot "$U/.codex/memories"   "$P/codex/memories"   @()
-Snapshot "$U/.codex/sessions"   "$P/codex/sessions"   @()
-Snapshot "$U/.codex/agents"     "$P/codex/agents"     @()
-# --checksum here, NOT elsewhere. --modify-window=5 (see Invoke-Rsync) makes rsync's
-# quick-check tolerate a 5s mtime difference, which is safe for append-only logs: any
-# real change moves their size too. SQLite is the exception - it updates rows inside
-# EXISTING pages, so content changes while size stays byte-identical. A write landing
-# within 5s of the dest's (Drive-rounded) mtime would be skipped, and skipped forever
-# after, since neither side changes again. --checksum compares content and is immune to
-# both the rounding and the same-size case. Cheap: codex-dev.db is ~224KB.
-Snapshot "$U/.codex/sqlite"     "$P/codex/sqlite"     @() @('--checksum')
-Snapshot "$U/.gemini"           "$P/gemini"           @('antigravity_browser_profile')
-# launchd job definitions. Nothing else on this machine holds them: not a git repo, and
-# until 2026-09-19 not in the manifest either, so a disk loss took every schedule with it
-# even though the scripts survived in dotclaude.
-Snapshot "$U/Library/LaunchAgents" "$P/launchagents"   @()
+Snapshot-Gws "$U/.claude/projects"      'claude-projects.tgz'  @('worktrees')
+Snapshot-Gws "$U/.codex/memories"       'codex-memories.tgz'   @()
+Snapshot-Gws "$U/.codex/sessions"       'codex-sessions.tgz'   @()
+Snapshot-Gws "$U/.codex/agents"         'codex-agents.tgz'     @()
+Snapshot-Gws "$U/.codex/sqlite"         'codex-sqlite.tgz'     @()
+Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile')
+Snapshot-Gws "$U/Library/LaunchAgents"  'launchagents.tgz'     @()
 
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null
@@ -471,13 +548,14 @@ if ($Manifest) {
     }
 
     # Receipts: prove each destination accepted a write in THIS run.
-    foreach ($dn in @('ssd', 'drive')) {
-        $root = $Manifest.destinations.$dn.root
-        if (-not $root -or -not (Test-Path $root)) { continue }
-        if ($DryRun) { Log "RECEIPT $dn : skipped (dry run wrote nothing to verify)"; continue }
-        if (Write-Receipt $root $RunId) { Log "RECEIPT $dn : verified run=$RunId" }
-        else { $Errors.Add("receipt-failed:$dn"); Log "RECEIPT $dn : FAILED - destination did not read back the sentinel" }
+    if ($SsdRoot -and (Test-Path $SsdRoot)) {
+        if ($DryRun) { Log "RECEIPT ssd : skipped (dry run wrote nothing to verify)" }
+        elseif (Write-Receipt $SsdRoot $RunId) { Log "RECEIPT ssd : verified run=$RunId" }
+        else { $Errors.Add("receipt-failed:ssd"); Log "RECEIPT ssd : FAILED - destination did not read back the sentinel" }
     }
+    if ($DryRun) { Log "RECEIPT drive : skipped (dry run wrote nothing to verify)" }
+    elseif (Write-DriveReceiptGws $RunId) { Log "RECEIPT drive : verified run=$RunId (via gws)" }
+    else { $Errors.Add("receipt-failed:drive"); Log "RECEIPT drive : FAILED - gws did not confirm sentinel upload" }
 }
 else {
     $Errors.Add('manifest-missing')
@@ -577,11 +655,16 @@ if ($msExe -and -not $DryRun) {
     }
 } elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch not found" }
 
-# --- 2d. Mirror the recovery guide to the cloud backup root ---
-if ((Test-Path "$GDrive/_MACHINE/Backups") -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
-    New-Item -ItemType Directory -Force -Path "$GDrive/_MACHINE/Backups" | Out-Null
-    Copy-Item "$U/.claude/RESTORE.md" "$GDrive/_MACHINE/Backups/RESTORE.md" -Force
-    Log "RESTORE.md mirrored to $GDrive/_MACHINE/Backups/"
+# --- 2d. Mirror the recovery guide to the cloud backup root via gws ---
+if ($GwsExe -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
+    Push-Location "$U/.claude"
+    try {
+        $upParams = @{ fileId = $DriveRestoreId; fields = 'id,name' } | ConvertTo-Json -Compress
+        $resObj = Invoke-GwsJson @('drive', 'files', 'update', '--params', $upParams, '--upload', './RESTORE.md')
+        if ($resObj -and $resObj.id) { Log "RESTORE.md mirrored to _MACHINE/Backups/ (via gws)" }
+    } finally {
+        Pop-Location
+    }
 }
 
 # --- 3. State + escalation ---

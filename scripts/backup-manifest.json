@@ -1570,18 +1570,6 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/AI_Analyst",
-   "class": "institutional",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/AI_Analyst.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
    "path": "DEV/Flint",
    "class": "institutional",
    "isRepo": true,
@@ -1692,6 +1680,42 @@
    "captureOrphans": true,
    "captureWorkingTree": true,
    "note": "2026-10-14: the space-named twin DEV/Linda Projects was parked at ~/_PARKED_COPIES/DEV-twin-checkouts (identical content, HEAD 031f96a). Its entry's history: Holds I-983 material: 02_SupervisorPlan_I983_CONFIDENTIAL.md, source/I983_page3.png, source/I983_page5.png. The 2026-08-19 entry routed this SSD-only and deliberately off github. Superseded: on 2026-09-09 the folder was put under git and pushed to the PRIVATE repo erash11/Linda_Projects (commit 031f96a), and on 2026-09-19 Eric confirmed private GitHub is acceptable and asked for this entry to match reality. KEEP THAT REPO PRIVATE. Folder name uses a space, the GitHub repo uses an underscore; that mismatch made /dev-sync clone a redundant DEV/Linda_Projects on 2026-09-19. Class left as 'personal' - no script reads it; Eric has still not classified it."
+  },
+  {
+   "path": "DEV/BayCap",
+   "class": "institutional",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/BayCap.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/Cloudroom_Learning",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/Cloudroom_Learning.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/MacEverything",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/MacEverything.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true
   }
  ]
 }
