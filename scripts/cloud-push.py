@@ -24,7 +24,7 @@ LIST = os.path.expanduser("~/.claude/scripts/logs/cloud-push-files0.bin")
 DB_EXT = (".duckdb", ".db", ".sqlite", ".sqlite3", ".db-wal", ".db-shm")
 SECRET_PREFIX = (".env",)
 SECRET_PARTS = ("credentials", "secrets", "id_rsa", ".pem", ".key")
-REGEN_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next"}
+REGEN_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next", "printing-press-library"}
 JUNK = {".DS_Store"}
 
 
@@ -50,7 +50,11 @@ def keep(name):
 def build_list():
     files = []
     for dp, dn, fn in os.walk(DEV):
-        dn[:] = [d for d in dn if d not in REGEN_DIRS]
+        base = os.path.basename(dp)
+        dn[:] = [
+            d for d in dn
+            if d not in REGEN_DIRS and not (base == "graphify-out" and d == "cache")
+        ]
         for f in fn:
             if not keep(f):
                 continue

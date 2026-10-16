@@ -1,0 +1,170 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Write a short Codex brief to re-review the 8 fix commits on phase2-wins-model, then I will run it in Codex.
+- can you send this to codex, there is a plugin installed
+- Fix the 3 findings from the Codex re-review, failing test first, one commit each, then push.
+- there is more than that many calls left, if we need more I can get another API Key, run it with real data. lets see if we run out of calls
+- I will add a key if I need to, run it and lets see if we run out
+
+## Files Modified
+conftest.py, STATUS.md, 2026-10-16-phase2-fixes-codex-brief.md
+
+## Unresolved Errors
+- {"stdout":"# STATUS\n\nRead this first. Update it before ending every session.\n\n## Current state\n- 2026-10-16: **Phase 2 Codex review: GO AFTER ...
+- {"stdout":"43898    01:59:38 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.80/Helpers/browser_crashpa...
+- {"stdout":"def _counts(con) -> dict[str, int]:\n    return {t: con.execute(f\"select count(*) from {t}\").fetchone()[0] for t in TABLES}\n\n\ndef _...
+- {"stdout":"tests/test_playoff_requirements.py:32: AssertionError\n=========================== short test summary info ============================\...
+- {"stdout":"E       _duckdb.BinderException: Binder Error: Referenced column \"team_id\" not found in FROM clause!","stderr":"","interrupted":false,...
+- {"stdout":">       assert focus and focus[0][\"expected_wins\"] is None and focus[0][\"luck\"] is None\nE       AssertionError: assert ([{'school':...
+- {"stdout":"    60\t\n    61\t\n    62\tdef _complete_count(df: pd.DataFrame, series: list[str]) -> int:\n    63\t    if df.empty:\n    64\t        ...
+- {"stdout":"=========================== short test summary info ============================\nFAILED tests/test_wins_model.py::test_loso_off_stores_...
+- {"stdout":"....................                                                     [100%]","stderr":"","interrupted":false,"isImage":false,"noOutp...
+- {"stdout":"E       assert 2.0301884121399234 == 1.8398373348538093 ± 1.8e-06\nE         \nE         comparison failed\nE         Obtained: 2.030188...
+- {"stdout":"E       AssertionError: assert ('off_epa_play' not in ['off_epa_play', 'def_epa_play', 'off_success_rate', 'def_success_rate', 'off_expl...
+- {"stdout":"FAILED tests/test_wins_model.py::test_run_survives_a_series_flat_on_complete_rows\n.                                                    ...
+- {"stdout":"E           _duckdb.InvalidInputException: Invalid Input Error: executemany requires a non-empty list of parameter sets to be provided",...
+- {"stdout":"  <tr><td>{{ c.label }}</td><td>{{ c.direction }}</td><td class=\"num\">{{ c.points_per_sd|fmt(\"+.2f\") }}</td></tr>\n  {% endfor %}\n<...
+- {"stdout":"FAILED tests/test_report_staff.py::test_no_usable_game_scores_still_renders_the_season_model\nFAILED tests/test_wins_model.py::test_luck...
+- {"stdout":"tests/test_report_staff.py:150: \nE       NameError: name 'version' is not defined\ntests/test_wins_model.py:51: \nE       NameError: na...
+- {"stdout":"    70\t    return None\n    71\t\n    72\t\n    73\tdef main(argv: list[str], client_factory=CFBDClient) -> int:\n    74\t    args = _p...
+- {"stdout":"=========================== short test summary info ============================\nFAILED tests/test_run_phase2.py::test_missing_key_writ...
+- {"stdout":"........                                                                 [100%]","stderr":"","interrupted":false,"isImage":false,"noOutp...
+- {"stdout":"248 passed in 92.11s (0:01:32)\n178d656 fix: early failures write a current receipt (review finding 7)","stderr":"","interrupted":false,...
+- {"stdout":"178d656 Eric Rash fix: early failures write a current receipt (review finding 7)\nc7e7f5b Eric Rash fix: zero usable game scores no long...
+- {"stdout":"## phase2-wins-model...origin/phase2-wins-model [ahead 4]\n# Handoff 2026-10-16: Phase 2 built, reviewed, PR #3 draft, Codex brief waiti...
+- {"stdout":"# Handoff 2026-10-16: Phase 2 built, reviewed, PR #3 draft, Codex brief waiting\n\n> Superseded 2026-10-16 (Mac): the Codex review is do...
+- {"stdout":"## phase2-wins-model...origin/phase2-wins-model\n M docs/STATUS.md\n?? docs/handoffs/2026-10-16-phase2-review-closeout.md\n docs/STATUS....
+- {"stdout":"[codex] Starting Codex task thread.\n[codex] Thread ready (01a1467a-16d4-73b1-be13-606169504c43).\n[codex] Turn started (01a1467a-1eaf-7...
+- {"stdout":"## phase2-wins-model...origin/phase2-wins-model\n?? docs/reviews/2026-10-16-phase2-fixes-codex-review.md\nGO AFTER FIXES: handle a flat ...
+- {"stdout":"The three original early failures now have handlers.\nThe backup path still breaks the fix's claim that every failure replaces the old r...
+- {"stdout":"        # Re-review finding 2: a failed backup before a rerun must replace the earlier success receipt.\nE       OSError: backup disk fu...
+- {"stdout":".........                                                                [100%]\ncda45dc fix: a failed backup or reopen writes a db_erro...
+- {"stdout":"E       _duckdb.BinderException: Binder Error: Referenced update column epa_play_for_adj_adj not found in table!\nE       \nE       Did ...
+- {"stdout":"E           ValueError: no complete rows to fit the margin model","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":fal...
+- {"stdout":"........................................................................ [ 28%]\n..........................................................
+- {"stdout":"## phase2-wins-model...origin/phase2-wins-model","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff"...
+- {"stdout":"Auto-merging docs/STATUS.md\nCONFLICT (content): Merge conflict in docs/STATUS.md\nAutomatic merge failed; fix conflicts and then commit...
+- {"stdout":"     339 docs/superpowers/specs/2026-10-16-cfb-playoff-benchmarks-design.md\n1:# CFB Playoff Benchmarks: design\n7:## 1. Purpose\n22:## ...
+- {"stdout":"## 6. Architecture\n\n```\nCFBD API (plays, drives, games, rankings, conferences, SP+)\nBCF Toys FEI (weekly table on Drive)\n        |\...
+- {"stdout":"db /Users/kristinarash/.local/share/cfb-benchmarks/cfb_benchmarks.duckdb True\ndrive /Users/kristinarash/Library/CloudStorage/GoogleDriv...
+- {"stdout":"exit 3\nTraceback (most recent call last):\n  File \"/Users/kristinarash/DEV/Football/CFB_Playoff_Benchmarks/scripts/run_phase1.py\", li...
+- {"stdout":"  File \"/Users/kristinarash/DEV/Football/CFB_Playoff_Benchmarks/cfb_benchmarks/cfbd_client.py\", line 41, in _get\n    raise CFBDError(...
+- {"stdout":"## main...origin/main","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/U...
+
+## Git
+log, status, pull, fix: add jinja2 to deps; keep tests away from .env and Drive (review finding 1)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, fix: playoff targets obey the selected window (review finding 8)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>;, pytest, fix: LOSO off stores no held-out error and the report says validation was not run (review finding 4)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>;, fix: luck band is the RMSE of the luck values the table shows (review finding 5)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>;, stash, fix: drop and name a series constant on the complete rows (review finding 2)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>;, fix: zero usable game scores no longer stops the season model (review finding 3)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>;, docs: STATUS after all eight Phase 2 review fixes
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, docs: mark Phase 2 handoff superseded; runner docstring names the /info exit
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, docs: Codex brief to re-review the eight Phase 2 fix commits
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, commit, docs: Codex re-review of the Phase 2 fix commits (GO AFTER FIXES)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, docs: STATUS after the three re-review fixes
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, merge, diff, branch, docs: STATUS after the first live Phase 1 and Phase 2 runs
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md
+
+## Subagent Tasks
+- [completed] Working directory: /Users/kristinarash/DEV/Football/CFB_Playoff_Benchmarks (branch phase2-wins-model, alr...
+
+## Skills Used
+mattpocock-skills:tdd
+
+## Environment
+cwd: ~/DEV/Football/CFB_Playoff_Benchmarks;
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 26 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

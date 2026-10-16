@@ -1,0 +1,713 @@
+phase3-weekly
+diff --git a/cfb_benchmarks/config.py b/cfb_benchmarks/config.py
+index 4dec2cc..8542794 100644
+--- a/cfb_benchmarks/config.py
++++ b/cfb_benchmarks/config.py
+@@ -9,6 +9,7 @@ import yaml
+ DEFAULTS = {
+     "window": {"start_year": 2021, "end_year": 2025, "include_2020": False},
+     "cfp": {"era_cutover": 2024},
++    "live": {"season": 2026, "team": "Baylor"},
+     "labels": {
+         "priority": ["made_cfp", "final_ap_top25", "bowl_eligible", "sub_500"],
+         "bowl_eligible_min_wins": 6,
+@@ -135,6 +136,13 @@ def _wins_model_from_dict(w: dict) -> WinsModelConfig:
+     )
+ 
+ 
++@dataclass(frozen=True)
++class LiveConfig:
++    """The season scored weekly against the reference. It never joins the reference window by itself."""
++    season: int = 2026
++    team: str = "Baylor"
++
++
+ @dataclass(frozen=True)
+ class Config:
+     start_year: int
+@@ -148,6 +156,7 @@ class Config:
+     extra_teams: list[str]
+     metrics: MetricsConfig = field(default_factory=lambda: _metrics_from_dict(None))
+     wins_model: WinsModelConfig = field(default_factory=lambda: _wins_model_from_dict(DEFAULTS["wins_model"]))
++    live: LiveConfig = field(default_factory=LiveConfig)
+     project_root: Path = field(default_factory=project_root)
+ 
+     def seasons(self) -> list[int]:
+@@ -177,6 +186,7 @@ def load_config_from_dict(d: dict, conferences: dict | None = None, metrics: dic
+         extra_teams=list(conferences.get("extra_teams") or []),
+         metrics=_metrics_from_dict(metrics),
+         wins_model=_wins_model_from_dict(m["wins_model"]),
++        live=LiveConfig(season=int(m["live"]["season"]), team=str(m["live"]["team"])),
+     )
+ 
+ 
+diff --git a/cfb_benchmarks/fonts.py b/cfb_benchmarks/fonts.py
+new file mode 100644
+index 0000000..17065b0
+--- /dev/null
++++ b/cfb_benchmarks/fonts.py
+@@ -0,0 +1,21 @@
++"""Inline @font-face rules for the coach one-pager, so the page renders the same with no network.
++
++The three families are variable fonts copied from WeeklyCoachReport/fonts; each is embedded once with a weight range."""
++from __future__ import annotations
++
++import base64
++from pathlib import Path
++
++FACES = [("Archivo Narrow", "Archivo+Narrow.woff2"), ("JetBrains Mono", "JetBrains+Mono.woff2"), ("Source Sans 3", "Source+Sans+3.woff2")]
++
++
++def font_face_css(fonts_dir: Path) -> str:
++    rules = []
++    for family, filename in FACES:
++        path = Path(fonts_dir) / filename
++        if not path.exists():
++            raise FileNotFoundError(f"font file missing: {path}")
++        data = base64.b64encode(path.read_bytes()).decode("ascii")
++        rules.append(f"@font-face {{ font-family: '{family}'; font-style: normal; font-weight: 400 700; "
++                     f"font-display: block; src: url(data:font/woff2;base64,{data}) format('woff2'); }}")
++    return "\n".join(rules)
+diff --git a/cfb_benchmarks/ingest_fbs_teams.py b/cfb_benchmarks/ingest_fbs_teams.py
+index 0b80bfd..4a23eff 100644
+--- a/cfb_benchmarks/ingest_fbs_teams.py
++++ b/cfb_benchmarks/ingest_fbs_teams.py
+@@ -8,9 +8,10 @@ import duckdb
+ from cfb_benchmarks.config import Config
+ 
+ 
+-def ingest_fbs_teams(con: duckdb.DuckDBPyConnection, client, config: Config, pulled_at: datetime) -> int:
++def ingest_fbs_teams(con: duckdb.DuckDBPyConnection, client, config: Config, pulled_at: datetime,
++                     seasons: list[int] | None = None) -> int:
+     rows = []
+-    for season in config.seasons():
++    for season in seasons or config.seasons():
+         for t in client.teams_fbs(season):
+             rows.append((season, t["id"], t["school"], t.get("conference"), t.get("classification", "fbs"), "CFBD", pulled_at))
+     con.executemany(
+diff --git a/cfb_benchmarks/ingest_games.py b/cfb_benchmarks/ingest_games.py
+index c04d911..2cc1362 100644
+--- a/cfb_benchmarks/ingest_games.py
++++ b/cfb_benchmarks/ingest_games.py
+@@ -69,9 +69,10 @@ def _parse_ts(value: str | None) -> datetime | None:
+     return datetime.fromisoformat(value.replace("Z", "+00:00")).replace(tzinfo=None)
+ 
+ 
+-def ingest_games(con: duckdb.DuckDBPyConnection, client, config: Config, pulled_at: datetime) -> int:
++def ingest_games(con: duckdb.DuckDBPyConnection, client, config: Config, pulled_at: datetime,
++                 seasons: list[int] | None = None) -> int:
+     rows = []
+-    for season in config.seasons():
++    for season in seasons or config.seasons():
+         for season_type in SEASON_TYPES:
+             for g in client.games(season, season_type):
+                 title, title_conf, cfp, cfp_round = classify_game(g.get("notes"), season_type)
+diff --git a/cfb_benchmarks/ingest_plays.py b/cfb_benchmarks/ingest_plays.py
+index 76307ca..6090d2e 100644
+--- a/cfb_benchmarks/ingest_plays.py
++++ b/cfb_benchmarks/ingest_plays.py
+@@ -62,6 +62,21 @@ def expected_games(con: duckdb.DuckDBPyConnection, season: int, week: int, seaso
+     }
+ 
+ 
++def check_week_rows(con: duckdb.DuckDBPyConnection | None, config: Config, season: int, week: int, season_type: str,
++                    rows: list[dict]) -> list[int]:
++    """Refuse a week's rows before they are stored: a response on a known row cap that misses expected games is
++    TruncationError; one missing more than MAX_MISSING_SHARE of the week's expected FBS games is CoverageError
++    (an empty response for a week with completed games included). Returns the missing game ids."""
++    expected = expected_games(con, season, week, season_type) if con is not None else set()
++    seen = {r.get("gameId") for r in rows}
++    if len(rows) in config.metrics.cap_row_counts and not expected <= seen:
++        raise TruncationError(season, week, season_type, len(rows))
++    missing = sorted(expected - seen)
++    if expected and len(missing) / len(expected) > MAX_MISSING_SHARE:
++        raise CoverageError(season, week, season_type, missing, len(expected))
++    return missing
++
++
+ def iterate_weeks(fetch: Callable[[int, int, str], list[dict]], season: int, config: Config, store: Callable,
+                   on_week=None, con: duckdb.DuckDBPyConnection | None = None) -> int:
+     """Regular weeks 1..max then postseason 1..max, stopping each season type at the first empty week.
+@@ -73,16 +88,10 @@ def iterate_weeks(fetch: Callable[[int, int, str], list[dict]], season: int, con
+     for season_type, max_weeks in (("regular", config.metrics.max_regular_weeks), ("postseason", config.metrics.max_postseason_weeks)):
+         for week in range(1, max_weeks + 1):
+             rows = fetch(season, week, season_type)
+-            expected = expected_games(con, season, week, season_type) if con is not None else set()
+-            seen = {r.get("gameId") for r in rows}
+-            if len(rows) in config.metrics.cap_row_counts and not expected <= seen:
+-                raise TruncationError(season, week, season_type, len(rows))
+             if not rows:
+                 break
++            missing = check_week_rows(con, config, season, week, season_type, rows)
+             stored = store(season, week, season_type, rows)
+-            missing = sorted(expected - seen)
+-            if expected and len(missing) / len(expected) > MAX_MISSING_SHARE:
+-                raise CoverageError(season, week, season_type, missing, len(expected))
+             total += stored
+             if on_week:
+                 on_week(season, season_type, week, stored, missing)
+diff --git a/cfb_benchmarks/live_pull.py b/cfb_benchmarks/live_pull.py
+new file mode 100644
+index 0000000..5b50db6
+--- /dev/null
++++ b/cfb_benchmarks/live_pull.py
+@@ -0,0 +1,68 @@
++"""The live season, one week at a time. Only weeks whose completed games lack plays or drives are pulled, so a run
++that stops partway resumes at the first week still missing, and a run with nothing new costs only the schedule calls.
++
++The live season is built with the Phase 1 builders scoped to that one season; thresholds, cohorts and the wins model
++read config.seasons() only, so the live season never enters the reference."""
++from __future__ import annotations
++
++from datetime import datetime
++
++import duckdb
++
++from cfb_benchmarks.adjust import adjust_team_game_metrics
++from cfb_benchmarks.config import Config
++from cfb_benchmarks.derive_plays import derive_plays
++from cfb_benchmarks.ingest_drives import _store_drives
++from cfb_benchmarks.ingest_fbs_teams import school_to_id
++from cfb_benchmarks.ingest_plays import EmptyTeamMapError, _store_plays, check_week_rows
++from cfb_benchmarks.metrics import build_team_game_metrics
++from cfb_benchmarks.season_metrics import build_team_season_metrics
++
++SCHEDULE_CALLS = 3          # /teams/fbs plus /games for regular and postseason
++
++
++def missing_weeks(con: duckdb.DuckDBPyConnection, season: int) -> list[tuple[str, int]]:
++    """(season_type, week) with a completed game that has an FBS side but no stored plays or no stored drives."""
++    rows = con.execute(
++        """with done as (
++               select distinct g.season_type, g.week from games g
++               where g.season = ? and g.home_points is not null and g.away_points is not null
++                 and (g.home_id in (select cfbd_id from fbs_teams f where f.season = g.season)
++                      or g.away_id in (select cfbd_id from fbs_teams f where f.season = g.season))),
++           p as (select distinct season_type, week from plays where season = ?),
++           d as (select distinct season_type, week from drives where season = ?)
++           select done.season_type, done.week from done
++           left join p using (season_type, week) left join d using (season_type, week)
++           where p.week is null or d.week is null""",
++        [season, season, season],
++    ).fetchall()
++    return sorted(((st, int(w)) for st, w in rows), key=lambda r: (r[0] != "regular", r[1]))
++
++
++def pull_week(con: duckdb.DuckDBPyConnection, client, config: Config, season: int, season_type: str, week: int,
++              pulled_at: datetime) -> tuple[int, int]:
++    """Plays then drives for one week, each checked before it is stored. A refused endpoint stores nothing."""
++    ids = school_to_id(con, season)
++    if not ids:
++        raise EmptyTeamMapError(season)
++    plays = client.plays(season, week, season_type)
++    check_week_rows(con, config, season, week, season_type, plays)
++    n_plays = _store_plays(con, season, week, season_type, plays, ids, pulled_at)
++    drives = client.drives(season, week, season_type)
++    check_week_rows(con, config, season, week, season_type, drives)
++    n_drives = _store_drives(con, season, week, season_type, drives, ids, pulled_at)
++    return n_plays, n_drives
++
++
++def estimate_live_calls(n_weeks: int) -> int:
++    return SCHEDULE_CALLS + 2 * n_weeks
++
++
++def build_live_season(con: duckdb.DuckDBPyConnection, config: Config, built_at: datetime, season: int) -> dict[str, int]:
++    seasons = [season]
++    derive_plays(con, config, seasons)
++    build_team_game_metrics(con, config, built_at, seasons)
++    adjust_team_game_metrics(con, config, built_at, seasons)
++    build_team_season_metrics(con, config, built_at, seasons, from_cohorts=False)
++    return {t: con.execute(f"select count(*) from {t} where season = ?", [season]).fetchone()[0]
++            for t in ("team_game_metrics", "team_season_metrics")}
+diff --git a/cfb_benchmarks/report_coach.py b/cfb_benchmarks/report_coach.py
+new file mode 100644
+index 0000000..73ff48e
+--- /dev/null
++++ b/cfb_benchmarks/report_coach.py
+@@ -0,0 +1,185 @@
++"""The weekly coach one-pager: one game scored against the reference through the stored model run.
++
++No refit happens here. The newest wins_model_runs row supplies the model, and its version names the thresholds, so a
++live game is tiered on exactly the scale the staff report publishes. Game grain, adjusted values throughout. An FCS
++opponent's game is shown untiered, since the reference holds no FCS games."""
++from __future__ import annotations
++
++from pathlib import Path
++
++import duckdb
++import pandas as pd
++from jinja2 import Environment, FileSystemLoader
++
++from cfb_benchmarks.composite import COMPOSITE, composite_value
++from cfb_benchmarks.config import Config
++from cfb_benchmarks.fonts import font_face_css
++from cfb_benchmarks.metrics import series_value
++from cfb_benchmarks.report_staff import _fmt_for, fmt_value
++from cfb_benchmarks.thresholds import assign_tier, load_cuts
++from cfb_benchmarks.wins_model import load_run
++
++FCS_LINE = "FCS opponent: not tiered against the Power Four reference."
++
++
++def latest_run_version(con: duckdb.DuckDBPyConnection) -> str | None:
++    row = con.execute("select version from wins_model_runs order by built_at desc limit 1").fetchone()
++    return row[0] if row else None
++
++
++def _team_id(con: duckdb.DuckDBPyConnection, season: int, team: str) -> int | None:
++    row = con.execute("select cfbd_id from fbs_teams where season = ? and school = ?", [season, team]).fetchone()
++    if row is None:
++        row = con.execute("select cfbd_id from teams where school = ?", [team]).fetchone()
++    return int(row[0]) if row else None
++
++
++def _school(con: duckdb.DuckDBPyConnection, season: int, team_id: int | None) -> str:
++    if team_id is None:
++        return "Unknown"
++    for sql, params in (("select school from fbs_teams where season = ? and cfbd_id = ?", [season, team_id]),
++                        ("select school from teams where cfbd_id = ?", [team_id])):
++        row = con.execute(sql, params).fetchone()
++        if row:
++            return row[0]
++    return f"Team {team_id}"
++
++
++def _order(season_type: str, week: int) -> tuple[int, int]:
++    return (1 if season_type == "postseason" else 0, int(week))
++
++
++def _game_rows(con: duckdb.DuckDBPyConnection, season: int, team_id: int) -> list[dict]:
++    cur = con.execute("select * from team_game_metrics where season = ? and cfbd_id = ?", [season, team_id])
++    names = [d[0] for d in cur.description]
++    rows = [{k: (None if (v is not None and not isinstance(v, (str, bool)) and pd.isna(v)) else v) for k, v in zip(names, r)}
++            for r in cur.fetchall()]
++    return sorted(rows, key=lambda r: _order(r["season_type"], r["week"]))
++
++
++def resolve_game(con: duckdb.DuckDBPyConnection, season: int, team: str, week: int | None = None) -> int | None:
++    """The team's latest completed game with a metrics row, or its regular-season game in `week`."""
++    tid = _team_id(con, season, team)
++    if tid is None:
++        return None
++    rows = _game_rows(con, season, tid)
++    if week is not None:
++        rows = [r for r in rows if r["week"] == week and r["season_type"] == "regular"]
++    return int(rows[-1]["game_id"]) if rows else None
++
++
++def _tier(value, series: str, grain: str, cuts: dict, direction: str):
++    return assign_tier(value, series, grain, cuts.get((series, grain), {}), direction)
++
++
++def _opponent(con, config, model, cuts, season: int, opp_id: int | None, game_order: tuple[int, int]) -> dict:
++    out = {"record": None, "composite_season": None, "tier_season": None}
++    if opp_id is None:
++        return out
++    games = con.execute(
++        """select season_type, week, case when home_id = ? then home_points else away_points end,
++                  case when home_id = ? then away_points else home_points end
++           from games where season = ? and (home_id = ? or away_id = ?) and home_points is not null and away_points is not null""",
++        [opp_id, opp_id, season, opp_id, opp_id]).fetchall()
++    played = [(pf, pa) for st, wk, pf, pa in games if _order(st, wk) <= game_order]
++    if played:
++        out["record"] = f"{sum(pf > pa for pf, pa in played)}-{sum(pf < pa for pf, pa in played)}"
++    cur = con.execute("select * from team_season_metrics where season = ? and cfbd_id = ?", [season, opp_id])
++    row = cur.fetchone()
++    if row is not None:
++        rec = dict(zip([d[0] for d in cur.description], row))
++        v = composite_value(model, rec)
++        out["composite_season"] = v
++        out["tier_season"] = _tier(v, COMPOSITE, "season", cuts, "higher")
++    return out
++
++
++def assemble_game(con: duckdb.DuckDBPyConnection, config: Config, version: str, season: int, game_id: int, team: str) -> dict:
++    run = load_run(con, version)
++    model = run.model
++    cuts = load_cuts(con, version, config)
++    tid = _team_id(con, season, team)
++    rows = _game_rows(con, season, tid)
++    game = next(r for r in rows if int(r["game_id"]) == int(game_id))
++    fcs = bool(game["is_fcs_opponent"])
++
++    g = con.execute("select start_date, home_id, home_points, away_points from games where game_id = ?", [game_id]).fetchone()
++    team_pts = opp_pts = date = None
++    if g is not None:
++        date, home_id, hp, ap = g
++        team_pts, opp_pts = (hp, ap) if home_id == tid else (ap, hp)
++    result = None if team_pts is None or opp_pts is None else ("W" if team_pts > opp_pts else "L")
++
++    series = []
++    for name, sdef in config.metrics.series.items():
++        value = series_value(game, name, adjusted=True)
++        c = cuts.get((name, "game"), {})
++        tier = None if fcs else _tier(value, name, "game", cuts, sdef.direction)
++        series.append({"name": name, "label": sdef.label, "fmt": _fmt_for(name), "value": value, "tier": tier,
++                       "out_of_range": tier == "bad", "cfp_median": (c.get("medians") or {}).get("made_cfp"),
++                       "cut_average": c.get("cut_average"), "cut_good": c.get("cut_good"), "cut_elite": c.get("cut_elite"),
++                       "direction": sdef.direction, "ordered": bool(c.get("ordered"))})
++
++    composite = composite_value(model, game)
++    trend = []
++    for r in rows:
++        v = composite_value(model, r)
++        r_fcs = bool(r["is_fcs_opponent"])
++        trend.append({"week": int(r["week"]), "season_type": r["season_type"], "opponent": _school(con, season, r["opponent_id"]),
++                      "composite": v, "tier": None if r_fcs else _tier(v, COMPOSITE, "game", cuts, "higher"),
++                      "is_fcs_opponent": r_fcs, "is_this_game": int(r["game_id"]) == int(game_id)})
++
++    order = _order(game["season_type"], game["week"])
++    return {
++        "meta": {"team": team, "opponent": _school(con, season, game["opponent_id"]), "season": season,
++                 "week": int(game["week"]), "season_type": game["season_type"], "date": date, "team_points": team_pts,
++                 "opp_points": opp_pts, "result": result, "is_fcs_opponent": fcs, "version": version,
++                 "fit_window": run.fit_window, "fcs_line": FCS_LINE},
++        "overall": {"composite": composite, "tier": None if fcs else _tier(composite, COMPOSITE, "game", cuts, "higher")},
++        "series": series,
++        "opponent": _opponent(con, config, model, cuts, season, game["opponent_id"], order),
++        "trend": trend,
++    }
++
++
++def monitor_strip(row: dict, width: int = 300, height: int = 26) -> str:
++    """The reference band (average cut to elite cut), a tick at the playoff-team median, and this game's dot.
++    Better is always to the right. The dot carries --out only when the value is outside the band on the bad side."""
++    pts = [row.get(k) for k in ("cut_average", "cut_elite", "cfp_median", "value")]
++    vals = [v for v in pts if v is not None]
++    if not vals or row.get("cut_average") is None or row.get("cut_elite") is None:
++        return (f'<svg class="strip" data-series="{row["name"]}" width="{width}" height="{height}" '
++                f'viewBox="0 0 {width} {height}" role="img" aria-label="no reference range"></svg>')
++    lo, hi = min(vals), max(vals)
++    span = (hi - lo) or 1.0
++    lo, hi = lo - 0.1 * span, hi + 0.1 * span
++    span = hi - lo
++    pad = 8
++
++    def x(v: float) -> float:
++        frac = (v - lo) / span if row["direction"] == "higher" else (hi - v) / span
++        return round(pad + frac * (width - 2 * pad), 1)
++
++    xa, xe = x(row["cut_average"]), x(row["cut_elite"])
++    mid = height / 2
++    parts = [f'<svg class="strip" data-series="{row["name"]}" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" '
++             f'aria-label="{row["label"]} against the reference range">',
++             f'<line x1="{pad}" y1="{mid}" x2="{width - pad}" y2="{mid}" class="axis"/>',
++             f'<rect data-label="band" x="{min(xa, xe)}" y="{mid - 6}" width="{abs(xe - xa)}" height="12" class="band"/>',
++             f'<line data-label="cut_average" x1="{xa}" y1="{mid - 6}" x2="{xa}" y2="{mid + 6}" class="cut"/>',
++             f'<line data-label="cut_elite" x1="{xe}" y1="{mid - 6}" x2="{xe}" y2="{mid + 6}" class="cut"/>']
++    if row.get("cfp_median") is not None:
++        xm = x(row["cfp_median"])
++        parts.append(f'<line data-label="cfp_median" x1="{xm}" y1="{mid - 10}" x2="{xm}" y2="{mid + 10}" class="cfp"/>')
++    if row.get("value") is not None:
++        cls = "dot out" if row.get("out_of_range") else "dot"
++        parts.append(f'<circle data-label="value" cx="{x(row["value"])}" cy="{mid}" r="4.5" class="{cls}"/>')
++    parts.append("</svg>")
++    return "".join(parts)
++
++
++def render_onepager(data: dict, templates_dir: Path) -> str:
++    env = Environment(loader=FileSystemLoader(str(templates_dir)), autoescape=True)
++    env.filters["fmt"] = fmt_value
++    env.filters["strip"] = monitor_strip
++    return env.get_template("coach_onepager.html.j2").render(fonts_css=font_face_css(Path(templates_dir) / "fonts"), **data)
+diff --git a/cfb_benchmarks/season_metrics.py b/cfb_benchmarks/season_metrics.py
+index 4a99680..45b7d5f 100644
+--- a/cfb_benchmarks/season_metrics.py
++++ b/cfb_benchmarks/season_metrics.py
+@@ -23,11 +23,14 @@ def _agg(q: str, side: str, adj: str) -> str:
+ 
+ 
+ def build_team_season_metrics(con: duckdb.DuckDBPyConnection, config: Config, built_at: datetime,
+-                              seasons: list[int] | None = None) -> int:
++                              seasons: list[int] | None = None, from_cohorts: bool = True) -> int:
++    """One row per team-season. Reference seasons take their rows from `cohorts`; a live season has no cohort labels
++    yet, so with from_cohorts=False every team with a team_game_metrics row that season gets one."""
+     seasons = list(seasons or config.seasons())
+     cols = metric_columns()
+     agg_sql = ",\n       ".join(_agg(q, side, adj) for adj in ("", "_adj") for side in ("for", "against") for q in QUANTITIES)
+     # Reorder to metric_columns() order: for, against, for_adj, against_adj
++    base = "cohorts" if from_cohorts else "(select distinct cfbd_id, season from team_game_metrics)"
+     sql = f"""
+     with counted as (
+         select m.*, (m.season_type = 'regular' or m.is_conf_title_game) as counts
+@@ -53,13 +56,15 @@ def build_team_season_metrics(con: duckdb.DuckDBPyConnection, config: Config, bu
+     select c.cfbd_id, c.season, coalesce(a.games, 0), coalesce(a.fbs_games, 0),
+            {', '.join('a.' + col for col in cols)},
+            mg.point_margin_per_game
+-    from cohorts c
++    from {base} c
+     left join agg a on a.cfbd_id = c.cfbd_id and a.season = c.season
+     left join margin mg on mg.team_id = c.cfbd_id and mg.season = c.season
+     where c.season in ({','.join('?' * len(seasons))})
+     """
+     rows = con.execute(sql, seasons + seasons).fetchall()
+     out_cols = ["cfbd_id", "season", "games", "fbs_games", *cols, "point_margin_per_game", "source_system", "built_at"]
++    if not rows:
++        return 0
+     con.executemany(
+         f"insert or replace into team_season_metrics ({', '.join(out_cols)}) values ({', '.join('?' * len(out_cols))})",
+         [(*r, "CFBD", built_at) for r in rows],
+diff --git a/cfb_benchmarks/snapshot.py b/cfb_benchmarks/snapshot.py
+new file mode 100644
+index 0000000..28a49b8
+--- /dev/null
++++ b/cfb_benchmarks/snapshot.py
+@@ -0,0 +1,43 @@
++"""Parquet snapshot of every table, the way machines exchange this DB (the DB itself never travels).
++
++Files are written to a local temp folder, then copied into the target folder, then the manifest is written last, so
++a reader never sees a manifest that promises files not yet there. A snapshot never shrinks without --force: if the
++published manifest records more rows for any table than the DB holds, the DB is probably an older copy."""
++from __future__ import annotations
++
++import json
++import shutil
++import tempfile
++from datetime import datetime
++from pathlib import Path
++
++import duckdb
++
++MANIFEST = "manifest.json"
++
++
++class SnapshotRefused(Exception):
++    def __init__(self, shrinking: dict[str, tuple[int, int]]):
++        self.shrinking = shrinking
++        detail = ", ".join(f"{t} {pub} published, {db} in the DB" for t, (pub, db) in sorted(shrinking.items()))
++        super().__init__(f"snapshot would shrink: {detail}. Pass --force-snapshot if the DB is right.")
++
++
++def export_snapshot(con: duckdb.DuckDBPyConnection, out_dir: Path, exported_at: datetime, force: bool = False) -> dict[str, int]:
++    out_dir = Path(out_dir)
++    tables = sorted(r[0] for r in con.execute("show tables").fetchall())
++    rows = {t: con.execute(f'select count(*) from "{t}"').fetchone()[0] for t in tables}
++    manifest = out_dir / MANIFEST
++    if manifest.exists() and not force:
++        published = json.loads(manifest.read_text()).get("rows", {})
++        shrinking = {t: (int(published[t]), rows.get(t, 0)) for t in published if int(published[t]) > rows.get(t, 0)}
++        if shrinking:
++            raise SnapshotRefused(shrinking)
++    out_dir.mkdir(parents=True, exist_ok=True)
++    with tempfile.TemporaryDirectory() as tmp:
++        for t in tables:
++            local = Path(tmp) / f"{t}.parquet"
++            con.execute(f"copy \"{t}\" to '{local}' (format parquet)")
++            shutil.copy2(local, out_dir / local.name)
++    manifest.write_text(json.dumps({"exported_at": exported_at.isoformat(), "rows": rows}, indent=2))
++    return rows
+diff --git a/config/benchmarks.yaml b/config/benchmarks.yaml
+index 3059ce8..efa4c13 100644
+--- a/config/benchmarks.yaml
++++ b/config/benchmarks.yaml
+@@ -3,6 +3,9 @@ window:
+   start_year: 2021
+   end_year: 2025
+   include_2020: false        # 2020 schedules were uneven; off unless asked for
++live:                        # Phase 3: scored weekly against the reference, never part of it until Eric says so
++  season: 2026
++  team: Baylor
+ cfp:
+   era_cutover: 2024          # seasons before this are the 4-team era, from it the 12-team era
+ labels:
+diff --git a/scripts/run_weekly.py b/scripts/run_weekly.py
+new file mode 100644
+index 0000000..f435073
+--- /dev/null
++++ b/scripts/run_weekly.py
+@@ -0,0 +1,194 @@
++"""Weekly runner: pull the live season's new weeks, score the team's latest game, write the coach one-pager,
++publish it and a Parquet snapshot to Drive, and write a receipt.
++
++Exit codes: 0 ok, 1 config or key, 2 DB open or backup, 3 ingest error (the weeks before it stay stored and the next
++run resumes there), 4 no completed game to report, 5 build, report or snapshot error, 6 budget refused,
++7 no wins model run (run scripts/run_phase2.py first).
++"""
++from __future__ import annotations
++
++import argparse
++import json
++import os
++import shutil
++import sys
++import traceback
++from datetime import datetime, timezone
++from pathlib import Path
++
++from dotenv import load_dotenv
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++
++from cfb_benchmarks.budget import BudgetError, check_budget  # noqa: E402
++from cfb_benchmarks.cfbd_client import CFBDClient  # noqa: E402
++from cfb_benchmarks.config import load_config, project_root  # noqa: E402
++from cfb_benchmarks.db import backup_db, connect, db_path, init_schema  # noqa: E402
++from cfb_benchmarks.ingest_fbs_teams import ingest_fbs_teams  # noqa: E402
++from cfb_benchmarks.ingest_games import ingest_games  # noqa: E402
++from cfb_benchmarks.ingest_log import finish_run, start_run  # noqa: E402
++from cfb_benchmarks.live_pull import build_live_season, estimate_live_calls, missing_weeks, pull_week  # noqa: E402
++from cfb_benchmarks.report_coach import assemble_game, latest_run_version, render_onepager, resolve_game  # noqa: E402
++from cfb_benchmarks.report_staff import write_report  # noqa: E402
++from cfb_benchmarks.snapshot import SnapshotRefused, export_snapshot  # noqa: E402
++
++RECEIPT = Path("logs") / "last_run_weekly.json"
++NO_RUN = "no wins model run: run scripts/run_phase2.py first"
++
++
++def _parse(argv):
++    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    p.add_argument("--season", type=int, help="default: live.season in config")
++    p.add_argument("--week", type=int, help="report this regular-season week instead of the latest game")
++    p.add_argument("--team", help="default: live.team in config")
++    p.add_argument("--dry-run", action="store_true", help="print the missing weeks, estimated calls and budget; no writes")
++    p.add_argument("--skip-pull", action="store_true", help="score and report from what the DB holds")
++    p.add_argument("--skip-budget-check", action="store_true")
++    p.add_argument("--db", type=Path)
++    p.add_argument("--config-dir", type=Path)
++    p.add_argument("--out-dir", type=Path, help="report folder (default reports/weekly/<season>)")
++    p.add_argument("--no-snapshot", action="store_true")
++    p.add_argument("--force-snapshot", action="store_true", help="publish a snapshot even if it has fewer rows than the last one")
++    return p.parse_args(argv)
++
++
++def _write_receipt(receipt: dict) -> None:
++    RECEIPT.parent.mkdir(parents=True, exist_ok=True)
++    receipt["finished_at"] = datetime.now(timezone.utc).isoformat()
++    RECEIPT.write_text(json.dumps(receipt, indent=2, default=str))
++
++
++def main(argv: list[str], client_factory=CFBDClient) -> int:
++    args = _parse(argv)
++    load_dotenv(project_root() / ".env")
++    receipt: dict = {"season": None, "team": None, "status": "running", "exit_code": None, "error": None, "calls_used": 0,
++                     "weeks_pulled": [], "weeks_missing": [], "game_id": None, "week": None, "opponent": None,
++                     "model_version": None, "report": None, "snapshot_rows": None}
++
++    def finish(status: str, code: int, error: str | None = None, quiet: bool = False) -> int:
++        receipt.update(status=status, exit_code=code, error=error)
++        if not args.dry_run:
++            _write_receipt(receipt)
++        if error and not quiet:
++            print(error, file=sys.stderr)
++        return code
++
++    try:
++        config = load_config(args.config_dir)
++    except Exception as e:  # noqa: BLE001
++        return finish("config_error", 1, f"Could not load config: {e}")
++    season = args.season or config.live.season
++    team = args.team or config.live.team
++    receipt.update(season=season, team=team)
++    key = os.environ.get("CFBD_API_KEY")
++    pulling = not args.skip_pull
++    if pulling and not key and not args.dry_run:
++        return finish("config_error", 1, "CFBD_API_KEY is not set. Put it in .env (see .env.example).")
++
++    path = Path(args.db) if args.db else db_path()
++    if args.dry_run:
++        con = connect(path, read_only=True)
++        try:
++            weeks = missing_weeks(con, season) if pulling else []
++        finally:
++            con.close()
++        print(f"Dry run. Season {season}, team {team}. Missing weeks: {weeks or 'none'}. "
++              f"estimated calls: {estimate_live_calls(len(weeks)) if pulling else 0}.")
++        if pulling and key:
++            info = client_factory(key).info()
++            print(f"  remaining this month: {info.get('remainingCalls')} (resets {info.get('resetAt')})")
++        print(f"  DB: {path}")
++        return 0
++
++    try:
++        con = connect(path)
++        init_schema(con)
++    except Exception as e:  # noqa: BLE001
++        return finish("db_error", 2, f"Could not open DB: {e}")
++
++    try:
++        version = latest_run_version(con)
++        if version is None:
++            return finish("no_model_run", 7, NO_RUN)
++        receipt["model_version"] = version
++        con.close()
++        try:
++            print(f"backup: {backup_db(path, 'weekly')}")
++            con = connect(path)
++        except Exception as e:  # noqa: BLE001
++            return finish("db_error", 2, f"Could not back up or reopen the DB: {e}")
++
++        now = datetime.now(timezone.utc).replace(tzinfo=None)
++        if pulling:
++            client = client_factory(key)
++            before = missing_weeks(con, season)
++            if not args.skip_budget_check:
++                try:
++                    check_budget(client.info(), estimate_live_calls(len(before)))
++                except BudgetError as e:
++                    return finish("budget_refused", 6, str(e))
++                except Exception as e:  # noqa: BLE001
++                    return finish("ingest_error", 3, f"info: {e}")
++            try:
++                ingest_fbs_teams(con, client, config, now, seasons=[season])
++                ingest_games(con, client, config, now, seasons=[season])
++                receipt["calls_used"] = estimate_live_calls(0)
++            except Exception as e:  # noqa: BLE001
++                return finish("ingest_error", 3, f"schedule: {e}")
++            weeks = missing_weeks(con, season)
++            if len(weeks) > len(before) and not args.skip_budget_check:
++                try:
++                    check_budget(client.info(), 2 * len(weeks))
++                except BudgetError as e:
++                    return finish("budget_refused", 6, str(e))
++            for season_type, week in weeks:
++                rid = start_run(con, "live/plays+drives", f"{season} {season_type} wk{week}")
++                try:
++                    n_plays, n_drives = pull_week(con, client, config, season, season_type, week, now)
++                except Exception as e:  # noqa: BLE001
++                    finish_run(con, rid, rows=0, status="error", error=str(e))
++                    receipt["weeks_missing"] = [list(w) for w in missing_weeks(con, season)]
++                    return finish("ingest_error", 3, f"{season} {season_type} week {week}: {e}")
++                finish_run(con, rid, rows=n_plays + n_drives, status="ok")
++                receipt["calls_used"] += 2
++                receipt["weeks_pulled"].append([season_type, week])
++                print(f"{season} {season_type} week {week}: {n_plays} plays, {n_drives} drives")
++            receipt["weeks_missing"] = [list(w) for w in missing_weeks(con, season)]
++
++        try:
++            build_live_season(con, config, now, season)
++            game_id = resolve_game(con, season, team, args.week)
++            if game_id is None:
++                return finish("no_game", 4, f"no completed {team} game with play data in {season}"
++                                            + (f" week {args.week}" if args.week else ""))
++            data = assemble_game(con, config, version, season, game_id, team)
++            receipt.update(game_id=game_id, week=data["meta"]["week"], opponent=data["meta"]["opponent"])
++            html = render_onepager(data, project_root() / "templates")
++            out_dir = args.out_dir or (Path("reports") / "weekly" / str(season))
++            html_path, pdf_path = write_report(html, out_dir, stem=f"coach_onepager_wk{data['meta']['week']:02d}")
++            receipt["report"] = {"html": str(html_path), "pdf": str(pdf_path) if pdf_path else None}
++            print(f"report: {html_path}" + (f" and {pdf_path}" if pdf_path else " (no PDF)"))
++            drive = os.environ.get("CFB_BENCH_DRIVE_DIR")
++            if drive:
++                weekly = Path(drive) / "weekly" / str(season)
++                weekly.mkdir(parents=True, exist_ok=True)
++                for p in (html_path, pdf_path):
++                    if p:
++                        shutil.copy2(p, weekly / p.name)
++                print(f"copied to {weekly}")
++                if not args.no_snapshot:
++                    receipt["snapshot_rows"] = export_snapshot(con, Path(drive) / "snapshots", now, force=args.force_snapshot)
++                    print(f"snapshot: {Path(drive) / 'snapshots'}")
++        except SnapshotRefused as e:
++            return finish("snapshot_refused", 5, str(e))
++        except Exception as e:  # noqa: BLE001
++            traceback.print_exc()
++            return finish("build_error", 5, str(e), quiet=True)
++
++        return finish("ok", 0)
++    finally:
++        con.close()
++
++
++if __name__ == "__main__":
++    sys.exit(main(sys.argv[1:]))
