@@ -16,8 +16,10 @@ Never put memory content here — the file itself holds the facts.
 - [CFB Analytics Lab](project_cfb-analytics-lab.md) — resuming CFB Analytics Lab
 - [CFB forecast capture](project_cfb-forecast-capture.md) — weekly Big 12 forecast capture
 - [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
+- [Drive FUSE read hang](project_drive-fuse-read-hang.md) — before reading, hashing or walking anything on the Drive mount; use name+size and the Drive MCP
 - [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
+- [Zotero expert reference](reference_zotero-expert-reference.md) — any Zotero how-to, setup, import, sync, backup, or citation question
 - [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems
 - [memsearch index path drift](project_memsearch-index-path-drift.md) — memsearch indexes fewer paths
 - [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — memsearch slow or timing out
@@ -67,8 +69,10 @@ Never put memory content here — the file itself holds the facts.
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
-- [Work laptop hands-off](project_work-laptop-hands-off.md) — anything that runs on the Windows laptop; scheduled tasks there
+- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; laptop retired 10-14
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
-- [Cloud copy approval](project_cloud-copy-approval.md) — the daily all-DEV copy to personal Google Drive; athlete data approved; DBs and secrets stay local
+- [Cloud copy approval](project_cloud-copy-approval.md) — daily all-DEV copy to Drive; cloud servers/schedulers approved 10-14; DBs, secrets, Dexa stay local
+- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push fails under launchd; run by hand until the VPS
+- [Agentic operating loop](project_agentic-operating-loop.md) — agent workflow, Cloudroom, worktrees, reviewers: point at WORKFLOW.md loop first
