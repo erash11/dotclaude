@@ -152,3 +152,4 @@
 {"type":"agent-name","agentName":"home-page-inventory-session-sweep","sessionId":"f2acd470-b4f8-4633-9970-4201409ab9df"}
 {"type":"ai-title","aiTitle":"home-page-inventory-session-sweep","sessionId":"f2acd470-b4f8-4633-9970-4201409ab9df"}
 {"type":"agent-name","agentName":"home-page-inventory-session-sweep","sessionId":"f2acd470-b4f8-4633-9970-4201409ab9df"}
+{"type":"cost-state","sessionId":"f2acd470-b4f8-4633-9970-4201409ab9df","totalCostUSD":0.41827319999999996,"totalAPIDuration":91107,"totalAPIDurationWithoutRetries":89877,"totalToolDuration":27221,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":60976348,"startTime":1791992382597,"modelUsage":{"claude-sonnet-5-5":{"inputTokens":1900,"outputTokens":6276,"thinkingTokens":1660,"cacheReadInputTokens":1279492,"cacheCreationInputTokens":55941,"webSearchRequests":0,"costUSD":0.41827319999999996}},"hasUnknownModelCost":false}

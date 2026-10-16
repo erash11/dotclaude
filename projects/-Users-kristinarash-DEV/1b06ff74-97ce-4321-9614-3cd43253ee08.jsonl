@@ -16,3 +16,4 @@
 {"type":"agent-name","agentName":"cloudroom-core-tutorial","sessionId":"1b06ff74-97ce-4321-9614-3cd43253ee08"}
 {"type":"mode","mode":"normal","sessionId":"1b06ff74-97ce-4321-9614-3cd43253ee08"}
 {"type":"bridge-session","sessionId":"1b06ff74-97ce-4321-9614-3cd43253ee08","bridgeSessionId":"cse_01NgRfMLaewvw5NmNVjqzhCi","lastSequenceNum":0,"ownerAccountUuid":"416bef0f-da27-46f8-9a3c-18dedd0186a1","ownerOrganizationUuid":"507a61e7-48f7-48f7-8c5b-df28be667fa3"}
+{"type":"cost-state","sessionId":"1b06ff74-97ce-4321-9614-3cd43253ee08","totalCostUSD":0,"totalAPIDuration":0,"totalAPIDurationWithoutRetries":0,"totalToolDuration":0,"totalLinesAdded":0,"totalLinesRemoved":0,"totalDuration":54989277,"startTime":1792006315415,"modelUsage":{},"hasUnknownModelCost":false}
