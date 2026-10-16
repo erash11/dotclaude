@@ -66,8 +66,9 @@ these, file it by the table above in the same session.
 
 ## Known gaps (2026-10-16)
 
-- The Mac's Drive mount has been stale since about 10-06 and does not show `_MACHINE`. Until it does,
-  the scripts skip Drive and log `backup-target-offline:GoogleDrive/_MACHINE` or `Drive not mounted`.
+- The Mac's Drive mount went stale about 10-06. On 10-16 it showed `_MACHINE` but not `_MACHINE/Backups`
+  (still listed at the root). The mount is current when `ls ".../My Drive/_MACHINE"` lists `Backups` and the
+  root no longer does. Until then daily-backup skips Drive and logs `backup-target-offline:GoogleDrive/_MACHINE`.
   A one-off copy was uploaded by API to `_MACHINE/Backups/gws-upload-2026-10-16/`.
 - `cloud-push.py` fails under launchd ("Operation not permitted"); it works when run by hand.
 - Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
