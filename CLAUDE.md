@@ -11,6 +11,7 @@ Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows lapt
 # Workflow Expectations
 
 - When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
 - When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
 - Skills are tools: invoke one when it clearly fits the task.
 
