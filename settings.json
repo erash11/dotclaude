@@ -291,7 +291,10 @@
     "visual-explainer": "off",
     "watch": "off",
     "web-scraping": "off",
-    "articulation-skill": "name-only"
+    "articulation-skill": "name-only",
+    "anthropic-skills:pbir-report-builder": "off",
+    "anthropic-skills:research-in-5": "off",
+    "anthropic-skills:sports-science-research-grounding": "off"
   },
   "hooks": {
     "UserPromptSubmit": [
