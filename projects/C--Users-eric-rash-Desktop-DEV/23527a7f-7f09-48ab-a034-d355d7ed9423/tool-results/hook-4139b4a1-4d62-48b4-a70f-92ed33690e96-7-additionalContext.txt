@@ -1,0 +1,180 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- it was copying the dotfolders, I skipped it
+- [Image #42] Im getting alot of these, I keep skipping them
+- done, codex.zip redone
+- CRASHBOX is my external drive, I'm keeping it
+
+[Image #50] [Image #51] [Image #52] [Image #53] [Image #54]
+- upload started, says about 42 minutes left
+- keep everything, leave tasks disabled
+- upload done, no failed items
+
+[Image #68]
+- Q: .claude (main) is 1 commit(s) behind origin, likely pushed from the other machine. Pull before editing? → A: Pull first
+- dont run any commands, I need to do them by hand, I dont want you to do anything that would flag to IT
+- still empty, repos checked: 108 [Image #75]
+- still empty, repos checked: 110
+- done, here's the output
+- all in OneDrive, copy the templates and course files
+- yes, add them to HANDOFF.md
+- yes, add them to HANDOFF.md
+- 1,060.0 MB copied
+
+PS C:\Users\eric_rash\Desktop\DEV> $c="$env:LOCALAPPDATA\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude"; $t="G:\My Dri...
+- yes, add it to HANDOFF.md
+- do items 1-4. If we can use Haiku 5.5 for any of this, let's invoke that model where it makes sense
+- <pasted_content id="d7c3">
+PS C:\Users\eric_rash> git -C "$HOME\.claude\global-memory" status -sb; git -C "$HOME\.claude" status -sb
+## main...orig...
+
+## Files Modified
+laptop-handoff.html, HANDOFF.md, work-laptop-handoff-2026-10-08.md, MAC_CLAUDE_PROMPT.md, SKILL.md
+
+## Unresolved Errors
+- {"stdout":"total 80\ndrwxr-xr-x 1 Eric_Rash Domain Users     0 Oct  4 20:47 ./\ndrwxr-xr-x 1 Eric_Rash Domain Users     0 Oct  4 18:59 ../\n-rw-r--...
+- {"stdout":"{\n  \"_comment\": \"Windows path configuration. SecondBrain was restored on this machine at C:\\\\Users\\\\eric_rash\\\\Desktop\\\\Seco...
+
+## Git
+log, projects: work laptop handoff 2026-10-08 (Windows)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MzF6RjhzyKmw1CEAtS6QWV
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, dev-sync/SKILL.md
+
+## Subagent Tasks
+- [completed] Read-only verification task using the Google Drive connector tools (mcp__claude_ai_Google_Drive__search_f...
+
+## Environment
+cwd: /c/Users/eric_rash/.claude/skills/closeout
+model:claude-opus-5-5[1m]
+
+## Data References
+- <pasted_content id="d7c3">
+S C:\Users\eric_rash> $D="$HOME\Desktop\DEV"; Get-ChildItem $D -Directory -Recurse -Depth 5 -Filter .git -Force | ForEac… (4337 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- <pasted_content id="d7c3">
+PS C:\Users\eric_rash> Get-Content "$HOME\.claude\global-memory\transcripts\.errors.log" -ErrorAction SilentlyContinue; … (1597 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- <pasted_content id="d7c3">
+== CATES
+   ## main...origin/main [behind 1]
+== CFB_Forecast_Archive
+   ## main...origin/main [behind 2]
+== CFB_Victory_… (1630 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- <pasted_content id="d7c3">
+PS C:\Users\eric_rash> $g="$HOME\.claude\global-memory"; git -C $g checkout --theirs -- transcripts/.memsearch-last-run;… (1321 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- type:text
+- <pasted_content id="d7c3">
+PS C:\Users\eric_rash\Desktop\DEV\project-triage> $g="$HOME\.claude\global-memory"; $f="transcripts/2026-10-08.md"; git … (1106 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- <pasted_content id="d7c3">
+PS C:\Users\eric_rash\Desktop\DEV\project-triage> ^C
+PS C:\Users\eric_rash\Desktop\DEV\project-triage> (git -C "$HOME\.c… (21082 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- <pasted_content id="d7c3">
+ create mode 100644 projects/-Users-kristinarash-DEV/memory/project_work-laptop-hands-off.md
+## main...origin/main [ahea… (1285 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- … 18 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+investigate
+
+## User Role
+You are walking me through a manual file handoff on my work Windows laptop. I am moving everything I need to Google Drive so my Mac and a new Linux VPS can pull it from there.
+
+How this works:
+- I am doing every step by hand myself. You do not run, execute, or automate anything on this computer. You only give me instructions in this chat.
+- Prefer normal Windows apps I can click through: File Explorer, Task Scheduler, Settings, Credential Manager, the Google Drive for Desktop app, and a web browser.
+- If a step truly needs a terminal command, label it clearly as "COMMAND YOU RUN YOURSELF", say which app to type it in (PowerShell or Command Prompt), explain in one line what it does, and keep it read-only where possible. I will type and run it myself, then paste you the output if needed.
+- Never give me scripts to save or run, nothing to download or install, and nothing that runs in the background or on a schedule.
+- Give me ONE step at a time, then wait for me to reply "done" or describe what I see before moving on.
+- If something on screen doesn't match what you expected, help me figure it out before going on.
+- Keep each step short and plain. Tell me exactly what to click or type.
+
+Background:
+- My Windows user folder is C:\Users\eric_rash.
+- My project folder is C:\Users\eric_rash\Desktop\DEV (about 130 git repos plus large untracked data files). Google Drive for Desktop should already sync it as a "My Computer" folder, which shows up under "Computers" on drive.google.com, not under My Drive.
+- My Google Drive is mounted as G:\My Drive, and my main documents are in G:\My Drive\00_Primary_Storage_Drive.
+- The large files that exist ONLY on this laptop and matter most:
+  - DEV\Football\PFF_Data_Project\data\pff.db
+  - DEV\ForcePlate_DecisionSystem (including its data folder and database)
+  - DEV\SportScienceResearchRepo (about 4.4 GB)
+  - DEV\Risk_Stratification_Engine (about 1.8 GB)
+  - DEV\Football (the non-repo folder, about 3 GB)
+- Outside DEV, I want to keep C:\Users\eric_rash\.codex (a hidden folder of Codex session history).
+
+Walk me through these phases in order:
+
+1. Stop scheduled tasks: in Task Scheduler, open the "Eric" folder and any KeystoneOS, MorningBriefing, nightly-digest, or Backup tasks. Have me write down each task name and its trigger time, then disable each one.
+2. Close apps that hold files open: Docker Desktop (and turn off "start on sign-in" first), VS Code, RStudio, Excel, Power BI, and any terminal windows.
+3. Confirm Drive for Desktop is syncing DEV, and help me add it if it isn't.
+4. Create G:\My Drive\_FROM_WORK_LAPTOP and copy in .codex plus anything I want from Downloads, Documents, and the Desktop outside DEV. Ask me what's in those folders before I copy, so I don't move junk.
+5. Wait for Drive to show "Up to date" with no errors. Help me clear any errors it lists.
+6. Verify: for each large folder listed above, have me check its size in File Explorer (right-click, Properties) and compare it to drive.google.com under Computers > my laptop > DEV. Keep a running table of folder, laptop size, Drive size, and match yes/no.
+7. Once everything matches: uninstall Claude, Codex, and Docker Desktop in Settings > Apps; rename C:\Users\eric_rash\.claude to .claude_retired; and remove any github or git: entries in Credential Manager > Windows Credentials.
+
+At the end, give me a short summary I can paste to my Mac: the scheduled task names and times I recorded, the size-check table, anything that didn't match, and anything I chose not to move.
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
