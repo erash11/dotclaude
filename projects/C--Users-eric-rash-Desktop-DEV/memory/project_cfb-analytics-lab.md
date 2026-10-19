@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f6ecdcbb-242a-4647-a903-9d4ba12a4d93
-  modified: 2026-08-30T05:46:29.856Z
+  modified: 2026-10-16T22:50:55.437Z
 ---
 
 `~/DEV/CFB_Analytics_Lab` is a teaching workspace created 2026-08-13 for working through
@@ -25,7 +25,10 @@ EDA/regression, over-expected metrics (CPOE/RYOE), GLMs, clustering+PCA, tree en
 Bayesian hierarchical. Bayesian is an extension past the book, which stops at frequentist GLMs.
 
 **CFBD API traps — verified live 2026-08-13, each cost real calls to establish:**
-- Free tier is **1,000 calls/month**, hard reset on the 1st. CFB and CBB share one pool.
+- Key replaced 2026-10-16: **3,000 calls/month** (`patronLevel` 0, so tier-gated endpoints below still 401), hard
+  reset on the 1st. CFB and CBB share one pool. The same key sits in `CFB_Victory_Model/.env`,
+  `CFB_Analytics_Lab/.env`, `house-model/.env` and `Football/CFB_Playoff_Benchmarks/.env` as `CFBD_API_KEY`;
+  WeeklyCoachReport and MatchupAnalysis_FB2026 read it from `CFB_Victory_Model/.env`. A new key means updating all four.
 - **`GET /info` does NOT decrement the quota** — budget checks are free. Verified by two
   consecutive calls leaving `usedCalls` unchanged.
 - **`/plays/stats` silently truncates at exactly 2000 rows** with no error or cursor — one week
@@ -60,4 +63,4 @@ needed for FBS filtering.
 spent budget from a cap that only resets monthly. Rediscovering them costs calls and can strand
 the project for weeks.
 **How to apply:** read this before touching CFBD from any project, including
-[[cfb-forecast-capture]] work, which shares the same key and the same 1,000-call pool.
+[[cfb-forecast-capture]] work, which shares the same key and the same 3,000-call pool.
