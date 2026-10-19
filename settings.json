@@ -380,6 +380,11 @@
             "type": "command",
             "command": "exec node \"$HOME/.claude/hooks/memsearch-sync.js\"",
             "timeout": 50
+          },
+          {
+            "type": "command",
+            "command": "exec node \"$HOME/.claude/hooks/session-autopush.js\"",
+            "timeout": 60
           }
         ]
       }
