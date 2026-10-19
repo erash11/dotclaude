@@ -1,6 +1,7 @@
 # STATUS
 
 ## Current state
+- 2026-10-19 (Windows, prompt audit): pulled 55 commits from origin. To do that, stashed `settings.json` and restored 209 transcripts removed by auto-cleanup; the stash pop merged cleanly with the Mac's settings, and the local plugin toggles (playwright, commit-commands, github, claude-mem-cowork) are committed. `projects/` transcripts are still uncommitted, per the 2026-10-16 rule. Audit report: `audits/2026-10-19-prompt-audit.md`; handoff: `global-memory/handoffs/2026-10-19-prompt-audit.md`.
 - 2026-10-16 (BayCap closeout maintenance): Preserved the existing `opus[1m]` settings change. Live `projects/` histories remain local, including pre-existing deletions and active transcript changes; do not publish them while the session-log GitHub decision is unresolved. Backup failures remain logged (Drive mount and unmanaged Cloudroom_Learning); no risky repair attempted.
 - 2026-10-12 (closeout 2): backup error fixed. `DEV/house-model` was missing from `scripts/backup-manifest.json` (default-deny). Declared it, commit `7e5bbaf`, pushed. Uncommitted and not from this session: `scripts/cloud-push.py` (new 17:58, needs an owner decision), deleted session transcripts (`projects/…jsonl`), and Tier A memory `MEMORY.md` plus `feedback_no-baylor-onedrive.md`. Left as they are.
 - 2026-10-12: Closeout saved live session-log changes. House-model setup and week 7 reports are pushed. One compiler flush hit its two-turn limit at 07:31; a different save passed at 07:31:52. The error log was kept. Details: `global-memory/handoffs/2026-10-12-house-model-closeout.md`.
@@ -44,9 +45,8 @@
 - Configure the correct private remote for RunningTheRoom and push `ff3cefd`.
 - A human audio-listening pass for Sportsmith Part 2 remains optional; the transcript is caption-cross-checked, not human-verified word-for-word.
 ## Open questions
-- None open. (The 2026-09-19 "Indexed 0 chunks" was closed 2026-10-03 as not a bug; the
-  real follow-ups, a logging patch and the 09-28 run that died mid-index, are
-  `HARNESS_FIXES.md` #3 and #4.)
+- Is the Windows laptop still meant to run no automation? Global MEMORY.md says "Win laptop hands-off 10/8, no automation", but `skills/claude-stack-doctor/SKILL.md` describes the Windows scheduled task `\Eric\memsearch-drain-weekly` (Sundays 02:00) as active. Decide which is current, then fix the other.
+- The GitHub plugin is now enabled in `settings.json`, but on 2026-10-19 its MCP server rejected the configured token (HTTP 401). Keep it and fix the token, or turn the plugin off again?
 
 ## Gotchas
 - **A hand-run `memsearch index` takes no lock.** Only the SessionEnd hook and daily-backup use `.memsearch-index.lock`, so a manual rebuild collides with the next backup and Milvus Lite reports it as "older database". Write the rebuild's PID into the lock, or start it through the hook (2026-10-11).

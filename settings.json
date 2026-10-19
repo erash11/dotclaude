@@ -434,14 +434,14 @@
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": false,
-    "playwright@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": false,
-    "commit-commands@claude-plugins-official": false,
+    "commit-commands@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": false,
     "supabase@claude-plugins-official": false,
     "vercel@claude-plugins-official": false,
-    "github@claude-plugins-official": false,
+    "github@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": false,
     "firecrawl@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": false,
@@ -451,7 +451,8 @@
     "codex@openai-codex": true,
     "mattpocock-skills@mattpocock": true,
     "watch@claude-video": true,
-    "typesafe@typesafe-ai": true
+    "typesafe@typesafe-ai": true,
+    "claude-mem-cowork@thedotmack": true
   },
   "extraKnownMarketplaces": {
     "last30days-skill": {
