@@ -464,6 +464,56 @@ Snapshot-Gws "$U/.codex/sqlite"         'codex-sqlite.tgz'     @()
 Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile')
 Snapshot-Gws "$U/Library/LaunchAgents"  'launchagents.tgz'     @()
 
+# --- 2a-db. Live DEV databases -> dev-databases.tgz (added 2026-10-20) ---
+# cloud-push.py keeps DB files off the FUSE mount (sync can lock or corrupt a live DB).
+# This stages a consistent copy of each live DB and uploads one archive through gws instead.
+# Live = not under backups/, renv/, edge-profile/, .build/, printing-press-library/, and no
+# 'before'/'backup' in the name. Dated backups stay local.
+# shortcut: re-uploads the whole archive every night (~1 GB) and keeps only one cloud copy
+# (update in place, no history); add a skip-if-unchanged hash check if upload time hurts.
+function Snapshot-Databases {
+    $stage = Join-Path ([IO.Path]::GetTempPath()) "dev-db-$([guid]::NewGuid().ToString('N'))"
+    $root = Join-Path $stage 'dev-databases'
+    New-Item -ItemType Directory -Force -Path $root | Out-Null
+    try {
+        $prune = @('node_modules', '.venv', 'venv', '.git', 'renv', 'edge-profile', '.build', 'printing-press-library', 'backups')
+        $findArgs = @("$U/DEV", '(')
+        foreach ($p in $prune) { $findArgs += @('-name', $p, '-o') }
+        $findArgs = $findArgs[0..($findArgs.Count - 2)] + @(')', '-prune', '-o', '-type', 'f',
+            '(', '-name', '*.duckdb', '-o', '-name', '*.db', '-o', '-name', '*.sqlite', '-o', '-name', '*.sqlite3', ')',
+            '!', '-iname', '*before*', '!', '-iname', '*backup*', '-print')
+        $dbs = @(& /usr/bin/find @findArgs 2>$null)
+        $ok = 0
+        foreach ($src in $dbs) {
+            $rel = $src.Substring("$U/DEV/".Length)
+            $dst = Join-Path $root $rel
+            New-Item -ItemType Directory -Force -Path (Split-Path $dst -Parent) | Out-Null
+            $buf = New-Object byte[] 15
+            $fs = [IO.File]::OpenRead($src)
+            try { [void]$fs.Read($buf, 0, 15) } finally { $fs.Dispose() }
+            $head = [Text.Encoding]::ASCII.GetString($buf)
+            if ($head -eq 'SQLite format 3') {
+                # .backup gives a consistent copy even if a writer has it open.
+                & /usr/bin/sqlite3 $src ".backup '$dst'" 2>$null
+                $check = & /usr/bin/sqlite3 $dst 'PRAGMA quick_check;' 2>$null
+                if ($check -ne 'ok') { $Errors.Add("db:$rel"); Log "DB $rel : FAILED (sqlite check: $check)"; continue }
+            } else {
+                # DuckDB: a plain copy is only safe when no process has the file open.
+                $holders = & /usr/sbin/lsof -t -- $src 2>$null
+                if ($holders) { $Errors.Add("db:$rel"); Log "DB $rel : SKIPPED (open by pid $($holders -join ','))"; continue }
+                Copy-Item -LiteralPath $src -Destination $dst
+                if (Test-Path -LiteralPath "$src.wal") { Copy-Item -LiteralPath "$src.wal" -Destination "$dst.wal" }
+            }
+            $ok++
+        }
+        Log "DB staged $ok of $($dbs.Count) live databases"
+        if ($ok -gt 0) { Snapshot-Gws $root 'dev-databases.tgz' @() }
+    } finally {
+        Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+Snapshot-Databases
+
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null
 if ($Manifest -and $Manifest.destinations.baylor.root) {

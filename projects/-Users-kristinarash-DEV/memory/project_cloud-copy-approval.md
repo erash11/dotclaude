@@ -10,7 +10,7 @@ metadata:
 
 On 2026-10-12 Eric stated that Baylor data governance approved copying ALL of `~/DEV`, including athlete data, to his personal Google Drive (eric.rash11@gmail.com). The copy goes to `_MACHINE/Cloud_Copy/DEV/ (moved out of Primary 2026-10-14)`, one-way, never deletes. It runs daily at 07:00 and 17:30 through `~/.claude/scripts/cloud-push.py` (launchd `com.keystone.clouddrivepush`). It is the first step toward a VPS migration.
 
-**Kept local on purpose:** database files (DuckDB/SQLite, because sync can lock or corrupt them), password and key files (`.env`, `*.pem`, `*.key`, `id_rsa`, `credentials*`, `secrets*`), and regenerable folders (`node_modules`, `.venv`, `venv`, `__pycache__`, `.next`).
+**Kept off the mirror on purpose:** database files (DuckDB/SQLite, because sync can lock or corrupt them; since 2026-10-20 the live DBs go to Drive as `dev-databases.tgz` via `gws` from `daily-backup.ps1`), password and key files (`.env`, `*.pem`, `*.key`, `id_rsa`, `credentials*`, `secrets*`), and regenerable folders (`node_modules`, `.venv`, `venv`, `__pycache__`, `.next`).
 
 **Why:** Eric is migrating to a VPS and wants everything in the cloud where possible. He wants a copy in the cloud now.
 

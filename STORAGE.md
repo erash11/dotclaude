@@ -20,7 +20,7 @@ mirrored into Drive, so Drive still shows everything.
 | Finished deliverable from a repo | Drive `00_Primary_Storage_Drive/03_REPORTS/`, named `YYYY-MM-DD_<Sport>_<Topic>_<Audience>.<ext>` | made in `<repo>/outputs/` | `closeout` copies it (copy, keep the repo one) |
 | Code, scripts, project docs, `STATUS.md` | GitHub `erash11/<repo>` | `~/DEV/<repo>` | `git commit` + `git push`, every session |
 | Generated output (charts, exports, logs) | `<repo>/outputs/` | same | regenerate from code; gitignore it if large |
-| Database (DuckDB, SQLite) | local disk, inside its repo or `~/DEV` | same | nightly backup to Drive `_MACHINE/Backups/Machine` |
+| Database (DuckDB, SQLite) | local disk, inside its repo or `~/DEV` | same | nightly `daily-backup.ps1` stages the live DBs (not dated `before`/`backup` copies) into `dev-databases.tgz`, uploaded via `gws` to Drive `_MACHINE/Backups/Machine` (since 2026-10-20; one copy, no history) |
 | Secrets (`.env`, tokens, keys) | macOS Keychain or local `.env` | same | nowhere else — never in git, Drive, or chat |
 | Claude/Codex config, skills, memory | GitHub `dotclaude`, `claude-skills`, `claude-global-memory` | `~/.claude` | `git push` (daily-backup also pushes) |
 | A loose file with no home yet | `~/DEV/_INBOX/` | same | `weekly-review` drains it within 7 days |
@@ -73,6 +73,7 @@ these, file it by the table above in the same session.
   from 104,945 to ~33,735), and `daily-backup.ps1` now uploads its Drive `.tgz` snapshots, receipt, and
   `RESTORE.md` directly via the `gws` API to `_MACHINE/Backups/Machine`, so a lagging local mount can
   never block nightly backups.
+- The nightly 00:30 `gws` uploads fail when the Mac is offline or asleep (all FAILED 2026-10-20 00:05, git pushes failed too); a by-hand run succeeds.
 - `cloud-push.py` fails under launchd ("Operation not permitted"); it works when run by hand.
 - Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.

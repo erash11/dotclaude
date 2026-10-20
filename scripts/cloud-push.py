@@ -6,7 +6,8 @@ Builds the file list fresh each run, so new and changed files are picked up.
 
 Approved scope (Eric, 2026-10-12): all project files, including athlete data, on personal Google Drive.
 Kept local on purpose:
-  - database files (DuckDB/SQLite): sync can lock or corrupt them
+  - database files (DuckDB/SQLite): sync can lock or corrupt them.
+    daily-backup.ps1 uploads consistent copies as dev-databases.tgz via gws instead.
   - password and key files (.env, *.pem, *.key, id_rsa, credentials*, secrets*)
   - regenerable folders (node_modules, .venv, venv, __pycache__, .next)
 Log: ~/.claude/scripts/logs/cloud-push.log
