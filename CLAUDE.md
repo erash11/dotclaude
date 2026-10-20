@@ -14,6 +14,11 @@ Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows lapt
 - **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
 - When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
 - Skills are tools: invoke one when it clearly fits the task.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
 
 # Session Startup
 
