@@ -259,7 +259,12 @@ function Invoke-GwsJson([string[]]$gwsArgs) {
     $code = $LASTEXITCODE
     $jsonLines = @($out | Where-Object { "$_" -notmatch '^Using keyring backend:' })
     $text = ($jsonLines -join "`n").Trim()
-    if ($code -ne 0 -or -not $text) { return $null }
+    if ($code -ne 0 -or -not $text) {
+        # Log gws's own error text so a failed upload says why. shortcut: first 300 chars only, enough for the error line.
+        $shown = if ($text.Length -gt 300) { $text.Substring(0, 300) } else { $text }
+        Log "GWS-ERR exit=$code $($gwsArgs[0]) $($gwsArgs[1]) : $shown"
+        return $null
+    }
     try { return ($text | ConvertFrom-Json) } catch { return $null }
 }
 
@@ -294,11 +299,16 @@ function Snapshot-Gws($src, $archiveName, [string[]]$extraXD = @()) {
             $params = @{ q = $q; fields = 'files(id,name)' } | ConvertTo-Json -Compress
             $listObj = Invoke-GwsJson @('drive', 'files', 'list', '--params', $params)
             $existingId = if ($listObj -and $listObj.files -and $listObj.files.Count -gt 0) { $listObj.files[0].id } else { $null }
-            if ($existingId) {
-                $upParams = @{ fileId = $existingId; fields = 'id,name,size' } | ConvertTo-Json -Compress
-                $resObj = Invoke-GwsJson @('drive', 'files', 'update', '--params', $upParams, '--upload', "./$archiveName")
-            } else {
-                $resObj = Invoke-GwsJson @('drive', '+upload', "./$archiveName", '--parent', $DriveMachineId)
+            # One retry after a short pause, so one failed upload does not mark the snapshot as failed.
+            $resObj = $null
+            for ($try = 1; $try -le 2 -and -not ($resObj -and $resObj.id); $try++) {
+                if ($try -gt 1) { Start-Sleep -Seconds 10; Log "SNAP-GWS $archiveName : retry after failed upload" }
+                if ($existingId) {
+                    $upParams = @{ fileId = $existingId; fields = 'id,name,size' } | ConvertTo-Json -Compress
+                    $resObj = Invoke-GwsJson @('drive', 'files', 'update', '--params', $upParams, '--upload', "./$archiveName")
+                } else {
+                    $resObj = Invoke-GwsJson @('drive', '+upload', "./$archiveName", '--parent', $DriveMachineId)
+                }
             }
             if ($resObj -and $resObj.id) {
                 Log "SNAP-GWS $src -> _MACHINE/Backups/Machine/$archiveName : OK (id=$($resObj.id))"
