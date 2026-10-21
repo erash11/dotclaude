@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.keystone.dailybackup-login</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/kristinarash/.claude/scripts/daily-backup-login.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/kristinarash/.claude/scripts/logs/daily-backup-login.err</string>
+	<key>StandardOutPath</key>
+	<string>/Users/kristinarash/.claude/scripts/logs/daily-backup-login.out</string>
+</dict>
+</plist>
