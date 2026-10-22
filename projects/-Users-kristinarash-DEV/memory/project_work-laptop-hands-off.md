@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 788f361d-8aa2-49b2-ba0b-3402ca8b2f41
-  modified: 2026-10-14T20:30:00.000Z
+  modified: 2026-10-22T11:07:57.119Z
 ---
 
 Since **2026-10-08** the Baylor Windows work laptop (BU-1979FJ4, "My Laptop (2)" in Google Drive) is hands-off. Eric does not want any automation running on it. All 17 of its scheduled tasks (the Eric folder plus the root-library KeystoneOS, MorningBriefing, DailyGmailDigest and Refresh_All_Data tasks) are **disabled**. Their XML exports are in `My Drive/_FROM_WORK_LAPTOP/scheduled-tasks`.
@@ -17,3 +17,5 @@ Everything that lived only on the laptop was copied to `My Drive/_FROM_WORK_LAPT
 **Why:** Eric chose to stop running jobs on the Baylor machine.
 
 **How to apply:** Do not re-enable, create, or fix scheduled tasks or hooks on the Windows laptop. Port a needed job to the Mac, a VPS, or a Cloudroom automation instead (cloud servers and schedulers approved 2026-10-14, see [[cloud-copy-approval]]). Treat Windows-side entries in [[automation-cadence]] as historical. The Mac is now the only machine, full stop. Do not plan two-machine sync, Windows ports, or Docker fixes.
+
+Historical Windows trap notes (dropped from the index 2026-10-22, files kept): [[git-bash-msys-ad-stall]], [[backup-task-sleepkill-signature]], [[settings-json-bom-trap]]. Open the BOM one if a config file ever arrives from a Windows editor.

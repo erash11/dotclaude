@@ -4,9 +4,9 @@ Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitigno
 
 @machine.md
 
-Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive.
+Projects sync through GitHub (`erash11`), documents through Google Drive.
 
-**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This is what keeps the two machines in step.
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
 
 # Workflow Expectations
 
@@ -38,7 +38,7 @@ The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed
 - Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
 - Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, retrieval-ladder section
 - Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
-- **Slugs differ per machine** (Mac `-Users-kristinarash-DEV-<X>`, Windows `C--Users-eric-rash-Desktop-DEV-<X>`). Tier A written on one is not auto-injected on the other; memsearch still finds it. Durable project facts belong in the repo's `docs/` so both machines see them.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
 
 ---
 

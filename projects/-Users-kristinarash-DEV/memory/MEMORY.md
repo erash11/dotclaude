@@ -48,7 +48,6 @@ Never put memory content here — the file itself holds the facts.
 - [Supervisor log pipeline](project_supervisor-log-pipeline.md) — supervisor log or Kenny/Chris report
 - [dcg guard blocks](project_dcg-guard-blocks.md) — a Bash command was blocked
 - [Headless tool-deny gap](project_headless-claude-tool-deny-gap.md) — before calling a headless run read-only
-- [Config encoding damage from Windows](project_settings-json-bom-trap.md) — "hook missing" or garbled statusline
 - [Tech inventory refresh](project_tech-inventory-refresh.md) — refreshing the tech inventory
 - [Brain audit loop](project_brain-audit-loop.md) — scoring the second brain
 - [Hook two-copies trap](project_hook-two-copies-trap.md) — a hook patch "reverts"
@@ -58,8 +57,6 @@ Never put memory content here — the file itself holds the facts.
 - [Skill bloat and promotion](project_skill-bloat-and-promotion.md) — before touching ANY skill folder
 - [Prioritization slate](project_prioritization-slate.md) — Eric proposes a new project or idea
 - [Baylor department names](user_baylor-department-names.md) — writing staff-facing text
-- [Git Bash MSYS/AD stall](project_git-bash-msys-ad-stall.md) — Windows bash dies with `add_item errno 1`
-- [Backup task sleep-kill signature](project_backup-task-sleepkill-signature.md) — Windows backup exit 3221225786
 - [Sport-science thought partner](user_sport-science-thought-partner.md) — performance, S&C or rehab questions
 - [Third-party skill install](project_third-party-skill-install.md) — installing a third-party skill
 - [Admin docs house style](feedback_admin-docs-house-style.md) — building any doc for administration; Baylor_Doc_Style only, ask before breaking a page limit
@@ -69,7 +66,7 @@ Never put memory content here — the file itself holds the facts.
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
-- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; laptop retired 10-14
+- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; laptop retired 10-14; links the old Windows trap notes
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
