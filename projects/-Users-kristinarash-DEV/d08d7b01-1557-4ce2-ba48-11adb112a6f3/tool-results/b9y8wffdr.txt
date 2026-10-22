@@ -1,0 +1,547 @@
+ create mode 100644 docs/handoffs/2026-10-20-position-grids-decisions.md
+ create mode 100644 scripts/add_grid_decisions.py
+ create mode 100644 scripts/add_mauro_answers.py
+---
+# STATUS
+
+Read this first. Update it before ending every session.
+
+## Where everything lives
+
+| What | Where |
+|---|---|
+| Drive outputs | `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/02_SPORTS/Football/PP_Recruiting` (Windows: `G:\My Drive\00_Primary_Storage_Drive\02_SPORTS\Football\PP_Recruiting`) |
+
+## Current state
+- **2026-10-20: 026 TEST = current working version** (025 + Mauro's answers in
+  `024. ... (DECISIONS_MAURO).xlsx`). Impact alert 80 for every position (Eric);
+  EDGE must-have #1 Pass Rush 70 / 80; OG / C Size 9 at 6'4"; REVIEW BOARD C labels
+  END / JACK by weight (SETTINGS B62 = 260) and WR / SLOT by height (B63 = 72).
+  2025 load: REVIEW 2,852 (+661 new, 609 on Impact alone; -44 EDGE). ALL CHECKS
+  PASS. Built by `scripts/add_mauro_answers.py`. Drive root, not in Send/.
+- **2026-10-20: 025 TEST built on Windows: 022 + Eric's grid decisions** (024
+  DECISIONS: Yes 2, 4-6, 8-13; No 1, 7; Hold 3 EDGE must-have). Colleague's
+  original mappings used (OT Speed counts Pass Blocking, OL Athletic counts
+  Stops Allowed OE, IDL Athletic = Tackling, WR YAC Ability = Tackles Avoided).
+  SETTINGS C29 71 / C31 76 / C32:C33 74, B61 QB Impact cut 85; REVIEW BOARD
+  N, S, T, U position-aware (2026 traits by header); PRIOR SEASON L; CROSSWALK.
+  2025 load: REVIEW 2,235 (+10 QBs); SIZE 671 changes, ATHLETIC 1,627, QUICK
+  893, SPEED 444; Size-Speed alert -82 WR, -12 RB, +7 OT. `check_workbook.py`
+  recomputes S/T/U and the QB cut: ALL CHECKS PASS (022, 025). Built by
+  `scripts/add_grid_decisions.py`. Drive root, not in Send/. Open: EDGE
+  must-have source (Hold); IOL "(AVG)" on the grid was built as best-of.
+- **2026-10-20: 024 = decisions sheet** (Drive root, `scripts/decision_sheet.py`):
+  023 with VS WORKBOOK replaced by DECISIONS, the 13 proposals as plain yes /
+  no questions grouped A (changes REVIEW), B (9/3/1 values only), C (wording),
+  with a Yes / No / Hold dropdown. **Next: Eric fills DECISIONS column G; the
+  Yes rows go into the next grading workbook (025).**
+- **2026-10-20: 023 = reviewed copy of the staff Position Grids** (Drive root,
+  `scripts/review_position_grids.py`; staff original untouched). 17 commented
+  cell fixes (IDL Athletic Flex -> None, OT Speed drops Pass Blocking, WR YAC
+  Ability -> YAC OE + Tackles Avoided + Elusiveness, Telemetry spellings, (2nd)
+  tags); MATRIX synced to the tabs; VS WORKBOOK lists 13 proposals vs 022 with
+  2025 effects and a Decision cell for Eric; REVIEW NOTES corrects the morning
+  review (Double Team Rate is loaded; EDGE Must-have 1 differs: Pass Rush 65/80
+  vs Disruption 54/80). No grading workbook changed. Decisions moved to
+  024's DECISIONS tab.
+- **2026-10-20: 022 TEST built on Windows (Excel COM): 021 with Run Blocking
+  out of the WR toughness proxy.** Staff question: Run Blocking ("space created
+  by walling off defenders") credits a WR who runs his DB off with no contact.
+  2025 data: correlation 0.02-0.04 with YAC, Tackle Breaking, Tackles Avoided;
+  it alone gave 117 of 278 WRs TOUGH 9. Eric chose to drop Run Blocking only
+  (YAC, Tackle Breaking, Tackles Avoided stay). REVIEW BOARD R swaps V for Y on
+  WR rows; CROSSWALK F14, METRIC GLOSSARY E11, README B11. WR TOUGH 9: 278 to
+  161. Band, elite share, REVIEW (2,225) unchanged; Run Blocking still counts in
+  WR elite share (removing it would move 155 WR bands; not decided).
+  `check_workbook.py` now recomputes TOUGH (proxy); ALL CHECKS PASS on 021 and
+  022. Diff vs 021 only those cells; query package identical; Excel merged the
+  AP:AW "Y" CF blocks (13 to 8, same coverage). Drive root, not in Send/.
+  Built by `scripts/add_wr_toughness.py`.
+- **2026-10-20: new staff file `BU - Telemetry STAQS Position Grids.xlsx`
+  reviewed (Drive LOG 2026-10-20).** Position tabs propose changes not in any
+  workbook: narrower Toughness proxies per position, SLOT merged into WR at a
+  5'11" floor, OT 6'4" / IOL 6'2" floors, OT size gate + arm length, QB 2nd
+  path at Impact 85, RB/TE Elusiveness, JACK CoD removed. MATRIX tab still has
+  the old mappings. Awaiting Eric's decisions.
+- **2026-10-19: 021 TEST built on the Mac: 020 + prior season + group change +
+  Elusiveness.** Drive project root, id `1brIIoZgAvnYaLQKGdG3uttb7g0mP_V0a`
+  (30,933,648 bytes); not in Send/. Hidden tab PRIOR SEASON (29,538 rows: 2024
+  FBS, 2025 FBS + FCS/G6; K/L compute prior band and prior REVIEW from
+  SETTINGS). REVIEW BOARD AS (hidden helper) to AW: Prior band, Prior Impact,
+  Prior REVIEW, Group change. SETTINGS B60 = Y makes Prior REVIEW turn REVIEW
+  on. On the shipped 2025 data: REVIEW 2,121 to 2,225 (+104); Prior REVIEW 330;
+  Group change 346 (Coleman "SAF to CB"). Elusiveness: CROSSWALK F11/F20 and
+  glossary row 57, still not counted. Query package byte-identical to 020 (no
+  Stage change, no refresh). `check_workbook.py` ALL CHECKS PASS (extended for
+  021); cell diff vs 020 is only the planned cells; CF rules 8 to 13 (AR's "Y"
+  rule copied to AS:AW). Built by `scripts/prior_season.py` then
+  `scripts/add_prior_season.py`. Handoff: `docs/handoffs/2026-10-19-021-prior-season.md`.
+- **2026-10-17: 020 TEST built on the Mac** (first build without Windows COM).
+  019 + Stage query loads the 5 new traits after BT (secondary, elite share
+  unchanged) + Mac path support; CROSSWALK 11 rows, METRIC GLOSSARY 52-56,
+  SETTINGS B59 = 3, REVIEW BOARD AR "Project" (71 of 12,029 flagged on 2025
+  data; WT 0 = missing, never flagged). Versus 019 only those cells and README
+  B11 differ; `check_workbook.py` ALL CHECKS PASS; 8 CF rules as 019. Not
+  refreshed: Mac Excel cannot run the folder query. On Drive root, not in Send/.
+  Built by `scripts/patch_mashup.py` then `scripts/add_new_traits.py`.
+  Handoff: `docs/handoffs/2026-10-17-020-new-traits-mac-build.md`.
+- **2026-10-17: Telemetry added 7 Player Traits columns; decisions for 020.**
+  OT/IOL Pull Agility + Perimeter Speed; OB-LB Closing + Reaction Time; CB/SAF
+  Targeted Coverage + Closing + Reaction Time. Advanced Stats unchanged.
+  Stage.m drops them silently today; the column check passes. Perimeter Speed
+  is "straight line speed", so it maps to Speed (Play-speed), not Foot speed.
+  Weight: SIZE already never scores 1 on weight (weight only decides 9 vs 3;
+  checked on 019 data), so the "PROJECT, not Size 1" rule has nothing to fix.
+  Open: optional info-only PROJECT column. 019 read via
+  `gws drive files get` (Drive mount still hangs on big files after restart).
+  Builds were all Windows Excel COM; Mac build route undecided. Definitions, crosswalk and the 020 build list:
+  `docs/2026-10-17-new-telemetry-traits.md`. All mappings confirmed by
+  Eric 2026-10-17. Blocker: the Drive mount hung reading 019 today, so the SIZE
+  formula is not yet read.
+- 2026-10-12: docs commit pointed STATUS at the Drive outputs folder. No other work recorded today (closeout sweep).
+
+- **2026-10-06: weekly pull is one command, and every load checks its columns.**
+  A staff export arrived without Elig. and Tackle Breaking (columns switched off
+  in his leaderboard view; Download CSV writes only on-screen columns) and with
+  heights Excel had turned into dates. New: `scripts/pull_week.bat` (44 CSVs,
+  FBS + FCS/G6, into one folder `_exports/<season>_asof_<date>`, checked, path
+  on the clipboard); `scripts/check_exports.py` (required columns per group and
+  tab, identical 2023-2026; group from Pos. codes); the same check inside
+  `telemetry_pull.py` and the workbook Stage query. First full run:
+  `_exports/2026_asof_2026-10-06/` (44 files, all ok, week 6).
+- **019 (2026-10-06) = 018 + LOAD STATUS "Column check" row** (OK, or PROBLEM
+  naming the file and the missing columns / unreadable heights); UPDATE DATA
+  step 1 says turn every column on and do not open CSVs in Excel; step 3 says
+  check the row. Built by `add_column_check.py` on the 2025 files: versus 017
+  only README B11, UPDATE DATA B6/B8/B16/B17/A25:B26 and the known HONORS
+  BENCHMARK A3 differ; `check_workbook.py` ALL CHECKS PASS (12,029 / 2,121).
+  Negative test (broken QB file among the 44 week-6 files) flagged exactly that
+  file. In the Drive root and **in Send/** (copied 2026-10-06). Next number is 020.
+- **Send/018 is no longer as shipped:** saved 2026-10-06 16:04 after a Refresh
+  All on `_exports/2026_Workings` (week-5 files; 17,492 / 14,397). Formulas and
+  layout unchanged. Use 019 for the next send.
+- **2026 FBS leaderboard pulled (2026-09-29, through week 5): 22 CSVs in Drive
+  `_exports/2026_asof_2026-09-29/fbs/` + `manifest_2026_fbs.json`.** 138 teams
+  (RB traits 137), headers and BOM match the 2025 files, all 22 distinct.
+  `scripts/telemetry_pull.py` now works end to end: scope fix `20e2de6`; `93e8829`
+  keeps the CSV the page builds for Download CSV instead of Chrome's download
+  manager, which crashed Chrome seconds after each download (Crashpad dumps in
+  the tool profile), and lets the manifest merge across reruns. Not yet loaded
+  into a workbook. Handoffs: `docs/handoffs/2026-09-29-telemetry-pull-fix.md`,
+  `docs/handoffs/2026-09-29-2026-fbs-pull.md`.
+- **018 (2026-09-30) is the current staff workbook, in Send/.** 017 with the
+  DeJean provenance fix: `RETURN_ROLE` keyed to one raw row (season, source,
+  player, heading, selectors), DeJean's 2023 SI kick-returner row excluded, his
+  DB All-America kept; the matcher stops if an entry does not match exactly one
+  row. Benchmark CSV identical to v4; versus 017 only HONORS BENCHMARK A3 differs
+  (note rewritten); `check_workbook.py` ALL CHECKS PASS. v4 outputs in
+  `_exports/honors/superseded_2026-09-30_v4/`. 017 also stays in Send/ because it
+  went to Mauro today; every number is the same. Sonnet 5.5 review of 018 (Codex at usage limit): SHIP, all 6 checks pass (`docs/audits/2026-09-30-sonnet-check-018.md`); its per-entry guard suggestion applied, outputs identical.
+- **017 (2026-09-30), superseded by 018; sent to Mauro.** 016 with one All-American flag removed: Codex's check of
+  016 (`docs/audits/2026-09-30-codex-check-016.md`) passed everything except
+  LaJohntay Wester 2023, whose All-America award was as punt returner (FWAA,
+  Phil Steele). `honors_match.py` `RETURN_ROLE` now lists sourced returner
+  exceptions. 15 WR All-American medians moved, as Codex predicted; 40 cells
+  differ from 016; `check_workbook.py` passes on 017. v3 outputs and a raw
+  snapshot in `_exports/honors/superseded_2026-09-30_v3/`.
+  **Codex check of 017 (2026-09-30, `docs/audits/2026-09-30-codex-check-017.md`):**
+  Wester fix, all 1,104 median/n comparisons, the 40-cell diff and the Send/
+  copy (byte-identical) pass. Verdict DO NOT SHIP on provenance only: Cooper
+  DeJean's 2023 SI All-America row (raw row 627) is a kick-returner award and
+  still counts, so A3's "return honors excluded" overstates. **Zero numerical
+  effect** (his DB All-America, raw row 606, keeps him in). Fix needs a
+  row-level exclusion (season, source, player, heading, selector): adding
+  DeJean to `RETURN_ROLE` as keyed would also drop row 606 and move 14 CB
+  medians. Worthy, Kingston, Concepcion are valid all-purpose; leave them.
+- **016 (2026-09-29 evening), superseded by 017.** 015 with the All-American column corrected.
+  The full Codex GPT-6-Astra re-check of 015 (`docs/audits/2026-09-29-codex-reverification-015.md`)
+  passed the arithmetic (552 medians, 0 discrepancies) and the sheet but blocked on
+  N2: all-purpose All-Americans (Hunter 2023, Knight 2025) had been dropped.
+  Fixed in `honors_match.py` (`keep_honor`: combined all-purpose/return honors
+  count only with a position honor that season); Honorees and Power Four
+  unchanged, All-American 37 medians / 58 n changed. Versus 015 only
+  All-American cells and the A3 note differ. Rule and rejected alternatives in
+  the honors plan doc. `check_workbook.py` not re-run (low memory; only the
+  HONORS BENCHMARK tab changed).
+- **015 (2026-09-29), superseded by 016.**
+  014 plus tab HONORS BENCHMARK (`scripts/add_honors_benchmark.py`): SETTINGS
+  position-profile must-haves side by side with 2023-25 honoree medians (all,
+  Power Four, All-American, n). Data: Drive `_exports/honors/`
+  (honors list 2,150 rows, 1,845/1,845 matched, benchmark 1,433 rows / 1,432
+  player-seasons, 300+ snaps). First build rejected by the Codex GPT-6-Astra
+  audit (F1-F9, report kept at `%TEMP%/pp015/codex_verification.md`); all fixed.
+  014 is still the self-service template; 015 and 016 refresh the same way (UPDATE DATA).
+- **014 (2026-09-29) is the self-service workbook for Anthony Mauro, current
+  staff workbook, in Send/ (replaced the 013 copy).** `014. BAYLOR - TELEMETRY x
+  STAQS UNIFIED GRADING (SELF-SERVICE LOAD).xlsx`, built from 013 by
+  `scripts/make_self_service.py`. PORTAL INPUT is now a Power Query table fed
+  from a folder of Telemetry leaderboard CSVs: new tab UPDATE DATA (3 steps,
+  folder cell `LoadFolder`, Min Elig cell `LoadMinElig`, LOAD STATUS table,
+  live checks); Data > Refresh All reloads. No macros, no Python on his side.
+  The M code (`scripts/powerquery/`) is a port of `load_leaderboard.py`.
+  Verified: on the 44 2025 baseline CSVs it reproduces 013's 12,029 Elig 1+
+  players value for value in PORTAL INPUT and REVIEW BOARD (only row order of
+  15 same-name/same-position pairs differs), REVIEW 2,121, 1,930 with Sample
+  OK; `check_workbook.py` all 7 pass; reopen-and-refresh to a 132-row folder
+  and back leaves the board intact (0 errors); a blank path refuses to refresh
+  and keeps the data. REVIEW BOARD holds 20,000 rows (capacity check on UPDATE
+  DATA). Shipped loaded with 2025 (Elig 1+), path cell empty. The 578 Elig 0
+  benchmark reference rows are gone; Benchmark 2025 is refilled on each load
+  from the hidden BENCHMARK IDS table (710 ids); BENCHMARK PROFILES is frozen
+  as 2025 values. A 44-file refresh took about 2 minutes on this laptop.
+- **Honors benchmark plan (draft, 2026-09-29):**
+  `docs/2026-09-29-honors-benchmark-plan.md`. Benchmarks from 1st/2nd-team
+  All-America and all-conference players 2023-2025 (Mauro conversation
+  2026-09-28). Ten decisions for Eric in section 8; two verifications block the
+  build (is Telemetry `Team` season-specific in past-season exports; are
+  percentiles independent of the export filter).
+- **Jev pilot brief captured 2026-09-22:**
+  `docs/2026-09-22-jev-recruiting-pilot.md`. TypeSafe API access was verified
+  on Windows with `jev-1.13.0`; no player data was sent. The proposal is a
+  shadow-mode evidence/exception sidecar and later valuation evidence ledger.
+  It is not implemented, staff-approved, or validated. Mac API access and an
+  approved qualitative evidence corpus have not been verified. PR #2 (merged
+  2026-09-26) carried it; the dated cross-harness handoff is
+  `docs/handoffs/2026-09-22-jev-pilot-capture.md`.
+- Deliverables 001 to 026 are on Drive (020-022, 025, 026 are TEST builds; 023 / 024 are the Position Grids review and decisions sheet). Next number is 027.
+- **013** (2026-09-26) is 012 plus the position profiles from Drive
+  `Baylor_Elite_Position_Profiles_2025.pdf`, built by `scripts/add_profiles.py`.
+  SETTINGS rows 41-58 hold the profile table (all thresholds editable);
+  REVIEW BOARD AM:AQ show Must-have 1/2, Profile, Diamond signal and Profile
+  REVIEW. Profile BOTH (200+ snaps) is a second path into REVIEW at OT, OG, C
+  and EDGE only: pre-portal REVIEW (Sample OK) 1,708 to 1,930. Passes all 7
+  checks (checker now recomputes the profile path); only REVIEW? and Low
+  Impact alert differ from 012. Staff workbook until 014 (2026-09-29).
+  Test behind it: `docs/2026-09-26-position-profiles-test.md`.
+- **Size standards held for Mauro:** `docs/2026-09-26-size-standards-question.md`
+  (describe the 2025 elite market or keep Baylor's prototype; SLOT row, LB
+  weight cap, OT floor).
+- **Data governance cleared for Jev with player data (Eric, 2026-09-26).** The
+  Jev pilot's remaining blocker is an approved qualitative evidence corpus
+  (scout notes); see `docs/2026-09-22-jev-recruiting-pilot.md`.
+- **012** (2026-09-26) is 010 plus Eric's 2025 benchmark set (Drive
+  `2025 Telemetry Benchmark Stats/`, 22 CSVs, 710 top 2025 players), built by
+  `scripts/add_benchmark.py`. All 710 tagged BENCHMARK (PORTAL INPUT BT,
+  REVIEW BOARD AL); the 578 Elig 0 players were appended as reference rows
+  (12,607 rows). New last tab BENCHMARK PROFILES: band mix of the 710 by
+  position (live) and per-metric 25th / median / 75th percentile per group.
+  Passes all 7 checks; all 12,029 010 rows identical. **REVIEW in 012 is
+  2,352 because it counts the benchmark rows; the pre-portal board (Benchmark
+  blank) is still 1,899 / 1,708 Sample OK.** Benchmark projects 16% AL+ and
+  50% QS+; 78% get REVIEW. 010 stays the template for new loads.
+- **011** (2026-09-16) is the screening matrix, proposed staff-review rules:
+  `011. BAYLOR - TELEMETRY x STAQS SCREENING MATRIX (PROPOSED).docx`. One
+  template for 14 roles (300+ snaps, k core metrics at 75th+, optional Player
+  Impact floor, must-have not under 25); boards of 35 to 54 per role (609
+  unique names) plus sized exception paths (Impact, Speed, Young, staff add).
+  Keeps 13 of 28 graded QS+ on a board, 17 with exceptions, 1 of 11 FRP.
+  Method and alternatives: `docs/2026-09-16-screening-matrix.md`; harness
+  `scripts/size_matrix.py`. **Not yet reviewed by Eric or staff.**
+- **010** (2026-09-16) is the full 2025 load: FBS (all 136 teams) plus FCS,
+  Elig 1+, 12,029 players, 1,899 REVIEW (1,708 with Sample OK). Power Four
+  adds 3,268 players and 635 REVIEW (545 Sample OK). Built by
+  `load_leaderboard.py` from `_exports/2025_baseline/fcs_g6/` and `fbs/`
+  staged into one folder, template 009. Passes all 7 `check_workbook.py`
+  checks; every 009 PlayerId has identical REVIEW BOARD values in 010. **Use
+  010 as the template for future loads.** Per-position counts: Drive LOG.md,
+  2026-09-16 evening entry.
+- **009** (2026-09-16) is 008 plus the Impact alert (Player Impact 90+, turns
+  REVIEW on) and the Low Impact alert (REVIEW rows at Player Impact 10 or
+  lower, a note only). 1,264 REVIEW flags (was 879), 1,163 with Sample OK (was
+  778); all 385 new flags come from the Impact alert. 149 Low Impact alerts.
+  Bands unchanged. Built by `scripts/add_impact_alerts.py` from 008.
+- **008** (2026-09-15) is the 2025 FCS + Group of Six leaderboard baseline:
+  8,761 players with Elig 1+, built by `scripts/load_leaderboard.py` from 22
+  CSVs in Drive `_exports/2025_baseline/fcs_g6/`.
+- 2026-09-15 meeting with Anthony Mauro, assistant GM (named 2026-09-26): strong buy-in; he
+  wants 30 to 50 pre-portal names per position by week 5 or 6. Notes:
+  `docs/2026-09-15-review-board-meeting.md`.
+- Plan approved by Eric 2026-09-15: 2025 baseline (done), validation run (done
+  2026-09-16), alerts (009, done), full FBS load (010, done 2026-09-16),
+  screening matrix (011, drafted 2026-09-16, awaiting review), then the weekly
+  refresh once 2026 data fills in.
+- **Validation run, both halves (2026-09-16):** 39 graded players from 000
+  `POST-PORTAL RECAP` with a band (19 FCS / G6, 20 Power Four). Bands: 12
+  exact, 28 within one tier, and the data runs low (mean gap -0.77 tiers,
+  -1.25 on Power Four). REVIEW caught 10 of 13 QS-or-better offensive players
+  and 5 of 15 defensive players; it flagged 4 of 11 FRP players. With 009's
+  Impact alert: 21 of 28 QS-or-better caught, 5 of 11 FRP flagged. Detail:
+  `docs/2026-09-16-validation-run.md`.
+- The 008 / validation / 009 work was merged to main 2026-09-16 (PR #1); 010,
+  011, 012 and the Jev brief on 2026-09-26 (PR #2). `main` is current.
+- Drive `AGENTS.md` refreshed 2026-09-16 (file table through 009, alerts, fixed
+  column positions, COM-only writes); Drive `CLAUDE.md` is now a pointer to it.
+
+## Settings currently implemented
+
+- Elite percentile 75, poor percentile 25
+- Minimum snaps 150 (LOW SAMPLE warns below this, does not suppress)
+- Speed alert: Play Speed or Deep Speed at 90th percentile or higher, fires
+  independently of the elite-share gate
+- Review trigger: elite-trait share at or above 0.375
+- Minimum graded traits to project a band: 2, else THIN
+- Impact alert (009): Player Impact 90 or higher, fires independently and turns
+  REVIEW on for rows with trait data (NO DATA rows never show REVIEW)
+- Low Impact alert (009): REVIEW row with Player Impact 10 or lower; note only
+- Tackling stays a counted IDL trait (decided 2026-09-16)
+- Prior-season alert (021): met the REVIEW rule last season on 150+ snaps; turns
+  REVIEW on while SETTINGS B60 = Y (shipped Y; kept Y by Eric 2026-10-19). Group change (021): note only
+
+## Next
+
+- **NEXT (2026-10-20): Eric sends 026 to Mauro; Mauro refreshes it on Windows Excel** with a 2026 folder
+  (UPDATE DATA, Refresh All; method in the 021 item below) and checks the REVIEW
+  board size by position at the 80 Impact cut. If clean, copy 026 into Send/ (drop
+  "TEST"). 026 carries 021's prior-season columns, 022 and both rounds of grid
+  decisions, same query package.
+- Done 2026-10-20: 024 went to Mauro and came back answered (026 built from it).
+- (2026-10-19) Mauro tests 021, not 020 (021 = 020 + prior season; same
+  query package). He opens `021. ... (PRIOR SEASON, TEST).xlsx` (Drive project root,
+  id `1brIIoZgAvnYaLQKGdG3uttb7g0mP_V0a`) on Windows Excel, points UPDATE DATA at
+  `_exports/2026_asof_2026-10-06` (or a fresh `PULL WEEK.bat` folder), Refresh All, and
+  checks: LOAD STATUS Column check OK, "CSV columns not used" none, PORTAL INPUT shows
+  Pull Agility .. Reaction Time after BT, and REVIEW BOARD AT:AW fill in (2026 rows now
+  look up 2025). If clean, copy 021 into Send/ (drop "TEST"). If the refresh fails, the
+  cause is the Mac-built query package from 020 (`scripts/patch_mashup.py`), still not
+  verified on Windows; 019 stays in Send/ and is unaffected.
+- Each new season (2027): rebuild PRIOR SEASON with `scripts/prior_season.py` (add the
+  2026 folder) and `scripts/add_prior_season.py`, or the prior columns go blank.
+  Known gap: `add_prior_season.py` stops if PRIOR SEASON exists; it needs a replace
+  mode (delete the tab and the PriorKeys / PriorTable names first) before this works.
+0. **Done: 019 sent to Mauro and walked through with him 2026-10-06 (Eric, 2026-10-07).** Steps used, for the record: UPDATE DATA folder `G:\My Drive\00_Primary_Storage_Drive\02_SPORTS\Football\PP_Recruiting\_exports\2026_asof_2026-10-06`, Refresh All (about 6 min on this laptop), confirm LOAD STATUS Column check = OK. Weekly after that: double-click `PULL WEEK.bat` in the Drive folder.
+- Done: **2026 test load 2026-09-30, clean.** `scripts/test_load.py` on a copy
+   of 016 (`%TEMP%/pp015/016_2026_test_load_b.xlsx`; staged folder
+   `%TEMP%/pp015/load_2026_asof_2026-09-29_b`): 44 files, 17,492 players, 14,397
+   loaded at Elig 1+, 3,095 below; columns not used none; unmapped codes ST only;
+   Refresh All 136-167 s; REVIEW 1,956 (1,485 with Sample OK; 2025 full season was
+   2,121 / 1,930); 0 formula errors; `check_workbook.py` ALL CHECKS PASS (REVIEW
+   recomputed 1,956). Earlier note, kept for the method: both 2026 pulls are on Drive: `_exports/2026_asof_2026-09-29/fbs`
+   (22 files, 138 teams) and `.../fcs_g6` (22 files, 198 teams; pulled
+   2026-09-30 with `--scope "FCS,Group of Six" --tag fcs-g6`, headers match
+   2025; 7,258 of 7,276 Group of Six rows identical to the FBS pull, the other 18
+   differ only in Snaps by 1-2, revised overnight). Copy 016, stage both folders
+   into one load folder as in 2025 (010), point UPDATE DATA at it, Refresh All;
+   check LOAD STATUS (44 files, no unmapped columns, only ST unknown) and the
+   week-5 REVIEW / Sample OK counts. This feeds item 1.
+1. **Walk Mauro through 017** (UPDATE DATA tab). He uses Excel for Windows
+   (confirmed by Eric 2026-09-30), the platform Power Query folder refresh was
+   built and tested on. First real 2026 load: 44 leaderboard CSVs (FBS + FCS/G6
+   in one folder; season 2026, all 11 groups, Player Traits + Advanced Stats),
+   Min Elig 1. Check LOAD STATUS: unmapped columns none, unknown codes only ST.
+   Tell him a refresh takes 2-4 minutes. Week-5 REVIEW + Sample OK by tab (item 0
+   load): QB 68, RB 48, WR/SLOT 168, TE 54, OT 175, OG 316, NT 88, END/JACK 122,
+   ILB/JACK 141, CB/STAR 156, SAF/STAR 149. All clear his 30; only RB sits in
+   30-50. **OG/OT: show as is (Eric, 2026-09-30).** No trim for the walkthrough;
+   tell Mauro the Profile BOTH path (200+ snaps, OT/OG/C/EDGE) inflates them.
+   Trimming stays an open question (same as OL targets vs honoree medians).
+   **Send 017 as is (Eric, 2026-09-30)** with the email in
+   `docs/2026-09-30-mauro-email-017.md`; the Codex DeJean finding changes no number.
+1b. **018: DeJean fix, built 2026-09-30.** Zero median/n change, 1 cell (A3) vs
+   017, `check_workbook.py` passes. Sonnet review: SHIP. Remaining: send
+   018 to Mauro as a quiet replacement (same numbers, corrected method note).
+   Detail: `docs/handoffs/2026-09-30-2026-fbs-test-load.md`.
+2. **Honors benchmark:** Eric works through the 10 decisions in
+   `docs/2026-09-29-honors-benchmark-plan.md`, then run the two verifications
+   (pull one 2023 leaderboard, check a known transfer's Team; compare one
+   player's percentile in an FBS-only vs FBS+FCS export) before any build.
+   **Update 2026-09-29:** decisions made; export-scope check passed; honors
+   list, matcher and aggregation built. Check 1 passed; 2023 and 2024 FBS
+   leaderboards pulled; three-season benchmark built (1,417 player-seasons,
+   99.9% matched): Drive `_exports/honors/honors_benchmark_2023_2025.csv`.
+   **Done:** side by side in 015 (Eric, 2026-09-29: keep both, do not replace
+   SETTINGS targets). Codex re-check done; N2 fixed (016); Codex check of 016
+   done, Wester fixed (017). Any future combined-heading AA honor needs its
+   selector role checked; add returners to `RETURN_ROLE` with the source.
+   F9 selector names (926 placeholders) is a traceability project. Open: minimum snaps (300 used); whether any
+   SETTINGS target should move (OL and EDGE Disruption sit far above honoree
+   medians).
+3. **Review 011 with Eric, then Mauro.** 013's profile columns may replace
+   011's core metrics at QB, RB, WR, OT, IDL, LB; decide together.
+4. **Optional ROSTER tag:** current Baylor players in their final year (Elig 0,
+   e.g. Gavin Freeman) are not in the workbook by design. Needs a roster list.
+5. **Jev shadow pilot:** governance cleared 2026-09-26; still needs an
+   approved scout-note corpus and staff labels. See the Jev pilot brief.
+6. Run `check_workbook.py` on every new numbered workbook.
+
+## Open questions
+
+- IOL Athletic Flexibility: the grid wrote "(AVG)" after Stops Allowed OE, Pull Agility,
+  Movement, Perimeter Speed, and Mauro did not answer. 026 uses best-of like every factor.
+  Switch IOL to an average?
+- Mauro did not confirm two mappings in 026: Pass Blocking counts toward OT Speed (7 OTs
+  get a "poor size, elite speed" alert) and Tackling is IDL Athletic Flexibility (268 IDL
+  score 1). Keep both as built?
+- EDGE must-have #1 target: Mauro set Pass Rush "70+" but gave no target; 026 keeps 80.
+  Is 80 right?
+- ~~EDGE must-have #1 source~~ ANSWERED 2026-10-20 (Mauro): Pass Rush, floor 70 (026).
+- ~~Send 025 to staff~~ ANSWERED 2026-10-20: superseded by 026; Send/ waits on Mauro's
+  Windows refresh.
+
+- ANSWERED 2026-10-07 (Eric): only 019 stays in Send/. 017 and 018 moved to Drive `_to_delete/` with a `[from Send]` suffix.
+- ANSWERED 2026-09-30: 2026 FCS pull scope decided: FCS + Group of Six (Eric, 2026-09-30).
+- ANSWERED 2026-09-29: size standards dropped for now (Eric, 2026-09-29). The question and proposed
+  table stay in `docs/2026-09-26-size-standards-question.md`.
+- ANSWERED 2026-10-19 (Eric): keep the 63 OL/EDGE REVIEW rows that carry the
+  Low Impact alert on the board. No Impact floor on the profile path. No change
+  to the workbook.
+- ANSWERED 2026-10-19 (checked): TypeSafe works on the Mac. Key in Keychain
+  (`typesafe-api-key`, exported by `~/.zshenv`), `typesafe-sdk` 0.7.0 in
+  `TypeSafe_Sandbox/.venv`, `smoke_test.py` passed. Data governance cleared
+  2026-09-26. The Jev pilot still needs the scout-notes evidence corpus.
+- ANSWERED 2026-10-19 (Eric): yes, staff can label a position-stratified
+  sample that includes non-board players and genuine negative evaluations.
+  Next: draft the sample request for Mauro.
+- ANSWERED 2026-10-19 (Eric): yes, the 75th percentile and 0.375 share
+  thresholds are useful. Keep them. Weak defense and low Power Four projection
+  (validation n = 39) stay known limits.
+- ANSWERED 2026-10-19 (agent check): why Baylor's own players disagree most.
+  Three different causes: Thomas had one down season (2025) and his value was
+  in coverage stats that are not counted; Coleman was graded as a slot corner
+  in 2025 but is a safety (speed 85-100 as FS in 2024 and 2026); Lagway's data
+  is low in all three seasons, so his AL grade carries projection the data does
+  not measure. Write-up: `docs/2026-10-19-baylor-player-disagreement.md`.
+- ANSWERED 2026-10-19 (Eric): build a prior-season check and a group-change
+  flag in 021. Built (see Current state). Correction: neither would have caught
+  Thomas (Elig 0 in 2025, so not on the board; 2024 under the bar). Coleman was
+  already REVIEW via Impact; 021 adds his group change and prior REVIEW.
+- Answered 2026-09-16: Jordan Church match confirmed (Louisville 2025);
+  DeBraun Hampton has no tracked 2025 snaps; current Baylor players appear in
+  009 only if their 2025 team was FCS / G6 and Elig is 1+ (see the validation
+  doc, "Why some current Baylor players...").
+- ANSWERED 2026-10-19 (Eric): Elusiveness goes in as a secondary trait, like
+  the 020 traits (shown, not counted; WR elite share unchanged). Done in 021:
+  CROSSWALK F11 (RB) and F20 (WR/SLOT), glossary row 57.
+- Open, Eric not sure why (2026-10-19): SETTINGS has no SLOT size row, so slot
+  receivers are sized against WR (25 of 26 elite slots score Size 1). It
+  matters only if size standards come back; they were dropped 2026-09-29.
+  Parked with `docs/2026-09-26-size-standards-question.md`.
+- ANSWERED 2026-10-19 (Eric): for proven undersized players, Player Impact
+  wins over Size. Band sort versus a rank was not answered; band sort stays
+  (no-composite rule).
+
+## Gotchas
+
+- Read Drive workbooks with the API, not the mount (default from 2026-10-17):
+  `gws drive files get --params '{"fileId":"<id>","alt":"media"}' -o <local>`.
+  019 in the Drive root is id `1bMYW1prGDsSymnquKMJAIruQvINWDB35` (a second copy sits in Send/).
+  The mount hung at 0 bytes on 019 twice, even after a Drive restart.
+
+- `pull_week.bat` / `PULL WEEK.bat` puts the export folder path on the clipboard at READY (replaces whatever was there). Refresh All on 44 files took 331-354 s on this laptop 2026-10-06, not the 2-4 min UPDATE DATA mentions. Hand-downloaded CSVs: run `check_exports.py` or read LOAD STATUS Column check; Download CSV writes only on-screen columns.
+- `telemetry_pull.py` uses one Chrome profile (`%LOCALAPPDATA%\telemetry-pull`);
+  only one run at a time. Two sessions pulling at once lock each other out
+  ("Opening in existing browser session"), and a hung diagnostic holds the lock.
+  Chrome's download manager crashes this machine's automated Chrome a few
+  seconds after a download; the tool no longer uses it (page CSV captured
+  instead). Do not revert to `expect_download`/`save_as`.
+- Telemetry's scope multiselect will not remove its last chip, and options carry
+  no selected attribute. `set_scope` adds the wanted scope first, then clicks the
+  other chips' x buttons. If the UI changes again, `--probe` and the diagnostic
+  in the 2026-09-29 handoff show the DOM.
+- The Telemetry API host is `snowshoe-api-coaching.telemetry.fm`. Standing rule 3
+  still applies: no token, no internal API. Stay with the rendered-UI pull.
+- `codex exec -o <file>` saves only the one-line summary; the full report is the last
+  `+++ b/codex_verification_*.md` block in the run log. From `%TEMP%/pp015` add
+  `--skip-git-repo-check`. Codex hit its usage limit 2026-09-30 afternoon.
+- Codex companion jobs cannot be cancelled from Git Bash (`taskkill /PID` gets
+  path-mangled); a stale `task-mun50b68-8oa2ce` may still show as running. Clear
+  with `/codex:cancel`. Direct `codex exec -m gpt-6-astra ... -o <file>` works.
+- Low memory (other Claude sessions, WSL) killed a Codex run; `check_workbook.py`
+  holds two 20k-row workbooks in memory.
+
+- **014 is query-driven. Never run `load_leaderboard.py`, `add_benchmark.py`
+  or `add_profiles.py` on it**; new data goes in through Refresh All. To change
+  the loader, edit `scripts/powerquery/*.m` and `load_leaderboard.py` together
+  and rebuild 014-style workbooks with `make_self_service.py`.
+- Excel query tables insert whole columns when created and on their first
+  refresh (they shifted REVIEW BOARD references 72 columns and moved a named
+  cell). `make_self_service.py` refreshes each table before writing layout and
+  rewrites the REVIEW BOARD formulas afterwards. Later refreshes use overwrite
+  style and shift nothing (tested).
+- pywin32 ignores the `After=` keyword on `Worksheets.Add`; pass it
+  positionally, `Add(None, sheet)`.
+- `Excel.CurrentWorkbook()` plus `Folder.Files` needs privacy levels ignored:
+  set by `wb.Queries.FastCombine = True`, saved in the file (verified after
+  reopen).
+
+- **012 and 013 are not load templates.** `load_leaderboard.py` clears rows but
+  not the Benchmark tag or profile columns. Load onto 010, then rerun
+  `add_benchmark.py` and `add_profiles.py`.
+- REVIEW totals in 012/013 include the 578 Elig 0 benchmark rows. Filter
+  REVIEW BOARD Benchmark (AL) to blank for the pre-portal board.
+- In the Telemetry exports the CB column is `Comp Rate Over Expected` (the
+  loader's alias for the long name never fires on these files).
+
+- REVIEW BOARD reads PORTAL INPUT by fixed column position, not header. Load
+  with `load_leaderboard.py`; write workbooks only through Excel COM (openpyxl
+  save strips the conditional formatting).
+- Telemetry `Elig.` and `Class` are current values even in past-season files
+  (30 of 30 transfers matched). Elig 1+ means still eligible after this season.
+  `Team` is the season's school, not a current value.
+- **Validation P4 files are subsets.** In `_exports/2025_baseline/
+  validation_fbs_fcs/`, only the two QB files are full; the 16
+  `*_recap-subset.csv` hold only recap players. Fine for grading those players
+  (percentiles do not change with scope), useless for sizing alerts.
+- **Downloads from automation (2026-09-16):** with the Chrome window hidden or
+  minimized (`document.hidden` true), screenshots and timers stall and
+  scripted downloads stop after the first one, even with "allow multiple
+  downloads" on. Download CSV is an `<a download>` blob link inside a Radix
+  menu (open it with a pointerdown on "More options"; the blob is built when
+  the menu opens, so reopen after the table loads). Workaround used: `fetch()`
+  the blob in the page and read it back, about 1 KB per JavaScript return. For
+  full exports, keep the window visible and click by hand or with real clicks.
+  Mantine selects (scope, season, group) respond to mousedown + click on
+  `[role=option]`. Leaderboard `Top End
+  Speed` looks like a percentile, not mph.
+- **Verify the season before trusting a leaderboard pull.** The season box can
+  read 2025 while the table still shows 2026 (seen 2026-09-16 with the window
+  hidden). Check one known player's snaps against a saved file first
+  (for example Colandrea, UNLV, 794 snaps in 2025).
+- Leaderboard position codes are alignments: OWR/SWR, H/F/Y, LT/RT, LG/C/RG,
+  DT/NT, UP/DOWN, ILB/OLB, FS/SS, OCB/SCB, ST. Both scripts map them; ST shows
+  Baylor tab "?".
+- 4,047 of 8,761 rows in 008 are NO DATA: Advanced-Stats-only players carry
+  Player Impact but no traits. FCS has no Ball Skills values. 66 players sit in
+  two position groups and keep the first file's position.
+- **Full FBS pull (2026-09-16) worked** with the window visible: real clicks on
+  "More options" > "Download CSV", 22 files in a row. The Telemetry app is
+  `https://app.telemetry.fm` (leaderboards at `/ncaa/leaderboard/player-traits`
+  and `/advanced-stats`). The extension may open its own new window, which
+  reports hidden until Eric brings it to the front. Window width can change
+  mid-session and move the toolbar; re-measure click positions. A
+  `browser_batch` of 7 groups timed out (downloads still finished); use 4 or 5.
+  Season can be verified afterwards from file contents (136 teams, top snaps
+  near 800 to 1,000 for a full 2025 FBS file).
+- **G6 players are in both `fcs_g6/` and `fbs/`** (4,968 ids, identical values),
+  so stage both folders together; the loader merges on PlayerId.
+- Telemetry in the browser: Chrome's "Ask where to save each file" dialog
+  freezes automation (Eric turned it off 2026-09-15). Switching Player Traits /
+  Advanced Stats tabs resets season, scope and group. Scope "Clear selection"
+  does not remove Power Four; untick the option. Click coordinates use the
+  screenshot frame, not page pixels. The Advanced Stats group list adds K and P
+  at the bottom. Check the table has rows before Download CSV (one TE export
+  came back empty).
+- Portal scrape: calendar arrows move two months; "Apply Filters" may need a
+  second click; reload if Next is disabled on page 1; the table is virtualized
+  (~20 rows in the DOM).
+---
+AGENTS.md
+CLAUDE.md
+data
+docs
+scripts
+2026-09-15-review-board-meeting.md
+2026-09-16-screening-matrix.md
+2026-09-16-validation-run.md
+2026-09-22-jev-recruiting-pilot.md
+2026-09-26-anthony-mauro-brief.md
+2026-09-26-position-profiles-test.md
+2026-09-26-size-standards-question.md
+2026-09-29-honors-benchmark-plan.md
+2026-09-30-mauro-email-017.md
+2026-10-17-new-telemetry-traits.md
+2026-10-19-baylor-player-disagreement.md
+agm_summary_artifact.md
+audits
+handoffs
+open-work.md
+STATUS.md
