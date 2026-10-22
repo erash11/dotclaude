@@ -1,0 +1,1 @@
+{"agentType":"workflow-subagent","description":"digest:build+run","workflowPhase":"Digest","spawnDepth":1,"requestShape":"foreground","requestNonInteractive":false}

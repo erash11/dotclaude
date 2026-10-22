@@ -1,0 +1,534 @@
+#!/usr/bin/env python3
+"""Score the video summary claim check against its pre-registered bars.
+
+    python video_check/score.py              # prints the results table, writes results_raw.json
+    python video_check/score.py --audit      # also writes the blind answer-key audit sheet
+    python video_check/score.py --selftest   # synthetic answers in a temp dir; no network, no repo writes
+
+Written 2026-10-22 from docs/VIDEO_SUMMARY_CHECK_PREREG.md. Inputs: state.jsonl (item ids and
+kinds), answer_key.csv (item_id,label for the 60 real items; label is exactly "supported",
+"partly" or "not supported"), runs/jev.jsonl, runs/haiku.jsonl, runs/haiku_failures.jsonl,
+runs/codex.jsonl. Output: results_raw.json (ids and numbers only, no claim or passage text).
+
+How the prereg's words are read here (each a choice the prereg leaves open):
+  - Flagged (Jev): contradiction >= 0.50 or extra_detail >= 0.50 or support <= 0.50.
+  - Decisive (Jev): no one of the three Nouls in the band 0.35 to 0.65, edges INCLUSIVE
+    (a value of exactly 0.35 or 0.65 is in the band, so not decisive). Denominator: all 140;
+    an item with no Jev row counts as not decisive.
+  - Bar 2, catch rate: flagged / decisive planted items, overall and per kind. Planted items
+    are the four planted kinds in state.jsonl (the sample's "expected" column is not used).
+    A kind with no decisive item fails its bar. Flagged / all 80 is reported, not barred.
+  - Bar 3, false alarm: flagged / ALL real items keyed "supported" (the prereg's row has no
+    "decisive only"). The decisive-only figure is reported, not barred.
+  - Bar 4, Jev vs Haiku: same items for both: all 80 planted and all real items keyed
+    "supported", minus any item without both a Jev row and a usable Haiku answer. Haiku
+    flagged = "partly" or "not supported". Pass needs Jev catch >= Haiku catch AND Jev false
+    alarm <= Haiku false alarm. Reported, not barred: the strict mapping (flagged = "not
+    supported" only) and the same comparison on Jev's decisive items. Codex: reported only.
+  - Verdict: PASS only when all four bars pass. INCOMPLETE (no verdict) while Jev lacks a row
+    for any item or Haiku lacks a final outcome (answer or out-of-vocabulary) for any item.
+  - Cost: Jev input tokens x $0.042 per million (JEV_CAPABILITY_MAP.md; output tokens free).
+    Comparator cost is not recorded (`--output-format text` gives none); wall time is.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import random
+import sys
+import tempfile
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+
+CUT = 0.50
+BAND = (0.35, 0.65)
+QS = ("support", "contradiction", "extra_detail")
+PLANTED = ("wrong_locator", "cross_video", "negation", "mechanism")
+KIND_COUNTS = {"real": 60, "wrong_locator": 20, "cross_video": 20, "negation": 20, "mechanism": 20}
+LABELS = ("supported", "partly", "not supported")
+BAR_DECISIVE, BAR_CATCH, BAR_CATCH_KIND, BAR_FA = 0.60, 0.85, 0.75, 0.10
+PRICE_PER_M_INPUT = 0.042
+AUDIT_SEED, AUDIT_MAX = 20260930, 20  # seed: the prereg's sample seed, reused
+
+
+def in_band(v: float) -> bool:
+    return BAND[0] <= v <= BAND[1]
+
+
+def decisive(r: dict | None) -> bool:
+    return r is not None and not any(in_band(r[q]) for q in QS)
+
+
+def flagged(r: dict) -> bool:
+    return r["contradiction"] >= CUT or r["extra_detail"] >= CUT or r["support"] <= 1 - CUT
+
+
+def comp_flagged(answer: str, strict: bool = False) -> bool:
+    return answer == "not supported" if strict else answer in ("partly", "not supported")
+
+
+def frac(n: int, of: int, bar: float | None = None, at_most: bool = False) -> dict:
+    rate = n / of if of else None
+    out = {"n": n, "of": of, "rate": None if rate is None else round(rate, 4)}
+    if bar is not None:
+        out["bar"] = bar
+        out["pass"] = rate is not None and (rate <= bar if at_most else rate >= bar)
+    return out
+
+
+def jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+
+def load(base: Path) -> dict:
+    state = jsonl(base / "state.jsonl")
+    kinds = {r["item_id"]: r["kind"] for r in state}
+    counts = {k: sum(1 for v in kinds.values() if v == k) for k in KIND_COUNTS}
+    if counts != KIND_COUNTS or len(kinds) != 140:
+        sys.exit(f"state.jsonl kinds {counts} do not match the prereg {KIND_COUNTS}")
+    key_path = base / "answer_key.csv"
+    if not key_path.exists():
+        sys.exit(f"{key_path} missing: expected columns item_id,label with one row per real item")
+    with key_path.open(encoding="utf-8", newline="") as fh:
+        key = {r["item_id"]: r["label"] for r in csv.DictReader(fh)}
+    real = {i for i, k in kinds.items() if k == "real"}
+    bad = [i for i, lab in key.items() if i not in real or lab not in LABELS]
+    if set(key) != real or bad:
+        sys.exit(f"answer_key.csv must label exactly the 60 real items with {LABELS}; "
+                 f"missing {sorted(real - set(key))[:5]}, bad {bad[:5]}")
+    by_id = lambda rows: {r["item_id"]: r for r in rows}  # noqa: E731
+    haiku_oov = {r["item_id"] for r in jsonl(base / "runs" / "haiku_failures.jsonl")
+                 if r.get("reason") == "out_of_vocabulary"}
+    return {"kinds": kinds, "key": key, "state": by_id(state),
+            "jev": by_id(jsonl(base / "runs" / "jev.jsonl")),
+            "haiku": by_id(jsonl(base / "runs" / "haiku.jsonl")),
+            "codex": by_id(jsonl(base / "runs" / "codex.jsonl")),
+            "haiku_oov": haiku_oov}
+
+
+def comparison(d: dict, planted: list, supported: list, strict: bool) -> dict:
+    """Jev vs Haiku on the same items: catch on `planted`, false alarm on `supported`."""
+    usable = lambda ids: [i for i in ids if i in d["haiku"] and i in d["jev"]]  # noqa: E731
+    p, s = usable(planted), usable(supported)
+    jc = frac(sum(flagged(d["jev"][i]) for i in p), len(p))
+    jf = frac(sum(flagged(d["jev"][i]) for i in s), len(s))
+    hc = frac(sum(comp_flagged(d["haiku"][i]["answer"], strict) for i in p), len(p))
+    hf = frac(sum(comp_flagged(d["haiku"][i]["answer"], strict) for i in s), len(s))
+    ok = None not in (jc["rate"], hc["rate"], jf["rate"], hf["rate"]) and \
+        jc["rate"] >= hc["rate"] and jf["rate"] <= hf["rate"]
+    return {"mapping": "not supported only" if strict else "partly or not supported",
+            "items_dropped": (len(planted) - len(p)) + (len(supported) - len(s)),
+            "jev": {"catch": jc, "false_alarm": jf}, "haiku": {"catch": hc, "false_alarm": hf},
+            "jev_at_least_equal": ok}
+
+
+def score(d: dict) -> dict:
+    kinds, key, jev = d["kinds"], d["key"], d["jev"]
+    ids = sorted(kinds)
+    planted = [i for i in ids if kinds[i] in PLANTED]
+    supported = [i for i in ids if kinds[i] == "real" and key[i] == "supported"]
+    dec = [i for i in ids if decisive(jev.get(i))]
+    dec_set = set(dec)
+
+    b1 = frac(len(dec), len(ids), BAR_DECISIVE)
+    pd = [i for i in planted if i in dec_set]
+    b2_overall = frac(sum(flagged(jev[i]) for i in pd), len(pd), BAR_CATCH)
+    b2_kind = {}
+    for k in PLANTED:
+        sub = [i for i in pd if kinds[i] == k]
+        b2_kind[k] = frac(sum(flagged(jev[i]) for i in sub), len(sub), BAR_CATCH_KIND)
+    b2_pass = b2_overall["pass"] and all(v["pass"] for v in b2_kind.values())
+    s_answered = [i for i in supported if i in jev]
+    b3 = frac(sum(flagged(jev[i]) for i in s_answered), len(supported), BAR_FA, at_most=True)
+    b4 = comparison(d, planted, supported, strict=False)
+
+    p_ans = [i for i in planted if i in jev]
+    sd = [i for i in supported if i in dec_set]
+    real = [i for i in ids if kinds[i] == "real"]
+    reported = {
+        "catch_all_planted": frac(sum(flagged(jev[i]) for i in p_ans), len(planted)),
+        "catch_all_planted_by_kind": {k: frac(sum(flagged(jev[i]) for i in p_ans if kinds[i] == k),
+                                              KIND_COUNTS[k]) for k in PLANTED},
+        "decisive_by_kind": {k: frac(sum(1 for i in dec if kinds[i] == k), KIND_COUNTS[k]) for k in KIND_COUNTS},
+        "false_alarm_decisive_only": frac(sum(flagged(jev[i]) for i in sd), len(sd)),
+        "jev_vs_haiku_strict": comparison(d, planted, supported, strict=True),
+        "jev_vs_haiku_on_jev_decisive": comparison(d, pd, sd, strict=False),
+        "key_labels_real": {lab: sum(1 for i in real if key[i] == lab) for lab in LABELS},
+        "jev_flagged_by_key_label": {lab: frac(sum(flagged(jev[i]) for i in real if key[i] == lab and i in jev),
+                                               sum(1 for i in real if key[i] == lab)) for lab in LABELS},
+        "codex": {
+            "answered": len(d["codex"]),
+            "catch": frac(sum(comp_flagged(d["codex"][i]["answer"]) for i in planted if i in d["codex"]),
+                          sum(1 for i in planted if i in d["codex"])),
+            "false_alarm": frac(sum(comp_flagged(d["codex"][i]["answer"]) for i in supported if i in d["codex"]),
+                                sum(1 for i in supported if i in d["codex"])),
+        },
+    }
+    tokens_in = sum(r.get("input_tokens") or 0 for r in jev.values())
+    tokens_out = sum(r.get("output_tokens") or 0 for r in jev.values())
+    ms = lambda runs: sum(r.get("ms") or 0 for r in runs.values())  # noqa: E731
+    cost = {"jev_rows": len(jev), "jev_rows_with_usage": sum(1 for r in jev.values() if r.get("input_tokens") is not None),
+            "jev_input_tokens": tokens_in, "jev_output_tokens": tokens_out,
+            "jev_usd": round(tokens_in * PRICE_PER_M_INPUT / 1e6, 6),
+            "price": f"${PRICE_PER_M_INPUT} per million input tokens, output free (JEV_CAPABILITY_MAP.md)",
+            "jev_models": sorted({str(r.get("model")) for r in jev.values()}),
+            "wall_ms": {"jev": ms(jev), "haiku": ms(d["haiku"]), "codex": ms(d["codex"])},
+            "comparator_usd": "not recorded (--output-format text returns no cost)"}
+    coverage = {"items": len(ids), "jev": len(jev), "haiku_answers": len(d["haiku"]),
+                "haiku_out_of_vocabulary": len(d["haiku_oov"]), "codex_answers": len(d["codex"])}
+    complete = len(jev) == len(ids) and len(set(d["haiku"]) | d["haiku_oov"]) == len(ids)
+    all_pass = b1["pass"] and b2_pass and b3["pass"] and b4["jev_at_least_equal"]
+    return {"prereg": "docs/VIDEO_SUMMARY_CHECK_PREREG.md", "cut": CUT, "band": list(BAND),
+            "coverage": coverage,
+            "bars": {"decisive_share": b1,
+                     "catch_decisive": {"overall": b2_overall, "by_kind": b2_kind, "pass": b2_pass},
+                     "false_alarm_supported": b3,
+                     "jev_vs_haiku": b4},
+            "reported": reported, "cost": cost,
+            "verdict": ("PASS" if all_pass else "FAIL") if complete else "INCOMPLETE"}
+
+
+def show(f: dict) -> str:
+    return f"{f['n']}/{f['of']} ({f['rate']:.1%})" if f["rate"] is not None else f"{f['n']}/{f['of']}"
+
+
+def yn(b) -> str:
+    return "yes" if b else "no"
+
+
+def table(res: dict) -> str:
+    b, rep, c, cov = res["bars"], res["reported"], res["cost"], res["coverage"]
+    v4 = b["jev_vs_haiku"]
+    dropped = f"; {v4['items_dropped']} items dropped (no usable Haiku answer, or no Jev row)" if v4["items_dropped"] else ""
+    L = ["# Video summary claim check: results", "",
+         f"Coverage: Jev {cov['jev']}/{cov['items']}, Haiku {cov['haiku_answers']} answers + "
+         f"{cov['haiku_out_of_vocabulary']} out of vocabulary, Codex {cov['codex_answers']}.", "",
+         "## Bars", "", "| Bar | Needed | Result | Pass |", "|---|---|---|---|",
+         f"| Jev decisive (no Noul in 0.35 to 0.65, edges in) | >= 60% of 140 | {show(b['decisive_share'])} | "
+         f"{yn(b['decisive_share']['pass'])} |",
+         f"| Catch rate, decisive planted | >= 85% | {show(b['catch_decisive']['overall'])} | "
+         f"{yn(b['catch_decisive']['overall']['pass'])} |"]
+    for k, f in b["catch_decisive"]["by_kind"].items():
+        L.append(f"| Catch rate, decisive {k} | >= 75% | {show(f)} | {yn(f['pass'])} |")
+    L += [f"| False alarm, real keyed supported (all) | <= 10% | {show(b['false_alarm_supported'])} | "
+          f"{yn(b['false_alarm_supported']['pass'])} |",
+          f"| Jev vs Haiku (Haiku flagged = partly or not supported) | Jev catch >= Haiku and Jev FA <= Haiku | "
+          f"catch Jev {show(v4['jev']['catch'])} vs Haiku {show(v4['haiku']['catch'])}; "
+          f"FA Jev {show(v4['jev']['false_alarm'])} vs Haiku {show(v4['haiku']['false_alarm'])}{dropped} | "
+          f"{yn(v4['jev_at_least_equal'])} |",
+          "", f"**Verdict on the original labels: {res['verdict']}** (all four bars required).", "",
+          "## Reported without bars", "", "| Measure | Result |", "|---|---|",
+          f"| Jev catch, all 80 planted | {show(rep['catch_all_planted'])} |"]
+    for k, f in rep["catch_all_planted_by_kind"].items():
+        L.append(f"| Jev catch, all {k} | {show(f)} |")
+    for k, f in rep["decisive_by_kind"].items():
+        L.append(f"| Jev decisive, {k} | {show(f)} |")
+    L.append(f"| Jev false alarm, decisive keyed-supported only | {show(rep['false_alarm_decisive_only'])} |")
+    for name in ("jev_vs_haiku_strict", "jev_vs_haiku_on_jev_decisive"):
+        v = rep[name]
+        label = "Jev vs Haiku, strict (flagged = not supported only)" if name.endswith("strict") \
+            else "Jev vs Haiku, Jev's decisive items only"
+        L.append(f"| {label} | catch Jev {show(v['jev']['catch'])} vs Haiku {show(v['haiku']['catch'])}; "
+                 f"FA Jev {show(v['jev']['false_alarm'])} vs Haiku {show(v['haiku']['false_alarm'])}; "
+                 f"Jev at least equal: {yn(v['jev_at_least_equal'])} |")
+    cx = rep["codex"]
+    L += [f"| Codex ({cx['answered']} answers, flagged = partly or not supported) | catch {show(cx['catch'])}; "
+          f"FA {show(cx['false_alarm'])} |",
+          f"| Answer key, 60 real items | " + ", ".join(f"{k} {n}" for k, n in rep["key_labels_real"].items()) + " |"]
+    for lab, f in rep["jev_flagged_by_key_label"].items():
+        L.append(f"| Jev flagged, real keyed {lab} | {show(f)} |")
+    L += ["", "## Cost", "",
+          f"Jev: {c['jev_input_tokens']} input, {c['jev_output_tokens']} output tokens over {c['jev_rows']} rows "
+          f"({c['jev_rows_with_usage']} with usage) = ${c['jev_usd']:.4f} at {c['price']}. "
+          f"Models: {', '.join(c['jev_models']) or 'none'}.",
+          f"Wall time (sum of per-item ms): Jev {c['wall_ms']['jev']}, Haiku {c['wall_ms']['haiku']}, "
+          f"Codex {c['wall_ms']['codex']}. Comparator cost {c['comparator_usd']}.", ""]
+    return "\n".join(L)
+
+
+def write_audit(d: dict, out_dir: Path) -> dict:
+    """Blind answer-key audit: Jev's confident (decisive) disagreements with the key on real rows.
+
+    Disagreement: Jev flagged and key "supported", or Jev not flagged and key "partly" or
+    "not supported". Jev is binary and the key is 3-way, so both sides are shown as the
+    same two binary statements; "partly" never appears, or it would unblind the key side.
+    Cap 20, seeded random draw if more, shuffled, A/B sides shuffled. Refuses to overwrite
+    a sheet that already exists (Eric may have started filling it in).
+    """
+    sheet, key_file = out_dir / "audit_sheet.md", out_dir / "audit_key.json"
+    if sheet.exists() or key_file.exists():
+        sys.exit(f"{sheet} or {key_file} already exists; move it aside first, never overwrite a judged sheet")
+    kinds, key, jev = d["kinds"], d["key"], d["jev"]
+    dis = sorted(i for i in kinds if kinds[i] == "real" and decisive(jev.get(i))
+                 and flagged(jev[i]) == (key[i] == "supported"))
+    rng = random.Random(AUDIT_SEED)
+    pick = rng.sample(dis, AUDIT_MAX) if len(dis) > AUDIT_MAX else list(dis)
+    rng.shuffle(pick)
+    yes, no = "The passage supports the claim.", "The passage does not fully support the claim."
+    lines = ["# Video summary claim check: answer-key audit (blind)", "",
+             f"{len(pick)} items (of {len(dis)} confident disagreements). For each, read the claim and the "
+             "passage, then pick the statement that is right: write A, B, or U (unclear) on the Verdict "
+             "line. Judge only from the passage shown.", ""]
+    unblind = {}
+    for n, i in enumerate(pick, 1):
+        jev_side = no if flagged(jev[i]) else yes
+        key_side = yes if key[i] == "supported" else no
+        sides = [("jev", jev_side), ("key", key_side)]
+        rng.shuffle(sides)
+        unblind[str(n)] = {"item_id": i, "A": sides[0][0], "B": sides[1][0], "key_label": key[i]}
+        s = d["state"][i]
+        lines += [f"## {n}", "", f"**Claim:** {s['claim']}", "", f"**Passage:** {s['passage']}", "",
+                  f"- **A:** {sides[0][1]}", f"- **B:** {sides[1][1]}", "", "Verdict: ", ""]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    sheet.write_text("\n".join(lines), encoding="utf-8")
+    key_file.write_text(json.dumps(unblind, indent=1), encoding="utf-8")
+    return {"disagreements": len(dis), "on_sheet": len(pick)}
+
+
+# ---------------------------------------------------------------- selftest
+
+def _write_jsonl(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8")
+
+
+def _scenario(base: Path, variant: str) -> None:
+    """Synthetic 140 items. Variant "A": mixed bars, FAIL. "C": every bar passes. "B": INCOMPLETE."""
+    ids = {k: [f"{k[:3]}{n:03d}" for n in range(c)] for k, c in KIND_COUNTS.items()}
+    state = [{"item_id": i, "kind": k, "claim": f"claim {i}", "passage": f"passage {i}"}
+             for k, lst in ids.items() for i in lst]
+    _write_jsonl(base / "state.jsonl", state)
+    real = ids["real"]
+    key = {i: "supported" for i in real[:40]} | {i: "partly" for i in real[40:50]} | \
+          {i: "not supported" for i in real[50:]}
+    with (base / "answer_key.csv").open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["item_id", "label"])
+        w.writerows(key.items())
+
+    FLAG = {"support": 0.1, "contradiction": 0.05, "extra_detail": 0.9}    # decisive, flagged
+    PASS_ = {"support": 0.9, "contradiction": 0.05, "extra_detail": 0.1}   # decisive, not flagged
+    jev = {}
+    wl = ids["wrong_locator"]
+    for i in wl[:18]:
+        jev[i] = FLAG
+    jev[wl[18]] = {"support": 0.65, "contradiction": 0.05, "extra_detail": 0.05}  # band edge: not decisive, not flagged
+    jev[wl[19]] = {"support": 0.35, "contradiction": 0.05, "extra_detail": 0.05}  # band edge: not decisive, flagged
+    for i, kind_flagged in ((ids["cross_video"], 19), (ids["negation"], 18),
+                            (ids["mechanism"], 20 if variant == "C" else 14)):
+        for n, j in enumerate(i):
+            jev[j] = FLAG if n < kind_flagged else PASS_
+    sup = real[:40]
+    for i in sup[:34]:
+        jev[i] = PASS_
+    for i in sup[34:37]:
+        jev[i] = {"support": 0.2, "contradiction": 0.9, "extra_detail": 0.1}     # decisive false alarm
+    jev[sup[37]] = {"support": 0.6, "contradiction": 0.1, "extra_detail": 0.1}  # in band, not flagged
+    jev[sup[38]] = {"support": 0.55, "contradiction": 0.1, "extra_detail": 0.1}  # in band, not flagged
+    jev[sup[39]] = {"support": 0.9, "contradiction": 0.1, "extra_detail": 0.50}  # in band, flagged at the cut
+    for i in real[40:50]:
+        jev[i] = PASS_                       # key partly, Jev confident unflagged: disagreement
+    for i in real[50:59]:
+        jev[i] = PASS_                       # key not supported, Jev confident unflagged: disagreement
+    jev[real[59]] = FLAG
+    rows = [{"item_id": i, **v, "model": "jev-test", "input_tokens": 1000, "output_tokens": 9, "ms": 300}
+            for i, v in jev.items()]
+    if variant == "B":
+        rows = [r for r in rows if r["item_id"] != real[0]]                             # a Jev row missing
+        rows = [({**r, "support": 0.5} if n < 60 else r) for n, r in enumerate(rows)]  # first 60 into the band
+    _write_jsonl(base / "runs" / "jev.jsonl", rows)
+
+    planted = [i for k in PLANTED for i in ids[k]]
+    haiku = {}
+    for n, i in enumerate(planted):
+        haiku[i] = "not supported" if n < 60 else ("partly" if n < 72 and variant != "C" else "supported")
+    haiku_oov = [sup[0]]
+    for n, i in enumerate(sup[1:]):
+        haiku[i] = "supported" if n < 35 else ("partly" if n < 38 else "not supported")
+    for i in real[40:]:
+        haiku[i] = "partly"
+    if variant == "B":
+        haiku.pop(real[45])                  # a no_answer: no final outcome yet
+    _write_jsonl(base / "runs" / "haiku.jsonl", [{"item_id": i, "answer": a, "ms": 5000} for i, a in haiku.items()])
+    _write_jsonl(base / "runs" / "haiku_failures.jsonl",
+                 [{"item_id": i, "reason": "out_of_vocabulary", "error": "answer outside the three: 'unclear'"}
+                  for i in haiku_oov] +
+                 [{"item_id": real[45], "reason": "no_answer", "error": "ValueError: no JSON answer"}])
+    _write_jsonl(base / "runs" / "codex.jsonl", [{"item_id": i, "answer": "not supported", "ms": 70000}
+                                                 for i in planted[:10]])
+
+
+def selftest() -> int:
+    checks = []
+
+    def check(name, got, want):
+        ok = got == want
+        checks.append(ok)
+        print(f"  {'ok  ' if ok else 'FAIL'} {name}: {got!r}" + ("" if ok else f" (want {want!r})"))
+
+    with tempfile.TemporaryDirectory() as tmp:
+        base = Path(tmp) / "A"
+        _scenario(base, "A")
+        d = load(base)
+        r = score(d)
+        b, rep = r["bars"], r["reported"]
+        print("scenario A (mixed bars):")
+        check("edge 0.35 in band", in_band(0.35), True)
+        check("edge 0.65 in band", in_band(0.65), True)
+        check("support 0.50 flagged", flagged({"support": 0.5, "contradiction": 0, "extra_detail": 0}), True)
+        check("contradiction 0.50 flagged", flagged({"support": 1, "contradiction": 0.5, "extra_detail": 0}), True)
+        check("support 0.51 not flagged", flagged({"support": 0.51, "contradiction": 0.49, "extra_detail": 0.49}), False)
+        check("decisive share", (b["decisive_share"]["n"], b["decisive_share"]["of"], b["decisive_share"]["pass"]),
+              (135, 140, True))
+        o = b["catch_decisive"]["overall"]
+        check("catch decisive overall 69/78", (o["n"], o["of"], o["pass"]), (69, 78, True))
+        bk = b["catch_decisive"]["by_kind"]
+        check("catch wrong_locator 18/18", (bk["wrong_locator"]["n"], bk["wrong_locator"]["of"]), (18, 18))
+        check("catch mechanism 14/20 fails", (bk["mechanism"]["n"], bk["mechanism"]["of"], bk["mechanism"]["pass"]),
+              (14, 20, False))
+        check("bar 2 fails on one kind while overall passes", b["catch_decisive"]["pass"], False)
+        fa = b["false_alarm_supported"]
+        check("false alarm 4/40 = exactly 10% passes", (fa["n"], fa["of"], fa["pass"]), (4, 40, True))
+        check("false alarm decisive only 3/37", (rep["false_alarm_decisive_only"]["n"],
+                                                 rep["false_alarm_decisive_only"]["of"]), (3, 37))
+        check("catch all 80 planted (unbarred) 70/80", (rep["catch_all_planted"]["n"], rep["catch_all_planted"]["of"]),
+              (70, 80))
+        v = b["jev_vs_haiku"]
+        check("bar 4 drops 1 OOV item", v["items_dropped"], 1)
+        check("bar 4 Jev catch 70/80 vs Haiku 72/80", (v["jev"]["catch"]["n"], v["haiku"]["catch"]["n"]), (70, 72))
+        check("bar 4 FA Jev 4/39 vs Haiku 4/39", (v["jev"]["false_alarm"]["n"], v["jev"]["false_alarm"]["of"],
+                                                  v["haiku"]["false_alarm"]["n"]), (4, 39, 4))
+        check("bar 4 fails (Haiku catches more)", v["jev_at_least_equal"], False)
+        s = rep["jev_vs_haiku_strict"]
+        check("strict mapping Haiku catch 60, FA 1", (s["haiku"]["catch"]["n"], s["haiku"]["false_alarm"]["n"]), (60, 1))
+        check("strict: Jev catch higher, FA higher, so not at least equal", s["jev_at_least_equal"], False)
+        dd = rep["jev_vs_haiku_on_jev_decisive"]
+        check("decisive-subset comparison sizes", (dd["jev"]["catch"]["of"], dd["jev"]["false_alarm"]["of"]), (78, 36))
+        check("codex reported over 10", (rep["codex"]["answered"], rep["codex"]["catch"]["n"]), (10, 10))
+        check("cost", (r["cost"]["jev_input_tokens"], r["cost"]["jev_usd"]), (140000, 0.00588))
+        check("verdict", r["verdict"], "FAIL")
+        out = Path(tmp) / "results_raw.json"
+        out.write_text(json.dumps(r, indent=1), encoding="utf-8")
+        check("results_raw.json has no claim/passage text", "passage " in out.read_text() or "claim " in out.read_text(),
+              False)
+        print(table(r))
+
+        audit_dir = base / "private"
+        a = write_audit(d, audit_dir)
+        print("audit pull:")
+        check("audit 22 disagreements, 20 on sheet", (a["disagreements"], a["on_sheet"]), (22, 20))
+        sheet = (audit_dir / "audit_sheet.md").read_text()
+        unblind = json.loads((audit_dir / "audit_key.json").read_text())
+        check("sheet names no side", any(w in sheet.lower() for w in ("jev", "answer key", "partly", "key:")), False)
+        check("sides shuffled (both orders occur)", {u["A"] for u in unblind.values()}, {"jev", "key"})
+        check("all picked are real disagreements",
+              all(flagged(d["jev"][u["item_id"]]) == (d["key"][u["item_id"]] == "supported") for u in unblind.values()),
+              True)
+        a2 = json.loads((audit_dir / "audit_key.json").read_text())
+        (audit_dir / "audit_sheet.md").unlink()
+        (audit_dir / "audit_key.json").unlink()
+        write_audit(d, audit_dir)
+        check("seeded draw is reproducible", json.loads((audit_dir / "audit_key.json").read_text()) == a2, True)
+        try:
+            write_audit(d, audit_dir)
+            check("refuses to overwrite a sheet", False, True)
+        except SystemExit:
+            check("refuses to overwrite a sheet", True, True)
+
+        base = Path(tmp) / "C"
+        _scenario(base, "C")
+        r = score(load(base))
+        print("scenario C (every bar passes):")
+        check("catch decisive overall 75/78", (r["bars"]["catch_decisive"]["overall"]["n"],
+                                               r["bars"]["catch_decisive"]["overall"]["of"]), (75, 78))
+        check("bar 4 Jev 76 vs Haiku 60, FA 4 vs 4", (r["bars"]["jev_vs_haiku"]["jev"]["catch"]["n"],
+                                                     r["bars"]["jev_vs_haiku"]["haiku"]["catch"]["n"],
+                                                     r["bars"]["jev_vs_haiku"]["haiku"]["false_alarm"]["n"]), (76, 60, 4))
+        check("verdict", r["verdict"], "PASS")
+
+        base = Path(tmp) / "B"
+        _scenario(base, "B")
+        r = score(load(base))
+        print("scenario B (a Jev row and a Haiku outcome missing, many in band):")
+        check("decisive share 76/140 fails", (r["bars"]["decisive_share"]["n"], r["bars"]["decisive_share"]["pass"]),
+              (76, False))
+        check("coverage", (r["coverage"]["jev"], r["coverage"]["haiku_answers"]), (139, 138))
+        check("verdict", r["verdict"], "INCOMPLETE")
+
+    print(f"selftest: {sum(checks)}/{len(checks)} checks passed")
+    return 0 if all(checks) else 1
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--audit", action="store_true", help="also write private/audit_sheet.md (blind)")
+    ap.add_argument("--selftest", action="store_true", help="synthetic answers in a temp dir")
+    args = ap.parse_args()
+    if args.selftest:
+        return selftest()
+    d = load(HERE)
+    res = score(d)
+    (HERE / "results_raw.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    print(table(res))
+    if args.audit:
+        a = write_audit(d, HERE / "private")
+        print(f"audit: {a['disagreements']} confident disagreements, {a['on_sheet']} on private/audit_sheet.md")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+----
+# Drive triage pilot: results
+
+Scored by `score.py` against `answer_key.csv` (committed before the first Jev call).
+
+## Bars
+
+| Bar | Needed | Result | Pass |
+|---|---|---|---|
+| Jev confident (p >= 0.50) | 60% of 200 | 166/200 (83.0%) | yes |
+| Jev domain accuracy, confident answers | 90% | 127/166 (76.5%) | no |
+| Jev vs Haiku, domain accuracy on Jev's confident subset | Jev >= Haiku | Jev 127, Haiku 108 | yes |
+
+**Verdict on the original labels: FAIL** (all three bars required).
+
+## Reported without bars
+
+| Measure | Jev | Haiku | Codex |
+|---|---|---|---|
+| Domain accuracy, all 200 | 149/200 (74.5%) | 132/200 (66.0%) | 148/200 (74.0%) |
+| Topic accuracy, all 200 | 127/200 (63.5%) | 104/200 (52.0%) | 132/200 (66.0%) |
+| Route accuracy, all 200 | 133/200 (66.5%) | 126/200 (63.0%) | 144/200 (72.0%) |
+| Topic accuracy, Jev's confident subset | 111/166 (66.9%) | 85/166 (51.2%) | 120/166 (72.3%) |
+
+## By stratum (domain accuracy)
+
+| Stratum | Jev confident | Jev right (confident) | Jev right (all) | Haiku right (all) | Rules right |
+|---|---|---|---|---|---|
+| unclassified | 81/100 (81.0%) | 69/81 (85.2%) | 81/100 (81.0%) | 70/100 (70.0%) | 0/100 (0.0%) |
+| rules-classified | 85/100 (85.0%) | 58/85 (68.2%) | 68/100 (68.0%) | 62/100 (62.0%) | 52/100 (52.0%) |
+
+Files with no first-page text: 87. Jev confident on 77 of them, right on 50 of those.
+----
+# video_check
+
+Pre-registered test: can Jev flag unsupported claims in a video summary?
+Spec and bars: `../docs/VIDEO_SUMMARY_CHECK_PREREG.md` (bars PROPOSED until Eric approves).
+
+- `build_sample.py` : builds `sample.csv` from `../../42Analytics/videos/*` (no model calls).
+- `sample.csv` : 100 rows now (60 real, 20 wrong_locator, 20 cross_video). 40 authored plants
+  (negation, mechanism) go in `authored_plants.csv` before any call, then rerun the builder.
+- Next: answer key for the 60 real rows, then Eric approves bars, then calls (Mac).
+- `run_jev.py` : Jev, three Nouls per item (prereg wording), state = claim and passage only.
+  `--dry-run` prints item 1's exact request body with no network and no key. Resumable;
+  raw answers, token usage and wall time go to `runs/jev.jsonl` (ids and numbers only).
+- `run_llm.py haiku|codex` : comparators, forced to "supported", "partly" or "not supported".
+  Out-of-vocabulary answers go to `runs/<name>_failures.jsonl` and are final.
+- `score.py` : the prereg bars, printed and written to `results_raw.json`. `--audit` writes the
+  blind answer-key audit to `private/` (never overwrites). `--selftest` runs on synthetic
+  answers in a temp dir (2026-10-22: 36/36 checks).

@@ -437,11 +437,11 @@
     "playwright@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": false,
-    "commit-commands@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": false,
     "claude-code-setup@claude-plugins-official": false,
     "supabase@claude-plugins-official": false,
     "vercel@claude-plugins-official": false,
-    "github@claude-plugins-official": true,
+    "github@claude-plugins-official": false,
     "andrej-karpathy-skills@karpathy-skills": false,
     "firecrawl@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": false,
@@ -451,7 +451,7 @@
     "codex@openai-codex": true,
     "mattpocock-skills@mattpocock": true,
     "watch@claude-video": true,
-    "typesafe@typesafe-ai": true,
+    "typesafe@typesafe-ai": false,
     "claude-mem-cowork@thedotmack": true
   },
   "extraKnownMarketplaces": {
@@ -526,6 +526,9 @@
       "effortLevel": "medium"
     },
     "claude-fable-5-1": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
       "effortLevel": "high"
     }
   },

@@ -69,7 +69,8 @@ Never put memory content here — the file itself holds the facts.
 - [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; laptop retired 10-14; links the old Windows trap notes
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
-- [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive
+- [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive (one exception: Kenny's ITS tracker in the Teams team)
 - [Cloud copy approval](project_cloud-copy-approval.md) — daily all-DEV copy to Drive; cloud servers/schedulers approved 10-14; DBs, secrets, Dexa stay local
 - [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push fails under launchd; run by hand until the VPS
 - [Agentic operating loop](project_agentic-operating-loop.md) — agent workflow, Cloudroom, worktrees, reviewers: point at WORKFLOW.md loop first
+- [Jev health-data IT approval](project_jev-health-data-it-approval.md) — before sending any health data to Jev/TypeSafe; IT approved 10-22, Eric still gates each item
