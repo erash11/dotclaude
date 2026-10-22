@@ -19,6 +19,12 @@ Projects sync through GitHub (`erash11`), documents through Google Drive.
   - New logic with a branch, loop, parser, money or security leaves one small test or assert.
   - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
   - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
 
 # Session Startup
 
