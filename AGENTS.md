@@ -67,10 +67,11 @@ On "remember this", "note that", "update memory", "save this", "forget about":
 For **remove**: confirm with the user before deleting.
 
 ## Retrieval — the tiered ladder
-Climb in order; stop as soon as the question is answered. Do not run memsearch when the answer is already in the injected snapshot.
+Climb in order; stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
 
 1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
-2. **L1** — `memsearch search "query" --top-k 5`. Hybrid vector + keyword across all indexed paths.
-3. **L2** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
-4. **L3** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
-5. **Fallback** — "I don't have a record of that."
+2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: opens the best file and prints the matching paragraphs. If they miss the answer, open the #2 or #3 candidate it lists.
+3. **L2** — on `NO MATCH`, or when the question's words are not the notes' words: `memsearch search "query" --top-k 5`. Hybrid vector + keyword, ~1 min.
+4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+6. **Fallback** — "I don't have a record of that."
