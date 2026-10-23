@@ -99,9 +99,10 @@ def open_index(rts, db_path=DB_PATH):
     """FTS5 table kept in step with the disk by mtime: only new or changed files are re-read."""
     if db_path != ":memory:":
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
-    db = sqlite3.connect(db_path)
+    db = sqlite3.connect(db_path, timeout=60, isolation_level=None)
     db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS d USING fts5(path UNINDEXED, body, tokenize='porter unicode61')")
     db.execute("CREATE TABLE IF NOT EXISTS seen(path TEXT PRIMARY KEY, mtime REAL)")
+    db.execute("BEGIN IMMEDIATE")  # two refreshes at once could each insert the same new file
     old = dict(db.execute("SELECT path, mtime FROM seen"))
     now = {}
     for p in md_files(rts):
@@ -111,7 +112,7 @@ def open_index(rts, db_path=DB_PATH):
             pass
     stale = [p for p, m in now.items() if old.get(p) != m]
     gone = [p for p in old if p not in now]
-    for p in gone + [p for p in stale if p in old]:
+    for p in gone + stale:
         db.execute("DELETE FROM d WHERE path = ?", (p,))
         db.execute("DELETE FROM seen WHERE path = ?", (p,))
     for p in stale:
@@ -122,7 +123,7 @@ def open_index(rts, db_path=DB_PATH):
         name = os.path.basename(p)[:-3].replace("-", " ").replace("_", " ")
         db.execute("INSERT INTO d VALUES (?, ?)", (p, name + "\n" + body))
         db.execute("INSERT INTO seen VALUES (?, ?)", (p, now[p]))
-    db.commit()
+    db.execute("COMMIT")
     return db
 
 
@@ -137,6 +138,28 @@ def fts5_top(db, q, limit):
     expr = " OR ".join('"%s"' % t.replace('"', "") for t in toks)
     return [r[0] for r in db.execute(
         "SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d) LIMIT ?", (expr, limit))]
+
+
+def tier_a(p):
+    """A Tier A memory file: short, hand-kept, newest word on its topic. The MEMORY.md index is not one."""
+    return "/.claude/projects/" in p and "/memory/" in p and os.path.basename(p) != "MEMORY.md"
+
+
+def name_hits(path, q):
+    """Question words in the file name. Memory file names are topic slugs, so this says what the file is about."""
+    return len(set(keywords(q)) & set(tokens(os.path.basename(path)[:-3].replace("_", " ").replace("-", " "))))
+
+
+def rank(db, q, limit):
+    """BM25 order, except a Tier A memory in the top 3 moves to #1 when its name matches as many
+    question words as #1's name. Compiled knowledge articles and vault notes can be older than
+    the memory that corrected them; the name guard stops an off-topic memory jumping."""
+    cands = fts5_top(db, q, max(limit, 3))
+    a = next((p for p in cands[:3] if tier_a(p)), None)
+    if a and a != cands[0] and name_hits(a, q) >= name_hits(cands[0], q):
+        cands.remove(a)
+        cands.insert(0, a)
+    return cands[:limit]
 
 
 def idf_of(db, kws):
@@ -239,7 +262,7 @@ def pointers(text, from_path):
 def gather(question, db, top=3):
     """Returns (kws, candidates, evidence) where evidence is [(path, [paragraph tuples])]."""
     kws = keywords(question)
-    cands = fts5_top(db, question, top)
+    cands = rank(db, question, top)
     if not cands or not os.path.exists(cands[0]):
         return kws, cands, []
     idf = idf_of(db, kws)
@@ -274,7 +297,7 @@ def main(argv=None):
 
     print(f"# recall: {a.question}")
     print(f"keywords: {' '.join(kws)}")
-    print("candidates (BM25, only #1 opened): " + "  ".join(short(c) for c in cands))
+    print("candidates (BM25, Tier A memory first, only #1 opened): " + "  ".join(short(c) for c in cands))
     if not evidence or not evidence[0][1]:
         print(f"\nNO MATCH. Deeper (about 1 min): {memsearch}")
         if a.deep:

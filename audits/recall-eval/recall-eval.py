@@ -208,11 +208,11 @@ _RECALL_DB = None
 
 
 def b_recall(q, case):
-    """recall.py's own index (memsearch roots + whole vault, mtime-refreshed on disk)."""
+    """recall.py's own index (memsearch roots + whole vault, mtime-refreshed on disk), ranked as recall.py ranks."""
     global _RECALL_DB
     if _RECALL_DB is None:
         _RECALL_DB = RECALL.open_index(RECALL.roots())
-    return RECALL.fts5_top(_RECALL_DB, q, 5)
+    return RECALL.rank(_RECALL_DB, q, 5)
 
 
 BACKENDS = {"memsearch": b_memsearch, "fts5": b_fts5, "rg": b_rg, "jev": b_jev, "recall": b_recall}

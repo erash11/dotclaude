@@ -63,4 +63,26 @@ with tempfile.TemporaryDirectory() as root:
     _, _, ev = r.gather("tesseract confuses which numbers five nine", sdb)
     assert len(ev) == 2 and ev[1][0] == target, ev  # open: one hop
 
+    # Tier A first: a memory file at #2 or #3 jumps a compiled article; the MEMORY.md index never does.
+    kdir = os.path.join(root, "knowledge")
+    mdir = os.path.join(root, ".claude/projects/-x/memory")
+    write(kdir, "push-fix.md", "Drive push fix: grant Full Disk Access. Drive push fix. Drive push fix.\n")
+    write(mdir, "project_push-fix.md", "Drive push fix: run it from Terminal.\n")
+    write(mdir, "MEMORY.md", "- Drive push fix Drive push fix Drive push fix Drive push fix\n")
+    tdb = r.open_index([kdir, mdir], ":memory:")
+    assert not r.fts5_top(tdb, "drive push fix", 3)[0].endswith("project_push-fix.md")  # BM25 alone loses
+    assert r.rank(tdb, "drive push fix", 3)[0].endswith("project_push-fix.md")
+    assert r.rank(tdb, "drive push fix", 1) == [r.rank(tdb, "drive push fix", 3)[0]]
+    # Name guard: a memory about something else stays below the article named for the question.
+    write(kdir, "sleep-scheduler-project.md", "Sleep scheduler project. Sleep scheduler project.\n")
+    write(mdir, "project_backup-sleepkill.md", "Backup task: sleep kill signature, scheduler project.\n")
+    gdb = r.open_index([kdir, mdir], ":memory:")
+    assert r.rank(gdb, "sleep scheduler project", 3)[0].endswith("sleep-scheduler-project.md")
+
+    # Refresh writes each file once, even when it re-reads it.
+    os.utime(os.path.join(kdir, "push-fix.md"))
+    r.open_index([kdir, mdir], disk).close()
+    ddb = r.open_index([kdir, mdir], disk)
+    assert ddb.execute("SELECT count(*) - count(DISTINCT path) FROM d").fetchone()[0] == 0
+
 print("test_recall: all checks passed")

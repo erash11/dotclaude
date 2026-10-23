@@ -22,3 +22,9 @@ One row per backend per run. Decision rule: audit section 6.2.
 | 2026-10-23 | kristinas-macbook.local | recall.py first Mac run | recall | 30 | 17 | 23 | 0.639 | 499 | 1296 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 11/14, transcript 0/1, vault 11/13 |
 | 2026-10-23 | kristinas-macbook.local | recall.py on fts5 (Mac) | fts5 | 30 | 19 | 25 | 0.728 | 32 | 393 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-23 | kristinas-macbook.local | recall.py on fts5 (Mac) | recall | 30 | 18 | 25 | 0.692 | 35 | 399 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first | fts5 | 30 | 19 | 25 | 0.728 | 9 | 43 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first | recall | 30 | 21 | 25 | 0.747 | 11 | 27 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first, coverage guard | fts5 | 30 | 19 | 25 | 0.728 | 4 | 20 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first, coverage guard | recall | 30 | 21 | 25 | 0.747 | 18 | 729 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first, name guard | fts5 | 30 | 19 | 25 | 0.728 | 6 | 19 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py Tier A first, name guard | recall | 30 | 22 | 25 | 0.764 | 11 | 36 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |

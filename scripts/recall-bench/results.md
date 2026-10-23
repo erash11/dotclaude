@@ -3,6 +3,37 @@
 Model: Sonnet, both arms. A = default session; B = memsearch top-5 + 1 tool-less call (run 1 only); C = recall.py + 1 tool-less call.
 Correct = judged by hand against questions.tsv ground truth.
 
+## Run 2026-10-23 (4): Tier A memory first (name guard)
+
+Change: a Tier A memory in the BM25 top 3 moves to #1 when its file name matches as many
+question words as #1's name. 30-case eval (no model): hit@1 18 -> 22 (fts5 alone: 19),
+hit@5 25/30 unchanged, no case worse (p03, p10, n04, n06 rose to #1). A guard on body
+coverage instead let an off-topic memory jump on n03; the name guard blocks it.
+
+| Q | Set | C tokens | C $ | C s | code s |
+|---|---|---:|---:|---:|---:|
+| 1 | orig | 17,808 | 0.066 | 18.5 | 1.8 |
+| 2 | orig | 18,253 | 0.063 | 15.4 | 1.1 |
+| 3 | orig | 17,978 | 0.062 | 14.5 | 0.4 |
+| 4 | orig | 18,602 | 0.063 | 9.9 | 0.7 |
+| 5 | orig | 18,063 | 0.061 | 9.1 | 0.3 |
+| 6 | held | 17,692 | 0.060 | 9.9 | 0.4 |
+| 7 | held | 17,340 | 0.057 | 14.5 | 0.3 |
+| 8 | held | 18,250 | 0.063 | 11.6 | 0.4 |
+| 9 | held | 18,702 | 0.064 | 9.3 | 0.3 |
+| total | | 162,688 | 0.559 | 113 | |
+
+A (default) is the run-3 figures for Q6-9: 472,728 tokens, $0.721, 184 s.
+
+| Set | A default | C run 3 | C run 4 |
+|---|---|---|---|
+| orig Q1-5 | 4 / 5 | 3 / 5 | 4 / 5 |
+| held Q6-9 | 2 / 4 | 4 / 4 | 4 / 4 |
+
+Q2 now opens project_cloud-push-launchd-blocked.md and gives the Terminal fix.
+Miss: Q3 said NOT FOUND (honest): the right memory is not in the top 3; a Drive dedupe article wins.
+Pass line for routing (no new misses on Q1-5 vs default) is met.
+
 ## Run 2026-10-23 (3): recall.py on BM25 (fts5) + paragraph picker
 
 The index-only ranker (run 2) lost to the fts5 BM25 search already in
