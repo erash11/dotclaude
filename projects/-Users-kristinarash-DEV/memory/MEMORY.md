@@ -8,6 +8,7 @@ Never put memory content here — the file itself holds the facts.
 - [Status report sourcing](project_status-report-sourcing.md) — building the status report
 - [Fireflies CLI on Mac](project_fireflies-cli-broken-on-mac.md) — Fireflies CLI errors or renames
 - [gws Google Forms API](project_gws-forms-api.md) — creating or editing a Google Form
+- [gws CLI default](feedback_gws-cli-default.md) — any Google API work: use gws, never exported tokens; ~2.5 s/call
 - [Kenny Boyd doc review](project_kenny-boyd-doc-review-preferences.md) — writing a review doc for Kenny
 - [Kenny Boyd writing voice](project_kenny-boyd-writing-voice.md) — writing to, for, or like Kenny; SAS Leadership meeting
 - [Terminal Fluency workspace](project_terminal-fluency-workspace.md) — resuming Terminal Fluency
