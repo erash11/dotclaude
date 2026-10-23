@@ -1,0 +1,1 @@
+{"agentType":"workflow-subagent","description":"audit:mac-toolchain","workflowPhase":"Audit","spawnDepth":1,"requestShape":"foreground","requestNonInteractive":false}

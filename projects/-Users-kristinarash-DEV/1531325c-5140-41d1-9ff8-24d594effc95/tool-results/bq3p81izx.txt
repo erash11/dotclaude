@@ -1,0 +1,520 @@
+=== project_skill-bloat-and-promotion.md
+---
+name: skill-bloat-and-promotion
+description: "Measured skill bloat in this setup, the project-until-promoted rule that fixes it, and the command that re-measures usage from .jsonl session logs"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
+  modified: 2026-10-07T16:20:14.842Z
+---
+
+Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
+("How to Actually Choose the Right AI Agent", 2026-09-11). Full note:
+`~/SecondBrain/Inbox/2026-09-12-harness-over-model-mark-kashef.md`.
+Same shape as the earlier audit in [[brain-audit-loop]] — that one scored the
+**vault**, this one scores the **skill layer**.
+
+## The measurement
+
+| Metric | Count |
+|---|---|
+| Global skills in `~/.claude/skills/` | 160 (→ **117** after the Tier 1 archive, 2026-09-12) |
+| Plugin skills exposed per session | ~37 (6 enabled, 18 disabled) |
+| SKILL.md files in plugin cache | 606 — disabled plugins + old versions, NOT the load |
+| Project-level skills anywhere in `~/DEV` | **0** |
+| `.jsonl` sessions scanned | 414 |
+| Distinct real skills **ever** invoked | **58** |
+| Used 3+ times | 30 |
+| Used exactly once | 19 |
+
+Everything is global. That is the anti-pattern, not the achievement.
+
+## The rule that fixes it — promotion
+
+**Everything stays project-level until it earns global.** A skill lives in
+`<project>/.claude/skills/` until it proves itself across 2+ projects, then it
+gets promoted to `~/.claude/skills/`. Keeps the global load small and the blast
+radius tight — so when something underperforms you can tell a *model* problem
+from a *harness* problem from an *organisation* problem.
+
+## The audit question
+
+Not "how often did I run this skill?" but **"would the model do this fine without
+the skill now?"** A skill is a crutch; as the brain gets smarter the crutch starts
+to *limit* it. Seasonal skills (`forecast-capture`) and occasional ones
+(`ingest-book`) are low-count by design — low usage alone is not a delete signal.
+
+## Re-measure (BUILTIN filter is the whole trick)
+
+Without the `BUILTIN` set you also count `/exit`, `/clear`, `/compact` and friends,
+which inflates the total to 74 and buries the real skills.
+
+```bash
+python3 - <<'EOF'
+import glob,re,collections
+BUILTIN={'exit','clear','compact','rename','color','login','logout','plugin','doctor',
+'help','model','config','resume','cost','status','init','agents','mcp','hooks','memory',
+'review','vim','terminal-setup','install-github-app','add-dir','bug','release-notes',
+'pr-comments','ide','permissions','statusline','output-style','todos','export',
+'privacy-settings','upgrade','fast','artifacts','tasks','loop','context','usage','rewind',
+'sandbox','feedback','worktrees','skills','reload-skills','reload-plugins','bashes',
+'keybindings','theme'}
+c=collections.Counter()
+for f in glob.glob('/Users/kristinarash/.claude/projects/**/*.jsonl',recursive=True):
+    try:
+        for line in open(f,encoding='utf-8',errors='ignore'):
+            if 'Skill' not in line and 'command-name' not in line: continue
+            for m in re.finditer(r'"name"\s*:\s*"Skill"\s*,\s*"input"\s*:\s*\{[^}]*?"skill"\s*:\s*"([^"]+)"', line):
+                c[m.group(1)]+=1
+            for m in re.finditer(r'<command-name>/([a-zA-Z0-9:_-]+)</command-name>', line):
+                c[m.group(1)]+=1
+    except Exception: pass
+real={k:v for k,v in c.items() if k.split(':')[-1] not in BUILTIN and k not in BUILTIN}
+print("distinct real skills ever invoked:",len(real))
+print("used >=3 times:",len([k for k,v in real.items() if v>=3]))
+print("used exactly once:",len([k for k,v in real.items() if v==1]))
+for k,v in sorted(real.items(),key=lambda x:-x[1]): print(f"{v:5d}  {k}")
+EOF
+```
+
+## Decision, 2026-09-12
+
+**Do the skill audit BEFORE adopting Pi** (`pi.dev`) as an alternative harness.
+Rationale: the leverage is the bloat, not the harness. Auditing first means any
+future harness move ports ~30 good skills instead of ~200 mixed ones.
+
+Pi facts, verified from `pi.dev/docs/latest` 2026-09-12 — full note at
+`~/SecondBrain/Inbox/2026-09-12-pi-harness-research.md`:
+
+1. **No sandbox, no approval flows.** "Pi does not include a built-in sandbox."
+   Project trust only guards resource *loading*, not what the agent then does.
+   Never run Pi in `~/DEV` or near `DexaProject`. Trial it in `~/pi-trial` or a
+   container (`sbx` keeps the credential off the container).
+2. **Skills port for one line.** Pi implements the Agent Skills standard and already
+   auto-discovers `~/.agents/skills/` — where 45 of the skills live. Add the rest with
+   `{"skills": ["~/.claude/skills"]}` in `~/.pi/agent/settings.json`. It loads
+   `AGENTS.md` **or** `CLAUDE.md` directly.
+3. **Hooks → TypeScript extensions is a bounded port, not a rewrite** (earlier note
+   said "weeks", that was wrong). Hooks here are already `.ts`; Pi's `tool_call` event
+   returns `{block, reason}` — the same shape as the dcg guard.
+4. **Claude subscription through Pi bills per token as "extra usage", NOT against plan
+   limits.** Changes the economics of brain-swapping.
+
+Config lives in `~/.pi/agent/` and survives npm uninstall.
+See also [[hook-two-copies-trap]] and [[dcg-guard-blocks]].
+
+## Audit outcome, 2026-09-12
+
+**Both tiers executed.** 99 skills archived, global **160 → 61**, roster cost
+**19,158 → 6,428 tokens/session (a 66% cut)**. Zero regressions: none of the 99
+had ever been invoked in 414 sessions.
+
+Decision 2026-09-12: keep the `mattpocock-skills` and `superpowers` **plugins** and
+archive the local bare-name duplicates. The plugin (v1.2.3, 35 skills) ships every
+duplicate removed and is newer than the July symlinks. Rule that follows: when a
+plugin and a local skill share a name, **the plugin wins** — delete the local copy.
+
+Script: `~/.claude/skills-audit-2026-09-12.sh` (archives, never deletes — undo with
+`mv ~/.claude/skills-archive/2026-09-12/* ~/.claude/skills/`).
+Report: `~/SecondBrain/Inbox/2026-09-12-skill-audit.md`.
+
+Traps found while doing it:
+1. **CORRECTED 2026-09-12 — `~/.claude/skills/` IS version-controlled.** It is its own
+   git repo, remote `https://github.com/erash11/claude-skills.git`, and the audit was
+   committed as `3ab4467 chore: apply global skill audit` and pushed. The earlier note
+   that it is "gitignored, archive is the only undo" was true only of the *`dotclaude`*
+   repo, which ignores this path — a different thing. **Git IS the safety net here, and
+   it is also how the cut reaches Windows.** Undo with
+   `git -C ~/.claude/skills revert <sha> && git push`, not the archive folder
+   (`skills-archive/` is not in the repo and never reaches the other machine).
+2. **A cut in `~/.claude/skills/` does NOT reach `~/.agents/skills/`.** After the audit,
+   98 of the 99 archived skills were still live in the pool (306 entries there vs 61
+   canonical). Claude Code stopped seeing them; **Pi auto-discovers that folder**, so
+   installing Pi would have re-exposed all of them. Always cut both.
+3. **Skills live in three places and it is easy to edit the wrong copy.**
+   `~/.claude/skills/` (19 entries were symlinks pointing *out* to the pool),
+   `~/.agents/skills/` (Pi, Cowork), `~/.codex/skills/` (Codex, 27 symlinks + 5 real
+   dirs). Count with `find -L`; plain `find` undercounts.
+4. **`sync-to-codex.sh` did `rm -rf "$dst/$s"; cp -R "$SRC/$s"`** over a 7-name
+   allowlist. If `$SRC/$s` ever became a symlink into `$dst`, that deletes the real
+   data. `dev-sync` tells you to run it after every pull. A `.ps1` twin has the same
+   shape — patch both.
+5. **`~/.claude/skills/_shared/`** holds `config.json` + `Inference/` and is resolved by
+   10+ skills via `parents[2]/_shared/config.json`. It has **no SKILL.md**. Never treat
+   "no SKILL.md" as "orphan, delete".
+6. **"606 plugin skills" is cache, not load.** Only 6 of 24 plugins are enabled
+   (~37 skills exposed). The rest are disabled plugins and old cached versions.
+
+## Executed 2026-09-12 — traps the live run found
+
+- **Views are live links now.** `~/.agents/skills/<owned>` and `~/.codex/skills/<owned>`
+  point into canonical, so anything that writes a view path writes canonical
+  (`graphify install --platform agents` does; see [[graphify-runtime-setup]]).
+- **`skillOverrides` in `~/.claude/settings.json` breaks parity silently.** Codex and Pi
+  ignore that file, so an owned skill set `"off"` there is hidden in Claude Code but live
+  elsewhere. Perfect frontmatter does not help; `skill-portability-check.py` fails it.
+  Resolved 2026-09-13: Eric re-enabled the 7 (ArXiv, ISA, Science, capture-insight,
+  library-review, pp-espn, session-miner) — `~/.claude` commit `21c686d`, checker 42/42.
+  Never set an owned skill "off" again; retire it from canonical instead.
+- **Git's spelling wins, not the Mac's.** APFS is case-insensitive: the folder showed
+  `Harvest` while git recorded `harvest/`. Check `git ls-files` before "fixing" a
+  name to match the disk.
+- **A `closeout` in another session commits your uncommitted work** (it swept Task 5's
+  34 SKILL.md edits into its own commit). Commit each verified step immediately.
+- **Description budget:** keep each description under ~650 chars; Claude Code caps the
+  combined listing.
+
+## Architecture decided 2026-09-12 (executed through Task 5 the same day)
+
+**Canonical = `~/.claude/skills/`** (the git repo, real directories only, **never commit
+a symlink** — Windows pulls this repo). `~/.agents/skills/` and `~/.codex/skills/` are
+**generated views**, rebuilt by `sync-to-codex.sh` from a complete manifest of every
+canonical dir holding a SKILL.md, recorded in a `.generated-by-sync-to-codex` ownership
+file so an audit can tell a generated entry from a third-party `npx skills add` install.
+Symlink on Mac, copy on Windows.
+
+Portable frontmatter contract (fires in Claude Code *and* Codex): `name` must equal the
+directory name (TitleCase is legal), and `description` needs **both** a positive
+"Use when …" clause with literal trigger phrases *and* a negative "Do not use …" clause.
+Codex reads only `name` + `description` (+ optional `metadata.short-description`) and
+ignores `argument-hint` / `allowed-tools`. Codex over-fires without the negative clause;
+Claude will not trigger without the literal phrases.
+
+Plan (Codex-approved after 6 review rounds, 10→0 findings):
+`~/DEV/KeystoneOS/docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`.
+See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-install]].
+
+## claude.ai-synced duplicates, 2026-10-02 (doctor-plus)
+
+`~/.claude/skills/synced/<account-id>/` is claude.ai account skills synced down (gitignored,
+re-synced each start — deleting the folder does not stick). They list as `anthropic-skills:<name>`.
+Where one duplicates a local skill, **local wins**: set `"anthropic-skills:<name>": "off"` in
+`skillOverrides` (namespaced keys work — verified with a headless on/off control run). Done for
+closeout, dev-sync, five-slides-generator, new-project, watch, last30days (2026-10-06; the
+plugins `watch@claude-video` and `last30days@last30days-skill` keep them; local `watch` was
+already "off"), articulation-skill (the last one re-tracked
+in canonical 2026-10-02 after a 9/10 removal left untracked per-machine copies). Do not delete them on claude.ai: the synced
+five-slides is written for the claude.ai sandbox and is the right copy there. The "never off" rule
+above is for *owned* skills only.
+
+## Listing trim, 2026-09-14 (doctor-plus)
+
+**40 owned skills are `"name-only"` in `~/.claude/settings.json` `skillOverrides`**
+(dotclaude commit `172d547`). 13 stay full: the ones Claude invoked itself 2+ times
+(memory-write, CreateSkill, impeccable, claude-stack-doctor, codex-review, name-meetings,
+project, graphify, fireflies-intake, html-to-pdf, meeting-prep, status-report) plus
+sports-science-research-grounding. Chosen from the usage scan above (model calls vs typed).
+
+- Why `name-only`, not `"off"` or `disable-model-invocation`: the name stays listed, so
+  Skill-tool chains (`startup`→`dev-sync`, `weekly-review`→`meeting-sync`) still work,
+  the portability checker only fails `"off"`, and Codex/Pi still see full descriptions.
+- Cost: those 40 fire less on phrases ("goodnight", "capture this"). Type `/name`.
+- Next-session check: if ~17 local skills still show as bare names, the listing budget
+  is being eaten by plugin skills, not these. Promote a skill back to `"on"` by deleting
+  its line.
+
+## Plugin/skill dedupe, 2026-10-07
+
+- `mattpocock-skills` now comes from Matt's own marketplace (`@mattpocock`, 1.3.1, autoUpdate).
+  The `@claude-plugins-official` copy was uninstalled: that marketplace pins a commit SHA and
+  lagged at 1.2.3. Prefer the author's own marketplace.
+- Removed 6 untracked symlinks in `~/.claude/skills/` that shadowed plugin skills (code-review,
+  grilling, handoff, prototype, teach, watch). Targets stay in `~/.agents/skills/` for Codex/Pi.
+- Review skills trimmed (Eric's choice, same day): keep `mattpocock-skills:code-review` +
+  `codex-review`. Built-in `code-review` set "off" (bare key; does not hit the namespaced plugin
+  skill). `superpowers:requesting-code-review` "off" (Eric's call; superpowers
+  executing-plans and subagent-driven-development call it by name, so their review step may fail).
+- `superpowers:test-driven-development` "off" too; `mattpocock-skills:tdd` is the TDD skill.
+- A description/body similarity scan of 148 active skills found no other duplicates.
+=== project_fireflies-cli-broken-on-mac.md
+---
+name: fireflies-cli-broken-on-mac
+description: "fireflies-pp-cli's misleading \"out of memory (14)\" error means the local DB was never synced — not a real failure"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 412a89e3-b64f-44e6-9c87-4766d44e6c7a
+  modified: 2026-08-29T13:01:27.698Z
+---
+
+**Resolved 2026-08-11.** Recording the trap because the error message points the wrong way.
+
+`fireflies-pp-cli` failed on **every** command and every `--data-source` (including
+`live`) with:
+
+```
+Error: querying: unable to open database file: out of memory (14)
+```
+
+"Out of memory" is wrong — SQLite 14 is `SQLITE_CANTOPEN`. The real cause: the local
+mirror had **never been created on this Mac**. Two things were missing after the
+Windows → Mac migration:
+
+1. No `FIREFLIES_API_KEY` anywhere — not env, not disk, not Keychain.
+2. No database. `sync` had never been run here.
+
+**`--data-source live` does not bypass the database.** Read commands open it regardless,
+so "live" fails identically until a sync exists. That is what makes the error so
+misleading — it looks like a corrupt/locked DB rather than a missing one.
+
+**Fix:** the key is in the login Keychain as of 2026-08-13, not plaintext in
+`~/.zshrc`. `~/.zshrc` exports it by *reading* the Keychain:
+`export FIREFLIES_API_KEY="$(security find-generic-password -s FIREFLIES_API_KEY -a "$USER" -w)"`.
+Then `fireflies-pp-cli sync`. See [[path-shadowing-and-cleanup]].
+Synced 189 transcripts / 200 records on first run.
+
+**The DB lives at `~/.local/share/fireflies-pp-cli/data.db`** (XDG data dir), *not*
+`~/.fireflies-pp-cli/` — that directory exists but stays empty and is a red herring.
+
+**Shell gotcha:** `~/.zshrc` exports are invisible to Claude Code's Bash tool (it runs
+non-interactive bash and does not source zshrc). Load them explicitly per command:
+`eval "$(grep -m1 '^[[:space:]]*export[[:space:]]\+VARNAME' ~/.zshrc)"`
+
+**Knock-on effect worth remembering:** `meeting-sync` hard-stops on auth failure and
+`weekly-review` calls it first, so this single missing credential silently disabled both
+rituals. The vault meeting corpus froze at 2026-08-03 and `Inbox/weekly-review/` went
+empty after 2026-07-31. A lapse that reads as a discipline problem was a missing env var.
+Design rule: recurring skills must **degrade and report staleness**, never hard-stop.
+
+---
+
+## Transcript text requires `--live` (added 2026-08-13)
+
+`transcripts get <id>` returns metadata, speakers, and the AI summary but **no
+`sentences` array** — and neither does the local DB (`json_extract(data,'$.sentences')`
+is null) nor `transcripts export`, which emits only the summary (~2.6 KB).
+
+To get the actual dialogue, add `--live`:
+
+```
+fireflies-pp-cli transcripts get <id> --live --json
+```
+
+That returned 476 sentences / 284 KB for a 39-minute meeting, vs 6 KB without it. So
+`sync` does **not** mirror transcript bodies — only metadata and summaries. Plan any
+transcript-reading work around one `--live` call, then condense locally (group
+consecutive sentences by `speaker_name` into turns; 476 sentences collapsed to 74 turns
+/ 37 KB, which is readable in one pass).
+
+Also: **speaker names in the AI summary can be wrong.** In the 8/13 meeting the summary
+named "Aaron" and "Carrie"; the actual `speakers` array had **Erin Boyette**, and Carrie
+never spoke. Trust `speakers` / `sentences`, not `summary.action_items`.
+
+**Correction to the shell gotcha above:** as of 2026-08-13 `FIREFLIES_API_KEY` *is*
+visible to the Bash tool — `doctor` reported `auth_source: env:FIREFLIES_API_KEY` with
+no manual sourcing. Verify before working around it.
+
+Related: [[status-report-sourcing]], [[gws-forms-api]]
+
+
+---
+
+## Renaming meetings: both the CLI and the MCP tool are broken (added 2026-08-29)
+
+Two independent failures, and the second one lies about succeeding.
+
+**1. `fireflies-pp-cli transcripts update` always fails.** It sends the id as a bare
+mutation argument; the API wants it wrapped in an input object:
+
+```
+CLI sends: updateMeetingTitle(id: ..., title: ...)
+API wants: updateMeetingTitle(input: {id: ..., title: ...})
+```
+
+Result is `HTTP 400 ... Unknown argument "id" on field "Mutation.updateMeetingTitle"`.
+Note the field really is `id`, **not** `meetingId` — a direct call with `meetingId`
+returns `Field "UpdateMeetingTitleInput.id" of required type "String!" was not provided`.
+Don't "fix" the CLI by renaming the field; the shape is what's wrong.
+
+**2. The Fireflies MCP tool `fireflies_update_meeting_title` is unreliable and its
+`success:true` means nothing.** Writes are *erratically delayed*, not simply dropped:
+on 2026-08-29 only 2 of 7 renames persisted promptly, 5 returned success and had not
+landed after 8 minutes of polling, and one diagnostic write ("… v2") surfaced roughly
+20–30 minutes later. So a "failed" MCP rename can still land an hour on and clobber a
+good title. **This looked exactly like a rate limit and is not one** —
+`name-meetings/REFERENCE.md` documents a "hard daily rate limit", which sent the
+diagnosis down a 45-minute dead end. Never use MCP for renames; never send a throwaway
+"test" title through it, because late arrival makes the probe destructive.
+
+**Working path — call GraphQL directly with the keychain API key:**
+
+```python
+q = "mutation($input: UpdateMeetingTitleInput!){ updateMeetingTitle(input:$input){ title } }"
+# POST https://api.fireflies.ai/graphql, Authorization: Bearer <FIREFLIES_API_KEY>
+# variables: {"input": {"id": <meetingId>, "title": <newTitle>}}
+```
+
+All 7 renames applied first try this way, verified by read-back. Reusable script:
+`~/.claude/jobs/*/tmp/rename_direct.py` (regenerate it; job dirs are cleaned up).
+
+**Verification traps:**
+- `transcripts get <id> --data-source live --no-cache` is trustworthy and is the
+  read-back to use. `--no-cache` matters.
+- The **list** endpoint (what `sync` + `transcripts find` read) lags the single-transcript
+  endpoint by minutes. A fresh rename can be correct live and stale in `find` after a
+  `sync --full`. Wait ~4 min and re-sync before exporting, or the vault filename bakes in
+  the old title.
+- Never verify a rename by exit code or by the mutation's own response.
+
+**Backgrounded polling scripts appear to produce no output** until they exit — the file
+stays 0 bytes mid-run. Don't conclude the script died; read it again after it completes.
+
+Related: [[fireflies-cli-broken-on-mac]]
+
+---
+
+## `transcripts find --json` returns a bare LIST (added 2026-09-02)
+
+`fireflies-pp-cli transcripts find --json --agent` emits a **top-level JSON array**, not an
+envelope object. A parser written as `d.get("data") or d.get("items") or d` dies with
+`AttributeError: 'list' object has no attribute 'get'`. Guard with
+`items = d if isinstance(d, list) else d.get("data", [])`.
+
+**The rename → export loop works end to end** (verified 2026-09-02, 3 meetings):
+`scripts/rename.py <id> "<title>"` → `sleep 270` → `sync --full --resources transcripts`
+→ `find` shows new titles → `meeting-sync/scripts/sync.py --no-sync` exports with the
+good slug. The 4-minute wait is mandatory; skipping it bakes the stale title into the
+vault filename. Run the sleep as a **background** Bash job — the foreground tool caps at 120s.
+
+**Vault header placement:** `assets/meeting-header.md` goes after the metadata block's
+`---` rule (line 9 of the export), *before* `## Summary` — not at line 1. Exported files
+have no YAML frontmatter, so "after frontmatter" reads as line 1 and would be wrong;
+match the 237 existing files instead.
+
+**Open to-do (moved out of Tier B working memory 2026-09-09): rotate the Fireflies API
+key.** Rotate it in the Fireflies dashboard, then update the stored secret — secrets on
+this machine live in the macOS Keychain, never in `~/.zshrc`.
+=== project_m365-agent-access.md
+---
+name: m365-agent-access
+description: "How the agent reaches Teams, Outlook, Excel, Word and PowerPoint on the Baylor Windows laptop (Graph + Office COM, both verified, no admin)"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: 6a709501-394d-4811-8fbb-8fec24f5d7dd
+  modified: 2026-10-03T14:25:35.786Z
+---
+
+Verified 2026-10-03 on the Baylor Windows laptop. Eric ran the tests himself; all passed.
+
+- **Microsoft Graph (delegated) works.** `Install-Module Microsoft.Graph.Authentication -Scope CurrentUser`, then `Connect-MgGraph -Scopes "User.Read","Mail.Read","Calendars.Read","Chat.Read"`. Baylor allowed the consent (unlike the Box connector, see [[box-access-via-box-drive]]). `/me`, `/me/messages` and `/me/chats` returned data via `Invoke-MgGraphRequest`. Teams write scopes (ChatMessage.Send, ChannelMessage.Send) are BLOCKED: sign-in asks for Baylor IT admin approval (tested 2026-10-03). Mail.Send and Calendars.ReadWrite are untested.
+- **Office COM works from PowerShell** (FullLanguage mode, no admin): Excel, Word, PowerPoint, and classic Outlook (`Outlook.Application`, inbox read without a security prompt).
+- New Outlook and new Teams are installed too. Neither has COM: Teams goes through Graph, and so would new Outlook mail.
+- Teams posting workaround: a Teams Workflows webhook on a channel (posts as a bot). Eric created a private Team by hand 2026-10-03. NEXT: add the Workflows webhook to its channel, save the URL as the `TEAMS_WEBHOOK_URL` user env var (never in chat or a repo), then write a posting script and send one test message.
+- CLI-Anything (HKUDS) was reviewed and rejected for this: it targets open-source apps, and these are closed-source.
+
+**Why:** Saves re-testing access each session; Graph sign-in is interactive (browser), so the agent can't silently re-verify it.
+**How to apply:** For file edits use the docx/pptx/xlsx skills; for app actions (recalc, PDF export, mail, calendar) use COM; for Teams use Graph. Graph needs Eric to sign in in the browser at the start of a session; ask before adding any send scope.
+=== feedback_harness-time-budget.md
+---
+name: harness-time-budget
+description: "Harness/system work is done as it comes up, not on a schedule; start with project work, a new tool must replace an old one"
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: 786ccf63-5477-4140-ad17-9a8760e9a864
+  modified: 2026-10-12T00:58:04.873Z
+---
+
+Eric set a budget on harness and system work (hooks, skills, memory, KeystoneOS, sync, doctor checks) on 2026-10-03. On 2026-10-11 he dropped the Friday slot: he does system work as it is needed, as the work comes up, not on a schedule.
+
+- No weekly Friday "Harness slot". Do harness fixes when they come up.
+- A new tool, hook or skill must replace an old one.
+- Start sessions with the project work, not doctor/stack checks. Run `claude-stack-doctor` only after a second failure.
+- Let small breakage (noisy logs, stale counts, duplicate hooks) wait if there is a workaround.
+
+**Why:** A 60-day measurement to 2026-10-03 estimated ~55% system / 45% real work (commits: 65/35). Eric wants more time creating and shipping. He chose to handle system work as it comes up instead of in a fixed slot.
+
+**How to apply:** Do system work when it is needed, without a time box. Still start with project work. Do not propose new system pieces unasked. A ratio recheck is on the calendar for 2026-11-02 (method in the event notes); the goal is real work above 50%.
+
+Related: [[working-conditions-bottleneck]], [[skill-bloat-and-promotion]], [[session-hygiene]].
+=== feedback_defer-to-mattpocock-skills.md
+---
+name: defer-to-mattpocock-skills
+description: Eric wants the mattpocock-skills plugin (1.3.1) used first when one fits; which Pocock skill beats which overlapping skill
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: 05cbd553-a2c4-4dcd-adbd-c9fcd3297062
+  modified: 2026-10-07T16:21:08.140Z
+---
+
+Eric, 2026-10-07: "get familiar with the new matt pocock skills and defer to those
+for necessary invocation when needed."
+
+**Why:** He upgraded to 1.3.1 from Matt's own marketplace the same day (see
+[[skill-bloat-and-promotion]]) and wants those skills, not near-duplicates, to drive the work.
+
+**How to apply:** when a task fits, invoke the `mattpocock-skills:` skill first. On overlap:
+
+| Task | Use | Instead of |
+|---|---|---|
+| Bug, error, slow code | `diagnosing-bugs` (tight red loop first) | `superpowers:systematic-debugging` |
+| Test-first build/fix | `tdd` (agree seams with Eric first) | `superpowers:test-driven-development` |
+| Stress-test a plan | `grilling` (rounds, recommended answers) | `superpowers:brainstorming` Q&A |
+| Edit a skill, CLAUDE.md, AGENTS.md | `writing-for-agents` | `superpowers:writing-skills` |
+| Module/interface design | `codebase-design` | — |
+| Glossary / ADR / domain terms | `domain-modeling` | — |
+| Throwaway logic or UI test | `prototype` | — |
+| Docs/API fact-finding to a .md | `research` (background agent) | — |
+| PR body | `pr` (Summary / Evidence / Merge Danger) | — |
+| Steps only a human can do | `wizard` (bash script) | — |
+
+Eric, later 2026-10-07: "I want to default all the mattpocock skills." Every overlapping skill
+is now "off" in `~/.claude/settings.json` skillOverrides: built-in `code-review`; superpowers
+`requesting-code-review`, `test-driven-development`, `systematic-debugging`, `brainstorming`,
+`writing-skills`, `writing-plans` (→ `/to-spec`), `executing-plans` and
+`subagent-driven-development` (→ `/implement-spec`), `finishing-a-development-branch` (→ `pr`);
+`anthropic-skills:skill-creator` (→ `writing-for-agents`), `anthropic-skills:deep-research` (→ `research`).
+
+Exceptions:
+- `mattpocock-skills:code-review` is ON (Eric's choice). It needs `docs/agents/issue-tracker.md`;
+  run `/setup-matt-pocock-skills` once per repo. `codex-review` stays as the Codex reviewer.
+- Owned skills are not set "off" (portability rule): `CreateSkill` and `session-handoff` stay.
+- Eric's own domain skills still win in their lane (status-report, research-in-5, etc.).
+- Eric is usage-sensitive: `grilling` and `research` may spawn sub-agents; keep it to one.
+- Slash-only (Eric runs them): `/grill-me`, `/grill-with-docs`, `/to-spec`, `/to-tickets`,
+  `/implement`, `/implement-spec`, `/triage`, `/wayfinder`, `/handoff`, `/teach`,
+  `/to-questionnaire`, `/wait-what`, `/retro`, `/ask-matt`, `/improve-codebase-architecture`,
+  `/setup-matt-pocock-skills` (run once per repo before the tracker-based skills).
+  Suggest one by name when it fits.
+=== project_supervisor-log-pipeline.md
+---
+name: project-supervisor-log-pipeline
+description: "How the nightly supervisor log feeds the biweekly Kenny/Chris status report, and what the report still cannot source"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 497f3a39-2043-486a-af25-95ec8b23acec
+  modified: 2026-09-08T02:17:39.699Z
+---
+
+Built 2026-09-07. `interview-me` opens with **Part 0 — supervisor log**: three factual
+questions (equipment/installs, who you talked to + sport, waiting-on/risks), 90 seconds,
+asked *before* the four reflection questions. Output → `~/SecondBrain/Inbox/status-log/YYYY-MM-DD.md`
+(config key `vault_status_log`). Nothing to report writes **no file**.
+
+`status-report` reads that folder first (Step 2b item 1b), skips standing interview
+questions the logs already answered, and prints "N of D days logged" in Step 8.
+
+**Why:** roughly two thirds of what belongs in the supervisor email — equipment arriving,
+installs, hallway conversations, follow-ups awaiting a reply — appears in **no** automated
+source. `portfolio.json` and `_ledger.md` track building work; the report describes
+departmental operations. A draft from automated sources alone is about one-third finished.
+
+**How to apply:** Part 0 goes first and that ordering is the design, not a preference —
+reflection is expensive when tired and this ritual already lapsed 49 days once. The
+"N of D" count is the nudge; never backfill missing days to make it look better. Never
+pad the log — `status-report` copies entries into an email to supervisors with light
+editing, so an invented install becomes a false claim in front of Chris Ruf.
+
+Traps the 09-07 cycle exposed:
+- Meeting **action items are assignments, not outcomes.** Three lines nearly shipped as
+  done that were only to-dos. Same failure class as `portfolio.json` `stage: shipped`.
+- Writing in ASD-STE/plain-English mode **strips Eric's contractions** and the email stops
+  sounding like him. Contract everything; the sent 08-24 reference is the voice test.
+- `fireflies-pp-cli action-items list` exits 0 and returns empty `{}` objects — reads as
+  "no open commitments" if trusted. Use the digest's inline action items.
+
+Related: [[project-status-report-sourcing]], [[project-automation-cadence]]
