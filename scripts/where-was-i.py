@@ -26,6 +26,20 @@ DEV = os.path.expanduser("~/Desktop/DEV") if os.name == "nt" else os.path.expand
 SKIP = ("_ARCHIVE", "_to_delete", "_OLD_", "worktrees")
 
 
+def dev_glob(*tail):
+    """Glob DEV/*/<tail> and DEV/*/*/<tail>, skipping symlinked top-level folders.
+
+    ~/DEV/_DRIVE links into the Google Drive mount: walking it can hang and
+    surfaces local-only projects (DexaProject, Linda_Projects).
+    """
+    paths = []
+    for top in os.scandir(DEV):
+        if top.is_dir(follow_symlinks=False):
+            paths += glob.glob(os.path.join(top.path, *tail)) + \
+                glob.glob(os.path.join(top.path, "*", *tail))
+    return paths
+
+
 def git(repo, *args):
     r = subprocess.run(["git", "-C", repo, *args], capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
@@ -83,8 +97,7 @@ def open_questions(path):
 
 
 def recent_handoffs(cutoff):
-    paths = glob.glob(os.path.join(DEV, "*", "docs", "handoffs", "*.md")) + \
-        glob.glob(os.path.join(DEV, "*", "*", "docs", "handoffs", "*.md"))
+    paths = dev_glob("docs", "handoffs", "*.md")
     rows = []
     for p in paths:
         if any(k in p for k in SKIP):
@@ -115,9 +128,9 @@ def main():
                     help="list open questions and recent handoffs instead of NEXT lines")
     a = ap.parse_args()
 
-    paths = glob.glob(os.path.join(DEV, "*", "docs", "STATUS.md")) + \
-        glob.glob(os.path.join(DEV, "*", "*", "docs", "STATUS.md"))
+    paths = dev_glob("docs", "STATUS.md")
     paths = [p for p in paths if not any(k in p for k in SKIP)]
+    assert not any(os.sep + "_DRIVE" + os.sep in p for p in paths)
     with ThreadPoolExecutor(12) as ex:
         rows = list(ex.map(inspect, paths))
 
