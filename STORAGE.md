@@ -76,7 +76,8 @@ these, file it by the table above in the same session.
 - Night backups failed whenever the Mac slept on battery (every 21:00 run 10-13 to 10-22). Since 2026-10-22 the
   backup runs in the daytime: launchd tries hourly 12:00-17:00 through `scripts/daily-backup-login.sh`, which runs
   it only on AC power, at most 2 tries a day, and stops once a run ends OK.
-- `cloud-push.py` fails under launchd ("Operation not permitted"); it works when run by hand.
+- `cloud-push.py` could not run straight from launchd (macOS blocks it from Terminal-made Drive files). Since
+  2026-10-23 launchd opens it in Terminal via `scripts/cloud-push-launch.sh`; a run that never starts logs an ERROR.
 - Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.
 

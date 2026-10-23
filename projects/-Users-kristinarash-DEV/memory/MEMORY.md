@@ -72,6 +72,6 @@ Never put memory content here — the file itself holds the facts.
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive (one exception: Kenny's ITS tracker in the Teams team)
 - [Cloud copy approval](project_cloud-copy-approval.md) — daily all-DEV copy to Drive; cloud servers/schedulers approved 10-14; DBs, secrets, Dexa stay local
-- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push fails under launchd; run by hand until the VPS
+- [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push schedule or any launchd job touching Drive files: macl block, Terminal route since 10-23
 - [Agentic operating loop](project_agentic-operating-loop.md) — agent workflow, Cloudroom, worktrees, reviewers: point at WORKFLOW.md loop first
 - [Jev health-data IT approval](project_jev-health-data-it-approval.md) — before sending any health data to Jev/TypeSafe; IT approved 10-22, Eric still gates each item

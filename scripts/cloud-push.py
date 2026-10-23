@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Copy all of ~/DEV to the Google Drive _MACHINE/Cloud_Copy folder (one-way, never deletes).
 
-Runs daily from launchd (com.keystone.clouddrivepush, 07:00 and 17:30) and can be run by hand.
+Runs daily from launchd (com.keystone.clouddrivepush, 07:00 and 17:30) through cloud-push.command,
+which opens it in Terminal: launchd alone cannot list Drive folders (see that file). Can be run by hand.
 Builds the file list fresh each run, so new and changed files are picked up.
 
 Approved scope (Eric, 2026-10-12): all project files, including athlete data, on personal Google Drive.

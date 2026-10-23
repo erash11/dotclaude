@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.keystone.clouddrivepush</string>
+	<!-- Opens cloud-push.command in Terminal so the copy gets Terminal's Drive access, and logs an ERROR
+	     if it never starts (see cloud-push-launch.sh and cloud-push.command). -->
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/kristinarash/.claude/scripts/cloud-push-launch.sh</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/Users/kristinarash/.claude/scripts/logs/cloud-push.err</string>
+	<key>StandardOutPath</key>
+	<string>/Users/kristinarash/.claude/scripts/logs/cloud-push.out</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Hour</key>
+			<integer>7</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>17</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
