@@ -22,6 +22,8 @@ def run(*args):
 
 # Slug rule from the skill.
 assert m.slug_dir("/Users/kristinarash/DEV").endswith("/.claude/projects/-Users-kristinarash-DEV/memory")
+assert m.slug_dir("/Users/kristinarash/DEV/CLI_Dev").endswith("/-Users-kristinarash-DEV-CLI_Dev/memory")  # Mac keeps '_'
+assert m.slug_dir("/Users/kristinarash/.claude/skills").endswith("/-Users-kristinarash--claude-skills/memory")
 
 with tempfile.TemporaryDirectory() as d:
     base = ["--dir", d, "--type", "project", "--desc", 'Drive "push" fix', "--hook", "cloud-push fails"]

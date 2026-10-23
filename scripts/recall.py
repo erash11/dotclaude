@@ -7,7 +7,8 @@ keywords. Prints the evidence with file paths and line numbers; the model
 answers from that in one go.
 
 Roots: KeystoneOS/data/memory-index-paths.json (the memsearch roots, one home)
-plus the whole SecondBrain vault, which that file only partly covers.
+plus the whole SecondBrain vault and every ~/.claude/projects/*/memory folder,
+which that file only partly covers.
 The index lives in ~/.claude/cache/recall-fts.sqlite and refreshes by mtime on
 each call; delete the file to force a full rebuild (~10 s).
 
@@ -79,7 +80,8 @@ def roots(cfg=ROOTS_CFG):
             out.append(p.replace("{DEV}", DEV).replace("{VAULT}", VAULT).replace("{HOME}", HOME))
     except (OSError, ValueError, KeyError):
         pass
-    return out + [VAULT]
+    # Every project's Tier A folder (Mac and old Windows slugs), not only the ones listed in the config.
+    return out + [VAULT] + sorted(glob.glob(os.path.join(HOME, ".claude/projects/*/memory")))
 
 
 def md_files(rts):

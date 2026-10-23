@@ -30,3 +30,5 @@ One row per backend per run. Decision rule: audit section 6.2.
 | 2026-10-23 | kristinas-macbook.local | recall.py Tier A first, name guard | recall | 30 | 22 | 25 | 0.764 | 11 | 36 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-23 | kristinas-macbook.local | recall.py newest Tier A copy | fts5 | 30 | 19 | 25 | 0.728 | 4 | 14 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-23 | kristinas-macbook.local | recall.py newest Tier A copy | recall | 30 | 22 | 25 | 0.764 | 9 | 22 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py all memory folders | fts5 | 30 | 19 | 25 | 0.728 | 3 | 9 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
+| 2026-10-23 | kristinas-macbook.local | recall.py all memory folders | recall | 30 | 21 | 25 | 0.747 | 12 | 22 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |

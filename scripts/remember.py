@@ -33,8 +33,14 @@ INDEX_LIMIT = 200  # the harness stops reading a memory index after about this m
 
 
 def slug_dir(cwd):
-    """The skill's slug rule: every character other than a letter or digit becomes '-'."""
-    return os.path.join(recall.HOME, ".claude/projects", re.sub(r"[^A-Za-z0-9]", "-", cwd), "memory")
+    """The harness's project folder for cwd. On the Mac it keeps '_' (-Users-kristinarash-DEV-CLI_Dev);
+    the skill's rule (every non-alphanumeric to '-') matches the Windows folders. Prefer whichever exists."""
+    projects = os.path.join(recall.HOME, ".claude/projects")
+    mac = os.path.join(projects, re.sub(r"[^A-Za-z0-9_-]", "-", cwd), "memory")
+    strict = os.path.join(projects, re.sub(r"[^A-Za-z0-9]", "-", cwd), "memory")
+    if not os.path.isdir(os.path.dirname(mac)) and os.path.isdir(os.path.dirname(strict)):
+        return strict
+    return mac
 
 
 def name_words(stem):
