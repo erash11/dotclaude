@@ -10,7 +10,10 @@ Kept local on purpose:
     daily-backup.ps1 uploads consistent copies as dev-databases.tgz via gws instead.
   - password and key files (.env, *.pem, *.key, id_rsa, credentials*, secrets*)
   - regenerable folders (node_modules, .venv, venv, __pycache__, .next)
-Log: ~/.claude/scripts/logs/cloud-push.log
+  - any folder whose CLAUDE.md heading says "local only" (STORAGE.md rule; e.g. SpecialRequests/TOS_ES)
+  - browser profiles (a folder holding "Local State"): saved logins and cookies
+Log: ~/.claude/scripts/logs/cloud-push.log. Failures also go to global-memory/transcripts/.errors.log,
+so they show at the next session start.
 """
 import datetime
 import os
@@ -27,6 +30,7 @@ SECRET_PREFIX = (".env",)
 SECRET_PARTS = ("credentials", "secrets", "id_rsa", ".pem", ".key")
 REGEN_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".next", ".build", "printing-press-library"}
 JUNK = {".DS_Store"}
+ERRORS = os.path.expanduser("~/.claude/global-memory/transcripts/.errors.log")
 
 
 def log(msg):
@@ -35,6 +39,20 @@ def log(msg):
     with open(LOG, "a", encoding="utf-8") as fh:
         fh.write(line + "\n")
     print(line)
+    if msg.startswith("ERROR"):
+        stamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        with open(ERRORS, "a", encoding="utf-8") as fh:
+            fh.write(f"[{stamp}] cloud-push: {msg[:300]}\n")
+
+
+def private_dir(dp, fn):
+    """True for a folder that must not leave this Mac: local-only CLAUDE.md, or a browser profile."""
+    if "Local State" in fn:
+        return True
+    if "CLAUDE.md" in fn:
+        with open(os.path.join(dp, "CLAUDE.md"), encoding="utf-8", errors="replace") as fh:
+            return "local only" in fh.readline().lower()
+    return False
 
 
 def keep(name):
@@ -51,6 +69,9 @@ def keep(name):
 def build_list():
     files = []
     for dp, dn, fn in os.walk(DEV):
+        if private_dir(dp, fn):
+            dn[:] = []
+            continue
         base = os.path.basename(dp)
         dn[:] = [
             d for d in dn
