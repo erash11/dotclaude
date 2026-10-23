@@ -524,6 +524,45 @@ function Snapshot-Databases {
 }
 Snapshot-Databases
 
+# --- 2a-zotero. Zotero library -> zotero.tgz (added 2026-10-23, Eric picked weekly + only-if-changed) ---
+# ~/Zotero was in no backup layer. zotero.org sync is not a backup (deletions sync too).
+# Uploads at most once per 7 days, and only when zotero.sqlite or storage/ changed since the last OK upload.
+# The stamp file's mtime marks the last OK upload. Staging uses APFS clones (cp -c), so it costs no disk.
+# shortcut: one cloud copy, updated in place (no history); keep dated copies if a bad sync ever needs undoing.
+function Snapshot-Zotero {
+    $zdir = "$U/Zotero"
+    $stamp = "$LogDir/zotero-snapshot.stamp"
+    if (-not (Test-Path -LiteralPath "$zdir/zotero.sqlite")) { Log "ZOTERO skip (no $zdir/zotero.sqlite)"; return }
+    if (Test-Path -LiteralPath $stamp) {
+        $last = (Get-Item -LiteralPath $stamp).LastWriteTime
+        if ((Get-Date) - $last -lt [TimeSpan]::FromDays(7)) { Log "ZOTERO skip (last upload $($last.ToString('yyyy-MM-dd')), weekly)"; return }
+        $newer = @(& /usr/bin/find "$zdir/zotero.sqlite" "$zdir/storage" "$zdir/styles" -newer $stamp -print -quit 2>$null)
+        if ($newer.Count -eq 0) { Log "ZOTERO skip (unchanged since $($last.ToString('yyyy-MM-dd')))"; return }
+    }
+    $started = Get-Date  # stamp with the start time, so edits made during the upload count as changes next time
+    $stage = Join-Path ([IO.Path]::GetTempPath()) "zotero-$([guid]::NewGuid().ToString('N'))"
+    $root = Join-Path $stage 'Zotero'
+    New-Item -ItemType Directory -Force -Path $root | Out-Null
+    try {
+        # .backup gives a consistent copy; Zotero holds an exclusive lock while open, so then it fails.
+        & /usr/bin/sqlite3 "$zdir/zotero.sqlite" ".backup '$root/zotero.sqlite'" 2>$null
+        $check = if (Test-Path -LiteralPath "$root/zotero.sqlite") { & /usr/bin/sqlite3 "$root/zotero.sqlite" 'PRAGMA quick_check;' 2>$null } else { 'no copy' }
+        if ($check -ne 'ok') { Log "ZOTERO skip (database copy failed: $check; Zotero open?) - retries next run"; return }
+        foreach ($d in @('storage', 'styles')) {
+            if (Test-Path -LiteralPath "$zdir/$d") { & /bin/cp -cR "$zdir/$d" "$root/$d" }
+        }
+        $before = $Errors.Count
+        Snapshot-Gws $root 'zotero.tgz' @()
+        if (-not $DryRun -and $Errors.Count -eq $before) {
+            if (-not (Test-Path -LiteralPath $stamp)) { New-Item -ItemType File -Path $stamp | Out-Null }
+            (Get-Item -LiteralPath $stamp).LastWriteTime = $started
+        }
+    } finally {
+        Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+Snapshot-Zotero
+
 # --- 2b. Manifest-driven DEV coverage ---
 $B = $null
 if ($Manifest -and $Manifest.destinations.baylor.root) {

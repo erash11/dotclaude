@@ -38,7 +38,8 @@ Scripts write to Drive `_MACHINE/`. Humans browse `00_Primary_Storage_Drive/`. N
   caches (`printing-press-library`, `graphify-out/cache`, `.build`, `node_modules`, `.venv`, `__pycache__`).
   Written by `~/.claude/scripts/cloud-push.py` (07:00 and 17:30).
 - `_MACHINE/Backups/Machine` — nightly `.tgz` snapshots of `~/.claude/projects`, Codex, Gemini, and LaunchAgents
-  uploaded directly by `gws` API (`daily-backup.ps1` `Snapshot-Gws`), plus SSD captures of repo data git does not
+  uploaded directly by `gws` API (`daily-backup.ps1` `Snapshot-Gws`); `zotero.tgz` (`~/Zotero` database, PDFs,
+  styles) at most weekly and only when Zotero changed (`Snapshot-Zotero`, since 2026-10-23); plus SSD captures of repo data git does not
   carry from `~/.claude/scripts/backup-manifest.json`.
 - External SSD `CRASHBOX` — second nightly copy when it is plugged in.
 
