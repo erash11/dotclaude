@@ -4,8 +4,10 @@
 #   C = recall.py evidence (plain code) -> one model call, no tools
 # Usage: bash ~/.claude/scripts/recall-bench/run.sh [A] [C]   (default: C only; ASET=held limits A to one set)
 # Writes out/<arm><n>.json + .wall; score with: python3 -I ~/.claude/scripts/recall-bench/score.py
-# Note: --no-session-persistence makes the session hooks log "transcript_path does not exist"
-# to ~/.claude/global-memory/transcripts/.errors.log, one line per run. Harmless.
+# --no-session-persistence runs have no transcript. CLAUDE_INVOKED_BY makes the end-of-session hooks
+# (transcript-capture, session-end, autopush, memsearch-sync) skip them; SessionStart still runs.
+# Without it each run logged "transcript_path does not exist" to .errors.log (bursts on 2026-10-23).
+export CLAUDE_INVOKED_BY=recall_bench
 HERE="$(cd "$(dirname "$0")" && pwd)"; OUT="$HERE/out"; mkdir -p "$OUT"
 ARMS="${*:-C}"
 now() { python3 -c 'import time;print(time.time())'; }
