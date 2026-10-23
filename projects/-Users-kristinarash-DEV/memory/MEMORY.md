@@ -17,7 +17,7 @@ Never put memory content here — the file itself holds the facts.
 - [CFB Analytics Lab](project_cfb-analytics-lab.md) — resuming CFB Analytics Lab
 - [CFB forecast capture](project_cfb-forecast-capture.md) — weekly Big 12 forecast capture
 - [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
-- [Drive FUSE read hang](project_drive-fuse-read-hang.md) — before reading or copying ANY Drive file: default is the gws API, not the mount
+- [Drive FUSE read hang](project_drive-fuse-read-hang.md) — before reading, copying or walking ANY Drive file: gws API for reads, child-process timeout for walks
 - [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
 - [Zotero expert reference](reference_zotero-expert-reference.md) — any Zotero how-to, setup, import, sync, backup, or citation question
