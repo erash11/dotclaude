@@ -23,6 +23,24 @@ function logErr(msg) {
   } catch (_) { /* swallow */ }
 }
 
+// Command lines of the 3 processes above this hook (hook shell, claude, whatever started
+// claude), so a session with no transcript names the program that started it.
+function callers() {
+  try {
+    const { execFileSync } = require('child_process');
+    const out = [];
+    let pid = process.ppid;
+    for (let i = 0; i < 3 && pid > 1; i++) {
+      const row = execFileSync('ps', ['-o', 'ppid=,command=', '-p', String(pid)], { encoding: 'utf8' }).trim();
+      const m = row.match(/^(\d+)\s+(.*)$/);
+      if (!m) break;
+      out.push(m[2].slice(0, 120));
+      pid = Number(m[1]);
+    }
+    return JSON.stringify(out);
+  } catch (_) { return '?'; }
+}
+
 function extractText(content) {
   // content can be a string or an array of {type, text} blocks
   if (typeof content === 'string') return content;
@@ -66,9 +84,10 @@ function lastAssistantText(transcriptPath) {
   // Loop guard: if our hook (or another) is what stopped the model, don't recurse.
   if (input.stop_hook_active) return;
 
-  // Recursion guard, same as the memory compiler's session-end.py: flush.py and compile.py
-  // run Agent SDK sessions marked CLAUDE_INVOKED_BY that never write a transcript, so every
-  // one of them logged "transcript_path does not exist" (13 on 2026-10-23).
+  // Recursion guard, same as the memory compiler's session-end.py: its flush.py and
+  // compile.py Agent SDK sessions are marked CLAUDE_INVOKED_BY and have nothing to capture.
+  // Not the source of the 2026-10-23 "transcript_path does not exist" bursts: session-end.py
+  // logged those sessions too, so they were unmarked. The log line below names the caller.
   if (process.env.CLAUDE_INVOKED_BY) return;
 
   const transcriptPath = input.transcript_path;
@@ -81,7 +100,8 @@ function lastAssistantText(transcriptPath) {
 
   // A path that WAS supplied but is not on disk is real breakage. Keep logging it.
   if (!fs.existsSync(transcriptPath)) {
-    logErr('transcript_path does not exist: ' + JSON.stringify(input).slice(0, 200));
+    logErr('transcript_path does not exist: ' + JSON.stringify(input).slice(0, 200) +
+      ` entrypoint=${process.env.CLAUDE_CODE_ENTRYPOINT || '?'} callers=${callers()}`);
     return;
   }
 
