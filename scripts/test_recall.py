@@ -79,6 +79,14 @@ with tempfile.TemporaryDirectory() as root:
     gdb = r.open_index([kdir, mdir], ":memory:")
     assert r.rank(gdb, "sleep scheduler project", 3)[0].endswith("sleep-scheduler-project.md")
 
+    # Two machine slugs, same memory: only the newer copy is listed.
+    wdir = os.path.join(root, ".claude/projects/-win/memory")
+    newer = write(wdir, "project_push-fix.md", "Drive push fix: run it from Terminal (newer).\n")
+    os.utime(newer, (2e9, 2e9))
+    cdb = r.open_index([kdir, mdir, wdir], ":memory:")
+    got = r.rank(cdb, "drive push fix", 3)
+    assert got[0] == newer and sum(p.endswith("project_push-fix.md") for p in got) == 1, got
+
     # Refresh writes each file once, even when it re-reads it.
     os.utime(os.path.join(kdir, "push-fix.md"))
     r.open_index([kdir, mdir], disk).close()

@@ -150,11 +150,20 @@ def name_hits(path, q):
     return len(set(keywords(q)) & set(tokens(os.path.basename(path)[:-3].replace("_", " ").replace("-", " "))))
 
 
+def newest_copy(db, path):
+    """Mac and old Windows slugs can hold the same memory file; the most recently changed copy wins."""
+    name = os.path.basename(path)
+    rows = [(m, p) for p, m in db.execute("SELECT path, mtime FROM seen WHERE path LIKE ?", ("%/" + name,))
+            if os.path.basename(p) == name and tier_a(p)]
+    return max(rows)[1] if rows else path
+
+
 def rank(db, q, limit):
     """BM25 order, except a Tier A memory in the top 3 moves to #1 when its name matches as many
     question words as #1's name. Compiled knowledge articles and vault notes can be older than
     the memory that corrected them; the name guard stops an off-topic memory jumping."""
-    cands = fts5_top(db, q, max(limit, 3))
+    cands = [newest_copy(db, p) if tier_a(p) else p for p in fts5_top(db, q, max(limit, 3) + 3)]
+    cands = list(dict.fromkeys(cands))
     a = next((p for p in cands[:3] if tier_a(p)), None)
     if a and a != cands[0] and name_hits(a, q) >= name_hits(cands[0], q):
         cands.remove(a)
