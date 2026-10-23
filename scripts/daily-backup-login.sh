@@ -13,7 +13,8 @@ skip() { echo "$(date '+%F %T') gate skip: $1"; exit 0; }
 
 grep -q "^$TODAY .*daily-backup end: OK" "$LOG" 2>/dev/null && skip "already OK today"
 pmset -g ps | grep -q "AC Power" || skip "on battery"
-pgrep -f "daily-backup.ps1" >/dev/null && skip "a backup is already running"
+# [.] keeps the pattern from matching any shell whose command line merely mentions the script
+pgrep -f "pwsh.*daily-backup[.]ps1" >/dev/null && skip "a backup is already running"
 STARTS=$(grep -c "^$TODAY .*daily-backup start (DryRun=False)" "$LOG" 2>/dev/null)
 [ "${STARTS:-0}" -ge 2 ] && skip "2 tries already today"
 
