@@ -25,7 +25,7 @@ Two tiers.
 ## Tier A — per-project structured facts
 `~/.claude/projects/<slug>/memory/` — one file per durable fact, indexed by `MEMORY.md`. The active project's Tier A memory is **auto-injected each session**. Write here for stable facts: user profile entries, project conventions, feedback rules. Also indexed by memsearch, so recallable cross-project.
 
-File naming by type: `user_*.md`, `project_*.md`, `feedback_*.md`, `reference_*.md`. Each needs frontmatter (`name`, `description`, `metadata.type`) plus a one-line pointer added to that slug's `MEMORY.md`.
+File naming by type: `user_*.md`, `project_*.md`, `feedback_*.md`, `reference_*.md`. Each needs frontmatter (`name`, `description`, `metadata.type`) plus a one-line pointer added to that slug's `MEMORY.md`. `python3 ~/.claude/scripts/remember.py --type <t> --name <slug> --desc "..." --hook "..." [--why ... --how ...] "fact"` does both, refuses duplicates (`--update` replaces), and runs the read-back check; run it from the project folder so the slug is right.
 
 **Slugs.** The slug is the absolute cwd with every character other than a letter or digit replaced by `-`:
 - Mac: `~/DEV` → `-Users-kristinarash-DEV` · `~/.claude/skills` → `-Users-kristinarash--claude-skills`
