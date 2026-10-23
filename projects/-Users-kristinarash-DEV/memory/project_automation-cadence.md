@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-23T02:37:05.360Z
+  modified: 2026-10-23T16:08:36.822Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -51,13 +51,35 @@ is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claud
   missed). Emails Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored
   commits, by repo, via `gws`. `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`).
 - **Nightly digest** — plist `com.keystone.nightlydigest` (21:00) is built but **not installed**:
-  it waits in `~/handoff-staging/launchd/` until a `--dry-run` passes (its Drive-tree walk ran
+  it waits in `~/_PARKED_COPIES/handoff-staging/launchd/` until a `--dry-run` passes (its Drive-tree walk ran
   >25 min on 10-08 while other Drive jobs were running).
 - **Run nowhere now:** memsearch-drain-weekly (the recall eval), DailyGmailDigest
   (`DEV/agy/daily_digest.py`), Backup AI Sessions (`backup-ai-sessions.ps1`; the Mac daily backup
   already snapshots `.codex/sessions`), CFB-ForecastCaptureReminder.
 - Agents cannot write `~/Library/LaunchAgents` (auto-mode blocks it as persistence): stage the
   plist and Eric installs with `cp … && launchctl bootstrap gui/$(id -u) <plist>`.
+
+## Mac launchd agents (from the plists, 2026-10-23)
+
+Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting one.
+
+| Agent (`com.keystone.*`) | When |
+|---|---|
+| morning | daily 06:00 |
+| filesdigest | daily 06:30 |
+| reconcile | daily 07:00 + RunAtLoad |
+| clouddrivepush | daily 07:00 and 17:30 (via Terminal, see [[cloud-push-launchd-blocked]]) |
+| graphextract | daily 09:30 |
+| gpspull | daily 10:00 and 16:30 |
+| perchpull | daily 10:05 and 16:35 |
+| valdpull | daily 10:10 and 16:40 |
+| dailybackup | hourly 12:00-17:00 (gate: `daily-backup-login.sh`) |
+| dailybackup-login | RunAtLoad (same gate) |
+| stackdoctor | Mon 10:30 |
+| adjudicate | Sun 02:30 |
+| aiosaudit | monthly, day 1, 14:00 |
+| agysync | every 6 h (StartInterval 21600) |
+| rituals, commandcentre | disabled |
 
 ## OS audits
 

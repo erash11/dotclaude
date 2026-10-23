@@ -5,21 +5,24 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-10-03T23:04:26.036Z
+  modified: 2026-10-23T16:30:53.679Z
 ---
 
-> **Current schedule (2026-10-03) — supersedes every time below.** Mac
-> `com.keystone.dailybackup` runs **21:00 daily since 2026-09-24** (00:30 until 08-29, then
-> 09:00), with the full memsearch reindex riding it; reconcile's make-up window follows it
-> (21:00–23:59). launchd catches up a run missed during sleep, **not** one missed during a
-> shutdown — then run `/backup`. Leave CRASHBOX attached at 21:00 or the SSD layer skips.
+> **Current schedule (2026-10-22) — supersedes every time below.** `com.keystone.dailybackup`
+> fires hourly 12:00-17:00 and `com.keystone.dailybackup-login` at login; both run
+> `~/.claude/scripts/daily-backup-login.sh` (AC power only, none already running, no `end: OK`
+> today, max 2 starts per day). The full memsearch reindex still rides the backup. `jobs.json`:
+> `daily-backup` at 12:00 with `reconcile: false` (monitor-only since 2026-10-23: reconcile's
+> RunAtLoad could start `daily-backup.ps1` directly, skipping the AC gate). The hourly gate and
+> the login job are the only make-up paths; nothing retries 17:00-20:00. Leave CRASHBOX attached
+> at midday or the SSD layer skips.
 > **Windows has no nightly DEV backup by design**: `Desktop\DEV` is covered by Drive sync,
 > `\Eric\Backup AI Sessions to Drive` runs 00:30 (session logs + repo-doc harvest; an exit of
 > 0xC000013A is the sleep-kill signature, see [[backup-task-sleepkill-signature]]), and
 > `\Eric\memsearch-drain-weekly` runs Sundays 02:00. `KeystoneOS-DailyBackup` on Windows
 > stays disabled — the script is the macOS port.
 
-**Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
+Historical, superseded 2026-10-22: **Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
 right about that — but **not** because reconcile hard-codes the backup. The real mechanism,
 traced 09-03:
 
@@ -35,7 +38,7 @@ The `daily-backup` job is in that registry with `reconcile: true`, `graceMinutes
 - **Run the backup by hand before 07:00 and reconcile skips it** ("already succeeded today").
   Confirmed 09-03: a 06:15 manual run logged `OK` at 06:25, and no 07:00 run happened.
 
-Registry inconsistency worth knowing: `jobs.json` records `schedule.at: "00:30"` while the live
+Historical, superseded 2026-10-22: registry inconsistency worth knowing: `jobs.json` records `schedule.at: "00:30"` while the live
 plist fires at 09:00. The make-up window is what actually drives the 07:00 replay, so the stale
 `at` has not bitten yet. Still true: `launchctl ... runs = 0` proves nothing — read the log.
 Receipts cluster only on days CRASHBOX is attached: a mount gap, not a schedule gap.
@@ -431,7 +434,7 @@ app that launches the script.
 runs unblock *together* the moment access is granted and race onto the SSD — the two-writer
 corruption this whole system exists to prevent.
 
-**Timing that matters:** reconcile replays the backup at 07:00 if no `OK` is logged for today, and
+Historical, superseded 2026-10-22: **Timing that matters:** reconcile replays the backup at 07:00 if no `OK` is logged for today, and
 launchd fires at 09:00 regardless (see "Current state" above). A manual run finishing before 07:00
 suppresses the replay; one finishing after 07:00 can collide with it.
 

@@ -1,15 +1,15 @@
 ---
 name: ath-tech-framework
-description: "ATH software/tech management framework — where the shipped 08-14 set lives, which sections are still missing, and who unblocks them"
+description: "ATH software/tech management framework (archived) — where the shipped 08-14 set lives, which sections are still missing, and who unblocks them"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 75960c5c-8bdf-4780-831f-f85391d38ed5
-  modified: 2026-09-05T12:10:04.886Z
+  modified: 2026-10-23T16:07:42.711Z
 ---
 
 Baylor Athletics software & technology management framework. Lives at
-`~/DEV/SoftwareTech_Mgmt_Framework/deliverables/`.
+`~/DEV/_ARCHIVE/SoftwareTech_Mgmt_Framework/deliverables/`.
 
 **Shipped set — 2026-08-14** (four documents, `.docx` + `.pdf` of each):
 - `Software_and_Tech_Management_ER_2026-08-14` — the framework itself, including

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 1af2d0a6-e25b-4097-a3e5-e0f45a6e5d14
-  modified: 2026-08-03T03:50:43.299Z
+  modified: 2026-10-23T16:07:45.810Z
 ---
 
 Git Bash on this machine intermittently dies at startup with
@@ -29,8 +29,9 @@ Code fires 3–4 Stop hooks simultaneously, landing right in that window.
 concurrency alone (0/48 parallel), not mandatory ASLR (NOTSET), not a username with a period
 (`Eric_Rash` has none), not duplicate msys DLLs (one only).
 
-**Fixes applied:** hooks in `settings.json` + `settings.local.json` now use `"shell": "powershell"`
-(a real hook field; Windows defaults to bash). Switching shell **requires rewriting POSIX commands** —
+**Fixes applied:** hooks once used `"shell": "powershell"`; as of 2026-10-23 neither settings file
+sets a shell field (Windows is desktop-app only since 10-21). (`shell` is a real hook field; Windows
+defaults to bash.) Switching shell **requires rewriting POSIX commands** —
 `[ ! -f X ] || node X` is a PowerShell syntax error; use `if (Test-Path X) { node X }`. stdin JSON
 passes through the wrapper fine.
 

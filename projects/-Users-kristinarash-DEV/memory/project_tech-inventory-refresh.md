@@ -5,10 +5,10 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3101f63e-ae24-43b1-9f12-b3bcdc82bdcc
-  modified: 2026-09-16T20:55:38.440Z
+  modified: 2026-10-23T16:30:58.288Z
 ---
 
-Analysis repo: `~/Desktop/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
+Analysis repo: `~/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
 private). Supersedes the Mac-slug note of the same name, which still says "not a
 git repo" and has the 08-29 baseline.
 
@@ -47,4 +47,4 @@ on Windows via Word COM. Update `PREVIOUS` in `build_docx.py` each run.
 proxy entries would otherwise read as 100% coverage.
 
 **How to apply:** before the post-9/29 final run, merge the refresh branch first.
-Related: [[ath-tech-framework]], [[baylor-house-style]].
+Related: [[ath-tech-framework]], [[admin-docs-house-style]].

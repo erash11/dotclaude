@@ -173,12 +173,13 @@ function Sync-Repo($path, $branch) {
 $CredDenyDirs  = @('secrets', 'owa-profile', 'edge-profile', 'chrome-profile', '.aws', '.ssh')
 $CredDenyFiles = @('.env', '.env.local', '.env.production', '.env.production.local',
                    'Cookies', 'Login Data', 'Local State', '.credentials.json',
-                   'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json')
+                   'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json',
+                   'oauth_creds.json', 'google_accounts.json')   # ~/.gemini live OAuth (audit 2026-10-22)
 # Regex form (forward-slash paths). '.env.example' is deliberately NOT denied.
 $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(/|$)' +
               '|(^|/)\.env(\.local|\.production(\.local)?)?$' +
               '|(^|/)(Cookies|Login Data|Local State)$' +
-              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials)\.json$'
+              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials|oauth_creds|google_accounts)\.json$'
 
 # rsync wrapper. ADDITIVE - never --delete: a mirror faithfully replicates the
 # deletion you are trying to recover from. (The Windows original mirrored the
@@ -288,10 +289,21 @@ function Snapshot-Gws($src, $archiveName, [string[]]$extraXD = @()) {
         foreach ($d in $xd) { $tarArgs += "--exclude=$d" }
         $tarArgs += @('-C', (Split-Path $src -Parent), (Split-Path $src -Leaf))
         & /usr/bin/tar @tarArgs 2>$null
+        $rc = $LASTEXITCODE
         if (-not (Test-Path "$tmpDir/$archiveName")) {
             $Errors.Add("snapshot:$archiveName")
             Log "SNAP-GWS $src -> $archiveName : FAILED (tar archive not created)"
             return
+        }
+        # bsdtar exits nonzero on benign "file changed as we read it"; fail only when the archive does not list.
+        if ($rc -ne 0) {
+            & /usr/bin/tar -tzf "$tmpDir/$archiveName" 2>$null | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+                $Errors.Add("snapshot:$archiveName")
+                Log "SNAP-GWS $src -> $archiveName : FAILED (tar exit $rc, archive unreadable)"
+                return
+            }
+            Log "SNAP-GWS $src -> $archiveName : WARN tar exit $rc, archive lists OK"
         }
         Push-Location $tmpDir
         try {
@@ -405,7 +417,7 @@ function Capture-RepoData($repoPath, $repoName, $ssdRoot) {
             try { Copy-Item -LiteralPath $s -Destination $d -Force -EA Stop; $copied++ } catch {}
         } else { $copied++ }
     }
-    if ($denied -gt 0) { Log "  DENY $repoName : $denied credential file(s) excluded by policy" }
+    if ($denied -gt 0) { $null = Log "  DENY $repoName : $denied credential file(s) excluded by policy" }
     return $copied
 }
 
@@ -471,7 +483,7 @@ Snapshot-Gws "$U/.codex/memories"       'codex-memories.tgz'   @()
 Snapshot-Gws "$U/.codex/sessions"       'codex-sessions.tgz'   @()
 Snapshot-Gws "$U/.codex/agents"         'codex-agents.tgz'     @()
 Snapshot-Gws "$U/.codex/sqlite"         'codex-sqlite.tgz'     @()
-Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile')
+Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile', 'oauth_creds.json', 'google_accounts.json')
 Snapshot-Gws "$U/Library/LaunchAgents"  'launchagents.tgz'     @()
 
 # --- 2a-db. Live DEV databases -> dev-databases.tgz (added 2026-10-20) ---

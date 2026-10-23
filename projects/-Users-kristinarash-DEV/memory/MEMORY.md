@@ -67,7 +67,7 @@ Never put memory content here — the file itself holds the facts.
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
-- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; laptop retired 10-14; links the old Windows trap notes
+- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; no automation since 10-14; desktop-app sessions only since 10-21; links the old Windows trap notes
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failures
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive (one exception: Kenny's ITS tracker in the Teams team)
@@ -75,3 +75,4 @@ Never put memory content here — the file itself holds the facts.
 - [Cloud push launchd blocked](project_cloud-push-launchd-blocked.md) — cloud-push schedule or any launchd job touching Drive files: macl block, Terminal route since 10-23
 - [Agentic operating loop](project_agentic-operating-loop.md) — agent workflow, Cloudroom, worktrees, reviewers: point at WORKFLOW.md loop first
 - [Jev health-data IT approval](project_jev-health-data-it-approval.md) — before sending any health data to Jev/TypeSafe; IT approved 10-22, Eric still gates each item
+- [Session history tracked](feedback_session-history-tracked.md) — before gitignoring, untracking or purging session .jsonl/transcripts; they may hold secrets

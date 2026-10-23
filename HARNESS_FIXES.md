@@ -22,14 +22,13 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
 3. **Apply the memsearch index logging patch** to `scripts/daily-backup.ps1` (~lines 556-560):
    `audits/2026-10-03-daily-backup-index-logging.patch`. It logs path and file counts, says
    "no new content" on 0, and records errors for no input or unexpected output. Do it with
-   items 6–8, after tonight's backup is checked.
+   items 6–7, after tonight's backup is checked.
 4. **The 2026-09-28 21:54 backup run died mid-index** (`INDEX path set`, then nothing) and
    no error was recorded. Add a check that `INDEX path set` is always followed by
    `INDEX full set` (in `claude-stack-doctor` or the next run).
 6. **`daily-backup` has no retry** after a short network failure on push. The next try is the
    next day's run.
 7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit.
-8. **`~/Library/LaunchAgents` is not backed up.** The launchd job files exist only on this Mac.
 9. **WINDOWS: memsearch cannot reach Milvus.** 7 failed indexes in a row on 2026-10-06
    (~10:00–14:30 Central); the same `milvus-standalone` container also restarted by itself on
    2026-10-04. The Mac is fine (embedded Milvus Lite). On Windows: `docker ps` (three `milvus-*`
@@ -42,15 +41,17 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
     NEXT: `com.keystone.nightlydigest` (21:00) waits on a passing dry run
     (`python3 ~/.claude/scripts/nightly-digest.py --date 2026-10-07 --dry-run`; its Drive walk
     took >25 min on 10-08 while other Drive jobs ran). Then:
-    `cp ~/handoff-staging/launchd/com.keystone.nightlydigest.plist ~/Library/LaunchAgents/ &&
+    `cp ~/_PARKED_COPIES/handoff-staging/launchd/com.keystone.nightlydigest.plist ~/Library/LaunchAgents/ &&
     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.nightlydigest.plist`.
     Agents can't write LaunchAgents (auto-mode blocks it); Eric installs.
 
-Items 6–8 wait until after the 2026-10-03 21:00 backup run is checked (item 2), so that
+Items 6–7 wait until after the 2026-10-03 21:00 backup run is checked (item 2), so that
 run tests only the two earlier fixes.
 
 ## Done
 
+- 2026-10-23 — **#8 `~/Library/LaunchAgents` not backed up: FIXED.** `daily-backup.ps1`
+  snapshots it to `_MACHINE/Backups/Machine/launchagents.tgz`; launchagents.tgz OK 2026-10-22/23.
 - 2026-10-03 — **memsearch "Indexed 0 chunks" on 2026-09-19: NOT A BUG.** No sessions and
   no changed .md files that day; memsearch dedups by content hash, and ~56 zero runs since
   08-06 are routine. The real gaps became items #3 and #4 above.

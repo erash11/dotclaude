@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 83464d9d-8262-4ca8-9aed-13167ae4fa1f
-  modified: 2026-09-08T02:32:14.657Z
+  modified: 2026-10-23T16:08:16.654Z
 ---
 
 Built 2026-09-07 from a gap analysis of a Nate Herk AIOS video. The video's own
@@ -38,9 +38,9 @@ it is itself on a timer.
 `meeting-sync` and grows daily regardless. `Notes/` and `Drafts/` are the honest
 signal, which is why cadence is scored on `Notes/` rather than on job exit codes.
 When proposing builds, prefer automating an existing manual step over adding a new
-capability, and check the proposal against [[user_working-conditions-bottleneck]] —
+capability, and check the proposal against [[working-conditions-bottleneck]] —
 the grill-me build was chosen because that memory says the limiting factor is the
 absence of a thinking partner and the right move is helping him capture what
 surfaces. Stay off two neighbours' territory: `claude-stack-doctor` owns plumbing,
-`improve-system` owns note-level rot. Related: [[project_keystoneos-verification-habits]],
-[[feedback_ingest-review-gate]].
+`improve-system` owns note-level rot. Related: [[keystoneos-verification-habits]],
+[[ingest-review-gate]].

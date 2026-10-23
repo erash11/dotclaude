@@ -20,7 +20,7 @@ mirrored into Drive, so Drive still shows everything.
 | Finished deliverable from a repo | Drive `00_Primary_Storage_Drive/03_REPORTS/`, named `YYYY-MM-DD_<Sport>_<Topic>_<Audience>.<ext>` | made in `<repo>/outputs/` | `closeout` copies it (copy, keep the repo one) |
 | Code, scripts, project docs, `STATUS.md` | GitHub `erash11/<repo>` | `~/DEV/<repo>` | `git commit` + `git push`, every session |
 | Generated output (charts, exports, logs) | `<repo>/outputs/` | same | regenerate from code; gitignore it if large |
-| Database (DuckDB, SQLite) | local disk, inside its repo or `~/DEV` | same | nightly `daily-backup.ps1` stages the live DBs (not dated `before`/`backup` copies) into `dev-databases.tgz`, uploaded via `gws` to Drive `_MACHINE/Backups/Machine` (since 2026-10-20; one copy, no history) |
+| Database (DuckDB, SQLite) | local disk, inside its repo or `~/DEV` | same | daily (daytime: hourly 12:00-17:00 via `scripts/daily-backup-login.sh`) `daily-backup.ps1` stages the live DBs (not dated `before`/`backup` copies) into `dev-databases.tgz`, uploaded via `gws` to Drive `_MACHINE/Backups/Machine` (since 2026-10-20; one copy, no history) |
 | Secrets (`.env`, tokens, keys) | macOS Keychain or local `.env` | same | nowhere else — never in git, Drive, or chat |
 | Claude/Codex config, skills, memory | GitHub `dotclaude`, `claude-skills`, `claude-global-memory` | `~/.claude` | `git push` (daily-backup also pushes) |
 | A loose file with no home yet | `~/DEV/_INBOX/` | same | `weekly-review` drains it within 7 days |
@@ -37,11 +37,11 @@ Scripts write to Drive `_MACHINE/`. Humans browse `00_Primary_Storage_Drive/`. N
 - `_MACHINE/Cloud_Copy/DEV` — one-way mirror of `~/DEV`, minus databases, secrets, and regenerable/catalog
   caches (`printing-press-library`, `graphify-out/cache`, `.build`, `node_modules`, `.venv`, `__pycache__`).
   Written by `~/.claude/scripts/cloud-push.py` (07:00 and 17:30).
-- `_MACHINE/Backups/Machine` — nightly `.tgz` snapshots of `~/.claude/projects`, Codex, Gemini, and LaunchAgents
+- `_MACHINE/Backups/Machine` — daily (daytime: hourly 12:00-17:00 via `scripts/daily-backup-login.sh`) `.tgz` snapshots of `~/.claude/projects`, Codex, Gemini, and LaunchAgents
   uploaded directly by `gws` API (`daily-backup.ps1` `Snapshot-Gws`); `zotero.tgz` (`~/Zotero` database, PDFs,
   styles) at most weekly and only when Zotero changed (`Snapshot-Zotero`, since 2026-10-23); plus SSD captures of repo data git does not
   carry from `~/.claude/scripts/backup-manifest.json`.
-- External SSD `CRASHBOX` — second nightly copy when it is plugged in.
+- External SSD `CRASHBOX` — second daily copy when CRASHBOX is plugged in at midday.
 
 Read a backup to restore. Edit only the true copy. To add a path to the backups, add it to
 `backup-manifest.json`; a path missing from the manifest is not backed up.
@@ -79,7 +79,7 @@ these, file it by the table above in the same session.
   it only on AC power, at most 2 tries a day, and stops once a run ends OK.
 - `cloud-push.py` could not run straight from launchd (macOS blocks it from Terminal-made Drive files). Since
   2026-10-23 launchd opens it in Terminal via `scripts/cloud-push-launch.sh`; a run that never starts logs an ERROR.
-- Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
+- Windows laptop: retired as a work box 2026-10-14; desktop-app sessions only since 2026-10-21. It follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.
 
 Background and history: `~/DEV/docs/FILE-ORGANIZATION-PLAN.md`.

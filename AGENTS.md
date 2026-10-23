@@ -2,7 +2,7 @@
 
 Machine-specific shell, paths, and traps live in `~/.claude/machine.md`. Read that file first. On a new machine copy `machine.macos.md` or `machine.windows.md` to `machine.md`.
 
-Two machines share this setup: the MacBook (`~/DEV`) and the Baylor Windows laptop (`~/Desktop/DEV`). Projects sync through GitHub (`erash11`), documents through Google Drive.
+The Mac (`~/DEV`) runs everything. The Baylor Windows laptop (`~/Desktop/DEV`) is used only for desktop-app sessions since 2026-10-21, with no automation. Projects sync through GitHub (`erash11`), documents through Google Drive.
 
 **Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end.
 

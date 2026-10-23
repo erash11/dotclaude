@@ -11,23 +11,50 @@
 // the next session on. Idempotent. Fails silent: worst case the injection
 // comes back, never a blocked session.
 //
+// A second copy arrives from claude.ai account sync under
+// plugins/synced/<account>/<plugin-id>/ (folder names are ids, so it is found by
+// its plugin.json name). A re-sync may restore it for one session. The other fix
+// is turning the synced superpowers off on claude.ai.
+//
 // Undo: remove this hook from settings.json, then reinstall the plugin
 // (or restore hooks.json.orig beside each patched hooks.json).
 import { existsSync, readdirSync, readFileSync, writeFileSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
+function patch(f) {
+  if (!existsSync(f)) return;
+  const cfg = JSON.parse(readFileSync(f, "utf8"));
+  if (!cfg.hooks || !cfg.hooks.SessionStart) return;
+  if (!existsSync(f + ".orig")) copyFileSync(f, f + ".orig");
+  delete cfg.hooks.SessionStart;
+  writeFileSync(f, JSON.stringify(cfg, null, 2) + "\n");
+}
+
 try {
   const root = join(homedir(), ".claude", "plugins", "cache", "claude-plugins-official", "superpowers");
   if (existsSync(root)) {
     for (const ver of readdirSync(root)) {
-      const f = join(root, ver, "hooks", "hooks.json");
-      if (!existsSync(f)) continue;
-      const cfg = JSON.parse(readFileSync(f, "utf8"));
-      if (!cfg.hooks || !cfg.hooks.SessionStart) continue;
-      if (!existsSync(f + ".orig")) copyFileSync(f, f + ".orig");
-      delete cfg.hooks.SessionStart;
-      writeFileSync(f, JSON.stringify(cfg, null, 2) + "\n");
+      try { patch(join(root, ver, "hooks", "hooks.json")); } catch {}
+    }
+  }
+} catch {}
+
+try {
+  const synced = join(homedir(), ".claude", "plugins", "synced");
+  if (existsSync(synced)) {
+    for (const acct of readdirSync(synced)) {
+      let plugins;
+      try { plugins = readdirSync(join(synced, acct)); } catch { continue; }
+      for (const p of plugins) {
+        try {
+          const dir = join(synced, acct, p);
+          const manifest = join(dir, ".claude-plugin", "plugin.json");
+          if (!existsSync(manifest)) continue;
+          if (JSON.parse(readFileSync(manifest, "utf8")).name !== "superpowers") continue;
+          patch(join(dir, "hooks", "hooks.json"));
+        } catch {}
+      }
     }
   }
 } catch {}

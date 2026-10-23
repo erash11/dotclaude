@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 412a89e3-b64f-44e6-9c87-4766d44e6c7a
-  modified: 2026-08-29T13:01:27.698Z
+  modified: 2026-10-23T16:07:50.420Z
 ---
 
 **Resolved 2026-08-11.** Recording the trap because the error message points the wrong way.
@@ -152,6 +152,6 @@ vault filename. Run the sleep as a **background** Bash job — the foreground to
 have no YAML frontmatter, so "after frontmatter" reads as line 1 and would be wrong;
 match the 237 existing files instead.
 
-**Open to-do (moved out of Tier B working memory 2026-09-09): rotate the Fireflies API
-key.** Rotate it in the Fireflies dashboard, then update the stored secret — secrets on
-this machine live in the macOS Keychain, never in `~/.zshrc`.
+**Fireflies API key rotated 2026-10-22 (Eric)**; key in Keychain item `FIREFLIES_API_KEY`
+(a GraphQL `user` query with it returned 200 on 2026-10-23). Secrets on this machine live in
+the macOS Keychain, never in `~/.zshrc`.

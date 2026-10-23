@@ -1,11 +1,11 @@
 ---
-name: project-supervisor-log-pipeline
+name: supervisor-log-pipeline
 description: "How the nightly supervisor log feeds the biweekly Kenny/Chris status report, and what the report still cannot source"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 497f3a39-2043-486a-af25-95ec8b23acec
-  modified: 2026-09-08T02:17:39.699Z
+  modified: 2026-10-23T16:08:13.500Z
 ---
 
 Built 2026-09-07. `interview-me` opens with **Part 0 — supervisor log**: three factual
@@ -35,4 +35,4 @@ Traps the 09-07 cycle exposed:
 - `fireflies-pp-cli action-items list` exits 0 and returns empty `{}` objects — reads as
   "no open commitments" if trusted. Use the digest's inline action items.
 
-Related: [[project-status-report-sourcing]], [[project-automation-cadence]]
+Related: [[status-report-sourcing]], [[automation-cadence]]

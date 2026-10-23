@@ -4,7 +4,7 @@ description: "PATH shadowing repair 2026-08-13 — measure PATH with env -i, gre
 metadata: 
   node_type: memory
   type: project
-  modified: 2026-08-16T18:39:28.064Z
+  modified: 2026-10-23T16:07:47.830Z
   originSessionId: 7c7ca38f-e834-48b6-bae9-d7d80bbbbb95
 ---
 
@@ -35,9 +35,10 @@ Repairs made 2026-08-13 on this Mac, and the four traps hit doing it. All four g
    a just-deleted tree; the first cleanup pass removed 1 of 92 and reported success. Use
    `find … \( -type l -o -type f \) -delete`.
 
-**Still open (his action):** rotate the Fireflies key — the old value persists in two `.zshrc`
-backups, session transcripts, and `~/.claude/file-history/`; the Keychain does not retract those.
-Also `sudo rm -rf /usr/local/include/node` (62 MB) and `sudo rmdir /usr/local/lib/node_modules`.
+**Done 2026-10-22:** Eric rotated the Fireflies key; the old value left in transcripts and
+`file-history/` is dead. The two `.zshrc.bak-20260813-*` backups went to `~/.Trash` on 2026-10-23.
+
+**Still open (his action):** `sudo rm -rf /usr/local/include/node` (62 MB) and `sudo rmdir /usr/local/lib/node_modules`.
 
 **Why:** each of these cost real debugging time, and three of them fail *silently* — the wrong
 version runs, the hook stops, the file never gets deleted, with no error.
