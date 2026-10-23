@@ -1,10 +1,20 @@
 #!/bin/bash
-# Runs daily-backup.ps1 once at login, so a Mac that was off overnight still gets a backup.
-# Skips if any daily-backup run already ended today (the nightly run or an earlier login run).
+# Gate for daily-backup.ps1. Both launchd jobs call it:
+#   com.keystone.dailybackup        hourly 12:00-17:00, so a failed try gets another chance
+#   com.keystone.dailybackup-login  at login, so a Mac that was off still gets a backup
+# Runs the backup only when: no run ended OK today, the Mac is on AC power, no backup is
+# running, and fewer than 2 real runs started today (a lasting error must not run 6 times).
+# Why daytime + AC: every 21:00 run from 10-13 to 10-22 ended ERROR because the Mac slept
+# on battery, and caffeinate -s only holds sleep off on AC (audit 2026-10-22).
 # shortcut: checks the log, not a lock file; two runs at the same moment could both start.
-LOG="$HOME/.claude/scripts/logs/daily-backup.log"
+LOG="${BACKUP_LOG:-$HOME/.claude/scripts/logs/daily-backup.log}"
 TODAY=$(date +%Y-%m-%d)
-if grep -q "^$TODAY .*daily-backup end:" "$LOG" 2>/dev/null; then
-  exit 0
-fi
+skip() { echo "$(date '+%F %T') gate skip: $1"; exit 0; }
+
+grep -q "^$TODAY .*daily-backup end: OK" "$LOG" 2>/dev/null && skip "already OK today"
+pmset -g ps | grep -q "AC Power" || skip "on battery"
+pgrep -f "daily-backup.ps1" >/dev/null && skip "a backup is already running"
+STARTS=$(grep -c "^$TODAY .*daily-backup start (DryRun=False)" "$LOG" 2>/dev/null)
+[ "${STARTS:-0}" -ge 2 ] && skip "2 tries already today"
+
 exec /usr/bin/caffeinate -i -s /opt/homebrew/bin/pwsh -NoProfile -File "$HOME/.claude/scripts/daily-backup.ps1"

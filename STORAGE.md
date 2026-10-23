@@ -73,7 +73,9 @@ these, file it by the table above in the same session.
   from 104,945 to ~33,735), and `daily-backup.ps1` now uploads its Drive `.tgz` snapshots, receipt, and
   `RESTORE.md` directly via the `gws` API to `_MACHINE/Backups/Machine`, so a lagging local mount can
   never block nightly backups.
-- The nightly 00:30 `gws` uploads fail when the Mac is offline or asleep (all FAILED 2026-10-20 00:05, git pushes failed too); a by-hand run succeeds.
+- Night backups failed whenever the Mac slept on battery (every 21:00 run 10-13 to 10-22). Since 2026-10-22 the
+  backup runs in the daytime: launchd tries hourly 12:00-17:00 through `scripts/daily-backup-login.sh`, which runs
+  it only on AC power, at most 2 tries a day, and stops once a run ends OK.
 - `cloud-push.py` fails under launchd ("Operation not permitted"); it works when run by hand.
 - Windows laptop retired 2026-10-14. If a second machine returns, it follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.

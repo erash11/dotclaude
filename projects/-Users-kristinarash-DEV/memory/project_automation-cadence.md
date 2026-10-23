@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-08T23:02:03.657Z
+  modified: 2026-10-23T02:37:05.360Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -28,7 +28,8 @@ settings, not active threads — health-check them with `/claude-stack-doctor`.
 ## memsearch reindex
 
 **Mac:** reindex **rides the daily backup task** rather than running on its own timer
-(00:30 → 09:00 on 2026-08-29 → **21:00 since 2026-09-24**, per claude-stack-doctor). The
+(00:30 → 09:00 on 2026-08-29 → 21:00 on 2026-09-24 → **hourly 12:00-17:00 since 2026-10-22**,
+gated by `daily-backup-login.sh`: AC power only, max 2 tries/day, stops after an OK run). The
 backup's uncapped full reindex absorbs backlogs the short SessionEnd hook can't finish.
 See [[backup-sync-system]].
 
