@@ -1,0 +1,10 @@
+# set	question	ground-truth file	ground-truth answer
+orig	What was the total score of my first brain audit, and what were the four sub-scores?	memory/project_brain-audit-loop.md	67/100: context 17, connections 22, capabilities 15, cadence 13
+orig	Why did the cloud-push launchd job fail to copy to Google Drive, and how was it fixed?	memory/project_cloud-push-launchd-blocked.md	com.apple.macl on Terminal-made Drive files blocks launchd-started rsync; fix runs it inside Terminal via cloud-push-launch.sh -> cloud-push.command
+orig	How should I copy a 24 MB file off the Google Drive mount, and which folder should every Drive walk skip?	memory/project_drive-fuse-read-hang.md	gws API (drive files get alt=media), not the mount; skip 00_Primary_Storage_Drive/02_SPORTS/Football/FA2026/02_Raw_Tagging
+orig	How many CMJ tests and metric rows were in the summer 2025 CMJ backfill?	knowledge/connections/vald-forcedecks-cmj-data-across-projects.md	2,531 tests, 103,769 metric rows
+orig	In the AIOS video gap analysis, what four things were missing, and which two builds did the first brain audit propose?	memory/project_brain-audit-loop.md	missing: recurring scored audit, level-up step, topic-driven grill that files itself, rubric; builds: /grill-me <topic> to Inbox/grills, /brain-audit on the monthly com.keystone.rituals timer
+held	After the memsearch session-end hook kept timing out, what was the fix and how long does the hook take now?	memory/project_memsearch-hook-timeout-cap.md	detached background worker (re-execs itself with --worker, detached, unref); hook now exits in ~42 ms
+held	When ordering scanned book pages, which digits does Tesseract confuse?	memory/project_book-scan-page-ordering.md	5 and 9 (read page 50 as 90)
+held	How do I fix FLUSH_ERRORs in the memory compiler after a Claude Code update?	knowledge/concepts/claude-memory-compiler-setup.md	cd ~/.claude/claude-memory-compiler && uv lock --upgrade-package claude-agent-sdk && uv sync
+held	How long did the daily interview and weekly review rituals stay stopped before anything noticed?	SecondBrain/Notes/insight-is-not-a-control.md	49 days (stopped 2026-06-05)

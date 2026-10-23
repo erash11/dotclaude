@@ -7,6 +7,7 @@ roots (KeystoneOS data/memory-index-paths.json, tokens resolved per machine):
   memsearch  vector search (Milvus + ONNX embedder), top 5 distinct files
   fts5       stdlib SQLite FTS5 / BM25 over whole files, natural-language query
   rg         ripgrep on the case's `keyword`, files ranked by match count
+  recall     ~/.claude/scripts/recall.py's own index: fts5 roots + whole vault (it opens only #1)
   jev        fts5 top 30, then TypeSafe Jev re-sorts the ALLOWED notes by a yes/no
              "does this note answer the question?" (cloud call; see JEV_ALLOWED)
 
@@ -86,33 +87,27 @@ def b_memsearch(q, case):
 
 
 _FTS = None
-TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9\-]*")
+
+
+def _recall():
+    """BM25 has one home: ~/.claude/scripts/recall.py. This file only calls it."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("recall", HOME / ".claude" / "scripts" / "recall.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+RECALL = _recall()
 
 
 def build_fts(rts):
-    db = sqlite3.connect(":memory:")
-    db.execute("CREATE VIRTUAL TABLE d USING fts5(path UNINDEXED, body, tokenize='porter unicode61')")
-    n = 0
-    for r in rts:
-        if not r.is_dir():
-            continue
-        for f in r.rglob("*.md"):
-            try:
-                db.execute("INSERT INTO d VALUES (?, ?)", (str(f), f.stem.replace("-", " ") + "\n" + f.read_text(encoding="utf-8", errors="replace")))
-                n += 1
-            except OSError:
-                pass
-    db.commit()
-    return db, n
+    db = RECALL.open_index([str(r) for r in rts], ":memory:")
+    return db, db.execute("SELECT count(*) FROM seen").fetchone()[0]
 
 
 def fts5_top(q, limit):
-    toks = [t for t in TOKEN.findall(q) if len(t) > 2]
-    if not toks:
-        return []
-    expr = " OR ".join('"%s"' % t.replace('"', "") for t in toks)
-    rows = _FTS.execute("SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d) LIMIT ?", (expr, limit)).fetchall()
-    return [r[0] for r in rows]
+    return RECALL.fts5_top(_FTS, q, limit)
 
 
 def b_fts5(q, case):
@@ -209,7 +204,18 @@ def b_rg(q, case):
     return [p for _, p in counts[:5]]
 
 
-BACKENDS = {"memsearch": b_memsearch, "fts5": b_fts5, "rg": b_rg, "jev": b_jev}
+_RECALL_DB = None
+
+
+def b_recall(q, case):
+    """recall.py's own index (memsearch roots + whole vault, mtime-refreshed on disk)."""
+    global _RECALL_DB
+    if _RECALL_DB is None:
+        _RECALL_DB = RECALL.open_index(RECALL.roots())
+    return RECALL.fts5_top(_RECALL_DB, q, 5)
+
+
+BACKENDS = {"memsearch": b_memsearch, "fts5": b_fts5, "rg": b_rg, "jev": b_jev, "recall": b_recall}
 
 
 # ---------------- run ----------------

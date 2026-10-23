@@ -44,3 +44,6 @@ scripts/logs/
 # machine.md is per-machine, never tracked
 audits/recall-eval/logs/
 __pycache__/
+# recall bench evidence holds note text (athlete names): local only
+scripts/recall-bench/out/
+scripts/recall-bench/out-run2/
