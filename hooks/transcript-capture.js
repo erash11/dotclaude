@@ -66,6 +66,11 @@ function lastAssistantText(transcriptPath) {
   // Loop guard: if our hook (or another) is what stopped the model, don't recurse.
   if (input.stop_hook_active) return;
 
+  // Recursion guard, same as the memory compiler's session-end.py: flush.py and compile.py
+  // run Agent SDK sessions marked CLAUDE_INVOKED_BY that never write a transcript, so every
+  // one of them logged "transcript_path does not exist" (13 on 2026-10-23).
+  if (process.env.CLAUDE_INVOKED_BY) return;
+
   const transcriptPath = input.transcript_path;
 
   // A null/absent transcript_path is not breakage — some harnesses that share
