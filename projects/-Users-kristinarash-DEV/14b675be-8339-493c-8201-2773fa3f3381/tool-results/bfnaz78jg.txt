@@ -1,0 +1,619 @@
+=================== project_automation-cadence
+     1	---
+     2	name: automation-cadence
+     3	description: "Standing automation schedule (Mac only since 2026-10-08) — digests, ritual nudges, memsearch reindex + recall eval timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
+     8	  modified: 2026-10-24T05:58:48.622Z
+     9	---
+    10	
+    11	Durable schedule and capability facts for the Mac automation stack. These are stable
+    12	settings, not active threads — health-check them with `/claude-stack-doctor`.
+    13	
+    14	## Ritual nudges — OFF on both machines (updated 2026-10-03)
+    15	
+    16	- Mac `com.keystone.rituals` was booted out and disabled **2026-09-24**; Windows
+    17	  `KeystoneOS-Rituals` (weekdays 17:00, Fri 15:30) is disabled and Eric chose to **keep it
+    18	  off** on 2026-10-03. Nothing nudges `/interview-me` or `/weekly-review` any more.
+    19	- The reminder now is `~/DEV/WORKFLOW.md` (the ideal day/week) plus the status lines.
+    20	  `ritual-check.ps1` still works by hand. It has **five** rituals (interview-me,
+    21	  weekly-review, harvest, forecast-capture, `slate` added 09-14); `Name    = ` in
+    22	  `KeystoneOS/scripts/ritual-check.ps1` is the authoritative list. Due/overdue is computed
+    23	  from each ritual's own output (forecast-capture is Monday-anchored and season-bounded —
+    24	  see [[cfb-forecast-capture]]).
+    25	
+    26	**The output artifact is the record**, not a reminder firing.
+    27	
+    28	## memsearch reindex
+    29	
+    30	**Mac:** reindex **rides the daily backup task** rather than running on its own timer
+    31	(00:30 → 09:00 on 2026-08-29 → 21:00 on 2026-09-24 → **hourly 12:00-17:00 since 2026-10-22**,
+    32	gated by `daily-backup-login.sh`: AC power only, max 2 tries/day, stops after an OK run). The
+    33	backup's uncapped full reindex absorbs backlogs the short SessionEnd hook can't finish.
+    34	See [[backup-sync-system]].
+    35	
+    36	**Windows:** no nightly reindex — the `KeystoneOS-DailyBackup` task is disabled (since
+    37	2026-08-13). Task Scheduler `\Eric\memsearch-drain-weekly` (**Sundays 02:00**) has ONE
+    38	action since 2026-10-04: `audits/recall-eval/weekly-chain.ps1`, which runs
+    39	`memsearch-drain.ps1` → `run-eval.ps1` (memsearch, fts5, rg, jev; label `weekly`) →
+    40	`after-run.ps1` (commits+pushes results, writes `LATEST.md`, appends to `.errors.log` only on
+    41	a problem), retrying a step that exits 0xC0000142. Log: `audits/recall-eval/logs/weekly-chain.log`.
+    42	Why: as three separate actions, action 2 died at 02:10 with 0xC0000142 (DLL init failed, never
+    43	ran a line) on 10-01 and 10-04; it runs fine by hand. `\Eric\memsearch-drain-once` no longer exists.
+    44	
+    45	## Mac is the only scheduler (since 2026-10-08)
+    46	
+    47	The Windows laptop is hands-off ([[work-laptop-hands-off]]); every Windows entry in this file
+    48	is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claude` commit `08d3113`):
+    49	
+    50	- **Claude files digest** — launchd `com.keystone.filesdigest`, daily **06:30** (runs on wake if
+    51	  missed). Emails Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored
+    52	  commits, by repo, via `gws`. `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`).
+    53	- **Nightly digest** — launchd `com.keystone.nightlydigest`, daily **21:00**, installed 2026-10-23
+    54	  (tracked plist `~/.claude/scripts/com.keystone.nightlydigest.plist`; first launchd send OK 23:29).
+    55	  `nightly-digest.py` emails Eric_Rash@baylor.edu via `gws`. The Mac version skips the Drive section
+    56	  (launchd cannot list Drive; mount walks hang); a crash or failed send goes to `.errors.log`.
+    57	- **Windows tasks, final state (audit 2026-10-23,** `~/.claude/audits/2026-10-23-windows-holdover-audit.md`**):**
+    58	  memsearch-drain-weekly recall-eval chain retired (`recall-bench/check.py` in the daily backup replaces
+    59	  it; the .ps1 chain and `LATEST.md` deleted). Backup AI Sessions retired (daily backup Snapshot-Gws
+    60	  covers it; script deleted). CFB-ForecastCaptureReminder is dead code (it calls the archived
+    61	  morning-briefing package); **nothing nudges the in-season CFB forecast capture.** DailyGmailDigest
+    62	  (`DEV/agy/daily_digest.py`) is dormant, not retired; porting is minutes (gws path + a plist).
+    63	- **A launchd install by an agent worked 2026-10-23, with Eric's chat approval for that work.** An agent copied a plist into
+    64	  `~/Library/LaunchAgents` and ran `launchctl bootstrap` without a block, after Eric said in chat
+    65	  "I approve you to schedule jobs on your own". Keep a tracked copy of every plist (KeystoneOS jobs:
+    66	  `~/DEV/KeystoneOS/ops/`; ~/.claude jobs: `~/.claude/scripts/`). The daily backup runs
+    67	  `harvest-dev-docs.sh` (step 2b-harvest) since the same day.
+    68	
+    69	## Mac launchd agents (from the plists, 2026-10-23)
+    70	
+    71	Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting one.
+    72	
+    73	| Agent (`com.keystone.*`) | When |
+    74	|---|---|
+    75	| morning | daily 06:00 |
+    76	| filesdigest | daily 06:30 |
+    77	| nightlydigest | daily 21:00 (installed 2026-10-23) |
+    78	| reconcile | daily 07:00 + RunAtLoad |
+    79	| clouddrivepush | daily 07:00 and 17:30 (via Terminal, see [[cloud-push-launchd-blocked]]) |
+    80	| graphextract | daily 09:30 |
+    81	| gpspull | daily 10:00 and 16:30 |
+    82	| perchpull | daily 10:05 and 16:35 |
+    83	| valdpull | daily 10:10 and 16:40 |
+    84	| dailybackup | hourly 12:00-17:00 (gate: `daily-backup-login.sh`) |
+    85	| dailybackup-login | RunAtLoad (same gate) |
+    86	| stackdoctor | Mon 10:30 |
+    87	| adjudicate | Sun 02:30 |
+    88	| aiosaudit | monthly, day 1, 14:00 |
+    89	| agysync | every 6 h (StartInterval 21600) |
+    90	| rituals, commandcentre | disabled |
+    91	
+    92	## OS audits
+    93	
+    94	Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run);
+    95	**next due 2026-10-24**.
+    96	
+    97	## Capability limits worth remembering
+    98	
+    99	- **gws `invalid_client: The provided client secret is invalid` = stale client SECRET, not
+   100	  token rot** — re-auth alone never fixes it. The secret for client `208643585660-3ogm…`
+   101	  (project `baylor-gws`) was rotated 2026-09-17 to one ending `Xyjf`; the Mac kept the
+   102	  June one until 2026-09-30, when the Windows copy was carried over via Drive. Console no
+   103	  longer shows or downloads a secret: copy the other machine's `client_secret.json`, or
+   104	  Add secret (shown once). Then login, then delete `token_cache.json`.
+   105	- **gws** re-auth requires explicit full scope URLs — the `-s drive`
+   106	  shorthand silently grants no scopes (v0.22.5 bug), and `~/.config/gws/token_cache.json`
+   107	  must be deleted after re-auth or the stale token is served. See [[gws-forms-api]].
+   108	- **MCP Gmail sends to Eric himself are approved** (2026-10-04): `send_message`/`forward` work.
+   109	  Eric OK'd sending to eric.rash11@gmail.com and his Outlook, Eric_Rash@Baylor.edu. Anyone
+   110	  else still gets a draft, not a send.
+   111	
+   112	## reMarkable OCR
+   113	
+   114	`remarkable_extract.py` — USB-first with a `--cloud` fallback; Vision API key lives in
+   115	`.env`.
+   116	
+   117	## Claude Code routines (cloud, since 2026-10-14)
+   118	
+   119	- **skills-health-check** — Claude Code routine `trig_01Te3Xg9bkFKLDypiFnssC6J`, cron `0 12 * * *` UTC (07:00 CDT; 06:00 after DST ends 11-01). Opus 5.5, repo erash11/claude-skills, tools Bash/Read/Glob/Grep, no connectors. Read-only; replies "OK <date> - no issues" or 3 sentences per problem. Runs with the Mac off. Manage: https://claude.ai/code/routines/trig_01Te3Xg9bkFKLDypiFnssC6J
+   120	- **Cloudroom dropped.** 2026-10-14: Cloudroom automations and the drive-cloud-copy script automation were deleted (Eric stayed with Claude Code). 2026-10-24: Eric dropped Cloudroom Local too; app, `dev.cloudroom.preview.*` LaunchAgent and `room-cli` skill removed (Trash and `skills-archive/2026-10-24/`). The Drive copy ran by hand until 2026-10-23; since then launchd runs it at 07:00 and 17:30 through Terminal (see [[cloud-push-launchd-blocked]]).
+=================== project_backup-sync-system
+     1	---
+     2	name: backup-sync-system
+     3	description: "Nightly backup/sync architecture and its traps — two-writer root cause, manifest classification rules, Milvus is NOT in the memsearch path, dry-run can't verify writes"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
+     8	  modified: 2026-10-23T16:30:53.679Z
+     9	---
+    10	
+    11	> **Current schedule (2026-10-22) — supersedes every time below.** `com.keystone.dailybackup`
+    12	> fires hourly 12:00-17:00 and `com.keystone.dailybackup-login` at login; both run
+    13	> `~/.claude/scripts/daily-backup-login.sh` (AC power only, none already running, no `end: OK`
+    14	> today, max 2 starts per day). The full memsearch reindex still rides the backup. `jobs.json`:
+    15	> `daily-backup` at 12:00 with `reconcile: false` (monitor-only since 2026-10-23: reconcile's
+    16	> RunAtLoad could start `daily-backup.ps1` directly, skipping the AC gate). The hourly gate and
+    17	> the login job are the only make-up paths; nothing retries 17:00-20:00. Leave CRASHBOX attached
+    18	> at midday or the SSD layer skips.
+    19	> **Windows has no nightly DEV backup by design**: `Desktop\DEV` is covered by Drive sync,
+    20	> `\Eric\Backup AI Sessions to Drive` runs 00:30 (session logs + repo-doc harvest; an exit of
+    21	> 0xC000013A is the sleep-kill signature, see [[backup-task-sleepkill-signature]]), and
+    22	> `\Eric\memsearch-drain-weekly` runs Sundays 02:00. `KeystoneOS-DailyBackup` on Windows
+    23	> stays disabled — the script is the macOS port.
+    24	
+    25	Historical, superseded 2026-10-22: **Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
+    26	right about that — but **not** because reconcile hard-codes the backup. The real mechanism,
+    27	traced 09-03:
+    28	
+    29	`keystone-reconcile.ps1` is a **generic make-up engine**. It has no mention of `daily-backup` at
+    30	all; it loops the registry at `DEV/KeystoneOS/data/jobs.json` and calls
+    31	`run-job.ps1 -Job <id> -Trigger reconcile -MadeUp` for any job with no success recorded today.
+    32	The `daily-backup` job is in that registry with `reconcile: true`, `graceMinutes: 60`,
+    33	`maxAttemptsPerDay: 2`, and `makeupWindow: 07:00-20:00`. Its `successProbe` greps today's
+    34	`daily-backup.log` for `daily-backup end: OK`. So:
+    35	
+    36	- **If no successful run is recorded by 07:00, reconcile replays it** → the ~07:00-07:10 run.
+    37	- **launchd `com.keystone.dailybackup` fires at 09:00 regardless** → the second run.
+    38	- **Run the backup by hand before 07:00 and reconcile skips it** ("already succeeded today").
+    39	  Confirmed 09-03: a 06:15 manual run logged `OK` at 06:25, and no 07:00 run happened.
+    40	
+    41	Historical, superseded 2026-10-22: registry inconsistency worth knowing: `jobs.json` records `schedule.at: "00:30"` while the live
+    42	plist fires at 09:00. The make-up window is what actually drives the 07:00 replay, so the stale
+    43	`at` has not bitten yet. Still true: `launchctl ... runs = 0` proves nothing — read the log.
+    44	Receipts cluster only on days CRASHBOX is attached: a mount gap, not a schedule gap.
+    45	
+    46	**"Scheduled runs cannot push" is NOT yet established — and the two contexts differ.** On
+    47	2026-09-03 the **09:00 launchd** run pushed `global-memory` cleanly and ended `OK (0 errors)`:
+    48	no `PUSH FAILED`, no `PUSH ERR`. But the **reconcile/`run-job.ps1`** context — which is where the
+    49	09-02 07:08 and 08-13 07:00 failures happened — **was not exercised that day**, because the manual
+    50	06:15 run pre-empted the replay. Do not read 09-03 as clearing the gap; it only clears launchd.
+    51	`daily-backup.ps1:74` no longer swallows the reason: the `Out-Null` was replaced 09-03 with
+    52	captured output that logs `REPO <name> : PUSH ERR | <text>` on failure only. **The error text will
+    53	only appear on a day nobody runs the backup by hand before 07:00.** Diagnose from that line rather
+    54	than assuming a credential gap. `daily-backup.err` is stale (last written 2026-08-06); never read
+    55	it as current. Manual remedy after a failed push is still `git -C <repo> push origin main` for
+    56	SecondBrain, `.claude/global-memory`, `.claude`.
+    57	
+    58	**SSD layout:** non-repo DEV dirs land in `DEV-nonrepo/`, **not** `DEV/` — there is no `DEV/`
+    59	on CRASHBOX (roots are `DEV-nonrepo/`, `DEV-repo-data/`, `DEV-working-tree/`, `claude/`,
+    60	`codex/`, `gemini/`, `SecondBrain/`, `_receipts/`). `._`-prefixed files beside every real file
+    61	are normal AppleDouble xattr sidecars on exFAT, not corruption or duplication.
+    62	
+    63	The nightly backup is `~/.claude/scripts/daily-backup.ps1` (pwsh, launchd
+    64	`com.keystone.dailybackup`), driven by `~/.claude/scripts/backup-manifest.json`, logging to
+    65	`~/.claude/scripts/logs/daily-backup.log`. `~/.claude` is itself the `dotclaude` repo.
+    66	Workflow docs live in `~/DEV/Bucket` (`docs/SYSTEM-HEALTH-FINDINGS.md`,
+    67	`docs/AGENT-FIX-PROMPT.md`, `docs/FIX-STATUS-2026-08-14.md`).
+    68	
+    69	## The root cause behind most "divergence" symptoms — CLOSED 2026-08-14
+    70	
+    71	The retired **Windows box was still running `daily-backup.ps1` and pushing to the shared
+    72	repos** (SecondBrain, dotclaude, claude-skills, claude-global-memory). Two writers on one
+    73	set of repos manufactured `repo-diverged:SecondBrain` nightly. Identified by the
+    74	commit-message format `chore: daily backup sync YYYY-MM-DD [auto]`, generated at
+    75	`daily-backup.ps1:62`.
+    76	
+    77	**Retired 2026-08-14**: all 9 KeystoneOS/MorningBriefing scheduled tasks disabled (not
+    78	unregistered) on the Windows box; all four repos left at 0 ahead / 0 behind. It contributed
+    79	no unique history since 08-05 — only two append-only Windows failure logs, preserved
+    80	byte-identical to `~/Desktop/windows-retirement-2026-08-14/` on that machine and
+    81	deliberately **not** pushed (origin had already untracked `.memsearch-index.log` in
+    82	`a0e58c9`; committing would have undone a Mac-side decision).
+    83	
+    84	**Update 2026-09-10: the Windows laptop is ACTIVE again** (synced 9/9; both machines in use).
+    85	The retirement above is history, not current state. Unverified: whether its disabled
+    86	scheduled tasks were re-enabled. Before blaming a single writer for `repo-diverged`, check
+    87	the Windows task list and look for `[auto]` commits from it.
+    88	
+    89	Residual, by design — the box is meant to stay usable:
+    90	- **Session hooks still write.** `settings.json` `Stop`/`SessionEnd` hooks write
+    91	  `global-memory/transcripts/`, so interactive Claude Code use there re-dirties that repo.
+    92	  It cannot *diverge* it — nothing pushes on a schedule anymore. (That Stop hook is
+    93	  currently broken there anyway: `MODULE_NOT_FOUND` on a mangled
+    94	  `C:\Program Files\Git\...\transcript-capture.js` path.)
+    95	- **`daily-backup.ps1` on Windows is still the macOS port** and still buggy. It is inert
+    96	  because the task is disabled, not because it was repaired.
+    97	- Three non-KeystoneOS tasks left enabled (`CFB-ForecastCaptureReminder`,
+    98	  `DailyGmailDigest`, `Refresh_All_Data`) — all operate under the Windows `~/Desktop/DEV`
+    99	  and touch none of the four repos.
+   100	
+   101	## Manifest classification — get this right, it routes athlete data
+   102	
+   103	`backup-manifest.json` is default-deny: any `~/DEV` dir absent from `paths[]` fails the
+   104	health check. Adding an entry requires a human class call:
+   105	
+   106	| class | destinations |
+   107	|---|---|
+   108	| `institutional` | `ssd`, `baylor` (+`github` if a repo) |
+   109	| `personal` | `ssd` (+`github` if a repo) |
+   110	
+   111	`isRepo: true` also sets `captureOrphans` and `captureWorkingTree` true and needs `remote`.
+   112	**Athlete data must never be classed `personal`** — `personal` skips the Baylor OneDrive
+   113	destination. `baylor` is `deprecated: true` and must never be a sole destination.
+   114	
+   115	## Traps that cost time
+   116	
+   117	- **Milvus is NOT in the memsearch path**, despite what `RESTORE.md` and the Bucket docs
+   118	  say. Indexing works with port 19530 closed and Docker not installed. Don't set it up.
+   119	- **`-DryRun` cannot verify a write path.** It passes `rsync -n`, which writes nothing. A
+   120	  snapshot that fails live will show `OK` in a dry run. Only a non-dry run is evidence.
+   121	- **Never size up a DriveFS destination with `du`.** It reports local cache/allocated
+   122	  blocks, not logical size — the `codex/sessions` mirror read as "47 MB of 289 MB" while
+   123	  actually holding 255 of 256 files, with a 35 MB file verified byte-identical by
+   124	  `stat -f%z` on both sides. Compare **file counts and per-file byte sizes**, never `du -sh`.
+   125	- **`snapshot:sessions` is a genuine hang** — not a size problem, not a lock, not a
+   126	  permission fault, and not slow enumeration. Three wrong theories died here in one
+   127	  session; see the evidence section below before forming a fourth. **Bounded 2026-08-14**
+   128	  by a watchdog in `Invoke-Rsync` (900s ceiling, hard SIGKILL, records `rsync-timeout`),
+   129	  committed as `8863a37`. That caps the symptom so the run reaches the SSD capture. The
+   130	  wedge itself is still unexplained.
+   131	- **Tier A memory is NOT in git.** `~/.claude/.gitignore` line 1 is `/*` (default-deny
+   132	  allowlist) and `projects/` is not allowlisted, so `projects/*/memory/*.md` has exactly
+   133	  two backup layers: the Drive SNAP of `~/.claude/projects`, and the SSD. With CRASHBOX
+   134	  unmounted that is a single copy. Nothing to "commit" there — it's by design.
+   135	- **`daily-backup.ps1` refuses to merge diverged repos by design** — that's correct
+   136	  behavior, not a bug. Reconcile by hand.
+   137	- **stack-doctor's cloud heartbeat** watches the newest per-run receipt
+   138	  (`_receipts/run-*.txt`). It used to watch `RESTORE.md`, which the job *copies*
+   139	  (`Copy-Item -Force`, line 411) rather than rewrites, so its mtime never advanced and the
+   140	  check cried `backup-cloud-stale (218h)` while DriveFS was healthy. Fixed 2026-08-14.
+   141	- **Untracked files block a fast-forward**, and plain `git stash` does not pick them up —
+   142	  needs `-u`, or rename them aside. Bit the documented SecondBrain fix.
+   143	- Reading exit codes through a pipe returns the *last* pipeline element's status, not the
+   144	  command's — see [[zsh-shell-traps]]. This produced two wrong readings in one
+   145	  session (`rsync ... | tail` and a stack-check run).
+   146	
+   147	## Standing state as of 2026-08-14
+   148	
+   149	Fixed: `Invoke-Rsync` false-OK guard, 6 manifest entries, SecondBrain reconciled (both
+   150	machines' briefings preserved, Mac copies renamed `*.mac-local.md`), stack-doctor cloud
+   151	heartbeat. Morning brief **retired** at Eric's request — `com.keystone.morningbriefing`
+   152	booted out + disabled, plist and `~/DEV/morning-briefing` retained, dropped from
+   153	stack-doctor's checked sets. `com.keystone.morning` is a *different* KeystoneOS cadence —
+   154	leave it alone.
+   155	
+   156	CRASHBOX SSD **reattached 2026-08-14 ~11:50** (`/Volumes/CRASHBOX/AssistantBackup`, 447 GB
+   157	free, writable) — first orphan/working-tree capture since migration due in the next
+   158	nightly. Bucket doc set committed + pushed (`ce94371`). Windows retired (above).
+   159	
+   160	Two script fixes committed 2026-08-14 beyond the ones above: `ac2af1d` guards the script
+   161	against running on a non-macOS host (it is the macOS port; `$IsMacOS` is PS6+, so
+   162	Windows PowerShell 5.1's undefined `$null` aborts too — intended), and `8863a37` adds the
+   163	`Invoke-Rsync` watchdog. Both are in dotclaude, so any machine pulling the repo inherits
+   164	them.
+   165	
+   166	Open: the `codex/sessions` wedge itself (bounded, not explained — see evidence below).
+   167	`.errors.log` retains 6 historical lines — clear the file once one clean nightly lands
+   168	with the Windows box off, not before.
+   169	
+   170	**Acceptance test — run 2026-08-14 15:48, mostly PASSED.** `repo-diverged:SecondBrain` and
+   171	`manifest-unmanaged` are both GONE (Windows retirement + manifest work confirmed). The
+   172	watchdog fired at 900s exactly as designed, killed the wedge, and the run *continued* —
+   173	so the **SSD layer captured for the first time since 2026-08-06**: 53,533 files newer than
+   174	the old receipt, `RECEIPT ssd : verified run=20260814-154848`, ~24 GB total including
+   175	Risk_Stratification_Engine 2.0 GB and ForcePlate_DecisionSystem 1.6 GB.
+   176	
+   177	Remaining: `ERROR (2 errors)` = `rsync-timeout` + `snapshot:sessions`, which are the same
+   178	single `codex/sessions` wedge counted twice (the watchdog error plus the snapshot failure
+   179	it causes). Not two problems. Clear `.errors.log` only after the wedge itself is fixed.
+   180	
+   181	Verification trap met here: `find -newermt '-30 minutes'` silently matches nothing on BSD
+   182	find (macOS) — it wants an absolute date. Use `find -newer <reference-file>` instead. Also
+   183	remember `rsync -a` preserves source mtimes, so freshly-copied files look old; compare
+   184	*directory* mtimes or use a reference file to prove a capture ran.
+   185	
+   186	Note the run ordering: Drive SNAPs run *before* the SSD capture, so a long `codex/sessions`
+   187	seed delays the SSD layer within a given run. Not a failure, just a wait.
+   188	
+   189	## `snapshot:sessions` — evidence from a live reproduction, 2026-08-14 15:20 (stack-doctor)
+   190	
+   191	Caught the hang in progress and narrowed it. **Root cause still open** — this section is
+   192	evidence, not a verdict. Everything below is measured, not inferred:
+   193	
+   194	- **It is a hang, not a slow transfer.** Four rsync processes (client `-a ... codex/sessions/`,
+   195	  its `--server` receiver, plus two older receivers) sat at **0.01–0.03 s of CPU across
+   196	  34–85 minutes** of wall clock. Zero progress, not slow progress.
+   197	- **Nothing is left to copy.** The mirror is **256/256 files** — the previously-missing
+   198	  `2026/08/06/rollout-*.jsonl` is present. A complete mirror still hangs.
+   199	- **The mount is healthy.** A recursive `find` over the destination returned 256 files
+   200	  promptly, and `touch` inside the exact hung directory succeeded instantly. Reads *and*
+   201	  writes both work, so this is not a wedged DriveFS/FUSE mount.
+   202	- **The wedged processes ignore SIGTERM** (still alive minutes later in `S` state) — they
+   203	  are blocked inside a call that neither returns nor delivers signals.
+   204	- **Dry runs cannot see it**: `-n` completes clean, live runs hang. Another instance of the
+   205	  "`-DryRun` cannot verify a write path" trap above.
+   206	
+   207	### Orphans are a symptom, not the cause
+   208	
+   209	Two `rsync --server` receivers were **orphaned to PPID 1** (started 13:55 and 14:33). It is
+   210	tempting to call them the blocker; the timeline refutes it — the **10:31:54 run hung at the
+   211	identical point** (last line `SNAP skip (missing): .codex/memories`, no end line) while the
+   212	oldest surviving orphan did not exist until 13:55. `kill` on both orphans did not unblock
+   213	the live pair either.
+   214	
+   215	Why they accumulate: **`daily-backup.ps1` contains no `pkill` at all** (verified by grep —
+   216	do not go looking for one). The anchored `pkill -f "^/usr/bin/rsync"` belongs to an *ad-hoc
+   217	wrapper used interactively in another session*. That pattern matches only the client, whose
+   218	`argv[0]` is the full path; the `--server` child's `argv[0]` is bare `rsync`, so
+   219	`pgrep -f "^/usr/bin/rsync"` returns the client alone. Every kill-and-retry therefore strands
+   220	one more receiver. If that wrapper is reused, match on `-x rsync` or the destination path.
+   221	
+   222	### ROOT CAUSE FOUND 2026-08-14 17:00 — it is not rsync
+   223	
+   224	Ran the copy in the foreground with `-avv`, unpiped. It printed ~99 lines of
+   225	`... is uptodate` and froze mid-filename. Then:
+   226	
+   227	- `sample <receiver-pid>` showed the process blocked in **`__mmap`** — one frame, not moving.
+   228	- `lsof` on it showed FD 5 open on a specific **destination** file:
+   229	  `codex/sessions/2026/05/08/rollout-2026-05-08T17-14-58-019e09a8-*.jsonl`.
+   230	- **`head -c 512` on that destination file hangs by itself**, with zero rsync processes
+   231	  running. A plain read. So the file is unreadable through DriveFS.
+   232	- A 44-file sample elsewhere in the same mirror read instantly, so it is **specific files,
+   233	  not the mount**.
+   234	
+   235	The files are **DriveFS placeholders** — uploaded to Google, then evicted from the local
+   236	cache. Census of the destination on 2026-08-14: 256 files, **122 materialized (48.5 MB on
+   237	disk), 134 placeholder-only (240.7 MB logical, 0 bytes local)**. Source is 256/256
+   238	materialized. Detect with `stat -f '%b %z'`: blocks==0 with a nonzero logical size means
+   239	the content is not local. Reading one forces an on-demand fetch, and that fetch stalls —
+   240	which is what blocks `__mmap`. rsync was the victim, not the cause. **Do not chase rsync
+   241	flags**; the block happens at open, before any comparison strategy applies.
+   242	
+   243	**This inverts the problem: the backup is fine, the verification is what's broken.** All
+   244	256 files are on Google's servers. Nothing is missing. What fails is the *next* run's
+   245	attempt to re-read them to confirm they match. Never conclude "the snapshot is broken"
+   246	from this failure mode.
+   247	
+   248	Also: `du -sh` on the destination reports the *local cache* (48 MB), not the logical 289 MB.
+   249	Both numbers are true and mean different things — do not treat the gap as missing data.
+   250	
+   251	Diagnostic sequence that worked, reuse it: `sample <pid>` for the blocking syscall →
+   252	`lsof -p <pid>` for the file it is on → bounded `head -c` on that path to prove the
+   253	filesystem, not the tool, is at fault.
+   254	
+   255	**Attempted fix that DID NOT WORK**: pinning `My Drive/Backups` "Available offline" via the
+   256	Finder context menu (there is no CLI or xattr for it — the app ships no control surface).
+   257	Eric pinned it 2026-08-14 17:30. Result: **one** file materialized, then flat for 5 minutes
+   258	(133 placeholders, 49.2 MB, unchanged). Restarting Drive did not help either.
+   259	
+   260	**DriveFS on this Mac is itself unhealthy** — this is the real blocker, not rsync and not
+   261	the pin:
+   262	- It refused a graceful `osascript quit` for 20s and needed SIGKILL. Its log emitted
+   263	  `crashpad ... ThreadsStuck` every 6s. Restarting cleared the stuck threads but nothing else.
+   264	- The **download** queue fails, not just uploads: `merger.cc:969:ProcessDownloadEvent` +
+   265	  `HandleFailedChange [DownloadMergeQueueItem]`. DriveFS cannot pull content *down*.
+   266	- Signs of local DB damage: `item_query_handler.cc:1135:OnGetItemIds Ignoring item
+   267	  local-376561 that's missing from ...`.
+   268	- NOT quota: 671 GB used of 5.5 TB.
+   269	
+   270	**Do not clear the DriveFS content cache as the remedy.** It converts every materialized
+   271	file into a placeholder needing re-download, feeding the exact mechanism that is failing —
+   272	122 readable files could become 0. If DriveFS is repaired, do it by signing out and back in
+   273	to force a DB rebuild, deliberately, with time to watch it.
+   274	
+   275	### RESOLVED 2026-08-14 — the backup was never broken, the verification was
+   276	
+   277	**Final mechanism**: files Drive has evicted from local cache are placeholders. Fetching a
+   278	placeholder through DriveFS is *unreliable* — usually fast, sometimes stalling for tens of
+   279	minutes. rsync blocking on such a fetch is the entire "wedge". Proof it is a slow fetch and
+   280	not a poisoned file: the file that hung four separate times **now reads instantly**, and its
+   281	blocks went 0 → 770,048 — the repeated read attempts eventually completed the fetch. Six
+   282	other placeholders read fine first try. Nothing was corrupt.
+   283	
+   284	**`~/.claude/scripts/verify-drive-backup.sh` (`0d2edb5`) is now the way to verify.** It
+   285	compares the Drive API's server-side `md5Checksum` against a local md5 — metadata only, no
+   286	DriveFS read, batched ~25 names per query. First run on `~/.codex/sessions`:
+   287	**256/256 verified, 0 mismatch, 0 missing.** The snapshot that logged `FAILED` for days was
+   288	complete and byte-correct the whole time.
+   289	
+   290	Do not "fix" this by deleting Drive copies. Both files that hung were verified byte-identical
+   291	to source *before* anything was touched — deleting would have destroyed a good backup to
+   292	repair a read path.
+   293	
+   294	**It is plain fetch latency, scaling with file size** — no mystery left. A full read-scan of
+   295	all 256 files with a 6s per-file cap: 33 stalled, and those averaged **2,301 KB vs 1,156 KB
+   296	for the set overall** (max 15.8 MB). Bigger file, longer fetch. Nothing file-specific,
+   297	nothing corrupt. The scan itself moved the mirror from 122 → 230 materialized (48.5 → 161.8 MB
+   298	local), which is exactly what "reading materializes it" predicts.
+   299	
+   300	Caution when testing this: **reading a file materializes it**, so any scan warms the cache and
+   301	a later run passes for reasons that will not hold once Drive evicts again. Timestamp results
+   302	and never treat a post-scan rsync run as a clean verification.
+   303	
+   304	### Why DriveFS is unhealthy — found 2026-08-14 18:20
+   305	
+   306	**Google Drive is mirroring `~/DEV` as a device-backup folder named "My Mac"**, including
+   307	**34 `.git` directories / 3,470 files**. VS Code has `"git.autofetch": true`, which rewrites
+   308	every repo's `FETCH_HEAD` on a 180s cycle; Drive uploads all 34 each time. That is the source
+   309	of the `PRECONDITION_FAILED` storms on `FETCH_HEAD` and the stuck threads in `drive_fs.txt`,
+   310	and therefore of the slow placeholder fetches upstream.
+   311	
+   312	Proof (not inference): local `~/DEV/*/.git/FETCH_HEAD` all stamped 18:22:09 while Drive's
+   313	server copies read `2026-08-14T23:22:09Z` — same second — and the Drive parent chain resolves
+   314	`FETCH_HEAD → .git → DataBase_GPS_Reporting → DEV → My Mac`.
+   315	
+   316	**`OneDrive-Import` was a red herring** — it holds 22 `.git` dirs / 7,292 files, but they are
+   317	static archives and do not churn. Don't chase it.
+   318	
+   319	**FIXED 2026-08-14 ~18:28 — Eric removed `~/DEV` from Drive Preferences → "Folders from your
+   320	computer" (keeping the cloud copy). Verified, and it worked:**
+   321	- Server-side `FETCH_HEAD` froze at `23:28:12Z` while local `~/DEV` copies kept updating
+   322	  (18:32:28) — churn decoupled, `git.autofetch` left ON as intended.
+   323	- `PRECONDITION_FAILED` 14 → **0**. `ProcessDownloadEvent` errors 11 → **0**.
+   324	  `HandleFailedChange` stable (idle retry backlog, not growing).
+   325	- Google Drive CPU **64.6% → 0.0%**.
+   326	- **End-to-end: 5/5 genuine placeholders (blocks==0) fetched in 2–3s each**, where the same
+   327	  class of read previously stalled for minutes or indefinitely. This is the actual cure for
+   328	  the `snapshot:sessions` wedge — the watchdog only bounded it.
+   329	
+   330	Original recommendation, for the record: remove `~/DEV` from Drive Preferences → "Folders
+   331	from your computer", choosing KEEP for the existing cloud copy. The mirror is redundant and
+   332	strictly worse than the nightly, which already covers `~/DEV` via 68 manifest entries →
+   333	SSD + GitHub with `.git` excluded and credential files denied (6 projects hit that policy on
+   334	2026-08-14). **Do not** "fix" this by disabling `git.autofetch`: that masks the symptom, costs
+   335	a useful feature, and leaves 3,470 `.git` files still mirrored to churn on every commit and
+   336	checkout. Verify afterward by re-querying `FETCH_HEAD` modifiedTime via the Drive API and
+   337	re-checking `drive_fs.txt` for `ThreadsStuck` / `PRECONDITION_FAILED`.
+   338	
+   339	How to check whether anything is pending before any Drive surgery: sample
+   340	`grep -c HandleModifiedLocalItem/HandleFailedChange/DownloadMergeQueueItem` in
+   341	`~/Library/Application Support/Google/DriveFS/Logs/drive_fs.txt` over ~90s — flat counters
+   342	mean idle queues. **Do not** use the presence of `com.google.drivefs.item-id` as an
+   343	upload-pending signal: 774 files in Backups lacked it and were all already on the server.
+   344	
+   345	Rejected: `--ignore-existing` (would freeze any mid-session rollout file at its partial
+   346	size in Drive permanently) and leaving the watchdog to absorb it (~15 min wasted nightly,
+   347	and two standing errors would camouflage real ones).
+   348	
+   349	Note `-W` (whole-file) is already default for local transfers, so `--whole-file`,
+   350	`--size-only` and delta-algorithm tuning are all dead ends here — the block happens on
+   351	open, before any comparison strategy matters.
+   352	
+   353	## The SSD layer's real failure mode — schedule/mount mismatch, found 2026-08-29
+   354	
+   355	**The nightly is healthy; the SSD layer is simply absent at run time.** `com.keystone.dailybackup`
+   356	fires at 00:30 and CRASHBOX is normally unplugged then, so every run logs
+   357	`TARGET SSD /Volumes/CRASHBOX/AssistantBackup NOT MOUNTED - orphan and working-tree capture
+   358	SKIPPED this run` and ends `OK (0 errors)`. A clean exit code is therefore **not** evidence the
+   359	SSD captured — the skip is not an error. Check `_receipts/run-*.txt` mtime on the drive instead.
+   360	
+   361	Receipt history proves the pattern: 10 SSD captures total, clustered on days the drive happened
+   362	to be attached (Aug 6, Aug 14 ×5, Aug 15, Aug 16, Aug 17), then a **12-day gap** to Aug 29. Eric
+   363	read this as "the SSD backup has never run"; it had, just rarely.
+   364	
+   365	**Manual run is the remedy and takes ~6 minutes**, not the ~45 the 2026-08-14 notes imply:
+   366	`/opt/homebrew/bin/pwsh -File ~/.claude/scripts/daily-backup.ps1` (no SSD-only switch exists; do
+   367	not add one). Run 20260829-073713: Drive SNAPs finished in **6 seconds** — the `codex/sessions`
+   368	wedge is genuinely gone since the `~/DEV` de-mirroring fix — DEV capture 07:37–07:40, `.claude`/
+   369	`.codex`/`.gemini`/SecondBrain state 07:41–07:42, `RECEIPT ssd : verified` at 07:42:50,
+   370	`end: OK (0 errors)` at 07:43:14. SSD 25 → 27 GB. The long tail in the 00:34 nightly was the
+   371	memsearch INDEX step (00:51→01:18), which runs *after* the backup and is not part of it.
+   372	
+   373	Verification trap repeated here: **top-level SSD directory mtimes stay old after a successful
+   374	capture** (`SecondBrain` still read Aug 17, `claude` Aug 14) because `rsync -a` preserves source
+   375	mtimes and a parent dir's mtime only moves when an entry is added or removed at that level. The
+   376	`STATE-SSD ... : OK` log lines and the receipt are the evidence; mtimes are not. See also
+   377	[[keystoneos-verification-habits]].
+   378	
+   379	**RESOLVED 2026-08-29**: schedule moved 00:30 -> 09:00 in
+   380	`~/Library/LaunchAgents/com.keystone.dailybackup.plist` (PlistBuddy `Set :StartCalendarInterval:Hour 9`,
+   381	then `launchctl bootout gui/$(id -u)/com.keystone.dailybackup` + `bootstrap`; live schedule confirmed
+   382	`Hour => 9, Minute => 0` via `launchctl print`). Old plist kept at `.plist.bak-2026-08-29`. 09:00 was
+   383	chosen from mount evidence (drive attached 07:31 on 08-29; the 08-17 capture ran 08:05). **Do not
+   384	verify this by mtime or by exit code** — the only proof is a fresh `_receipts/run-*.txt` on the drive
+   385	dated 08-30 or later. If receipts still cluster, the drive is not attached at 09:00 and the hour is wrong.
+   386	
+   387	`~/.claude/global-memory/transcripts/.errors.log` archived to `.errors.log.archived-2026-08-29` and
+   388	cleared the same day. It held two **still-open** issues, not stale history: memsearch `onnxruntime`
+   389	import failure (2026-08-22, corroborated by `INDEX full set: Indexed 0 chunks` on 08-28/08-29), and
+   390	stack-doctor weekly flagging `errors-log`, `flush-stale`, `memfile-full:MEMORY.md` (2026-08-24).
+   391	
+   392	**Both cleared by end of 2026-08-29** — stack-doctor returned `ALL CLEAR`: memsearch `search: OK`,
+   393	`last-flush.json OK (0h ago)`, no `FLUSH_ERROR` in recent dailies, `errors.log: clean`. The
+   394	`onnxruntime` import failure did not need a reinstall, so **do not** reflexively run
+   395	`uv tool install --force memsearch` on the next `ETIMEDOUT` — that strips the local flush patch
+   396	and creates a worse problem. Confirmed here: `memsearch --version` answered instantly (0.4.17) and
+   397	`pgrep -fc memsearch` was 0, ruling out both a broken binary and the
+   398	[[milvus-lock-misdiagnosis]] lock-contention pattern.
+   399	
+   400	A separate `memsearch-sync: index ETIMEDOUT Nx consecutively` streak ran 6→13 during the afternoon
+   401	session of 08-29 and then self-cleared. Per the skill's own note, `Indexed 0 chunks` is usually a
+   402	starved flush pipeline rather than a dead indexer — **check `flush-stale` before touching
+   403	memsearch**. The streak counter is reset by the nightly backup, so a climbing count mid-session is
+   404	expected noise unless it survives a backup run. Both cleared by end of 2026-08-29 —
+   405	stack-doctor returned ALL CLEAR and the thread is closed.
+   406	
+   407	Guard trap: shell truncation (`: > file`) anywhere under `$HOME` is blocked by dcg
+   408	rule `core.filesystem:redirect-truncate-root-home`; `cp /dev/null file` is allowed, and macOS has no
+   409	`truncate` binary. This file is itself near the `memfile-full` threshold — trim before appending more.
+   410	
+   411	## A stalled run with no rsync child = an unanswered macOS access prompt (2026-09-03)
+   412	
+   413	`daily-backup.ps1` gates both optional destinations on a bare `Test-Path` with **no timeout**:
+   414	`Test-Path $GDrive` (section 2a) and `Test-Path $SsdRoot` (section 2b). When macOS has a pending
+   415	TCC/removable-volume permission prompt for that path, the call blocks **forever** — and because 2a
+   416	runs before 2b, the SSD capture never happens and no receipt is written.
+   417	
+   418	**The tell:** `pwsh` alive in `S`/`SN` state, **zero rsync children**, and the log frozen mid-run.
+   419	That is not a slow copy — a slow copy always shows an `rsync` process. `ps -axo pid,stat,comm` on
+   420	macOS marks I/O wait `U`, not `D`; a `D`-state grep finds nothing and proves nothing.
+   421	
+   422	**The fix is the human, not the shell — look at the screen for a pending prompt FIRST.** On
+   423	2026-09-03 both `~/Library/CloudStorage/GoogleDrive-*` and `/Volumes/CRASHBOX` were unresponsive to
+   424	a plain `ls`. The Drive half cleared after a quit/relaunch of Google Drive, **but Eric was
+   425	approving access prompts in that same window — the relaunch is unproven and may have done nothing.**
+   426	Do not treat killing Google Drive as the known fix. The SSD half cleared only when he approved the
+   427	prompt. **Do not force-unmount CRASHBOX** (exFAT, no journal) — ask first.
+   428	
+   429	Probably (unverified): the Claude Code shell and the launchd/reconcile jobs are different TCC
+   430	principals, so this prompt should not recur for the scheduled runs — but it may fire once per new
+   431	app that launches the script.
+   432	
+   433	**Never re-run without `pkill -f daily-backup.ps1` first.** A hung run is harmless, but several hung
+   434	runs unblock *together* the moment access is granted and race onto the SSD — the two-writer
+   435	corruption this whole system exists to prevent.
+   436	
+   437	Historical, superseded 2026-10-22: **Timing that matters:** reconcile replays the backup at 07:00 if no `OK` is logged for today, and
+   438	launchd fires at 09:00 regardless (see "Current state" above). A manual run finishing before 07:00
+   439	suppresses the replay; one finishing after 07:00 can collide with it.
+   440	
+   441	Open gap, not yet fixed: neither `Test-Path` has a watchdog, unlike `Invoke-Rsync`
+   442	(`$RsyncTimeoutSec = 900`). Worth wrapping both.
+   443	
+   444	## `/backup` skill + the completeness signal (2026-09-04)
+   445	
+   446	`~/.claude/skills/backup/SKILL.md` is the on-demand path — the launchd job only fires if the
+   447	Mac is awake at 09:00. Standing routine: plug in CRASHBOX, then type `/backup`.
+   448	
+   449	**Job count, not error count, is the completeness signal.** A run with CRASHBOX unmounted
+   450	reports `OK (0 errors)` with **9 jobs**; the same run with it attached reports **31 jobs**.
+   451	Never report "backup complete" from a 0-error run without checking `okCount` and naming any
+   452	skipped target.
+   453	
+   454	`repo-push:*` failures are usually a transient `Could not resolve host: github.com`, not a
+   455	credential or repo problem — commits are already local, so a re-run pushes them. Seen
+   456	2026-09-04 09:05 on `global-memory` and `skills`; one re-run cleared both.
+   457	
+   458	A USB-C drive that powers on but never mounts is almost always a charge-only cable.
+   459	`diskutil list external` printing nothing at all is the fast check — that is a cable/port
+   460	problem, not software.
+   461	
+   462	Full handoff: `~/.claude/global-memory/handoffs/2026-09-04-backup-skill.md`.
+   463	
+   464	## Manifest coverage closed + job-count baseline reset (2026-09-09)
+   465	
+   466	**The 49 `manifest-unmanaged` folders are gone.** They were never a classification backlog —
+   467	they were fallout from the GitHub consolidation migration (see [[github-consolidation]]).
+   468	All 49 added to `backup-manifest.json` in one pass: 47 are git repos with `erash11` remotes
+   469	(`isRepo:true`, `captureOrphans`/`captureWorkingTree` true, destinations `["ssd","github"]`),
+   470	and 2 are plain dirs — `_ARCHIVE` (4.3 GB) and `docs` — destinations `["ssd"]` only.
+   471	`baylor` deliberately omitted from every new entry; it is deprecated and Eric's own newest
+   472	entry (`DEV/Life-OS`, commit `3444c0b`) already omits it.
+   473	
+   474	**`class` is inert.** Grep of `daily-backup.ps1` shows it is read nowhere — only `isRepo`,
+   475	`captureOrphans`, `captureWorkingTree` and `destinations` drive behavior. The
+   476	institutional/personal call is documentation. Do not stall a manifest add waiting on it.
+   477	
+   478	**A DEV manifest entry never auto-commits or pushes that repo.** `Sync-Repo` is called on a
+   479	hardcoded list (SecondBrain, global-memory, skills, dotclaude); the manifest loop only calls
+   480	`Capture-RepoData` (SSD) or `Snapshot-Additive`. Adding 47 project repos was therefore safe
+   481	with open PRs and dirty trees — verify from source before assuming otherwise.
+   482	
+   483	**Job-count baseline is now 76, not 31.** The 2026-09-04 note above (9 = no SSD, 31 = SSD
+   484	attached) is superseded. Full run with CRASHBOX attached = **76 jobs**. `CAPTURE` only logs a
+   485	line when a repo has files git does not carry, so 18 log lines with 65 capture jobs is normal —
+   486	read `okCount`, not the log line count.
+   487	
+   488	**Removed 2 dead entries**: `DEV/AI_Analyst` and `DEV/token-dashboard`. Both had moved into
+   489	`~/DEV/_ARCHIVE/`, which is itself now backed up, so coverage was preserved, not dropped.
+   490	`DexaProject` stays declared-but-absent on purpose — it lives on Google Drive.
+   491	
+   492	**`~/.claude` now tracks session transcripts.** Eric's commit `8a3d55c` (2026-09-09 15:44)
+   493	un-ignored `projects/`, so the dotclaude repo carries ~368 MB of `.jsonl` transcripts and
+   494	Tier A memory. This **invalidates the "Tier A memory is NOT in git" trap above** — it now has
+   495	a third layer. No single file exceeds 40 MB, so pushes succeed; they are just slower.
+   496	
+   497	Full handoff: `~/.claude/global-memory/handoffs/2026-09-09-backup-manifest-coverage.md`.
