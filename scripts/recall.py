@@ -179,6 +179,8 @@ def rank(db, q, limit):
     off-topic memory jumping. (Giving #1 its title too lost n06 on the 30-case eval.)"""
     cands = [newest_copy(db, p) if tier_a(p) else p for p in fts5_top(db, q, max(limit, 3) + 3)]
     cands = list(dict.fromkeys(cands))
+    # global-memory/handoffs keeps a .windows.md twin of many files; one copy is enough.
+    cands = [p for p in cands if not (p.endswith(".windows.md") and p[:-len(".windows.md")] + ".md" in cands)]
     a = next((p for p in cands[:3] if tier_a(p)), None)
     if a and a != cands[0] and about_hits(db, a, q) >= about_hits(db, cands[0], q, describe=False):
         cands.remove(a)

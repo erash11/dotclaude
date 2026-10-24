@@ -97,7 +97,8 @@ def open_questions(path):
 
 
 def recent_handoffs(cutoff):
-    paths = dev_glob("docs", "handoffs", "*.md")
+    # workspace and system handoffs live in ~/DEV/docs/handoffs, which dev_glob (DEV/*/...) misses
+    paths = dev_glob("docs", "handoffs", "*.md") + glob.glob(os.path.join(DEV, "docs", "handoffs", "*.md"))
     rows = []
     for p in paths:
         if any(k in p for k in SKIP):

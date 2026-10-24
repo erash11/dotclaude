@@ -98,6 +98,18 @@ with tempfile.TemporaryDirectory() as root:
     assert not r.fts5_top(qdb, q3, 3)[0].endswith("project_fuse-hang.md")
     assert r.rank(qdb, q3, 3)[0].endswith("project_fuse-hang.md")
 
+    # A handoff and its .windows.md twin take one slot, so a memory at #4 gets back into the top 3.
+    k2, h2 = os.path.join(root, "k2"), os.path.join(root, "h2")
+    m2 = os.path.join(root, ".claude/projects/-y/memory")
+    write(k2, "push-fix.md", "Drive push fix. Drive push fix. Drive push fix.\n")
+    write(h2, "push.md", "Drive push fix. Drive push fix. Drive push fix. Drive push fix.\n")
+    twin = write(h2, "push.windows.md", "Drive push fix. Drive push fix. Drive push fix. Drive push fix.\n")
+    write(m2, "project_push-fix.md", "Drive push fix: run it from Terminal.\n")
+    hdb = r.open_index([k2, h2, m2], ":memory:")
+    assert r.fts5_top(hdb, "drive push fix", 4)[3].endswith("project_push-fix.md")  # BM25 alone: #4
+    got = r.rank(hdb, "drive push fix", 3)
+    assert twin not in got and got[0].endswith("project_push-fix.md"), got
+
     # Refresh writes each file once, even when it re-reads it.
     os.utime(os.path.join(kdir, "push-fix.md"))
     r.open_index([kdir, mdir], disk).close()
