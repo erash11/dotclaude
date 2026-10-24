@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-09-02T19:20:41.051Z
+  modified: 2026-10-24T00:27:41.196Z
 ---
 
 The CFB Victory Model's pre-game forecasts are frozen once per week by the
@@ -57,6 +57,14 @@ curl -s "https://site.api.espn.com/apis/site/v2/sports/football/college-football
 - ~~**Wednesdays**, season window **2026-08-26 → 2027-01-20**~~ — superseded
   2026-08-15. Current cadence is **Monday-anchored**, season window
   **2026-08-24 → 2027-01-23**. See "Cadence" below, which is authoritative.
+
+## "Nothing moved" in season = dead report link (2026-10-23)
+
+The site swapped to a new Power BI report around 10-05. `REPORT` in `weekly_capture.py` still
+opened the old one, which kept loading with no error but froze at ~10-02. Three captures
+(10-07, 10-14, 10-23) were copies; a session wrongly told Eric the *site* was stale, and Eric
+corrected it (the site was current). Week 6-7 pre-game forecasts are lost. Fix: compare `REPORT`
+with the iframe on `cfbvictorymodel.com/team-schedule-overview/`. Also in the repo's STATUS Gotchas.
 
 ## The constraint that makes the cadence non-negotiable
 
