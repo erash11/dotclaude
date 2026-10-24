@@ -39,8 +39,9 @@ def floors(days=DAYS):
                         continue
                     app, day = d.get("entrypoint"), d.get("timestamp", "")[:10]
                     n = u.get("input_tokens", 0) + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0)
-                    # shortcut: under 5k is a broken or synthetic turn, not a real session start.
-                    if app in APPS and day >= since and n > 5000:
+                    # shortcut: under 5k is a broken or synthetic turn, not a real session start
+                    # (background SDK jobs run with no settings, so theirs can be ~1k).
+                    if app in APPS and day >= since and n > (500 if app in CEILING else 5000):
                         low[app] = min(n, low.get(app, n))
                     break
         except (OSError, ValueError):
