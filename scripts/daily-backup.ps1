@@ -520,6 +520,9 @@ Snapshot-Gws "$U/.codex/sessions"       'codex-sessions.tgz'   @()
 Snapshot-Gws "$U/.codex/sqlite"         'codex-sqlite.tgz'     @()
 Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile', 'oauth_creds.json', 'google_accounts.json')
 Snapshot-Gws "$U/Library/LaunchAgents"  'launchagents.tgz'     @()
+# Third-party skills (pp-espn, pp-fireflies, ...) are real files only here; canonical skills
+# are symlinks in it and live in git. ~10 MB. Added 2026-10-24 (was a RESTORE.md known gap).
+Snapshot-Gws "$U/.agents"               'agents.tgz'           @()
 
 # --- 2a-codex. Codex config and state -> codex-config.tgz (R23, 2026-10-24) ---
 # Replaces the codex-memories snapshot (~/.codex/memories never existed on the Mac: "SNAP skip

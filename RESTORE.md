@@ -89,6 +89,8 @@ uv tool install 'memsearch[onnx]' && uv tool install cli-anything-hub && memsear
 cd ~/.claude/claude-memory-compiler && uv sync
 python3 ~/DEV/TypeSafe_Sandbox/skill_router/install.py   # restores ~/.claude/skill-router (in no backup)
 mkdir -p ~/.claude/permission-gate && cp ~/DEV/TypeSafe_Sandbox/permission_gate/{rules,sanitize,shadow_hook}.py ~/.claude/permission-gate/
+# third-party skills (pp-espn, pp-fireflies, ...): since 2026-10-24 the daily backup uploads ~/.agents as
+# _MACHINE/Backups/Machine/agents.tgz. Unpack it first: tar -xzf agents.tgz -C ~
 mkdir -p ~/.agents && touch ~/.agents/.sync-v2-ready && bash ~/.claude/skills/sync-to-codex.sh   # fresh Mac: rebuilds ~/.agents/skills and ~/.codex/skills
 ln -s ~/.claude/AGENTS.md ~/.codex/AGENTS.md && ln -s ~/.claude/hooks ~/.codex/hooks && ln -s ~/DEV/CLI_Dev/printing-press ~/printing-press
 ln -s "$HOME/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive" ~/DEV/_DRIVE
@@ -117,7 +119,7 @@ launchctl list | grep -c 'com\.keystone\.'      # expect 15; com.google.keystone
 ## 9. Deliberately NOT backed up
 - `~/.codex/work` (disposable clones), caches, `.venv`, `node_modules`, tool binaries. The memsearch index `~/.memsearch/milvus.db` (the daily backup rebuilds it).
 - All credentials: `.env` files, `.credentials.json`, OAuth tokens, `~/.config/gws`, Gemini `oauth_creds.json`, browser profiles.
-- Known gaps (in no backup; rebuild by hand): `~/.claude.json` (the `zotero` MCP server; may hold tokens, so it stays local), `~/.memsearch/config.toml` (one line: `memsearch config set embedding.provider onnx`), `~/.agents/` third-party skills (reinstall from `~/.agents/.skill-lock.json` on the old Mac), and `~/.config/gws/client_secret.json`.
+- Known gaps (in no backup; rebuild by hand): `~/.claude.json` (the `zotero` MCP server; may hold tokens, so it stays local), `~/.memsearch/config.toml` (one line: `memsearch config set embedding.provider onnx`), and `~/.config/gws/client_secret.json`.
 
 ## Keeping this document honest
 When a backup, repo, store or scheduled job changes, update this file in the same session and commit it to dotclaude.
