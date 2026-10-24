@@ -1,6 +1,6 @@
 ---
 name: memsearch-setup
-description: "Windows-era (2026-05-18) memsearch setup, superseded on the Mac — today memsearch is a uv tool on an embedded Milvus Lite file (no Docker, no server) with a detached SessionEnd worker; Windows history kept below"
+description: "Windows-era (2026-05-18) memsearch setup, superseded on the Mac — today memsearch is a uv tool on an embedded Milvus Lite file (no Docker, no server); Windows history kept below"
 metadata: 
   node_type: memory
   type: project
@@ -11,9 +11,8 @@ metadata:
 > (checked 2026-10-24): memsearch 0.4.17 is a **uv tool** (`~/.local/bin/memsearch`). It stores
 > chunks in the embedded **Milvus Lite** file `~/.memsearch/milvus.db`: no Docker, no Milvus
 > server, nothing on port 19530. `~/.memsearch/config.toml` holds only `provider = "onnx"`.
-> Index paths come from `~/DEV/KeystoneOS/data/memory-index-paths.json`. The SessionEnd hook is a
-> **detached worker** since 2026-09-02 (DEV memory `project_memsearch-hook-timeout-cap.md`), and the daily backup runs
-> the full reindex. Reinstall with `uv tool install --force memsearch`, never pip
+> Index paths come from `~/DEV/KeystoneOS/data/memory-index-paths.json`. The daily backup runs
+> the full reindex. The session-end job changed on 2026-09-02 and has its own DEV memory. Reinstall with `uv tool install --force memsearch`, never pip
 > (DEV memory `project_memory-compiler-pipeline.md`). No flush patch is present in the Mac `store.py`, and indexing
 > works without it (the 2026-10-24 backup indexed 2,941 chunks).
 
@@ -32,7 +31,7 @@ Set up 2026-05-18 on Eric's Windows 11 machine to give Claude cross-project sema
 
 **Auto-sync** (Windows, May 2026; Mac paths are in `memory-index-paths.json`)**:** A SessionEnd hook at `~/.claude/hooks/memsearch-sync.js` reindexes after every session, so transcripts captured this turn are searchable next session. It indexes 4 paths: `global-memory/transcripts/`, `projects/C--Users-eric-rash/memory/`, and the compiler's `claude-memory-compiler/daily/` + `knowledge/`. Output is captured to `global-memory/transcripts/.memsearch-index.log` (truncated each run); errors to `.errors.log`.
 
-**⚠️ SessionEnd hook redesign (2026-06-11)** — superseded 2026-09-02: the hook is now a detached background worker on the Mac, on purpose; do not put the synchronous version back (DEV memory `project_memsearch-hook-timeout-cap.md`). Original note: The hook ran `stats → index → stats` (the trailing stats was a flush-bug detector) which took ~18s, but its settings.json timeout was only **5s** — so the harness killed it every single session ("`SessionEnd hook ... failed: Hook cancelled`") and the index often never committed. Root cause was a too-tight timeout, NOT a memsearch fault (corpus was healthy, `.errors.log` empty). Fix: dropped the stats bracketing, run `index` **synchronously** via spawnSync (18s internal cap), bumped the hook timeout to **20s**. Steady-state session-end indexing is ~5s (fixed model-load + scan overhead; only the new transcript is fresh). NOTE: do NOT "optimize" this back to a detached/fire-and-forget spawn — tested 2026-06-11 and detached children are unreliable on Windows here (cmd.exe opens the redirect file but memsearch gets killed in the parent-exit race; creates a 0-byte log, never finishes). Synchronous + adequate timeout is the deliberate, correct trade.
+**⚠️ SessionEnd hook redesign (2026-06-11)** — superseded 2026-09-02: the hook is now a detached background worker on the Mac, on purpose; do not put the synchronous version back (see the DEV memory index). Original note: The hook ran `stats → index → stats` (the trailing stats was a flush-bug detector) which took ~18s, but its settings.json timeout was only **5s** — so the harness killed it every single session ("`SessionEnd hook ... failed: Hook cancelled`") and the index often never committed. Root cause was a too-tight timeout, NOT a memsearch fault (corpus was healthy, `.errors.log` empty). Fix: dropped the stats bracketing, run `index` **synchronously** via spawnSync (18s internal cap), bumped the hook timeout to **20s**. Steady-state session-end indexing is ~5s (fixed model-load + scan overhead; only the new transcript is fresh). NOTE: do NOT "optimize" this back to a detached/fire-and-forget spawn — tested 2026-06-11 and detached children are unreliable on Windows here (cmd.exe opens the redirect file but memsearch gets killed in the parent-exit race; creates a 0-byte log, never finishes). Synchronous + adequate timeout is the deliberate, correct trade.
 
 **⚠️ Fragile patch — must re-apply after `pip install --upgrade memsearch`** (Windows, remote Milvus server only). Superseded 2026-10-24: on the Mac memsearch is a uv tool on Milvus Lite; reinstall with `uv`, never pip, and no patch is present there (see the top note).
 
