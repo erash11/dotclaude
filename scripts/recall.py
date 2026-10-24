@@ -332,7 +332,7 @@ def memsearch_hits(question):
     exe = os.path.join(HOME, ".local/bin/memsearch")
     try:
         return subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "5"],
-                              capture_output=True, text=True, timeout=180).stdout
+                              capture_output=True, text=True, timeout=45).stdout  # ~4x measured; a locked index must not hang a ~1 s tool
     except (OSError, subprocess.TimeoutExpired) as e:
         return f"memsearch did not run: {e}"
 
