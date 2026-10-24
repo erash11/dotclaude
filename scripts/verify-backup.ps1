@@ -11,8 +11,15 @@
 #                That is the point — a mirror would have deleted them too.
 
 $ErrorActionPreference = 'Continue'
-$dest = 'D:\AssistantBackup'
-$dev  = 'C:\Users\eric_rash\Desktop\DEV'
+# Same SSD root the daily backup writes to, so the two cannot drift.
+$dest = (Get-Content -Raw (Join-Path $PSScriptRoot 'backup-manifest.json') | ConvertFrom-Json).destinations.ssd.root
+$dev  = Join-Path $HOME 'DEV'
+# Before 2026-10-23 this held Windows paths; on the Mac every tier was skipped
+# and the run still printed PASS. An absent SSD is now a FAIL, not a PASS.
+if (-not (Test-Path -LiteralPath $dest)) {
+  "VERDICT: FAIL - SSD not mounted at $dest; nothing verified. Plug in CRASHBOX and re-run."
+  exit 1
+}
 $man  = Join-Path $dest 'MANIFEST'
 $log  = Join-Path $man 'verify.log'
 
@@ -26,9 +33,9 @@ $match=0; $mismatch=0; $gone=0; $bytes=0
 $mismatchList = New-Object System.Collections.Generic.List[string]
 
 foreach($tier in @(
-  @{ root="$dest\DEV-repo-data";    label='repo-orphan'  },
-  @{ root="$dest\DEV-nonrepo";      label='non-repo'     },
-  @{ root="$dest\DEV-working-tree"; label='working-tree' }
+  @{ root=(Join-Path $dest 'DEV-repo-data');    label='repo-orphan'  },
+  @{ root=(Join-Path $dest 'DEV-nonrepo');      label='non-repo'     },
+  @{ root=(Join-Path $dest 'DEV-working-tree'); label='working-tree' }
 )){
   if(-not (Test-Path $tier.root)){ Log "SKIP $($tier.label) (absent)"; continue }
   Log "TIER $($tier.label)"
@@ -63,9 +70,14 @@ Log "RESULT bytes verified: $([math]::Round($bytes/1GB,2)) GB"
 Log "MANIFEST sha256-manifest.csv written ($($rows.Count) rows)"
 if($gone -gt 0){ Log "NOTE $gone file(s) retained on SSD after upstream deletion - expected for an additive store, not a failure" }
 
-if($mismatch -eq 0){
+$failed = $true
+if($match + $mismatch + $gone -eq 0){
+  Log "VERDICT: FAIL - no files found in any tier under $dest; nothing verified"
+} elseif($mismatch -eq 0){
   Log "VERDICT: PASS - every rescued file matches its source by SHA-256"
+  $failed = $false
 } else {
   Log "VERDICT: FAIL - $mismatch file(s) differ: $($mismatchList -join '; ')"
 }
 Log "===== phase1-verify end ====="
+if($failed){ exit 1 }

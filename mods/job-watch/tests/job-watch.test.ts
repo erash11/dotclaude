@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'claude-code/testing'
 
-import { isFailure, parseDocker, parseLaunchctl, parseWindows, statusText, taskNotice } from '../hooks/register'
+import { isFailure, parseDocker, parseLaunchctl, parseWindows, recallStatus, statusText, taskNotice } from '../hooks/register'
 
 const WIN = '[{"name":"Backup AI Sessions to Drive","lastRun":"2026-10-02T00:30:01.0000000-05:00","result":0,"nextRun":"2026-10-03T00:30:00.0000000-05:00"},{"name":"memsearch-drain-weekly","lastRun":null,"result":267011,"nextRun":"2026-10-04T02:00:00.0000000-05:00"}]'
 
@@ -52,5 +52,13 @@ describe('docker', () => {
     expect(statusText({ ...base, docker: 'up' })).toContain('milvus ✓')
     expect(statusText({ ...base, docker: 'docker-down' })).toContain('docker ✗')
     expect(statusText({ ...base, docker: null })).not.toContain('milvus')
+  })
+})
+
+describe('recall check', () => {
+  test('takes the last RECALL line from daily-backup.log', async () => {
+    const log = '2026-10-22 22:00:00 RECALL recall-check: DROP x\n2026-10-23 22:08:12 RECALL recall-check: OK eval hit@1 21/30\n'
+    expect(recallStatus(log)).toBe('OK')
+    expect(recallStatus('no recall lines here')).toBe(null)
   })
 })

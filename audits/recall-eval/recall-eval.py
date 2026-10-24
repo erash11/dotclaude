@@ -241,14 +241,15 @@ def main():
 
     global _FTS
     backends = [b for b in a.backends.split(",") if b]
-    # Chained after memsearch-drain in a scheduled task, this runs whether or not the
-    # index finished. Don't let a partial index pass as a clean memsearch number.
-    drain_log = HOME / ".claude" / "scripts" / "logs" / "memsearch-drain.log"
-    if "memsearch" in backends and drain_log.exists():
-        tail = drain_log.read_text(encoding="utf-8", errors="replace").strip().splitlines()[-1:]
-        if not tail or "exit=0" not in tail[0]:
+    # Don't let a partial index pass as a clean memsearch number. The full reindex rides the
+    # daily backup (memsearch-drain.ps1 and its log were Windows-only, removed 2026-10-23):
+    # its last INDEX line reads "INDEX complete" only when the run finished.
+    backup_log = HOME / ".claude" / "scripts" / "logs" / "daily-backup.log"
+    if "memsearch" in backends and backup_log.exists():
+        idx = [ln for ln in backup_log.read_text(encoding="utf-8", errors="replace").splitlines() if " INDEX " in ln][-1:]
+        if not idx or "INDEX complete" not in idx[0]:
             a.label = (a.label + "-index-unverified").lstrip("-")
-            print(f"memsearch-drain.log does not end in exit=0 ({tail[0][:80] if tail else 'empty'}); label -> {a.label}")
+            print(f"daily-backup.log last INDEX line is not 'INDEX complete' ({idx[0][:80] if idx else 'none'}); label -> {a.label}")
     build_s = None
     if "fts5" in backends or "jev" in backends:
         t = time.perf_counter()

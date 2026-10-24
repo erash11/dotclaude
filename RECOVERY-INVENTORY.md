@@ -18,8 +18,8 @@ GitHub was safe; everything else on this machine existed in exactly one place.
 **Fixes 1-3 were applied the same day** — both backup tasks now have a trigger and a real
 next-run time, and the DEV copy is additive rather than mirrored. Fixes 4-6 are open, so
 the machine is covered but not yet *verifiably* covered: nothing on Windows reads the
-backup state to tell you when a run stops happening. Re-run
-`scripts/survey-recovery.ps1` to refresh the findings below.
+backup state to tell you when a run stops happening. This is a Windows-era
+record; `scripts/survey-recovery.ps1` that refreshed it was removed 2026-10-23 (in git history).
 
 Git coverage is genuinely good: 131 repos, 0 unpushed, 0 without a remote, 1 uncommitted
 file at survey time. The gap is entirely in what git does not track.
@@ -102,12 +102,13 @@ stale, from the day the Mac took over.
    9/13 run was killed by sleep, the 9/20 run was missed, and no `DEV_Backup` folder or
    state file was ever written. Drive for Desktop already syncs `C:\Users\eric_rash\Desktop\DEV`
    as a root (`root_preference_sqlite.db`), and the repos are on GitHub. Task XML and
-   script are in `scripts/retired/`; re-import with
+   script were in `scripts/retired/` (removed 2026-10-23; `git show 1ff5dce~1:scripts/retired/...`); re-import with
    `Register-ScheduledTask -Xml (Get-Content <xml> -Raw) -TaskName 'Backup DEV to Drive' -TaskPath '\Eric\'`.
 
 2. ~~**Move the scripts out of `_INBOX`.**~~ **DONE 2026-09-12.** New copies at
    `~/.claude/scripts/backup-dev-to-drive.ps1` and `backup-ai-sessions.ps1`, tracked in
-   dotclaude. The `_INBOX` originals were left unmodified rather than deleted.
+   dotclaude. The `_INBOX` originals were left unmodified rather than deleted. Both copies and
+   the `_INBOX` originals were removed 2026-10-23 (Windows-only; in git history).
 
 3. ~~**Reconsider `/MIR`.**~~ **DONE 2026-09-12.** The new DEV script uses `/E`. Both scripts
    now also write `backup-state.json`, which the existing health checks read, and both

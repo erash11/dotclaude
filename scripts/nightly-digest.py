@@ -8,12 +8,14 @@ Sent from eric.rash11@gmail.com (the gws account) to Eric's Outlook. Sections:
                                              committed in the last STATUS_DAYS days (any branch,
                                              after fetch, so the Mac's pushed work counts)
   4. Docs created today                    - doc files added in any git commit that day, and
-                                             doc files created that day on the Drive storage tree
+                                             (Windows only) doc files created that day on the
+                                             Drive storage tree; the Mac skips it, see drive_docs
 
-The daily log is gitignored and per machine, so sections 2 and the Action Items are Windows
-sessions only. Drive CreationTime for Mac-made files is the time Drive synced them here.
+The daily log is gitignored and per machine, so sections 2 and the Action Items cover this
+machine's sessions only.
 
-Runs from Task Scheduler (\\Eric\\nightly-digest, 21:00, runs on wake if missed).
+Runs from launchd com.keystone.nightlydigest (21:00, runs on wake if missed; tracked plist
+~/.claude/scripts/com.keystone.nightlydigest.plist). Retries the send while the network wakes up.
   python nightly-digest.py                          # today (yesterday if run before noon), send
   python nightly-digest.py --date 2026-10-05 --dry-run   # write HTML, no send
 """
@@ -25,6 +27,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -35,9 +38,24 @@ if os.name == "nt":
 
 HOME = Path.home()
 SCRIPTS = HOME / ".claude" / "scripts"
-_spec = importlib.util.spec_from_file_location("files_digest", SCRIPTS / "claude-files-digest.py")
-fd = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(fd)          # reuse its repo list, git helper, SKIP filter, gws path
+ERR_LOG = HOME / ".claude" / "global-memory" / "transcripts" / ".errors.log"
+
+
+def report_crash(e: BaseException) -> None:
+    """Under launchd a crash only reaches nightlydigest.err; put one line where sessions see it."""
+    with ERR_LOG.open("a", encoding="utf-8") as f:
+        f.write(f"[{dt.datetime.now().astimezone().isoformat()}] nightly-digest: crashed ({e!r})"
+                f" - see ~/.claude/scripts/logs/nightlydigest.err\n")
+
+
+try:
+    _spec = importlib.util.spec_from_file_location("files_digest", SCRIPTS / "claude-files-digest.py")
+    fd = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(fd)      # reuse its repo list, git helper, SKIP filter, gws path
+    MAX_BODY = fd.MAX_BODY
+except Exception as e:
+    report_crash(e)
+    raise
 
 TO = "Eric_Rash@baylor.edu"
 MEMORY = HOME / ".claude" / "global-memory" / "MEMORY.md"
@@ -51,7 +69,7 @@ PER_NEXT, PER_OPEN = 5, 3   # bullets shown for a project whose STATUS.md change
 CLIP = 240            # characters kept per bullet
 PER_LIST = 40         # created-doc paths shown per repo or Drive folder
 LOG = SCRIPTS / "logs" / "nightly-digest.log"
-MAX_BODY = fd.MAX_BODY
+SEND_TRIES, SEND_WAIT = 4, 60   # a run on wake can start before DNS is up (files digest, 10-23)
 
 H = "font-family:Arial,sans-serif;color:#154734;border-bottom:2px solid #154734;margin:22px 0 6px"
 SUB = "color:#595959;font-size:0.85em"
@@ -153,6 +171,11 @@ def git_docs(repo: Path, day: dt.date) -> list[str]:
 
 def drive_docs(day: dt.date) -> dict[str, list[str]]:
     """Doc files on the Drive storage tree created on `day`, grouped by parent folder. Metadata only."""
+    # shortcut: no Drive section on the Mac. launchd jobs cannot list Drive folders
+    # (com.apple.macl, memory cloud-push-launchd-blocked) and mount walks can hang;
+    # upgrade to a gws files.list on createdTime if the digest should list Drive docs again.
+    if os.name != "nt":
+        return {}
     start = dt.datetime.combine(day, dt.time()).timestamp()
     end = start + 86400
     found: dict[str, list[str]] = {}
@@ -287,18 +310,27 @@ def main() -> int:
         print(f"{subject}\n{full}\nbody {len(body)} chars{' + attachment' if attach else ''}")
         return 0
 
-    r = subprocess.run([*fd.GWS, "gmail", "+send", "--to", TO, "--subject", subject,
-                        "--body", body, "--html", *attach], cwd=full.parent, capture_output=True, text=True,
-                       encoding="utf-8", errors="replace")
-    if r.returncode == 0:
-        log(f"sent {day}: {subject}")
-        return 0
-    log(f"FAILED {day}: {r.stderr.strip()[:500]}")
-    with fd.ERR_LOG.open("a", encoding="utf-8") as f:
+    for attempt in range(1, SEND_TRIES + 1):
+        r = subprocess.run([*fd.GWS, "gmail", "+send", "--to", TO, "--subject", subject,
+                            "--body", body, "--html", *attach], cwd=full.parent, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        if r.returncode == 0:
+            log(f"sent {day}: {subject}" + (f" (try {attempt})" if attempt > 1 else ""))
+            return 0
+        if attempt < SEND_TRIES:
+            log(f"send try {attempt} failed, retrying in {SEND_WAIT}s: {r.stderr.strip()[:200]}")
+            time.sleep(SEND_WAIT)
+    log(f"FAILED {day} after {SEND_TRIES} tries: {r.stderr.strip()[:500]}")
+    with ERR_LOG.open("a", encoding="utf-8") as f:
         f.write(f"[{dt.datetime.now().astimezone().isoformat()}] nightly-digest: send failed for {day}"
                 f" - see ~/.claude/scripts/logs/nightly-digest.log\n")
     return 1
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as e:
+        log(f"CRASHED: {e!r}")
+        report_crash(e)
+        raise

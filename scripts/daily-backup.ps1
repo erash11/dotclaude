@@ -1,6 +1,7 @@
 # daily-backup.ps1 — KeystoneOS durability automation (macOS port, 2026-08-05)
-# Runs daily at 00:30 via launchd agent "com.keystone.dailybackup".
-# Windows original preserved at daily-backup.ps1.win-orig.
+# Runs via daily-backup-login.sh: launchd com.keystone.dailybackup (hourly 12:00-17:00, gated) and
+# com.keystone.dailybackup-login (at login). The gate allows AC power only, 2 tries a day.
+# The Windows original (daily-backup.ps1.win-orig) was removed 2026-10-23; it is in git history.
 #
 # Jobs:
 #   1. Git-sync the memory repos (auto-commit + push).
@@ -458,12 +459,12 @@ Log "===== daily-backup start (DryRun=$DryRun) run=$RunId ====="
 # WORSE than silently - snapshots logged "SNAP OK" off a stale $LASTEXITCODE, so the
 # run reported success while copying nothing. That false receipt is the reason this
 # guard exists. Refuse loudly instead of pretending.
-# The Windows original is preserved at daily-backup.ps1.win-orig: restore and re-port
-# it before re-enabling KeystoneOS-DailyBackup on any Windows host.
+# The Windows original (daily-backup.ps1.win-orig) is in git history, removed 2026-10-23:
+# restore and re-port it before re-enabling KeystoneOS-DailyBackup on any Windows host.
 # Note $IsMacOS is a PowerShell 6+ automatic variable; on Windows PowerShell 5.1 it is
 # undefined, so -not $null still aborts. That is the intended outcome.
 if (-not $IsMacOS) {
-    Log "ABORT: daily-backup.ps1 is the macOS port and will not run on this platform. No backup ran, and no receipt was written. See daily-backup.ps1.win-orig before re-enabling a scheduled task here."
+    Log "ABORT: daily-backup.ps1 is the macOS port and will not run on this platform. No backup ran, and no receipt was written. Restore daily-backup.ps1.win-orig from git history before re-enabling a scheduled task here."
     Log "===== daily-backup end: ABORTED (wrong platform) ====="
     exit 1
 }
@@ -676,6 +677,16 @@ else {
             Where-Object { -not (Test-Path (Join-Path $_.FullName '.git')) -and $_.Name -notmatch '^\.' } |
             ForEach-Object { Snapshot $_.FullName "$B/$($_.Name)" @('.playwright-mcp') }
     }
+}
+
+# --- 2b-harvest. Copy DEV repos' docs/*.md into global-memory/dev-docs (added 2026-10-23) ---
+# The reindex below and recall.py read STATUS files and handoffs only from dev-docs.
+# Before this, only /closeout ran the harvest, so a day without one left them stale. ~2 s.
+$harvest = "$U/.claude/scripts/harvest-dev-docs.sh"
+if ($IsMacOS -and (Test-Path $harvest) -and -not $DryRun) {
+    $hvOut = (& /bin/bash $harvest 2>&1 | Out-String).Trim()
+    Log "HARVEST $hvOut"
+    if ($LASTEXITCODE -ne 0) { $Errors.Add("harvest-dev-docs: $hvOut") }
 }
 
 # --- 2c. Full memsearch reindex (no session-time cap) ---

@@ -95,6 +95,12 @@ function when(iso: string | null): string {
 
 const hex = (n: number) => `0x${(n >>> 0).toString(16)}`
 
+// Last "RECALL recall-check: <WORD>" in daily-backup.log (OK, DROP, ...). The Windows
+// weekly eval and its LATEST.md retired 2026-10-23; the backup's check.py replaced them.
+export function recallStatus(log: string): string | null {
+  return [...log.matchAll(/RECALL recall-check:\s*(\w+)/g)].pop()?.[1] ?? null
+}
+
 export function statusText(r: JobReport): string {
   const failed = r.jobs.filter(isFailure)
   const running = r.jobs.filter(j => j.result === RUNNING)
@@ -133,8 +139,8 @@ async function collect($: EngineInterface): Promise<JobReport> {
   const errText = await $.fs.read(`${home}/.claude/global-memory/transcripts/.errors.log`).catch(() => '')
   const errorLines = String(errText).split('\n').filter(l => l.trim()).length
 
-  const latest = await $.fs.read(`${home}/.claude/audits/recall-eval/LATEST.md`).catch(() => '')
-  const evalStatus = /Status:\s*(\w+)/.exec(String(latest))?.[1] ?? null
+  const backupLog = await $.fs.read(`${home}/.claude/scripts/logs/daily-backup.log`).catch(() => '')
+  const evalStatus = recallStatus(String(backupLog))
 
   const d = await $.process
     .run(['docker', 'ps', '-a', '--filter', 'name=milvus', '--format', '{{.Names}}|{{.Status}}'], { timeoutMs: 15_000 })
@@ -190,7 +196,7 @@ export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
       name: 'jobs',
-      description: 'Scheduled jobs, errors.log and recall-eval status (job-watch)',
+      description: 'Scheduled jobs, errors.log and recall-check status (job-watch)',
     })
     timer?.cancel()
     timer = $.clock.every(PERIOD_MS, () => void refresh($, true).catch(() => {}))
@@ -219,7 +225,7 @@ export const register: Register = on => {
         `Scheduled jobs (${r.jobs.length}):`,
         ...(rows.length ? rows : ['- none found']),
         `errors.log: ${r.errorLines} line(s)`,
-        `recall eval: ${r.evalStatus ?? 'no LATEST.md'}`,
+        `recall check: ${r.evalStatus ?? 'no RECALL line in daily-backup.log'}`,
         `memsearch backend: ${r.docker ? (dockerWarning(r.docker) ?? 'Milvus up') : 'no Milvus container on this machine'}`,
       ].join('\n'),
     }
