@@ -1,6 +1,6 @@
 ---
 name: vscode-terminal-flicker
-description: VS Code integrated terminal flickers during long streaming output on Win11/PS7; scrollback=500 + gpuAcceleration=off reduces but doesn't eliminate
+description: Windows laptop only (not the Mac). VS Code integrated terminal flickers during long streaming output on Win11/PS7; scrollback=500 + gpuAcceleration=off reduces but doesn't eliminate
 metadata: 
   node_type: memory
   type: project

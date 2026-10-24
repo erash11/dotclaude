@@ -7,7 +7,7 @@ metadata:
   originSessionId: 3a2e9560-72d2-4a8d-972f-70547df31d13
 ---
 
-User established a fresh Obsidian vault at `C:\Users\eric_rash\Desktop\SecondBrain\` on 2026-05-20 after archiving two failed prior vaults (Vault41, BigHouse).
+User established a fresh Obsidian vault on 2026-05-20 (created on Windows; on the Mac it lives at `~/SecondBrain`) after archiving two failed prior vaults (Vault41, BigHouse).
 
 **Why:** Two prior vault attempts failed because structure was built before content habits. This time, the vault has a single job (distilling work into permanent notes that fuel essays/frameworks) and a single capture mechanism (end-of-day interview with Claude, not stream-of-consciousness journaling).
 
@@ -20,7 +20,7 @@ User established a fresh Obsidian vault at `C:\Users\eric_rash\Desktop\SecondBra
 - Interview structure: 4 questions (Orientation → Signal → Pattern → Essay seed), 10–15 min budget.
 - Output rule: 0–3 atomic permanent notes per session. Zero is acceptable; pad-to-fill is forbidden.
 - Meeting references in interviews: check `Inbox/meetings/` first before calling Fireflies API. Local-first.
-- **Prereq for Fireflies pipeline:** `FIREFLIES_API_KEY` env var must be set (Windows: System Properties → Environment Variables). Until then, `meeting-sync` and `weekly-review` will halt at the auth check.
+- **Prereq for Fireflies pipeline:** `FIREFLIES_API_KEY` env var must be set (Mac: `~/.zshrc` reads it from the Keychain). Until then, `meeting-sync` and `weekly-review` will halt at the auth check.
 
 **Decision point (target ~2026-06-17, 4 weeks in):**
 - ≥15 permanent notes + ≥1 draft started → continue, layer in phone capture.

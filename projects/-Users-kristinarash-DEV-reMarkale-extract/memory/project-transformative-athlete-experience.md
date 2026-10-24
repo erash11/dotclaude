@@ -8,7 +8,7 @@ metadata:
   modified: 2026-08-01T15:56:56.580Z
 ---
 
-Transformative Athlete Experience (TAE) pilot. Project home: `C:\Users\eric_rash\Desktop\DEV\Transformative_Athlete_Experience\`. Proposal brief (HTML + PDF, 5 pages) drafted 2026-08-01; awaiting Kenny Boyd's (SVP athlete care) blessing before ANY data work or stakeholder asks.
+Transformative Athlete Experience (TAE) pilot. Project home: `~/DEV/Transformative_Athlete_Experience/`. Proposal brief (HTML + PDF, 5 pages) drafted 2026-08-01; awaiting Kenny Boyd's (SVP athlete care) blessing before ANY data work or stakeholder asks.
 
 Locked decisions (from grilling session 2026-08-01):
 - Proof-of-concept for cross-dept data integration, framed as athlete-care ("measuring the promise to transfers"), not analytics.
