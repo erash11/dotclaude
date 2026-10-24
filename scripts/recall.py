@@ -35,7 +35,7 @@ VAULT = os.path.join(HOME, "SecondBrain")
 KNOWLEDGE = os.path.join(HOME, ".claude/claude-memory-compiler/knowledge")
 ROOTS_CFG = os.path.join(DEV, "KeystoneOS/data/memory-index-paths.json")
 DB_PATH = os.path.join(HOME, ".claude/cache/recall-fts.sqlite")
-SKIP_DIRS = {".obsidian", ".trash", ".git", "Archive", "Templates", "node_modules"}
+SKIP_DIRS = {".obsidian", ".trash", ".git", "Archive", "archive", "Templates", "node_modules"}  # archive: superseded plans
 BUDGET = 1800  # evidence chars per file; a whole paragraph is never cut
 WHOLE = 4000   # a file body this small is returned whole (memory notes are short by design)
 LEAD = 500     # a big file's opening paragraph up to this size is always shown
@@ -103,7 +103,10 @@ def open_index(rts, db_path=DB_PATH):
     if db_path != ":memory:":
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
     db = sqlite3.connect(db_path, timeout=60, isolation_level=None)
-    db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS d USING fts5(path UNINDEXED, body, tokenize='porter unicode61')")
+    if "name" not in [c[1] for c in db.execute("PRAGMA table_info(d)")]:  # pre-2026-10-24 index had no name column
+        db.execute("DROP TABLE IF EXISTS d")
+        db.execute("DROP TABLE IF EXISTS seen")
+    db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS d USING fts5(path UNINDEXED, name, body, tokenize='porter unicode61')")
     db.execute("CREATE TABLE IF NOT EXISTS seen(path TEXT PRIMARY KEY, mtime REAL)")
     db.execute("BEGIN IMMEDIATE")  # two refreshes at once could each insert the same new file
     old = dict(db.execute("SELECT path, mtime FROM seen"))
@@ -124,7 +127,7 @@ def open_index(rts, db_path=DB_PATH):
         except OSError:
             continue
         name = os.path.basename(p)[:-3].replace("-", " ").replace("_", " ")
-        db.execute("INSERT INTO d VALUES (?, ?)", (p, name + "\n" + body))
+        db.execute("INSERT INTO d VALUES (?, ?, ?)", (p, name, name + "\n" + body))
         db.execute("INSERT INTO seen VALUES (?, ?)", (p, now[p]))
     db.execute("COMMIT")
     return db
@@ -134,13 +137,15 @@ TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9\-]*")
 
 
 def fts5_top(db, q, limit):
-    """BM25 rank of whole files for a natural-language query (any word may match)."""
+    """BM25 rank of whole files for a natural-language query (any word may match). The file name is
+    in the body and also in its own column at weight 2: bench 11 -> 12 of 13, eval unchanged
+    (recall-bench/results.md, 2026-10-24); weight 8 lost a bench row."""
     toks = [t for t in TOKEN.findall(q) if len(t) > 2]
     if not toks:
         return []
     expr = " OR ".join('"%s"' % t.replace('"', "") for t in toks)
     return [r[0] for r in db.execute(
-        "SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d) LIMIT ?", (expr, limit))]
+        "SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d, 0.0, 2.0, 1.0) LIMIT ?", (expr, limit))]
 
 
 def tier_a(p):
@@ -181,7 +186,10 @@ def rank(db, q, limit):
     cands = list(dict.fromkeys(cands))
     # global-memory/handoffs keeps a .windows.md twin of many files; one copy is enough.
     cands = [p for p in cands if not (p.endswith(".windows.md") and p[:-len(".windows.md")] + ".md" in cands)]
-    a = next((p for p in cands[:3] if tier_a(p)), None)
+    # The best-matching Tier A memory in the top 3, not the first: a superseded memory at #1 must
+    # not shield the current one at #2 (p01 flipped on 2026-10-24 for this reason).
+    tops = [p for p in cands[:3] if tier_a(p)]
+    a = max(tops, key=lambda p: (about_hits(db, p, q), -cands.index(p))) if tops else None
     if a and a != cands[0] and about_hits(db, a, q) >= about_hits(db, cands[0], q, describe=False):
         cands.remove(a)
         cands.insert(0, a)
@@ -335,6 +343,7 @@ def main(argv=None):
         if a.deep:
             print(subprocess.run(memsearch, shell=True, capture_output=True, text=True).stdout)
         return 1
+    covered = set().union(*(c[5] for _, chosen in evidence for c in chosen))
     for path, chosen in evidence:
         print(f"\n## {short(path)}")
         heads = outline(path)
@@ -342,6 +351,9 @@ def main(argv=None):
             print("outline: " + " | ".join(heads))
         for _, _, ln, head, text, _ in chosen:
             print(f"\n[line {ln}{' · ' + head if head else ''}]\n{text}")
+    if len(covered) * 2 < len(kws):
+        print(f"\nWEAK MATCH: these files hold {len(covered)} of {len(kws)} question words. "
+              f"If they do not answer it, the notes may use other words. Deeper (about 1 min): {memsearch}")
     if a.deep:
         print("\n## memsearch\n" + subprocess.run(memsearch, shell=True, capture_output=True, text=True).stdout)
     return 0

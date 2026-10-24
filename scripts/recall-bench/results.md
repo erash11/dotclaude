@@ -3,6 +3,31 @@
 Model: Sonnet, both arms. A = default session; B = memsearch top-5 + 1 tool-less call (run 1 only); C = recall.py + 1 tool-less call.
 Correct = judged by hand against questions.tsv ground truth.
 
+## Run 2026-10-24: ranking tweaks (code only, no model calls)
+
+Asked: can recall.py beat 21/30? Of the 9 hit@1 misses, 4 have the right file in the top 5
+(Issurin, Gallucci, Kitman, renv) and 5 are word gaps BM25 cannot bridge (persist vs residual,
+Soviet vs Kots, "three deep" vs depth-2, unmanaged backup dirs, TypeSafe key). renv is a label
+issue: the #1 handoff holds `RENV_PATHS_LIBRARY_ROOT`. Issurin's #1 is his other book.
+
+Tried on a scratch index (grid in the session scratchpad, not kept):
+- FTS5 column weights alone barely move a score: FTS5 adds weighted hits into one tf before
+  saturation, so a big body tf swamps the name. Scoring name and body apart (BM25F-like) reached
+  hit@1 23, but lost one hit@5 (v08) and one bench row (4). Rejected as fitting the test.
+- Parent folder and camelCase words in the name: +v02/+v09 only together with the split score
+  above; same losses.
+
+Kept (eval 21/30, hit@5 25/30 unchanged; bench 11 -> 12 of 13, row 3 CMJ backfill):
+- name column at weight 2 (weights 2-4 were a plateau; 8 lost bench row 4);
+- best-matching Tier A in the top 3 wins, not the first (p01 had flipped when a superseded
+  memory at #1 gained words);
+- folders named `archive` skipped (5 archived KeystoneOS plans arrived with the 10:36 harvest
+  and pushed p03 to 20/30 for old and new code alike);
+- WEAK MATCH line when the opened files hold under half the question words; it names memsearch.
+  On the eval it fires on 4 of 30: 3 misses (p02, s01, n07) and 1 hit (n04).
+
+The rest needs meaning-based search (memsearch, L2). Baseline updated.
+
 ## Run 2026-10-23 (6): 4 fresh questions (Q10-13)
 
 Picked blind: one random note each from Tier A ~/DEV, a Tier A project slug, the vault library,

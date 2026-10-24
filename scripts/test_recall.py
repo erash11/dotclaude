@@ -89,7 +89,7 @@ with tempfile.TemporaryDirectory() as root:
     assert got[0] == newer and sum(p.endswith("project_push-fix.md") for p in got) == 1, got
 
     # A memory whose name misses but whose description fits still jumps (bench Q3).
-    write(kdir, "drive-hash-dedupe.md", "Copy file Drive mount folder skip. " * 3 + "\n")
+    write(kdir, "drive-hash-dedupe.md", "Copy file Drive mount folder skip. " * 6 + "\n")
     write(mdir, "project_fuse-hang.md",
           '---\ndescription: "Drive mount reads hang; copy a file with the API; every walk skips one folder"\n---\n'
           "Copy file Drive mount folder skip.\n")
@@ -115,5 +115,41 @@ with tempfile.TemporaryDirectory() as root:
     r.open_index([kdir, mdir], disk).close()
     ddb = r.open_index([kdir, mdir], disk)
     assert ddb.execute("SELECT count(*) - count(DISTINCT path) FROM d").fetchone()[0] == 0
+
+    # An index from before the name column is rebuilt, not crashed on.
+    import sqlite3
+    old = os.path.join(root, "old.sqlite")
+    odb = sqlite3.connect(old)
+    odb.execute("CREATE VIRTUAL TABLE d USING fts5(path UNINDEXED, body, tokenize='porter unicode61')")
+    odb.execute("CREATE TABLE seen(path TEXT PRIMARY KEY, mtime REAL)")
+    odb.execute("INSERT INTO seen VALUES (?, ?)", (os.path.join(kdir, "push-fix.md"), 0))
+    odb.commit(); odb.close()
+    ndb = r.open_index([kdir, mdir], old)
+    assert "name" in [c[1] for c in ndb.execute("PRAGMA table_info(d)")]
+    assert r.rank(ndb, "drive push fix", 3)[0].endswith("project_push-fix.md")
+
+    # Two memories in the top 3: the one that is about the question wins, even from #2.
+    m3 = os.path.join(root, ".claude/projects/-z/memory")
+    write(m3, "project_memsearch-setup.md", '---\ndescription: "old setup notes"\n---\n'
+          + "Memsearch hook timeout. " * 8 + "\n")
+    write(m3, "project_hook-timeout-cap.md", '---\ndescription: "hook timeout cap fix"\n---\nHook timeout cap.\n')
+    pdb = r.open_index([m3], ":memory:")
+    q4 = "fix for memsearch hook timeout"
+    assert r.fts5_top(pdb, q4, 2)[0].endswith("project_memsearch-setup.md")  # BM25 alone
+    assert r.rank(pdb, q4, 2)[0].endswith("project_hook-timeout-cap.md")
+
+    # An opened file that holds under half the question words says so and names memsearch.
+    import contextlib, io
+    def ask(question, rts):
+        buf = io.StringIO()
+        old_open, r.open_index = r.open_index, lambda _rts: old_open(rts, ":memory:")
+        try:
+            with contextlib.redirect_stdout(buf):
+                r.main([question])
+        finally:
+            r.open_index = old_open
+        return buf.getvalue()
+    assert "WEAK MATCH" in ask("drive zebra quartz walrus", [kdir, mdir])  # 1 of 4 words
+    assert "WEAK MATCH" not in ask("drive push fix", [kdir, mdir])
 
 print("test_recall: all checks passed")
