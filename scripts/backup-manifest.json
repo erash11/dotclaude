@@ -1378,18 +1378,6 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/printing-press-library",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/printing-press-library.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
    "path": "DEV/project-triage",
    "class": "personal",
    "isRepo": true,

@@ -14,15 +14,15 @@
 !/settings.json
 !/settings.local.json
 !/keybindings.json
-!/statusline-command.py
 !/package.json
 !/agents/
 !/hooks/
 !/skills-archive/
-!/skills-audit/
 !/audits/
 !/scripts/
 !/mods/
+!/docs/
+!/output-styles/
 mods/**/.claude-plugin/types/
 mods/.loadlist
 scripts/logs/
@@ -51,3 +51,8 @@ scripts/recall-bench/out-run3/
 scripts/recall-bench/out-run4/
 scripts/recall-bench/out-run5/
 scripts/recall-bench/out-run6/
+
+# Config backups are git history plus the daily Drive tgz. No loose copies (2026-10-24).
+**/*.bak*
+**/*.win-orig
+**/*.orig
