@@ -223,17 +223,6 @@
     "articulation-skill": "name-only"
   },
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f \"$HOME/.claude/skill-router/router.py\" ]; then exec python3 \"$HOME/.claude/skill-router/router.py\"; else cat >/dev/null; fi",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "matcher": "",
