@@ -1,0 +1,516 @@
+Already up to date.
+=== project_prioritization-slate
+---
+name: prioritization-slate
+description: "Eric's job-lane prioritization system (built 2026-09-14): charters, cap, timer check; where it lives, how to clear a nag, why it exists"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: df3b3576-b317-408d-964a-187d57ed18ca
+  modified: 2026-10-03T15:45:05.188Z
+---
+
+Built 2026-09-14 from that day's interview. Eric's diagnosis in his words: projects started on random ideas or suggestions, no deadlines, no staged deliverables, "done is never really defined", and work nobody asked for so nobody to deliver it to. Four earlier fixes (5/22 note, 6/2 morning brief, 6/12 okr-tracker, 7/31 note) died because each needed remembering.
+
+**Rules** (vault `Projects/Applied-Performance-Operating-Cadence.md`, which replaced the v2 OKR playbook): an active job project needs a `charter` in `~/DEV/project-triage/portfolio.json` — pillar (data/education/research), jd_duty, named receiver, done_means, 4 dated steps (plan agreed → first draft → final → in use), finish_by ≤ semester close. Cap in `meta.slate.cap` (default 4; **5 for Fall 2026 only**). Ideas wait in `/project` ideas. Side lane is outside the cap by Eric's choice.
+
+**Timer:** `KeystoneOS/scripts/ritual-check.ps1` runs `portfolio.py slate-check --json` as the `slate` ritual. Over cap, late step, past finish, missed checkpoint → OVERDUE; incomplete charter or open slot with next_up → DUE. A check that cannot run reports DUE, never OK.
+
+**Clearing a nag:** `python3 ~/DEV/project-triage/portfolio.py mark-done <Project> --step N` or `mark-done "report #2"` (checkpoint match must be unique).
+
+**CLEARED 2026-10-03 by Eric (no progress being made):** all 5 slate projects set to `paused`, charters kept for a restart; 0 of 5 active, next_up still NCAA_BestPractices_Doc. Same day the registry grew to 159 rows (every DEV folder + Drive project) with lanes job/side/system/knowledge/tool, `parent` families, `merged`/`archived` statuses and a read-only `portfolio.py crosswalk` drift report — plan and decisions in `~/DEV/project-triage/docs/inventory/`. Only `lane: job` + `active` counts against the cap.
+
+**Fall 2026 slate (as set 2026-09-14, now paused):** Tech_Inventory_Analysis (Kenny, 10-09) · HPI_Protocol (Chris+Kenny, 12-11) · Education_Curriculum (Student Services leadership, 12-11) · RTP_Constraints_Course (Joe Smith, 12-11) · WomensHealth_Survey (Andrew Gallucci, 12-11). Next up: NCAA_BestPractices_Doc. Checkpoints: status reports #2 09-18 … #9 12-18, Oct 15 OKR checkpoint, Dec 18 close. Summer KRs scored 09-14, avg 0.23; Fall KRs in the OKR doc.
+
+**Parked (as of 2026-09-14):** Baseball profiles · Acro pass builder · 6 job projects. Moved here from `global-memory/MEMORY.md` on 2026-09-19 to stay under its 2,500-char cap; MEMORY.md no longer lists them, so this line is the record.
+
+**Time + tracking loop (added 2026-09-14):** calendar blocks from `project-triage/slate_calendar.py` → Drive `05_SYSTEMS/ProjectBlocks/fall-2026-project-blocks.ics` (Focus time first; future weeks fitted to recurring meetings only — rerun ~every 2 weeks; busy times need the Google Calendar MCP, work calendar is the imported "Calendar"). `/interview-me` Part 0b logs `add-update <Project> "[block] ..."`. Friday ritual runs write `SecondBrain/Inbox/weekly-slate/YYYY-MM-DD.md` via `portfolio.py week-report`. Eric chose to keep the debrief inside interview-me rather than a separate skill. 2026-09-14: the 65 blocks were imported into Outlook web (Add calendar → Upload from file → main "Calendar"); no Outlook app on the Mac. The Chrome upload tool only accepts files under the working dir, so copy the .ics into ~/DEV first. Before re-importing a regenerated file, delete the old "Project block" events — Outlook import may duplicate despite stable UIDs.
+
+**How to apply:** when Eric proposes a new project or idea, check the slate first (`slate-check`) and name the trade-off — which active project it displaces — before helping start it. `okr-tracker/` is retired; do not revive it. Design: `project-triage/docs/superpowers/specs/2026-09-14-prioritization-system-design.md`.
+
+Related: [[portfolio-registry-write-provenance]], [[supervisor-log-pipeline]], [[automation-cadence]]
+=== feedback_harness-time-budget
+---
+name: harness-time-budget
+description: "Harness/system work is done as it comes up, not on a schedule; start with project work, a new tool must replace an old one"
+metadata:
+  node_type: memory
+  type: feedback
+  originSessionId: 786ccf63-5477-4140-ad17-9a8760e9a864
+  modified: 2026-10-12T00:58:04.873Z
+---
+
+Eric set a budget on harness and system work (hooks, skills, memory, KeystoneOS, sync, doctor checks) on 2026-10-03. On 2026-10-11 he dropped the Friday slot: he does system work as it is needed, as the work comes up, not on a schedule.
+
+- No weekly Friday "Harness slot". Do harness fixes when they come up.
+- A new tool, hook or skill must replace an old one.
+- Start sessions with the project work, not doctor/stack checks. Run `claude-stack-doctor` only after a second failure.
+- Let small breakage (noisy logs, stale counts, duplicate hooks) wait if there is a workaround.
+
+**Why:** A 60-day measurement to 2026-10-03 estimated ~55% system / 45% real work (commits: 65/35). Eric wants more time creating and shipping. He chose to handle system work as it comes up instead of in a fixed slot.
+
+**How to apply:** Do system work when it is needed, without a time box. Still start with project work. Do not propose new system pieces unasked. A ratio recheck is on the calendar for 2026-11-02 (method in the event notes); the goal is real work above 50%.
+
+Related: [[working-conditions-bottleneck]], [[skill-bloat-and-promotion]], [[session-hygiene]].
+=== project_work-laptop-hands-off
+---
+name: work-laptop-hands-off
+description: "Baylor Windows laptop: no automation or terminal work since 2026-10-14; desktop-app sessions only since 2026-10-21 (session-end auto-push)"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: 788f361d-8aa2-49b2-ba0b-3402ca8b2f41
+  modified: 2026-10-23T16:30:57.213Z
+---
+
+Since **2026-10-08** the Baylor Windows work laptop (BU-1979FJ4, "My Laptop (2)" in Google Drive) is hands-off. Eric does not want any automation running on it. All 17 of its scheduled tasks (the Eric folder plus the root-library KeystoneOS, MorningBriefing, DailyGmailDigest and Refresh_All_Data tasks) are **disabled**. Their XML exports are in `My Drive/_FROM_WORK_LAPTOP/scheduled-tasks`.
+
+Everything that lived only on the laptop was copied to `My Drive/_FROM_WORK_LAPTOP` (11 zips, `pff-data`, `_tools`) and to the CRASHBOX drive. Handoff doc with the Mac to-do list: `My Drive/_FROM_WORK_LAPTOP/HANDOFF.md`. Vault note: `~/SecondBrain/Projects/work-laptop-handoff-2026-10-08.md`.
+
+**Update 2026-10-14 (Eric):** the Windows laptop is **retired**, not just hands-off. Docker was removed from it. Everything was ported to the Mac and Google Drive. There is no Milvus standalone, no Windows scheduled task, and no Windows-slug memory being written any more. The `C--Users-eric-rash-*` memory folders and the Windows entries in `memory-index-paths.json` are historical; they are still on disk and still indexed (3 C--Users paths in memory-index-paths.json); removing them is Eric's call.
+
+**Timeline:** 2026-08-14 ended Windows as primary; 2026-09-10 active again (both machines); 2026-10-14 retired as a work box; 2026-10-21 back for desktop-app sessions only.
+
+**Why:** Eric chose to stop running jobs on the Baylor machine.
+
+**How to apply:** Do not re-enable, create, or fix scheduled tasks or hooks on the Windows laptop. Port a needed job to the Mac, a VPS, or a Cloudroom automation instead (cloud servers and schedulers approved 2026-10-14, see [[cloud-copy-approval]]). Treat Windows-side entries in [[automation-cadence]] as historical. The Mac is the only machine that runs automation or terminal Claude Code. Windows runs desktop-app sessions only and pushes to GitHub at session end; do not add jobs, hooks or Docker there.
+
+Historical Windows trap notes (dropped from the index 2026-10-22, files kept): [[git-bash-msys-ad-stall]], [[backup-task-sleepkill-signature]], [[settings-json-bom-trap]]. Open the BOM one if a config file ever arrives from a Windows editor.
+=== user_working-conditions-bottleneck
+---
+name: working-conditions-bottleneck
+description: "Eric's self-identified bottleneck is working conditions, not effort — he needs a thinking partner / sharing outlet, and lacking one he goes looking for people and loses time"
+metadata: 
+  node_type: memory
+  type: user
+  originSessionId: 583baf57-8dc4-46c7-8842-501ae1fdeb04
+  modified: 2026-08-03T23:18:09.932Z
+---
+
+Eric's limiting factor on deep work is environmental, not motivational. He is highly productive in short bursts once work actually starts; what breaks is the path to starting. The specific disruptor he named (2026-07-28) is the pull to share what he's working on — with no standing outlet for it, he goes and finds people, which costs him the session.
+
+**Corrected 2026-07-29.** The pull toward people is not a leak, it's the generative stage. His own observation: alone he wants company; in company the project ideas arrive. Solitude is where he refines, not where he generates. A long unbroken solo block with nothing in the hopper is waiting, not deep work.
+
+**Second brake, same day:** he holds ideas back from fear of overstepping into others' lanes, against an unstated expectation that he act unasked. He is deliberately moving off this position ("if I don't act, ideas wither"). Pressfield's Resistance is his frame for it.
+
+**Qualified 2026-08-03.** The permission gate is not entirely self-imposed. He acted unasked on a device another staffer was already championing (ShiftWave chair, second trial unit) and took real organizational blowback for it — careful, low-key handling bought nothing, because the claim was made by initiating, not by presenting. So the caution is warranted on ground someone has visibly attached themselves to, and unwarranted everywhere else. His same-day reaction ("pander to the people in power, keep your head down") is a bruise, not necessarily a settled position — don't treat it as one.
+
+**Why:** Both reframe what looks like procrastination. The first is an unmet structural need (input/ideation) improvising in real time; the second is a self-imposed permission gate that reads as professional courtesy. Neither is a discipline failure, and treating them as one produces useless advice.
+
+**How to apply:** Act as the thinking partner in-session — reflect his reasoning back, name what's interesting in it, and give him something to react to rather than only executing tasks silently. When he's ideating, don't rush to implementation; the ideation *is* the need being met, and it's the stage that feeds everything else — help him capture what surfaces. Prefer short, well-scoped blocks with a clear starting line. When he hesitates on whether something is his to do, first ask whether anyone has visibly claimed it — if not, name the permission gate rather than validating the caution; if someone has, the hesitation is a correct read and the useful move is how to approach the owner, not encouragement to proceed. Related: [[company-generates-solitude-refines]], [[waiting-for-the-ask-kills-the-idea]], [[ownership-not-merit-governs-the-reaction]], [[design-the-conditions-not-the-discipline]] in the SecondBrain vault.
+=== project_hook-two-copies-trap
+---
+name: hook-two-copies-trap
+description: "A Claude Code hook patch works, then silently reverts — hooks live in two directories and both must be patched"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 9422b1a6-8624-4c86-a4f6-3c4b1a4c9fc8
+  modified: 2026-09-09T15:26:04.471Z
+---
+
+The **entire hook directory is mirrored** across two harnesses — not one stray file.
+Verified 2026-09-09: ~55 near-identical entries in each of
+
+- `~/.claude/hooks/` — Claude Code
+- `~/.codex/hooks/` — Codex
+
+**Patch both, always.** Editing one leaves the other on the old code. Whichever
+harness runs next re-triggers the bug, which reads as "the fix reverted".
+
+The two are not exact mirrors, so do not assume drift means a failed patch:
+`.claude/hooks/` additionally holds `herdr-agent-state.sh` and an older
+`memsearch-sync.js.bak-20260814`. Those are legitimate, not drift.
+
+Worked example — `transcript-capture.js` (Stop hook):
+Codex invokes it with a null `transcript_path`, which the script did not handle.
+Patched 2026-09-07 to exit quietly on null instead of erroring.
+**Tell that a copy drifted:** `missing transcript_path` lines reappear in
+`~/.claude/global-memory/transcripts/.errors.log`. When they do, diff the two
+copies before debugging the script itself.
+
+Verify after any hook edit — one file, or the whole set:
+
+```bash
+diff ~/.claude/hooks/transcript-capture.js ~/.codex/hooks/transcript-capture.js
+diff -rq ~/.claude/hooks ~/.codex/hooks     # whole set; expect only the two known extras
+```
+
+Hook *failures* surface at session start via `.errors.log` — see
+[[keystoneos-verification-habits]] for what a clean exit code does and does not
+prove, and [[backup-sync-system]] for the archive-before-clearing rule on that log.
+=== project_skill-bloat-and-promotion
+---
+name: skill-bloat-and-promotion
+description: "Measured skill bloat in this setup, the project-until-promoted rule that fixes it, and the command that re-measures usage from .jsonl session logs"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
+  modified: 2026-10-07T16:20:14.842Z
+---
+
+Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
+("How to Actually Choose the Right AI Agent", 2026-09-11). Full note:
+`~/SecondBrain/Inbox/2026-09-12-harness-over-model-mark-kashef.md`.
+Same shape as the earlier audit in [[brain-audit-loop]] — that one scored the
+**vault**, this one scores the **skill layer**.
+
+## The measurement
+
+| Metric | Count |
+|---|---|
+| Global skills in `~/.claude/skills/` | 160 (→ **117** after the Tier 1 archive, 2026-09-12) |
+| Plugin skills exposed per session | ~37 (6 enabled, 18 disabled) |
+| SKILL.md files in plugin cache | 606 — disabled plugins + old versions, NOT the load |
+| Project-level skills anywhere in `~/DEV` | **0** |
+| `.jsonl` sessions scanned | 414 |
+| Distinct real skills **ever** invoked | **58** |
+| Used 3+ times | 30 |
+| Used exactly once | 19 |
+
+Everything is global. That is the anti-pattern, not the achievement.
+
+## The rule that fixes it — promotion
+
+**Everything stays project-level until it earns global.** A skill lives in
+`<project>/.claude/skills/` until it proves itself across 2+ projects, then it
+gets promoted to `~/.claude/skills/`. Keeps the global load small and the blast
+radius tight — so when something underperforms you can tell a *model* problem
+from a *harness* problem from an *organisation* problem.
+
+## The audit question
+
+Not "how often did I run this skill?" but **"would the model do this fine without
+the skill now?"** A skill is a crutch; as the brain gets smarter the crutch starts
+to *limit* it. Seasonal skills (`forecast-capture`) and occasional ones
+(`ingest-book`) are low-count by design — low usage alone is not a delete signal.
+
+## Re-measure (BUILTIN filter is the whole trick)
+
+Without the `BUILTIN` set you also count `/exit`, `/clear`, `/compact` and friends,
+which inflates the total to 74 and buries the real skills.
+
+```bash
+python3 - <<'EOF'
+import glob,re,collections
+BUILTIN={'exit','clear','compact','rename','color','login','logout','plugin','doctor',
+'help','model','config','resume','cost','status','init','agents','mcp','hooks','memory',
+'review','vim','terminal-setup','install-github-app','add-dir','bug','release-notes',
+'pr-comments','ide','permissions','statusline','output-style','todos','export',
+'privacy-settings','upgrade','fast','artifacts','tasks','loop','context','usage','rewind',
+'sandbox','feedback','worktrees','skills','reload-skills','reload-plugins','bashes',
+'keybindings','theme'}
+c=collections.Counter()
+for f in glob.glob('/Users/kristinarash/.claude/projects/**/*.jsonl',recursive=True):
+    try:
+        for line in open(f,encoding='utf-8',errors='ignore'):
+            if 'Skill' not in line and 'command-name' not in line: continue
+            for m in re.finditer(r'"name"\s*:\s*"Skill"\s*,\s*"input"\s*:\s*\{[^}]*?"skill"\s*:\s*"([^"]+)"', line):
+                c[m.group(1)]+=1
+            for m in re.finditer(r'<command-name>/([a-zA-Z0-9:_-]+)</command-name>', line):
+                c[m.group(1)]+=1
+    except Exception: pass
+real={k:v for k,v in c.items() if k.split(':')[-1] not in BUILTIN and k not in BUILTIN}
+print("distinct real skills ever invoked:",len(real))
+print("used >=3 times:",len([k for k,v in real.items() if v>=3]))
+print("used exactly once:",len([k for k,v in real.items() if v==1]))
+for k,v in sorted(real.items(),key=lambda x:-x[1]): print(f"{v:5d}  {k}")
+EOF
+```
+
+## Decision, 2026-09-12
+
+**Do the skill audit BEFORE adopting Pi** (`pi.dev`) as an alternative harness.
+Rationale: the leverage is the bloat, not the harness. Auditing first means any
+future harness move ports ~30 good skills instead of ~200 mixed ones.
+
+Pi facts, verified from `pi.dev/docs/latest` 2026-09-12 — full note at
+`~/SecondBrain/Inbox/2026-09-12-pi-harness-research.md`:
+
+1. **No sandbox, no approval flows.** "Pi does not include a built-in sandbox."
+   Project trust only guards resource *loading*, not what the agent then does.
+   Never run Pi in `~/DEV` or near `DexaProject`. Trial it in `~/pi-trial` or a
+   container (`sbx` keeps the credential off the container).
+2. **Skills port for one line.** Pi implements the Agent Skills standard and already
+   auto-discovers `~/.agents/skills/` — where 45 of the skills live. Add the rest with
+   `{"skills": ["~/.claude/skills"]}` in `~/.pi/agent/settings.json`. It loads
+   `AGENTS.md` **or** `CLAUDE.md` directly.
+3. **Hooks → TypeScript extensions is a bounded port, not a rewrite** (earlier note
+   said "weeks", that was wrong). Hooks here are already `.ts`; Pi's `tool_call` event
+   returns `{block, reason}` — the same shape as the dcg guard.
+4. **Claude subscription through Pi bills per token as "extra usage", NOT against plan
+   limits.** Changes the economics of brain-swapping.
+
+Config lives in `~/.pi/agent/` and survives npm uninstall.
+See also [[hook-two-copies-trap]] and [[dcg-guard-blocks]].
+
+## Audit outcome, 2026-09-12
+
+**Both tiers executed.** 99 skills archived, global **160 → 61**, roster cost
+**19,158 → 6,428 tokens/session (a 66% cut)**. Zero regressions: none of the 99
+had ever been invoked in 414 sessions.
+
+Decision 2026-09-12: keep the `mattpocock-skills` and `superpowers` **plugins** and
+archive the local bare-name duplicates. The plugin (v1.2.3, 35 skills) ships every
+duplicate removed and is newer than the July symlinks. Rule that follows: when a
+plugin and a local skill share a name, **the plugin wins** — delete the local copy.
+
+Script: `~/.claude/skills-audit-2026-09-12.sh` (archives, never deletes — undo with
+`mv ~/.claude/skills-archive/2026-09-12/* ~/.claude/skills/`).
+Report: `~/SecondBrain/Inbox/2026-09-12-skill-audit.md`.
+
+Traps found while doing it:
+1. **CORRECTED 2026-09-12 — `~/.claude/skills/` IS version-controlled.** It is its own
+   git repo, remote `https://github.com/erash11/claude-skills.git`, and the audit was
+   committed as `3ab4467 chore: apply global skill audit` and pushed. The earlier note
+   that it is "gitignored, archive is the only undo" was true only of the *`dotclaude`*
+   repo, which ignores this path — a different thing. **Git IS the safety net here, and
+   it is also how the cut reaches Windows.** Undo with
+   `git -C ~/.claude/skills revert <sha> && git push`, not the archive folder
+   (`skills-archive/` is not in the repo and never reaches the other machine).
+2. **A cut in `~/.claude/skills/` does NOT reach `~/.agents/skills/`.** After the audit,
+   98 of the 99 archived skills were still live in the pool (306 entries there vs 61
+   canonical). Claude Code stopped seeing them; **Pi auto-discovers that folder**, so
+   installing Pi would have re-exposed all of them. Always cut both.
+3. **Skills live in three places and it is easy to edit the wrong copy.**
+   `~/.claude/skills/` (19 entries were symlinks pointing *out* to the pool),
+   `~/.agents/skills/` (Pi, Cowork), `~/.codex/skills/` (Codex, 27 symlinks + 5 real
+   dirs). Count with `find -L`; plain `find` undercounts.
+4. **`sync-to-codex.sh` did `rm -rf "$dst/$s"; cp -R "$SRC/$s"`** over a 7-name
+   allowlist. If `$SRC/$s` ever became a symlink into `$dst`, that deletes the real
+   data. `dev-sync` tells you to run it after every pull. A `.ps1` twin has the same
+   shape — patch both.
+5. **`~/.claude/skills/_shared/`** holds `config.json` + `Inference/` and is resolved by
+   10+ skills via `parents[2]/_shared/config.json`. It has **no SKILL.md**. Never treat
+   "no SKILL.md" as "orphan, delete".
+6. **"606 plugin skills" is cache, not load.** Only 6 of 24 plugins are enabled
+   (~37 skills exposed). The rest are disabled plugins and old cached versions.
+
+## Executed 2026-09-12 — traps the live run found
+
+- **Views are live links now.** `~/.agents/skills/<owned>` and `~/.codex/skills/<owned>`
+  point into canonical, so anything that writes a view path writes canonical
+  (`graphify install --platform agents` does; see [[graphify-runtime-setup]]).
+- **`skillOverrides` in `~/.claude/settings.json` breaks parity silently.** Codex and Pi
+  ignore that file, so an owned skill set `"off"` there is hidden in Claude Code but live
+  elsewhere. Perfect frontmatter does not help; `skill-portability-check.py` fails it.
+  Resolved 2026-09-13: Eric re-enabled the 7 (ArXiv, ISA, Science, capture-insight,
+  library-review, pp-espn, session-miner) — `~/.claude` commit `21c686d`, checker 42/42.
+  Never set an owned skill "off" again; retire it from canonical instead.
+- **Git's spelling wins, not the Mac's.** APFS is case-insensitive: the folder showed
+  `Harvest` while git recorded `harvest/`. Check `git ls-files` before "fixing" a
+  name to match the disk.
+- **A `closeout` in another session commits your uncommitted work** (it swept Task 5's
+  34 SKILL.md edits into its own commit). Commit each verified step immediately.
+- **Description budget:** keep each description under ~650 chars; Claude Code caps the
+  combined listing.
+
+## Architecture decided 2026-09-12 (executed through Task 5 the same day)
+
+**Canonical = `~/.claude/skills/`** (the git repo, real directories only, **never commit
+a symlink** — Windows pulls this repo). `~/.agents/skills/` and `~/.codex/skills/` are
+**generated views**, rebuilt by `sync-to-codex.sh` from a complete manifest of every
+canonical dir holding a SKILL.md, recorded in a `.generated-by-sync-to-codex` ownership
+file so an audit can tell a generated entry from a third-party `npx skills add` install.
+Symlink on Mac, copy on Windows.
+
+Portable frontmatter contract (fires in Claude Code *and* Codex): `name` must equal the
+directory name (TitleCase is legal), and `description` needs **both** a positive
+"Use when …" clause with literal trigger phrases *and* a negative "Do not use …" clause.
+Codex reads only `name` + `description` (+ optional `metadata.short-description`) and
+ignores `argument-hint` / `allowed-tools`. Codex over-fires without the negative clause;
+Claude will not trigger without the literal phrases.
+
+Plan (Codex-approved after 6 review rounds, 10→0 findings):
+`~/DEV/KeystoneOS/docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md`.
+See [[dev-layout-and-discovery]], [[hook-two-copies-trap]], [[vendored-skill-install]].
+
+## claude.ai-synced duplicates, 2026-10-02 (doctor-plus)
+
+`~/.claude/skills/synced/<account-id>/` is claude.ai account skills synced down (gitignored,
+re-synced each start — deleting the folder does not stick). They list as `anthropic-skills:<name>`.
+Where one duplicates a local skill, **local wins**: set `"anthropic-skills:<name>": "off"` in
+`skillOverrides` (namespaced keys work — verified with a headless on/off control run). Done for
+closeout, dev-sync, five-slides-generator, new-project, watch, last30days (2026-10-06; the
+plugins `watch@claude-video` and `last30days@last30days-skill` keep them; local `watch` was
+already "off"), articulation-skill (the last one re-tracked
+in canonical 2026-10-02 after a 9/10 removal left untracked per-machine copies). Do not delete them on claude.ai: the synced
+five-slides is written for the claude.ai sandbox and is the right copy there. The "never off" rule
+above is for *owned* skills only.
+
+## Listing trim, 2026-09-14 (doctor-plus)
+
+**40 owned skills are `"name-only"` in `~/.claude/settings.json` `skillOverrides`**
+(dotclaude commit `172d547`). 13 stay full: the ones Claude invoked itself 2+ times
+(memory-write, CreateSkill, impeccable, claude-stack-doctor, codex-review, name-meetings,
+project, graphify, fireflies-intake, html-to-pdf, meeting-prep, status-report) plus
+sports-science-research-grounding. Chosen from the usage scan above (model calls vs typed).
+
+- Why `name-only`, not `"off"` or `disable-model-invocation`: the name stays listed, so
+  Skill-tool chains (`startup`→`dev-sync`, `weekly-review`→`meeting-sync`) still work,
+  the portability checker only fails `"off"`, and Codex/Pi still see full descriptions.
+- Cost: those 40 fire less on phrases ("goodnight", "capture this"). Type `/name`.
+- Next-session check: if ~17 local skills still show as bare names, the listing budget
+  is being eaten by plugin skills, not these. Promote a skill back to `"on"` by deleting
+  its line.
+
+## Plugin/skill dedupe, 2026-10-07
+
+- `mattpocock-skills` now comes from Matt's own marketplace (`@mattpocock`, 1.3.1, autoUpdate).
+  The `@claude-plugins-official` copy was uninstalled: that marketplace pins a commit SHA and
+  lagged at 1.2.3. Prefer the author's own marketplace.
+- Removed 6 untracked symlinks in `~/.claude/skills/` that shadowed plugin skills (code-review,
+  grilling, handoff, prototype, teach, watch). Targets stay in `~/.agents/skills/` for Codex/Pi.
+- Review skills trimmed (Eric's choice, same day): keep `mattpocock-skills:code-review` +
+  `codex-review`. Built-in `code-review` set "off" (bare key; does not hit the namespaced plugin
+  skill). `superpowers:requesting-code-review` "off" (Eric's call; superpowers
+  executing-plans and subagent-driven-development call it by name, so their review step may fail).
+- `superpowers:test-driven-development` "off" too; `mattpocock-skills:tdd` is the TDD skill.
+- A description/body similarity scan of 148 active skills found no other duplicates.
+=== feedback_no-follow-up-on-eric
+---
+name: no-follow-up-on-eric
+description: "Eric takes the recommended option and does not verify or remember follow-up steps; design every loop so it runs or alerts without him, and verify the work yourself"
+metadata:
+  type: feedback
+---
+
+Eric defers to the recommended option and relies on the agent to verify. Work that depends on him remembering a step, checking a result, or starting a test later will not get done. Example (2026-10-23, recall bench): 'add that to the recall test' was replaced by an agent rule (memory-write skill: a wrong or stale recall becomes a bench question unasked) plus an unattended daily check in the backup (`~/.claude/scripts/recall-bench/check.py`). Related: [[working-conditions-bottleneck]], [[recall-bench]].
+
+**Why:** Eric, 2026-10-23: 'I'm not going to remember to do that. A lot of the times ... I just pick your suggestion and your recommendation ... I don't verify a lot of my work. I ask you to do it for me.' A step that waits on him does not happen.
+
+**How to apply:** Never end on a habit for Eric to keep ('tell me when X'). Make the agent do it unasked (a rule in the skill/AGENTS.md the session reads) or make it run unattended and report through .errors.log, which every session shows. Verify results yourself before calling work done. Still give a recommendation first; it is the option he will take, so make it the safe, complete one. Confirm only hard-to-reverse or outward-facing actions.
+=== project_automation-cadence
+---
+name: automation-cadence
+description: "Standing automation schedule (Mac only since 2026-10-08) — digests, ritual nudges, memsearch reindex + recall eval timing, OS audit cadence, gws/Gmail capability limits, reMarkable OCR entry point"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
+  modified: 2026-10-23T16:08:36.822Z
+---
+
+Durable schedule and capability facts for the Mac automation stack. These are stable
+settings, not active threads — health-check them with `/claude-stack-doctor`.
+
+## Ritual nudges — OFF on both machines (updated 2026-10-03)
+
+- Mac `com.keystone.rituals` was booted out and disabled **2026-09-24**; Windows
+  `KeystoneOS-Rituals` (weekdays 17:00, Fri 15:30) is disabled and Eric chose to **keep it
+  off** on 2026-10-03. Nothing nudges `/interview-me` or `/weekly-review` any more.
+- The reminder now is `~/DEV/WORKFLOW.md` (the ideal day/week) plus the status lines.
+  `ritual-check.ps1` still works by hand. It has **five** rituals (interview-me,
+  weekly-review, harvest, forecast-capture, `slate` added 09-14); `Name    = ` in
+  `KeystoneOS/scripts/ritual-check.ps1` is the authoritative list. Due/overdue is computed
+  from each ritual's own output (forecast-capture is Monday-anchored and season-bounded —
+  see [[cfb-forecast-capture]]).
+
+**The output artifact is the record**, not a reminder firing.
+
+## memsearch reindex
+
+**Mac:** reindex **rides the daily backup task** rather than running on its own timer
+(00:30 → 09:00 on 2026-08-29 → 21:00 on 2026-09-24 → **hourly 12:00-17:00 since 2026-10-22**,
+gated by `daily-backup-login.sh`: AC power only, max 2 tries/day, stops after an OK run). The
+backup's uncapped full reindex absorbs backlogs the short SessionEnd hook can't finish.
+See [[backup-sync-system]].
+
+**Windows:** no nightly reindex — the `KeystoneOS-DailyBackup` task is disabled (since
+2026-08-13). Task Scheduler `\Eric\memsearch-drain-weekly` (**Sundays 02:00**) has ONE
+action since 2026-10-04: `audits/recall-eval/weekly-chain.ps1`, which runs
+`memsearch-drain.ps1` → `run-eval.ps1` (memsearch, fts5, rg, jev; label `weekly`) →
+`after-run.ps1` (commits+pushes results, writes `LATEST.md`, appends to `.errors.log` only on
+a problem), retrying a step that exits 0xC0000142. Log: `audits/recall-eval/logs/weekly-chain.log`.
+Why: as three separate actions, action 2 died at 02:10 with 0xC0000142 (DLL init failed, never
+ran a line) on 10-01 and 10-04; it runs fine by hand. `\Eric\memsearch-drain-once` no longer exists.
+
+## Mac is the only scheduler (since 2026-10-08)
+
+The Windows laptop is hands-off ([[work-laptop-hands-off]]); every Windows entry in this file
+is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claude` commit `08d3113`):
+
+- **Claude files digest** — launchd `com.keystone.filesdigest`, daily **06:30** (runs on wake if
+  missed). Emails Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored
+  commits, by repo, via `gws`. `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`).
+- **Nightly digest** — plist `com.keystone.nightlydigest` (21:00) is built but **not installed**:
+  it waits in `~/_PARKED_COPIES/handoff-staging/launchd/` until a `--dry-run` passes (its Drive-tree walk ran
+  >25 min on 10-08 while other Drive jobs were running).
+- **Run nowhere now:** memsearch-drain-weekly (the recall eval), DailyGmailDigest
+  (`DEV/agy/daily_digest.py`), Backup AI Sessions (`backup-ai-sessions.ps1`; the Mac daily backup
+  already snapshots `.codex/sessions`), CFB-ForecastCaptureReminder.
+- Agents cannot write `~/Library/LaunchAgents` (auto-mode blocks it as persistence): stage the
+  plist and Eric installs with `cp … && launchctl bootstrap gui/$(id -u) <plist>`.
+
+## Mac launchd agents (from the plists, 2026-10-23)
+
+Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting one.
+
+| Agent (`com.keystone.*`) | When |
+|---|---|
+| morning | daily 06:00 |
+| filesdigest | daily 06:30 |
+| reconcile | daily 07:00 + RunAtLoad |
+| clouddrivepush | daily 07:00 and 17:30 (via Terminal, see [[cloud-push-launchd-blocked]]) |
+| graphextract | daily 09:30 |
+| gpspull | daily 10:00 and 16:30 |
+| perchpull | daily 10:05 and 16:35 |
+| valdpull | daily 10:10 and 16:40 |
+| dailybackup | hourly 12:00-17:00 (gate: `daily-backup-login.sh`) |
+| dailybackup-login | RunAtLoad (same gate) |
+| stackdoctor | Mon 10:30 |
+| adjudicate | Sun 02:30 |
+| aiosaudit | monthly, day 1, 14:00 |
+| agysync | every 6 h (StartInterval 21600) |
+| rituals, commandcentre | disabled |
+
+## OS audits
+
+Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run);
+**next due 2026-10-24**.
+
+## Capability limits worth remembering
+
+- **gws `invalid_client: The provided client secret is invalid` = stale client SECRET, not
+  token rot** — re-auth alone never fixes it. The secret for client `208643585660-3ogm…`
+  (project `baylor-gws`) was rotated 2026-09-17 to one ending `Xyjf`; the Mac kept the
+  June one until 2026-09-30, when the Windows copy was carried over via Drive. Console no
+  longer shows or downloads a secret: copy the other machine's `client_secret.json`, or
+  Add secret (shown once). Then login, then delete `token_cache.json`.
+- **gws** re-auth requires explicit full scope URLs — the `-s drive`
+  shorthand silently grants no scopes (v0.22.5 bug), and `~/.config/gws/token_cache.json`
+  must be deleted after re-auth or the stale token is served. See [[gws-forms-api]].
+- **MCP Gmail sends to Eric himself are approved** (2026-10-04): `send_message`/`forward` work.
+  Eric OK'd sending to eric.rash11@gmail.com and his Outlook, Eric_Rash@Baylor.edu. Anyone
+  else still gets a draft, not a send.
+
+## reMarkable OCR
+
+`remarkable_extract.py` — USB-first with a `--cloud` fallback; Vision API key lives in
+`.env`.
+
+## Claude Code routines (cloud, since 2026-10-14)
+
+- **skills-health-check** — Claude Code routine `trig_01Te3Xg9bkFKLDypiFnssC6J`, cron `0 12 * * *` UTC (07:00 CDT; 06:00 after DST ends 11-01). Opus 5.5, repo erash11/claude-skills, tools Bash/Read/Glob/Grep, no connectors. Read-only; replies "OK <date> - no issues" or 3 sentences per problem. Runs with the Mac off. Manage: https://claude.ai/code/routines/trig_01Te3Xg9bkFKLDypiFnssC6J
+- **Cloudroom dropped 2026-10-14.** Eric chose to stay with Claude Code: Cloudroom automations and the drive-cloud-copy script automation were deleted. The Drive copy ran by hand until 2026-10-23; since then launchd runs it at 07:00 and 17:30 through Terminal (see [[cloud-push-launchd-blocked]]).
+=== project_cloud-push-launchd-blocked
+---
+name: cloud-push-launchd-blocked
+description: "cloud-push under launchd: macOS per-file com.apple.macl blocks it; fixed 2026-10-23 by running it inside Terminal via cloud-push-launch.sh"
+metadata:
+  node_type: memory
+  type: project
+  originSessionId: 802ea68a-c53e-4d3a-a897-1d311560fdd1
+  modified: 2026-10-23T12:24:59.589Z
+---
+
+`com.keystone.clouddrivepush` (07:00 and 17:30) failed under launchd from 2026-10-12 to 10-23 with rsync `open: Operation not permitted` on `Drive/.../_MACHINE/Cloud_Copy/DEV/`. By hand from Terminal it always worked.
+
+**Cause (tested 2026-10-23).** A process started straight by launchd (python3 or bash) can stat, mkdir and create new files in the Drive mount, and rewrite files it made itself. It cannot list Drive folders, or open, rename over, or delete files that Terminal made. Each such file carries `com.apple.macl` naming Terminal; `xattr -d` does not remove it. Full Disk Access on `Python.app`/rsync does not help (tried 10-14). rsync lists the destination, so it failed on the first step.
+
+**Fix (live 2026-10-23).** The plist runs `/bin/bash ~/.claude/scripts/cloud-push-launch.sh`. That runs `open -g -a Terminal ~/.claude/scripts/cloud-push.command`, which runs `cloud-push.py` (rsync, unchanged) with Terminal's access. The launcher waits 90 s for a new `START` line in `cloud-push.log`; if none, it writes an ERROR to the log and to `.errors.log`. Tracked plist copy: `~/.claude/scripts/com.keystone.clouddrivepush.plist`. Proven: kickstarted runs OK 07:15 and 07:21 with the screen locked.
+
+**Known costs.** Each run opens a Terminal window. Eric set profile "Clear Dark" to "Close if the shell exited cleanly" (10-23, in Terminal Settings; a `defaults import` did not reach the running Terminal), so the window closes when the copy ends (tested). Under memory pressure Terminal ran queued opens ~5 min late; the 90 s check would log that as an ERROR even if the copy runs later.
+
+**How to apply:** Do not swap rsync for a launchd-run copier: Terminal-made files can never be updated that way, and a by-hand run re-taints files. By hand is still `python3 ~/.claude/scripts/cloud-push.py`, or `launchctl kickstart gui/501/com.keystone.clouddrivepush`. Off switch: `launchctl bootout gui/501/com.keystone.clouddrivepush`. Any other launchd job that must read or change Terminal-made Drive files hits the same wall; route it through Terminal the same way or use the `gws` API. See [[automation-cadence]] and [[cloud-copy-approval]].

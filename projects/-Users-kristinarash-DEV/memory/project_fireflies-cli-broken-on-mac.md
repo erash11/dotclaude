@@ -152,6 +152,13 @@ vault filename. Run the sleep as a **background** Bash job — the foreground to
 have no YAML frontmatter, so "after frontmatter" reads as line 1 and would be wrong;
 match the 237 existing files instead.
 
+**Morning cadence meeting-sync was dead under launchd until 2026-10-23.** Every scheduled run
+(2026-08-06, the first Mac run, to 10-23) printed `not authenticated - set FIREFLIES_API_KEY` while the cadence still logged
+`cadence OK`: launchd runs `pwsh -NoProfile`, which never sees the `~/.zshrc` Keychain export. Fixed in
+`~/DEV/KeystoneOS/scripts/keystone.ps1` `Invoke-MeetingSync` (KeystoneOS `b13a617`): it reads the Keychain
+item directly (launchd CAN read the login Keychain, tested 10-23). A bad key still exits 0 and shows only
+as `"event":"sync_error"` lines, so those and non-zero exits now go to `.errors.log`.
+
 **Fireflies API key rotated 2026-10-22 (Eric)**; key in Keychain item `FIREFLIES_API_KEY`
 (a GraphQL `user` query with it returned 200 on 2026-10-23). Secrets on this machine live in
 the macOS Keychain, never in `~/.zshrc`.

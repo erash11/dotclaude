@@ -1,0 +1,1 @@
+{"agentType":"workflow-subagent","description":"audit:restore-github","workflowPhase":"Inventory","spawnDepth":1,"requestShape":"foreground","requestNonInteractive":true}

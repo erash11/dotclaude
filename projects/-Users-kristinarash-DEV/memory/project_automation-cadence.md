@@ -50,14 +50,21 @@ is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claud
 - **Claude files digest** — launchd `com.keystone.filesdigest`, daily **06:30** (runs on wake if
   missed). Emails Eric_Rash@baylor.edu the files added the PREVIOUS day in Claude co-authored
   commits, by repo, via `gws`. `~/.claude/scripts/claude-files-digest.py` (`--date`, `--dry-run`).
-- **Nightly digest** — plist `com.keystone.nightlydigest` (21:00) is built but **not installed**:
-  it waits in `~/_PARKED_COPIES/handoff-staging/launchd/` until a `--dry-run` passes (its Drive-tree walk ran
-  >25 min on 10-08 while other Drive jobs were running).
-- **Run nowhere now:** memsearch-drain-weekly (the recall eval), DailyGmailDigest
-  (`DEV/agy/daily_digest.py`), Backup AI Sessions (`backup-ai-sessions.ps1`; the Mac daily backup
-  already snapshots `.codex/sessions`), CFB-ForecastCaptureReminder.
-- Agents cannot write `~/Library/LaunchAgents` (auto-mode blocks it as persistence): stage the
-  plist and Eric installs with `cp … && launchctl bootstrap gui/$(id -u) <plist>`.
+- **Nightly digest** — launchd `com.keystone.nightlydigest`, daily **21:00**, installed 2026-10-23
+  (tracked plist `~/.claude/scripts/com.keystone.nightlydigest.plist`; first launchd send OK 23:29).
+  `nightly-digest.py` emails Eric_Rash@baylor.edu via `gws`. The Mac version skips the Drive section
+  (launchd cannot list Drive; mount walks hang); a crash or failed send goes to `.errors.log`.
+- **Windows tasks, final state (audit 2026-10-23,** `~/.claude/audits/2026-10-23-windows-holdover-audit.md`**):**
+  memsearch-drain-weekly recall-eval chain retired (`recall-bench/check.py` in the daily backup replaces
+  it; the .ps1 chain and `LATEST.md` deleted). Backup AI Sessions retired (daily backup Snapshot-Gws
+  covers it; script deleted). CFB-ForecastCaptureReminder is dead code (it calls the archived
+  morning-briefing package); **nothing nudges the in-season CFB forecast capture.** DailyGmailDigest
+  (`DEV/agy/daily_digest.py`) is dormant, not retired; porting is minutes (gws path + a plist).
+- **A launchd install by an agent worked 2026-10-23, with Eric's chat approval for that work.** An agent copied a plist into
+  `~/Library/LaunchAgents` and ran `launchctl bootstrap` without a block, after Eric said in chat
+  "I approve you to schedule jobs on your own". Keep a tracked copy of every plist (KeystoneOS jobs:
+  `~/DEV/KeystoneOS/ops/`; ~/.claude jobs: `~/.claude/scripts/`). The daily backup runs
+  `harvest-dev-docs.sh` (step 2b-harvest) since the same day.
 
 ## Mac launchd agents (from the plists, 2026-10-23)
 
@@ -67,6 +74,7 @@ Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting
 |---|---|
 | morning | daily 06:00 |
 | filesdigest | daily 06:30 |
+| nightlydigest | daily 21:00 (installed 2026-10-23) |
 | reconcile | daily 07:00 + RunAtLoad |
 | clouddrivepush | daily 07:00 and 17:30 (via Terminal, see [[cloud-push-launchd-blocked]]) |
 | graphextract | daily 09:30 |
