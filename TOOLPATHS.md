@@ -21,7 +21,7 @@ without looking stay in `~/.claude/CLAUDE.md` and `~/.claude/AGENTS.md`.
 | gws | `/opt/homebrew/bin/gws` | |
 | rg | `/opt/homebrew/bin/rg` | |
 | jq | `/usr/bin/jq` | Apple copy only; no Homebrew jq. |
-| memsearch, dcg, room-cli | `/Users/kristinarash/.local/bin/` | |
+| memsearch, dcg | `/Users/kristinarash/.local/bin/` | (`room-cli` removed with Cloudroom 2026-10-24) |
 | herdr | `/Users/kristinarash/.local/bin/herdr` | Runs as `herdr server`. Owns the Codex `~/.codex/hooks.json` SessionStart hook (`herdr-agent-state.sh`) and the `herdr` block in `~/.gemini/config/hooks.json`; the hook scripts (`herdr-agent-state.sh`) carry an `# installed by herdr` marker and the hooks.json entries call them, so treat them as herdr-owned and edit around them. Log `~/.config/herdr/herdr-server.log` has no rotation (522 KB on 2026-10-23). |
 | bun | `/Users/kristinarash/.bun/bin/bun` | 1.3.14. `~/.bun/bin` is on PATH. |
 | graphify | `/Users/kristinarash/.claude/skills/graphify/.venv/bin/graphify` | Not on PATH; call it by full path. |

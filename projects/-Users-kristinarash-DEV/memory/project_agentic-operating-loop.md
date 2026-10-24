@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 408ba3bc-96bc-4947-9341-3eca45e1fb41
-  modified: 2026-10-14T20:58:21.352Z
+  modified: 2026-10-24T05:58:42.332Z
 ---
 
 Decided 2026-10-14. The operating process for coding agents is the 8-step loop now in
@@ -18,8 +18,9 @@ pattern plus David Ondrej's `goal-loop` skill. Full notes:
 
 Stack decisions: stay on Claude Code; Codex plugin is the single second-opinion reviewer;
 no five-reviewer fan-outs, no autogit auto-push, no Pi/OpenRouter model sprawl. Many small
-repos stay (one Cloudroom project per repo; cloud threads clone from GitHub, push first).
-Cloudroom Local is installed; cloud is invite-only.
+repos stay (cloud sessions clone from GitHub, so push first).
+**Cloudroom dropped entirely 2026-10-24** (Eric): app, LaunchAgent and `room-cli` skill removed.
+Long runs go to a separate Claude Code session (desktop app, or claude.ai/code cloud).
 
 **Why:** Eric is usage-sensitive and was at 55% system / 45% real work. The loop is habits,
 not tools. **How to apply:** when Eric asks about agent workflow, Cloudroom, worktrees,

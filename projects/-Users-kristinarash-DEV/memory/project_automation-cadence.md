@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-23T16:08:36.822Z
+  modified: 2026-10-24T05:58:48.622Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -117,4 +117,4 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 ## Claude Code routines (cloud, since 2026-10-14)
 
 - **skills-health-check** — Claude Code routine `trig_01Te3Xg9bkFKLDypiFnssC6J`, cron `0 12 * * *` UTC (07:00 CDT; 06:00 after DST ends 11-01). Opus 5.5, repo erash11/claude-skills, tools Bash/Read/Glob/Grep, no connectors. Read-only; replies "OK <date> - no issues" or 3 sentences per problem. Runs with the Mac off. Manage: https://claude.ai/code/routines/trig_01Te3Xg9bkFKLDypiFnssC6J
-- **Cloudroom dropped 2026-10-14.** Eric chose to stay with Claude Code: Cloudroom automations and the drive-cloud-copy script automation were deleted. The Drive copy ran by hand until 2026-10-23; since then launchd runs it at 07:00 and 17:30 through Terminal (see [[cloud-push-launchd-blocked]]).
+- **Cloudroom dropped.** 2026-10-14: Cloudroom automations and the drive-cloud-copy script automation were deleted (Eric stayed with Claude Code). 2026-10-24: Eric dropped Cloudroom Local too; app, `dev.cloudroom.preview.*` LaunchAgent and `room-cli` skill removed (Trash and `skills-archive/2026-10-24/`). The Drive copy ran by hand until 2026-10-23; since then launchd runs it at 07:00 and 17:30 through Terminal (see [[cloud-push-launchd-blocked]]).
