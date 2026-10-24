@@ -147,9 +147,20 @@ def tier_a(p):
     return "/.claude/projects/" in p and "/memory/" in p and os.path.basename(p) != "MEMORY.md"
 
 
-def name_hits(path, q):
-    """Question words in the file name. Memory file names are topic slugs, so this says what the file is about."""
-    return len(set(keywords(q)) & set(tokens(os.path.basename(path)[:-3].replace("_", " ").replace("-", " "))))
+def about_hits(db, path, q, describe=True):
+    """Question words in what the file says it is about: its name, plus (describe) its frontmatter
+    description line. Memory names are topic slugs and their description is a one-line summary."""
+    about = os.path.basename(path)[:-3].replace("_", " ").replace("-", " ")
+    row = db.execute("SELECT body FROM d WHERE path = ?", (path,)).fetchone() if describe else None
+    if row:
+        head = row[0].split("\n")[:40]  # body starts with the name line, then the frontmatter
+        if len(head) > 1 and head[1].strip() == "---":
+            for line in head[2:]:
+                if line.strip() == "---":
+                    break
+                if line.startswith("description:"):
+                    about += " " + line.split(":", 1)[1]
+    return len(set(keywords(q)) & set(tokens(about)))
 
 
 def newest_copy(db, path):
@@ -161,13 +172,14 @@ def newest_copy(db, path):
 
 
 def rank(db, q, limit):
-    """BM25 order, except a Tier A memory in the top 3 moves to #1 when its name matches as many
-    question words as #1's name. Compiled knowledge articles and vault notes can be older than
-    the memory that corrected them; the name guard stops an off-topic memory jumping."""
+    """BM25 order, except a Tier A memory in the top 3 moves to #1 when what it says it is about
+    (name + description) matches as many question words as #1's file name. Compiled knowledge
+    articles and vault notes can be older than the memory that corrected them; the guard stops an
+    off-topic memory jumping. (Giving #1 its title too lost n06 on the 30-case eval.)"""
     cands = [newest_copy(db, p) if tier_a(p) else p for p in fts5_top(db, q, max(limit, 3) + 3)]
     cands = list(dict.fromkeys(cands))
     a = next((p for p in cands[:3] if tier_a(p)), None)
-    if a and a != cands[0] and name_hits(a, q) >= name_hits(cands[0], q):
+    if a and a != cands[0] and about_hits(db, a, q) >= about_hits(db, cands[0], q, describe=False):
         cands.remove(a)
         cands.insert(0, a)
     return cands[:limit]

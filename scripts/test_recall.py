@@ -87,6 +87,16 @@ with tempfile.TemporaryDirectory() as root:
     got = r.rank(cdb, "drive push fix", 3)
     assert got[0] == newer and sum(p.endswith("project_push-fix.md") for p in got) == 1, got
 
+    # A memory whose name misses but whose description fits still jumps (bench Q3).
+    write(kdir, "drive-hash-dedupe.md", "Copy file Drive mount folder skip. " * 3 + "\n")
+    write(mdir, "project_fuse-hang.md",
+          '---\ndescription: "Drive mount reads hang; copy a file with the API; every walk skips one folder"\n---\n'
+          "Copy file Drive mount folder skip.\n")
+    qdb = r.open_index([kdir, mdir], ":memory:")
+    q3 = "how to copy a file off the Drive mount and which folder to skip"
+    assert not r.fts5_top(qdb, q3, 3)[0].endswith("project_fuse-hang.md")
+    assert r.rank(qdb, q3, 3)[0].endswith("project_fuse-hang.md")
+
     # Refresh writes each file once, even when it re-reads it.
     os.utime(os.path.join(kdir, "push-fix.md"))
     r.open_index([kdir, mdir], disk).close()

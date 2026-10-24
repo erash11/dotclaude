@@ -3,6 +3,16 @@
 Model: Sonnet, both arms. A = default session; B = memsearch top-5 + 1 tool-less call (run 1 only); C = recall.py + 1 tool-less call.
 Correct = judged by hand against questions.tsv ground truth.
 
+## Run 2026-10-23 (5): all memory folders + description guard
+
+Changes since run 4: roots add every `~/.claude/projects/*/memory`; the newest Mac/Windows copy
+of a memory wins; the Tier A guard counts the memory's name + description against #1's file name
+(not #1's title: that lost n06). 30-case eval hit@1 21, hit@5 25/30.
+
+C: 9/9 (orig 5/5, held 4/4). 163,387 tokens, $0.555, 85 s for all 9. Q3 now opens
+`project_drive-fuse-read-hang.md`: gws API, not the mount; skip `02_Raw_Tagging`.
+Default session (run 3 figures): orig 4/5, held 2/4.
+
 ## Run 2026-10-23 (4): Tier A memory first (name guard)
 
 Change: a Tier A memory in the BM25 top 3 moves to #1 when its file name matches as many
