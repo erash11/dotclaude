@@ -76,4 +76,5 @@ Never put memory content here — the file itself holds the facts.
 - [Agentic operating loop](project_agentic-operating-loop.md) — agent workflow, Cloudroom, worktrees, reviewers: point at WORKFLOW.md loop first
 - [Jev health-data IT approval](project_jev-health-data-it-approval.md) — before sending any health data to Jev/TypeSafe; IT approved 10-22, Eric still gates each item
 - [Session history tracked](feedback_session-history-tracked.md) — before gitignoring, untracking or purging session .jsonl/transcripts; they may hold secrets
-- [Recall bench](reference_recall-bench.md) — "add that to the recall test" (a wrong/stale answer); re-testing recall.py or memsearch; scoring the second brain
+- [Recall bench](reference_recall-bench.md) — a recalled answer was wrong or stale (add it to the bench unasked); re-testing recall.py; recall-check errors
+- [No follow up on eric](feedback_no-follow-up-on-eric.md) — before proposing any habit, reminder, manual step or 'tell me when'; when offering options

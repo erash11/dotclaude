@@ -766,6 +766,18 @@ if ($msExe -and -not $DryRun) {
     }
 } elseif (-not $msExe) { $Errors.Add('memsearch-exe-missing'); Log "INDEX skipped: memsearch not found" }
 
+# --- 2c-recall. Does recall.py still open the right file? (added 2026-10-23) ---
+# No model, ~1 s: the 30-case eval + the bench questions against baseline.json. Replaces the
+# retired Windows weekly recall-eval chain. A drop becomes one backup error, so it reaches
+# .errors.log and every session shows it at startup; nobody has to remember to run it.
+$recallCheck = "$U/.claude/scripts/recall-bench/check.py"
+$pyExe = @('/opt/homebrew/bin/python3', '/usr/bin/python3') | Where-Object { Test-Path $_ } | Select-Object -First 1
+if ($pyExe -and (Test-Path $recallCheck)) {
+    $rcOut = (& $pyExe -I $recallCheck 2>&1 | Out-String).Trim()
+    Log "RECALL $rcOut"
+    if ($LASTEXITCODE -ne 0) { $Errors.Add("recall-check: $rcOut") }
+}
+
 # --- 2d. Mirror the recovery guide to the cloud backup root via gws ---
 if ($GwsExe -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
     Push-Location "$U/.claude"

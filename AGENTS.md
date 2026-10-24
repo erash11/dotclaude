@@ -75,3 +75,5 @@ Climb in order; stop as soon as the question is answered. Do not run a search wh
 4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
 5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
 6. **Fallback** — "I don't have a record of that."
+
+When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`, and say so in one line.
