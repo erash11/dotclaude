@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-10-23T16:30:53.679Z
+  modified: 2026-10-24T14:52:45.878Z
 ---
 
 > **Current schedule (2026-10-22) — supersedes every time below.** `com.keystone.dailybackup`
@@ -16,11 +16,14 @@ metadata:
 > RunAtLoad could start `daily-backup.ps1` directly, skipping the AC gate). The hourly gate and
 > the login job are the only make-up paths; nothing retries 17:00-20:00. Leave CRASHBOX attached
 > at midday or the SSD layer skips.
-> **Windows has no nightly DEV backup by design**: `Desktop\DEV` is covered by Drive sync,
-> `\Eric\Backup AI Sessions to Drive` runs 00:30 (session logs + repo-doc harvest; an exit of
-> 0xC000013A is the sleep-kill signature, see [[backup-task-sleepkill-signature]]), and
-> `\Eric\memsearch-drain-weekly` runs Sundays 02:00. `KeystoneOS-DailyBackup` on Windows
-> stays disabled — the script is the macOS port.
+> **Windows runs no backup job.** All 17 of its scheduled tasks were disabled 2026-10-08
+> ([[work-laptop-hands-off]]). `\Eric\Backup AI Sessions to Drive` and the
+> `\Eric\memsearch-drain-weekly` chain were retired and their scripts deleted 2026-10-23; the
+> Mac daily backup's Snapshot-Gws block and `recall-bench/check.py` replace them
+> ([[automation-cadence]]). `KeystoneOS-DailyBackup` on Windows stays disabled — the script is
+> the macOS port. (Superseded 2026-10-24: this block used to say Backup AI Sessions ran 00:30 and
+> drain-weekly ran Sundays 02:00. Their old 0xC000013A exit was the sleep-kill signature, see
+> [[backup-task-sleepkill-signature]].)
 
 Historical, superseded 2026-10-22: **Current state (2026-09-03).** Two backup runs happen on most days, and the 09-02 entry was
 right about that — but **not** because reconcile hard-codes the backup. The real mechanism,
@@ -81,7 +84,9 @@ byte-identical to `~/Desktop/windows-retirement-2026-08-14/` on that machine and
 deliberately **not** pushed (origin had already untracked `.memsearch-index.log` in
 `a0e58c9`; committing would have undone a Mac-side decision).
 
-**Update 2026-09-10: the Windows laptop is ACTIVE again** (synced 9/9; both machines in use).
+Superseded 2026-10-24 (the laptop was hands-off 2026-10-08, retired 2026-10-14, and is
+desktop-app only since 2026-10-21; see [[work-laptop-hands-off]]): **Update 2026-09-10: the
+Windows laptop is ACTIVE again** (synced 9/9; both machines in use).
 The retirement above is history, not current state. Unverified: whether its disabled
 scheduled tasks were re-enabled. Before blaming a single writer for `repo-diverged`, check
 the Windows task list and look for `[auto]` commits from it.
@@ -96,7 +101,8 @@ Residual, by design — the box is meant to stay usable:
   because the task is disabled, not because it was repaired.
 - Three non-KeystoneOS tasks left enabled (`CFB-ForecastCaptureReminder`,
   `DailyGmailDigest`, `Refresh_All_Data`) — all operate under the Windows `~/Desktop/DEV`
-  and touch none of the four repos.
+  and touch none of the four repos. Superseded 2026-10-08: all 17 Windows scheduled tasks are
+  disabled, and the laptop runs no automation ([[work-laptop-hands-off]]).
 
 ## Manifest classification — get this right, it routes athlete data
 
@@ -109,13 +115,20 @@ health check. Adding an entry requires a human class call:
 | `personal` | `ssd` (+`github` if a repo) |
 
 `isRepo: true` also sets `captureOrphans` and `captureWorkingTree` true and needs `remote`.
-**Athlete data must never be classed `personal`** — `personal` skips the Baylor OneDrive
-destination. `baylor` is `deprecated: true` and must never be a sole destination.
+Superseded 2026-10-24: this said athlete data must never be classed `personal` because
+`personal` skips the Baylor OneDrive destination. That no longer routes anything. `class` is
+inert (see 2026-09-09 below), `baylor` is `deprecated: true` and the backup skips it, and
+nothing goes to Baylor OneDrive except Kenny's ITS tracker in the Teams team
+([[no-baylor-onedrive]]). Athlete data may go to personal Drive (approved 2026-10-12,
+[[cloud-copy-approval]]). Identifiable health data (DexaProject, local-only folders) stays local
+or in its one Drive folder (`~/.claude/STORAGE.md`).
 
 ## Traps that cost time
 
 - **Milvus is NOT in the memsearch path**, despite what `RESTORE.md` and the Bucket docs
   say. Indexing works with port 19530 closed and Docker not installed. Don't set it up.
+  (No Milvus server; memsearch uses the embedded Milvus Lite file `~/.memsearch/milvus.db`,
+  checked 2026-10-24.)
 - **`-DryRun` cannot verify a write path.** It passes `rsync -n`, which writes nothing. A
   snapshot that fails live will show `OK` in a dry run. Only a non-dry run is evidence.
 - **Never size up a DriveFS destination with `du`.** It reports local cache/allocated
@@ -376,6 +389,7 @@ mtimes and a parent dir's mtime only moves when an entry is added or removed at 
 `STATE-SSD ... : OK` log lines and the receipt are the evidence; mtimes are not. See also
 [[keystoneos-verification-habits]].
 
+Historical, superseded 2026-10-22 (now hourly 12:00-17:00 through the gate; see the top block):
 **RESOLVED 2026-08-29**: schedule moved 00:30 -> 09:00 in
 `~/Library/LaunchAgents/com.keystone.dailybackup.plist` (PlistBuddy `Set :StartCalendarInterval:Hour 9`,
 then `launchctl bootout gui/$(id -u)/com.keystone.dailybackup` + `bootstrap`; live schedule confirmed
@@ -393,7 +407,8 @@ stack-doctor weekly flagging `errors-log`, `flush-stale`, `memfile-full:MEMORY.m
 `last-flush.json OK (0h ago)`, no `FLUSH_ERROR` in recent dailies, `errors.log: clean`. The
 `onnxruntime` import failure did not need a reinstall, so **do not** reflexively run
 `uv tool install --force memsearch` on the next `ETIMEDOUT` — that strips the local flush patch
-and creates a worse problem. Confirmed here: `memsearch --version` answered instantly (0.4.17) and
+and creates a worse problem. Superseded 2026-10-24: there is no flush patch on the Mac (`store.py`
+is unpatched and indexing works); do not reinstall reflexively, but a reinstall loses nothing. Confirmed here: `memsearch --version` answered instantly (0.4.17) and
 `pgrep -fc memsearch` was 0, ruling out both a broken binary and the
 [[milvus-lock-misdiagnosis]] lock-contention pattern.
 
@@ -406,7 +421,8 @@ stack-doctor returned ALL CLEAR and the thread is closed.
 
 Guard trap: shell truncation (`: > file`) anywhere under `$HOME` is blocked by dcg
 rule `core.filesystem:redirect-truncate-root-home`; `cp /dev/null file` is allowed, and macOS has no
-`truncate` binary. This file is itself near the `memfile-full` threshold — trim before appending more.
+`truncate` binary. Superseded 2026-10-11: that rule is allowlisted, so `: > file` works now
+([[dcg-guard-blocks]]). This file is itself near the `memfile-full` threshold — trim before appending more.
 
 ## A stalled run with no rsync child = an unanswered macOS access prompt (2026-09-03)
 
@@ -443,8 +459,9 @@ Open gap, not yet fixed: neither `Test-Path` has a watchdog, unlike `Invoke-Rsyn
 
 ## `/backup` skill + the completeness signal (2026-09-04)
 
-`~/.claude/skills/backup/SKILL.md` is the on-demand path — the launchd job only fires if the
-Mac is awake at 09:00. Standing routine: plug in CRASHBOX, then type `/backup`.
+`~/.claude/skills/backup/SKILL.md` is the on-demand path — the launchd job only runs when the
+Mac is awake and on AC power between 12:00 and 17:00 (the 09:00 time here was superseded
+2026-10-22). Standing routine: plug in CRASHBOX, then type `/backup`.
 
 **Job count, not error count, is the completeness signal.** A run with CRASHBOX unmounted
 reports `OK (0 errors)` with **9 jobs**; the same run with it attached reports **31 jobs**.

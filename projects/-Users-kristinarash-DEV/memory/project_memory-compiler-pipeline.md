@@ -49,6 +49,9 @@ memsearch is a **uv tool**: binary `~/.local/bin/memsearch`, env
 (`.../memsearch/bin/python -c "import onnxruntime"`) rather than inferring from index counts.
 Reinstall with `uv tool install --force memsearch`, never pip — and re-apply the local flush
 patch afterwards, which any reinstall strips.
+Superseded 2026-10-24: the Mac `store.py` has no flush patch (the patch was for a Windows
+remote Milvus server), and indexing works without it on Milvus Lite (2026-10-24 backup: 2,941
+chunks indexed). `uv tool install --force memsearch` strips nothing on the Mac.
 
 **`hooks/session-start.py` — rewritten 2026-08-29.** It used to paste all of
 `knowledge/index.md` into every session. That file is ~48k chars against a 20k cap, so the

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-24T05:58:48.622Z
+  modified: 2026-10-24T14:51:51.848Z
 ---
 
 Durable schedule and capability facts for the Mac automation stack. These are stable
@@ -33,9 +33,10 @@ gated by `daily-backup-login.sh`: AC power only, max 2 tries/day, stops after an
 backup's uncapped full reindex absorbs backlogs the short SessionEnd hook can't finish.
 See [[backup-sync-system]].
 
-**Windows:** no nightly reindex — the `KeystoneOS-DailyBackup` task is disabled (since
-2026-08-13). Task Scheduler `\Eric\memsearch-drain-weekly` (**Sundays 02:00**) has ONE
-action since 2026-10-04: `audits/recall-eval/weekly-chain.ps1`, which runs
+**Windows (historical — superseded 2026-10-23: this chain was retired and its scripts
+deleted; see "Windows tasks, final state" below):** no nightly reindex — the
+`KeystoneOS-DailyBackup` task is disabled (since 2026-08-13). Task Scheduler
+`\Eric\memsearch-drain-weekly` (**Sundays 02:00**) had ONE action from 2026-10-04: `audits/recall-eval/weekly-chain.ps1`, which runs
 `memsearch-drain.ps1` → `run-eval.ps1` (memsearch, fts5, rg, jev; label `weekly`) →
 `after-run.ps1` (commits+pushes results, writes `LATEST.md`, appends to `.errors.log` only on
 a problem), retrying a step that exits 0xC0000142. Log: `audits/recall-eval/logs/weekly-chain.log`.

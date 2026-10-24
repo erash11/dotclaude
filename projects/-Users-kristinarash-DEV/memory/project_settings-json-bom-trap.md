@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 7741462f-dac7-4551-8692-76574bbfd202
-  modified: 2026-09-12T03:37:42.609Z
+  modified: 2026-10-24T14:51:28.734Z
 ---
 
 One bad write from the Windows machine damages `~/.claude` config files in
@@ -93,6 +93,8 @@ sample payload into the `statusLine.command` and look at the bars.
 
 Writing the repaired file needs the Write tool, not a shell heredoc: `dcg`
 blocks any truncating `>` redirect into `~` (`core.filesystem:redirect-truncate-root-home`).
+**Superseded 2026-10-24:** that rule was allowlisted on 2026-10-11, so a `>` into `~` now
+passes (see [[dcg-guard-blocks]]). The Python fix above writes the file itself either way.
 
 ## The generalisation
 

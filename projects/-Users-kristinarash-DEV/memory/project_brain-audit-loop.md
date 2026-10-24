@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 83464d9d-8262-4ca8-9aed-13167ae4fa1f
-  modified: 2026-10-23T16:08:16.654Z
+  modified: 2026-10-24T14:52:04.573Z
 ---
 
 Built 2026-09-07 from a gap analysis of a Nate Herk AIOS video. The video's own
@@ -24,8 +24,12 @@ registered in `~/.claude/skills/_shared/config.json` as `vault_audits` /
 
 **Baseline 2026-09-07: 67/100** (context 17, connections 22, capabilities 15,
 cadence 13). Two builds it proposed and Eric has not yet started: `/grill-me
-<topic>` writing to `Inbox/grills/`, and putting `/brain-audit` on the monthly
-`com.keystone.rituals` timer.
+<topic>` writing to `Inbox/grills/`, and putting `/brain-audit` on a monthly
+timer. (Superseded 2026-10-24: the proposal named `com.keystone.rituals`, which
+has been disabled since 2026-09-24; see [[automation-cadence]]. No timer runs
+`/brain-audit`; it is a manual monthly step in `~/DEV/WORKFLOW.md`. The monthly
+`com.keystone.aiosaudit` job is the KeystoneOS AIOS audit, not this one. As of
+2026-10-24 the 09-07 audit is still the only one in `~/SecondBrain/audits/`.)
 
 **Why:** The recurring failure in this system is not bloat or drift — it is that
 **everything with a cron stays alive and everything manual freezes inside six

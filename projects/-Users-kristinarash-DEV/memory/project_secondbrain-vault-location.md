@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: a344e278-9d2a-4998-836a-fc0ece8896e2
-  modified: 2026-08-15T00:50:26.229Z
+  modified: 2026-10-24T14:51:59.663Z
 ---
 
 The SecondBrain vault is at `/Users/kristinarash/SecondBrain`. It was relocated from
@@ -24,11 +24,13 @@ indexing, graphify) on files that still *appear* to exist. `~/SecondBrain` is ou
   (entry is `$HOME`-relative: `SecondBrain`), `daily-backup.ps1`, `restore.command`,
   `setup-agents-symlinks.sh`, KeystoneOS `data/*.json` (discovery-roots, memory-index-paths,
   memory-sources, projects), KeystoneOS `scripts/*.ps1`, `tests/keystone-memory-index-paths.ps1`
-  (asserts exact path strings — update in lockstep or the test goes red), and
-  `morning-briefing/config.toml`.
+  (asserts exact path strings — update in lockstep or the test goes red). (Superseded
+  2026-10-24: `morning-briefing/config.toml` was on this list; morning-briefing is archived in
+  `~/DEV/_ARCHIVE/morning-briefing`, see [[morning-briefing-retired]], so it needs no update.)
 - Do NOT rewrite generated outputs (`KeystoneOS/outputs/**`), historical design docs, session
   `.jsonl` logs, or `file-history/` — those are records and regenerate on their own.
-- Before any vault move, `launchctl bootout` the 7 loaded `com.keystone.*` agents first. `agysync`
+- Before any vault move, `launchctl bootout` every loaded `com.keystone.*` agent first (7 in
+  August; 15 on 2026-10-24 — list them with `launchctl list | grep com.keystone`). `agysync`
   fires every 6h and would recreate a partial vault at the old path — the same two-writer failure
   recorded in [[backup-sync-system]].
 - Vault contains zero self-referential absolute paths, so it is portable; `ditto` + a clean

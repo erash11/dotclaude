@@ -5,18 +5,20 @@ metadata:
   type: project
 ---
 
-**FaceComps** = Eric's repo `C:\Users\eric_rash\Desktop\DEV\Football\FaceComps` ("Baylor Football Practice Load"). His shorthand **"face comps"** = this folder; **"practice simulator project"** = the `simulator/` app inside it. Same effort — it's the *implementation* of the practice-load decisions from the meetings (see [[practice-load-framework]]). "Faces" = practice-script Excel files (periods + load) in `SourceFaces/`.
+**FaceComps** = Eric's repo `~/DEV/Football/FaceComps` on the Mac (was `C:\Users\eric_rash\Desktop\DEV\Football\FaceComps` on Windows) ("Baylor Football Practice Load"). His shorthand **"face comps"** = this folder; **"practice simulator project"** = the `simulator/` app inside it. Same effort — it's the *implementation* of the practice-load decisions from the meetings (see [[practice-load-framework]]). "Faces" = practice-script Excel files (periods + load) in `SourceFaces/`.
 
 **Layout:**
 - `simulator/` — **production Next.js app, deployed https://baylor-load-sim.vercel.app** (live tool coaches use). Classifies periods by **PlayerLoad (PL/player) → GREEN/YELLOW/RED**. Domains: `'2026 Spring'`, `'2026 Fall Camp'` (18 DEF faces seeded to prod). Data model (`simulator/lib/types.ts`): `Practice` (season, date, dress, tempo, emphasis, duration) + `Period` (minutes, pl_team_projected/actual). Stack: Next.js + Vercel + db/lib, vitest tests.
 - `SourceFaces/` — raw practice-face Excel (2025 Spring, 2026 Spring, 2026 Fall Camp, Fast Friday/MorphoCycle). `legacy/html/` — archived pre-rebuild artifacts (read-only). `SPEC_SHEET.md` — original load-math algorithm. `CLAUDE.md`/`CONTEXT.md` — project conventions.
 
-**Active work (ACTIVE as of 2026-06-16, resumed from the 5/29 pause):** planning & prescription layer (MorphoCycle + color/rep model) on top of the simulator. State tracked in `docs/practice-planning-grill-state.md`. Major decisions now LOCKED (resolves most of the old B1–B7 branches):
+**Status 2026-10-24: parked.** Superseded 2026-10-24: the heading below said "ACTIVE as of 2026-06-16". There are no planning commits after 2026-06-16, and the repo's `docs/STATUS.md` (2026-10-03) has no next step on record. Fall camp 2026 is over. The plan of record is LOCKED (6/15): do not modify it without Eric saying so (DEV memory `project_dormant-threads.md`).
+
+**Planning work (active 2026-05-29 to 2026-06-16):** planning & prescription layer (MorphoCycle + color/rep model) on top of the simulator. State tracked in `docs/practice-planning-grill-state.md`. Major decisions now LOCKED (resolves most of the old B1–B7 branches):
 - **Plan of record (6/15):** 14-day install structure (3/3/4/4) at the **Moderate** ramp — the recommended flavor of the v2 comparison matrix. Other 5 candidates (15-day; Conservative/Aggressive) kept as decision record only; coach-facing artifact is now the pruned **v3 deck** (`scripts/render_camp_models_v3.py`).
 - **Mock Game = Aug 29, controlled rehearsal** (6/15, Aranda staff-confirmed): game-week *operations* cadence, NOT game-week *collision* — anchors the taper, holds even if pushed to be "competitive." Resolves B6 (MorphoCycle vs camp): mock/game week is morphocycle-shaped (day-of-week aligned); camp itself stays block-shaped, MC qualities don't tile across blocks.
 - **NCAA 5-day acclimatization locked as a hard constraint** (6/15): Aug 5 = practice day 1 (no pre-camp acclimatization). Days 1–2 helmets/spider pads only (GREEN ceiling); Days 3–5 shoulder pads max, never RED; full pads/live contact only from Day 6 (Aug 11).
 - **Mock-week sequencing refined 6/16** (AJ feedback): Tue→full pads (red, mimics in-season hardest day); Tue/Wed emphases flipped (Tue=red zone/short yardage, Wed=3rd down+tempo) so stimuli split not stack; "coming out" installed early (Mon); walk-through relabeled MD-2.
-- **Next deliverable:** day-by-day color/quality templates for the locked 14-day build (Aranda's late-June blue/green/yellow/red ask) — not the full candidate matrix anymore, since that's been pruned to one plan.
+- **Next deliverable (never committed; the open item if the thread wakes):** day-by-day color/quality templates for the locked 14-day build (Aranda's late-June blue/green/yellow/red ask) — not the full candidate matrix anymore, since that's been pruned to one plan.
 
 **Glossary (use these terms):** MorphoCycle (game-week day-quality template: activation→collision→volume→speed→recovery), Block (3–4 day stretch between off-days; rep target unit), Rep Ramp (across-camp per-block rep progression ~88→124→152→180→taper, built backward from ~180 in-season weekly stimulus), Undulation (day-color variation within a block), Macro (camp calendar) vs Micro (per-day period template).
 

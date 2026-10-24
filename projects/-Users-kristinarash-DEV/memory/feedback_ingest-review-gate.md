@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 4597514e-1de9-4f80-87b7-4c8742ddec83
-  modified: 2026-09-05T14:57:33.666Z
+  modified: 2026-10-24T14:53:06.831Z
 ---
 
 **Stated 2026-09-05**, finishing the Myszka book scan, when Eric was asked how much of the
@@ -27,13 +27,8 @@ where judgement about what matters in the text happens.
   built.** For the book scan: the order was set by a *visual* read of cropped folio bands,
   so verification read the folio out of the *full-page OCR text* of the finished PDF, and a
   third pass rendered the PDF and read the folios off the rendered pages.
-- **A cheap arithmetic identity is worth having, but do not oversell it.** `files −
-  duplicates == last − first + 1` costs nothing; make it a hard gate that refuses to
-  proceed, and test it with a deliberately corrupted input. **But it is a map-consistency
-  check, not a proof of order.** On the default path — where folios are assigned as a
-  running counter — the two sides of the identity are equal *by construction*, so the gate
-  compares a number with itself. A transposition, a wrong start page, a missed duplicate,
-  and two cancelling errors all pass it.
+- **A cheap arithmetic identity is worth having as a hard gate, but it is not a proof of
+  order.** Why, with the Myszka evidence: [[book-scan-page-ordering]].
 - **Audit the verification itself, not just the artifact.** The first version of
   `verify_pdf.py` "checked" that folios increase by appending the *expected* value and
   testing that those increased — true by construction, so it printed YES unconditionally.

@@ -5,14 +5,14 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3101f63e-ae24-43b1-9f12-b3bcdc82bdcc
-  modified: 2026-10-23T16:30:58.288Z
+  modified: 2026-10-24T14:52:28.069Z
 ---
 
 Analysis repo: `~/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
-private). Supersedes the Mac-slug note of the same name, which still says "not a
-git repo" and has the 08-29 baseline.
+private). This text came from the Windows slug in the 2026-09-24 memory mirror and
+replaced the older Mac note, which said "not a git repo" and had the 08-29 baseline.
 
-**Latest run 2026-09-16** (merged to `main` 2026-09-16, commit `6edf470`): 52
+**Run 2026-09-16; the 2026-10-01 final run matched it** (merged to `main` 2026-09-16, commit `6edf470`): 52
 responses, **Volleyball answered for itself → 32 of 32 units**, 188 products, 75
 athlete-data, 123 single-unit, 9 retired, 18 BO-only (VB confirmed Hawkin +
 DVSport outside the form → `UNIT_CONFIRMED` in `aliases.py`). Write-up
@@ -40,11 +40,19 @@ lists for 11 units (2 in August, 9 on 9/14) plus a department-wide contract list
 
 **Refresh:** save as `raw/Quick_Inventory_export_YYYY-MM-DD.xlsx`, run
 `clean_inventory.py`, loop `unmapped_review.csv` into `aliases.py`, then the three
-builders (`build_docx.py`, `build_exec_summary.py`, `build_tech_lists.py`) — they run
-on Windows via Word COM. Update `PREVIOUS` in `build_docx.py` each run.
+builders (`build_docx.py`, `build_exec_summary.py`, `build_tech_lists.py`) — run them
+on the Mac, with Microsoft Word open first (`scripts/doc_platform.py` drives Word
+through `osascript`; with Word closed it falls back to an HTML twin whose page count
+is wrong). Update `PREVIOUS` in `build_docx.py` each run. (Superseded 2026-10-24:
+this said they run on Windows via Word COM. The COM branch is still in
+`doc_platform.py`, but the Windows laptop has had no terminal or script work since
+2026-10-14; see [[work-laptop-hands-off]].)
 
 **Why:** the ID renumbering makes a naive diff report every row as changed, and the
 proxy entries would otherwise read as 100% coverage.
 
-**How to apply:** before the post-9/29 final run, merge the refresh branch first.
+**How to apply:** before any rerun, merge the refresh branch first. (Superseded
+2026-10-24: this said "before the post-9/29 final run". That run happened
+2026-10-01, matched 09-16 answer for answer, and went to Kenny the same day; the
+record is in the repo's `docs/STATUS.md`.)
 Related: [[ath-tech-framework]], [[admin-docs-house-style]].

@@ -4,13 +4,13 @@ description: "the SessionEnd memsearch hook read its path config from a Windows-
 metadata: 
   node_type: memory
   type: project
-  modified: 2026-08-15T04:07:30.329Z
+  modified: 2026-10-24T14:53:27.089Z
   originSessionId: 75381393-88b6-4b65-960d-6613e08f7060
 ---
 
-`~/DEV/KeystoneOS/data/memory-index-paths.json` is the single source of truth for which directories memsearch indexes. Three writers read it: the SessionEnd hook `~/.claude/hooks/memsearch-sync.js`, `~/.claude/scripts/daily-backup.ps1` (nightly; 09:00 since 2026-08-29), and the Codex hook `KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1`.
+`~/DEV/KeystoneOS/data/memory-index-paths.json` is the single source of truth for which directories memsearch indexes. Three writers read it: the SessionEnd hook `~/.claude/hooks/memsearch-sync.js`, `~/.claude/scripts/daily-backup.ps1` (nightly; 09:00 since 2026-08-29), and the Codex hook `KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1`. **Current 2026-10-24:** the daily backup runs hourly 12:00-17:00 on AC power through `daily-backup-login.sh` (since 2026-10-22). The Codex `.ps1` folder is gone; Codex runs the same `.js` through the `~/.codex/hooks` symlink. `recall.py` and `remember.py` also read the JSON now.
 
-**Found 2026-08-14:** the JS hook pointed at `~/Desktop/DEV/KeystoneOS/data/memory-index-paths.json` — the pre-migration Windows layout. DEV lives at `~/DEV` on this Mac, so the read threw, the `catch` returned a hardcoded fallback, and the hook indexed **4 paths instead of 10** for months. The fallback itself was also stale (`~/Desktop/SecondBrain/...`, which does not exist since the vault move). `daily-backup.ps1` used `$U/DEV` and was already correct; the Codex hook self-locates from its own script path and was fine. So only the JS hook drifted — and it is the one wired into `settings.json` (`SessionEnd`, 50s timeout).
+**Found 2026-08-14:** the JS hook pointed at `~/Desktop/DEV/KeystoneOS/data/memory-index-paths.json` — the pre-migration Windows layout. DEV lives at `~/DEV` on this Mac, so the read threw, the `catch` returned a hardcoded fallback, and the hook indexed **4 paths instead of 10** for months. The fallback itself was also stale (`~/Desktop/SecondBrain/...`, which does not exist since the vault move). `daily-backup.ps1` used `$U/DEV` and was already correct; the Codex hook self-locates from its own script path and was fine. So only the JS hook drifted — and it is the one wired into `settings.json` (`SessionEnd`, 50s timeout). Since 2026-09-02 that hook hands the index to a detached worker and exits at once, so the 50s no longer bounds the index: see [[memsearch-hook-timeout-cap]].
 
 Unindexed as a result: `SecondBrain/Knowledge`, `SecondBrain/Inbox/meetings`, `SecondBrain/morning-briefings`, the Mac memory slug `-Users-kristinarash-DEV/memory`, `KeystoneOS/decisions`, `.codex/memories`. Incremental recall for all of those depended entirely on that nightly.
 
@@ -33,6 +33,8 @@ Ordering trap in that repair: `const ERR_LOG` was declared *after* `const PATHS 
 The 2026-08-14/15 sweep fixed the two `memsearch-sync.js` copies but did not catch this one, so **"grep for `Desktop/DEV`" must cover every file in `~/.claude/hooks/` and `~/.codex/hooks/`, not only the hook currently being repaired.** Run it as a sweep across the whole hooks tree, not per-file.
 
 That sweep then found a **fourth** copy — `~/.codex/hooks/keystone-unified-snapshot.js`, byte-identical and wired in `~/.codex/hooks.json`. Also fixed 2026-09-01.
+
+**Superseded 2026-10-24:** `~/.codex/hooks` is now a symlink to `~/.claude/hooks`, so every hook has one copy and the two-copies story above is history. See [[hook-two-copies-trap]]. The habit still holds for other config pairs: ask which copy the harness reads.
 
 **A second signature the `Desktop/DEV` grep cannot catch:** `~/.codex/AGENTS.md` (dated 2026-08-08) had been through a bad `claude` to `Codex` find-replace, so it told Codex to read `~/.Codex/global-memory/`, `~/.Codex/projects/<slug>/memory/` and `~/.Codex/Codex-memory-compiler/daily/` — none of which exist. Grep for `.Codex` (capital C) as well as `Desktop/DEV` when auditing migration damage. Also check which AGENTS.md the harness actually reads: `~/.claude/AGENTS.md` was correct but referenced by nothing.
 

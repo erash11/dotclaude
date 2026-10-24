@@ -1,12 +1,22 @@
 ---
 name: m365-agent-access
-description: "How the agent reaches Teams, Outlook, Excel, Word and PowerPoint on the Baylor Windows laptop (Graph + Office COM, both verified, no admin)"
+description: "What Baylor's M365 tenant lets the agent do (Graph read yes, Teams send needs IT admin), and why the 10-03 Windows PowerShell Graph/COM route is retired; no Mac Graph/Teams route yet"
 metadata:
   node_type: memory
   type: project
   originSessionId: 6a709501-394d-4811-8fbb-8fec24f5d7dd
-  modified: 2026-10-03T14:25:35.786Z
+  modified: 2026-10-24T14:55:41.813Z
 ---
+
+**Superseded 2026-10-24: the Windows route below is retired.** The laptop has had no
+terminal work or jobs since 2026-10-14 and runs desktop-app sessions only since 2026-10-21
+([[work-laptop-hands-off]]). So no PowerShell, Graph module or COM from an agent there, and
+the webhook NEXT step below is dropped (no record it was done). What still holds is the
+tenant side: Graph delegated read was allowed, Teams send scopes need IT admin. On the Mac:
+use the docx/pptx/xlsx skills for files. Office has no COM. PowerPoint can be driven through
+osascript: Eric granted the Automation permission on 2026-10-24 (five-slides-generator Step 6).
+The error 'Not authorized to send Apple events' means it was turned off. There is no record of a Graph
+or Teams route on the Mac. Any secret for one (a webhook URL) goes in the Keychain.
 
 Verified 2026-10-03 on the Baylor Windows laptop. Eric ran the tests himself; all passed.
 
@@ -17,4 +27,4 @@ Verified 2026-10-03 on the Baylor Windows laptop. Eric ran the tests himself; al
 - CLI-Anything (HKUDS) was reviewed and rejected for this: it targets open-source apps, and these are closed-source.
 
 **Why:** Saves re-testing access each session; Graph sign-in is interactive (browser), so the agent can't silently re-verify it.
-**How to apply:** For file edits use the docx/pptx/xlsx skills; for app actions (recalc, PDF export, mail, calendar) use COM; for Teams use Graph. Graph needs Eric to sign in in the browser at the start of a session; ask before adding any send scope.
+**How to apply:** For file edits use the docx/pptx/xlsx skills. The COM and PowerShell Graph steps above were Windows-only (historical, see the top). A Mac Graph or Teams route would need a fresh test; Graph sign-in is interactive, so Eric signs in in the browser. Ask before adding any send scope.

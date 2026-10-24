@@ -1,9 +1,11 @@
 ---
-name: project-python-environment
-description: Python 3.14.x environment setup on Eric's Windows machine — Install Manager, paths, ai-check.ps1 audit tool, upgrade gotchas
+name: python-environment
+description: "Windows history (2026-06): Python 3.14 via the Install Manager, ai-check.ps1, upgrade gotchas. On the Mac use venvs or uv; paths in ~/.claude/TOOLPATHS.md"
 metadata:
   type: project
 ---
+
+**Superseded 2026-10-24: Windows history only.** The Windows laptop has had no terminal work since 2026-10-14 and runs desktop-app sessions only since 2026-10-21. The Mac is primary. There, `python3` is Homebrew 3.14 and PEP 668-managed: use a venv or `uv` (`~/.local/bin/uv`), never a global `pip install`. Paths: `~/.claude/TOOLPATHS.md`. The Install Manager steps and `ai-check.ps1` below do not apply to the Mac.
 
 # Python environment (Windows 11, fixed 2026-06-11)
 

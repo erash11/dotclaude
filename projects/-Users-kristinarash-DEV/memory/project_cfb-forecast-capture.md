@@ -1,11 +1,11 @@
 ---
 name: cfb-forecast-capture
-description: "CFB Victory Model weekly forecast freeze — all 16 Big 12 teams via scripts/weekly_run.sh, archive mirror, Monday-anchored nag 2026-08-24 to 2027-01-23, no backfill, and how to tell a real missed week from a stale snapshot"
+description: "CFB Victory Model weekly forecast freeze — all 16 Big 12 teams via scripts/weekly_run.sh, archive mirror, Monday-anchored check 2026-08-24 to 2027-01-23 (logged only, no nag since 2026-09-24), Mac only, no backfill, and how to tell a real missed week from a stale snapshot"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 330c1f71-242a-47c7-ac7b-129bd6f5dd3c
-  modified: 2026-10-24T00:27:41.196Z
+  modified: 2026-10-24T14:51:24.467Z
 ---
 
 The CFB Victory Model's pre-game forecasts are frozen once per week by the
@@ -38,6 +38,10 @@ Before declaring a missed week, check the other machine's copy of the log.
 Merging is safe: the natural key is `(captured_at, season, team, week, game_id)`,
 and a union on that key had **zero conflicts** across 216 Mac + 348 Windows rows
 → 540. Same key never carried different values. See [[github-consolidation]].
+
+**Superseded 2026-10-24:** the capture now runs on the Mac only. The Windows laptop has had no
+terminal work or jobs since 2026-10-14 (desktop-app only since 10-21). Check the Windows copy
+only for weeks before then; a later gap is a real gap.
 
 ## An old newest-snapshot file is not proof of a missed week
 
@@ -75,7 +79,8 @@ forward. This is why the reminder escalates rather than silently re-queuing.
 ## Mac-side guard (built 2026-08-15)
 
 `ritual-check.ps1` now carries a fourth ritual, `forecast-capture`, so the cadence is
-enforced on this machine rather than depending on memory. It detects captures from the
+enforced on this machine rather than depending on memory (enforced only while the rituals
+timer ran; see "Superseded 2026-10-24" under Schedule below). It detects captures from the
 artifact itself — newest `*_baylor.csv` in `~/DEV/CFB_Victory_Model/data/weekly_snapshots/`
 — matching the script's existing "the artifact is the record, not a state file" rule.
 
@@ -113,10 +118,18 @@ therefore only visible if the script is run by hand. Acceptable because Fri 15:3
 are the last useful warnings anyway, but it does mean the Saturday branch is effectively a
 manual-run safety net, not a live alarm.
 
+**Superseded 2026-10-24 — nothing nags any more.** `com.keystone.rituals` has been disabled
+since 2026-09-24, so none of the triggers above fire. `ritual-check.ps1` still runs daily at
+06:00 inside `com.keystone.morning` (`morning-cadence.ps1`), without `-Notify`: the
+forecast-capture DUE/OVERDUE shows only in `KeystoneOS/outputs/morning/cadence.log`. In season
+the capture depends on someone running `/forecast-capture`. See [[automation-cadence]].
+
 A Windows-side scheduled task `CFB-ForecastCaptureReminder` was left enabled when the
 Windows box was retired 2026-08-14 — it operates under that machine's own `~/Desktop/DEV`
 and touches none of the Mac repos, so it is harmless but is *not* the authoritative
-reminder. See [[backup-sync-system]].
+reminder. See [[backup-sync-system]]. **Superseded 2026-10-24:** all Windows scheduled tasks
+were disabled 2026-10-08, and the 2026-10-23 audit found this one is dead code (it calls the
+archived morning-briefing package). See [[automation-cadence]] and [[work-laptop-hands-off]].
 
 Related model/data work lives in [[cfb-analytics-lab]] (a separate project —
 `~/DEV/CFB_Analytics_Lab` vs the Victory Model's own tree).

@@ -1,11 +1,11 @@
 ---
 name: rtp-cla-course
-description: "RTP Constraints-Led course — book ingest complete with zero-offset PDF; lesson 0002 is next"
+description: "RTP Constraints-Led course — book ingest complete with zero-offset PDF; lessons 0001-0003 built, lesson 0004 waits on Joe's 0003 dial card"
 metadata: 
   node_type: memory
   type: project
   originSessionId: b89c2f0b-04a6-4248-9c74-5f9b535a314c
-  modified: 2026-09-10T17:00:00.000Z
+  modified: 2026-10-24T14:57:55.536Z
 ---
 
 `DEV/RTP_Constraints_Course` — a return-to-play course built on constraints-led
@@ -26,10 +26,14 @@ new SecondBrain vault domain:
 **Deliberate limit.** Printed pages 254 onward are a blank verso and About the
 Authors. Eric chose not to scan them because they add no course material.
 
+**Lessons (as of 2026-10-20):** 0001, 0002 and 0003 are built. Lesson 0003 was
+exported to Joe's Drive folder on 2026-10-20. Next: Joe re-downloads the folder, then
+wait for his lesson 0003 dial card before writing lesson 0004. The live list is the
+repo's `docs/STATUS.md`. Superseded 2026-10-24: "Write lesson 0002" (done).
+
 **Also open:**
 - Import `sources/myszka-references-new.ris` (122 records) into Zotero via
   File → Import.
-- Write lesson 0002.
 
 Before any further expensive atomization here, apply the arithmetic gate in
 [[ingest-review-gate]].

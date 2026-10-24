@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: ea41d487-7812-4180-a6a8-f76a99753f83
-  modified: 2026-09-12T13:34:11.490Z
+  modified: 2026-10-24T14:52:01.495Z
 ---
 
 This system is well-instrumented, which makes its few misleading surfaces
@@ -18,11 +18,14 @@ under-reports. Correctness is fine — `Test-JobCompleteOn` checks the ledger *o
 the job's `successProbe`. Ask `.\scripts\keystone-reconcile.ps1 -DryRun -Json`,
 never the ledger alone and never `Get-ScheduledTaskInfo`.
 
-**memsearch timeout streaks are not failures.** The SessionEnd hook is
-deliberately best-effort (`daily-backup.ps1:122-125`), wired at `timeout: 50` in
-`~/.claude/settings.json`; the uncapped nightly absorbs backlog and resets the
-counter. That nightly moved 00:30 → **09:00 on 2026-08-29**, so a streak now
-clears in the morning, not overnight. A streak of 16 on 2026-07-28 was
+**memsearch timeout streaks are not failures.** The SessionEnd hook
+(`~/.claude/hooks/memsearch-sync.js`) is deliberately best-effort. Since 2026-09-02
+it hands the index to a detached worker and returns at once, so the `timeout: 50`
+still in `~/.claude/settings.json` no longer bounds the index; see
+[[memsearch-hook-timeout-cap]]. The daily backup's uncapped full reindex absorbs
+backlog and resets the counter. Since 2026-10-22 that backup runs hourly
+12:00-17:00 on AC power, so a streak clears by afternoon; see [[backup-sync-system]].
+(Superseded 2026-10-24: the nightly ran 00:30, then 09:00 from 2026-08-29.) A streak of 16 on 2026-07-28 was
 read as a broken indexer and produced a whole plan step to "fix" it — the nightly
 cleared it the same night, exactly as designed. Alarm threshold is 6.
 
@@ -31,12 +34,13 @@ cleared it the same night, exactly as designed. Alarm threshold is 6.
 out-of-band run never clears it, and a sleep/wake kill mid-run sets it while the
 day's work still completed on a later retry. Read the job's own log for a
 same-day clean end before treating a red status as rot. Two recorded instances:
-Windows `KeystoneOS-DailyBackup` exit 3221225786 on 2026-08-01 (four killed
-starts 08:27-11:32, clean end 16:36), and `launchctl list` on 2026-08-31 still
+the Windows sleep-kill exit on `KeystoneOS-DailyBackup` (2026-08-01, details in
+[[backup-task-sleepkill-signature]]), and `launchctl list` on 2026-08-31 still
 showing the failed 09:00 `com.keystone.dailybackup` after the corrected re-run
 completed with 0 errors. Both cleared themselves at the next scheduled run; a
-forced re-run would have been cosmetic. (Generalised from the retired
-Windows-only `backup-task-sleepkill-signature` memory, archived 2026-09-01.)
+forced re-run would have been cosmetic. (Generalised from that Windows-only
+memory. It was archived to `_archive/` on 2026-09-01, came back as a live copy in
+the 2026-09-24 Windows memory mirror, and is kept unindexed as Windows history.)
 
 **The test suite is main-checkout-only.** `Get-KeystoneDevRoot` resolves the DEV
 root as `<repoRoot>\..`, which from a worktree yields

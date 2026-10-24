@@ -1,5 +1,5 @@
 ---
-name: feedback_gws-cli-default
+name: gws-cli-default
 description: "Google (Drive, Sheets, Gmail, etc.) work goes through the gws CLI by default; no raw API/OAuth token handling"
 metadata:
   node_type: memory

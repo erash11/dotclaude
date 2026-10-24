@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-Baylor football **practice-load framework** (likely what Eric calls the **"practice simulator" project**) — a system to standardize and simulate practice load to manage athlete stress/injury and maintain availability into fall camp.
+Baylor football **practice-load framework** — the meeting-side spec. Eric's **"practice simulator" project** is its build, the `simulator/` app in the FaceComps repo (see [[facecomps-practice-simulator]]). The framework is a system to standardize and simulate practice load to manage athlete stress/injury and maintain availability into fall camp.
 
 **Source meetings:** `PreSummer_Planning` (2026-05-22, with Dave Aranda + Vic Viloria) and `KSU_Planning_Brief_LYancy` (2026-05-26, K-State model via Lance Yancy).
 
@@ -19,7 +19,7 @@ Baylor football **practice-load framework** (likely what Eric calls the **"pract
 
 **Owners:** Eric Rash + Vic Viloria (templates, recovery); Dave Aranda (final sign-off / Baylor-specific adaptation of the K-State model); Lance Yancy + Coach Klanderman (K-State source / scripting guardrails).
 
-**Status (updated from FaceComps repo activity through 2026-06-16):** framework finalized ahead of the "last week of June" deadline — the 2nd planning meeting recs converged into a **locked plan of record (6/15): 14-day install structure (3/3/4/4) at Moderate ramp**, plus locked mock-game rules and NCAA acclimatization constraints. See [[facecomps-practice-simulator]] for the full decision log. No FaceComps commits since 6/16 as of this check — next deliverable is the day-by-day color/quality templates; worth a status check-in before fall camp (Aug 5 start) if it's been quiet.
+**Status:** plan of record locked 2026-06-15; the decision log and current state (parked) live in [[facecomps-practice-simulator]].
 
 **Implementation:** this framework is built in the **FaceComps repo / load simulator** — see [[facecomps-practice-simulator]] (the meeting decisions above are the spec; the simulator + planning-layer grill is the build).
 

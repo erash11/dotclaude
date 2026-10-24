@@ -4,7 +4,7 @@ description: "the SessionEnd memsearch hook's fixed 45s cap was outrun by corpus
 metadata: 
   node_type: memory
   type: project
-  modified: 2026-09-02T12:33:29.526Z
+  modified: 2026-10-24T14:52:10.264Z
   originSessionId: 00fe7fc2-f53c-471d-b407-c777e8cc679c
 ---
 
@@ -39,8 +39,10 @@ healthy. **Time the actual command before believing the comment.**
 `node memsearch-sync.js --worker` with `detached: true, stdio: 'ignore'` and `.unref()`,
 then exits — measured **42ms**. The worker keeps the entire original body, so it owns the
 PID lock (clustered session-ends still elect one indexer), writes `INDEX_LOG`, and runs
-every error branch. Its `spawnSync` cap is now 600s: a runaway guard, not a budget, so an
-ETIMEDOUT there genuinely means ">10 minutes".
+every error branch. Its `spawnSync` cap was 600s: a runaway guard, not a budget, so an
+ETIMEDOUT there genuinely meant ">10 minutes". **Raised to 3h on 2026-10-07** (Windows indexing
+under memory pressure ran ~1.2 s/chunk, so 600s runs were killed mid-backlog); the PID lock and
+a 30-min cooldown stop overlap. Read the cap in `memsearch-sync.js` before quoting it.
 
 - `stdio: 'ignore'` is **not optional** — inherited or piped stdio keeps the harness's pipe
   open and it waits for the child anyway, rebuilding the timeout with extra steps.
@@ -59,11 +61,11 @@ ETIMEDOUT there genuinely means ">10 minutes".
   design where "correct" means minutes must be asynchronous.
 - Both harnesses wire their own copy. `~/.codex/hooks/memsearch-sync.js` is now a
   **symlink** to the Claude copy (2026-09-02) so the pair cannot drift again — same fix as
-  `~/.codex/AGENTS.md`. Before "fixing a hook", ask which copy the harness wires; see
-  [[memsearch-index-path-drift]] for the four-copy history.
-- `~/DEV/KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1` still has a 45s
-  `WaitForExit(45000)`, but nothing wires it (Codex uses `hooks.json` → the `.js`). Dead
-  Windows-era code; left alone deliberately.
+  `~/.codex/AGENTS.md`. Since 2026-10-24 the whole `~/.codex/hooks` folder is a symlink to
+  `~/.claude/hooks`, so there is one copy to edit. See [[memsearch-index-path-drift]] for the
+  four-copy history.
+- Superseded 2026-10-24: `~/DEV/KeystoneOS/scripts/codex-hooks/memsearch-sync.ps1` (a dead 45s
+  Windows copy nothing wired) was removed with the other Codex PowerShell hooks.
 
 Related: [[milvus-lock-misdiagnosis]], [[memsearch-index-path-drift]],
 [[memory-compiler-pipeline]], [[backup-sync-system]], [[keystoneos-verification-habits]]

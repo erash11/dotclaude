@@ -5,17 +5,20 @@ metadata:
   node_type: memory
   type: project
   originSessionId: a6dfb3da-c339-44b1-a836-2a6884e07ea6
-  modified: 2026-09-04T13:43:21.110Z
+  modified: 2026-10-24T14:53:01.947Z
 ---
 
-Third-party skills live in **`~/.agents/skills/<name>/`** (the real files, ~360 of
-them) with `~/.agents/.skill-lock.json` as the install ledger. Both harness
+Third-party skills live in **`~/.agents/skills/<name>/`** (the real files) with
+`~/.agents/.skill-lock.json` as the install ledger. Both harness
 directories are symlinks into it:
 
 - `~/.claude/skills/<name>` → `../../.agents/skills/<name>` (relative)
 - `~/.codex/skills/<name>` → `~/.claude/skills/<name>` (absolute, hopping through
-  the Claude symlink — verified on disk 2026-09-04. It does **not** point straight
-  at `~/.agents/skills/`.)
+  the Claude symlink — verified on disk 2026-09-04, and again 2026-10-24 for
+  `pp-espn`, `pp-fireflies`, `anti-sleep`). One link (`scroll-craft`) points straight at
+  `~/.agents/skills/` instead; both shapes resolve.
+- On the Mac there is no `~/.cursor/skills`, and `~/.gemini/skills` holds real folders,
+  not links (checked 2026-10-24).
 
 Install with the CLI that owns that store when you can:
 
@@ -45,7 +48,9 @@ blocks the *entire* command on rule `core.filesystem:rm-rf-general`, even when t
 target is a subfolder you just created yourself. Copy only what you want instead of
 copy-then-delete. `dcg` also false-positives on a `>` inside a heredoc'd Python
 script (rule `core.filesystem:redirect-truncate-root-home`) — use the Edit tool for
-that write rather than fighting the pattern.
+that write rather than fighting the pattern. **Superseded 2026-10-24:** that rule and
+`heredoc.posix:pipeline-consumer` were allowlisted on 2026-10-11, so a `>` in a heredoc
+now passes. The `rm -rf` block above is still a kept hard stop. See [[dcg-guard-blocks]].
 
 **Trap: a hand-install is invisible to the ledger.** It gets no entry in
 `~/.agents/.skill-lock.json`, so `skills update` will never touch it.
@@ -78,5 +83,6 @@ Where a skill puts its *output* is separate: some resolve a workspace from the
 nearest `.git` walking up, so run them from inside the target project or set
 their env override, or builds land wherever cwd happened to be.
 
-See [[vendored-skill-repair]] for what to do when one of these is broken, and
+See [[vendored-skill-repair]] for what to do when one of these is broken,
+[[third-party-skill-install]] for the daily-backup jam a new link causes, and
 [[path-shadowing-and-cleanup]] before deleting any copy.

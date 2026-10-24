@@ -5,13 +5,14 @@ metadata:
   node_type: memory
   type: project
   originSessionId: b7d080c1-e0f8-4eb5-b181-d06b87224449
-  modified: 2026-10-03T23:17:05.473Z
+  modified: 2026-10-24T14:52:04.424Z
 ---
 
 > **RETIRED 2026-10-03.** The CommandCentre repo was archived in the organization pass.
 > The `com.keystone.commandcentre` launchd agent is stopped and disabled by
-> `~/DEV/project-triage/docs/inventory/mac_archive_pass.sh --go` on the Mac — still pending
-> as of 2026-10-03; check `launchctl list | grep commandcentre` before assuming it's off. The front door is now the live
+> `~/DEV/project-triage/docs/inventory/mac_archive_pass.sh --go` on the Mac — pending on
+> 2026-10-03; verified done 2026-10-24 (`launchctl print-disabled` shows it disabled, it is not
+> loaded, and its plist is gone from `~/Library/LaunchAgents`). The front door is now the live
 > project board (`pm` in a shell, `/pm` in Claude Code; `project-triage/board.py`). The rules
 > below (DNS-rebinding Host allowlist, fd-checked reads, "one number, one code path",
 > judge a daemon by its PID) still apply to any local web service — the board follows them.
@@ -79,9 +80,11 @@ numerator *and* denominator.
 **Creating any new `~/DEV/<folder>` breaks the backup immediately** — the manifest
 is default-deny, so `daily-backup` exits 1 until the folder is added to
 `~/.claude/scripts/backup-manifest.json`. Working as designed; just add the entry
-in the same turn. The `class` field answers *who keeps this when you leave
-Baylor* — `institutional` also copies to Baylor OneDrive ("lost when Baylor
-access ends"), `personal` stays yours. See [[backup-sync-system]].
+in the same turn. See [[backup-sync-system]]. Superseded 2026-10-24: this used to
+say `institutional` also copies to Baylor OneDrive. It does not. The `class` field is
+inert (no code reads it), the `baylor` destination is deprecated and the backup skips it,
+and nothing goes to Baylor OneDrive except Kenny's ITS tracker in the Teams team
+([[no-baylor-onedrive]]).
 
 ## The `/os` view — added 2026-09-01
 

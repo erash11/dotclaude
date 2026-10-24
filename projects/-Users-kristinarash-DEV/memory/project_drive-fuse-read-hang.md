@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: dc65ba85-7374-4641-97a3-dad384e86ec2
-  modified: 2026-10-24T08:35:06.138Z
+  modified: 2026-10-24T14:51:43.486Z
 ---
 
 Opening files through `~/Library/CloudStorage/GoogleDrive-…/My Drive/` hangs when the file is
@@ -34,8 +34,10 @@ even after Eric quit and reopened Google Drive; the API pulled it in seconds:
 
 **How to apply:**
 - Compare Drive copies by `(basename, size)`, never by content. `~/DEV/drive-tools/tools/drain_diff.py --names-only` (moved from `_INBOX/tools` 2026-10-24). For content checks use the Drive API `md5Checksum`: `~/DEV/drive-tools/tools/drive_index.py`.
-- Move or rename Drive folders with the Drive MCP (`update_file` with `parentId`) — server-side, instant,
-  no FUSE. Never `mv` a big tree through the mount.
+- Move or rename Drive folders with the gws CLI (`gws drive files update` with `addParents`/`removeParents`,
+  full command under "Moving Drive items" below) — server-side, instant, no FUSE. Never `mv` a big tree
+  through the mount. (Superseded 2026-10-24: this bullet used to say the Drive MCP `update_file`; the
+  classifier blocks that move, see [[gws-cli-default]].)
 - Put any Drive walk (even `ls`/`stat` only) in a child process under a wall-clock timeout; a hang
   shows as elapsed time with no CPU. Pattern: `scan_tree_guarded` in `landed.py`.
 - Related: [[drive-fuse-rsync-mtime-loop]] (rsync re-sends), [[rea-ghidra-setup-traps]] (Drive reads hang R).
