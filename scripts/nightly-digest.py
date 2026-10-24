@@ -27,7 +27,6 @@ import os
 import re
 import subprocess
 import sys
-import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -69,7 +68,6 @@ PER_NEXT, PER_OPEN = 5, 3   # bullets shown for a project whose STATUS.md change
 CLIP = 240            # characters kept per bullet
 PER_LIST = 40         # created-doc paths shown per repo or Drive folder
 LOG = SCRIPTS / "logs" / "nightly-digest.log"
-SEND_TRIES, SEND_WAIT = 4, 60   # a run on wake can start before DNS is up (files digest, 10-23)
 
 H = "font-family:Arial,sans-serif;color:#154734;border-bottom:2px solid #154734;margin:22px 0 6px"
 SUB = "color:#595959;font-size:0.85em"
@@ -274,10 +272,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="YYYY-MM-DD (default: today, or yesterday if run before noon)")
     ap.add_argument("--dry-run", action="store_true", help="write the HTML, do not send")
+    ap.add_argument("--force", action="store_true", help="send even if this day was already sent")
     a = ap.parse_args()
     now = dt.datetime.now()
     day = dt.date.fromisoformat(a.date) if a.date else (now.date() if now.hour >= 12
                                                         else now.date() - dt.timedelta(days=1))
+    if not a.dry_run and not a.force and fd.already_sent(LOG, day):
+        log(f"skip {day}: already sent (use --force to resend)")
+        return 0
 
     threads, pending = memory_threads()
     sessions = daily_sessions(day)
@@ -310,17 +312,11 @@ def main() -> int:
         print(f"{subject}\n{full}\nbody {len(body)} chars{' + attachment' if attach else ''}")
         return 0
 
-    for attempt in range(1, SEND_TRIES + 1):
-        r = subprocess.run([*fd.GWS, "gmail", "+send", "--to", TO, "--subject", subject,
-                            "--body", body, "--html", *attach], cwd=full.parent, capture_output=True, text=True,
-                           encoding="utf-8", errors="replace")
-        if r.returncode == 0:
-            log(f"sent {day}: {subject}" + (f" (try {attempt})" if attempt > 1 else ""))
-            return 0
-        if attempt < SEND_TRIES:
-            log(f"send try {attempt} failed, retrying in {SEND_WAIT}s: {r.stderr.strip()[:200]}")
-            time.sleep(SEND_WAIT)
-    log(f"FAILED {day} after {SEND_TRIES} tries: {r.stderr.strip()[:500]}")
+    r, tries = fd.send(subject, body, *attach, to=TO, cwd=full.parent, note=log)   # retried in fd
+    if r.returncode == 0:
+        log(f"sent {day}: {subject}" + (f" (try {tries})" if tries > 1 else ""))
+        return 0
+    log(f"FAILED {day} after {tries} tries: {r.stderr.strip()[:500]}")
     with ERR_LOG.open("a", encoding="utf-8") as f:
         f.write(f"[{dt.datetime.now().astimezone().isoformat()}] nightly-digest: send failed for {day}"
                 f" - see ~/.claude/scripts/logs/nightly-digest.log\n")

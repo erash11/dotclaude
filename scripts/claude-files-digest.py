@@ -5,7 +5,8 @@ Files Claude writes outside git (Drive deliverables, scratch) are not attributab
 they are not listed. Repos are fetched first and read with --all, so the Mac's pushed
 commits count too.
 
-Runs from Task Scheduler (\\Eric\\claude-files-digest, 06:30, reports the previous day).
+Runs from launchd com.keystone.filesdigest (06:30, runs on wake if missed; reports the previous
+day). The send is retried while the network wakes up.
   python claude-files-digest.py                 # yesterday, send
   python claude-files-digest.py --date 2026-10-03 --dry-run   # write HTML, no send
 """
@@ -17,6 +18,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -35,6 +37,7 @@ ERR_LOG = HOME / ".claude" / "global-memory" / "transcripts" / ".errors.log"
 PER_REPO = 30          # paths listed per repo before "+N more"
 COUNT_ONLY = {"Flint", "SecondBrain"}   # bulk generated notes: show the count, not the list
 MAX_BODY = 28000      # Windows command line caps the whole call at 32767 chars
+SEND_TRIES, SEND_WAIT = 4, 60   # a run on wake can start before DNS is up (failed 10-21, 10-23)
 
 # Same health-data filter as project-triage/landed.py, plus session transcripts.
 SKIP = re.compile(
@@ -47,6 +50,24 @@ def log(msg: str) -> None:
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a", encoding="utf-8") as f:
         f.write(f"[{dt.datetime.now():%Y-%m-%dT%H:%M:%S}] {msg}\n")
+
+
+def send(subject: str, body: str, *extra: str, to: str = TO, cwd: Path | None = None,
+         note=log) -> tuple[subprocess.CompletedProcess, int]:
+    """gws gmail +send, retried SEND_TRIES times. Returns the last attempt and its number."""
+    for attempt in range(1, SEND_TRIES + 1):
+        r = subprocess.run([*GWS, "gmail", "+send", "--to", to, "--subject", subject,
+                            "--body", body, "--html", *extra], cwd=cwd, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        if r.returncode == 0 or attempt == SEND_TRIES:
+            return r, attempt
+        note(f"send try {attempt} failed, retrying in {SEND_WAIT}s: {r.stderr.strip()[:200]}")
+        time.sleep(SEND_WAIT)
+
+
+def already_sent(log_path: Path, day: dt.date) -> bool:
+    """A by-hand run, or a launchd re-run on wake, must not email the same day twice."""
+    return log_path.exists() and f"] sent {day}:" in log_path.read_text(encoding="utf-8", errors="replace")
 
 
 def git(repo: Path, *args: str, timeout: int = 60) -> str:
@@ -113,8 +134,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="YYYY-MM-DD (default: yesterday)")
     ap.add_argument("--dry-run", action="store_true", help="write the HTML next to the log, do not send")
+    ap.add_argument("--force", action="store_true", help="send even if this day was already sent")
     a = ap.parse_args()
     day = dt.date.fromisoformat(a.date) if a.date else dt.date.today() - dt.timedelta(days=1)
+    if not a.dry_run and not a.force and already_sent(LOG, day):
+        log(f"skip {day}: already sent (use --force to resend)")
+        return 0
 
     rs = repos()
     with ThreadPoolExecutor(8) as ex:
@@ -128,13 +153,11 @@ def main() -> int:
         print(f"{subject}\n{out}")
         return 0
 
-    r = subprocess.run([*GWS, "gmail", "+send", "--to", TO, "--subject", subject,
-                        "--body", body, "--html"], capture_output=True, text=True,
-                       encoding="utf-8", errors="replace")
+    r, tries = send(subject, body)
     if r.returncode == 0:
-        log(f"sent {day}: {subject}")
+        log(f"sent {day}: {subject}" + (f" (try {tries})" if tries > 1 else ""))
         return 0
-    log(f"FAILED {day}: {r.stderr.strip()[:500]}")
+    log(f"FAILED {day} after {tries} tries: {r.stderr.strip()[:500]}")
     with ERR_LOG.open("a", encoding="utf-8") as f:
         f.write(f"[{dt.datetime.now().astimezone().isoformat()}] claude-files-digest: send failed for {day}"
                 f" - see ~/.claude/scripts/logs/claude-files-digest.log\n")
