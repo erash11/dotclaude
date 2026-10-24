@@ -3,6 +3,25 @@
 Model: Sonnet, both arms. A = default session; B = memsearch top-5 + 1 tool-less call (run 1 only); C = recall.py + 1 tool-less call.
 Correct = judged by hand against questions.tsv ground truth.
 
+## Run 2026-10-23 (6): 4 fresh questions (Q10-13)
+
+Picked blind: one random note each from Tier A ~/DEV, a Tier A project slug, the vault library,
+and the compiled knowledge (seed 20261023, excluding every file used by the bench or the eval);
+questions worded in Eric's voice and answers fixed before any run.
+
+| Q | Topic | A default | C first try | C after fix |
+|---|---|---|---|---|
+| 10 | rsync re-sends to Drive | right | right | right |
+| 11 | simulator URL + RATIO | right | half (URL missed) | right |
+| 12 | Verkhoshansky deload length | right gist, unsourced ("from memory") | right, cited | right |
+| 13 | Drive scan no progress | wrong (blamed the FUSE hang; cause was Mac sleep) | right | right |
+| total | | 3/4, 371,491 tokens, $0.671 | 3.5/4, 71,964 tokens, $0.241 | 4/4 |
+
+Q11 miss: the big file's opening line held the URL ("deployed at ...") with no words in common
+with "web address". Fix: a big file's opening paragraph (<= 500 chars) is always shown.
+That fix was made after seeing Q11, so Q10-13 are no longer held out. Q1-9 not rerun after it
+(it only adds a short paragraph).
+
 ## Run 2026-10-23 (5): all memory folders + description guard
 
 Changes since run 4: roots add every `~/.claude/projects/*/memory`; the newest Mac/Windows copy

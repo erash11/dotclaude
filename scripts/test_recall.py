@@ -49,6 +49,7 @@ with tempfile.TemporaryDirectory() as root:
     assert any("Cause" in t for t in texts) and any("Fix" in t for t in texts), texts
     assert texts.index(next(t for t in texts if "Cause" in t)) < texts.index(next(t for t in texts if "Fix" in t))
     assert not any("Filler" in t for t in texts)
+    assert texts[0] == "Intro line."  # the short opening paragraph always comes along (bench Q11: the URL)
 
     # Small file: returned whole.
     small = write(root, "mem/project_small.md", "One.\n\nTwo about tesseract.\n\nThree.\n")

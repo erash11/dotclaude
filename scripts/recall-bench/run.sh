@@ -2,7 +2,7 @@
 # Recall bench: same questions, same model, two arms.
 #   A = fresh default session in ~/DEV (finds the answer however it likes)
 #   C = recall.py evidence (plain code) -> one model call, no tools
-# Usage: bash ~/.claude/scripts/recall-bench/run.sh [A] [C]   (default: C only; ASET=held limits A to one set)
+# Usage: bash ~/.claude/scripts/recall-bench/run.sh [A] [C]   (default: C only; ASET=held / CSET=held limit A / C to one set)
 # Writes out/<arm><n>.json + .wall; score with: python3 -I ~/.claude/scripts/recall-bench/score.py
 # --no-session-persistence runs have no transcript. CLAUDE_INVOKED_BY makes the end-of-session hooks
 # (transcript-capture, session-end, autopush, memsearch-sync) skip them; SessionStart still runs.
@@ -22,7 +22,7 @@ grep -v '^#' "$HERE/questions.tsv" | while IFS=$'\t' read -r set q gtf gta; do
       < /dev/null > "$OUT/A$n.json" 2> "$OUT/A$n.err"
     echo "$s $(now)" > "$OUT/A$n.wall"
   fi
-  if [[ " $ARMS " == *" C "* ]]; then
+  if [[ " $ARMS " == *" C "* && ( -z "$CSET" || "$set" == "$CSET" ) ]]; then
     s=$(now)
     python3 -I ~/.claude/scripts/recall.py "$q" > "$OUT/C$n.evidence" 2>&1
     m=$(now)

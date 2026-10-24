@@ -38,6 +38,7 @@ DB_PATH = os.path.join(HOME, ".claude/cache/recall-fts.sqlite")
 SKIP_DIRS = {".obsidian", ".trash", ".git", "Archive", "Templates", "node_modules"}
 BUDGET = 1800  # evidence chars per file; a whole paragraph is never cut
 WHOLE = 4000   # a file body this small is returned whole (memory notes are short by design)
+LEAD = 500     # a big file's opening paragraph up to this size is always shown
 
 STOP = set("""a about after again all also an and any are as at be been before being both
 but by can could did do does doing done for from had has have how i if in into is it its
@@ -249,6 +250,12 @@ def best_paragraphs(path, kws, idf, k=3):
             continue
         chosen.append(item)
         used += len(item[4])
+    # The opening paragraph usually states the main fact ("deployed at <url>") in words the question
+    # may not share, so a short one always comes along, outside the budget.
+    lead = next(((pos, ln, h, t) for pos, (ln, h, t) in enumerate(paras) if not t.startswith("description:")), None)
+    if lead and len(lead[3]) <= LEAD and lead[0] not in {c[1] for c in chosen}:
+        pos, ln, h, t = lead
+        chosen.append((0, pos, ln, h, t, {w for w in kws if w in set(tokens(h + " " + t))}))
     chosen.sort(key=lambda x: x[1])  # back to document order
     return chosen
 
