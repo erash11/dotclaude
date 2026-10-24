@@ -51,7 +51,7 @@ Never put memory content here — the file itself holds the facts.
 - [Headless tool-deny gap](project_headless-claude-tool-deny-gap.md) — before calling a headless run read-only
 - [Tech inventory refresh](project_tech-inventory-refresh.md) — refreshing the tech inventory
 - [Brain audit loop](project_brain-audit-loop.md) — scoring the second brain
-- [Hook two-copies trap](project_hook-two-copies-trap.md) — a hook patch "reverts"
+- [Hook two-copies trap](project_hook-two-copies-trap.md) — a hook patch "reverts"; editing any hook (shared ones are links into ~/.claude/hooks)
 - [Child dental plan](user_child-dental-plan.md) — child dental care
 - [ELI5 output style](user_eli5-output-style.md) — output-style rules
 - [GitHub consolidation](project_github-consolidation.md) — ~/DEV repo layout or merge traps

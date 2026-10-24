@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: f1097c6d-9db5-4bb5-a0f7-c42d645cf75d
-  modified: 2026-10-07T16:20:14.842Z
+  modified: 2026-10-24T05:38:56.191Z
 ---
 
 Measured 2026-09-12 from a gap analysis of a Nate Herk / **Mark Kashef** video
@@ -114,8 +114,8 @@ archive the local bare-name duplicates. The plugin (v1.2.3, 35 skills) ships eve
 duplicate removed and is newer than the July symlinks. Rule that follows: when a
 plugin and a local skill share a name, **the plugin wins** — delete the local copy.
 
-Script: `~/.claude/skills-audit-2026-09-12.sh` (archives, never deletes — undo with
-`mv ~/.claude/skills-archive/2026-09-12/* ~/.claude/skills/`).
+Script: the one-off `skills-audit-2026-09-12.sh` went to `~/.Trash/` on 2026-10-24 (it archived,
+never deleted). Undo still works: `mv ~/.claude/skills-archive/2026-09-12/* ~/.claude/skills/`.
 Report: `~/SecondBrain/Inbox/2026-09-12-skill-audit.md`.
 
 Traps found while doing it:
