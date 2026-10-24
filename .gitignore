@@ -27,12 +27,7 @@ mods/.loadlist
 scripts/logs/
 **/.env
 
-!/MIGRATION-MACOS.md
 !/CREDENTIALS.md
-!/START-HERE.md
-!/RECOVERY-INVENTORY.md
-!/restore.command
-!/restore-README.txt
 !/.gitattributes
 
 # Claude Code session transcripts (added 2026-09-09)

@@ -58,7 +58,7 @@ and correct — do not attempt to preserve them. The *code* that uses them is yo
 & "$env:USERPROFILE\Desktop\DEV\morning-briefing\scripts\reauth.bat"
 ```
 
-On macOS this script needs porting to `.sh` — see `MIGRATION-MACOS.md` Step 8.
+On macOS this script needs porting to `.sh` (the old `MIGRATION-MACOS.md` Step 8 is in dotclaude git history; the Mac restore is `RESTORE.md`).
 
 ## Accepted exception — credential files on the transport drive (expanded 2026-08-05)
 

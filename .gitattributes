@@ -1,4 +1,3 @@
-restore.command text eol=lf
 # Shell scripts must keep LF. Checked out with CRLF on Windows and then run on the
 # Mac, bash fails with "bad interpreter: /usr/bin/env bash^M" -- which reads as a
 # missing interpreter rather than a line-ending problem and wastes an hour.
