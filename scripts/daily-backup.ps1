@@ -7,6 +7,8 @@
 #   1. Git-sync the memory repos (auto-commit + push).
 #   2. Snapshot non-git stores to the cloud targets (rsync, ADDITIVE - no delete).
 #   3. Manifest-driven coverage. backup-manifest.json is the single authority.
+#   4. Housekeeping (2026-10-24): uv cache prune once a day, log trims, 60-day prune of
+#      regenerable KeystoneOS outputs.
 #
 # COVERAGE MODEL — three states, all covered (each gap was a real failure):
 #   tracked + committed + pushed  -> GitHub
@@ -175,12 +177,13 @@ $CredDenyDirs  = @('secrets', 'owa-profile', 'edge-profile', 'chrome-profile', '
 $CredDenyFiles = @('.env', '.env.local', '.env.production', '.env.production.local',
                    'Cookies', 'Login Data', 'Local State', '.credentials.json',
                    'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json',
-                   'oauth_creds.json', 'google_accounts.json')   # ~/.gemini live OAuth (audit 2026-10-22)
+                   'oauth_creds.json', 'google_accounts.json',   # ~/.gemini live OAuth (audit 2026-10-22)
+                   'auth.json')                                  # ~/.codex live login: never onto the exFAT SSD (2026-10-24)
 # Regex form (forward-slash paths). '.env.example' is deliberately NOT denied.
 $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(/|$)' +
               '|(^|/)\.env(\.local|\.production(\.local)?)?$' +
               '|(^|/)(Cookies|Login Data|Local State)$' +
-              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials|oauth_creds|google_accounts)\.json$'
+              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials|oauth_creds|google_accounts|auth)\.json$'
 
 # rsync wrapper. ADDITIVE - never --delete: a mirror faithfully replicates the
 # deletion you are trying to recover from. (The Windows original mirrored the
@@ -450,8 +453,41 @@ if (Test-Path $ManifestFile) {
     catch { $Errors.Add('manifest-unreadable'); }
 }
 
+# HARNESS #4 (2026-10-24): the runs of 2026-09-28 and 2026-10-20 logged "INDEX path set" and then
+# nothing (the process died mid-index), and no error was ever recorded. A dead process cannot report
+# itself, so each run reads the previous real run's block, before writing its own start line.
+# Only the last DryRun=False block is checked: older history would re-raise the same death forever.
+# Returns that run's id when it logged "INDEX path set" with no "INDEX full set" or "INDEX skipped".
+function Get-IndexIncompleteRun([string[]]$lines) {
+    $start = -1
+    for ($i = $lines.Count - 1; $i -ge 0; $i--) {
+        if ($lines[$i] -match '===== daily-backup start \(DryRun=False\)') { $start = $i; break }
+    }
+    if ($start -lt 0) { return $null }
+    $end = $lines.Count - 1
+    for ($j = $start + 1; $j -lt $lines.Count; $j++) {
+        if ($lines[$j] -match '===== daily-backup start') { $end = $j - 1; break }
+    }
+    $block = @($lines[$start..$end])
+    if (-not ($block -match ' INDEX path set: ')) { return $null }
+    if ($block -match ' INDEX (full set|skipped)') { return $null }
+    if ($lines[$start] -match '\srun=(\S+)') { return $Matches[1] }   # \s: "DryRun=" also holds "run="
+    return 'unknown'
+}
+$PrevIndexDied = $null
+if ($IsMacOS -and (Test-Path -LiteralPath $LogFile)) {
+    # A live backup other than this one means the previous block may still be mid-index, not dead.
+    # The pattern anchors pwsh as argv[0]: caffeinate's command line also contains "pwsh ... daily-backup.ps1".
+    $alive = @(& /usr/bin/pgrep -f '^[^ ]*pwsh .*daily-backup[.]ps1' 2>$null | Where-Object { [int]$_ -ne $PID })
+    if ($alive.Count -eq 0) { $PrevIndexDied = Get-IndexIncompleteRun @(Get-Content -LiteralPath $LogFile -Tail 3000) }
+}
+
 $RunId = (Get-Date -Format 'yyyyMMdd-HHmmss')
 Log "===== daily-backup start (DryRun=$DryRun) run=$RunId ====="
+if ($PrevIndexDied) {
+    $Errors.Add("index-incomplete:$PrevIndexDied")
+    Log "INDEX previous run $PrevIndexDied logged 'INDEX path set' but no 'INDEX full set': it died mid-index (HARNESS #4)"
+}
 
 # --- 0. Platform guard ---
 # This file is the macOS port. Every path below is macOS-specific: /usr/bin/rsync,
@@ -480,12 +516,71 @@ Sync-Repo "$U/.claude/skills"           'main'
 # via gws API so a stale or wedged CloudStorage FUSE mount can never block nightly backups.
 $GDrive = "$U/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive"
 Snapshot-Gws "$U/.claude/projects"      'claude-projects.tgz'  @('worktrees')
-Snapshot-Gws "$U/.codex/memories"       'codex-memories.tgz'   @()
 Snapshot-Gws "$U/.codex/sessions"       'codex-sessions.tgz'   @()
-Snapshot-Gws "$U/.codex/agents"         'codex-agents.tgz'     @()
 Snapshot-Gws "$U/.codex/sqlite"         'codex-sqlite.tgz'     @()
 Snapshot-Gws "$U/.gemini"               'gemini.tgz'           @('antigravity_browser_profile', 'oauth_creds.json', 'google_accounts.json')
 Snapshot-Gws "$U/Library/LaunchAgents"  'launchagents.tgz'     @()
+
+# --- 2a-codex. Codex config and state -> codex-config.tgz (R23, 2026-10-24) ---
+# Replaces the codex-memories snapshot (~/.codex/memories never existed on the Mac: "SNAP skip
+# (missing)" every run) and codex-agents (an empty folder). An explicit allowlist, never a glob:
+# auth.json (the live Codex login) sits beside these files and must never be staged.
+# SQLite files go through .backup, so a Codex process writing them cannot tear the copy.
+function Snapshot-CodexConfig {
+    $cx = "$U/.codex"
+    $stage = Join-Path ([IO.Path]::GetTempPath()) "codex-cfg-$([guid]::NewGuid().ToString('N'))"
+    $root = Join-Path $stage 'codex-config'
+    New-Item -ItemType Directory -Force -Path $root | Out-Null
+    try {
+        $want = @('config.toml', 'hooks.json', 'rules', 'memories_1.sqlite', 'state_5.sqlite', 'history.jsonl', 'session_index.jsonl')
+        $ok = 0
+        foreach ($item in $want) {
+            $src = "$cx/$item"
+            if (-not (Test-Path -LiteralPath $src)) { Log "CODEX skip (missing): $src"; continue }
+            if ($item -like '*.sqlite') {
+                & /usr/bin/sqlite3 $src ".backup '$root/$item'" 2>$null
+                $check = if (Test-Path -LiteralPath "$root/$item") { & /usr/bin/sqlite3 "$root/$item" 'PRAGMA quick_check;' 2>$null } else { 'no copy' }
+                if ($check -ne 'ok') { $Errors.Add("codex-config:$item"); Log "CODEX $item : FAILED (sqlite check: $check)"; continue }
+            } else {
+                Copy-Item -LiteralPath $src -Destination "$root/$item" -Recurse -Force
+            }
+            $ok++
+        }
+        Log "CODEX staged $ok of $($want.Count) config/state items"
+        if ($ok -gt 0) { Snapshot-Gws $root 'codex-config.tgz' @() }
+    } finally {
+        Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+Snapshot-CodexConfig
+
+# --- 2a-shell. Shell setup -> shell-dotfiles.tgz (2026-10-24) ---
+# ~/.zshrc, ~/.zprofile, ~/.zshenv and ~/.gitconfig were in no backup layer. They hold Keychain
+# lookups, not secret values; a file that looks like it holds a value is refused, not uploaded.
+function Snapshot-ShellDotfiles {
+    $secretRe = 'gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|apikey_[A-Za-z0-9]{20,}' +
+                '|(KEY|TOKEN|SECRET|PASSWORD)[A-Z_]*=["'']?[A-Za-z0-9_\-]{16,}'
+    $stage = Join-Path ([IO.Path]::GetTempPath()) "shell-dot-$([guid]::NewGuid().ToString('N'))"
+    $root = Join-Path $stage 'shell-dotfiles'
+    New-Item -ItemType Directory -Force -Path $root | Out-Null
+    try {
+        $ok = 0
+        foreach ($item in '.zshrc', '.zprofile', '.zshenv', '.gitconfig') {
+            $src = "$U/$item"
+            if (-not (Test-Path -LiteralPath $src)) { Log "SHELL skip (missing): $src"; continue }
+            if (Select-String -LiteralPath $src -Pattern $secretRe -CaseSensitive -Quiet) {
+                $Errors.Add("shell-dotfiles:$item"); Log "SHELL $item : REFUSED (looks like it holds a secret value; use the Keychain)"; continue
+            }
+            Copy-Item -LiteralPath $src -Destination "$root/$item" -Force
+            $ok++
+        }
+        Log "SHELL staged $ok shell setup file(s)"
+        if ($ok -gt 0) { Snapshot-Gws $root 'shell-dotfiles.tgz' @() }
+    } finally {
+        Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue
+    }
+}
+Snapshot-ShellDotfiles
 
 # --- 2a-db. Live DEV databases -> dev-databases.tgz (added 2026-10-20) ---
 # cloud-push.py keeps DB files off the FUSE mount (sync can lock or corrupt a live DB).
@@ -650,7 +745,10 @@ if ($Manifest) {
                 default      { $leaf -replace '^\.', '' }
             }
             $extra = @()
-            if ($entry.path -eq '.codex') { $extra = @('work') }
+            # R23 (2026-10-24): also skip Codex's app-owned, regenerable trees. A leading '/' anchors the
+            # rsync exclude to the top of ~/.codex ('/cache' -> --exclude=/cache/), so a nested folder of the
+            # same name is still copied. The manifest has no excludes field, so this list lives here.
+            if ($entry.path -eq '.codex') { $extra = @('work', '/packages', '/plugins', '/.tmp', '/cache', '/computer-use', '/visualizations') }
             if ($entry.path -eq '.gemini') { $extra = @('antigravity_browser_profile') }
             if ($entry.path -eq 'SecondBrain') { $extra = @('.git') }   # vault moved off Desktop 2026-08-14; github dest covers tracked files
             $ok = Snapshot-Additive $src (Join-Path $SsdRoot $sub) $extra
@@ -761,11 +859,31 @@ if ($msExe -and -not $DryRun) {
     else {
         try {
             $existingPaths = @($msPaths | Where-Object { Test-Path $_ })
-            if ($existingPaths.Count -gt 0) {
+            # HARNESS #3 (audits/2026-10-03-daily-backup-index-logging.patch, ported 2026-10-24). memsearch
+            # prints only "Indexed N chunks." and N counts NEW chunks only: it dedups by content hash, and the
+            # SessionEnd hook indexes the same set all day, so 0 is normal on a quiet day. Log the scan size
+            # beside it so a no-op and a broken scan differ. Overlapping roots (Inbox, Inbox/meetings) count once.
+            $mdCount = @($existingPaths | ForEach-Object { Get-ChildItem -LiteralPath $_ -Recurse -File -Filter *.md -ErrorAction SilentlyContinue } |
+                ForEach-Object { $_.FullName } | Sort-Object -Unique).Count
+            $why = "$($existingPaths.Count)/$($msPaths.Count) paths exist, $mdCount .md files scanned"
+            if ($existingPaths.Count -eq 0 -or $mdCount -eq 0) {
+                $msFail = $true; $Errors.Add('memsearch-index:no-input')
+                Log "INDEX full set: NOT RUN - nothing to index ($why)"
+            } else {
                 $r = & $msExe index $existingPaths 2>&1 | Select-Object -Last 1
-                Log "INDEX full set: $r"
-                if ($LASTEXITCODE -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:full-set") }
+                $code = $LASTEXITCODE
+                if ($code -ne 0) { $msFail = $true; $Errors.Add("memsearch-index:full-set") }
+                elseif ("$r" -notmatch '^Indexed \d+ chunks') { $msFail = $true; $Errors.Add('memsearch-index:unexpected-output') }
+                $note = if ("$r" -match '^Indexed 0 chunks') { '; no new content since last index' } else { '' }
+                Log "INDEX full set: $r ($why$note, exit $code)"
             }
+        }
+        catch {
+            # HARNESS #4, in-run half: "INDEX path set" is always followed by an "INDEX full set" line,
+            # even when the step throws. (A process that dies mid-index cannot log anything; the next
+            # run's Get-IndexIncompleteRun check catches that case.)
+            $msFail = $true; $Errors.Add('memsearch-index:no-result')
+            Log "INDEX full set: NO RESULT - $(($_.Exception.Message -split "`n")[0]) (HARNESS #4)"
         }
         finally {
             Remove-Item -LiteralPath $indexLockFile -Force -ErrorAction SilentlyContinue
@@ -801,6 +919,37 @@ if ($GwsExe -and (Test-Path "$U/.claude/RESTORE.md") -and -not $DryRun) {
     }
 }
 
+# --- 2e. uv cache prune, at most once a day (2026-10-24) ---
+# The uv cache was 24.3 GiB on 2026-10-24; prune removes only dangling entries. Live uvx servers
+# (browser-use MCPs) can hold the cache lock all day, so UV_LOCK_TIMEOUT=10 makes prune give up
+# after 10 s instead of uv's 5-minute default. A lock skip is not an error, and it leaves no stamp,
+# so the next run that day tries again. Never pass --force: it ignores uv's in-use checks.
+function Invoke-UvPrune($uvExe, $stamp) {
+    if (-not (Test-Path -LiteralPath $uvExe)) { Log "uv-prune: skipped (no uv at $uvExe)"; return }
+    if ((Test-Path -LiteralPath $stamp) -and (Get-Item -LiteralPath $stamp).LastWriteTime.Date -eq (Get-Date).Date) { return }
+    if ($DryRun) { Log 'uv-prune: [dry-run] would run uv cache prune'; return }
+    # 'uv cache size' is experimental; the preview flag silences its warning. A size failure shows '?'.
+    $size = {
+        $s = & /usr/bin/env UV_LOCK_TIMEOUT=10 $uvExe --preview-features cache-size cache size --human 2>$null | Select-Object -Last 1
+        if ($LASTEXITCODE -eq 0 -and "$s".Trim()) { "$s".Trim() } else { '?' }
+    }
+    $before = & $size
+    $out = @(& /usr/bin/env UV_LOCK_TIMEOUT=10 $uvExe cache prune 2>&1)
+    $code = $LASTEXITCODE
+    $text = ($out | ForEach-Object { "$_" }) -join "`n"   # not Out-String: it wraps long lines at host width
+    if ($code -eq 0) {
+        Log "uv-prune: ok $before->$(& $size)"
+        Set-Content -LiteralPath $stamp -Value (Get-Date -Format 'o')
+    } elseif ($text -match 'Timeout \(\d+s\) when waiting for lock') {
+        Log 'uv-prune: skipped (locked)'
+    } else {
+        $Errors.Add('uv-prune')
+        $last = if ($out.Count -gt 0) { "$($out[-1])" } else { '' }
+        Log "uv-prune: FAILED exit=$code : $last"
+    }
+}
+Invoke-UvPrune "$U/.local/bin/uv" "$LogDir/uv-prune.stamp"
+
 # --- 3. State + escalation ---
 $status = if ($Errors.Count -eq 0) { 'OK' } else { 'ERROR' }
 @{
@@ -816,10 +965,55 @@ if ($Errors.Count -gt 0 -and -not $DryRun) {
     Add-Content -Path $ErrorsLog -Value $line
 }
 
-# Keep the log from growing unbounded.
-if ((Get-Item $LogFile).Length -gt 2MB) {
-    Get-Content $LogFile -Tail 2000 | Set-Content $LogFile
+# --- 4. Log housekeeping (R22 + HARNESS #7, 2026-10-24) ---
+# Each log over 2 MB keeps its last 2000 lines (the rule this script always used for its own log).
+# Read into a variable first, then rewrite: piping Get-Content into Set-Content on the same file can
+# truncate it before the read finishes. The rewrite keeps the same inode, and the live writers append
+# with O_APPEND (lsof +fg shows AP for everythingd and this job's stdout), so their next line lands at
+# the new end. shortcut: a line appended between the read and the rewrite is lost; fine for logs.
+function Invoke-LogTrim([string[]]$paths) {
+    foreach ($f in $paths) {
+        if (-not (Test-Path -LiteralPath $f -PathType Leaf)) { continue }
+        if ((Get-Item -LiteralPath $f).Length -le 2MB) { continue }
+        if ($DryRun) { Log "TRIM [dry-run] would keep the last 2000 lines of $f"; continue }
+        try {
+            $tail = @(Get-Content -LiteralPath $f -Tail 2000 -ErrorAction Stop)
+            Set-Content -LiteralPath $f -Value $tail -ErrorAction Stop
+            Log "TRIM $f : kept the last 2000 lines"
+        } catch { Log "TRIM $f : FAILED ($($_.Exception.Message))" }
+    }
 }
+# Deletes top-level files older than $days, in place (launchd code never writes ~/.Trash).
+# Only for folders whose files are regenerable, and only dated files (YYYY-MM-DD in the name: every
+# file in both KeystoneOS folders on 2026-10-24), so a README or latest.json there is never touched.
+function Remove-OldFiles([string[]]$dirs, [int]$days) {
+    $cutoff = (Get-Date).AddDays(-$days)
+    foreach ($d in $dirs) {
+        if (-not (Test-Path -LiteralPath $d -PathType Container)) { continue }
+        $old = @(Get-ChildItem -LiteralPath $d -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -match '\d{4}-\d{2}-\d{2}' -and $_.LastWriteTime -lt $cutoff })
+        if ($old.Count -eq 0) { continue }
+        if ($DryRun) { Log "PRUNE [dry-run] would delete $($old.Count) file(s) older than $days days in $d"; continue }
+        $old | Remove-Item -Force -ErrorAction SilentlyContinue
+        $left = @($old | Where-Object { Test-Path -LiteralPath $_.FullName }).Count
+        Log ("PRUNE $d : deleted $($old.Count - $left) file(s) older than $days days" + $(if ($left) { ", $left could not be deleted" } else { '' }))
+    }
+}
+$TrimLogs = @(
+    $LogFile,
+    "$LogDir/daily-backup.out",
+    # Not permission-gate/shadow.jsonl: it is the only evidence for the pending Jev residue review
+    # (TypeSafe_Sandbox docs/STATUS.md) and no backup holds it. Rotate it only after that review.
+    "$U/Library/Logs/everythingd.log",
+    "$U/.claude/claude-memory-compiler/scripts/flush.log",
+    "$U/.claude/claude-memory-compiler/scripts/compile.log",
+    "$U/.claude/claude-memory-compiler/scripts/adjudicate.log",
+    "$DevRoot/KeystoneOS/outputs/morning/cadence.log",
+    "$U/.claude/skill-router/skill_router.log",
+    "$U/.claude/skill_router.log"
+)
+Invoke-LogTrim $TrimLogs
+Remove-OldFiles @("$DevRoot/KeystoneOS/outputs/inventory", "$DevRoot/KeystoneOS/outputs/jobs") 60
 
 Log "===== daily-backup end: $status ($($Errors.Count) errors) ====="
 if ($Errors.Count -gt 0) { exit 1 } else { exit 0 }

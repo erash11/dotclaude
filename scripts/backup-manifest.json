@@ -129,7 +129,8 @@
     "drive"
    ],
    "captureOrphans": false,
-   "captureWorkingTree": false
+   "captureWorkingTree": false,
+   "note": "2026-10-24 (R23): this manifest has no excludes field, so the SSD copy's excludes live in daily-backup.ps1's non-DEV loop: work plus the top-level app-owned trees packages, plugins, .tmp, cache, computer-use, visualizations. 'drive' is served by the Snapshot-Gws lines (codex-sessions.tgz, codex-sqlite.tgz) and Snapshot-CodexConfig (codex-config.tgz: config.toml, hooks.json, rules, memories_1.sqlite, state_5.sqlite, history.jsonl, session_index.jsonl; never auth.json)."
   },
   {
    "path": ".gemini",
@@ -1633,18 +1634,6 @@
   },
 
   {
-   "path": "DEV/claude-global-memory",
-   "class": "personal",
-   "isRepo": true,
-   "remote": "https://github.com/erash11/claude-global-memory.git",
-   "destinations": [
-    "ssd",
-    "github"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true
-  },
-  {
    "path": "DEV/FootballWeightTargetTool",
    "class": "institutional",
    "isRepo": true,
@@ -1704,6 +1693,19 @@
    ],
    "captureOrphans": true,
    "captureWorkingTree": true
+  },
+  {
+   "path": "DEV/drive-tools",
+   "class": "personal",
+   "isRepo": true,
+   "remote": "https://github.com/erash11/drive-tools.git",
+   "destinations": [
+    "ssd",
+    "github"
+   ],
+   "captureOrphans": true,
+   "captureWorkingTree": true,
+   "note": "Moved from DEV/_INBOX/tools 2026-10-24. drive-index/ and drain-reports/ are gitignored (file names can be sensitive): captureOrphans keeps them on the SSD only."
   }
  ]
 }

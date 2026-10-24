@@ -1,39 +1,37 @@
 ---
 name: hook-two-copies-trap
-description: "Hooks Codex shares with Claude are symlinks into ~/.claude/hooks (since 2026-10-24) — edit only there; a regular file in ~/.codex/hooks where a link should be is the old trap coming back"
+description: "~/.codex/hooks is a symlink to ~/.claude/hooks (since 2026-10-24): one folder, edit only there; a real folder at ~/.codex/hooks is the old two-copies trap coming back"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 9422b1a6-8624-4c86-a4f6-3c4b1a4c9fc8
-  modified: 2026-10-24T05:38:30.979Z
+  modified: 2026-10-24T08:45:54.102Z
 ---
 
 Until 2026-10-23 the hook folder was copied across two harnesses, so a patch to one
 copy "reverted" the next time the other harness ran (`transcript-capture.js` drifted
 twice: Codex ran the 09-07 copy while Claude had the 10-23 fix).
 
-**Now (2026-10-24):** every hook Codex shares with Claude is a symlink in
-`~/.codex/hooks/` pointing into `~/.claude/hooks/`: `transcript-capture.js`,
-`context-mode-cache-heal.mjs`, `keystone-unified-snapshot.js`, `memsearch-sync.js`.
+**Now (2026-10-24):** `~/.codex/hooks` is a symlink to the whole `~/.claude/hooks`
+folder, so both harnesses run the same files. LIFEOS `hooks/lib` and `hooks/handlers`
+were retired the same day.
 
-- **Edit only `~/.claude/hooks/`.** Never copy a hook into `~/.codex/hooks/`: link it.
+- **Edit only `~/.claude/hooks/`** (dotclaude). Anything written into `~/.codex/hooks`
+  lands there too.
 - **Never remove or reorder entries in `~/.codex/hooks.json`.** Codex keys its trusted
-  hashes (`~/.codex/config.toml [hooks.state]`) by entry position. Swapping a file for a
-  link keeps trust (proven by `memsearch-sync.js`, a link since 2026-09-02).
-- `hooks/lib/` and `hooks/handlers/` are still identical twin copies in both folders
-  (LIFEOS tools import them; retire with LIFEOS).
+  hashes (`~/.codex/config.toml [hooks.state]`) by entry position and command string, so
+  the folder link kept trust.
+- Codex's own herdr script is `~/.codex/herdr-agent-state.sh` (outside the folder) and
+  belongs to herdr.
 
 Check after any hook edit:
 
 ```bash
-for f in transcript-capture.js context-mode-cache-heal.mjs keystone-unified-snapshot.js memsearch-sync.js; do readlink ~/.codex/hooks/$f; done
-diff -rq ~/.claude/hooks ~/.codex/hooks   # expect only the Claude-only herdr-agent-state.sh, session-autopush.js, superpowers-quiet.mjs
+readlink ~/.codex/hooks        # must print /Users/kristinarash/.claude/hooks
 ```
 
-Codex's own herdr script is `~/.codex/herdr-agent-state.sh` and belongs to herdr.
-**Tell that a copy came back:** `missing transcript_path` lines in
-`~/.claude/global-memory/transcripts/.errors.log`, or a regular file where a link
-should be.
+**Tell that the trap came back:** `readlink` prints nothing (a real folder again), or
+`missing transcript_path` lines reappear in `~/.claude/global-memory/transcripts/.errors.log`.
 
 Hook *failures* surface at session start via `.errors.log` — see
 [[keystoneos-verification-habits]] for what a clean exit code does and does not

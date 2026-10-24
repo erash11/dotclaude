@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: dc65ba85-7374-4641-97a3-dad384e86ec2
-  modified: 2026-10-23T22:06:15.891Z
+  modified: 2026-10-24T08:35:06.138Z
 ---
 
 Opening files through `~/Library/CloudStorage/GoogleDrive-…/My Drive/` hangs when the file is
@@ -33,7 +33,7 @@ even after Eric quit and reopened Google Drive; the API pulled it in seconds:
 - Same name can exist twice (a copy in `Send/`); pick by `parents`.
 
 **How to apply:**
-- Compare Drive copies by `(basename, size)`, never by content. `~/DEV/_INBOX/tools/drain_diff.py --names-only`.
+- Compare Drive copies by `(basename, size)`, never by content. `~/DEV/drive-tools/tools/drain_diff.py --names-only` (moved from `_INBOX/tools` 2026-10-24). For content checks use the Drive API `md5Checksum`: `~/DEV/drive-tools/tools/drive_index.py`.
 - Move or rename Drive folders with the Drive MCP (`update_file` with `parentId`) — server-side, instant,
   no FUSE. Never `mv` a big tree through the mount.
 - Put any Drive walk (even `ls`/`stat` only) in a child process under a wall-clock timeout; a hang

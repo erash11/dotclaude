@@ -9,17 +9,24 @@ duplicate Mac-only hook line; see Done 2026-10-24).
 
 ## Open
 
-3. **Apply the memsearch index logging patch** to `scripts/daily-backup.ps1` (~lines 556-560):
-   `audits/2026-10-03-daily-backup-index-logging.patch`. It logs path and file counts, says
-   "no new content" on 0, and records errors for no input or unexpected output. Do it with
-   items 6–7, after tonight's backup is checked.
-4. **The 2026-09-28 21:54 backup run died mid-index** (`INDEX path set`, then nothing) and
-   no error was recorded. Add a check that `INDEX path set` is always followed by
-   `INDEX full set` (in `claude-stack-doctor` or the next run).
-7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit
-   (775 KB and 123 KB on 2026-10-24).
+(none)
 
 ## Done
+
+- 2026-10-24 — **#3 memsearch index logging patch: PORTED** to the current `daily-backup.ps1`
+  index step. `INDEX full set` now carries `<n>/<m> paths exist, <k> .md files scanned` and the
+  exit code, adds "no new content since last index" on 0, and records `memsearch-index:no-input`
+  (nothing to index; memsearch not run) or `memsearch-index:unexpected-output`. Offline-tested with
+  a fake memsearch (`scripts/test_daily_backup.ps1`); first real run not yet seen.
+- 2026-10-24 — **#4 run died mid-index with no error: DONE, both halves.** Next run: before its
+  start line, `Get-IndexIncompleteRun` reads the last `DryRun=False` block and records
+  `index-incomplete:<runId>` when it has `INDEX path set` but no `INDEX full set`/`INDEX skipped`
+  (skipped while another backup pwsh is alive). In-run: a `catch` logs
+  `INDEX full set: NO RESULT` and records `memsearch-index:no-result` when the step throws. The
+  2026-10-20 00:05 run was the same failure. Offline-tested.
+- 2026-10-24 — **#7 backup logs never rotated: FIXED by mechanism.** Section 4 of `daily-backup.ps1`
+  trims `daily-backup.log`, `daily-backup.out` and 8 other logs (R22) to their last 2000 lines once
+  over 2 MB. Both backup logs are under 2 MB today (775 KB and 123 KB), so no trim has fired yet.
 
 - 2026-10-24 — **#1 duplicate `dcg` hook: GONE.** `settings.json` holds one dcg PreToolUse
   entry and is clean against git.
@@ -31,7 +38,7 @@ duplicate Mac-only hook line; see Done 2026-10-24).
   snapshots it to `_MACHINE/Backups/Machine/launchagents.tgz`; launchagents.tgz OK 2026-10-22/23.
 - 2026-10-03 — **memsearch "Indexed 0 chunks" on 2026-09-19: NOT A BUG.** No sessions and
   no changed .md files that day; memsearch dedups by content hash, and ~56 zero runs since
-  08-06 are routine. The real gaps became items #3 and #4 above.
+  08-06 are routine. The real gaps became items #3 and #4 (both Done 2026-10-24).
 - 2026-10-03 — **#5 `CommandCentre/server.out`**: untracked and added to `.gitignore`
   (CommandCentre commit, pushed). File stays on disk.
 - 2026-10-03 — **#4 `dcg` blocks `$CLAUDE_JOB_DIR/tmp` redirects: WON'T FIX.** dcg 0.11.0
