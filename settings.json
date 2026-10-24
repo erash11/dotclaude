@@ -229,7 +229,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/.claude/skill-router/router.py\"",
+            "command": "if [ -f \"$HOME/.claude/skill-router/router.py\" ]; then exec python3 \"$HOME/.claude/skill-router/router.py\"; else cat >/dev/null; fi",
             "timeout": 5
           }
         ]
