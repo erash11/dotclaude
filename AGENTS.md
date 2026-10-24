@@ -48,7 +48,8 @@ Check `wc -c` before writing. If over cap, consolidate existing entries before a
 
 > Kept as a manual instruction on purpose. Claude Code does this with the
 > `keystone-unified-snapshot.js` SessionStart hook, so `CLAUDE.md` no longer
-> states it. Codex has no equivalent hook, so the steps stay spelled out here.
+> states it. Codex runs the same snapshot hook (`~/.codex/hooks.json` SessionStart →
+> `keystone-unified-snapshot.js`); if its output is not in your context, read the files by hand as below.
 > Do not "align" the two files by deleting this section.
 Read in this order: `global-memory/USER.md`, then `global-memory/MEMORY.md`, then `global-memory/transcripts/.errors.log`. The one thing to say out loud: if `.errors.log` is non-empty, give a one-line-per-kind summary (kind, count, latest message) on the first response, then continue. Entries mean a hook or scheduled job failed.
 

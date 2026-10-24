@@ -1,24 +1,14 @@
 # Harness fix list
 
-Work this list only in the Friday 1:00–2:00 PM Central harness slot.
+Work this list as fixes come up (the Friday slot was dropped 2026-10-11).
 Rules: `projects/-Users-kristinarash-DEV/memory/feedback_harness-time-budget.md`.
 
-During the week, add one line and go back to work. Fix something outside the slot only if it
-blocks real work today. Top of the list = do first. Move done items to **Done** with the date.
+Top of the list = do first. Move done items to **Done** with the date.
+**Never run `dcg install` on this setup**; ignore `dcg doctor` asking for it (it re-adds a
+duplicate Mac-only hook line; see Done 2026-10-24).
 
 ## Open
 
-1. **Duplicate `dcg` hook in the Mac `settings.json` working copy.** ERIC ONLY (auto mode
-   blocks Claude from editing its own settings). Cause found 2026-10-03: `dcg doctor` only
-   counts the absolute-path entry as "its" hook, so it tells you to run `dcg install`, which
-   re-adds the Mac-only line; the next settings commit then sweeps it into git (happened in
-   e72c374). The line also reappeared within seconds of a manual removal at 11:04, cause of
-   that still unknown. Steps: close all Claude sessions, run
-   `git -C ~/.claude restore settings.json`, then open one session and run
-   `git -C ~/.claude diff --stat settings.json`. If it is back, `dcg` rewrites its own hook.
-   **Never run `dcg install` on this setup**; ignore `dcg doctor` asking for it.
-2. **Check the 2026-10-03 21:00 `daily-backup` run.** It is the first test of two fixes:
-   `global-memory` behind GitHub, and `42Analytics` missing from the backup list.
 3. **Apply the memsearch index logging patch** to `scripts/daily-backup.ps1` (~lines 556-560):
    `audits/2026-10-03-daily-backup-index-logging.patch`. It logs path and file counts, says
    "no new content" on 0, and records errors for no input or unexpected output. Do it with
@@ -26,30 +16,17 @@ blocks real work today. Top of the list = do first. Move done items to **Done** 
 4. **The 2026-09-28 21:54 backup run died mid-index** (`INDEX path set`, then nothing) and
    no error was recorded. Add a check that `INDEX path set` is always followed by
    `INDEX full set` (in `claude-stack-doctor` or the next run).
-6. **`daily-backup` has no retry** after a short network failure on push. The next try is the
-   next day's run.
-7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit.
-9. **WINDOWS: memsearch cannot reach Milvus.** 7 failed indexes in a row on 2026-10-06
-   (~10:00–14:30 Central); the same `milvus-standalone` container also restarted by itself on
-   2026-10-04. The Mac is fine (embedded Milvus Lite). On Windows: `docker ps` (three `milvus-*`
-   Up), `curl http://localhost:9091/healthz` (`OK`); if down, `docker logs milvus-standalone
-   --tail 50` first to learn why, then `cd ~/.memsearch/milvus && docker compose up -d`, then
-   `memsearch stats`. Never `memsearch reset`. Optional: tag `.errors.log` lines with the
-   machine name, because the log syncs and Windows errors look like Mac errors.
-10. **PORTED 2026-10-08 (A chosen): `nightly-digest` + `claude-files-digest` run on the Mac.**
-    Scripts made OS-aware in commit `08d3113`. `com.keystone.filesdigest` (06:30) is installed.
-    NEXT: `com.keystone.nightlydigest` (21:00) waits on a passing dry run
-    (`python3 ~/.claude/scripts/nightly-digest.py --date 2026-10-07 --dry-run`; its Drive walk
-    took >25 min on 10-08 while other Drive jobs ran). Then:
-    `cp ~/_PARKED_COPIES/handoff-staging/launchd/com.keystone.nightlydigest.plist ~/Library/LaunchAgents/ &&
-    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.nightlydigest.plist`.
-    Agents can't write LaunchAgents (auto-mode blocks it); Eric installs.
-
-Items 6–7 wait until after the 2026-10-03 21:00 backup run is checked (item 2), so that
-run tests only the two earlier fixes.
+7. **`daily-backup.out` and `daily-backup.log` are never rotated.** They grow without limit
+   (775 KB and 123 KB on 2026-10-24).
 
 ## Done
 
+- 2026-10-24 — **#1 duplicate `dcg` hook: GONE.** `settings.json` holds one dcg PreToolUse
+  entry and is clean against git.
+- 2026-10-24 — **#2 check the 10-03 backup run: OBSOLETE.** Backups end OK daily (10-22 audit).
+- 2026-10-24 — **#6 push retry: DONE** (`daily-backup.ps1` R10-04 retries a transient push failure).
+- 2026-10-24 — **#9 Windows Milvus: OBSOLETE.** The Windows laptop has had no automation since 10-14.
+- 2026-10-24 — **#10 nightly-digest on the Mac: DONE.** `com.keystone.nightlydigest` is loaded.
 - 2026-10-23 — **#8 `~/Library/LaunchAgents` not backed up: FIXED.** `daily-backup.ps1`
   snapshots it to `_MACHINE/Backups/Machine/launchagents.tgz`; launchagents.tgz OK 2026-10-22/23.
 - 2026-10-03 — **memsearch "Indexed 0 chunks" on 2026-09-19: NOT A BUG.** No sessions and
