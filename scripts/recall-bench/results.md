@@ -26,7 +26,10 @@ Kept (eval 21/30, hit@5 25/30 unchanged; bench 11 -> 12 of 13, row 3 CMJ backfil
 - WEAK MATCH line when the opened files hold under half the question words; it names memsearch.
   On the eval it fires on 4 of 30: 3 misses (p02, s01, n07) and 1 hit (n04).
 
-The rest needs meaning-based search (memsearch, L2). Baseline updated.
+The rest needs meaning-based search. memsearch on the 5 word-gap misses (after the 10:56
+index): found s01, n07 (#1) and n01 (in top 5); missed s02, n02. About 8-10 s each, not the
+~1 min of 10-23. So recall.py now runs memsearch itself on a weak or no match (`--quick` skips
+it, `--deep` forces it); one such run took 8.8 s and printed 6.6 KB. Baseline updated.
 
 ## Run 2026-10-23 (6): 4 fresh questions (Q10-13)
 

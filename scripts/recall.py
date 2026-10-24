@@ -14,10 +14,13 @@ each call; delete the file to force a full rebuild (~10 s).
 
 Usage:
     python3 ~/.claude/scripts/recall.py "why did cloud-push fail on Drive"
-    python3 ~/.claude/scripts/recall.py "..." --deep     # also run memsearch (slow: ~1 min)
+    python3 ~/.claude/scripts/recall.py "..." --deep     # always also run memsearch (~10 s)
+    python3 ~/.claude/scripts/recall.py "..." --quick    # never run memsearch
     python3 ~/.claude/scripts/recall.py "..." --top 5    # show more candidates
 
-Exit 0 = evidence printed, 1 = no match (it prints the memsearch command).
+On no match, or a weak match (the opened files hold under half the question words), it runs
+memsearch by itself: its meaning search found 3 of the 5 word-gap misses (2026-10-24).
+Exit 0 = evidence printed, 1 = no match.
 """
 import argparse
 import glob
@@ -324,24 +327,34 @@ def short(p):
     return p.replace(HOME, "~")
 
 
+def memsearch_hits(question):
+    """memsearch's top 5 (meaning + keyword search over the memsearch roots); about 10 s on 2026-10-24."""
+    exe = os.path.join(HOME, ".local/bin/memsearch")
+    try:
+        return subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "5"],
+                              capture_output=True, text=True, timeout=180).stdout
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return f"memsearch did not run: {e}"
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("question")
     ap.add_argument("--top", type=int, default=3, help="candidates to list")
-    ap.add_argument("--deep", action="store_true", help="also run memsearch (slow)")
+    ap.add_argument("--deep", action="store_true", help="always also run memsearch")
+    ap.add_argument("--quick", action="store_true", help="never run memsearch")
     a = ap.parse_args(argv)
 
     db = open_index(roots())
     kws, cands, evidence = gather(a.question, db, a.top)
-    memsearch = f'memsearch search "{a.question}" --top-k 5'
 
     print(f"# recall: {a.question}")
     print(f"keywords: {' '.join(kws)}")
     print("candidates (BM25, Tier A memory first, only #1 opened): " + "  ".join(short(c) for c in cands))
     if not evidence or not evidence[0][1]:
-        print(f"\nNO MATCH. Deeper (about 1 min): {memsearch}")
-        if a.deep:
-            print(subprocess.run(memsearch, shell=True, capture_output=True, text=True).stdout)
+        print("\nNO MATCH in the word index.")
+        if not a.quick:
+            print("\n## memsearch (meaning search)\n" + memsearch_hits(a.question))
         return 1
     covered = set().union(*(c[5] for _, chosen in evidence for c in chosen))
     for path, chosen in evidence:
@@ -351,11 +364,12 @@ def main(argv=None):
             print("outline: " + " | ".join(heads))
         for _, _, ln, head, text, _ in chosen:
             print(f"\n[line {ln}{' · ' + head if head else ''}]\n{text}")
-    if len(covered) * 2 < len(kws):
-        print(f"\nWEAK MATCH: these files hold {len(covered)} of {len(kws)} question words. "
-              f"If they do not answer it, the notes may use other words. Deeper (about 1 min): {memsearch}")
-    if a.deep:
-        print("\n## memsearch\n" + subprocess.run(memsearch, shell=True, capture_output=True, text=True).stdout)
+    weak = len(covered) * 2 < len(kws)
+    if weak:
+        print(f"\nWEAK MATCH: these files hold {len(covered)} of {len(kws)} question words; "
+              "the notes may use other words.")
+    if (weak or a.deep) and not a.quick:
+        print("\n## memsearch (meaning search)\n" + memsearch_hits(a.question))
     return 0
 
 

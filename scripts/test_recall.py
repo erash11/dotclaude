@@ -140,16 +140,22 @@ with tempfile.TemporaryDirectory() as root:
 
     # An opened file that holds under half the question words says so and names memsearch.
     import contextlib, io
-    def ask(question, rts):
+    def ask(question, rts, *flags):
         buf = io.StringIO()
         old_open, r.open_index = r.open_index, lambda _rts: old_open(rts, ":memory:")
+        old_ms, r.memsearch_hits = r.memsearch_hits, lambda q: "MEMSEARCH-STUB"
         try:
             with contextlib.redirect_stdout(buf):
-                r.main([question])
+                r.main([question, *flags])
         finally:
-            r.open_index = old_open
+            r.open_index, r.memsearch_hits = old_open, old_ms
         return buf.getvalue()
-    assert "WEAK MATCH" in ask("drive zebra quartz walrus", [kdir, mdir])  # 1 of 4 words
-    assert "WEAK MATCH" not in ask("drive push fix", [kdir, mdir])
+    weak = ask("drive zebra quartz walrus", [kdir, mdir])  # 1 of 4 words
+    assert "WEAK MATCH" in weak and "MEMSEARCH-STUB" in weak  # runs memsearch by itself
+    strong = ask("drive push fix", [kdir, mdir])
+    assert "WEAK MATCH" not in strong and "MEMSEARCH-STUB" not in strong
+    assert "MEMSEARCH-STUB" not in ask("drive zebra quartz walrus", [kdir, mdir], "--quick")
+    assert "MEMSEARCH-STUB" in ask("drive push fix", [kdir, mdir], "--deep")
+    assert "MEMSEARCH-STUB" in ask("zebra quartz walrus", [kdir, mdir])  # no match at all
 
 print("test_recall: all checks passed")
