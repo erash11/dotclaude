@@ -20,7 +20,6 @@
 - [Reviews must check unmerged PRs](feedback-review-check-unmerged-prs.md) — SpeedProfiling v1 review's blocking finding was wrong; work sat in a draft PR, not on main
 - [RTP joint presentation](project-rtp-presentation.md) — Eric+Jeremy Baylor talk, bookend; ALL 4 dry-run items DONE 7/6 (17-slide deck w/ act-when lines + video slide, script rewritten, exports fresh, workbook in Drive, QR on slide 16); ERIC MUST: enable link-sharing on Drive folder + re-merge PPTX (Jeremy handoff → ~S10)
 - [CFB forecast capture](project-cfb-forecast-capture.md) — Wednesdays only 8/26–1/20, CANNOT backfill (report overwrites weekly); `/forecast-capture` + briefing nag; CFB_Victory_Model is NOT a git repo (backed up via non-repo DEV mirror)
-- [Wilhelm RTP report](project-wilhelm-rtp-report.md) — one-pager shipped 7/21 (SpecialRequests\Wilhelm_Brody_RTP, params.yaml = reuse seam); Catapult /stats: athlete_id-only filters + client-side dates, max_vel in mph; VALD IMTP has no L/R split
 - [feedback-auto-commit-push.md](feedback-auto-commit-push.md) — Eric authorized autonomous commit+push to the KeystoneOS repo (2026-06-11)
 - [feedback-fireflies-cli-first.md](feedback-fireflies-cli-first.md) — Fireflies meeting work defaults to fireflies-pp-cli; MCP tools are fallback only
 - [feedback-review-check-unmerged-prs.md](feedback-review-check-unmerged-prs.md) — Whole-feature/spec reviews must enumerate open PRs and unmerged branches before declaring a requirement missing — reading the default branch is not reading the project's state
@@ -35,6 +34,5 @@
 - [project-rtp-presentation.md](project-rtp-presentation.md) — RTP joint Baylor talk (Eric + Jeremy) — bookend delivery (Eric opens, Jeremy middle, Eric closes), Marp/Swiss-Modern conversion; dry run 2026-06-25, post-dry-run feedback task list pending, talk ~mid-July 2026
 - [project-skill-audit-2026-07.md](project-skill-audit-2026-07.md) — 2026-07-13 full audit of ~/.claude/skills — 9 skills fixed, 3 removed, archive location for removed skills
 - [project-speedprofiling-data-gotchas.md](project-speedprofiling-data-gotchas.md) — SpeedProfiling non-obvious data facts — practice-field venue metadata, empirical field calibration, metabolic-power sideline rule, wallclock glitches
-- [project-wilhelm-rtp-report.md](project-wilhelm-rtp-report.md) — Wilhelm RTP one-pager shipped 2026-07-21; Catapult /stats + VALD data gotchas learned building it
 - [user_career_context.md](user_career_context.md) — Eric's career situation, strengths, ambitions, constraints, and 12-month clock — read before giving career or work strategy advice
 - [user_personal_constitution.md](user_personal_constitution.md) — Eric's personal values, faith framework, family priorities, and the internal tensions he's working against — read for any personal, leadership, or character-level conversation
