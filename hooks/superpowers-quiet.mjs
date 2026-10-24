@@ -13,8 +13,12 @@
 //
 // A second copy arrives from claude.ai account sync under
 // plugins/synced/<account>/<plugin-id>/ (folder names are ids, so it is found by
-// its plugin.json name). A re-sync may restore it for one session. The other fix
-// is turning the synced superpowers off on claude.ai.
+// its plugin.json name). A re-sync may restore it for one session.
+//
+// A third copy is the desktop app's own, under
+// ~/Library/Application Support/Claude/local-agent-mode-sessions/<a>/<b>/rpm/plugin_<id>/
+// (found 2026-10-23: the only copy whose SessionStart was still live). The other
+// fix for both is turning the synced superpowers off on claude.ai.
 //
 // Undo: remove this hook from settings.json, then reinstall the plugin
 // (or restore hooks.json.orig beside each patched hooks.json).
@@ -54,6 +58,29 @@ try {
           if (JSON.parse(readFileSync(manifest, "utf8")).name !== "superpowers") continue;
           patch(join(dir, "hooks", "hooks.json"));
         } catch {}
+      }
+    }
+  }
+} catch {}
+
+try {
+  const lams = join(homedir(), "Library", "Application Support", "Claude", "local-agent-mode-sessions");
+  if (existsSync(lams)) {
+    for (const a of readdirSync(lams)) {
+      let bs;
+      try { bs = readdirSync(join(lams, a)); } catch { continue; }
+      for (const b of bs) {
+        let plugins;
+        try { plugins = readdirSync(join(lams, a, b, "rpm")); } catch { continue; }
+        for (const p of plugins) {
+          try {
+            const dir = join(lams, a, b, "rpm", p);
+            const manifest = join(dir, ".claude-plugin", "plugin.json");
+            if (!existsSync(manifest)) continue;
+            if (JSON.parse(readFileSync(manifest, "utf8")).name !== "superpowers") continue;
+            patch(join(dir, "hooks", "hooks.json"));
+          } catch {}
+        }
       }
     }
   }
