@@ -20,7 +20,7 @@ When memsearch fails to open `~/.memsearch/milvus.db`, milvus-lite prints:
 
 **How to apply:**
 - Before believing any milvus-lite "incompatible database" message, run `lsof +D ~/.memsearch/milvus.db` and `ps aux | grep memsearch`. A live holder means wait, not rebuild.
-- Milvus Lite is single-writer. `daily-backup.ps1`'s advisory lock (`.memsearch-index.lock`, ~line 416) coordinates the nightly reindex with the SessionEnd hook only — it cannot see a hand-run `memsearch index`, so manual indexing during a backup window collides. Avoid running `memsearch index` by hand while the nightly backup may fire.
+- Milvus Lite is single-writer. `daily-backup.ps1`'s advisory lock (`.memsearch-index.lock`, ~line 416) coordinates the nightly reindex with the SessionEnd hook only — it cannot see a hand-run `memsearch index`, so manual indexing during a backup window collides. Avoid running `memsearch index` by hand while the backup may fire (hourly 12:00-17:00 since 2026-10-22). For a by-hand catch-up use `node memsearch-sync.js --worker` (see [[memsearch-index-is-destructive]]).
 - `memsearch-index:full-set` in `.errors.log` is therefore usually transient. Confirm the lock is free, then let the next scheduled run clear it.
 
 **Tooling mitigation added 2026-08-14 (because the written warning was not enough).** Later the same day a session ran `memsearch reset --yes` anyway and triggered a ~2h full rebuild — the exact outage this note warns about, with the note already on disk. Prose guidance does not survive contact with a scary error message, so the guard is now in code:

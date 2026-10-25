@@ -23,7 +23,7 @@ Director of Applied Performance, Baylor Athletics. Works with football GPS and f
 - Builds incrementally; has started/stopped projects multiple times due to API friction
 - Never paste credentials or tokens into a session: session transcripts are committed to git (DEV memory `feedback_session-history-tracked.md`). Secrets live in the macOS Keychain.
 
-**Active projects:**
+**Active projects:** Superseded 2026-10-25: live threads are in `global-memory/MEMORY.md` (Active Threads), not here.
 - [[catapult-cli]] — GPS CLI built with Printing Press, now wrapped as the `pp-catapult-openfield-connect` skill
 
 **Design preferences:**

@@ -61,13 +61,14 @@ Never put memory content here — the file itself holds the facts.
 - [Sport-science thought partner](user_sport-science-thought-partner.md) — performance, S&C or rehab questions
 - [Third-party skill install](project_third-party-skill-install.md) — after a third-party skill install: backup jam, other-machine gap
 - [Admin docs house style](feedback_admin-docs-house-style.md) — building any doc for administration; Baylor_Doc_Style only, ask before breaking a page limit
-- [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector, use the local Box Drive folder
+- [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector; Box Drive was the Windows route, not yet on the Mac
 - [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
 - [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
 - [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; no automation since 10-14; desktop-app sessions only since 10-21; links the old Windows trap notes
+- [Windows history: backup sleep-kill](project_backup-task-sleepkill-signature.md), [Git Bash AD stall](project_git-bash-msys-ad-stall.md), [settings.json BOM](project_settings-json-bom-trap.md) — only if the Windows laptop runs a terminal again
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failure history
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive (one exception: Kenny's ITS tracker in the Teams team)

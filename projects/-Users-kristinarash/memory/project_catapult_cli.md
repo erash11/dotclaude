@@ -17,7 +17,7 @@ on PATH; the skill expects it in `~/.local/bin`. The scheduled GPS pull (`com.ke
 → `bulk_import.py` into `data/gps_history.duckdb`. The commands under "What Works" are the old
 CLI's; check the Mac binary's `--help` before relying on them.
 
-**Why:** Sport scientist at Baylor Football needed programmatic access to GPS wearable data without R scripts or manual OpenField exports.
+**Why:** Eric (Applied Performance, Baylor Football) needed programmatic access to GPS wearable data without R scripts or manual OpenField exports.
 
 ## Critical API Discoveries (do not re-investigate)
 

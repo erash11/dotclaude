@@ -12,7 +12,7 @@ Eric wants to lean on Claude more as both a **thought partner and an execution l
 **How to apply:**
 - When he idea-dumps, don't just discuss — distill into a short, ordered, actionable list and offer to drive execution.
 - Push for outcome clarity early ("what does done look like?") rather than activity.
-- Tie daily work up to weekly big rocks / the Applied Performance OKR cadence (weekly Thursday check-in). The daily brief is the daily tier beneath the weekly OKR check-in.
+- Tie daily work up to weekly big rocks / the Applied Performance OKR cadence (weekly Thursday check-in). The daily brief is the daily tier beneath the weekly OKR check-in. Superseded 2026-09-14: the Thursday check-ins are history; the Prioritization Rules slate replaced the cadence doc (see DEV memory `project_prioritization-slate.md`).
 - **The on-ramp mechanism is gone.** `morning-briefings/onramp.sh`, the Outlook
   inbox triage, and the `morning-briefing` system were retired 2026-08-14: the
   directory was deleted, the launchd job disabled, and Outlook auth destroyed.

@@ -141,7 +141,7 @@ or in its one Drive folder (`~/.claude/STORAGE.md`).
   by a watchdog in `Invoke-Rsync` (900s ceiling, hard SIGKILL, records `rsync-timeout`),
   committed as `8863a37`. That caps the symptom so the run reaches the SSD capture. The
   wedge itself is still unexplained.
-- **Tier A memory is NOT in git.** `~/.claude/.gitignore` line 1 is `/*` (default-deny
+- **Superseded 2026-09-09 (see the 09-09 section below): `projects/` is now tracked in dotclaude.** Old trap: **Tier A memory is NOT in git.** `~/.claude/.gitignore` line 1 is `/*` (default-deny
   allowlist) and `projects/` is not allowlisted, so `projects/*/memory/*.md` has exactly
   two backup layers: the Drive SNAP of `~/.claude/projects`, and the SSD. With CRASHBOX
   unmounted that is a single copy. Nothing to "commit" there — it's by design.

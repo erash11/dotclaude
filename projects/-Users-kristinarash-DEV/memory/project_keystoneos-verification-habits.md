@@ -11,7 +11,7 @@ metadata:
 This system is well-instrumented, which makes its few misleading surfaces
 dangerous — they look authoritative. Check these before drawing conclusions.
 
-**"Did a job run today?"** Only `KeystoneOS Morning` runs through `run-job.ps1`;
+**"Did a job run today?"** On the Mac (since 2026-10-14 the only scheduler): `launchctl list | grep com.keystone` plus each job's log in `~/.claude/scripts/logs/`. Historical, superseded 2026-10-14 (Windows task names): only `KeystoneOS Morning` runs through `run-job.ps1`;
 AgySync, DailyBackup, MsysKeepAlive, Reconcile, Rituals and StackDoctor invoke
 their scripts directly and write **no ledger row**. So `outputs/run-ledger.json`
 under-reports. Correctness is fine — `Test-JobCompleteOn` checks the ledger *or*

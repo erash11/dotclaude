@@ -13,7 +13,7 @@ metadata:
 **Traps**
 - yt-dlp caption requests get HTTP 429 after about 4 in a row from this laptop. `scripts/fetch_captions.py` backs off and leaves rows `todo`; rerun it. Cloud IPs are likelier to be blocked.
 - Subagents may write `applications.md` but the harness refuses `summary.md`. Do not work around it: agents return summary text, the main session saves it, then `scripts/check_summary.py`.
-- `SetEnvironmentVariable("TYPESAFE_API_KEY", (Read-Host ...))` saved an EMPTY value when the paste did not land. Check `.Length` before saving. Never paste keys into chat.
+- Historical (Windows laptop, retired 2026-10-14; on the Mac secrets go in the Keychain): `SetEnvironmentVariable("TYPESAFE_API_KEY", (Read-Host ...))` saved an EMPTY value when the paste did not land. Check `.Length` before saving. Never paste keys into chat.
 
 **State 2026-10-01:** tier A 122 of 139 summarized; 12 still rate-limited, 5 no-captions.
 

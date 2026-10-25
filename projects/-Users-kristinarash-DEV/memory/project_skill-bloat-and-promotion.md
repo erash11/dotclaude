@@ -79,7 +79,7 @@ EOF
 
 ## Decision, 2026-09-12
 
-**Do the skill audit BEFORE adopting Pi** (`pi.dev`) as an alternative harness.
+**Do the skill audit BEFORE adopting Pi** (`pi.dev`) as an alternative harness. Superseded 2026-10-14: stay on Claude Code, no Pi (see [[agentic-operating-loop]]). The Pi facts below are kept as reference.
 Rationale: the leverage is the bloat, not the harness. Auditing first means any
 future harness move ports ~30 good skills instead of ~200 mixed ones.
 

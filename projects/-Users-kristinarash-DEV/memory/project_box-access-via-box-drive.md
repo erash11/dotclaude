@@ -13,7 +13,7 @@ Baylor blocks third-party Box apps (confirmed 2026-09-30). So the Box plugin's M
 server also needs a registered Box OAuth app: it rejects Claude Code's automatic client
 registration ("does not support dynamic client registration"). No Box CLI is installed.
 
-The working route is Box Drive desktop sync on the Windows laptop: `C:\Users\eric_rash\Box`.
+Historical, superseded 2026-10-25: the working route was Box Drive desktop sync on the Windows laptop (`C:\Users\eric_rash\Box`); that laptop has had no terminal work since 2026-10-14. Box Drive is not installed on the Mac (checked 2026-10-25: nothing in `~/Library/CloudStorage`). To reach Box from the Mac, install Box Drive there first.
 Files there are cloud placeholders that download when opened. This route offers no Box AI,
 shared links, collaborations, or metadata. The box plugin's skills only give guidance.
 
