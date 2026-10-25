@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: fa062f93-2c55-4016-b9c6-f1a32e0a7083
-  modified: 2026-08-15T02:42:26.304Z
+  modified: 2026-10-25T21:38:30.824Z
 ---
 
 When memsearch fails to open `~/.memsearch/milvus.db`, milvus-lite prints:
@@ -29,5 +29,7 @@ When memsearch fails to open `~/.memsearch/milvus.db`, milvus-lite prints:
 - `~/.claude/hooks/memsearch-sync.js` now classifies those same lock signatures as transient instead of escalating them as hard errors. Caveat: `bumpTransientStreak` shares one counter across all transient classes at threshold 6, so a cluster of session-ends during a long rebuild can still escalate — downgraded, not eliminated.
 
 **How to apply (updated):** prefer `ms-search "query"` over `memsearch search` for recall; it waits out a busy index instead of surfacing the misleading message. Reserve bare `memsearch` for writes.
+
+**2026-10-25: the SessionEnd re-index can hold the lock ~23 min.** The `memsearch-sync.js --worker` run started 16:08:45 held it 1,362 s; `ms-search`'s 60 s wait does not cover that. During the lock `memsearch search` **exits 0 with empty stdout** (error on stderr only), so an empty result is not "no match". recall.py now prints `memsearch DID NOT RUN: an index run holds its lock` instead of an empty section (dotclaude `5c7dc08`). An eval run during the lock scored 0/30 and is marked INVALID in `audits/recall-eval/ledger.md`. Audit: `~/.claude/audits/2026-10-25-memory-recall-audit.md`.
 
 Related: [[backup-sync-system]] (carries the earlier two-writer lesson), [[memsearch-index-path-drift]] (the config drift found while fixing this), [[drive-fuse-rsync-mtime-loop]]

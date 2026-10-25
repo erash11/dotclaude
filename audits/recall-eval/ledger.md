@@ -37,3 +37,4 @@ One row per backend per run. Decision rule: audit section 6.2.
 | 2026-10-23 | kristinsmacbook.lan | recall.py memory description guard | fts5 | 30 | 19 | 25 | 0.722 | 2 | 7 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-23 | kristinsmacbook.lan | recall.py memory description guard | recall | 30 | 21 | 25 | 0.747 | 8 | 92 | 0.0 | 100.0 | compiled 1/1, dev-docs 0/1, tierA 12/14, transcript 1/1, vault 11/13 |
 | 2026-10-25 | kristinsmacbook.lan | INVALID: ran while SessionEnd index held the Milvus lock (fail 100%); see audits/2026-10-25-memory-recall-audit.md §5 | memsearch | 30 | 0 | 0 | 0.0 | 8175 | 17855 | 100.0 | 100.0 | compiled 0/1, dev-docs 0/1, tierA 0/14, transcript 0/1, vault 0/13 |
+| 2026-10-25 | kristinsmacbook.lan | audit 10-25 post-lock | memsearch | 30 | 13 | 25 | 0.611 | 6230 | 7274 | 0.0 | 100.0 | compiled 1/1, dev-docs 1/1, tierA 11/14, transcript 1/1, vault 11/13 |

@@ -12,9 +12,9 @@ chose the search engines). This one measures cost against use, and compares outs
 
 | # | Call | Why (short) |
 |---|---|---|
-| 1 | **Stop the daily compile step** of claude-memory-compiler. Keep the per-session flush into daily logs. Keep the 536 articles as a frozen, searchable archive. | $27–32/month of quota, rising; articles opened directly in 3 of ~191 sessions; a stale article has outranked a newer memory with a wrong fix [M]. Upstream repo unmaintained since 2026-04-06 [W]. |
+| 1 | **Stop the daily compile step** of claude-memory-compiler (the switch: the end-of-day trigger in `scripts/flush.py`, `COMPILE_AFTER_HOUR = 18` at line 234). Keep the per-session flush into daily logs. Keep the 536 articles as a frozen, searchable archive. Eric decides; alternative is weekly compile. | $27–32/month of quota, rising; articles opened directly in 3 of ~191 sessions; a stale article has outranked a newer memory with a wrong fix [M]. Upstream repo unmaintained since 2026-04-06 [W]. |
 | 2 | **Fixed today:** recall.py printed an empty memsearch section when memsearch was locked. | Reads as "no match" instead of "search was down" [M]. |
-| 3 | Fold the 6 Windows-only Tier A memories into Mac slugs, then archive the `C--Users-eric-rash-*` / `c--…` / `G--…` slugs. | 145 Windows files, 139 are twins of Mac files; laptop retired [M]. |
+| 3 | Fold the 6 Windows-only Tier A memories into Mac slugs and drop the `C--Users-eric-rash-*` / `c--…` / `G--…` slugs from recall.py's roots. **Move or archive nothing** until Eric confirms the laptop no longer writes them. | 145 Windows files, 139 are twins of Mac files [M]. The laptop still runs desktop-app sessions (since 10-21), and one Windows-slug file changed after 10-21 [M]. |
 | 4 | Split the two fattest Tier A files; add a size warning to memlint (e.g. > 6 KB). | `project_backup-sync-system.md` is 34.7 KB (~8.7k tokens per read); "one fact per file" has eroded [M]. |
 | 5 | **Do not install** claude-mem, mem0, Letta, Zep/Graphiti, Cognee, Supermemory. | Each adds always-on token cost or a database; none beats BM25 + one-line index at this scale [W]. |
 | 6 | Optional test later: **QMD** as one replacement for recall.py + memsearch. Adopt only if it beats recall.py on the 30-case eval and 14-question bench. | One local SQLite file: BM25 + vectors + rerank, MIT, 30k stars [W]. Not tested here. |
@@ -81,7 +81,7 @@ runs, so ~191 real sessions [M].
    It now prints `memsearch DID NOT RUN: an index run holds its lock ... Retry in a few minutes.`
    Test added (`scripts/test_recall.py`). Not fixed: the lock itself (search still unavailable
    during long index runs). The index log is overwritten each run, so run lengths have no history.
-3. **Windows twins are dead weight.** 145 files under Windows slugs; only 6 names have no Mac twin:
+3. **Windows twins are mostly duplicates.** 145 files under Windows slugs; only 6 names have no Mac twin:
    `feedback_bair-document-styling.md`, `feedback_newsletter.md`, `project_issue01_status.md`,
    `project_no-kitman-myelin-decision.md`, `project_proulx-approval-status.md`, `user_eric_rash.md` [M].
 4. **Tier A files have grown fat.** Top: backup-sync-system 34.7 KB, skill-bloat 13.6 KB,
@@ -110,8 +110,11 @@ the lock scored memsearch 4/5 of 30 — that is the silent failure in finding 2,
 
 recall.py misses s01, s02, n01, n02, n07; memsearch finds 3 of them (s01, n01, n07).
 **Fusing into one list loses; showing both lists separately (recall.py's current weak-match
-fallback) wins.** Keep the current shape. memsearch hit@5 was 28–29/30 on 10-01 and is 25 now
-(index has changed since); not investigated.
+fallback) wins.** Keep the current shape. Confirmed by a clean `recall-eval.py --backends memsearch` run
+(label "audit 10-25 post-lock", fail 0.0%, hit@5 25, hit@1 13, p50 6.2 s) — same numbers as the
+scratch script. memsearch's hit@5 really fell from 28–29/30 (10-01) to 25; the loss is in Tier A
+(14/14 then, 11/14 now). Cause not investigated; candidate: the 10-24 root swap (Windows C-- memory
+roots replaced by Mac twins) or new superseded-fact text from the 10-25 memlint pass.
 
 ## 6. Outside options (web survey, 2026-10-25)
 
