@@ -308,6 +308,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Update these when fixing the schedule. One line each.
 
 ### dev-edge-profile-cloud-mirrored — Leftover SpecialRequests/Wilhelm_Brody_RTP copy holds an Edge browser profile (Cookies, Login Data) that cloud-push lists for the Drive mirror
+- **Status 2026-10-25:** fixed earlier: cloud-push.py skips browser profiles (folders holding "Local State"). Stub copy still on disk (see dev-wilhelm-stub-phantom-repo).
 - Domain: dev-repos · Effort: hour · Already known: no
 - Skeptic: **downgrade** → medium. The mechanics check out. ~/DEV/SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile is 21M and holds Default/Login Data, Default/Network/Cookies, Safe Browsing Cookies and Crashpad/temp/edge_shutdown_crash.txt (all dated Oct 10). cloud-push.py:26-28 only skips DB extensions, names starting with .env, and names containing credentials/secrets/id_rsa/.pem/.key, so these files pass keep(). ~/.claude/scripts/logs/cloud-push-files0.bin (Oct 22 17:30) lists 258 edge-profile paths, including 'Login Data', 'Login Data For Account', 'Network/Cookies' and 'Safe Browsing Cookies'. cloud-push.log shows 'OK rsync finished' on 2026-10-14 (several runs) and 2026-10-16 (2 runs), so it was probably copied to Drive. The Drive side was not checked. SpecialRequests/.gitignore line 14 ignores Wilhelm_Brody_RTP/. The severity is overstated, though. I opened both stores read-only (sqlite3 with mode=ro&immutable=1) and counted rows without printing any values. Login Data has 0 saved logins. Cookies has 10 rows from 4 hosts, all Microsoft defaults: .bing.com, .msn.com, turbo.microsoft.com and www.bing.com. It is a fresh headless Edge profile left over from PDF rendering, so nothing was exposed. Every cloud-push run since 10-19 has also failed with 'Operation not permitted', which is already known, so the copy is not being refreshed. The real issue is a gap in the skip list: authenticated browser profiles have lived in DEV before (memory project_morning-briefing-retired.md mentions a 32 MB authenticated Outlook profile), and the next one would go to Drive unfiltered. That makes it a medium trap, not a current exposure. Small correction: the list holds 327 paths matching 'Wilhelm_Brody_RTP/', but that count also takes in _ARCHIVE/SpecialRequests-Wilhelm_Brody_RTP (34) and a top-level Wilhelm_Brody_RTP (11). Not already known: grepping Tier A memory, DEV/docs/STATUS.md, STORAGE.md, HARNESS_FIXES.md and both audits for 'edge-profile' or 'browser profile' found only the morning-briefing note.
 - Evidence: ~/DEV/SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile (21M) contains Default/Login Data and Default/Network/Cookies (found with find; contents not opened). Last list ~/.claude/scripts/logs/cloud-push-files0.bin (Oct 22 17:30) includes 'SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile/Default/Login Data', '.../Network/Cookies', '.../Safe Browsing Network/Safe Browsing Cookies' (258 edge-profile files, 282 files in the folder). cloud-push.py:25-27 + keep() exclude only DB extensions, names starting with .env, or names containing credentials/secrets/id_rsa/.pem/.key, so these names pass. Folder created 2026-10-10; cloud-push.log shows 'OK rsync finished' on 2026-10-14 (3 runs) and 2026-10-16 (2 runs), so the profile was very likely copied to Drive _MACHINE/Cloud_Copy/DEV (Drive side not checked). Git does not carry it: SpecialRequests/.gitignore:14 ignores 'Wilhelm_Brody_RTP/'.
@@ -315,6 +316,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: (1) Add browser-profile folders to cloud-push's skip list (e.g. 'edge-profile', 'chrome-profile', or any folder holding 'Login Data'/'Cookies'), and add 'cookies' and 'login data' to SECRET_PARTS. (2) Remove Cloud_Copy/DEV/SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile from Drive using the gws API, not the mount. (3) Resolve the stub copy (see dev-wilhelm-stub-phantom-repo) after confirming data/report_data.json and out/cmj.svg exist elsewhere.
 
 ### dev-wherewasi-follows-drive-symlink — where-was-i.py walks ~/DEV/_DRIVE into the Google Drive mount and prints DexaProject and Linda_Projects NEXT lines
+- **Status 2026-10-25:** fixed earlier: where-was-i.py skips _DRIVE (assert at line 134).
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Skeptic: **downgrade** → medium. The code bug is confirmed by reading the script. I did not run it, because running it touches the mount. ~/DEV/_DRIVE is a symlink to the Drive 00_Primary_Storage_Drive (ls -la ~/DEV). ~/.claude/scripts/where-was-i.py:26 sets SKIP=('_ARCHIVE','_to_delete','_OLD_','worktrees') with no _DRIVE. main() globs DEV/*/docs/STATUS.md and DEV/*/*/docs/STATUS.md (and recent_handoffs globs DEV/*/*/docs/handoffs), and glob follows the symlink, so _DRIVE/<folder>/docs/STATUS.md is picked up. inspect() then runs `git log` and `git status` inside that Drive repo for every path, before the date filter, on every run. first_next() opens STATUS.md through the mount. Memory project_drive-fuse-read-hang.md says file opens through the mount can hang and that the mount is for ls/stat only. Old transcripts show _DRIVE/DexaProject is a git repo that DEV-wide scripts reach (projects/-Users-kristinarash-DEV/5e8623c6...jsonl: '_DRIVE/DexaProject dirty=0 ahead=?'). The callers are real: closeout/SKILL.md:74 and dev-sync/SKILL.md:117 (startup runs dev-sync) call `where-was-i.py --decisions`. Why it is overstated: (1) The rows the auditor cites are dated 2026-09-09, and the default 14-day window and the --days 1/3 windows used by closeout and dev-sync drop them. DexaProject's NEXT or open-questions text reaches chat only with --all, or after its STATUS is committed within the window. The mount reads and git calls still happen on every run. (2) The auditor's own run finished, and I found no record of a where-was-i hang, so nothing Eric relies on is failing today. (3) The Linda_Projects part is wrong. ~/DEV/Linda_Projects is a real local directory, not under _DRIVE (ls -ld), listed in PROGRAM.md:52 as a collaborator project. Listing it is intended behavior for Eric's own tool, and the 'do not open' rule binds this audit, not the script. The fix (add '_DRIVE' to SKIP or skip symlinked top-level folders) is right. Rated medium: a hang trap plus a possible Dexa-policy leak under --all. Not already known: no mention of _DRIVE in where-was-i's context in memory, STATUS.md, STORAGE.md, HARNESS_FIXES.md or the audits.
 - Evidence: ~/DEV/_DRIVE -> ~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive (ls -la ~/DEV). where-was-i.py:26 SKIP = ('_ARCHIVE','_to_delete','_OLD_','worktrees') has no '_DRIVE'. Its globs at lines 117-118 (DEV/*/*/docs/STATUS.md) and 87-88 (handoffs) follow the symlink. Running `where-was-i.py --all` printed rows '2026-09-09  _DRIVE/DexaProject' and '2026-09-09  Linda_Projects', each with a NEXT line (redacted in this audit). crosswalk.py:17 skips _DRIVE and landed.py skips '_'-prefixed folders, so where-was-i is the only offender. Note: running it for this audit touched the mount once.
@@ -322,54 +324,63 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Add '_DRIVE' (and 'Linda_Projects' if it is local-only) to SKIP, or drop any path whose top-level folder is a symlink (os.path.islink(os.path.join(DEV, top))). Add a one-line test that _DRIVE is excluded.
 
 ### dev-router-11-unindexed-repos — 11 top-level repos are named in no area index (a different set from the 22 indexed on 10-21)
+- **Status 2026-10-25:** fixed earlier: all 11 moved to ~/DEV/_ARCHIVE/ (10-23).
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: Substring check of FOOTBALL/PERFORMANCE/RESEARCH/PLATFORM/PROGRAM/PERSONAL/COMMANDS/WORKFLOW.md + CLAUDE.md finds no mention of: GameONPaper, Gemini_Projects, InjurPred, Non-Negative-Matrix-Factorization-RTP, PT_Dash, PostGameReport, SprintLab, morning-briefing, skill-audit-2026-09-05, speed-velocity-profiling, vision-builder. All have erash11 remotes; last commits 2026-09-09 to 2026-09-25. None were in the 10-19 router-gap list (DEV/docs/STATUS.md:10).
 - Impact: Cloud sessions and agents rely on the indexes to map folder to repo, so these projects can't be found by the router. Breaks the CLAUDE.md rule 'a stale pointer is worse than no pointer'.
 - Fix: Add a row for each to its area index, or move it to _ARCHIVE and mark its registry row archived. morning-briefing is retired per memory, so it belongs in _ARCHIVE.
 
 ### dev-root-status-bloat — ~/DEV/docs/STATUS.md is 266 lines / 39 KB, with 44 dated entries and stale Next items
+- **Status 2026-10-25:** partly fixed: 166 lines, older entries in STATUS-archive-2026-Q3.md. VALD Next/Open items wait on Eric (dev-vald-secret-item-stale).
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: wc: 266 lines, 39,262 chars. '## Current state' has 44 dated '- 20..' entries back to September. ## Next (line 198) still lists done or stale items: 'Run the next Baylor forecast capture on Wednesday, 2026-09-16'; 'Remove the ~/Desktop/DEV on Windows line from ~/DEV/CLAUDE.md' (no longer in CLAUDE.md); an ANSWERED 2026-10-02 item. Line 10 says branch cloud-sessions is 'not merged', but `git branch -r --merged main` lists origin/cloud-sessions. No archive or length rule found in closeout SKILL.md or WORKFLOW.md.
 - Impact: The session routine reads it at the start of every session (~10k tokens). Stale NEXT items mislead /startup and cloud sessions.
 - Fix: Move Current-state entries older than ~14 days to docs/handoffs/STATUS-archive-2026-Q3.md, prune done Next items, and correct line 10. Add a cap such as 'Current state ≤ 15 entries' to the closeout skill.
 
 ### dev-registry-duplicate-and-wrong-paths — portfolio.json has 3 duplicated project names and 2 dev_folder paths that don't exist
+- **Status 2026-10-25:** Eric: 3 pairs remain (merged row at old root path vs paused row at real Football/ path; DexaProject archived vs paused). Handoff 2026-10-25-dev-findings-sweep.md.
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: ~/DEV/project-triage/portfolio.json (182 rows). Duplicate names: DexaProject (archived + paused), CoachReport_Prototypes (merged at 'CoachReport_Prototypes' + paused at 'Football/CoachReport_Prototypes'), WeeklyCoachReport (same pattern). Wrong paths: 'Football/FootballWeightTargetTool' and 'Football/2026-3-18_BodyWeightNorms' (merged rows); the folders are at ~/DEV/FootballWeightTargetTool and ~/DEV/2026-3-18_BodyWeightNorms. Other missing dev_folders are archived/merged rows now in _ARCHIVE (fine), plus AthleticMedicineReviews and token-dashboard. Crosswalk reports 0-2 drift because it skips retired rows. project-triage/docs/STATUS.md:11 (10-13) added paused rows for folders that already had merged rows, which created the duplicates.
 - Impact: The board and the sweep can show the same project twice with conflicting status. Path-based tools (crosswalk, landed) miss the two folders at their real paths.
 - Fix: Merge each duplicate pair into one row with the right status. Fix the two dev_folder values or move the folders under Football/. Add a duplicate-name check to crosswalk.py.
 
 ### dev-wilhelm-stub-phantom-repo — SpecialRequests/Wilhelm_Brody_RTP is a stale copy with a broken .git that discovery counts as a repo
+- **Status 2026-10-25:** Eric: left in place. 5 of 24 files are in no other copy (incl. data/report_data.json), checksum-checked 10-25.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: SpecialRequests/Wilhelm_Brody_RTP/.git has only hooks/info/logs/objects/refs (no HEAD/config). `git -C` there resolves to the parent (show-toplevel = ~/DEV/SpecialRequests), so it reports SpecialRequests' remote and HEAD dd4c03d. where-was-i shows it as an 'uncommitted' row. The real repo is ~/DEV/Wilhelm_Brody_RTP (erash11/Wilhelm_Brody_RTP), and ~/DEV/_ARCHIVE/SpecialRequests-Wilhelm_Brody_RTP also exists. The stub holds data/report_data.json and out/cmj.svg, which are not tracked in the real repo, plus the edge-profile.
 - Impact: A third copy of athlete RTP work outside any git history, mirrored to Drive by cloud-push. It makes where-was-i and repo counts wrong (144 discovered vs 143 real).
 - Fix: Check whether data/report_data.json and out/cmj.svg are in _ARCHIVE/SpecialRequests-Wilhelm_Brody_RTP or Drive. If so, delete the stub (the post-merge rule requires asking Eric, since it holds content not in git); otherwise move them into the real repo's ignored data/ first.
 
 ### dev-rtpworkinggroup-docs-case — RTP_WorkingGroup tracks Docs/STATUS.md (capital D) but the disk folder is docs/
+- **Status 2026-10-25:** fixed: RTP_WorkingGroup 82dfa4a (Docs/ renamed to docs/ in git).
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: `git -C ~/DEV/RTP_WorkingGroup ls-files` shows 11 paths under 'Docs/' (incl. Docs/STATUS.md); disk has ~/DEV/RTP_WorkingGroup/docs/STATUS.md; core.ignorecase=true. `git log -- docs/STATUS.md` returns nothing, so where-was-i shows 'uncommitted'. It is the only repo with this mismatch.
 - Impact: On a case-sensitive clone (cloud session, Linux VPS) the folder comes out as Docs/, so the session routine's 'read docs/STATUS.md' fails. Locally, STATUS freshness is always wrong.
 - Fix: `git mv Docs docs-tmp && git mv docs-tmp docs`, then commit and push.
 
 ### dev-sportsci-public-repo-bloat — Public SportScienceResearchRepo has committed node_modules, logs, three PDFs over 50 MB, and settings.local.json with local paths
+- **Status 2026-10-25:** fixed (part): SportScienceResearchRepo 22f386c untracks node_modules and .claude/settings.local.json; deploy run 40231408522 passed. Eval .log briefs kept on purpose. Large PDFs and history left (Eric only).
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: git ls-files: 2,254 node_modules files (38 packages), added in aebf01d 2026-03-24 despite .gitignore:1 'node_modules/'; 48 tracked .log files (docs/ask-library-eval); 3 SourcePapers PDFs at 65/59/50 MB; .git pack 1.85 GiB. .claude/settings.local.json is tracked with 14 'Users' path lines (Travel_Map, also public, has 2). gh: visibility PUBLIC. Public status itself is SETTLED (memory project_github-consolidation.md:66) and is not re-raised here.
 - Impact: Slow clones (1.9 GB) for cloud sessions and the VPS. Mac usernames and local tool permissions are published. GitHub warns on files over 50 MB.
 - Fix: `git rm -r --cached node_modules '*.log' .claude/settings.local.json`, add them to .gitignore, then commit. Consider moving PDFs over 50 MB to Git LFS or Drive (only if Eric wants it; history rewrite optional).
 
 ### dev-catapult-token-in-history — The live Catapult token is in DataBase_GPS_Reporting git history (API_Token_FB.txt)
+- **Status 2026-10-25:** Eric (rotation parked 09-21).
 - Domain: dev-repos · Effort: hour · Already known: yes — ~/DEV/DataBase_GPS_Reporting/docs/STATUS.md:74 ('Rotate the Catapult token (2026-09-21: Eric not concerned for now; parked)')
 - Evidence: The value of CATAPULT_TOKEN in DataBase_GPS_Reporting/gps_report/.env matches (git log -S, value not printed) API_Token_FB.txt, added in 91a233b 2026-03-13 'Added API token .txt' and removed in 88e9d7a 2026-09-13. Both commits are on origin/main (91a233b also on origin/coach-report, origin/coach-report-v2). Repo is PRIVATE (gh). The same token is also in Football/FaceComps/simulator/.env.local and .vercel/.env.production.local. No other .env secret (9 values scanned across all 144 repos' history) was found in git.
 - Impact: The token is still valid and readable by anyone with repo access or a clone. Rotating it means updating 3+ files.
 - Fix: Rotate the token when Eric decides to. Store it in one place (Keychain or a single .env) and point FaceComps at it.
 
 ### dev-merged-branches-worktrees-not-cleaned — Merged branches and dead worktrees are not cleaned up, against the standing post-merge-cleanup permission
+- **Status 2026-10-25:** left: needs its own sitting after a fetch; local branch -d is dcg-blocked.
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: Local branches merged into main: Football/SpeedProfiling (10: hierarchical-fit, ticket-03..06, v1-review-fixes…), Football/FaceComps (feat/fall-camp-calibration, worktree-mock-week-deck), Football/PFF_Data_Project (1), project-triage (worktree-portfolio-merge-editor), S2_Evaluation ('master' merged into main), SportScienceResearchRepo (batch-123-staged), LibraryProject/ZoteroInjestion (1). Flint: 3 prunable worktrees in /private/tmp/claude-501/... (107c861, 6a52dc3, 4cf19d9, all ancestors of main). Football/FaceComps/.claude/worktrees/mock-week-deck: orphan Windows worktree (.git -> C:/Users/eric_rash/...), 15 MB/223 files, gitignored but in the cloud-push list (222 files). Remote merged-branch counts from local refs (no fetch): printing-press-library 58, GameONPaper 40, SportScienceResearchRepo 17, Weekly_Research_Review 10, TypeSafe_Sandbox 7. DEV root: origin/claude/{add-cfb-playoff-benchmarks, admiring-fermat-rxylkw, project-thread-y44b7o} are unmerged but their rows are already on main (squash); closeout-0922-doctor-plus and claude/youthful-cannon-5ys23v are merged.
 - Impact: Clutter, mis-signals in branch lists, and junk mirrored to Drive.
 - Fix: Per feedback_post-merge-cleanup.md: `git branch -d` the merged local branches, `git worktree prune` in Flint, delete superseded remote branches with `git push origin --delete`. For the FaceComps orphan folder, verify each file is in history (hash-object rule) before removing it.
 
 ### dev-cloudpush-restricted-folders — cloud-push's file list includes Linda_Projects (23 files) and SpecialRequests/TOS_ES (8 files)
+- **Status 2026-10-25:** fixed earlier: cloud-push.py skips folders whose CLAUDE.md says local only.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: cloud-push-files0.bin (2026-10-22 17:30): 23 paths under Linda_Projects/, 8 under SpecialRequests/TOS_ES/. ~/DEV/CLAUDE.md 'Health data stays out' names SpecialRequests/TOS_ES and 'any folder whose CLAUDE.md says local only'. Memory project_cloud-copy-approval.md keeps only DexaProject, DBs and secrets off the mirror. Whether these folders are marked local-only was not checked (audit rule forbids opening them).
 - Impact: If either folder is local-only, its files are being copied to personal Drive.
@@ -712,54 +723,63 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: chmod 600 both.
 
 ### dev-ptdash-no-main — PT_Dash has no main branch; the default branch is a claude/ session branch
+- **Status 2026-10-25:** fixed earlier: PT_Dash moved to _ARCHIVE.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: `git -C ~/DEV/PT_Dash branch -vv`: only 'claude/cmj-performance-report-011CURrnCVZRnL3cTVQHoiGN' tracking origin; `main..HEAD` fails (unknown revision); origin/HEAD -> that claude/ branch. Last commit 2026-09-09.
 - Impact: It breaks the main-based conventions (merged checks, cloud 'attach repo' flows, post-merge rules).
 - Fix: `git branch -m main`, push, set the GitHub default branch to main, and delete the claude/ branch.
 
 ### dev-branch-work-off-main — Football/CFB_Playoff_Benchmarks has been on unmerged branch phase3-weekly since 10-19, so main's STATUS is stale
+- **Status 2026-10-25:** left: CFB_Playoff_Benchmarks phase3-weekly is active season work.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: branch -vv: '* phase3-weekly af42f3b [origin/phase3-weekly] docs(status): 2026-10-19 entry'; main 556f785. (TypeSafe_Sandbox on jev-reopen-2026-10-22 is today's active work, so not flagged.)
 - Impact: Cloud sessions attaching the repo read main's STATUS and miss phase-3 state.
 - Fix: Merge phase3-weekly or open a PR, or note the branch in main's STATUS.
 
 ### dev-local-clones-behind — house-model is 2 commits behind origin/main (cloud CFBD-auth rewire); DEV/claude-global-memory clone is 16 behind
+- **Status 2026-10-25:** fixed: house-model pulled to 6876bb0 (CFBD now via cloud vault connector; local CFBD pulls need a cloud session). ~/DEV/claude-global-memory is now a symlink to ~/.claude/global-memory (10-24).
 - Domain: dev-repos · Effort: minutes · Already known: yes — Second clone noted in ~/.claude/scripts/claude-files-digest.py:65 and DEV/docs/STATUS.md:162; behind count not recorded
 - Evidence: rev-list vs last-fetched refs: house-model behind 2 (011fffe 'Rewire CFBD auth to the Secure Vault connector', 6876bb0 week 8 rescore). ~/DEV/claude-global-memory at 5d83182 (2026-10-20) vs origin/main 14caf6f; ~/.claude/global-memory is at 14caf6f. The DEV clone is still a row in ~/.claude/scripts/backup-manifest.json:1648.
 - Impact: Local forecast runs use old CFBD auth until pulled. The duplicate memory clone could be edited by mistake, the two-copies trap.
 - Fix: `git pull` in house-model before its next run. Remove ~/DEV/claude-global-memory and its manifest row (crosswalk already maps the name to ~/.claude/global-memory).
 
 ### dev-zotero-submodule-pointer — LibraryProject's ZoteroInjestion submodule pins a38bc94, 5 commits behind the working clone; STATUS says 10e3986
+- **Status 2026-10-25:** fixed: LibraryProject ad11b44 pins 0077fd6.
 - Domain: dev-repos · Effort: minutes · Already known: yes — ~/DEV/docs/STATUS.md:260 (pointer bump needed; the sha is stale)
 - Evidence: `git -C ~/DEV/LibraryProject ls-tree HEAD ZoteroInjestion` → a38bc94 (detached, 2026-09-14). `git -C ~/DEV/ZoteroInjestion rev-list --count a38bc94..main` = 5. DEV/docs/STATUS.md:260 says both pin 10e3986.
 - Impact: The STATUS fact is wrong, and anyone opening LibraryProject sees old Zotero code.
 - Fix: Bump the submodule pointer or drop the submodule, and correct STATUS:260.
 
 ### dev-vald-secret-item-stale — 'Rotate the exposed VALD client secret' is still open, but the current secret is not in git
+- **Status 2026-10-25:** Eric: was it rotated? Then close DEV STATUS lines in Next and Open questions.
 - Domain: dev-repos · Effort: minutes · Already known: yes — ~/DEV/docs/STATUS.md ## Next and ## Open questions
 - Evidence: VALD_CLIENT_SECRET from ForcePlate_DecisionSystem/.env (64 chars, not printed): 0 commits via `git log --all -S`, 0 files at HEAD, 0 hits in docs/superpowers/plans/2026-03-20-forceplate-decision-system.md, 0 in the worktree outside .env/data. DEV/docs/STATUS.md Next ('Rotate the exposed VALD client secret…') and Open questions ('Has the exposed VALD client secret been revoked and replaced?') remain.
 - Impact: Either the secret was already rotated (stale item) or the exposure was outside git (not verifiable here).
 - Fix: Ask Eric whether it was rotated, then close both STATUS items.
 
 ### dev-status-next-gaps — 73 of 141 STATUS files have an empty or missing ## Next; 2 repos have no STATUS; 8 STATUS files lag their last commit
+- **Status 2026-10-25:** left: separate sitting.
 - Domain: dev-repos · Effort: hour · Already known: yes — project-triage/docs/STATUS.md:41 (45 blank on purpose) and :4 (TackleAnalytics no Next)
 - Evidence: where-was-i --all: 73 rows '(## Next is empty)' or '(no ## Next section)'. No docs/STATUS.md: AgentAssist (README only, 2026-08-17), KnowledgeManagement. STATUS older than last commit by 3+ days: TackleAnalytics (09-09 vs 10-19, 40d), CommandCentre 24d, Kinexon_Volleyball 21d, skill-audit-2026-09-05 16d, CFB_Victory_Model 12d, CFB_Forecast_Archive 6d, graphify-out 6d, house-model 3d.
 - Impact: /where-was-i and cloud sessions get no next step for half the portfolio. Closeouts skipped STATUS on active repos such as TackleAnalytics.
 - Fix: Update STATUS in the 8 lagging repos. Archive or add STATUS to AgentAssist/KnowledgeManagement. Leave dormant blanks as decided.
 
 ### dev-router-path-drift — Small router inaccuracies: wrong paths and a stale count
+- **Status 2026-10-25:** fixed earlier: PERFORMANCE.md, PLATFORM.md, AGENTS.md corrected.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: PERFORMANCE.md:21 lists `Zinnecker_Skylar/` at the root; it lives at SpecialRequests/Zinnecker_Skylar. PLATFORM.md:15 lists `claude-skills/` as a DEV folder; the clone is ~/.claude/skills (origin erash11/claude-skills). ~/DEV/CLAUDE.md says '23 projects carry their own CLAUDE.md'; 138 repos have one (43 are not the @AGENTS.md pointer). ~/DEV/AGENTS.md's index list omits WORKFLOW.md.
 - Impact: Small misdirection for agents following the map.
 - Fix: Fix the two paths, change the count to ~43 substantive, and add WORKFLOW.md to AGENTS.md.
 
 ### dev-large-binary-and-git-garbage — vision-builder tracks an 89 MB supabase.exe; graphify-out and Weekly_Matchups_2026 hold leftover temp objects
+- **Status 2026-10-25:** partly fixed: vision-builder moved to _ARCHIVE. tmp_obj files not checked.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: git ls-tree -l HEAD: vision-builder/supabase.exe 89MB (since 7987a2c 2026-01-31). `git count-objects -v`: graphify-out 14 tmp_obj_* (size-garbage 2439 KB), Weekly_Matchups_2026 6 tmp_obj_*.
 - Impact: A Windows binary in the repo slows clones and is useless on the Mac. Temp objects are leftovers from interrupted writes.
 - Fix: `git rm --cached supabase.exe` and add *.exe to .gitignore. Delete the tmp_obj_* files once no git process is running.
 
 ### dev-env-key-duplication — API keys are copied across several .env files; one .env is world-readable
+- **Status 2026-10-25:** partly fixed: CFB_Playoff_Benchmarks/.env now 600. Key sharing left (Eric).
 - Domain: dev-repos · Effort: hour · Already known: yes — CFBD copies: memory project_cfb-analytics-lab.md:29-31 (PFF/Catapult copies not recorded)
 - Evidence: Key names only: PFF_API_KEY in Football/PFF_Data_Project/.env and house-model/.env; CATAPULT_TOKEN in DataBase_GPS_Reporting/gps_report/.env, Football/FaceComps/simulator/.env.local, .vercel/.env.production.local. Football/CFB_Playoff_Benchmarks/.env is mode 644 (others 600/700). All 12 .env files are gitignored. STORAGE.md:24 allows a local .env.
 - Impact: Rotation needs edits in several places, so a rotation is likely to miss one.
