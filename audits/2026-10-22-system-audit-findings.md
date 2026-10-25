@@ -338,7 +338,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Move Current-state entries older than ~14 days to docs/handoffs/STATUS-archive-2026-Q3.md, prune done Next items, and correct line 10. Add a cap such as 'Current state ≤ 15 entries' to the closeout skill.
 
 ### dev-registry-duplicate-and-wrong-paths — portfolio.json has 3 duplicated project names and 2 dev_folder paths that don't exist
-- **Status 2026-10-25:** Eric: 3 pairs remain (merged row at old root path vs paused row at real Football/ path; DexaProject archived vs paused). Handoff 2026-10-25-dev-findings-sweep.md.
+- **Status 2026-10-25:** fixed: Eric kept the paused rows; project-triage eb91d17.
 - Domain: dev-repos · Effort: hour · Already known: no
 - Evidence: ~/DEV/project-triage/portfolio.json (182 rows). Duplicate names: DexaProject (archived + paused), CoachReport_Prototypes (merged at 'CoachReport_Prototypes' + paused at 'Football/CoachReport_Prototypes'), WeeklyCoachReport (same pattern). Wrong paths: 'Football/FootballWeightTargetTool' and 'Football/2026-3-18_BodyWeightNorms' (merged rows); the folders are at ~/DEV/FootballWeightTargetTool and ~/DEV/2026-3-18_BodyWeightNorms. Other missing dev_folders are archived/merged rows now in _ARCHIVE (fine), plus AthleticMedicineReviews and token-dashboard. Crosswalk reports 0-2 drift because it skips retired rows. project-triage/docs/STATUS.md:11 (10-13) added paused rows for folders that already had merged rows, which created the duplicates.
 - Impact: The board and the sweep can show the same project twice with conflicting status. Path-based tools (crosswalk, landed) miss the two folders at their real paths.
