@@ -106,7 +106,7 @@ Full OS audit last run **2026-07-24** (reports under `audits/`, guards auto-run)
 - **gws** re-auth requires explicit full scope URLs — the `-s drive`
   shorthand silently grants no scopes (v0.22.5 bug), and `~/.config/gws/token_cache.json`
   must be deleted after re-auth or the stale token is served. See [[gws-forms-api]].
-- **MCP Gmail sends to Eric himself are approved** (2026-10-04): `send_message`/`forward` work.
+- **MCP Gmail sends to Eric himself are approved** (2026-10-04): `send_message`/`forward` work. Since 2026-10-22 the default for Google APIs is `gws` ([[gws-cli-default]]); use MCP Gmail only where gws cannot do the job.
   Eric OK'd sending to eric.rash11@gmail.com and his Outlook, Eric_Rash@Baylor.edu. Anyone
   else still gets a draft, not a send.
 

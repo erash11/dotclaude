@@ -16,7 +16,7 @@ Repairs made 2026-08-13 on this Mac, and the four traps hit doing it. All four g
 - PATH had duplicate `~/go/bin` and `~/.local/bin` entries (17 entries → 15). Sources: a redundant
   export in `.zshrc`, a duplicated `go/bin` line, and two unguarded `brew shellenv` calls in `.zprofile`.
 - An entire pre-migration Node install at `/usr/local` (~690 MB: node, npm, npx, corepack, stale
-  codex/gemini/gws) removed. `/usr/local/bin` now holds only Docker Desktop + kubectl.
+  codex/gemini/gws) removed. `/usr/local/bin` then held only Docker Desktop + kubectl. Superseded 2026-10-25: it now holds only `code` (the VS Code CLI link); Docker is gone.
 - `FIREFLIES_API_KEY` moved from plaintext in `.zshrc` into the login Keychain.
 
 **The four traps — these are the reusable part:**
