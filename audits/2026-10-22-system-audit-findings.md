@@ -345,7 +345,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Merge each duplicate pair into one row with the right status. Fix the two dev_folder values or move the folders under Football/. Add a duplicate-name check to crosswalk.py.
 
 ### dev-wilhelm-stub-phantom-repo — SpecialRequests/Wilhelm_Brody_RTP is a stale copy with a broken .git that discovery counts as a repo
-- **Status 2026-10-25:** Eric: left in place. 5 of 24 files are in no other copy (incl. data/report_data.json), checksum-checked 10-25.
+- **Status 2026-10-25:** closed: Eric chose to leave it in place. 5 of 24 files are in no other copy (incl. data/report_data.json), checksum-checked 10-25.
 - Domain: dev-repos · Effort: minutes · Already known: no
 - Evidence: SpecialRequests/Wilhelm_Brody_RTP/.git has only hooks/info/logs/objects/refs (no HEAD/config). `git -C` there resolves to the parent (show-toplevel = ~/DEV/SpecialRequests), so it reports SpecialRequests' remote and HEAD dd4c03d. where-was-i shows it as an 'uncommitted' row. The real repo is ~/DEV/Wilhelm_Brody_RTP (erash11/Wilhelm_Brody_RTP), and ~/DEV/_ARCHIVE/SpecialRequests-Wilhelm_Brody_RTP also exists. The stub holds data/report_data.json and out/cmj.svg, which are not tracked in the real repo, plus the edge-profile.
 - Impact: A third copy of athlete RTP work outside any git history, mirrored to Drive by cloud-push. It makes where-was-i and repo counts wrong (144 discovered vs 143 real).
@@ -751,7 +751,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Bump the submodule pointer or drop the submodule, and correct STATUS:260.
 
 ### dev-vald-secret-item-stale — 'Rotate the exposed VALD client secret' is still open, but the current secret is not in git
-- **Status 2026-10-25:** Eric: was it rotated? Then close DEV STATUS lines in Next and Open questions.
+- **Status 2026-10-25:** closed: Eric chose not to rotate (accepted); DEV STATUS items removed.
 - Domain: dev-repos · Effort: minutes · Already known: yes — ~/DEV/docs/STATUS.md ## Next and ## Open questions
 - Evidence: VALD_CLIENT_SECRET from ForcePlate_DecisionSystem/.env (64 chars, not printed): 0 commits via `git log --all -S`, 0 files at HEAD, 0 hits in docs/superpowers/plans/2026-03-20-forceplate-decision-system.md, 0 in the worktree outside .env/data. DEV/docs/STATUS.md Next ('Rotate the exposed VALD client secret…') and Open questions ('Has the exposed VALD client secret been revoked and replaced?') remain.
 - Impact: Either the secret was already rotated (stale item) or the exposure was outside git (not verifiable here).
