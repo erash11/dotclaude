@@ -331,10 +331,18 @@ def memsearch_hits(question):
     """memsearch's top 5 (meaning + keyword search over the memsearch roots); about 10 s on 2026-10-24."""
     exe = os.path.join(HOME, ".local/bin/memsearch")
     try:
-        return subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "5"],
-                              capture_output=True, text=True, timeout=45).stdout  # ~4x measured; a locked index must not hang a ~1 s tool
+        res = subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "5"],
+                             capture_output=True, text=True, timeout=45)  # ~4x measured; a locked index must not hang a ~1 s tool
     except (OSError, subprocess.TimeoutExpired) as e:
         return f"memsearch did not run: {e}"
+    if res.stdout.strip():
+        return res.stdout
+    # memsearch exits 0 with empty stdout when it fails; an empty section reads as "no match".
+    # Seen 2026-10-25: the SessionEnd re-index (memsearch-sync.js worker) held the Milvus lock for 15+ min.
+    if "DataDirLockedError" in res.stderr or "holds the lock" in res.stderr:
+        return "memsearch DID NOT RUN: an index run holds its lock (it re-indexes after each session ends). Retry in a few minutes."
+    last = (res.stderr.strip().splitlines() or ["no output"])[-1][:200]
+    return f"memsearch DID NOT RUN: {last}"
 
 
 def main(argv=None):

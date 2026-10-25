@@ -158,4 +158,18 @@ with tempfile.TemporaryDirectory() as root:
     assert "MEMSEARCH-STUB" in ask("drive push fix", [kdir, mdir], "--deep")
     assert "MEMSEARCH-STUB" in ask("zebra quartz walrus", [kdir, mdir])  # no match at all
 
+    # A failed memsearch (exit 0, empty stdout) must say it did not run, not print an empty section.
+    import subprocess
+    old_run = r.subprocess.run
+    try:
+        lock = "milvus_lite.exceptions.DataDirLockedError: another process holds the lock on 'milvus.db'"
+        r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "", lock)
+        assert "DID NOT RUN" in r.memsearch_hits("q") and "lock" in r.memsearch_hits("q")
+        r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "", "boom\nValueError: bad")
+        assert r.memsearch_hits("q") == "memsearch DID NOT RUN: ValueError: bad"
+        r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "hit 1\n", "")
+        assert r.memsearch_hits("q") == "hit 1\n"
+    finally:
+        r.subprocess.run = old_run
+
 print("test_recall: all checks passed")
