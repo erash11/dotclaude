@@ -192,7 +192,7 @@ esac
     $stamp = "$LogDir/uv-prune.stamp"
     $env:FAKE_UV_MODE = 'lock'; Reset
     Invoke-UvPrune "$T/bin/uv" $stamp
-    Check 'lock: "uv-prune: skipped (locked)", no error, no stamp' ((@($LogLines) -contains 'uv-prune: skipped (locked)') -and $Errors.Count -eq 0 -and -not (Test-Path $stamp))
+    Check 'lock: skipped line, no error, no stamp' ((@($LogLines) -contains 'uv-prune: skipped (locked by a live uvx server; normal, retries next run)') -and $Errors.Count -eq 0 -and -not (Test-Path $stamp))
     Check 'UV_LOCK_TIMEOUT=10 reached uv' ((Get-Content "$T/bin/uv-timeout") -eq '10')
     $env:FAKE_UV_MODE = 'boom'; Reset
     Invoke-UvPrune "$T/bin/uv" $stamp

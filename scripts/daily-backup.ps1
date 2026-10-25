@@ -944,7 +944,7 @@ function Invoke-UvPrune($uvExe, $stamp) {
         Log "uv-prune: ok $before->$(& $size)"
         Set-Content -LiteralPath $stamp -Value (Get-Date -Format 'o')
     } elseif ($text -match 'Timeout \(\d+s\) when waiting for lock') {
-        Log 'uv-prune: skipped (locked)'
+        Log 'uv-prune: skipped (locked by a live uvx server; normal, retries next run)'
     } else {
         $Errors.Add('uv-prune')
         $last = if ($out.Count -gt 0) { "$($out[-1])" } else { '' }
