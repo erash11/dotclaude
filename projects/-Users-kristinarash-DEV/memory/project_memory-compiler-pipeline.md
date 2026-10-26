@@ -11,6 +11,8 @@ metadata:
 The compiler at `~/.claude/claude-memory-compiler/` has three stages. Each fails
 differently and the symptoms look alike, so identify the stage before fixing.
 
+**Since 2026-10-25 compile is off** (Eric: ~$30/month, articles opened in 3 of ~191 sessions). `flush.py` has `COMPILE_ON_FLUSH = False`; flush and `daily/` logs continue; `knowledge/` is frozen (~540 articles). `compile.py` still runs by hand. Weekly lint `orphan_source` and health `compile_backlog` counts will grow; that is expected.
+
 **Stage 1 — `hooks/session-end.py`.** Writes `scripts/session-flush-<uuid>-<YYYYMMDD>-<HHMMSS>.md`,
 then spawns `flush.py`. Logs every firing to `scripts/flush.log` as `SessionEnd fired`.
 If `flush.log` has no such line for days but the hook works when run by hand, sessions
