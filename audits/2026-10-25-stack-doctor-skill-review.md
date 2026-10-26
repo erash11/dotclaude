@@ -66,3 +66,13 @@ the script behind it where the skill's claims depend on it. Today's run: ALL CLE
 ## Not changed by this review
 
 Nothing edited yet. Script tests to extend if B is applied: `scripts/test-*.sh` pattern.
+
+## Applied 2026-10-25 (Eric chose "all of it") — skills `31e7631`
+
+All 13 items. SKILL.md 20,180 → 3,498 chars (steps + done line + issue-code index); per-code fixes
+in `FIXES.md` (12.6 KB, read only when a code fires); laptop material in `WINDOWS.md`. Script:
+memsearch empty output fails / lock warns; `INVALID` ledger rows skipped; Windows memsearch section
+skipped. Found while applying: 8 script codes the old skill never explained (`task-unloaded`,
+`backup-dryrun-only`, `backup-repo-gone`, `skill-tax`, `memfile-full`, `memfile-missing`,
+`handoff-upstream`, `handoff-check-missing`); all 37 codes now documented. Verified: real run ALL
+CLEAR; tests 18/18 (memsearch-check 8, job-proof 6, pwsh-tap 4).
