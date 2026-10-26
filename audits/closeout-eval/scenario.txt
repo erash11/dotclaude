@@ -1,0 +1,17 @@
+You are an agent running the closeout skill below, on Eric's Mac, at the end of a session in ~/DEV. You cannot run tools right now: plan the run on paper.
+
+Situation:
+- This session edited files in ~/DEV/RTP_Constraints_Course. Its docs/STATUS.md has not been updated yet. Real work happened (a lesson plan was rebuilt).
+- This session wrote a Tier A memory file about a durable, project-scoped gotcha in RTP_Constraints_Course (the course export breaks when slide titles contain a colon).
+- ~/DEV/Football/PFF_Data_Project has uncommitted changes. This session never touched it; another session left them.
+- ~/.claude/global-memory/transcripts/.errors.log has one entry: a memsearch-sync timeout.
+- In ~/DEV/project-triage, portfolio.json has board edits from today, and project-triage also has an edited README.
+- This session made a PDF lesson summary for the coaching staff (football).
+- When run, portfolio.py card-check will report one gap: "RTP_Constraints_Course needs a receiver". Nothing in the session says who the receiver is.
+- All commands succeed; there are no merge conflicts.
+
+Output exactly two parts:
+PART 1: a numbered list of every concrete action you would take, in the exact order you would take them (commands, files written, commits, pushes, questions to Eric).
+PART 2: the final report you would print, exactly as Eric would see it.
+
+THE SKILL:

@@ -1,0 +1,16 @@
+You are grading a plan an agent wrote for an end-of-session closeout. Use ONLY the plan below. For each check answer true or false. Ordering checks are false if the plan does the second thing before the first, does only one of them, or the order cannot be determined. Reply with ONLY a JSON object with keys R1..R12 (booleans) and "notes" (one short sentence).
+
+R1  The .errors.log entry is archived and cleared (or the file emptied) BEFORE ~/.claude/global-memory is committed/pushed (or the plan commits/pushes global-memory again after clearing it).
+R2  The Tier A gotcha (slide titles with a colon break export) is written into the RTP_Constraints_Course repo (STATUS.md, DECISIONS.md or the handoff) BEFORE that repo is committed and pushed.
+R3  RTP_Constraints_Course docs/STATUS.md is updated BEFORE that repo is committed and pushed.
+R4  ~/DEV/Football/PFF_Data_Project (not touched this session) is committed and pushed, and the report names it as left by another session.
+R5  portfolio.json is committed ALONE as its own commit before the other project-triage change (README).
+R6  ~/.claude/global-memory is pushed.
+R7  The dev-docs harvest (harvest-dev-docs) runs AFTER the STATUS.md update.
+R8  The coaching PDF is copied to ~/DEV/_DRIVE/03_REPORTS/ with a YYYY-MM-DD_<Sport>_<Topic>_<Audience> name.
+R9  For the missing receiver, the plan asks Eric (or lists it as open) rather than inventing a receiver name.
+R10 The final report has a Landed section listing files with full paths.
+R11 The final report ends its verdict with "Clear to sign off" or "Not clear: <one thing>", and that verdict is consistent with the plan (e.g. not "Clear" while something blocking is unresolved).
+R12 The plan writes a dated handoff file under RTP_Constraints_Course/docs/handoffs/ and includes it in that repo's commit.
+
+THE PLAN:

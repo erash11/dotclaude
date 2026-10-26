@@ -67,3 +67,13 @@ typed in ~99 Mac sessions in the last 30 days, plus 19 model-invoked runs [M]. N
 `portfolio.py` crosswalk / seven-day / card-check / set-receiver / add-update / set-status;
 `landed.py` scan / show; `where-was-i.py --decisions --days`; `~/DEV/_DRIVE/03_REPORTS/`;
 `mods-sync.sh`; `harvest-dev-docs.sh`; `dev-sync` holds the conflict steps; `startup` exists.
+
+## Applied 2026-10-25 (Eric chose "all of it") — skills `740138a`
+
+All 13 items. SKILL.md 14,085 → 8,275 chars; `CARDS.md` (card-gap table) and `PLATFORMS.md`
+(Windows, Cowork). Tests: 56/56 old working rules present in the new files; paper eval
+(`~/.claude/audits/closeout-eval/`, 3 Sonnet runs per version, blind judge): old 30/36, new 32/36
+after correcting two judge errors by line position. Gain is verdict consistency (0/3 → 2/3); the
+step-order trap did not trip Sonnet on this scenario (both 3/3), so that fix is preventive.
+Side effect found: headless `--no-session-persistence` runs make `transcript-capture.js` log to
+`.errors.log`; 8 lines archived to `.errors-ledger.log` with a note, file cleared.
