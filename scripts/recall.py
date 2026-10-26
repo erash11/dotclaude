@@ -327,16 +327,41 @@ def short(p):
     return p.replace(HOME, "~")
 
 
+def memory_first(hits, limit=5):
+    """memsearch hits -> one best chunk per file, Tier A memory files first, at most `limit` files.
+    Same idea as rank()'s Tier A rule. Eval 2026-10-25 (30 cases): hit@1 13 -> 16, hit@5 25 -> 27,
+    no vault case worse. A Windows-slug twin is dropped when the Mac copy is also listed;
+    _archive memories are old versions, so they do not move up."""
+    best = {}
+    for h in hits:
+        best.setdefault(h["source"], h)  # memsearch returns best score first
+    win = lambda p: "/projects/C--" in p or "/projects/c--" in p
+    mac_names = {os.path.basename(p) for p in best if not win(p)}
+    files = [p for p in best if not (win(p) and os.path.basename(p) in mac_names)]
+    up = lambda p: tier_a(p) and "/_archive/" not in p
+    return [best[p] for p in [p for p in files if up(p)] + [p for p in files if not up(p)]][:limit]
+
+
 def memsearch_hits(question):
-    """memsearch's top 5 (meaning + keyword search over the memsearch roots); about 10 s on 2026-10-24."""
+    """memsearch's top 20 chunks (meaning + keyword search over the memsearch roots), memory files first,
+    5 files shown; about 8-10 s (top 20 costs the same as top 5, measured 2026-10-25)."""
     exe = os.path.join(HOME, ".local/bin/memsearch")
     try:
-        res = subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "5"],
+        res = subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "20", "-j"],
                              capture_output=True, text=True, timeout=45)  # ~4x measured; a locked index must not hang a ~1 s tool
     except (OSError, subprocess.TimeoutExpired) as e:
         return f"memsearch did not run: {e}"
     if res.stdout.strip():
-        return res.stdout
+        try:
+            hits = json.loads(res.stdout[res.stdout.find("["):])
+        except ValueError:
+            return res.stdout  # not JSON: show memsearch's own text rather than nothing
+        out = []
+        for n, h in enumerate(memory_first(hits), 1):
+            body = h["content"] if len(h["content"]) <= 600 else (
+                h["content"][:600] + f"\n  ... [truncated, run 'memsearch expand {h['chunk_hash']}' for full content]")
+            out.append(f"--- Result {n} ---\nSource: {short(h['source'])} (lines {h['start_line']}-{h['end_line']})\n{body}")
+        return "\n\n".join(out) + "\n" if out else "memsearch: no hits.\n"
     # memsearch exits 0 with empty stdout when it fails; an empty section reads as "no match".
     # Seen 2026-10-25: the SessionEnd re-index (memsearch-sync.js worker) held the Milvus lock for 15+ min.
     if "DataDirLockedError" in res.stderr or "holds the lock" in res.stderr:

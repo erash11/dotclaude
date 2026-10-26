@@ -2,6 +2,7 @@
 Run: python3 -I ~/.claude/scripts/test_recall.py  (reads nothing outside the temp tree)
 """
 import importlib.util
+import json
 import os
 import tempfile
 
@@ -168,7 +169,24 @@ with tempfile.TemporaryDirectory() as root:
         r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "", "boom\nValueError: bad")
         assert r.memsearch_hits("q") == "memsearch DID NOT RUN: ValueError: bad"
         r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "hit 1\n", "")
-        assert r.memsearch_hits("q") == "hit 1\n"
+        assert r.memsearch_hits("q") == "hit 1\n"  # not JSON: memsearch's own text passes through
+
+        # Memory files first: one chunk per file, Mac copy over its Windows twin, _archive not promoted.
+        P = "/Users/x/.claude/projects/"
+        def hit(src, h): return {"source": src, "chunk_hash": h, "content": "c" + h, "start_line": "1", "end_line": "2"}
+        hits = [hit("/Users/x/.claude/global-memory/handoffs/a.md", "1"),
+                hit("/Users/x/.claude/global-memory/handoffs/a.md", "2"),
+                hit(P + "C--Users-eric-rash-Desktop-DEV/memory/project_x.md", "3"),
+                hit(P + "-Users-x/memory/_archive/project_old.md", "4"),
+                hit("/Users/x/SecondBrain/Notes/n.md", "5"),
+                hit(P + "-Users-x-DEV/memory/project_x.md", "6"),
+                hit(P + "C--Users-eric-rash/memory/project_only_win.md", "7")]
+        assert [h["chunk_hash"] for h in r.memory_first(hits)] == ["6", "7", "1", "4", "5"]
+        r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, json.dumps(hits), "")
+        out = r.memsearch_hits("q")
+        assert out.index("project_x.md") < out.index("handoffs/a.md") and "C--Users-eric-rash-Desktop-DEV" not in out
+        r.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "[]", "")
+        assert r.memsearch_hits("q") == "memsearch: no hits.\n"
     finally:
         r.subprocess.run = old_run
 

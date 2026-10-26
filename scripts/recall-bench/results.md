@@ -170,3 +170,10 @@ A: Q8 did not find the fix; Q9 answered a different question. Q5 (run 1) lost it
 | 4 | 104,276 | 176 | 18,519 | 88 (54) |
 | 5 | 57,456 | 693 | 18,147 | 207 (166) |
 | total | 467,047 ($0.90) | 983 | 91,847 ($0.32) | 612 |
+
+## Run 2026-10-25: memsearch section memory-first (code only, no model calls)
+
+recall.py's memsearch fallback now takes memsearch's top 20, one chunk per file, Tier A memory
+files first (Mac copy over Windows twin, `_archive` not promoted), 5 files shown.
+memsearch section on the 30-case eval: hit@1 13 -> 17, hit@5 25 -> 27. recall.py BM25 unchanged:
+check.py OK (eval 21/25, bench 12/13). Details: `~/.claude/audits/2026-10-25-memory-recall-audit.md` §9.

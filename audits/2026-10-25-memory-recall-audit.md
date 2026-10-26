@@ -12,7 +12,7 @@ chose the search engines). This one measures cost against use, and compares outs
 
 | # | Call | Why (short) |
 |---|---|---|
-| 1 | **Stop the daily compile step** of claude-memory-compiler (the switch: the end-of-day trigger in `scripts/flush.py`, `COMPILE_AFTER_HOUR = 18` at line 234). Keep the per-session flush into daily logs. Keep the 536 articles as a frozen, searchable archive. Eric decides; alternative is weekly compile. | $27–32/month of quota, rising; articles opened directly in 3 of ~191 sessions; a stale article has outranked a newer memory with a wrong fix [M]. Upstream repo unmaintained since 2026-04-06 [W]. |
+| 1 | **Keep the daily compile** (Eric, 10-25: cost is not a concern). The first pick was to stop it; without cost the measured harm is small, and recall.py's Tier A rule already beats stale articles. Follow-up done: memsearch results now get the same memory-first rule (section 9). | $27–32/month of quota, rising; articles opened directly in 3 of ~191 sessions; a stale article has outranked a newer memory with a wrong fix [M]. Upstream repo unmaintained since 2026-04-06 [W]. |
 | 2 | **Fixed today:** recall.py printed an empty memsearch section when memsearch was locked. | Reads as "no match" instead of "search was down" [M]. |
 | 3 | Fold the 6 Windows-only Tier A memories into Mac slugs and drop the `C--Users-eric-rash-*` / `c--…` / `G--…` slugs from recall.py's roots. **Move or archive nothing** until Eric confirms the laptop no longer writes them. | 145 Windows files, 139 are twins of Mac files [M]. The laptop still runs desktop-app sessions (since 10-21), and one Windows-slug file changed after 10-21 [M]. |
 | 4 | Split the two fattest Tier A files; add a size warning to memlint (e.g. > 6 KB). | `project_backup-sync-system.md` is 34.7 KB (~8.7k tokens per read); "one fact per file" has eroded [M]. |
@@ -195,3 +195,23 @@ recall.py: 10 collections, 4,683 files, Archive/archive dirs and `.windows.md` t
 - Side finding: pymilvus `query_iterator` on this Milvus Lite DB returned 7,530 of 50,003 rows
   (mvccTs warning); plain `query()` returned all. Any script that counts chunks should not use
   the iterator.
+
+## 9. Memory-first rule for memsearch (10-25, Eric's ask) [M]
+
+Where: recall.py `memory_first()` + `memsearch_hits()` (memsearch's own package is not patched;
+an update would erase it). recall.py now asks memsearch for its top 20 chunks (`-j`; same ~8 s as
+top 5), keeps one chunk per file, drops a Windows-slug twin when the Mac copy is listed, moves Tier A
+memory files (not `_archive/`) ahead of everything else, and shows 5 files.
+The memory-write skill's L2 now runs `recall.py "<reworded>" --deep` instead of bare
+`memsearch search`, so direct meaning searches get the rule too (skills `efce82b`).
+
+| memsearch section (30-case eval) | hit@1 | hit@5 |
+|---|---:|---:|
+| before (memsearch top 5 as printed) | 13 | 25 |
+| simulated variants on cached top 20: best Tier A to #1 within top 10 | 16 | 25 |
+| simulated: all Tier A first within top 20 | 16 | 27 |
+| **shipped `memsearch_hits` (adds `_archive` exclusion)** | **17** | **27** |
+
+No vault case worse; recall.py itself unchanged (`recall-bench/check.py`: OK, eval 21/25, bench 12/13).
+Caveat: 14 of 30 eval cases are Tier A, so the eval favours this rule; picked from 4 variants on it.
+Tests: `scripts/test_recall.py` (ordering, twin drop, archive, empty result, non-JSON passthrough).
