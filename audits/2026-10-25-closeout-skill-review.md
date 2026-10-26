@@ -77,3 +77,12 @@ after correcting two judge errors by line position. Gain is verdict consistency 
 step-order trap did not trip Sonnet on this scenario (both 3/3), so that fix is preventive.
 Side effect found: headless `--no-session-persistence` runs make `transcript-capture.js` log to
 `.errors.log`; 8 lines archived to `.errors-ledger.log` with a note, file cleared.
+
+## Round 2, 2026-10-26 — gaps fixed (skills `bf2c7e7`, dotclaude `3c8bad0`)
+
+Gaps found after the rework: hand sweep blind to side branches, stashes, worktrees and broken `.git`
+(Wilhelm_Brody_RTP reads clean everywhere); no proof after the push; weaker commit guard than the
+autopush hook; no rule for running jobs (lost in 740138a); unclear which open items block; hook-written
+session files would fail any post-push check. Fixes: `where-was-i.py --sweep` (+ test), second sweep
+at the end of step 4, `BLOCKED` list pointer, background-job rule, done-line wording. Eval results in
+`~/.claude/audits/closeout-eval/README.md`: scenario 1 34/36, scenario 2 27/27.

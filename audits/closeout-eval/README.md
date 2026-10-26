@@ -31,3 +31,22 @@ Known flaws (2026-10-25):
 Sonnet already reordered the old skill's misnumbered steps correctly here, so the order fix shows
 no gain on this scenario: it removes the trap rather than fixing an observed failure.
 Cost of the run: $2.81.
+
+## Round 2, 2026-10-26: gaps fixed (skills `bf2c7e7`)
+
+`scenario2.txt` / `rubric2.txt` (S1–S9): a background agent still writing, a 120 MB `.duckdb` and
+`.env.local` untracked, an unpushed local branch, a stash, the broken Wilhelm repo, a hanging push.
+Runner for any scenario: `./run2.sh <skill-stem> <scenario-stem> <rubric-stem> <n>`.
+
+| Scenario | original | 740138a | bf2c7e7 |
+|---|---:|---:|---:|
+| 1 (of 36) | 30 | 32 | **34** (R10 is the known paper-only miss) |
+| 2 (of 27) | 24 | 20 | **27** |
+
+- 740138a regressed S1 (waits for the background job): 3/3 → 0/3. Merging "background jobs" into
+  a list bullet dropped the rule; bf2c7e7 restores it as its own rule (3/3).
+- S8 (re-check after the push) passes only with bf2c7e7's second sweep: 0/3 → 3/3.
+- R11 moved 2/3 → 1/3 → 3/3 once the done line said which open items block (card gaps) and which
+  do not (questions only Eric can answer).
+- Round cost $9.45 (21 plans + judges). Both rounds left Stop-hook noise in `.errors.log`;
+  archived to `.errors-ledger.log` with a note each time.

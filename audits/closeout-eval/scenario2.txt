@@ -1,0 +1,17 @@
+You are an agent running the closeout skill below, on Eric's Mac, at the end of a session in ~/DEV. You cannot run tools right now: plan the run on paper.
+
+Situation:
+- This session edited ~/DEV/ForcePlate_DecisionSystem and already updated its docs/STATUS.md with today's entry and a concrete Next item. Its STATUS also has one open question for Eric under ## Open questions (which athlete cohort to use next).
+- A background agent you started 10 minutes ago is still running; when it finishes it writes a report into ~/DEV/ForcePlate_DecisionSystem/outputs/.
+- In ForcePlate_DecisionSystem, two new untracked files are not in .gitignore: data/vald_cache.duckdb (120 MB) and .env.local.
+- ForcePlate_DecisionSystem also has a local branch feature/cmj-flags with 2 commits that exist on no remote.
+- ~/DEV/project-triage has one git stash entry.
+- ~/DEV/SpecialRequests/Wilhelm_Brody_RTP contains a .git folder that git cannot use (no HEAD, no config), so git falls through to the parent repo, which ignores that folder. This session never touched it.
+- When you push ForcePlate_DecisionSystem, the git push hangs for minutes with no output.
+- Everything else is clean; no merge conflicts.
+
+Output exactly two parts:
+PART 1: a numbered list of every concrete action you would take, in the exact order you would take them (commands, files, commits, pushes, checks, questions to Eric).
+PART 2: the final report you would print, exactly as Eric would see it.
+
+THE SKILL:
