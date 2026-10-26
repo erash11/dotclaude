@@ -1014,7 +1014,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Find which source enables github@synced or github@inline (claude.ai synced plugins or the workflow/inline plugin set) and disable it there. Alternatively, supply the token from Keychain through a wrapper.
 
 ### mac-brew-npm-outdated — 53 Homebrew formulae and 7 npm globals are outdated
-- **Status 2026-10-25:** Eric picked; closed for now: Eric chose to wait until after the season (the 4-formula upgrade also pulls node and python@3.14 and downgrades openssl@3). npm globals opencode-ai and pi-coding-agent removed.
+- **Status 2026-10-25:** fixed (Eric: do it now): brew upgraded gh 2.103.2, git 2.56.0, openssl@3 3.5.9 (LTS), sqlite 3.54.1 plus node 26.12.1 and python@3.14 3.14.9; old kegs kept (HOMEBREW_NO_INSTALL_CLEANUP); pwsh untouched at 7.5.2; 3 DEV venvs tested OK. New git hung on a Keychain prompt; git now uses gh as GitHub credential helper. npm globals opencode-ai and pi-coding-agent removed.
 - Domain: mac-toolchain · Effort: minutes · Already known: no
 - Evidence: brew outdated --formula | wc -l -> 53 (casks 0). Includes gh 2.100.0<2.103.0, git 2.55.0<2.56.0_1, node 26.6.0<26.12.1, python@3.14 3.14.7<3.14.9, sqlite 3.53.4<3.54.1, go 1.26.5<1.27.3. npm -g outdated: codex 0.162.1<0.163.0, gemini-cli 0.58.0<0.65.0, opencode-ai, pi-coding-agent, @playwright/cli, sharp, npm 11->12.
 - Impact: Normal drift, including security patches for git, sqlite and openssl. A python@3.14 upgrade plus brew cleanup removes the Cellar 3.14.7 path that the running board.py (pid 43242) uses; it keeps running until restarted. The gps_report venv uses /opt/homebrew/opt/python@3.14, which survives patch upgrades.

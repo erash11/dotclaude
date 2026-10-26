@@ -80,3 +80,4 @@ Never put memory content here — the file itself holds the facts.
 - [Recall bench](reference_recall-bench.md) — a recalled answer was wrong or stale (add it to the bench unasked); re-testing recall.py; recall-check errors
 - [No follow up on eric](feedback_no-follow-up-on-eric.md) — before proposing any habit, reminder, manual step or 'tell me when'; when offering options
 - [Pwsh launchd wrapper trap](project_pwsh-launchd-wrapper-trap.md) — before upgrading or reinstalling PowerShell, or any launchd job that runs pwsh
+- [Brew git keychain hang](project_brew-git-keychain-hang.md) — git pull/push hangs, or before any brew upgrade
