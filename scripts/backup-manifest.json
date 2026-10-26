@@ -1451,17 +1451,6 @@
    "captureWorkingTree": true
   },
   {
-   "path": "Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/DexaProject",
-   "class": "institutional",
-   "isRepo": true,
-   "destinations": [
-    "ssd"
-   ],
-   "captureOrphans": true,
-   "captureWorkingTree": true,
-   "note": "Identifiable health data. Moved out of ~/DEV 2026-09-09. SSD destination ONLY - never github, never baylor, never any cloud target."
-  },
-  {
    "path": "SecondBrain",
    "class": "personal",
    "isRepo": false,
