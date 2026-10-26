@@ -97,5 +97,7 @@ these, file it by the table above in the same session.
   2026-10-23 launchd opens it in Terminal via `scripts/cloud-push-launch.sh`; a run that never starts logs an ERROR.
 - Windows laptop: retired as a work box 2026-10-14; desktop-app sessions only since 2026-10-21. It follows this same table:
   documents through Drive sync, code through `git pull`/`git push`, never a second true copy.
+- No Time Machine (no spare APFS disk; CRASHBOX is exFAT and holds the SSD layer). Whole-machine restore is out
+  of scope: the plan is the manual rebuild in `RESTORE.md` (Eric, 2026-10-25). Add Time Machine if a spare disk turns up.
 
 Background and history: `~/DEV/docs/FILE-ORGANIZATION-PLAN.md`.

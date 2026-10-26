@@ -577,7 +577,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Turn on the firewall in System Settings > Network > Firewall (or sudo socketfilterfw --setglobalstate on). Optionally enable stealth mode and switch off AirPlay Receiver if it is not used.
 
 ### mac-no-time-machine — No Time Machine destination; nothing can restore the whole machine
-- **Status 2026-10-25:** Eric: (a) Set aside or buy a spare APFS disk for Time Machine (this costs money). (b) Record in the STORAGE.md Known gaps that whole-machine restore is out of scope and that RESTORE.md's manual rebuild is the plan. My pick: (b) now, and (a) later if a spare disk turns up.
+- **Status 2026-10-25:** closed (pick b): recorded in STORAGE.md Known gaps; RESTORE.md manual rebuild is the plan.
 - Domain: mac-toolchain · Effort: hour · Already known: no
 - Evidence: tmutil destinationinfo -> 'tmutil: No destinations configured.'; tmutil latestbackup -> 'Failed to mount backup destination ... Code=17'. ~/.claude/scripts/logs/daily-backup.out 2026-10-22 05:48:13: 'TARGET SSD /Volumes/CRASHBOX/AssistantBackup NOT MOUNTED ... SKIPPED this run'; 06:05:12 'daily-backup end: ERROR (5 errors)'. launchctl list shows com.keystone.dailybackup last exit 1.
 - Impact: Recovery depends on the custom Drive and CRASHBOX design. That design covers chosen paths, not the system, apps, Keychain or app settings, and its SSD leg is usually skipped. A disk failure would mean a manual rebuild of the toolchain.
