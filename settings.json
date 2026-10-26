@@ -251,16 +251,6 @@
             "command": "if [ -x \"$HOME/.local/bin/dcg\" ]; then exec \"$HOME/.local/bin/dcg\"; else cat >/dev/null; fi"
           }
         ]
-      },
-      {
-        "matcher": "Bash|PowerShell|mcp__.*|WebFetch|SendMessage|SendUserFile|Artifact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f \"$HOME/.claude/permission-gate/shadow_hook.py\" ]; then exec python3 \"$HOME/.claude/permission-gate/shadow_hook.py\"; else cat >/dev/null; fi",
-            "timeout": 5
-          }
-        ]
       }
     ],
     "Stop": [
