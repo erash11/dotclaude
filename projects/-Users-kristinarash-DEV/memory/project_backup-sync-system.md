@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-10-24T14:52:45.878Z
+  modified: 2026-10-26T00:40:04.420Z
 ---
 
 > **Current schedule (2026-10-22) — supersedes every time below.** `com.keystone.dailybackup`
@@ -54,8 +54,8 @@ no `PUSH FAILED`, no `PUSH ERR`. But the **reconcile/`run-job.ps1`** context —
 `daily-backup.ps1:74` no longer swallows the reason: the `Out-Null` was replaced 09-03 with
 captured output that logs `REPO <name> : PUSH ERR | <text>` on failure only. **The error text will
 only appear on a day nobody runs the backup by hand before 07:00.** Diagnose from that line rather
-than assuming a credential gap. `daily-backup.err` is stale (last written 2026-08-06); never read
-it as current. Manual remedy after a failed push is still `git -C <repo> push origin main` for
+than assuming a credential gap. `daily-backup.err` holds pwsh stderr noise (MallocStackLogging,
+rewritten 10-24); read daily-backup.log for status. Manual remedy after a failed push is still `git -C <repo> push origin main` for
 SecondBrain, `.claude/global-memory`, `.claude`.
 
 **SSD layout:** non-repo DEV dirs land in `DEV-nonrepo/`, **not** `DEV/` — there is no `DEV/`
@@ -507,7 +507,7 @@ read `okCount`, not the log line count.
 `DexaProject` stays declared-but-absent on purpose — it lives on Google Drive.
 
 **`~/.claude` now tracks session transcripts.** Eric's commit `8a3d55c` (2026-09-09 15:44)
-un-ignored `projects/`, so the dotclaude repo carries ~368 MB of `.jsonl` transcripts and
+un-ignored `projects/`, so the dotclaude repo carries ~3.5 GB / 4,610 transcript files (2026-10-25), growing ~60 MB/day; kept in git by Eric (option b, 10-23) — `.jsonl` transcripts and
 Tier A memory. This **invalidates the "Tier A memory is NOT in git" trap above** — it now has
 a third layer. No single file exceeds 40 MB, so pushes succeed; they are just slower.
 
