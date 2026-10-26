@@ -20,6 +20,7 @@ try {
     # Script-scope variables the loaded code reads. None of them points at the real home.
     $U = "$T/home"; $LogDir = "$U/.claude/scripts/logs"; $LogFile = "$LogDir/daily-backup.log"; $DevRoot = "$U/DEV"
     $DryRun = $false
+    $ErrorsLog = "$U/.claude/global-memory/transcripts/.errors.log"
     $Errors = [System.Collections.Generic.List[string]]::new()
     $Results = [System.Collections.Generic.List[object]]::new()
     $LogLines = [System.Collections.Generic.List[string]]::new()
@@ -28,12 +29,12 @@ try {
     New-Item -ItemType Directory -Force -Path $LogDir, "$U/.claude/global-memory/transcripts" | Out-Null
 
     $want = 'Invoke-GwsJson', 'Snapshot-Gws', 'Snapshot-CodexConfig', 'Snapshot-ShellDotfiles', 'Get-IndexIncompleteRun', 'Invoke-UvPrune',
-            'Invoke-LogTrim', 'Remove-OldFiles', 'Invoke-Rsync', 'Snapshot-Additive'
+            'Invoke-LogTrim', 'Remove-OldFiles', 'Invoke-Rsync', 'Snapshot-Additive', 'Get-StagedSecretFiles'
     $fns = @($ast.FindAll({ $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $want -contains $args[0].Name }, $true))
     $fns | ForEach-Object { . ([scriptblock]::Create($_.Extent.Text)) }
     Check "loaded $($fns.Count) of $($want.Count) functions" ($fns.Count -eq $want.Count)
     foreach ($s in $ast.EndBlock.Statements) {
-        if ($s.Extent.Text -match '^\$(CredDenyDirs|CredDenyFiles|CredDenyRe|RsyncTimeoutSec)\s*=') { . ([scriptblock]::Create($s.Extent.Text)) }
+        if ($s.Extent.Text -match '^\$(CredDenyDirs|CredDenyFiles|CredDenyRe|RsyncTimeoutSec|SecretRe)\s*=') { . ([scriptblock]::Create($s.Extent.Text)) }
     }
 
     # ---- fakes ----
@@ -114,6 +115,32 @@ esac
     Check 'a Keychain lookup line is not mistaken for a secret' (-not (@($Errors) -contains 'shell-dotfiles:.zshrc'))
     Check 'file with a secret value refused, not archived' ((@($Errors) -contains 'shell-dotfiles:.zshenv') -and -not ($list -match '\.zshenv'))
     Check 'missing .gitconfig logged as skip' (@($LogLines -match 'SHELL skip \(missing\).*\.gitconfig').Count -eq 1)
+
+    "--- secret scan before the dotclaude commit (warn-only, names only)"
+    $fakePat = 'github_pat_' + ('A1b2C3d4E5' * 8)          # planted fake, built at run time
+    $fakeGoogle = 'AIza' + ('Xy9_-' * 7)
+    $repo = "$T/dotclaude"
+    New-Item -ItemType Directory -Force -Path "$repo/projects/slug", "$repo/scripts" | Out-Null
+    & git -C $repo init -q 2>&1 | Out-Null
+    ('{"t":"reg query output ' + $fakePat + '"}') | Set-Content "$repo/projects/slug/leak.jsonl"
+    ('{"k":"' + $fakeGoogle + '"}') | Set-Content "$repo/projects/slug/key.jsonl"
+    '{"t":"nothing to see"}' | Set-Content "$repo/projects/slug/clean.jsonl"
+    ('x=' + $fakePat) | Set-Content "$repo/scripts/outside.txt"           # outside projects/: not scanned
+    & git -C $repo add -A 2>&1 | Out-Null
+    Reset
+    Push-Location $repo
+    try { $hits = @(Get-StagedSecretFiles) } finally { Pop-Location }
+    Check 'secret scan: exactly the 2 planted projects/ files' (($hits.Count -eq 2) -and ($hits -contains 'projects/slug/leak.jsonl') -and ($hits -contains 'projects/slug/key.jsonl'))
+    $el = if (Test-Path $ErrorsLog) { Get-Content -Raw $ErrorsLog } else { '' }
+    Check 'secret scan: .errors.log names the files' (($el -match 'secret-scan warning') -and ($el -match 'leak\.jsonl') -and ($el -match 'key\.jsonl'))
+    Check 'secret scan: no secret value in .errors.log or the backup log' (-not ($el.Contains($fakePat) -or $el.Contains($fakeGoogle) -or ($LogLines -join "`n").Contains($fakePat) -or ($LogLines -join "`n").Contains($fakeGoogle)))
+    Check 'secret scan: never adds a backup error' ($Errors.Count -eq 0)
+    Check 'secret scan: one WARNING line in the backup log' (@($LogLines -match '^SECRET-SCAN dotclaude : WARNING 2 ').Count -eq 1)
+    Remove-Item -LiteralPath $ErrorsLog -Force -ErrorAction SilentlyContinue; Reset   # -Force: pwsh treats dotfiles as hidden on Unix
+    Push-Location "$T/out"                                   # not a git repo: git fails, scan must not throw
+    try { $hits = @(Get-StagedSecretFiles) } finally { Pop-Location }
+    Check 'secret scan: outside a repo -> no hits, no error, nothing written' (($hits.Count -eq 0) -and ($Errors.Count -eq 0) -and -not (Test-Path $ErrorsLog))
+    Check 'call site: runs only for dotclaude, after git add -A' ($ScriptText -match "git add -A 2>&1 \| Out-Null\s+if \(\`$name -eq 'dotclaude'\) \{ \`$null = Get-StagedSecretFiles \}")
 
     "--- R23 .codex SSD excludes (real rsync, fixture paths)"
     $m = [regex]::Match($ScriptText, "if \(\`$entry\.path -eq '\.codex'\) \{ \`$extra = (@\([^)]*\)) \}")

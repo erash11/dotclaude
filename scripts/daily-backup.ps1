@@ -105,6 +105,7 @@ function Sync-Repo($path, $branch) {
                 Log "REPO $name : [dry-run] would commit $dirty change(s)"
             } else {
                 git add -A 2>&1 | Out-Null
+                if ($name -eq 'dotclaude') { $null = Get-StagedSecretFiles }
                 git diff --cached --quiet 2>$null
                 if ($LASTEXITCODE -eq 0) {
                     # Dirty but nothing stageable (e.g. modified content inside a
@@ -184,6 +185,34 @@ $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh
               '|(^|/)\.env(\.local|\.production(\.local)?)?$' +
               '|(^|/)(Cookies|Login Data|Local State)$' +
               '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials|oauth_creds|google_accounts|auth)\.json$'
+
+# Secret-value shapes. Used by Snapshot-ShellDotfiles (refuse) and Get-StagedSecretFiles (warn).
+# github_pat_ added 2026-10-25: the fine-grained PAT that reached dotclaude history had that shape.
+$SecretRe = 'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{40,}|AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|apikey_[A-Za-z0-9]{20,}' +
+            '|(KEY|TOKEN|SECRET|PASSWORD)[A-Z_]*=["'']?[A-Za-z0-9_\-]{16,}'
+
+# WARN-ONLY secret check before the dotclaude commit (audit disksec-github-pat-in-pushed-transcript +
+# backups-secrets-in-tracked-transcripts, Eric 2026-10-25). Scans the staged projects/ files (session
+# transcripts) and writes FILE NAMES only, never the matched text, to the backup log and .errors.log.
+# It never blocks or fails the backup: no $Errors entry, and any failure in here is logged and dropped.
+# Run inside the repo, after 'git add -A'. Returns the matching paths.
+function Get-StagedSecretFiles {
+    try {
+        $staged = @(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR -- projects/ 2>$null)
+        $hits = @($staged | Where-Object { $_ -and (Test-Path -LiteralPath $_ -PathType Leaf) -and
+            (Select-String -LiteralPath $_ -Pattern $SecretRe -CaseSensitive -Quiet) })
+        if ($hits.Count -eq 0) { return @() }
+        $shown = ($hits | Select-Object -First 10) -join ', '
+        if ($hits.Count -gt 10) { $shown += ", +$($hits.Count - 10) more" }
+        Log "SECRET-SCAN dotclaude : WARNING $($hits.Count) staged projects/ file(s) match a secret pattern (committed anyway): $shown"
+        $line = "[{0}] daily-backup: secret-scan warning (not blocked): {1} staged dotclaude projects/ file(s) match a secret pattern: {2} - check and rotate if real; values are not logged" -f (Get-Date -Format 'yyyy-MM-dd HH:mm'), $hits.Count, $shown
+        Add-Content -Path $ErrorsLog -Value $line
+        return $hits
+    } catch {
+        Log "SECRET-SCAN dotclaude : check failed ($($_.Exception.Message)) - commit goes ahead"
+        return @()
+    }
+}
 
 # rsync wrapper. ADDITIVE - never --delete: a mirror faithfully replicates the
 # deletion you are trying to recover from. (The Windows original mirrored the
@@ -561,8 +590,6 @@ Snapshot-CodexConfig
 # ~/.zshrc, ~/.zprofile, ~/.zshenv and ~/.gitconfig were in no backup layer. They hold Keychain
 # lookups, not secret values; a file that looks like it holds a value is refused, not uploaded.
 function Snapshot-ShellDotfiles {
-    $secretRe = 'gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|apikey_[A-Za-z0-9]{20,}' +
-                '|(KEY|TOKEN|SECRET|PASSWORD)[A-Z_]*=["'']?[A-Za-z0-9_\-]{16,}'
     $stage = Join-Path ([IO.Path]::GetTempPath()) "shell-dot-$([guid]::NewGuid().ToString('N'))"
     $root = Join-Path $stage 'shell-dotfiles'
     New-Item -ItemType Directory -Force -Path $root | Out-Null
@@ -571,7 +598,7 @@ function Snapshot-ShellDotfiles {
         foreach ($item in '.zshrc', '.zprofile', '.zshenv', '.gitconfig') {
             $src = "$U/$item"
             if (-not (Test-Path -LiteralPath $src)) { Log "SHELL skip (missing): $src"; continue }
-            if (Select-String -LiteralPath $src -Pattern $secretRe -CaseSensitive -Quiet) {
+            if (Select-String -LiteralPath $src -Pattern $SecretRe -CaseSensitive -Quiet) {
                 $Errors.Add("shell-dotfiles:$item"); Log "SHELL $item : REFUSED (looks like it holds a secret value; use the Keychain)"; continue
             }
             Copy-Item -LiteralPath $src -Destination "$root/$item" -Force
