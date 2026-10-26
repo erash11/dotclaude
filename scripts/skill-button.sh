@@ -22,7 +22,6 @@ MODEL="${SKILL_BUTTON_MODEL:-claude-sonnet-5}"
 # skills qualify. Anything that sends mail, publishes, or deletes does not.
 typeset -A BUTTONS
 BUTTONS=(
-  closeout            "$HOME/DEV"
   project-triage      "$HOME/DEV"
   claude-stack-doctor "$HOME/DEV"
   forecast-capture    "$HOME/DEV/CFB_Analytics_Lab"

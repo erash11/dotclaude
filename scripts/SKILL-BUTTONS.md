@@ -13,7 +13,6 @@ material, not wiring. **No skill could fire without a human typing `/name`.**
 ~/.claude/scripts/skill-button.sh claude-stack-doctor
 ~/.claude/scripts/skill-button.sh project-triage
 ~/.claude/scripts/skill-button.sh forecast-capture
-~/.claude/scripts/skill-button.sh closeout
 ```
 
 Anything after the skill name is passed through to the skill.
@@ -39,7 +38,6 @@ skills:
 
 | Button | Working dir |
 |---|---|
-| `closeout` | `~/DEV` |
 | `project-triage` | `~/DEV` |
 | `claude-stack-doctor` | `~/DEV` |
 | `forecast-capture` | `~/DEV/CFB_Analytics_Lab` |
