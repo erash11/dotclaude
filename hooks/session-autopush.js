@@ -24,8 +24,11 @@
 //      rebase (the local commit stays) and report.
 //   8. Push. A failure is reported; the local commit stays for next time.
 //
-// Runs synchronously with short git timeouts. Total worst case is about 50s,
-// inside the 60s timeout registered in settings.json.
+// Runs synchronously. Every git call is capped by one overall 55s deadline,
+// inside the 60s timeout registered in settings.json; if too little time is
+// left before the rebase or push, it stops and reports "push by hand".
+// A lock file (<git-dir>/autopush.lock) stops two copies running on the same
+// repo at once; a second copy quits quietly. A lock older than 120s is stale.
 
 const { spawnSync } = require('child_process');
 const fs = require('fs');
@@ -37,6 +40,8 @@ const HOME = os.homedir();
 const ERR_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log');
 const OK_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', 'autopush.log');
 const MAX_BYTES = 50 * 1024 * 1024;
+const DEADLINE = Date.now() + 55000;
+const LOCK_STALE_MS = 120000;
 
 // Files that must never be pushed by an unattended commit, even if a
 // .gitignore forgot them. Matched against the repo-relative path.
@@ -64,11 +69,30 @@ function git(cwd, args, timeoutSec = 15) {
   const r = spawnSync('git', args, {
     cwd,
     encoding: 'utf8',
-    timeout: timeoutSec * 1000,
+    timeout: Math.max(1, Math.min(timeoutSec, Math.floor((DEADLINE - Date.now()) / 1000) - 2)) * 1000,
     windowsHide: true,
     env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
   });
-  return { ok: r.status === 0 && !r.error, out: (r.stdout || '').trim(), err: ((r.stderr || '') + (r.error ? ` ${r.error.message}` : '')).trim() };
+  return { ok: r.status === 0 && !r.error, signal: r.signal, out: (r.stdout || '').trim(), err: ((r.stderr || '') + (r.error ? ` ${r.error.message}` : '')).trim() };
+}
+
+// Hold <git-dir>/autopush.lock for the life of this process. Another live copy
+// holds it: quit quietly. fail() and quit() call process.exit, so release runs
+// from an 'exit' handler rather than a finally block.
+function takeLock(lockPath) {
+  const stamp = `${process.pid} ${Date.now()}`;
+  try {
+    const fd = fs.openSync(lockPath, 'wx');
+    fs.writeSync(fd, stamp);
+    fs.closeSync(fd);
+  } catch (e) {
+    if (e.code !== 'EEXIST') return; // cannot lock (read-only?): carry on unlocked
+    let ts = 0;
+    try { ts = parseInt(fs.readFileSync(lockPath, 'utf8').split(' ')[1], 10) || fs.statSync(lockPath).mtimeMs; } catch (_) {}
+    if (Date.now() - ts < LOCK_STALE_MS) quit();
+    try { fs.writeFileSync(lockPath, stamp); } catch (_) { quit(); }
+  }
+  process.on('exit', () => { try { fs.unlinkSync(lockPath); } catch (_) {} });
 }
 
 function readStdin() {
@@ -99,6 +123,7 @@ function main() {
   // 4. Repo state.
   const gitDir = git(root, ['rev-parse', '--absolute-git-dir']).out;
   if (!gitDir) quit();
+  takeLock(path.join(gitDir, 'autopush.lock'));
   for (const m of ['MERGE_HEAD', 'rebase-merge', 'rebase-apply', 'CHERRY_PICK_HEAD']) {
     if (fs.existsSync(path.join(gitDir, m))) fail(`${label}: skipped, a merge or rebase is in progress. Finish it, then push by hand.`);
   }
@@ -149,11 +174,13 @@ function main() {
 
   // 7. Catch up with the remote.
   const fetch = git(root, ['fetch', '--quiet'], 20);
+  if (!fetch.ok && (fetch.signal || /signal \d+/.test(fetch.err))) quit(); // killed, not offline
   if (!fetch.ok) fail(`${label}: ${committed ? 'committed locally, ' : ''}not pushed, fetch failed (offline?): ${fetch.err.slice(0, 200)}`);
   const ahead = parseInt(git(root, ['rev-list', '--count', '@{u}..HEAD']).out || '0', 10);
   const behind = parseInt(git(root, ['rev-list', '--count', 'HEAD..@{u}']).out || '0', 10);
   if (ahead === 0) quit(); // nothing of ours to push
   if (behind > 0) {
+    if (DEADLINE - Date.now() < 35000) fail(`${label}: committed locally, not pushed, out of time; push by hand.`);
     const rb = git(root, ['rebase', '@{u}'], 30);
     if (!rb.ok) {
       git(root, ['rebase', '--abort']);
@@ -162,6 +189,7 @@ function main() {
   }
 
   // 8. Push.
+  if (DEADLINE - Date.now() < 10000) fail(`${label}: committed locally, not pushed, out of time; push by hand.`);
   const push = git(root, ['push', '--quiet'], 45);
   if (!push.ok) fail(`${label}: committed locally, NOT pushed: ${push.err.slice(0, 300)}`);
   log(OK_LOG, `${label}: pushed ${branch.out} (${ahead} commit${ahead === 1 ? '' : 's'})`);
