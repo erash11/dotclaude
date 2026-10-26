@@ -121,13 +121,89 @@ def inspect(status_path):
     return os.path.relpath(repo, DEV), when, first_next(status_path), flags
 
 
+# Closeout's scope beyond DEV. Their LIVE paths are rewritten by hooks on every turn and pushed by
+# the daily backup, so changes there alone never block a closeout.
+CONFIG_REPOS = [os.path.expanduser(p) for p in ("~/.claude", "~/.claude/skills", "~/.claude/global-memory")]
+LIVE = {os.path.expanduser("~/.claude"): ("projects/", "history.jsonl"),
+        os.path.expanduser("~/.claude/global-memory"): ("transcripts/",)}
+
+
+def sweep_repos():
+    """Every git repo closeout must leave pushed: DEV itself, DEV/*/ and DEV/*/*/ repos, and CONFIG_REPOS."""
+    repos = [DEV] + [os.path.dirname(g) for g in dev_glob(".git")]
+    repos = [r for r in repos if not any(k in r for k in SKIP)]
+    return sorted(set(repos)) + [r for r in CONFIG_REPOS if os.path.isdir(os.path.join(r, ".git"))]
+
+
+def sweep_repo(repo):
+    """(blocking flags, info flags) for one repo. Blocking = work that is not on GitHub."""
+    block, info = [], []
+    # A .git git cannot use (Wilhelm_Brody_RTP 2026-10-25: no HEAD or config) makes git fall through
+    # to the parent repo, which ignores the folder: its work is tracked nowhere and reads as clean.
+    if os.path.realpath(git(repo, "rev-parse", "--show-toplevel") or "/") != os.path.realpath(repo):
+        return ["NOT-A-REPO"], []
+    head = git(repo, "status", "-sb", "--porcelain").splitlines()
+    changed = [line[3:] for line in head[1:]]
+    live = LIVE.get(repo, ())
+    if any(not p.strip('"').startswith(live) for p in changed) if live else changed:
+        block.append("DIRTY")
+    elif changed:
+        info.append("LIVE")  # only hook-written session files changed
+    if head and "ahead" in head[0]:
+        block.append("UNPUSHED")
+    # Facts git knows, not CLAUDE.md wording (2026-10-25: "local only" there also names rules about
+    # other folders). No remote = cannot be pushed; a detached HEAD is a pinned checkout.
+    if not git(repo, "remote"):
+        info.append("NO-REMOTE")
+    elif head and head[0].startswith("## HEAD (no branch)"):
+        info.append("DETACHED")
+    elif head and "..." not in head[0] and git(repo, "rev-parse", "--verify", "-q", "HEAD"):
+        block.append("NO-UPSTREAM")
+    current = git(repo, "branch", "--show-current")
+    for row in git(repo, "for-each-ref", "refs/heads", "--format=%(refname:short)|%(upstream:short)|%(upstream:track)").splitlines():
+        name, up, track = (row.split("|") + ["", ""])[:3]
+        if name == current:
+            continue
+        if "ahead" in track:
+            block.append(f"BRANCH-AHEAD:{name}")
+        elif not up and subprocess.run(["git", "-C", repo, "merge-base", "--is-ancestor", name, "HEAD"],
+                                       capture_output=True).returncode != 0:
+            block.append(f"BRANCH-UNPUSHED:{name}")  # merged local branches are post-merge leftovers, not work
+    stashes = len(git(repo, "stash", "list").splitlines())
+    if stashes:
+        info.append(f"STASH:{stashes}")
+    for wt in re.findall(r"^worktree (.+)$", git(repo, "worktree", "list", "--porcelain"), re.M)[1:]:
+        if os.path.isdir(wt) and git(wt, "status", "--porcelain"):
+            block.append(f"WORKTREE-DIRTY:{os.path.relpath(wt, repo)}")
+    return block, info
+
+
+def sweep():
+    """Print every repo needing action; exit 1 if any repo holds work that is not on GitHub."""
+    repos = sweep_repos()
+    with ThreadPoolExecutor(12) as ex:
+        results = list(ex.map(sweep_repo, repos))
+    needs = 0
+    for repo, (block, info) in zip(repos, results):
+        if block or info:
+            needs += bool(block)
+            name = repo.replace(os.path.expanduser("~"), "~")
+            print(f"{'ACTION' if block else 'info  '}  {name}  [{' '.join(block + info)}]")
+    print(f"SWEEP: {len(repos)} repos, {needs} need action")
+    return 1 if needs else 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--decisions", action="store_true",
                     help="list open questions and recent handoffs instead of NEXT lines")
+    ap.add_argument("--sweep", action="store_true",
+                    help="closeout sweep: every DEV and config repo with work not on GitHub; exit 1 if any")
     a = ap.parse_args()
+    if a.sweep:
+        raise SystemExit(sweep())
 
     paths = dev_glob("docs", "STATUS.md")
     paths = [p for p in paths if not any(k in p for k in SKIP)]
