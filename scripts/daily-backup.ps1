@@ -1013,7 +1013,8 @@ $TrimLogs = @(
     "$U/.claude/claude-memory-compiler/scripts/adjudicate.log",
     "$DevRoot/KeystoneOS/outputs/morning/cadence.log",
     "$U/.claude/skill-router/skill_router.log",
-    "$U/.claude/skill_router.log"
+    "$U/.claude/skill_router.log",
+    "$U/.claude/context-mode/heal-partial-install.log"
 )
 Invoke-LogTrim $TrimLogs
 Remove-OldFiles @("$DevRoot/KeystoneOS/outputs/inventory", "$DevRoot/KeystoneOS/outputs/jobs") 60

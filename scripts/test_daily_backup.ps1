@@ -235,10 +235,11 @@ esac
     Check 'two TRIM lines, no failures' ((@($LogLines -match '^TRIM .* : kept the last 2000 lines$').Count -eq 2) -and -not ($LogLines -match 'FAILED'))
     $tl = $ast.EndBlock.Statements | Where-Object { $_.Extent.Text -like '$TrimLogs = @(*' } | Select-Object -First 1
     . ([scriptblock]::Create($tl.Extent.Text))
-    Check "call-site list: 9 paths, all built from `$U/`$LogDir/`$DevRoot" ($TrimLogs.Count -eq 9 -and -not ($TrimLogs | Where-Object { -not $_.StartsWith($U) }))
+    Check "call-site list: 10 paths, all built from `$U/`$LogDir/`$DevRoot" ($TrimLogs.Count -eq 10 -and -not ($TrimLogs | Where-Object { -not $_.StartsWith($U) }))
     Check 'call-site list never trims permission-gate/shadow.jsonl (Jev review evidence)' (-not ($TrimLogs | Where-Object { $_.EndsWith('shadow.jsonl') }))
     foreach ($n in 'daily-backup.log', 'daily-backup.out', 'Library/Logs/everythingd.log', 'scripts/flush.log',
-                   'scripts/compile.log', 'scripts/adjudicate.log', 'outputs/morning/cadence.log', 'skill-router/skill_router.log', '.claude/skill_router.log') {
+                   'scripts/compile.log', 'scripts/adjudicate.log', 'outputs/morning/cadence.log', 'skill-router/skill_router.log', '.claude/skill_router.log',
+                   'context-mode/heal-partial-install.log') {
         Check "call-site list has $n" (@($TrimLogs | Where-Object { $_.EndsWith($n) }).Count -ge 1)
     }
 
