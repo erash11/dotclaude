@@ -1070,7 +1070,7 @@ Not checked: whether the Windows desktop-app sessions actually load this setting
 - Fix: Set telemetryEnabled false through set_config_value, or remove the plugin if it is unused (usage shows 0 terminal operations). Chmod 600 the logs or delete them.
 
 ### gaps-misc-cred-perms — Small credential-hygiene items: SSH key without a passphrase, gws client_secret 644, stale 644 .claude.json temp file, dormant cli-proxy-api with api-keys
-- **Status 2026-10-25:** Eric: Your SSH key has no passphrase. (A) Add one with ssh-keygen -p and store it in the Keychain with ssh-add --apple-use-keychain. (B) Leave it as is. Pick B: FileVault is on and git uses HTTPS, so the key is barely used.
+- **Status 2026-10-25:** closed (pick B): SSH key left without a passphrase; FileVault is on and git uses HTTPS (now via gh).
 - Domain: gaps · Effort: minutes · Already known: no
 - Evidence: ssh-keygen -y -P '' -f ~/.ssh/id_ed25519 succeeds, so the key has no passphrase; ~/.ssh is mode 755. ~/.config/gws/client_secret.json and client_secret.json.bak-2026-06-19 are -rw-r--r--. ~/.claude.json.tmp.40931.4ce4003e7e0c is 644, 65 KB, from Aug 14, with no token-shaped keys. ~/cli-proxy-api/config.yaml is 644 with an api-keys entry, port 8317, auth-dir ~/.cli-proxy-api (empty); the proxy is not running. opencode auth.json is 0600, which is fine.
 - Impact: Each is minor with FileVault on. Together they are drift against the 'secrets in Keychain' rule.
