@@ -25,6 +25,8 @@ without looking stay in `~/.claude/CLAUDE.md` and `~/.claude/AGENTS.md`.
 | herdr | `/Users/kristinarash/.local/bin/herdr` | Runs as `herdr server`. Owns the Codex `~/.codex/hooks.json` SessionStart hook (`herdr-agent-state.sh`) and the `herdr` block in `~/.gemini/config/hooks.json`; the hook scripts (`herdr-agent-state.sh`) carry an `# installed by herdr` marker and the hooks.json entries call them, so treat them as herdr-owned and edit around them. Log `~/.config/herdr/herdr-server.log` has no rotation (522 KB on 2026-10-23). |
 | bun | `/Users/kristinarash/.bun/bin/bun` | 1.3.14. `~/.bun/bin` is on PATH. |
 | graphify | `/Users/kristinarash/.claude/skills/graphify/.venv/bin/graphify` | Not on PATH; call it by full path. |
+| R / Rscript | `/opt/homebrew/bin/` | Homebrew R. |
+| browser-use | not on PATH | Runs as an MCP server via uvx (`uv tool uvx --python 3.12 browser-use@latest --cli-mcp`, from the claude.ai-synced browser-use plugin, so not under `plugins/cache`); these servers hold the uv cache lock. Checked 2026-10-25. |
 
 `/opt/homebrew/bin` sits in PATH twice: `brew shellenv` in `~/.zprofile` puts it ahead of the system paths and
 `/etc/paths.d/homebrew` adds it again at the end. So Homebrew tools (go, node, npm, codex,
