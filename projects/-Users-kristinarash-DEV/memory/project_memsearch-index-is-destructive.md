@@ -1,16 +1,24 @@
 ---
 name: memsearch-index-is-destructive
-description: "`memsearch index <paths>` deletes every indexed source outside the given paths — never run it with a partial or test path set; plus the 2026-10-07 Windows failure causes (history: Windows no longer indexes)"
+description: "`memsearch index <paths>` deleted every source outside the given paths before 0.4.17 (now prunes only inside them; removed roots never clean) — never run it with a partial or test path set; plus the 2026-10-07 Windows failure causes (history: Windows no longer indexes)"
 metadata:
   node_type: memory
   type: project
   originSessionId: 4f57cc78-0bf6-4202-bd61-8f428a3c6dca
-  modified: 2026-10-24T15:00:22.564Z
+  modified: 2026-10-25T22:40:55.705Z
 ---
 
 `memsearch index <paths>` is **never read-only**. It reconciles the collection against
 the path set it is given and deletes every indexed source not under those paths
 (core.py `index()` → store.py delete). An empty or partial path set wipes the rest.
+
+**Superseded 2026-10-25 for memsearch 0.4.17 (Mac):** `index_with_report` now prunes only
+sources *under the directory roots of that run* (`_cleanup_roots_for_paths` /
+`_source_under_any_root`). Sources outside the given paths are kept, so a partial path set no
+longer wipes the rest — and a root removed from `memory-index-paths.json` is never cleaned:
+108 files from the old `C--Users-eric-rash*` memory roots (400 chunks) were still indexed on
+10-25. Files under a root that the run does not find (deleted, or newly `exclude`d) are still
+deleted. Keep the "never run a partial set by hand" rule anyway: it still re-embeds and locks.
 
 On 2026-10-07 a diagnostic run against an empty temp dir deleted ~12,900 of ~31,000
 vectors before it was stopped. Recovery: a full re-index over every path in

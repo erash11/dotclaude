@@ -17,7 +17,7 @@ chose the search engines). This one measures cost against use, and compares outs
 | 3 | Fold the 6 Windows-only Tier A memories into Mac slugs and drop the `C--Users-eric-rash-*` / `c--…` / `G--…` slugs from recall.py's roots. **Move or archive nothing** until Eric confirms the laptop no longer writes them. | 145 Windows files, 139 are twins of Mac files [M]. The laptop still runs desktop-app sessions (since 10-21), and one Windows-slug file changed after 10-21 [M]. |
 | 4 | Split the two fattest Tier A files; add a size warning to memlint (e.g. > 6 KB). | `project_backup-sync-system.md` is 34.7 KB (~8.7k tokens per read); "one fact per file" has eroded [M]. |
 | 5 | **Do not install** claude-mem, mem0, Letta, Zep/Graphiti, Cognee, Supermemory. | Each adds always-on token cost or a database; none beats BM25 + one-line index at this scale [W]. |
-| 6 | Optional test later: **QMD** as one replacement for recall.py + memsearch. Adopt only if it beats recall.py on the 30-case eval and 14-question bench. | One local SQLite file: BM25 + vectors + rerank, MIT, 30k stars [W]. Not tested here. |
+| 6 | **QMD tested 10-25 and rejected** (section 8). Keep recall.py + memsearch. | Best QMD mode: hit@1 13, hit@5 24, 84 s/question vs recall.py 21 / 25 at ~1 s; found nothing the current pair misses [M]. |
 
 ## 2. What exists (sizes and real use)
 
@@ -127,7 +127,7 @@ roots replaced by Mac twins) or new superseded-fact text from the 10-25 memlint 
 | Zep / Graphiti, Cognee | No | LLM call per write + graph DB; overkill for one user |
 | Basic Memory | Maybe later | Markdown + SQLite over MCP; AGPL; overlaps recall.py |
 | Supermemory | No | Cloud-first; always-on profile injection |
-| QMD (tobi/qmd) | **Test** | One SQLite file: BM25 + vectors + rerank; could replace recall.py + memsearch |
+| QMD (tobi/qmd) | **Tested, rejected** | Lost on our eval at 80x the time; see section 8 |
 | memsearch | Keep as fallback | Free, local; lock issue above |
 | Karpathy LLM wiki (our compiler) | Freeze | Critique: drifts past ~100–200 sources; treat raw logs as truth |
 
@@ -146,7 +146,52 @@ Unverified: "Auto Dream" consolidation in Claude Code (secondary posts only); ex
 
 ## 7. Not checked
 
-- QMD was not installed or run.
 - How often SessionEnd index runs are long (index log keeps only the last run).
 - Whether stopping compile changes recall on new topics; re-run the bench 4 weeks after stopping.
 - context-mode usage drop (448 → 9 `ctx_search`) was not investigated.
+- QMD's warm server mode (`qmd mcp --http --daemon`) was not timed; it would cut load time,
+  not change accuracy.
+
+## 8. Follow-up 10-25 evening: QMD trial and the memsearch drop [M]
+
+**QMD 2.8.3** installed in an isolated folder (`npm install @tobilu/qmd@2.8.3`; only
+`better-sqlite3` and `node-llama-cpp` install scripts allowed). Indexed the same corpus as
+recall.py: 10 collections, 4,683 files, Archive/archive dirs and `.windows.md` twins skipped
+(config kept as scratch, not in repo). Keyword index 20 s; embeddings 15,821 chunks in ~59 min
+(two runs; QMD stops one embed run at 30 min). Disk: 2.2 GB models + index, 204 MB install.
+
+| Ranker (30-case eval) | hit@1 | hit@5 | p50 per question |
+|---|---:|---:|---:|
+| recall.py (current L1) | **21** | **25** | ~1 s |
+| memsearch (current fallback) | 13 | 25 | 6.2 s |
+| recall.py or memsearch, either top 5 | — | **28** | — |
+| QMD `search` (BM25) | 15 | 17 | 0.5 s |
+| QMD `vsearch` (vectors) | 8 | 20 | 14 s |
+| QMD `query` (expansion + hybrid + rerank) | 13 | 24 | 84 s |
+
+- QMD `search` requires every query word to appear (0 results on full questions such as p04);
+  it is built for short keyword queries.
+- QMD `query` finds s01 and n01 among recall.py's misses — the same ones memsearch already finds.
+  It adds nothing to the current pair. Each CLI call reloads its models (no daemon in this test).
+- Verdict: **rejected.** Eric asked to delete it if it lost; the delete needs `rm -rf`, which
+  dcg hard-stops on purpose, so Eric runs it.
+
+**Why memsearch fell from 28–29 to 25 (hit@5):**
+
+| memsearch variant (same queries, top 30 then filtered) | hit@1 | hit@5 |
+|---|---:|---:|
+| as is | 13 | 25 |
+| dead sources dropped (old Windows slugs, archive dirs, `.windows.md`) | 12 | 25 |
+| handoff + audit roots dropped (`global-memory/handoffs`, `DEV/docs/handoffs`, `.claude/audits`) | 13 | **27** |
+
+- Main cause: the 10-24 root additions (handoffs, audits) crowd memory files out of the top 5
+  (p01, n04 return). Caveat: no eval case has its answer in a handoff, so this test cannot show
+  what those roots add. Left as is: recall.py is L1, and the pair still covers 28/30.
+- Dead sources: 108 files (400 chunks) from removed `C--Users-eric-rash*` roots, 12 archived
+  files (97), 42 `.windows.md` twins (343), of 50,003 chunks / 4,538 files. Harmless on the eval
+  (a Windows twin has the same file name as the right answer). They stay because memsearch
+  0.4.17 prunes only inside the roots of the current run — a removed root is never cleaned.
+  Tier A `project_memsearch-index-is-destructive.md` corrected (it said the opposite).
+- Side finding: pymilvus `query_iterator` on this Milvus Lite DB returned 7,530 of 50,003 rows
+  (mvccTs warning); plain `query()` returned all. Any script that counts chunks should not use
+  the iterator.
