@@ -48,5 +48,5 @@ Runner for any scenario: `./run2.sh <skill-stem> <scenario-stem> <rubric-stem> <
 - S8 (re-check after the push) passes only with bf2c7e7's second sweep: 0/3 → 3/3.
 - R11 moved 2/3 → 1/3 → 3/3 once the done line said which open items block (card gaps) and which
   do not (questions only Eric can answer).
-- Round cost $9.45 (21 plans + judges). Both rounds left Stop-hook noise in `.errors.log`;
+- Round cost $7.67 (18 plans + judges). Both rounds left Stop-hook noise in `.errors.log`;
   archived to `.errors-ledger.log` with a note each time.
