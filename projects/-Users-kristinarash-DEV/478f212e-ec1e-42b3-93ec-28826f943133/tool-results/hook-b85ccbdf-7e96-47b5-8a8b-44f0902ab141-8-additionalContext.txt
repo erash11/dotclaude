@@ -1,0 +1,148 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Files Modified
+STATUS.md, 2026-10-25-dev-findings-sweep.md
+
+## Unresolved Errors
+- {"stdout":"     166 docs/STATUS.md\n# STATUS — ~/DEV workspace root\n\n## Current state\n- 2026-10-24 (Mac, Opus, afternoon): **Audit group 4 confi...
+- {"stdout":"5:## Domain verdicts\n44:## CRITICAL (1)\n54:## HIGH (8)\n111:## MEDIUM (74)\n310:### dev-edge-profile-cloud-mirrored — Leftover Special...
+- {"stdout":"## main...origin/main\n a38bc94a9d5d5b57d182f992d01a72d8eeeb63f5 ZoteroInjestion (heads/main-7-ga38bc94)\na38bc94 docs: clarify archived...
+- {"stdout":"       0\n39:The congested-week example simulates guided intake, one clarification, a Decision Brief, controlled sharing, review submiss...
+- {"stdout":"-CFBD_API_KEY=\n+# CFBD needs no key in .env: its auth comes from the Secure Vault connector\n+# (custom.collegefootballdata). Do not pu...
+- {"stdout":"## main...origin/main\n6876bb0 Full refresh on vault key: week 7 graded, week 8 rescored on 2026-10-21 EPA","stderr":"","interrupted":fa...
+- {"stdout":"1\nhouse-model/src/housemodel/grade.py:7:listed as pending. Run after cfbd_pull refreshes results.\nhouse-model/src/housemodel/epa_guard...
+- {"stdout":"114:def load_registry(path: Path) -> dict:\n136:def save_registry(path: Path, data: dict) -> None:\n136:def save_registry(path: Path, da...
+
+## Git
+pull, log, Rename tracked Docs/ to docs/ so case-sensitive clones find docs/STATUS.md
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, add, Bump ZoteroInjestion submodule to 0077fd6
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, status, Stop tracking node_modules and .claude/settings.local.json
+
+node_modules was already in .gitignore but committed in aebf01d; CI installs
+with npm ci. settings.local.json holds local machine paths.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, diff, audits: 2026-10-25 status line under each dev-* finding
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, STATUS + handoff: dev-* audit findings sweep
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, STATUS: Zotero submodule pin now 0077fd6; handoff clone note
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, STATUS: Next placeholder
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, data: drop 3 duplicate registry rows, keep the paused ones (Eric 2026-10-25)
+
+Removed DexaProject (archived), CoachReport_Prototypes (merged, old root path)
+and WeeklyCoachReport (merged, old root path). Their one update note each moved
+onto the kept paused row. 185 -> 182 rows; crosswalk OK; 319 tests pass.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g, audits: registry duplicates fixed (project-triage eb91d17)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md
+
+## Environment
+cwd: ~/.claude
+model:claude-opus-5-5[1m]
+cd ~/DEV
+echo "== RTPWG"; git -C RTP_WorkingGroup status --porcelain | wc -l; git -C RTP_WorkingGroup ls-files | grep -c '^Docs/'; ls RTP_WorkingGroup; grep -rn 'Docs/' RTP_WorkingGroup --include='*.md' --include='*.py' --include='*.R' --include='*.json' -l 2>/dev/null | grep -v '/.git/' | head
+echo "== Zotero"; git -C ZoteroInjestion fetch -q; git -C ZoteroInjestion status -sb | head -1; git -C ZoteroInjestion rev-parse --short main origin/main; git -C LibraryProject status -sb | head -3; cat LibraryProject/.gitmodules
+echo "== SSRR"; git -C SportScienceResearchRepo status -sb | head -3; git -C SportScienceResearchRepo ls-files '*.log' | wc -l; cat SportScienceResearchRepo/.gitignore | head -20; ls SportScienceResearchRepo; grep -rln 'node_modules\|npm ci\|npm install' SportScienceResearchRepo --include='*.sh' --include='*.yml' --include='*.yaml' --include='*.md' 2>/dev/null | grep -v node_modules | head
+echo "== GM clone"; git -C claude-global-memory fetch -q; git -C claude-global-memory status -sb | head -2
+cd ~/DEV/SportScienceResearchRepo && git add docs/STATUS.md .gitignore && git commit -q -m "Stop tracking node_modules and .claude/settings.local.json
+
+node_modules was already in .gitignore but committed in aebf01d; CI installs
+with npm ci. settings.local.json holds local machine paths.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013cwnYrAYa2PQ3pgLjQbq1g" && git push -q && git log -1 --format=%h && git ls-files | grep -c node_modules
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 8 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

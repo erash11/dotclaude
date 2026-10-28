@@ -1,0 +1,1 @@
+{"agentType":"workflow-subagent","isBuiltIn":true,"description":"verify:disksec","workflowPhase":"Verify","spawnDepth":1,"requestShape":"foreground","requestNonInteractive":false}

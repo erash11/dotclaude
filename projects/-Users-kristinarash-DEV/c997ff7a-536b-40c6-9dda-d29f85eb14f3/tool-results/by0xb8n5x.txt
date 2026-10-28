@@ -1,0 +1,367 @@
+######## 0 opus
+**Context:** Agent-files cleanup on 2026-10-24: memory linting, backup verification, and recall/memsearch improvements. Changes were tested, committed and pushed.
+
+**Key Exchanges:**
+- Memory cleanup: the memory linter found 41 problems across 36 memory files, and all were fixed. Outdated facts are marked "Superseded 2026-10-24" and no files were deleted. The linter now shows 0 errors, plus 3 old warnings that are kept on purpose.
+- Backup: a manual run finished OK with 0 errors. The new parts all worked: Codex config, shell files, search index, and the recall check. `uv-prune` was skipped because the cache was locked; it retries daily.
+- Recall results:
+  - Eval, right file first: 21/30 → 21/30 (unchanged).
+  - Eval, right file in top 5: 25/30 → 25/30 (unchanged).
+  - Bench, right file first: 11/13 → 12/13.
+  - Word-gap misses found: 0/5 → 3/5.
+- End-to-end test on a word-gap question took 8.8 s. memsearch ranked `project_dev-layout-and-discovery.md` first, which was correct.
+
+**Decisions Made:**
+- recall.py now calls memsearch directly when its own match is weak, replacing the old shell-based call.
+- One setting reached 23/30 but broke 2 other questions. It was rejected because it was fitting the test.
+- 2 of the 9 eval misses are mistakes in the test: the right answer was already in the #1 file, but the test expects a different file. This was noted and the test was left unchanged.
+- Docs were updated: memsearch takes about 10 s (not "~1 min") and no longer has to be run by hand.
+- Recommendation: leave the git history alone for the old athlete memory and the 4 raw session files, since both repos are private.
+
+**Lessons Learned:**
+- A memory rule requires loading the writing-for-agents skill (mattpocock-skills) before editing any skill or CLAUDE.md file.
+- memsearch is fast enough (about 10 s) to run automatically when a match is weak.
+
+**Action Items (only the user can do these):**
+1. Turn the firewall on: `sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on`
+2. Empty the Trash (about 4 GB, in folders ending `-2026-10-23` or `-2026-10-24`).
+3. In claude.ai plugin settings, turn off the synced copies of superpowers 6.4.2, desktop-commander and browser-use.
+4. In `~/.gemini/antigravity-cli/settings.json`, set `toolPermission` to ask and `allowNonWorkspaceAccess` to false.
+5. Rotate the EXA and Firecrawl keys in `~/.claude/skills-archive/2026-09-12/web-scraping/.env`.
+6. Remove the Grok Bot device on xAI's site.
+7. Decide whether to delete the old athlete memory and the 4 raw session files from git history.
+8. Get a spare disk for Time Machine (CRASHBOX is already the SSD backup drive).
+- Full details are in `~/DEV/docs/handoffs/2026-10-24-agent-files-cleanup.md`.
+######## 0 sonnet
+**Context:** Finishing the agent-files cleanup and recall improvements: memory lint fixes, backup run, and making recall.py call memsearch automatically. Then updating docs (results note, STATUS, handoff) to match the new behavior.
+
+**Key Exchanges:**
+- End-to-end test of recall.py on a word-gap question took 8.8 s. memsearch ranked the right memory (`project_dev-layout-and-discovery.md`) first.
+- Docs said memsearch takes "~1 min" and must be run by hand. Both claims were stale. Now fixed: recall.py runs it automatically and it takes about 10 s.
+- Recall results: the eval score is unchanged at 21/30 (top-5: 25/30). The bench went from 11/13 to 12/13. Word-gap misses found went from 0/5 to 3/5.
+- Memory cleanup: 41 linter problems fixed across 36 memory files. Old facts are marked "Superseded 2026-10-24". Nothing was deleted. The linter now shows 0 errors and 3 intentional warnings.
+- Backup: the manual run ended OK with 0 errors. `uv-prune` was skipped because the cache was locked, and it retries daily.
+
+**Decisions Made:**
+- Rejected a setting that reached 23/30 on the eval because it broke 2 other questions. That is overfitting to the test.
+- Left the eval test unchanged even though 2 of the 9 misses are test mistakes (the right answer is in the #1 file, but the test expects a different file). The issue is noted instead.
+- Recommended leaving git history as is for the old athlete memory and 4 raw session files. Both repos are private and today's files are clean. The user still has to decide.
+- A memory rule requires loading the writing-for-agents skill before any edit to a skill or CLAUDE.md.
+
+**Lessons Learned:**
+- Docs that restate behavior go stale quickly. After changing code behavior (here, shell-based call → automatic memsearch), grep the docs for the old claims.
+- Eval gains can come from test fitting. Check whether a gain breaks other questions before keeping it.
+
+**Action Items (user only):**
+1. Turn on the firewall: `sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on`
+2. Empty the Trash (~4 GB, folders ending `-2026-10-23` or `-2026-10-24`).
+3. Turn off the synced claude.ai plugin copies of superpowers 6.4.2, desktop-commander and browser-use.
+4. In `~/.gemini/antigravity-cli/settings.json`, set `toolPermission` to ask and `allowNonWorkspaceAccess` to false.
+5. Rotate the EXA and Firecrawl keys in `~/.claude/skills-archive/2026-09-12/web-scraping/.env`.
+6. Remove the Grok Bot device on xAI's site.
+7. Decide whether to purge the old athlete memory and 4 raw session files from git history.
+8. Time Machine needs a spare disk. CRASHBOX is already the SSD backup drive.
+
+Full details: `~/DEV/docs/handoffs/2026-10-24-agent-files-cleanup.md`
+######## 0 haiku
+**Context:** Tuning recall in the claude-memory-compiler (memsearch fallback in recall.py), plus a memory-file lint cleanup, a backup check, and an agent-files security cleanup on 2026-10-24.
+
+**Key Exchanges:**
+- Recall eval: right file first stayed at 21/30 and right file in top 5 stayed at 25/30. The bench went from 11/13 to 12/13. On the 5 word-gap questions, memsearch found the right file for 3 (was 0/5).
+- A tuned setting reached 23/30 but broke 2 other questions, so it was treated as overfitting to the test and not kept.
+- 2 of the 9 eval misses are test errors: the right answer was already the #1 result, but the test expects a different file. Noted, test left unchanged.
+- Memory linter: 41 issues fixed across 36 files, with old facts marked "Superseded 2026-10-24" rather than deleted. Linter now shows 0 errors and 3 intentional warnings.
+- Backup: a manual run ended OK with 0 errors. `uv-prune` was skipped because the cache was locked and will retry daily.
+
+**Decisions Made:**
+- recall.py now runs memsearch itself when its own match is weak. Rationale: it recovers word-gap misses at about 10 s per query, not the roughly 1 min previously documented.
+- Did not keep the 23/30 setting. Rationale: it improved the score by breaking other questions, which means fitting the test.
+- Left the test's 2 incorrect expectations unchanged and documented them.
+- Keep git history as is (no rewrite to purge the old athlete memory or 4 raw session files). Rationale: both repos are private and current files are clean.
+
+**Lessons Learned:**
+- Measure memsearch latency directly before writing it into docs. The docs said about 1 min; the real figure is about 10 s.
+- A higher eval score is not proof of a better system if it comes from a setting that trades off other questions. Check for regressions on separate questions.
+- Eval expectations can be wrong. Check whether a "miss" is a retrieval failure or an incorrect expected answer before changing the code.
+
+**Action Items:**
+- Turn on the macOS firewall: `sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on`
+- Empty the Trash (about 4 GB in folders ending `-2026-10-23` or `-2026-10-24`) when ready.
+- In claude.ai plugin settings, turn off the synced copies of superpowers 6.4.2, desktop-commander, and browser-use.
+- In `~/.gemini/antigravity-cli/settings.json`, set `toolPermission` to ask and `allowNonWorkspaceAccess` to false.
+- Rotate the EXA and Firecrawl API keys in `~/.claude/skills-archive/2026-09-12/web-scraping/.env`.
+- Remove the Grok Bot device from xAI's site.
+- Get a spare disk for Time Machine (CRASHBOX is already the SSD backup drive).
+- Full list: `~/DEV/docs/handoffs/2026-10-24-agent-files-cleanup.md`.
+######## 1 opus
+**Context:** The user ran an on-demand daily backup via the `/backup` skill, then wrote a handoff document for the second-brain recall work (`recall.py`).
+
+**Key Exchanges:**
+- The backup ran past the 10-minute timeout, moved to the background, and finished with exit 0. It reported status OK with 0 errors.
+- The new recall check ran inside the backup for the first time. It passed at 21/30 and 11/13, matching the baseline.
+- The CRASHBOX SSD was not mounted, so only 11 jobs ran instead of the full ~31. Uncommitted, untracked and gitignored files were NOT saved. GitHub pushes and Google Drive snapshots did run.
+- The memsearch index added 57 new chunks.
+- `.errors.log` was already empty, so nothing needed archiving.
+- A handoff was written to `/var/folders/gw/8qg6y2bj7rvdqzttmxfl9lx00000gn/T/handoff-2026-10-24-second-brain-recall.md`.
+  - It covers what was built, pointers to the full records, the main rule, 3 optional next steps, risks, and suggested skills.
+  - The lasting record is `~/DEV/docs/handoffs/2026-10-23-recall-py.md`, which is pushed to GitHub. The temp-folder copy is not backed up and macOS may delete it.
+
+**Decisions Made:**
+- Main rule recorded in the handoff: the agent fixes and tests recall misses itself and never leaves the user a manual step to remember.
+
+**Lessons Learned:**
+- Other sessions changed shared files on 10-24 while this one was working. Check recent changes before writing handoffs.
+  - `recall.py` now falls back to running `memsearch` itself when its own match is weak.
+  - Mac folder names now convert `_` to `-`. This replaced the previous night's fix, so do not undo it.
+- After those changes the recall check scores 21/30 and 12/13, up from 11/13.
+- The `okCount` cross-check worked as intended. A single-digit count with status OK meant a silent partial backup with the SSD absent.
+
+**Action Items:**
+- If there is uncommitted work, plug in CRASHBOX and re-run `/backup`.
+- Optionally, pick up one of the 3 next steps listed in the handoff document.
+######## 1 sonnet
+**Context:** Ran the on-demand `/backup` skill (daily-backup.ps1) on the Mac, then wrote a handoff document for the second-brain recall work.
+
+**Key Exchanges:**
+- The backup exceeded the 10-minute timeout and moved to the background. It finished with exit code 0 and 0 errors. The new recall check ran inside it for the first time and passed at 21/30 and 11/13, matching the baseline.
+- CRASHBOX SSD was not mounted, so only 11 jobs ran (a full run is about 31). Untracked, gitignored, and uncommitted files were not saved anywhere. Repos were pushed to GitHub, snapshots went to Google Drive, and memsearch indexed 57 new chunks. The error log was left empty.
+- Handoff written to `/var/folders/gw/8qg6y2bj7rvdqzttmxfl9lx00000gn/T/handoff-2026-10-24-second-brain-recall.md`. It points to `~/DEV/docs/handoffs/2026-10-23-recall-py.md` (pushed to GitHub) as the lasting record.
+- While writing the handoff, I found that other sessions had changed files after my edits on 10-24:
+  - `recall.py` now also runs `memsearch` itself when its own match is weak.
+  - Mac folder names now turn `_` into `-`, which replaces last night's fix.
+  - The recall check now reads 21/30 and 12/13.
+
+**Decisions Made:**
+- The handoff references existing artifacts (the handoff doc, test results file, commits) instead of duplicating them.
+- It records the user's standing rule that the agent fixes and tests misses itself and never leaves the user a step to remember.
+
+**Lessons Learned:**
+- `status: OK` with 0 errors can still be a partial backup. A single-digit or low `okCount` (11 here, versus about 31 for a full run) means the SSD was absent.
+- The temp folder is not backed up and macOS can delete files in it, so the handoff in `/var/folders/...` is not durable. The `~/DEV` copy is.
+- Other sessions edit the same files, so check what changed before writing a handoff.
+
+**Action Items:**
+- If there is uncommitted work, plug in CRASHBOX and re-run `/backup` to capture it.
+- The handoff lists 3 optional next steps and the main risks for the next session. Their details are in the handoff doc and were not shown in this conversation.
+######## 1 haiku
+**Context:** Ran the on-demand daily backup because the Mac was asleep at 21:00, then wrote a handoff doc for the second-brain recall work.
+
+**Key Exchanges:**
+- Backup finished with status OK and 0 errors, but only 11 jobs ran (a full run is about 31). The CRASHBOX SSD was not mounted, so untracked, gitignored, and uncommitted files were not saved. GitHub and Google Drive hold only committed and pushed work.
+- The recall check passed in the backup run: 21 of 30 and 11 of 13, matching baseline.
+- The memsearch index added 57 new chunks.
+- A handoff doc was saved to the macOS temp folder (`handoff-2026-10-24-second-brain-recall.md`). Other sessions had changed `recall.py` (it now falls back to memsearch on weak matches) and the Mac folder-name rule (`_` becomes `-`). The recall check then read 21 of 30 and 12 of 13.
+- The lasting record is `~/DEV/docs/handoffs/2026-10-23-recall-py.md`, pushed to GitHub. The temp copy is not backed up.
+
+**Decisions Made:**
+- Ran the backup with `caffeinate -i` and waited for the background task instead of re-running it. A re-run would have restarted the slow index step.
+- Left the error log untouched because it was empty, so no archive was needed.
+
+**Lessons Learned:**
+- `status: OK` and an error count of 0 do not prove a full backup. Check `okCount`: about 31 means the SSD was captured, and about 9-10 means it was skipped.
+- Slow nightly INDEX runs happen because the lid-closed Mac sleeps. `caffeinate -i -s` cannot stop that, so the index finishes only in short wakes.
+- launchd runs write every log line twice (the script writes to the file and to stdout, and the plist captures stdout to the same file). This is expected and not a retry.
+- Under `$HOME`, truncate the error log with `cp /dev/null` because the dcg rule blocks shell truncation.
+
+**Action Items:**
+- If there is uncommitted work, plug in CRASHBOX and run the backup again.
+- Review the other sessions' changes to `recall.py` and the folder-name rule before the next recall session, so they are not undone.
+- Treat the temp-folder handoff as disposable. Use the `~/DEV` handoff as the lasting record.
+######## 2 opus
+**Context:** Eric ran a second `/closeout` on 2026-10-23 at about 17:00, roughly 10 minutes after the first one. That day's work was Drive cleanup waves 2–3 (DEV / _INBOX).
+
+**Key Exchanges:**
+- The second closeout found no changes except that day's transcript in global-memory. It was pushed as `8743ffa`.
+- Every DEV repo was clean and pushed. Earlier commits that day were DEV `2e48c91`, _INBOX `d0cedd0` and `4bb3447`, and global-memory `c77efe0`.
+- STATUS.md had been updated in the first run, in `~/DEV/docs/STATUS.md` and `~/DEV/_INBOX/docs/STATUS.md`. The handoff is `~/DEV/docs/handoffs/2026-10-23-drive-waves-2-3.md`.
+- Memory check passed: `.errors.log` was empty and the transcript was written at 16:59. No Drive background jobs were running.
+- The verdict was "Clear to sign off."
+
+**Decisions Made:**
+- The registry drift check was not re-run in the second closeout, because it takes about 10 minutes and nothing had changed. The 16:55 result stood: 4 drift items.
+
+**Lessons Learned:**
+- When `/closeout` is re-run shortly after a clean one, the only new artifact is the session transcript in global-memory. That transcript still has to be pushed.
+
+**Action Items:**
+1. Run the Computers wave after 09:40 on the day after 2026-10-23. Start with a dry run:
+   `cd ~/DEV/_INBOX && python3 -I tools/trash_twins.py --zone computers --backups-off-confirmed --dry-run --threads 24 --prefix "Computers/My Mac"`
+2. `~/.claude` has uncommitted session-history `.jsonl` files. These are left for the nightly backup.
+3. Fix 3 card gaps from other sessions: project-triage, Football and CFB_Victory_Model.
+4. Resolve the 4 registry drift items (`portfolio.py crosswalk`).
+######## 2 sonnet
+**Context:** Second `/closeout` run on 2026-10-23 (~17:00), wrapping up Drive waves 2-3 work across DEV, _INBOX and global-memory.
+
+**Key Exchanges:**
+- The second closeout found nothing changed since the first run 10 minutes earlier except today's transcript in `global-memory`. That was pushed as `8743ffa`.
+- Final state: all DEV repos clean and pushed, `.errors.log` empty, transcript written at 16:59, no background jobs running.
+- Earlier commits that day: DEV `2e48c91`, _INBOX `d0cedd0` and `4bb3447`, global-memory `c77efe0`.
+- The registry drift check was not re-run (about 10 min, nothing changed). The 4 items are from the 16:55 check.
+
+**Decisions Made:**
+- Skipped re-running the `crosswalk` drift check on the second closeout because nothing had changed and it takes about 10 minutes.
+- Left `~/.claude` uncommitted `.jsonl` session-history files to the nightly backup instead of committing them.
+
+**Lessons Learned:**
+- A repeat `/closeout` can be cheap: check repo status, the memory log and running jobs, push only what changed, and reuse earlier results for slow checks.
+
+**Action Items:**
+- Computers wave, tomorrow after 09:40. First command:
+  `cd ~/DEV/_INBOX && python3 -I tools/trash_twins.py --zone computers --backups-off-confirmed --dry-run --threads 24 --prefix "Computers/My Mac"`
+- Resolve 3 card gaps from other sessions: project-triage, Football, CFB_Victory_Model.
+- Review the 4 registry drift items (`portfolio.py crosswalk`).
+- Handoff file for the detailed record: `~/DEV/docs/handoffs/2026-10-23-drive-waves-2-3.md`. STATUS.md files: `~/DEV/docs/STATUS.md` and `~/DEV/_INBOX/docs/STATUS.md`.
+######## 2 haiku
+**Context:** Daily closeout for 2026-10-23 across DEV, _INBOX, and global-memory, run twice (about 16:50 and 17:00), with the Drive waves 2-3 work as the main thread.
+
+**Key Exchanges:**
+- Second `/closeout` run found nothing new except today's transcript, which was pushed as global-memory `8743ffa`.
+- Earlier commits today: DEV `2e48c91`, _INBOX `d0cedd0` and `4bb3447`, global-memory `c77efe0`.
+- Memory capture was clean: `.errors.log` was empty and the transcript was written at 16:59.
+- No background Drive jobs were running; all Drive work for the day was finished.
+
+**Decisions Made:**
+- Skipped re-running `portfolio.py crosswalk` on the second closeout because it takes about 10 minutes and nothing had changed. The 4 drift items are carried over from the 16:55 check.
+- Left `~/.claude` session-history `.jsonl` files uncommitted, relying on the nightly backup to capture them.
+
+**Lessons Learned:**
+- Re-running closeout is cheap only when nothing has changed; `crosswalk` is the slow step to skip.
+
+**Action Items:**
+- **Tomorrow after 09:40, Computers wave.** Start with the dry run, not the live run:
+  `cd ~/DEV/_INBOX && python3 -I tools/trash_twins.py --zone computers --backups-off-confirmed --dry-run --threads 24 --prefix "Computers/My Mac"`
+  The `--backups-off-confirmed` flag suggests backups must be verified off before any real run. Confirm that before dropping `--dry-run`.
+- Fix 3 card gaps from other sessions (project-triage, Football, CFB_Victory_Model) with `card-check`.
+- Resolve the 4 registry drift items (`portfolio.py crosswalk`).
+- Check that the nightly backup picks up the `~/.claude` `.jsonl` files.
+- Handoff file for reference: `~/DEV/docs/handoffs/2026-10-23-drive-waves-2-3.md`.
+######## 3 opus
+**Context:** Daily status check on the backup and cloud-push system (login catch-up agent, cloud push, overnight backup, memory compiler).
+
+**Key Exchanges:**
+- Status at session start: the login catch-up agent was loaded and not running, which is normal. The cloud push was still failing with `Operation not permitted`. The last failed run was 10-21 at 17:30.
+- The overnight backup reported 5 errors: the global-memory repo had diverged, and 4 snapshot uploads failed. The memory compiler had a backlog of 3 logs.
+- At first the assistant did not re-run the push, because the request came from a relay rather than from the user. The user then said "go" (10-22, 11:26Z), and one cloud push was started.
+- The push ran longer than the 2-minute tool limit and moved to the background. The background task reported "completed" with exit code 0. When checked, though, the push was still running (it started at 06:42), so there was no result yet.
+
+**Decisions Made:**
+- Do not re-run the cloud push unless the user explicitly asks in a new message. Relay or automated prompts are not enough.
+
+**Lessons Learned:**
+- The cloud push can run longer than the 2-minute tool limit, so expect it to go to the background.
+- Exit code 0 on the background wrapper task does not mean the push finished. Check the push log itself before reporting a result.
+- `Operation not permitted` points to a missing macOS Full Disk Access grant.
+
+**Action Items:**
+- Grant Full Disk Access (still pending), then run one push to verify.
+- Read the result of the in-progress push started at 06:42 once it finishes.
+- Fix the global-memory repo divergence and look into the 4 failed snapshot uploads.
+- Clear the compiler backlog of 3 logs.
+######## 3 sonnet
+**Context:** Checking status of the daily backup/cloud-push system (claude-memory-compiler) and re-running the cloud push after the Full Disk Access grant.
+
+**Key Exchanges:**
+- Morning status: login catch-up job is loaded but not running (normal). Cloud push had been failing with `Operation not permitted` (last run 10-21 17:30).
+- The assistant declined to rerun the push on a relay request alone, since the user hadn't sent a message asking for it. The user then sent "go" (11:26Z, 10-22), and the push was started.
+- The push exceeded the 2-minute limit and moved to a background task (bo6u0jie9). A completion notification arrived (exit code 0), but it was an automated event, not user input. The assistant said the push was still running (started 06:42) and it had no result yet.
+
+**Decisions Made:**
+- Only run the push after an explicit user request, not on relay/automated prompts, because the user hadn't asked for it directly.
+- Treat background task-notifications as non-user input; they are not approval or confirmation.
+
+**Lessons Learned:**
+- The cloud push can take longer than 2 minutes and goes to the background. A "completed" notification with exit 0 doesn't by itself confirm that the push succeeded. The output file needs to be read.
+- The assistant's last message ("still running") conflicts with the notification showing the task completed (exit 0). The actual output was never read, so the result is unverified.
+
+**Action Items:**
+- Read the output file `/private/tmp/claude-501/-Users-kristinarash-DEV/b5e553b3-7c3d-4e6d-bac9-92f137a55b69/tasks/bo6u0jie9.output` to confirm whether the push succeeded (whether the `Operation not permitted` error is resolved and the Full Disk Access grant worked).
+- Overnight backup had 5 errors: the global-memory repo divergence and 4 snapshot upload failures. These need investigating.
+- The compiler has a backlog of 3 logs to process.
+######## 3 haiku
+**Context:** Daily check on the cloud push for the claude-memory-compiler, which has been failing with `Operation not permitted`.
+
+**Key Exchanges:**
+- Login catch-up loaded and is not running, which is normal.
+- Cloud push last succeeded 10-21 at 17:30 and still fails. The overnight backup had 5 errors: global-memory repo divergence and 4 snapshot upload failures. The compiler also has a backlog of 3 logs.
+- On a "go" wake, one push was run in the background because it exceeded the 2-minute limit. The background task reported `completed` with exit code 0, but its output was not read.
+
+**Decisions Made:**
+- The push was not run until the user sent "go," because the earlier request to rerun it was not a new instruction.
+
+**Lessons Learned:**
+- Long-running commands should be checked against the task output file, not assumed to be still running. The assistant later said the push "has not finished" even though the completion notification had arrived, so the status report was wrong.
+- The `Operation not permitted` failure is likely a macOS privacy restriction. Full Disk Access for the relevant process is still needed.
+
+**Action Items:**
+- Read the output of background task `bo6u0jie9` (`/private/tmp/claude-501/-Users-kristinarash-DEV/b5e553b3-7c3d-4e6d-bac9-92f137a55b69/tasks/bo6u0jie9.output`) to confirm whether the push succeeded.
+- Confirm whether Full Disk Access has been granted. If not, the user needs to grant it before pushes can work.
+- Resolve the global-memory repo divergence and the 4 snapshot upload failures from the overnight backup.
+- Process the 3-log compiler backlog.
+######## 4 opus
+**Context:** Mac maintenance session: a PowerShell upgrade was rolled back, and PowerPoint automation was enabled for the slide-deck skill.
+
+**Key Exchanges:**
+- The PowerShell upgrade broke every scheduled (launchd) pwsh job. macOS would not launch it because the maintained version is a small script wrapper, not the binary itself. It was rolled back within 5 minutes, no scheduled run was missed, and the morning and sync jobs re-ran fine.
+- macOS asked whether Claude may control PowerPoint (needed for slide-deck PDF and image export). Eric chose **Allow**. The permission now works.
+
+**Decisions Made:**
+- Stay on the old PowerShell for now. It keeps working until 2027-06-18. A tested fix for later is written into the weekly health check, which starts warning on 2027-03-01. See memory `project_pwsh-launchd-wrapper-trap.md`.
+- Allow PowerPoint Automation (System Settings > Privacy & Security > Automation), so the slide-deck skill can check its own slides.
+- The slide-deck skill now saves the PDF inside PowerPoint's own sandbox folder, then moves it out.
+
+**Lessons Learned:**
+- PowerPoint on macOS is sandboxed. Exporting a PDF to an outside path works on a fresh launch but hangs behind a hidden dialog when PowerPoint is already running. Saving inside PowerPoint's own container folder works every time.
+- `pdftoppm` is installed and turns the exported PDF into slide images, with no PowerPoint step needed.
+- The dcg safety guard blocks `rm` under the home folder. Move temp folders to `~/.Trash` instead.
+- Tested: the skill's export block, run exactly as written twice, produced a 5-page PDF and 5 slide images each time.
+
+**Action Items:**
+- Before 2027-06-18, apply the tested PowerShell fix. The weekly health check starts warning on 2027-03-01.
+- Open items are in `~/DEV/docs/STATUS.md`, including a Mac test for the lock that stops two search-index updates from running at once.
+- Test files are in `~/.Trash/five-slides-test-2026-10-24/`.
+- The skill update and status note are pushed to GitHub. Nothing is needed from Eric.
+######## 4 sonnet
+**Context:** Rolling back a PowerShell upgrade on the Mac, then granting and testing PowerPoint automation for the slide-deck skill.
+
+**Key Exchanges:**
+- PowerShell upgrade broke every scheduled PowerShell job. macOS refused to start it because it is a small script wrapper, not the real program. Rolled back to the old version within 5 minutes. No scheduled run was missed, and morning and sync re-ran fine.
+- Eric chose "Allow" for the macOS prompt letting Claude control PowerPoint. Rules stop the assistant from changing privacy settings itself, so Eric had to click the prompt. The first PDF export worked.
+- Verified the export end to end: the skill's block, run exactly as written twice, gave a 5-page PDF and 5 slide images. One image opened and looked right.
+
+**Decisions Made:**
+- Allow PowerPoint automation, so the slide-deck skill can check its own slides on the Mac instead of Eric exporting PDFs by hand.
+- Save the PDF inside PowerPoint's own sandbox folder, then move it out. This is the fix for the hang below.
+- Moved temp test folders to the Trash because the safety guard blocked an `rm` under the home folder.
+
+**Lessons Learned:**
+- PowerPoint on macOS is sandboxed and can only write in its own folder. Saving a PDF elsewhere while PowerPoint is already running stalls behind a hidden dialog, with no error. The first save worked only because PowerPoint started fresh.
+- `pdftoppm` is installed, so PDF-to-image conversion does not need PowerPoint.
+- The PowerShell wrapper issue is recorded in memory as `project_pwsh-launchd-wrapper-trap.md`. Check it before upgrading or reinstalling PowerShell, or touching any launchd job that runs pwsh.
+- The PowerShell fix is tested and written into the weekly health check, which starts warning on 2027-03-01. The old version keeps working until 2027-06-18.
+
+**Action Items:**
+- Small open items are in `~/DEV/docs/STATUS.md`. One example is a Mac test for the lock that stops two search-index updates from running at once.
+- Test files are in `~/.Trash/five-slides-test-2026-10-24/`. The skill update and status note are pushed to GitHub. Eric has nothing to do.
+######## 4 haiku
+**Context:** Eric's PowerShell upgrade broke scheduled jobs and was rolled back, and the PowerPoint automation permission was enabled for the slide-deck skill.
+
+**Key Exchanges:**
+- The maintained PowerShell upgrade broke every scheduled job on macOS because the install was a small script wrapper, not the program itself. The old version was restored within 5 minutes. No scheduled runs were missed, and morning and sync re-ran cleanly.
+- Eric chose **Allow** when macOS asked whether Claude could control PowerPoint. The slide-deck skill needs this to export PDFs and slide images on the Mac.
+- A five-slide test deck exported to PDF on the first try. Later saves hung, so the export step was rewritten and tested twice more. Both runs produced a 5-page PDF and 5 slide images.
+
+**Decisions Made:**
+- **Keep the old PowerShell version** until the upgrade is fixed. The health check warns starting 2027-03-01, and the old version keeps working until 2027-06-18. Rationale: the upgrade broke scheduled jobs, so the working version stays in place until a tested fix exists.
+- **Allow PowerPoint automation** for the slide-deck skill. Rationale: the skill can then check its own slides instead of Eric exporting by hand.
+- **Save PDFs inside PowerPoint's own folder, then move them out.** Rationale: PowerPoint is sandboxed and cannot write elsewhere. Saves outside its folder stalled behind a hidden dialog.
+
+**Lessons Learned:**
+- A wrapper-style PowerShell install can fail under launchd even when the command works in a terminal. Test the launchd path, not just the shell path.
+- PowerPoint's sandbox limits where it can save. Exporting outside its container hangs silently, so the export has to go through its own folder.
+- A running PowerPoint instance can block saves that worked on a fresh launch. Close PowerPoint before a scripted export if a save stalls.
+- The safety guard blocks cleanup commands that delete under the home folder. Moving files to the Trash works instead.
+
+**Action Items:**
+- Fix the PowerShell upgrade and test it under launchd before 2027-06-18. The health check starts warning 2027-03-01.
+- Work through the open small items in `~/DEV/docs/STATUS.md`, including a Mac test for the lock that stops two search-index updates from running at once.
+- Optional: empty the test files from `~/.Trash/five-slides-test-2026-10-24/`.

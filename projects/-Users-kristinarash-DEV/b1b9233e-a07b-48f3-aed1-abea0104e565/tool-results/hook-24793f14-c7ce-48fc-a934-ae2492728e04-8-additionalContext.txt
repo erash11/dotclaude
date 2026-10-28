@@ -1,0 +1,243 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Key Decisions
+- what do we need to do next, are there things you can do for me, I dont have access to the window laptop right now
+- yes, run wave 2
+- are you using the gws-cli for this job, hiaku 5.5 should also be used.
+
+## Files Modified
+STORAGE.md, FILE-ORGANIZATION-PLAN.md, readme.md, drive_index.py, trash_review.py, bf7rb0dst.output, trash_twins.py, 2026-10-23-drive-waves-2-3.md, bx9afgvo7.output
+
+## Unresolved Errors
+- {"stdout":"=== 2026-10-20.md\n32:- **Drive:** the \"Field notes - Joe Smith\" Google Doc is still the empty template. It hasn't been edited since y...
+- {"stdout":"=========== 1JDFf50im2pKSZBg0UDGz7OuFSOHZD2Ps\n> **CLOSED 2026-10-16 by Eric. Do not continue this plan.** The consolidation was already...
+- {"stdout":"config:\njev_topic_to_discipline.csv\nmodel_labels\nown_method.txt\nroots.json\n\nscripts:\n__pycache__\napply_reciprocal_links.py\nbuil...
+- {"stdout":"The following paths are ignored by one of your .gitignore files:\ndrive-index\nhint: Use -f if you really want to add them.\nhint: Disab...
+- {"stdout":"Traceback (most recent call last):\n  File \"<stdin>\", line 15, in <module>\n  File \"<frozen os>\", line 709, in __getitem__\nKeyError...
+- {"stdout":"1\n  page failed (try 1): Using keyring backend: keyring\n  page failed (try 2): Using keyring backend: keyring\n  page failed (try 1): ...
+- {"stdout":"[codex] Starting Codex task thread.\n[codex] Thread ready (01a16510-d7ab-7983-9c11-92dde2a0f0a0).\n[codex] Turn started (01a16510-e454-7...
+- {"stdout":"docs/STATUS.md:3:## Current state\ndocs/STATUS.md:197:## Next\ndocs/STATUS.md:235:## Open questions\ndocs/STATUS.md:245:## Gotchas\n_INB...
+- {"stdout":"## Current state\n- 2026-10-22 (Mac, Opus, later): **Flint + Drive 7-day plan** at `Flint/docs/7-DAY-PLAN-2026-10-22.md`. Grok bot (inst...
+- {"stdout":"f0b1268 STATUS + handoff: Drive index and first trash wave","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"ba...
+- {"stdout":"Decisions waiting on you — 22 open in 6 repos (STATUS touched in the last 1 days)\n\n2026-10-22  SoftwareTech_Review\n    - Should Nancy...
+- {"stdout":"candidates: 3410 (24.4 GB) of 23074 md5 files in zone 'unsorted' prefix '' [DRY RUN]\ncandidates: 102703 (124.3 GB) of 122166 md5 files ...
+- {"stdout":"     1\t\"\"\"Trash proven copies in a hidden zone of Drive (each wave needs Eric's yes).\n     2\t\n     3\tReplaces trash_review.py (w...
+- {"stdout":"     1\t\"\"\"Trash _TO_REVIEW files that are proven copies (Eric's yes 2026-10-22, option 1).\n     2\t\n     3\tTrashes a file only if...
+- {"stdout":"CREATE TABLE files (id text primary key, parent text, name text, folder text, zone text, mime text, size integer, md5 text, modified tex...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"drive_index.py — one local index of everything Eric owns on Google Drive.\n\nLists Drive by the API (gws),...
+- {"stdout":"t twins all had exactly 1 parent. Cheap guard: require len(meta['parents']) == 1 for the candidate.\"\n        },\n        {\n          ...
+- {"stdout":"Backup-word paths: as the task specified (the full word list, including 'archive'), 23,285 wave 2 candidates (22.62 GB) and 1,598 wave 3...
+- {"stdout":"  **Done 2026-10-22 ~17:25 (Eric's yes, option 1):** `_INBOX/tools/trash_review.py` trashed **3,566 `_TO_REVIEW`\n  files (50.1 GB)**: 2...
+- {"stdout":"5:## Current state\n69:## Next\na644691\ne5a0d2e\nnaming no longer listed","stderr":"","interrupted":false,"isImage":false,"noOutputExpe...
+- {"stdout":"a88f47b","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristinar...
+- {"stdout":"[2026-10-23T06:36:08.162733-05:00] claude-files-digest: send failed for 2026-10-22 - see ~/.claude/scripts/logs/claude-files-digest.log\...
+- {"stdout":"[2026-10-10T11:15:34] sent 2026-10-09: Files Claude created: Fri Oct 09, 2026 (422 files)\n[2026-10-11T06:30:15] sent 2026-10-10: Files ...
+- {"stdout":"02a70d7","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"bashEditDiff":{"files":[{"filePath":"/Users/kristinar...
+- {"stdout":"\"\"\"Trash proven copies in a hidden zone of Drive (each wave needs Eric's yes).\n\nReplaces trash_review.py (wave 1, 2026-10-22: `--zo...
+- {"stdout":"candidates: 11003 (5.5 GB) of 57512 md5 files in zone 'computers' prefix 'Computers/My Mac' [DRY RUN]\nTraceback (most recent call last)...
+- {"stdout":"# STATUS — ~/DEV workspace root\n\n## Current state\nEntries dated before 2026-10-09 are in `docs/handoffs/STATUS-archive-2026-Q3.md`.\n...
+- {"stdout":"Traceback (most recent call last):\n  File \"<stdin>\", line 15, in <module>\n  File \"<stdin>\", line 4, in sub\nAssertionError: (Posix...
+- {"stdout":"ok\n docs/FILE-ORGANIZATION-PLAN.md              |  1 +\n docs/STATUS.md                              |  5 ++---\n docs/handoffs/2026-10...
+
+## Git
+log, status, pull, commit, Add drive_index.py: Drive API index, find, duplicate and naming reports
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, drive_index: Computers zone, parent column, low-memory build; STATUS
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, drive_index: _TO_REVIEW zone (Grok dedupe drop); STATUS after rebuild
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, Plan Task 8: Codex verification, report C is never a trash list
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, trash_review.py: live-checked trash of _TO_REVIEW proven copies (run by Eric)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, Plan Task 8: _TO_REVIEW trash wave done (3,566 files, 50 GB)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS: backup gate next, naming question
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, landed: 2026-10-22 ledger
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, trash_twins.py: verified trash of proven copies in any hidden zone (replaces trash_review.py); waves 2-3 ready; naming B
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, Plan Task 8 NEXT 4: Jev sorting test after waves 2-3 (Eric: wait)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, diff, trash_twins.py: --threads option
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS + handoff: Drive waves 2-3 running
+
+$M, Drive: backups off, Computers quiet day to 10-24 09:40
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, Drive: Eric's yes for Computers wave (after quiet day)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, trash_twins: --prefix accepts a Computers machine root, so the under() check covers the Computers wave
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, Drive waves 2-3 done: 102,362 + 3,393 trashed; index rebuilt; Computers wave steps$M, closeout 2026-10-23: Drive waves 2-3 done; ledger, transcripts, dev-docs
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, closeout 2026-10-23: Drive waves 2-3 done; ledger, transcripts
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, closeout 2026-10-23 (2): transcript
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, .claude/STORAGE.md, tmp/readme.md
+
+## Subagent Tasks
+- [completed] Independent, READ-ONLY verification task. Do not modify, move, trash, or upload anything — not on disk, n...
+
+## Skills Used
+closeout
+
+## Environment
+cwd: ~/.claude/global-memory
+model:claude-opus-5-5[1m]
+cd ~/DEV && export T=*** && python3 - <<'EOF'
+import os
+from pathlib import Path
+p=Path("docs/FILE-ORGANIZATION-PLAN.md"); s=p.read_text()
+def rep(a,b):
+    global s
+    assert a in s, a[:70]; s=s.replace(a,b,1)
+rep('''**Found:** 214,368 files (36 GB) in **"Computers" backups** (old Backup and Sync device roots such as `My Laptop (2)`,
+outside My Drive; one holds a copy of the Drive folder itself). The script now files them as zone `computers` and
+counts them as delete candidates when a twin exists.''','''**Found:** 214,368 files (36 GB) had no path. **Mostly "Computers" backups** (old Backup and Sync device roots such
+as `My Laptop (2)`, outside My Drive; one holds a copy of the Drive folder itself), filed now as zone `computers`.
+Some `_MACHINE/Cloud_Copy` files were also unplaced: unordered paging likely skipped a few folders. The build now
+pages by `createdTime` and runs a repair pass that fetches skipped ancestors; its printed count separates the two.
+**Also:** `99_UNSORTED` is 76 GB, not the 23.8 GB the FUSE scan showed (`From_REMOTE_DESK` alone 55 GB, 95% exact
+twins). The "leave until 2027-01-01" call was made on the small number.''')
+table=open(os.environ["T"]).read()
+rep('''- [ ] **NEXT 2 (Eric):** delete wave. Trash `delete_candidates.csv` rows by zone, smallest first, via `gws`
+  (Drive trash keeps 30 days). One zone per sitting; re-check each twin still exists at the moment of trashing.''',
+'''- [ ] **NEXT 2 (Eric):** delete wave, **by folder, not by file** (102k single trash calls is ~14 h). A folder at
+  ~100% twins gets one trash call; a folder below that has its unique files moved out first, then is trashed.
+  Re-check the twins exist at the moment of trashing. Drive trash keeps 30 days. One folder per sitting.
+  **Gate before anything under `Computers/`:** open Drive for desktop preferences on the Mac **and** the Windows
+  laptop (back in use since 10-21) and confirm no folder backs up to "My Laptop". Turn it off, wait one scan.
+  Trashing a live backup's cloud copy is re-uploaded (Backup mode) or **deletes the local files** (Mirror mode).
+
+  Per-folder twins (first index, 07:10; `_PARKED` = `10_ARCHIVE/_PARKED_COPIES`, folders with 20+ files):
+
+''' + table)
+p.write_text(s)
+EOF
+git add docs/FILE-ORGANIZATION-PLAN.md && git commit -q -m "Plan Task 8: per-folder twin table, Computers gate, 99_UNSORTED true size
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j" && git push -q 2>&1|tail -1; git log --oneline -1; cd ~/DEV/_INBOX && git log --oneline -2; git status --short
+model:claude-opus-5-5[1m]
+model:claude-opus-5-5[1m]
+model:claude-opus-5-5[1m]
+model:claude-opus-5-5[1m]
+
+## Data References
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- … 65 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<rules>
+Follow these decisions:
+- what do we need to do next, are there things you can do for me, I dont have access to the window lap
+- yes, run wave 2
+- are you using the gws-cli for this job, hiaku 5.5 should also be used.
+</rules>
+
+<active_skills>
+Re-invoke if relevant: closeout
+To reload: call the Skill tool with the skill name.
+</active_skills>
+
+<session_mode>implement</session_mode>
+
+</session_state>

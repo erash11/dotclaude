@@ -1,0 +1,217 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- Q: #1 from the "what's left" list (the remember command) is done. Which one do you mean? → A: Search all memory folders (Recommended)
+- I'm going to be completely honest with you: I'm not going to remember to do that. A lot of the times when you suggest something, I just pick your s...
+
+## Files Modified
+recall.py, test_recall.py, recall-eval.py, results.md, CLAUDE.md, SKILL.md, AGENTS.md, session-start.py, STATUS.md, remember.py, test_remember.py, 2026-10-23-recall-py.md, memory-index-paths.json, cards.py, portfolio.py, test_cards.py, reference_recall-bench.md, check.py, test_check.py, daily-backup.ps1, USER.md, handoff-2026-10-24-second-brain-recall.md
+
+## Unresolved Errors
+- {"stdout":"---\nname: harness-time-budget\ndescription: \"Harness/system work is done as it comes up, not on a schedule; start with project work, a...
+- {"stdout":"`daily-backup.ps1` resets `.memsearch-timeout-streak` every morning, the escalation\nthreshold is 6 consecutive timeouts, and the hook w...
+- {"stdout":"---\ntype: permanent\ncreated: 2026-07-25\nsource: [[2026-07-25-interview]]\ndomain: [methodology, decision-making, personal]\ntags: [su...
+- {"stdout":"# recall: What was the total score of my first brain audit, and what were the four sub-scores?\nkeywords: total score brain audit sub sc...
+- {"stdout":"patched\n# recall: What was the total score of my first brain audit, and what were the four sub-scores?\nkeywords: total score brain aud...
+- {"stdout":"# recall: After the memsearch session-end hook kept timing out, what was the fix and how long does the hook take now?\nkeywords: memsear...
+- {"stdout":"__pycache__\nafter-run.ps1\nLATEST.md\nledger.md\nlogs\nquestions.jsonl\nrecall-eval.py\nresults\nrun-eval.ps1\nweekly-chain.ps1\n==> /U...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"Recall eval: can each retrieval backend find the known answer file?\n\nRuns every case in questions.jsonl ...
+- {"stdout":"def roots():\n    cfg = json.loads((DEV / \"KeystoneOS\" / \"data\" / \"memory-index-paths.json\").read_text(encoding=\"utf-8\"))\n    o...
+- {"stdout":"ok\n  recall    s01  miss    1161 ms  why the Soviet electrical muscle stimulation strength gains \n  recall    s02  @3       551 ms  ho...
+- {"stdout":"coverage 100.0%  missing roots: 1  uncovered: []\nfts5      hit@5 25/30  hit@1 19  MRR 0.728  p50 32 ms  fail 0.0%  {'compiled': '1/1', ...
+- {"stdout":"| Q | Set | Arm | Tokens | Cost $ | Wall s | code s |\n|---|---|---|---:|---:|---:|---:|\n| 1 | orig | C | 18,175 | 0.062 | 50.0 | 2.4 |...
+- {"stdout":"2:\"\"\"Recall eval: can each retrieval backend find the known answer file?\n4:Runs every case in questions.jsonl against up to four bac...
+- {"stdout":"  fts5      s01  miss      26 ms  why the Soviet electrical muscle stimulation strength gains \n  fts5      s02  miss      12 ms  how lo...
+- {"stdout":"test_recall: all checks passed\nfts5      hit@5 25/30  hit@1 19  MRR 0.728  p50 4 ms  fail 0.0%  {'compiled': '1/1', 'dev-docs': '0/1', ...
+- {"stdout":"fts5      hit@5 25/30  hit@1 19  MRR 0.728  p50 6 ms  fail 0.0%  {'compiled': '1/1', 'dev-docs': '0/1', 'tierA': '12/14', 'transcript': ...
+- {"stdout":"== Q8 (held)\n== Q9 (held)\nDONE\n| Q | Set | Arm | Tokens | Cost $ | Wall s | code s |\n|---|---|---|---:|---:|---:|---:|\n| 1 | orig |...
+- {"stdout":"# recall: why did cloud-push fail on Drive\nkeywords: cloud push fail drive\ncandidates (BM25, Tier A memory first, only #1 opened): ~/....
+- {"stdout":"---\nname: skill-bloat-and-promotion\ndescription: \"Measured skill bloat in this setup, the project-until-promoted rule that fixes it, ...
+- {"stdout":"parse ok\nugrep: error: error at position 28\n(?m)Search across all memory[^\\]*\n          mismatched [ ]___/\n\n\n M hooks/session-sta...
+- {"stdout":"test_recall: all checks passed\nfts5      hit@5 25/30  hit@1 19  MRR 0.728  p50 4 ms  fail 0.0%  {'compiled': '1/1', 'dev-docs': '0/1', ...
+- {"stdout":"# Memory Write\n\n## Outcome\n- Fact added to, updated in, or removed from the correct memory tier\n- Tier-B caps enforced (2,500 chars ...
+- {"stdout":"{\n  \"paths\": [\n    \"{HOME}/.claude/global-memory/transcripts\",\n    \"{HOME}/.claude/global-memory/dev-docs\",\n    \"{HOME}/.clau...
+- {"stdout":"candidates (BM25, Tier A memory first, only #1 opened): ~/.claude/claude-memory-compiler/knowledge/concepts/baylor-fall-camp-practice-pl...
+- {"stdout":"`~/DEV/KeystoneOS/data/memory-index-paths.json` is the single source of truth for which directories memsearch indexes. Three writers rea...
+- {"stdout":"// --- Detach: re-exec ourselves as a background worker, then return at once. ---\n// stdio MUST be 'ignore'. Inheriting or piping keeps...
+- {"stdout":"def build_cards(registry: dict, dev_root: Path, ledger: list[dict],\n                today: _dt.date | None = None) -> dict[str, dict]:\...
+- {"stdout":"182:    if a and a != cands[0] and about_hits(db, a, q) >= about_hits(db, cands[0], q):\ntest_recall: all checks passed\ntest_remember: ...
+- {"stdout":"test_recall: all checks passed\nfts5      hit@5 25/30  hit@1 19  MRR 0.722  p50 2 ms  fail 0.0%  {'compiled': '1/1', 'dev-docs': '0/1', ...
+- {"stdout":"8:## Current state\n48:## Next\n62:## Open questions\n68:## Gotchas\n`docs/audits/2026-09-12-gate-a-approval.md`.\n\n## Current state\n-...
+- {"stdout":"=== .claude/projects/-Users-kristinarash-DEV/memory/project_drive-fuse-rsync-mtime-loop.md\n---\nname: drive-fuse-rsync-mtime-loop\ndesc...
+- {"stdout":"---\nname: working-conditions-bottleneck\ndescription: \"Eric's self-identified bottleneck is working conditions, not effort — he needs ...
+- {"stdout":"`after-run.ps1` (commits+pushes results, writes `LATEST.md`, appends to `.errors.log` only on\na problem), retrying a step that exits 0x...
+- {"stdout":"34:def first_dir(cands, marker=None):\n45:def roots():\n54:def norm(p):\n58:def matches(path, expected):\n63:def rank_of(files, expected...
+- {"stdout":"def norm(p):\n    return str(p).replace(\"\\\\\", \"/\").lower()\n\n\ndef matches(path, expected):\n    n = norm(path)\n    return any(e...
+
+## Git
+status, recall.py: plain-code recall ladder on fts5 BM25, plus rerunnable bench
+
+recall.py ranks local markdown with the fts5 BM25 from recall-eval (now its one
+home), opens only the top file, and prints matching paragraphs with line numbers.
+Bench: 7/9 correct at ~18k tokens/question vs default 6/9 at ~100k.
+Known miss: older knowledge articles can outrank the current Tier A memory.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, log, recall.py: Tier A memory first, guarded by file-name match
+
+A Tier A memory in the BM25 top 3 moves to #1 when its name matches as many
+question words as #1's name. 30-case eval hit@1 18 -> 22, no case worse.
+Bench run 4: 8/9 (orig 4/5, held 4/4); Q2 stale-fix miss is gone.
+Index refresh now takes a write lock so two runs cannot insert a file twice.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, pull, Router: search with recall.py first, memsearch on NO MATCH
+
+Bench run 4: recall.py 8/9 at ~18k tokens/question vs default 6/9 at ~100k.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, $MSG, recall.py: list one Tier A memory once, newest Mac/Windows copy
+
+Mac and old Windows slugs hold the same memory files; sometimes the Windows copy
+is newer. rank() now keeps the most recently changed copy and drops the twin.
+30-case eval unchanged (hit@1 22, hit@5 25/30).
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, memory: recall-bench reference (first remember.py write)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, recall.py searches every project memory folder; remember.py keeps '_' in Mac slugs
+
+roots() adds ~/.claude/projects/*/memory: 31 folders, 336 memory files (was 5).
+30-case eval hit@1 21 (was 22): p02 moved 1 -> 2 behind a same-day handoff
+(IDF shift from the larger corpus; no Tier A involved). hit@5 25/30 unchanged.
+remember.py: the Mac harness keeps '_' in slugs (-Users-kristinarash-DEV-CLI_Dev);
+the old rule would have written to a folder nothing injects.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, memory-write: Mac slugs keep '_'
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, $m
+
+$C;, memsearch roots: add vault Inbox, Notes, Drafts, audits
+
+memsearch never saw SecondBrain/Notes (main notes), top-level Inbox (interviews,
+status-log, weekly-review/slate), Drafts or audits. Overlap with Inbox/meetings is
+safe: memsearch's scanner dedups by resolved path. Adding roots cannot delete:
+index() only prunes deleted files inside the roots it is given.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, card-check: a retired row whose STATUS is dated today is explained
+
+CFB_Forecast_Archive is archived on purpose; the automated forecast capture
+writes to it weekly and its STATUS says so each time. card-check flagged it
+every capture day anyway. An entry dated today now counts as the why.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, recall.py: memory guard reads the memory's description; bench 9/9
+
+A Tier A memory in the top 3 moves to #1 when its name + frontmatter description
+match as many question words as #1's file name. Fixes bench Q3 (drive-fuse-read-hang
+was #2 behind a dedupe article). Giving #1 its title too lost n06, so it is not used.
+30-case eval hit@1 21, hit@5 25/30 (unchanged). Bench run 5: 9/9.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, STATUS + handoff: memsearch roots added, bench 9/9, card-check fix
+
+$C, recall bench: 4 fresh questions; recall.py always shows a big file's opening paragraph
+
+Fresh Q10-13, picked blind (seeded random note per layer, answers fixed first):
+default session 3/4 at 371k tokens, recall.py 3.5/4 at 72k, then 4/4 after the fix.
+Q11 missed a URL stated in the opening line in words the question did not share.
+run.sh: CSET limits arm C to one set.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq, diff, memory: recall-bench covers 'add that to the recall test'
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Dirbq4bTGxHNVb4ZifD4cq
+
+## Project Rules
+scripts/recall.py, scripts/test_recall.py, recall-bench/results.md, memory/reference_recall-bench.md, scripts/daily-backup.ps1, global-memory/USER.md
+
+## Skills Used
+backup
+
+## Environment
+cwd: ~/.claude
+model:claude-opus-5-5[1m]
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 93 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

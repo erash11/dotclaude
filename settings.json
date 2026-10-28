@@ -349,7 +349,7 @@
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "timeFormat": "auto",
-  "skipDangerousModePermissionPrompt": false,
+  "skipDangerousModePermissionPrompt": true,
   "theme": "dark-daltonized",
   "verbose": false,
   "autoCompactEnabled": true,

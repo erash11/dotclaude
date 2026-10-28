@@ -1,0 +1,201 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- finish it, then delete QMD if it loses
+- keep it, add memory-first rule to memsearch
+
+## Files Modified
+recall.py, test_recall.py, 2026-10-25-memory-recall-audit.md, STATUS.md, project_milvus-lock-misdiagnosis.md, memsearch-sync.js, project_memsearch-index-is-destructive.md, SKILL.md, 2026-10-25-stack-doctor-skill-review.md
+
+## Unresolved Errors
+- {"stdout":"# STATUS — ~/DEV workspace root\n\n## Current state\n- 2026-10-25 (Mac, Opus): **dev-* audit findings swept** (20 of the 10-22 audit's l...
+- {"stdout":"---\nname: memory-write\ndescription: >-\n  Writes, updates, removes, and recalls facts in the two-tier memory system\n  (~/.claude/glob...
+- {"stdout":"2026-10-24.md {'hash': '9665882e0bd76d4e', 'compiled_at': '2026-10-24T18:17:17-05:00', 'cost_usd': 1.271332, 'status': 'succeeded', 'art...
+- {"stdout":"__pycache__\nledger.md\nlogs\nquestions.jsonl\nrecall-eval.py\nresults\n# set\tquestion\tground-truth file\norig\tWhat was the total sco...
+- {"stdout":"## 1. Verdict in three lines\n\n1. **Retire Docker/Milvus on Windows.** It exists only because `milvus-lite` ships no\n   Windows wheel ...
+- {"stdout":"  memsearch n06  FAIL    6095 ms  getting Box files when the connector is blocked\n  memsearch n07  FAIL    6112 ms  why isn't a project...
+- {"stdout":"Failed to start MilvusLite server for /Users/kristinarash/.memsearch/milvus.db\nTraceback (most recent call last):\n  File \"/Users/kris...
+- {"stdout":"- **Dogfood probes run with PP_DOGFOOD=1** which curtails syncs to one page — happy-args fixtures must resolve against a ~25-row cache. ...
+- {"stdout":"index finished after waiting 432s; total run since 16:08:45: 1362s\nAWAY received; Error code: 11; Debug Text: too_many_pings {http2_err...
+- {"stdout":"| 2026-10-25 | kristinsmacbook.lan | INVALID: ran while SessionEnd index held the Milvus lock (fail 100%); see audits/2026-10-25-memory-...
+- {"stdout":"projects/C--Users-eric-rash-Desktop-DEV-KeystoneOS/memory/MEMORY.md\n---\n234:COMPILE_AFTER_HOUR = 18  # 6 PM local time\n238:    \"\"\"...
+- {"stdout":"memsearch hit@5 25/30  hit@1 13  MRR 0.611  p50 6230 ms  fail 0.0%  {'compiled': '1/1', 'dev-docs': '1/1', 'tierA': '11/14', 'transcript...
+- {"stdout":"    async def index_with_report(self, *, force: bool = False) -> IndexReport:\n        \"\"\"Scan paths and index all markdown files wit...
+- {"stdout":"2026-10-25 17:16:29,805 [ERROR][_log_rpc_error]: RPC error: [query], <MilvusException: (code=101, message=Collection 'memsearch_chunks' ...
+- {"stdout":"2026-10-25 17:16:42,508 [WARNING][__setup_ts_by_request]: failed to get mvccTs from milvus server, use client-side ts instead (query_ite...
+- {"stdout":"qmd context rm qmd://notes/old\n```\n\n### Configuring `index.yml`\n\n\nThe `collection` and `context` commands above all read and write...
+- {"stdout":"qmd search : hit@1=15 hit@5=17 fail=0 p50=485ms max=1348ms\nmisses: ['p04', 'p06', 'p07', 'p09', 'v01', 'v09', 's01', 's02', 'n01', 'n02...
+- {"stdout":"455:def _cleanup_roots_for_paths(paths: list[str | Path]) -> list[Path]:\n456-    roots: list[Path] = []\n457-    for raw_path in paths:...
+- {"stdout":"qmd vsearch : hit@1=8 hit@5=20 fail=0 p50=14270ms max=343890ms\nmisses: ['p03', 'p09', 'p10', 'v02', 'v08', 's01', 's02', 'n02', 'n04', ...
+- {"stdout":"qmd query : hit@1=13 hit@5=24 fail=0 p50=84083ms max=274597ms\nmisses: ['v02', 'v08', 'v09', 's02', 'n02', 'n07']\n\n[exited with code 0...
+- {"stdout":"fails []","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"recall-check: OK eval hit@1 21/30 hit@5 25/30, bench top-1 12/13\nshipped memsearch_hits: hit@1=17 hit@5=27 fail=0","stderr":"","interru...
+- {"stdout":"=== launchd agents ===\ncom.keystone.morning : OK\ncom.keystone.agysync : OK\ncom.keystone.dailybackup : OK\ncom.keystone.reconcile : OK...
+- {"stdout":"== docker/milvus in script\n130:    # On the laptop memsearch talks to Milvus in Docker Desktop (WSL2). With Docker down,\n133:    $st =...
+
+## Git
+pull, log, status, Memory/recall audit 10-25; recall.py says when memsearch did not run
+
+memsearch exits 0 with empty stdout when the SessionEnd re-index holds the
+Milvus Lite lock (held 1,362 s today). recall.py printed an empty section,
+which reads as 'no match'. It now prints 'memsearch DID NOT RUN: ...'.
+Test added. Audit: ~/.claude/audits/2026-10-25-memory-recall-audit.md.
+Ledger row from the locked eval run marked INVALID.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, STATUS: memory/recall audit 10-25 (dotclaude 5c7dc08)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, Audit 10-25: clean memsearch eval row; Windows slugs not archived; lock fact in Tier A
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, Audit 10-25 follow-up: QMD trial rejected; memsearch drop traced to handoff/audit roots
+
+memsearch 0.4.17 prunes only inside current roots; Tier A note corrected.
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, STATUS: QMD rejected, memsearch drop traced (dotclaude f3a078d)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, STATUS: QMD deleted
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, memory-write: L2 meaning search runs through recall.py --deep (memory files first)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, commit, STATUS: compile kept; memsearch memory-first (dotclaude 8c2131a)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6, Audit: claude-stack-doctor skill review (writing-for-agents lens)
+
+Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019wr8mhd94CiQUXrxvKyEK6
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, scripts/recall.py, scripts/test_recall.py, hooks/memsearch-sync.js, memory/project_memsearch-index-is-destructive.md, memory-write/SKILL.md
+
+## Subagent Tasks
+- [completed] Research task (read-only, web only; do not touch local files). Today is 2026-10-25.
+
+Goal: I am auditing ...
+
+## Skills Used
+mattpocock-skills:writing-for-agents, claude-stack-doctor
+
+## Environment
+cwd: ~/.claude
+model:claude-opus-5-5[1m]
+mkdir -p ~/.local/share/qmd-eval && cd ~/.local/share/qmd-eval && npm install --no-fund --no-audit @tobilu/qmd@2.8.3 2>&1 | tail -5; ls node_modules/.bin | grep -i qmd; ./node_modules/.bin/qmd --version 2>&1 | head -3
+cd ~/.local/share/qmd-eval && npm install-scripts ls 2>&1 | head -20
+cd ~/.local/share/qmd-eval && npm install-scripts approve better-sqlite3 node-llama-cpp 2>&1 | tail -2 && npm rebuild better-sqlite3 node-llama-cpp 2>&1 | tail -4; ./node_modules/.bin/qmd status 2>&1 | head -15
+mkdir -p ~/.local/share/qmd-eval/config && H=$HOME && cat > ~/.local/share/qmd-eval/config/audit.yml <<EOF
+# QMD eval index: same corpus as recall.py (memsearch roots + whole vault + every projects/*/memory).
+collections:
+  memory:
+    path: $H/.claude/projects
+    pattern: "*/memory/**/*.md"
+    ignore: ["**/Archive/**", "**/archive/**"]
+  gm-transcripts:
+    path: $H/.claude/global-memory/transcripts
+  gm-devdocs:
+    path: $H/.claude/global-memory/dev-docs
+    ignore: ["**/Archive/**", "**/archive/**", "**/node_modules/**"]
+  gm-handoffs:
+    path: $H/.claude/global-memory/handoffs
+    ignore: ["**/*.windows.md"]
+  mc-daily:
+    path: $H/.claude/claude-memory-compiler/daily
+  mc-knowledge:
+    path: $H/.claude/claude-memory-compiler/knowledge
+  vault:
+    path: $H/SecondBrain
+    ignore: ["**/.obsidian/**", "**/.trash/**", "**/Archive/**", "**/archive/**", "**/Templates/**"]
+  ks-decisions:
+    path: $H/DEV/KeystoneOS/decisions
+  dev-handoffs:
+    path: $H/DEV/docs/handoffs
+  audits:
+    path: $H/.claude/audits
+    ignore: ["**/archive/**"]
+EOF
+cd ~/.local/share/qmd-eval && export QMD_CONFIG_DIR=*** && time ./node_modules/.bin/qmd --index audit update 2>&1 | tail -15
+cd ~/.local/share/qmd-eval && export QMD_CONFIG_DIR=*** && /usr/bin/time -p ./node_modules/.bin/qmd --index audit embed 2>&1 | tr '\r' '\n' | grep -v -E '^\s*$' | tail -8
+cd ~/.local/share/qmd-eval && export QMD_CONFIG_DIR=*** && /usr/bin/time -p ./node_modules/.bin/qmd --index audit embed 2>&1 | tr '\r' '\n' | grep -E 'real|expired|Embedded|error' | tail -4; ./node_modules/.bin/qmd --index audit status 2>&1 | sed -n 7,9p
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- … 64 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+investigate
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>

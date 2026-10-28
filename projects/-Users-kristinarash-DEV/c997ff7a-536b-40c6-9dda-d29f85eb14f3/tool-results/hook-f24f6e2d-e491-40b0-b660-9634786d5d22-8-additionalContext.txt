@@ -1,0 +1,169 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- I want to keep rolling with system work until it's done or at a place where we can objectively say, "Hey you're in a much more efficient state."
+- Q: The skill helper runs before every message you type. In the last 7 days it showed 474 hints. You (or I) used the hinted skill 6 times (1%). It a...
+
+## Files Modified
+2026-10-24-proof-of-changes.md, stack-check.ps1, test-job-proof.sh, SKILL.md, context-floor.py, by0xb8n5x.txt
+
+## Unresolved Errors
+- {"stdout":"a8a157e 10-24 01:02 STATUS: ran new jobs, cleared 3 stack-doctor warnings (2026-10-24)\n43ccda6 10-24 00:59 WORKFLOW: long runs go to a ...
+- {"stdout":"  PASS  a failed batch beside real verdicts does not escalate\n  PASS  no candidates and no failures does not escalate\n\n54 passed, 0 f...
+- {"stdout":"# Read-only health check for Eric's automation/memory stack.\n# Exit 0 = all clear, exit 1 = issues found (listed in VERDICT).\n$ErrorAc...
+- {"stdout":"PASS  sync_complete passes\nPASS  fresh HARVEST passes\nPASS  fresh send passes\nPASS  not authenticated fails even with cadence OK\nPAS...
+- {"stdout":"5:  venvs, memsearch, the memory-compiler flush pipeline, backup freshness, and context\n17:## Quick start\n24:The same script runs on b...
+- {"stdout":"de55972 proof handoff finished: session-start size, job-proof checks in stack-doctor","stderr":"","interrupted":false,"isImage":false,"n...
+- {"stdout":"ce27d98 proof handoff: table fix, correct failing run date","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false,"ba...
+- {"stdout":"Sat Oct 24 09:48:57 CDT 2026\n-----\nmeeting-sync: OK sync_complete (4h ago)\nbackup-harvest: OK (9h ago)\nnightly-digest: OK (10h ago)\...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"UserPromptSubmit hook: suggest at most one skill for the prompt, using Jev.\n\nImplements the TypeSafe `sk...
+- {"stdout":"73:# SHORTLIST and FITS_THRESHOLD are the cookbook's, from its prose: the config cell\n77:FITS_THRESHOLD = 0.30   # best `fits` noul, be...
+- {"stdout":"    }\n    # Same rule as the gate: a reply missing the winner, or missing any candidate's\n    # fits noul, is malformed rather than ne...
+- {"stdout":"        names, trace = suggest(prompt, roster, key, deadline)\n    except Exception as error:  # noqa: BLE001\n        millis = int((tim...
+- {"stdout":"12:function Section($t) { Write-Output \"`n=== $t ===\" }\n15:Section \"Scheduled tasks (Windows)\"\n36:    if (-not $task) { \"$($t.n) ...
+- {"stdout":"340:Section \"Job proof (logs, not exit codes)\"\n341-# A launchd exit code of 0 is not proof the job did its work: Meeting Sync failed ...
+- {"stdout":"    @{ f = \"$HOME/.claude/global-memory\\MEMORY.md\"; cap = 2500 })) {\n    $n = Split-Path $m.f -Leaf\n    if (-not (Test-Path $m.f)) ...
+- {"stdout":"102:### `proof:*` — the job ran but its log shows no real success (Mac)\n103:Exit code 0 is not proof. The \"Job proof\" section reads e...
+- {"stdout":"7f00695 STATUS + handoff: efficiency pass (router off, suggestions off, context-floor watch)","stderr":"","interrupted":false,"isImage":...
+- {"stdout":" scripts/flush.py                     | 4 ++++\n scripts/test_flush_tools_disabled.py | 3 +++\n 2 files changed, 7 insertions(+)\nTraceb...
+- {"stdout":"-                setting_sources=[],\n+                # SDK 0.2.165 drops setting_sources=[] from the CLI command; pass the flag.\n+   ...
+- {"stdout":"######## 0 opus\n**Context:** Agent-files cleanup on 2026-10-24: memory linting, backup verification, and recall/memsearch improvements....
+- {"stdout":"PASS: flush runs with no tools (--tools \"\" --strict-mcp-config)\n54 passed, 0 failed\n2026-10-25 18:27:05 INFO Result: FLUSH_OK\n   1 ...
+- {"stdout":"82893a6 flush: run on Sonnet (matched Opus on 5 real sessions; Haiku made 2 factual errors)\n7ca32c5 STATUS + handoff: flush model test,...
+- {"stdout":"25:import argparse\n79:def _safe_article_path(rel: str):\n93:def _dedupe_index(index_path: Path) -> int:\n124:def _persist_compilation(r...
+- {"stdout":"async def compile_daily_log(\n    log_path: Path, state: dict, budget=None, full_context: bool = False\n) -> tuple[str, float]:\n    \"\...
+- {"stdout":"  Retrieved 13 articles (8 relevant, 3 graph, 2 neglected) = 57,989 chars\n  FAILED (attempt 0/3): empty response\n2026-10-21 opus chars...
+- {"stdout":"### SONNET 10-23 recall-py\n-updated: 2026-10-24\n+updated: 2026-10-25\n-`~/.claude/scripts/recall.py`, built on 2026-10-23, is a memory...
+- {"stdout":"54 passed, 0 failed\n2d0072c compile: pin Opus (Sonnet missed 3 of 4 items and rewrote articles lossily, 10-25 test)\nbb0a4be STATUS + h...
+
+## Git
+log, pull, handoff: proof of 10-22..10-24 changes (tests pass; scheduled-run checks pending)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, stack-doctor: job proof reads logs for real success (meeting-sync, backup HARVEST, nightly digest) + test
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, proof handoff finished: session-start size, job-proof checks in stack-doctor
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, proof handoff: table fix, correct failing run date
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, diff, Skill router hook off (1% of hints used, ~0.55 s a prompt); context-floor script + baseline
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, STATUS + handoff: efficiency pass (router off, suggestions off, context-floor watch)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, flush/compile/adjudicate: really skip user settings (--setting-sources "")
+
+SDK 0.2.165 drops setting_sources=[] from the CLI command, so compile and
+adjudicate never had the protection their comments claim, and flush loaded
+CLAUDE.md files, plugins and hooks on every run. Measured: a flush's first
+turn 23.5k -> 0.9k tokens (trivial context), model unchanged (Opus).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, context-floor: ceiling for background SDK jobs
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, context-floor: count small background-job turns
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, commit, flush: run on Sonnet (matched Opus on 5 real sessions; Haiku made 2 factual errors)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, status
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, scripts/stack-check.ps1, claude-stack-doctor/SKILL.md, tool-results/by0xb8n5x.txt
+
+## Environment
+cwd: ~/.claude/claude-memory-compiler
+model:claude-opus-5-5
+cd /private/tmp/claude-501/-Users-kristinarash-DEV/c997ff7a-536b-40c6-9dda-d29f85eb14f3/scratchpad && cat > probe.sh <<'EOF'
+#!/bin/zsh
+# First-turn input tokens for a headless session under different configs.
+export CLAUDE_INVOKED_BY=***
+cd ~/DEV
+noplug=$(python3 -c "import json,os;s=json.load(open(os.path.expanduser('~/.claude/settings.json')));print(json.dumps({'enabledPlugins':{k:False for k in s.get('enabledPlugins',{})}}))")
+p() { local label=$1; shift
+  claude -p "reply ok" --model haiku --output-format json --no-session-persistence "$@" 2>/dev/null \
+  | python3 -c "import json,sys;u=json.load(sys.stdin)['usage'];print('%-22s %7d'%('$label',u['input_tokens']+u.get('cache_creation_input_tokens',0)+u.get('cache_read_input_tokens',0)))"; }
+p as-is
+p no-mcp --strict-mcp-config
+p no-plugins --settings "$noplug"
+p no-skills --disable-slash-commands
+p bare --strict-mcp-config --settings "$noplug" --disable-slash-commands
+EOF
+zsh probe.sh
+cd ~/DEV && export CLAUDE_INVOKED_BY=*** off='{"enabledPlugins":{"browser-use@claude-plugins-official":false,"cowork-plugin-management@knowledge-work-plugins":false,"desktop-commander@claude-plugins-official":false,"firecrawl@claude-plugins-official":false,"aab3308b-3931-463e-937c-1a804f3853e0@anthropic-plugin-directory":false,"2529b2d1-9426-48a5-a8ad-2ebc77af2815@anthropic-plugin-directory":false,"6ba53849-2ee0-4cf0-957e-31c122ea1dd1@anthropic-plugin-directory":false}}'
+for s in '{}' "$off"; do claude -p "reply ok" --model sonnet --output-format json --no-session-persistence --settings "$s" 2>/dev/null | python3 -c "import json,sys;u=json.load(sys.stdin)['usage'];print(u['input_tokens']+u.get('cache_creation_input_tokens',0)+u.get('cache_read_input_tokens',0))"; done
+cd ~/.claude/claude-memory-compiler && export CLAUDE_INVOKED_BY=*** for extra in "" "--setting-sources="; do claude -p "reply ok" --model haiku --output-format json --no-session-persistence --tools "" --strict-mcp-config $extra 2>/dev/null | python3 -c "import json,sys;u=json.load(sys.stdin)['usage'];print('$extra', u['input_tokens']+u.get('cache_creation_input_tokens',0)+u.get('cache_read_input_tokens',0))"; done; grep -n "model" scripts/flush.py | head -5
+
+## Data References
+- interrupted:false rcInterp:No matches found stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 41 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
