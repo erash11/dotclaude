@@ -1,0 +1,169 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Key Decisions
+- where are we with this, get me upto speed.
+- Athletics Research Council, it replaces BAIR. This is significant and should be solidified into memory
+- what are logical next steps for me with this, what docs can we begin to get completed or prototype.
+
+## Files Modified
+handoff-2026-10-28-ncaa-kenny-meeting.md, kb.txt, STATUS.md, PLAN.md, framework.txt, build_guide.py, fw0814.txt, build_outline_filled.py, SSI_BestPractices_OUTLINE_FILLED_KENNY_ER_2026-10-28.pdf, project_kenny-boyd-doc-review-preferences.md, build_arc_docs.py, ARC_OnePage_KENNY_ER_2026-10-29_p1.png, ARC_OnePage_KENNY_ER_2026-10-29_p2.png, ARC_Research_Request_Checklist_KENNY_ER_2026-10-29_p1.png, ARC_Research_Request_Checklist_KENNY_ER_2026-10-29_p2.png, chk_p2.png, chk_final.png, one_final.png, one_names.png
+
+## Unresolved Errors
+- {"stdout":"Fireflies CLI — Every Fireflies meeting feature, plus offline search, cross-meeting intelligence, and a local database no other tool ha…...
+- {"stdout":"---\nname: kenny-boyd-doc-review-preferences\ndescription: \"Kenny Boyd's editorial constraints on Athletics policy/framework docs — no ...
+- {"stdout":"114:def load_registry(path: Path) -> dict:\n136:def save_registry(path: Path, data: dict) -> None:\n241:    registry_path = Path(__file_...
+- {"stdout":"# Cloud project context\n\nThese files were moved out of the Claude cloud project \"B.A.I.R. Steering committee\"\nin September 2026. Th...
+- {"stdout":"13:| `BAIR_Steering_Committee/` | BAIR steering committee materials. Repo `erash11/BAIR_Steering_Committee`. |\n01_Process\n02_Proposals...
+- {"stdout":"5-This revision converted Feasibility from a scored dimension (2%) to a binary\n6:gatekeeper, and moved those points to Gender Equity, n...
+- {"stdout":"## Stage 1: Feasibility gate (pass/fail)\n\nBefore scoring begins, proposals must pass a binary feasibility assessment. Projects\nwith m...
+- {"stdout":"37:67: execution error: Microsoft Word got an error: every document doesn’t understand the “close” message. (-1708)\nclosed rc=1\nARC_On...
+- {"stdout":"Downloading pypdfium2 (3.4MiB)\n Downloaded pypdfium2\nInstalled 1 package in 6ms\nTraceback (most recent call last):\n  File \"<string>...
+- {"stdout":"37:68: execution error: Microsoft Word got an error: active document doesn’t understand the “close” message. (-1708)\n1","stderr":"","in...
+- {"stdout":"ARC_OnePage_KENNY_ER_2026-10-29: 1 pages\nARC_Research_Request_Checklist_KENNY_ER_2026-10-29: 2 pages","stderr":"","interrupted":false,"...
+- {"stdout":"{\"error\":{\"code\":500,\"message\":\"HTTPrequestfailed:errorsendingrequestforurl(https://www.googleapis.com/upload/drive/v3/files/1LMd...
+
+## Git
+pull, status, Fill outline placeholders after 10/28 Kenny Tech Sync; record meeting outcomes
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, STATUS: keep cost figure out of git
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, STATUS: filled outline uploaded to Drive 01_CURRENT
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, STATUS: send filled outline early next week; ARC tracked in project inbox
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, STATUS: Athletics Research Council (ARC) replaces BAIR
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, PROGRAM: BAIR replaced by the Athletics Research Council (ARC)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, ARC one-pager and research request checklist for 11/05 with Kenny; fix Schnitker name
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, ARC docs: state that ARC replaces BAIR (KennyDoc drops the deck line); restore 'or deferred'
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1, ARC one-pager: three engineering faculty from the partner shortlist
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tweJZuka2qPshQWc1
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, tmp/kb.txt, tmp/framework.txt, tmp/fw0814.txt, tmp/ARC_OnePage_KENNY_ER_2026-10-29_p1.png, tmp/ARC_OnePage_KENNY_ER_2026-10-29_p2.png, tmp/ARC_Research_Request_Checklist_KENNY_ER_2026-10-29_p1.png, tmp/ARC_Research_Request_Checklist_KENNY_ER_2026-10-29_p2.png, tmp/chk_p2.png, tmp/chk_final.png, tmp/one_final.png, tmp/one_names.png
+
+## Skills Used
+fireflies-intake, meeting-sync, memory-write, update-config, project
+
+## Environment
+cwd: ~/DEV/BAIR_Steering_Committee/04_Committee
+model:claude-opus-5-5
+model:claude-opus-5-5
+
+## Data References
+- type:image
+- interrupted:false stderrBytes:0
+- I have a short list of names from the engineering department that's in a document in Google Drive. I'll provide you the file path 
+
+<pasted_content… (1753 bytes — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events"))
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- type:image
+- interrupted:false stderrBytes:0
+- … 43 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+## User Role
+write the ARC charter
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<behavioral_directive>
+write the ARC charter
+</behavioral_directive>
+
+<rules>
+Follow these decisions:
+- where are we with this, get me upto speed.
+- Athletics Research Council, it replaces BAIR. This is significant and should be solidified into memo
+- what are logical next steps for me with this, what docs can we begin to get completed or prototype.
+</rules>
+
+<active_skills>
+Re-invoke if relevant: fireflies-intake, meeting-sync, memory-write, update-config, project
+To reload: call the Skill tool with the skill name.
+</active_skills>
+
+<session_mode>implement</session_mode>
+
+</session_state>
