@@ -71,4 +71,8 @@ with tempfile.TemporaryDirectory() as tmp:
     write(os.path.join(local, "notes.md"), "real work")
     assert "DIRTY" in w.sweep_repo(local)[0]
 
+# --list (dev-sync's pull set) is the sweep set: DEV root first-class, never a path through the Drive mount.
+listed = w.sweep_repos()
+assert w.DEV in listed and not any("_DRIVE" in r for r in listed), listed[:5]
+
 print("test_where_was_i_sweep: all checks passed")

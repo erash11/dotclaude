@@ -201,9 +201,14 @@ def main():
                     help="list open questions and recent handoffs instead of NEXT lines")
     ap.add_argument("--sweep", action="store_true",
                     help="closeout sweep: every DEV and config repo with work not on GitHub; exit 1 if any")
+    ap.add_argument("--list", action="store_true",
+                    help="print every repo --sweep checks, one path per line (dev-sync pulls these)")
     a = ap.parse_args()
     if a.sweep:
         raise SystemExit(sweep())
+    if a.list:
+        print("\n".join(sweep_repos()))
+        return
 
     paths = dev_glob("docs", "STATUS.md")
     paths = [p for p in paths if not any(k in p for k in SKIP)]
