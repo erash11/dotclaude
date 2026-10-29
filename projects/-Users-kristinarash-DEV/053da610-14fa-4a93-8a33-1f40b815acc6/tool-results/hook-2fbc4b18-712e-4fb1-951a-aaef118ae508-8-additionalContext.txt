@@ -1,0 +1,149 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="compact">
+<session_guide>
+## Files Modified
+SKILL.md, where-was-i.py, test_where_was_i_sweep.py, WORKFLOW.md, STATUS.md
+
+## Unresolved Errors
+- {"stdout":"closeout:\ntotal 40\ndrwx------@  5 kristinarash  staff    160 Oct 26 00:16 .\ndrwx------@ 68 kristinarash  staff   2176 Oct 24 04:06 .....
+- {"stdout":"# STATUS — ~/DEV workspace root\n\n## Current state\n- 2026-10-29 (Mac, Opus): **Drive Computers wave done.** 41,963 old backup copies t...
+- {"stdout":"5:- 2026-10-26 (Mac, Opus): **closeout round 2: gaps fixed.** New `where-was-i.py --sweep` (4 s; every DEV + config repo; side branches,...
+- {"stdout":"2026-10-19-prompt-audit.md:89:- **G-1 · Low · dated gotcha lines.** `backup`, `claude-stack-doctor`, `dev-sync`,\n2026-10-22-system-audi...
+- {"stdout":"---\nname: where-was-i\ndescription: \"Start-of-day reorientation across all DEV projects: runs ~/.claude/scripts/where-was-i.py and sho...
+- {"stdout":"===  053da610 2026-10-29T13:36 -> 2026-10-29T13:37 tools 0\n  REPORT: \n===  546e4c59 2026-10-20T19:02 -> 2026-10-20T20:57 tools 35\n  E...
+- {"stdout":"#!/usr/bin/env node\n// SessionEnd hook: commit and push the repo this session worked in, so new and\n// changed files reach GitHub with...
+- {"stdout":"scripts/sr-gws-fetch.py:32:        params = {\"q\": f\"'{folder_id}' in parents and trashed = false\",\nscripts/daily-backup.ps1:298:   ...
+- {"stdout":"## Morning\n\n**1. Open Claude Code in `~/DEV` and type `/startup`.** The SessionStart hooks have already\ninjected your profile, workin...
+- {"stdout":"FAIL c\nPULLED b\nb has:   c MERGE_HEAD: yes\n{\n  \"body\": {\n    \"name\": \"2026-10-29_Test_Dry_Eric.txt\",\n    \"parents\": [\n   ...
+- {"stdout":"/Users/kristinarash/DEV/KeystoneOS/scripts/skill-portability-check.py\nFAIL claude-stack-doctor\nFAIL closeout\nchecked 42 skills, 2 fai...
+- {"stdout":"FAIL claude-stack-doctor\n       - no negative clause ('Do not use ...') - Codex over-fires\nFAIL closeout\n       - no negative clause ...
+- {"stdout":"FAIL claude-stack-doctor\nchecked 42 skills, 1 failing, 41 portable\nwould sync where-was-i -> /Users/kristinarash/.codex/skills (link)\...
+- {"stdout":"39d71b5 dev-sync: skip phantom clones (claude-global-memory, Website, printing-press-library); FAIL triage; .from-remote example\n## mai...
+
+## Git
+pull, log, where-was-i.py --list: the sweep repo set, one path per line (dev-sync pulls these)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tiq7Wjto1v7UcX1WL, status, 1;, stash, dev-sync: sync only; sweep + one-pass merge loop; autopush BLOCKED list; mirror step retired
+
+- mirror_memory.py would have re-created 12 archived Windows-slug folders (135 files; dry run 2026-10-29)
+- inventory and proof use where-was-i.py --sweep/--list (same repo set as closeout, skips the Drive mount)
+- snapshot commits use the session-autopush BLOCKED list + 50 MB, as closeout does
+- board and pick-up report move to startup; seven-day stays in closeout only
+- Windows commands to PLATFORMS.md; history sediment cut$T, STATUS + WORKFLOW: startup/dev-sync/closeout audit (skills 97a0cd7 1969977 24ce29c)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tiq7Wjto1v7UcX1WL, dev-sync: skip phantom clones (claude-global-memory, Website, printing-press-library); FAIL triage; .from-remote example
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tiq7Wjto1v7UcX1WL, STATUS: dev-sync phantom-clone skip (skills 39d71b5)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7tiq7Wjto1v7UcX1WL
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, dev-sync/SKILL.md, closeout/SKILL.md, scripts/where-was-i.py, scripts/test_where_was_i_sweep.py, startup/SKILL.md
+
+## Skills Used
+mattpocock-skills:writing-for-agents
+
+## Environment
+cwd: ~/DEV
+model:claude-opus-5-5
+T=/Users/kristinarash/.claude/jobs/053da610/tmp/looptest2; mkdir -p $T && cd $T
+export GIT_AUTHOR_NAME=*** GIT_AUTHOR_EMAIL=t@t GIT_COMMITTER_NAME=t GIT_COMMITTER_EMAIL=t@t
+git init -q --bare -b main r.git; for c in a b c; do git clone -q r.git $c 2>/dev/null; done
+cd a; echo 1>f; git add f; git commit -qm 1; git push -q -u origin main; cd ..; for c in b c; do git -C $c pull -q; done
+echo 2>a/f; git -C a commit -qam 2; git -C a push -q
+echo X>c/f; git -C c commit -qam conflict
+git init -q d
+printf "%s\n" $T/b $T/c $T/d | xargs -P 8 -n 1 sh -c '
+     git -C "$1" symbolic-ref -q HEAD >/dev/null && git -C "$1" rev-parse -q --verify "@{u}" >/dev/null || exit 0
+     before=$(git -C "$1" rev-parse HEAD)
+     git -C "$1" fetch -q && git -C "$1" merge -q --no-edit "@{u}" >/dev/null 2>&1 || { echo "FAIL $1"; exit 0; }
+     [ "$before" = "$(git -C "$1" rev-parse HEAD)" ] || echo "PULLED $1"' _ | sed "s|$T/||"
+echo "b has: $(cat b/f)  c MERGE_HEAD: $(test -f c/.git/MERGE_HEAD && echo yes)"
+echo hi > up.txt; gws drive +upload ./up.txt --parent 18lZZ4ep4pmK6upQfEcTUuLNlDdSAk5Au --name 2026-10-29_Test_Dry_Eric.txt --dry-run 2>&1 | grep -vi keyring | head -8
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:47
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 15 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
+
+<session_state source="compaction">
+
+<active_skills>
+Re-invoke if relevant: mattpocock-skills:writing-for-agents
+To reload: call the Skill tool with the skill name.
+</active_skills>
+
+</session_state>
