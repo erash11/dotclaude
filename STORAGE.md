@@ -17,7 +17,7 @@ mirrored into Drive, so Drive still shows everything.
 | What you are saving | True copy | Work on it at | Gets back to the true copy by |
 |---|---|---|---|
 | Document, PDF, deck, spreadsheet for humans | Drive `00_Primary_Storage_Drive/`, filed by its `README.md` ladder | Drive desktop app, or `~/DEV/_DRIVE` | Drive sync (automatic) |
-| Finished deliverable from a repo | Drive `00_Primary_Storage_Drive/03_REPORTS/`, named `YYYY-MM-DD_<Sport>_<Topic>_<Audience>.<ext>` | made in `<repo>/outputs/` | `closeout` copies it (copy, keep the repo one) |
+| Finished deliverable from a repo | Drive `00_Primary_Storage_Drive/03_REPORTS/`, named `YYYY-MM-DD_<Sport>_<Topic>_<Type>_<Audience>.<ext>` in full words (`2026-10-29_Football_GPS_WeeklyReport_Coaches.pdf`; rules: Drive `README.md` Naming) | made in `<repo>/outputs/` | `closeout` copies it (copy, keep the repo one) |
 | Code, scripts, project docs, `STATUS.md` | GitHub `erash11/<repo>` | `~/DEV/<repo>` | `git commit` + `git push`, every session |
 | Generated output (charts, exports, logs) | `<repo>/outputs/` | same | regenerate from code; gitignore it if large |
 | Database (DuckDB, SQLite) | local disk, inside its repo or `~/DEV` | same | daily (daytime: hourly 12:00-17:00 via `scripts/daily-backup-login.sh`) `daily-backup.ps1` stages the live DBs (not dated `before`/`backup` copies) into `dev-databases.tgz`, uploaded via `gws` to Drive `_MACHINE/Backups/Machine` (since 2026-10-20; one copy, no history) |
