@@ -71,6 +71,22 @@ with tempfile.TemporaryDirectory() as tmp:
     write(os.path.join(local, "notes.md"), "real work")
     assert "DIRTY" in w.sweep_repo(local)[0]
 
+    # same-day STATUS commits sort by time, not alphabetically: startup picks the top dated row
+    for name, hhmm in (("a_early", "08:00"), ("z_late", "15:30")):
+        r = os.path.join(tmp, name); subprocess.run(["git", "init", "-q", r], check=True)
+        write(os.path.join(r, "docs", "STATUS.md")); sh(r, "add", ".")
+        os.environ["GIT_COMMITTER_DATE"] = f"2026-10-29T{hhmm}:00"
+        sh(r, "commit", "-qm", "s")
+    del os.environ["GIT_COMMITTER_DATE"]
+    rows = sorted((w.inspect(os.path.join(tmp, n, "docs", "STATUS.md")) for n in ("a_early", "z_late")),
+                  key=lambda r: r[1], reverse=True)
+    assert [r[1] for r in rows] == ["2026-10-29 15:30", "2026-10-29 08:00"], rows
+
+    # settled items drop out of startup's "Decisions waiting on you", bold or not
+    s = os.path.join(tmp, "a_early", "docs", "STATUS.md")
+    write(s, "## Open questions\n- **Decided 2026-09-22: no wake.**\n- ANSWERED 10-01: yes\n- ~~old~~\n- Real question?\n")
+    assert w.open_questions(s) == ["Real question?"], w.open_questions(s)
+
 # --list (dev-sync's pull set) is the sweep set: DEV root first-class, never a path through the Drive mount.
 listed = w.sweep_repos()
 assert w.DEV in listed and not any("_DRIVE" in r for r in listed), listed[:5]

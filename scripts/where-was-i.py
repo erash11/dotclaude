@@ -68,7 +68,7 @@ def first_next(path):
     return item[:160] + ("…" if len(item) > 160 else "")
 
 
-CLOSED = re.compile(r"^(~~|answered\b|resolved\b|settled\b|none\b|n/?a\b|nothing\b)", re.I)
+CLOSED = re.compile(r"^(~~|\**(answered|resolved|settled|decided)\b|none\b|n/?a\b|nothing\b)", re.I)
 
 
 def open_questions(path):
@@ -111,7 +111,9 @@ def recent_handoffs(cutoff):
 
 def inspect(status_path):
     repo = os.path.dirname(os.path.dirname(status_path))
-    when = git(repo, "log", "-1", "--format=%cs", "--", "docs/STATUS.md") or "uncommitted"
+    # date + time, so a busy day still sorts newest first (startup picks the top dated row)
+    when = git(repo, "log", "-1", "--date=format-local:%Y-%m-%d %H:%M", "--format=%cd",
+               "--", "docs/STATUS.md") or "uncommitted"
     flags = []
     status = git(repo, "status", "-sb", "--porcelain").splitlines()
     if len(status) > 1:
