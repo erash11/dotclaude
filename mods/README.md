@@ -15,6 +15,7 @@ Synced to both machines through the `~/.claude` repo.
 | `config-encoding-guard` | `session.start`, after Write/Edit/Bash/PowerShell, `turn.complete` | Catches a UTF-8 BOM or CP1252 garbling (`â€”`, `â–“`) in `~/.claude`/`~/.codex` config (see `project_settings-json-bom-trap`); offers a repair that keeps `.encoding-bak` and never writes JSON that will not parse; `/encoding` | none |
 | `slate-status` | `session.start`, 30-min timer | Status line: `slate: DUE · 1/5 active · 2 to do` from `project-triage/portfolio.py slate-check`; toasts when it changes and is not OK; `/slate` lists problems | none |
 | `pm` | `/pm` | Opens the live project board (`project-triage/board.py --background`): reuses the one running on this machine, else starts it tied to this session. The shell's `pm` runs the same command. | none |
+| `progress-line` | after TaskCreate/TaskUpdate/TodoWrite (main loop only), 1 s timer (8/s while an agent runs) | Thin band, stacked above the other bands: `━━━━╸──── 4/7  ⠹ Explore  ✓ 1  3m12s`; `✓ all done` for 5 s, then hides. `/progress-clear` clears a stuck line | none |
 | `landed` | `session.start` (background scan) | `/landed [today\|week\|N] [refresh] [project]`: files created or changed, grouped by project, both machines, from `project-triage/landed.py` | none |
 
 Added 2026-10-03 (from the Nate Herk mods video + a 45-day transcript audit):

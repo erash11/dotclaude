@@ -1,0 +1,6 @@
+{
+  "name": "progress-line",
+  "version": "0.1.0",
+  "description": "A thin progress line above the prompt: tasks done, running subagents, elapsed time",
+  "types": "./types/index.d.ts"
+}
