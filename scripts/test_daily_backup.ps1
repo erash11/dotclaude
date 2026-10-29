@@ -136,6 +136,9 @@ esac
     Check 'secret scan: no secret value in .errors.log or the backup log' (-not ($el.Contains($fakePat) -or $el.Contains($fakeGoogle) -or ($LogLines -join "`n").Contains($fakePat) -or ($LogLines -join "`n").Contains($fakeGoogle)))
     Check 'secret scan: never adds a backup error' ($Errors.Count -eq 0)
     Check 'secret scan: one WARNING line in the backup log' (@($LogLines -match '^SECRET-SCAN dotclaude : WARNING 2 ').Count -eq 1)
+    $fakeSk = 'sk-' + ('Ab3_' * 6)
+    Check 'secret scan: hyphenated names are not keys' (-not ('GPV-Risk-Stratification-Engine one-task-one-agent-one-commit' -cmatch $SecretRe))
+    Check 'secret scan: an sk- key after = or a quote still matches' ((('OPENAI_API_KEY=' + $fakeSk) -cmatch $SecretRe) -and (('"' + $fakeSk + '"') -cmatch $SecretRe))
     Remove-Item -LiteralPath $ErrorsLog -Force -ErrorAction SilentlyContinue; Reset   # -Force: pwsh treats dotfiles as hidden on Unix
     Push-Location "$T/out"                                   # not a git repo: git fails, scan must not throw
     try { $hits = @(Get-StagedSecretFiles) } finally { Pop-Location }

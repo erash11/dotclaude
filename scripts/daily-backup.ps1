@@ -188,7 +188,8 @@ $CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh
 
 # Secret-value shapes. Used by Snapshot-ShellDotfiles (refuse) and Get-StagedSecretFiles (warn).
 # github_pat_ added 2026-10-25: the fine-grained PAT that reached dotclaude history had that shape.
-$SecretRe = 'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{40,}|AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|apikey_[A-Za-z0-9]{20,}' +
+# sk- needs no letter/dash before it (2026-10-29): 'GPV-Risk-Stratification-Engine' was a false hit.
+$SecretRe = 'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{40,}|AIza[0-9A-Za-z_-]{30,}|(?<![A-Za-z0-9_-])sk-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|apikey_[A-Za-z0-9]{20,}' +
             '|(KEY|TOKEN|SECRET|PASSWORD)[A-Z_]*=["'']?[A-Za-z0-9_\-]{16,}'
 
 # WARN-ONLY secret check before the dotclaude commit (audit disksec-github-pat-in-pushed-transcript +
