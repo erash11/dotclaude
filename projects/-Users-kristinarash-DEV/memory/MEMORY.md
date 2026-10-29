@@ -8,7 +8,7 @@ Never put memory content here — the file itself holds the facts.
 - [Status report sourcing](project_status-report-sourcing.md) — building the status report
 - [Fireflies CLI on Mac](project_fireflies-cli-broken-on-mac.md) — Fireflies CLI errors or renames
 - [gws Google Forms API](project_gws-forms-api.md) — creating or editing a Google Form
-- [gws CLI default](feedback_gws-cli-default.md) — any Google API work: use gws, never exported tokens; ~2.5 s/call
+- [gws CLI default](feedback_gws-cli-default.md) — any Google API work: use gws, never exported tokens; ~2.5 s/call; download/upload/fullText traps
 - [Kenny Boyd doc review](project_kenny-boyd-doc-review-preferences.md) — writing a review doc for Kenny
 - [Kenny Boyd writing voice](project_kenny-boyd-writing-voice.md) — writing to, for, or like Kenny; SAS Leadership meeting
 - [Terminal Fluency workspace](project_terminal-fluency-workspace.md) — resuming Terminal Fluency
@@ -83,3 +83,4 @@ Never put memory content here — the file itself holds the facts.
 - [Brew git keychain hang](project_brew-git-keychain-hang.md) — git pull/push hangs, or before any brew upgrade
 - [Upload new docs to drive](feedback_upload-new-docs-to-drive.md) — after building any docx/pdf/xlsx/pptx deliverable
 - [Athletics research council](project_athletics-research-council.md) — ARC, BAIR, research council, research proposals, campus researchers
+- [Pmc open access pdf download](reference_pmc-open-access-pdf-download.md) — downloading any open-access paper PDF (PMC, Europe PMC, Springer)
