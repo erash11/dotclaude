@@ -87,6 +87,18 @@ with tempfile.TemporaryDirectory() as tmp:
     write(s, "## Open questions\n- **Decided 2026-09-22: no wake.**\n- ANSWERED 10-01: yes\n- ~~old~~\n- Real question?\n")
     assert w.open_questions(s) == ["Real question?"], w.open_questions(s)
 
+    # --decisions includes the workspace's own docs/STATUS.md; the NEXT list does not
+    import contextlib, io, sys
+    real_dev, w.DEV = w.DEV, tmp
+    write(os.path.join(tmp, "docs", "STATUS.md"), "## Next\n- x\n## Open questions\n- Workspace question?\n")
+    subprocess.run(["git", "init", "-q", tmp], check=True); sh(tmp, "add", "docs"); sh(tmp, "commit", "-qm", "ws")
+    for argv, want in ((["--decisions", "--all"], True), (["--all"], False)):
+        out = io.StringIO(); sys.argv = ["where-was-i.py", *argv]
+        with contextlib.redirect_stdout(out):
+            w.main()
+        assert ("Workspace question?" in out.getvalue() or "DEV (workspace)" in out.getvalue()) == want, (argv, out.getvalue())
+    w.DEV = real_dev
+
 # --list (dev-sync's pull set) is the sweep set: DEV root first-class, never a path through the Drive mount.
 listed = w.sweep_repos()
 assert w.DEV in listed and not any("_DRIVE" in r for r in listed), listed[:5]

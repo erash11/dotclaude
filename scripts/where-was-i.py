@@ -226,6 +226,13 @@ def main():
         window = "" if a.all else f" (STATUS touched in the last {a.days} days)"
         found = [(name, when, open_questions(os.path.join(DEV, name, "docs", "STATUS.md")))
                  for name, when, _, _ in rows]
+        # the workspace's own questions; kept out of the NEXT rows so startup never picks DEV itself
+        root = os.path.join(DEV, "docs", "STATUS.md")
+        if os.path.exists(root):
+            when = inspect(root)[1]
+            if a.all or when == "uncommitted" or when >= cutoff:
+                found.append(("DEV (workspace)", when, open_questions(root)))
+                found.sort(key=lambda f: f[1], reverse=True)
         found = [f for f in found if f[2]]
         print(f"Decisions waiting on you — {sum(len(f[2]) for f in found)} open in {len(found)} repos{window}")
         for name, when, qs in found:
