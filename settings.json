@@ -56,7 +56,8 @@
       "mcp__claude_ai_Fireflies__fireflies_get_transcripts",
       "mcp__claude_ai_Fireflies__fireflies_get_transcript",
       "mcp__claude_ai_Fireflies__fireflies_get_summary",
-      "mcp__claude_ai_Fireflies__fireflies_search"
+      "mcp__claude_ai_Fireflies__fireflies_search",
+      "Bash(gws drive files create:*)"
     ],
     "deny": [
       "Bash(rm -rf:*)",
@@ -361,7 +362,8 @@
   "autoMode": {
     "allow": [
       "$defaults",
-      "Merging a GitHub pull request with `gh pr merge` on one of Eric's own repos (owner erash11), including when it appears inside a compound shell command (&&, ; |) alongside git or gh commands. Eric has standing approval for merging his own PRs."
+      "Merging a GitHub pull request with `gh pr merge` on one of Eric's own repos (owner erash11), including when it appears inside a compound shell command (&&, ; |) alongside git or gh commands. Eric has standing approval for merging his own PRs.",
+      "Uploading a new document Claude built (docx, pdf, xlsx, pptx) to Eric's own Google Drive with `gws drive files create --upload`, including after `cd` into the file's folder in a compound command. Eric has standing approval to put new docs in his project folders under 00_Primary_Storage_Drive. This covers creating new files only, not overwriting, moving or deleting existing ones, and never health data."
     ]
   }
 }

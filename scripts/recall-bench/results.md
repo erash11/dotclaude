@@ -177,3 +177,10 @@ recall.py's memsearch fallback now takes memsearch's top 20, one chunk per file,
 files first (Mac copy over Windows twin, `_archive` not promoted), 5 files shown.
 memsearch section on the 30-case eval: hit@1 13 -> 17, hit@5 25 -> 27. recall.py BM25 unchanged:
 check.py OK (eval 21/25, bench 12/13). Details: `~/.claude/audits/2026-10-25-memory-recall-audit.md` §9.
+
+## 2026-10-29: baseline bench_top1 12 -> 11 (label issue, not a regression)
+
+Row 3 (CMJ backfill) now opens `global-memory/dev-docs/Tezino_CampPrep/DATA-INVENTORY.md` first and
+the knowledge article second. recall.py was not changed after 10-25. The new first file is the primary
+source and states the same answer (2,531 tests / 103,769 rows), so the answer is still right. The bench
+accepts one file per row, so it counts a miss. Baseline reset with `check.py --update-baseline`.

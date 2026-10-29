@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 126c5de4-d928-4658-88d2-1922d2464a29
-  modified: 2026-08-11T23:13:32.529Z
+  modified: 2026-10-28T21:15:11.442Z
 ---
 
 Kenny Boyd (reviewer on the Baylor Athletics Software and Technology Management
@@ -28,6 +28,12 @@ Framework) consistently pushes back on three things in draft policy language:
 
 He also wants Baylor branding carried through headers/footers and draft status
 marked on every page.
+
+Format (his own words, Tech Sync 2026-10-28): no long wordy documents; "economy of
+words"; a clean cover with the details behind it; charts and trend lines over
+text ("not a pre-K version" either). Say plainly when something already exists
+("we already have this") so work is not duplicated. To him "the SOP" means the
+Software and Technology Management Framework.
 
 **Why:** These are tone constraints, not content ones — the same facts land or
 fail on phrasing. Getting them wrong costs a full review cycle.
