@@ -10,8 +10,16 @@
 LOG="${BACKUP_LOG:-$HOME/.claude/scripts/logs/daily-backup.log}"
 TODAY=$(date +%Y-%m-%d)
 skip() { echo "$(date '+%F %T') gate skip: $1"; exit 0; }
+# A dry run also logs "daily-backup end: OK", so an OK counts only when its run started DryRun=False.
+real_ok_today() {
+  awk -v d="$TODAY" '$1==d && /daily-backup start/ {real = /DryRun=False/}
+                     $1==d && /daily-backup end: OK/ && real {found=1}
+                     END {exit !found}' "$LOG" 2>/dev/null
+}
+# Sourced (by test_backup_gate.sh): define the function only, run nothing.
+[[ "${BASH_SOURCE[0]}" != "$0" ]] && return 0
 
-grep -q "^$TODAY .*daily-backup end: OK" "$LOG" 2>/dev/null && skip "already OK today"
+real_ok_today && skip "already OK today"
 pmset -g ps | grep -q "AC Power" || skip "on battery"
 # [.] keeps the pattern from matching any shell whose command line merely mentions the script
 pgrep -f "pwsh.*daily-backup[.]ps1" >/dev/null && skip "a backup is already running"
