@@ -84,3 +84,4 @@ Never put memory content here — the file itself holds the facts.
 - [Upload new docs to drive](feedback_upload-new-docs-to-drive.md) — after building any docx/pdf/xlsx/pptx deliverable
 - [Athletics research council](project_athletics-research-council.md) — ARC, BAIR, research council, research proposals, campus researchers
 - [Pmc open access pdf download](reference_pmc-open-access-pdf-download.md) — downloading any open-access paper PDF (PMC, Europe PMC, Springer)
+- [Mac-Windows remote access](project_mac-windows-remote-access.md) — remote into the Windows laptop or the Mac; Tailscale, RDP, Chrome Remote Desktop, Mac sleep settings

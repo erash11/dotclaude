@@ -1,0 +1,155 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- we also need to devise a standard naming convention for our files, so I can more easily search for them.
+- yes park the 313, and go with A
+
+## Files Modified
+2026-10-29-computers-wave.md, survivors.py, rename.py, COMMANDS.md, STATUS.md, primary_readme.md, feedback_gws-cli-default.md, MEMORY.md, 2026-10-29-drive-tasks-10-11.md
+
+## Unresolved Errors
+- {"stdout":"# STATUS\n\n## Current state\n- 2026-10-25/26 (Mac, Opus): **Computers wave started, stopped half way.** Checks passed: 0 Computers writ...
+- {"stdout":"# STATUS — ~/DEV workspace root\n\n## Current state\n- 2026-10-26 (Mac, Opus): **closeout round 2: gaps fixed.** New `where-was-i.py --s...
+- {"stdout":"/Users/kristinarash/.claude/scripts/daily-backup.ps1:207:        Log \"SECRET-SCAN dotclaude : WARNING $($hits.Count) staged projects/ f...
+- {"stdout":"                   'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json',\n                   'oauth_creds.json...
+- {"stdout":"    Check 'a Keychain lookup line is not mistaken for a secret' (-not (@($Errors) -contains 'shell-dotfiles:.zshrc'))\n    Check 'file w...
+- {"stdout":"PASS secret scan: hyphenated names are not keys\nPASS secret scan: an sk- key after = or a quote still matches\n  LOG uv-prune: FAILED e...
+- {"stdout":"84:def gws(params):\n85-    \"\"\"One files.list page. stdout only: gws prints its keyring line to stderr.\"\"\"\n86-    for attempt in ...
+- {"stdout":"- `task-stale:<name>`, `task-never-run:<name>`, `task-missing:<name>`: behind, never run, or deleted.\n  Re-run with `Get-ScheduledTask ...
+- {"stdout":"def gws(args):\n    for _ in range(3):\n        r = subprocess.run([\"gws\", \"drive\", \"files\", *args], capture_output=True, text=Tru...
+- {"stdout":"-rw-r--r--@ 1 kristinarash  staff  7599 Oct 29 16:26 primary_readme.md\n# How to File Things\n\nRead this before you put anything on thi...
+- {"stdout":"---\nname: graphify-semantic-extraction\ndescription: \"graphify's Gemini semantic layer: one oversized data-dump file — not the API quo...
+- {"stdout":"17:## Part A — Terminal only\n25:| Job | Normal time | Run it now |\n27:| Morning cadence (the daily report) | Weekdays 06:00 | `launchc...
+- {"stdout":"# STATUS — ~/DEV workspace root\n\n## Current state\n- 2026-10-29 (Mac, Opus, 16:40): **handoff-button mod built.** One \"Handoff\" butt...
+- {"stdout":"## Next\n- Windows laptop: delete `DEV/SpecialRequests/TOS_ES` and `DEV/SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile` (the laptop'...
+- {"stdout":"59:- Drive (plan Task 10 step 4): after the 10-29 index rebuild, Eric runs in Te\n95:- ANSWERED 2026-10-29 (yes, 313 parked): Drive Task...
+
+## Git
+pull, diff, STATUS: Computers wave done (41,963 trashed, 10.0 GB)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, status, daily-backup: sk- secret rule skips hyphenated names (false hits in 3 transcripts)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS: index rebuilt after Computers wave
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS: next wave is plan Task 10
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS: Task 10 steps 1-2 done; step 3 command
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, report B uses the trash_twins NOT_KEPT rule (597 -> 162); Task 10 step 3 done
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, survivors.py: one copy stays per group in kept folders (Task 10 step 4 dry run)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, naming checker: sport codes, non-ISO dates, versions on finals (plan Task 11)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, rename.py: live-checked Drive renames with undo log (plan Task 11)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, find --inside: Drive full-text search, filtered to kept folders by the index
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, STATUS: find --inside test result (9 of 12 vs 0 by name)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, find: quoted exact phrases and --in <folder> (test: top-5 6 -> 9 of 12)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j, log, STATUS: gotchas (gws download dir, shared NOT_KEPT regex, dcg)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MGyKDrJWdTKWmyttuSe81j
+
+## Project Rules
+tmp/primary_readme.md, memory/feedback_gws-cli-default.md
+
+## Skills Used
+closeout
+
+## Environment
+cwd: ~/DEV/drive-tools
+model:claude-opus-5-5
+
+## Data References
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- type:text
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:0
+- … 37 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
