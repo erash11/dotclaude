@@ -3,5 +3,18 @@
   "eval_hit5": 25,
   "eval_n": 30,
   "bench_top1": 11,
-  "bench_n": 13
+  "bench_n": 13,
+  "bench_hits": [
+    "What was the total score of my first brain audit, and what were the four sub-scores?",
+    "Why did the cloud-push launchd job fail to copy to Google Drive, and how was it fixed?",
+    "How should I copy a 24 MB file off the Google Drive mount, and which folder should every Drive walk skip?",
+    "In the AIOS video gap analysis, what four things were missing, and which two builds did the first brain audit propose?",
+    "After the memsearch session-end hook kept timing out, what was the fix and how long does the hook take now?",
+    "When ordering scanned book pages, which digits does Tesseract confuse?",
+    "How do I fix FLUSH_ERRORs in the memory compiler after a Claude Code update?",
+    "My backup keeps re-sending the same files into Google Drive every night even though nothing changed. Why does that happen and what rsync setting fixes it?",
+    "What's the web address for the practice load simulator, and what number converts team-scale player load to per-player?",
+    "After a big high-volume training block, is a one or two week deload enough according to Verkhoshansky?",
+    "A long script scanning my Drive folders sat there with no progress forever. What actually went wrong and how do I stop it happening?"
+  ]
 }

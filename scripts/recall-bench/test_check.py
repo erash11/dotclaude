@@ -9,6 +9,9 @@ spec.loader.exec_module(c)
 base = {"eval_hit1": 21, "eval_hit5": 25, "bench_top1": 11}
 assert c.drops({"eval_hit1": 20, "eval_hit5": 25, "bench_top1": 11}, base) == ["eval_hit1 20 < 21"]
 assert c.drops({"eval_hit1": 21, "eval_hit5": 25, "bench_top1": 12}, base) == []  # more hits is fine
+hb = dict(base, bench_hits=["q1", "q2"])
+assert c.drops({"eval_hit1": 21, "eval_hit5": 25, "bench_top1": 11, "bench_hits": ["q2", "q3"]}, hb) == ["bench lost: q1"]  # swap hidden by count
+assert c.drops({"eval_hit1": 21, "eval_hit5": 25, "bench_top1": 11, "bench_hits": ["q1", "q2"]}, hb) == []
 assert c.rank_of(["/a/x.md", "/b/Memory/Y.md"], ["memory/y.md"]) == 2  # case-insensitive fragment
 assert c.rank_of(["/a/x.md"], ["z.md"]) is None
 print("test_check: all checks passed")

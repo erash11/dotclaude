@@ -1,0 +1,213 @@
+diff --git a/memory-write/SKILL.md b/memory-write/SKILL.md
+index cb2340c..bdc764f 100644
+--- a/memory-write/SKILL.md
++++ b/memory-write/SKILL.md
+@@ -1,119 +1,81 @@
+ ---
+ name: memory-write
+ description: >-
+-  Writes, updates, removes, and recalls facts in the two-tier memory system
++  Memory: writes, updates, removes, and recalls facts in the two-tier memory system
+   (~/.claude/global-memory/ and ~/.claude/projects/<slug>/memory/). Use for write
+   requests such as "remember this", "note that", "update memory", "save this", and
+   "forget about", and for recall requests such as "did we already…?", "what did we
+-  decide about X?", and "do you remember…?". Picks the tier, dedups, and enforces caps;
+-  recall checks the injected snapshot, then recall.py, then memsearch. Do not use for a story or lesson
+-  worth a vault note (use capture-insight) or an article to keep (use ingest-resource).
++  decide about X?", and "do you remember…?". Do not use for a story or lesson worth a
++  vault note (use capture-insight) or an article to keep (use ingest-resource).
+ ---
+ 
+ # Memory Write
+ 
+-## Outcome
+-- Fact added to, updated in, or removed from the correct memory tier
+-- Tier-B caps enforced (2,500 chars for MEMORY.md, 1,375 for USER.md)
+-- Confirmation: "Saved — will be active from next session."
++Two branches: **Write** (add, replace, remove a fact) and **Recall** (answer from past context). Take the one the request needs.
+ 
+-## Pick the tier first
++## Tiers
+ 
+-Ask: "Will this fact still be true and useful in 3 months, across multiple projects?"
++Ask: "Will this fact still be true and useful in 3 months, across projects?" Yes → Tier A. Work in play now → Tier B.
+ 
+-**Tier A — `~/.claude/projects/<slug>/memory/`** (one file per fact, indexed by MEMORY.md)
+-- Durable user facts → `user_*.md` (metadata.type: user)
+-- Stable project conventions / gotchas → `project_*.md` (metadata.type: project)
+-- Behavioral feedback rules → `feedback_*.md` (metadata.type: feedback)
+-- External-system pointers → `reference_*.md` (metadata.type: reference)
++**Tier A: `~/.claude/projects/<slug>/memory/`**, one file per fact, indexed by that folder's `MEMORY.md`.
+ 
+-**Tier B — `~/.claude/global-memory/`** (single capped file)
+-- Active threads (in-progress work) → `MEMORY.md` `## Active Threads`
+-- Current env notes (URLs, tool versions, project structure in play) → `MEMORY.md` `## Environment Notes`
+-- Pending decisions → `MEMORY.md` `## Pending Decisions`
+-- Durable user profile updates → `USER.md`
++| Fact | File | `metadata.type` |
++|---|---|---|
++| Durable user fact | `user_<name>.md` | `user` |
++| Stable project convention or gotcha | `project_<name>.md` | `project` |
++| Behavior rule from Eric | `feedback_<name>.md` | `feedback` |
++| Pointer to an outside system | `reference_<name>.md` | `reference` |
+ 
+-## Steps
++- **Slug**: use the memory folder the harness names in this session's system prompt. It is the absolute cwd with every non-letter, non-digit folded to `-` (`~/DEV/CLI_Dev` → `-Users-kristinarash-DEV-CLI-Dev`).
++- **Machine**: write to this machine's slug (Mac: `-Users-kristinarash-*`). The other machine never auto-injects it. Durable project facts belong in the repo's `docs/`, which both machines and the cloud see.
++- **`name:`** is the filename stem minus its leading type token, kebab-cased: `feedback_project_idea_capture.md` → `project-idea-capture`. `[[links]]` target this bare name. (A 2026-09-02 audit found the corpus split 59 bare / 58 prefixed, which broke 37 links. `remember.py` enforces the rule.)
+ 
+-1. **Decide tier** using the rule above.
+-2. **Read** the target file in full.
+-3. **Dedup check** — substring scan; if the fact already exists, skip or update in place.
+-4. **Cap check** for Tier B — `wc -c < ~/.claude/global-memory/MEMORY.md` (or USER.md). If over cap, consolidate (merge similar entries, prune stale) before adding.
+-5. **Write** the change.
+-   - Tier A: create a new file with proper frontmatter (name, description, metadata.type) and add a one-line pointer to that slug's `MEMORY.md` index. `name:` follows the rule below. Do it in one call, from the project folder (the slug comes from the current folder; `--dir` overrides):
+-     `python3 ~/.claude/scripts/remember.py --type <t> --name <bare-slug> --desc "<one line>" --hook "<when to open>" [--why "..." --how "..."] "<fact>"`
+-     It checks the name rule, refuses an existing or look-alike name (exit 2: read that file, then `--update` it or `--force`), writes the file and the index line, runs steps 1 and 4 of the Verification Gate, and refreshes recall.py's index. `PASS` covers those checks; step 3 (contradictions) is still yours.
+-   - Tier B: append under the correct `##` section.
+-6. **Confirm** in one line: `Saved — will be active from next session.`
++**Tier B: `~/.claude/global-memory/`**, two capped files. Caps are in characters, and only this skill enforces them: the SessionStart hook (`~/.claude/hooks/keystone-unified-snapshot.js`) injects both files whole.
+ 
+-## The `name:` field — bare kebab slug
++| Fact | Home | Cap |
++|---|---|---|
++| In-progress work | `MEMORY.md` `## Active Threads` (max 5; park one to add one) | 2,500 |
++| Paused work | `MEMORY.md` `## Parked` | (same file) |
++| Current env notes | `MEMORY.md` `## Environment Notes` | (same file) |
++| Decisions waiting on Eric | `MEMORY.md` `## Pending Decisions` | (same file) |
++| Durable user profile | `USER.md` | 1,375 |
+ 
+-**`name:` = the filename stem minus its leading type token, kebab-cased.** The type
+-already lives in `metadata.type` and the filename already carries the prefix; repeating
+-it in `name:` is the third copy.
++## Write
+ 
+-| File | `name:` |
+-|---|---|
+-| `project_automation-cadence.md` | `automation-cadence` |
+-| `user_sports-teams.md` | `sports-teams` |
+-| `reference_baylor-house-style.md` | `baylor-house-style` |
+-| `feedback_project_idea_capture.md` | `project-idea-capture` |
++1. **Pick the tier** with the tables above.
++2. **Dedup.** Tier A: grep the slug's folder for the fact's key words (`grep -ril '<word>' <memory folder>`) and read every hit. `remember.py` checks only names, not content. Tier B: read the target file in full. If the fact exists, replace it in place; that is the default over adding.
++3. **Write it.**
++   - **Tier A add or replace**, one call, run from the project folder (`--dir <memory folder>` overrides):
++     `python3 ~/.claude/scripts/remember.py --type <t> --name <bare-name> --desc "<one line>" --hook "<when to open>" [--why "..." --how "..."] "<fact>"`
++     It writes the file and the index line, reads both back, and refreshes recall.py's index. Exit 0 prints `PASS`. Exit 2 means the name exists or looks alike: read that file, then rerun with `--name <its name> --update`, or add `--force` for a genuinely new fact. Exit 1 is a `FAIL`; fix the input it names.
++   - **Tier A remove**: ask Eric first. Then delete the file and its line in the slug's `MEMORY.md`. recall.py drops the file on its next run.
++   - **Tier B**: measure first, `python3 -c "import sys;print(len(open(sys.argv[1]).read()))" ~/.claude/global-memory/MEMORY.md` (or `USER.md`). If the write would pass the cap, merge or prune stale lines first. Then edit under the right `##` section.
++4. **Verify.**
++   - Tier A: `remember.py`'s `PASS` covers read-back, frontmatter, and the index pointer.
++   - Tier B: read the file back. The fact appears once, in the intended section, and the character count is at or under the cap.
++   - Both: read the surrounding section for a contradiction or stale twin, and resolve it.
++5. **Confirm** in one line: `Saved — will be active from next session.`
+ 
+-Note the last row: strip only the **leading** token. `feedback_project_idea_capture.md`
+-is a feedback memory *about* project-idea capture — its name keeps the word `project`.
++**Done when** the fact is in one home, every check in step 4 passed, and the confirmation is sent. On a failed check, report `FAIL`, the path, and the check instead of the confirmation.
+ 
+-`[[links]]` target this bare name, never the filename and never a prefixed variant.
++USER.md and MEMORY.md are a frozen snapshot, injected once at session start to keep the prompt cache. A write persists now and is active next session; the one-line confirmation is the whole announcement.
+ 
+-This rule exists because it was previously unwritten: an audit on 2026-09-02 found the
+-corpus split 59 bare / 58 prefixed, which broke 37 links. Both forms look right in
+-isolation, so without a stated rule the split regrows on every write.
++## Recall
+ 
+-## Actions
++Climb in order. Stop as soon as the question is answered.
+ 
+-- **add** — append (default)
+-- **replace** — substring match + swap. Preferred over add when updating an existing fact.
+-- **remove** — confirm with the user before deleting.
++1. **Tier 0**: what is already in context: USER.md, MEMORY.md, and this folder's Tier A index. Zero cost.
++2. **L1**: `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: keyword rank over the memsearch roots, the whole vault, and every `projects/*/memory` folder. It opens the best file and prints the matching paragraphs; on a weak match it also runs memsearch (~10 s). If the paragraphs miss, open the #2 or #3 candidate it lists.
++3. **L2**: `python3 ~/.claude/scripts/recall.py "<reworded question>" --deep`. Always adds memsearch's hybrid meaning search (~10 s), memory files first.
++4. **L3**: `memsearch expand <chunk_hash>`: the full section around a hit.
++5. **L4**: `memsearch transcript <session_id>`: raw dialogue. Last resort.
++6. **Fallback**: "I don't have a record of that."
+ 
+-## Retrieval — the tiered ladder
++The daily compiled logs (`~/.claude/claude-memory-compiler/daily/<YYYY-MM-DD>.md`) arrive as a pointer, not content. Open one when the question names that day. Only `claude-memory-compiler` writes them.
+ 
+-When the user asks about past context, decisions, or "did we already…?", climb in order and stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
++**A wrong or stale recall becomes a bench question, unasked.** When Eric corrects a recalled fact, or a newer file proves your recalled answer stale, in the same session:
+ 
+-1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
+-2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: BM25 keyword rank over the memsearch paths plus the whole vault, a Tier A memory first, then it opens the best file and prints the matching paragraphs with line numbers. On a weak or no match it also runs memsearch (~10 s) and prints its hits. Answer from that. If the printed paragraphs miss the answer, open the #2 or #3 candidate it lists.
+-3. **L2** — when L1's output (memsearch hits included) still misses: `python3 ~/.claude/scripts/recall.py "<reworded query>" --deep`. Its memsearch section is hybrid vector + keyword, ~10 s, memory files first: the Mac Tier A slugs listed in `memory-index-paths.json` (recall.py reads every slug, Windows ones included), daily logs, transcripts, handoffs, audits.
+-4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+-5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+-6. **Fallback** — say "I don't have a record of that."
+-
+-**A recall that turned out wrong or stale becomes a test question — without being asked.** When Eric corrects a recalled fact, or you find that the answer you gave from recall was outdated (a newer file says otherwise), add the question to the bench yourself in the same session: one row in `~/.claude/scripts/recall-bench/questions.tsv` (set `miss`, the question as asked, the file holding the right answer, the right answer in one line), then run `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C` (~$0.06 a question) and note the result in that folder's `results.md`. Say so in one line. Eric will not remember to ask; the daily backup's recall check (`recall-bench/check.py`) then guards that question from then on.
+-
+-## Daily compiled logs — read-only
+-
+-`~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md` is produced by `claude-memory-compiler` through its own SessionEnd/PreCompact hooks, and injected by its own SessionStart hook.
+-
+-- **Never hand-edit these files.** The compiler owns them.
+-- **Never read them eagerly.** Treat the injected snapshot as the source of truth.
+-
+-## What is loaded at session start
+-
+-`~/.claude/global-memory/USER.md` and `MEMORY.md` are read once at session start and are a **frozen snapshot**. Mid-session writes persist to disk but only take effect next session — this is deliberate, to preserve the prefix cache. Never load more than the startup set proactively.
+-
+-## Rules
+-
+-- Never exceed Tier B caps. Consolidate first.
+-- Always dedup before adding.
+-- For Tier A, the slug is the absolute cwd with every character other than a letter or digit replaced by `-` (Mac `~/DEV` → `-Users-kristinarash-DEV`, `~/.claude/skills` → `-Users-kristinarash--claude-skills`; `_` folds too: `~/DEV/CLI_Dev` → `-Users-kristinarash-DEV-CLI-Dev`, verified 2026-10-24; Windows `~/Desktop/DEV` → `C--Users-eric-rash-Desktop-DEV`; `00_Primary_Storage_Drive` → `00-Primary-Storage-Drive`). The harness injects the correct slug each session — use that, don't reconstruct it.
+-- **Write only to the current machine's slug.** Mac slugs are `-Users-kristinarash-*`; Windows desktop-app sessions (the laptop has had no automation since 2026-10-14) write `C--Users-eric-rash-*`. A fact written to the other machine's slug is never auto-injected here (recall.py still finds it; memsearch indexes only the Mac slugs). Durable project facts belong in the repo's `docs/` so both machines see them.
+-- Never announce the write mid-session beyond the one-line confirmation. The injected snapshot is frozen — the new fact appears next session, not this one.
+-
+-## Verification Gate
+-
+-After every write:
+-
+-1. Read the exact destination back and require the intended fact to appear once in the intended tier.
+-2. Re-run the Tier B character cap check after the write.
+-3. Check the surrounding section for an unresolved contradiction or stale duplicate. Resolve it or report `FAIL`.
+-4. For Tier A, verify the new file has valid frontmatter and the memory index pointer resolves to it.
+-5. Distinguish persisted state from activation: the write can pass now, but next-session injection remains unverified until a later session observes it.
+-
+-Report `PASS` only when persistence, uniqueness, tier placement, caps, and pointers are verified. Report `FAIL` with the target path and failed check otherwise. Do not emit “Saved” before read-back succeeds.
++1. Add one row to `~/.claude/scripts/recall-bench/questions.tsv`: `miss`, the question as asked, the file holding the right answer, the right answer in one line (tab-separated).
++2. Run `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C` (~$0.06 a question) and note the result in that folder's `results.md`.
++3. Run `python3 -I ~/.claude/scripts/recall-bench/check.py`. When it prints `OK`, run it again with `--update-baseline`. The daily backup's check compares counts against `baseline.json`, so the new question is guarded only after this update. On a `DROP`, report it and leave the baseline alone.
++4. Tell Eric in one line.
+diff --git a/AGENTS.md b/AGENTS.md
+index d87848e..9fb9e04 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -70,11 +70,11 @@ For **remove**: confirm with the user before deleting.
+ ## Retrieval — the tiered ladder
+ Climb in order; stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
+ 
+-1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
++1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md). Zero cost. The daily compiled log arrives as a pointer only; open it when the question names that day.
+ 2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: opens the best file and prints the matching paragraphs; on a weak or no match it also runs memsearch (~10 s). If they miss the answer, open the #2 or #3 candidate it lists.
+ 3. **L2** — when L1's output (memsearch hits included) still misses: `memsearch search "<reworded query>" --top-k 5`. Hybrid vector + keyword, ~10 s.
+ 4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+ 5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+ 6. **Fallback** — "I don't have a record of that."
+ 
+-When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`, and say so in one line.
++When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`. Then run `python3 -I ~/.claude/scripts/recall-bench/check.py`; when it prints `OK`, run it again with `--update-baseline` (the daily check compares counts against `baseline.json`, so the new question is guarded only after this). Say so in one line.
+diff --git a/CLAUDE.md b/CLAUDE.md
+index f0a6918..79222bd 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -39,10 +39,10 @@ The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER
+ 
+ The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+ 
+-The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. Tier A files are also indexed by memsearch, so they stay recallable across projects.
++The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+ 
+ - Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+-- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, retrieval-ladder section
++- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+ - Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+ - **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+ 

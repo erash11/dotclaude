@@ -1,0 +1,7 @@
+- [SKILL.md:50](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:50) — The replace step can create a second file. `remember.py` builds the path from the given type and name. A match with another type or underscores can therefore produce a new path. See [remember.py:138](/Users/kristinarash/.claude/scripts/remember.py:138).
+
+- [SKILL.md:51](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:51) — The new rule asks before a Tier A removal only. The old rule required confirmation before **any** removal. The Tier B step does not keep that rule.
+
+- [SKILL.md:54](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:54) — `PASS` does not prove that the frontmatter is valid. It checks for a few text strings. See [remember.py:87](/Users/kristinarash/.claude/scripts/remember.py:87).
+
+- [SKILL.md:80](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:80) and [AGENTS.md:80](/Users/kristinarash/.claude/AGENTS.md:80) — Updating the baseline does not guard the new question by itself. The check compares total correct counts. A new failure can be hidden by another result that improves. See [check.py:42](/Users/kristinarash/.claude/scripts/recall-bench/check.py:42) and [check.py:47](/Users/kristinarash/.claude/scripts/recall-bench/check.py:47).

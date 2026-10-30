@@ -1,0 +1,1456 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/.claude
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a18eec-ada5-7811-8237-c60ee6b01038
+--------
+user
+Review this diff of an agent skill (memory-write) plus two mirror files. The diff is at /Users/kristinarash/.claude/audits/codex-review-memory-write-2026-10-30.diff.txt. Check every factual claim against the real files: ~/.claude/scripts/remember.py, ~/.claude/scripts/recall.py, ~/.claude/scripts/recall-bench/{check.py,run.sh,questions.tsv,baseline.json}, ~/.claude/hooks/keystone-unified-snapshot.js, ~/.claude/claude-memory-compiler/hooks/session-start.py, ~/.claude/global-memory/{USER.md,MEMORY.md}. Report only concrete faults: a claim that is false, a step that would fail or mislead an agent, a rule from the old version that was lost without reason. For each: file, line, the fault, the evidence. Be brief.
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+2026-10-30T22:27:19.517705Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I’ll check the diff against the files and the old rules. I’ll report only faults I can show.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat machine.md; cat CLAUDE.md; cat audits/codex-review-memory-write-2026-10-30.diff.txt' in /Users/kristinarash/.claude
+ succeeded in 0ms:
+# Shell / Environment (macOS)
+
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+# Machine
+
+Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitignored; copy `machine.macos.md` or `machine.windows.md` to `machine.md` on a new machine). It is imported below.
+
+@machine.md
+
+Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+
+# Workflow Expectations
+
+- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+- When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools: invoke one when it clearly fits the task.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
+
+# Session Startup
+
+The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER.md`, `global-memory/MEMORY.md`, a summary of `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot. Work from the injected copy.
+
+- If hook failures appear, surface them once on the first response, then continue. Entries mean a hook or scheduled job failed.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- The injection is a frozen snapshot: mid-session writes take effect next session. Load anything further only when a question needs it.
+
+# Memory — routing only
+
+The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+
+The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+
+- Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+- Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+
+---
+
+Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+diff --git a/memory-write/SKILL.md b/memory-write/SKILL.md
+index cb2340c..bdc764f 100644
+--- a/memory-write/SKILL.md
++++ b/memory-write/SKILL.md
+@@ -1,119 +1,81 @@
+ ---
+ name: memory-write
+ description: >-
+-  Writes, updates, removes, and recalls facts in the two-tier memory system
++  Memory: writes, updates, removes, and recalls facts in the two-tier memory system
+   (~/.claude/global-memory/ and ~/.claude/projects/<slug>/memory/). Use for write
+   requests such as "remember this", "note that", "update memory", "save this", and
+   "forget about", and for recall requests such as "did we already…?", "what did we
+-  decide about X?", and "do you remember…?". Picks the tier, dedups, and enforces caps;
+-  recall checks the injected snapshot, then recall.py, then memsearch. Do not use for a story or lesson
+-  worth a vault note (use capture-insight) or an article to keep (use ingest-resource).
++  decide about X?", and "do you remember…?". Do not use for a story or lesson worth a
++  vault note (use capture-insight) or an article to keep (use ingest-resource).
+ ---
+ 
+ # Memory Write
+ 
+-## Outcome
+-- Fact added to, updated in, or removed from the correct memory tier
+-- Tier-B caps enforced (2,500 chars for MEMORY.md, 1,375 for USER.md)
+-- Confirmation: "Saved — will be active from next session."
++Two branches: **Write** (add, replace, remove a fact) and **Recall** (answer from past context). Take the one the request needs.
+ 
+-## Pick the tier first
++## Tiers
+ 
+-Ask: "Will this fact still be true and useful in 3 months, across multiple projects?"
++Ask: "Will this fact still be true and useful in 3 months, across projects?" Yes → Tier A. Work in play now → Tier B.
+ 
+-**Tier A — `~/.claude/projects/<slug>/memory/`** (one file per fact, indexed by MEMORY.md)
+-- Durable user facts → `user_*.md` (metadata.type: user)
+-- Stable project conventions / gotchas → `project_*.md` (metadata.type: project)
+-- Behavioral feedback rules → `feedback_*.md` (metadata.type: feedback)
+-- External-system pointers → `reference_*.md` (metadata.type: reference)
++**Tier A: `~/.claude/projects/<slug>/memory/`**, one file per fact, indexed by that folder's `MEMORY.md`.
+ 
+-**Tier B — `~/.claude/global-memory/`** (single capped file)
+-- Active threads (in-progress work) → `MEMORY.md` `## Active Threads`
+-- Current env notes (URLs, tool versions, project structure in play) → `MEMORY.md` `## Environment Notes`
+-- Pending decisions → `MEMORY.md` `## Pending Decisions`
+-- Durable user profile updates → `USER.md`
++| Fact | File | `metadata.type` |
++|---|---|---|
++| Durable user fact | `user_<name>.md` | `user` |
++| Stable project convention or gotcha | `project_<name>.md` | `project` |
++| Behavior rule from Eric | `feedback_<name>.md` | `feedback` |
++| Pointer to an outside system | `reference_<name>.md` | `reference` |
+ 
+-## Steps
++- **Slug**: use the memory folder the harness names in this session's system prompt. It is the absolute cwd with every non-letter, non-digit folded to `-` (`~/DEV/CLI_Dev` → `-Users-kristinarash-DEV-CLI-Dev`).
++- **Machine**: write to this machine's slug (Mac: `-Users-kristinarash-*`). The other machine never auto-injects it. Durable project facts belong in the repo's `docs/`, which both machines and the cloud see.
++- **`name:`** is the filename stem minus its leading type token, kebab-cased: `feedback_project_idea_capture.md` → `project-idea-capture`. `[[links]]` target this bare name. (A 2026-09-02 audit found the corpus split 59 bare / 58 prefixed, which broke 37 links. `remember.py` enforces the rule.)
+ 
+-1. **Decide tier** using the rule above.
+-2. **Read** the target file in full.
+-3. **Dedup check** — substring scan; if the fact already exists, skip or update in place.
+-4. **Cap check** for Tier B — `wc -c < ~/.claude/global-memory/MEMORY.md` (or USER.md). If over cap, consolidate (merge similar entries, prune stale) before adding.
+-5. **Write** the change.
+-   - Tier A: create a new file with proper frontmatter (name, description, metadata.type) and add a one-line pointer to that slug's `MEMORY.md` index. `name:` follows the rule below. Do it in one call, from the project folder (the slug comes from the current folder; `--dir` overrides):
+-     `python3 ~/.claude/scripts/remember.py --type <t> --name <bare-slug> --desc "<one line>" --hook "<when to open>" [--why "..." --how "..."] "<fact>"`
+-     It checks the name rule, refuses an existing or look-alike name (exit 2: read that file, then `--update` it or `--force`), writes the file and the index line, runs steps 1 and 4 of the Verification Gate, and refreshes recall.py's index. `PASS` covers those checks; step 3 (contradictions) is still yours.
+-   - Tier B: append under the correct `##` section.
+-6. **Confirm** in one line: `Saved — will be active from next session.`
++**Tier B: `~/.claude/global-memory/`**, two capped files. Caps are in characters, and only this skill enforces them: the SessionStart hook (`~/.claude/hooks/keystone-unified-snapshot.js`) injects both files whole.
+ 
+-## The `name:` field — bare kebab slug
++| Fact | Home | Cap |
++|---|---|---|
++| In-progress work | `MEMORY.md` `## Active Threads` (max 5; park one to add one) | 2,500 |
++| Paused work | `MEMORY.md` `## Parked` | (same file) |
++| Current env notes | `MEMORY.md` `## Environment Notes` | (same file) |
++| Decisions waiting on Eric | `MEMORY.md` `## Pending Decisions` | (same file) |
++| Durable user profile | `USER.md` | 1,375 |
+ 
+-**`name:` = the filename stem minus its leading type token, kebab-cased.** The type
+-already lives in `metadata.type` and the filename already carries the prefix; repeating
+-it in `name:` is the third copy.
++## Write
+ 
+-| File | `name:` |
+-|---|---|
+-| `project_automation-cadence.md` | `automation-cadence` |
+-| `user_sports-teams.md` | `sports-teams` |
+-| `reference_baylor-house-style.md` | `baylor-house-style` |
+-| `feedback_project_idea_capture.md` | `project-idea-capture` |
++1. **Pick the tier** with the tables above.
++2. **Dedup.** Tier A: grep the slug's folder for the fact's key words (`grep -ril '<word>' <memory folder>`) and read every hit. `remember.py` checks only names, not content. Tier B: read the target file in full. If the fact exists, replace it in place; that is the default over adding.
++3. **Write it.**
++   - **Tier A add or replace**, one call, run from the project folder (`--dir <memory folder>` overrides):
++     `python3 ~/.claude/scripts/remember.py --type <t> --name <bare-name> --desc "<one line>" --hook "<when to open>" [--why "..." --how "..."] "<fact>"`
++     It writes the file and the index line, reads both back, and refreshes recall.py's index. Exit 0 prints `PASS`. Exit 2 means the name exists or looks alike: read that file, then rerun with `--name <its name> --update`, or add `--force` for a genuinely new fact. Exit 1 is a `FAIL`; fix the input it names.
++   - **Tier A remove**: ask Eric first. Then delete the file and its line in the slug's `MEMORY.md`. recall.py drops the file on its next run.
++   - **Tier B**: measure first, `python3 -c "import sys;print(len(open(sys.argv[1]).read()))" ~/.claude/global-memory/MEMORY.md` (or `USER.md`). If the write would pass the cap, merge or prune stale lines first. Then edit under the right `##` section.
++4. **Verify.**
++   - Tier A: `remember.py`'s `PASS` covers read-back, frontmatter, and the index pointer.
++   - Tier B: read the file back. The fact appears once, in the intended section, and the character count is at or under the cap.
++   - Both: read the surrounding section for a contradiction or stale twin, and resolve it.
++5. **Confirm** in one line: `Saved — will be active from next session.`
+ 
+-Note the last row: strip only the **leading** token. `feedback_project_idea_capture.md`
+-is a feedback memory *about* project-idea capture — its name keeps the word `project`.
++**Done when** the fact is in one home, every check in step 4 passed, and the confirmation is sent. On a failed check, report `FAIL`, the path, and the check instead of the confirmation.
+ 
+-`[[links]]` target this bare name, never the filename and never a prefixed variant.
++USER.md and MEMORY.md are a frozen snapshot, injected once at session start to keep the prompt cache. A write persists now and is active next session; the one-line confirmation is the whole announcement.
+ 
+-This rule exists because it was previously unwritten: an audit on 2026-09-02 found the
+-corpus split 59 bare / 58 prefixed, which broke 37 links. Both forms look right in
+-isolation, so without a stated rule the split regrows on every write.
++## Recall
+ 
+-## Actions
++Climb in order. Stop as soon as the question is answered.
+ 
+-- **add** — append (default)
+-- **replace** — substring match + swap. Preferred over add when updating an existing fact.
+-- **remove** — confirm with the user before deleting.
++1. **Tier 0**: what is already in context: USER.md, MEMORY.md, and this folder's Tier A index. Zero cost.
++2. **L1**: `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: keyword rank over the memsearch roots, the whole vault, and every `projects/*/memory` folder. It opens the best file and prints the matching paragraphs; on a weak match it also runs memsearch (~10 s). If the paragraphs miss, open the #2 or #3 candidate it lists.
++3. **L2**: `python3 ~/.claude/scripts/recall.py "<reworded question>" --deep`. Always adds memsearch's hybrid meaning search (~10 s), memory files first.
++4. **L3**: `memsearch expand <chunk_hash>`: the full section around a hit.
++5. **L4**: `memsearch transcript <session_id>`: raw dialogue. Last resort.
++6. **Fallback**: "I don't have a record of that."
+ 
+-## Retrieval — the tiered ladder
++The daily compiled logs (`~/.claude/claude-memory-compiler/daily/<YYYY-MM-DD>.md`) arrive as a pointer, not content. Open one when the question names that day. Only `claude-memory-compiler` writes them.
+ 
+-When the user asks about past context, decisions, or "did we already…?", climb in order and stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
++**A wrong or stale recall becomes a bench question, unasked.** When Eric corrects a recalled fact, or a newer file proves your recalled answer stale, in the same session:
+ 
+-1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
+-2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: BM25 keyword rank over the memsearch paths plus the whole vault, a Tier A memory first, then it opens the best file and prints the matching paragraphs with line numbers. On a weak or no match it also runs memsearch (~10 s) and prints its hits. Answer from that. If the printed paragraphs miss the answer, open the #2 or #3 candidate it lists.
+-3. **L2** — when L1's output (memsearch hits included) still misses: `python3 ~/.claude/scripts/recall.py "<reworded query>" --deep`. Its memsearch section is hybrid vector + keyword, ~10 s, memory files first: the Mac Tier A slugs listed in `memory-index-paths.json` (recall.py reads every slug, Windows ones included), daily logs, transcripts, handoffs, audits.
+-4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+-5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+-6. **Fallback** — say "I don't have a record of that."
+-
+-**A recall that turned out wrong or stale becomes a test question — without being asked.** When Eric corrects a recalled fact, or you find that the answer you gave from recall was outdated (a newer file says otherwise), add the question to the bench yourself in the same session: one row in `~/.claude/scripts/recall-bench/questions.tsv` (set `miss`, the question as asked, the file holding the right answer, the right answer in one line), then run `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C` (~$0.06 a question) and note the result in that folder's `results.md`. Say so in one line. Eric will not remember to ask; the daily backup's recall check (`recall-bench/check.py`) then guards that question from then on.
+-
+-## Daily compiled logs — read-only
+-
+-`~/.claude/claude-memory-compiler/daily/{YYYY-MM-DD}.md` is produced by `claude-memory-compiler` through its own SessionEnd/PreCompact hooks, and injected by its own SessionStart hook.
+-
+-- **Never hand-edit these files.** The compiler owns them.
+-- **Never read them eagerly.** Treat the injected snapshot as the source of truth.
+-
+-## What is loaded at session start
+-
+-`~/.claude/global-memory/USER.md` and `MEMORY.md` are read once at session start and are a **frozen snapshot**. Mid-session writes persist to disk but only take effect next session — this is deliberate, to preserve the prefix cache. Never load more than the startup set proactively.
+-
+-## Rules
+-
+-- Never exceed Tier B caps. Consolidate first.
+-- Always dedup before adding.
+-- For Tier A, the slug is the absolute cwd with every character other than a letter or digit replaced by `-` (Mac `~/DEV` → `-Users-kristinarash-DEV`, `~/.claude/skills` → `-Users-kristinarash--claude-skills`; `_` folds too: `~/DEV/CLI_Dev` → `-Users-kristinarash-DEV-CLI-Dev`, verified 2026-10-24; Windows `~/Desktop/DEV` → `C--Users-eric-rash-Desktop-DEV`; `00_Primary_Storage_Drive` → `00-Primary-Storage-Drive`). The harness injects the correct slug each session — use that, don't reconstruct it.
+-- **Write only to the current machine's slug.** Mac slugs are `-Users-kristinarash-*`; Windows desktop-app sessions (the laptop has had no automation since 2026-10-14) write `C--Users-eric-rash-*`. A fact written to the other machine's slug is never auto-injected here (recall.py still finds it; memsearch indexes only the Mac slugs). Durable project facts belong in the repo's `docs/` so both machines see them.
+-- Never announce the write mid-session beyond the one-line confirmation. The injected snapshot is frozen — the new fact appears next session, not this one.
+-
+-## Verification Gate
+-
+-After every write:
+-
+-1. Read the exact destination back and require the intended fact to appear once in the intended tier.
+-2. Re-run the Tier B character cap check after the write.
+-3. Check the surrounding section for an unresolved contradiction or stale duplicate. Resolve it or report `FAIL`.
+-4. For Tier A, verify the new file has valid frontmatter and the memory index pointer resolves to it.
+-5. Distinguish persisted state from activation: the write can pass now, but next-session injection remains unverified until a later session observes it.
+-
+-Report `PASS` only when persistence, uniqueness, tier placement, caps, and pointers are verified. Report `FAIL` with the target path and failed check otherwise. Do not emit “Saved” before read-back succeeds.
++1. Add one row to `~/.claude/scripts/recall-bench/questions.tsv`: `miss`, the question as asked, the file holding the right answer, the right answer in one line (tab-separated).
++2. Run `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C` (~$0.06 a question) and note the result in that folder's `results.md`.
++3. Run `python3 -I ~/.claude/scripts/recall-bench/check.py`. When it prints `OK`, run it again with `--update-baseline`. The daily backup's check compares counts against `baseline.json`, so the new question is guarded only after this update. On a `DROP`, report it and leave the baseline alone.
++4. Tell Eric in one line.
+diff --git a/AGENTS.md b/AGENTS.md
+index d87848e..9fb9e04 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -70,11 +70,11 @@ For **remove**: confirm with the user before deleting.
+ ## Retrieval — the tiered ladder
+ Climb in order; stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
+ 
+-1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
++1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md). Zero cost. The daily compiled log arrives as a pointer only; open it when the question names that day.
+ 2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: opens the best file and prints the matching paragraphs; on a weak or no match it also runs memsearch (~10 s). If they miss the answer, open the #2 or #3 candidate it lists.
+ 3. **L2** — when L1's output (memsearch hits included) still misses: `memsearch search "<reworded query>" --top-k 5`. Hybrid vector + keyword, ~10 s.
+ 4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
+ 5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
+ 6. **Fallback** — "I don't have a record of that."
+ 
+-When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`, and say so in one line.
++When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`. Then run `python3 -I ~/.claude/scripts/recall-bench/check.py`; when it prints `OK`, run it again with `--update-baseline` (the daily check compares counts against `baseline.json`, so the new question is guarded only after this). Say so in one line.
+diff --git a/CLAUDE.md b/CLAUDE.md
+index f0a6918..79222bd 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -39,10 +39,10 @@ The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER
+ 
+ The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+ 
+-The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. Tier A files are also indexed by memsearch, so they stay recallable across projects.
++The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+ 
+ - Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+-- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, retrieval-ladder section
++- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+ - Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+ - **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+ 
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba skills/memory-write/SKILL.md; nl -ba scripts/remember.py; nl -ba scripts/recall-bench/check.py; nl -ba scripts/recall-bench/run.sh; nl -ba scripts/recall-bench/questions.tsv; cat scripts/recall-bench/baseline.json' in /Users/kristinarash/.claude
+ succeeded in 0ms:
+     1	---
+     2	name: memory-write
+     3	description: >-
+     4	  Memory: writes, updates, removes, and recalls facts in the two-tier memory system
+     5	  (~/.claude/global-memory/ and ~/.claude/projects/<slug>/memory/). Use for write
+     6	  requests such as "remember this", "note that", "update memory", "save this", and
+     7	  "forget about", and for recall requests such as "did we already…?", "what did we
+     8	  decide about X?", and "do you remember…?". Do not use for a story or lesson worth a
+     9	  vault note (use capture-insight) or an article to keep (use ingest-resource).
+    10	---
+    11	
+    12	# Memory Write
+    13	
+    14	Two branches: **Write** (add, replace, remove a fact) and **Recall** (answer from past context). Take the one the request needs.
+    15	
+    16	## Tiers
+    17	
+    18	Ask: "Will this fact still be true and useful in 3 months, across projects?" Yes → Tier A. Work in play now → Tier B.
+    19	
+    20	**Tier A: `~/.claude/projects/<slug>/memory/`**, one file per fact, indexed by that folder's `MEMORY.md`.
+    21	
+    22	| Fact | File | `metadata.type` |
+    23	|---|---|---|
+    24	| Durable user fact | `user_<name>.md` | `user` |
+    25	| Stable project convention or gotcha | `project_<name>.md` | `project` |
+    26	| Behavior rule from Eric | `feedback_<name>.md` | `feedback` |
+    27	| Pointer to an outside system | `reference_<name>.md` | `reference` |
+    28	
+    29	- **Slug**: use the memory folder the harness names in this session's system prompt. It is the absolute cwd with every non-letter, non-digit folded to `-` (`~/DEV/CLI_Dev` → `-Users-kristinarash-DEV-CLI-Dev`).
+    30	- **Machine**: write to this machine's slug (Mac: `-Users-kristinarash-*`). The other machine never auto-injects it. Durable project facts belong in the repo's `docs/`, which both machines and the cloud see.
+    31	- **`name:`** is the filename stem minus its leading type token, kebab-cased: `feedback_project_idea_capture.md` → `project-idea-capture`. `[[links]]` target this bare name. (A 2026-09-02 audit found the corpus split 59 bare / 58 prefixed, which broke 37 links. `remember.py` enforces the rule.)
+    32	
+    33	**Tier B: `~/.claude/global-memory/`**, two capped files. Caps are in characters, and only this skill enforces them: the SessionStart hook (`~/.claude/hooks/keystone-unified-snapshot.js`) injects both files whole.
+    34	
+    35	| Fact | Home | Cap |
+    36	|---|---|---|
+    37	| In-progress work | `MEMORY.md` `## Active Threads` (max 5; park one to add one) | 2,500 |
+    38	| Paused work | `MEMORY.md` `## Parked` | (same file) |
+    39	| Current env notes | `MEMORY.md` `## Environment Notes` | (same file) |
+    40	| Decisions waiting on Eric | `MEMORY.md` `## Pending Decisions` | (same file) |
+    41	| Durable user profile | `USER.md` | 1,375 |
+    42	
+    43	## Write
+    44	
+    45	1. **Pick the tier** with the tables above.
+    46	2. **Dedup.** Tier A: grep the slug's folder for the fact's key words (`grep -ril '<word>' <memory folder>`) and read every hit. `remember.py` checks only names, not content. Tier B: read the target file in full. If the fact exists, replace it in place; that is the default over adding.
+    47	3. **Write it.**
+    48	   - **Tier A add or replace**, one call, run from the project folder (`--dir <memory folder>` overrides):
+    49	     `python3 ~/.claude/scripts/remember.py --type <t> --name <bare-name> --desc "<one line>" --hook "<when to open>" [--why "..." --how "..."] "<fact>"`
+    50	     It writes the file and the index line, reads both back, and refreshes recall.py's index. Exit 0 prints `PASS`. Exit 2 means the name exists or looks alike: read that file, then rerun with `--name <its name> --update`, or add `--force` for a genuinely new fact. Exit 1 is a `FAIL`; fix the input it names.
+    51	   - **Tier A remove**: ask Eric first. Then delete the file and its line in the slug's `MEMORY.md`. recall.py drops the file on its next run.
+    52	   - **Tier B**: measure first, `python3 -c "import sys;print(len(open(sys.argv[1]).read()))" ~/.claude/global-memory/MEMORY.md` (or `USER.md`). If the write would pass the cap, merge or prune stale lines first. Then edit under the right `##` section.
+    53	4. **Verify.**
+    54	   - Tier A: `remember.py`'s `PASS` covers read-back, frontmatter, and the index pointer.
+    55	   - Tier B: read the file back. The fact appears once, in the intended section, and the character count is at or under the cap.
+    56	   - Both: read the surrounding section for a contradiction or stale twin, and resolve it.
+    57	5. **Confirm** in one line: `Saved — will be active from next session.`
+    58	
+    59	**Done when** the fact is in one home, every check in step 4 passed, and the confirmation is sent. On a failed check, report `FAIL`, the path, and the check instead of the confirmation.
+    60	
+    61	USER.md and MEMORY.md are a frozen snapshot, injected once at session start to keep the prompt cache. A write persists now and is active next session; the one-line confirmation is the whole announcement.
+    62	
+    63	## Recall
+    64	
+    65	Climb in order. Stop as soon as the question is answered.
+    66	
+    67	1. **Tier 0**: what is already in context: USER.md, MEMORY.md, and this folder's Tier A index. Zero cost.
+    68	2. **L1**: `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: keyword rank over the memsearch roots, the whole vault, and every `projects/*/memory` folder. It opens the best file and prints the matching paragraphs; on a weak match it also runs memsearch (~10 s). If the paragraphs miss, open the #2 or #3 candidate it lists.
+    69	3. **L2**: `python3 ~/.claude/scripts/recall.py "<reworded question>" --deep`. Always adds memsearch's hybrid meaning search (~10 s), memory files first.
+    70	4. **L3**: `memsearch expand <chunk_hash>`: the full section around a hit.
+    71	5. **L4**: `memsearch transcript <session_id>`: raw dialogue. Last resort.
+    72	6. **Fallback**: "I don't have a record of that."
+    73	
+    74	The daily compiled logs (`~/.claude/claude-memory-compiler/daily/<YYYY-MM-DD>.md`) arrive as a pointer, not content. Open one when the question names that day. Only `claude-memory-compiler` writes them.
+    75	
+    76	**A wrong or stale recall becomes a bench question, unasked.** When Eric corrects a recalled fact, or a newer file proves your recalled answer stale, in the same session:
+    77	
+    78	1. Add one row to `~/.claude/scripts/recall-bench/questions.tsv`: `miss`, the question as asked, the file holding the right answer, the right answer in one line (tab-separated).
+    79	2. Run `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C` (~$0.06 a question) and note the result in that folder's `results.md`.
+    80	3. Run `python3 -I ~/.claude/scripts/recall-bench/check.py`. When it prints `OK`, run it again with `--update-baseline`. The daily backup's check compares counts against `baseline.json`, so the new question is guarded only after this update. On a `DROP`, report it and leave the baseline alone.
+    81	4. Tell Eric in one line.
+     1	"""Remember: file one Tier A memory in plain code, no model call.
+     2	
+     3	The writer (Eric, or an agent following the memory-write skill) supplies the words;
+     4	this does the filing the skill asks for: name rule, duplicate check, frontmatter,
+     5	the MEMORY.md index line, read-back check, and a recall.py index refresh.
+     6	Tier A only. Tier B (global-memory MEMORY.md / USER.md) has caps that need judgement.
+     7	
+     8	Usage:
+     9	    python3 ~/.claude/scripts/remember.py --type project --name cloud-push-launchd-blocked \\
+    10	        --desc "one line: what the fact is" --hook "when to open it" \\
+    11	        --why "reason" --how "what to do" "The fact itself."
+    12	    echo "body" | python3 ~/.claude/scripts/remember.py ... -      # body from stdin
+    13	    ... --update      # replace an existing memory of the same name
+    14	    ... --force       # file it although a similar name exists
+    15	    ... --dir PATH    # memory folder (default: the slug of the current folder)
+    16	
+    17	Exit 0 = PASS, 1 = FAIL (bad input or read-back failed), 2 = refused (it exists or looks like a duplicate).
+    18	"""
+    19	import argparse
+    20	import importlib.util
+    21	import os
+    22	import re
+    23	import sys
+    24	
+    25	HERE = os.path.dirname(os.path.abspath(__file__))
+    26	_spec = importlib.util.spec_from_file_location("recall", os.path.join(HERE, "recall.py"))
+    27	recall = importlib.util.module_from_spec(_spec)
+    28	_spec.loader.exec_module(recall)
+    29	
+    30	TYPES = ("user", "feedback", "project", "reference")
+    31	NAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+    32	INDEX_LIMIT = 200  # the harness stops reading a memory index after about this many lines
+    33	
+    34	
+    35	def slug_dir(cwd):
+    36	    """The harness's project folder for cwd. The harness folds every non-alphanumeric, '_' included,
+    37	    to '-' (2.1.308: ~/DEV/TypeSafe_Sandbox -> -Users-kristinarash-DEV-TypeSafe-Sandbox, verified 2026-10-24)."""
+    38	    return os.path.join(recall.HOME, ".claude/projects", re.sub(r"[^A-Za-z0-9]", "-", cwd), "memory")
+    39	
+    40	
+    41	def name_words(stem):
+    42	    return set(re.split(r"[-_]", stem)) - set(TYPES) - {""}
+    43	
+    44	
+    45	def look_alikes(mem_dir, name):
+    46	    """Existing memories whose name shares at least half its words with the new name."""
+    47	    new = name_words(name)
+    48	    out = []
+    49	    for f in sorted(os.listdir(mem_dir)) if os.path.isdir(mem_dir) else []:
+    50	        if f.endswith(".md") and f != "MEMORY.md":
+    51	            old = name_words(f[:-3].split("_", 1)[-1])
+    52	            if new and old and len(new & old) * 2 >= max(len(new), len(old)):
+    53	                out.append(f)
+    54	    return out
+    55	
+    56	
+    57	def render(a, body):
+    58	    desc = a.desc.replace('"', "'")
+    59	    text = f'---\nname: {a.name}\ndescription: "{desc}"\nmetadata:\n  type: {a.type}\n---\n\n{body.strip()}\n'
+    60	    if a.why:
+    61	        text += f"\n**Why:** {a.why.strip()}\n"
+    62	    if a.how:
+    63	        text += f"\n**How to apply:** {a.how.strip()}\n"
+    64	    return text
+    65	
+    66	
+    67	def write_atomic(path, text):
+    68	    tmp = path + ".tmp"
+    69	    with open(tmp, "w", encoding="utf-8") as fh:
+    70	        fh.write(text)
+    71	    os.replace(tmp, path)
+    72	
+    73	
+    74	def set_index_line(index, fname, line):
+    75	    """Add the pointer, or replace the one already pointing at fname. Returns the new index text."""
+    76	    text = open(index, encoding="utf-8").read() if os.path.exists(index) else "# Memory Index\n"
+    77	    lines = text.rstrip("\n").split("\n")
+    78	    hits = [i for i, l in enumerate(lines) if f"]({fname})" in l]
+    79	    if hits:
+    80	        lines[hits[0]] = line
+    81	        lines = [l for i, l in enumerate(lines) if i not in hits[1:]]
+    82	    else:
+    83	        lines.append(line)
+    84	    return "\n".join(lines) + "\n"
+    85	
+    86	
+    87	def verify(path, index, a, body):
+    88	    """The skill's verification gate, in code. Returns a list of failed checks."""
+    89	    fails = []
+    90	    text = open(path, encoding="utf-8").read()
+    91	    m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+    92	    if not m:
+    93	        fails.append("frontmatter missing")
+    94	    else:
+    95	        fm = m.group(1)
+    96	        for want in (f"name: {a.name}", "description: ", f"  type: {a.type}"):
+    97	            if want not in fm:
+    98	                fails.append(f"frontmatter lacks '{want.strip()}'")
+    99	    if text.count(body.strip()) != 1:
+   100	        fails.append("fact not in the file exactly once")
+   101	    fname = os.path.basename(path)
+   102	    n = open(index, encoding="utf-8").read().count(f"]({fname})")
+   103	    if n != 1:
+   104	        fails.append(f"index points at {fname} {n} times, want 1")
+   105	    return fails
+   106	
+   107	
+   108	def main(argv=None):
+   109	    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+   110	    ap.add_argument("body", help="the fact; '-' reads it from stdin")
+   111	    ap.add_argument("--type", required=True, choices=TYPES)
+   112	    ap.add_argument("--name", required=True, help="bare kebab slug, e.g. cloud-push-launchd-blocked")
+   113	    ap.add_argument("--desc", required=True, help="one line; used to decide relevance during recall")
+   114	    ap.add_argument("--hook", required=True, help="index hook: when to open this memory")
+   115	    ap.add_argument("--title", help="index title (default: from the name)")
+   116	    ap.add_argument("--why")
+   117	    ap.add_argument("--how")
+   118	    ap.add_argument("--dir", help="memory folder (default: slug of the current folder)")
+   119	    ap.add_argument("--update", action="store_true", help="replace an existing memory of this name")
+   120	    ap.add_argument("--force", action="store_true", help="file it although a similar name exists")
+   121	    a = ap.parse_args(argv)
+   122	
+   123	    body = sys.stdin.read() if a.body == "-" else a.body
+   124	    errs = []
+   125	    if not body.strip():
+   126	        errs.append("the fact is empty")
+   127	    if not NAME.match(a.name):
+   128	        errs.append(f"--name '{a.name}' is not a bare kebab slug (a-z, 0-9, single dashes)")
+   129	    elif a.name.split("-")[0] == a.type:
+   130	        errs.append(f"--name repeats the type: use '{a.name.split('-', 1)[-1]}' (only if the memory is not about '{a.type}')")
+   131	    for flag in ("desc", "hook", "title"):
+   132	        if "\n" in (getattr(a, flag) or ""):
+   133	            errs.append(f"--{flag} must be one line")
+   134	    if errs:
+   135	        print("FAIL: " + "; ".join(errs))
+   136	        return 1
+   137	
+   138	    mem_dir = os.path.abspath(os.path.expanduser(a.dir)) if a.dir else slug_dir(os.getcwd())
+   139	    fname = f"{a.type}_{a.name}.md"
+   140	    path = os.path.join(mem_dir, fname)
+   141	    index = os.path.join(mem_dir, "MEMORY.md")
+   142	
+   143	    if os.path.exists(path) and not a.update:
+   144	        print(f"REFUSED: {path} exists. Read it; to replace it, add --update.")
+   145	        return 2
+   146	    if not os.path.exists(path):
+   147	        twins = [f for f in look_alikes(mem_dir, a.name) if f != fname]
+   148	        if twins and not a.force:
+   149	            print(f"REFUSED: similar memory names in {mem_dir}: {', '.join(twins)}")
+   150	            print("Read them first. Update one (--name <its name> --update), or add --force if this is a new fact.")
+   151	            return 2
+   152	
+   153	    os.makedirs(mem_dir, exist_ok=True)
+   154	    title = a.title or a.name.replace("-", " ").capitalize()
+   155	    write_atomic(path, render(a, body))
+   156	    write_atomic(index, set_index_line(index, fname, f"- [{title}]({fname}) — {a.hook.strip()}"))
+   157	
+   158	    fails = verify(path, index, a, body)
+   159	    if fails:
+   160	        print(f"FAIL: {path}: " + "; ".join(fails))
+   161	        return 1
+   162	
+   163	    notes = []
+   164	    if not os.path.basename(os.path.dirname(mem_dir)).startswith("-Users-") and not a.dir:
+   165	        notes.append("this is not a Mac slug; it will not be auto-injected on this machine")
+   166	    lines = open(index, encoding="utf-8").read().count("\n")
+   167	    if lines > INDEX_LIMIT:
+   168	        notes.append(f"index is {lines} lines; the harness reads about {INDEX_LIMIT}")
+   169	    rts = recall.roots()
+   170	    if any(os.path.abspath(mem_dir).startswith(os.path.abspath(r)) for r in rts):
+   171	        recall.open_index(rts).close()  # findable by recall.py right away
+   172	    else:
+   173	        notes.append("folder is outside the recall/memsearch roots (KeystoneOS/data/memory-index-paths.json); search will not find it")
+   174	
+   175	    print(f"PASS: {'updated' if a.update else 'saved'} {path.replace(recall.HOME, '~')}")
+   176	    for n in notes:
+   177	        print(f"note: {n}")
+   178	    print("Active from the next session.")
+   179	    return 0
+   180	
+   181	
+   182	if __name__ == "__main__":
+   183	    sys.exit(main())
+     1	"""Unattended recall check: does recall.py still open the right file? No model call, seconds.
+     2	
+     3	Asks recall.py every question in the 30-case eval (audits/recall-eval/questions.jsonl) and the
+     4	bench (questions.tsv here), and compares with baseline.json. Prints one line. Exit 1 when a
+     5	score drops below the baseline, so the daily backup logs it to .errors.log, which every
+     6	session shows at startup. Nobody has to remember to run it.
+     7	
+     8	Usage:
+     9	    python3 -I ~/.claude/scripts/recall-bench/check.py                     # check
+    10	    python3 -I ~/.claude/scripts/recall-bench/check.py --update-baseline   # after a deliberate change
+    11	"""
+    12	import argparse
+    13	import importlib.util
+    14	import json
+    15	import os
+    16	import sys
+    17	
+    18	HERE = os.path.dirname(os.path.abspath(__file__))
+    19	HOME = os.path.expanduser("~")
+    20	EVAL = os.path.join(HOME, ".claude/audits/recall-eval/questions.jsonl")
+    21	BENCH = os.path.join(HERE, "questions.tsv")
+    22	BASELINE = os.path.join(HERE, "baseline.json")
+    23	
+    24	_spec = importlib.util.spec_from_file_location("recall", os.path.join(HERE, "..", "recall.py"))
+    25	recall = importlib.util.module_from_spec(_spec)
+    26	_spec.loader.exec_module(recall)
+    27	
+    28	
+    29	def rank_of(files, expected):
+    30	    """1-based rank of the first file whose path contains an expected fragment (recall-eval's rule)."""
+    31	    for i, f in enumerate(files, 1):
+    32	        if any(e.lower() in f.replace("\\", "/").lower() for e in expected):
+    33	            return i
+    34	    return None
+    35	
+    36	
+    37	def scores(db):
+    38	    cases = [json.loads(l) for l in open(EVAL, encoding="utf-8") if l.strip()]
+    39	    ranks = [rank_of(recall.rank(db, c["query"], 5), c["expected"]) for c in cases]
+    40	    rows = [l.rstrip("\n").split("\t") for l in open(BENCH, encoding="utf-8")
+    41	            if l.strip() and not l.startswith("#")]
+    42	    top1 = sum(1 for r in rows if rank_of(recall.rank(db, r[1], 1), [os.path.basename(r[2])]) == 1)
+    43	    return {"eval_hit1": sum(r == 1 for r in ranks), "eval_hit5": sum(r is not None for r in ranks),
+    44	            "eval_n": len(cases), "bench_top1": top1, "bench_n": len(rows)}
+    45	
+    46	
+    47	def drops(now, base):
+    48	    """Scores below the baseline. A bigger question set with the same hits is not a drop."""
+    49	    return [f"{k} {now[k]} < {base[k]}" for k in ("eval_hit1", "eval_hit5", "bench_top1")
+    50	            if k in base and now[k] < base[k]]
+    51	
+    52	
+    53	def main(argv=None):
+    54	    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    55	    ap.add_argument("--update-baseline", action="store_true")
+    56	    a = ap.parse_args(argv)
+    57	    now = scores(recall.open_index(recall.roots()))
+    58	    line = (f"eval hit@1 {now['eval_hit1']}/{now['eval_n']} hit@5 {now['eval_hit5']}/{now['eval_n']}, "
+    59	            f"bench top-1 {now['bench_top1']}/{now['bench_n']}")
+    60	    if a.update_baseline:
+    61	        with open(BASELINE, "w", encoding="utf-8") as fh:
+    62	            json.dump(now, fh, indent=2)
+    63	        print(f"recall-check: baseline set: {line}")
+    64	        return 0
+    65	    try:
+    66	        base = json.load(open(BASELINE, encoding="utf-8"))
+    67	    except (OSError, ValueError):
+    68	        print(f"recall-check: no baseline ({BASELINE}); run with --update-baseline. Now: {line}")
+    69	        return 1
+    70	    bad = drops(now, base)
+    71	    if bad:
+    72	        print(f"recall-check: DROP {'; '.join(bad)} ({line}). recall.py now opens a worse file for some "
+    73	              f"questions: compare with ~/.claude/scripts/recall-bench/results.md, or --update-baseline if intended")
+    74	        return 1
+    75	    print(f"recall-check: OK {line}")
+    76	    return 0
+    77	
+    78	
+    79	if __name__ == "__main__":
+    80	    sys.exit(main())
+     1	#!/bin/bash
+     2	# Recall bench: same questions, same model, two arms.
+     3	#   A = fresh default session in ~/DEV (finds the answer however it likes)
+     4	#   C = recall.py evidence (plain code) -> one model call, no tools
+     5	# Usage: bash ~/.claude/scripts/recall-bench/run.sh [A] [C]   (default: C only; ASET=held / CSET=held limit A / C to one set)
+     6	# Writes out/<arm><n>.json + .wall; score with: python3 -I ~/.claude/scripts/recall-bench/score.py
+     7	# --no-session-persistence runs have no transcript. CLAUDE_INVOKED_BY makes the end-of-session hooks
+     8	# (transcript-capture, session-end, autopush, memsearch-sync) skip them; SessionStart still runs.
+     9	# Without it each run logged "transcript_path does not exist" to .errors.log (bursts on 2026-10-23).
+    10	export CLAUDE_INVOKED_BY=recall_bench
+    11	HERE="$(cd "$(dirname "$0")" && pwd)"; OUT="$HERE/out"; mkdir -p "$OUT"
+    12	ARMS="${*:-C}"
+    13	now() { python3 -c 'import time;print(time.time())'; }
+    14	cd ~/DEV || exit 1
+    15	n=0
+    16	grep -v '^#' "$HERE/questions.tsv" | while IFS=$'\t' read -r set q gtf gta; do
+    17	  n=$((n+1)); echo "== Q$n ($set)"
+    18	  if [[ " $ARMS " == *" A "* && ( -z "$ASET" || "$set" == "$ASET" ) ]]; then
+    19	    s=$(now)
+    20	    claude -p "$q Answer in 3 sentences or fewer." --model sonnet --output-format json \
+    21	      --permission-mode bypassPermissions --no-session-persistence --max-budget-usd 1 \
+    22	      < /dev/null > "$OUT/A$n.json" 2> "$OUT/A$n.err"
+    23	    echo "$s $(now)" > "$OUT/A$n.wall"
+    24	  fi
+    25	  if [[ " $ARMS " == *" C "* && ( -z "$CSET" || "$set" == "$CSET" ) ]]; then
+    26	    s=$(now)
+    27	    python3 -I ~/.claude/scripts/recall.py "$q" > "$OUT/C$n.evidence" 2>&1
+    28	    m=$(now)
+    29	    claude -p "Answer the question using ONLY the evidence below, in 3 sentences or fewer. If the evidence does not answer it, say NOT FOUND.
+    30	
+    31	Question: $q
+    32	
+    33	Evidence:
+    34	$(cat "$OUT/C$n.evidence")" --model sonnet --output-format json --tools "" --strict-mcp-config \
+    35	      --no-session-persistence --max-budget-usd 1 < /dev/null > "$OUT/C$n.json" 2> "$OUT/C$n.err"
+    36	    echo "$s $m $(now)" > "$OUT/C$n.wall"
+    37	  fi
+    38	done
+    39	echo DONE
+     1	# set	question	ground-truth file	ground-truth answer
+     2	orig	What was the total score of my first brain audit, and what were the four sub-scores?	memory/project_brain-audit-loop.md	67/100: context 17, connections 22, capabilities 15, cadence 13
+     3	orig	Why did the cloud-push launchd job fail to copy to Google Drive, and how was it fixed?	memory/project_cloud-push-launchd-blocked.md	com.apple.macl on Terminal-made Drive files blocks launchd-started rsync; fix runs it inside Terminal via cloud-push-launch.sh -> cloud-push.command
+     4	orig	How should I copy a 24 MB file off the Google Drive mount, and which folder should every Drive walk skip?	memory/project_drive-fuse-read-hang.md	gws API (drive files get alt=media), not the mount; skip 00_Primary_Storage_Drive/02_SPORTS/Football/FA2026/02_Raw_Tagging
+     5	orig	How many CMJ tests and metric rows were in the summer 2025 CMJ backfill?	knowledge/connections/vald-forcedecks-cmj-data-across-projects.md	2,531 tests, 103,769 metric rows
+     6	orig	In the AIOS video gap analysis, what four things were missing, and which two builds did the first brain audit propose?	memory/project_brain-audit-loop.md	missing: recurring scored audit, level-up step, topic-driven grill that files itself, rubric; builds: /grill-me <topic> to Inbox/grills, /brain-audit on the monthly com.keystone.rituals timer
+     7	held	After the memsearch session-end hook kept timing out, what was the fix and how long does the hook take now?	memory/project_memsearch-hook-timeout-cap.md	detached background worker (re-execs itself with --worker, detached, unref); hook now exits in ~42 ms
+     8	held	When ordering scanned book pages, which digits does Tesseract confuse?	memory/project_book-scan-page-ordering.md	5 and 9 (read page 50 as 90)
+     9	held	How do I fix FLUSH_ERRORs in the memory compiler after a Claude Code update?	knowledge/concepts/claude-memory-compiler-setup.md	cd ~/.claude/claude-memory-compiler && uv lock --upgrade-package claude-agent-sdk && uv sync
+    10	held	How long did the daily interview and weekly review rituals stay stopped before anything noticed?	SecondBrain/Notes/insight-is-not-a-control.md	49 days (stopped 2026-06-05)
+    11	fresh	My backup keeps re-sending the same files into Google Drive every night even though nothing changed. Why does that happen and what rsync setting fixes it?	memory/project_drive-fuse-rsync-mtime-loop.md	Drive stores its own (rounded/upload-time) mtimes, so rsync's size+mtime check sees changes; use --modify-window=5 (plus --checksum for same-size files like SQLite)
+    12	fresh	What's the web address for the practice load simulator, and what number converts team-scale player load to per-player?	-Users-kristinarash-DEV-Football-FaceComps/memory/project_simulator.md	https://baylor-load-sim.vercel.app; RATIO = 0.09772
+    13	fresh	After a big high-volume training block, is a one or two week deload enough according to Verkhoshansky?	Knowledge/library/.../heuristic--loading-reduction-for-the-delayed-effect-must-outlast-1-2-weeks.md	No: the delayed training effect needs a prolonged reduction in volume (weeks, far longer than the usual 1-2 week unload); do not add volume
+    14	fresh	A long script scanning my Drive folders sat there with no progress forever. What actually went wrong and how do I stop it happening?	knowledge/concepts/mac-sleep-freezes-drive-reading-scripts.md	The Mac went to sleep and froze the Drive read (it does not resume on wake); run it under caffeinate (finished in ~4 min)
+{
+  "eval_hit1": 21,
+  "eval_hit5": 25,
+  "eval_n": 30,
+  "bench_top1": 11,
+  "bench_n": 13
+}
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba hooks/keystone-unified-snapshot.js; nl -ba claude-memory-compiler/hooks/session-start.py; nl -ba scripts/recall.py' in /Users/kristinarash/.claude
+ succeeded in 0ms:
+     1	#!/usr/bin/env node
+     2	// SessionStart hook: inject the Tier B global memory snapshot (USER.md,
+     3	// MEMORY.md, and .errors.log when non-empty) plus KeystoneOS's cross-harness
+     4	// unified snapshot, alongside the memory compiler's own snapshot.
+     5	//
+     6	// This replaces the prose instruction in ~/.claude/CLAUDE.md that told the
+     7	// agent to read those three files by hand at session start — a rule nothing
+     8	// enforced, which therefore silently did not happen in some sessions.
+     9	//
+    10	// Fails closed: any error means less context, never a thrown error that could
+    11	// block session start. But a MISSING SOURCE IS REPORTED, not swallowed — the
+    12	// old version pointed at the retired ~/Desktop/DEV path and injected nothing
+    13	// at all for weeks without a single visible symptom (see project memory
+    14	// `memsearch-index-path-drift`: make fallbacks loud).
+    15	
+    16	const fs = require('fs');
+    17	const path = require('path');
+    18	const os = require('os');
+    19	
+    20	const HOME = os.homedir();
+    21	
+    22	const SOURCES = [
+    23	  {
+    24	    label: 'User profile (global-memory/USER.md)',
+    25	    file: path.join(HOME, '.claude', 'global-memory', 'USER.md'),
+    26	    required: true,
+    27	  },
+    28	  {
+    29	    label: 'Working memory (global-memory/MEMORY.md)',
+    30	    file: path.join(HOME, '.claude', 'global-memory', 'MEMORY.md'),
+    31	    required: true,
+    32	  },
+    33	  {
+    34	    label: 'HOOK FAILURES — surface these to the user on the first response',
+    35	    file: path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log'),
+    36	    required: false,      // absent is fine
+    37	    skipIfEmpty: true,    // normally empty; only inject when it is not
+    38	    summarize: true,      // one line per failure kind, not one per occurrence
+    39	  },
+    40	  {
+    41	    // Points, does not paste: ~6k chars of recent activity that most sessions
+    42	    // never need. Recorded decision — see project memory
+    43	    // `memory-compiler-pipeline`: "SessionStart now points, not pastes".
+    44	    // Flip `pointOnly` to false to inline it again.
+    45	    label: 'Cross-harness activity (KeystoneOS unified snapshot)',
+    46	    // Mac: ~/DEV. Windows: ~/Desktop/DEV. First path that exists wins.
+    47	    file: [path.join(HOME, 'DEV'), path.join(HOME, 'Desktop', 'DEV')]
+    48	      .map((d) => path.join(d, 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'))
+    49	      .find((f) => fs.existsSync(f)) || path.join(HOME, 'DEV', 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'),
+    50	    required: false,
+    51	    pointOnly: true,
+    52	  },
+    53	];
+    54	
+    55	// .errors.log lines look like `[ISO-time] kind: message`. A stuck job writes
+    56	// the same kind every few minutes, so the raw log can reach 100+ near-identical
+    57	// lines injected into every session. Collapse to one line per kind: count,
+    58	// first and last time, and the latest message (which carries the running count).
+    59	function summarizeErrors(body) {
+    60	  const groups = new Map();
+    61	  const other = [];
+    62	  for (const line of body.split(/\r?\n/)) {
+    63	    const m = line.match(/^\[([^\]]+)\]\s*([\w.-]+):\s*(.*)$/);
+    64	    if (!m) { if (line.trim()) other.push(line.trim()); continue; }
+    65	    const [, ts, kind, msg] = m;
+    66	    const g = groups.get(kind) || { n: 0, first: ts, last: ts, msg };
+    67	    // Both machines append, so lines are not in time order: track min/max.
+    68	    g.n += 1;
+    69	    if (ts < g.first) g.first = ts;
+    70	    if (ts >= g.last) { g.last = ts; g.msg = msg; }
+    71	    groups.set(kind, g);
+    72	  }
+    73	  const t = (s) => s.slice(0, 16).replace('T', ' ');
+    74	  const cap = (s) => (s.length > 300 ? s.slice(0, 300) + '…' : s);
+    75	  const lines = [...groups].map(([kind, g]) =>
+    76	    `- **${kind}** ×${g.n} (${t(g.first)} → ${t(g.last)} UTC): ${cap(g.msg)}`);
+    77	  if (other.length) lines.push(`- ${other.length} unparsed line(s); see the file.`);
+    78	  return lines.join('\n') +
+    79	    `\n\nFull log: \`~/.claude/global-memory/transcripts/.errors.log\`. ` +
+    80	    'Surface this once; clear the file after the user has seen it and the cause is handled.';
+    81	}
+    82	
+    83	function emit(context) {
+    84	  if (process.argv.includes('--agy')) {
+    85	    const out = context
+    86	      ? { injectSteps: [{ systemMessage: { systemMessage: context } }] }
+    87	      : {};
+    88	    process.stdout.write(JSON.stringify(out));
+    89	    return;
+    90	  }
+    91	  const output = { hookSpecificOutput: { hookEventName: 'SessionStart' } };
+    92	  if (context) output.hookSpecificOutput.additionalContext = context;
+    93	  process.stdout.write(JSON.stringify(output));
+    94	}
+    95	
+    96	function main() {
+    97	  const parts = [];
+    98	  const problems = [];
+    99	
+   100	  for (const src of SOURCES) {
+   101	    let body;
+   102	    try {
+   103	      body = fs.readFileSync(src.file, 'utf8');
+   104	    } catch (err) {
+   105	      if (src.required) {
+   106	        problems.push(`${src.label}: unreadable at ${src.file} (${err.code || 'ERR'})`);
+   107	      }
+   108	      continue;
+   109	    }
+   110	    if (src.skipIfEmpty && body.trim() === '') continue;
+   111	    if (src.pointOnly) {
+   112	      const stamp = fs.statSync(src.file).mtime.toISOString().slice(0, 16).replace('T', ' ');
+   113	      parts.push(
+   114	        `## ${src.label}\n\nNot loaded here — read it only if a question needs it.\n` +
+   115	        `Path: \`${src.file}\` (${body.length} chars, updated ${stamp})`
+   116	      );
+   117	      continue;
+   118	    }
+   119	    parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
+   120	  }
+   121	
+   122	  // Dead-man check: the weekly stack doctor reports failures through .errors.log,
+   123	  // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
+   124	  // the laptop has no weekly run. 8 days = one missed Monday.
+   125	  if (process.platform === 'darwin') {
+   126	    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
+   127	      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
+   128	    let ageD = Infinity;
+   129	    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
+   130	    if (ageD > 8) {
+   131	      parts.unshift(
+   132	        '## Weekly stack doctor is overdue\n\n' +
+   133	        `\`${weekly}\` is ${ageD === Infinity ? 'missing or unreadable' : Math.floor(ageD) + ' days old'}; ` +
+   134	        'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
+   135	        'response and run `/claude-stack-doctor`.'
+   136	      );
+   137	    }
+   138	  }
+   139	
+   140	  if (problems.length) {
+   141	    parts.unshift(
+   142	      '## SessionStart hook could not read a required memory file\n\n' +
+   143	      problems.map((p) => `- ${p}`).join('\n') +
+   144	      '\n\nTell the user on the first response. Do not work around it silently.'
+   145	    );
+   146	  }
+   147	
+   148	  emit(parts.length ? parts.join('\n\n---\n\n') : null);
+   149	}
+   150	
+   151	try {
+   152	  main();
+   153	} catch (_) {
+   154	  emit(null);
+   155	}
+     1	"""
+     2	SessionStart hook - injects knowledge base context into every conversation.
+     3	
+     4	This is the "context injection" layer. When Claude Code starts a session,
+     5	this hook injects today's date plus pointers to the knowledge base index and
+     6	the most recent daily log. Both are read on demand.
+     7	
+     8	Configure in .claude/settings.json:
+     9	{
+    10	    "hooks": {
+    11	        "SessionStart": [{
+    12	            "matcher": "",
+    13	            "command": "uv run python hooks/session-start.py"
+    14	        }]
+    15	    }
+    16	}
+    17	"""
+    18	
+    19	import json
+    20	import sys
+    21	from datetime import datetime, timedelta, timezone
+    22	from pathlib import Path
+    23	
+    24	# Paths relative to project root
+    25	ROOT = Path(__file__).resolve().parent.parent
+    26	KNOWLEDGE_DIR = ROOT / "knowledge"
+    27	DAILY_DIR = ROOT / "daily"
+    28	INDEX_FILE = KNOWLEDGE_DIR / "index.md"
+    29	
+    30	MAX_CONTEXT_CHARS = 20_000
+    31	# Progressive disclosure: the index (2026-08-29) and the daily log (2026-10-02)
+    32	# are both pointers now. The log tail used to be pasted in -- 30 lines cut
+    33	# mid-section, often action items from an unrelated session that read like
+    34	# instructions. Read the file only when a question needs that day.
+    35	
+    36	
+    37	def build_log_pointer() -> str:
+    38	    """Pointer to the most recent daily log (today or yesterday), not its contents."""
+    39	    today = datetime.now(timezone.utc).astimezone()
+    40	
+    41	    for offset in range(2):
+    42	        date = today - timedelta(days=offset)
+    43	        log_path = DAILY_DIR / f"{date.strftime('%Y-%m-%d')}.md"
+    44	        if log_path.exists():
+    45	            return (
+    46	                "## Recent Daily Log\n\n"
+    47	                f"Latest: `{log_path}`. Not loaded here; read it only when a "
+    48	                "question needs that day."
+    49	            )
+    50	
+    51	    return "## Recent Daily Log\n\n(no recent daily log)"
+    52	
+    53	
+    54	def build_context() -> str:
+    55	    """Assemble the context to inject into the conversation."""
+    56	    parts = []
+    57	
+    58	    # Today's date
+    59	    today = datetime.now(timezone.utc).astimezone()
+    60	    parts.append(f"## Today\n{today.strftime('%A, %B %d, %Y')}")
+    61	
+    62	    # Knowledge base — a pointer, not the whole index. Read it on demand.
+    63	    parts.append(build_knowledge_pointer())
+    64	
+    65	    # Recent daily log — a pointer, same as the index.
+    66	    parts.append(build_log_pointer())
+    67	
+    68	    context = "\n\n---\n\n".join(parts)
+    69	
+    70	    # Safety net only. With the pointer in place this should never fire.
+    71	    if len(context) > MAX_CONTEXT_CHARS:
+    72	        context = context[:MAX_CONTEXT_CHARS] + "\n\n...(truncated)"
+    73	
+    74	    return context
+    75	
+    76	
+    77	def build_knowledge_pointer() -> str:
+    78	    """One-line pointer to the knowledge base instead of the full index table."""
+    79	    if not INDEX_FILE.exists():
+    80	        return "## Knowledge Base\n\n(empty - no articles compiled yet)"
+    81	
+    82	    # Count article files on disk, not index rows: a row can outlive its file.
+    83	    counts = []
+    84	    article_count = 0
+    85	    for sub in ("concepts", "connections", "qa"):
+    86	        sub_dir = KNOWLEDGE_DIR / sub
+    87	        if sub_dir.is_dir():
+    88	            n = len(list(sub_dir.glob("*.md")))
+    89	            article_count += n
+    90	            counts.append(f"{n} {sub}")
+    91	    breakdown = ", ".join(counts) if counts else "no subfolders"
+    92	
+    93	    return (
+    94	        "## Knowledge Base\n\n"
+    95	        f"{article_count} compiled articles ({breakdown}). "
+    96	        "The index is NOT loaded here — read it only when a question actually needs it:\n"
+    97	        f"- Full index (article, summary, sources, updated): `{INDEX_FILE}`\n"
+    98	        f"- Article bodies: `{KNOWLEDGE_DIR}/<folder>/<name>.md`\n"
+    99	        "- Search across all memory instead of reading the index: "
+   100	        "`python3 ~/.claude/scripts/recall.py \"<question>\"` (~1 s); "
+   101	        "on NO MATCH, `memsearch search \"<query>\" --top-k 5` (~1 min)"
+   102	    )
+   103	
+   104	
+   105	def main():
+   106	    context = build_context()
+   107	
+   108	    output = {
+   109	        "hookSpecificOutput": {
+   110	            "hookEventName": "SessionStart",
+   111	            "additionalContext": context,
+   112	        }
+   113	    }
+   114	
+   115	    print(json.dumps(output))
+   116	
+   117	
+   118	if __name__ == "__main__":
+   119	    main()
+     1	"""Recall: answer-evidence for a question in plain code, before any model call.
+     2	
+     3	The ladder: BM25 full-text search over local markdown (SQLite FTS5, ~10 ms) ->
+     4	open only the best file -> keep only the paragraphs that match (a short file
+     5	comes back whole) -> follow one pointer if those paragraphs miss most of the
+     6	keywords. Prints the evidence with file paths and line numbers; the model
+     7	answers from that in one go.
+     8	
+     9	Roots: KeystoneOS/data/memory-index-paths.json (the memsearch roots, one home)
+    10	plus the whole SecondBrain vault and every ~/.claude/projects/*/memory folder,
+    11	which that file only partly covers.
+    12	The index lives in ~/.claude/cache/recall-fts.sqlite and refreshes by mtime on
+    13	each call; delete the file to force a full rebuild (~10 s).
+    14	
+    15	Usage:
+    16	    python3 ~/.claude/scripts/recall.py "why did cloud-push fail on Drive"
+    17	    python3 ~/.claude/scripts/recall.py "..." --deep     # always also run memsearch (~10 s)
+    18	    python3 ~/.claude/scripts/recall.py "..." --quick    # never run memsearch
+    19	    python3 ~/.claude/scripts/recall.py "..." --top 5    # show more candidates
+    20	
+    21	On no match, or a weak match (the opened files hold under half the question words), it runs
+    22	memsearch by itself: its meaning search found 3 of the 5 word-gap misses (2026-10-24).
+    23	Exit 0 = evidence printed, 1 = no match.
+    24	"""
+    25	import argparse
+    26	import glob
+    27	import json
+    28	import math
+    29	import os
+    30	import re
+    31	import sqlite3
+    32	import subprocess
+    33	import sys
+    34	
+    35	HOME = os.path.expanduser("~")
+    36	DEV = os.path.join(HOME, "DEV")
+    37	VAULT = os.path.join(HOME, "SecondBrain")
+    38	KNOWLEDGE = os.path.join(HOME, ".claude/claude-memory-compiler/knowledge")
+    39	ROOTS_CFG = os.path.join(DEV, "KeystoneOS/data/memory-index-paths.json")
+    40	DB_PATH = os.path.join(HOME, ".claude/cache/recall-fts.sqlite")
+    41	SKIP_DIRS = {".obsidian", ".trash", ".git", "Archive", "archive", "Templates", "node_modules"}  # archive: superseded plans
+    42	BUDGET = 1800  # evidence chars per file; a whole paragraph is never cut
+    43	WHOLE = 4000   # a file body this small is returned whole (memory notes are short by design)
+    44	LEAD = 500     # a big file's opening paragraph up to this size is always shown
+    45	
+    46	STOP = set("""a about after again all also an and any are as at be been before being both
+    47	but by can could did do does doing done for from had has have how i if in into is it its
+    48	me my no not of on or our out over should so than that the their them then there these they
+    49	this those to up us was we were what when where which while who why will with would you your
+    50	get got let make made many much more most now one only other same some such too very
+    51	just like each every first two three four off""".split())
+    52	
+    53	
+    54	def stem(w):
+    55	    """Crude suffix strip so 'scanned' meets 'scan' and 'pages' meets 'page'."""
+    56	    for suf in ("ing", "ed", "s"):
+    57	        if len(w) - len(suf) >= 3 and w.endswith(suf) and not w.endswith("ss"):
+    58	            w = w[: -len(suf)]
+    59	            break
+    60	    if len(w) > 3 and w[-1] == w[-2] and w[-1] not in "aeiouls":
+    61	        w = w[:-1]
+    62	    return w
+    63	
+    64	
+    65	def tokens(text):
+    66	    return [stem(t) for t in re.findall(r"[a-z0-9]+", text.lower())]
+    67	
+    68	
+    69	def keywords(question):
+    70	    seen = []
+    71	    for raw in re.findall(r"[a-z0-9]+", question.lower()):
+    72	        t = stem(raw)
+    73	        if raw not in STOP and t not in STOP and len(t) > 1 and t not in seen:
+    74	            seen.append(t)
+    75	    return seen
+    76	
+    77	
+    78	# ---- full-text index ----------------------------------------------------------
+    79	
+    80	def roots(cfg=ROOTS_CFG):
+    81	    out = []
+    82	    try:
+    83	        for p in json.load(open(cfg, encoding="utf-8"))["paths"]:
+    84	            out.append(p.replace("{DEV}", DEV).replace("{VAULT}", VAULT).replace("{HOME}", HOME))
+    85	    except (OSError, ValueError, KeyError):
+    86	        pass
+    87	    # Every project's Tier A folder (Mac and old Windows slugs), not only the ones listed in the config.
+    88	    return out + [VAULT] + sorted(glob.glob(os.path.join(HOME, ".claude/projects/*/memory")))
+    89	
+    90	
+    91	def md_files(rts):
+    92	    """Every .md under the roots. os.walk does not follow symlinks, so a link into Drive cannot hang it."""
+    93	    seen = set()
+    94	    for r in rts:
+    95	        for dirpath, dirs, files in os.walk(r):
+    96	            dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+    97	            for f in files:
+    98	                p = os.path.join(dirpath, f)
+    99	                if f.endswith(".md") and p not in seen:
+   100	                    seen.add(p)
+   101	                    yield p
+   102	
+   103	
+   104	def open_index(rts, db_path=DB_PATH):
+   105	    """FTS5 table kept in step with the disk by mtime: only new or changed files are re-read."""
+   106	    if db_path != ":memory:":
+   107	        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+   108	    db = sqlite3.connect(db_path, timeout=60, isolation_level=None)
+   109	    if "name" not in [c[1] for c in db.execute("PRAGMA table_info(d)")]:  # pre-2026-10-24 index had no name column
+   110	        db.execute("DROP TABLE IF EXISTS d")
+   111	        db.execute("DROP TABLE IF EXISTS seen")
+   112	    db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS d USING fts5(path UNINDEXED, name, body, tokenize='porter unicode61')")
+   113	    db.execute("CREATE TABLE IF NOT EXISTS seen(path TEXT PRIMARY KEY, mtime REAL)")
+   114	    db.execute("BEGIN IMMEDIATE")  # two refreshes at once could each insert the same new file
+   115	    old = dict(db.execute("SELECT path, mtime FROM seen"))
+   116	    now = {}
+   117	    for p in md_files(rts):
+   118	        try:
+   119	            now[p] = os.stat(p).st_mtime
+   120	        except OSError:
+   121	            pass
+   122	    stale = [p for p, m in now.items() if old.get(p) != m]
+   123	    gone = [p for p in old if p not in now]
+   124	    for p in gone + stale:
+   125	        db.execute("DELETE FROM d WHERE path = ?", (p,))
+   126	        db.execute("DELETE FROM seen WHERE path = ?", (p,))
+   127	    for p in stale:
+   128	        try:
+   129	            body = open(p, encoding="utf-8", errors="replace").read()
+   130	        except OSError:
+   131	            continue
+   132	        name = os.path.basename(p)[:-3].replace("-", " ").replace("_", " ")
+   133	        db.execute("INSERT INTO d VALUES (?, ?, ?)", (p, name, name + "\n" + body))
+   134	        db.execute("INSERT INTO seen VALUES (?, ?)", (p, now[p]))
+   135	    db.execute("COMMIT")
+   136	    return db
+   137	
+   138	
+   139	TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9\-]*")
+   140	
+   141	
+   142	def fts5_top(db, q, limit):
+   143	    """BM25 rank of whole files for a natural-language query (any word may match). The file name is
+   144	    in the body and also in its own column at weight 2: bench 11 -> 12 of 13, eval unchanged
+   145	    (recall-bench/results.md, 2026-10-24); weight 8 lost a bench row."""
+   146	    toks = [t for t in TOKEN.findall(q) if len(t) > 2]
+   147	    if not toks:
+   148	        return []
+   149	    expr = " OR ".join('"%s"' % t.replace('"', "") for t in toks)
+   150	    return [r[0] for r in db.execute(
+   151	        "SELECT path FROM d WHERE d MATCH ? ORDER BY bm25(d, 0.0, 2.0, 1.0) LIMIT ?", (expr, limit))]
+   152	
+   153	
+   154	def tier_a(p):
+   155	    """A Tier A memory file: short, hand-kept, newest word on its topic. The MEMORY.md index is not one."""
+   156	    return "/.claude/projects/" in p and "/memory/" in p and os.path.basename(p) != "MEMORY.md"
+   157	
+   158	
+   159	def about_hits(db, path, q, describe=True):
+   160	    """Question words in what the file says it is about: its name, plus (describe) its frontmatter
+   161	    description line. Memory names are topic slugs and their description is a one-line summary."""
+   162	    about = os.path.basename(path)[:-3].replace("_", " ").replace("-", " ")
+   163	    row = db.execute("SELECT body FROM d WHERE path = ?", (path,)).fetchone() if describe else None
+   164	    if row:
+   165	        head = row[0].split("\n")[:40]  # body starts with the name line, then the frontmatter
+   166	        if len(head) > 1 and head[1].strip() == "---":
+   167	            for line in head[2:]:
+   168	                if line.strip() == "---":
+   169	                    break
+   170	                if line.startswith("description:"):
+   171	                    about += " " + line.split(":", 1)[1]
+   172	    return len(set(keywords(q)) & set(tokens(about)))
+   173	
+   174	
+   175	def newest_copy(db, path):
+   176	    """Mac and old Windows slugs can hold the same memory file; the most recently changed copy wins."""
+   177	    name = os.path.basename(path)
+   178	    rows = [(m, p) for p, m in db.execute("SELECT path, mtime FROM seen WHERE path LIKE ?", ("%/" + name,))
+   179	            if os.path.basename(p) == name and tier_a(p)]
+   180	    return max(rows)[1] if rows else path
+   181	
+   182	
+   183	def rank(db, q, limit):
+   184	    """BM25 order, except a Tier A memory in the top 3 moves to #1 when what it says it is about
+   185	    (name + description) matches as many question words as #1's file name. Compiled knowledge
+   186	    articles and vault notes can be older than the memory that corrected them; the guard stops an
+   187	    off-topic memory jumping. (Giving #1 its title too lost n06 on the 30-case eval.)"""
+   188	    cands = [newest_copy(db, p) if tier_a(p) else p for p in fts5_top(db, q, max(limit, 3) + 3)]
+   189	    cands = list(dict.fromkeys(cands))
+   190	    # global-memory/handoffs keeps a .windows.md twin of many files; one copy is enough.
+   191	    cands = [p for p in cands if not (p.endswith(".windows.md") and p[:-len(".windows.md")] + ".md" in cands)]
+   192	    # The best-matching Tier A memory in the top 3, not the first: a superseded memory at #1 must
+   193	    # not shield the current one at #2 (p01 flipped on 2026-10-24 for this reason).
+   194	    tops = [p for p in cands[:3] if tier_a(p)]
+   195	    a = max(tops, key=lambda p: (about_hits(db, p, q), -cands.index(p))) if tops else None
+   196	    if a and a != cands[0] and about_hits(db, a, q) >= about_hits(db, cands[0], q, describe=False):
+   197	        cands.remove(a)
+   198	        cands.insert(0, a)
+   199	    return cands[:limit]
+   200	
+   201	
+   202	def idf_of(db, kws):
+   203	    n = db.execute("SELECT count(*) FROM seen").fetchone()[0] or 1
+   204	    out = {}
+   205	    for k in kws:
+   206	        try:
+   207	            df = db.execute("SELECT count(*) FROM d WHERE d MATCH ?", ('"%s"*' % k,)).fetchone()[0]
+   208	        except sqlite3.OperationalError:
+   209	            df = 0
+   210	        out[k] = math.log(1 + n / (1 + df))
+   211	    return out
+   212	
+   213	
+   214	# ---- inside the one chosen file --------------------------------------------
+   215	
+   216	def paragraphs(path):
+   217	    """(first line no, heading, text) per blank-line block, frontmatter dropped except description."""
+   218	    lines = open(path, encoding="utf-8", errors="replace").read().split("\n")
+   219	    out, start, heading, buf = [], 0, "", []
+   220	    i = 0
+   221	    if lines and lines[0].strip() == "---":
+   222	        for j in range(1, len(lines)):
+   223	            if lines[j].strip() == "---":
+   224	                desc = [l for l in lines[1:j] if l.startswith("description:")]
+   225	                if desc:
+   226	                    out.append((2, "", desc[0]))
+   227	                i = j + 1
+   228	                break
+   229	    for n in range(i, len(lines) + 1):
+   230	        line = lines[n] if n < len(lines) else ""
+   231	        if line.strip() == "" or n == len(lines):
+   232	            if buf:
+   233	                out.append((start + 1, heading, "\n".join(buf)))
+   234	                buf = []
+   235	            continue
+   236	        if line.startswith("#"):
+   237	            if buf:
+   238	                out.append((start + 1, heading, "\n".join(buf)))
+   239	                buf = []
+   240	            heading = line.lstrip("#").strip()
+   241	            continue
+   242	        if not buf:
+   243	            start = n
+   244	        buf.append(line)
+   245	    return out
+   246	
+   247	
+   248	def best_paragraphs(path, kws, idf, k=3):
+   249	    paras = paragraphs(path)
+   250	    if sum(len(p[2]) for p in paras) <= WHOLE:
+   251	        return [(0, i, ln, h, t, {w for w in kws if w in set(tokens(h + " " + t))})
+   252	                for i, (ln, h, t) in enumerate(paras)]
+   253	    scored = []
+   254	    for pos, (ln, head, text) in enumerate(paras):
+   255	        toks = set(tokens(head + " " + text))
+   256	        s = sum(idf.get(w, 1) for w in kws if w in toks)
+   257	        if s:
+   258	            scored.append((s, pos, ln, head, text, {w for w in kws if w in toks}))
+   259	    scored.sort(key=lambda x: -x[0])
+   260	    chosen, used = [], 0
+   261	    for item in scored[:k]:
+   262	        if chosen and used + len(item[4]) > BUDGET:
+   263	            continue
+   264	        chosen.append(item)
+   265	        used += len(item[4])
+   266	    # The opening paragraph usually states the main fact ("deployed at <url>") in words the question
+   267	    # may not share, so a short one always comes along, outside the budget.
+   268	    lead = next(((pos, ln, h, t) for pos, (ln, h, t) in enumerate(paras) if not t.startswith("description:")), None)
+   269	    if lead and len(lead[3]) <= LEAD and lead[0] not in {c[1] for c in chosen}:
+   270	        pos, ln, h, t = lead
+   271	        chosen.append((0, pos, ln, h, t, {w for w in kws if w in set(tokens(h + " " + t))}))
+   272	    chosen.sort(key=lambda x: x[1])  # back to document order
+   273	    return chosen
+   274	
+   275	
+   276	def outline(path, limit=25):
+   277	    """Heading lines of a big file: a map of what the unread parts cover."""
+   278	    heads = [l.lstrip("#").strip() for l in open(path, encoding="utf-8", errors="replace")
+   279	             if re.match(r"#{1,4}\s", l)]
+   280	    return heads[:limit]
+   281	
+   282	
+   283	def pointers(text, from_path):
+   284	    """Resolvable [[name]] links and backticked .md paths, in order of appearance."""
+   285	    found = []
+   286	    for name in re.findall(r"\[\[([^\]|#]+)", text):
+   287	        name = name.strip()
+   288	        for cand in (os.path.join(os.path.dirname(from_path), name + ".md"),
+   289	                     os.path.join(os.path.dirname(from_path), "project_" + name + ".md"),
+   290	                     os.path.join(KNOWLEDGE, name + ".md")):
+   291	            if os.path.exists(cand):
+   292	                found.append(cand)
+   293	                break
+   294	        else:
+   295	            hits = glob.glob(os.path.join(VAULT, "**", name + ".md"), recursive=True)
+   296	            if hits:
+   297	                found.append(hits[0])
+   298	    for p in re.findall(r"`(~?/[^`\s]+\.md)`", text):
+   299	        p = os.path.expanduser(p)
+   300	        if os.path.exists(p):
+   301	            found.append(p)
+   302	    return [p for p in dict.fromkeys(found) if os.path.abspath(p) != os.path.abspath(from_path)]
+   303	
+   304	
+   305	def gather(question, db, top=3):
+   306	    """Returns (kws, candidates, evidence) where evidence is [(path, [paragraph tuples])]."""
+   307	    kws = keywords(question)
+   308	    cands = rank(db, question, top)
+   309	    if not cands or not os.path.exists(cands[0]):
+   310	        return kws, cands, []
+   311	    idf = idf_of(db, kws)
+   312	    path = cands[0]
+   313	    chosen = best_paragraphs(path, kws, idf)
+   314	    evidence = [(path, chosen)]
+   315	    covered = set().union(*(c[5] for c in chosen)) if chosen else set()
+   316	    # One hop, gated: only when this file misses at least half the keywords.
+   317	    if len(covered) * 2 < len(kws):
+   318	        text = "\n".join(c[4] for c in chosen) or open(path, encoding="utf-8", errors="replace").read()
+   319	        for target in pointers(text, path)[:1]:
+   320	            extra = best_paragraphs(target, kws, idf)
+   321	            if extra and set().union(*(c[5] for c in extra)) - covered:
+   322	                evidence.append((target, extra))
+   323	    return kws, cands, evidence
+   324	
+   325	
+   326	def short(p):
+   327	    return p.replace(HOME, "~")
+   328	
+   329	
+   330	def memory_first(hits, limit=5):
+   331	    """memsearch hits -> one best chunk per file, Tier A memory files first, at most `limit` files.
+   332	    Same idea as rank()'s Tier A rule. Eval 2026-10-25 (30 cases): hit@1 13 -> 16, hit@5 25 -> 27,
+   333	    no vault case worse. A Windows-slug twin is dropped when the Mac copy is also listed;
+   334	    _archive memories are old versions, so they do not move up."""
+   335	    best = {}
+   336	    for h in hits:
+   337	        best.setdefault(h["source"], h)  # memsearch returns best score first
+   338	    win = lambda p: "/projects/C--" in p or "/projects/c--" in p
+   339	    mac_names = {os.path.basename(p) for p in best if not win(p)}
+   340	    files = [p for p in best if not (win(p) and os.path.basename(p) in mac_names)]
+   341	    up = lambda p: tier_a(p) and "/_archive/" not in p
+   342	    return [best[p] for p in [p for p in files if up(p)] + [p for p in files if not up(p)]][:limit]
+   343	
+   344	
+   345	def memsearch_hits(question):
+   346	    """memsearch's top 20 chunks (meaning + keyword search over the memsearch roots), memory files first,
+   347	    5 files shown; about 8-10 s (top 20 costs the same as top 5, measured 2026-10-25)."""
+   348	    exe = os.path.join(HOME, ".local/bin/memsearch")
+   349	    try:
+   350	        res = subprocess.run([exe if os.path.exists(exe) else "memsearch", "search", question, "--top-k", "20", "-j"],
+   351	                             capture_output=True, text=True, timeout=45)  # ~4x measured; a locked index must not hang a ~1 s tool
+   352	    except (OSError, subprocess.TimeoutExpired) as e:
+   353	        return f"memsearch did not run: {e}"
+   354	    if res.stdout.strip():
+   355	        try:
+   356	            hits = json.loads(res.stdout[res.stdout.find("["):])
+   357	        except ValueError:
+   358	            return res.stdout  # not JSON: show memsearch's own text rather than nothing
+   359	        out = []
+   360	        for n, h in enumerate(memory_first(hits), 1):
+   361	            body = h["content"] if len(h["content"]) <= 600 else (
+   362	                h["content"][:600] + f"\n  ... [truncated, run 'memsearch expand {h['chunk_hash']}' for full content]")
+   363	            out.append(f"--- Result {n} ---\nSource: {short(h['source'])} (lines {h['start_line']}-{h['end_line']})\n{body}")
+   364	        return "\n\n".join(out) + "\n" if out else "memsearch: no hits.\n"
+   365	    # memsearch exits 0 with empty stdout when it fails; an empty section reads as "no match".
+   366	    # Seen 2026-10-25: the SessionEnd re-index (memsearch-sync.js worker) held the Milvus lock for 15+ min.
+   367	    if "DataDirLockedError" in res.stderr or "holds the lock" in res.stderr:
+   368	        return "memsearch DID NOT RUN: an index run holds its lock (it re-indexes after each session ends). Retry in a few minutes."
+   369	    last = (res.stderr.strip().splitlines() or ["no output"])[-1][:200]
+   370	    return f"memsearch DID NOT RUN: {last}"
+   371	
+   372	
+   373	def main(argv=None):
+   374	    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+   375	    ap.add_argument("question")
+   376	    ap.add_argument("--top", type=int, default=3, help="candidates to list")
+   377	    ap.add_argument("--deep", action="store_true", help="always also run memsearch")
+   378	    ap.add_argument("--quick", action="store_true", help="never run memsearch")
+   379	    a = ap.parse_args(argv)
+   380	
+   381	    db = open_index(roots())
+   382	    kws, cands, evidence = gather(a.question, db, a.top)
+   383	
+   384	    print(f"# recall: {a.question}")
+   385	    print(f"keywords: {' '.join(kws)}")
+   386	    print("candidates (BM25, Tier A memory first, only #1 opened): " + "  ".join(short(c) for c in cands))
+   387	    if not evidence or not evidence[0][1]:
+   388	        print("\nNO MATCH in the word index.")
+   389	        if not a.quick:
+   390	            print("\n## memsearch (meaning search)\n" + memsearch_hits(a.question))
+   391	        return 1
+   392	    covered = set().union(*(c[5] for _, chosen in evidence for c in chosen))
+   393	    for path, chosen in evidence:
+   394	        print(f"\n## {short(path)}")
+   395	        heads = outline(path)
+   396	        if len(chosen) < len(paragraphs(path)) and heads:
+   397	            print("outline: " + " | ".join(heads))
+   398	        for _, _, ln, head, text, _ in chosen:
+   399	            print(f"\n[line {ln}{' · ' + head if head else ''}]\n{text}")
+   400	    weak = len(covered) * 2 < len(kws)
+   401	    if weak:
+   402	        print(f"\nWEAK MATCH: these files hold {len(covered)} of {len(kws)} question words; "
+   403	              "the notes may use other words.")
+   404	    if (weak or a.deep) and not a.quick:
+   405	        print("\n## memsearch (meaning search)\n" + memsearch_hits(a.question))
+   406	    return 0
+   407	
+   408	
+   409	if __name__ == "__main__":
+   410	    sys.exit(main())
+
+hook: PostToolUse
+hook: PostToolUse Failed
+codex
+- [SKILL.md:50](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:50) — The replace step can create a second file. `remember.py` builds the path from the given type and name. A match with another type or underscores can therefore produce a new path. See [remember.py:138](/Users/kristinarash/.claude/scripts/remember.py:138).
+
+- [SKILL.md:51](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:51) — The new rule asks before a Tier A removal only. The old rule required confirmation before **any** removal. The Tier B step does not keep that rule.
+
+- [SKILL.md:54](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:54) — `PASS` does not prove that the frontmatter is valid. It checks for a few text strings. See [remember.py:87](/Users/kristinarash/.claude/scripts/remember.py:87).
+
+- [SKILL.md:80](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:80) and [AGENTS.md:80](/Users/kristinarash/.claude/AGENTS.md:80) — Updating the baseline does not guard the new question by itself. The check compares total correct counts. A new failure can be hidden by another result that improves. See [check.py:42](/Users/kristinarash/.claude/scripts/recall-bench/check.py:42) and [check.py:47](/Users/kristinarash/.claude/scripts/recall-bench/check.py:47).
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+43,736
+- [SKILL.md:50](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:50) — The replace step can create a second file. `remember.py` builds the path from the given type and name. A match with another type or underscores can therefore produce a new path. See [remember.py:138](/Users/kristinarash/.claude/scripts/remember.py:138).
+
+- [SKILL.md:51](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:51) — The new rule asks before a Tier A removal only. The old rule required confirmation before **any** removal. The Tier B step does not keep that rule.
+
+- [SKILL.md:54](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:54) — `PASS` does not prove that the frontmatter is valid. It checks for a few text strings. See [remember.py:87](/Users/kristinarash/.claude/scripts/remember.py:87).
+
+- [SKILL.md:80](/Users/kristinarash/.claude/skills/memory-write/SKILL.md:80) and [AGENTS.md:80](/Users/kristinarash/.claude/AGENTS.md:80) — Updating the baseline does not guard the new question by itself. The check compares total correct counts. A new failure can be hidden by another result that improves. See [check.py:42](/Users/kristinarash/.claude/scripts/recall-bench/check.py:42) and [check.py:47](/Users/kristinarash/.claude/scripts/recall-bench/check.py:47).

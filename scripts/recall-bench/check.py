@@ -39,15 +39,18 @@ def scores(db):
     ranks = [rank_of(recall.rank(db, c["query"], 5), c["expected"]) for c in cases]
     rows = [l.rstrip("\n").split("\t") for l in open(BENCH, encoding="utf-8")
             if l.strip() and not l.startswith("#")]
-    top1 = sum(1 for r in rows if rank_of(recall.rank(db, r[1], 1), [os.path.basename(r[2])]) == 1)
+    hits = [r[1] for r in rows if rank_of(recall.rank(db, r[1], 1), [os.path.basename(r[2])]) == 1]
     return {"eval_hit1": sum(r == 1 for r in ranks), "eval_hit5": sum(r is not None for r in ranks),
-            "eval_n": len(cases), "bench_top1": top1, "bench_n": len(rows)}
+            "eval_n": len(cases), "bench_top1": len(hits), "bench_n": len(rows), "bench_hits": hits}
 
 
 def drops(now, base):
-    """Scores below the baseline. A bigger question set with the same hits is not a drop."""
-    return [f"{k} {now[k]} < {base[k]}" for k in ("eval_hit1", "eval_hit5", "bench_top1")
-            if k in base and now[k] < base[k]]
+    """Scores below the baseline, and any baseline bench hit now missed (so a new hit cannot hide it).
+    A bigger question set with the same hits is not a drop."""
+    out = [f"{k} {now[k]} < {base[k]}" for k in ("eval_hit1", "eval_hit5", "bench_top1")
+           if k in base and now[k] < base[k]]
+    lost = [q for q in base.get("bench_hits", []) if q not in now.get("bench_hits", [])]
+    return out + [f"bench lost: {q}" for q in lost]
 
 
 def main(argv=None):

@@ -70,11 +70,11 @@ For **remove**: confirm with the user before deleting.
 ## Retrieval — the tiered ladder
 Climb in order; stop as soon as the question is answered. Do not run a search when the answer is already in the injected snapshot.
 
-1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md, today's compiled log). Zero cost.
+1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md). Zero cost. The daily compiled log arrives as a pointer only; open it when the question names that day.
 2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: opens the best file and prints the matching paragraphs; on a weak or no match it also runs memsearch (~10 s). If they miss the answer, open the #2 or #3 candidate it lists.
 3. **L2** — when L1's output (memsearch hits included) still misses: `memsearch search "<reworded query>" --top-k 5`. Hybrid vector + keyword, ~10 s.
 4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
 5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
 6. **Fallback** — "I don't have a record of that."
 
-When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`, and say so in one line.
+When Eric corrects a recalled fact, or a recalled answer proves stale, add it to the bench unasked: one `miss` row in `~/.claude/scripts/recall-bench/questions.tsv` (question, file with the right answer, answer), then `CSET=miss bash ~/.claude/scripts/recall-bench/run.sh C`. Then run `python3 -I ~/.claude/scripts/recall-bench/check.py`; when it prints `OK`, run it again with `--update-baseline` (the daily check guards each question that was a hit in `baseline.json`, so the new question is guarded only after this, and only once recall.py ranks it first). Say so in one line.
