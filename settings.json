@@ -280,7 +280,11 @@
     "mattpocock-skills@mattpocock": true,
     "watch@claude-video": true,
     "typesafe@typesafe-ai": false,
-    "claude-mem-cowork@thedotmack": false
+    "claude-mem-cowork@thedotmack": false,
+    "pdf-viewer@synced": false,
+    "firecrawl@synced": false,
+    "data@synced": false,
+    "cowork-plugin-management@synced": false
   },
   "extraKnownMarketplaces": {
     "last30days-skill": {
