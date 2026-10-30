@@ -62,9 +62,9 @@ function lastAssistantText(transcriptPath) {
     if (!line) continue;
     let rec;
     try { rec = JSON.parse(line); } catch { continue; }
-    // Claude Code transcript records vary; check common shapes
+    // Claude Code / Codex / Antigravity transcript records vary; check common shapes
     const role = rec.role || (rec.message && rec.message.role) || rec.type;
-    if (role !== 'assistant') continue;
+    if (role !== 'assistant' && role !== 'PLANNER_RESPONSE') continue;
     const content = (rec.message && rec.message.content) || rec.content;
     const text = extractText(content).trim();
     if (text) return text;
@@ -73,35 +73,44 @@ function lastAssistantText(transcriptPath) {
 }
 
 (function main() {
+  const isAgyArg = process.argv.includes('--agy');
+  const finish = (isAgy) => {
+    if (isAgy) process.stdout.write(JSON.stringify({ decision: 'allow' }) + '\n');
+  };
+
   let input;
   try {
     input = JSON.parse(fs.readFileSync(0, 'utf8'));
   } catch (e) {
     logErr('failed to parse stdin: ' + e.message);
+    finish(isAgyArg);
     return;
   }
 
+  const isAgy = isAgyArg || Boolean(input && input.transcriptPath);
+
   // Loop guard: if our hook (or another) is what stopped the model, don't recurse.
-  if (input.stop_hook_active) return;
+  if (input.stop_hook_active) { finish(isAgy); return; }
 
   // Recursion guard, same as the memory compiler's session-end.py: its flush.py and
   // compile.py Agent SDK sessions are marked CLAUDE_INVOKED_BY and have nothing to capture.
   // Not the source of the 2026-10-23 "transcript_path does not exist" bursts: session-end.py
   // logged those sessions too, so they were unmarked. The log line below names the caller.
-  if (process.env.CLAUDE_INVOKED_BY) return;
+  if (process.env.CLAUDE_INVOKED_BY) { finish(isAgy); return; }
 
-  const transcriptPath = input.transcript_path;
+  const transcriptPath = input.transcript_path || input.transcriptPath;
 
   // A null/absent transcript_path is not breakage — some harnesses that share
   // these hooks (Codex `gpt-5.6*` sessions, verified 2026-09-07) never supply
   // one. There is nothing to capture, so exit quietly. Logging it refilled
   // .errors.log every run and buried the entries that do mean something.
-  if (!transcriptPath) return;
+  if (!transcriptPath) { finish(isAgy); return; }
 
   // A path that WAS supplied but is not on disk is real breakage. Keep logging it.
   if (!fs.existsSync(transcriptPath)) {
     logErr('transcript_path does not exist: ' + JSON.stringify(input).slice(0, 200) +
       ` entrypoint=${process.env.CLAUDE_CODE_ENTRYPOINT || '?'} callers=${callers()}`);
+    finish(isAgy);
     return;
   }
 
@@ -110,9 +119,10 @@ function lastAssistantText(transcriptPath) {
     text = lastAssistantText(transcriptPath);
   } catch (e) {
     logErr('read transcript failed: ' + e.message);
+    finish(isAgy);
     return;
   }
-  if (!text) return; // nothing assistant said this turn (e.g. pure tool-use turn)
+  if (!text) { finish(isAgy); return; } // nothing assistant said this turn (e.g. pure tool-use turn)
 
   // Local date/time — toISOString() is always UTC, which makes file names jump
   // to "tomorrow" in the evening for any timezone west of GMT.
@@ -122,8 +132,10 @@ function lastAssistantText(transcriptPath) {
   const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
   const outFile = path.join(OUT_DIR, `${today}.md`);
   const snippet = text.slice(0, SNIPPET_CHARS).replace(/\n{3,}/g, '\n\n');
-  const session = input.session_id ? ` [${String(input.session_id).slice(0, 8)}]` : '';
-  const cwd = input.cwd ? ` (${input.cwd})` : '';
+  const sessionId = input.session_id || input.conversationId;
+  const cwdVal = input.cwd || (Array.isArray(input.workspacePaths) && input.workspacePaths[0]) || '';
+  const session = sessionId ? ` [${String(sessionId).slice(0, 8)}]` : '';
+  const cwd = cwdVal ? ` (${cwdVal})` : '';
   const entry = `\n## ${time}${session}${cwd}\n${snippet}\n`;
 
   try {
@@ -132,4 +144,5 @@ function lastAssistantText(transcriptPath) {
   } catch (e) {
     logErr('append failed: ' + e.message);
   }
+  finish(isAgy);
 })();
