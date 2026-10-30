@@ -226,3 +226,14 @@ sports-science-research-grounding. Chosen from the usage scan above (model calls
   executing-plans and subagent-driven-development call it by name, so their review step may fail).
 - `superpowers:test-driven-development` "off" too; `mattpocock-skills:tdd` is the TDD skill.
 - A description/body similarity scan of 148 active skills found no other duplicates.
+
+## Synced plugins CAN be turned off locally, 2026-10-30
+
+Corrects the 10-24 "managed in claude.ai, not local" note (that probe used the wrong key).
+claude.ai-synced plugins have ids `<name>@synced` (`claude plugin list --json`, scope `synced`).
+`claude plugin disable <name>@synced` writes `"<name>@synced": false` to `enabledPlugins`; a fresh
+session no longer lists the skills. Done for pdf-viewer, firecrawl, data, cowork-plugin-management
+(20 skills, 0 calls; dotclaude `36a04c6`). Kept: superpowers@synced (the only live superpowers copy,
+in use), desktop-commander@synced (MCP used), browser-use@synced.
+**`skillOverrides` does not apply to plugin skills** (docs: skills.md), so `superpowers:*: "off"` keys
+are dead lines. To cut one plugin skill you must disable the whole plugin. Undo: `claude plugin enable <name>@synced`.
