@@ -81,6 +81,13 @@ function summarizeErrors(body) {
 }
 
 function emit(context) {
+  if (process.argv.includes('--agy')) {
+    const out = context
+      ? { injectSteps: [{ systemMessage: { systemMessage: context } }] }
+      : {};
+    process.stdout.write(JSON.stringify(out));
+    return;
+  }
   const output = { hookSpecificOutput: { hookEventName: 'SessionStart' } };
   if (context) output.hookSpecificOutput.additionalContext = context;
   process.stdout.write(JSON.stringify(output));

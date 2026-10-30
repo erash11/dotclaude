@@ -14,6 +14,7 @@ without looking stay in `~/.claude/CLAUDE.md` and `~/.claude/AGENTS.md`.
 | npm / npx | `/opt/homebrew/bin/` | |
 | claude | `/Users/kristinarash/.local/bin/claude` | |
 | codex | `/opt/homebrew/bin/codex` | |
+| agy | `/Users/kristinarash/.local/bin/agy` | Antigravity CLI (`agy update`). Global config in `~/.gemini/config/`: `AGENTS.md` and `rules/machine.md` link to `~/.claude/`, `skills.json` points to `~/.claude/skills`, `hooks.json` runs `keystone-unified-snapshot.js --agy` (`SessionStart`) and `dcg-agy.js` (`PreToolUse` `run_command`). |
 | pwsh | `/opt/homebrew/bin/pwsh` | PowerShell 7. Present only to run the KeystoneOS `.ps1` jobs natively. |
 | Go-installed CLIs | `/Users/kristinarash/go/bin/` | `fireflies-pp-cli`, `espn-pp-cli`, and the other `*-pp-cli` tools. |
 | gh | `/opt/homebrew/bin/gh` | |
