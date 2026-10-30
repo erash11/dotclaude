@@ -1,11 +1,11 @@
 ---
 name: drive-fuse-read-hang
-description: "Drive mount reads hang, and folder listings sometimes too; DEFAULT is to read/copy Drive files with the gws API (files get alt=media). Any Drive walk runs in a child process under a timeout. Index Drive by name+size only, move with the gws CLI (Drive MCP moves get blocked), skip 02_Raw_Tagging"
+description: "Drive mount reads hang, and folder listings sometimes too; DEFAULT is to read/copy Drive files with the gws API (files get alt=media). Any Drive walk runs in a child process under a timeout. Index Drive by name+size only, move with the gws CLI (Drive MCP moves get blocked), skip 02_Raw_Tagging. A STALE mount gives false 'missing folder' results; fix is a Mac restart, never Drive reset/disconnect"
 metadata:
   node_type: memory
   type: project
   originSessionId: dc65ba85-7374-4641-97a3-dad384e86ec2
-  modified: 2026-10-24T14:51:43.486Z
+  modified: 2026-10-30T22:38:59.870Z
 ---
 
 Opening files through `~/Library/CloudStorage/GoogleDrive-…/My Drive/` hangs when the file is
@@ -47,3 +47,14 @@ even after Eric quit and reopened Google Drive; the API pulled it in seconds:
 (`/opt/homebrew/bin/gws`, Drive scope granted) does the same server-side move from the shell and is not blocked:
 `gws drive files update --params '{"fileId":"<id>","addParents":"<new>","removeParents":"<old>","fields":"id,name,parents"}' --json '{}'`.
 Uploads with `--upload` must name a file under the current directory (`cd` to the job tmp dir first).
+
+**Stale mount (2026-10-28 to 10-30).** The mount can stop following Drive and still answer quickly,
+with an old layout. Symptoms: the crosswalk check alarms "Drive folder missing" on rows that are
+correct, Finder shows folders that were moved, and Drive may refuse to start with a macOS
+"file provider" error. Diagnose: ask the gws API for the folder (`gws drive files list`, by name);
+if the API has it and the mount does not, the mount is stale. 10-30 cause: Drive's File Provider
+link to macOS broke at 10-29 05:44. Not an account fault; cloud files were fine.
+- Fix: restart the Mac (closes all Claude sessions). Quitting and reopening Drive did not help (10-17).
+- **Never** use Drive's "reset" or "disconnect account": they can delete files waiting to upload.
+- It does not clear on its own. A session said it would on 10-30 and was wrong.
+- Any check that decides "missing" should ask the API, not the mount.

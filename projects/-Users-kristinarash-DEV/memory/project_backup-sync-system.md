@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 3db720f8-cca5-4aed-96cd-e7ac4a95ab2d
-  modified: 2026-10-26T00:40:04.420Z
+  modified: 2026-10-30T22:39:19.190Z
 ---
 
 > **Current schedule (2026-10-22) — supersedes every time below.** `com.keystone.dailybackup`
@@ -480,7 +480,7 @@ Full handoff: `~/.claude/global-memory/handoffs/2026-09-04-backup-skill.md`.
 
 ## Manifest coverage closed + job-count baseline reset (2026-09-09)
 
-**The 49 `manifest-unmanaged` folders are gone.** They were never a classification backlog —
+**The 49 `manifest-unmanaged` folders are gone** (as of 2026-09-09; the error returns whenever a new top-level `~/DEV` folder is not added: 10-24 drive-tools, 10-30 `_to_delete`. `new-project` step 7 now adds the entry). They were never a classification backlog —
 they were fallout from the GitHub consolidation migration (see [[github-consolidation]]).
 All 49 added to `backup-manifest.json` in one pass: 47 are git repos with `erash11` remotes
 (`isRepo:true`, `captureOrphans`/`captureWorkingTree` true, destinations `["ssd","github"]`),

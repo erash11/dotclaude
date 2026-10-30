@@ -17,11 +17,11 @@ Never put memory content here — the file itself holds the facts.
 - [CFB Analytics Lab](project_cfb-analytics-lab.md) — resuming CFB Analytics Lab
 - [CFB forecast capture](project_cfb-forecast-capture.md) — weekly Big 12 forecast capture
 - [Drive FUSE rsync loop](project_drive-fuse-rsync-mtime-loop.md) — rsync keeps re-sending files to Drive, or hangs copying into Drive
-- [Drive FUSE read hang](project_drive-fuse-read-hang.md) — before reading, copying or walking ANY Drive file: gws API for reads, child-process timeout for walks
+- [Drive FUSE read hang](project_drive-fuse-read-hang.md) — before reading, copying or walking ANY Drive file: gws API for reads, child-process timeout for walks; a 'missing folder' alarm or stale Finder view (stale mount: restart the Mac)
 - [SecondBrain vault location](project_secondbrain-vault-location.md) — vault path questions
 - [Milvus lock misdiagnosis](project_milvus-lock-misdiagnosis.md) — Zotero/Milvus errors
 - [Zotero expert reference](reference_zotero-expert-reference.md) — any Zotero how-to, setup, import, sync, backup, or citation question
-- [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems
+- [Memory compiler pipeline](project_memory-compiler-pipeline.md) — flush or daily-log problems; claude-agent-sdk upgrade (setting-sources trap); flush/compile model choice
 - [memsearch index path drift](project_memsearch-index-path-drift.md) — memsearch indexes fewer paths
 - [memsearch hook timeout cap](project_memsearch-hook-timeout-cap.md) — memsearch slow or timing out
 - [Morning briefing retired](project_morning-briefing-retired.md) — old morning-briefing code or config
@@ -64,7 +64,7 @@ Never put memory content here — the file itself holds the facts.
 - [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector; Box Drive was the Windows route, not yet on the Mac
 - [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
 - [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
-- [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
+- [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint; Word/PowerPoint freezes on export
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
 - [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync
@@ -86,3 +86,4 @@ Never put memory content here — the file itself holds the facts.
 - [Pmc open access pdf download](reference_pmc-open-access-pdf-download.md) — downloading any open-access paper PDF (PMC, Europe PMC, Springer)
 - [Mac-Windows remote access](project_mac-windows-remote-access.md) — remote into the Windows laptop or the Mac; Tailscale, RDP, Chrome Remote Desktop, Mac sleep settings
 - [Skill audit list](reference_skill-audit-list.md) — "audit the next skill on the list"; any skill audit or maintenance pass
+- [Long jobs in terminal](feedback_long-jobs-in-terminal.md) — before starting any job that may run 30+ minutes; after a background job dies

@@ -1,17 +1,23 @@
 ---
 name: memory-compiler-pipeline
-description: How the claude-memory-compiler flush/index pipeline fails and how to tell which stage broke; SessionStart injection was rewritten to a pointer 2026-08-29
+description: How the claude-memory-compiler flush/index pipeline fails and how to tell which stage broke; SessionStart injection was rewritten to a pointer 2026-08-29; SDK 0.2.165 drops setting_sources (use extra_args); flush=Sonnet, compile=Opus and why
 metadata: 
   node_type: memory
   type: project
   originSessionId: 174cde34-d23d-454b-8db8-9365e7f728f2
-  modified: 2026-08-29T20:05:21.521Z
+  modified: 2026-10-30T22:39:18.864Z
 ---
 
 The compiler at `~/.claude/claude-memory-compiler/` has three stages. Each fails
 differently and the symptoms look alike, so identify the stage before fixing.
 
 **Since 2026-10-25 compile is off** (Eric: ~$30/month, articles opened in 3 of ~191 sessions). `flush.py` has `COMPILE_ON_FLUSH = False`; flush and `daily/` logs continue; `knowledge/` is frozen (~540 articles). `compile.py` still runs by hand. Weekly lint `orphan_source` and health `compile_backlog` counts will grow; that is expected.
+
+**SDK trap (2026-10-24): claude-agent-sdk 0.2.165 silently drops `setting_sources=[]`.** The jobs loaded ~20k tokens of CLAUDE.md, plugins and hooks each run, and fired SessionStart/End hooks inside a flush; code comments said they were protected. Fix in `flush.py` and `compile.py`: pass `extra_args={"setting-sources": ""}`. Measured 23.5k → 3.3k tokens a flush. After any SDK upgrade, check the flag still reaches the CLI command.
+
+**Models (tested 2026-10-25 on real sessions, results `~/DEV/docs/handoffs/2026-10-24-proof-of-changes.md`):**
+- `flush.py` = Sonnet. It kept the same items as Opus with no wrong facts. Haiku wrote 2 wrong facts (a failed run called "last succeeded"; an open choice recorded as made). A wrong fact in memory is worse than a missing one, because later sessions trust memory.
+- `compile.py` = Opus, named in code. Sonnet found 1 of 4 items and rewrote 7 existing articles, which the job's rules forbid.
 
 **Stage 1 — `hooks/session-end.py`.** Writes `scripts/session-flush-<uuid>-<YYYYMMDD>-<HHMMSS>.md`,
 then spawns `flush.py`. Logs every firing to `scripts/flush.log` as `SessionEnd fired`.

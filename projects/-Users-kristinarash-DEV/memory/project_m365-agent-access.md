@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 6a709501-394d-4811-8fbb-8fec24f5d7dd
-  modified: 2026-10-24T14:55:41.813Z
+  modified: 2026-10-30T22:39:19.024Z
 ---
 
 **Superseded 2026-10-24: the Windows route below is retired.** The laptop has had no
@@ -17,6 +17,9 @@ use the docx/pptx/xlsx skills for files. Office has no COM. PowerPoint can be dr
 osascript: Eric granted the Automation permission on 2026-10-24 (five-slides-generator Step 6).
 The error 'Not authorized to send Apple events' means it was turned off. There is no record of a Graph
 or Teams route on the Mac. Any secret for one (a webhook URL) goes in the Keychain.
+
+**Mac Office export trap (2026-10-24 PowerPoint, 2026-10-29 Word).** Word and PowerPoint are sandboxed. When a script makes them save to a folder outside their container, they stall behind a hidden permission dialog. Word froze twice on 10-29 and needed a force-quit. Fix: export into the app's own folder, then move the file out with the shell:
+`~/Library/Containers/com.microsoft.Word/Data/tmp/` or `~/Library/Containers/com.microsoft.Powerpoint/Data/tmp/` (five-slides-generator Step 6 uses the PowerPoint one).
 
 Verified 2026-10-03 on the Baylor Windows laptop. Eric ran the tests himself; all passed.
 
