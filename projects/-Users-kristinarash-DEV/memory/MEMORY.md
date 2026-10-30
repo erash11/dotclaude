@@ -67,8 +67,8 @@ Never put memory content here — the file itself holds the facts.
 - [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
-- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync; no automation since 10-14; desktop-app sessions only since 10-21; links the old Windows trap notes
-- [Windows history: backup sleep-kill](project_backup-task-sleepkill-signature.md), [Git Bash AD stall](project_git-bash-msys-ad-stall.md), [settings.json BOM](project_settings-json-bom-trap.md) — only if the Windows laptop runs a terminal again
+- [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync
+- [Win: sleep-kill](project_backup-task-sleepkill-signature.md), [AD stall](project_git-bash-msys-ad-stall.md), [BOM](project_settings-json-bom-trap.md) — the laptop runs a terminal again
 - [memsearch index is destructive](project_memsearch-index-is-destructive.md) — before running `memsearch index` by hand; Windows Docker/Milvus failure history
 - [REA + Ghidra setup traps](project_rea-ghidra-setup-traps.md) — running rea/Ghidra/R on the Mac; Drive reads hang; no wine
 - [No Baylor OneDrive](feedback_no-baylor-onedrive.md) — before choosing any output, sync or backup destination; never Baylor OneDrive (one exception: Kenny's ITS tracker in the Teams team)
