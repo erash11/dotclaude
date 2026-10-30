@@ -130,7 +130,7 @@ function main() {
     if (ageD > 8) {
       parts.unshift(
         '## Weekly stack doctor is overdue\n\n' +
-        `\`${weekly}\` was last written ${ageD === Infinity ? 'never' : Math.floor(ageD) + ' days ago'}; ` +
+        `\`${weekly}\` is ${ageD === Infinity ? 'missing or unreadable' : Math.floor(ageD) + ' days old'}; ` +
         'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
         'response and run `/claude-stack-doctor`.'
       );
