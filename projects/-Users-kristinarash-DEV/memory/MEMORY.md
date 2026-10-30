@@ -87,3 +87,4 @@ Never put memory content here — the file itself holds the facts.
 - [Mac-Windows remote access](project_mac-windows-remote-access.md) — remote into the Windows laptop or the Mac; Tailscale, RDP, Chrome Remote Desktop, Mac sleep settings
 - [Skill audit list](reference_skill-audit-list.md) — "audit the next skill on the list"; any skill audit or maintenance pass
 - [Long jobs in terminal](feedback_long-jobs-in-terminal.md) — before starting any job that may run 30+ minutes; after a background job dies
+- [Codex exec stdin hang](project_codex-exec-stdin-hang.md) — before running codex exec from a script or the Bash tool
