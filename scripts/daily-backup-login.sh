@@ -11,8 +11,11 @@ LOG="${BACKUP_LOG:-$HOME/.claude/scripts/logs/daily-backup.log}"
 TODAY=$(date +%Y-%m-%d)
 skip() { echo "$(date '+%F %T') gate skip: $1"; exit 0; }
 # A dry run also logs "daily-backup end: OK", so an OK counts only when its run started DryRun=False.
+# The start may be yesterday (a run crossing midnight), so every start line sets the flag.
+# shortcut: pairs each end with the latest start, so a dry run started during a real run hides
+# that real OK and the gate may run once more (capped at 2 tries); end lines carry no run id.
 real_ok_today() {
-  awk -v d="$TODAY" '$1==d && /daily-backup start/ {real = /DryRun=False/}
+  awk -v d="$TODAY" '/daily-backup start/ {real = /DryRun=False/}
                      $1==d && /daily-backup end: OK/ && real {found=1}
                      END {exit !found}' "$LOG" 2>/dev/null
 }

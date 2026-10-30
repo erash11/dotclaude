@@ -26,5 +26,11 @@ check 'dry run then real OK -> skip' "$(run \
 check 'real OK yesterday only -> run' "$(run \
   '2026-10-29 12:00:06 ===== daily-backup start (DryRun=False) run=1 =====' \
   '2026-10-29 12:11:25 ===== daily-backup end: OK (0 errors) =====')" no
+check 'real run crossing midnight ended OK today -> skip' "$(run \
+  '2026-10-29 23:50:00 ===== daily-backup start (DryRun=False) run=1 =====' \
+  '2026-10-30 00:05:00 ===== daily-backup end: OK (0 errors) =====')" yes
+check 'dry run crossing midnight ended OK today -> run' "$(run \
+  '2026-10-29 23:50:00 ===== daily-backup start (DryRun=True) run=1 =====' \
+  '2026-10-30 00:05:00 ===== daily-backup end: OK (0 errors) =====')" no
 check 'no log -> run' "$(rm -f "$BACKUP_LOG"; real_ok_today && echo yes || echo no)" no
 exit $fails
