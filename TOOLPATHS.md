@@ -44,7 +44,7 @@ security find-generic-password -s FIREFLIES_API_KEY -a "$USER" -w
 
 ## History that explains the layout
 
-- `/usr/local/bin` is **empty and stays that way.** Homebrew owns `/opt/homebrew/bin`.
+- `/usr/local/bin` holds only app-installed CLI links: `code` (VS Code, 2026-10-12) and `tailscale` (Tailscale app settings, 2026-10-30). Keep both. Homebrew owns `/opt/homebrew/bin`; nothing else goes in `/usr/local/bin`.
 - Docker Desktop, and the `kubectl` it shipped, was removed 2026-09-03. Nothing here used it.
 
 ## Why this file exists
