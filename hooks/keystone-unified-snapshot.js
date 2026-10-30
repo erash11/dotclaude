@@ -119,6 +119,24 @@ function main() {
     parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
   }
 
+  // Dead-man check: the weekly stack doctor reports failures through .errors.log,
+  // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
+  // the laptop has no weekly run. 8 days = one missed Monday.
+  if (process.platform === 'darwin') {
+    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
+      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
+    let ageD = Infinity;
+    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
+    if (ageD > 8) {
+      parts.unshift(
+        '## Weekly stack doctor is overdue\n\n' +
+        `\`${weekly}\` was last written ${ageD === Infinity ? 'never' : Math.floor(ageD) + ' days ago'}; ` +
+        'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
+        'response and run `/claude-stack-doctor`.'
+      );
+    }
+  }
+
   if (problems.length) {
     parts.unshift(
       '## SessionStart hook could not read a required memory file\n\n' +
