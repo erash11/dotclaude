@@ -1,0 +1,9 @@
+- [SKILL.md:37](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:37) says the autopush hook skips all five repos. It can push SecondBrain. The [hook](/Users/kristinarash/.claude/hooks/session-autopush.js:118) skips repos under `~/.claude` and repos with `.no-autopush`. SecondBrain is outside that folder and has no `.no-autopush` file.
+
+- [SKILL.md:49](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:49) says the daily backup commits and pushes SecondBrain once a day. The [backup](/Users/kristinarash/.claude/scripts/daily-backup.ps1:59) can stop when branches differ. The [gate](/Users/kristinarash/.claude/scripts/daily-backup-login.sh:25) can skip a run on battery power or after two tries.
+
+- [SKILL.md:101](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:101) can choose the wrong clone folder. For `MatchupAnalysis_FB2026`, the search finds only the name. But [FOOTBALL.md:24](/Users/kristinarash/DEV/FOOTBALL.md:24) puts it inside `Football/`. The step would choose `~/DEV/MatchupAnalysis_FB2026`.
+
+- [SKILL.md:109](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:109) checks only whether the current branch is ahead. It can report done when either repo has changed files, a branch with no upstream, or unpushed work on another branch. The [sweep](/Users/kristinarash/.claude/scripts/where-was-i.py:147) checks these states for the other repos.
+
+- The diff removes the rule against moving repos into `_ARCHIVE/`. It also removes the rule to keep Tier A memory per machine and not restore the old mirror step. These are lost rules at the end of [SKILL.md](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:123).

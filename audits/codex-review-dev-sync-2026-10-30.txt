@@ -1,0 +1,1337 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/DEV
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a18eff-a39f-7782-bcb6-734d573c91b1
+--------
+user
+Review this diff of an agent skill (dev-sync) at /Users/kristinarash/.claude/audits/codex-review-dev-sync-2026-10-30.diff.txt; the full skill is ~/.claude/skills/dev-sync/SKILL.md and PLATFORMS.md. Check each claim against the real files: ~/.claude/scripts/where-was-i.py (--sweep, --list, CONFIG_REPOS), ~/.claude/hooks/session-autopush.js, ~/.claude/scripts/daily-backup.ps1 (Sync-Repo, and its once-a-day gate ~/.claude/scripts/daily-backup-login.sh if present), ~/.claude/claude-memory-compiler/.gitignore, ~/DEV/*.md area indexes. Report only concrete faults: a false claim, a step that would fail or mislead an agent, a wrong command, a lost rule. For each: file, line, fault, evidence. Be brief.
+2026-10-30T22:48:01.894596Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I’ll check the diff against the files you named. I’ll report only faults I can verify.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/machine.md; cat ~/.claude/global-memory/transcripts/.errors.log; cat ~/.claude/audits/codex-review-dev-sync-2026-10-30.diff.txt' in /Users/kristinarash/DEV
+ succeeded in 40ms:
+# Shell / Environment (macOS)
+
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+diff --git a/dev-sync/PLATFORMS.md b/dev-sync/PLATFORMS.md
+index 1ee9751..deac96c 100644
+--- a/dev-sync/PLATFORMS.md
++++ b/dev-sync/PLATFORMS.md
+@@ -6,6 +6,7 @@
+ - DEV root: `C:\Users\eric_rash\Desktop\DEV`. `where-was-i.py` resolves it the same way; run it
+   with `python`, not `python3`.
+ - `machine.md` missing: copy `machine.windows.md`.
++- Vault: `~/Desktop/SecondBrain`. Skip `claude-memory-compiler` in Step 1 when it is not cloned.
+ - Mods: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\mods\mods-sync.ps1`.
+ - Codex view: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\skills\sync-to-codex.ps1`.
+ - Step 3.2 merge: walk `python ~/.claude/scripts/where-was-i.py --list` one repo at a time with the
+diff --git a/dev-sync/SKILL.md b/dev-sync/SKILL.md
+index d0c788e..c61eaa7 100644
+--- a/dev-sync/SKILL.md
++++ b/dev-sync/SKILL.md
+@@ -33,8 +33,10 @@ Mac: `~/DEV`. Missing: stop and say so. Print the root on the first line of outp
+ ## Step 1 — Config repos
+ 
+ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+-`~/.claude/global-memory` (claude-global-memory). For each: snapshot-commit local changes
+-(Step 3.1 rule), `git pull --no-rebase`, `git push`. Then:
++`~/.claude/global-memory` (claude-global-memory), `~/.claude/claude-memory-compiler` (code only:
++`daily/` and `knowledge/` are gitignored), `~/SecondBrain` (the vault). The autopush hook skips
++all five; the sweep covers only the first three. For each: snapshot-commit local changes (Step 3.1
++rule), `git pull --no-rebase`, `git push`. Then:
+ 
+ - **`~/.claude`:** if `machine.md` is missing, copy `machine.macos.md` to it. Run
+   `bash ~/.claude/mods/mods-sync.sh`; report its line (`mods: N loaded, N disabled, N invalid`)
+@@ -44,6 +46,8 @@ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+   SessionStart hook already injected the pre-pull copy. If the pull brings commits, say how many
+   and name the newest. On conflict in `transcripts/.errors.log` or `MEMORY.md`, keep both sides'
+   lines: they are logs, and a dropped line is a lost memory.
++- **SecondBrain:** the Mac's daily backup also commits and pushes it, once a day; this step covers
++  the rest of the day and the other machine.
+ 
+ ## Step 2 — Inventory
+ 
+@@ -53,7 +57,7 @@ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+    mount: walking it hangs), `_ARCHIVE` and worktrees.
+ 2. Missing locally: `gh repo list erash11 --limit 300 --no-archived --json name`, minus the
+    folders `where-was-i.py --list` prints, minus `dotclaude`, `SecondBrain`, `claude-skills`,
+-   `claude-global-memory`, `claude-memory-compiler`, `DEV`, `DexaProject`,
++   `claude-global-memory`, `claude-memory-compiler` (Step 1 syncs these five), `DEV`, `DexaProject`,
+    `AppliedPerformance-Site` (local `Website/`), and `printing-press-library` (removed locally
+    2026-10-23; cloning it brings back ~66,000 files).
+ 3. Project folders with no `.git` (the DEV repo ignores them, so their work is tracked nowhere):
+@@ -86,24 +90,30 @@ Show all three before changing anything.
+    local changes 3.1 left unstaged), and list the repo.
+ 3. **Conflict.** Keep this machine's version and save the remote one beside it as
+    `<file>.from-mac`, `<file>.from-windows` or `<file>.from-remote` (whoever pushed it), stage
+-   both, commit. Closeout uses these steps too. `.DS_Store` conflicts: `git rm -q .DS_Store`.
++   both, commit. Closeout uses these steps too. Exception: `transcripts/.errors.log` and
++   `MEMORY.md` in global-memory keep both sides' lines in the one file (Step 1). `.DS_Store` conflicts: `git rm -q .DS_Store`.
+    - Save the remote side by **moving** the file: a stdout redirect re-encodes the bytes.
+      `git checkout --theirs -- <f> && mv <f> <f>.from-remote && git checkout --ours -- <f>`
+    - While `.git/MERGE_HEAD` exists, stage only the paths you just resolved, by name:
+      `git add -A` there commits the conflict markers themselves.
+ 4. **Push** every repo the sweep marked `UNPUSHED`, plus every repo 3.1–3.3 committed in.
+    `NO-UPSTREAM`: `git push -u origin <branch>`.
+-5. Missing locally: `gh repo clone erash11/<name> ~/DEV/<name>`. No remote:
++5. Missing locally: clone it where it belongs. ``grep -h -o '`[^`]*<name>/`' ~/DEV/*.md`` searches
++   the area indexes; a hit with a parent folder (`Football/<name>/`) is the place, otherwise
++   `~/DEV/<name>`. Then `gh repo clone erash11/<name> ~/DEV/<path>`. A wrong folder breaks the
++   KeystoneOS paths and orphans the repo's Tier A memory (the slug is the absolute path). No remote:
+    `gh repo create erash11/<name> --private --source=. --push`.
+ 
+ ## Step 4 — Prove it and report
+ 
+-Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. Done when its last line reads
+-`0 need action`, or every `ACTION` line left is in the report with its reason.
++Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`, and `git -C <repo> status -sb | head -1`
++for the two Step 1 repos the sweep does not cover (`claude-memory-compiler`, `SecondBrain`). Done
++when the sweep's last line reads `0 need action`, neither status line says `ahead`, and every
++problem left is in the report with its reason.
+ 
+ ```
+ DEV root: ~/DEV
+-Config: dotclaude, skills, global-memory pulled + pushed (global-memory: +N commits, newest "<msg>")
++Config: dotclaude, skills, global-memory, memory-compiler, SecondBrain pulled + pushed (global-memory: +N commits, newest "<msg>")
+ <mods line>
+ Pulled: <repos>    Pushed: <repos>    Cloned: <repos>    Created: <repos>
+ Conflicts: <every .from-* file created>, or none
+@@ -117,11 +127,3 @@ Conflicts: <every .from-* file created>, or none
+   `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md`.
+ - **`cannot lock ref 'HEAD'`:** check `pgrep -fl git` first. If no git is running and the
+   `.git/*.lock` file is zero bytes and older than the session, it is stale: move it aside, retry.
+-- **Sorting and archiving are separate.** Moving a dormant repo into `_ARCHIVE/` breaks DEV paths
+-  in KeystoneOS `projects.json`, `memory-sources.json`, `memory-index-paths.json` and
+-  `discovery-roots.json`, and orphans its Tier A memory (the slug is the absolute path).
+-- **Tier A memory stays per machine.** The Windows-slug folders were archived 2026-10-25
+-  (`~/.claude/projects/_windows-import-archive/`); the old `mirror_memory.py` step would have
+-  copied them back. Project facts cross machines through the repo's `docs/`, which closeout writes.
+-</content>
+-</invoke>
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "rg -n -C 4 'CONFIG_REPOS|sweep|--list|SecondBrain|compiler' ~/.claude/scripts/where-was-i.py ~/.claude/hooks/session-autopush.js ~/.claude/scripts/daily-backup.ps1 ~/.claude/scripts/daily-backup-login.sh ~/.claude/claude-memory-compiler/.gitignore" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc 'cat ~/.claude/CLAUDE.md; cat ~/DEV/docs/STATUS.md; cat ~/DEV/CLAUDE.md' in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "rg -n '"'`[''^`]+/`'"' ~/DEV/*.md" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/skills/dev-sync/SKILL.md; nl -ba ~/.claude/skills/dev-sync/PLATFORMS.md' in /Users/kristinarash/DEV
+ succeeded in 50ms:
+     1	---
+     2	name: dev-sync
+     3	description: >-
+     4	  Make this machine match GitHub without losing work on either side: pull the config, skills
+     5	  and memory repos, commit and push local work in every DEV repo, merge what other sessions
+     6	  pushed, clone missing repos, keep both sides of any conflict. Use when Eric says 'sync DEV',
+     7	  switches machines, or asks whether everything is pushed or pulled. Do not use at the start
+     8	  of the day (use startup, which runs this first), for the end-of-session sign-off (use
+     9	  closeout), or to scaffold a new repo (use new-project).
+    10	---
+    11	
+    12	# DEV sync
+    13	
+    14	GitHub (`erash11`, all private) is the transport between every place work happens: terminal
+    15	sessions on the Mac, desktop-app sessions on the Windows laptop, cloud sessions, Codex. The
+    16	session-end hook `~/.claude/hooks/session-autopush.js` pushes the one repo a session worked in;
+    17	it skips `~/.claude`, headless and cloud sessions, and any repo mid-merge. This skill catches
+    18	the rest: pull everything others pushed, push everything still local, keep both sides of every
+    19	conflict.
+    20	
+    21	Eric pre-approves every operation here; run the steps straight through. Pause only when
+    22	something looks wrong: hundreds of changed files in one repo, or a large file about to be added.
+    23	On Windows, read [`PLATFORMS.md`](PLATFORMS.md) for the commands that differ.
+    24	
+    25	**Guardrails.** Merge only: no rebase, no force-push. Anything in the way moves to a
+    26	`_to_delete/` or `_OLD_*` folder; deleting is Eric's call. DexaProject, and any repo whose
+    27	`CLAUDE.md` says its data stays local, is committed and never pushed.
+    28	
+    29	## Step 0 — DEV root
+    30	
+    31	Mac: `~/DEV`. Missing: stop and say so. Print the root on the first line of output.
+    32	
+    33	## Step 1 — Config repos
+    34	
+    35	In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+    36	`~/.claude/global-memory` (claude-global-memory), `~/.claude/claude-memory-compiler` (code only:
+    37	`daily/` and `knowledge/` are gitignored), `~/SecondBrain` (the vault). The autopush hook skips
+    38	all five; the sweep covers only the first three. For each: snapshot-commit local changes (Step 3.1
+    39	rule), `git pull --no-rebase`, `git push`. Then:
+    40	
+    41	- **`~/.claude`:** if `machine.md` is missing, copy `machine.macos.md` to it. Run
+    42	  `bash ~/.claude/mods/mods-sync.sh`; report its line (`mods: N loaded, N disabled, N invalid`)
+    43	  and name any invalid mod.
+    44	- **skills:** `bash ~/.claude/skills/sync-to-codex.sh`, so Codex and Pi see the same skills.
+    45	- **global-memory** carries `USER.md`, `MEMORY.md` and the logs between machines, and the
+    46	  SessionStart hook already injected the pre-pull copy. If the pull brings commits, say how many
+    47	  and name the newest. On conflict in `transcripts/.errors.log` or `MEMORY.md`, keep both sides'
+    48	  lines: they are logs, and a dropped line is a lost memory.
+    49	- **SecondBrain:** the Mac's daily backup also commits and pushes it, once a day; this step covers
+    50	  the rest of the day and the other machine.
+    51	
+    52	## Step 2 — Inventory
+    53	
+    54	1. `python3 ~/.claude/scripts/where-was-i.py --sweep` (~4 s): every DEV repo two levels deep plus
+    55	   the config repos, one line per repo holding work not on GitHub. It reads local refs only, so
+    56	   repos that are *behind* show up in Step 3.2, not here. It already skips `_DRIVE` (the Drive
+    57	   mount: walking it hangs), `_ARCHIVE` and worktrees.
+    58	2. Missing locally: `gh repo list erash11 --limit 300 --no-archived --json name`, minus the
+    59	   folders `where-was-i.py --list` prints, minus `dotclaude`, `SecondBrain`, `claude-skills`,
+    60	   `claude-global-memory`, `claude-memory-compiler` (Step 1 syncs these five), `DEV`, `DexaProject`,
+    61	   `AppliedPerformance-Site` (local `Website/`), and `printing-press-library` (removed locally
+    62	   2026-10-23; cloning it brings back ~66,000 files).
+    63	3. Project folders with no `.git` (the DEV repo ignores them, so their work is tracked nowhere):
+    64	   check `~/DEV/*/`, `~/DEV/Football/*/` and `~/DEV/SpecialRequests/*/`, skipping `_*` and
+    65	   `docs` folders (the parent repo tracks `docs/`).
+    66	   `SpecialRequests/TOS_ES` is local on purpose (health data). Any other: list it for
+    67	   `new-project`.
+    68	
+    69	Show all three before changing anything.
+    70	
+    71	## Step 3 — Apply
+    72	
+    73	1. **Snapshot.** Each repo the sweep marked `DIRTY`: read `git status --porcelain` first.
+    74	   Anything the `BLOCKED` list in `session-autopush.js` names (`.env`, keys, credentials,
+    75	   secrets, token files, databases, DEXA) or over 50 MB goes into `.gitignore`, or stays
+    76	   unstaged and is listed. Then `git add -A && git commit -m "<machine> snapshot before sync"`.
+    77	2. **Merge what others pushed**, every repo in one pass (~10 s):
+    78	
+    79	   ```bash
+    80	   python3 ~/.claude/scripts/where-was-i.py --list | tr '\n' '\0' | xargs -0 -P 8 -n 1 sh -c '
+    81	     git -C "$1" symbolic-ref -q HEAD >/dev/null && git -C "$1" rev-parse -q --verify "@{u}" >/dev/null || exit 0
+    82	     before=$(git -C "$1" rev-parse HEAD)
+    83	     git -C "$1" fetch -q && git -C "$1" merge -q --no-edit "@{u}" >/dev/null 2>&1 || { echo "FAIL $1"; exit 0; }
+    84	     [ "$before" = "$(git -C "$1" rev-parse HEAD)" ] || echo "PULLED $1"' _
+    85	   ```
+    86	
+    87	   It skips detached checkouts and branches with no upstream. A `FAIL` repo with
+    88	   `.git/MERGE_HEAD` is a conflict: 3.3. Without it, the loop hid git's message: run
+    89	   `git -C <repo> fetch` and `git -C <repo> merge @{u}` by hand to read it (a fetch error, or
+    90	   local changes 3.1 left unstaged), and list the repo.
+    91	3. **Conflict.** Keep this machine's version and save the remote one beside it as
+    92	   `<file>.from-mac`, `<file>.from-windows` or `<file>.from-remote` (whoever pushed it), stage
+    93	   both, commit. Closeout uses these steps too. Exception: `transcripts/.errors.log` and
+    94	   `MEMORY.md` in global-memory keep both sides' lines in the one file (Step 1). `.DS_Store` conflicts: `git rm -q .DS_Store`.
+    95	   - Save the remote side by **moving** the file: a stdout redirect re-encodes the bytes.
+    96	     `git checkout --theirs -- <f> && mv <f> <f>.from-remote && git checkout --ours -- <f>`
+    97	   - While `.git/MERGE_HEAD` exists, stage only the paths you just resolved, by name:
+    98	     `git add -A` there commits the conflict markers themselves.
+    99	4. **Push** every repo the sweep marked `UNPUSHED`, plus every repo 3.1–3.3 committed in.
+   100	   `NO-UPSTREAM`: `git push -u origin <branch>`.
+   101	5. Missing locally: clone it where it belongs. ``grep -h -o '`[^`]*<name>/`' ~/DEV/*.md`` searches
+   102	   the area indexes; a hit with a parent folder (`Football/<name>/`) is the place, otherwise
+   103	   `~/DEV/<name>`. Then `gh repo clone erash11/<name> ~/DEV/<path>`. A wrong folder breaks the
+   104	   KeystoneOS paths and orphans the repo's Tier A memory (the slug is the absolute path). No remote:
+   105	   `gh repo create erash11/<name> --private --source=. --push`.
+   106	
+   107	## Step 4 — Prove it and report
+   108	
+   109	Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`, and `git -C <repo> status -sb | head -1`
+   110	for the two Step 1 repos the sweep does not cover (`claude-memory-compiler`, `SecondBrain`). Done
+   111	when the sweep's last line reads `0 need action`, neither status line says `ahead`, and every
+   112	problem left is in the report with its reason.
+   113	
+   114	```
+   115	DEV root: ~/DEV
+   116	Config: dotclaude, skills, global-memory, memory-compiler, SecondBrain pulled + pushed (global-memory: +N commits, newest "<msg>")
+   117	<mods line>
+   118	Pulled: <repos>    Pushed: <repos>    Cloned: <repos>    Created: <repos>
+   119	Conflicts: <every .from-* file created>, or none
+   120	<SWEEP line>. Clean. / Not clean: <repo: reason>, ...
+   121	```
+   122	
+   123	## Gotchas
+   124	
+   125	- **A push or fetch that hangs** is usually a keychain credential prompt: look for
+   126	  `git credential-osxkeychain get` in `ps`, and see
+   127	  `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md`.
+   128	- **`cannot lock ref 'HEAD'`:** check `pgrep -fl git` first. If no git is running and the
+   129	  `.git/*.lock` file is zero bytes and older than the session, it is stale: move it aside, retry.
+     1	# dev-sync on Windows
+     2	
+     3	`SKILL.md` gives the Mac commands. The Windows laptop runs Claude desktop-app sessions only
+     4	(since 2026-10-21; no terminal CLI, no scheduled jobs). Use these where they differ.
+     5	
+     6	- DEV root: `C:\Users\eric_rash\Desktop\DEV`. `where-was-i.py` resolves it the same way; run it
+     7	  with `python`, not `python3`.
+     8	- `machine.md` missing: copy `machine.windows.md`.
+     9	- Vault: `~/Desktop/SecondBrain`. Skip `claude-memory-compiler` in Step 1 when it is not cloned.
+    10	- Mods: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\mods\mods-sync.ps1`.
+    11	- Codex view: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\skills\sync-to-codex.ps1`.
+    12	- Step 3.2 merge: walk `python ~/.claude/scripts/where-was-i.py --list` one repo at a time with the
+    13	  same `fetch` + `merge --no-edit "@{u}"`.
+    14	- Conflict, saving the remote side (moving, never redirecting):
+    15	  `git checkout --theirs -- <f>; Move-Item <f> <f>.from-mac; git checkout --ours -- <f>`
+    16	- Line-ending noise (`LF will be replaced by CRLF`) is normal. If a merge refuses to start over
+    17	  phantom modifications, run `git add --renormalize .` and commit first.
+    18	- Stale lock: `Get-Process git` in place of `pgrep`.
+    19	</content>
+    20	</invoke>
+
+hook: PostToolUse
+ succeeded in 69ms:
+# Machine
+
+Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitignored; copy `machine.macos.md` or `machine.windows.md` to `machine.md` on a new machine). It is imported below.
+
+@machine.md
+
+Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+
+# Workflow Expectations
+
+- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+- When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools: invoke one when it clearly fits the task.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
+
+# Session Startup
+
+The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER.md`, `global-memory/MEMORY.md`, a summary of `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot. Work from the injected copy.
+
+- If hook failures appear, surface them once on the first response, then continue. Entries mean a hook or scheduled job failed.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- The injection is a frozen snapshot: mid-session writes take effect next session. Load anything further only when a question needs it.
+
+# Memory — routing only
+
+The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+
+The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+
+- Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+- Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+
+---
+
+Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+# STATUS — ~/DEV workspace root
+
+## Current state
+- 2026-10-30 (Mac, Opus, 17:00-17:50): **session-miner run (10-24..10-30).** 10 findings; Eric approved 1-7, skipped 8-10 (ledger `~/.claude/claude-memory-compiler/reports/proposals-pending.md`). 5 Tier A memory edits + 1 new (`feedback_long-jobs-in-terminal.md`), skills `9e56198` (new-project manifest step, backup sk- false hit). Handoff `docs/handoffs/2026-10-30-session-miner.md`.
+- 2026-10-30 (Mac, Opus): **memory-write skill audited and fixed** (writing-for-agents twice; skills `7a9dd89`, dotclaude `d6fa209`; Codex review `~/.claude/audits/codex-review-memory-write-2026-10-30.md`, 4 findings, all fixed). Bugs: Tier 0 said today's daily log is in context (it is a pointer only since 10-02; also fixed in `~/.claude/AGENTS.md`); the recall bench's daily check compared hit counts only, so a new `miss` question was never guarded and a new hit could hide a lost one (`check.py` now tracks each question, `test_check.py` passes, baseline reset at 11/13); `remember.py --update` on one of ~42 legacy underscore files would write a twin (skill now says edit it by hand). Skill now: Tiers tables (Parked section added), Write and Recall branches, done line, char-based cap check. Tested: remember.py PASS / exit 2 / exit 1 in scratch, recall.py, check.py OK. List: memory-write to Done, `codex-review` joins Next. Follow-up: portability check now 42/42 (descriptions of claude-stack-doctor and doctor-plus), AGENTS.md L2 matches the skill. Left on purpose: 2 bench questions recall.py ranks #2 and #4 (CMJ backfill, insight-is-not-a-control; one is held-out), end-to-end bench still 9/9. **NEXT:** none for Eric.
+- 2026-10-30 (Mac, Opus, 17:00-17:40): **Codex review of today's 4 audits** (weekly-review, backup + gate, meeting-sync + intake, 06:00 job). Output: `~/.claude/audits/codex-review-maint-skills-2026-10-30.md`. 16 findings, each checked: 10 real and fixed (skills `fe6b76b`, dotclaude `8fcfb93`, KeystoneOS `bf1250d`). Biggest: a generic meeting held by the 06:00 job could age out of the 14-day window and never reach the vault (now held 7 days, then exported); gate missed a real run crossing midnight; name-meetings Unattended mode still asked about `review[]`; weekly-review's crosswalk lists the Drive mount (now under a 120 s timeout). 3 edge cases left as notes, 3 not true on this Mac (`xargs` with empty input runs nothing; no filenames with spaces). Tests: gate 7/7, titles + hold 26/26. **NEXT:** none for Eric.
+- 2026-10-30 (Mac, Opus, 16:20-17:00): **meeting-sync + fireflies-intake audited** (writing-for-agents, two passes; skills `dfd95d1` + `37f93fc`, KeystoneOS `13f7dbf`). Found: the KeystoneOS 06:00 job exports meetings before the skill runs, so the skill's rename and Jev tag steps never ran (10-26 and 10-29 ×2 reached the vault as `Oct_29_0922_AM` with no tag); its generic pattern missed Fireflies' default `Oct 29, 09:22 AM`; `python` and relative `scripts/` paths. Fixed: the 06:00 job leaves generic titles for the skill (test 20/20); meeting-sync renames unattended (no question inside weekly-review), tags every note in the window from both exporters, drift audit in `DRIFT.md`; fireflies-intake is now meeting-sync + completeness check. Not run: the tagger (sends summaries to Jev); the next sync will tag the 3 untagged notes. Backup with CRASHBOX 16:20-16:37: OK, 0 errors, 77 jobs, SSD captured. **NEXT:** none for Eric.
+- 2026-10-30 (Mac, Opus, 16:00-16:30): **backup skill audited and fixed** (writing-for-agents; skills `ab87c9d` + `3d15e0d`, dotclaude `d6ab8bc`). Found: skill said 21:00, real schedule is login + hourly 12-17 through the gate `daily-backup-login.sh` (now a pointer); `backup-state.json` is overwritten by `-DryRun` (the 15:36 dry run showed OK on a day with no good backup); okCount thresholds stale; `manifest-unmanaged` and secret-scan warnings not covered; the "Drive for Desktop" gotcha no longer exists in the script. Gate bug fixed: a dry run's `end: OK` no longer counts as today's backup (`test_backup_gate.sh`, 5/5 pass). Skill now: steps, done line, fixes in `FIXES.md`. Tested by running it: real backup 15:58-16:14 OK, 0 errors; SSD not mounted; one secret-scan warning on `b1b9233e...jsonl` (same file closeout called a false positive at 12:00) reported and archived. **NEXT:** none for Eric unless he wants the SSD copy (plug in CRASHBOX, `/backup`).
+- 2026-10-30 (Mac, Opus, 15:40-16:30): **weekly-review skill audited and fixed** (writing-for-agents; skills `db60b87` + `8e0ea63`). Verified bugs: `python` does not exist on the Mac (3 commands failed); `--agent` on Fireflies `action-items`/`topics` implies `--compact` and returned `{}` rows (the "empty rows" flagged in the 10-16 and 10-23 reviews); the unnamed-speaker grep read vault notes that hold summaries only (now reads live transcripts; tested). Structure: steps in run order (gather, one ask to Eric with a recommended answer per line, apply, write the note once), done line, explicit stale rule, inbox drain moves only local homes and reads nothing on the Drive mount, sweep picks can now say archive (rows with no purpose, next step or receiver), What NOT to do folded in. Stays model-invoked: interview-me calls it. Portability check passes for it (claude-stack-doctor and doctor-plus still fail it). **NEXT:** none for Eric; the next Friday run is the first real test.
+- 2026-10-30 (Mac, Opus, 11:00-12:00): **doctor-plus + stack-doctor reviewed and fixed** (writing-for-agents; Eric chose all). Found: the Monday 10-26 weekly stack-doctor run never happened and nothing said so (cause not found; logs too short). Fix: SessionStart hook `keystone-unified-snapshot.js` now adds an "overdue" line when `last-weekly-run.log` is over 8 days old; `stack-check.ps1` watches `stackdoctor` + `snapshot` jobs and reports `proof:stack-doctor-weekly`. Real run caught it, then cleared. doctor-plus is now user-invoked (~600 chars off every session), has steps + done line, re-checks the last report first, reads stack-check's context numbers, reports go to `docs/handoffs/YYYY-MM-DD-doctor-plus.md` (old 08-29 and 09-30 findings moved there). Tests: 4 files pass. Review: `~/.claude/audits/2026-10-30-doctor-skills-review.md`. **NEXT:** none for Eric; Mon 11-02 10:30 is the first scheduled weekly run since the fix. **15:30-16:10 follow-up:** full run of both skills + Codex review. doctor-plus report `docs/handoffs/2026-10-30-doctor-plus.md` (5 PASS, 1 minor FLAG: 2 long Windows lines in the Tier A index). Codex found 4 real gaps, all fixed and tested (skills `be02868`). Backup `manifest-unmanaged:_to_delete` already fixed by the 15:35 closeout; dry run 0 errors.
+- 2026-10-30 (Mac, Antigravity, morning): **Antigravity CLI (`agy`) updated and wired to workspace skills, rules, hooks, and memory.** `agy update` confirmed `1.4.11` is current. Linked `~/.gemini/config/AGENTS.md` -> `~/.claude/AGENTS.md` and `~/.gemini/config/rules/machine.md` -> `~/.claude/machine.md`; added `~/.gemini/config/skills.json` pointing to `~/.claude/skills`; archived the 20 unused GCP Data Cloud skills from `~/.gemini/config/skills/` (`gemini-datacloud-2026-10-30`) and 18 stale June/July skill copies from `~/.gemini/skills/` (`gemini-legacy-2026-10-30`, including defunct `game-film-timestamps`). Wired `SessionStart` (`keystone-unified-snapshot.js --agy`), `PreToolUse` `run_command` (`dcg-agy.js` -> `~/.local/bin/dcg`, closing `gaps-antigravity-unguarded`), and `Stop` (`transcript-capture.js --agy`) in `~/.gemini/config/hooks.json` alongside `herdr`. Added Go `zotero` MCP (`/Users/kristinarash/go/bin/zotero-research-library-pp-mcp`) to `~/.gemini/config/mcp_config.json`. Updated `KeystoneOS/scripts/agy-sync.ps1` (`Get-AgyAssistantResponses`) + `tests/agy-sync.ps1` to include `PLANNER_RESPONSE` assistant text from `transcript_full.jsonl`/`transcript.jsonl` in digests and compiler flushes (`agy-sync tests passed`; live `agy-sync` 0 errors). **NEXT:** none.
+- 2026-10-29 (Mac, Opus, 15:00-17:30): **Drive plan Tasks 10-11.** Dupes left measured (108k extra copies, 126 GB; ~3,100 real new saves in 60 days). 80.7 GB snapshot folder parked; `AI_Sessions_Backup` to `_MACHINE`; 160 more copies trashed (Eric); report B fixed (597 was an over-count); 313 survivor-rule copies parked (`drive-tools/tools/survivors.py`). Naming convention (full words, date first) live in Drive README, STORAGE.md, closeout, checker; 23 files renamed (`tools/rename.py`). `find --inside` (Drive full-text) + quoted phrases + `--in <folder>`: test found 10 of 12 in the top 25 vs 0 by name. Graphify over Drive and meaning search for Drive: not now (Eric chose A). Handoff: `docs/handoffs/2026-10-29-drive-tasks-10-11.md`.
+- 2026-10-29 (Mac, Opus, 17:25): **progress-line mod built and kept.** Thin band above the prompt: tasks done/total, running subagents with a spinner, clock; `✓ all done` 5 s then hides; `/progress-clear`. Stacks above `repo-band`/`next-steps`. Validate, `tsc`, tests 2/2 pass; `mods-sync.sh` 11 loaded. dotclaude `88ca5b6`. Not yet seen live (loads after restart). Handoff: `docs/handoffs/2026-10-29-progress-line-mod.md`.
+- 2026-10-29 (Mac, Opus, 16:40): **handoff-button mod built.** One "Handoff" button in the band above the prompt runs `/mattpocock-skills:handoff` through `$.command.run`. Validate and `tsc` pass; never pressed live (Eric said "Not now" to hot-reload). Lives at `~/.claude/dev-mods/be0bffce-6cc4-4fbd-95ac-6ef92fa7c3e2/handoff-button/` (gitignored, this machine only). Closeout moved 8 pre-10-15 entries here to `docs/handoffs/STATUS-archive-2026-Q4.md`. Handoff: `docs/handoffs/2026-10-29-handoff-button-mod.md`.
+- 2026-10-29 (Mac, Opus): **First real /startup run.** dev-sync merge loop over 122 repos: 10.8 s, PULLED `house-model` only, 0 FAIL, 0 conflicts; Codex links `where-was-i` + `_shared` landed; board started. Fixes from the run: where-was-i sorts same-day rows by time (date-only stamps made startup's pick arbitrary on a busy day) and treats `**Decided ...` items as closed (17 -> 16 open); startup's board rule no longer blocks on the committed 10-20 `project-triage/portfolio.json.from-windows` (a settled conflict); dev-sync loop space-safe (`xargs -0`), FAIL triage re-runs fetch/merge by hand, no-.git check skips `docs/`. `--decisions` now also lists this workspace's own `## Open questions` (they never reached /startup). Skills `e534ff9`, dotclaude `f7f733b` + follow-up. Still open: `SpecialRequests/Wilhelm_Brody_RTP` is NOT-A-REPO (project work). Later the same day: conflict steps, Windows scripts (Mac pwsh) and every closeout command tested and passing; Wilhelm repaired, data pushed (Eric's call). Handoff `docs/handoffs/2026-10-29-startup-devsync-first-run.md`.
+- 2026-10-29 (Mac, Opus): **startup / dev-sync / closeout audited and fixed** (writing-for-agents). Live bug: dev-sync's `mirror_memory.py` would have copied 135 files back into the 12 Windows-slug memory folders archived 10-25 (dry run); step and script retired. dev-sync is now sync only: `where-was-i.py --sweep` inventory and proof, a one-pass fetch+merge loop over the new `where-was-i.py --list` (122 repos ~10 s; tested on throwaway repos: pull, conflict, no-upstream), snapshot commits use the autopush `BLOCKED` list, Windows commands in `PLATFORMS.md`, 12.7 KB -> 6.6 KB. startup now owns board + "Picking up" report (pick = newest dated `where-was-i.py` row; the old activity rank always chose `claude-global-memory`). closeout: deliverable copy via `gws drive +upload` to `03_REPORTS` (id `18lZZ4ep4pmK6upQfEcTUuLNlDdSAk5Au`), not the mount; "Do not use" clause (portability check now passes). Skills `97a0cd7`, `1969977`, `24ce29c`, `39d71b5` (skip phantom clones: `printing-press-library` is trashed locally but live on GitHub; Eric may archive it there); dotclaude `15896e0`. Seven-day rule now runs only in closeout. First real run done (entry above).
+- 2026-10-29 (Mac, Opus): **Drive Computers wave done.** 41,963 old backup copies trashed (10.0 GB) from "Computers/My Laptop (2)", "Computers/My Mac" and 98 small roots; each one live-checked first (a twin still in a kept folder, or an empty file). Eric ran the passes in Terminal (agent trash runs are blocked by the auto-mode check). ~100 left untrashed on purpose (changed, call errors, moved, no twin). All Drive waves so far: ~151,000 copies, ~203 GB, in Drive trash for 30 days. Handoff `docs/handoffs/2026-10-29-computers-wave.md`. **NEXT:** index rebuild (`~/DEV/drive-tools/docs/STATUS.md` Next 1).
+- 2026-10-26 (Mac, Opus): **closeout round 2: gaps fixed.** New `where-was-i.py --sweep` (4 s; every DEV + config repo; side branches, stashes, worktrees, broken `.git`; dotclaude `3c8bad0`, test added). closeout now proves the push with a second sweep, uses the autopush `BLOCKED` list, waits for background jobs, and says which open items block (skills `bf2c7e7`). Eval: scenario 1 34/36, new-trap scenario 2 27/27 (was 24 original, 20 after the first rework). Sweep found today: `SpecialRequests/Wilhelm_Brody_RTP` `.git` is broken (no HEAD/config; work there is tracked nowhere), `graphify-out` dirty. **NEXT (Eric):** Wilhelm repair is already on your list (Wilhelm stub).
+- 2026-10-25 (Mac, Opus): **closeout skill reworked** (writing-for-agents review, Eric chose all). Steps now in run order (memory before the push), one scope rule, done line, Landed in the verdict, dead `session-handoff` pointer gone; SKILL.md 14 KB -> 8.3 KB + `CARDS.md` + `PLATFORMS.md` (skills `740138a`). Tested: 56/56 old rules kept; paper eval old 30/36, new 32/36 (`~/.claude/audits/closeout-eval/`). Gotcha: headless `--no-session-persistence` runs log to `.errors.log` via `transcript-capture.js` (8 lines archived). **NEXT:** none.
+- 2026-10-25 (Mac, Opus): **stack-doctor skill reworked** (writing-for-agents review, Eric chose all). SKILL.md 20 KB -> 3.5 KB (steps, done line, code index) + `FIXES.md` + `WINDOWS.md`; memsearch check no longer passes empty output (lock = WARN busy); `INVALID` eval rows skipped; 8 undocumented codes documented (37/37). Real run ALL CLEAR, tests 18/18 (skills `31e7631`). Review: `~/.claude/audits/2026-10-25-stack-doctor-skill-review.md`. **NEXT:** none.
+- 2026-10-25 (Mac, Opus, workflow): **Audit leftovers swept, all 8 domains** (run `wf_7c2abb5f-5cd`, 9 agents). 126 findings: 65 already fixed, 16 fixed today (settings allow rules 122 -> 59, autopush deadline, memory-compiler lock + phantom index rows, stack-check covers 3 more jobs, ~0.2 GB clutter to Trash, chmod go-w on 4,754 `~/.claude` cache files), 27 for Eric, 16 left. Every audit heading has a status line. Handoff `docs/handoffs/2026-10-25-audit-sweep-all-domains.md`. Eric said "all picks" (run `wf_6e240910-e86`): 12 applied, 3 were no-action picks, 4 came back (handoff "Picks applied"). Those 4 then applied too (shadow gate retired, `cx` sandboxed, Windows memory archived). brew upgraded too (Eric); new git hung on a Keychain prompt, so git now signs in to GitHub through gh. **NEXT (Eric):** the 8 hands-on items in the handoff (first: claude.ai plugin toggles, firewall).
+- 2026-10-25 (Mac, Opus): **Compile stays on Opus (tested).** 3 logs x Opus/Sonnet, same prompt, nothing written: Sonnet found 1 of Opus's 4 items and rewrote 6 articles shorter, losing facts. `compile.py` now pins `model="opus"`; tests 54/54. Flush stays on Sonnet. **NEXT:** none for Eric.
+- 2026-10-25 (Mac, Opus): **Memory flush now runs on Sonnet.** Test on 5 real sessions x 3 models: Sonnet matched Opus with no wrong facts; Haiku made 2 factual errors, so not Haiku. `flush.py` `model="sonnet"`, test asserts it, 54/54 pass, live run confirmed `claude-sonnet-5-5`. compile.py stays on the default (untested). Details in `docs/handoffs/2026-10-24-proof-of-changes.md`. **NEXT:** none for Eric.
+- 2026-10-25 (Mac, Opus): **Memory/recall audit** -> `~/.claude/audits/2026-10-25-memory-recall-audit.md`. Verdict: design is right (short index + on-demand files + BM25 recall.py with memsearch fallback; two separate lists cover 28/30 on the eval, a fused list does worse). Outside systems (claude-mem, mem0, Letta, Zep, Cognee) not worth it; QMD tested, rejected and deleted (best mode 13/24 at 84 s vs recall.py 21/25 at 1 s; dotclaude `f3a078d`). memsearch drop 28->25 traced to the 10-24 handoff/audit roots (27 without them; left as is). Leak: compiler daily compile costs $27–32/mo quota and rising, articles opened in 3 of ~191 sessions. Fixed: recall.py printed an empty memsearch section while the SessionEnd re-index held the Milvus lock (1,362 s today); now says `memsearch DID NOT RUN` (dotclaude `5c7dc08`, test added; audit update `a9f8162`). **Decided (Eric):** keep the nightly compile; memsearch hits now memory-first in recall.py (eval hit@1 13->17, hit@5 25->27; dotclaude `8c2131a`, skills `efce82b`). **NEXT (agent):** fold 6 Windows-only Tier A files, drop Windows slugs from recall roots (move nothing until Eric confirms the laptop stopped writing them); split `project_backup-sync-system.md` (34.7 KB); memlint size warning.
+- 2026-10-25 (Mac, Opus): **dev-* audit findings swept** (20 of the 10-22 audit's leftovers). Fixed: RTP_WorkingGroup `Docs/` -> `docs/` (`82dfa4a`); LibraryProject Zotero submodule bump (`ad11b44`); public SportScienceResearchRepo stops tracking `node_modules` + `settings.local.json` (`22f386c`, deploy passed); house-model pulled (CFBD now cloud-only via `/opt/muse`). Status line under each finding (dotclaude `29e62a3`). Handoff `docs/handoffs/2026-10-25-dev-findings-sweep.md`. Registry duplicates fixed (Eric kept paused rows; project-triage `eb91d17`). Eric 10-25: VALD secret not rotated (accepted); Wilhelm stub stays. **NEXT (agent):** the non-dev domains of the same findings file.
+- 2026-10-25 (Mac, Opus): **10-23 audit handoff closed; weekly memlint cleaned.** Checked: cloud-push OK (10-24 17:30, 10-25 07:00), weekly adjudicate OK (02:30, `.errors.log` empty), flush fix test passes, KeystoneOS memory-index item closed (`72854f7`). memlint's weekly LLM pass re-flagged facts the 10-24 session had already marked superseded, plus by-design USER.md repeats: memlint now skips both, tolerates empty harness-made slug dirs, and runs without user settings (memory-compiler `ca1a18a`). Rerun: 1 error + 37 warnings -> 0 + 15; the 12 real stale facts marked in place and the 3 Windows history files indexed (dotclaude `8cfc527`, `3aa5ff5`); structural lint 0 errors, 0 warnings; new test `scripts/test_memlint_empty_slug.py` (`c13c9f0`), pipeline tests 54/54. Weekly report kept as `reports/memlint-2026-10-25-weekly.md`. Still open: daily-backup `uv-prune: skipped (locked)` every run (browser-use MCP holds the uv cache). uv-prune lock skip accepted as normal (Eric, 10-25): the log line now says so (dotclaude, offline test ALL PASS). Trade-off: the uv cache (24.9 GiB) is pruned only on a run when no uvx server holds it. **NEXT:** none for Eric. Box Drive is not on the Mac; install it only if a Box task comes up.
+- 2026-10-24 (Mac, Opus, afternoon): **Audit group 4 confirmed done.** It was already applied in dotclaude `066c69b` (00:42, pushed): `skillOverrides` has `anthropic-skills:research-in-5` and `anthropic-skills:sports-science-research-grounding` off, and `claude-mem@thedotmack` is uninstalled (only `claude-mem-cowork` remains, turned off). Checked: `settings.json` clean against git, `claude plugin list`. Pid 75119 (`ttys002`) is still open but no longer blocks anything; it was not stopped. Left: an orphan cache folder `~/.claude/plugins/cache/thedotmack/claude-mem/` (harmless). **NEXT:** none for Eric.
+- 2026-10-24 (Mac, Opus, 11:10): **Memory hygiene + recall.** All 41 memlint findings fixed in 36 Tier A files (superseded facts marked in place, nothing deleted; memlint structural 0 errors; dotclaude `7bc3799`, `d43885c`; global-memory `cae04bf`). recall.py (Eric asked to beat 21/30): file-name column at weight 2, best-matching Tier A wins, `archive/` folders skipped, and it runs memsearch itself on a weak or no match (memsearch now ~10 s; it found 3 of the 5 word-gap misses). Eval stays 21/30 (hit@5 25/30), bench 11 -> 12 of 13; a tuned 23/30 lost other questions, so it was not kept. dotclaude `c8bbd91`, `71df93e`; claude-skills `baa3ad0`. Notes: `~/.claude/scripts/recall-bench/results.md`. Manual backup 10:15-10:57 ended OK, 0 errors: `codex-config.tgz` and `shell-dotfiles.tgz` uploaded, index 334 chunks, recall-check OK; `uv-prune` skipped (locked by browser-use servers; retries daily). **NEXT:** none for Eric beyond the handoff's Eric-only list.
+- 2026-10-24 (Mac, Opus, 10:35): **Background memory jobs stop loading user settings.** claude-agent-sdk 0.2.165 silently drops `setting_sources=[]`, so flush (~12 a day, Opus) loaded CLAUDE.md, plugins and hooks every run (~20k tokens) and compile/adjudicate were not protected as their comments said. Now `extra_args={"setting-sources": ""}` (memory-compiler `c8d263b`); flush first turn 23.5k -> 0.9k, model unchanged, tests 54/54. stack-doctor `context-floor` now also flags background jobs over 15k (dotclaude `3240c71`). **NEXT:** none for Eric.
+- 2026-10-24 (Mac, Opus, 10:40): **Efficiency pass, measured.** Skill router hook off (Eric): 474 hints in 7 days, 6 followed, ~0.55 s a prompt, prompt text went to TypeSafe (dotclaude `c836850`; code kept in `~/.claude/skill-router/`; reverses the 10-23 rebuild choice on the numbers). Prompt suggestions off (Eric). Session start size is now watched: stack-doctor `context-floor` (claude-skills `c8f4aa7`, `~/.claude/scripts/context-floor.py`), baseline desktop 102,211 / CLI 69,130 tokens; desktop grew from 71k on 10-16, mostly app-owned tools. 06:00 Meeting Sync scheduled run proven (`sync_complete`). Table in `docs/handoffs/2026-10-24-proof-of-changes.md`. **NEXT:** none for Eric. Optional, Eric: claude.ai > Customize, remove unused synced plugins (browser-use, firecrawl, data, pdf-viewer, cowork-plugin-management); 0 calls in Code.
+- 2026-10-24 (Mac, Opus, overnight + morning): **Agent-file cleanup done (Task 9, FILE-ORGANIZATION-PLAN).** Review (9 agents) then fixes, each checked and committed: `~/.codex/hooks` is a symlink to `~/.claude/hooks`; LIFEOS retired (parked in `~/_PARKED_COPIES`); harvest-dev-docs is a true mirror that skips health/local-only repos; search roots cover handoffs and audits (recall 21/30 unchanged); 8 Tier A `_` slugs folded to `-`; one `.errors-ledger.log`; daily-backup gained log trims (not `permission-gate/shadow.jsonl`: Jev review evidence), `codex-config.tgz`, `shell-dotfiles.tgz`, index checks, a daily `uv cache prune`, and `auth.json` on the credential deny-list (offline test ALL PASS); `RESTORE.md` rewritten for the Mac and fact-checked (old restore docs retired; Drive copy refreshed); Drive tools moved to their own repo `~/DEV/drive-tools`; everythingd no longer crawls Drive; 16 plugins uninstalled; Cloudroom and Grok Bot removed (Eric); athlete RTP memory de-identified; Windows C:/ paths fixed in PlayerProfiles, Risk engine, ForcePlate, SpringPlayerEvals (tests pass); skill-router hook guarded; flush.py keeps the context on FLUSH_ERROR; compiler `_stranded-archive` untracked. About 4 GB sits in `~/.Trash` (`*-2026-10-23`/`-24`). Handoff: `docs/handoffs/2026-10-24-agent-files-cleanup.md`. **NEXT:** done 10:57 (manual backup proved the new parts; see the 11:10 entry). Eric items are in the handoff.
+Entries dated before 2026-10-09 are in `docs/handoffs/STATUS-archive-2026-Q3.md`.
+- 2026-10-24 (Mac, Opus, early morning): **Windows-holdover leftovers cleaned up** (5 fix agents + 2 reviewers, then follow-ups). KeystoneOS: dead Codex PowerShell hooks and 5 Windows tests removed, `codex-memory-bridge.md` rewritten from `~/.codex/hooks.json`, Windows paths out of the router docs, `jobs.json` morning-cadence `daily` (matches the plist; Saturday is game day), 10 stale branches deleted (each kept as an `archive/*` tag), 5 Windows-era plans archived under `docs/superpowers/plans/archive/`. Skills: pp-espn/pp-fireflies restored as vendored skills in `~/.agents/skills` (untracked on purpose since 98f7517); the daily backup now snapshots `~/.agents` (`agents.tgz`); five-slides Mac build/deliver steps (image export waits on PowerPoint Automation permission); Fireflies auth message gives the Mac Keychain step. memory-compiler: flush runs with no tools (cause of the 10-10/10-12 max-turns failures), tests log to a temp file. settings.local.json impeccable hooks deduped (Windows behaviour kept). Antigravity `~/.gemini/config/mcp_config.json` points at Mac MCP paths. ZoteroInjestion Windows installer removed. Flint `triage_model_pass.py` runs on the Mac (catalog rebuild is Flint's NEXT). ~266 MB of untracked Windows leftovers moved to `~/.Trash/windows-leftovers-2026-10-24/`. **pwsh migration tried and rolled back:** Homebrew core's `powershell` 7.6.8 installs `bin/pwsh` as a bash wrapper, and launchd killed the jobs (Launch Constraint Violation); back on the tap's 7.5.2 at 04:54, morning and agysync re-run OK. Tested fix for later: put `/bin/bash` before `/opt/homebrew/bin/pwsh` in the plists (stack-check prints this; fails from 2027-03-01). **Resolved:** Eric allowed Claude to control PowerPoint; five-slides Step 6 now exports PDF + slide PNGs on the Mac (saved via PowerPoint's sandbox container; tested twice). **Open, agent can do:** a Mac test for the memsearch lock shared by `memsearch-sync.js` and `daily-backup.ps1`; `memory-sources.json` `codex_memory` points at a missing `~/.codex/memories`; `tests/keystone-reconcile.ps1` stops at `-WindowStyle` on macOS; ZoteroInjestion SETUP.md older Windows blocks; ~~game-film-timestamps skill also missing on the Mac~~ (defunct per Eric 2026-10-30).
+- 2026-10-24 (Mac, Opus, 03:40): **Proof of the 10-22..10-24 changes.** Handoff `docs/handoffs/2026-10-24-proof-of-changes.md`: recall.py is the one speed/cost win (~18k vs ~100k tokens a question); Meeting Sync fix was needed (silent fail 08-06..10-23); flush tests 54/54; session start grew ~330 tokens (cleanups = fewer parts, not speed). stack-doctor now has "Job proof" (log success lines, not exit codes) for meeting-sync, backup HARVEST, nightly digest, with a 6/6 test (claude-skills `f588b6a`). **NEXT:** none for Eric; the weekly stack-doctor flags a failed timed run in `.errors.log`.
+- 2026-10-24 (Mac, Opus, after midnight): **Ran the new pieces and cleared the 3 stack-doctor warnings.** Kickstarted `com.keystone.morning`: Meeting Sync `sync_complete`, `cadence OK` 00:08 (Keychain read works under launchd). Kickstarted the daily backup: `HARVEST` ran 00:31 (107 repos + 39 archived). Warnings: (1) `filesdigest` exit 1 = no send retry; `claude-files-digest.py` now has a shared `send()` (4 tries, 60 s) and an `already_sent()` guard (`--force` resends), both digests use them; launchd run 00:52 sent 10-23, exit 0 (dotclaude `6c3c9a6`). (2) `flush-error` = flushes that hit no network on wake (10-17, 10-21) were never retried; `flush.py` now treats ENOTFOUND/"Can't reach the API server"/ECONN* as transient, backoff 10/30/120 s, test added (memory-compiler `cdd640e`). The flag reads the last 3 dailies, so it clears once a 10-24 daily exists. (3) `USER.md` 97% -> 91%, same facts (global-memory `8f0cc9c`). Not fixed, older and not recurring since 10-12: flush `Reached maximum number of turns (2)`. Note: a parallel session changed `harvest-dev-docs.sh` and `memory-index-paths.json` (18 roots) around 00:24-00:34; the backup's first index of the new roots ran 30+ min.
+- 2026-10-23 (Mac, Opus, night): **Windows holdover audit + fixes.** Read-only audit (7 agents, 132 items; a skeptic re-checked all 70 port/delete calls): `~/.claude/audits/2026-10-23-windows-holdover-audit.md`. GitHub: all 160 repos already on the Mac, no Windows CI. Most `~/.claude` residue was already in the 10-22 audit. **Fixed:** Fireflies meeting-sync in the morning cadence (failed on every scheduled run since 08-06 while logging OK; now reads the Keychain, failures go to `.errors.log`; KeystoneOS `b13a617`); `jobs.json` probe regex; the six KeystoneOS plists versioned in `KeystoneOS/ops/`; `verify-backup.ps1` (printed a false PASS on the Mac; now FAIL without CRASHBOX; `COMMANDS.md` says so); the daily backup runs the dev-docs harvest; the job-watch status line reads the backup's recall check (was a frozen 10-04 PROBLEM); **nightly digest scheduled** (launchd 21:00, retries the send, no Drive section on the Mac; test send OK 23:29); TOS build paths; ~200 dead Windows files removed (in git history). An adversarial review (3 agents) found no live-job breakage; its fixes are in (`fix-msys-ad-stall.ps1` restored for Windows desktop sessions). **First proof is tomorrow (agent checks, not Eric):** `KeystoneOS/outputs/morning/cadence.log` 06:00 `== Meeting Sync ==` block shows `sync_complete`; the first backup run after 12:00 logs a `HARVEST` line; 21:00 digest arrives. **Deferred, agent can do on request:** files digest has no send retry (failed at wake 10-23 06:36); KeystoneOS `scripts/codex-hooks/*.ps1` + 5 Windows tests + `docs/codex-memory-bridge.md` rewrite; five-slides-generator SKILL.md Mac export steps; pp-espn/pp-fireflies skills missing on the Mac; Flint `triage_model_pass.py` Windows defaults (half-day; catalog rebuild first); `settings.local.json` Windows impeccable hooks (touches Windows desktop sessions); Antigravity `~/.gemini/config/mcp_config.json` zotero entry; 8 stale KeystoneOS branches (copy 2 branches' docs first); `jobs.json` morning-cadence kind `weekdays` vs a daily plist; the pwsh tap is disabled 2027-06-18 (6 jobs depend on it); claude.ai-synced migrate-project-to-disk skill still writes to the removed `_INBOX/migration-tools/`. Run nowhere by choice: DailyGmailDigest (dormant), a CFB forecast nudge (none exists; captures are by hand).
+- 2026-10-23 (Mac, Opus, afternoon): **Second-brain recall: `recall.py` is now the first search.** Built `~/.claude/scripts/recall.py` (plain code, ~1 s: fts5 BM25 rank, a Tier A memory first when its name fits, newest Mac/Windows copy, opens one file, prints matching paragraphs). Bench `~/.claude/scripts/recall-bench/results.md` run 4: 8/9 right at ~18k tokens/question vs default session 6/9 at ~100k; memsearch 1.5/5. 30-case eval hit@1 22 vs fts5 19. Routed first in `CLAUDE.md` (`31d86b1`), memory-write skill (claude-skills `844407a`), `AGENTS.md`, session-start hook (memory-compiler `3e35b5b`); memsearch is the NO MATCH fallback. A fresh headless session used it unprompted. **The 10-23 `.errors.log` bursts ("hidden sessions in ~/DEV with no transcript") were this bench:** `claude -p --no-session-persistence` runs from `~/DEV`; not a fault. **Evening:** `~/.claude/scripts/remember.py` files a Tier A memory with no model (name rule, duplicate refusal, index line, read-back; skill + AGENTS.md point at it). recall.py now also searches every `~/.claude/projects/*/memory` folder (31 folders, 336 files; eval hit@1 21). Mac slugs keep `_` (skill fixed). Handoff: `docs/handoffs/2026-10-23-recall-py.md`. **Later (evening):** memsearch roots now include vault Inbox/Notes/Drafts/audits (KeystoneOS `data/memory-index-paths.json`; indexed 19:25, Notes hits confirmed). recall.py's memory guard now reads the memory's description: bench run 5 is 9/9. card-check no longer flags an archived project whose STATUS has an entry dated today (project-triage `aed07de`). **Night:** 4 fresh bench questions (Q10-13, picked blind): default session 3/4 at 371k tokens, recall.py 3.5/4 at 72k, 4/4 after a fix (a big file's short opening paragraph is always shown; `725edb9`). Q10-13 are no longer held out. **NEXT:** none required; after any ranking change run the 30-case eval, then `bash ~/.claude/scripts/recall-bench/run.sh C`.
+- 2026-10-23 (Mac, Opus, morning): **Handoff follow-up.** Files digest for 10-22 resent (06:36 run failed on DNS at wake). **cloud-push schedule fixed:** cause is macOS per-file `com.apple.macl` — a job started straight by launchd cannot list Drive folders or touch Terminal-made files. The plist now runs `~/.claude/scripts/cloud-push-launch.sh`, which opens `cloud-push.command` in Terminal and logs an ERROR if no START in 90 s (dotclaude `b49c68f`). Kickstarted runs OK 07:15 and 07:21. Cost: one Terminal window left open per run. `uv cache prune` still blocked (7 live browser-use MCPs hold the lock). **NEXT:** after 13:00 check `grep 'daily-backup end' ~/.claude/scripts/logs/daily-backup.log | tail -1`; 17:30 cloud-push line in `cloud-push.log`; Eric items in the 10-22 handoff (Windows deletes, firewall, Time Machine, claude.ai superpowers toggle). **Later:** Zotero now backed up: `Snapshot-Zotero` in `daily-backup.ps1` uploads `zotero.tgz` weekly, only when changed (dotclaude `2e85b1a`; first upload 09:28, 1.25 GB). Eric: Terminal profile set to close on clean exit (b); Terminal added to Full Disk Access. **Audit re-triage + fixes (afternoon):** 145 findings re-checked (23 fixed, 121 open); a safety critic kept 31 agent-safe items; 28 applied and reviewed in 5 repos (dotclaude `41fbbd1`, claude-skills `966af91`, memory-compiler `86dff8b`, DEV `7f93ac7`, KeystoneOS `4f21dc2`). Eric picked: history files stay committed (option b); skill router rebuilt, not retired (TypeSafe_Sandbox `dbdf3aa`, 151/151 skills). STATUS older than 10-09 moved to `docs/handoffs/STATUS-archive-2026-Q3.md`. **NEXT:** group 4 (2 skillOverrides + uninstall claude-mem) once other sessions are closed; router fail-open re-test when load drops; Eric: `MODEL_ROUTER_KEY` in `~/.zshrc` was printed into a review agent's transcript (now committed under option b) — delete the retired model-router block or rotate. **Check pass (afternoon):** daily backup ended OK 10:32 (0 errors); router full test passed under load (0/9 wrong, 0/4 needless, 9/9 safety; TypeSafe_Sandbox `30b2c9b`); backup changes passed an offline test; stack-check found 3 items (filesdigest flag clears after tomorrow's run; 10-21 flush error is the known `mp-flush-error-deletes-context` item; error-log bursts). The bursts are hidden Claude sessions in `~/DEV` with no transcript (10:58-11:24, 12:09-12:15, 12:23-12:29). Not the memory compiler: its hook logged them too, so they were unmarked. `transcript-capture.js` now logs the caller chain (dotclaude `ec652d9`). **Later:** burst source found: `~/.claude/scripts/recall-bench/run.sh` (`claude -p --no-session-persistence`); it now sets `CLAUDE_INVOKED_BY=recall_bench`. `morning-briefing` moved to `_ARCHIVE` (Eric). It was back because `dev-sync` re-clones archived GitHub repos; 28 such repos came back on 10-13. `dev-sync` now uses `--no-archived`. group 4 done (dotclaude `066c69b`, 2026-10-24 00:42; pid 75119 stopped 10-24); Eric: archive `~/DEV/morning-briefing/` or not.
+- 2026-10-23 (Mac, Opus, all day): **Drive waves 2 and 3 done.** Wave 2 (parked OneDrive import): 102,362 of 102,400 copies trashed (~118 GB; 38 left: 24 changed, 13 call errors, 1 no live twin). Wave 3 (`99_UNSORTED`): 3,393 of 3,393 (24.4 GB). With wave 1: ~109,300 copies, ~193 GB, all in Drive trash for 30 days, ids in `_INBOX/drive-index/trash_log_<zone>.csv`. Index rebuilt 16:20 (519,228 rows; Computers still 232,801 = no new backup writes). `trash_twins.py --prefix` now takes a Computers machine root, so the folder check covers that wave (`_INBOX d0cedd0`). Computers candidates: 42,071 (10.1 GB): My Mac 11,003, My Laptop (2) 30,968, small roots 100. Handoff: `docs/handoffs/2026-10-23-drive-waves-2-3.md`.
+- 2026-10-22 (Mac, Opus, late night): **System audit + fixes.** Read-only audit (16 agents, 145 findings): `~/.claude/audits/2026-10-22-system-audit.md`. Eric rotated the 4 leaked secrets, quit Grok, disabled the synced GitHub plugin. Fixed: creds files 600, bare `Bash` allow rule gone, Codex hook symlinked, `where-was-i.py` skips `_DRIVE`, 11 GB freed; **backup now daytime** (hourly 12-17 via gate `daily-backup-login.sh`, AC only, max 2 tries; tonight's run ended OK 22:05); **cloud-push** skips local-only folders and browser profiles, logs failures to `.errors.log`, by-hand run OK 22:14; the 2 private Cloud_Copy folders trashed. Handoff: `docs/handoffs/2026-10-22-system-audit-and-fixes.md`.
+- 2026-10-22 (Mac, Opus, night): **Drive waves 2 and 3 ready, not run.** `_INBOX/tools/trash_twins.py` (replaces `trash_review.py`) verified by 3 read-only agents + 60/60 live dry-run. Wave 2 = parked OneDrive-Import, 102,400 copies (118.7 GB); wave 3 = `99_UNSORTED`, 3,393 (24.4 GB). Naming: Eric picked B (rename new files only). Detail: plan Task 8.
+- 2026-10-22 (Mac, Opus, evening): **Drive trash wave 1 done.** Rebuilt index (615,824 rows); Codex verified counts; Eric ran `_INBOX/tools/trash_review.py`: 3,566 `_TO_REVIEW` copies (50.1 GB) trashed, live-checked, 0 errors. Windows laptop still backs up `DEV` to Drive "My Laptop (2)". Handoff: `docs/handoffs/2026-10-22-drive-index-and-first-trash-wave.md`.
+- 2026-10-22 (Mac, Opus, later): **Flint + Drive 7-day plan** at `Flint/docs/7-DAY-PLAN-2026-10-22.md`. Grok bot (installed 10/21) moved 3,699 duplicate files (50 GB) into Drive `_TO_REVIEW` at 11:09, so the 07:10 Drive index is stale. Task 8 NEXT 1 (rebuild) now also serves as Flint's catalog recount. Eric: Grok is finished; Claude is the only Drive writer. Index rebuilt 17:55 (Task 8 NEXT 1 done); Flint recount 51,290 files / 26,977 unique.
+- 2026-10-22 (Mac, Opus): **Drive index (plan Task 8).** `_INBOX/tools/drive_index.py` lists all of Drive by API with checksums; `find` + delete-candidate/naming reports. 214k files found in old "Computers" backups. Rebuild stopped (low memory). NEXT in plan Task 8.
+- 2026-10-21 (cloud, Haiku): **Unlisted repos indexed.** Added the 22 repos from the 10-19 list to their area indexes (PERFORMANCE, FOOTBALL, PROGRAM, RESEARCH, PERSONAL, PLATFORM). Eric said to use judgement. Guesses to confirm: `house-model` (placed in PERSONAL), `Volleyball_GRID` and `Cheer_Programming` (PERFORMANCE), `Build_Along` (PLATFORM), `sleep-scheduler` (PERSONAL). `Website/` now names repo `AppliedPerformance-Site`. Both config repos are in PLATFORM Control plane. **NEXT (Eric):** confirm the guesses above and move any that are wrong.
+- 2026-10-21 (Windows, desktop app, Opus): **Windows laptop is back in use for Claude desktop-app sessions only** (no terminal CLI, no automation); the Mac keeps terminal Claude Code. **Session-end auto-push is live on both machines:** dotclaude `5c121f0` (`hooks/session-autopush.js`, registered under `SessionEnd`) was already on `main`; pulled here. It commits and pushes the session's repo at session end, skipping `~/.claude` repos, secrets, DBs and Dexa. Results in `global-memory/transcripts/autopush.log`. DEV branch `cloud-sessions` (`6f97dba`) was also already on `main`; both merged branches deleted from origin. Still open from 10-19: map the 22 unmapped repos.
+- 2026-10-20 (Mac, Opus): **Live DEV databases now back up nightly.** `~/.claude/scripts/daily-backup.ps1` (new `Snapshot-Databases`, dotclaude `73bb462`) stages consistent copies of the 6 live DBs (`pff.db`, `forceplate.db`, `gps_history.duckdb`, `perch.duckdb`, `model.duckdb`, `InjurPred/predictions.db`) and uploads one `dev-databases.tgz` (256 MB) via `gws` to `_MACHINE/Backups/Machine`. First upload done by hand 15:40, OK. Dated `before`/`backup` copies stay local. `cloud-push.py` still keeps DBs off the mirror. Found: last night's 00:05 `gws` uploads all failed because the Mac was offline (git pushes failed too).
+- 2026-10-19 (cloud, Opus): **Cloud-session rules added to `CLAUDE.md`** (branch `cloud-sessions`, merged to main). Folder name = repo name for every mapped project except `Website/` → `AppliedPerformance-Site` and `DexaProject` (no repo). Companion: dotclaude branch `autopush-session-end` adds a SessionEnd hook that commits and pushes local work. **Router gap found:** 22 active repos are not in any area index: TackleAnalytics, house-model, Wilhelm_Brody_RTP, Volleyball_GRID, AppliedPerformance-Site (as `Website/`), Education_Alignment_Initiative, sleep-scheduler, cmj-traffic-light, Weekly_Matchups_2026, agent-skills, Cheer_Programming, Zinnecker_Skylar, BAIR_Steering_Committee, SportScience_Benchmarking, AppliedNewsletter_2026, Build_Along, BookVaultApp, printing-press-library, SPC_Report, Football_GRID, plus claude-global-memory and claude-skills (config, fine to leave out). **NEXT (Eric):** say which area each unmapped repo belongs to, or archive it.
+- 2026-10-16 (Mac, Antigravity, evening): **Drive sync unblocked + gws backup route + crosswalk 0 drift.** Traced DriveFS slow acknowledgments/409 conflicts via `gws` and `drive_fs.txt` to 68,000+ small cache/catalog files inside `_MACHINE/Cloud_Copy/DEV` (`printing-press-library` 66,283 files, `graphify-out/cache` 2,100+ files, leftover `SportScienceResearchRepo/node_modules`). Trashed those cache/catalog folders on Drive via `gws` (leaving all `graphify-out` reports/graphs and all project repos intact) and excluded `printing-press-library`, `graphify-out/cache`, and `.build` in `~/.claude/scripts/cloud-push.py` (cutting sync file count from 104,945 to ~33,735). Updated `~/.claude/scripts/daily-backup.ps1` (Option 2, Eric approved) to upload `.tgz` personal snapshots, receipts, and `RESTORE.md` directly via `gws` API into `_MACHINE/Backups/Machine` (`1ALag3z9Ew5ihBZKjt_1yZzsNpX-K4UJn`), and moved today's 5 `.tgz` snapshots from `gws-upload-2026-10-16` into `_MACHINE/Backups/Machine`. Added `BayCap`, `Cloudroom_Learning`, and `MacEverything` to `backup-manifest.json` (and removed archived `AI_Analyst`), and added `Cloudroom_Learning`, `CFB_Playoff_Benchmarks`, `MacEverything`, and `house-model` `drive_folder` to `portfolio.json` (`portfolio.py crosswalk`: `OK - 0 problem(s) across 182 rows`).
+- 2026-10-16 (Mac, Opus, evening): **Drive mount refresh tried, not fixed.** Server is correct (`Backups` inside `_MACHINE`). Restarted Google Drive for desktop and `fileproviderd`; after 40 min the mount still shows `Backups` at the root. DriveFS log: slow acknowledgments, then stuck threads, likely from today's 104,923-file cloud-push backlog (that run finished OK 16:10). Today's snapshots are already on Drive by gws. Handoff: `docs/handoffs/2026-10-16-drive-mount-refresh.md`.
+- 2026-10-16 (BayCap closeout): Eric installed OpenCap on both devices. Resume at `https://app.opencap.ai/` for guided account setup; installation is complete, pairing/calibration remain unverified. Handoff: `BayCap/docs/handoffs/2026-10-16-baycap-setup.md`.
+- 2026-10-16 (Mac, Codex): **BayCap created.** Private repo `erash11/BayCap`, local `~/DEV/BayCap`, Drive `01_PROJECTS/BayCap`. Starter README, agent instructions, exclusions, and STATUS preserve the guided iPhone 15/iPad mini OpenCap pilot. Added to PERFORMANCE.md and the project registry. **NEXT (Eric):** install OpenCap on both devices and confirm it opens; exact iPad generation remains unverified.
+- 2026-10-16 (Mac, Codex): **NODAL/iPhone feasibility review.** Reviewed NODALCapture releases/README, REA (`morluto/rea`), and OpenCap's primary validation paper. NODAL's public repo contains only README plus binary releases; third-party video import and standalone software use remain unconfirmed. REA may help investigate interoperability, but camera synchronization/calibration require separate engineering and validation. **NEXT:** test an existing two-iPhone OpenCap workflow before custom capture work; establish NODAL's external-video/calibration interface if NODAL remains the preferred processor. No software installed or binaries executed.
+- 2026-10-16 (Mac, Opus): **Storage rulebook.** `~/.claude/STORAGE.md` is the one rule set for where every file lives (Eric chose: documents' true copy in Drive, code's in GitHub mirrored to `_MACHINE/Cloud_Copy`). Pointer added to `~/.claude/CLAUDE.md` Workflow Expectations. Drive main README bullet fixed (`Backups`/`Cloud_Copy` are in `_MACHINE`). Drive app restarted; mount still stale (no `_MACHINE`), so today's machine snapshots were uploaded by gws to `_MACHINE/Backups/gws-upload-2026-10-16/` (5 tgz, sizes verified). Gemini's 10-15 handoff `00_Primary_Storage_Drive/2026-10-15_Drive_Consolidation_Handoff/` reviewed: it duplicates this plan. Gemini plan CLOSED (Eric). Mount half refreshed at close: `_MACHINE` visible, `_MACHINE/Backups` not yet; daily-backup guard now checks `_MACHINE/Backups` (dotclaude `e3f74fa`). `SpecialRequests/TOS_ES` kept local only (Eric).
+- Cowork project migration is COMPLETE. All cloud projects point at their disk repo from the project instructions block; WebApps, PlayerProfiles and Post Season Analysis were the last three and are archived.
+- Codex scratch in `~/Documents/Codex` swept. Salvage went to PP_Recruiting, Baylor_Doc_Style, TechEd_Prop, agent-skills, and `_DRIVE/00_INBOX/Personal`. That folder now carries `_SAFE_TO_DELETE.md` (3.2 GB, left in place by choice).
+- Recovered scripts re-filed 2026-09-14: the superseded publication utility is archived at `ZoteroInjestion/scripts/legacy/prepare_publication_syntheses.py`, and the migration tool and tests live at `CLI_Dev/codex-win-to-mac-migration/`. The other two utilities were byte-identical to existing local-pool scripts and were not overwritten. The complete holding folder remains recoverable at `_to_delete/2026-09-14_recovered-from-codex/`.
+- The guarded Windows v2 skill sync is complete. `~/.claude/skills` is the pushed canonical repo; `~/.agents/skills` and `~/.codex/skills` are generated copy views with 40 identical managed entries and preserved third-party/view-only skills. Platform-specific path configs preserve Mac behavior and supply Windows paths.
+- Security: a historical VALD client secret surfaced during the migration audit. Current working files and migration artifacts were redacted; the old value remains in private Git history only. Eric decided 2026-10-25 not to rotate it (accepted; the current secret is not in git).
+- The thin workspace router is synced with GitHub.
+- Pi `0.85.1` is installed at `/opt/homebrew/bin/pi` on the Mac.
+- The RTP course book has 253 verified pages and a zero page offset.
+- Its 84 library entries are complete.
+- Baylor's 2026 forecast snapshot is frozen at 4.49 expected wins.
+
+## Next
+- Drive (plan Task 10 step 4): after the 10-29 index rebuild, Eric runs in Terminal `cd ~/DEV/drive-tools && python3 -I tools/trash_twins.py --zone parked --threads 12` to trash the 313 parked survivor-rule copies (each live-checked against its kept twin). Then plan Task 10 step 5 (file the 23 root files and `99_UNSORTED/From_Desktop`).
+- Skill audits: say "audit the next skill on the list" (`memory-write` is first; rules and method in `docs/SKILL-AUDIT-LIST.md`). Next session checks the first 06:00 meeting export after the KeystoneOS change (10-31): `grep -E 'Skipped \(generic|Exported with a generic|New exports' ~/DEV/KeystoneOS/outputs/morning/cadence.log | tail -5`; a generic-named new file in `~/SecondBrain/Inbox/meetings/` dated 10-30 or later means the hold failed.
+- Windows laptop: delete `DEV/SpecialRequests/TOS_ES` and `DEV/SpecialRequests/Wilhelm_Brody_RTP/out/edge-profile` (the laptop's Drive backup "My Laptop (2)" still uploads them).
+- Audit leftovers worth doing next (from the report): `uv cache prune` (23 GB, was locked 10-22), Mac firewall on, untrack Windows hooks in `settings.local.json`, turn off the synced superpowers plugin on claude.ai.
+- After Drive waves 2-3: Jev test on sorting 50 unique (non-copy) files from one non-health folder; Eric approves the list first (plan Task 8 NEXT 4).
+- Run the loop once for real (WORKFLOW.md, "The work block"): pick one repo with tests, write its first `## Next` line as objective / validate command / stop condition, run the check (it must fail), start one agent with the goal contract, prove, read the diff, commit the item alone.
+- Remove the "`~/Desktop/DEV` on Windows" line from `~/DEV/CLAUDE.md` (laptop retired 10-14).
+- Open `Flint/docs/handoffs/2026-10-13-sport-science-network-closeout.md` for this session's files and checks. Adam Parr is the next replay if Eric asks to continue; saved video sources still require review before library promotion.
+- Mac dcg check: the duplicate hook was removed 2026-10-11 (`ff6a02b`). After restarting Claude,
+  `grep -c "local/bin/dcg" ~/.claude/settings.json` must print 1. If it prints 2, an open session wrote it back.
+- Football: `CoachReport_Prototypes/` and `WeeklyCoachReport/` still sit in `~/DEV/Football/` with no
+  registry row, though FOOTBALL.md lists them as archived 2026-10-03. Run `bash project-triage/docs/inventory/mac_archive_pass.sh`
+  (dry run) to see whether the Mac archive pass missed them.
+- 42Analytics: 6 tier A videos still `todo` (YouTube 429s on the Mac too, 10/3). Retry later:
+  `python3 scripts/fetch_captions.py --tier A --all-todo`.
+- Codex: after a fresh session, check whether SessionEnd completes without a
+  timeout and inspect the remaining warning screens. Reduce duplicate plugin
+  skill bundles only after choosing which ones should stay available; the
+  skill-context overflow is separate from hook execution. Carry the broker
+  timeout fix into the plugin source or reapply it after cache refresh.
+- Recheck memsearch incremental indexing; the Sep 25 error remains in
+  `~/.claude/global-memory/transcripts/.errors.log` and the retry timed out.
+- SportScienceResearchRepo: screen Batch 19 from its refreshed queue. For Ask the Library,
+  run the approved staff pilot or define the agent build target after Eric's direction.
+- Run the data-tier checklist in `docs/handoffs/2026-09-24-data-tier-for-duckdb-and-pulls.md`: inventory every `.duckdb`/`.db` in DEV first, then gitignore, `build_db`, and the `_DRIVE/03_DATA` move. Windows stops Drive-backing `Desktop\DEV` only after the data has moved.
+- Restart any Claude Code session that still shows the old `dcg` hook error, then confirm
+  a new Bash or PowerShell tool call runs without a `PreToolUse` error.
+- Windows: restart RStudio before the next `Football/SpeedProfiling` session, so it picks up `RENV_PATHS_LIBRARY_ROOT` and does not rebuild the renv library inside DEV.
+- Windows: recheck the Google Drive error count (expect 2, was 162). Quit and reopen Drive to force a rescan.
+- Next session: confirm every listed skill shows a description (skill listing budget is ~30,000 chars; predicted ~26,800).
+- Delete `~/Documents/Codex` when ready. 3.2 GB, nothing in it that is not already in git.
+- Write lesson 0002 in RTP_Constraints_Course and import its 122 Myszka references into Zotero.
+- Consolidate `USER.md` (95%) and `MEMORY.md` (101%) before the next memory write.
+- Confirm that `Ath_Medicine`, `Baylor_Exposure_Data`, and `Risk_Stratification_Engine` contain no identifiable athlete or health data that should remain local-only.
+
+## Open questions
+- ANSWERED 2026-10-29 (yes, 313 parked): Drive Task 10 step 4: park 313 clear copies (4.3 GB) in `09_PRO_DEV/Continuing_Education` and `05_SYSTEMS/TMG` (the "(1)", " 2", timestamped or nested TMG copy loses; the clean copy stays) and leave the 24 unclear ones? Yes means `survivors.py --apply`, index rebuild, then Eric's `trash_twins.py --zone parked` run.
+- ANSWERED 2026-10-29 (A, full words; live in 4 homes): Drive Task 11 naming: use full words (`2026-10-29_Football_GPS_WeeklyReport_Coaches.pdf`, "Football" is used 757 times vs `FB` 64) or keep the README's short codes (`FB_`)? Applies to new files only.
+- ANSWERED 2026-10-29: park (moved to `10_ARCHIVE/2026/`). Drive Task 10 step 1: `09_PRO_DEV/TB's Training Info (snapshot 2026-09-26)` is 80.7 GB (8% of Drive), added in one day on 9-27. Keep it as reference (drop "(snapshot …)" from its name), or park it in `10_ARCHIVE/2026/`?
+- ANSWERED 2026-10-23 (a): 26 clean re-cloned archived repos moved to `~/DEV/_ARCHIVE/` (list in its README). `2026-3-18_BodyWeightNorms` stays: its registry row is paused, not retired.
+- ANSWERED 2026-10-23 (a): `morning-briefing` moved to `~/DEV/_ARCHIVE/`.
+- ANSWERED 2026-10-22 (B, rename new files only): Drive naming: rename the 549 bad names in `03_REPORTS`, `06_TEMPLATES` and the top folders now, or keep the README rule "rename new files only"? (Counts in `_INBOX/drive-index/naming_problems.csv`.)
+- RESOLVED 2026-10-23: Eric chose to keep committing history. `dev-sync` Step 1 commits `~/.claude` with `git add -A`, which stages session history (`projects/*.jsonl`) against the old no-history rule (retired 2026-10-23); history may be tracked.
+- RESOLVED 2026-10-23: Eric chose to keep committing history. Should harness history files remain local, or should a separate task change their
+  tracking rules? Eric prohibited staging or committing history. Dotclaude and
+  global-memory both have history changes, so this closeout cannot save them.
+- Whether an already-running Claude Code session reloads changed hook settings without a restart.
+- Turn off the `last30days` plugin? 0 uses since 2026-08-05.
+- `LibraryProject.code-workspace` points at a nonexistent nested `SportScienceResearchRepo`; the live repo is at the DEV root.
+- ANSWERED 2026-10-29 (A, push the data): repaired and re-linked to private `erash11/Wilhelm_Brody_RTP`, `data/` tracked and pushed (`f482379`). Was: `SpecialRequests/Wilhelm_Brody_RTP` has been tracked nowhere since 2026-10-10: its `.git` is a broken partial copy (no HEAD, no config) and the parent `SpecialRequests` repo tracks 0 of its files. It has `data/` (RTP, may be identifiable). (A) move `.git` aside as `_OLD_git`, make it a private repo with `new-project`, commit, and push only if `data/` holds no identifiable health data (else add a "local only" line to its `CLAUDE.md`, committed, never pushed, like DexaProject); or (B) leave it: the sweep flags it daily and nothing backs it up. Recommended: A.
+
+## Gotchas
+- Restarting Google Drive for desktop and `killall fileproviderd` did not refresh the stale mount on 10-16. Do not repeat both before checking `drive_fs.txt` for "Slow working set change acknowledgment" or stuck threads.
+- `com.keystone.clouddrivepush` fails under launchd even with Full Disk Access on `Python.app` and `/usr/bin/rsync`; works by hand. Do not repeat the FDA fix. Untried: staged plist launching via `/bin/bash`.
+- Worktree folders and `.git/worktrees/` metadata fail to delete with `Permission denied` because **Google Drive for Desktop holds them open**, not because of privileges — no elevated shell needed. Quit Drive (Pause is not enough), then delete. PowerShell `Remove-Item -Recurse -Force` run from a directory outside the target works where Git Bash `rm -rf` reports `Device or resource busy` (Bash refuses while its own cwd is inside). All stubs were cleared this way on 09-22, including the old `router-wrr` and `router+dexa-windows-path`.
+- A leftover worktree branch is not automatically junk. Run `git log origin/main..<branch>` before deleting: `status+closeout-0917` held the only copy of the 09-17 DexaProject handoff (recovered 09-22).
+- Comparing a Windows checkout against a Mac-authored copy: normalize line endings before concluding the two have diverged. Raw md5s made six identical DexaProject files look different on 09-17. Binary files are the reliable signal.
+- `DexaProject` is no longer in `~/DEV` on either machine. It lives only on Google Drive — Windows `G:\My Drive\00_Primary_Storage_Drive\DexaProject`. Identifiable health data; never paste its contents anywhere.
+- `skillOverrides` does not apply to plugin skills. A plugin is on or off as a whole.
+- Editing `~/.claude/settings.json` while other Claude sessions are open does not stick: a running
+  session writes its in-memory copy back within seconds, and any closeout "snapshot" commit of
+  `~/.claude` then pushes the old file (`e72c374` 10/2, `9603eb4` 10/3). Close all sessions first.
+- `~/.agents/skills` and `~/.codex/skills` are generated views, not authoring locations. Edit and push `~/.claude/skills`, then run the platform sync; do not hand-edit managed copies.
+- The top-level `ZoteroInjestion` checkout is the working clone. `LibraryProject` carries the same repo as a submodule and pins `0077fd6`, equal to the working clone's main on 2026-10-25 (LibraryProject `ad11b44`); later Zotero commits require a submodule-pointer bump there.
+- Keep the `/*` rule in `.gitignore`.
+- If every pull fails with "Another git process seems to be running", look for zero-byte `.git/*.lock` files left by an interrupted run (138 on 2026-09-14; search deeper than depth 4, submodules keep theirs under `.git/modules/`). Move them aside, never delete.
+- Each project folder is its own Git repo.
+- Project name does not predict repo name. Post Season Analysis lives in `2025-11-25_EOS_Football_Analysis_GPS_ERR`; WebApps spans Jump_Dash, Game_Tracker_PWA and Practice_PlayCounts. Read a project's instructions block rather than guessing from the name.
+- Codex creates a scratch folder under `~/Documents/Codex` when a session starts outside a project directory. Start it from inside the DEV repo instead.
+- SportScienceResearchRepo, Travel_Map, and JumpReporting stay public because they serve live sites.
+# ~/DEV — workspace map
+
+Eric Rash — Applied Performance, Baylor Athletics. Sport science and
+football analytics, plus the agent system that runs them.
+
+This file is a **map, not a rulebook**. Behavior rules live in
+`~/.claude/CLAUDE.md`. Read only the index you need.
+
+## Areas
+
+| Area | Index | What lives there |
+|---|---|---|
+| Football | `FOOTBALL.md` | Game film, player analytics, CFB prediction. ~39k files — about two thirds of DEV. |
+| Performance | `PERFORMANCE.md` | Athlete monitoring, testing, load, risk. GPS, force plate, VALD, DEXA, S2. |
+| Research | `RESEARCH.md` | Literature, Zotero, book library, reading pipelines. |
+| Platform | `PLATFORM.md` | KeystoneOS, dashboards, CLIs, scheduled jobs. |
+| Program | `PROGRAM.md` | Staff reporting, curriculum, proposals, vetting, brand. |
+| Personal | `PERSONAL.md` | Side projects. Not Baylor work. |
+| Commands | `COMMANDS.md` | Desk reference: every report/project command Eric can run himself. |
+| Workflow | `WORKFLOW.md` | The ideal day, week and semester: which skill, mod and ritual, when and why. |
+
+## Elsewhere on disk
+
+`~/DEV` in this file means the workspace root on the Mac. Machine paths are in `~/.claude/machine.md`.
+
+| Path | What it is |
+|---|---|
+| `~/DEV/_ARCHIVE/` | Parked projects. Not a git repo, so the consolidation sweep skips it. Has its own `README.md`. |
+| `~/DEV/_INBOX/` | Loose files from the `~/DEV` root. Own repo. |
+| SecondBrain vault | Obsidian vault, ~850 notes. Own `CLAUDE.md`. `~/SecondBrain`. |
+| `~/.claude/skills/` | ~45 skills (plugins add more) |
+| `~/go/bin/` | ~8 custom CLIs built with `cli-printing-press` |
+| `~/.claude/claude-memory-compiler/knowledge/` | ~190 compiled articles |
+
+## Cloud sessions
+
+A cloud session (`CLAUDE_CODE_REMOTE=true`) has only this repo cloned. No
+project folders, no `~/.claude`, no Drive mount. Work this way instead:
+
+- **Open a project by attaching its repo.** The GitHub repo name is the folder
+  name in the area index (`Football/PFF_Data_Project/` → `erash11/PFF_Data_Project`).
+  Exceptions: `Website/` → `erash11/AppliedPerformance-Site`; `DexaProject/` has no
+  repo and is never opened from the cloud. Not in the map? List Eric's repos and
+  ask which one before guessing.
+- **Then follow that repo's Session routine** (read `docs/STATUS.md` first; commit
+  and push at the end). Nothing pushed means nothing the other machine can see.
+- **Documents:** use the Google Drive connector. The mount paths in this file are
+  Mac only.
+- **Skip what only exists on a machine:** `recall.py`, `memsearch`, Tier A memory files,
+  SecondBrain, `~/go/bin` CLIs, local databases (DuckDB, `.rds`). If a task
+  needs one of these, say so and suggest a local session on the Mac.
+- **Health data stays out:** never pull DexaProject, `SpecialRequests/TOS_ES`,
+  or any folder whose `CLAUDE.md` says "local only" into a cloud session.
+
+## Layout rules
+
+Full rules — grouping depth, the depth-2 discovery limit, and the gitignored-subtree
+trap — live in project memory: `project_dev-layout-and-discovery.md`.
+
+- ~50 projects carry a substantive `CLAUDE.md` (the rest are `@AGENTS.md` pointers). Read it before working in one.
+
+## Handling care
+
+- `DexaProject/` holds identifiable health data. It lives on Google Drive, not in
+  `~/DEV`: `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/DexaProject`
+
+  See `PERFORMANCE.md`.
+  Never paste its contents into chat, an artifact, or an external service.
+
+## Keeping this true
+
+When a file moves or a new project starts, **update the router in the same
+turn**. A stale pointer is worse than no pointer.
+
+The counts above are approximate on purpose — they convey scale, not state, and
+a `~` keeps ordinary growth from making this file wrong. Re-measure them only
+when one is off by enough to change a decision. Counts last checked 2026-10-23.
+
+Memory files named in these indexes (`project_*.md`, `user_*.md`) live in the
+workspace's Tier A folder: `~/.claude/projects/-Users-kristinarash-DEV/memory/`. They auto-load
+only when cwd is the workspace root itself — from inside a sub-project, open them by path.
+
+Search everything with `python3 ~/.claude/scripts/recall.py "<question>"` (plain code, ~1 s;
+it opens the best file and prints the matching paragraphs; on a weak or no match it also prints
+memsearch's meaning search, ~10 s). Bench: `~/.claude/scripts/recall-bench/results.md`.
+
+hook: PostToolUse
+ succeeded in 124ms:
+/Users/kristinarash/DEV/PERSONAL.md:9:| `SignalPlays/` | Eric's sports analytics career track and the Signal Plays brand. Has its own `CLAUDE.md`. **Disk is the source of truth**; the Cowork "UPskilling" project is only a pointer. Roadmap, Substack/site plan, Project 1.1 (Big 12 third down / red zone), brand rules. Code lives in GitHub `baylor-football-analytics`. |
+/Users/kristinarash/DEV/PERSONAL.md:10:| `MacEverything/` | macOS clone of voidtools Everything: instant filename search (daemon, `ev` CLI, menu-bar app). Repo `erash11/MacEverything`; start with its `docs/STATUS.md`. On disk at `~/DEV/MacEverything`; the `everythingd` daemon runs from `~/.local/bin/`. Built 2026-10-15/16. |
+/Users/kristinarash/DEV/PERSONAL.md:11:| `Travel_Map/` | Travel map micro-app. Has `index.html` → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERSONAL.md:12:| `Website/` | Repo `erash11/AppliedPerformance-Site`. Two sites. Root files = the Baylor Applied Performance department page (PRD + `.dc.html`). `Website/personal/` = Eric's personal brand site (`index.html`, briefs `BRIEF.md`/`BRIEF-V2.md`/`BRIEF-V3.md`, plus `DESIGN-IDEAS.md` — redesign notes from the Nate Herk video, incl. the Artifact-vs-scroll-craft constraint conflict), published as an Artifact: https://claude.ai/code/artifact/4bb58c5d-70c6-4459-baea-1e192e716f2a — republish with that `url` to keep the link. |
+/Users/kristinarash/DEV/PERSONAL.md:13:| `indiana-fever-schedule/` | Indiana Fever (WNBA) schedule. Team routing: `user_sports-teams.md`. |
+/Users/kristinarash/DEV/PERSONAL.md:14:| `Basketball/` | Basketball notes. Dormant since May. |
+/Users/kristinarash/DEV/PERSONAL.md:15:| `Basketball_Women/` | Women's basketball notes. Dormant since May. |
+/Users/kristinarash/DEV/PERSONAL.md:16:| `sleep-scheduler/` | Sleep scheduling side project. Repo `erash11/sleep-scheduler`. Assumed personal; confirm. |
+/Users/kristinarash/DEV/PERSONAL.md:17:| `house-model/` | House model project. Repo `erash11/house-model`. Area unconfirmed; placed here pending Eric. |
+/Users/kristinarash/DEV/PERSONAL.md:24:`WashingtonWebPage` → `~/DEV/_ARCHIVE/` (4 scaffold files, no content; repo read-only).
+/Users/kristinarash/DEV/CLAUDE.md:28:| `~/DEV/_ARCHIVE/` | Parked projects. Not a git repo, so the consolidation sweep skips it. Has its own `README.md`. |
+/Users/kristinarash/DEV/CLAUDE.md:29:| `~/DEV/_INBOX/` | Loose files from the `~/DEV` root. Own repo. |
+/Users/kristinarash/DEV/CLAUDE.md:31:| `~/.claude/skills/` | ~45 skills (plugins add more) |
+/Users/kristinarash/DEV/CLAUDE.md:32:| `~/go/bin/` | ~8 custom CLIs built with `cli-printing-press` |
+/Users/kristinarash/DEV/CLAUDE.md:33:| `~/.claude/claude-memory-compiler/knowledge/` | ~190 compiled articles |
+/Users/kristinarash/DEV/CLAUDE.md:41:  name in the area index (`Football/PFF_Data_Project/` → `erash11/PFF_Data_Project`).
+/Users/kristinarash/DEV/CLAUDE.md:42:  Exceptions: `Website/` → `erash11/AppliedPerformance-Site`; `DexaProject/` has no
+/Users/kristinarash/DEV/CLAUDE.md:64:- `DexaProject/` holds identifiable health data. It lives on Google Drive, not in
+/Users/kristinarash/DEV/CLAUDE.md:80:workspace's Tier A folder: `~/.claude/projects/-Users-kristinarash-DEV/memory/`. They auto-load
+/Users/kristinarash/DEV/PROGRAM.md:10:| `Program_Context_Meet/` | Meeting context prep → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PROGRAM.md:11:| `SpecialRequests/` | One-off asks from staff |
+/Users/kristinarash/DEV/PROGRAM.md:12:| `Supervisor_Reviews/` | The recurring bi-weekly time and progress update to leadership, plus the handoff on how to write one. Own `AGENTS.md` + `CLAUDE.md`. Git repo, created 2026-09-14 on Windows. |
+/Users/kristinarash/DEV/PROGRAM.md:13:| `BAIR_Steering_Committee/` | BAIR steering committee materials. Replaced by the Athletics Research Council (ARC) on 2026-10-29; this is ARC's starting point. Repo `erash11/BAIR_Steering_Committee`. |
+/Users/kristinarash/DEV/PROGRAM.md:14:| `AppliedNewsletter_2026/` | Applied Performance newsletter for 2026. Repo `erash11/AppliedNewsletter_2026`. |
+/Users/kristinarash/DEV/PROGRAM.md:23:| `TechEd_Prop/` | Tech education proposal |
+/Users/kristinarash/DEV/PROGRAM.md:24:| `RTP_Constraints_Course/` | Constraints-led return-to-performance course for Joe Smith, plus a planned drill-design tool → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PROGRAM.md:25:| `RTP_DataCollection_Talk/` | Return-to-play data collection talk |
+/Users/kristinarash/DEV/PROGRAM.md:26:| `TSSHB_Skills/` | Skills doc. Empty. |
+/Users/kristinarash/DEV/PROGRAM.md:27:| `Performance_Playbook/` | Departmental user manual: intern SOPs and education materials → own `AGENTS.md` + `docs/context.md`. Disk is the source of truth; the Cowork project is only a pointer. Holds ~33 MB of binary Office/PDF templates, so commit on structural change, not every edit. |
+/Users/kristinarash/DEV/PROGRAM.md:28:| `Education_Alignment_Initiative/` | Education alignment initiative. Repo `erash11/Education_Alignment_Initiative`. |
+/Users/kristinarash/DEV/PROGRAM.md:34:| `Department_Audits/` | Executable sport performance departmental audit playbooks → own `AGENTS.md` + `docs/context.md`. Disk is the source of truth; the Cowork project is only a pointer. Bulk source materials still live in Google Drive. |
+/Users/kristinarash/DEV/PROGRAM.md:35:| `RunningTheRoom/` | Old Bull Performance "Running The Room" course (Jason Weber) distilled into a department operating plan and staff-development recommendations. Private repo; course media and PDFs stay on Drive at `09_PRO_DEV/Old bull performance`. |
+/Users/kristinarash/DEV/PROGRAM.md:36:| `SoftwareTech_Review/` | Kenny's Software & Technology Review (2026-10-01): costs and use agreement terms for FY28 budget planning, the Teams group plan, the Business Office cost request, and the weekly ITS project tracker. Cost figures stay out of git. Costs workbook builder lives in `Tech_Inventory_Analysis/`. |
+/Users/kristinarash/DEV/PROGRAM.md:37:| `Transformative_Athlete_Experience/` | Athlete experience initiative |
+/Users/kristinarash/DEV/PROGRAM.md:38:| `NCAA_BestPractices_Doc/` | NCAA best practices. Empty. |
+/Users/kristinarash/DEV/PROGRAM.md:44:| `Baylor_Doc_Style/` | Document style rules |
+/Users/kristinarash/DEV/PROGRAM.md:45:| `Baylor_Fonts/` | Approved typefaces |
+/Users/kristinarash/DEV/PROGRAM.md:51:| `Baseball_JD/` | Job description draft |
+/Users/kristinarash/DEV/PROGRAM.md:52:| `Linda_Projects/` | Collaborator project folder (private I-983 repo). The space-named twin was parked 2026-10-14. |
+/Users/kristinarash/DEV/PROGRAM.md:53:| `SPA_Presentation/` | Presentation. Empty. |
+/Users/kristinarash/DEV/PROGRAM.md:64:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/RESEARCH.md:10:| `SportScienceResearchRepo/` | Main research repo. Has `CONTEXT.md`, a spec sheet, and an `index.html` micro-app → own `CLAUDE.md` |
+/Users/kristinarash/DEV/RESEARCH.md:11:| `ZoteroInjestion/` | Zotero ingest pipeline (~1,850 files). Note the spelling — "Injestion", not "Ingestion". |
+/Users/kristinarash/DEV/RESEARCH.md:12:| `LibraryProject/` | Book library → advisor entries → own `CLAUDE.md` |
+/Users/kristinarash/DEV/RESEARCH.md:13:| `Flint/` | Knowledge base behind Claude-as-"Flint", Eric's sport-science thought partner (side lane). Drive catalog, own-method baseline, triage, per-discipline synthesis. Plan in `docs/PLAN.md` → own `AGENTS.md` |
+/Users/kristinarash/DEV/RESEARCH.md:14:| `42Analytics/` | Knowledge repo from the 42 Analytics YouTube channel (MIT Sloan Sports Analytics Conference talks). Shortlist of 256 by topic, per-video transcript, summary and Baylor applications, for batch ingest into Flint. Videos live on Drive, not in git. Private repo `erash11/42Analytics` → `docs/STATUS.md` |
+/Users/kristinarash/DEV/RESEARCH.md:15:| `Weekly_Research_Review/` | "Research in 5": weekly one-paper review. Deck PDF for Teams, post, email, running index. Outputs on `_DRIVE/07_EDUCATION/Research_in_5` → own `AGENTS.md` |
+/Users/kristinarash/DEV/RESEARCH.md:16:| `Epilepsy-Baseball-Research/` | Epilepsy + baseball literature review |
+/Users/kristinarash/DEV/RESEARCH.md:17:| `TOS_Evidence_Brief/` | Thoracic outlet syndrome in overhead throwing athletes. One-page briefing note + 14-page evidence review, built to Word/PDF by `scripts/` → own `AGENTS.md` |
+/Users/kristinarash/DEV/RESEARCH.md:18:| `BookInbox/` | Staging for books not yet ingested |
+/Users/kristinarash/DEV/RESEARCH.md:19:| `reMarkale_extract/` | reMarkable highlight extraction. Note the spelling — "reMarkale". |
+/Users/kristinarash/DEV/RESEARCH.md:20:| `ContextVault/` | Context storage experiment |
+/Users/kristinarash/DEV/RESEARCH.md:21:| `May_Meetings_Research/` | May 2026 meeting materials and EOY research reporting. Disk is the source of truth → own `CLAUDE.md`. Dormant. |
+/Users/kristinarash/DEV/RESEARCH.md:22:| `BookVaultApp/` | Book vault app for the library. Repo `erash11/BookVaultApp`. Sits beside `LibraryProject/`. |
+/Users/kristinarash/DEV/RESEARCH.md:31:- Compiled knowledge: `~/.claude/claude-memory-compiler/knowledge/` (185 articles)
+/Users/kristinarash/DEV/PERFORMANCE.md:10:| `BayCap/` | Affordable iOS movement capture and analysis, starting with a guided OpenCap pilot. Private repo; own `AGENTS.md` and `docs/STATUS.md`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:11:| `DataBase_GPS_Reporting/` | GPS load reporting database → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERFORMANCE.md:12:| `Catapult_API/` | Catapult OpenField API work. CLI skill: `pp-catapult-openfield-connect`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:13:| `Kinexon_Volleyball/` | Kinexon volleyball tracking |
+/Users/kristinarash/DEV/PERFORMANCE.md:14:| `ForcePlate_DecisionSystem/` | Force plate decision system → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERFORMANCE.md:15:| `Football/football-cmj-monitoring/` | Football CMJ monitoring (baselines, change detection, reports). Lives under Football; see `FOOTBALL.md`. Reads FDS `cmj_trials` read-only. |
+/Users/kristinarash/DEV/PERFORMANCE.md:16:| `VALD_Performance/` | ForceDecks monitoring pipeline (PowerShell, Python, MATLAB) that builds and refreshes the `VALD_Monitoring_Football` workbook from raw VALD Hub exports. Own `AGENTS.md` + `CLAUDE.md`. Git repo, created 2026-09-14 on Windows. |
+/Users/kristinarash/DEV/PERFORMANCE.md:17:| `VALD_Release/` | VALD records release work: release documents, the email knowledge base, and what was sent to whom. Own `AGENTS.md` + `CLAUDE.md`. Git repo, created 2026-09-14 on Windows. |
+/Users/kristinarash/DEV/PERFORMANCE.md:18:| `AMS_Mini/` | Small athlete management system |
+/Users/kristinarash/DEV/PERFORMANCE.md:19:| `Volleyball_GRID/` | Volleyball GRID work. Repo `erash11/Volleyball_GRID`. Sits beside `Kinexon_Volleyball/`. Purpose to confirm. |
+/Users/kristinarash/DEV/PERFORMANCE.md:20:| `Cheer_Programming/` | Cheer team programming. Repo `erash11/Cheer_Programming`. Purpose to confirm. |
+/Users/kristinarash/DEV/PERFORMANCE.md:21:| `SpecialRequests/Zinnecker_Skylar/` | Athlete-specific folder. Repo `erash11/Zinnecker_Skylar`. Index only; keep athlete data out of chat. |
+/Users/kristinarash/DEV/PERFORMANCE.md:27:| `Risk_Stratification_Engine/` | Risk stratification → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERFORMANCE.md:28:| `Injury_Surveillance/` | Baylor Football injury surveillance, 2017-2025: season change in injury count and severity, position risk thresholds, Five Pillars prevention proposal. Own `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `Injury Surveillance` is only a pointer. **`data/` holds athlete-identifiable health data — never paste into chat or any external service; gitignored.** |
+/Users/kristinarash/DEV/PERFORMANCE.md:29:| `PracticeIntensity/` | Practice intensity |
+/Users/kristinarash/DEV/PERFORMANCE.md:30:| `AppliedUtilization/` | Utilization analysis |
+/Users/kristinarash/DEV/PERFORMANCE.md:31:| `AT_Utilization_Benchmarks/` | Athletic training utilization benchmarks → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERFORMANCE.md:32:| `Wilhelm_Brody_RTP/` | Return-to-play work. Repo `erash11/Wilhelm_Brody_RTP`. Index only; health data stays out of chat. |
+/Users/kristinarash/DEV/PERFORMANCE.md:38:| `S2_Evaluation/` | S2 Cognition evaluation → own `CLAUDE.md`; disk is the source of truth, the Claude cloud project is only a pointer. Program docs in `docs/program/`. Norms and threshold traps: `project_s2-cognition-analysis.md`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:39:| `COG_S2_Position_Reports/` | S2 position-level reports |
+/Users/kristinarash/DEV/PERFORMANCE.md:40:| `CATES/` | Comprehensive Athletic Talent Evaluation System: four-pillar athlete and recruit evaluation, medical A-F grade layered over the weighted score, plus the executive ROI white paper. Own `CLAUDE.md` + `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `Athlete Evaluation Framework` is only a pointer. Program docs in `docs/program/`. No athlete data in the repo: it goes to the primary storage drive, see `data/README.md`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:41:| `Baseball_PerformanceProfiles/` | Baseball performance profiles |
+/Users/kristinarash/DEV/PERFORMANCE.md:42:| `DexaProject/` | **Moved out of `~/DEV` to Google Drive — Mac 2026-09-09, Windows 2026-09-17.** Mac path `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive/DexaProject`; Windows path `G:\My Drive\00_Primary_Storage_Drive\DexaProject` (same Drive folder). DEXA scanner exports. **Identifiable health data — never paste contents into chat, an artifact, or any external service. Not in git, not pushed anywhere.** |
+/Users/kristinarash/DEV/PERFORMANCE.md:43:| `Ath_Medicine/` | Athletic medicine → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PERFORMANCE.md:44:| `RTP_ProgressReport/` | Force plate return-to-play progress reports for individual athletes; three report styles, JSX/HTML template rendered per athlete. Own `AGENTS.md` + `CLAUDE.md`. Git repo, created 2026-09-14 on Windows. A similarly named folder also sits at `RTP_WorkingGroup/RTP_ProgressREPORT/` — check which is current before editing either. |
+/Users/kristinarash/DEV/PERFORMANCE.md:45:| `cmj-traffic-light/` | CMJ traffic-light monitoring. Repo `erash11/cmj-traffic-light`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:46:| `SportScience_Benchmarking/` | Sport-science benchmarking. Repo `erash11/SportScience_Benchmarking`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:47:| `SPC_Report/` | Statistical process control report. Repo `erash11/SPC_Report`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:56:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/FOOTBALL.md:10:| `CFB_Analytics_Lab/` | CFBD API research lab. Has `MISSION.md`, `GLOSSARY.md`, `RESOURCES.md`, `learning-records/`. Largest single folder (~25k files). |
+/Users/kristinarash/DEV/FOOTBALL.md:11:| `CFB_Victory_Model/` | Weekly prediction model. Capture cadence and rules: `/forecast-capture`, `project_cfb-forecast-capture.md`. |
+/Users/kristinarash/DEV/FOOTBALL.md:12:| `CFB_Forecast_Archive/` | Read-only copies of the weekly forecast freezes, by year. Source of truth stays in `CFB_Victory_Model/data/`. |
+/Users/kristinarash/DEV/FOOTBALL.md:13:| `PlayerProfiles_FB_03-28-2026/` | Player profile build (spring 2026, TSA radar, whole-roster T-scores). Also the Perch pull host (`com.keystone.perchpull`). Successor for profiles: `Football/PerformanceSnapshot/`. Lives at the DEV root, not under `Football/`. → own `CLAUDE.md` |
+/Users/kristinarash/DEV/FOOTBALL.md:14:| `Football/PerformanceSnapshot/` | Running player performance snapshot: VALD CMJ/IMTP + Catapult GPS + Perch 1RM, STEN vs position norms (VALD NCAA + Baylor-built), radar across Winter / Summer / In-season. Static HTML, `snapshot.py --upload` to Drive `01_PROJECTS/_STALLED/2026-10-29_PerformanceSnapshot`, rebuilt by launchd `com.keystone.snapshot` after every pull. Roster from BaylorBears.com. Read-only on the three DBs. Repo `erash11/PerformanceSnapshot`. Created 2026-10-29. |
+/Users/kristinarash/DEV/FOOTBALL.md:15:| `PlayCalls_SuccessRate_EPA/` | 2021–2025 Baylor offensive play-call charting CSVs (PFF export) **+ the Phase 1 self-scout**, joined to PFF data (read-only) at 99.3%. Own `CLAUDE.md` + `AGENTS.md`. Private repo. Finding: success rate 57.4% → 49.5%, concentrated on 1st & 10 and the run game. **Only 2024–2025 carry outcome columns**; 2021–2023 cannot support success rate at all. Phase 1 has no EPA — that needs CFBD and is Phase 2. |
+/Users/kristinarash/DEV/FOOTBALL.md:16:| `Game_Tracker_PWA/` | Football game tracking PWA for the coaching staff (`football-tracker-pwa/`). Own `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `WebApps` is only a pointer. |
+/Users/kristinarash/DEV/FOOTBALL.md:17:| `Practice_PlayCounts/` | Practice segment / play-count tracking PWA (`practice-tracker-pwa/`). Own `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `WebApps` is only a pointer. |
+/Users/kristinarash/DEV/FOOTBALL.md:18:| `PP_Recruiting/` | Player personnel grading: Telemetry (Teamworks) trait percentiles coupled with internal S.T.A.Q.S. grades; AGM summary build scripts. Own `AGENTS.md` + `CLAUDE.md`. Git repo, created 2026-09-14 on Windows. Finished AGM summary docs live on the primary storage drive under `02_SPORTS/Football/PP_Recruiting`. |
+/Users/kristinarash/DEV/FOOTBALL.md:19:| `Football/` | Umbrella for 16 sub-projects, listed below. |
+/Users/kristinarash/DEV/FOOTBALL.md:20:| `TackleAnalytics/` | Tackle analytics. Repo `erash11/TackleAnalytics`. |
+/Users/kristinarash/DEV/FOOTBALL.md:21:| `Weekly_Matchups_2026/` | Weekly matchup analysis for 2026. Repo `erash11/Weekly_Matchups_2026`. Active on Drive `_ACTIVE`. |
+/Users/kristinarash/DEV/FOOTBALL.md:22:| `Football_GRID/` | Football GRID work. Repo `erash11/Football_GRID`. |
+/Users/kristinarash/DEV/FOOTBALL.md:24:## Inside `Football/`
+/Users/kristinarash/DEV/FOOTBALL.md:28:| `FaceComps/` | Face-comparison work. Carries its own graph output folder. |
+/Users/kristinarash/DEV/FOOTBALL.md:29:| `PFF_Data_Project/` | PFF data ingest and analysis. `outputs/` holds the finished reports (per-snap game demands, positional speed/collision thresholds) plus their `PROC_*.csv` working tables. |
+/Users/kristinarash/DEV/FOOTBALL.md:30:| `CFB_Playoff_Benchmarks/` | Baylor performance tiers (bad, average, good, elite) anchored to what CFP teams actually did, plus the wins model that inverts a playoff profile into Baylor's gap. Power Four CFBD data, 2021 to 2025 reference, 2026 scored live. Own `AGENTS.md` + `docs/`. Spec: `docs/superpowers/specs/2026-10-16-cfb-playoff-benchmarks-design.md`. Created 2026-10-16. |
+/Users/kristinarash/DEV/FOOTBALL.md:31:| `MatchupAnalysis_FB2026/` | Week-by-week 2026 opponent matchup analysis. Own `CLAUDE.md` + `docs/`. Git repo. Source of truth for the project; the Claude cloud project is only a pointer to it. |
+/Users/kristinarash/DEV/FOOTBALL.md:32:| `PlayerPersonel/` | Player personnel film review (first case: Jacorey Thomas). Python + extracted frames. Moved from `~/Documents/ChatGPT/` on 2026-09-07. Own private GitHub repo. |
+/Users/kristinarash/DEV/FOOTBALL.md:33:| `SpeedProfiling/` | Speed profiling |
+/Users/kristinarash/DEV/FOOTBALL.md:34:| `PlayerEvals/` | Player evaluations |
+/Users/kristinarash/DEV/FOOTBALL.md:35:| `SpringPlayerEvals_SymAnalysis/` | Spring evals + symmetry analysis |
+/Users/kristinarash/DEV/FOOTBALL.md:36:| `FootballBodyWeightDevelopment/` | Body weight development |
+/Users/kristinarash/DEV/FOOTBALL.md:37:| `Baylor_Exposure_Data/` | Exposure data |
+/Users/kristinarash/DEV/FOOTBALL.md:38:| `SP2026_03_07_ReportingROI_Football/` | Reporting ROI analysis |
+/Users/kristinarash/DEV/FOOTBALL.md:39:| `Tezino_CampPrep/` | Camp prep |
+/Users/kristinarash/DEV/FOOTBALL.md:40:| `football-cmj-monitoring/` | Longitudinal football CMJ pipeline (VALD ForceDecks + roster): team, position and individual views, PDF/Excel exports. Phase 0: source inventoried (`docs/SOURCE_INVENTORY.md`); reads `ForcePlate_DecisionSystem/data/forceplate.db` read-only, rep-level table `cmj_trials` built 2026-10-20 (live pull pending). Status in `docs/STATUS.md` + `AGENTS.md`. No athlete data in the repo. Created 2026-10-20. |
+/Users/kristinarash/DEV/FOOTBALL.md:54:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/PLATFORM.md:10:| `KeystoneOS/` | Map and control plane. Holds `AGENTS.md`, `data/`, `decisions/`, `audits/`, `memory/`, `knowledge/` → own `CLAUDE.md`. **Maps projects by reference — never stores their source.** |
+/Users/kristinarash/DEV/PLATFORM.md:11:| `project-triage/` | The registry (`portfolio.json`) and the live project board (`pm` / `/pm` → `board.py`): resume cards, focus view, slate cap, 7-day rule, Friday sweep, crosswalk drift, landed ledger. Static `dashboard.html` retired 2026-10-03. |
+/Users/kristinarash/DEV/PLATFORM.md:12:| `token-dashboard/` | **Deleted 2026-10-03** (Eric). Third-party course clone (`nateherkai/token-dashboard`), never ours. |
+/Users/kristinarash/DEV/PLATFORM.md:13:| `agy/` | Gmail/Drive cleanup scripts (dormant since 2026-09-11). The `com.keystone.agysync` job runs `KeystoneOS/scripts/agy-sync.ps1`, not this folder. |
+/Users/kristinarash/DEV/PLATFORM.md:14:| `claude-global-memory/` | Symlink to `~/.claude/global-memory`, the one clone of `erash11/claude-global-memory`. Edit there. |
+/Users/kristinarash/DEV/PLATFORM.md:15:| `~/.claude/skills/` | Canonical skills repo. Clone of `erash11/claude-skills`, not in DEV. |
+/Users/kristinarash/DEV/PLATFORM.md:16:| `_ARCHIVE/morning-briefing/` | Retired 2026-08-14, parked 2026-10-23. Do not use. |
+/Users/kristinarash/DEV/PLATFORM.md:22:| `drive-tools/` | Read-only Google Drive index and cleanup tools (`drive_index.py find/build/report`, `drain_diff.py`, `trash_twins.py`). Repo `erash11/drive-tools`; `drive-index/` and `drain-reports/` stay local. Moved from `_INBOX` 2026-10-24. |
+/Users/kristinarash/DEV/PLATFORM.md:23:| `CLI_Dev/` | CLI development scratch. Built CLIs land in `~/go/bin/`. Holds `printing-press/` — the Printing Press workspace (`library/`, `manuscripts/`), moved here from `~/printing-press` on 2026-09-07. Repo `erash11/CLI_Dev`, pushed by hand; the backup manifest still routes it to **`ssd` only** (no auto-push), so unpushed work is protected only on nights CRASHBOX is attached. `~/printing-press` is now a symlink to it; tools that assume the old path still work. |
+/Users/kristinarash/DEV/PLATFORM.md:24:| `Terminal_Fluency/` | CLI-learning mission. Lessons + quiz. Learns through real repairs, not exercises. |
+/Users/kristinarash/DEV/PLATFORM.md:25:| `Cloudroom_Learning/` | Cloudroom teaching mission (`/mattpocock-skills:teach`). `MISSION.md`, `reference/` cheatsheet, `lessons/` HTML, `learning-records/`. Repo `erash11/Cloudroom_Learning`. Started 2026-10-14. |
+/Users/kristinarash/DEV/PLATFORM.md:26:| `Tech_Inventory_Analysis/` | Tech stack inventory, and the costs workbook builder for `SoftwareTech_Review/` (see `PROGRAM.md`) |
+/Users/kristinarash/DEV/PLATFORM.md:27:| `Bucket/` | Catch-all + `docs/TOOLING-OPTIMIZATION.md` |
+/Users/kristinarash/DEV/PLATFORM.md:28:| `TypeSafe_Sandbox/` | Sandbox for the TypeSafe System One API (the Jev model: typed judgments and probabilities, not generated text). Holds `setup_global_key.sh` and `smoke_test.py`. **The API key is not in the repo, and nothing about it syncs between machines** — Windows reads `~/.claude/typesafe.env` (auto-ignored by the dotclaude whitelist), macOS uses the Keychain (service `typesafe-api-key`) exported by `~/.zshenv`, per the `machine.macos.md` rule. The key starts with `apikey_`; dropping that prefix returns 401. Claude Code carries the matching skill as plugin `typesafe@typesafe-ai`. Per-machine key status: `TypeSafe_Sandbox/docs/STATUS.md`. |
+/Users/kristinarash/DEV/PLATFORM.md:29:| `agent-skills/` | Agent skills. Repo `erash11/agent-skills`. |
+/Users/kristinarash/DEV/PLATFORM.md:30:| `Build_Along/` | Fork of Brian Julius's "Capital Slice" Claude Skills build-along course (third-party). Repo `erash11/Build_Along`. |
+/Users/kristinarash/DEV/PLATFORM.md:39:- `graphify-out/` — workspace knowledge graph. Live: the nightly `com.keystone.graphextract`
+/Users/kristinarash/DEV/PLATFORM.md:46:In `~/go/bin/`, all made with `cli-printing-press`. `zotero-research-library` builds
+/Users/kristinarash/DEV/PLATFORM.md:47:from the local workspace at `CLI_Dev/printing-press/`, not from the public registry.
+/Users/kristinarash/DEV/PLATFORM.md:48:`catapult-openfield-connect` has a manuscript and a `library/` entry there but is not installed in `~/go/bin/`:
+/Users/kristinarash/DEV/PLATFORM.md:74:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/WORKFLOW.md:241:- KeystoneOS `workflows/` routines (June/July) predate startup and closeout — history only.
+/Users/kristinarash/DEV/COMMANDS.md:278:every snapshot and comparison into `/Users/kristinarash/DEV/CFB_Forecast_Archive/2026/`.
+/Users/kristinarash/DEV/COMMANDS.md:321:**Trap 5 — the archive is a copy.** `CFB_Forecast_Archive/` is filled by the wrapper.
+/Users/kristinarash/DEV/COMMANDS.md:322:Truth lives in `CFB_Victory_Model/data/`. Never edit the archive by hand.
+/Users/kristinarash/DEV/COMMANDS.md:367:All live in `/Users/kristinarash/go/bin/` and are on your PATH.
+
+ succeeded in 124ms:
+/Users/kristinarash/.claude/scripts/where-was-i.py-124-
+/Users/kristinarash/.claude/scripts/where-was-i.py-125-
+/Users/kristinarash/.claude/scripts/where-was-i.py-126-# Closeout's scope beyond DEV. Their LIVE paths are rewritten by hooks on every turn and pushed by
+/Users/kristinarash/.claude/scripts/where-was-i.py-127-# the daily backup, so changes there alone never block a closeout.
+/Users/kristinarash/.claude/scripts/where-was-i.py:128:CONFIG_REPOS = [os.path.expanduser(p) for p in ("~/.claude", "~/.claude/skills", "~/.claude/global-memory")]
+/Users/kristinarash/.claude/scripts/where-was-i.py-129-LIVE = {os.path.expanduser("~/.claude"): ("projects/", "history.jsonl"),
+/Users/kristinarash/.claude/scripts/where-was-i.py-130-        os.path.expanduser("~/.claude/global-memory"): ("transcripts/",)}
+/Users/kristinarash/.claude/scripts/where-was-i.py-131-
+/Users/kristinarash/.claude/scripts/where-was-i.py-132-
+/Users/kristinarash/.claude/scripts/where-was-i.py:133:def sweep_repos():
+/Users/kristinarash/.claude/scripts/where-was-i.py:134:    """Every git repo closeout must leave pushed: DEV itself, DEV/*/ and DEV/*/*/ repos, and CONFIG_REPOS."""
+/Users/kristinarash/.claude/scripts/where-was-i.py-135-    repos = [DEV] + [os.path.dirname(g) for g in dev_glob(".git")]
+/Users/kristinarash/.claude/scripts/where-was-i.py-136-    repos = [r for r in repos if not any(k in r for k in SKIP)]
+/Users/kristinarash/.claude/scripts/where-was-i.py:137:    return sorted(set(repos)) + [r for r in CONFIG_REPOS if os.path.isdir(os.path.join(r, ".git"))]
+/Users/kristinarash/.claude/scripts/where-was-i.py-138-
+/Users/kristinarash/.claude/scripts/where-was-i.py-139-
+/Users/kristinarash/.claude/scripts/where-was-i.py:140:def sweep_repo(repo):
+/Users/kristinarash/.claude/scripts/where-was-i.py-141-    """(blocking flags, info flags) for one repo. Blocking = work that is not on GitHub."""
+/Users/kristinarash/.claude/scripts/where-was-i.py-142-    block, info = [], []
+/Users/kristinarash/.claude/scripts/where-was-i.py-143-    # A .git git cannot use (Wilhelm_Brody_RTP 2026-10-25: no HEAD or config) makes git fall through
+/Users/kristinarash/.claude/scripts/where-was-i.py-144-    # to the parent repo, which ignores the folder: its work is tracked nowhere and reads as clean.
+--
+/Users/kristinarash/.claude/scripts/where-was-i.py-179-            block.append(f"WORKTREE-DIRTY:{os.path.relpath(wt, repo)}")
+/Users/kristinarash/.claude/scripts/where-was-i.py-180-    return block, info
+/Users/kristinarash/.claude/scripts/where-was-i.py-181-
+/Users/kristinarash/.claude/scripts/where-was-i.py-182-
+/Users/kristinarash/.claude/scripts/where-was-i.py:183:def sweep():
+/Users/kristinarash/.claude/scripts/where-was-i.py-184-    """Print every repo needing action; exit 1 if any repo holds work that is not on GitHub."""
+/Users/kristinarash/.claude/scripts/where-was-i.py:185:    repos = sweep_repos()
+/Users/kristinarash/.claude/scripts/where-was-i.py-186-    with ThreadPoolExecutor(12) as ex:
+/Users/kristinarash/.claude/scripts/where-was-i.py:187:        results = list(ex.map(sweep_repo, repos))
+/Users/kristinarash/.claude/scripts/where-was-i.py-188-    needs = 0
+/Users/kristinarash/.claude/scripts/where-was-i.py-189-    for repo, (block, info) in zip(repos, results):
+/Users/kristinarash/.claude/scripts/where-was-i.py-190-        if block or info:
+/Users/kristinarash/.claude/scripts/where-was-i.py-191-            needs += bool(block)
+--
+/Users/kristinarash/.claude/scripts/where-was-i.py-200-    ap.add_argument("--days", type=int, default=14)
+/Users/kristinarash/.claude/scripts/where-was-i.py-201-    ap.add_argument("--all", action="store_true")
+/Users/kristinarash/.claude/scripts/where-was-i.py-202-    ap.add_argument("--decisions", action="store_true",
+/Users/kristinarash/.claude/scripts/where-was-i.py-203-                    help="list open questions and recent handoffs instead of NEXT lines")
+/Users/kristinarash/.claude/scripts/where-was-i.py:204:    ap.add_argument("--sweep", action="store_true",
+/Users/kristinarash/.claude/scripts/where-was-i.py:205:                    help="closeout sweep: every DEV and config repo with work not on GitHub; exit 1 if any")
+/Users/kristinarash/.claude/scripts/where-was-i.py:206:    ap.add_argument("--list", action="store_true",
+/Users/kristinarash/.claude/scripts/where-was-i.py:207:                    help="print every repo --sweep checks, one path per line (dev-sync pulls these)")
+/Users/kristinarash/.claude/scripts/where-was-i.py-208-    a = ap.parse_args()
+/Users/kristinarash/.claude/scripts/where-was-i.py:209:    if a.sweep:
+/Users/kristinarash/.claude/scripts/where-was-i.py:210:        raise SystemExit(sweep())
+/Users/kristinarash/.claude/scripts/where-was-i.py-211-    if a.list:
+/Users/kristinarash/.claude/scripts/where-was-i.py:212:        print("\n".join(sweep_repos()))
+/Users/kristinarash/.claude/scripts/where-was-i.py-213-        return
+/Users/kristinarash/.claude/scripts/where-was-i.py-214-
+/Users/kristinarash/.claude/scripts/where-was-i.py-215-    paths = dev_glob("docs", "STATUS.md")
+/Users/kristinarash/.claude/scripts/where-was-i.py-216-    paths = [p for p in paths if not any(k in p for k in SKIP)]
+--
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-535-    exit 1
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-536-}
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-537-
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-538-# --- 1. Git memory repos ---
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:539:Sync-Repo "$U/SecondBrain"      'main'
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-540-Sync-Repo "$U/.claude/global-memory"    'main'
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-541-Sync-Repo "$U/.claude"                  'main'
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-542-Sync-Repo "$U/.claude/skills"           'main'
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-543-
+--
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-762-            $Results.Add(@{ kind = 'capture'; name = $name; status = 'OK' })
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-763-        }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-764-    }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-765-
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:766:    # Non-DEV manifest paths (~/.claude subtrees, .codex, .gemini, SecondBrain) -> SSD.
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-767-    if ($SsdOnline) {
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-768-        foreach ($entry in ($Manifest.paths | Where-Object { $_.path -notlike 'DEV/*' -and $_.destinations -contains 'ssd' })) {
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-769-            $rel = $entry.path
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-770-            $src = Join-Path $U $rel
+--
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-780-            # rsync exclude to the top of ~/.codex ('/cache' -> --exclude=/cache/), so a nested folder of the
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-781-            # same name is still copied. The manifest has no excludes field, so this list lives here.
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-782-            if ($entry.path -eq '.codex') { $extra = @('work', '/packages', '/plugins', '/.tmp', '/cache', '/computer-use', '/visualizations') }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-783-            if ($entry.path -eq '.gemini') { $extra = @('antigravity_browser_profile') }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:784:            if ($entry.path -eq 'SecondBrain') { $extra = @('.git') }   # vault moved off Desktop 2026-08-14; github dest covers tracked files
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-785-            $ok = Snapshot-Additive $src (Join-Path $SsdRoot $sub) $extra
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-786-            if ($ok) { Log "STATE-SSD $($entry.path) -> $sub : OK" }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-787-            else { $Errors.Add("snapshot-ssd:$($entry.path)"); Log "STATE-SSD $($entry.path) : FAILED" }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-788-        }
+--
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-826-    # Single source of truth: KeystoneOS data/memory-index-paths.json.
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-827-    $msPathsFallback = @(
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-828-        "$U/.claude/global-memory/transcripts",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-829-        "$U/.claude/projects/C--Users-eric-rash/memory",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:830:        "$U/.claude/claude-memory-compiler/daily",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:831:        "$U/.claude/claude-memory-compiler/knowledge",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:832:        "$U/SecondBrain/Knowledge",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:833:        "$U/Desktop/SecondBrain/Knowledge"
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-834-    )
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-835-    $msConfig = "$DevRoot/KeystoneOS/data/memory-index-paths.json"
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-836-    $msPaths = $null
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-837-    if (Test-Path -LiteralPath $msConfig) {
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-838-        try {
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-839-            $declared = (Get-Content -Raw -LiteralPath $msConfig | ConvertFrom-Json).paths
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-840-            if ($declared -and $declared.Count -ge 1) {
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:841:                # {VAULT}: ~/SecondBrain on the Mac, ~/Desktop/SecondBrain on Windows (2026-09-30).
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:842:                $vaultRoot = @("$U/SecondBrain", "$U/Desktop/SecondBrain") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:843:                if (-not $vaultRoot) { $vaultRoot = "$U/SecondBrain" }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-844-                $msPaths = @($declared | ForEach-Object { (($_ -replace '\{HOME\}', $U) -replace '\{DEV\}', $DevRoot) -replace '\{VAULT\}', $vaultRoot })
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-845-                Log "INDEX path set: $($msPaths.Count) paths from memory-index-paths.json"
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-846-            }
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-847-        } catch { Log "INDEX config unreadable ($($_.Exception.Message)) - using built-in fallback list" }
+--
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1035-    "$LogDir/daily-backup.out",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1036-    # Not permission-gate/shadow.jsonl: it is the only evidence for the pending Jev residue review
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1037-    # (TypeSafe_Sandbox docs/STATUS.md) and no backup holds it. Rotate it only after that review.
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1038-    "$U/Library/Logs/everythingd.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:1039:    "$U/.claude/claude-memory-compiler/scripts/flush.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:1040:    "$U/.claude/claude-memory-compiler/scripts/compile.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1:1041:    "$U/.claude/claude-memory-compiler/scripts/adjudicate.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1042-    "$DevRoot/KeystoneOS/outputs/morning/cadence.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1043-    "$U/.claude/skill-router/skill_router.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1044-    "$U/.claude/skill_router.log",
+/Users/kristinarash/.claude/scripts/daily-backup.ps1-1045-    "$U/.claude/context-mode/heal-partial-install.log"
+
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "nl -ba ~/.claude/scripts/where-was-i.py | sed -n '130,180p'; git -C ~/.claude/claude-memory-compiler status -sb; git -C ~/SecondBrain status -sb" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "nl -ba ~/.claude/hooks/session-autopush.js | rg -n -C 4 'skip|SKIP|claude|SecondBrain|compiler|repoRoot'" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "grep -h -o '"'`[''^`]*MatchupAnalysis_FB2026/`'"' ~/DEV/*.md; grep -h -o '"'`[''^`]*PerformanceSnapshot/`'"' ~/DEV/*.md; nl -ba ~/DEV/FOOTBALL.md | sed -n '24,32p'; nl -ba ~/DEV/PLATFORM.md | sed -n '10,17p'" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "nl -ba ~/.claude/scripts/daily-backup.ps1 | sed -n '90,190p;530,545p'; nl -ba ~/.claude/scripts/daily-backup-login.sh; nl -ba ~/.claude/claude-memory-compiler/.gitignore" in /Users/kristinarash/DEV
+ succeeded in 65ms:
+    90	            } else {
+    91	                $pullOut = git pull --ff-only origin $branch 2>&1
+    92	                if ($LASTEXITCODE -ne 0) {
+    93	                    # Real overlap, or a non-ff remote. Now it is worth an error, and git's
+    94	                    # own message says which file is in the way.
+    95	                    $Errors.Add("repo-behind-blocked:$name")
+    96	                    Log "REPO $name : FAST-FORWARD REFUSED (behind=$behind ahead=$ahead dirty=$dirty) - manual reconcile needed"
+    97	                    foreach ($l in $pullOut) { if ("$l".Trim()) { Log "REPO $name : PULL ERR | $l" } }
+    98	                    return
+    99	                }
+   100	                Log "REPO $name : fast-forwarded $behind commit(s)"
+   101	            }
+   102	        }
+   103	        if ($dirty -gt 0) {
+   104	            if ($DryRun) {
+   105	                Log "REPO $name : [dry-run] would commit $dirty change(s)"
+   106	            } else {
+   107	                git add -A 2>&1 | Out-Null
+   108	                if ($name -eq 'dotclaude') { $null = Get-StagedSecretFiles }
+   109	                git diff --cached --quiet 2>$null
+   110	                if ($LASTEXITCODE -eq 0) {
+   111	                    # Dirty but nothing stageable (e.g. modified content inside a
+   112	                    # submodule). Not a failure - there is simply nothing to commit.
+   113	                    Log "REPO $name : $dirty change(s) but nothing stageable - no commit"
+   114	                } else {
+   115	                    # R10-01: capture and check the commit, as the push below already
+   116	                    # does. A commit refused by a hook (the skills repo's pre-commit
+   117	                    # rejects symlinks) used to be thrown away by Out-Null and logged
+   118	                    # as "committed": a silent failure that repeated every day.
+   119	                    $commitOut = git commit -m ("chore: daily backup sync {0} [auto]" -f (Get-Date -Format 'yyyy-MM-dd')) 2>&1
+   120	                    if ($LASTEXITCODE -ne 0) {
+   121	                        $Errors.Add("repo-commit:$name")
+   122	                        Log "REPO $name : COMMIT FAILED"
+   123	                        foreach ($l in $commitOut) { if ("$l".Trim()) { Log "REPO $name : COMMIT ERR | $l" } }
+   124	                        return
+   125	                    }
+   126	                    Log "REPO $name : committed $dirty change(s)"
+   127	                }
+   128	            }
+   129	        }
+   130	        $counts = git rev-list --left-right --count "origin/$branch...HEAD" 2>$null
+   131	        $ahead = if ($counts) { [int](($counts -split '\s+')[1]) } else { 0 }
+   132	        if ($DryRun -and $dirty -gt 0) { $ahead = 1 }
+   133	        if ($ahead -gt 0) {
+   134	            $attempt = 1
+   135	            if (-not $DryRun) {
+   136	                # Capture push output instead of discarding it. Scheduled runs have failed
+   137	                # to push for weeks with no recorded reason (2026-09-02 handoff); Out-Null
+   138	                # threw the error text away. Success stays silent - only failures log.
+   139	                #
+   140	                # R10-04: retry a failed push. On 2026-09-17 a whole day's push was lost to a
+   141	                # transient 'curl 55 Recv failure / remote end hung up' and nothing reattempted
+   142	                # it until the next day's run. Only transient failures are retried. A rejected
+   143	                # or unauthorised push fails identically every time, so retrying it would just
+   144	                # delay the error behind a longer log block - those bail out immediately.
+   145	                $Deterministic = '\[rejected\]|non-fast-forward|fetch first|Updates were rejected|Permission denied|403 Forbidden|Authentication failed|does not match any|Repository not found'
+   146	                $delays = @(5, 15)
+   147	                while ($true) {
+   148	                    $pushOut = git push origin $branch 2>&1
+   149	                    if ($LASTEXITCODE -eq 0) { break }
+   150	                    $text = ($pushOut | Out-String)
+   151	                    if ($text -match $Deterministic -or $attempt -gt $delays.Count) {
+   152	                        $Errors.Add("repo-push:$name")
+   153	                        Log "REPO $name : PUSH FAILED after $attempt attempt(s)"
+   154	                        foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR | $l" } }
+   155	                        return
+   156	                    }
+   157	                    $wait = $delays[$attempt - 1]
+   158	                    foreach ($l in $pushOut) { if ("$l".Trim()) { Log "REPO $name : PUSH ERR (attempt $attempt) | $l" } }
+   159	                    Log "REPO $name : push attempt $attempt failed - transient, retrying in ${wait}s"
+   160	                    Start-Sleep -Seconds $wait
+   161	                    $attempt++
+   162	                }
+   163	            }
+   164	            $suffix = if ($attempt -gt 1) { " on attempt $attempt" } else { '' }
+   165	            Log "REPO $name : $(if ($DryRun) { '[dry-run] would push' } else { "pushed$suffix" })"
+   166	        }
+   167	        $Results.Add(@{ kind='repo'; name=$name; status='OK' })
+   168	    } finally { Pop-Location }
+   169	}
+   170	
+   171	# CREDENTIAL DENY-LIST — applies to every capture path. Do not weaken.
+   172	# Files are gitignored for two OPPOSITE reasons: too big (back up) and secret
+   173	# (never). On 2026-08-04 the capture swept 7,633 files of a live authenticated
+   174	# Outlook browser profile onto a portable drive. This list is why it cannot recur.
+   175	# 2026-08-05 restore finding: five project .env files DID reach the transport
+   176	# drive via a pre-deny-list capture - the list below now provably excludes them.
+   177	$CredDenyDirs  = @('secrets', 'owa-profile', 'edge-profile', 'chrome-profile', '.aws', '.ssh')
+   178	$CredDenyFiles = @('.env', '.env.local', '.env.production', '.env.production.local',
+   179	                   'Cookies', 'Login Data', 'Local State', '.credentials.json',
+   180	                   'gmail_token.json', 'gmail_credentials.json', 'token.json', 'credentials.json',
+   181	                   'oauth_creds.json', 'google_accounts.json',   # ~/.gemini live OAuth (audit 2026-10-22)
+   182	                   'auth.json')                                  # ~/.codex live login: never onto the exFAT SSD (2026-10-24)
+   183	# Regex form (forward-slash paths). '.env.example' is deliberately NOT denied.
+   184	$CredDenyRe = '(^|/)(secrets|owa-profile|edge-profile|chrome-profile|\.aws|\.ssh)(/|$)' +
+   185	              '|(^|/)\.env(\.local|\.production(\.local)?)?$' +
+   186	              '|(^|/)(Cookies|Login Data|Local State)$' +
+   187	              '|(^|/)(\.credentials|gmail_token|gmail_credentials|token|credentials|oauth_creds|google_accounts|auth)\.json$'
+   188	
+   189	# Secret-value shapes. Used by Snapshot-ShellDotfiles (refuse) and Get-StagedSecretFiles (warn).
+   190	# github_pat_ added 2026-10-25: the fine-grained PAT that reached dotclaude history had that shape.
+   530	# Note $IsMacOS is a PowerShell 6+ automatic variable; on Windows PowerShell 5.1 it is
+   531	# undefined, so -not $null still aborts. That is the intended outcome.
+   532	if (-not $IsMacOS) {
+   533	    Log "ABORT: daily-backup.ps1 is the macOS port and will not run on this platform. No backup ran, and no receipt was written. Restore daily-backup.ps1.win-orig from git history before re-enabling a scheduled task here."
+   534	    Log "===== daily-backup end: ABORTED (wrong platform) ====="
+   535	    exit 1
+   536	}
+   537	
+   538	# --- 1. Git memory repos ---
+   539	Sync-Repo "$U/SecondBrain"      'main'
+   540	Sync-Repo "$U/.claude/global-memory"    'main'
+   541	Sync-Repo "$U/.claude"                  'main'
+   542	Sync-Repo "$U/.claude/skills"           'main'
+   543	
+   544	# --- 2a. Personal-context snapshots -> personal Google Drive via gws API ---
+   545	# Uploaded directly as .tgz archives to _MACHINE/Backups/Machine (1ALag3z9Ew5ihBZKjt_1yZzsNpX-K4UJn)
+     1	#!/bin/bash
+     2	# Gate for daily-backup.ps1. Both launchd jobs call it:
+     3	#   com.keystone.dailybackup        hourly 12:00-17:00, so a failed try gets another chance
+     4	#   com.keystone.dailybackup-login  at login, so a Mac that was off still gets a backup
+     5	# Runs the backup only when: no run ended OK today, the Mac is on AC power, no backup is
+     6	# running, and fewer than 2 real runs started today (a lasting error must not run 6 times).
+     7	# Why daytime + AC: every 21:00 run from 10-13 to 10-22 ended ERROR because the Mac slept
+     8	# on battery, and caffeinate -s only holds sleep off on AC (audit 2026-10-22).
+     9	# shortcut: checks the log, not a lock file; two runs at the same moment could both start.
+    10	LOG="${BACKUP_LOG:-$HOME/.claude/scripts/logs/daily-backup.log}"
+    11	TODAY=$(date +%Y-%m-%d)
+    12	skip() { echo "$(date '+%F %T') gate skip: $1"; exit 0; }
+    13	# A dry run also logs "daily-backup end: OK", so an OK counts only when its run started DryRun=False.
+    14	# The start may be yesterday (a run crossing midnight), so every start line sets the flag.
+    15	# shortcut: pairs each end with the latest start, so a dry run started during a real run hides
+    16	# that real OK and the gate may run once more (capped at 2 tries); end lines carry no run id.
+    17	real_ok_today() {
+    18	  awk -v d="$TODAY" '/daily-backup start/ {real = /DryRun=False/}
+    19	                     $1==d && /daily-backup end: OK/ && real {found=1}
+    20	                     END {exit !found}' "$LOG" 2>/dev/null
+    21	}
+    22	# Sourced (by test_backup_gate.sh): define the function only, run nothing.
+    23	[[ "${BASH_SOURCE[0]}" != "$0" ]] && return 0
+    24	
+    25	real_ok_today && skip "already OK today"
+    26	pmset -g ps | grep -q "AC Power" || skip "on battery"
+    27	# [.] keeps the pattern from matching any shell whose command line merely mentions the script
+    28	pgrep -f "pwsh.*daily-backup[.]ps1" >/dev/null && skip "a backup is already running"
+    29	STARTS=$(grep -c "^$TODAY .*daily-backup start (DryRun=False)" "$LOG" 2>/dev/null)
+    30	[ "${STARTS:-0}" -ge 2 ] && skip "2 tries already today"
+    31	
+    32	exec /usr/bin/caffeinate -i -s /opt/homebrew/bin/pwsh -NoProfile -File "$HOME/.claude/scripts/daily-backup.ps1"
+     1	# Python
+     2	__pycache__/
+     3	*.pyc
+     4	.venv/
+     5	
+     6	# Runtime state (regenerated by scripts)
+     7	scripts/state.json
+     8	scripts/last-flush.json
+     9	scripts/flush.log
+    10	scripts/compile.log
+    11	scripts/session-flush-*
+    12	scripts/flush-context-*
+    13	
+    14	# Generated content (built up per-user by hooks and scripts)
+    15	daily/
+    16	knowledge/
+    17	
+    18	# Reports (regenerated by lint)
+    19	reports/
+    20	
+    21	# uv lock (regenerated by uv sync)
+    22	scripts/uv.lock
+    23	
+    24	# Claude Code local settings
+    25	.claude/settings.local.json
+    26	
+    27	# OS files
+    28	.DS_Store
+    29	Thumbs.db
+    30	
+    31	.obsidian/
+    32	scripts/connections_state.json
+    33	scripts/adjudicate.log
+    34	
+    35	# Hand-made safety copies of stranded session-flush context files. flush.py deletes
+    36	# its input on success AND on the duplicate-skip path, so a copy is taken before any
+    37	# recovery run. Same reason daily/ is ignored: raw session context stays off GitHub.
+    38	leftover-backup-*/
+    39	
+    40	# Stranded session-flush context files moved aside 2026-10-12. Raw session text, same reason daily/ is ignored.
+    41	scripts/_stranded-archive/
+    42	
+    43	# Context files kept after a failed flush: raw session text, never on GitHub
+    44	scripts/_stranded-archive/
+
+ succeeded in 69ms:
+10-    10	// to .errors.log (surfaced by keystone-unified-snapshot.js at the next session
+11-    11	// start), and leaves the working tree exactly as it was.
+12-    12	//   1. Skip headless/SDK sessions, cloud sessions, and AUTOPUSH_DISABLE=1.
+13-    13	//   2. Find the git repo for the session's cwd. Not a repo: do nothing.
+14:    14	//   3. Skip ~/.claude and everything under it (daily-backup owns those repos,
+15:    15	//      and dotclaude carries GBs of transcripts), the DEV router's ignored
+16-    16	//      subfolders, and any repo with a `.no-autopush` file at its root.
+17-    17	//   4. Skip if a merge or rebase is in progress, HEAD is detached, there are
+18-    18	//      unmerged files, or the branch has no upstream.
+19-    19	//   5. Refuse to commit if any file about to be added looks like a secret,
+--
+36-    36	const os = require('os');
+37-    37	
+38-    38	const NAME = 'session-autopush';
+39-    39	const HOME = os.homedir();
+40:    40	const ERR_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log');
+41:    41	const OK_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', 'autopush.log');
+42-    42	const MAX_BYTES = 50 * 1024 * 1024;
+43-    43	const DEADLINE = Date.now() + 55000;
+44-    44	const LOCK_STALE_MS = 120000;
+45-    45	
+--
+114-   114	  const root = path.resolve(top.out);
+115-   115	  const label = path.basename(root);
+116-   116	
+117-   117	  // 3. Repos this hook must not touch.
+118:   118	  const claudeDir = path.resolve(HOME, '.claude');
+119:   119	  const rel = path.relative(claudeDir, root);
+120-   120	  if (rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel))) quit();
+121-   121	  if (fs.existsSync(path.join(root, '.no-autopush'))) quit();
+122-   122	
+123-   123	  // 4. Repo state.
+124-   124	  const gitDir = git(root, ['rev-parse', '--absolute-git-dir']).out;
+125-   125	  if (!gitDir) quit();
+126-   126	  takeLock(path.join(gitDir, 'autopush.lock'));
+127-   127	  for (const m of ['MERGE_HEAD', 'rebase-merge', 'rebase-apply', 'CHERRY_PICK_HEAD']) {
+128:   128	    if (fs.existsSync(path.join(gitDir, m))) fail(`${label}: skipped, a merge or rebase is in progress. Finish it, then push by hand.`);
+129-   129	  }
+130-   130	  const branch = git(root, ['symbolic-ref', '--quiet', '--short', 'HEAD']);
+131:   131	  if (!branch.ok) fail(`${label}: skipped, HEAD is detached.`);
+132-   132	  const upstream = git(root, ['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}']);
+133:   133	  if (!upstream.ok) fail(`${label}: skipped, branch '${branch.out}' has no upstream. Push it once by hand with -u.`);
+134-   134	
+135-   135	  const status = git(root, ['status', '--porcelain=v1', '-z', '--untracked-files=all']);
+136-   136	  if (!status.ok) fail(`${label}: git status failed: ${status.err}`);
+137-   137	  const entries = status.out.split('\0').filter(Boolean);
+138:   138	  if (entries.some(e => /^(DD|AU|UD|UA|DU|AA|UU) /.test(e))) fail(`${label}: skipped, unmerged files present.`);
+139-   139	
+140-   140	  // 5. Screen what would be added. Renames list the new path first in -z mode.
+141-   141	  const toAdd = [];
+142-   142	  for (let i = 0; i < entries.length; i++) {
+143-   143	    const e = entries[i];
+144-   144	    const code = e.slice(0, 2);
+145-   145	    const p = e.slice(3);
+146:   146	    if (code[0] === 'R' || code[0] === 'C') i++; // skip the "from" path
+147-   147	    if (code.includes('D') && !code.includes('?')) continue; // deletions add nothing
+148-   148	    toAdd.push(p);
+149-   149	  }
+150-   150	  const blocked = [];
+
+hook: PostToolUse
+hook: PostToolUse
+ succeeded in 81ms:
+`MatchupAnalysis_FB2026/`
+`Football/PerformanceSnapshot/`
+`Football/PerformanceSnapshot/`
+    24	## Inside `Football/`
+    25	
+    26	| Sub-folder | What it is |
+    27	|---|---|
+    28	| `FaceComps/` | Face-comparison work. Carries its own graph output folder. |
+    29	| `PFF_Data_Project/` | PFF data ingest and analysis. `outputs/` holds the finished reports (per-snap game demands, positional speed/collision thresholds) plus their `PROC_*.csv` working tables. |
+    30	| `CFB_Playoff_Benchmarks/` | Baylor performance tiers (bad, average, good, elite) anchored to what CFP teams actually did, plus the wins model that inverts a playoff profile into Baylor's gap. Power Four CFBD data, 2021 to 2025 reference, 2026 scored live. Own `AGENTS.md` + `docs/`. Spec: `docs/superpowers/specs/2026-10-16-cfb-playoff-benchmarks-design.md`. Created 2026-10-16. |
+    31	| `MatchupAnalysis_FB2026/` | Week-by-week 2026 opponent matchup analysis. Own `CLAUDE.md` + `docs/`. Git repo. Source of truth for the project; the Claude cloud project is only a pointer to it. |
+    32	| `PlayerPersonel/` | Player personnel film review (first case: Jacorey Thomas). Python + extracted frames. Moved from `~/Documents/ChatGPT/` on 2026-09-07. Own private GitHub repo. |
+    10	| `KeystoneOS/` | Map and control plane. Holds `AGENTS.md`, `data/`, `decisions/`, `audits/`, `memory/`, `knowledge/` → own `CLAUDE.md`. **Maps projects by reference — never stores their source.** |
+    11	| `project-triage/` | The registry (`portfolio.json`) and the live project board (`pm` / `/pm` → `board.py`): resume cards, focus view, slate cap, 7-day rule, Friday sweep, crosswalk drift, landed ledger. Static `dashboard.html` retired 2026-10-03. |
+    12	| `token-dashboard/` | **Deleted 2026-10-03** (Eric). Third-party course clone (`nateherkai/token-dashboard`), never ours. |
+    13	| `agy/` | Gmail/Drive cleanup scripts (dormant since 2026-09-11). The `com.keystone.agysync` job runs `KeystoneOS/scripts/agy-sync.ps1`, not this folder. |
+    14	| `claude-global-memory/` | Symlink to `~/.claude/global-memory`, the one clone of `erash11/claude-global-memory`. Edit there. |
+    15	| `~/.claude/skills/` | Canonical skills repo. Clone of `erash11/claude-skills`, not in DEV. |
+    16	| `_ARCHIVE/morning-briefing/` | Retired 2026-08-14, parked 2026-10-23. Do not use. |
+    17	
+
+hook: PostToolUse
+ succeeded in 148ms:
+   130	        os.path.expanduser("~/.claude/global-memory"): ("transcripts/",)}
+   131	
+   132	
+   133	def sweep_repos():
+   134	    """Every git repo closeout must leave pushed: DEV itself, DEV/*/ and DEV/*/*/ repos, and CONFIG_REPOS."""
+   135	    repos = [DEV] + [os.path.dirname(g) for g in dev_glob(".git")]
+   136	    repos = [r for r in repos if not any(k in r for k in SKIP)]
+   137	    return sorted(set(repos)) + [r for r in CONFIG_REPOS if os.path.isdir(os.path.join(r, ".git"))]
+   138	
+   139	
+   140	def sweep_repo(repo):
+   141	    """(blocking flags, info flags) for one repo. Blocking = work that is not on GitHub."""
+   142	    block, info = [], []
+   143	    # A .git git cannot use (Wilhelm_Brody_RTP 2026-10-25: no HEAD or config) makes git fall through
+   144	    # to the parent repo, which ignores the folder: its work is tracked nowhere and reads as clean.
+   145	    if os.path.realpath(git(repo, "rev-parse", "--show-toplevel") or "/") != os.path.realpath(repo):
+   146	        return ["NOT-A-REPO"], []
+   147	    head = git(repo, "status", "-sb", "--porcelain").splitlines()
+   148	    changed = [line[3:] for line in head[1:]]
+   149	    live = LIVE.get(repo, ())
+   150	    if any(not p.strip('"').startswith(live) for p in changed) if live else changed:
+   151	        block.append("DIRTY")
+   152	    elif changed:
+   153	        info.append("LIVE")  # only hook-written session files changed
+   154	    if head and "ahead" in head[0]:
+   155	        block.append("UNPUSHED")
+   156	    # Facts git knows, not CLAUDE.md wording (2026-10-25: "local only" there also names rules about
+   157	    # other folders). No remote = cannot be pushed; a detached HEAD is a pinned checkout.
+   158	    if not git(repo, "remote"):
+   159	        info.append("NO-REMOTE")
+   160	    elif head and head[0].startswith("## HEAD (no branch)"):
+   161	        info.append("DETACHED")
+   162	    elif head and "..." not in head[0] and git(repo, "rev-parse", "--verify", "-q", "HEAD"):
+   163	        block.append("NO-UPSTREAM")
+   164	    current = git(repo, "branch", "--show-current")
+   165	    for row in git(repo, "for-each-ref", "refs/heads", "--format=%(refname:short)|%(upstream:short)|%(upstream:track)").splitlines():
+   166	        name, up, track = (row.split("|") + ["", ""])[:3]
+   167	        if name == current:
+   168	            continue
+   169	        if "ahead" in track:
+   170	            block.append(f"BRANCH-AHEAD:{name}")
+   171	        elif not up and subprocess.run(["git", "-C", repo, "merge-base", "--is-ancestor", name, "HEAD"],
+   172	                                       capture_output=True).returncode != 0:
+   173	            block.append(f"BRANCH-UNPUSHED:{name}")  # merged local branches are post-merge leftovers, not work
+   174	    stashes = len(git(repo, "stash", "list").splitlines())
+   175	    if stashes:
+   176	        info.append(f"STASH:{stashes}")
+   177	    for wt in re.findall(r"^worktree (.+)$", git(repo, "worktree", "list", "--porcelain"), re.M)[1:]:
+   178	        if os.path.isdir(wt) and git(wt, "status", "--porcelain"):
+   179	            block.append(f"WORKTREE-DIRTY:{os.path.relpath(wt, repo)}")
+   180	    return block, info
+## main...origin/main
+## main...origin/main
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "ls -la ~/SecondBrain/.no-autopush; git -C ~/SecondBrain rev-parse --show-toplevel; nl -ba ~/.claude/scripts/daily-backup.ps1 | sed -n '45,95p'; nl -ba ~/DEV/FOOTBALL.md | sed -n '10,17p'; rg -n 'mirror_memory|_windows-import-archive|Sorting and archiving' ~/.claude/skills/dev-sync ~/DEV/AGENTS.md" in /Users/kristinarash/DEV
+ exited 1 in 121ms:
+ls: /Users/kristinarash/SecondBrain/.no-autopush: No such file or directory
+/Users/kristinarash/SecondBrain
+    45	}
+    46	
+    47	function Sync-Repo($path, $branch) {
+    48	    $name = Split-Path $path -Leaf
+    49	    if ($path -eq "$U/.claude") { $name = 'dotclaude' }
+    50	    if (-not (Test-Path (Join-Path $path '.git'))) { $Errors.Add("repo-missing:$name"); return }
+    51	    Push-Location $path
+    52	    try {
+    53	        git fetch origin 2>&1 | Out-Null
+    54	        $counts = git rev-list --left-right --count "origin/$branch...HEAD" 2>$null
+    55	        $behind = 0; $ahead = 0
+    56	        if ($counts) { $p = $counts -split '\s+'; $behind = [int]$p[0]; $ahead = [int]$p[1] }
+    57	        $dirty = (git status --porcelain | Measure-Object).Count
+    58	
+    59	        if ($behind -gt 0 -and $ahead -gt 0) {
+    60	            # True divergence: both sides carry commits. Never merge blindly from
+    61	            # automation - this one needs a human.
+    62	            $Errors.Add("repo-diverged:$name")
+    63	            Log "REPO $name : DIVERGED (behind=$behind ahead=$ahead dirty=$dirty) - manual reconcile needed"
+    64	            return
+    65	        }
+    66	        if ($behind -gt 0) {
+    67	            # Behind only, whatever the tree looks like. A dirty tree is NOT a reason to
+    68	            # refuse: --ff-only succeeds when the local changes do not overlap the incoming
+    69	            # commits, and git refuses on its own when they do. Let git decide.
+    70	            #
+    71	            # R10-02: the old pre-check treated "behind + dirty" as divergence and returned
+    72	            # before asking git. dotclaude and global-memory are permanently dirty, because
+    73	            # live session transcripts and .jsonl logs are written into them while a session
+    74	            # runs, so every day the other machine pushed produced a false repo-diverged
+    75	            # error (2026-09-18 and 2026-09-19 both did) and skipped the sync entirely.
+    76	            if ($DryRun) {
+    77	                # R10-03: do not claim a fast-forward that was never attempted. A dirty file
+    78	                # that the incoming commits also touch makes --ff-only refuse, and the old
+    79	                # dry-run line reported "would fast-forward" anyway - which is how a dry run
+    80	                # came back OK (0 errors) on 2026-09-19 for a state the real run would have
+    81	                # refused. Compare the dirty paths against the incoming changed paths instead.
+    82	                $incoming = @(git diff --name-only HEAD "origin/$branch" 2>$null)
+    83	                $dirtyPaths = @(git status --porcelain | ForEach-Object { ($_ -replace '^.{3}', '').Trim('"') })
+    84	                $clash = @($dirtyPaths | Where-Object { $incoming -contains $_ })
+    85	                if ($clash.Count -gt 0) {
+    86	                    Log "REPO $name : [dry-run] would be REFUSED - $($clash.Count) dirty file(s) also changed upstream: $($clash -join ', ')"
+    87	                } else {
+    88	                    Log "REPO $name : [dry-run] would fast-forward $behind commit(s)"
+    89	                }
+    90	            } else {
+    91	                $pullOut = git pull --ff-only origin $branch 2>&1
+    92	                if ($LASTEXITCODE -ne 0) {
+    93	                    # Real overlap, or a non-ff remote. Now it is worth an error, and git's
+    94	                    # own message says which file is in the way.
+    95	                    $Errors.Add("repo-behind-blocked:$name")
+    10	| `CFB_Analytics_Lab/` | CFBD API research lab. Has `MISSION.md`, `GLOSSARY.md`, `RESOURCES.md`, `learning-records/`. Largest single folder (~25k files). |
+    11	| `CFB_Victory_Model/` | Weekly prediction model. Capture cadence and rules: `/forecast-capture`, `project_cfb-forecast-capture.md`. |
+    12	| `CFB_Forecast_Archive/` | Read-only copies of the weekly forecast freezes, by year. Source of truth stays in `CFB_Victory_Model/data/`. |
+    13	| `PlayerProfiles_FB_03-28-2026/` | Player profile build (spring 2026, TSA radar, whole-roster T-scores). Also the Perch pull host (`com.keystone.perchpull`). Successor for profiles: `Football/PerformanceSnapshot/`. Lives at the DEV root, not under `Football/`. → own `CLAUDE.md` |
+    14	| `Football/PerformanceSnapshot/` | Running player performance snapshot: VALD CMJ/IMTP + Catapult GPS + Perch 1RM, STEN vs position norms (VALD NCAA + Baylor-built), radar across Winter / Summer / In-season. Static HTML, `snapshot.py --upload` to Drive `01_PROJECTS/_STALLED/2026-10-29_PerformanceSnapshot`, rebuilt by launchd `com.keystone.snapshot` after every pull. Roster from BaylorBears.com. Read-only on the three DBs. Repo `erash11/PerformanceSnapshot`. Created 2026-10-29. |
+    15	| `PlayCalls_SuccessRate_EPA/` | 2021–2025 Baylor offensive play-call charting CSVs (PFF export) **+ the Phase 1 self-scout**, joined to PFF data (read-only) at 99.3%. Own `CLAUDE.md` + `AGENTS.md`. Private repo. Finding: success rate 57.4% → 49.5%, concentrated on 1st & 10 and the run game. **Only 2024–2025 carry outcome columns**; 2021–2023 cannot support success rate at all. Phase 1 has no EPA — that needs CFBD and is Phase 2. |
+    16	| `Game_Tracker_PWA/` | Football game tracking PWA for the coaching staff (`football-tracker-pwa/`). Own `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `WebApps` is only a pointer. |
+    17	| `Practice_PlayCounts/` | Practice segment / play-count tracking PWA (`practice-tracker-pwa/`). Own `AGENTS.md` + `docs/STATUS.md`. Git repo, pushed to erash11. Disk is the source of truth; the Claude cloud project `WebApps` is only a pointer. |
+
+hook: PostToolUse
+hook: PostToolUse Failed
+codex
+- [SKILL.md:37](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:37) says the autopush hook skips all five repos. It can push SecondBrain. The [hook](/Users/kristinarash/.claude/hooks/session-autopush.js:118) skips repos under `~/.claude` and repos with `.no-autopush`. SecondBrain is outside that folder and has no `.no-autopush` file.
+
+- [SKILL.md:49](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:49) says the daily backup commits and pushes SecondBrain once a day. The [backup](/Users/kristinarash/.claude/scripts/daily-backup.ps1:59) can stop when branches differ. The [gate](/Users/kristinarash/.claude/scripts/daily-backup-login.sh:25) can skip a run on battery power or after two tries.
+
+- [SKILL.md:101](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:101) can choose the wrong clone folder. For `MatchupAnalysis_FB2026`, the search finds only the name. But [FOOTBALL.md:24](/Users/kristinarash/DEV/FOOTBALL.md:24) puts it inside `Football/`. The step would choose `~/DEV/MatchupAnalysis_FB2026`.
+
+- [SKILL.md:109](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:109) checks only whether the current branch is ahead. It can report done when either repo has changed files, a branch with no upstream, or unpushed work on another branch. The [sweep](/Users/kristinarash/.claude/scripts/where-was-i.py:147) checks these states for the other repos.
+
+- The diff removes the rule against moving repos into `_ARCHIVE/`. It also removes the rule to keep Tier A memory per machine and not restore the old mirror step. These are lost rules at the end of [SKILL.md](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:123).
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+42,893
+- [SKILL.md:37](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:37) says the autopush hook skips all five repos. It can push SecondBrain. The [hook](/Users/kristinarash/.claude/hooks/session-autopush.js:118) skips repos under `~/.claude` and repos with `.no-autopush`. SecondBrain is outside that folder and has no `.no-autopush` file.
+
+- [SKILL.md:49](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:49) says the daily backup commits and pushes SecondBrain once a day. The [backup](/Users/kristinarash/.claude/scripts/daily-backup.ps1:59) can stop when branches differ. The [gate](/Users/kristinarash/.claude/scripts/daily-backup-login.sh:25) can skip a run on battery power or after two tries.
+
+- [SKILL.md:101](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:101) can choose the wrong clone folder. For `MatchupAnalysis_FB2026`, the search finds only the name. But [FOOTBALL.md:24](/Users/kristinarash/DEV/FOOTBALL.md:24) puts it inside `Football/`. The step would choose `~/DEV/MatchupAnalysis_FB2026`.
+
+- [SKILL.md:109](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:109) checks only whether the current branch is ahead. It can report done when either repo has changed files, a branch with no upstream, or unpushed work on another branch. The [sweep](/Users/kristinarash/.claude/scripts/where-was-i.py:147) checks these states for the other repos.
+
+- The diff removes the rule against moving repos into `_ARCHIVE/`. It also removes the rule to keep Tier A memory per machine and not restore the old mirror step. These are lost rules at the end of [SKILL.md](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:123).

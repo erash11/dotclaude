@@ -1,0 +1,97 @@
+diff --git a/dev-sync/PLATFORMS.md b/dev-sync/PLATFORMS.md
+index 1ee9751..deac96c 100644
+--- a/dev-sync/PLATFORMS.md
++++ b/dev-sync/PLATFORMS.md
+@@ -6,6 +6,7 @@
+ - DEV root: `C:\Users\eric_rash\Desktop\DEV`. `where-was-i.py` resolves it the same way; run it
+   with `python`, not `python3`.
+ - `machine.md` missing: copy `machine.windows.md`.
++- Vault: `~/Desktop/SecondBrain`. Skip `claude-memory-compiler` in Step 1 when it is not cloned.
+ - Mods: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\mods\mods-sync.ps1`.
+ - Codex view: `powershell -ExecutionPolicy Bypass -File $HOME\.claude\skills\sync-to-codex.ps1`.
+ - Step 3.2 merge: walk `python ~/.claude/scripts/where-was-i.py --list` one repo at a time with the
+diff --git a/dev-sync/SKILL.md b/dev-sync/SKILL.md
+index d0c788e..8f9b0a9 100644
+--- a/dev-sync/SKILL.md
++++ b/dev-sync/SKILL.md
+@@ -33,8 +33,10 @@ Mac: `~/DEV`. Missing: stop and say so. Print the root on the first line of outp
+ ## Step 1 — Config repos
+ 
+ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+-`~/.claude/global-memory` (claude-global-memory). For each: snapshot-commit local changes
+-(Step 3.1 rule), `git pull --no-rebase`, `git push`. Then:
++`~/.claude/global-memory` (claude-global-memory), `~/.claude/claude-memory-compiler` (code only:
++`daily/` and `knowledge/` are gitignored), `~/SecondBrain` (the vault). The sweep covers only the
++first three, and the autopush hook pushes only the repo a session ran in. For each: snapshot-commit local changes (Step 3.1
++rule), `git pull --no-rebase`, `git push`. Then:
+ 
+ - **`~/.claude`:** if `machine.md` is missing, copy `machine.macos.md` to it. Run
+   `bash ~/.claude/mods/mods-sync.sh`; report its line (`mods: N loaded, N disabled, N invalid`)
+@@ -44,6 +46,8 @@ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+   SessionStart hook already injected the pre-pull copy. If the pull brings commits, say how many
+   and name the newest. On conflict in `transcripts/.errors.log` or `MEMORY.md`, keep both sides'
+   lines: they are logs, and a dropped line is a lost memory.
++- **SecondBrain:** the Mac's daily backup also commits and pushes it, at most once a day, and it
++  skips a day on battery or a diverged branch; this step covers the rest.
+ 
+ ## Step 2 — Inventory
+ 
+@@ -53,7 +57,7 @@ In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+    mount: walking it hangs), `_ARCHIVE` and worktrees.
+ 2. Missing locally: `gh repo list erash11 --limit 300 --no-archived --json name`, minus the
+    folders `where-was-i.py --list` prints, minus `dotclaude`, `SecondBrain`, `claude-skills`,
+-   `claude-global-memory`, `claude-memory-compiler`, `DEV`, `DexaProject`,
++   `claude-global-memory`, `claude-memory-compiler` (Step 1 syncs these five), `DEV`, `DexaProject`,
+    `AppliedPerformance-Site` (local `Website/`), and `printing-press-library` (removed locally
+    2026-10-23; cloning it brings back ~66,000 files).
+ 3. Project folders with no `.git` (the DEV repo ignores them, so their work is tracked nowhere):
+@@ -86,24 +90,32 @@ Show all three before changing anything.
+    local changes 3.1 left unstaged), and list the repo.
+ 3. **Conflict.** Keep this machine's version and save the remote one beside it as
+    `<file>.from-mac`, `<file>.from-windows` or `<file>.from-remote` (whoever pushed it), stage
+-   both, commit. Closeout uses these steps too. `.DS_Store` conflicts: `git rm -q .DS_Store`.
++   both, commit. Closeout uses these steps too. Exception: `transcripts/.errors.log` and
++   `MEMORY.md` in global-memory keep both sides' lines in the one file (Step 1). `.DS_Store` conflicts: `git rm -q .DS_Store`.
+    - Save the remote side by **moving** the file: a stdout redirect re-encodes the bytes.
+      `git checkout --theirs -- <f> && mv <f> <f>.from-remote && git checkout --ours -- <f>`
+    - While `.git/MERGE_HEAD` exists, stage only the paths you just resolved, by name:
+      `git add -A` there commits the conflict markers themselves.
+ 4. **Push** every repo the sweep marked `UNPUSHED`, plus every repo 3.1–3.3 committed in.
+    `NO-UPSTREAM`: `git push -u origin <branch>`.
+-5. Missing locally: `gh repo clone erash11/<name> ~/DEV/<name>`. No remote:
++5. Missing locally: clone it where it belongs. Find the name in the area indexes
++   (``grep -n '<name>/' ~/DEV/*.md``) and read its entry: a path written `Football/<name>/`, or a
++   row under an "Inside Football/" heading, puts it in that parent folder; otherwise
++   `~/DEV/<name>`. Then `gh repo clone erash11/<name> ~/DEV/<path>`. A wrong folder breaks the
++   KeystoneOS paths and orphans the repo's Tier A memory (the slug is the absolute path). No remote:
+    `gh repo create erash11/<name> --private --source=. --push`.
+ 
+ ## Step 4 — Prove it and report
+ 
+-Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. Done when its last line reads
+-`0 need action`, or every `ACTION` line left is in the report with its reason.
++Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. For the two Step 1 repos it does not
++cover (`claude-memory-compiler`, `SecondBrain`), run `git -C <repo> status --porcelain` and
++`git -C <repo> log --branches --not --remotes --oneline`. Done when the sweep's last line reads
++`0 need action`, both commands print nothing for both repos, and every problem left is in the
++report with its reason.
+ 
+ ```
+ DEV root: ~/DEV
+-Config: dotclaude, skills, global-memory pulled + pushed (global-memory: +N commits, newest "<msg>")
++Config: dotclaude, skills, global-memory, memory-compiler, SecondBrain pulled + pushed (global-memory: +N commits, newest "<msg>")
+ <mods line>
+ Pulled: <repos>    Pushed: <repos>    Cloned: <repos>    Created: <repos>
+ Conflicts: <every .from-* file created>, or none
+@@ -117,11 +129,3 @@ Conflicts: <every .from-* file created>, or none
+   `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md`.
+ - **`cannot lock ref 'HEAD'`:** check `pgrep -fl git` first. If no git is running and the
+   `.git/*.lock` file is zero bytes and older than the session, it is stale: move it aside, retry.
+-- **Sorting and archiving are separate.** Moving a dormant repo into `_ARCHIVE/` breaks DEV paths
+-  in KeystoneOS `projects.json`, `memory-sources.json`, `memory-index-paths.json` and
+-  `discovery-roots.json`, and orphans its Tier A memory (the slug is the absolute path).
+-- **Tier A memory stays per machine.** The Windows-slug folders were archived 2026-10-25
+-  (`~/.claude/projects/_windows-import-archive/`); the old `mirror_memory.py` step would have
+-  copied them back. Project facts cross machines through the repo's `docs/`, which closeout writes.
+-</content>
+-</invoke>
