@@ -1,0 +1,7 @@
+- [startup/SKILL.md:28](/Users/kristinarash/.claude/skills/startup/SKILL.md:28): The folder rule conflicts with “from any folder.” The Mac command works from any folder because [board.py:429](/Users/kristinarash/DEV/project-triage/board.py:429) uses the script’s folder.
+
+- [startup/SKILL.md:26](/Users/kristinarash/.claude/skills/startup/SKILL.md:26): The rule requires a pull. A repo that is already current may not appear in dev-sync’s `Pulled` list. The agent could report a pull failure when there was none. See [dev-sync/SKILL.md:84](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:84).
+
+- [startup/SKILL.md:46](/Users/kristinarash/.claude/skills/startup/SKILL.md:46): The command does not show every open question in every changed STATUS file. It uses the last **committed** date, and it shortens questions after 220 characters. See [where-was-i.py:95](/Users/kristinarash/.claude/scripts/where-was-i.py:95), [line 115](/Users/kristinarash/.claude/scripts/where-was-i.py:115), and [line 222](/Users/kristinarash/.claude/scripts/where-was-i.py:222).
+
+- [startup/SKILL.md:64](/Users/kristinarash/.claude/skills/startup/SKILL.md:64): The skill says to flag bad questions for the next closeout. It gives no place to save that flag. Closeout fixes questions in repos touched that day, so a flagged repo can be missed. See [closeout/SKILL.md:93](/Users/kristinarash/.claude/skills/closeout/SKILL.md:93).

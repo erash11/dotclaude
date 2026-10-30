@@ -1,0 +1,1820 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/DEV
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a18f03-fca7-7d72-9bd1-ef9e39712cfb
+--------
+user
+Review this diff of an agent skill (startup) at /Users/kristinarash/.claude/audits/codex-review-startup-2026-10-30.diff.txt; the full skill is ~/.claude/skills/startup/SKILL.md. It runs ~/.claude/skills/dev-sync/SKILL.md first. Check each claim against the real files: ~/DEV/project-triage/board.py (--background, its printed lines, whether it works from any folder), ~/.claude/skills/_shared/config.*.json, ~/.claude/scripts/where-was-i.py (--days, --decisions, 'uncommitted' rows), and ~/.claude/skills/closeout/SKILL.md (what it does with STATUS open questions). Also check startup and dev-sync agree. Report only concrete faults: a false claim, a step that would fail or mislead an agent, a wrong command, a lost rule. For each: file, line, fault, evidence. Be brief.
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+2026-10-30T22:52:46.583605Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I’ll check each claim against the files. I’ll report only faults I can prove.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/machine.md ~/.claude/CLAUDE.md' in /Users/kristinarash/DEV
+ succeeded in 104ms:
+# Shell / Environment (macOS)
+
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+# Machine
+
+Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitignored; copy `machine.macos.md` or `machine.windows.md` to `machine.md` on a new machine). It is imported below.
+
+@machine.md
+
+Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+
+# Workflow Expectations
+
+- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+- When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools: invoke one when it clearly fits the task.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
+
+# Session Startup
+
+The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER.md`, `global-memory/MEMORY.md`, a summary of `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot. Work from the injected copy.
+
+- If hook failures appear, surface them once on the first response, then continue. Entries mean a hook or scheduled job failed.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- The injection is a frozen snapshot: mid-session writes take effect next session. Load anything further only when a question needs it.
+
+# Memory — routing only
+
+The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+
+The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+
+- Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+- Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+
+---
+
+Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+
+hook: PostToolUse
+hook: PostToolUse Failed
+codex
+I’ll use the code-review skill to check the changes.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "for f in ~/.claude/skills/_shared/config.*.json; do printf '\\n%s\\n' \""'$f"; nl -ba "$f"; done' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+
+/Users/kristinarash/.claude/skills/_shared/config.macos.json
+     1	{
+     2	  "_comment": "macOS path configuration. The SecondBrain vault moved off the iCloud-synced Desktop to ~/SecondBrain on 2026-08-14.",
+     3	  "vault_root": "/Users/kristinarash/SecondBrain",
+     4	  "vault_inbox_meetings": "/Users/kristinarash/SecondBrain/Inbox/meetings",
+     5	  "vault_notes": "/Users/kristinarash/SecondBrain/Notes",
+     6	  "vault_knowledge": "/Users/kristinarash/SecondBrain/Knowledge",
+     7	  "vault_library": "/Users/kristinarash/SecondBrain/Knowledge/library",
+     8	  "vault_todo": "/Users/kristinarash/SecondBrain/Inbox/TODO.md",
+     9	  "vault_projects": "/Users/kristinarash/SecondBrain/Projects",
+    10	  "vault_output_ledger": "/Users/kristinarash/SecondBrain/output/_ledger.md",
+    11	  "vault_audits": "/Users/kristinarash/SecondBrain/audits",
+    12	  "vault_audit_trend": "/Users/kristinarash/SecondBrain/audits/_trend.md",
+    13	  "vault_status_reports": "/Users/kristinarash/SecondBrain/Inbox/status-reports",
+    14	  "vault_status_log": "/Users/kristinarash/SecondBrain/Inbox/status-log",
+    15	  "portfolio_json": "/Users/kristinarash/DEV/project-triage/portfolio.json",
+    16	  "okr_doc": "/Users/kristinarash/SecondBrain/Projects/Applied-Performance-OKRs-2026-27.md",
+    17	  "meeting_sync_state_file": "/Users/kristinarash/SecondBrain/Inbox/meetings/.sync-state.json",
+    18	  "pending_renames_file": "/Users/kristinarash/SecondBrain/Inbox/meetings/.pending-renames.json",
+    19	  "fireflies_cli": "/Users/kristinarash/go/bin/fireflies-pp-cli",
+    20	  "meeting_lookback_days": 14,
+    21	  "keystone": {
+    22	    "_comment": "KeystoneOS repo-relative environment paths used by loop-designer and friends.",
+    23	    "context_command": ".\\scripts\\keystone.ps1 context <ProjectKey>",
+    24	    "specs_dir": "docs/superpowers/specs/",
+    25	    "verification_checklist": "verification/default-checklist.md"
+    26	  },
+    27	  "okr_scoreboard": "/Users/kristinarash/SecondBrain/Projects/okr-tracker/SCOREBOARD.md",
+    28	  "okr_tracker_dir": "/Users/kristinarash/SecondBrain/Projects/okr-tracker",
+    29	  "utilization_brief": "/Users/kristinarash/DEV/AppliedUtilization/Applied_Performance_Utilization_Brief.md",
+    30	  "canonical_projects": "/Users/kristinarash/SecondBrain/Projects/Applied-Performance-Active-Projects.md"
+    31	}
+
+/Users/kristinarash/.claude/skills/_shared/config.windows.json
+     1	{
+     2	  "_comment": "Windows path configuration. SecondBrain was restored on this machine at C:\\Users\\eric_rash\\Desktop\\SecondBrain (not the home dir) and vault_root was repointed there 2026-09-17; vault-backed skills must fail clearly if it moves again.",
+     3	  "vault_root": "C:\\Users\\eric_rash\\Desktop\\SecondBrain",
+     4	  "vault_inbox_meetings": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings",
+     5	  "vault_notes": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Notes",
+     6	  "vault_knowledge": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge",
+     7	  "vault_library": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Knowledge\\library",
+     8	  "vault_todo": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\TODO.md",
+     9	  "vault_projects": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Projects",
+    10	  "vault_output_ledger": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\output\\_ledger.md",
+    11	  "vault_audits": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\audits",
+    12	  "vault_audit_trend": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\audits\\_trend.md",
+    13	  "vault_status_reports": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\status-reports",
+    14	  "vault_status_log": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\status-log",
+    15	  "portfolio_json": "C:\\Users\\eric_rash\\Desktop\\DEV\\project-triage\\portfolio.json",
+    16	  "okr_doc": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Projects\\Applied-Performance-OKRs-2026-27.md",
+    17	  "meeting_sync_state_file": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\.sync-state.json",
+    18	  "pending_renames_file": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Inbox\\meetings\\.pending-renames.json",
+    19	  "fireflies_cli": "C:\\Users\\eric_rash\\go\\bin\\fireflies-pp-cli.exe",
+    20	  "meeting_lookback_days": 14,
+    21	  "keystone": {
+    22	    "_comment": "KeystoneOS repo-relative environment paths used by loop-designer and friends.",
+    23	    "context_command": ".\\scripts\\keystone.ps1 context <ProjectKey>",
+    24	    "specs_dir": "docs/superpowers/specs/",
+    25	    "verification_checklist": "verification/default-checklist.md"
+    26	  },
+    27	  "okr_scoreboard": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Projects\\okr-tracker\\SCOREBOARD.md",
+    28	  "okr_tracker_dir": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Projects\\okr-tracker",
+    29	  "utilization_brief": "C:\\Users\\eric_rash\\Desktop\\DEV\\AppliedUtilization\\Applied_Performance_Utilization_Brief.md",
+    30	  "canonical_projects": "C:\\Users\\eric_rash\\Desktop\\SecondBrain\\Projects\\Applied-Performance-Active-Projects.md"
+    31	}
+
+hook: PostToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba ~/DEV/project-triage/board.py' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+     1	"""Local drag-and-drop board over portfolio.json.
+     2	
+     3	Binds 127.0.0.1 only. A token guards /api/*, and writes additionally
+     4	require a same-origin request, because any page in the browser can POST to a
+     5	localhost port.
+     6	
+     7	The port (7474) and the token are stable across restarts so the board's URL can
+     8	live in the Dock as a Safari web app (File > Add to Dock). The token is kept in a
+     9	machine-local file outside DEV, which is Drive-backed.
+    10	"""
+    11	import argparse
+    12	import datetime as _dt
+    13	import hashlib
+    14	import http.server
+    15	import json
+    16	import os
+    17	import secrets
+    18	import shutil
+    19	import subprocess
+    20	import sys
+    21	import tempfile
+    22	import threading
+    23	import time
+    24	import urllib.request
+    25	import webbrowser
+    26	from pathlib import Path
+    27	from urllib.parse import urlparse, parse_qs, unquote
+    28	
+    29	import board_ops
+    30	import cards
+    31	import landed
+    32	import portfolio
+    33	import sweep
+    34	from portfolio import RegistryError
+    35	
+    36	LOCK = threading.Lock()
+    37	DEFAULT_PORT = 7474                   # 7373 was the retired command centre
+    38	
+    39	# Oswald carries the board's display register (DESIGN.md). The board is server-backed,
+    40	# so the font is served as a file rather than base64-inlined.
+    41	FONT_PATH = Path(__file__).resolve().parent / "assets" / "oswald-latin.woff2"
+    42	
+    43	# App icon (concept A, drawn by Codex 2026-10-05; sources in assets/icon-candidates/).
+    44	# Served unauthenticated like the font: the browser fetches icons and the manifest
+    45	# without the token. The manifest has no start_url on purpose, so an installed app
+    46	# opens at the URL it was installed from, which carries ?token=.
+    47	ICONS = {f"/icon-{s}.png": Path(__file__).resolve().parent / "assets" / f"icon-{s}.png"
+    48	         for s in (32, 180, 192, 512)}
+    49	MANIFEST = json.dumps({
+    50	    "name": "Front Burner", "short_name": "Front Burner", "scope": "/",
+    51	    "display": "standalone", "background_color": "#0a0d0b", "theme_color": "#0a0d0b",
+    52	    "icons": [{"src": f"/icon-{s}.png", "sizes": f"{s}x{s}", "type": "image/png"}
+    53	              for s in (192, 512)],
+    54	}).encode()
+    55	
+    56	
+    57	class Handler(http.server.BaseHTTPRequestHandler):
+    58	    repo: Path = None
+    59	    dev_root: Path = None             # DEV folder that dev_folder paths hang off
+    60	    ledger_dir: Path = None           # landed ledgers (one JSONL per machine)
+    61	    token: str = ""
+    62	    undo: dict = None
+    63	    undo_fingerprint: tuple = None    # registry stat when `undo` was captured
+    64	
+    65	    def log_message(self, *args):        # keep the terminal quiet
+    66	        pass
+    67	
+    68	    # ---------- helpers ----------
+    69	    def _send(self, code, payload=None, body=None, ctype="application/json"):
+    70	        data = body if body is not None else json.dumps(payload or {}).encode()
+    71	        self.send_response(code)
+    72	        self.send_header("Content-Type", ctype)
+    73	        self.send_header("Content-Length", str(len(data)))
+    74	        self.end_headers()
+    75	        self.wfile.write(data)
+    76	
+    77	    def _authorised(self, parsed) -> bool:
+    78	        got = parse_qs(parsed.query).get("token", [""])[0]
+    79	        return secrets.compare_digest(got, self.token)
+    80	
+    81	    def _same_origin(self) -> bool:
+    82	        origin = self.headers.get("Origin")
+    83	        if origin is None:
+    84	            return True                  # non-browser client, e.g. curl
+    85	        host = self.headers.get("Host", "")
+    86	        return origin in (f"http://{host}", f"https://{host}")
+    87	
+    88	    def _load(self):
+    89	        return portfolio.load_registry(self.repo / "portfolio.json")
+    90	
+    91	    def _save(self, data):
+    92	        portfolio.save_registry(self.repo / "portfolio.json", data)
+    93	
+    94	    def _fingerprint(self):
+    95	        """Cheap identity of the registry file on disk, or None if it is gone."""
+    96	        try:
+    97	            st = os.stat(self.repo / "portfolio.json")
+    98	        except OSError:
+    99	            return None
+   100	        return (st.st_mtime_ns, st.st_size)
+   101	
+   102	    def _changes_sig(self, names) -> str:
+   103	        """Hash of the registry's stat plus each shown project's STATUS.md mtime.
+   104	
+   105	        Names map to paths through the registry, never from the request, so the
+   106	        page can only make the server stat STATUS files of real rows. mtime only:
+   107	        the page asks every few seconds.
+   108	        """
+   109	        folders = {p["name"]: p.get("dev_folder") for p in self._load()["projects"]}
+   110	        parts = [self._fingerprint()]
+   111	        for name in sorted(set(names)):
+   112	            if name not in folders:
+   113	                continue
+   114	            mtime = None
+   115	            if folders[name]:
+   116	                try:
+   117	                    status = self.dev_root / folders[name] / "docs" / "STATUS.md"
+   118	                    mtime = os.stat(status).st_mtime_ns
+   119	                except OSError:
+   120	                    pass
+   121	            parts.append((name, mtime))
+   122	        return hashlib.sha1(json.dumps(parts).encode()).hexdigest()
+   123	
+   124	    def _body(self):
+   125	        length = int(self.headers.get("Content-Length") or 0)
+   126	        return json.loads(self.rfile.read(length) or b"{}")
+   127	
+   128	    # ---------- routes ----------
+   129	    def do_GET(self):
+   130	        parsed = urlparse(self.path)
+   131	        if parsed.path == "/":
+   132	            page = (self.repo / "board.html").read_bytes()
+   133	            return self._send(200, body=page, ctype="text/html; charset=utf-8")
+   134	        if parsed.path == "/oswald.woff2":
+   135	            # Unauthenticated on purpose: a CSS url() cannot carry the token, and a
+   136	            # font file holds nothing worth guarding. Read from the module directory,
+   137	            # not self.repo — the font belongs to the app, not to the registry's
+   138	            # directory, which in the tests is a tmp dir holding only two files.
+   139	            return self._send(200, body=FONT_PATH.read_bytes(), ctype="font/woff2")
+   140	        if parsed.path in ICONS:
+   141	            return self._send(200, body=ICONS[parsed.path].read_bytes(), ctype="image/png")
+   142	        if parsed.path == "/manifest.webmanifest":
+   143	            return self._send(200, body=MANIFEST, ctype="application/manifest+json")
+   144	        if not parsed.path.startswith("/api/"):
+   145	            return self._send(404, {"error": "not found"})
+   146	        if not self._authorised(parsed):
+   147	            return self._send(403, {"error": "bad or missing token"})
+   148	        if parsed.path == "/api/registry":
+   149	            data = self._load()
+   150	            data["today"] = _dt.date.today().isoformat()
+   151	            # resume cards ride along: load() runs on every change the poll sees
+   152	            try:
+   153	                ledger = landed.read_ledgers(self.ledger_dir)
+   154	            except (OSError, ValueError):     # a torn ledger line must not blank the board
+   155	                ledger = []
+   156	            data["cards"] = cards.build_cards(data, self.dev_root, ledger)
+   157	            data["unpushed"] = unpushed_edits(self.repo)
+   158	            data["sweep_pending"] = sweep.pending_count(data, ledger, _dt.date.today())
+   159	            return self._send(200, data)
+   160	        if parsed.path == "/api/changes":
+   161	            # the page polls this so terminal edits show up without a reload
+   162	            raw = parse_qs(parsed.query).get("names", [""])[0]
+   163	            names = [n for n in raw.split(",") if n]
+   164	            return self._send(200, {"sig": self._changes_sig(names)})
+   165	        return self._send(404, {"error": "not found"})
+   166	
+   167	    def _mutate(self, fn):
+   168	        """Run fn(data), snapshot for undo, save. Returns the saved registry."""
+   169	        with LOCK:
+   170	            data = self._load()
+   171	            snapshot = json.loads(json.dumps(data))
+   172	            fn(data)
+   173	            self._save(data)
+   174	            type(self).undo = snapshot
+   175	            # stat AFTER the write lands (save_registry ends in os.replace) so the
+   176	            # fingerprint describes the file the snapshot is the predecessor of
+   177	            type(self).undo_fingerprint = self._fingerprint()
+   178	            return data
+   179	
+   180	    def do_POST(self):
+   181	        parsed = urlparse(self.path)
+   182	        if not self._authorised(parsed):
+   183	            return self._send(403, {"error": "bad or missing token"})
+   184	        if not self._same_origin():
+   185	            return self._send(403, {"error": "cross-origin write refused"})
+   186	
+   187	        parts = [p for p in parsed.path.split("/") if p]     # ["api", ...]
+   188	        try:
+   189	            body = self._body()
+   190	        except (ValueError, json.JSONDecodeError) as e:
+   191	            # JSONDecodeError subclasses ValueError; the plain-ValueError arm also
+   192	            # covers a non-numeric Content-Length, which int() rejects inside _body.
+   193	            return self._send(400, {"error": "body is not valid JSON"
+   194	                                    if isinstance(e, json.JSONDecodeError)
+   195	                                    else "malformed request headers or body"})
+   196	        if not isinstance(body, dict):
+   197	            return self._send(400, {"error": "body must be a JSON object"})
+   198	
+   199	        try:
+   200	            if parts == ["api", "move"]:
+   201	                data = self._mutate(lambda d: board_ops.reorder(
+   202	                    d, body["name"], body["lane"], body["stage"], int(body.get("position", 0))))
+   203	                lane = [{"name": p["name"], "rank": p["rank"], "stage": p.get("stage")}
+   204	                        for p in board_ops.live(data, body["lane"])]
+   205	                return self._send(200, {"ok": True, "lane": lane})
+   206	
+   207	            if parts == ["api", "undo"]:
+   208	                with LOCK:
+   209	                    snapshot = type(self).undo
+   210	                    if snapshot is None:
+   211	                        return self._send(400, {"error": "nothing to undo"})
+   212	                    # The snapshot may be hours old. Anything that wrote the registry
+   213	                    # since — the `project` skill, `portfolio.py add-idea` — would be
+   214	                    # silently destroyed by restoring it, and `ideas` is not even
+   215	                    # rendered here, so the loss would be invisible. Refuse instead.
+   216	                    if self._fingerprint() != type(self).undo_fingerprint:
+   217	                        type(self).undo = None
+   218	                        type(self).undo_fingerprint = None
+   219	                        return self._send(409, {
+   220	                            "error": "registry changed outside the board — undo refused"})
+   221	                    self._save(snapshot)
+   222	                    type(self).undo = None
+   223	                    type(self).undo_fingerprint = None
+   224	                return self._send(200, {"ok": True})
+   225	
+   226	            if len(parts) == 3 and parts[:2] == ["api", "project"]:
+   227	                name = unquote(parts[2])
+   228	                self._mutate(lambda d: board_ops.patch_project(
+   229	                    d, name,
+   230	                    status=body.get("status"),
+   231	                    purpose=body.get("purpose"),
+   232	                    next_action=body.get("next_action"),
+   233	                    note=body.get("note"),
+   234	                    receiver=body.get("receiver"),
+   235	                    today=_dt.date.today().isoformat()))
+   236	                return self._send(200, {"ok": True})
+   237	
+   238	            if len(parts) == 4 and parts[:2] == ["api", "project"] and parts[3] == "lane":
+   239	                name = unquote(parts[2])
+   240	                self._mutate(lambda d: board_ops.set_lane(d, name, body["lane"]))
+   241	                return self._send(200, {"ok": True})
+   242	
+   243	            if len(parts) == 4 and parts[:2] == ["api", "inbox"] and parts[3] == "archive":
+   244	                name = unquote(parts[2])
+   245	                self._mutate(lambda d: board_ops.archive_inbox(
+   246	                    d, name, body["lane"],
+   247	                    body.get("purpose", ""), body.get("next_action", ""),
+   248	                    body.get("status", "dropped")))
+   249	                return self._send(200, {"ok": True})
+   250	
+   251	            if len(parts) == 4 and parts[:2] == ["api", "inbox"] and parts[3] == "promote":
+   252	                name = unquote(parts[2])
+   253	                self._mutate(lambda d: board_ops.promote(
+   254	                    d, name, body["lane"], body["stage"], int(body.get("position", 0)),
+   255	                    body.get("purpose", ""), body.get("next_action", "")))
+   256	                return self._send(200, {"ok": True})
+   257	
+   258	        except RegistryError as e:
+   259	            return self._send(400, {"error": str(e)})
+   260	        except KeyError as e:
+   261	            return self._send(400, {"error": f"missing field: {e.args[0]}"})
+   262	        except (ValueError, TypeError, AttributeError) as e:
+   263	            return self._send(400, {"error": str(e)})
+   264	
+   265	        return self._send(404, {"error": "not found"})
+   266	
+   267	    def do_DELETE(self):
+   268	        parsed = urlparse(self.path)
+   269	        if not self._authorised(parsed):
+   270	            return self._send(403, {"error": "bad or missing token"})
+   271	        if not self._same_origin():
+   272	            return self._send(403, {"error": "cross-origin write refused"})
+   273	        parts = [p for p in parsed.path.split("/") if p]
+   274	        try:
+   275	            if len(parts) == 3 and parts[:2] == ["api", "project"]:
+   276	                name = unquote(parts[2])
+   277	                self._mutate(lambda d: board_ops.delete_project(d, name))
+   278	                return self._send(200, {"ok": True})
+   279	            if len(parts) == 3 and parts[:2] == ["api", "inbox"]:
+   280	                name = unquote(parts[2])
+   281	                self._mutate(lambda d: board_ops.delete_inbox(d, name))
+   282	                return self._send(200, {"ok": True})
+   283	        except RegistryError as e:
+   284	            return self._send(400, {"error": str(e)})
+   285	        return self._send(404, {"error": "not found"})
+   286	
+   287	
+   288	def unpushed_edits(repo: Path) -> int | None:
+   289	    """Registry edits not on GitHub yet: 1 if portfolio.json is dirty, plus unpushed commits
+   290	    touching it. None when the repo is not a git checkout. closeout clears them with a
+   291	    `data: board edits <date>` commit and a push (PM design Decision 10)."""
+   292	    def git(*a):
+   293	        return subprocess.run(["git", *a], cwd=repo, capture_output=True, text=True, timeout=10)
+   294	    try:
+   295	        dirty = git("status", "--porcelain", "--", "portfolio.json")
+   296	        if dirty.returncode != 0:
+   297	            return None
+   298	        ahead = git("rev-list", "--count", "@{u}..HEAD", "--", "portfolio.json")
+   299	        n = int(ahead.stdout.strip()) if ahead.returncode == 0 else 0   # no upstream: count dirty only
+   300	        return n + (1 if dirty.stdout.strip() else 0)
+   301	    except (OSError, ValueError, subprocess.SubprocessError):
+   302	        return None
+   303	
+   304	
+   305	def session_backup(repo: Path):
+   306	    """Copy the registry aside once per board session, before the first mutation.
+   307	
+   308	    The one-deep portfolio.json.bak is clobbered on every save, and the board saves
+   309	    far more often than the CLI, so after a few bad drags both the .bak and the
+   310	    single-level undo only reach back one mutation. This is the session restore
+   311	    point. It lives here rather than in portfolio.py so the CLI is unchanged.
+   312	    Returns the backup path, or None if there is no registry yet.
+   313	    """
+   314	    src = Path(repo) / "portfolio.json"
+   315	    if not src.exists():
+   316	        return None
+   317	    stamp = _dt.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")   # no colons: filename-safe
+   318	    dest = src.with_name(f"{src.name}.{stamp}.bak")
+   319	    shutil.copy2(src, dest)
+   320	    return dest
+   321	
+   322	
+   323	def make_server(repo: Path, token: str, port: int = 0,
+   324	                dev_root: Path | None = None,
+   325	                ledger_dir: Path | None = None) -> http.server.HTTPServer:
+   326	    # project-triage sits inside DEV on both machines, as crosswalk assumes
+   327	    dev_root = Path(dev_root) if dev_root else Path(repo).parent
+   328	    handler = type("BoundHandler", (Handler,),
+   329	                   {"repo": Path(repo), "token": token, "dev_root": dev_root,
+   330	                    "ledger_dir": Path(ledger_dir) if ledger_dir else landed.LEDGER_DIR})
+   331	    return _Server(("127.0.0.1", port), handler)
+   332	
+   333	
+   334	class _Server(http.server.HTTPServer):
+   335	    # On Windows SO_REUSEADDR lets a second server share a port already in use, so a
+   336	    # taken 7474 would go unnoticed. Elsewhere it only skips TIME_WAIT, which we want.
+   337	    allow_reuse_address = os.name != "nt"
+   338	
+   339	
+   340	def bind(repo: Path, token: str, port: int, dev_root: Path | None = None) -> http.server.HTTPServer:
+   341	    """The requested port, or any free one if something else holds it."""
+   342	    try:
+   343	        return make_server(repo, token, port, dev_root)
+   344	    except OSError:
+   345	        if not port:
+   346	            raise
+   347	        print(f"port {port} is taken; using a free one (the Dock app's URL won't match this run)")
+   348	        return make_server(repo, token, 0, dev_root)
+   349	
+   350	
+   351	def token_path() -> Path:
+   352	    override = os.environ.get("PM_BOARD_TOKEN")
+   353	    if override:
+   354	        return Path(override)
+   355	    base = Path(os.environ["LOCALAPPDATA"]) if os.name == "nt" else Path.home() / ".config"
+   356	    return base / "pm-board" / "token"
+   357	
+   358	
+   359	def load_token(path: Path) -> str:
+   360	    """The machine's board token: made once, then reused so the board's URL stays put."""
+   361	    try:
+   362	        tok = path.read_text(encoding="utf-8").strip()
+   363	        if tok:
+   364	            return tok
+   365	    except OSError:
+   366	        pass
+   367	    path.parent.mkdir(parents=True, exist_ok=True)
+   368	    tok = secrets.token_urlsafe(16)
+   369	    path.write_text(tok, encoding="utf-8")
+   370	    try:
+   371	        path.chmod(0o600)
+   372	    except OSError:
+   373	        pass
+   374	    return tok
+   375	
+   376	
+   377	# ---------- one board per machine: `pm` and `/pm` reuse a running one ----------
+   378	# Machine-local state outside DEV (DEV is Drive-backed, and the token is per run).
+   379	
+   380	def state_path() -> Path:
+   381	    override = os.environ.get("PM_BOARD_STATE")
+   382	    return Path(override) if override else Path(tempfile.gettempdir()) / "pm-board.json"
+   383	
+   384	
+   385	def write_state(path: Path, repo: Path, port: int, token: str) -> None:
+   386	    path.write_text(json.dumps({"pid": os.getpid(), "port": port, "token": token,
+   387	                                "repo": str(Path(repo).resolve())}), encoding="utf-8")
+   388	
+   389	
+   390	def running_instance(repo: Path, path: Path | None = None) -> str | None:
+   391	    """URL of a live board for this repo, or None. Live = it answers its own token."""
+   392	    path = path or state_path()
+   393	    try:
+   394	        st = json.loads(path.read_text(encoding="utf-8"))
+   395	        if Path(st["repo"]) != Path(repo).resolve():
+   396	            return None
+   397	        base = f"http://127.0.0.1:{int(st['port'])}"
+   398	        with urllib.request.urlopen(f"{base}/api/changes?token={st['token']}&names=", timeout=2) as r:
+   399	            if r.status != 200:
+   400	                return None
+   401	        return f"{base}/?token={st['token']}"
+   402	    except (OSError, ValueError, KeyError, TypeError):
+   403	        return None
+   404	
+   405	
+   406	def start_background(args) -> int:
+   407	    """Start the board as a child of this terminal (it dies with it), wait until it answers."""
+   408	    log = state_path().with_suffix(".log")
+   409	    cmd = [sys.executable, str(Path(__file__).resolve()), "--repo", str(args.repo),
+   410	           "--port", str(args.port), "--no-open"]
+   411	    if args.dev_root:
+   412	        cmd += ["--dev-root", str(args.dev_root)]
+   413	    with open(log, "w", encoding="utf-8") as out:
+   414	        subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=out, stderr=subprocess.STDOUT)
+   415	    for _ in range(60):
+   416	        url = running_instance(args.repo)
+   417	        if url:
+   418	            print(f"board started at {url}")
+   419	            if not args.no_open:
+   420	                webbrowser.open(url)
+   421	            return 0
+   422	        time.sleep(0.25)
+   423	    print(f"board did not start; see {log}", file=sys.stderr)
+   424	    return 1
+   425	
+   426	
+   427	def main(argv=None) -> int:
+   428	    ap = argparse.ArgumentParser(description="Local portfolio board")
+   429	    ap.add_argument("--repo", type=Path, default=Path(__file__).parent)
+   430	    ap.add_argument("--port", type=int, default=DEFAULT_PORT, help="0 = any free port")
+   431	    ap.add_argument("--no-open", action="store_true")
+   432	    ap.add_argument("--dev-root", type=Path, default=None,
+   433	                    help="default: the folder holding project-triage")
+   434	    ap.add_argument("--background", action="store_true",
+   435	                    help="what `pm` and /pm run: reuse a running board, else start one and return")
+   436	    args = ap.parse_args(argv)
+   437	
+   438	    portfolio.load_registry(args.repo / "portfolio.json")   # refuse to start on a bad file
+   439	
+   440	    url = running_instance(args.repo)
+   441	    if url:
+   442	        print(f"board already running at {url}")
+   443	        if not args.no_open:
+   444	            webbrowser.open(url)
+   445	        return 0
+   446	    if args.background:
+   447	        return start_background(args)
+   448	
+   449	    backup = session_backup(args.repo)
+   450	    if backup is not None:
+   451	        print(f"session backup: {backup}")
+   452	
+   453	    token = load_token(token_path())
+   454	    srv = bind(args.repo, token, args.port, args.dev_root)
+   455	    url = f"http://127.0.0.1:{srv.server_address[1]}/?token={token}"
+   456	    state = state_path()
+   457	    write_state(state, args.repo, srv.server_address[1], token)
+   458	    print(f"board at {url}")
+   459	    print("ctrl-c to stop")
+   460	    if not args.no_open:
+   461	        webbrowser.open(url)
+   462	    try:
+   463	        srv.serve_forever()
+   464	    except KeyboardInterrupt:
+   465	        print("\nstopped")
+   466	    finally:
+   467	        try:                                  # only clear the state if it is still ours
+   468	            if json.loads(state.read_text(encoding="utf-8")).get("pid") == os.getpid():
+   469	                state.unlink()
+   470	        except (OSError, ValueError):
+   471	            pass
+   472	    return 0
+   473	
+   474	
+   475	if __name__ == "__main__":
+   476	    raise SystemExit(main())
+
+hook: PostToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/scripts/where-was-i.py' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+     1	"""Where was I? One line per project: the first item under `## Next` in docs/STATUS.md.
+     2	
+     3	Sorted by when STATUS.md was last committed, newest first. Flags repos with
+     4	uncommitted or unpushed work, since those are the ones a closeout missed.
+     5	
+     6	With --decisions it lists instead every open item under `## Open questions`
+     7	(decisions waiting on Eric) across the same repos, then the dated handoffs
+     8	written in the window. /startup runs this so a multi-repo day is not reduced
+     9	to one repo's "Blocked on" line.
+    10	
+    11	Usage:
+    12	    python ~/.claude/scripts/where-was-i.py            # last 14 days
+    13	    python ~/.claude/scripts/where-was-i.py --days 60
+    14	    python ~/.claude/scripts/where-was-i.py --all
+    15	    python ~/.claude/scripts/where-was-i.py --decisions --days 7
+    16	"""
+    17	import argparse
+    18	import glob
+    19	import os
+    20	import re
+    21	import subprocess
+    22	from concurrent.futures import ThreadPoolExecutor
+    23	from datetime import datetime, timedelta
+    24	
+    25	DEV = os.path.expanduser("~/Desktop/DEV") if os.name == "nt" else os.path.expanduser("~/DEV")
+    26	SKIP = ("_ARCHIVE", "_to_delete", "_OLD_", "worktrees")
+    27	
+    28	
+    29	def dev_glob(*tail):
+    30	    """Glob DEV/*/<tail> and DEV/*/*/<tail>, skipping symlinked top-level folders.
+    31	
+    32	    ~/DEV/_DRIVE links into the Google Drive mount: walking it can hang and
+    33	    surfaces local-only projects (DexaProject, Linda_Projects).
+    34	    """
+    35	    paths = []
+    36	    for top in os.scandir(DEV):
+    37	        if top.is_dir(follow_symlinks=False):
+    38	            paths += glob.glob(os.path.join(top.path, *tail)) + \
+    39	                glob.glob(os.path.join(top.path, "*", *tail))
+    40	    return paths
+    41	
+    42	
+    43	def git(repo, *args):
+    44	    r = subprocess.run(["git", "-C", repo, *args], capture_output=True, text=True,
+    45	                       encoding="utf-8", errors="replace")
+    46	    return r.stdout.strip()
+    47	
+    48	
+    49	def first_next(path):
+    50	    text = open(path, encoding="utf-8", errors="replace").read()
+    51	    m = re.search(r"^## Next\s*\n(.*?)(?=^## |\Z)", text, re.M | re.S)
+    52	    if not m:
+    53	        return "(no ## Next section)"
+    54	    parts = []
+    55	    for line in m.group(1).splitlines():
+    56	        s = line.strip()
+    57	        if not parts:
+    58	            s = re.sub(r"^(\d+[.)]|[-*])\s*", "", s)
+    59	            if re.search(r"\w", s) and not s.startswith(("#", "```", "|")):
+    60	                parts.append(s)
+    61	        elif not s or re.match(r"^(\d+[.)]|[-*])\s", s) or s.startswith("#"):
+    62	            break
+    63	        else:
+    64	            parts.append(s)
+    65	    if not parts:
+    66	        return "(## Next is empty)"
+    67	    item = " ".join(parts)
+    68	    return item[:160] + ("…" if len(item) > 160 else "")
+    69	
+    70	
+    71	CLOSED = re.compile(r"^(~~|\**(answered|resolved|settled|decided)\b|none\b|n/?a\b|nothing\b)", re.I)
+    72	
+    73	
+    74	def open_questions(path):
+    75	    """Open items under `## Open questions`, one string each; closed and blank items dropped."""
+    76	    text = open(path, encoding="utf-8", errors="replace").read()
+    77	    m = re.search(r"^## Open questions\s*\n(.*?)(?=^## |\Z)", text, re.M | re.S | re.I)
+    78	    if not m:
+    79	        return []
+    80	    items, cur = [], None
+    81	    for line in m.group(1).splitlines():
+    82	        s = line.strip()
+    83	        if re.match(r"^(\d+[.)]|[-*])(\s|$)", s) and not line.startswith((" ", "\t")):
+    84	            cur = [re.sub(r"^(\d+[.)]|[-*])\s*", "", s)]
+    85	            items.append(cur)
+    86	        elif s.startswith(("---", "#")):
+    87	            cur = None
+    88	        elif s and cur is not None:
+    89	            cur.append(s)
+    90	    out = []
+    91	    for parts in items:
+    92	        item = " ".join(p for p in parts if p)
+    93	        if not re.search(r"\w", item) or CLOSED.match(item):
+    94	            continue
+    95	        out.append(item[:220] + ("…" if len(item) > 220 else ""))
+    96	    return out
+    97	
+    98	
+    99	def recent_handoffs(cutoff):
+   100	    # workspace and system handoffs live in ~/DEV/docs/handoffs, which dev_glob (DEV/*/...) misses
+   101	    paths = dev_glob("docs", "handoffs", "*.md") + glob.glob(os.path.join(DEV, "docs", "handoffs", "*.md"))
+   102	    rows = []
+   103	    for p in paths:
+   104	        if any(k in p for k in SKIP):
+   105	            continue
+   106	        name = os.path.basename(p)
+   107	        if re.match(r"^\d{4}-\d{2}-\d{2}", name) and name[:10] >= cutoff:
+   108	            rows.append((name[:10], os.path.relpath(p, DEV)))
+   109	    return sorted(rows, reverse=True)
+   110	
+   111	
+   112	def inspect(status_path):
+   113	    repo = os.path.dirname(os.path.dirname(status_path))
+   114	    # date + time, so a busy day still sorts newest first (startup picks the top dated row)
+   115	    when = git(repo, "log", "-1", "--date=format-local:%Y-%m-%d %H:%M", "--format=%cd",
+   116	               "--", "docs/STATUS.md") or "uncommitted"
+   117	    flags = []
+   118	    status = git(repo, "status", "-sb", "--porcelain").splitlines()
+   119	    if len(status) > 1:
+   120	        flags.append("DIRTY")
+   121	    if status and "ahead" in status[0]:
+   122	        flags.append("UNPUSHED")
+   123	    return os.path.relpath(repo, DEV), when, first_next(status_path), flags
+   124	
+   125	
+   126	# Closeout's scope beyond DEV. Their LIVE paths are rewritten by hooks on every turn and pushed by
+   127	# the daily backup, so changes there alone never block a closeout.
+   128	CONFIG_REPOS = [os.path.expanduser(p) for p in ("~/.claude", "~/.claude/skills", "~/.claude/global-memory")]
+   129	LIVE = {os.path.expanduser("~/.claude"): ("projects/", "history.jsonl"),
+   130	        os.path.expanduser("~/.claude/global-memory"): ("transcripts/",)}
+   131	
+   132	
+   133	def sweep_repos():
+   134	    """Every git repo closeout must leave pushed: DEV itself, DEV/*/ and DEV/*/*/ repos, and CONFIG_REPOS."""
+   135	    repos = [DEV] + [os.path.dirname(g) for g in dev_glob(".git")]
+   136	    repos = [r for r in repos if not any(k in r for k in SKIP)]
+   137	    return sorted(set(repos)) + [r for r in CONFIG_REPOS if os.path.isdir(os.path.join(r, ".git"))]
+   138	
+   139	
+   140	def sweep_repo(repo):
+   141	    """(blocking flags, info flags) for one repo. Blocking = work that is not on GitHub."""
+   142	    block, info = [], []
+   143	    # A .git git cannot use (Wilhelm_Brody_RTP 2026-10-25: no HEAD or config) makes git fall through
+   144	    # to the parent repo, which ignores the folder: its work is tracked nowhere and reads as clean.
+   145	    if os.path.realpath(git(repo, "rev-parse", "--show-toplevel") or "/") != os.path.realpath(repo):
+   146	        return ["NOT-A-REPO"], []
+   147	    head = git(repo, "status", "-sb", "--porcelain").splitlines()
+   148	    changed = [line[3:] for line in head[1:]]
+   149	    live = LIVE.get(repo, ())
+   150	    if any(not p.strip('"').startswith(live) for p in changed) if live else changed:
+   151	        block.append("DIRTY")
+   152	    elif changed:
+   153	        info.append("LIVE")  # only hook-written session files changed
+   154	    if head and "ahead" in head[0]:
+   155	        block.append("UNPUSHED")
+   156	    # Facts git knows, not CLAUDE.md wording (2026-10-25: "local only" there also names rules about
+   157	    # other folders). No remote = cannot be pushed; a detached HEAD is a pinned checkout.
+   158	    if not git(repo, "remote"):
+   159	        info.append("NO-REMOTE")
+   160	    elif head and head[0].startswith("## HEAD (no branch)"):
+   161	        info.append("DETACHED")
+   162	    elif head and "..." not in head[0] and git(repo, "rev-parse", "--verify", "-q", "HEAD"):
+   163	        block.append("NO-UPSTREAM")
+   164	    current = git(repo, "branch", "--show-current")
+   165	    for row in git(repo, "for-each-ref", "refs/heads", "--format=%(refname:short)|%(upstream:short)|%(upstream:track)").splitlines():
+   166	        name, up, track = (row.split("|") + ["", ""])[:3]
+   167	        if name == current:
+   168	            continue
+   169	        if "ahead" in track:
+   170	            block.append(f"BRANCH-AHEAD:{name}")
+   171	        elif not up and subprocess.run(["git", "-C", repo, "merge-base", "--is-ancestor", name, "HEAD"],
+   172	                                       capture_output=True).returncode != 0:
+   173	            block.append(f"BRANCH-UNPUSHED:{name}")  # merged local branches are post-merge leftovers, not work
+   174	    stashes = len(git(repo, "stash", "list").splitlines())
+   175	    if stashes:
+   176	        info.append(f"STASH:{stashes}")
+   177	    for wt in re.findall(r"^worktree (.+)$", git(repo, "worktree", "list", "--porcelain"), re.M)[1:]:
+   178	        if os.path.isdir(wt) and git(wt, "status", "--porcelain"):
+   179	            block.append(f"WORKTREE-DIRTY:{os.path.relpath(wt, repo)}")
+   180	    return block, info
+   181	
+   182	
+   183	def sweep():
+   184	    """Print every repo needing action; exit 1 if any repo holds work that is not on GitHub."""
+   185	    repos = sweep_repos()
+   186	    with ThreadPoolExecutor(12) as ex:
+   187	        results = list(ex.map(sweep_repo, repos))
+   188	    needs = 0
+   189	    for repo, (block, info) in zip(repos, results):
+   190	        if block or info:
+   191	            needs += bool(block)
+   192	            name = repo.replace(os.path.expanduser("~"), "~")
+   193	            print(f"{'ACTION' if block else 'info  '}  {name}  [{' '.join(block + info)}]")
+   194	    print(f"SWEEP: {len(repos)} repos, {needs} need action")
+   195	    return 1 if needs else 0
+   196	
+   197	
+   198	def main():
+   199	    ap = argparse.ArgumentParser()
+   200	    ap.add_argument("--days", type=int, default=14)
+   201	    ap.add_argument("--all", action="store_true")
+   202	    ap.add_argument("--decisions", action="store_true",
+   203	                    help="list open questions and recent handoffs instead of NEXT lines")
+   204	    ap.add_argument("--sweep", action="store_true",
+   205	                    help="closeout sweep: every DEV and config repo with work not on GitHub; exit 1 if any")
+   206	    ap.add_argument("--list", action="store_true",
+   207	                    help="print every repo --sweep checks, one path per line (dev-sync pulls these)")
+   208	    a = ap.parse_args()
+   209	    if a.sweep:
+   210	        raise SystemExit(sweep())
+   211	    if a.list:
+   212	        print("\n".join(sweep_repos()))
+   213	        return
+   214	
+   215	    paths = dev_glob("docs", "STATUS.md")
+   216	    paths = [p for p in paths if not any(k in p for k in SKIP)]
+   217	    assert not any(os.sep + "_DRIVE" + os.sep in p for p in paths)
+   218	    with ThreadPoolExecutor(12) as ex:
+   219	        rows = list(ex.map(inspect, paths))
+   220	
+   221	    cutoff = (datetime.now() - timedelta(days=a.days)).strftime("%Y-%m-%d")
+   222	    rows = [r for r in rows if a.all or r[1] == "uncommitted" or r[1] >= cutoff]
+   223	    rows.sort(key=lambda r: r[1], reverse=True)
+   224	
+   225	    if a.decisions:
+   226	        window = "" if a.all else f" (STATUS touched in the last {a.days} days)"
+   227	        found = [(name, when, open_questions(os.path.join(DEV, name, "docs", "STATUS.md")))
+   228	                 for name, when, _, _ in rows]
+   229	        # the workspace's own questions; kept out of the NEXT rows so startup never picks DEV itself
+   230	        root = os.path.join(DEV, "docs", "STATUS.md")
+   231	        if os.path.exists(root):
+   232	            when = inspect(root)[1]
+   233	            if a.all or when == "uncommitted" or when >= cutoff:
+   234	                found.append(("DEV (workspace)", when, open_questions(root)))
+   235	                found.sort(key=lambda f: f[1], reverse=True)
+   236	        found = [f for f in found if f[2]]
+   237	        print(f"Decisions waiting on you — {sum(len(f[2]) for f in found)} open in {len(found)} repos{window}")
+   238	        for name, when, qs in found:
+   239	            print(f"\n{when}  {name}")
+   240	            for q in qs:
+   241	                print(f"    - {q}")
+   242	        handoffs = recent_handoffs("0000" if a.all else cutoff)
+   243	        print(f"\nHandoffs written{'' if a.all else f' since {cutoff}'}: {len(handoffs) or 'none'}")
+   244	        for date, path in handoffs:
+   245	            print(f"    {date}  {path}")
+   246	        return
+   247	
+   248	    print(f"Where was I — {len(rows)} projects" + ("" if a.all else f" touched in the last {a.days} days"))
+   249	    for name, when, nxt, flags in rows:
+   250	        flag = f"  [{' '.join(flags)}]" if flags else ""
+   251	        print(f"\n{when}  {name}{flag}\n    NEXT: {nxt}")
+   252	
+   253	
+   254	if __name__ == "__main__":
+   255	    main()
+
+hook: PostToolUse
+exec
+/bin/zsh -lc 'cat ~/.agents/skills/code-review/SKILL.md' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+---
+name: code-review
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to "review since X".
+---
+
+Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
+
+- **Standards** — does the code conform to this repo's documented coding standards?
+- **Spec** — does the code faithfully implement the originating issue / PRD / spec?
+
+Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
+
+The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if `docs/agents/issue-tracker.md` is missing.
+
+## Process
+
+### 1. Pin the fixed point
+
+Whatever the user said is the fixed point — a commit SHA, branch name, tag, `main`, `HEAD~5`, etc. If they didn't specify one, ask for it.
+
+Capture the diff command once: `git diff <fixed-point>...HEAD` (three-dot, so the comparison is against the merge-base). Also note the list of commits via `git log <fixed-point>..HEAD --oneline`.
+
+Before going further, confirm the fixed point resolves (`git rev-parse <fixed-point>`) and the diff is non-empty. A bad ref or empty diff should fail here — not inside two parallel sub-agents.
+
+### 2. Identify the spec source
+
+Look for the originating spec, in this order:
+
+1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.) — fetch via the workflow in `docs/agents/issue-tracker.md`.
+2. A path the user passed as an argument.
+3. A PRD/spec file under `docs/`, `specs/`, or `.scratch/` matching the branch name or feature.
+4. If nothing is found, ask the user where the spec is. If they say there isn't one, the **Spec** sub-agent will skip and report "no spec available".
+
+### 3. Identify the standards sources
+
+Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`.
+
+On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below — a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
+
+- **The repo overrides.** A documented repo standard always wins; where it endorses something the baseline would flag, suppress the smell.
+- **Always a judgement call.** Each smell is a labelled heuristic ("possible Feature Envy"), never a hard violation — and, like any standard here, skip anything tooling already enforces.
+
+Each smell reads *what it is* → *how to fix*; match it against the diff:
+
+- **Mysterious Name** — a function, variable, or type whose name doesn't reveal what it does or holds. → rename it; if no honest name comes, the design's murky.
+- **Duplicated Code** — the same logic shape appears in more than one hunk or file in the change. → extract the shared shape, call it from both.
+- **Feature Envy** — a method that reaches into another object's data more than its own. → move the method onto the data it envies.
+- **Data Clumps** — the same few fields or params keep travelling together (a type wanting to be born). → bundle them into one type, pass that.
+- **Primitive Obsession** — a primitive or string standing in for a domain concept that deserves its own type. → give the concept its own small type.
+- **Repeated Switches** — the same `switch`/`if`-cascade on the same type recurs across the change. → replace with polymorphism, or one map both sites share.
+- **Shotgun Surgery** — one logical change forces scattered edits across many files in the diff. → gather what changes together into one module.
+- **Divergent Change** — one file or module is edited for several unrelated reasons. → split so each module changes for one reason.
+- **Speculative Generality** — abstraction, parameters, or hooks added for needs the spec doesn't have. → delete it; inline back until a real need shows.
+- **Message Chains** — long `a.b().c().d()` navigation the caller shouldn't depend on. → hide the walk behind one method on the first object.
+- **Middle Man** — a class or function that mostly just delegates onward. → cut it, call the real target direct.
+- **Refused Bequest** — a subclass or implementer that ignores or overrides most of what it inherits. → drop the inheritance, use composition.
+
+### 4. Spawn both sub-agents in parallel
+
+Send a single message with two `Agent` tool calls. Use the `general-purpose` subagent for both.
+
+**Standards sub-agent prompt** — include:
+
+- The full diff command and commit list.
+- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full — the sub-agent has no other access to it.
+- The brief: "Report — per file/hunk where relevant — (a) every place the diff violates a documented standard: cite the standard (file + the rule); and (b) any baseline smell you spot: name it and quote the hunk. Distinguish hard violations from judgement calls — documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented repo standard overrides the baseline. Skip anything tooling enforces. Under 400 words."
+
+**Spec sub-agent prompt** — include:
+
+- The diff command and commit list.
+- The path or fetched contents of the spec.
+- The brief: "Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour in the diff that wasn't asked for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Quote the spec line for each finding. Under 400 words."
+
+If the spec is missing, skip the Spec sub-agent and note this in the final report.
+
+### 5. Aggregate
+
+Present the two reports under `## Standards` and `## Spec` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the two axes are deliberately separate (see _Why two axes_).
+
+End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes — that's the reranking the separation exists to prevent.
+
+## Why two axes
+
+A change can pass one axis and fail the other:
+
+- Code that follows every standard but implements the wrong thing → **Standards pass, Spec fail.**
+- Code that does exactly what the issue asked but breaks the project's conventions → **Spec pass, Standards fail.**
+
+Reporting them separately stops one axis from masking the other.
+
+hook: PostToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/skills/startup/SKILL.md' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+     1	---
+     2	name: startup
+     3	description: >-
+     4	  Start of a work session on any machine: sync DEV with GitHub (runs dev-sync), start the
+     5	  project board, report where the last session left off and the decisions waiting on Eric,
+     6	  then stop. Use when Eric says '/startup', 'good morning', 'starting up', or sits down
+     7	  without naming a task. Do not use for a mid-day sync alone (use dev-sync), a quick
+     8	  read-only list of where each project stands (use where-was-i), or the end-of-session
+     9	  sign-off (use closeout).
+    10	---
+    11	
+    12	# Startup
+    13	
+    14	The front door of a work session: sync, board, pick-up report, stop. "Sync" is what the machine
+    15	does (`dev-sync` owns it); "startup" is what Eric is doing. Global memory is already in context
+    16	from the SessionStart hook.
+    17	
+    18	## Step 1 — Sync
+    19	
+    20	Invoke the `dev-sync` skill and run it to its end. Done when its report is out and its last line
+    21	reads clean or names what is not.
+    22	
+    23	## Step 2 — Board
+    24	
+    25	The live board writes `portfolio.json`, so it starts only on a registry that already has every
+    26	other session's edits. Start it when project-triage came through Step 1 clean (pulled, no
+    27	`.git/MERGE_HEAD`, and dev-sync's `Conflicts:` line names no `portfolio.json.from-*` file; an
+    28	older, committed one is a settled conflict). Run `board.py` from the folder that holds
+    29	`portfolio_json` in `~/.claude/skills/_shared/config.<os>.json`; on the Mac, from any folder:
+    30	
+    31	`python3 ~/DEV/project-triage/board.py --background`
+    32	
+    33	It prints `board started at <url>` or `board already running at <url>`; put that line in the
+    34	report. Not clean: report `board: not started, project-triage pull unresolved` and name the
+    35	conflict.
+    36	
+    37	## Step 3 — Pick up
+    38	
+    39	Choose one repo: the one Eric named; else the newest dated row in
+    40	`python3 ~/.claude/scripts/where-was-i.py --days 3` (skip `uncommitted` rows: that STATUS was
+    41	never committed, often a broken repo). Say which you chose and why.
+    42	
+    43	1. Read `<repo>/AGENTS.md` (or `CLAUDE.md`), then `<repo>/docs/STATUS.md`, then the newest file
+    44	   in `<repo>/docs/handoffs/` if it is under two weeks old.
+    45	2. A repo with real work and no `docs/STATUS.md` is invisible to every other session: say so.
+    46	3. `python3 ~/.claude/scripts/where-was-i.py --decisions --days 3` (`--days 7` after a longer
+    47	   gap): every open question in each repo whose STATUS changed, plus the handoffs written. This
+    48	   keeps a multi-repo day from shrinking to one repo.
+    49	
+    50	Report, after the dev-sync and board lines:
+    51	
+    52	```
+    53	Picking up: <repo>
+    54	Last session: <date>, <mac|windows|cloud>
+    55	Where things stand: <two lines from STATUS.md Current state>
+    56	Blocked on: <open questions, or "nothing">
+    57	Next: <top one or two from STATUS.md Next>
+    58	
+    59	Decisions waiting on you (<N> in <M> repos):
+    60	- <repo>: <question, one line>
+    61	Handoffs since <date>: <repo/file>, ...
+    62	```
+    63	
+    64	List decisions newest repo first, one line each, the question itself. Two kinds need a fix at the
+    65	next closeout; flag that repo's STATUS for it:
+    66	- A pointer ("See PLAN.md …"): open the file and list the real questions in its place.
+    67	- An item already answered (it says `RESOLVED`, or repeats another line): leave it out.
+    68	
+    69	Over about twelve: the last day's in full, the rest as repo + count.
+    70	
+    71	Then hold for Eric to confirm or redirect. STATUS records where work stopped, not what he wants
+    72	to do today.
+    73	
+    74	**Done when** the dev-sync report, the board line and the pick-up report are out, and the session is
+    75	waiting on Eric.
+    76	</content>
+    77	</invoke>
+
+hook: PostToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/skills/closeout/SKILL.md' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+     1	---
+     2	name: closeout
+     3	description: >-
+     4	  End-of-session sign-off: sweeps every DEV repo for loose ends, checks memory capture, updates
+     5	  STATUS and the handoff, commits and pushes, then says clear to sign off or what is still open.
+     6	  Use when Eric is wrapping up or signing off, or asks about loose ends. Do not use at session
+     7	  start (use startup) or for an automation health check (use claude-stack-doctor).
+     8	---
+     9	
+    10	# Closeout
+    11	
+    12	One command for the end-of-day sequence: loose ends → memory → STATUS and handoff → commit and push → one verdict.
+    13	
+    14	Run every step without pausing: invoking closeout authorizes the whole sequence. Commit and push is
+    15	standing-authorized for every DEV repo (each repo's `AGENTS.md` Session routine ends with it, and
+    16	unpushed work on one machine is the top cause of conflicts on the other). On Windows or in Cowork,
+    17	read [`PLATFORMS.md`](PLATFORMS.md) for the commands that differ.
+    18	
+    19	**Scope.** Every DEV repo with uncommitted or unpushed work (touched this session or not), plus
+    20	`~/.claude` (dotclaude), `~/.claude/skills` (claude-skills) and `~/.claude/global-memory`.
+    21	A repo whose `CLAUDE.md` says its data stays local (DexaProject is the precedent) is committed,
+    22	not pushed, and listed.
+    23	
+    24	**Clear to sign off when** the closing `where-was-i.py --sweep` (step 4) shows no `ACTION` line
+    25	except repos listed under "Still open" with their reason, no background job is still writing,
+    26	`.errors.log` is empty or its entries are reported, and every repo touched today has a STATUS entry
+    27	dated today with a concrete first `## Next` item, and every `card-check` gap is fixed. Questions
+    28	only Eric can answer (a receiver nobody named, a decision recorded under `## Open questions`) do
+    29	not block: `/startup` shows them tomorrow; list them under "Still open" and say "Clear to sign off".
+    30	Anything short of that: "Not clear", naming the one thing blocking.
+    31	
+    32	If a check fails and the fix is quick and safe (restage a file, clear a stale lock), fix it and
+    33	note it. A risky fix goes under "Still open".
+    34	
+    35	## Step 1 — Sweep
+    36	
+    37	- **Repo sweep:** `python3 ~/.claude/scripts/where-was-i.py --sweep` (~4 s). It checks every git
+    38	  repo under `DEV/` (two levels) and the three config repos, and prints one line per repo needing
+    39	  attention; exit 1 means at least one `ACTION`. Another session, harness or machine may have left
+    40	  that work; name each such repo in the report. Flags:
+    41	  - `DIRTY`, `UNPUSHED`, `NO-UPSTREAM`, `BRANCH-AHEAD:<b>`, `BRANCH-UNPUSHED:<b>` (a local branch
+    42	    holding commits on no remote), `WORKTREE-DIRTY:<path>`: work not on GitHub. Step 4 pushes it.
+    43	  - `NOT-A-REPO`: a `.git` folder git cannot use, so the folder's work is tracked nowhere. List it;
+    44	    repair is project work, not closeout. It blocks only if this session wrote files there.
+    45	  - Info, never blocking: `STASH:<n>` (list it; leave the stash alone), `NO-REMOTE`, `DETACHED`
+    46	    (a pinned checkout), `LIVE` (session files the hooks rewrite every turn; the daily backup
+    47	    pushes them).
+    48	- **Background jobs** still running (shells, agents, workflows): wait for each to finish, or name
+    49	  it as the blocker. A job that writes after the push leaves work unpushed.
+    50	- **Registry drift:** `python <dir of portfolio_json>/portfolio.py crosswalk` (`portfolio_json` is
+    51	  in `~/.claude/skills/_shared/config.macos.json`). It only reports. List every item under "Still
+    52	  open", any folder created this session first (a project started without a row). Fixing waits
+    53	  for a project session. `drive_unreachable` means the Drive checks never ran: say so.
+    54	- **7-day rule:** `python <dir of portfolio_json>/portfolio.py seven-day --apply`. Name every
+    55	  project it paused, and any on its last two days, under "Still open" with what it needs (a
+    56	  receiver, a first step).
+    57	- Unfinished tasks from this session (TaskList), and anything promised to Eric this session and
+    58	  not delivered.
+    59	
+    60	## Step 2 — Memory
+    61	
+    62	Memory capture failing silently is Eric's top recurring worry; this step runs every time.
+    63	
+    64	- **`~/.claude/global-memory/transcripts/.errors.log`:** surface every entry, fix the hook issue if
+    65	  obvious, then archive and clear it as in claude-stack-doctor's `FIXES.md` → Memory pipeline
+    66	  (append to `.errors-ledger.log`, then `cp /dev/null`). The file is tracked in `global-memory`,
+    67	  so this happens before step 4's push.
+    68	- **Today's transcript** `~/.claude/global-memory/transcripts/<today>.md` exists and changed within
+    69	  the last few hours.
+    70	- **New durable decision or active thread:** update `~/.claude/global-memory/MEMORY.md`
+    71	  (2,500-char cap; consolidate first) or write a Tier A memory with the `memory-write` skill.
+    72	- **Tier A stays on this machine** (its slug is built from the absolute path, which differs per
+    73	  machine). Every durable, project-scoped Tier A fact written today also goes into the repo:
+    74	  `docs/STATUS.md` for current state, `docs/DECISIONS.md` for a decision and its reason, the dated
+    75	  handoff for detail.
+    76	
+    77	## Step 3 — STATUS, handoff, cards
+    78	
+    79	**Handoff**, when real work happened (not just Q&A): `<repo>/docs/handoffs/<YYYY-MM-DD>-<slug>.md`;
+    80	workspace or system work with no single repo goes to `~/DEV/docs/handoffs/`
+    81	(`~/.claude/global-memory/handoffs/` is read-only history). Plain markdown that Codex,
+    82	Antigravity or a fresh Claude session can resume from:
+    83	- what was worked on and why
+    84	- decisions made, with the reasoning that would be lost
+    85	- exact paths of every file created or modified
+    86	- next actions, most important first
+    87	- anything mid-flight (open questions, awaited inputs)
+    88	- suggested skills: which ones the next session should invoke, by name
+    89	
+    90	Link, don't copy: if a spec, plan, ADR, issue or commit already holds the detail, give its
+    91	path, URL or sha. Redact keys, passwords and personal data; the note is pushed to GitHub.
+    92	
+    93	**`docs/STATUS.md`, in every repo touched, every time.** The next session reads it first, on
+    94	either machine, in any harness. Rewrite these sections in place, short:
+    95	- `## Current state`: two to five lines on where things stand today.
+    96	- `## Next`: most important first. Item 1 is one concrete action (a command to run or a file to
+    97	  open); `~/.claude/scripts/where-was-i.py` shows it to Eric the next morning.
+    98	- `## Open questions`: each decision waiting on Eric as its own top-level bullet, the question and
+    99	  enough context to answer it without opening another file. `/startup` lists this section across
+   100	  repos, so write the question itself, never a pointer. Mark answered items `ANSWERED <date>: …`
+   101	  or strike them (`~~…~~`). Leave the section empty when nothing waits.
+   102	- `## Gotchas`: anything that will bite the next session.
+   103	
+   104	Over 20 KB, or more than 15 dated entries under `## Current state`: first move entries older than
+   105	14 days and finished `## Next` items, verbatim, to the end of
+   106	`docs/handoffs/STATUS-archive-<YYYY>-Q<n>.md`. The archive is a search root; entries move, they
+   107	are never deleted.
+   108	
+   109	Then:
+   110	1. `python ~/.claude/scripts/where-was-i.py --decisions --days 1` prints what tomorrow's
+   111	   `/startup` shows as "Decisions waiting on you". Every decision left open today appears there as
+   112	   a readable question; fix the repo's `## Open questions` until it does.
+   113	2. `python <dir of portfolio_json>/landed.py scan --days 1` (~1 min), then
+   114	   `python <dir of portfolio_json>/portfolio.py card-check`. Fix every gap with
+   115	   [`CARDS.md`](CARDS.md), then re-run `card-check`.
+   116	3. `bash ~/.claude/scripts/harvest-dev-docs.sh`: copies every repo's `docs/*.md` into
+   117	   `~/.claude/global-memory/dev-docs/` (gitignored, indexed by memsearch). One line of output.
+   118	4. **Deliverables:** a finished file made for someone else today (PDF, deck, report, sheet) gets a
+   119	   copy in Drive `03_REPORTS`, uploaded through the API (writes through the `_DRIVE` mount hang):
+   120	   `cd <file's folder> && gws drive +upload ./<file> --parent 18lZZ4ep4pmK6upQfEcTUuLNlDdSAk5Au --name YYYY-MM-DD_<Sport>_<Topic>_<Type>_<Audience>.<ext>`.
+   121	   The repo keeps the source. Health data stays local.
+   122	
+   123	## Step 4 — Commit and push
+   124	
+   125	- **Registry edits first, alone.** In project-triage, if `git status --porcelain portfolio.json`
+   126	  shows a change, commit that file alone as `data: board edits <YYYY-MM-DD>`. The board's "N
+   127	  unpushed registry edits" counts these; folded into another commit, they become a JSON merge
+   128	  conflict when the other machine edits too.
+   129	- **Before staging,** read the files about to be added (`git status --porcelain`). Anything the
+   130	  `BLOCKED` list in `~/.claude/hooks/session-autopush.js` names (`.env`, keys, credentials,
+   131	  secrets, token files, databases, DEXA) or over 50 MB stays out: add it to `.gitignore`, or leave
+   132	  it unstaged and list it. Health data never reaches GitHub.
+   133	- Every repo in scope: stage, commit with a descriptive message, `git pull --no-rebase`, push. On
+   134	  a merge conflict follow `dev-sync/SKILL.md` Step 3.3 (the one home for conflict steps), push, and
+   135	  list the file under "Still open". A side branch the sweep flagged: `git push -u origin <branch>`.
+   136	- `~/.claude/mods` changed this session: `bash ~/.claude/mods/mods-sync.sh`; list any invalid mod.
+   137	- **`global-memory` is pushed every time,** even on a light session: it is the only repo that
+   138	  carries memory to the other machine, and the nightly backup is too late for a same-day switch.
+   139	- Nothing to commit: one line, move on.
+   140	- **Prove it:** re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. Every `ACTION` line left
+   141	  is either fixed now or goes under "Still open" with its reason. A push that hangs is usually a
+   142	  credential prompt: look for `git credential-osxkeychain get` in `ps`; fix and retry once, as
+   143	  `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md` says.
+   144	  Still hanging: "Not clear", that repo is the blocker.
+   145	
+   146	## Step 5 — Verdict
+   147	
+   148	`python <dir of portfolio_json>/landed.py show --days 1` lists every file that landed today (git in
+   149	every DEV repo, file times on Drive and in the vault), so the report names every created or
+   150	modified file with its full path. The ledger lives in `~/.claude/global-memory/landed/` and was
+   151	pushed in step 4.
+   152	
+   153	```
+   154	## Closeout — <date>
+   155	
+   156	**Committed & pushed:** <repos + one-line summary, or "nothing to commit">
+   157	**STATUS.md:** updated in <repos>
+   158	**Memory:** captured ✓ / issue found: <what> / skipped: <what> (Cowork)
+   159	**Handoff:** <path, or "not needed — no substantive work">
+   160	**Registry drift:** <N items, or "none">
+   161	**Still open:** <numbered list, or "none">
+   162	
+   163	Clear to sign off. / Not clear: <the one thing blocking>.
+   164	
+   165	**Landed:** <landed.py show output, grouped by project>
+   166	**Cards:** <card-check output after the step 3 fixes>
+   167	```
+   168	
+   169	The block above the verdict line fits on one screen: Eric is leaving. Landed and Cards come last
+   170	because the next session picks up from them; trim both to projects with work today, keeping every
+   171	card that still has a gap.
+
+hook: PostToolUse
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/skills/dev-sync/SKILL.md' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+     1	---
+     2	name: dev-sync
+     3	description: >-
+     4	  Make this machine match GitHub without losing work on either side: pull the config, skills
+     5	  and memory repos, commit and push local work in every DEV repo, merge what other sessions
+     6	  pushed, clone missing repos, keep both sides of any conflict. Use when Eric says 'sync DEV',
+     7	  switches machines, or asks whether everything is pushed or pulled. Do not use at the start
+     8	  of the day (use startup, which runs this first), for the end-of-session sign-off (use
+     9	  closeout), or to scaffold a new repo (use new-project).
+    10	---
+    11	
+    12	# DEV sync
+    13	
+    14	GitHub (`erash11`, all private) is the transport between every place work happens: terminal
+    15	sessions on the Mac, desktop-app sessions on the Windows laptop, cloud sessions, Codex. The
+    16	session-end hook `~/.claude/hooks/session-autopush.js` pushes the one repo a session worked in;
+    17	it skips `~/.claude`, headless and cloud sessions, and any repo mid-merge. This skill catches
+    18	the rest: pull everything others pushed, push everything still local, keep both sides of every
+    19	conflict.
+    20	
+    21	Eric pre-approves every operation here; run the steps straight through. Pause only when
+    22	something looks wrong: hundreds of changed files in one repo, or a large file about to be added.
+    23	On Windows, read [`PLATFORMS.md`](PLATFORMS.md) for the commands that differ.
+    24	
+    25	**Guardrails.** Merge only: no rebase, no force-push. Anything in the way moves to a
+    26	`_to_delete/` or `_OLD_*` folder; deleting is Eric's call. DexaProject, and any repo whose
+    27	`CLAUDE.md` says its data stays local, is committed and never pushed.
+    28	
+    29	## Step 0 — DEV root
+    30	
+    31	Mac: `~/DEV`. Missing: stop and say so. Print the root on the first line of output.
+    32	
+    33	## Step 1 — Config repos
+    34	
+    35	In order: `~/.claude` (dotclaude), `~/.claude/skills` (claude-skills),
+    36	`~/.claude/global-memory` (claude-global-memory), `~/.claude/claude-memory-compiler` (code only:
+    37	`daily/` and `knowledge/` are gitignored), `~/SecondBrain` (the vault). The sweep covers only the
+    38	first three, and the autopush hook pushes only the repo a session ran in. For each: snapshot-commit local changes (Step 3.1
+    39	rule), `git pull --no-rebase`, `git push`. Then:
+    40	
+    41	- **`~/.claude`:** if `machine.md` is missing, copy `machine.macos.md` to it. Run
+    42	  `bash ~/.claude/mods/mods-sync.sh`; report its line (`mods: N loaded, N disabled, N invalid`)
+    43	  and name any invalid mod.
+    44	- **skills:** `bash ~/.claude/skills/sync-to-codex.sh`, so Codex and Pi see the same skills.
+    45	- **global-memory** carries `USER.md`, `MEMORY.md` and the logs between machines, and the
+    46	  SessionStart hook already injected the pre-pull copy. If the pull brings commits, say how many
+    47	  and name the newest. On conflict in `transcripts/.errors.log` or `MEMORY.md`, keep both sides'
+    48	  lines: they are logs, and a dropped line is a lost memory.
+    49	- **SecondBrain:** the Mac's daily backup also commits and pushes it, at most once a day, and it
+    50	  skips a day on battery or a diverged branch; this step covers the rest.
+    51	
+    52	## Step 2 — Inventory
+    53	
+    54	1. `python3 ~/.claude/scripts/where-was-i.py --sweep` (~4 s): every DEV repo two levels deep plus
+    55	   the config repos, one line per repo holding work not on GitHub. It reads local refs only, so
+    56	   repos that are *behind* show up in Step 3.2, not here. It already skips `_DRIVE` (the Drive
+    57	   mount: walking it hangs), `_ARCHIVE` and worktrees.
+    58	2. Missing locally: `gh repo list erash11 --limit 300 --no-archived --json name`, minus the
+    59	   folders `where-was-i.py --list` prints, minus `dotclaude`, `SecondBrain`, `claude-skills`,
+    60	   `claude-global-memory`, `claude-memory-compiler` (Step 1 syncs these five), `DEV`, `DexaProject`,
+    61	   `AppliedPerformance-Site` (local `Website/`), and `printing-press-library` (removed locally
+    62	   2026-10-23; cloning it brings back ~66,000 files).
+    63	3. Project folders with no `.git` (the DEV repo ignores them, so their work is tracked nowhere):
+    64	   check `~/DEV/*/`, `~/DEV/Football/*/` and `~/DEV/SpecialRequests/*/`, skipping `_*` and
+    65	   `docs` folders (the parent repo tracks `docs/`).
+    66	   `SpecialRequests/TOS_ES` is local on purpose (health data). Any other: list it for
+    67	   `new-project`.
+    68	
+    69	Show all three before changing anything.
+    70	
+    71	## Step 3 — Apply
+    72	
+    73	1. **Snapshot.** Each repo the sweep marked `DIRTY`: read `git status --porcelain` first.
+    74	   Anything the `BLOCKED` list in `session-autopush.js` names (`.env`, keys, credentials,
+    75	   secrets, token files, databases, DEXA) or over 50 MB goes into `.gitignore`, or stays
+    76	   unstaged and is listed. Then `git add -A && git commit -m "<machine> snapshot before sync"`.
+    77	2. **Merge what others pushed**, every repo in one pass (~10 s):
+    78	
+    79	   ```bash
+    80	   python3 ~/.claude/scripts/where-was-i.py --list | tr '\n' '\0' | xargs -0 -P 8 -n 1 sh -c '
+    81	     git -C "$1" symbolic-ref -q HEAD >/dev/null && git -C "$1" rev-parse -q --verify "@{u}" >/dev/null || exit 0
+    82	     before=$(git -C "$1" rev-parse HEAD)
+    83	     git -C "$1" fetch -q && git -C "$1" merge -q --no-edit "@{u}" >/dev/null 2>&1 || { echo "FAIL $1"; exit 0; }
+    84	     [ "$before" = "$(git -C "$1" rev-parse HEAD)" ] || echo "PULLED $1"' _
+    85	   ```
+    86	
+    87	   It skips detached checkouts and branches with no upstream. A `FAIL` repo with
+    88	   `.git/MERGE_HEAD` is a conflict: 3.3. Without it, the loop hid git's message: run
+    89	   `git -C <repo> fetch` and `git -C <repo> merge @{u}` by hand to read it (a fetch error, or
+    90	   local changes 3.1 left unstaged), and list the repo.
+    91	3. **Conflict.** Keep this machine's version and save the remote one beside it as
+    92	   `<file>.from-mac`, `<file>.from-windows` or `<file>.from-remote` (whoever pushed it), stage
+    93	   both, commit. Closeout uses these steps too. Exception: `transcripts/.errors.log` and
+    94	   `MEMORY.md` in global-memory keep both sides' lines in the one file (Step 1). `.DS_Store` conflicts: `git rm -q .DS_Store`.
+    95	   - Save the remote side by **moving** the file: a stdout redirect re-encodes the bytes.
+    96	     `git checkout --theirs -- <f> && mv <f> <f>.from-remote && git checkout --ours -- <f>`
+    97	   - While `.git/MERGE_HEAD` exists, stage only the paths you just resolved, by name:
+    98	     `git add -A` there commits the conflict markers themselves.
+    99	4. **Push** every repo the sweep marked `UNPUSHED`, plus every repo 3.1–3.3 committed in.
+   100	   `NO-UPSTREAM`: `git push -u origin <branch>`.
+   101	5. Missing locally: clone it where it belongs. Find the name in the area indexes
+   102	   (``grep -n '<name>/' ~/DEV/*.md``) and read its entry: a path written `Football/<name>/`, or a
+   103	   row under an "Inside Football/" heading, puts it in that parent folder; otherwise
+   104	   `~/DEV/<name>`. Then `gh repo clone erash11/<name> ~/DEV/<path>`. A wrong folder breaks the
+   105	   KeystoneOS paths and orphans the repo's Tier A memory (the slug is the absolute path). No remote:
+   106	   `gh repo create erash11/<name> --private --source=. --push`.
+   107	
+   108	## Step 4 — Prove it and report
+   109	
+   110	Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. For the two Step 1 repos it does not
+   111	cover (`claude-memory-compiler`, `SecondBrain`), run `git -C <repo> status --porcelain` and
+   112	`git -C <repo> log --branches --not --remotes --oneline`. Done when the sweep's last line reads
+   113	`0 need action`, both commands print nothing for both repos, and every problem left is in the
+   114	report with its reason.
+   115	
+   116	```
+   117	DEV root: ~/DEV
+   118	Config: dotclaude, skills, global-memory, memory-compiler, SecondBrain pulled + pushed (global-memory: +N commits, newest "<msg>")
+   119	<mods line>
+   120	Pulled: <repos>    Pushed: <repos>    Cloned: <repos>    Created: <repos>
+   121	Conflicts: <every .from-* file created>, or none
+   122	<SWEEP line>. Clean. / Not clean: <repo: reason>, ...
+   123	```
+   124	
+   125	## Gotchas
+   126	
+   127	- **A push or fetch that hangs** is usually a keychain credential prompt: look for
+   128	  `git credential-osxkeychain get` in `ps`, and see
+   129	  `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md`.
+   130	- **`cannot lock ref 'HEAD'`:** check `pgrep -fl git` first. If no git is running and the
+   131	  `.git/*.lock` file is zero bytes and older than the session, it is stale: move it aside, retry.
+
+hook: PostToolUse
+exec
+/bin/zsh -lc 'cat ~/.claude/audits/codex-review-startup-2026-10-30.diff.txt' in /Users/kristinarash/DEV
+ succeeded in 0ms:
+diff --git a/startup/SKILL.md b/startup/SKILL.md
+index 468ba75..8a2d6aa 100644
+--- a/startup/SKILL.md
++++ b/startup/SKILL.md
+@@ -25,10 +25,10 @@ reads clean or names what is not.
+ The live board writes `portfolio.json`, so it starts only on a registry that already has every
+ other session's edits. Start it when project-triage came through Step 1 clean (pulled, no
+ `.git/MERGE_HEAD`, and dev-sync's `Conflicts:` line names no `portfolio.json.from-*` file; an
+-older, committed one is a settled conflict), from the folder holding `portfolio_json`
+-(`~/.claude/skills/_shared/config.macos.json`):
++older, committed one is a settled conflict). Run `board.py` from the folder that holds
++`portfolio_json` in `~/.claude/skills/_shared/config.<os>.json`; on the Mac, from any folder:
+ 
+-`python3 board.py --background`
++`python3 ~/DEV/project-triage/board.py --background`
+ 
+ It prints `board started at <url>` or `board already running at <url>`; put that line in the
+ report. Not clean: report `board: not started, project-triage pull unresolved` and name the
+@@ -61,11 +61,17 @@ Decisions waiting on you (<N> in <M> repos):
+ Handoffs since <date>: <repo/file>, ...
+ ```
+ 
+-List decisions newest repo first, one line each, the question itself. An item that is only a
+-pointer ("See PLAN.md …"): open the file, list the real questions, and flag that repo's STATUS for
+-a fix at the next closeout. Over about twelve: the last day's in full, the rest as repo + count.
++List decisions newest repo first, one line each, the question itself. Two kinds need a fix at the
++next closeout; flag that repo's STATUS for it:
++- A pointer ("See PLAN.md …"): open the file and list the real questions in its place.
++- An item already answered (it says `RESOLVED`, or repeats another line): leave it out.
++
++Over about twelve: the last day's in full, the rest as repo + count.
+ 
+ Then hold for Eric to confirm or redirect. STATUS records where work stopped, not what he wants
+ to do today.
++
++**Done when** the dev-sync report, the board line and the pick-up report are out, and the session is
++waiting on Eric.
+ </content>
+ </invoke>
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "rg -n -C 4 'question|RESOLVED|pointer|STATUS' ~/.claude/skills/closeout/SKILL.md" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc 'git -C ~/DEV/project-triage status --short' in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "rg -n -C 4 'background|board started|already running|__file__|portfolio.json|cwd|chdir' ~/DEV/project-triage/board.py" in /Users/kristinarash/DEV
+exec
+/bin/zsh -lc "sed -n '87,180p' ~/.claude/skills/dev-sync/SKILL.md | nl -ba -v87" in /Users/kristinarash/DEV
+ succeeded in 13ms:
+    87	   It skips detached checkouts and branches with no upstream. A `FAIL` repo with
+    88	   `.git/MERGE_HEAD` is a conflict: 3.3. Without it, the loop hid git's message: run
+    89	   `git -C <repo> fetch` and `git -C <repo> merge @{u}` by hand to read it (a fetch error, or
+    90	   local changes 3.1 left unstaged), and list the repo.
+    91	3. **Conflict.** Keep this machine's version and save the remote one beside it as
+    92	   `<file>.from-mac`, `<file>.from-windows` or `<file>.from-remote` (whoever pushed it), stage
+    93	   both, commit. Closeout uses these steps too. Exception: `transcripts/.errors.log` and
+    94	   `MEMORY.md` in global-memory keep both sides' lines in the one file (Step 1). `.DS_Store` conflicts: `git rm -q .DS_Store`.
+    95	   - Save the remote side by **moving** the file: a stdout redirect re-encodes the bytes.
+    96	     `git checkout --theirs -- <f> && mv <f> <f>.from-remote && git checkout --ours -- <f>`
+    97	   - While `.git/MERGE_HEAD` exists, stage only the paths you just resolved, by name:
+    98	     `git add -A` there commits the conflict markers themselves.
+    99	4. **Push** every repo the sweep marked `UNPUSHED`, plus every repo 3.1–3.3 committed in.
+   100	   `NO-UPSTREAM`: `git push -u origin <branch>`.
+   101	5. Missing locally: clone it where it belongs. Find the name in the area indexes
+   102	   (``grep -n '<name>/' ~/DEV/*.md``) and read its entry: a path written `Football/<name>/`, or a
+   103	   row under an "Inside Football/" heading, puts it in that parent folder; otherwise
+   104	   `~/DEV/<name>`. Then `gh repo clone erash11/<name> ~/DEV/<path>`. A wrong folder breaks the
+   105	   KeystoneOS paths and orphans the repo's Tier A memory (the slug is the absolute path). No remote:
+   106	   `gh repo create erash11/<name> --private --source=. --push`.
+   107	
+   108	## Step 4 — Prove it and report
+   109	
+   110	Re-run `python3 ~/.claude/scripts/where-was-i.py --sweep`. For the two Step 1 repos it does not
+   111	cover (`claude-memory-compiler`, `SecondBrain`), run `git -C <repo> status --porcelain` and
+   112	`git -C <repo> log --branches --not --remotes --oneline`. Done when the sweep's last line reads
+   113	`0 need action`, both commands print nothing for both repos, and every problem left is in the
+   114	report with its reason.
+   115	
+   116	```
+   117	DEV root: ~/DEV
+   118	Config: dotclaude, skills, global-memory, memory-compiler, SecondBrain pulled + pushed (global-memory: +N commits, newest "<msg>")
+   119	<mods line>
+   120	Pulled: <repos>    Pushed: <repos>    Cloned: <repos>    Created: <repos>
+   121	Conflicts: <every .from-* file created>, or none
+   122	<SWEEP line>. Clean. / Not clean: <repo: reason>, ...
+   123	```
+   124	
+   125	## Gotchas
+   126	
+   127	- **A push or fetch that hangs** is usually a keychain credential prompt: look for
+   128	  `git credential-osxkeychain get` in `ps`, and see
+   129	  `~/.claude/projects/-Users-kristinarash-DEV/memory/project_brew-git-keychain-hang.md`.
+   130	- **`cannot lock ref 'HEAD'`:** check `pgrep -fl git` first. If no git is running and the
+   131	  `.git/*.lock` file is zero bytes and older than the session, it is stale: move it aside, retry.
+
+hook: PostToolUse
+ succeeded in 28ms:
+1----
+2-name: closeout
+3-description: >-
+4-  End-of-session sign-off: sweeps every DEV repo for loose ends, checks memory capture, updates
+5:  STATUS and the handoff, commits and pushes, then says clear to sign off or what is still open.
+6-  Use when Eric is wrapping up or signing off, or asks about loose ends. Do not use at session
+7-  start (use startup) or for an automation health check (use claude-stack-doctor).
+8----
+9-
+10-# Closeout
+11-
+12:One command for the end-of-day sequence: loose ends → memory → STATUS and handoff → commit and push → one verdict.
+13-
+14-Run every step without pausing: invoking closeout authorizes the whole sequence. Commit and push is
+15-standing-authorized for every DEV repo (each repo's `AGENTS.md` Session routine ends with it, and
+16-unpushed work on one machine is the top cause of conflicts on the other). On Windows or in Cowork,
+--
+22-not pushed, and listed.
+23-
+24-**Clear to sign off when** the closing `where-was-i.py --sweep` (step 4) shows no `ACTION` line
+25-except repos listed under "Still open" with their reason, no background job is still writing,
+26:`.errors.log` is empty or its entries are reported, and every repo touched today has a STATUS entry
+27-dated today with a concrete first `## Next` item, and every `card-check` gap is fixed. Questions
+28:only Eric can answer (a receiver nobody named, a decision recorded under `## Open questions`) do
+29-not block: `/startup` shows them tomorrow; list them under "Still open" and say "Clear to sign off".
+30-Anything short of that: "Not clear", naming the one thing blocking.
+31-
+32-If a check fails and the fix is quick and safe (restage a file, clear a stale lock), fix it and
+--
+70-- **New durable decision or active thread:** update `~/.claude/global-memory/MEMORY.md`
+71-  (2,500-char cap; consolidate first) or write a Tier A memory with the `memory-write` skill.
+72-- **Tier A stays on this machine** (its slug is built from the absolute path, which differs per
+73-  machine). Every durable, project-scoped Tier A fact written today also goes into the repo:
+74:  `docs/STATUS.md` for current state, `docs/DECISIONS.md` for a decision and its reason, the dated
+75-  handoff for detail.
+76-
+77:## Step 3 — STATUS, handoff, cards
+78-
+79-**Handoff**, when real work happened (not just Q&A): `<repo>/docs/handoffs/<YYYY-MM-DD>-<slug>.md`;
+80-workspace or system work with no single repo goes to `~/DEV/docs/handoffs/`
+81-(`~/.claude/global-memory/handoffs/` is read-only history). Plain markdown that Codex,
+--
+83-- what was worked on and why
+84-- decisions made, with the reasoning that would be lost
+85-- exact paths of every file created or modified
+86-- next actions, most important first
+87:- anything mid-flight (open questions, awaited inputs)
+88-- suggested skills: which ones the next session should invoke, by name
+89-
+90-Link, don't copy: if a spec, plan, ADR, issue or commit already holds the detail, give its
+91-path, URL or sha. Redact keys, passwords and personal data; the note is pushed to GitHub.
+92-
+93:**`docs/STATUS.md`, in every repo touched, every time.** The next session reads it first, on
+94-either machine, in any harness. Rewrite these sections in place, short:
+95-- `## Current state`: two to five lines on where things stand today.
+96-- `## Next`: most important first. Item 1 is one concrete action (a command to run or a file to
+97-  open); `~/.claude/scripts/where-was-i.py` shows it to Eric the next morning.
+98:- `## Open questions`: each decision waiting on Eric as its own top-level bullet, the question and
+99-  enough context to answer it without opening another file. `/startup` lists this section across
+100:  repos, so write the question itself, never a pointer. Mark answered items `ANSWERED <date>: …`
+101-  or strike them (`~~…~~`). Leave the section empty when nothing waits.
+102-- `## Gotchas`: anything that will bite the next session.
+103-
+104-Over 20 KB, or more than 15 dated entries under `## Current state`: first move entries older than
+105-14 days and finished `## Next` items, verbatim, to the end of
+106:`docs/handoffs/STATUS-archive-<YYYY>-Q<n>.md`. The archive is a search root; entries move, they
+107-are never deleted.
+108-
+109-Then:
+110-1. `python ~/.claude/scripts/where-was-i.py --decisions --days 1` prints what tomorrow's
+111-   `/startup` shows as "Decisions waiting on you". Every decision left open today appears there as
+112:   a readable question; fix the repo's `## Open questions` until it does.
+113-2. `python <dir of portfolio_json>/landed.py scan --days 1` (~1 min), then
+114-   `python <dir of portfolio_json>/portfolio.py card-check`. Fix every gap with
+115-   [`CARDS.md`](CARDS.md), then re-run `card-check`.
+116-3. `bash ~/.claude/scripts/harvest-dev-docs.sh`: copies every repo's `docs/*.md` into
+--
+153-```
+154-## Closeout — <date>
+155-
+156-**Committed & pushed:** <repos + one-line summary, or "nothing to commit">
+157:**STATUS.md:** updated in <repos>
+158-**Memory:** captured ✓ / issue found: <what> / skipped: <what> (Cowork)
+159-**Handoff:** <path, or "not needed — no substantive work">
+160-**Registry drift:** <N items, or "none">
+161-**Still open:** <numbered list, or "none">
+
+ succeeded in 34ms:
+1:"""Local drag-and-drop board over portfolio.json.
+2-
+3-Binds 127.0.0.1 only. A token guards /api/*, and writes additionally
+4-require a same-origin request, because any page in the browser can POST to a
+5-localhost port.
+--
+37-DEFAULT_PORT = 7474                   # 7373 was the retired command centre
+38-
+39-# Oswald carries the board's display register (DESIGN.md). The board is server-backed,
+40-# so the font is served as a file rather than base64-inlined.
+41:FONT_PATH = Path(__file__).resolve().parent / "assets" / "oswald-latin.woff2"
+42-
+43-# App icon (concept A, drawn by Codex 2026-10-05; sources in assets/icon-candidates/).
+44-# Served unauthenticated like the font: the browser fetches icons and the manifest
+45-# without the token. The manifest has no start_url on purpose, so an installed app
+46-# opens at the URL it was installed from, which carries ?token=.
+47:ICONS = {f"/icon-{s}.png": Path(__file__).resolve().parent / "assets" / f"icon-{s}.png"
+48-         for s in (32, 180, 192, 512)}
+49-MANIFEST = json.dumps({
+50-    "name": "Front Burner", "short_name": "Front Burner", "scope": "/",
+51:    "display": "standalone", "background_color": "#0a0d0b", "theme_color": "#0a0d0b",
+52-    "icons": [{"src": f"/icon-{s}.png", "sizes": f"{s}x{s}", "type": "image/png"}
+53-              for s in (192, 512)],
+54-}).encode()
+55-
+--
+85-        host = self.headers.get("Host", "")
+86-        return origin in (f"http://{host}", f"https://{host}")
+87-
+88-    def _load(self):
+89:        return portfolio.load_registry(self.repo / "portfolio.json")
+90-
+91-    def _save(self, data):
+92:        portfolio.save_registry(self.repo / "portfolio.json", data)
+93-
+94-    def _fingerprint(self):
+95-        """Cheap identity of the registry file on disk, or None if it is gone."""
+96-        try:
+97:            st = os.stat(self.repo / "portfolio.json")
+98-        except OSError:
+99-            return None
+100-        return (st.st_mtime_ns, st.st_size)
+101-
+--
+285-        return self._send(404, {"error": "not found"})
+286-
+287-
+288-def unpushed_edits(repo: Path) -> int | None:
+289:    """Registry edits not on GitHub yet: 1 if portfolio.json is dirty, plus unpushed commits
+290-    touching it. None when the repo is not a git checkout. closeout clears them with a
+291-    `data: board edits <date>` commit and a push (PM design Decision 10)."""
+292-    def git(*a):
+293:        return subprocess.run(["git", *a], cwd=repo, capture_output=True, text=True, timeout=10)
+294-    try:
+295:        dirty = git("status", "--porcelain", "--", "portfolio.json")
+296-        if dirty.returncode != 0:
+297-            return None
+298:        ahead = git("rev-list", "--count", "@{u}..HEAD", "--", "portfolio.json")
+299-        n = int(ahead.stdout.strip()) if ahead.returncode == 0 else 0   # no upstream: count dirty only
+300-        return n + (1 if dirty.stdout.strip() else 0)
+301-    except (OSError, ValueError, subprocess.SubprocessError):
+302-        return None
+--
+304-
+305-def session_backup(repo: Path):
+306-    """Copy the registry aside once per board session, before the first mutation.
+307-
+308:    The one-deep portfolio.json.bak is clobbered on every save, and the board saves
+309-    far more often than the CLI, so after a few bad drags both the .bak and the
+310-    single-level undo only reach back one mutation. This is the session restore
+311-    point. It lives here rather than in portfolio.py so the CLI is unchanged.
+312-    Returns the backup path, or None if there is no registry yet.
+313-    """
+314:    src = Path(repo) / "portfolio.json"
+315-    if not src.exists():
+316-        return None
+317-    stamp = _dt.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")   # no colons: filename-safe
+318-    dest = src.with_name(f"{src.name}.{stamp}.bak")
+--
+402-    except (OSError, ValueError, KeyError, TypeError):
+403-        return None
+404-
+405-
+406:def start_background(args) -> int:
+407-    """Start the board as a child of this terminal (it dies with it), wait until it answers."""
+408-    log = state_path().with_suffix(".log")
+409:    cmd = [sys.executable, str(Path(__file__).resolve()), "--repo", str(args.repo),
+410-           "--port", str(args.port), "--no-open"]
+411-    if args.dev_root:
+412-        cmd += ["--dev-root", str(args.dev_root)]
+413-    with open(log, "w", encoding="utf-8") as out:
+414-        subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=out, stderr=subprocess.STDOUT)
+415-    for _ in range(60):
+416-        url = running_instance(args.repo)
+417-        if url:
+418:            print(f"board started at {url}")
+419-            if not args.no_open:
+420-                webbrowser.open(url)
+421-            return 0
+422-        time.sleep(0.25)
+--
+425-
+426-
+427-def main(argv=None) -> int:
+428-    ap = argparse.ArgumentParser(description="Local portfolio board")
+429:    ap.add_argument("--repo", type=Path, default=Path(__file__).parent)
+430-    ap.add_argument("--port", type=int, default=DEFAULT_PORT, help="0 = any free port")
+431-    ap.add_argument("--no-open", action="store_true")
+432-    ap.add_argument("--dev-root", type=Path, default=None,
+433-                    help="default: the folder holding project-triage")
+434:    ap.add_argument("--background", action="store_true",
+435-                    help="what `pm` and /pm run: reuse a running board, else start one and return")
+436-    args = ap.parse_args(argv)
+437-
+438:    portfolio.load_registry(args.repo / "portfolio.json")   # refuse to start on a bad file
+439-
+440-    url = running_instance(args.repo)
+441-    if url:
+442:        print(f"board already running at {url}")
+443-        if not args.no_open:
+444-            webbrowser.open(url)
+445-        return 0
+446:    if args.background:
+447:        return start_background(args)
+448-
+449-    backup = session_backup(args.repo)
+450-    if backup is not None:
+451-        print(f"session backup: {backup}")
+
+hook: PostToolUse
+hook: PostToolUse
+ succeeded in 48ms:
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+codex
+- [startup/SKILL.md:28](/Users/kristinarash/.claude/skills/startup/SKILL.md:28): The folder rule conflicts with “from any folder.” The Mac command works from any folder because [board.py:429](/Users/kristinarash/DEV/project-triage/board.py:429) uses the script’s folder.
+
+- [startup/SKILL.md:26](/Users/kristinarash/.claude/skills/startup/SKILL.md:26): The rule requires a pull. A repo that is already current may not appear in dev-sync’s `Pulled` list. The agent could report a pull failure when there was none. See [dev-sync/SKILL.md:84](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:84).
+
+- [startup/SKILL.md:46](/Users/kristinarash/.claude/skills/startup/SKILL.md:46): The command does not show every open question in every changed STATUS file. It uses the last **committed** date, and it shortens questions after 220 characters. See [where-was-i.py:95](/Users/kristinarash/.claude/scripts/where-was-i.py:95), [line 115](/Users/kristinarash/.claude/scripts/where-was-i.py:115), and [line 222](/Users/kristinarash/.claude/scripts/where-was-i.py:222).
+
+- [startup/SKILL.md:64](/Users/kristinarash/.claude/skills/startup/SKILL.md:64): The skill says to flag bad questions for the next closeout. It gives no place to save that flag. Closeout fixes questions in repos touched that day, so a flagged repo can be missed. See [closeout/SKILL.md:93](/Users/kristinarash/.claude/skills/closeout/SKILL.md:93).
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+41,262
+- [startup/SKILL.md:28](/Users/kristinarash/.claude/skills/startup/SKILL.md:28): The folder rule conflicts with “from any folder.” The Mac command works from any folder because [board.py:429](/Users/kristinarash/DEV/project-triage/board.py:429) uses the script’s folder.
+
+- [startup/SKILL.md:26](/Users/kristinarash/.claude/skills/startup/SKILL.md:26): The rule requires a pull. A repo that is already current may not appear in dev-sync’s `Pulled` list. The agent could report a pull failure when there was none. See [dev-sync/SKILL.md:84](/Users/kristinarash/.claude/skills/dev-sync/SKILL.md:84).
+
+- [startup/SKILL.md:46](/Users/kristinarash/.claude/skills/startup/SKILL.md:46): The command does not show every open question in every changed STATUS file. It uses the last **committed** date, and it shortens questions after 220 characters. See [where-was-i.py:95](/Users/kristinarash/.claude/scripts/where-was-i.py:95), [line 115](/Users/kristinarash/.claude/scripts/where-was-i.py:115), and [line 222](/Users/kristinarash/.claude/scripts/where-was-i.py:222).
+
+- [startup/SKILL.md:64](/Users/kristinarash/.claude/skills/startup/SKILL.md:64): The skill says to flag bad questions for the next closeout. It gives no place to save that flag. Closeout fixes questions in repos touched that day, so a flagged repo can be missed. See [closeout/SKILL.md:93](/Users/kristinarash/.claude/skills/closeout/SKILL.md:93).

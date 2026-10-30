@@ -1,0 +1,39 @@
+diff --git a/startup/SKILL.md b/startup/SKILL.md
+index 468ba75..8a2d6aa 100644
+--- a/startup/SKILL.md
++++ b/startup/SKILL.md
+@@ -25,10 +25,10 @@ reads clean or names what is not.
+ The live board writes `portfolio.json`, so it starts only on a registry that already has every
+ other session's edits. Start it when project-triage came through Step 1 clean (pulled, no
+ `.git/MERGE_HEAD`, and dev-sync's `Conflicts:` line names no `portfolio.json.from-*` file; an
+-older, committed one is a settled conflict), from the folder holding `portfolio_json`
+-(`~/.claude/skills/_shared/config.macos.json`):
++older, committed one is a settled conflict). Run `board.py` from the folder that holds
++`portfolio_json` in `~/.claude/skills/_shared/config.<os>.json`; on the Mac, from any folder:
+ 
+-`python3 board.py --background`
++`python3 ~/DEV/project-triage/board.py --background`
+ 
+ It prints `board started at <url>` or `board already running at <url>`; put that line in the
+ report. Not clean: report `board: not started, project-triage pull unresolved` and name the
+@@ -61,11 +61,17 @@ Decisions waiting on you (<N> in <M> repos):
+ Handoffs since <date>: <repo/file>, ...
+ ```
+ 
+-List decisions newest repo first, one line each, the question itself. An item that is only a
+-pointer ("See PLAN.md …"): open the file, list the real questions, and flag that repo's STATUS for
+-a fix at the next closeout. Over about twelve: the last day's in full, the rest as repo + count.
++List decisions newest repo first, one line each, the question itself. Two kinds need a fix at the
++next closeout; flag that repo's STATUS for it:
++- A pointer ("See PLAN.md …"): open the file and list the real questions in its place.
++- An item already answered (it says `RESOLVED`, or repeats another line): leave it out.
++
++Over about twelve: the last day's in full, the rest as repo + count.
+ 
+ Then hold for Eric to confirm or redirect. STATUS records where work stopped, not what he wants
+ to do today.
++
++**Done when** the dev-sync report, the board line and the pick-up report are out, and the session is
++waiting on Eric.
+ </content>
+ </invoke>
