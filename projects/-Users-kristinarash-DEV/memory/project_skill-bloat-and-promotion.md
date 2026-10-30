@@ -236,4 +236,4 @@ session no longer lists the skills. Done for pdf-viewer, firecrawl, data, cowork
 (20 skills, 0 calls; dotclaude `36a04c6`). Kept: superpowers@synced (the only live superpowers copy,
 in use), desktop-commander@synced (MCP used), browser-use@synced.
 **`skillOverrides` does not apply to plugin skills** (docs: skills.md), so `superpowers:*: "off"` keys
-are dead lines. To cut one plugin skill you must disable the whole plugin. Undo: `claude plugin enable <name>@synced`.
+were dead lines; removed 2026-10-30. To cut one plugin skill you must disable the whole plugin. Undo: `claude plugin enable <name>@synced`.
