@@ -10,9 +10,10 @@ doctor-plus has never been reviewed with this lens.
 ## A. claude-stack-doctor — gaps in what it does (urgent)
 
 1. **The weekly run missed Monday 10-26, and nothing noticed.** `scripts/last-weekly-run.log` is
-   dated 10-19. The Mac booted Mon 10-26 08:43, before the 10:30 slot. The job was re-registered
-   10-29 16:00 (`backgroundtaskmanagementd`), so `runs = 0` now says nothing about Monday.
-   Cause not proven: unified log does not reach back to 10-26. Not a pwsh outage:
+   dated 10-19. The Mac booted Mon 10-26 08:43, before the 10:30 slot, and `launchctl print`
+   shows `runs = 0`. A `backgroundtaskmanagementd` rescan logged the job at 10-29 16:00; that may
+   or may not be a reload, so `runs = 0` may or may not cover Monday.
+   Cause not confirmed: unified log does not reach back to 10-26. Not a pwsh outage:
    `com.keystone.morning` and `agysync` run on the same `/opt/homebrew/bin/pwsh` (runs 3 and 2,
    exit 0). Next scheduled run: Mon 11-02 10:30.
 2. **The watcher has no watcher.** `stack-check.ps1:62-66` lists 14 jobs and omits
