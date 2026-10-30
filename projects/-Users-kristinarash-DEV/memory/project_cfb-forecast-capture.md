@@ -133,3 +133,16 @@ archived morning-briefing package). See [[automation-cadence]] and [[work-laptop
 
 Related model/data work lives in [[cfb-analytics-lab]] (a separate project —
 `~/DEV/CFB_Analytics_Lab` vs the Victory Model's own tree).
+
+## Evaluation and the market line (2026-10-30)
+
+- **Late capture check for all 16 teams in one call:** the ESPN scoreboard with the Big 12
+  group, one date at a time (a date range returned nothing):
+  `curl -s "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?groups=4&dates=YYYYMMDD&limit=100"`.
+  A Friday capture is safe if no Big 12 game was played Thursday.
+- **The opening betting line beat the model** on the first 68 true pregame games (winners 76% vs
+  81%, margin miss 12.9 vs 11.4). A Codex audit found no correction to the model's numbers with
+  a clear gain. So `weekly_run.sh` now also prints model vs opening line (`market_view.py`).
+- **REA does not apply:** there is no binary, only Garrett's published Power BI report. The
+  model's structure was recovered from its outputs instead (in the repo's STATUS).
+- Details: `EVAL_2026_SEASON.md`, `docs/MODEL_AUDIT_2026-10-30.md` in the repo.
