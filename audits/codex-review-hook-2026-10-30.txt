@@ -1,0 +1,465 @@
+Reading additional input from stdin...
+2026-10-30T20:38:59.403327Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/.claude
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a18e89-744f-7e93-bc91-6ef8d43a8835
+--------
+user
+You are a code reviewer. Read the diff with: git -C ~/.claude show 0828727 -- hooks/keystone-unified-snapshot.js  and the full file. The file is a SessionStart hook, also run by Codex via a symlinked ~/.codex/hooks and by Antigravity with --agy. Focus: can the new dead-man block throw and kill the whole injection, false-alarm (fresh Mac, Windows, Codex/agy runs), or stay silent when the weekly run is missed? Is 8 days right given weekly-check.ps1 (at ~/.claude/skills/claude-stack-doctor/scripts/) rewrites last-weekly-run.log every Monday 10:30 and a Mac may sleep through Monday? Report concrete findings with file:line, most severe first, and say NONE if nothing is wrong. Do not edit files.
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I’ll read the change, the full hook, and the weekly script. I will check when the warning can fail or misfire.
+warning: Codex could not update marketplace `claude-plugins-official`: git clone marketplace source timed out after 30s: Cloning into '/Users/kristinarash/.codex/.tmp/marketplaces/.staging/marketplace-macos-nRi9FT/checkout'...
+warning: Codex could not update marketplace `context-mode`: git clone marketplace source timed out after 30s: Cloning into '/Users/kristinarash/.codex/.tmp/marketplaces/.staging/marketplace-macos-61lSfT/checkout'...
+2026-10-30T20:40:59.609322Z ERROR codex_core::tools::router: error=timed out negotiating with the code-mode host
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/machine.md ~/.claude/global-memory/USER.md ~/.claude/global-memory/MEMORY.md ~/.claude/global-memory/transcripts/.errors.log' in /Users/kristinarash/.claude
+ succeeded in 217ms:
+# Shell / Environment (macOS)
+
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+<!-- Cap: 1,375 chars. Durable user preferences only. -->
+# User Profile
+
+## About
+Eric Rash, Director of Applied Performance, Baylor Athletics. Builds football GPS and force-plate pipelines. Wife Kristina; kids Ames 5, Saylor 4, Rowan 10mo (9/2026). Career target: analytics-first player-coach near Iowa, $90K+ floor, mid-2027. Read `~/DEV/ContextVault` before career/personal advice.
+
+## Preferences
+- Python/R. Mac primary; Win laptop desktop-app only (10/21).
+- DBs local (SQLite/DuckDB), never on Drive (sync locks). Cloud servers/schedulers OK (10/14).
+- Tangible working examples over docs.
+- Staff text: Athletic Performance (not S&C), Athletic Medicine (not sports medicine), Applied Performance (not sport science).
+
+## Working Style
+- Usage-sensitive: few subagents; fan-outs/review agents only when asked.
+- Direct; says "stop" when done. Challenge vague reasoning: "sharpened, not soothed."
+- Decide standard details, state the choice, move on. He takes your pick and won't verify or recall follow-ups: verify yourself; make steps run/alert unaided.
+- Small steps. Do not break mid-season work.
+- OKR-driven change agent; sets direction when leadership doesn't.
+- Right question over downstream craft; Christian faith is his organizing frame.
+<!-- Cap: 2,500 chars. Working scratchpad; writes take effect next session. -->
+# Working Memory
+
+## Active Threads (max 5; park one to add one)
+- **Status report**: biweekly to 12/18. →Tier A supervisor-log-pipeline
+- **SW/Tech Review (10/1)**: Erin asked; ET by 11/30. Kenny check-in Thu 2:30; Wed tracker loop from 10/28 (tracker in Teams). →`SoftwareTech_Review/docs/`
+- **Ship queue (re-dated 10/23)**: AP Digest ch1 10/30 (PR #1, Performance_Playbook); intern M1 + RI5 #002 11/13. →`RunningTheRoom/docs/STATUS.md`
+- **PP Recruiting (10/20)**: 026 TEST (Mauro answers); Mauro Win refresh →`PP_Recruiting/docs/`
+- **RTP CLA (10/20)**: L3 built+exported; notes in Doc. NEXT Joe re-downloads, await L3 dial card → L4. →`RTP_Constraints_Course/docs/`
+
+## Parked (NEXT in each repo's docs/STATUS.md; `where-was-i.py` lists them)
+BayCap · PerformanceSnapshot (FB/, live launchd) · house-model (10/12) · 5S5M (EAI STATUS) · project-triage PM system · personal site (scroll-craft, Tier A) · Football/MatchupAnalysis_FB2026 · Flint (10/13) · 42Analytics (captions 429) · Volleyball_GRID (await Mike) · sleep-scheduler · TypeSafe_Sandbox (maint) · File org Task 4 after season →`DEV/docs/FILE-ORGANIZATION-PLAN.md`
+
+## Environment Notes
+- Win laptop: no automation; desktop-app sessions only (10/21), push to GitHub to sync to Mac. Mac sole writer GPS/Perch/VALD; GPS coach report archived 10/19.
+- Hooks: ~/.codex/hooks links ~/.claude/hooks; edit there only →Tier A hook-two-copies-trap.
+- daily-backup: manifest entries alone copy nothing; sweep nested ~/.claude repos.
+- `DEV/Linda_Projects` = private I-983 repo. Drive reads hang →Tier A drive-fuse-read-hang.
+- `~/DEV` = THIN repo; `.gitignore` starts `/*`, never remove →Tier A github-consolidation.
+- PFF: swap Parquet on Drive, never the DB; `PFF_DB`.
+- Schedules →Tier A automation-cadence. CFB capture Mac only.
+- Post-merge: remove merged worktrees + remote branches unasked; local `git branch -d` is dcg-blocked, hand Eric the line →Tier A post-merge-cleanup.
+- Sessions: start `where-was-i.py`, prune `session-sweep.py` →Tier A session-hygiene.
+
+## Pending Decisions
+- None open.
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/hooks/keystone-unified-snapshot.js' in /Users/kristinarash/.claude
+exec
+/bin/zsh -lc 'nl -ba ~/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1' in /Users/kristinarash/.claude
+exec
+/bin/zsh -lc "rg -n -C 3 'Workflow Expectations|last-weekly-run|weekly-check' ~/.claude/CLAUDE.md ~/.claude/skills/claude-stack-doctor ~/.claude/hooks ~/.claude/settings.json ~/.codex/hooks.json" in /Users/kristinarash/.claude
+exec
+/bin/zsh -lc 'git -C ~/.claude show 0828727 -- hooks/keystone-unified-snapshot.js' in /Users/kristinarash/.claude
+ succeeded in 117ms:
+     1	#!/usr/bin/env node
+     2	// SessionStart hook: inject the Tier B global memory snapshot (USER.md,
+     3	// MEMORY.md, and .errors.log when non-empty) plus KeystoneOS's cross-harness
+     4	// unified snapshot, alongside the memory compiler's own snapshot.
+     5	//
+     6	// This replaces the prose instruction in ~/.claude/CLAUDE.md that told the
+     7	// agent to read those three files by hand at session start — a rule nothing
+     8	// enforced, which therefore silently did not happen in some sessions.
+     9	//
+    10	// Fails closed: any error means less context, never a thrown error that could
+    11	// block session start. But a MISSING SOURCE IS REPORTED, not swallowed — the
+    12	// old version pointed at the retired ~/Desktop/DEV path and injected nothing
+    13	// at all for weeks without a single visible symptom (see project memory
+    14	// `memsearch-index-path-drift`: make fallbacks loud).
+    15	
+    16	const fs = require('fs');
+    17	const path = require('path');
+    18	const os = require('os');
+    19	
+    20	const HOME = os.homedir();
+    21	
+    22	const SOURCES = [
+    23	  {
+    24	    label: 'User profile (global-memory/USER.md)',
+    25	    file: path.join(HOME, '.claude', 'global-memory', 'USER.md'),
+    26	    required: true,
+    27	  },
+    28	  {
+    29	    label: 'Working memory (global-memory/MEMORY.md)',
+    30	    file: path.join(HOME, '.claude', 'global-memory', 'MEMORY.md'),
+    31	    required: true,
+    32	  },
+    33	  {
+    34	    label: 'HOOK FAILURES — surface these to the user on the first response',
+    35	    file: path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log'),
+    36	    required: false,      // absent is fine
+    37	    skipIfEmpty: true,    // normally empty; only inject when it is not
+    38	    summarize: true,      // one line per failure kind, not one per occurrence
+    39	  },
+    40	  {
+    41	    // Points, does not paste: ~6k chars of recent activity that most sessions
+    42	    // never need. Recorded decision — see project memory
+    43	    // `memory-compiler-pipeline`: "SessionStart now points, not pastes".
+    44	    // Flip `pointOnly` to false to inline it again.
+    45	    label: 'Cross-harness activity (KeystoneOS unified snapshot)',
+    46	    // Mac: ~/DEV. Windows: ~/Desktop/DEV. First path that exists wins.
+    47	    file: [path.join(HOME, 'DEV'), path.join(HOME, 'Desktop', 'DEV')]
+    48	      .map((d) => path.join(d, 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'))
+    49	      .find((f) => fs.existsSync(f)) || path.join(HOME, 'DEV', 'KeystoneOS', 'outputs', 'dashboard', 'unified-snapshot.md'),
+    50	    required: false,
+    51	    pointOnly: true,
+    52	  },
+    53	];
+    54	
+    55	// .errors.log lines look like `[ISO-time] kind: message`. A stuck job writes
+    56	// the same kind every few minutes, so the raw log can reach 100+ near-identical
+    57	// lines injected into every session. Collapse to one line per kind: count,
+    58	// first and last time, and the latest message (which carries the running count).
+    59	function summarizeErrors(body) {
+    60	  const groups = new Map();
+    61	  const other = [];
+    62	  for (const line of body.split(/\r?\n/)) {
+    63	    const m = line.match(/^\[([^\]]+)\]\s*([\w.-]+):\s*(.*)$/);
+    64	    if (!m) { if (line.trim()) other.push(line.trim()); continue; }
+    65	    const [, ts, kind, msg] = m;
+    66	    const g = groups.get(kind) || { n: 0, first: ts, last: ts, msg };
+    67	    // Both machines append, so lines are not in time order: track min/max.
+    68	    g.n += 1;
+    69	    if (ts < g.first) g.first = ts;
+    70	    if (ts >= g.last) { g.last = ts; g.msg = msg; }
+    71	    groups.set(kind, g);
+    72	  }
+    73	  const t = (s) => s.slice(0, 16).replace('T', ' ');
+    74	  const cap = (s) => (s.length > 300 ? s.slice(0, 300) + '…' : s);
+    75	  const lines = [...groups].map(([kind, g]) =>
+    76	    `- **${kind}** ×${g.n} (${t(g.first)} → ${t(g.last)} UTC): ${cap(g.msg)}`);
+    77	  if (other.length) lines.push(`- ${other.length} unparsed line(s); see the file.`);
+    78	  return lines.join('\n') +
+    79	    `\n\nFull log: \`~/.claude/global-memory/transcripts/.errors.log\`. ` +
+    80	    'Surface this once; clear the file after the user has seen it and the cause is handled.';
+    81	}
+    82	
+    83	function emit(context) {
+    84	  if (process.argv.includes('--agy')) {
+    85	    const out = context
+    86	      ? { injectSteps: [{ systemMessage: { systemMessage: context } }] }
+    87	      : {};
+    88	    process.stdout.write(JSON.stringify(out));
+    89	    return;
+    90	  }
+    91	  const output = { hookSpecificOutput: { hookEventName: 'SessionStart' } };
+    92	  if (context) output.hookSpecificOutput.additionalContext = context;
+    93	  process.stdout.write(JSON.stringify(output));
+    94	}
+    95	
+    96	function main() {
+    97	  const parts = [];
+    98	  const problems = [];
+    99	
+   100	  for (const src of SOURCES) {
+   101	    let body;
+   102	    try {
+   103	      body = fs.readFileSync(src.file, 'utf8');
+   104	    } catch (err) {
+   105	      if (src.required) {
+   106	        problems.push(`${src.label}: unreadable at ${src.file} (${err.code || 'ERR'})`);
+   107	      }
+   108	      continue;
+   109	    }
+   110	    if (src.skipIfEmpty && body.trim() === '') continue;
+   111	    if (src.pointOnly) {
+   112	      const stamp = fs.statSync(src.file).mtime.toISOString().slice(0, 16).replace('T', ' ');
+   113	      parts.push(
+   114	        `## ${src.label}\n\nNot loaded here — read it only if a question needs it.\n` +
+   115	        `Path: \`${src.file}\` (${body.length} chars, updated ${stamp})`
+   116	      );
+   117	      continue;
+   118	    }
+   119	    parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
+   120	  }
+   121	
+   122	  // Dead-man check: the weekly stack doctor reports failures through .errors.log,
+   123	  // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
+   124	  // the laptop has no weekly run. 8 days = one missed Monday.
+   125	  if (process.platform === 'darwin') {
+   126	    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
+   127	      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
+   128	    let ageD = Infinity;
+   129	    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
+   130	    if (ageD > 8) {
+   131	      parts.unshift(
+   132	        '## Weekly stack doctor is overdue\n\n' +
+   133	        `\`${weekly}\` was last written ${ageD === Infinity ? 'never' : Math.floor(ageD) + ' days ago'}; ` +
+   134	        'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
+   135	        'response and run `/claude-stack-doctor`.'
+   136	      );
+   137	    }
+   138	  }
+   139	
+   140	  if (problems.length) {
+   141	    parts.unshift(
+   142	      '## SessionStart hook could not read a required memory file\n\n' +
+   143	      problems.map((p) => `- ${p}`).join('\n') +
+   144	      '\n\nTell the user on the first response. Do not work around it silently.'
+   145	    );
+   146	  }
+   147	
+   148	  emit(parts.length ? parts.join('\n\n---\n\n') : null);
+   149	}
+   150	
+   151	try {
+   152	  main();
+   153	} catch (_) {
+   154	  emit(null);
+   155	}
+
+ succeeded in 118ms:
+     1	# Weekly unattended stack-doctor run (launchd: com.keystone.stackdoctor).
+     2	# Runs the read-only stack-check and, ONLY on failure, appends a one-line
+     3	# summary to global-memory .errors.log — which every Claude session surfaces
+     4	# at startup per CLAUDE.md. Silence in that file means the check passed.
+     5	# Full output of the most recent run is always kept in last-weekly-run.log.
+     6	
+     7	$check = Join-Path $PSScriptRoot 'stack-check.ps1'
+     8	# Windows: Task Scheduler task KeystoneOS-StackDoctor (Mondays 10:30) runs this with pwsh 7.
+     9	$pwsh = if ($env:OS -eq 'Windows_NT') { (Get-Command pwsh -ErrorAction SilentlyContinue).Source } else { '/opt/homebrew/bin/pwsh' }
+    10	if (-not $pwsh) { $pwsh = (Get-Process -Id $PID).Path }
+    11	$out = & $pwsh -NoProfile -File $check 2>&1 | Out-String
+    12	$failed = $LASTEXITCODE -ne 0
+    13	
+    14	Set-Content -Path (Join-Path $PSScriptRoot 'last-weekly-run.log') -Value $out -Encoding utf8
+    15	
+    16	if ($failed) {
+    17	    $verdict = (($out -split "`r?`n") | Where-Object { $_ -match '^\d+ issue' } | Select-Object -First 1)
+    18	    if (-not $verdict) { $verdict = 'check failed (no VERDICT line — see last-weekly-run.log)' }
+    19	    $stamp = Get-Date -Format o
+    20	    $entry = "[$stamp] stack-doctor weekly: $verdict — details in ~/.claude/skills/claude-stack-doctor/scripts/last-weekly-run.log; run /claude-stack-doctor to fix"
+    21	    Add-Content -Path "$HOME/.claude/global-memory/transcripts/.errors.log" -Value $entry -Encoding utf8
+    22	}
+    23	exit 0
+
+hook: PostToolUse
+hook: PostToolUse
+ succeeded in 153ms:
+commit 0828727b11c06c72845afca88f80bb93059a9e56
+Author: Eric Rash <eric.rash11@gmail.com>
+Date:   Fri Oct 30 11:51:50 2026 -0500
+
+    SessionStart: dead-man line for a missed weekly stack-doctor run; doctor skills review
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_0195ZD7uE9VSBysc87QiZJFL
+
+diff --git a/hooks/keystone-unified-snapshot.js b/hooks/keystone-unified-snapshot.js
+index ef448ef..766b27a 100644
+--- a/hooks/keystone-unified-snapshot.js
++++ b/hooks/keystone-unified-snapshot.js
+@@ -119,6 +119,24 @@ function main() {
+     parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
+   }
+ 
++  // Dead-man check: the weekly stack doctor reports failures through .errors.log,
++  // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
++  // the laptop has no weekly run. 8 days = one missed Monday.
++  if (process.platform === 'darwin') {
++    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
++      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
++    let ageD = Infinity;
++    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
++    if (ageD > 8) {
++      parts.unshift(
++        '## Weekly stack doctor is overdue\n\n' +
++        `\`${weekly}\` was last written ${ageD === Infinity ? 'never' : Math.floor(ageD) + ' days ago'}; ` +
++        'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
++        'response and run `/claude-stack-doctor`.'
++      );
++    }
++  }
++
+   if (problems.length) {
+     parts.unshift(
+       '## SessionStart hook could not read a required memory file\n\n' +
+
+hook: PostToolUse
+ succeeded in 374ms:
+/Users/kristinarash/.claude/CLAUDE.md-8-
+/Users/kristinarash/.claude/CLAUDE.md-9-**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+/Users/kristinarash/.claude/CLAUDE.md-10-
+/Users/kristinarash/.claude/CLAUDE.md:11:# Workflow Expectations
+/Users/kristinarash/.claude/CLAUDE.md-12-
+/Users/kristinarash/.claude/CLAUDE.md-13-- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+/Users/kristinarash/.claude/CLAUDE.md-14-- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+--
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-124-  // the laptop has no weekly run. 8 days = one missed Monday.
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-125-  if (process.platform === 'darwin') {
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-126-    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:127:      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-128-    let ageD = Infinity;
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-129-    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
+/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js-130-    if (ageD > 8) {
+--
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-49-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-50-## Weekly run
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-51-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md:52:launchd `com.keystone.stackdoctor` (Mondays 10:30) runs `scripts/weekly-check.ps1`, the same check.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-53-On failure it appends one line to `~/.claude/global-memory/transcripts/.errors.log`, which every
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-54-session start surfaces. A run that never happens is caught twice: the SessionStart hook
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md:55:`~/.claude/hooks/keystone-unified-snapshot.js` adds an "overdue" line when `last-weekly-run.log` is
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md:56:over 8 days old, and the check itself reports `proof:stack-doctor-weekly`; full output is in `scripts/last-weekly-run.log`. Clear the entry after the
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-57-fix (FIXES.md → Memory pipeline → Clearing `.errors.log`).
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-58-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/SKILL.md-59-## Outside the script
+--
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-2-# Runs the read-only stack-check and, ONLY on failure, appends a one-line
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-3-# summary to global-memory .errors.log — which every Claude session surfaces
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-4-# at startup per CLAUDE.md. Silence in that file means the check passed.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:5:# Full output of the most recent run is always kept in last-weekly-run.log.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-6-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-7-$check = Join-Path $PSScriptRoot 'stack-check.ps1'
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-8-# Windows: Task Scheduler task KeystoneOS-StackDoctor (Mondays 10:30) runs this with pwsh 7.
+--
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-11-$out = & $pwsh -NoProfile -File $check 2>&1 | Out-String
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-12-$failed = $LASTEXITCODE -ne 0
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-13-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:14:Set-Content -Path (Join-Path $PSScriptRoot 'last-weekly-run.log') -Value $out -Encoding utf8
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-15-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-16-if ($failed) {
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-17-    $verdict = (($out -split "`r?`n") | Where-Object { $_ -match '^\d+ issue' } | Select-Object -First 1)
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:18:    if (-not $verdict) { $verdict = 'check failed (no VERDICT line — see last-weekly-run.log)' }
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-19-    $stamp = Get-Date -Format o
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:20:    $entry = "[$stamp] stack-doctor weekly: $verdict — details in ~/.claude/skills/claude-stack-doctor/scripts/last-weekly-run.log; run /claude-stack-doctor to fix"
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-21-    Add-Content -Path "$HOME/.claude/global-memory/transcripts/.errors.log" -Value $entry -Encoding utf8
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-22-}
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1-23-exit 0
+--
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-44-  `KeystoneOS/outputs/morning/cadence.log` (it failed this way 08-06 to 10-23 behind `cadence OK`).
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-45-- `proof:backup-harvest`: no `HARVEST` line in `daily-backup.log`.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-46-- `proof:nightly-digest`: no `sent` line in `nightly-digest.log`.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md:47:- `proof:stack-doctor-weekly`: `scripts/last-weekly-run.log` is over 8 days old, so the Monday
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-48-  `com.keystone.stackdoctor` run did not happen (missed 2026-10-26, cause not found). Check it is
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-49-  loaded (`launchctl print gui/$(id -u)/com.keystone.stackdoctor`), then run
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md:50:  `pwsh -NoProfile -File scripts/weekly-check.ps1` once by hand.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-51-
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-52-Read the failing block, then run the job by hand. Test: `zsh scripts/test-job-proof.sh`.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/FIXES.md-53-
+--
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-385-# 10-26). Its proof is the log it rewrites every run. 8 days = one missed Monday. The
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-386-# SessionStart hook keystone-unified-snapshot.js makes the same check at every session start.
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-387-if ($env:OS -ne 'Windows_NT') {
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:388:    $wk = if ($env:PROOF_WEEKLY_LOG) { $env:PROOF_WEEKLY_LOG } else { Join-Path $PSScriptRoot 'last-weekly-run.log' }
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-389-    if (-not (Test-Path $wk)) { "stack-doctor-weekly: log MISSING"; $fail += "proof:stack-doctor-weekly" }
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-390-    else {
+/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1-391-        $ageD = [math]::Floor(((Get-Date) - (Get-Item $wk).LastWriteTime).TotalDays)
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+codex
+I found three issues.
+
+1. **A missed run can stay silent for a day.** [keystone-unified-snapshot.js:130](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:130) waits until the log is more than eight days old. If the job runs Monday at 10:30 and misses the next Monday, the warning starts after Tuesday at 10:30. Eight days is useful as a grace period for a sleeping Mac, but it does not detect a missed Monday right away.
+
+2. **A fresh Mac can get a false alarm.** [keystone-unified-snapshot.js:128](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:128) treats a missing or unreadable log as a missed job. The warning then says the job did not run. A fresh Mac may not have the job set up yet. A file access error can also cause this warning. Codex and Antigravity get the same warning on a Mac.
+
+3. **A fresh file time can hide a missed job.** [keystone-unified-snapshot.js:129](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:129) checks only the file time. A copy, a manual run, or a future file time can make the log look fresh even when the scheduled job did not run.
+
+The new block catches file-check errors. I found no normal path where it throws and stops the memory injection. Windows skips the block.
+
+I did not edit any files.
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+31,103
+I found three issues.
+
+1. **A missed run can stay silent for a day.** [keystone-unified-snapshot.js:130](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:130) waits until the log is more than eight days old. If the job runs Monday at 10:30 and misses the next Monday, the warning starts after Tuesday at 10:30. Eight days is useful as a grace period for a sleeping Mac, but it does not detect a missed Monday right away.
+
+2. **A fresh Mac can get a false alarm.** [keystone-unified-snapshot.js:128](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:128) treats a missing or unreadable log as a missed job. The warning then says the job did not run. A fresh Mac may not have the job set up yet. A file access error can also cause this warning. Codex and Antigravity get the same warning on a Mac.
+
+3. **A fresh file time can hide a missed job.** [keystone-unified-snapshot.js:129](/Users/kristinarash/.claude/hooks/keystone-unified-snapshot.js:129) checks only the file time. A copy, a manual run, or a future file time can make the log look fresh even when the scheduled job did not run.
+
+The new block catches file-check errors. I found no normal path where it throws and stops the memory injection. Windows skips the block.
+
+I did not edit any files.

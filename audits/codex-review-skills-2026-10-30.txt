@@ -1,0 +1,1208 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/.claude/skills
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a18e89-7117-72d1-b6ea-fb66765a9198
+--------
+user
+You are a code reviewer. Read the diff with: git -C ~/.claude/skills diff ef2e377~1 HEAD -- claude-stack-doctor doctor-plus  (also read full files as needed). Focus: (1) stack-check.ps1 new proof:stack-doctor-weekly check and the two added launchd jobs: can it false-pass or false-fail? Note weekly-check.ps1 runs stack-check BEFORE rewriting last-weekly-run.log, so on a normal Monday the log is ~7 days old. (2) test-job-proof.sh and test-weekly-deadman.sh: do they test what they claim? (3) doctor-plus/SKILL.md: disable-model-invocation is set; are its steps runnable as written, any wrong paths or commands? (4) SKILL.md/FIXES.md: any claim that does not match the script. Report concrete findings with file:line, most severe first, and say NONE if nothing is wrong. Do not edit files.
+2026-10-30T20:38:59.412824Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I’ll read the diff and check the scripts against the docs. I’ll use the code-review skill.
+warning: Codex could not update marketplace `claude-plugins-official`: git clone marketplace source timed out after 30s: Cloning into '/Users/kristinarash/.codex/.tmp/marketplaces/.staging/marketplace-macos-WiJjTQ/checkout'...
+warning: Codex could not update marketplace `context-mode`: git clone marketplace source timed out after 30s: Cloning into '/Users/kristinarash/.codex/.tmp/marketplaces/.staging/marketplace-macos-ggcc13/checkout'...
+2026-10-30T20:40:59.609309Z ERROR codex_core::tools::router: error=timed out negotiating with the code-mode host
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/machine.md ~/.claude/global-memory/USER.md ~/.claude/global-memory/MEMORY.md ~/.claude/global-memory/transcripts/.errors.log ~/.agents/skills/code-review/SKILL.md' in /Users/kristinarash/.claude/skills
+ succeeded in 216ms:
+# Shell / Environment (macOS)
+
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+<!-- Cap: 1,375 chars. Durable user preferences only. -->
+# User Profile
+
+## About
+Eric Rash, Director of Applied Performance, Baylor Athletics. Builds football GPS and force-plate pipelines. Wife Kristina; kids Ames 5, Saylor 4, Rowan 10mo (9/2026). Career target: analytics-first player-coach near Iowa, $90K+ floor, mid-2027. Read `~/DEV/ContextVault` before career/personal advice.
+
+## Preferences
+- Python/R. Mac primary; Win laptop desktop-app only (10/21).
+- DBs local (SQLite/DuckDB), never on Drive (sync locks). Cloud servers/schedulers OK (10/14).
+- Tangible working examples over docs.
+- Staff text: Athletic Performance (not S&C), Athletic Medicine (not sports medicine), Applied Performance (not sport science).
+
+## Working Style
+- Usage-sensitive: few subagents; fan-outs/review agents only when asked.
+- Direct; says "stop" when done. Challenge vague reasoning: "sharpened, not soothed."
+- Decide standard details, state the choice, move on. He takes your pick and won't verify or recall follow-ups: verify yourself; make steps run/alert unaided.
+- Small steps. Do not break mid-season work.
+- OKR-driven change agent; sets direction when leadership doesn't.
+- Right question over downstream craft; Christian faith is his organizing frame.
+<!-- Cap: 2,500 chars. Working scratchpad; writes take effect next session. -->
+# Working Memory
+
+## Active Threads (max 5; park one to add one)
+- **Status report**: biweekly to 12/18. →Tier A supervisor-log-pipeline
+- **SW/Tech Review (10/1)**: Erin asked; ET by 11/30. Kenny check-in Thu 2:30; Wed tracker loop from 10/28 (tracker in Teams). →`SoftwareTech_Review/docs/`
+- **Ship queue (re-dated 10/23)**: AP Digest ch1 10/30 (PR #1, Performance_Playbook); intern M1 + RI5 #002 11/13. →`RunningTheRoom/docs/STATUS.md`
+- **PP Recruiting (10/20)**: 026 TEST (Mauro answers); Mauro Win refresh →`PP_Recruiting/docs/`
+- **RTP CLA (10/20)**: L3 built+exported; notes in Doc. NEXT Joe re-downloads, await L3 dial card → L4. →`RTP_Constraints_Course/docs/`
+
+## Parked (NEXT in each repo's docs/STATUS.md; `where-was-i.py` lists them)
+BayCap · PerformanceSnapshot (FB/, live launchd) · house-model (10/12) · 5S5M (EAI STATUS) · project-triage PM system · personal site (scroll-craft, Tier A) · Football/MatchupAnalysis_FB2026 · Flint (10/13) · 42Analytics (captions 429) · Volleyball_GRID (await Mike) · sleep-scheduler · TypeSafe_Sandbox (maint) · File org Task 4 after season →`DEV/docs/FILE-ORGANIZATION-PLAN.md`
+
+## Environment Notes
+- Win laptop: no automation; desktop-app sessions only (10/21), push to GitHub to sync to Mac. Mac sole writer GPS/Perch/VALD; GPS coach report archived 10/19.
+- Hooks: ~/.codex/hooks links ~/.claude/hooks; edit there only →Tier A hook-two-copies-trap.
+- daily-backup: manifest entries alone copy nothing; sweep nested ~/.claude repos.
+- `DEV/Linda_Projects` = private I-983 repo. Drive reads hang →Tier A drive-fuse-read-hang.
+- `~/DEV` = THIN repo; `.gitignore` starts `/*`, never remove →Tier A github-consolidation.
+- PFF: swap Parquet on Drive, never the DB; `PFF_DB`.
+- Schedules →Tier A automation-cadence. CFB capture Mac only.
+- Post-merge: remove merged worktrees + remote branches unasked; local `git branch -d` is dcg-blocked, hand Eric the line →Tier A post-merge-cleanup.
+- Sessions: start `where-was-i.py`, prune `session-sweep.py` →Tier A session-hygiene.
+
+## Pending Decisions
+- None open.
+---
+name: code-review
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to "review since X".
+---
+
+Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
+
+- **Standards** — does the code conform to this repo's documented coding standards?
+- **Spec** — does the code faithfully implement the originating issue / PRD / spec?
+
+Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
+
+The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if `docs/agents/issue-tracker.md` is missing.
+
+## Process
+
+### 1. Pin the fixed point
+
+Whatever the user said is the fixed point — a commit SHA, branch name, tag, `main`, `HEAD~5`, etc. If they didn't specify one, ask for it.
+
+Capture the diff command once: `git diff <fixed-point>...HEAD` (three-dot, so the comparison is against the merge-base). Also note the list of commits via `git log <fixed-point>..HEAD --oneline`.
+
+Before going further, confirm the fixed point resolves (`git rev-parse <fixed-point>`) and the diff is non-empty. A bad ref or empty diff should fail here — not inside two parallel sub-agents.
+
+### 2. Identify the spec source
+
+Look for the originating spec, in this order:
+
+1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.) — fetch via the workflow in `docs/agents/issue-tracker.md`.
+2. A path the user passed as an argument.
+3. A PRD/spec file under `docs/`, `specs/`, or `.scratch/` matching the branch name or feature.
+4. If nothing is found, ask the user where the spec is. If they say there isn't one, the **Spec** sub-agent will skip and report "no spec available".
+
+### 3. Identify the standards sources
+
+Anything in the repo that documents how code should be written, such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`.
+
+On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below — a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
+
+- **The repo overrides.** A documented repo standard always wins; where it endorses something the baseline would flag, suppress the smell.
+- **Always a judgement call.** Each smell is a labelled heuristic ("possible Feature Envy"), never a hard violation — and, like any standard here, skip anything tooling already enforces.
+
+Each smell reads *what it is* → *how to fix*; match it against the diff:
+
+- **Mysterious Name** — a function, variable, or type whose name doesn't reveal what it does or holds. → rename it; if no honest name comes, the design's murky.
+- **Duplicated Code** — the same logic shape appears in more than one hunk or file in the change. → extract the shared shape, call it from both.
+- **Feature Envy** — a method that reaches into another object's data more than its own. → move the method onto the data it envies.
+- **Data Clumps** — the same few fields or params keep travelling together (a type wanting to be born). → bundle them into one type, pass that.
+- **Primitive Obsession** — a primitive or string standing in for a domain concept that deserves its own type. → give the concept its own small type.
+- **Repeated Switches** — the same `switch`/`if`-cascade on the same type recurs across the change. → replace with polymorphism, or one map both sites share.
+- **Shotgun Surgery** — one logical change forces scattered edits across many files in the diff. → gather what changes together into one module.
+- **Divergent Change** — one file or module is edited for several unrelated reasons. → split so each module changes for one reason.
+- **Speculative Generality** — abstraction, parameters, or hooks added for needs the spec doesn't have. → delete it; inline back until a real need shows.
+- **Message Chains** — long `a.b().c().d()` navigation the caller shouldn't depend on. → hide the walk behind one method on the first object.
+- **Middle Man** — a class or function that mostly just delegates onward. → cut it, call the real target direct.
+- **Refused Bequest** — a subclass or implementer that ignores or overrides most of what it inherits. → drop the inheritance, use composition.
+
+### 4. Spawn both sub-agents in parallel
+
+Send a single message with two `Agent` tool calls. Use the `general-purpose` subagent for both.
+
+**Standards sub-agent prompt** — include:
+
+- The full diff command and commit list.
+- The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full — the sub-agent has no other access to it.
+- The brief: "Report — per file/hunk where relevant — (a) every place the diff violates a documented standard: cite the standard (file + the rule); and (b) any baseline smell you spot: name it and quote the hunk. Distinguish hard violations from judgement calls — documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented repo standard overrides the baseline. Skip anything tooling enforces. Under 400 words."
+
+**Spec sub-agent prompt** — include:
+
+- The diff command and commit list.
+- The path or fetched contents of the spec.
+- The brief: "Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour in the diff that wasn't asked for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Quote the spec line for each finding. Under 400 words."
+
+If the spec is missing, skip the Spec sub-agent and note this in the final report.
+
+### 5. Aggregate
+
+Present the two reports under `## Standards` and `## Spec` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the two axes are deliberately separate (see _Why two axes_).
+
+End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes — that's the reranking the separation exists to prevent.
+
+## Why two axes
+
+A change can pass one axis and fail the other:
+
+- Code that follows every standard but implements the wrong thing → **Standards pass, Spec fail.**
+- Code that does exactly what the issue asked but breaks the project's conventions → **Spec pass, Standards fail.**
+
+Reporting them separately stops one axis from masking the other.
+
+hook: PostToolUse
+hook: PostToolUse Failed
+2026-10-30T20:41:27.752939Z ERROR codex_core::tools::router: error=collab spawn failed: Fatal error: failed to load model context for thread 01a18e89-7117-72d1-b6ea-fb66765a9198: invalid thread-store request: no rollout found for thread id 01a18e89-7117-72d1-b6ea-fb66765a9198
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/CLAUDE.md' in /Users/kristinarash/.claude/skills
+exec
+/bin/zsh -lc 'git -C ~/.claude/skills status --short' in /Users/kristinarash/.claude/skills
+exec
+/bin/zsh -lc 'git -C ~/.claude/skills diff ef2e377~1 HEAD -- claude-stack-doctor doctor-plus' in /Users/kristinarash/.claude/skills
+hook: PostToolUse
+ succeeded in 116ms:
+# Machine
+
+Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitignored; copy `machine.macos.md` or `machine.windows.md` to `machine.md` on a new machine). It is imported below.
+
+@machine.md
+
+Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+
+# Workflow Expectations
+
+- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+- When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools: invoke one when it clearly fits the task.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
+
+# Session Startup
+
+The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER.md`, `global-memory/MEMORY.md`, a summary of `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot. Work from the injected copy.
+
+- If hook failures appear, surface them once on the first response, then continue. Entries mean a hook or scheduled job failed.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- The injection is a frozen snapshot: mid-session writes take effect next session. Load anything further only when a question needs it.
+
+# Memory — routing only
+
+The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+
+The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. Tier A files are also indexed by memsearch, so they stay recallable across projects.
+
+- Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, retrieval-ladder section
+- Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+
+---
+
+Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+
+ succeeded in 128ms:
+diff --git a/claude-stack-doctor/FIXES.md b/claude-stack-doctor/FIXES.md
+index f0ec1c3..0208e61 100644
+--- a/claude-stack-doctor/FIXES.md
++++ b/claude-stack-doctor/FIXES.md
+@@ -4,7 +4,7 @@ One section per issue-code group in `SKILL.md`. Each class here has bitten more
+ Laptop codes: [`WINDOWS.md`](WINDOWS.md). "Tier A `<file>`" means
+ `~/.claude/projects/-Users-kristinarash-DEV/memory/<file>`.
+ 
+-## Jobs — `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*`
++## Jobs — `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*`, `task-dual-run:*`
+ 
+ Jobs are launchd user agents in `~/Library/LaunchAgents/`; schedules live in each plist (summary:
+ Tier A `project_automation-cadence.md`).
+@@ -15,6 +15,8 @@ Tier A `project_automation-cadence.md`).
+   in the repo that owns the job: `~/DEV/KeystoneOS/ops/`, a data repo's `ops/` (GPS, Perch, VALD),
+   or `~/.claude/scripts/`. Find it with `ls ~/DEV/*/ops/<name>.plist ~/.claude/scripts/<name>.plist`,
+   copy it back, then bootstrap.
++- `task-dual-run:com.keystone.rituals`: a retired job is loaded again. Unload it with
++  `launchctl bootout gui/$(id -u)/com.keystone.rituals`; leave the plist on disk.
+ 
+ 1. Run the `action:` line the script printed in a foreground terminal. launchd discards stdout
+    unless the plist sets `StandardOutPath`, so the foreground run shows the real error.
+@@ -42,6 +44,10 @@ Exit code 0 is not proof. The script reads each log for the line only success wr
+   `KeystoneOS/outputs/morning/cadence.log` (it failed this way 08-06 to 10-23 behind `cadence OK`).
+ - `proof:backup-harvest`: no `HARVEST` line in `daily-backup.log`.
+ - `proof:nightly-digest`: no `sent` line in `nightly-digest.log`.
++- `proof:stack-doctor-weekly`: `scripts/last-weekly-run.log` is over 8 days old, so the Monday
++  `com.keystone.stackdoctor` run did not happen (missed 2026-10-26, cause not found). Check it is
++  loaded (`launchctl print gui/$(id -u)/com.keystone.stackdoctor`), then run
++  `pwsh -NoProfile -File scripts/weekly-check.ps1` once by hand.
+ 
+ Read the failing block, then run the job by hand. Test: `zsh scripts/test-job-proof.sh`.
+ 
+diff --git a/claude-stack-doctor/SKILL.md b/claude-stack-doctor/SKILL.md
+index 62bc973..07ade47 100644
+--- a/claude-stack-doctor/SKILL.md
++++ b/claude-stack-doctor/SKILL.md
+@@ -4,8 +4,8 @@ description: >-
+   Health check for Eric's automation and memory stack: launchd jobs and their log proof, backups,
+   memory flush, memsearch and recall, cross-machine sync, context size. Use when asked whether the
+   stack is healthy, when a scheduled job or backup did not run, when memory or recall seems broken,
+-  or when .errors.log shows an entry at session start. For running the backup use backup; for
+-  context-engineering practice use doctor-plus.
++  or when .errors.log or an overdue-weekly-run line shows at session start. For running the backup
++  use backup.
+ ---
+ 
+ # Claude Stack Doctor
+@@ -35,8 +35,8 @@ confirmed cause and why it waits (for example, it needs Eric at the machine).
+ 
+ | Code | Means | Section |
+ |---|---|---|
+-| `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*` | a launchd agent failed, did not run, is not loaded, or lost its plist | Jobs |
+-| `proof:*` | a job exited 0 but its log has no success line | Job proof |
++| `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*`, `task-dual-run:*` | a launchd agent failed, did not run, is not loaded, lost its plist, or a retired job is loaded | Jobs |
++| `proof:*` | a job exited 0 but its log has no success line, or the weekly run is 8+ days old | Job proof |
+ | `venv-missing`, `venv-broken` | the memory compiler's Python is gone or broken | Python venvs |
+ | `memsearch-path`, `memsearch-run` | memsearch missing, or search fails | memsearch |
+ | `recall-coverage`, `recall-regress` | an index root is missing, or eval hit@5 fell 2+ | Recall |
+@@ -51,7 +51,9 @@ confirmed cause and why it waits (for example, it needs Eric at the machine).
+ 
+ launchd `com.keystone.stackdoctor` (Mondays 10:30) runs `scripts/weekly-check.ps1`, the same check.
+ On failure it appends one line to `~/.claude/global-memory/transcripts/.errors.log`, which every
+-session start surfaces; full output is in `scripts/last-weekly-run.log`. Clear the entry after the
++session start surfaces. A run that never happens is caught twice: the SessionStart hook
++`~/.claude/hooks/keystone-unified-snapshot.js` adds an "overdue" line when `last-weekly-run.log` is
++over 8 days old, and the check itself reports `proof:stack-doctor-weekly`; full output is in `scripts/last-weekly-run.log`. Clear the entry after the
+ fix (FIXES.md → Memory pipeline → Clearing `.errors.log`).
+ 
+ ## Outside the script
+@@ -62,4 +64,4 @@ expiry: the auth section of `pp-catapult-openfield-connect`.
+ ## Tests
+ 
+ `zsh scripts/test-job-proof.sh`, `zsh scripts/test-pwsh-tap.sh`,
+-`zsh scripts/test-memsearch-check.sh`. Run the one for any section of `stack-check.ps1` you edit.
++`zsh scripts/test-memsearch-check.sh`, `zsh scripts/test-weekly-deadman.sh` (the hook). Run the one for any section of `stack-check.ps1` you edit.
+diff --git a/claude-stack-doctor/scripts/stack-check.ps1 b/claude-stack-doctor/scripts/stack-check.ps1
+index 443f522..8d9f9c4 100644
+--- a/claude-stack-doctor/scripts/stack-check.ps1
++++ b/claude-stack-doctor/scripts/stack-check.ps1
+@@ -63,7 +63,8 @@ foreach ($name in 'com.keystone.morning', 'com.keystone.agysync',
+                   'com.keystone.dailybackup', 'com.keystone.reconcile', 'com.keystone.adjudicate',
+                   'com.keystone.clouddrivepush', 'com.keystone.gpspull', 'com.keystone.perchpull',
+                   'com.keystone.valdpull', 'com.keystone.filesdigest', 'com.keystone.dailybackup-login',
+-                  'com.keystone.graphextract', 'com.keystone.nightlydigest', 'com.keystone.aiosaudit') {
++                  'com.keystone.graphextract', 'com.keystone.nightlydigest', 'com.keystone.aiosaudit',
++                  'com.keystone.stackdoctor', 'com.keystone.snapshot') {
+     $plist = "$HOME/Library/LaunchAgents/$name.plist"
+     if (-not (Test-Path $plist)) { "$name : MISSING plist"; $fail += "task-missing:$name"; continue }
+     $row = (& launchctl list) | Select-String -Pattern ("\b" + [regex]::Escape($name) + "$") | Select-Object -First 1
+@@ -380,6 +381,19 @@ foreach ($p in @(
+     else { "$($p.n): OK (${ageH}h ago)" }
+ }
+ 
++# The weekly run reports only on failure, so a run that never happens is silent (missed
++# 10-26). Its proof is the log it rewrites every run. 8 days = one missed Monday. The
++# SessionStart hook keystone-unified-snapshot.js makes the same check at every session start.
++if ($env:OS -ne 'Windows_NT') {
++    $wk = if ($env:PROOF_WEEKLY_LOG) { $env:PROOF_WEEKLY_LOG } else { Join-Path $PSScriptRoot 'last-weekly-run.log' }
++    if (-not (Test-Path $wk)) { "stack-doctor-weekly: log MISSING"; $fail += "proof:stack-doctor-weekly" }
++    else {
++        $ageD = [math]::Floor(((Get-Date) - (Get-Item $wk).LastWriteTime).TotalDays)
++        if ($ageD -gt 8) { "stack-doctor-weekly: last run ${ageD}d ago - STALE"; $fail += "proof:stack-doctor-weekly" }
++        else { "stack-doctor-weekly: OK (${ageD}d ago)" }
++    }
++}
++
+ Section "Context floor (tokens every session pays at start)"
+ # Grew 71k -> 113k (desktop, 10-16 -> 10-24) unseen. After a deliberate change,
+ # re-baseline with: python3 ~/.claude/scripts/context-floor.py --set
+diff --git a/claude-stack-doctor/scripts/test-job-proof.sh b/claude-stack-doctor/scripts/test-job-proof.sh
+index 424cb73..b06b2e3 100644
+--- a/claude-stack-doctor/scripts/test-job-proof.sh
++++ b/claude-stack-doctor/scripts/test-job-proof.sh
+@@ -4,26 +4,30 @@
+ here=${0:A:h}; t=$(mktemp -d); bad=0
+ now=$(date +%Y-%m-%dT%H:%M:%S); old=2026-01-01T06:00:00
+ 
+-run() { PROOF_CADENCE_LOG=$t/cad.log PROOF_BACKUP_LOG=$t/bk.log PROOF_DIGEST_LOG=$t/dg.log \
+-  /opt/homebrew/bin/pwsh -NoProfile -File $here/stack-check.ps1 2>&1 | grep -E '^(meeting-sync|backup-harvest|nightly-digest):'; }
++run() { PROOF_CADENCE_LOG=$t/cad.log PROOF_BACKUP_LOG=$t/bk.log PROOF_DIGEST_LOG=$t/dg.log PROOF_WEEKLY_LOG=$t/wk.log \
++  /opt/homebrew/bin/pwsh -NoProfile -File $here/stack-check.ps1 2>&1 | grep -E '^(meeting-sync|backup-harvest|nightly-digest|stack-doctor-weekly):'; }
+ expect() { if print -r -- "$out" | grep -q -- "$1"; then print "PASS  $2"; else print "FAIL  $2"; print -r -- "$out"; bad=1; fi; }
+ 
+ # Good runs.
+ print "== Meeting Sync ==\n{\"event\":\"sync_complete\"}\n\n== Unified Snapshot ==\n[$now] cadence OK" > $t/cad.log
+ print "${now/T/ } HARVEST harvested docs from 1 repos" > $t/bk.log
+ print "[$now] sent 2026-10-24: Nightly digest" > $t/dg.log
++touch $t/wk.log
+ out=$(run)
+ expect 'meeting-sync: OK' 'sync_complete passes'
+ expect 'backup-harvest: OK' 'fresh HARVEST passes'
+ expect 'nightly-digest: OK' 'fresh send passes'
++expect 'stack-doctor-weekly: OK' 'fresh weekly log passes'
+ 
+ # The real 10-23 failure: the cadence logged OK, the sync did not run.
+ print "== Meeting Sync ==\nError: not authenticated\nfireflies-pp-cli sync failed (exit 1); skipping export this run.\n\n== Unified Snapshot ==\n[$now] cadence OK" > $t/cad.log
+ print "${old/T/ } HARVEST harvested docs from 1 repos" > $t/bk.log
+ print "[$old] sent 2026-01-01: Nightly digest" > $t/dg.log
++touch -t 202610010000 $t/wk.log
+ out=$(run)
+ expect 'meeting-sync: FAIL' 'not authenticated fails even with cadence OK'
+ expect 'backup-harvest: last success .* STALE' 'old HARVEST is stale'
+ expect 'nightly-digest: last success .* STALE' 'old send is stale'
++expect 'stack-doctor-weekly: last run .* STALE' 'missed weekly run is stale'
+ 
+ rm -rf $t; exit $bad
+diff --git a/claude-stack-doctor/scripts/test-weekly-deadman.sh b/claude-stack-doctor/scripts/test-weekly-deadman.sh
+new file mode 100644
+index 0000000..f9fc028
+--- /dev/null
++++ b/claude-stack-doctor/scripts/test-weekly-deadman.sh
+@@ -0,0 +1,11 @@
++#!/bin/zsh
++# Checks the SessionStart dead-man line for a missed weekly stack-doctor run.
++# Run: zsh ~/.claude/skills/claude-stack-doctor/scripts/test-weekly-deadman.sh
++hook=$HOME/.claude/hooks/keystone-unified-snapshot.js; t=$(mktemp); bad=0
++ctx() { STACKDOCTOR_WEEKLY_LOG=$1 node $hook | python3 -c "import json,sys;print(json.load(sys.stdin)['hookSpecificOutput'].get('additionalContext',''))"; }
++check() { if ctx $1 | grep -q 'stack doctor is overdue'; then got=1; else got=0; fi
++  if [[ $got == $2 ]]; then print "PASS  $3"; else print "FAIL  $3"; bad=1; fi; }
++touch $t;                     check $t 0 'fresh log: no line'
++touch -t 202610010000 $t;     check $t 1 'old log: overdue line'
++check /nonexistent/log 1 'missing log: overdue line'
++rm -f $t; exit $bad
+diff --git a/doctor-plus/SKILL.md b/doctor-plus/SKILL.md
+index 8f0dc48..fadaa33 100644
+--- a/doctor-plus/SKILL.md
++++ b/doctor-plus/SKILL.md
+@@ -1,58 +1,41 @@
+ ---
+ name: doctor-plus
+-description: >-
+-  Runs Claude Code's built-in /doctor health check, then audits the workspace against
+-  the 6 then-and-now context-engineering shifts Anthropic shipped with the Claude 5
+-  models (rules to judgement, examples to interfaces, upfront to progressive disclosure,
+-  repeats to tool descriptions, CLAUDE.md memory to auto-memory, simple specs to rich
+-  references). Reports findings first, fixes only on approval. Use when the user says
+-  "/doctor-plus", "doctor plus", "doctor-plus", "extended doctor", "then and now audit",
+-  "context checkup". Do not use to check launchd jobs, the memory pipeline, or backups
+-  (use claude-stack-doctor).
++description: Built-in /doctor plus an audit of always-loaded context against the 6 then-and-now context-engineering shifts. Reports first, fixes on approval.
++disable-model-invocation: true
+ ---
+ 
+ # Doctor Plus
+ 
+ The standard /doctor checkup, plus a workspace audit for the 6 then & now shifts from Anthropic's context-engineering article (Thariq @trq212, Jul 2026 - they cut ~80% of the Claude Code system prompt for the Claude 5 models). Read the article if a check needs the original reasoning: https://x.com/trq212/status/2080710971228918066
+ 
+-## Trigger Phrases
+-- "/doctor-plus", "doctor plus"
+-- "run the extended checkup"
+-- "then and now audit", "context checkup"
++For a single skill, CLAUDE.md or AGENTS.md, review it with `mattpocock-skills:writing-for-agents`. This skill is the workspace-wide pass.
+ 
+-## The 6 shifts (the principles part 2 audits against)
++## Steps
+ 
+-| # | Then | Now | The principle |
+-|---|---|---|---|
+-| 1 | Give Claude rules | Let Claude use judgement | constrain Claude only where a wrong call is genuinely costly; judgement covers the rest |
+-| 2 | Give Claude examples | Design interfaces | a well-designed parameter, name, or field teaches use better than worked examples |
+-| 3 | Put it all upfront | Use progressive disclosure | the right context at the right time; always-loaded files must earn every line |
+-| 4 | Repeat yourself | Simple tool descriptions | every instruction has one authoritative home; everything else points there |
+-| 5 | Memory in CLAUDE.md | Auto-memory | facts about the user and the work belong in the memory system, not guidance files |
+-| 6 | Simple specs | Rich references | the highest-fidelity reference wins: code, test suites, HTML mockups, rubrics |
++1. **Re-check last time's flags.** Open the `~/DEV/docs/handoffs/*doctor-plus*.md` with the latest date in its name (file times lie: copied files are newer). For each FLAG, record FIXED, STILL, or WORSE with the evidence. Older reports there are history.
++2. **Run `claude doctor`** via Bash with a 60 s timeout and summarize it. If it hangs or wants an interactive screen, note "run /doctor in your session for the built-in half" and go to step 3.
++3. **Read the measured numbers.** Run the stack check and keep its context lines (`context-floor`, `skill-tax`, `memfile-*`):
++   ```bash
++   /opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1
++   ```
++   These are the always-loaded sizes for shift 3. Measure by hand only what the script does not cover (hook injections, guidance files).
++4. **Map the loaded set**: guidance files (CLAUDE.md and kin), skill descriptions, rules, memory indexes, SessionStart injections. Mark each as always-loaded or on-demand. Skip version-control internals, sync backups, node_modules, caches, temp folders, and generated output.
++5. **Audit each shift** (below). Judge each file against the principle the way Claude receives it; the smells are illustrations, not definitions.
++6. **Write the report** to `~/DEV/docs/handoffs/YYYY-MM-DD-doctor-plus.md`: the step 1 re-check table, the `claude doctor` result, one findings table (shift, PASS or FLAG, worst offender with file and passage, suggested fix). Show it, then wait.
++7. **After approval**, apply fixes one shift at a time and re-verify each. Add what changed, with commits, to the report.
+ 
+-## Workflow
++**Done when** every prior FLAG has a re-check verdict, every always-loaded source has a size, every shift has PASS or FLAG citing file and passage, and the report is saved.
+ 
+-### Part 1 - the standard checkup
+-1. Run `claude doctor` via Bash with a 60s timeout. If it completes, summarize its findings.
+-2. If it hangs or needs an interactive screen, note "run /doctor in your session for the built-in half" and move on. Never block on it.
++## The 6 shifts
+ 
+-### Part 2 - the 6 shift checks
+-Scope: whatever the workspace actually loads as context - guidance files (CLAUDE.md and kin), skills, rules, memory indexes. Map that set first; don't assume the workspace's layout. Always exclude version-control internals, sync backups, node_modules, caches, temp folders, and generated output.
++1. **Judgement over rules** (then: give Claude rules). Constrain Claude only where a wrong call is costly; judgement covers the rest. Smell: absolute directives about taste or style, or two directives that pull against each other. Safety, money, deletion, approval and health-data rules are costly-if-wrong by design: leave them as they are.
++2. **Interfaces over examples** (then: give Claude examples). A well-designed parameter, name, or field teaches use better than worked examples. Smell: a skill boxing Claude into worked examples where clearer parameters, names or structure would carry it.
++3. **Progressive disclosure over upfront loading** (then: put it all upfront). The right context at the right time; always-loaded files earn every line. Smell: detail needed only sometimes, sitting in a file that loads every session instead of behind a pointer.
++4. **One home over repetition** (then: repeat yourself). Each instruction has one authoritative home; everything else points there. Smell: the same guidance in several places, especially copies that drifted apart. Some divergence is deliberate and documented (CLAUDE.md vs AGENTS.md memory rules): check for a note before flagging.
++5. **Auto-memory over guidance-file memory** (then: memory in CLAUDE.md). Facts about the user and the work (preferences, dates, decisions) belong in the memory system. Smell: dated history or decisions as prose in guidance files.
++6. **Rich references over simple specs** (then: simple specs). The highest-fidelity reference wins: code, test suites, HTML mockups, rubrics. Smell: an active build steered by a markdown description where a script, test or mockup exists or is cheap to make; prose that drifted from the script it describes.
+ 
+-**Audit the principles, not surface patterns.** This audit itself follows shift 1: judge each file against the principle, don't pattern-match for keywords. Read the context the way Claude receives it - what loads always, what loads on demand - and ask per shift: is this workspace still living in the THEN column? The smells below are illustrations, not definitions; something can smell fine and still break the principle, and vice versa.
++## Evidence
+ 
+-1. **Judgement over rules** - is Claude constrained where judgement would serve better? Smell: absolute directives about matters of taste or style, or two directives that pull against each other. Safety and money rules are legitimately hard - never flag those.
+-2. **Interfaces over examples** - do skills teach by boxing Claude into worked examples where a clearer interface (better parameters, names, structure) would carry it?
+-3. **Progressive disclosure over upfront loading** - does every always-loaded line earn its place? Smell: detail that's only occasionally needed sitting in files that load every session instead of a tree read on demand.
+-4. **One home over repetition** - does each instruction have one authoritative home? Smell: the same guidance restated in several places, especially copies that have drifted apart.
+-5. **Auto-memory over guidance-file memory** - are facts about the user or the work (preferences, dates, decisions) living as prose in guidance files instead of the memory system?
+-6. **Rich references over simple specs** - are active builds steered by plain markdown descriptions where a higher-fidelity reference (code, a test suite, an HTML mockup, a rubric) exists or would be cheap to make?
+-
+-### Part 3 - report, then wait
+-Output one findings table: shift, verdict (PASS or FLAG), worst offender, suggested fix. Mirror /doctor's manner: **show everything first, change nothing until the user approves.** After approval, apply fixes one shift at a time and re-verify.
+-
+-## Rules
+-- Every finding cites the actual file and the actual passage that breaks the principle. No vibes, no trend commentary.
+-- A zero-hit search at root is not proof of absence - look again narrowed before reporting PASS.
+-- Most workspaces keep some hard rules on purpose (approvals, backups, destructive actions, money). Never recommend softening those.
++- Cite the file and the passage for every finding.
++- A zero-hit search at root is not proof of absence: search again, narrowed, before reporting PASS.
+diff --git a/doctor-plus/findings-2026-08-29.md b/doctor-plus/findings-2026-08-29.md
+deleted file mode 100644
+index 175be52..0000000
+--- a/doctor-plus/findings-2026-08-29.md
++++ /dev/null
+@@ -1,35 +0,0 @@
+-# Doctor Plus — findings, 2026-08-29 (nothing changed yet)
+-
+-## Part 1 — `claude doctor`
+-Clean. native 2.1.251, darwin-arm64, auto-updates enabled, last update 2.1.238 (2026-08-20).
+-"No installation issues found."
+-
+-## Always-loaded context measured
+-| Source | chars |
+-|---|---|
+-| SessionStart hook injection (Knowledge Base Index) | **20,039** |
+-| skill descriptions (52 enabled, 96 disabled) | 20,843 |
+-| project memory MEMORY.md (index) | 5,355 |
+-| AGENTS.md | 4,995 |
+-| CLAUDE.md | 4,177 |
+-| global MEMORY.md | 2,309 |
+-| USER.md | 1,230 |
+-
+-## Part 2 — the 6 shifts
+-
+-| # | Shift | Verdict | Worst offender | Suggested fix |
+-|---|---|---|---|---|
+-| 1 | Judgement over rules | PASS | — | Hard rules present are backup/memory-cap/never-write-retired-slug — all costly-if-wrong. Leave them. |
+-| 2 | Interfaces over examples | PASS | — | Skills teach by structured steps and a decision question, not worked examples. |
+-| 3 | Progressive disclosure | **FLAG** | SessionStart hook injects a 20,039-char Knowledge Base Index table every session — larger than CLAUDE.md + AGENTS.md + USER.md + both MEMORY.md files combined (17,137). | Replace the full table with a one-line pointer plus an on-demand read of the index file. |
+-| 4 | One home | **FLAG** | Tool paths stated twice and drifted. `AGENTS.md` uv entry lost CLAUDE.md's "standalone install … do not delete or relocate"; AGENTS.md also lacks "`timeout` is NOT installed", the `/usr/local/bin` note, and the "Verify, don't trust this list" caveat. | Update AGENTS.md's Shell section, or cut it to the caveat + the `env -i` verify command. **Do not symlink** — the memory-rule divergence is deliberate and documented. |
+-| 5 | Auto-memory over guidance-file memory | FLAG (minor) | CLAUDE.md carries dated history as prose: "the Homebrew formula was removed 2026-08-13", "The old Node install there was removed 2026-08-13", "retired 2026-08-14". Tier A `project_path-shadowing-and-cleanup.md` already owns the 08-13 repairs. | Cut the dated history from CLAUDE.md; keep the live paths. |
+-| 6 | Rich references over simple specs | **FLAG** | `claude-stack-doctor/SKILL.md` prose is Windows-era — `Task Scheduler job KeystoneOS-StackDoctor`, `C:\Python31x`, `%APPDATA%\Python\Python31x\Scripts\memsearch.exe`, `G:\My Drive`, `robocopy`, `~\.claude\` backslash paths. The actual `stack-check.ps1` checks **launchd** agents. Machine has been macOS since 2026-08-05. | Rewrite the fix sections against what `stack-check.ps1` actually emits. The script is the high-fidelity reference; the prose drifted. |
+-
+-## Also found (not a shift finding)
+-12 stranded `session-flush-*.md` files in `~/.claude/claude-memory-compiler/scripts/`:
+-2 from 08-06, 1 from 08-08, 5 from 08-11, 4 from 08-16. `flush.py` deletes its context
+-file on success (proven today: count went 13 → 12 after a successful recovery run), so
+-these 12 are all **died** flushes — captured sessions that never reached a daily log.
+-Consistent with `daily/` having no `2026-08-16.md`.
+-Recovery is possible: re-run `flush.py <file> <session_id>` per file (~1 min each).
+diff --git a/doctor-plus/findings-2026-09-30.md b/doctor-plus/findings-2026-09-30.md
+deleted file mode 100644
+index a511342..0000000
+--- a/doctor-plus/findings-2026-09-30.md
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# Doctor Plus — findings, 2026-09-30 (nothing changed yet)
+-
+-## Part 1 — `claude doctor`
+-Clean. native 2.1.285, darwin-arm64, auto-updates enabled, last update success 2026-09-30.
+-
+-## Re-check of the 2026-08-29 flags
+-| # | 08-29 flag | Now |
+-|---|---|---|
+-| 3 | 20k-char KB index injected every session | FIXED — hook injects a pointer only |
+-| 4 | Tool paths duplicated and drifted (CLAUDE.md vs AGENTS.md) | FIXED — one home: `machine.md` → `TOOLPATHS.md`; AGENTS.md points there |
+-| 5 | Dated history prose in CLAUDE.md | FIXED — CLAUDE.md is 3,288 chars, routing only |
+-| 6 | stack-doctor SKILL.md Windows-era prose | FIXED — two-machine table matches `stack-check.ps1` |
+-| — | 12 stranded `session-flush-*.md` | 0 left — last one (09-21) moved to `scripts/_stranded-archive/` |
+-
+-## Part 2 — the 6 shifts
+-| # | Shift | Verdict | Worst offender | Suggested fix |
+-|---|---|---|---|---|
+-| 1 | Judgement over rules | PASS | — | Hard rules left are backup/deletion/health-data. Keep. |
+-| 2 | Interfaces over examples | PASS | — | — |
+-| 3 | Progressive disclosure | FIXED same day | Index trimmed 8,162 → 5,549 chars; hooks now say only when to open. | — |
+-| 4 | One home | PASS | — | — |
+-| 5 | Auto-memory | PASS | — | — |
+-| 6 | Rich references | PASS | — | — |
+
+hook: PostToolUse
+hook: PostToolUse
+ succeeded in 169ms:
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "nl -ba claude-stack-doctor/scripts/stack-check.ps1 | sed -n '40,110p;315,405p'; nl -ba claude-stack-doctor/scripts/weekly-check.ps1; nl -ba claude-stack-doctor/scripts/test-weekly-deadman.sh; nl -ba claude-stack-doctor/scripts/test-job-proof.sh; nl -ba doctor-plus/SKILL.md; nl -ba claude-stack-doctor/FIXES.md | sed -n '1,65p'; rg -n -C 5 'STACKDOCTOR_WEEKLY_LOG|stack doctor is overdue|last-weekly-run' ~/.claude/hooks/keystone-unified-snapshot.js; for f in ~/Library/LaunchAgents/com.keystone.{snapshot,stackdoctor}.plist; do cat \""'$f"; done; ls ~/DEV/docs/handoffs/*doctor-plus*.md' in /Users/kristinarash/.claude/skills
+ succeeded in 154ms:
+    40	    $code = [int64]$info.LastTaskResult
+    41	    $ageH = [math]::Round(((Get-Date) - $info.LastRunTime).TotalHours)
+    42	    $status = if ($benign.ContainsKey($code)) { $benign[$code] }
+    43	              elseif ($code -eq 3221225786) { 'WARN (last run interrupted by sleep/shutdown)' }
+    44	              else { $fail += "task:$($t.n)"; "FAIL(code=$code)" }
+    45	    if ($ageH -gt $t.maxH) { $status += " - STALE: last ran ${ageH}h ago, missed=$($info.NumberOfMissedRuns)"; $fail += "task-stale:$($t.n)" }
+    46	    else { $status += " (${ageH}h ago)" }
+    47	    "$($t.n) : $status"
+    48	}
+    49	# The Mac owns the other KeystoneOS jobs and the data pulls. A re-enabled Windows copy
+    50	# runs them twice, and two machines then write the same outputs.
+    51	Get-ScheduledTask -TaskName 'KeystoneOS-*' -ErrorAction SilentlyContinue |
+    52	    Where-Object { $_.State -ne 'Disabled' -and $_.TaskName -notin 'KeystoneOS-StackDoctor', 'KeystoneOS-Rituals' } |
+    53	    ForEach-Object { "$($_.TaskName) : ENABLED on Windows - the Mac owns this job"; $fail += "task-dual-run:$($_.TaskName)" }
+    54	} else {
+    55	Section "launchd agents"
+    56	# com.keystone.morningbriefing retired 2026-08-14 (no longer read; Outlook auth had
+    57	# lapsed and briefs were going out with 0 email threads). Job booted out and disabled,
+    58	# plist retained at ~/Library/LaunchAgents/. To bring it back: re-add it here, then
+    59	# `launchctl enable gui/$(id -u)/com.keystone.morningbriefing` and `launchctl bootstrap`.
+    60	# com.keystone.rituals retired (Windows laptop retired 10-14); a loaded Mac copy is still
+    61	# flagged below instead of expected here.
+    62	foreach ($name in 'com.keystone.morning', 'com.keystone.agysync',
+    63	                  'com.keystone.dailybackup', 'com.keystone.reconcile', 'com.keystone.adjudicate',
+    64	                  'com.keystone.clouddrivepush', 'com.keystone.gpspull', 'com.keystone.perchpull',
+    65	                  'com.keystone.valdpull', 'com.keystone.filesdigest', 'com.keystone.dailybackup-login',
+    66	                  'com.keystone.graphextract', 'com.keystone.nightlydigest', 'com.keystone.aiosaudit',
+    67	                  'com.keystone.stackdoctor', 'com.keystone.snapshot') {
+    68	    $plist = "$HOME/Library/LaunchAgents/$name.plist"
+    69	    if (-not (Test-Path $plist)) { "$name : MISSING plist"; $fail += "task-missing:$name"; continue }
+    70	    $row = (& launchctl list) | Select-String -Pattern ("\b" + [regex]::Escape($name) + "$") | Select-Object -First 1
+    71	    if (-not $row) { "$name : NOT LOADED (launchctl load -w $plist)"; $fail += "task-unloaded:$name"; continue }
+    72	    $code = (($row.Line.Trim()) -split "\s+")[1]
+    73	    $status = if ($code -eq '0' -or $code -eq '-') { 'OK' } else { "FAIL(code=$code)" }
+    74	    if ($status -ne 'OK') { $fail += "task:$name" }
+    75	    "$name : $status"
+    76	}
+    77	if ((& launchctl list) | Select-String -Pattern '\bcom\.keystone\.rituals$' -Quiet) {
+    78	    "com.keystone.rituals : LOADED on the Mac - rituals are retired, unload it (launchctl bootout gui/$(id -u)/com.keystone.rituals)"
+    79	    $fail += "task-dual-run:com.keystone.rituals"
+    80	}
+    81	
+    82	Section "PowerShell runtime"
+    83	# Every launchd .ps1 job (and the daily backup via daily-backup-login.sh) runs
+    84	# /opt/homebrew/bin/pwsh. It was installed from the powershell/tap formula, which Homebrew
+    85	# deprecated 2026-06-18 and disables 2027-06-18 (brew info powershell/tap/powershell).
+    86	# The swap needs Eric at the machine, so this only informs until PWSH_TAP_FAIL_FROM
+    87	# (default 2027-03-01; test-pwsh-tap.sh overrides it) and fails the weekly run after.
+    88	# Reads the keg's INSTALL_RECEIPT.json: no brew process, no network.
+    89	$pwshFailFrom = [datetime]$(if ($env:PWSH_TAP_FAIL_FROM) { $env:PWSH_TAP_FAIL_FROM } else { '2027-03-01' })
+    90	$pwshItem = Get-Item '/opt/homebrew/bin/pwsh' -ErrorAction SilentlyContinue
+    91	if (-not $pwshItem) { "pwsh: /opt/homebrew/bin/pwsh MISSING - the launchd .ps1 jobs cannot start" }
+    92	else {
+    93	    $pwshReal = if ($pwshItem.LinkTarget) { $pwshItem.ResolveLinkTarget($true).FullName } else { $pwshItem.FullName }
+    94	    $receipt = Join-Path (Split-Path (Split-Path $pwshReal)) 'INSTALL_RECEIPT.json'   # <keg>/libexec/pwsh
+    95	    $tap = if (Test-Path $receipt) { (Get-Content $receipt -Raw | ConvertFrom-Json).source.tap } else { $null }
+    96	    if ($tap -eq 'powershell/tap') {
+    97	        $overdue = (Get-Date) -ge $pwshFailFrom
+    98	        if ($overdue) { $fail += "pwsh-tap" }
+    99	        $when = if ($overdue) { 'OVERDUE' } else { "fails from $($pwshFailFrom.ToString('yyyy-MM-dd'))" }
+   100	        "pwsh: $pwshReal from the deprecated powershell/tap, disabled 2027-06-18 ($when). Swap to Homebrew core's powershell (no password), but core's bin/pwsh is a bash wrapper that launchd refuses to start directly (Launch Constraint Violation, tested 2026-10-24): first prepend /bin/bash to ProgramArguments in KeystoneOS/ops/com.keystone.*.plist and reload them, then test daily-backup-login.sh"
+   101	    } else { "pwsh: $pwshReal (tap: $(if ($tap) { $tap } else { 'none' })) - not the deprecated tap" }
+   102	}
+   103	}
+   104	
+   105	Section "Python venvs"
+   106	$venvs = @(
+   107	    # morning-briefing venv dropped 2026-08-14 with the job above. Later that day the
+   108	    # retirement was completed: project removed from disk, secrets destroyed, and the
+   109	    # backup-manifest.json entry deleted. Code lives at github.com/erash11/morning-briefing;
+   110	    # its 56 briefings remain at ~/SecondBrain/morning-briefings/ and are now in the
+   315	    if ($raw -match '(?s)description:\s*(.*?)(\n[a-z-]+:|\n---)') {
+   316	        $descChars += (($Matches[1] -replace '\s+', ' ').Trim()).Length
+   317	        $skillCount++
+   318	    }
+   319	}
+   320	if ($offCount) { "skill overrides: $offCount skill(s) disabled in settings.json - excluded from tax" }
+   321	$budget = 32000
+   322	$pct = if ($budget) { [math]::Round(100 * $descChars / $budget) } else { 0 }
+   323	if ($descChars -gt $budget) {
+   324	    "skill tax: $skillCount skills, $descChars chars (~$([math]::Round($descChars/4)) tokens) - OVER budget $budget ($pct%)"
+   325	    "  -> archive unused skills to ~/.claude/skills-archive, or trim descriptions to trigger conditions only"
+   326	    $fail += "skill-tax"
+   327	} else {
+   328	    "skill tax: $skillCount skills, $descChars chars (~$([math]::Round($descChars/4)) tokens) - OK ($pct% of $budget)"
+   329	}
+   330	
+   331	# Both files are loaded every session and both have caps declared in CLAUDE.md.
+   332	# At >95% the next write is a forced consolidation, and consolidations made
+   333	# under pressure drop facts quietly. Flag before it gets there, not after.
+   334	foreach ($m in @(
+   335	    @{ f = "$HOME/.claude/global-memory\USER.md";   cap = 1375 },
+   336	    @{ f = "$HOME/.claude/global-memory\MEMORY.md"; cap = 2500 })) {
+   337	    $n = Split-Path $m.f -Leaf
+   338	    if (-not (Test-Path $m.f)) { "$n : MISSING"; $fail += "memfile-missing:$n"; continue }
+   339	    $len = (Get-Item $m.f).Length
+   340	    $p = [math]::Round(100 * $len / $m.cap)
+   341	    if ($p -ge 95) { "$n : $len/$($m.cap) chars ($p%) - NO HEADROOM, consolidate deliberately before the next write forces it"; $fail += "memfile-full:$n" }
+   342	    else { "$n : $len/$($m.cap) chars ($p%) - OK" }
+   343	}
+   344	
+   345	if (-not $onWindows) {
+   346	Section "Job proof (logs, not exit codes)"
+   347	# A launchd exit code of 0 is not proof the job did its work: Meeting Sync failed on every
+   348	# scheduled run from 08-06 to 10-23 ("not authenticated") while the cadence still logged OK.
+   349	# These read each job's own log for the line that only real success writes.
+   350	# maxH allows for a weekend with the lid shut.
+   351	$maxH = 50
+   352	# PROOF_* env vars point the checks at fixture logs (test-job-proof.sh).
+   353	$cad = if ($env:PROOF_CADENCE_LOG) { $env:PROOF_CADENCE_LOG } else { "$HOME/DEV/KeystoneOS/outputs/morning/cadence.log" }
+   354	if (Test-Path $cad) {
+   355	    $lines = @(Get-Content $cad -Tail 400)
+   356	    $start = ($lines | Select-String -Pattern '^== Meeting Sync ==' | Select-Object -Last 1).LineNumber
+   357	    if (-not $start) { "meeting-sync: no block in the last 400 lines"; $fail += "proof:meeting-sync" }
+   358	    else {
+   359	        # The block runs to the next "== " header; the run's time is on the
+   360	        # "[stamp] cadence ..." line that ends the run, after the block.
+   361	        $block = @(); $when = $null; $done = $false
+   362	        foreach ($l in $lines[$start..($lines.Count - 1)]) {
+   363	            if ($l -match '^\[(\S+)\] cadence') { $when = [datetime]$Matches[1]; break }
+   364	            if (-not $done) { if ($l -match '^== ') { $done = $true } else { $block += $l } }
+   365	        }
+   366	        $ageH = if ($when) { [math]::Round(((Get-Date) - $when).TotalHours) } else { 999 }
+   367	        if (-not ($block -match 'sync_complete')) { "meeting-sync: FAIL -> $($block | Select-Object -First 1)"; $fail += "proof:meeting-sync" }
+   368	        elseif ($ageH -gt $maxH) { "meeting-sync: last good run ${ageH}h ago - STALE"; $fail += "proof:meeting-sync-stale" }
+   369	        else { "meeting-sync: OK sync_complete (${ageH}h ago)" }
+   370	    }
+   371	} else { "meeting-sync: cadence.log MISSING"; $fail += "proof:meeting-sync" }
+   372	
+   373	foreach ($p in @(
+   374	    @{ n = 'backup-harvest'; f = $(if ($env:PROOF_BACKUP_LOG) { $env:PROOF_BACKUP_LOG } else { "$HOME/.claude/scripts/logs/daily-backup.log" });  rx = '^(\S+ \S+) HARVEST harvested' },
+   375	    @{ n = 'nightly-digest'; f = $(if ($env:PROOF_DIGEST_LOG) { $env:PROOF_DIGEST_LOG } else { "$HOME/.claude/scripts/logs/nightly-digest.log" }); rx = '^\[(\S+)\] sent ' })) {
+   376	    if (-not (Test-Path $p.f)) { "$($p.n): log MISSING"; $fail += "proof:$($p.n)"; continue }
+   377	    $hit = Get-Content $p.f -Tail 2000 | Select-String -Pattern $p.rx | Select-Object -Last 1
+   378	    if (-not $hit) { "$($p.n): no success line in the log"; $fail += "proof:$($p.n)"; continue }
+   379	    $ageH = [math]::Round(((Get-Date) - [datetime]$hit.Matches[0].Groups[1].Value).TotalHours)
+   380	    if ($ageH -gt $maxH) { "$($p.n): last success ${ageH}h ago - STALE"; $fail += "proof:$($p.n)" }
+   381	    else { "$($p.n): OK (${ageH}h ago)" }
+   382	}
+   383	
+   384	# The weekly run reports only on failure, so a run that never happens is silent (missed
+   385	# 10-26). Its proof is the log it rewrites every run. 8 days = one missed Monday. The
+   386	# SessionStart hook keystone-unified-snapshot.js makes the same check at every session start.
+   387	if ($env:OS -ne 'Windows_NT') {
+   388	    $wk = if ($env:PROOF_WEEKLY_LOG) { $env:PROOF_WEEKLY_LOG } else { Join-Path $PSScriptRoot 'last-weekly-run.log' }
+   389	    if (-not (Test-Path $wk)) { "stack-doctor-weekly: log MISSING"; $fail += "proof:stack-doctor-weekly" }
+   390	    else {
+   391	        $ageD = [math]::Floor(((Get-Date) - (Get-Item $wk).LastWriteTime).TotalDays)
+   392	        if ($ageD -gt 8) { "stack-doctor-weekly: last run ${ageD}d ago - STALE"; $fail += "proof:stack-doctor-weekly" }
+   393	        else { "stack-doctor-weekly: OK (${ageD}d ago)" }
+   394	    }
+   395	}
+   396	
+   397	Section "Context floor (tokens every session pays at start)"
+   398	# Grew 71k -> 113k (desktop, 10-16 -> 10-24) unseen. After a deliberate change,
+   399	# re-baseline with: python3 ~/.claude/scripts/context-floor.py --set
+   400	$cf = "$HOME/.claude/scripts/context-floor.py"
+   401	if (Test-Path $cf) {
+   402	    & python3 $cf
+   403	    if ($LASTEXITCODE -ne 0) { $fail += "context-floor" }
+   404	} else { "context-floor.py: MISSING"; $fail += "context-floor" }
+   405	}
+     1	# Weekly unattended stack-doctor run (launchd: com.keystone.stackdoctor).
+     2	# Runs the read-only stack-check and, ONLY on failure, appends a one-line
+     3	# summary to global-memory .errors.log — which every Claude session surfaces
+     4	# at startup per CLAUDE.md. Silence in that file means the check passed.
+     5	# Full output of the most recent run is always kept in last-weekly-run.log.
+     6	
+     7	$check = Join-Path $PSScriptRoot 'stack-check.ps1'
+     8	# Windows: Task Scheduler task KeystoneOS-StackDoctor (Mondays 10:30) runs this with pwsh 7.
+     9	$pwsh = if ($env:OS -eq 'Windows_NT') { (Get-Command pwsh -ErrorAction SilentlyContinue).Source } else { '/opt/homebrew/bin/pwsh' }
+    10	if (-not $pwsh) { $pwsh = (Get-Process -Id $PID).Path }
+    11	$out = & $pwsh -NoProfile -File $check 2>&1 | Out-String
+    12	$failed = $LASTEXITCODE -ne 0
+    13	
+    14	Set-Content -Path (Join-Path $PSScriptRoot 'last-weekly-run.log') -Value $out -Encoding utf8
+    15	
+    16	if ($failed) {
+    17	    $verdict = (($out -split "`r?`n") | Where-Object { $_ -match '^\d+ issue' } | Select-Object -First 1)
+    18	    if (-not $verdict) { $verdict = 'check failed (no VERDICT line — see last-weekly-run.log)' }
+    19	    $stamp = Get-Date -Format o
+    20	    $entry = "[$stamp] stack-doctor weekly: $verdict — details in ~/.claude/skills/claude-stack-doctor/scripts/last-weekly-run.log; run /claude-stack-doctor to fix"
+    21	    Add-Content -Path "$HOME/.claude/global-memory/transcripts/.errors.log" -Value $entry -Encoding utf8
+    22	}
+    23	exit 0
+     1	#!/bin/zsh
+     2	# Checks the SessionStart dead-man line for a missed weekly stack-doctor run.
+     3	# Run: zsh ~/.claude/skills/claude-stack-doctor/scripts/test-weekly-deadman.sh
+     4	hook=$HOME/.claude/hooks/keystone-unified-snapshot.js; t=$(mktemp); bad=0
+     5	ctx() { STACKDOCTOR_WEEKLY_LOG=$1 node $hook | python3 -c "import json,sys;print(json.load(sys.stdin)['hookSpecificOutput'].get('additionalContext',''))"; }
+     6	check() { if ctx $1 | grep -q 'stack doctor is overdue'; then got=1; else got=0; fi
+     7	  if [[ $got == $2 ]]; then print "PASS  $3"; else print "FAIL  $3"; bad=1; fi; }
+     8	touch $t;                     check $t 0 'fresh log: no line'
+     9	touch -t 202610010000 $t;     check $t 1 'old log: overdue line'
+    10	check /nonexistent/log 1 'missing log: overdue line'
+    11	rm -f $t; exit $bad
+     1	#!/bin/zsh
+     2	# Checks the "Job proof" section of stack-check.ps1 against fixture logs.
+     3	# Run: zsh ~/.claude/skills/claude-stack-doctor/scripts/test-job-proof.sh
+     4	here=${0:A:h}; t=$(mktemp -d); bad=0
+     5	now=$(date +%Y-%m-%dT%H:%M:%S); old=2026-01-01T06:00:00
+     6	
+     7	run() { PROOF_CADENCE_LOG=$t/cad.log PROOF_BACKUP_LOG=$t/bk.log PROOF_DIGEST_LOG=$t/dg.log PROOF_WEEKLY_LOG=$t/wk.log \
+     8	  /opt/homebrew/bin/pwsh -NoProfile -File $here/stack-check.ps1 2>&1 | grep -E '^(meeting-sync|backup-harvest|nightly-digest|stack-doctor-weekly):'; }
+     9	expect() { if print -r -- "$out" | grep -q -- "$1"; then print "PASS  $2"; else print "FAIL  $2"; print -r -- "$out"; bad=1; fi; }
+    10	
+    11	# Good runs.
+    12	print "== Meeting Sync ==\n{\"event\":\"sync_complete\"}\n\n== Unified Snapshot ==\n[$now] cadence OK" > $t/cad.log
+    13	print "${now/T/ } HARVEST harvested docs from 1 repos" > $t/bk.log
+    14	print "[$now] sent 2026-10-24: Nightly digest" > $t/dg.log
+    15	touch $t/wk.log
+    16	out=$(run)
+    17	expect 'meeting-sync: OK' 'sync_complete passes'
+    18	expect 'backup-harvest: OK' 'fresh HARVEST passes'
+    19	expect 'nightly-digest: OK' 'fresh send passes'
+    20	expect 'stack-doctor-weekly: OK' 'fresh weekly log passes'
+    21	
+    22	# The real 10-23 failure: the cadence logged OK, the sync did not run.
+    23	print "== Meeting Sync ==\nError: not authenticated\nfireflies-pp-cli sync failed (exit 1); skipping export this run.\n\n== Unified Snapshot ==\n[$now] cadence OK" > $t/cad.log
+    24	print "${old/T/ } HARVEST harvested docs from 1 repos" > $t/bk.log
+    25	print "[$old] sent 2026-01-01: Nightly digest" > $t/dg.log
+    26	touch -t 202610010000 $t/wk.log
+    27	out=$(run)
+    28	expect 'meeting-sync: FAIL' 'not authenticated fails even with cadence OK'
+    29	expect 'backup-harvest: last success .* STALE' 'old HARVEST is stale'
+    30	expect 'nightly-digest: last success .* STALE' 'old send is stale'
+    31	expect 'stack-doctor-weekly: last run .* STALE' 'missed weekly run is stale'
+    32	
+    33	rm -rf $t; exit $bad
+     1	---
+     2	name: doctor-plus
+     3	description: Built-in /doctor plus an audit of always-loaded context against the 6 then-and-now context-engineering shifts. Reports first, fixes on approval.
+     4	disable-model-invocation: true
+     5	---
+     6	
+     7	# Doctor Plus
+     8	
+     9	The standard /doctor checkup, plus a workspace audit for the 6 then & now shifts from Anthropic's context-engineering article (Thariq @trq212, Jul 2026 - they cut ~80% of the Claude Code system prompt for the Claude 5 models). Read the article if a check needs the original reasoning: https://x.com/trq212/status/2080710971228918066
+    10	
+    11	For a single skill, CLAUDE.md or AGENTS.md, review it with `mattpocock-skills:writing-for-agents`. This skill is the workspace-wide pass.
+    12	
+    13	## Steps
+    14	
+    15	1. **Re-check last time's flags.** Open the `~/DEV/docs/handoffs/*doctor-plus*.md` with the latest date in its name (file times lie: copied files are newer). For each FLAG, record FIXED, STILL, or WORSE with the evidence. Older reports there are history.
+    16	2. **Run `claude doctor`** via Bash with a 60 s timeout and summarize it. If it hangs or wants an interactive screen, note "run /doctor in your session for the built-in half" and go to step 3.
+    17	3. **Read the measured numbers.** Run the stack check and keep its context lines (`context-floor`, `skill-tax`, `memfile-*`):
+    18	   ```bash
+    19	   /opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1
+    20	   ```
+    21	   These are the always-loaded sizes for shift 3. Measure by hand only what the script does not cover (hook injections, guidance files).
+    22	4. **Map the loaded set**: guidance files (CLAUDE.md and kin), skill descriptions, rules, memory indexes, SessionStart injections. Mark each as always-loaded or on-demand. Skip version-control internals, sync backups, node_modules, caches, temp folders, and generated output.
+    23	5. **Audit each shift** (below). Judge each file against the principle the way Claude receives it; the smells are illustrations, not definitions.
+    24	6. **Write the report** to `~/DEV/docs/handoffs/YYYY-MM-DD-doctor-plus.md`: the step 1 re-check table, the `claude doctor` result, one findings table (shift, PASS or FLAG, worst offender with file and passage, suggested fix). Show it, then wait.
+    25	7. **After approval**, apply fixes one shift at a time and re-verify each. Add what changed, with commits, to the report.
+    26	
+    27	**Done when** every prior FLAG has a re-check verdict, every always-loaded source has a size, every shift has PASS or FLAG citing file and passage, and the report is saved.
+    28	
+    29	## The 6 shifts
+    30	
+    31	1. **Judgement over rules** (then: give Claude rules). Constrain Claude only where a wrong call is costly; judgement covers the rest. Smell: absolute directives about taste or style, or two directives that pull against each other. Safety, money, deletion, approval and health-data rules are costly-if-wrong by design: leave them as they are.
+    32	2. **Interfaces over examples** (then: give Claude examples). A well-designed parameter, name, or field teaches use better than worked examples. Smell: a skill boxing Claude into worked examples where clearer parameters, names or structure would carry it.
+    33	3. **Progressive disclosure over upfront loading** (then: put it all upfront). The right context at the right time; always-loaded files earn every line. Smell: detail needed only sometimes, sitting in a file that loads every session instead of behind a pointer.
+    34	4. **One home over repetition** (then: repeat yourself). Each instruction has one authoritative home; everything else points there. Smell: the same guidance in several places, especially copies that drifted apart. Some divergence is deliberate and documented (CLAUDE.md vs AGENTS.md memory rules): check for a note before flagging.
+    35	5. **Auto-memory over guidance-file memory** (then: memory in CLAUDE.md). Facts about the user and the work (preferences, dates, decisions) belong in the memory system. Smell: dated history or decisions as prose in guidance files.
+    36	6. **Rich references over simple specs** (then: simple specs). The highest-fidelity reference wins: code, test suites, HTML mockups, rubrics. Smell: an active build steered by a markdown description where a script, test or mockup exists or is cheap to make; prose that drifted from the script it describes.
+    37	
+    38	## Evidence
+    39	
+    40	- Cite the file and the passage for every finding.
+    41	- A zero-hit search at root is not proof of absence: search again, narrowed, before reporting PASS.
+     1	# Stack doctor fixes (Mac)
+     2	
+     3	One section per issue-code group in `SKILL.md`. Each class here has bitten more than once.
+     4	Laptop codes: [`WINDOWS.md`](WINDOWS.md). "Tier A `<file>`" means
+     5	`~/.claude/projects/-Users-kristinarash-DEV/memory/<file>`.
+     6	
+     7	## Jobs — `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*`, `task-dual-run:*`
+     8	
+     9	Jobs are launchd user agents in `~/Library/LaunchAgents/`; schedules live in each plist (summary:
+    10	Tier A `project_automation-cadence.md`).
+    11	
+    12	- `task-unloaded:<name>`: the plist exists but launchd has not loaded it. `launchctl bootstrap`
+    13	  it (commands below), then confirm it in `launchctl list`.
+    14	- `task-missing:<name>`: the plist is gone from `~/Library/LaunchAgents/`. Each has a tracked copy
+    15	  in the repo that owns the job: `~/DEV/KeystoneOS/ops/`, a data repo's `ops/` (GPS, Perch, VALD),
+    16	  or `~/.claude/scripts/`. Find it with `ls ~/DEV/*/ops/<name>.plist ~/.claude/scripts/<name>.plist`,
+    17	  copy it back, then bootstrap.
+    18	- `task-dual-run:com.keystone.rituals`: a retired job is loaded again. Unload it with
+    19	  `launchctl bootout gui/$(id -u)/com.keystone.rituals`; leave the plist on disk.
+    20	
+    21	1. Run the `action:` line the script printed in a foreground terminal. launchd discards stdout
+    22	   unless the plist sets `StandardOutPath`, so the foreground run shows the real error.
+    23	2. Known causes: an executable without a full path (agents get a minimal PATH: use full paths such
+    24	   as `/opt/homebrew/bin/pwsh` and set `EnvironmentVariables:PATH` in the plist); a plist edited but
+    25	   never reloaded, so the old schedule is still live; the job firing while a needed volume is
+    26	   unmounted (see Backup).
+    27	3. `launchctl list | grep keystone` shows each job's last exit code in column 2. Non-zero with no
+    28	   output: the script's own log is the only evidence (`~/.claude/scripts/logs/`, or a `*.log`
+    29	   beside the script).
+    30	
+    31	```bash
+    32	launchctl list | grep keystone                                    # loaded jobs + last exit code
+    33	launchctl print gui/$(id -u)/com.keystone.<name>                  # live schedule and state
+    34	launchctl bootout  gui/$(id -u)/com.keystone.<name>               # unload
+    35	launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.<name>.plist   # reload
+    36	```
+    37	Edit a schedule with `/usr/libexec/PlistBuddy -c "Set :StartCalendarInterval:Hour <n>" <plist>`,
+    38	then bootout + bootstrap. A plist edit takes effect only after the reload.
+    39	
+    40	## Job proof — `proof:*`
+    41	
+    42	Exit code 0 is not proof. The script reads each log for the line only success writes, within 50 h:
+    43	- `proof:meeting-sync`: no `sync_complete` in the last `== Meeting Sync ==` block of
+    44	  `KeystoneOS/outputs/morning/cadence.log` (it failed this way 08-06 to 10-23 behind `cadence OK`).
+    45	- `proof:backup-harvest`: no `HARVEST` line in `daily-backup.log`.
+    46	- `proof:nightly-digest`: no `sent` line in `nightly-digest.log`.
+    47	- `proof:stack-doctor-weekly`: `scripts/last-weekly-run.log` is over 8 days old, so the Monday
+    48	  `com.keystone.stackdoctor` run did not happen (missed 2026-10-26, cause not found). Check it is
+    49	  loaded (`launchctl print gui/$(id -u)/com.keystone.stackdoctor`), then run
+    50	  `pwsh -NoProfile -File scripts/weekly-check.ps1` once by hand.
+    51	
+    52	Read the failing block, then run the job by hand. Test: `zsh scripts/test-job-proof.sh`.
+    53	
+    54	## Python venvs — `venv-missing`, `venv-broken`
+    55	
+    56	Checks `~/.claude/claude-memory-compiler/.venv/bin/python`. Causes: a Homebrew `python3` major bump
+    57	orphans venvs built on the old interpreter; a moved or reinstalled `uv` breaks tools that hardcode
+    58	`/Users/kristinarash/.local/bin/uv` (it stays there). Fix: `uv sync` in the project, then run the
+    59	dependent job once by hand.
+    60	
+    61	## memsearch — `memsearch-path`, `memsearch-run`, `search: WARN busy`
+    62	
+    63	memsearch is a uv tool: binary `/Users/kristinarash/.local/bin/memsearch`, environment
+    64	`/Users/kristinarash/.local/share/uv/tools/memsearch/`.
+    65	- Missing or erroring binary: `uv tool install --force memsearch`.
+121-
+122-  // Dead-man check: the weekly stack doctor reports failures through .errors.log,
+123-  // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
+124-  // the laptop has no weekly run. 8 days = one missed Monday.
+125-  if (process.platform === 'darwin') {
+126:    const weekly = process.env.STACKDOCTOR_WEEKLY_LOG ||
+127:      path.join(HOME, '.claude', 'skills', 'claude-stack-doctor', 'scripts', 'last-weekly-run.log');
+128-    let ageD = Infinity;
+129-    try { ageD = (Date.now() - fs.statSync(weekly).mtimeMs) / 86400000; } catch (_) {}
+130-    if (ageD > 8) {
+131-      parts.unshift(
+132:        '## Weekly stack doctor is overdue\n\n' +
+133-        `\`${weekly}\` was last written ${ageD === Infinity ? 'never' : Math.floor(ageD) + ' days ago'}; ` +
+134-        'the Monday launchd job `com.keystone.stackdoctor` did not run. Tell the user on the first ' +
+135-        'response and run `/claude-stack-doctor`.'
+136-      );
+137-    }
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Install: cp ops/com.keystone.snapshot.plist ~/Library/LaunchAgents/ &&
+     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.keystone.snapshot.plist
+     Off:     launchctl bootout gui/$(id -u)/com.keystone.snapshot -->
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.keystone.snapshot</string>
+  <key>EnvironmentVariables</key><dict><key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/Users/kristinarash/.local/bin</string></dict>
+  <key>ProgramArguments</key><array><string>/usr/bin/caffeinate</string><string>-i</string><string>-s</string><string>/bin/bash</string><string>/Users/kristinarash/DEV/Football/PerformanceSnapshot/run_snapshot.sh</string></array>
+  <key>WorkingDirectory</key><string>/Users/kristinarash/DEV/Football/PerformanceSnapshot</string>
+  <!-- Starts when any pull finishes (each rewrites its receipt). -->
+  <key>WatchPaths</key><array>
+    <string>/Users/kristinarash/DEV/ForcePlate_DecisionSystem/logs/last_run.json</string>
+    <string>/Users/kristinarash/DEV/DataBase_GPS_Reporting/gps_report/logs/last_run.json</string>
+    <string>/Users/kristinarash/DEV/PlayerProfiles_FB_03-28-2026/logs/last_run.json</string>
+  </array>
+  <!-- Fallback if no pull ran. -->
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+  <key>ThrottleInterval</key><integer>300</integer>
+  <key>StandardOutPath</key><string>/Users/kristinarash/DEV/Football/PerformanceSnapshot/logs/launchd-snapshot.log</string>
+  <key>StandardErrorPath</key><string>/Users/kristinarash/DEV/Football/PerformanceSnapshot/logs/launchd-snapshot.err</string>
+</dict></plist>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.keystone.stackdoctor</string>
+  <key>EnvironmentVariables</key><dict><key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/Users/kristinarash/.local/bin:/Users/kristinarash/go/bin</string></dict>
+  <key>ProgramArguments</key><array><string>/opt/homebrew/bin/pwsh</string><string>-NoProfile</string><string>-File</string><string>/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1</string></array>
+  <key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardOutPath</key><string>/Users/kristinarash/.claude/scripts/logs/stackdoctor.log</string>
+  <key>StandardErrorPath</key><string>/Users/kristinarash/.claude/scripts/logs/stackdoctor.err</string>
+</dict></plist>
+/Users/kristinarash/DEV/docs/handoffs/2026-08-29-doctor-plus.md
+/Users/kristinarash/DEV/docs/handoffs/2026-09-14-doctor-plus-context-audit.md
+/Users/kristinarash/DEV/docs/handoffs/2026-09-22-doctor-plus-context-audit.md
+/Users/kristinarash/DEV/docs/handoffs/2026-09-30-doctor-plus.md
+/Users/kristinarash/DEV/docs/handoffs/2026-10-02-doctor-plus.md
+/Users/kristinarash/DEV/docs/handoffs/2026-10-11-doctor-plus-context-audit.md
+/Users/kristinarash/DEV/docs/handoffs/2026-10-30-doctor-plus.md
+
+hook: PostToolUse
+hook: PostToolUse Failed
+codex
+I found a gap in the weekly age check. I’m checking the tests and the repair steps now.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "nl -ba claude-stack-doctor/SKILL.md | sed -n '1,85p'; nl -ba claude-stack-doctor/scripts/stack-check.ps1 | sed -n '280,330p;397,450p'; rg -n 'skill-tax|disable-model-invocation|skillOverrides|offCount' claude-stack-doctor/scripts/stack-check.ps1; rg -n 'doctor-plus|FLAG' ~/DEV/docs/handoffs/2026-10-30-doctor-plus.md | head -20; rg --files ~/DEV/Football/PerformanceSnapshot/ops ~/.claude/scripts ~/DEV/KeystoneOS/ops | rg 'com\\.keystone\\.(stackdoctor|snapshot)\\.plist'" in /Users/kristinarash/.claude/skills
+ succeeded in 443ms:
+     1	---
+     2	name: claude-stack-doctor
+     3	description: >-
+     4	  Health check for Eric's automation and memory stack: launchd jobs and their log proof, backups,
+     5	  memory flush, memsearch and recall, cross-machine sync, context size. Use when asked whether the
+     6	  stack is healthy, when a scheduled job or backup did not run, when memory or recall seems broken,
+     7	  or when .errors.log or an overdue-weekly-run line shows at session start. For running the backup
+     8	  use backup.
+     9	---
+    10	
+    11	# Claude Stack Doctor
+    12	
+    13	One read-only script surfaces every known silent failure in the stack. Run it before debugging anything by hand.
+    14	
+    15	## Steps
+    16	
+    17	1. Run the check (~30 s):
+    18	   ```bash
+    19	   /opt/homebrew/bin/pwsh -NoProfile -File ~/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1
+    20	   ```
+    21	   Exit 0 = `ALL CLEAR`. Exit 1 = the `VERDICT` line lists issue codes. `WARN` lines carry no code.
+    22	   On the Windows laptop, read [`WINDOWS.md`](WINDOWS.md) first.
+    23	2. Report every issue code and every `WARN` line to Eric, in plain words.
+    24	3. For each code, open its section in [`FIXES.md`](FIXES.md). Confirm the cause by running the
+    25	   failing job or command in the foreground before fixing: a signal that looks like a known
+    26	   failure can have another cause (6/25 Milvus misdiagnosis).
+    27	4. Apply the fix, then re-run step 1.
+    28	5. A failure class not yet in `FIXES.md`: add its section there, and a Tier A memory if the lesson
+    29	   reaches beyond this skill.
+    30	
+    31	**Done when** `VERDICT` reads `ALL CLEAR`, or every remaining code is reported to Eric with its
+    32	confirmed cause and why it waits (for example, it needs Eric at the machine).
+    33	
+    34	## Issue codes → FIXES.md section
+    35	
+    36	| Code | Means | Section |
+    37	|---|---|---|
+    38	| `task:*`, `task-stale:*`, `task-unloaded:*`, `task-missing:*`, `task-dual-run:*` | a launchd agent failed, did not run, is not loaded, lost its plist, or a retired job is loaded | Jobs |
+    39	| `proof:*` | a job exited 0 but its log has no success line, or the weekly run is 8+ days old | Job proof |
+    40	| `venv-missing`, `venv-broken` | the memory compiler's Python is gone or broken | Python venvs |
+    41	| `memsearch-path`, `memsearch-run` | memsearch missing, or search fails | memsearch |
+    42	| `recall-coverage`, `recall-regress` | an index root is missing, or eval hit@5 fell 2+ | Recall |
+    43	| `errors-log`, `flush-*` | memory pipeline: error ledger, flush dying | Memory pipeline |
+    44	| `backup-*` | daily backup missing, stale, failing, or not reaching Google | Backup |
+    45	| `context-floor` | sessions start >10% above baseline | Context floor |
+    46	| `skill-tax`, `memfile-full:*`, `memfile-missing:*` | skill descriptions over budget; USER.md or MEMORY.md at 95% of cap or gone | Context budget |
+    47	| `pwsh-tap` | jobs' PowerShell still from the deprecated tap (from 2027-03-01) | PowerShell |
+    48	| `handoff-*` | state did not make the trip between machines | Handoff |
+    49	
+    50	## Weekly run
+    51	
+    52	launchd `com.keystone.stackdoctor` (Mondays 10:30) runs `scripts/weekly-check.ps1`, the same check.
+    53	On failure it appends one line to `~/.claude/global-memory/transcripts/.errors.log`, which every
+    54	session start surfaces. A run that never happens is caught twice: the SessionStart hook
+    55	`~/.claude/hooks/keystone-unified-snapshot.js` adds an "overdue" line when `last-weekly-run.log` is
+    56	over 8 days old, and the check itself reports `proof:stack-doctor-weekly`; full output is in `scripts/last-weekly-run.log`. Clear the entry after the
+    57	fix (FIXES.md → Memory pipeline → Clearing `.errors.log`).
+    58	
+    59	## Outside the script
+    60	
+    61	MCP/plugin auth rot: `claude mcp list`, then re-auth failing claude.ai connectors. Catapult token
+    62	expiry: the auth section of `pp-catapult-openfield-connect`.
+    63	
+    64	## Tests
+    65	
+    66	`zsh scripts/test-job-proof.sh`, `zsh scripts/test-pwsh-tap.sh`,
+    67	`zsh scripts/test-memsearch-check.sh`, `zsh scripts/test-weekly-deadman.sh` (the hook). Run the one for any section of `stack-check.ps1` you edit.
+   280	        }
+   281	    }
+   282	} else { "cloud check: gws CLI not installed (skipped)" }
+   283	
+   284	Section "Context budget"
+   285	# Skill descriptions are preloaded into EVERY session, so this is a per-session
+   286	# tax paid whether or not a skill fires. It regrows silently: the 2026-07-13
+   287	# skill audit pruned the set, and by 2026-07-24 it was back to 105 skills /
+   288	# 42,885 chars (~10,700 tokens). Archiving 45 dead/dormant skills brought it to
+   289	# ~27,000. A number nobody watches is a number that drifts, so watch it.
+   290	$skillRoot = "$HOME/.claude/skills"
+   291	# A skill set to "off" in settings.json's skillOverrides is NOT loaded into the
+   292	# session listing, so it costs zero context and must not be counted. Before
+   293	# 2026-08-11 this loop counted every SKILL.md on disk, which reported 133 skills
+   294	# / 65,467 chars as OVER budget while 72 of them were already disabled — a false
+   295	# positive that fired every weekly run and spammed .errors.log. Read only the
+   296	# skillOverrides key; settings.json also holds env/secrets.
+   297	$off = @{}
+   298	$settingsPath = "$HOME/.claude/settings.json"
+   299	if (Test-Path $settingsPath) {
+   300	    try {
+   301	        $so = (Get-Content $settingsPath -Raw | ConvertFrom-Json).skillOverrides
+   302	        if ($so) {
+   303	            foreach ($p in $so.PSObject.Properties) {
+   304	                if ($p.Value -eq 'off') { $off[$p.Name] = $true }
+   305	            }
+   306	        }
+   307	    } catch { }
+   308	}
+   309	$descChars = 0; $skillCount = 0; $offCount = 0
+   310	foreach ($d in Get-ChildItem $skillRoot -Directory -ErrorAction SilentlyContinue) {
+   311	    $sk = Join-Path $d.FullName 'SKILL.md'
+   312	    if (-not (Test-Path $sk)) { continue }
+   313	    if ($off.ContainsKey($d.Name)) { $offCount++; continue }
+   314	    $raw = Get-Content $sk -Raw
+   315	    if ($raw -match '(?s)description:\s*(.*?)(\n[a-z-]+:|\n---)') {
+   316	        $descChars += (($Matches[1] -replace '\s+', ' ').Trim()).Length
+   317	        $skillCount++
+   318	    }
+   319	}
+   320	if ($offCount) { "skill overrides: $offCount skill(s) disabled in settings.json - excluded from tax" }
+   321	$budget = 32000
+   322	$pct = if ($budget) { [math]::Round(100 * $descChars / $budget) } else { 0 }
+   323	if ($descChars -gt $budget) {
+   324	    "skill tax: $skillCount skills, $descChars chars (~$([math]::Round($descChars/4)) tokens) - OVER budget $budget ($pct%)"
+   325	    "  -> archive unused skills to ~/.claude/skills-archive, or trim descriptions to trigger conditions only"
+   326	    $fail += "skill-tax"
+   327	} else {
+   328	    "skill tax: $skillCount skills, $descChars chars (~$([math]::Round($descChars/4)) tokens) - OK ($pct% of $budget)"
+   329	}
+   330	
+   397	Section "Context floor (tokens every session pays at start)"
+   398	# Grew 71k -> 113k (desktop, 10-16 -> 10-24) unseen. After a deliberate change,
+   399	# re-baseline with: python3 ~/.claude/scripts/context-floor.py --set
+   400	$cf = "$HOME/.claude/scripts/context-floor.py"
+   401	if (Test-Path $cf) {
+   402	    & python3 $cf
+   403	    if ($LASTEXITCODE -ne 0) { $fail += "context-floor" }
+   404	} else { "context-floor.py: MISSING"; $fail += "context-floor" }
+   405	}
+   406	
+   407	# Cross-machine handoff. Lives in its own script because it is the one check that
+   408	# must also run on the Windows laptop, where the launchd section above cannot. The
+   409	# backup section measures `ahead` and so catches a failing push; this catches the
+   410	# opposite and previously invisible failure, a push that succeeded and a pull that
+   411	# never happened.
+   412	$handoff = Join-Path $PSScriptRoot 'handoff-check.ps1'
+   413	if (Test-Path $handoff) {
+   414	    & $handoff
+   415	    if ($LASTEXITCODE -ne 0) { $fail += "handoff" }
+   416	} else {
+   417	    "`n=== Cross-machine handoff ===`nhandoff-check.ps1: MISSING"
+   418	    $fail += "handoff-check-missing"
+   419	}
+   420	
+   421	Section "VERDICT"
+   422	if ($fail.Count -eq 0) { "ALL CLEAR" } else { "$($fail.Count) issue(s): $($fail -join ', ')" }
+   423	exit [int]($fail.Count -gt 0)
+291:# A skill set to "off" in settings.json's skillOverrides is NOT loaded into the
+296:# skillOverrides key; settings.json also holds env/secrets.
+301:        $so = (Get-Content $settingsPath -Raw | ConvertFrom-Json).skillOverrides
+309:$descChars = 0; $skillCount = 0; $offCount = 0
+313:    if ($off.ContainsKey($d.Name)) { $offCount++; continue }
+320:if ($offCount) { "skill overrides: $offCount skill(s) disabled in settings.json - excluded from tax" }
+326:    $fail += "skill-tax"
+1:# 2026-10-30 (Mac) — doctor-plus
+22:- skill tax: 56 skills, 25,366 chars (79% of 32,000). doctor-plus no longer counted (user-invoked).
+32:| 3 | Progressive disclosure | FLAG (minor) | Tier A index: two lines for the retired laptop cost ~470 chars every session (`[Work laptop retired]…` 226 chars, `[Windows history: …]` 247 chars). | Cut each hook to its trigger ("anything Windows"); the files keep the detail. |
+/Users/kristinarash/DEV/KeystoneOS/ops/com.keystone.stackdoctor.plist
+/Users/kristinarash/DEV/Football/PerformanceSnapshot/ops/com.keystone.snapshot.plist
+
+hook: PostToolUse
+hook: PostToolUse Failed
+codex
+I found five issues.
+
+1. **The weekly check waits almost nine days to fail.** [stack-check.ps1:391](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:391) rounds the age down. Line 392 then checks whether it is greater than eight. A log that is eight days and 23 hours old still passes. The docs say it fails after eight days.
+
+2. **A late weekly run can report a failure after it starts.** [stack-check.ps1:389](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:389) checks the previous log. [weekly-check.ps1:11](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:11) runs that check before it writes the new log. If the previous log is missing or old enough, the current run reports an overdue failure. It then writes a fresh log and adds an error that needs to be cleared.
+
+3. **The new job checks can pass before a job has run.** [stack-check.ps1:73](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:73) treats `-` as OK. That can mean launchd has no exit result yet. It also cannot prove that the snapshot job did its work. The weekly wrapper always exits 0, even when the check finds problems.
+
+4. **The tests miss key failures.** [test-weekly-deadman.sh:6](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/test-weekly-deadman.sh:6) can pass the fresh-log case if the hook fails and prints no line. Both tests use October 1, 2026 as a fixed old date. They do not test the eight-day boundary. [test-job-proof.sh:26](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/test-job-proof.sh:26) also does not test a missing weekly log.
+
+5. **The context size can include a disabled skill description.** [doctor-plus/SKILL.md:17](/Users/kristinarash/.claude/skills/doctor-plus/SKILL.md:17) tells the reader to use the script’s skill count as an always-loaded size. But [stack-check.ps1:313](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:313) does not exclude `disable-model-invocation: true`. It counts the doctor-plus description even though that setting keeps it out of the model’s skill list.
+
+I did not edit files or run the tests. The review used the diff and the current files.
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+46,749
+I found five issues.
+
+1. **The weekly check waits almost nine days to fail.** [stack-check.ps1:391](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:391) rounds the age down. Line 392 then checks whether it is greater than eight. A log that is eight days and 23 hours old still passes. The docs say it fails after eight days.
+
+2. **A late weekly run can report a failure after it starts.** [stack-check.ps1:389](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:389) checks the previous log. [weekly-check.ps1:11](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/weekly-check.ps1:11) runs that check before it writes the new log. If the previous log is missing or old enough, the current run reports an overdue failure. It then writes a fresh log and adds an error that needs to be cleared.
+
+3. **The new job checks can pass before a job has run.** [stack-check.ps1:73](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:73) treats `-` as OK. That can mean launchd has no exit result yet. It also cannot prove that the snapshot job did its work. The weekly wrapper always exits 0, even when the check finds problems.
+
+4. **The tests miss key failures.** [test-weekly-deadman.sh:6](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/test-weekly-deadman.sh:6) can pass the fresh-log case if the hook fails and prints no line. Both tests use October 1, 2026 as a fixed old date. They do not test the eight-day boundary. [test-job-proof.sh:26](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/test-job-proof.sh:26) also does not test a missing weekly log.
+
+5. **The context size can include a disabled skill description.** [doctor-plus/SKILL.md:17](/Users/kristinarash/.claude/skills/doctor-plus/SKILL.md:17) tells the reader to use the script’s skill count as an always-loaded size. But [stack-check.ps1:313](/Users/kristinarash/.claude/skills/claude-stack-doctor/scripts/stack-check.ps1:313) does not exclude `disable-model-invocation: true`. It counts the doctor-plus description even though that setting keeps it out of the model’s skill list.
+
+I did not edit files or run the tests. The review used the diff and the current files.
