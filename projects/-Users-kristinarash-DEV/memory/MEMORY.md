@@ -85,3 +85,4 @@ Never put memory content here — the file itself holds the facts.
 - [Athletics research council](project_athletics-research-council.md) — ARC, BAIR, research council, research proposals, campus researchers
 - [Pmc open access pdf download](reference_pmc-open-access-pdf-download.md) — downloading any open-access paper PDF (PMC, Europe PMC, Springer)
 - [Mac-Windows remote access](project_mac-windows-remote-access.md) — remote into the Windows laptop or the Mac; Tailscale, RDP, Chrome Remote Desktop, Mac sleep settings
+- [Skill audit list](reference_skill-audit-list.md) — "audit the next skill on the list"; any skill audit or maintenance pass
