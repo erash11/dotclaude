@@ -72,7 +72,7 @@ Climb in order; stop as soon as the question is answered. Do not run a search wh
 
 1. **Tier 0** — scan what is already in context (USER.md, MEMORY.md). Zero cost. The daily compiled log arrives as a pointer only; open it when the question names that day.
 2. **L1** — `python3 ~/.claude/scripts/recall.py "question"`. Plain code, ~1 s: opens the best file and prints the matching paragraphs; on a weak or no match it also runs memsearch (~10 s). If they miss the answer, open the #2 or #3 candidate it lists.
-3. **L2** — when L1's output (memsearch hits included) still misses: `memsearch search "<reworded query>" --top-k 5`. Hybrid vector + keyword, ~10 s.
+3. **L2** — when L1's output (memsearch hits included) still misses: `python3 ~/.claude/scripts/recall.py "<reworded query>" --deep`. Always adds memsearch's hybrid vector + keyword search, ~10 s, memory files first.
 4. **L3** — `memsearch expand <chunk_hash>`. Full markdown section around a hit.
 5. **L4** — `memsearch transcript <session_id>`. Raw dialogue. Last resort.
 6. **Fallback** — "I don't have a record of that."
