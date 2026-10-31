@@ -3,9 +3,9 @@
 A session is safe to delete once its work is committed, pushed, and in STATUS.md.
 The session itself is a scratchpad; the repo is the record.
 
-KEEP when the session is still working or blocked on you, finished in the last
-24 hours (tonight's backup has not picked up its transcript yet), or owns a git
-worktree that still exists. Also lists every repo under DEV with uncommitted or
+KEEP when the session is still working or blocked on you, its transcript is not
+yet committed and pushed in ~/.claude (the backup or /closeout commits it), or it
+owns a git worktree that still exists. Also lists every repo under DEV with uncommitted or
 unpushed work, since deleting a session never deletes the repo but the work there
 is unfinished.
 
@@ -14,6 +14,7 @@ Read-only. It never deletes anything.
 Usage:
     python ~/.claude/scripts/session-sweep.py
 """
+import glob
 import json
 import os
 import subprocess
@@ -21,7 +22,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 HOME = os.path.expanduser("~")
-JOBS = os.path.join(HOME, ".claude", "jobs")
+CLAUDE = os.path.join(HOME, ".claude")
+JOBS = os.path.join(CLAUDE, "jobs")
 DEV = os.path.join(HOME, "Desktop", "DEV") if os.name == "nt" else os.path.join(HOME, "DEV")
 
 
@@ -29,6 +31,25 @@ def git(repo, *args):
     r = subprocess.run(["git", "-C", repo, *args], capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
     return r.stdout.strip() if r.returncode == 0 else ""
+
+
+def transcript_unsaved(sid, root=CLAUDE):
+    """Why session sid's transcript is not yet safe on GitHub, or "" when it is.
+
+    Safe = every file under projects/*/<sid>* (the .jsonl plus any subagent files)
+    is tracked, has no uncommitted change, and its last commit is on the upstream.
+    """
+    spec = f"projects/*/{sid}*"  # git pathspec: * also crosses /, so subagent files match
+    if not git(root, "ls-files", "--", spec):
+        on_disk = glob.glob(os.path.join(root, "projects", "*", sid + "*"))
+        return "transcript not committed" if on_disk else "no transcript found"
+    if git(root, "status", "--porcelain", "--untracked-files=all", "--", spec):
+        return "transcript has uncommitted changes"
+    if not git(root, "rev-parse", "--verify", "-q", "@{u}"):
+        return "~/.claude has no upstream"
+    if git(root, "rev-list", "@{u}..HEAD", "--", spec):
+        return "transcript commit not pushed"
+    return ""
 
 
 def sessions():
@@ -50,8 +71,9 @@ def sessions():
         if state in ("working", "blocked"):
             stale = " (no activity in 3+ days: open it; if its work is merged, delete)" if age > timedelta(days=3) else ""
             reasons.append(f"state={state}{stale}")
-        if age < timedelta(hours=24):
-            reasons.append("finished <24h ago (backup not yet run)")
+        unsaved = transcript_unsaved(d)
+        if unsaved:
+            reasons.append(unsaved)
         tmp = os.path.join(JOBS, d, "tmp")
         if os.path.isdir(tmp):
             for sub in os.listdir(tmp):
