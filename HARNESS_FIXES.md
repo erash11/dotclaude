@@ -13,6 +13,21 @@ duplicate Mac-only hook line; see Done 2026-10-24).
 
 ## Done
 
+- 2026-10-31 — **Mod and plugin review (answers the 10-06 "does context-mode earn its keep" item).**
+  Measured over 30 days (1,178 sessions, 46,654 tool calls). **context-mode** cost ~0.55 s per
+  Bash call (pre+post hook, ~27k calls), ~0.3 s on most other tools and every prompt, plus a tip on
+  every Bash call and a ~4 KB session block; its own tools were 0.6% of calls. **browser-use**
+  (synced) 0 calls, **desktop-commander** (synced) 8 calls; both start an MCP server each session.
+  Settings change (context-mode, browser-use@synced, desktop-commander@synced → false; the
+  `context-mode-cache-heal.mjs` SessionStart entry removed; hook file kept) is Eric's to apply:
+  Claude is denied edits to settings.json. **Mods:** `~/.zshrc:44` hardcoded 5 mods, so 6 never
+  loaded on the Mac; it now reads `.loadlist` as the README says. Turned off with `.disabled`:
+  `next-steps` (one Haiku call per turn, no use seen), `slate-status`, `landed`,
+  `config-encoding-guard` (Windows BOM trap), `twin-copy-guard` (on the Mac all twins are links).
+  Loaded now: job-watch, merge-cleanup, pm, progress-line, repo-band, where. Kept as is: repo-band
+  (9.7 s fetch runs in the background), codex, superpowers, the startup hooks (each < 0.7 s, run in
+  parallel), the Windows impeccable hooks in settings.local.json (ms no-op on the Mac).
+
 - 2026-10-24 — **#3 memsearch index logging patch: PORTED** to the current `daily-backup.ps1`
   index step. `INDEX full set` now carries `<n>/<m> paths exist, <k> .md files scanned` and the
   exit code, adds "no new content since last index" on 0, and records `memsearch-index:no-input`
