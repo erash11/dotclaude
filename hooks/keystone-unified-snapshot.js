@@ -52,6 +52,40 @@ const SOURCES = [
   },
 ];
 
+// Front Burner block (project-triage plan 2026-10-31, Phase 2): the top projects, their next
+// dated step, and the board questions waiting on Eric, computed fresh each session (~0.8 s).
+// A 3 s cap keeps session start quick; on timeout or error the last good copy is shown,
+// labelled stale, and one line goes to .errors.log so the failure is never silent.
+const FB_DIR = path.join(HOME, 'DEV', 'project-triage');
+const FB_OUT = path.join(FB_DIR, 'outputs', 'front-burner.md');
+const ERRORS_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log');
+
+function frontBurner() {
+  const script = path.join(FB_DIR, 'portfolio.py');
+  if (!fs.existsSync(script)) return null;           // not this machine's layout: say nothing
+  const py = ['/opt/homebrew/bin/python3', '/usr/bin/python3'].find((p) => fs.existsSync(p)) || 'python3';
+  let why = null;
+  try {
+    const r = require('child_process').spawnSync(py, [script, 'today', '--out', FB_OUT],
+      { encoding: 'utf8', timeout: 3000, cwd: FB_DIR });
+    if (r.error) why = r.error.code === 'ETIMEDOUT' ? 'timed out after 3 s' : String(r.error.message);
+    else if (r.status !== 0) why = `exit ${r.status}: ${(r.stderr || '').trim().split('\n').pop()}`;
+    else if (r.stdout.trim()) return r.stdout.trim();
+    else why = 'empty output';
+  } catch (err) {
+    why = String(err && err.message);
+  }
+  try {
+    fs.appendFileSync(ERRORS_LOG, `[${new Date().toISOString()}] front-burner: portfolio.py today failed (${why})\n`);
+  } catch (_) {}
+  try {
+    const stamp = fs.statSync(FB_OUT).mtime.toISOString().slice(0, 16).replace('T', ' ');
+    return fs.readFileSync(FB_OUT, 'utf8').trim().replace(/^## Front Burner/, `## Front Burner (stale, from ${stamp} UTC)`);
+  } catch (_) {
+    return `## Front Burner\n\nCould not build it (${why}). Run \`python3 ~/DEV/project-triage/portfolio.py today\`.`;
+  }
+}
+
 // .errors.log lines look like `[ISO-time] kind: message`. A stuck job writes
 // the same kind every few minutes, so the raw log can reach 100+ near-identical
 // lines injected into every session. Collapse to one line per kind: count,
@@ -118,6 +152,11 @@ function main() {
     }
     parts.push(`## ${src.label}\n\n${src.summarize ? summarizeErrors(body) : body.trim()}`);
   }
+
+  try {
+    const fb = frontBurner();
+    if (fb) parts.push(fb);
+  } catch (_) {}
 
   // Dead-man check: the weekly stack doctor reports failures through .errors.log,
   // so a run that never happens reports nothing (missed 10-26 unseen). Mac only:
