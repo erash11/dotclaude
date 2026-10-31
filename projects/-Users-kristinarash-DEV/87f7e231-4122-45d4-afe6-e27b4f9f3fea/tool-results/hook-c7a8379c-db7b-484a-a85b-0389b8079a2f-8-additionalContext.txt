@@ -1,0 +1,356 @@
+
+<context_window_protection>
+  <priority_instructions>
+    Every byte a tool returns enters your conversation memory and costs reasoning capacity for the rest of the session. The context-mode tools let you do the work in a sandbox and surface only the derived answer — the raw bytes stay out. Think-in-Code: program the analysis, do not compute it by reading raw data into your conversation.
+  </priority_instructions>
+
+  <tool_selection_hierarchy>
+    0. MEMORY: mcp__plugin_context-mode_context-mode__ctx_search(sort: "timeline")
+       - On resume or compaction, query prior decisions, errors, plans, user prompts before asking the user — auto-captured session memory is searchable.
+    1. GATHER: mcp__plugin_context-mode_context-mode__ctx_batch_execute(commands, queries)
+       - Primary research tool. Runs commands in parallel, auto-indexes each output, and (when queries are passed) returns matching sections in the same round trip — no follow-up search call.
+       - Each command: {label: "section header", command: "shell command"}; the label becomes the FTS5 chunk title — descriptive labels improve search.
+    2. FOLLOW-UP: mcp__plugin_context-mode_context-mode__ctx_search(queries: ["q1", "q2", ...])
+       - Multiple related questions about anything already indexed (your captures + session memory). Batch every question in one array; the ranking pipeline runs per-query and the round-trip cost is paid once.
+    3. PROCESSING: mcp__plugin_context-mode_context-mode__ctx_execute(language, code) | mcp__plugin_context-mode_context-mode__ctx_execute_file(path, language, code)
+       - Derive answers FROM data: filter, count, aggregate, parse, transform. Only what you console.log() enters your conversation; the raw bytes stay in the sandbox.
+  </tool_selection_hierarchy>
+
+  <when_not_to_use>
+    - You intend to PROCESS the output (filter, count, parse, aggregate) → use mcp__plugin_context-mode_context-mode__ctx_batch_execute or mcp__plugin_context-mode_context-mode__ctx_execute. Bash stays correct when you intend to OBSERVE a short fixed output (git status on a clean tree, whoami, pwd) or when you are mutating state (git, mkdir, rm, mv, navigation).
+    - You want to analyze, summarize, or extract from a file → use mcp__plugin_context-mode_context-mode__ctx_execute_file. Read stays correct when you intend to Edit the file (Edit needs the exact bytes in your conversation to match against).
+    - WebFetch → use mcp__plugin_context-mode_context-mode__ctx_fetch_and_index; full network access, results indexed for mcp__plugin_context-mode_context-mode__ctx_search, raw page bytes never enter your conversation.
+    - mcp__plugin_context-mode_context-mode__ctx_execute and mcp__plugin_context-mode_context-mode__ctx_execute_file for file writes → these run code in a subprocess and discard the sandbox FS; they are for analysis, processing, and computation only.
+  </when_not_to_use>
+
+  <file_writing_policy>
+    File writes use the native Write or Edit tool — mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, and Bash subprocesses do not persist edits to the host filesystem.
+    Applies to all file types: code, configs, plans, specs, YAML, JSON, markdown.
+  </file_writing_policy>
+
+  <output_constraints>
+    <artifact_policy>
+      Write artifacts (code, configs, PRDs) to files. Return only: file path + 1-line description.
+    </artifact_policy>
+  </output_constraints>
+  <session_continuity>
+    Skills, roles, and decisions captured earlier in this session are a memory aid, not a standing order. Treat them as context that may help — the user's most recent message always takes precedence. If a captured directive conflicts with what the user now asks, follow the user; a past phrase does not bind you.
+  </session_continuity>
+
+  <ctx_commands>
+    "ctx stats" | "ctx-stats" | "/ctx-stats" | context savings question
+    → Call stats MCP tool, display full output verbatim.
+
+    "ctx doctor" | "ctx-doctor" | "/ctx-doctor" | diagnose context-mode
+    → Call doctor MCP tool, run returned shell command, display as checklist.
+
+    "ctx upgrade" | "ctx-upgrade" | "/ctx-upgrade" | update context-mode
+    → Call upgrade MCP tool, run returned shell command, display as checklist.
+
+    "ctx purge" | "ctx-purge" | "/ctx-purge" | wipe/reset knowledge base
+    → Call purge MCP tool with confirm: true. Warn: irreversible.
+
+    After /clear or /compact: knowledge base preserved. Tell user: "context-mode knowledge base preserved. Use `ctx purge` to start fresh."
+  </ctx_commands>
+
+</context_window_protection>
+<session_knowledge source="continue">
+<session_guide>
+## Key Decisions
+- rename them, also move forward with your recommendations.
+
+## Files Modified
+SKILL.md, REFERENCE.md, REGISTRY-EDITS.md, rename.py, test_rename.py, SKILL-AUDIT-LIST.md, STATUS.md, .pending-renames.json, portfolio.py, test_board_server.py, test_portfolio.py, board.py, migrate_ideas.py, runner.py
+
+## Unresolved Errors
+- {"stdout":"## Next\n\nRanked by real use: Skill-tool calls and typed `/commands` in the last 60 days of session logs, owned skills only (`skill-aud...
+- {"stdout":"=== feedback_long-jobs-in-terminal\n  type: feedback\n---\n\nLong jobs (about 30 minutes or more) run in Eric's own Terminal under caffe...
+- {"stdout":"# Skill audit list\n\n\"The list\" for skill audits. When Eric says \"audit the next skill on the list\", take the first row under **Nex...
+- {"stdout":"/Users/kristinarash/DEV/CFB_Victory_Model\n436b224 inbox drain: CFBD API access check (2026-08-13) from _INBOX\n50b4e2b Closeout 2026-10...
+- {"stdout":"__pycache__\n2019-2026 All Games.xlsx\nAGENTS.md\naudit_model.py\ncfbd_pull.py\nCLAUDE.md\nCOACH_BRIEF_2026.md\ncompare_snapshots.py\nda...
+- {"stdout":"#!/usr/bin/env python\n\"\"\"\nWeekly capture of CFB Victory Model forecasts, before the games are played.\n\nWHY THIS EXISTS\n---------...
+- {"stdout":"# Skill audit list\n\n\"The list\" for skill audits. When Eric says \"audit the next skill on the list\", take the first row under **Nex...
+- {"stdout":"\"\"\"Registry module for portfolio management.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport datetime as _dt\n...
+- {"stdout":"total 8\ndrwxr-xr-x@ 3 kristinarash  staff    96 Sep  7 18:33 .\ndrwxr-xr-x@ 6 kristinarash  staff   192 Sep  7 18:33 ..\n-rw-r--r--@ 1 ...
+- {"stdout":"\"\"\"Pure registry mutations behind the board. No HTTP, no file I/O.\"\"\"\nimport datetime as _dt\n\nimport portfolio\nfrom portfolio ...
+- {"stdout":"CFBD_API_Access_Verification_2026-08-13.md\nhandoffs\nMODEL_AUDIT_2026-10-30.md\nSTATUS.md\n----\n6:- 2026-10-30 (Fri): Week 9 captured,...
+- {"stdout":"total 0\ndrwxr-xr-x@  3 kristinarash  staff   96 Sep  7 18:33 .\ndrwxr-xr-x   7 kristinarash  staff  224 Sep 12 17:33 ..\ndrwxr-xr-x@ 17...
+- {"stdout":"closeout/SKILL.md:126:  shows a change, commit that file alone as `data: board edits <YYYY-MM-DD>`. The board's \"N\ncloseout/SKILL.md:1...
+- {"stdout":"---\nname: claudex-loop\ndescription: \"Harden a plan with independent Claude/Codex review, then optionally build and cross-inspect it. ...
+- {"stdout":"# Skill audit list\n\n\"The list\" for skill audits. When Eric says \"audit the next skill on the list\", take the first row under **Nex...
+- {"stdout":"#!/usr/bin/env python3\n\"\"\"Apply Fireflies meeting-title renames via the GraphQL API, with read-back verification.\n\nWhy this exists...
+- {"stdout":"# Name Meetings — Reference\n\n## Contents\n\n- Resume mode — full loop\n- Generic-title patterns\n- Title construction rules\n- CLI got...
+- {"stdout":"Check CLI health\n\nUsage:\n  fireflies-pp-cli doctor [flags]\n\nExamples:\n  fireflies-pp-cli doctor\n  fireflies-pp-cli doctor --json\...
+- {"stdout":"USER: 11:24 track ARC with /project. I will also wait until early next week to send kenny the filled outline.\nASST: 11:24 I will add AR...
+- {"stdout":"---\nname: fireflies-cli-broken-on-mac\ndescription: \"fireflies-pp-cli's misleading \\\"out of memory (14)\\\" error means the local DB...
+- {"stdout":"1:2957:function Invoke-MeetingSync {\n11:2967-    if (-not (Test-Path -LiteralPath $statePath)) {\n14:2970-\n15:2971-    # A failure her...
+- {"stdout":"2947:function Test-HoldGenericMeeting {\n2948-    param($Transcript, [int]$Days = 7, [datetime]$Now = (Get-Date))\n2949-    if (-not (Te...
+- {"stdout":"project_memory-compiler-pipeline.md:3:description: How the claude-memory-compiler flush/index pipeline fails and how to tell which stage...
+- {"stdout":"21:# LOCAL PATCH -- see command(). Codex review/inspect turns run with\n66:            \"builder\": builder, \"inspector\": next(p for p...
+- {"stdout":"        raise RunError(\"BLOCKED must explain the limitation.\")\n    return value\n\n\ndef command(provider: str, mode: str, run_dir: P...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\nchecked 42 skills, 0 failing, 42 portable\ne23aa73 project: drop the render/republish ritual;...
+- {"stdout":"## 01M641XFBK2015WGYMC3KQ8FNY\n{\n  \"action_items\": \"**Unassigned**\\nConfirm campus-running plan (00:21)\\nClarify women’s golf trai...
+- {"stdout":"**3. Pick one thread.** `python3 ~/.claude/scripts/where-was-i.py` lists every project's\nfirst Next item, newest first. The board (`pm`...
+- {"stdout":"    return [str(path)]\n\n\ndef git(repo: Path, *args: str) -> bytes:\n    result = subprocess.run([\"git\", *args], cwd=repo, capture_o...
+- {"stdout":"---\ndescription: Run a Codex code review against local git state\nargument-hint: '[--wait|--background] [--base <ref>] [--scope auto|wo...
+- {"stdout":"927 [23, 30, 48, 49, 84, 105, 106, 111, 112, 113, 114, 128, 134, 135, 136, 148, 149, 150, 156, 157]\n23 user Base directory for this ski...
+- {"stdout":" weekly_capture.py | 10 +++-------\n 1 file changed, 3 insertions(+), 7 deletions(-)\ndiff --git a/weekly_capture.py b/weekly_capture.py...
+- {"stdout":"usage: weekly_capture.py [-h] [--teams TEAMS [TEAMS ...]] [--team TEAM]\n                         [--conference CONFERENCE] [--year YEAR...
+- {"stdout":"---\nname: ingest-book\ndescription: >-\n  Ingest a book (PDF/EPUB full-text, Kindle highlights, or framework-only from a\n  physical bo...
+- {"stdout":"      76 extract_epub.py\n      57 extract_pdf.py\n     133 total\n\"\"\"Extract a PDF into per-page text as JSON, and detect scanned/im...
+- {"stdout":" M forecast-capture/SKILL.md\n?? forecast-capture/REFERENCE.md\nFAIL forecast-capture\n       - no negative clause ('Do not use ...') - ...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\n0204fad forecast-capture: audit — dead-link check as a step, Big 12 scoreboard gap check, don...
+- {"stdout":"..\n----------------------------------------------------------------------\nRan 4 tests in 0.013s\n\nOK\nApply Fireflies meeting-title r...
+- {"stdout":"advisors\nCREATING-ADVISORS.md\nperformance-technology-and-leadership\nREADME.md\nrehab-and-return-to-play\nresearch-papers\nskill-acqui...
+- {"stdout":"---\nname: memsearch-index-is-destructive\ndescription: \"`memsearch index <paths>` deleted every source outside the given paths before ...
+- {"stdout":"exit 0\n\n2. **High — [SKILL.md:78](/Users/kristinarash/.claude/skills/forecast-capture/SKILL.md:78)**  \n   The done check requires new...
+- {"stdout":"3c37b4e name-meetings: audit — rename.py stops on 429, drops permanent failures from pending[], exit 2 on usage","stderr":"","interrupte...
+- {"stdout":"1:\"\"\"Validate distributable skill metadata, references and provider manifests.\"\"\"\n14:    for path in sorted((root / \"skills\").g...
+- {"stdout":"Skill metadata, references and manifests passed.\n\ntests/test_runner.py:134: AssertionError\n=========================== short test sum...
+- {"stdout":" scripts/weekly_run.sh | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\na84cd31 forecast-capture: audit — failure message no long...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\n ingest-book/lib/extract_epub.py |  7 +++--\n ingest-book/lib/extract_pdf.py  | 60 ++++++++++...
+- {"stdout":"ed8c9b2 ingest-book: audit — extract_pdf no longer pip-installs (PEP 668 failure), reads only requested pages, validates --pages; extrac...
+- {"stdout":"EXIT=0\n/Users/kristinarash/DEV/project-triage/docs/plans/2026-07-31-portfolio-dashboard.md:54:- `save_registry(path: Path, data: dict) ...
+- {"stdout":"fatal: pathspec 'ingest-book' did not match any files\n/Users/kristinarash/DEV/RTP_Constraints_Course/scripts/scan_pipeline.py:7:    pyt...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\nexit=0","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":" name-meetings/REFERENCE.md | 160 ++++++++++++++-------------------------------\n name-meetings/SKILL.md     | 140 ++++++++++++---------...
+- {"stdout":"exit=0\nhook: PostToolUse Failed\ncodex\nI found five defects.\n\n1. **High — The round cap can leave changes unchecked.** [SKILL.md:38]...
+- {"stdout":"== dup name (should NOT run set-status)\nAssertionError: HPI_Protocol exists\nEXIT=1\n== new name\nsaved Test_Intern_Agent\nstatus set: ...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable\n744294d project: audit — codex review fixes","stderr":"","interrupted":false,"isImage":false,...
+- {"stdout":"# /project: portfolio registry\n\nDrives the `project-triage` CLI. The registry, `portfolio.json`, is the single\nsource of truth; each ...
+- {"stdout":"1704\n1. **High — A rate limit during the read-back does not stop the batch.**  \n   [rename.py:111](/Users/kristinarash/.claude/skills/...
+- {"stdout":"checked 42 skills, 0 failing, 42 portable","stderr":"","interrupted":false,"isImage":false,"noOutputExpected":false}
+- {"stdout":"OK\nchecked 42 skills, 0 failing, 42 portable\ncbfc2e2 name-meetings: audit — Codex review fixes: read-back 429 stops, non-object entrie...
+- {"stdout":"cbfc2e2 name-meetings: audit — Codex review fixes: read-back 429 stops, non-object entries, atomic ledger write, STOP routing\n85f2aa3 n...
+- {"stdout":"== skills\n## main...origin/main [ahead 12]\ncbfc2e2 name-meetings: audit — Codex review fixes: read-back 429 stops, non-object entries,...
+- {"stdout":"                return self._send(200, {\"ok\": True, \"lane\": lane})\n\n            if parts == [\"api\", \"undo\"]:\n                ...
+- {"stdout":"----------------------------------------------------------------------\nRan 323 tests in 28.312s\n\nFAILED (failures=2)\nport 57422 is t...
+- {"stdout":"FAIL: test_the_external_write_survives_a_refused_undo (test_board_server.TestUndoSafety.test_the_external_write_survives_a_refused_undo)...
+- {"stdout":"exit 0\nTraceback (most recent call last):\n  File \"<string>\", line 2, in <module>\n    import json;d=json.load(open(\"/Users/kristina...
+- {"stdout":"# Meeting filename audit\n\nGround truth: each filename was generated by `fireflies-pp-cli transcripts export --vault` into a scratch di...
+- {"stdout":" Inbox/meetings/.sync-state.json | 1576 +++++++++++++++++++--------------------\n 1 file changed, 788 insertions(+), 788 deletions(-)\nd...
+- {"stdout":"## main...origin/main\nmatch=2 cosmetic=0 semantic=0 regression=0 failed=0 collisions=0","stderr":"\nShell cwd was reset to /Users/krist...
+- {"stdout":"d17fa36 data: inbox +3 (Content_Creation_Agent, Intern_Curriculum_Agent, Course_Builder_Agent) moved from ideas[]; those ideas marked pr...
+- {"stdout":"        reorder(data, name, lane, stage, position)\n    except RegistryError:\n        data[\"projects\"].remove(project)     # leave th...
+- {"stdout":"60:def reorder(data: dict, name: str, lane: str, stage: str, position: int) -> dict:\n61-    \"\"\"Move a card. Deliberately does NOT st...
+- {"stdout":"Ran 23 tests in 8.944s\n\nFAILED (failures=1)\n['model_reasoning_effort=\"medium\"'] gpt-6-astra","stderr":"\nShell cwd was reset to /Us...
+- {"stdout":"FAIL: test_unpinned_and_explicit_model_selection (test_runner.RunnerTests.test_unpinned_and_explicit_model_selection)","stderr":"\nShell...
+
+## Git
+pull, log, diff, status, forecast-capture: audit — CONFERENCES['Big 12'] is BIG12 (one team list); drop merge paste debris
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, forecast-capture: audit — dead-link check as a step, Big 12 scoreboard gap check, done line; errors moved to REFERENCE.md
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, name-meetings: audit — rename.py stops on 429, drops permanent failures from pending[], exit 2 on usage
+
+--pending kept writing after a rate limit and re-queued 'Transcript not found'
+forever; usage/config errors exited 1 (same as a failed verify); a network error
+crashed before pending[] was rewritten. Offline test added.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, project: audit — slate retired, ideas are off the board, python3, promote/rank via save_registry
+
+- Slate retired 10-30 (Decision 11): drop cap refusal, 7-day clock and slate-check on bare /project.
+- add-idea writes ideas[], which the board never renders; a 10-29 run told Eric it did. Bare /project lists them.
+- CLI block used python; the Mac has only python3.
+- promote said max rank + 1 (archived rows hold 10**6) and omitted purpose/status; rank used the
+  Edit tool, which skips validation and the .bak provenance proof. Both now go through
+  load_registry/save_registry in REGISTRY-EDITS.md, tested on a copy.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, forecast-capture: audit — failure message no longer says nothing was archived (successful teams are)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, add, ingest-book: audit — extract_pdf no longer pip-installs (PEP 668 failure), reads only requested pages, validates --pages; extract_epub decodes URL-encoded hrefs, checks --chapter range; tests
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>, project: audit — writing-for-agents pass (one trigger per branch, positive phrasing, rank rule in one home)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, forecast-capture: audit — a kicked-off game is lost only without an earlier capture this week
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, ingest(<book-slug>): <N> entries, ch X-Y`.
+, codex-review: audit — add code-change branch (runner inspect), inline the round loop, Done when
+
+Two of three real runs reviewed a PR or branch, which the skill did not cover:
+one abandoned it for the codex plugin, one wrapped the PR in a fake plan.
+Steps now pick review (plan) or inspect --base (diff/branch/PR), pass explicit
+model/effort so the record names what ran, and end on a Done when line.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, unittest, name-meetings: audit — steps in run order, done line, title rules match real data
+
+find --agent dropped date and speakers; participant-count rule never fired
+(participants is Eric alone on 240/244); Eric's Series_MMDDYYYY convention
+first; meeting-sync section contradicted its Unattended call; parallel-batch and
+MCP rate-limit guidance removed; one home for resume and the ledger schema;
+the 4-minute wait is a background sleep; renamed meetings already in the vault
+point to meeting-sync DRIFT.md.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, project: audit — codex review fixes
+
+- set-status matches names case-sensitively (board_ops.find): say pass the exact name.
+- $PT is set per Bash call; error rules cover argparse usage and board tracebacks.
+- promote: start runs only after a clean save (&&); captured_at read with .get.
+- rank: only active/paused rows (archived ones would fail validation); stage-column wording
+  matches board.html (unstaged column first).
+Review: ~/.claude/audits/codex-review-project-2026-10-31.md
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, project: audit — say what add-idea's 'N in inbox' counts
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, codex-review: audit — fold in Codex review findings
+
+mkdir the run folder; name the pre-start error line; state what inspect
+actually sends (tracked diff plus untracked list); a REVISE on the last
+round ends the loop with later fixes listed as unreviewed; Codex host
+routes code to inspect.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, name-meetings: audit — Codex review fixes: read-back 429 stops, non-object entries, atomic ledger write, STOP routing
+
+Review: ~/.claude/audits/codex-review-name-meetings-2026-10-31.md
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>, SKILL-AUDIT-LIST: 5 audits done in parallel (forecast-capture, project, codex-review, ingest-book, name-meetings); next five; audit agents run on Sonnet; STATUS line
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, stash, add-idea writes a named inbox card (the list the board shows), not ideas[]
+
+The board renders inbox[] only, so captured ideas never appeared there.
+Name: --name or the pitch's first four words, [A-Za-z0-9_], suffixed
+to stay unique across inbox and projects (board_ops finds by name).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, meetings: rename 2 Oct 29 notes to their new Fireflies titles; links and sync ledger follow
+
+StaffMeet_10292026 (was Oct_29_0944_AM), Research Council — Faculty Collaborator Outreach (was Oct_29_0922_AM). Approved by Eric 2026-10-31.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, data: inbox +3 (Content_Creation_Agent, Intern_Curriculum_Agent, Course_Builder_Agent) moved from ideas[]; those ideas marked promoted
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, STATUS: add-idea writes board Inbox cards; 3 ideas moved
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, runner: local patch reviews at medium effort (was low), matching ~/.codex/config.toml
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, STATUS + SKILL-AUDIT-LIST: Eric's 3 picks done (meeting renames, one idea list, reviewer effort medium)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, runner: local patch reviews on gpt-6.1-terra (was gpt-6-astra), matching ~/.codex/config.toml
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH, SKILL-AUDIT-LIST: Codex reviewer now gpt-6.1-terra at medium
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_0195ZD7wouJeE6dphYx7VfVH
+
+## Project Rules
+.claude/CLAUDE.md, DEV/CLAUDE.md, project/SKILL.md, forecast-capture/SKILL.md, project/REGISTRY-EDITS.md
+
+## Subagent Tasks
+- [completed] You are auditing ONE Claude Code skill for Eric Rash: `forecast-capture` (canonical folder `~/.claude/ski...
+- [completed] You are auditing ONE Claude Code skill for Eric Rash: `project` (canonical folder `~/.claude/skills/proje...
+- [completed] You are auditing ONE Claude Code skill for Eric Rash: `codex-review` (canonical folder `~/.claude/skills/...
+- [completed] You are auditing ONE Claude Code skill for Eric Rash: `name-meetings` (canonical folder `~/.claude/skills...
+- [completed] You are auditing ONE Claude Code skill for Eric Rash: `ingest-book` (canonical folder `~/.claude/skills/i...
+
+## Skills Used
+mattpocock-skills:writing-for-agents, memory-write, name-meetings
+
+## Environment
+cwd: ~/DEV
+model:claude-opus-5-5
+cd ~/.claude/skills/ingest-book/lib && python3 - <<'EOF'
+import re
+p=open('extract_pdf.py').read()
+p=p.replace('''Prefers pypdf; if absent, attempts pip install into user site at runtime.
+--probe''','''Run it as: uv run --with pypdf python3 extract_pdf.py <book.pdf> ...
+(Mac Python is PEP 668-managed, so pypdf is supplied per run by uv, never pip-installed.)
+--probe''')
+p=p.replace('import sys, json, subprocess\n','import sys, json\n')
+old=p[p.index('def _ensure_pypdf'):p.index('def page_texts')]
+new='''def load(path):
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        sys.exit("pypdf missing. Run: uv run --with pypdf python3 extract_pdf.py <book.pdf> ...")
+    return PdfReader(path)
+
+def parse_range(rng, n):
+    """'A-B' (0-based, inclusive) -> (lo, hi) clamped to n pages; exits on bad input."""
+    try:
+        a, b = rng.split("-")
+        lo, hi = int(a), int(b)
+    except ValueError:
+        sys.exit(f"--pages wants A-B with 0-based integers, got {rng!r}")
+    if lo > hi:
+        sys.exit(f"--pages {rng}: start is after end")
+    return max(lo, 0), min(hi, n - 1)
+
+'''
+p=p.replace(old,new)
+p=p.replace('''def page_texts(reader):
+    out = []
+    for pg in reader.pages:
+        try: out.append(pg.extract_text() or "")
+        except Exception: out.append("")
+    return out''','''def page_text(pg):
+    try: return pg.extract_text() or ""
+    except Exception: return ""''')
+main=p[p.index('def main'):]
+newmain='''def main():
+    args = sys.argv[1:]
+    if not args or args[0] in ("-h", "--help"):
+        print(__doc__ + "usage: extract_pdf.py <book.pdf> [--pages A-B] [--probe]",
+              file=sys.stderr); sys.exit(2)
+    reader = load(args[0])
+    n = len(reader.pages)
+    if "--probe" in args:
+        text_pages = sum(1 for pg in reader.pages if len(page_text(pg).strip()) > 40)
+        scanned = n > 0 and (text_pages / n) < 0.2
+        print(json.dumps({"pages": n, "text_pages": text_pages, "scanned": scanned}))
+        return
+    lo, hi = 0, n - 1
+    if "--pages" in args:
+        lo, hi = parse_range(args[args.index("--pages") + 1], n)
+    # Inclusive end (fixed 2026-09-26; it was exclusive and dropped the last page).
+    # Only the requested pages are read; a chapter no longer pays for the whole book.
+    print(json.dumps([{"page": i, "viewer_page": i + 1, "text": page_text(reader.pages[i])}
+                      for i in range(lo, hi + 1)], ensure_ascii=False))
+
+if __name__ == "__main__":
+    main()
+'''
+p=p.replace(main,newmain)
+open('extract_pdf.py','w').write(p)
+
+e=open('extract_epub.py').read()
+e=e.replace('import sys, zipfile, re, json, html\n','import sys, zipfile, re, json, html\nfrom urllib.parse import unquote\n')
+e=e.replace('            docs.append(base + href)','            docs.append(base + unquote(href))  # hrefs are URL-encoded; zip names are not')
+e=e.replace('''    if not args:
+        print("usage''','''    if not args or args[0] in ("-h", "--help"):
+        print("usage''')
+e=e.replace('''        n = int(args[args.index("--chapter") + 1])
+        print(''','''        n = int(args[args.index("--chapter") + 1])
+        if not 0 <= n < len(chs):
+            sys.exit(f"--chapter {n}: book has chapters 0-{len(chs) - 1} (see --list)")
+        print(''')
+open('extract_epub.py','w').write(e)
+EOF
+sed -n 1,12p extract_epub.py
+
+## Data References
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- interrupted:false stderrBytes:47
+- interrupted:false stderrBytes:0
+- … 85 older captures kept in the sandbox — query mcp__plugin_context-mode_context-mode__ctx_search(source: "session-events").
+
+## Session Intent
+implement
+
+</session_guide>
+<session_search>
+Detailed session data is indexed in context-mode FTS5 (source: "session-events").
+Use mcp__plugin_context-mode_context-mode__ctx_search(queries: [...], source: "session-events") when you need specifics.
+Do NOT call ctx_index() — data is already indexed.
+</session_search>
+</session_knowledge>
