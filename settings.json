@@ -166,14 +166,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"$HOME/.claude/hooks/context-mode-cache-heal.mjs\""
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
             "command": "node \"$HOME/.claude/hooks/superpowers-quiet.mjs\"",
             "timeout": 15
           }
@@ -266,7 +258,7 @@
     "superpowers@claude-plugins-official": false,
     "playwright@claude-plugins-official": false,
     "last30days@last30days-skill": true,
-    "context-mode@context-mode": true,
+    "context-mode@context-mode": false,
     "codex@openai-codex": true,
     "mattpocock-skills@mattpocock": true,
     "watch@claude-video": true,
@@ -275,7 +267,9 @@
     "pdf-viewer@synced": false,
     "firecrawl@synced": false,
     "data@synced": false,
-    "cowork-plugin-management@synced": false
+    "cowork-plugin-management@synced": false,
+    "browser-use@synced": false,
+    "desktop-commander@synced": false
   },
   "extraKnownMarketplaces": {
     "last30days-skill": {
