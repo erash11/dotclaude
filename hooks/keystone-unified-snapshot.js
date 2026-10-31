@@ -53,22 +53,28 @@ const SOURCES = [
 ];
 
 // Front Burner block (project-triage plan 2026-10-31, Phase 2): the top projects, their next
-// dated step, and the board questions waiting on Eric, computed fresh each session (~0.8 s).
-// A 3 s cap keeps session start quick; on timeout or error the last good copy is shown,
+// dated step, and the board questions waiting on Eric, computed fresh each session (~1 s warm,
+// ~3 s on a cold disk cache). A 6 s cap keeps session start quick (hook limit is 15 s); on timeout or error the last good copy is shown,
 // labelled stale, and one line goes to .errors.log so the failure is never silent.
-const FB_DIR = path.join(HOME, 'DEV', 'project-triage');
+// Mac: ~/DEV. Windows: ~/Desktop/DEV (same rule as the KeystoneOS source above). (FB-R3)
+const FB_DIR = [path.join(HOME, 'DEV'), path.join(HOME, 'Desktop', 'DEV')]
+  .map((d) => path.join(d, 'project-triage'))
+  .find((d) => fs.existsSync(path.join(d, 'portfolio.py'))) || path.join(HOME, 'DEV', 'project-triage');
 const FB_OUT = path.join(FB_DIR, 'outputs', 'front-burner.md');
 const ERRORS_LOG = path.join(HOME, '.claude', 'global-memory', 'transcripts', '.errors.log');
 
 function frontBurner() {
   const script = path.join(FB_DIR, 'portfolio.py');
-  if (!fs.existsSync(script)) return null;           // not this machine's layout: say nothing
-  const py = ['/opt/homebrew/bin/python3', '/usr/bin/python3'].find((p) => fs.existsSync(p)) || 'python3';
+  if (!fs.existsSync(script)) {
+    return '## Front Burner\n\nNot available here: no project-triage folder under ~/DEV or ~/Desktop/DEV.';
+  }
+  const py = ['/opt/homebrew/bin/python3', '/usr/bin/python3'].find((p) => fs.existsSync(p))
+    || (process.platform === 'win32' ? 'python' : 'python3');
   let why = null;
   try {
     const r = require('child_process').spawnSync(py, [script, 'today', '--out', FB_OUT],
-      { encoding: 'utf8', timeout: 3000, cwd: FB_DIR });
-    if (r.error) why = r.error.code === 'ETIMEDOUT' ? 'timed out after 3 s' : String(r.error.message);
+      { encoding: 'utf8', timeout: 6000, cwd: FB_DIR });
+    if (r.error) why = r.error.code === 'ETIMEDOUT' ? 'timed out after 6 s' : String(r.error.message);
     else if (r.status !== 0) why = `exit ${r.status}: ${(r.stderr || '').trim().split('\n').pop()}`;
     else if (r.stdout.trim()) return r.stdout.trim();
     else why = 'empty output';
