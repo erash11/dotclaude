@@ -4,6 +4,10 @@ Function-hook plugins ("Claude Mods"), built 2026-10-02 from the session audit
 (`/watch` of Chase AI's "Claude Mods" video + a read of the last 30 transcripts).
 Synced to both machines through the `~/.claude` repo.
 
+**Since 2026-10-31 only `repo-band` loads** (Eric kept it for the Closeout buttons). The other 10
+have a `.disabled` file; why and the numbers are in `~/.claude/HARNESS_FIXES.md` (Done 2026-10-31).
+The table below describes what each mod does when it is on.
+
 | Mod | Event | Shows | Usage |
 |---|---|---|---|
 | `repo-band` | `turn.complete`, timer | Band: `repos: 3 dirty · 1 unpushed`, **Closeout** / **Closeout + exit** buttons; `/repos` lists them | none (local git) |
