@@ -5,7 +5,7 @@ metadata:
   type: reference
 ---
 
-Claude can text Eric's iPhone with ~/.claude/scripts/text-eric.sh "message". It sends an iMessage through the Mac's Messages app; the phone number is stored in the macOS Keychain (item text-eric-number). Set up and tested 2026-10-31.
+Claude can text Eric's iPhone with ~/.claude/scripts/text-eric.sh "message". It sends an iMessage through the Mac's Messages app; the phone number is stored in the macOS Keychain (item text-eric-number). Set up and tested 2026-10-31. The script signs every text with a leading "From Claude: " (Eric asked 2026-10-31 so he knows it is from Claude); do not add a second signature.
 
 **Why:** Eric asked 2026-10-31 for a way for Claude to text him; Messages on the Mac sends iMessage, no new accounts
 
