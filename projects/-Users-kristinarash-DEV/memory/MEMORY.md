@@ -88,3 +88,4 @@ Never put memory content here — the file itself holds the facts.
 - [Skill audit list](reference_skill-audit-list.md) — "audit the next skill on the list"; any skill audit or maintenance pass
 - [Long jobs in terminal](feedback_long-jobs-in-terminal.md) — before starting any job that may run 30+ minutes; after a background job dies
 - [Codex exec stdin hang](project_codex-exec-stdin-hang.md) — before running codex exec from a script or the Bash tool
+- [Skill audit model](feedback_skill-audit-model.md) — before spawning an agent for a skill audit or similar review work
