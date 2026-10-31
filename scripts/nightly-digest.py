@@ -8,8 +8,8 @@ Sent from eric.rash11@gmail.com (the gws account) to Eric's Outlook. Sections:
                                              committed in the last STATUS_DAYS days (any branch,
                                              after fetch, so the Mac's pushed work counts)
   4. Docs created today                    - doc files added in any git commit that day, and
-                                             (Windows only) doc files created that day on the
-                                             Drive storage tree; the Mac skips it, see drive_docs
+                                             doc files created that day on Drive (Mac: Drive API
+                                             via claude-files-digest; Windows: mount walk)
 
 The daily log is gitignored and per machine, so sections 2 and the Action Items cover this
 machine's sessions only.
@@ -169,11 +169,13 @@ def git_docs(repo: Path, day: dt.date) -> list[str]:
 
 def drive_docs(day: dt.date) -> dict[str, list[str]]:
     """Doc files on the Drive storage tree created on `day`, grouped by parent folder. Metadata only."""
-    # shortcut: no Drive section on the Mac. launchd jobs cannot list Drive folders
-    # (com.apple.macl, memory cloud-push-launchd-blocked) and mount walks can hang;
-    # upgrade to a gws files.list on createdTime if the digest should list Drive docs again.
+    # The Mac asks the Drive API (claude-files-digest.drive_deliverables): launchd jobs cannot
+    # list Drive folders (com.apple.macl, memory cloud-push-launchd-blocked) and mount walks hang.
     if os.name != "nt":
-        return {}
+        found: dict[str, list[str]] = {}
+        for d in fd.drive_deliverables(day) or []:
+            found.setdefault(f"Drive: {d['folder']}", []).append(d["name"])
+        return found
     start = dt.datetime.combine(day, dt.time()).timestamp()
     end = start + 86400
     found: dict[str, list[str]] = {}
