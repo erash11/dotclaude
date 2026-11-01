@@ -1,6 +1,7 @@
 # STATUS
 
 ## Current state
+- 2026-10-31 (Mac, session sweep): `scripts/session-sweep.py` now keeps a finished session only until its transcript (`projects/*/<id>*`, subagent files included) is committed and pushed here; the 24 h rule is gone (`03e3715`, test `scripts/test_session_sweep.py`). 17 sessions deleted with `claude rm` today. Handoff `~/DEV/docs/handoffs/2026-10-31-session-sweep-fix.md`.
 - 2026-10-31 (Mac, mod review): `context-mode`, `browser-use@synced`, `desktop-commander@synced` off and the `context-mode-cache-heal.mjs` SessionStart entry removed (`0fa28c2`; backup `settings.json.bak-2026-10-31`). Only the `repo-band` mod loads (Closeout button); 10 mods have `.disabled` (`56acdd6`, `64a993e`). `~/.zshrc` now reads `mods/.loadlist`. Why and numbers: `HARNESS_FIXES.md` Done 10-31; handoff `~/DEV/docs/handoffs/2026-10-31-mod-review.md`.
 - 2026-10-31 (Mac, files digest): `scripts/claude-files-digest.py` (06:30 email) rebuilt per Eric's pick: Drive deliverables first (Drive API, linked, grouped by folder, `_MACHINE` mirror left out), then git docs linked to GitHub at the commit and grouped by commit message, then one count line per repo for data/code. Empty days send nothing (log line `empty <day>:`). Subject is now `New docs: ...`. `nightly-digest.py` reuses `drive_deliverables`, so its Mac Drive section is back. Tests: `scripts/test_claude_files_digest.py`; dry-runs 10-27, 10-30, 10-31 checked. Commit `91571de`.
 - 2026-10-30 (Mac, session-miner): Tier A memory edits (drive stale mount, Mac Office export, compiler SDK trap + models, zsh traps, backup GONE note) + new `feedback_long-jobs-in-terminal.md`. Ledger `claude-memory-compiler/reports/proposals-pending.md`: 7 applied, 3 rejected.
@@ -55,6 +56,7 @@
 - The GitHub plugin is now enabled in `settings.json`, but on 2026-10-19 its MCP server rejected the configured token (HTTP 401). Keep it and fix the token, or turn the plugin off again?
 
 ## Gotchas
+- **A finished session's transcript is committed only by the backup (hourly 12:00-17:00) or `/closeout`.** A session that ends after 17:00 shows as kept by `session-sweep.py` until the next day's backup. `claude rm` keeps the transcript file; it only drops the session from the list (2026-10-31).
 - **A hand-run `memsearch index` takes no lock.** Only the SessionEnd hook and daily-backup use `.memsearch-index.lock`, so a manual rebuild collides with the next backup and Milvus Lite reports it as "older database". Write the rebuild's PID into the lock, or start it through the hook (2026-10-11).
 - **`.errors.log` syncs between machines.** A Windows failure shows up on the Mac. Look for
   `C:\Users\` in a traceback before debugging on the wrong machine (2026-10-07).
