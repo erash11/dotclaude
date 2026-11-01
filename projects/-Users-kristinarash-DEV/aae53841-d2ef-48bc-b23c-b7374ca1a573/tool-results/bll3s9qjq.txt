@@ -1,0 +1,405 @@
+  version        Print version
+  -v, --version                 version for catapult-openfield-connect-pp-cli
+exit 0
+{"event":"sync_start","resource":"parameters"}
+{"event":"sync_progress","resource":"parameters","fetched":1829}
+{"event":"sync_complete","resource":"parameters","total":1829,"duration_ms":866}
+ 1097559 /Users/kristinarash/.claude/jobs/aae53841/tmp/params.json
+total params 1829
+keys ['id', 'parameter_type_id', 'name', 'original_name', 'base_name', 'band', 'aggregation', 'group_by', 'slug', 'calculation', 'ctr_order', 'created_at', 'modified_at', 'unit_type']
+player_load_band3_average_duration_session | Player Load Band 3 Average Duration (Session) | duration
+player_load_band8_total_distance | Player Load Band 8 Total Distance | distance
+player_load_band4_average_distance_session | Player Load Band 4 Average Distance (Session) | distance
+player_load_band7_average_effort_count_session | Player Load Band 7 Average Effort Count (Session) | None
+diveloadcentre_band2_total_count | Dive Load Med Centre Count | count
+diveloadright_band3_total_count | Dive Load High Right Count | count
+diveloadleft_band3_total_count | Dive Load High Left Count | count
+diveloadcentre_band3_total_count | Dive Load High Centre Count | count
+diveloadright_band1_total_count | Dive Load Low Right Count | count
+diveloadleft_band1_total_count | Dive Load Low Left Count | count
+diveloadcentre_band1_total_count | Dive Load Low Centre Count | count
+total_dive_load | Total Dive Load | None
+dive_load_per_minute | Dive Load / min | None
+diveloadright_band1_average_count_session | Dive Load Low Right Average Count (Session) | None
+diveloadleft_band1_average_count_session | Dive Load Low Left Average Count (Session) | None
+diveloadcentre_band1_average_count_session | Dive Load Low Centre Average Count (Session) | None
+diveloadright_band2_average_count_session | Dive Load Med Right Average Count (Session) | None
+diveloadleft_band2_average_count_session | Dive Load Med Left Average Count (Session) | None
+diveloadcentre_band2_average_count_session | Dive Load Med Centre Average Count (Session) | None
+diveloadright_band3_average_count_session | Dive Load High Right Average Count (Session) | None
+diveloadleft_band3_average_count_session | Dive Load High Left Average Count (Session) | None
+diveloadcentre_band3_average_count_session | Dive Load High Centre Average Count (Session) | None
+diveloadright_band1_total_pre_dive_load | Total Pre Dive Load Right Low Intensity | None
+diveloadright_band2_total_pre_dive_load | Total Pre Dive Load Right Med Intensity | None
+diveloadright_band3_total_pre_dive_load | Total Pre Dive Load Right High Intensity | None
+diveloadright_band1_total_impact_dive_load | Total Impact Dive Load Right Low Intensity | None
+diveloadright_band2_total_impact_dive_load | Total Impact Dive Load Right Med Intensity | None
+diveloadright_band3_total_impact_dive_load | Total Impact Dive Load Right High Intensity | None
+diveloadright_band1_total_post_dive_load | Total Post Dive Load Right Low Intensity | None
+diveloadright_band2_total_post_dive_load | Total Post Dive Load Right Med Intensity | None
+diveloadright_band3_total_post_dive_load | Total Post Dive Load Right High Intensity | None
+diveloadleft_band1_total_pre_dive_load | Total Pre Dive Load Left Low Intensity | None
+diveloadleft_band2_total_pre_dive_load | Total Pre Dive Load Left Med Intensity | None
+diveloadleft_band3_total_pre_dive_load | Total Pre Dive Load Left High Intensity | None
+diveloadleft_band1_total_impact_dive_load | Total Impact Dive Load Left Low Intensity | None
+diveloadleft_band2_total_impact_dive_load | Total Impact Dive Load Left Med Intensity | None
+diveloadleft_band3_total_impact_dive_load | Total Impact Dive Load Left High Intensity | None
+diveloadleft_band1_total_post_dive_load | Total Post Dive Load Left Low Intensity | None
+diveloadleft_band2_total_post_dive_load | Total Post Dive Load Left Med Intensity | None
+diveloadleft_band3_total_post_dive_load | Total Post Dive Load Left High Intensity | None
+diveloadcentre_band1_total_pre_dive_load | Total Pre Dive Load Centre Low Intensity | None
+diveloadcentre_band2_total_pre_dive_load | Total Pre Dive Load Centre Med Intensity | None
+diveloadcentre_band3_total_pre_dive_load | Total Pre Dive Load Centre High Intensity | None
+diveloadcentre_band1_total_impact_dive_load | Total Impact Dive Load Centre Low Intensity | None
+diveloadcentre_band2_total_impact_dive_load | Total Impact Dive Load Centre Med Intensity | None
+diveloadcentre_band3_total_impact_dive_load | Total Impact Dive Load Centre High Intensity | None
+diveloadcentre_band1_total_post_dive_load | Total Post Dive Load Centre Low Intensity | None
+diveloadcentre_band2_total_post_dive_load | Total Post Dive Load Centre Med Intensity | None
+diveloadcentre_band3_total_post_dive_load | Total Post Dive Load Centre High Intensity | None
+diveloadright_band1_average_pre_dive_load | Average Pre Dive Load Right Low Intensity | None
+diveloadright_band2_average_pre_dive_load | Average Pre Dive Load Right Med Intensity | None
+diveloadright_band3_average_pre_dive_load | Average Pre Dive Load Right High Intensity | None
+diveloadright_band1_average_impact_dive_load | Average Impact Dive Load Right Low Intensity | None
+diveloadright_band2_average_impact_dive_load | Average Impact Dive Load Right Med Intensity | None
+diveloadright_band3_average_impact_dive_load | Average Impact Dive Load Right High Intensity | None
+diveloadright_band1_average_post_dive_load | Average Post Dive Load Right Low Intensity | None
+diveloadright_band2_average_post_dive_load | Average Post Dive Load Right Med Intensity | None
+diveloadright_band3_average_post_dive_load | Average Post Dive Load Right High Intensity | None
+diveloadleft_band1_average_pre_dive_load | Average Pre Dive Load Left Low Intensity | None
+diveloadleft_band2_average_pre_dive_load | Average Pre Dive Load Left Med Intensity | None
+diveloadleft_band3_average_pre_dive_load | Average Pre Dive Load Left High Intensity | None
+diveloadleft_band1_average_impact_dive_load | Average Impact Dive Load Left Low Intensity | None
+diveloadleft_band2_average_impact_dive_load | Average Impact Dive Load Left Med Intensity | None
+diveloadleft_band3_average_impact_dive_load | Average Impact Dive Load Left High Intensity | None
+diveloadleft_band1_average_post_dive_load | Average Post Dive Load Left Low Intensity | None
+diveloadleft_band2_average_post_dive_load | Average Post Dive Load Left Med Intensity | None
+diveloadleft_band3_average_post_dive_load | Average Post Dive Load Left High Intensity | None
+diveloadcentre_band1_average_pre_dive_load | Average Pre Dive Load Centre Low Intensity | None
+diveloadcentre_band2_average_pre_dive_load | Average Pre Dive Load Centre Med Intensity | None
+diveloadcentre_band3_average_pre_dive_load | Average Pre Dive Load Centre High Intensity | None
+diveloadcentre_band1_average_impact_dive_load | Average Impact Dive Load Centre Low Intensity | None
+diveloadcentre_band2_average_impact_dive_load | Average Impact Dive Load Centre Med Intensity | None
+diveloadcentre_band3_average_impact_dive_load | Average Impact Dive Load Centre High Intensity | None
+diveloadcentre_band1_average_post_dive_load | Average Post Dive Load Centre Low Intensity | None
+diveloadcentre_band2_average_post_dive_load | Average Post Dive Load Centre Med Intensity | None
+diveloadcentre_band3_average_post_dive_load | Average Post Dive Load Centre High Intensity | None
+total_dive_load_left | Total Dive Load Left | None
+total_dive_load_right | Total Dive Load Right | None
+total_dive_load_centre | Total Dive Load Centre | None
+total_dive_load_low_intensity | Total Dive Load Low Intensity | None
+total_dive_load_med_intensity | Total Dive Load Med Intensity | None
+total_dive_load_high_intensity | Total Dive Load High Intensity | None
+total_dive_load_right_low_intensity | Total Dive Load Right Low Intensity | None
+total_dive_load_right_med_intensity | Total Dive Load Right Med Intensity | None
+total_dive_load_right_high_intensity | Total Dive Load Right High Intensity | None
+total_dive_load_left_low_intensity | Total Dive Load Left Low Intensity | None
+total_dive_load_left_med_intensity | Total Dive Load Left Med Intensity | None
+total_dive_load_left_high_intensity | Total Dive Load Left High Intensity | None
+total_dive_load_centre_low_intensity | Total Dive Load Centre Low Intensity | None
+total_dive_load_centre_med_intensity | Total Dive Load Centre Med Intensity | None
+total_dive_load_centre_high_intensity | Total Dive Load Centre High Intensity | None
+average_dive_load_low_intensity_session | Average Dive Load Low Intensity (Session) | None
+average_dive_load_med_intensity_session | Average Dive Load Med Intensity (Session) | None
+average_dive_load_high_intensity_session | Average Dive Load High Intensity (Session) | None
+average_dive_load_right_low_intensity_session | Average Dive Load Right Low Intensity (Session) | None
+average_dive_load_right_med_intensity_session | Average Dive Load Right Med Intensity (Session) | None
+average_dive_load_right_high_intensity_session | Average Dive Load Right High Intensity (Session) | None
+average_dive_load_left_low_intensity_session | Average Dive Load Left Low Intensity (Session) | None
+average_dive_load_left_med_intensity_session | Average Dive Load Left Med Intensity (Session) | None
+average_dive_load_left_high_intensity_session | Average Dive Load Left High Intensity (Session) | None
+average_dive_load_centre_low_intensity_session | Average Dive Load Centre Low Intensity (Session) | None
+average_dive_load_centre_med_intensity_session | Average Dive Load Centre Med Intensity (Session) | None
+average_dive_load_centre_high_intensity_session | Average Dive Load Centre High Intensity (Session) | None
+player_load_band8_average_distance_session | Player Load Band 8 Average Distance (Session) | distance
+player_load_band2_average_distance | Player Load Band 2 Average Distance | distance
+high_load | High Player Load | None
+max_intensity_interval_player_load_interval_1 | MII Player Load Interval 1 | None
+max_intensity_interval_player_load_interval_2 | MII Player Load Interval 2 | None
+max_intensity_interval_player_load_interval_3 | MII Player Load Interval 3 | None
+diveloadright_band2_total_count | Dive Load Med Right Count | count
+diveloadleft_band2_total_count | Dive Load Med Left Count | count
+pl_low_(avg) | PL_Low (Avg) | None
+high_player_load_(avg) | High Player Load (Avg) | None
+high_impact_player_load_ratio | High Impact Player Load Ratio (%) | None
+player_load_band4_average_duration | Player Load Band 4 Average Duration | duration
+player_load_band1_average_duration_session | Player Load Band 1 Average Duration (Session) | duration
+player_load_band2_average_effort_count | Player Load Band 2 Average Effort Count | count
+player_load_band8_average_distance | Player Load Band 8 Average Distance | distance
+player_load_band2_total_duration | Player Load Band 2 Total Duration | duration
+player_load_band3_total_distance | Player Load Band 3 Total Distance | distance
+high_impact_player_load_ratio | High Impact Player Load (%) | None
+player_load_band8_duration_percentage | Player Load Band 8 Duration % | percentage
+playerload_intensity_ratio | PlayerLoad Intensity Ratio | None
+pl_high | PL_High | None
+exp_ratio | EXP Ratio | None
+player_load_band5_total_distance | Player Load Band 5 Total Distance | distance
+non-contact_load_% | Non-Contact Load % | None
+player_load_band7_average_effort_count | Player Load Band 7 Average Effort Count | count
+high_metabolic_load_distance | High Metabolic Load Distance | distance
+player_load_band4_average_effort_count | Player Load Band 4 Average Effort Count | count
+player_load_band5_total_duration | Player Load Band 5 Total Duration | duration
+player_load_band4_total_duration | Player Load Band 4 Total Duration | duration
+player_load_band7_average_duration_session | Player Load Band 7 Average Duration (Session) | duration
+player_load_band4_total_effort_count | Player Load Band 4 Total Effort Count | count
+player_load_band6_total_distance | Player Load Band 6 Total Distance | distance
+player_load_band8_average_effort_count | Player Load Band 8 Average Effort Count | count
+player_load_band1_distance_percentage | Player Load Band 1 Distance % | percentage
+performance_efforts | Performance Efforts | None
+effort_ratio_(pli) | Effort Ratio (PLI) | None
+player_load_band6_total_effort_count | Player Load Band 6 Total Effort Count | count
+contact_load_percentage | Contact Load Percentage | percentage
+player_load_band6_average_duration | Player Load Band 6 Average Duration | duration
+lineplay | LinePlay | None
+player_load_band4_duration_percentage | Player Load Band 4 Duration % | percentage
+player_load_band2_total_distance | Player Load Band 2 Total Distance | distance
+player_load_band6_average_effort_count_session | Player Load Band 6 Average Effort Count (Session) | None
+load_per_contact | Load per Contact | None
+imafreerunning_band1_total_player_load | IMA Free Running Band 1 Total Player Load | None
+imafreerunning_band2_total_player_load | IMA Free Running Band 2 Total Player Load | None
+imafreerunning_band3_total_player_load | IMA Free Running Band 3 Total Player Load | None
+pl_low | PL_Low | None
+imafreerunning_band4_total_player_load | IMA Free Running Band 4 Total Player Load | None
+imafreerunning_band5_total_player_load | IMA Free Running Band 5 Total Player Load | None
+imafreerunning_band6_total_player_load | IMA Free Running Band 6 Total Player Load | None
+imafreerunning_band7_total_player_load | IMA Free Running Band 7 Total Player Load | None
+imafreerunning_band8_total_player_load | IMA Free Running Band 8 Total Player Load | None
+imafreerunning_band1_average_player_load_session | IMA Free Running Band 1 Average Player Load (Session) | None
+imafreerunning_band2_average_player_load_session | IMA Free Running Band 2 Average Player Load (Session) | None
+imafreerunning_band3_average_player_load_session | IMA Free Running Band 3 Average Player Load (Session) | None
+imafreerunning_band4_average_player_load_session | IMA Free Running Band 4 Average Player Load (Session) | None
+imafreerunning_band5_average_player_load_session | IMA Free Running Band 5 Average Player Load (Session) | None
+imafreerunning_band6_average_player_load_session | IMA Free Running Band 6 Average Player Load (Session) | None
+imafreerunning_band7_average_player_load_session | IMA Free Running Band 7 Average Player Load (Session) | None
+imafreerunning_band8_average_player_load_session | IMA Free Running Band 8 Average Player Load (Session) | None
+imafreerunning_band1_player_load_per_minute | IMA Free Running Band 1 Player Load Per Minute | None
+imafreerunning_band2_player_load_per_minute | IMA Free Running Band 2 Player Load Per Minute | None
+imafreerunning_band3_player_load_per_minute | IMA Free Running Band 3 Player Load Per Minute | None
+imafreerunning_band4_player_load_per_minute | IMA Free Running Band 4 Player Load Per Minute | None
+imafreerunning_band5_player_load_per_minute | IMA Free Running Band 5 Player Load Per Minute | None
+imafreerunning_band6_player_load_per_minute | IMA Free Running Band 6 Player Load Per Minute | None
+imafreerunning_band7_player_load_per_minute | IMA Free Running Band 7 Player Load Per Minute | None
+imafreerunning_band8_player_load_per_minute | IMA Free Running Band 8 Player Load Per Minute | None
+player_load_band4_distance_percentage | Player Load Band 4 Distance % | percentage
+player_load_band1_average_distance | Player Load Band 1 Average Distance | distance
+acceleration_density | Acceleration Density | None
+accel_load_density_index | Acceleration Density Index | None
+total_acceleration_load | Acceleration Load | None
+player_load_per_yard | Player Load Per Yard | None
+average_non-contact_load_(session) | Average Non-Contact Load (Session) | None
+pl_high/min | PL_High/Min | None
+player_load_band6_total_duration | Player Load Band 6 Total Duration | duration
+player_load_band1_duration_percentage | Player Load Band 1 Duration % | percentage
+player_load_band7_average_duration | Player Load Band 7 Average Duration | duration
+player_load_band5_average_distance_session | Player Load Band 5 Average Distance (Session) | distance
+physicality | Physicality | None
+player_load_band3_average_distance | Player Load Band 3 Average Distance | distance
+impactload_band1_total_count | Impact Load Band 1 Count | count
+impactload_band2_total_count | Impact Load Band 2 Count | count
+impactload_band3_total_count | Impact Load Band 3 Count | count
+impactload_band4_total_count | Impact Load Band 4 Count | count
+impactload_band5_total_count | Impact Load Band 5 Count | count
+total_football_impact_load | Total Impact Load | None
+average_football_impact_load_session | Average Impact Load (Session) | None
+football_impact_load_per_minute | Impact Load per Minute | None
+impactload_band1_total_power | Impact Load Band 1 Total Load | None
+impactload_band2_total_power | Impact Load Band 2 Total Load | None
+impactload_band3_total_power | Impact Load Band 3 Total Load | None
+impactload_band4_total_power | Impact Load Band 4 Total Load | None
+impactload_band5_total_power | Impact Load Band 5 Total Load | None
+average_non_impact_football_load | Average Non-Impact Football Load (Session) | None
+total_throw_load | Total Throw Load | None
+total_non_throw_load | Total Non-Throw Load | None
+average_throw_load | Average Throw Load (Period) | None
+average_throw_load_session | Average Throw Load (Session) | None
+average_non_throw_load | Average Non-Throw Load (Period) | None
+average_non_throw_load_session | Average Non-Throw Load (Session) | None
+throw_load_per_minute | Throw Load Per Minute | None
+throwload_band1_total_power | Throw Load Band 1 Total Load | None
+throwload_band2_total_power | Throw Load Band 2 Total Load | None
+throwload_band3_total_power | Throw Load Band 3 Total Load | None
+throwload_band4_total_power | Throw Load Band 4 Total Load | None
+throwload_band5_total_power | Throw Load Band 5 Total Load | None
+throwload_band1_total_count | Throw Load Band 1 Total Throws | count
+throwload_band2_total_count | Throw Load Band 2 Total Throws | count
+throwload_band3_total_count | Throw Load Band 3 Total Throws | count
+throwload_band4_total_count | Throw Load Band 4 Total Throws | count
+throwload_band5_total_count | Throw Load Band 5 Total Throws | count
+player_load_band8_distance_percentage | Player Load Band 8 Distance % | percentage
+player_load_band3_average_distance_session | Player Load Band 3 Average Distance (Session) | distance
+player_load_band1_total_distance | Player Load Band 1 Total Distance | distance
+pl_med_(avg) | PL_Med (Avg) | None
+player_load_band1_total_duration | Player Load Band 1 Total Duration | duration
+contactload_band2_total_count | Contact Load Band 2 Total Count | count
+contactload_band2_total_power | Contact Load Band 2 Total Load | None
+contactload_band2_average_count | Contact Load Band 2 Average Contact | count
+contactload_band2_average_load | Contact Load Band 2 Average Load | None
+contactload_band2_average_count | Contact Load Band 2 Average Contact (Session) | count
+contactload_band2_average_load_session | Contact Load Band 2 Average Load (Session) | None
+contactload_band2_count_per_minute | Contact Load Band 2 Contacts Per Minute | None
+contactload_band2_load_per_minute | Contact Load Band 2 Load Per Minute | None
+contactload_band2_load_per_contact | Contact Load Band 2 Load Per Contact | None
+explosive_ratio_(avg) | Explosive Ratio (Avg) | None
+player_load_band3_total_duration | Player Load Band 3 Total Duration | duration
+player_load_band2_average_effort_count_session | Player Load Band 2 Average Effort Count (Session) | None
+brute_2,0 | Brute 2,0 | None
+contactload_band3_total_count | Contact Load Band 3 Total Count | count
+contactload_band3_total_power | Contact Load Band 3 Total Load | None
+contactload_band3_average_count | Contact Load Band 3 Average Contact | count
+contactload_band3_average_load | Contact Load Band 3 Average Load | None
+contactload_band3_average_count | Contact Load Band 3 Average Contact (Session) | count
+contactload_band3_average_load_session | Contact Load Band 3 Average Load (Session) | None
+contactload_band3_count_per_minute | Contact Load Band 3 Contacts Per Minute | None
+contactload_band3_load_per_minute | Contact Load Band 3 Load Per Minute | None
+contactload_band3_load_per_contact | Contact Load Band 3 Load Per Contact | None
+player_load_band7_duration_percentage | Player Load Band 7 Duration % | percentage
+player_load_band1_average_distance_session | Player Load Band 1 Average Distance (Session) | distance
+total_non-contact_load | Total Non-Contact Load | None
+pl_veryhigh/min | PL_VeryHigh/Min | None
+player_load_band8_total_effort_count | Player Load Band 8 Total Effort Count | count
+total_lineman_contact_load | Total Contact Load | None
+average_lineman_contact_load_session | Average Contact Load (Session) | None
+average_lineman_contact_load | Average Contact Load | None
+lineman_contact_load_per_minute | Average Contact Load Per Minute | None
+lineman_average_load_per_contact | Average Load Per Contact | None
+accel_load_/_pl_ratio | Accel Load / PL Ratio | None
+contactload_band4_total_count | Contact Load Band 4 Total Count | count
+contactload_band4_total_power | Contact Load Band 4 Total Load | None
+contactload_band4_average_count | Contact Load Band 4 Average Contact | count
+contactload_band4_average_load | Contact Load Band 4 Average Load | None
+contactload_band4_average_count | Contact Load Band 4 Average Contact (Session) | count
+contactload_band4_average_load_session | Contact Load Band 4 Average Load (Session) | None
+contactload_band4_count_per_minute | Contact Load Band 4 Contacts Per Minute | None
+contactload_band4_load_per_minute | Contact Load Band 4 Load Per Minute | None
+contactload_band4_load_per_contact | Contact Load Band 4 Load Per Contact | None
+player_load_band3_average_effort_count | Player Load Band 3 Average Effort Count | count
+player_load_band6_duration_percentage | Player Load Band 6 Duration % | percentage
+player_load_band8_average_duration_session | Player Load Band 8 Average Duration (Session) | duration
+player_load_band7_total_duration | Player Load Band 7 Total Duration | duration
+player_load_band7_total_effort_count | Player Load Band 7 Total Effort Count | count
+contactload_band1_total_count | Contact Load Band 1 Total Count | count
+contactload_band1_total_power | Contact Load Band 1 Total Load | None
+contactload_band1_average_count | Contact Load Band 1 Average Contact | count
+contactload_band1_average_load | Contact Load Band 1 Average Load | None
+player_load_band8_average_duration | Player Load Band 8 Average Duration | duration
+player_load_band4_average_effort_count_session | Player Load Band 4 Average Effort Count (Session) | None
+contactload_band1_average_count | Contact Load Band 1 Average Contact (Session) | count
+contactload_band1_average_load_session | Contact Load Band 1 Average Load (Session) | None
+contactload_band1_count_per_minute | Contact Load Band 1 Contacts Per Minute | None
+contactload_band1_load_per_minute | Contact Load Band 1 Load Per Minute | None
+contactload_band1_load_per_contact | Contact Load Band 1 Load Per Contact | None
+player_load_band6_average_duration_session | Player Load Band 6 Average Duration (Session) | duration
+pl_med | PL_Med | None
+pl_med_(avg) | PL_High (Avg) | None
+contactload_band5_total_count | Contact Load Band 5 Total Count | count
+contactload_band5_total_power | Contact Load Band 5 Total Load | None
+contactload_band5_average_count | Contact Load Band 5 Average Contact | count
+contactload_band5_average_load | Contact Load Band 5 Average Load | None
+contactload_band5_average_count | Contact Load Band 5 Average Contact (Session) | count
+contactload_band5_average_load_session | Contact Load Band 5 Average Load (Session) | None
+contactload_band5_count_per_minute | Contact Load Band 5 Contacts Per Minute | None
+contactload_band5_load_per_minute | Contact Load Band 5 Load Per Minute | None
+contactload_band5_load_per_contact | Contact Load Band 5 Load Per Contact | None
+high_load/high_ima | High Load/High IMA | None
+player_load_band5_average_effort_count | Player Load Band 5 Average Effort Count | count
+player_load_band6_distance_percentage | Player Load Band 6 Distance % | percentage
+performance | Performance | None
+player_load_band3_distance_percentage | Player Load Band 3 Distance % | percentage
+contactload_band6_total_count | Contact Load Band 6 Total Count | count
+contactload_band6_total_power | Contact Load Band 6 Total Load | None
+contactload_band6_average_count | Contact Load Band 6 Average Contact | count
+contactload_band6_average_load | Contact Load Band 6 Average Load | None
+contactload_band6_average_count | Contact Load Band 6 Average Contact (Session) | count
+contactload_band6_average_load_session | Contact Load Band 6 Average Load (Session) | None
+contactload_band6_count_per_minute | Contact Load Band 6 Contacts Per Minute | None
+contactload_band6_load_per_minute | Contact Load Band 6 Load Per Minute | None
+contactload_band6_load_per_contact | Contact Load Band 6 Load Per Contact | None
+player_load_per_minute | Player Load Per Minute | None
+player_load_per_metre | Player Load Per Metre | None
+brute | Brute | None
+pl_low/min | PL_Low/Min | None
+total_player_load | Total Player Load | None
+average_player_load | Average Player Load | None
+player_load_band6_average_distance | Player Load Band 6 Average Distance | distance
+contactload_band7_total_count | Contact Load Band 7 Total Count | count
+contactload_band7_total_power | Contact Load Band 7 Total Load | None
+contactload_band7_average_count | Contact Load Band 7 Average Contact | count
+contactload_band7_average_load | Contact Load Band 7 Average Load | None
+contactload_band7_average_count | Contact Load Band 7 Average Contact (Session) | count
+contactload_band7_average_load_session | Contact Load Band 7 Average Load (Session) | None
+contactload_band7_count_per_minute | Contact Load Band 7 Contacts Per Minute | None
+contactload_band7_load_per_minute | Contact Load Band 7 Load Per Minute | None
+contactload_band7_load_per_contact | Contact Load Band 7 Load Per Contact | None
+load_per_yard | Load Per Yard | None
+player_load_band6_average_distance_session | Player Load Band 6 Average Distance (Session) | distance
+player_load_band5_duration_percentage | Player Load Band 5 Duration % | percentage
+player_load_band4_average_duration_session | Player Load Band 4 Average Duration (Session) | duration
+contactload_band8_total_count | Contact Load Band 8 Total Count | count
+contactload_band8_total_power | Contact Load Band 8 Total Load | None
+pl_veryhigh | PL_VeryHigh | None
+contactload_band8_average_count | Contact Load Band 8 Average Contact | count
+contactload_band8_average_load | Contact Load Band 8 Average Load | None
+contactload_band8_average_count | Contact Load Band 8 Average Contact (Session) | count
+contactload_band8_average_load_session | Contact Load Band 8 Average Load (Session) | None
+contactload_band8_count_per_minute | Contact Load Band 8 Contacts Per Minute | None
+contactload_band8_load_per_minute | Contact Load Band 8 Load Per Minute | None
+contactload_band8_load_per_contact | Contact Load Band 8 Load Per Contact | None
+player_load_band2_average_distance_session | Player Load Band 2 Average Distance (Session) | distance
+player_load_band2_average_duration_session | Player Load Band 2 Average Duration (Session) | duration
+player_load_band2_total_effort_count | Player Load Band 2 Total Effort Count | count
+player_load_band8_average_effort_count_session | Player Load Band 8 Average Effort Count (Session) | None
+player_load_band3_duration_percentage | Player Load Band 3 Duration % | percentage
+player_load_band2_distance_percentage | Player Load Band 2 Distance % | percentage
+player_load_band3_total_effort_count | Player Load Band 3 Total Effort Count | count
+player_load_band5_total_effort_count | Player Load Band 5 Total Effort Count | count
+max_intensity_interval_pl_interval_1_start_time | MII Player Load Interval 1 Start Time | None
+max_intensity_interval_pl_interval_1_end_time | MII Player Load Interval 1 End Time | None
+max_intensity_interval_pl_interval_2_start_time | MII Player Load Interval 2 Start Time | None
+max_intensity_interval_pl_interval_2_end_time | MII Player Load Interval 2 End Time | None
+max_intensity_interval_pl_interval_3_start_time | MII Player Load Interval 3 Start Time | None
+max_intensity_interval_pl_interval_3_end_time | MII Player Load Interval 3 End Time | None
+player_load_band7_average_distance_session | Player Load Band 7 Average Distance (Session) | distance
+player_load_band7_total_distance | Player Load Band 7 Total Distance | distance
+acceleration_load_average | Avg Acceleration Load (Session) | None
+high_ima/high_load | High IMA/High Load | None
+player_load_band5_average_duration | Player Load Band 5 Average Duration | duration
+contact_load_% | Contact Load % | None
+player_load_band2_average_duration | Player Load Band 2 Average Duration | duration
+player_load_band5_average_distance | Player Load Band 5 Average Distance | distance
+load_per_impact | Load per Impact | None
+player_load_band7_distance_percentage | Player Load Band 7 Distance % | percentage
+explosive_ratio | Explosive Ratio | None
+player_load_band7_average_distance | Player Load Band 7 Average Distance | distance
+player_load_band3_average_duration | Player Load Band 3 Average Duration | duration
+player_load_band8_total_duration | Player Load Band 8 Total Duration | duration
+total_2d_player_load | Player Load (2D) | None
+total_slow_player_load | Player Load (Slow) | None
+total_1d_fwd_player_load | Player Load (1D Fwd) | None
+total_1d_side_player_load | Player Load (1D Side) | None
+total_1d_up_player_load | Player Load (1D Up) | None
+average_2d_player_load | Average Player Load (2D) | None
+average_slow_player_load | Average Player Load (Slow) | None
+average_1d_fwd_player_load | Average Player Load (1D Fwd) | None
+average_1d_side_player_load | Average Player Load (1D Side) | None
+average_1d_up_player_load | Average Player Load (1D Up) | None
+average_2d_player_load_session | Average Player Load (2D) (Session) | None
+average_slow_player_load_session | Average Player Load (Slow) (Session) | None
+average_1d_fwd_player_load_session | Average Player Load (1D Fwd) (Session) | None
+average_1d_side_player_load_session | Average Player Load (1D Side) (Session) | None
+average_1d_up_player_load_session | Average Player Load (1D Up) (Session) | None
+1d_fwd_player_load_percentage | Player Load (1D Fwd %) | percentage
+1d_side_player_load_percentage | Player Load (1D Side %) | percentage
+1d_up_player_load_percentage | Player Load (1D Up %) | percentage
+peak_player_load | Peak Player Load | None
+player_load_band1_average_duration | Player Load Band 1 Average Duration | duration
+player_load_band5_average_duration_session | Player Load Band 5 Average Duration (Session) | duration
+player_load_band5_distance_percentage | Player Load Band 5 Distance % | percentage
+pl_veryhigh_(avg) | PL_VeryHigh (Avg) | None
+player_load_band3_average_effort_count_session | Player Load Band 3 Average Effort Count (Session) | None
+explosive_ratio | Explosive Ratio (100) | None
+player_load_band4_total_distance | Player Load Band 4 Total Distance | distance
+average_player_load_session | Average Player Load (Session) | None
+eff_ratio_v2 | Eff Ratio v2 | None
+player_load_band6_average_effort_count | Player Load Band 6 Average Effort Count | count
+player_load_band5_average_effort_count_session | Player Load Band 5 Average Effort Count (Session) | None
+player_load_band2_duration_percentage | Player Load Band 2 Duration % | percentage
+player_load_band4_average_distance | Player Load Band 4 Average Distance | distance
