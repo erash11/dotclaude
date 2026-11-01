@@ -90,3 +90,4 @@ Never put memory content here — the file itself holds the facts.
 - [Codex exec stdin hang](project_codex-exec-stdin-hang.md) — before running codex exec from a script or the Bash tool
 - [Skill audit model](feedback_skill-audit-model.md) — before spawning an agent for a skill audit or similar review work
 - [Text eric imessage](reference_text-eric-imessage.md) — Eric asks to be texted; a long job finishes while he is away
+- [Catapult not health data](feedback_catapult-not-health-data.md) — before treating any Catapult, GPS or tracking file as health data

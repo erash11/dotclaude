@@ -82,6 +82,7 @@ Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting
 | gpspull | daily 10:00 and 16:30 |
 | perchpull | daily 10:05 and 16:35 |
 | valdpull | daily 10:10 and 16:40 |
+| pffpull | Wed 10:20 (installed 2026-10-31 with Eric's chat approval, "Go A"). Tracked plist `~/DEV/Football/PFF_Data_Project/ops/com.keystone.pffpull.plist`; runs `scripts/weekly_pull.sh` (rolling backup, `run_pipeline.py --catch-up`). Failures and `config/checkpoints.txt` DUE notices go to `.errors.log` |
 | dailybackup | hourly 12:00-17:00 (gate: `daily-backup-login.sh`) |
 | dailybackup-login | RunAtLoad (same gate) |
 | stackdoctor | Mon 10:30 |

@@ -5,15 +5,16 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 25377000-859e-4d10-9d38-5e91339a12d3
-  modified: 2026-10-02T21:24:09.290Z
+  modified: 2026-10-31T18:53:40.379Z
 ---
 
 Sessions are scratchpads; the repo (commits + `docs/STATUS.md` `## Next`) is the record.
 Agreed 2026-10-02 after 79 sessions piled up on the home screen.
 
 - **Delete a session** once its work is committed, pushed and in STATUS.md. Keep it while
-  it is working/blocked, for 24 h after it finishes (the backup, hourly 12:00-17:00
-  since 2026-10-22, has not taken its transcript yet), or while its `jobs/<id>/tmp/` holds a git worktree.
+  it is working/blocked, until its transcript (`~/.claude/projects/*/<id>*`) is committed
+  and pushed in `~/.claude` (replaced the 24 h rule 2026-10-31; `claude rm` keeps the
+  transcript file), or while its `jobs/<id>/tmp/` holds a git worktree.
 - `python ~/.claude/scripts/session-sweep.py` prints KEEP / SAFE TO DELETE / repos with
   unsaved work. Read-only.
 - **Start the day** with `python ~/.claude/scripts/where-was-i.py` (first `## Next` item
