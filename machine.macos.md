@@ -1,6 +1,6 @@
 # Shell / Environment (macOS)
 
-- **Terminal app: Ghostty** (Eric, 2026-11-02; `/Applications/Ghostty.app`, 1.4.0). Hand Eric commands to paste in Ghostty. To start a new session or a long job in a window, run `open -na Ghostty --args --working-directory=<dir> -e <cmd>` (or `open -a Ghostty <file>.command`). Exception: `com.keystone.clouddrivepush` stays on Terminal, because macOS grants Drive file access to Terminal (Tier A `cloud-push-launchd-blocked`).
+- **Terminal app: Ghostty** (Eric, 2026-11-02; `/Applications/Ghostty.app`, 1.4.0). Hand Eric commands to paste in Ghostty. To start a new Claude session or a long job in a window, run `~/.claude/scripts/new-session.sh <dir> <cmd> [args]` (e.g. `… ~/DEV/KeystoneOS claude "audit my AI OS"`): it opens Ghostty with the parent's CLAUDE* variables removed. A plain `open` from inside Claude Code passes them on, and the new session saves no transcript (Tier A `child-session-env-leak`). Exception: `com.keystone.clouddrivepush` stays on Terminal, because macOS grants Drive file access to Terminal (Tier A `cloud-push-launchd-blocked`).
 - zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
 - **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
 - **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:

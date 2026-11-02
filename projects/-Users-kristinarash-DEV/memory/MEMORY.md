@@ -92,3 +92,4 @@ Never put memory content here — the file itself holds the facts.
 - [Text eric imessage](reference_text-eric-imessage.md) — any long run (30+ min or background job) finishes or fails: text Eric unasked; or he asks to be texted
 - [Catapult not health data](feedback_catapult-not-health-data.md) — before treating any Catapult, GPS or tracking file as health data
 - [Decision desk](feedback_decision-desk.md) — before asking Eric any decision; startup decisions list; reading his answers back
+- [Child session env leak](project_child-session-env-leak.md) — before opening a new Claude session from a session; 'transcript_path does not exist' in .errors.log
