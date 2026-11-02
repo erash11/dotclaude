@@ -8,6 +8,8 @@ metadata:
   modified: 2026-07-25T00:00:14.385Z
 ---
 
+> **History (Windows era).** On the Mac the backup is launchd `com.keystone.dailybackup` (hourly 12-17) to Google Drive: see DEV Tier A `backup-sync-system`. The OneDrive destination was removed 2026-10-31 (KeystoneOS `docs/STATUS.md`).
+
 System audit 2026-07-23 found capture healthy but durability broken; Phase 1 remediation executed same day (pre-approved by Eric).
 
 **Now remote-backed (all private GitHub repos under erash11):**

@@ -8,6 +8,8 @@ metadata:
   modified: 2026-07-25T22:19:57.484Z
 ---
 
+> **History (Windows only).** It applies only if the Windows laptop runs Git Bash again (DEV Tier A `work-laptop-hands-off`).
+
 **Git Bash's intermittent failures on this machine are load-induced MSYS shared-memory init timeouts — fixed 2026-07-25 by the `KeystoneOS-MsysKeepAlive` scheduled task.**
 
 Symptom: `bash.exe: *** fatal error - add_item ("\??\C:\Program Files\Git", "/", ...) failed, errno 1`, and more generally bash exiting 1 with empty output (the long-standing "Bash frequently fails silently" note in CLAUDE.md). Non-blocking: the underlying git command usually succeeded; Claude Code hooks (spawned via Git Bash) report failure.

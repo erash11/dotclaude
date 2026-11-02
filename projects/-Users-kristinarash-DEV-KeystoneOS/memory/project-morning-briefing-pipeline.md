@@ -7,6 +7,8 @@ metadata:
   originSessionId: edb9fb24-d71a-4337-9d52-a2f61c01fbc3
 ---
 
+> **History.** The morning briefing is retired and archived (DEV Tier A `morning-briefing-retired`). The venv lesson below still holds.
+
 `C:\Users\eric_rash\Desktop\DEV\morning-briefing`: `run.py` orchestrator → `morning_briefing/` package (config.py, deliver.py, sources/, carryover.py, synthesize.py) → Windows Task Scheduler at 07:20 weekdays via `scripts/run_with_logging.cmd`.
 
 **Incident (2026-06-17):** the briefing's `.venv` pointed at a Python install deleted by a Python Install Manager migration (old path `C:\Python314`). The scheduled task failed *silently* every weekday from 6/12–6/17 (last successful send 6/11 09:00:34) — no error surfaced to Eric because the failure email path itself depends on the broken venv. Fixed by rebuilding `.venv` against the current interpreter `C:\Users\eric_rash\AppData\Local\Python\pythoncore-3.14-64\python.exe` and reinstalling deps from `pyproject.toml` directly (NOT `pip install -e .` — that fails with a flat-layout multi-package discovery error because `logs/`, `secrets/`, `morning_briefing/` all get discovered as top-level packages; worked around, not fixed, since the package doesn't need installing — script dir is on `sys.path`). Verified via `--dry-run --force`.

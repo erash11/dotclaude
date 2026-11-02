@@ -8,6 +8,8 @@ metadata:
   modified: 2026-07-24T02:50:30.492Z
 ---
 
+> **History (Windows era, to 2026-10-21).** On the Mac, code lives in `~/DEV` and documents on Google Drive: see `~/.claude/machine.md` and `~/.claude/STORAGE.md`. OneDrive is not used (DEV Tier A `no-baylor-onedrive`).
+
 Eric's projects and knowledge live in **three homes**. Know this before searching, registering, or "consolidating" anything — don't re-discover it, and don't propose moving files into one folder (settled: federation, not a monorepo — see KeystoneOS `decisions/log.md` 2026-06-12).
 
 1. **`C:\Users\eric_rash\Desktop\DEV`** — active **code** projects. Each is its own git repo → personal GitHub (`github.com/erash11`). **Canonical.** This is what the cockpit's project lanes track.

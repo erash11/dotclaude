@@ -2,17 +2,17 @@
 <!-- re-keyed 2026-08-15 from C--Users-eric-rash-Desktop-DEV-KeystoneOS -->
 # Memory Index — KeystoneOS
 
-- [MSYS bash flakiness solved](project-msys-bash-flakiness.md) — "add_item errno 1" + silent bash exit-1s = load-induced MSYS init timeout; KeystoneOS-MsysKeepAlive task holds region warm (7/25)
+- [MSYS bash flakiness solved](project-msys-bash-flakiness.md) — HISTORY, Windows era: "add_item errno 1" + silent bash exit-1s = load-induced MSYS init timeout; KeystoneOS-MsysKeepAlive task holds region warm (7/25)
 
-- [Backup coverage 2026-07](project-backup-coverage.md) — Phases 1+2 done 7/23: 10 stores remote-backed + KeystoneOS-DailyBackup task (06:15) auto-commits repos & snapshots transcripts/codex to OneDrive; RESTORE.md in dotclaude; Phase 3 open: workdrive PDF extraction
+- [Backup coverage 2026-07](project-backup-coverage.md) — HISTORY, Windows era: Phases 1+2 done 7/23: 10 stores remote-backed + KeystoneOS-DailyBackup task (06:15) auto-commits repos & snapshots transcripts/codex to OneDrive; RESTORE.md in dotclaude; Phase 3 open: workdrive PDF extraction
 
 - [Career Context](user_career_context.md) — role, strengths, 12-mo clock, target role (Iowa, ~$90K+), leverage = ship visible proof
 - [Personal Constitution](user_personal_constitution.md) — faith as foundation, family first, service-vs-recognition tension, resentment as diagnostic
 - [Auto commit+push authorized](feedback-auto-commit-push.md) — Eric OK'd autonomous commit/push to this repo (2026-06-11)
-- [Drive topology](project-drive-topology.md) — three homes: DEV=canonical code, OneDrive workdrive=Baylor knowledge (registered), D:\ backup=ignore
+- [Drive topology](project-drive-topology.md) — HISTORY, Windows era: three homes: DEV=canonical code, OneDrive workdrive=Baylor knowledge (registered), D:\ backup=ignore
 - [AppPerformance utilization brief](project-appperformance-utilization-brief.md) — per-sport AppPerformance recs; 17-count fixed 6/17, 18th-sport gap open
-- [Morning-briefing pipeline](project-morning-briefing-pipeline.md) — on-ramp folded into run.py (6/17); 6-day silent venv outage found+fixed; gws calendar scope gap
-- [Skill audit 2026-07](project-skill-audit-2026-07.md) — 122 skills audited 7/13; 9 fixed, 3 removed (archive: ~/.claude/skills-archive); graphify bloat + 11 dead-weight candidates open
+- [Morning-briefing pipeline](project-morning-briefing-pipeline.md) — HISTORY, Windows era: on-ramp folded into run.py (6/17); 6-day silent venv outage found+fixed; gws calendar scope gap
+- [Skill audit 2026-07](project-skill-audit-2026-07.md) — HISTORY, Windows era: 122 skills audited 7/13; 9 fixed, 3 removed (archive: ~/.claude/skills-archive); graphify bloat + 11 dead-weight candidates open
 - [Insights-report fixes 2026-07](project-insights-fixes-2026-07.md) — SHELL="" removed (verify Bash healed), Fireflies loop hardened, .claude edits allowlisted, weekly StackDoctor task added; 2 recs open
 - [JD + OKR restructure 2026](project-jd-okr-2026.md) — new JD accepted 7/17; semester OKRs, AJ owns FB, Blake LEFT, white paper solo, Friday report cadence; 9 decision records in SecondBrain
 - [SpeedProfiling data gotchas](project-speedprofiling-data-gotchas.md) — TCU "degraded" retracted (transient-pull bug, PR #9), atomic .rds writes, ONE pipeline run at a time (silent OOM), venue metadata dead end, M≥3 W/kg sideline rule

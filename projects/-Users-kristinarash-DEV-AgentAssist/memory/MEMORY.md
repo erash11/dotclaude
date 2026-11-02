@@ -1,6 +1,3 @@
 - [Baylor house style](reference_baylor-house-style.md) — where the printed one-pager/report style lives and its exact color and font tokens
 - [Chrome PDF font gotcha](project_chrome-pdf-font-gotcha.md) — `--print-to-pdf` silently drops all text without `--virtual-time-budget`; verify the PDF, not the HTML
 - [PPTX rendering without PowerPoint](project_pptx-rendering-without-powerpoint.md) — AppleScript is dead; deck_preview.py + qlmanage, and qlmanage crops to a square
-- [project_chrome-pdf-font-gotcha.md](project_chrome-pdf-font-gotcha.md) — Chrome --print-to-pdf silently drops every glyph unless --virtual-time-budget is passed, when the page uses large data-URI font stylesheets
-- [project_pptx-rendering-without-powerpoint.md](project_pptx-rendering-without-powerpoint.md) — PowerPoint AppleScript is broken on this Mac; render .pptx proofs with tools/deck_preview.py plus qlmanage instead
-- [reference_baylor-house-style.md](reference_baylor-house-style.md) — Where the Baylor Athletics Applied Performance printed house style lives, and its exact color/font tokens

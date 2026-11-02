@@ -7,6 +7,8 @@ metadata:
   originSessionId: b43a1942-bb40-417d-8969-1fa74e776c87
 ---
 
+> **History (2026-07-13, Windows, 122 skills).** Now 41 canonical skills, and the monthly `aios-audit` owns skill audits (KeystoneOS `docs/audits/`). The "11 dead-weight candidates open" line is superseded.
+
 On 2026-07-13 all 122 skills in `~/.claude/skills/` were audited and cleaned up:
 
 - Rewritten descriptions: pp-recipe-goat, graphify (also renamed from `graphify-windows`), diagram-generator, pp-catapult-openfield-connect, pp-fireflies, web-scraping (narrowed to Exa; firecrawl suite owns scrape/crawl), everything-search, frontend-slides (absorbed slide-deck-generator's triggers + component library).
