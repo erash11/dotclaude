@@ -12,7 +12,7 @@ REA (`rea-agents` 6.4.0) is installed at `~/.local/bin/rea` (npm, prefix `~/.loc
 
 Run native analysis with `GHIDRA_INSTALL_DIR=/opt/homebrew/Cellar/ghidra/12.1.4/libexec` and `JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`.
 
-**Why:** the sleep-scheduler FAST recovery (see `~/DEV/sleep-scheduler/installer-inspection/FAST-MODEL-STATIC-RECOVERY.md`) took about an hour of avoidable traps.
+**Why:** the sleep-scheduler FAST recovery (see `~/DEV/Personal/sleep-scheduler/installer-inspection/FAST-MODEL-STATIC-RECOVERY.md`) took about an hour of avoidable traps.
 
 **How to apply:**
 - Ghidra rejects any path element starting with `.` (so `~/.claude/...` fails with `GhidraLaunchError`); copy targets to `/tmp/...` first.
