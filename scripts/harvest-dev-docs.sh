@@ -9,8 +9,9 @@
 # Never mirrored: local-only repos (CLAUDE.md says "local only"), health and confidential
 # folders. recall output lands in committed session transcripts, so these stay out of the index.
 set -e
-# KeystoneOS marks the DEV root; it may live in the Platform Area (plan Task 4).
-if [ -d "$HOME/DEV/KeystoneOS" ] || [ -d "$HOME/DEV/Platform/KeystoneOS" ]; then DEV="$HOME/DEV"; else DEV="$HOME/Desktop/DEV"; fi
+# ~/DEV is the root (Mac); ~/Desktop/DEV only where ~/DEV does not exist. Not keyed on KeystoneOS: repos move into
+# Area folders (plan Task 4) and a moved marker sent this to the wrong root (Codex R1/R3-01, 11-02).
+if [ -d "$HOME/DEV" ]; then DEV="$HOME/DEV"; else DEV="$HOME/Desktop/DEV"; fi
 [ -d "$DEV" ] || { echo "harvest: no DEV root at $DEV, nothing harvested or parked" >&2; exit 1; }
 OUT="$HOME/.claude/global-memory/dev-docs"
 PARK="$HOME/_PARKED_COPIES/dev-docs-orphans-$(date +%F)"

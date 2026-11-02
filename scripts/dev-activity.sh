@@ -16,7 +16,7 @@ DAYS="${1:-90}"
 ACTIVE="${2:-5}"
 
 DEV="$HOME/DEV"
-[ -d "$DEV/KeystoneOS" ] || [ -d "$DEV/Platform/KeystoneOS" ] || DEV="$HOME/Desktop/DEV"   # Platform: plan Task 4
+[ -d "$DEV" ] || DEV="$HOME/Desktop/DEV"   # not keyed on KeystoneOS: repos move into Areas (plan Task 4)
 
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
