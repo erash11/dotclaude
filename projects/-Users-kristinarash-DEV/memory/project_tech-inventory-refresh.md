@@ -8,7 +8,7 @@ metadata:
   modified: 2026-10-24T14:52:28.069Z
 ---
 
-Analysis repo: `~/DEV/Tech_Inventory_Analysis` — **a git repo** (erash11,
+Analysis repo: `~/DEV/Program/Tech_Inventory_Analysis` — **a git repo** (erash11,
 private). This text came from the Windows slug in the 2026-09-24 memory mirror and
 replaced the older Mac note, which said "not a git repo" and had the 08-29 baseline.
 

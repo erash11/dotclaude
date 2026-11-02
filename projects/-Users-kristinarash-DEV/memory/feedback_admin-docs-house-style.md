@@ -9,7 +9,7 @@ metadata:
 ---
 
 Every document going to Baylor Athletics administration (leadership, admin, Kenny Boyd,
-Chris Ruf) is built with the house style in `~/DEV/Baylor_Doc_Style`
+Chris Ruf) is built with the house style in `~/DEV/Program/Baylor_Doc_Style`
 (`baylor_docstyle.py`, `BaylorDoc`; exemplar is the Software & Technology Management
 Framework draft, chosen 2026-08-30). Use only its components (`section`, `table`, `note`,
 `para`, `bullets`) and its defaults: Calibri 10.5, 9.5pt tables, 0.80/0.90in margins.

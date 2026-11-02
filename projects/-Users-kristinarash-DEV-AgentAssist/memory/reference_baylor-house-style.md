@@ -14,9 +14,9 @@ is documented, not improvised. Chain of authority:
 1. `~/DEV/Education_Content_Agent/context/house-style.md` — governing doc. Format 2 is
    "the one-pager" and names the block spec plus the hard rule: one page, US Letter
    portrait, and **if it does not fit, cut content — never shrink the type**.
-2. `~/DEV/TechEd_Prop/ShitfWave/option-c-matrix.html` — the precedent artifact. Best
+2. `~/DEV/Program/TechEd_Prop/ShitfWave/option-c-matrix.html` — the precedent artifact. Best
    single file to copy from.
-3. `~/DEV/TechEd_Prop/ShitfWave/baylor-brand.css` (1.6 MB) — fonts and BU logo marks
+3. `~/DEV/Program/TechEd_Prop/ShitfWave/baylor-brand.css` (1.6 MB) — fonts and BU logo marks
    embedded as data URIs, zero external deps. Exposes `var(--bu-mark-white)`,
    `--bu-mark-green`, `--bear-gold`, `--bear-green`, `--lockup-white`.
 

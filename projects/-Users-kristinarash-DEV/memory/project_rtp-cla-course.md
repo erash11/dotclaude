@@ -8,7 +8,7 @@ metadata:
   modified: 2026-10-24T14:57:55.536Z
 ---
 
-`DEV/RTP_Constraints_Course` — a return-to-play course built on constraints-led
+`DEV/Program/RTP_Constraints_Course` — a return-to-play course built on constraints-led
 practice design, sourced from Myszka et al., *Enhancing Skill*.
 
 **Ingest state (as of 2026-09-05): DONE.** 84 atomized advisor entries live in a

@@ -198,7 +198,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/AppliedNewsletter_2026",
+   "path": "DEV/Program/AppliedNewsletter_2026",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/AppliedNewsletter_2026.git",
@@ -233,7 +233,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/BAIR_Steering_Committee",
+   "path": "DEV/Program/BAIR_Steering_Committee",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/BAIR_Steering_Committee.git",
@@ -257,7 +257,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Baseball_JD",
+   "path": "DEV/Program/Baseball_JD",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -301,7 +301,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Baylor_Doc_Style",
+   "path": "DEV/Program/Baylor_Doc_Style",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -312,7 +312,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Baylor_Fonts",
+   "path": "DEV/Program/Baylor_Fonts",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -506,7 +506,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Department_Audits",
+   "path": "DEV/Program/Department_Audits",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Department_Audits.git",
@@ -518,7 +518,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Education_Alignment_Initiative",
+   "path": "DEV/Program/Education_Alignment_Initiative",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Education_Alignment_Initiative.git",
@@ -743,7 +743,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/NCAA_BestPractices_Doc",
+   "path": "DEV/Program/NCAA_BestPractices_Doc",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -789,7 +789,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Performance_Playbook",
+   "path": "DEV/Program/Performance_Playbook",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Performance_Playbook.git",
@@ -885,7 +885,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Program_Context_Meet",
+   "path": "DEV/Program/Program_Context_Meet",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Program_Context_Meet.git",
@@ -897,7 +897,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/RTP_Constraints_Course",
+   "path": "DEV/Program/RTP_Constraints_Course",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -909,7 +909,7 @@
    "note": "Added 2026-09-02. Class 'personal' confirmed by Eric. Constraints-led return-to-performance course for Joe Smith. Not a git repo; SSD only."
   },
   {
-   "path": "DEV/RTP_DataCollection_Talk",
+   "path": "DEV/Program/RTP_DataCollection_Talk",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/RTP_DataCollection_Talk.git",
@@ -968,7 +968,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/SPA_Presentation",
+   "path": "DEV/Program/SPA_Presentation",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1076,7 +1076,7 @@
    "note": "Added 2026-09-22 after the 09:05 run flagged it manifest-unmanaged. Created on Windows 2026-09-21, cloned to the Mac by dev-sync 2026-09-22. Thoracic outlet syndrome evidence brief for softball staff: Baylor work, so institutional."
   },
   {
-   "path": "DEV/TSSHB_Skills",
+   "path": "DEV/Program/TSSHB_Skills",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1099,7 +1099,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/TechEd_Prop",
+   "path": "DEV/Program/TechEd_Prop",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1110,7 +1110,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Tech_Inventory_Analysis",
+   "path": "DEV/Program/Tech_Inventory_Analysis",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -1132,7 +1132,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Transformative_Athlete_Experience",
+   "path": "DEV/Program/Transformative_Athlete_Experience",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1477,7 +1477,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Supervisor_Reviews",
+   "path": "DEV/Program/Supervisor_Reviews",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/Supervisor_Reviews.git",
@@ -1537,7 +1537,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/RunningTheRoom",
+   "path": "DEV/Program/RunningTheRoom",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/RunningTheRoom.git",
@@ -1562,7 +1562,7 @@
    "note": "Added 2026-10-02. Class 'institutional' confirmed by Eric. YouTube channel pipeline that feeds Flint."
   },
   {
-   "path": "DEV/SoftwareTech_Review",
+   "path": "DEV/Program/SoftwareTech_Review",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/SoftwareTech_Review.git",
@@ -1612,7 +1612,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Linda_Projects",
+   "path": "DEV/Program/Linda_Projects",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/Linda_Projects.git",

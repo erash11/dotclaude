@@ -64,7 +64,7 @@ Pipeline: `img2pdf` (page order) → `ocrmypdf --force-ocr --rotate-pages --desk
 157 more pages finished the book (printed 14–253, 240 pages). Median confidence **95.5**,
 consistent with the first batch, so the quality bar above holds.
 
-**All of this is now code:** `DEV/RTP_Constraints_Course/scripts/scan_pipeline.py`. Read
+**All of this is now code:** `DEV/Program/RTP_Constraints_Course/scripts/scan_pipeline.py`. Read
 its docstring before the next book rather than rebuilding the method. `verify_pdf.py`
 beside it proves page order afterwards.
 
