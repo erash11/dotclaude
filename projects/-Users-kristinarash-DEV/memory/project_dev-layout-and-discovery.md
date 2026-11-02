@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: ea41d487-7812-4180-a6a8-f76a99753f83
-  modified: 2026-07-29T13:05:18.996Z
+  modified: 2026-11-02T23:17:20.641Z
 ---
 
 Each project gets its own folder in `~/DEV`. KeystoneOS is a map and
@@ -33,5 +33,12 @@ point you act on them, not from a scan taken minutes earlier.
 
 The root's display name in that config is still the Windows-era string
 "Desktop DEV" — a label, not a path. The `path` field is `/Users/kristinarash/DEV`.
+
+**Area folders (2026-11-02).** Repos now sit one level down in `~/DEV/{Personal,Program,Research,Performance}/`
+(64 moved); `Football/` was already grouped. Still at the top until the after-season Workflow run: Platform repos
+(KeystoneOS, project-triage, claude-global-memory, drive-tools...), `SpecialRequests`, `LibraryProject`, 3 live
+pipelines, 4 repos in no router. Before moving a repo: grep consumers for `DEV/<name>` AND `"DEV" / "<name>"` and
+`parents[n] / "<name>"`; rebuild any `.venv` (absolute paths); rename its Tier A slug folder; update
+`portfolio.json` `dev_folder` and `KeystoneOS/data/projects.json` (UTF-8 BOM). Steps: `~/DEV/docs/FILE-ORGANIZATION-PLAN.md` Task 4.
 
 Related: [[keystoneos-verification-habits]]

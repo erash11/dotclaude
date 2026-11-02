@@ -124,6 +124,16 @@ since 2026-09-24, so none of the triggers above fire. `ritual-check.ps1` still r
 forecast-capture DUE/OVERDUE shows only in `KeystoneOS/outputs/morning/cadence.log`. In season
 the capture depends on someone running `/forecast-capture`. See [[automation-cadence]].
 
+**Superseded 2026-11-02: a launchd job runs the capture.** `com.keystone.forecastcapture`
+(Wed 10:40, Thu 10:40 backup that skips if a Tue/Wed capture exists) runs
+`~/DEV/CFB_Victory_Model/scripts/scheduled_capture.sh`, which wraps `weekly_run.sh`, texts Eric
+(captured / FAILED / nothing moved = maybe dead link) and writes failures to `.errors.log`.
+Tested 2026-11-02 through launchd with the display asleep. Same day: it runs **headless** (new
+headless, `channel="chromium"`; Playwright's old headless shell broke the slicer) with a headed
+fallback, and **commits + pushes** the snapshots and log itself (Eric approved unattended push
+2026-11-02: "I approve you to push data with out my intervention"). A session still runs
+`/forecast-capture` for the report.
+
 A Windows-side scheduled task `CFB-ForecastCaptureReminder` was left enabled when the
 Windows box was retired 2026-08-14 — it operates under that machine's own `~/Desktop/DEV`
 and touches none of the Mac repos, so it is harmless but is *not* the authoritative

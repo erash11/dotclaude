@@ -59,7 +59,7 @@ is historical. Ported to the Mac on 2026-10-08 (scripts made OS-aware, `~/.claud
   memsearch-drain-weekly recall-eval chain retired (`recall-bench/check.py` in the daily backup replaces
   it; the .ps1 chain and `LATEST.md` deleted). Backup AI Sessions retired (daily backup Snapshot-Gws
   covers it; script deleted). CFB-ForecastCaptureReminder is dead code (it calls the archived
-  morning-briefing package); **nothing nudges the in-season CFB forecast capture.** DailyGmailDigest
+  morning-briefing package); nothing nudged the in-season CFB forecast capture until 2026-11-02 (now the `forecastcapture` job runs it). DailyGmailDigest
   (`DEV/agy/daily_digest.py`) is dormant, not retired; porting is minutes (gws path + a plist).
 - **A launchd install by an agent worked 2026-10-23, with Eric's chat approval for that work.** An agent copied a plist into
   `~/Library/LaunchAgents` and ran `launchctl bootstrap` without a block, after Eric said in chat
@@ -86,6 +86,7 @@ Times are each plist's `StartCalendarInterval`. Re-read the plist before quoting
 | dailybackup | hourly 12:00-17:00 (gate: `daily-backup-login.sh`) |
 | dailybackup-login | RunAtLoad (same gate) |
 | stackdoctor | Mon 10:30 |
+| forecastcapture | Wed 10:40 + Thu 10:40 backup (installed 2026-11-02 by Eric; headless, commits + pushes the capture data with Eric's approval). Tracked plist `~/DEV/CFB_Victory_Model/ops/com.keystone.forecastcapture.plist`; runs `scripts/scheduled_capture.sh`, texts Eric, failures to `.errors.log`. See [[cfb-forecast-capture]] |
 | adjudicate | Sun 02:30 |
 | aiosaudit | monthly, day 1, 14:00 |
 | agysync | every 6 h (StartInterval 21600) |

@@ -52,3 +52,7 @@ The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed
 ---
 
 Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+
+## Repo changes
+
+Before working in any repo, check ~/DEV/REPO_CHANGES.md for archives, renames, or merges and their undo commands.
