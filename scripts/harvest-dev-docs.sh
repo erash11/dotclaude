@@ -36,16 +36,19 @@ mirror() {  # $1 = source docs dir, $2 = destination
     --include='*/' --include='*.md' --exclude='*' "$1/" "$2/"
 }
 
-# Area folders (FILE-ORGANIZATION-PLAN Task 4) hold repos one level down, like Football/. An Area folder itself
-# has no docs/ and is skipped by skip(); a missing Area's glob stays literal and fails the -d test.
-for r in "$DEV"/*/ "$DEV"/Football/*/ "$DEV"/Personal/*/ "$DEV"/Program/*/ "$DEV"/Research/*/ \
-         "$DEV"/Performance/*/ "$DEV"/Platform/*/; do
+# Area folders (FILE-ORGANIZATION-PLAN Task 4) hold repos one level down, like Football/. Area containers are
+# skipped by skip(); a missing Area's glob stays literal and fails the -d test.
+roots=( "$DEV"/*/ "$DEV"/Football/*/ "$DEV"/Personal/*/ "$DEV"/Program/*/ "$DEV"/Research/*/
+        "$DEV"/Performance/*/ "$DEV"/Platform/*/ )
+# shortcut: mirrors are keyed by basename (dev-docs/X). Two harvested repos with one name would share a mirror and
+# --delete would swap their docs, so stop before touching any mirror. None exist (2026-11-02); key mirrors by
+# DEV-relative path if one ever appears.
+dups=$(for r in "${roots[@]}"; do [ -d "$r" ] || continue; r=${r%/}; skip "$r" "$(basename "$r")" || basename "$r"; done | sort | uniq -d)
+[ -z "$dups" ] || { echo "harvest: same repo name twice ($(echo $dups)): nothing mirrored or parked" >&2; exit 1; }
+for r in "${roots[@]}"; do
   [ -d "$r" ] || continue
   r=${r%/}; name=$(basename "$r")
   skip "$r" "$name" && continue
-  # shortcut: mirrors are keyed by basename, so DEV/X and DEV/<Area>/X would share dev-docs/X; the second is
-  # skipped with this warning. None exist (2026-11-02); key by DEV-relative path if one ever appears.
-  case "$seen" in *"|$name|"*) echo "harvest: duplicate $name skipped" >&2; continue;; esac
   seen="$seen$name|"
   mirror "$r/docs" "$OUT/$name"
   n=$((n+1))
