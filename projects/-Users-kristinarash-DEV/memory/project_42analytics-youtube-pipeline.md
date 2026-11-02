@@ -8,7 +8,7 @@ metadata:
   modified: 2026-09-30T23:28:45.054Z
 ---
 
-`DEV/42Analytics` (private repo `erash11/42Analytics`) holds transcripts, summaries and Baylor applications from the 42 Analytics YouTube channel (SSAC talks), for batch ingest into Flint. Video files stay on Drive, never git. State and next steps: `42Analytics/docs/STATUS.md` and `docs/handoffs/2026-09-30-channel-pipeline.md`.
+`DEV/Research/42Analytics` (private repo `erash11/42Analytics`) holds transcripts, summaries and Baylor applications from the 42 Analytics YouTube channel (SSAC talks), for batch ingest into Flint. Video files stay on Drive, never git. State and next steps: `42Analytics/docs/STATUS.md` and `docs/handoffs/2026-09-30-channel-pipeline.md`.
 
 **Traps**
 - yt-dlp caption requests get HTTP 429 after about 4 in a row from this laptop. `scripts/fetch_captions.py` backs off and leaves rows `todo`; rerun it. Cloud IPs are likelier to be blocked.

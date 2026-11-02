@@ -324,7 +324,7 @@
   },
 
   {
-   "path": "DEV/BookInbox",
+   "path": "DEV/Research/BookInbox",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -335,7 +335,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/BookVaultApp",
+   "path": "DEV/Research/BookVaultApp",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/BookVaultApp.git",
@@ -483,7 +483,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/ContextVault",
+   "path": "DEV/Research/ContextVault",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -542,7 +542,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Epilepsy-Baseball-Research",
+   "path": "DEV/Research/Epilepsy-Baseball-Research",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -732,7 +732,7 @@
   },
 
   {
-   "path": "DEV/May_Meetings_Research",
+   "path": "DEV/Research/May_Meetings_Research",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1016,7 +1016,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/SportScienceResearchRepo",
+   "path": "DEV/Research/SportScienceResearchRepo",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/SportScienceResearchRepo.git",
@@ -1063,7 +1063,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/TOS_Evidence_Brief",
+   "path": "DEV/Research/TOS_Evidence_Brief",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/TOS_Evidence_Brief.git",
@@ -1218,7 +1218,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/ZoteroInjestion",
+   "path": "DEV/Research/ZoteroInjestion",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/ZoteroInjestion.git",
@@ -1369,7 +1369,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/reMarkale_extract",
+   "path": "DEV/Research/reMarkale_extract",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1513,7 +1513,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Weekly_Research_Review",
+   "path": "DEV/Research/Weekly_Research_Review",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Weekly_Research_Review.git",
@@ -1525,7 +1525,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Flint",
+   "path": "DEV/Research/Flint",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Flint.git",
@@ -1549,7 +1549,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/42Analytics",
+   "path": "DEV/Research/42Analytics",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/42Analytics.git",

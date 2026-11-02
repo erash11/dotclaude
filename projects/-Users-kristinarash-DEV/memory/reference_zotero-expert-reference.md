@@ -70,7 +70,7 @@ Source: https://www.zotero.org/support/ (read 2026-10-13). Pages read: quick sta
 - Skills: pp-zotero-research-library (library search and sync) and sports-science-research-grounding (research answers and batch work). Use them for procedures; this file is only the reference.
 
 ## Flint wiring (pointer)
-- Flint setup and diagnosis: `~/DEV/Flint/docs/zotero-setup.md` (2026-10-13). Live layer is the bridge in `~/DEV/ZoteroInjestion`, read-only. The Go CLI cache is stale. Fixes need Eric's go-ahead.
+- Flint setup and diagnosis: `~/DEV/Research/Flint/docs/zotero-setup.md` (2026-10-13). Live layer is the bridge in `~/DEV/Research/ZoteroInjestion`, read-only. The Go CLI cache is stale. Fixes need Eric's go-ahead.
 - Decided 2026-10-13 (Eric): the bridge owns the Zotero `SecondBrain Queue` and the `research-papers` folder. Flint owns its vault library folder and writes no Zotero tags. The earlier `flint:*` tag plan is dropped.
 
 ## Gaps not yet read

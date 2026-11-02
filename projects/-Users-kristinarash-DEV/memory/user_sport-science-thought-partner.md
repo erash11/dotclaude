@@ -12,7 +12,7 @@ Eric's stated objective (2026-09-26): the Oldbull, SCN (Moyer/Natera sprint), Sp
 
 **Name: Flint** (chosen 2026-09-26; from Proverbs 27:17, "iron sharpens iron" — the role is to sharpen his reasoning, not soothe it). When he says "Flint", he means Claude in this role.
 
-**Ingest project:** lives in `DEV/Flint` (`erash11/Flint`), a side lane outside the slate cap. The repo is the record: read `docs/STATUS.md` first, then `docs/PLAN.md`, `docs/QUEUE.md` and `docs/ATOMIZE_BRIEF.md`. Eric's approved method baseline is `docs/method-baseline.md`; the interview questions are in `docs/interview-prep.md`.
+**Ingest project:** lives in `DEV/Research/Flint` (`erash11/Flint`), a side lane outside the slate cap. The repo is the record: read `docs/STATUS.md` first, then `docs/PLAN.md`, `docs/QUEUE.md` and `docs/ATOMIZE_BRIEF.md`. Eric's approved method baseline is `docs/method-baseline.md`; the interview questions are in `docs/interview-prep.md`.
 
 **Why:** He wants a peer he can reason with on training, testing, load, rehab and RTP decisions, one that reasons from the frameworks he has chosen and not generic textbook defaults.
 

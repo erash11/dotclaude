@@ -22,4 +22,4 @@ noted for the visit.
   ingredient, used for prevention and early lesions rather than as a fix for an
   existing cavity.
 
-Deeper personal context: `~/DEV/ContextVault`.
+Deeper personal context: `~/DEV/Research/ContextVault`.
