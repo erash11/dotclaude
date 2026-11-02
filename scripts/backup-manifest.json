@@ -279,7 +279,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Basketball",
+   "path": "DEV/Personal/Basketball",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -290,7 +290,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Basketball_Women",
+   "path": "DEV/Personal/Basketball_Women",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -991,7 +991,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/SignalPlays",
+   "path": "DEV/Personal/SignalPlays",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/SignalPlays.git",
@@ -1155,7 +1155,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Travel_Map",
+   "path": "DEV/Personal/Travel_Map",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/Travel_Map.git",
@@ -1182,7 +1182,7 @@
   },
 
   {
-   "path": "DEV/Website",
+   "path": "DEV/Personal/Website",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/AppliedPerformance-Site.git",
@@ -1334,7 +1334,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/indiana-fever-schedule",
+   "path": "DEV/Personal/indiana-fever-schedule",
    "class": "personal",
    "isRepo": false,
    "remote": null,
@@ -1393,7 +1393,7 @@
    "note": "Added 2026-09-05 at Eric's request after the 09:00 run flagged it manifest-unmanaged. One-off audit of Eric's own Claude Code / Codex skill tree, run 2026-09-05 07:15: REPORT.md, CLAUDE-CODEX-DUPLICATES.md, RECOMMENDATIONS.md, inventory.json/csv, plus audit.py and usage_audit.py. Class 'personal' by precedent with CLI_Dev and Terminal_Fluency - agent tooling, not Baylor work, so it stays off the institutional target. Not a git repo; SSD only; 3.2 MB. Reports are regenerable from the two scripts, but the run is dated and decisions were taken from it, so keep the snapshot."
   },
   {
-   "path": "DEV/sleep-scheduler",
+   "path": "DEV/Personal/sleep-scheduler",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/sleep-scheduler.git",
@@ -1575,7 +1575,7 @@
    "note": "Added 2026-10-02. Baylor software/tech review for Erin; class mirrors SoftwareTechDocs."
   },
   {
-    "path": "DEV/house-model",
+    "path": "DEV/Personal/house-model",
     "class": "institutional",
     "isRepo": true,
     "remote": "https://github.com/erash11/house-model.git",
@@ -1649,7 +1649,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/MacEverything",
+   "path": "DEV/Personal/MacEverything",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/MacEverything.git",
