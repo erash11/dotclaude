@@ -9,7 +9,9 @@
 # Never mirrored: local-only repos (CLAUDE.md says "local only"), health and confidential
 # folders. recall output lands in committed session transcripts, so these stay out of the index.
 set -e
-if [ -d "$HOME/DEV/KeystoneOS" ]; then DEV="$HOME/DEV"; else DEV="$HOME/Desktop/DEV"; fi
+# KeystoneOS marks the DEV root; it may live in the Platform Area (plan Task 4).
+if [ -d "$HOME/DEV/KeystoneOS" ] || [ -d "$HOME/DEV/Platform/KeystoneOS" ]; then DEV="$HOME/DEV"; else DEV="$HOME/Desktop/DEV"; fi
+[ -d "$DEV" ] || { echo "harvest: no DEV root at $DEV, nothing harvested or parked" >&2; exit 1; }
 OUT="$HOME/.claude/global-memory/dev-docs"
 PARK="$HOME/_PARKED_COPIES/dev-docs-orphans-$(date +%F)"
 mkdir -p "$OUT"
@@ -19,6 +21,7 @@ seen="|_ARCHIVE|"
 skip() {  # $1 = repo dir, $2 = name
   case "$2" in
     _DRIVE|_tools|_ARCHIVE|_INBOX|.claude|graphify-out|docs) return 0;;
+    Personal|Program|Research|Performance|Platform) [ "$1" = "$DEV/$2" ] && return 0;;   # Area containers
     *Linda_Projects|*"Linda Projects"|SpecialRequests*|TOS_*|*DexaProject*) return 0;;
     *Wilhelm_Brody_RTP*|*Zinnecker_Skylar*) return 0;;   # named-athlete case reviews
   esac
@@ -40,6 +43,8 @@ for r in "$DEV"/*/ "$DEV"/Football/*/ "$DEV"/Personal/*/ "$DEV"/Program/*/ "$DEV
   [ -d "$r" ] || continue
   r=${r%/}; name=$(basename "$r")
   skip "$r" "$name" && continue
+  # shortcut: mirrors are keyed by basename, so DEV/X and DEV/<Area>/X would share dev-docs/X; the second is
+  # skipped with this warning. None exist (2026-11-02); key by DEV-relative path if one ever appears.
   case "$seen" in *"|$name|"*) echo "harvest: duplicate $name skipped" >&2; continue;; esac
   seen="$seen$name|"
   mirror "$r/docs" "$OUT/$name"

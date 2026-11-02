@@ -33,7 +33,7 @@ LINKED=()
 for root in "$HOME/DEV" "$HOME/projects"; do
   [ -d "$root" ] || continue
   for repo in "$root"/*/ "$root"/Personal/*/ "$root"/Program/*/ "$root"/Research/*/ "$root"/Performance/*/ "$root"/Platform/*/; do   # Areas: plan Task 4
-    [ -d "$repo.git" ] && [ -f "${repo}CLAUDE.md" ] || continue
+    [ -e "$repo.git" ] && [ -f "${repo}CLAUDE.md" ] || continue   # .git file = worktree
     if (cd "$repo" && link_agents "CLAUDE.md" "AGENTS.md"); then
       LINKED+=("$repo")
     fi

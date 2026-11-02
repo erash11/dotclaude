@@ -16,7 +16,7 @@ DAYS="${1:-90}"
 ACTIVE="${2:-5}"
 
 DEV="$HOME/DEV"
-[ -d "$DEV/KeystoneOS" ] || DEV="$HOME/Desktop/DEV"
+[ -d "$DEV/KeystoneOS" ] || [ -d "$DEV/Platform/KeystoneOS" ] || DEV="$HOME/Desktop/DEV"   # Platform: plan Task 4
 
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
@@ -24,7 +24,7 @@ trap 'rm -f "$tmp"' EXIT
 for root in "$DEV" "$DEV/Football" "$DEV/SpecialRequests" "$DEV/Personal" "$DEV/Program" "$DEV/Research" "$DEV/Performance" "$DEV/Platform"; do   # Areas: plan Task 4
   [ -d "$root" ] || continue
   for p in "$root"/*/; do
-    [ -d "$p/.git" ] || continue
+    [ -e "$p/.git" ] || continue   # a worktree has a .git file, not a folder
     name="$(basename "$p")"
     case "$name" in .*|_*|*_OLD_merged*) continue ;; esac
     d=$(git -C "$p" log --since="$DAYS days ago" --format=%ad --date=short 2>/dev/null | sort -u | wc -l | tr -d ' ')

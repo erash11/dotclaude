@@ -24,7 +24,7 @@ $U = $HOME
 # ~/DEV on the Mac, ~/Desktop/DEV on Windows. Resolved the same way as memsearch-sync.js
 # (2026-09-30): the hardcoded "$U/DEV" made every Windows run fall back to the 5-path index
 # list and report all 52 DEV dirs "absent from disk".
-$DevRoot = @("$U/DEV", "$U/Desktop/DEV") | Where-Object { Test-Path -LiteralPath "$_/KeystoneOS" } | Select-Object -First 1
+$DevRoot = @("$U/DEV", "$U/Desktop/DEV") | Where-Object { (Test-Path -LiteralPath "$_/KeystoneOS") -or (Test-Path -LiteralPath "$_/Platform/KeystoneOS") } | Select-Object -First 1   # Platform: plan Task 4
 if (-not $DevRoot) { $DevRoot = "$U/DEV" }
 $LogDir = "$U/.claude/scripts/logs"
 $LogFile = "$LogDir/daily-backup.log"
