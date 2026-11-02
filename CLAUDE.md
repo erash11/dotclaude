@@ -14,6 +14,7 @@ Projects sync through GitHub (`erash11`), documents through Google Drive.
 - **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
 - When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
 - Skills are tools: invoke one when it clearly fits the task.
+- **Decisions for Eric go on the Decision Desk** (Eric, 2026-11-02): https://claude.ai/artifact/SKUir7NZtM8NN5gwohEn3u. Seed each one with ArtifactData (2 options max, Claude's pick marked), read his clicks back from `answers`, and still list them in one line each in chat with the link. Format and fields: Tier A `feedback_decision-desk.md`. One standing page; never make a new one.
 - **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
   - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
   - New logic with a branch, loop, parser, money or security leaves one small test or assert.
