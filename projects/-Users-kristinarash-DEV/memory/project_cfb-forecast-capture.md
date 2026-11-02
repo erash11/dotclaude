@@ -60,7 +60,7 @@ curl -s "https://site.api.espn.com/apis/site/v2/sports/football/college-football
 
 - ~~**Wednesdays**, season window **2026-08-26 → 2027-01-20**~~ — superseded
   2026-08-15. Current cadence is **Monday-anchored**, season window
-  **2026-08-24 → 2027-01-23**. See "Cadence" below, which is authoritative.
+  **2026-08-24 → 2027-01-23**. Capture day: ideally Wednesday; Thursday or Friday works while no Big 12 game has kicked off (`~/.claude/skills/forecast-capture/SKILL.md`, the authority; 2026-11-02).
 
 ## "Nothing moved" in season = dead report link (2026-10-23)
 

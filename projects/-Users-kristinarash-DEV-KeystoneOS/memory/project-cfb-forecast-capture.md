@@ -1,6 +1,6 @@
 ---
 name: cfb-forecast-capture
-description: "CFB Victory Model weekly forecast freeze — Wednesdays only, cannot be backfilled; how the capture and its reminder work"
+description: "CFB Victory Model weekly forecast freeze — ideally Wednesday, Thu/Fri OK until a Big 12 kickoff; cannot be backfilled; how the capture and its reminder work"
 metadata: 
   node_type: memory
   type: project
@@ -8,9 +8,11 @@ metadata:
   modified: 2026-07-27T22:43:14.917Z
 ---
 
-The CFB Victory Model's pre-game forecasts must be frozen **before kickoff**, every
-Wednesday of the 2026 season (2026-08-26 through 2027-01-20, 22 capture Wednesdays).
-A missed Wednesday is **permanently lost** — the published Power BI report is
+The CFB Victory Model's pre-game forecasts must be frozen **before kickoff**, once per game
+week of the 2026 season: ideally Wednesday, and Thursday or Friday still works while no Big 12
+game has kicked off (the `forecast-capture` skill's rule; captures ran Fri 10-23 and Fri 10-30;
+corrected 2026-11-02 by the AIOS audit). Fuller, current note: DEV Tier A
+`project_cfb-forecast-capture.md`. A missed game week is **permanently lost** — the published Power BI report is
 overwritten each week and holds no history, so there is nothing to backfill from.
 This is the reason the ritual exists at all.
 
