@@ -190,6 +190,14 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"/Users/kristinarash/.claude/hooks/context-mode-cache-heal.mjs\""
+          }
+        ]
       }
     ],
     "PreCompact": [
