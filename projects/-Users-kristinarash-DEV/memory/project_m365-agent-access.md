@@ -1,12 +1,14 @@
 ---
 name: m365-agent-access
-description: "What Baylor's M365 tenant lets the agent do (Graph read yes, Teams send needs IT admin), and why the 10-03 Windows PowerShell Graph/COM route is retired; no Mac Graph/Teams route yet"
+description: "What Baylor's M365 tenant lets the agent do (Graph read yes, Teams send needs IT admin); on the Mac, Outlook calendar is readable via Outlook on the web in Chrome (Claude in Chrome); the 10-03 Windows PowerShell Graph/COM route is retired"
 metadata:
   node_type: memory
   type: project
   originSessionId: 6a709501-394d-4811-8fbb-8fec24f5d7dd
-  modified: 2026-10-30T22:39:19.024Z
+  modified: 2026-11-02T20:07:36.237Z
 ---
+
+**Outlook calendar on the Mac: Outlook on the web via Claude in Chrome (works, 2026-11-02).** Eric's Chrome is signed in to the Baylor account ("Calendar - Rash, Eric - Outlook"). Open a new tab at `https://outlook.office.com/calendar/view/day/YYYY/M/D` (it redirects to `outlook.cloud.microsoft`, work-week view). Read events with the `find` tool: each event button's label holds title, time and date; clicking one opens a preview with attendees (Escape closes it). Read only by default: creating, editing or answering an Outlook event sends mail as Eric, so ask first. First use: found the Chris Ruf check-in ("HOLD: Eric Rash Check in/Updates", Wed 11/04 11:30) and copied it to his Google calendar. Google Calendar (personal gmail) has none of his Baylor meetings.
 
 **Superseded 2026-10-24: the Windows route below is retired.** The laptop has had no
 terminal work or jobs since 2026-10-14 and runs desktop-app sessions only since 2026-10-21

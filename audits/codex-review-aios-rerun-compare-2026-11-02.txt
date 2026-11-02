@@ -1,0 +1,2283 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /Users/kristinarash/DEV/KeystoneOS
+model: gpt-6.1-terra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a19db1-fed4-73a2-9a8a-406ff8cbdc02
+--------
+user
+You are a second reviewer. Two audit reports of the same AI setup were written today on this Mac: docs/audits/aios-audit-2026-11-02.md (baseline, made with the OLD skill, plus a later 'Cross-check and fixes' section) and docs/audits/aios-audit-2026-11-02-rerun.md (made with the REWRITTEN skill .claude/skills/aios-audit/SKILL.md, commits 4df0d89 and 2183ebb). Read both reports and the skill. Then answer, with evidence you checked yourself by reading files or running read-only commands (cite file:line or command output):
+1. For each finding that is NEW in the rerun, is it true? Spot-check at least these: project-triage last output date and its 3 pointers (~/.claude/skills/project/SKILL.md, ~/DEV/COMMANDS.md); 74 double index entries across ~/.claude/projects/*/memory/MEMORY.md (count them yourself: a note file named on 2+ index lines); the 5 Windows-era notes in ~/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/; ~/DEV/COMMANDS.md playwright line; ~/DEV/WORKFLOW.md stale-note line; PFF_Position_Reports missing from ~/DEV/*.md; doctor-plus disable-model-invocation.
+2. Where the rerun says the baseline was WRONG, who is right? (fireflies-intake Codex read; global-memory/MEMORY.md char count, measure it now; the second transcript-less session.)
+3. What did the rerun MISS or get wrong that the skill should have caught? Name the skill step that should have caught it.
+4. Did the rerun obey its own skill: read-only, newest-evidence quotes on every RED or YELLOW, pointer check before every DELETE, Decision Desk cards for every proposal, exactly two next builds, report and rot.md committed?
+5. Is the rewritten skill better than the old one, judged by these two reports? Name the 3 most useful changes to the skill still left, each tied to a concrete miss.
+Do not modify any file. Do not print secrets. Reply in plain short sentences, numbered to match.
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/hooks.json
+warning: clamping SessionEnd hook timeout to 3s in /Users/kristinarash/.codex/plugins/cache/openai-codex/codex/1.0.6/hooks/hooks.json
+2026-11-02T19:17:31.414052Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Completed
+hook: SessionStart Failed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Failed
+codex
+I will compare both reports with the skill and the files they cite.
+
+The startup log reports 11 lines it cannot read. I will check that log too.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'cat ~/.claude/machine.md ~/.claude/CLAUDE.md' in /Users/kristinarash/DEV/KeystoneOS
+exec
+/bin/zsh -lc 'cat docs/audits/aios-audit-2026-11-02.md docs/audits/aios-audit-2026-11-02-rerun.md .claude/skills/aios-audit/SKILL.md' in /Users/kristinarash/DEV/KeystoneOS
+exec
+/bin/zsh -lc 'cat ~/.claude/global-memory/transcripts/.errors.log' in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+# AIOS Audit — 2026-11-02
+
+Trigger: monthly nudge in `transcripts/.errors.log` (2026-11-01) + "audit my AI OS".
+Metrics: `scripts/aios-metrics.py` ran clean (no errors). Trend row for 2026-11-01 already committed.
+
+## Layer status
+
+| Layer | Due? | Result |
+|---|---|---|
+| Identity | green (50 d / 3 mo) | skipped |
+| Substrate | green (50 d / 3 mo) | skipped |
+| Skills | in window, but usage + crutch test never run | **audited** — see below |
+| Agents | `unknown` | **audited** — 4 agents, OK |
+| Rules | 7 weeks past a 1-week clock | **audited** — clean |
+| Hooks | green (9 d / 6 mo) | skipped; `hooks_codex_is_link=1` OK |
+| Memory (agent) | green (9 d / 1 mo) | skipped; one observation below |
+| Memory (vault notes) | past due | **audited, partial** (improve-system scope, read-only) |
+| Data feeds | past due | **audited** (os-audit Check 3, read-only) |
+| Vault | past due | **audited, partial** (brain-audit score, read-only, no trend row) |
+| Context posture | green (22 d / 3 mo) | skipped |
+
+## Layout invariants — all GREEN
+
+`tracked_symlinks_in_canonical=0`, `pool_view_drift=0`, `codex_view_drift=0`,
+`pool_dangling=0`, `codex_dangling=0`, `portability_failures=0` (42 of 42 portable).
+Info: 14 third-party links in canonical, 111 pool / 12 codex third-party installs.
+
+## Skills
+
+**Headline: `never_used` is mostly self-made by config.** 28 of 42 canonical skills are set
+`"name-only"` in `~/.claude/settings.json` `skillOverrides`. Claude Code then shows the name with
+no description, so the model cannot pick the skill on its own. 15 of the 19 never-used skills are
+name-only:
+
+- never-used + name-only (15): ArXiv, ISA, Science, articulation-skill, brain-audit,
+  capture-insight, five-slides-generator, improve-system, ingest-resource, library-advisor,
+  library-review, pbir-report-builder, pp-catapult-openfield-connect, pp-zotero-research-library,
+  project-triage
+- never-used with full description (4): graphify, html-to-pdf, meeting-prep, research-in-5
+- used once (6): decision-audit, fireflies-intake, impeccable, interview-me,
+  sports-science-research-grounding, where-was-i
+
+Canonical skills set `"off"`: **0** (config parity OK). All `"off"` keys are plugin copies or
+third-party installs.
+
+**Codex cross-check.** The skill's suggested grep (`<skill>/SKILL.md` in `~/.codex/sessions`)
+gives 57 hits for every skill: that is the skill roster Codex loads into every session, not use.
+Real-read method: `grep -rlE "(sed -n|Get-Content|cat )[^\"]{0,80}/<skill>/SKILL\.md"`.
+Validated on known-used skills (closeout 8, meeting-sync 2). **Result: 0 real Codex reads for all
+25 never/once-used skills.** `usage_unreadable_transcripts=1`, so counts may be off by one session.
+
+**Crutch test** (rule: delegate of rot.md → KEEP; holds Baylor paths/conventions → KEEP/SEASONAL;
+generic method the model knows + name-only + 0 reads → DELETE candidate).
+
+| Skill | Verdict | Why |
+|---|---|---|
+| ArXiv | DELETE candidate | arXiv API search; model + Firecrawl research tools do this. |
+| Science | DELETE candidate | Generic scientific method; the model knows it. |
+| ISA | DELETE candidate | Generic "ideal state" doc scaffold; 0 use anywhere. |
+| articulation-skill | DELETE candidate | Generic plain-language explaining; ELI5 output style already covers it. |
+| brain-audit | KEEP | rot.md delegate (Vault). |
+| improve-system | KEEP | rot.md delegate (vault notes). |
+| capture-insight | KEEP | Eric's vault note format and routing. |
+| ingest-resource | KEEP | Vault paths and ingest conventions. |
+| library-advisor / library-review | KEEP, check overlap | Eric's book library; two skills on one library (see Overlap). |
+| pp-catapult-openfield-connect | KEEP | Catapult API conventions. Season use likely goes through scripts. |
+| pp-zotero-research-library | KEEP, check overlap | Overlaps the zotero MCP server and sports-science-research-grounding. |
+| pbir-report-builder | SEASONAL | Power BI build knowledge; judge when a PBI build is next due. |
+| five-slides-generator | KEEP | Baylor deck style; feeds research-in-5. |
+| research-in-5 | KEEP | Baylor staff format; next issue 11/13. |
+| meeting-prep | KEEP | Eric's routine; full description, just not called yet. |
+| html-to-pdf | KEEP | Small; useful for coach PDFs. |
+| graphify | KEEP | Third-party core with local edits; Codex install trap. |
+| project-triage | FOLD into `project` | `portfolio.py` is called direct; the skill adds little on top. |
+| once-used six | KEEP | Each carries Eric's routine (decision desk, Fireflies intake, interviews, where-was-i). |
+
+**Overlap.** (1) `library-advisor` vs `library-review` vs `ingest-book` — same library. (2)
+`pp-zotero-research-library` vs `sports-science-research-grounding` vs the zotero MCP. (3)
+`project-triage` vs `project`. Fix: one sharper `Do not use … (use X)` line each, or merge (3).
+
+**Promotion.** Both project skills (`aios-audit`, `os-audit`) live only in KeystoneOS and show 0
+Skill-tool calls (they load by name from this repo); no promotion case. Fifteen global skills ran
+from only one project folder — expected, since Eric works from 2–3 folders. Information only.
+
+## Agents
+
+4 agents, all `impeccable-*`, `model: inherit`. Referenced by
+`skills/impeccable/reference/live.md` and `new-work.md`, so they are wired, not orphans.
+1 spawn ever in Claude transcripts. Verdict: KEEP while `impeccable` stays.
+
+## Rules
+
+Last 7 days: 92 Claude session files, 58 Codex session files (12 real user messages).
+No correction repeated twice. No `~/.claude/CLAUDE.md` rule contradicted by what happened.
+Today's `machine.md` Ghostty line is a new rule, not a conflict. Verdict: GREEN.
+
+## Hooks
+
+Skipped (green). `hooks_codex_is_link=1`. Note: `hooks_claude=8` counts files; rot.md's
+"13 wired hooks" counts settings entries. Not a finding.
+
+## Memory (agent) — observation only (layer green)
+
+- `~/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/MEMORY.md` lists most
+  memories twice (once by title, once by filename). Index bloat. [bloat]
+- `project-cfb-forecast-capture.md` says "Wednesdays only". The skill now allows Thu/Fri if no
+  Big 12 game has kicked off, and captures ran Fri 10-23 and Fri 10-30. Stale memory. [clash]
+- `global-memory/MEMORY.md` 1,894 / 2,500 chars; `USER.md` 1,256 / 1,375. Under cap.
+
+## Data feeds (os-audit Check 3, read-only)
+
+| Feed | Raw | Ingested | Cadence | Verdict |
+|---|---|---|---|---|
+| GPS (gpspull) | 2026-11-02 10:06, exit 0 | Drive snapshot written | daily | FRESH |
+| Perch | 2026-11-02 10:07, exit 0 | Drive snapshot written | daily | FRESH (10-28 network retries, recovered) |
+| VALD | 2026-11-02 10:11, exit 0 | Drive snapshot written | daily | FRESH (10-28 DNS error, recovered) |
+| PFF | 2026-10-31, exit 0, weeks 4–8 caught up | pff.db | weekly | FRESH |
+| Fireflies | 3 meetings 10-28/29, PROCESSED | all 3 in `SecondBrain/Inbox/meetings/` | per meeting | FRESH |
+| CFB forecast | 2026-10-30 snapshots | archive commit 2026-10-30 | weekly | FRESH |
+| Zotero | last item added 2026-10-19 | — | on demand | ON-DEMAND |
+
+Knowledge current through: **2026-11-02** (raw and ingested agree).
+
+**Out of scope, but RED — hand to `claude-stack-doctor`:** both `com.keystone.dailybackup`
+and `com.keystone.dailybackup-login` exit 1 today. Every `SNAP-GWS` upload failed
+(`gws upload failed`) and `RECEIPT drive : FAILED - gws did not confirm sentinel upload`.
+Last good runs 10-31 and 11-01. Likely `gws` auth. Log: `~/.claude/scripts/logs/daily-backup*.out`.
+
+## Vault (brain-audit, read-only, no trend row written)
+
+| C | Score | Evidence |
+|---|---|---|
+| Context | 25 | USER/MEMORY under cap, 91 Tier A, `Knowledge/` 2 d |
+| Connections | 25 | meeting_sync 3 d, portfolio 2 d, ledger 2 d |
+| Capabilities | 13 | skills exist; usage low, many hidden by name-only (judged, not measured) |
+| Cadence | 0 | `Notes/` 49 d stale (> 45) **and** two backup jobs exit 1 |
+| **Total** | **63** | baseline 67 on 2026-09-07 |
+
+Headline: same disease as July and September. Feeds alive; synthesis frozen.
+`Notes/` newest 2026-09-14, last interview 2026-09-14, `Drafts/` 94 d.
+
+## Memory (vault notes) (improve-system scope, read-only, ledger not touched)
+
+- 22 `status: seed` notes untouched > 60 d (oldest: `Notes/planning-windows-compound.md`, 163 d).
+  Proposed action: one pass to promote or archive.
+- 0 `Project_*.md` notes that read active and sit 30 d+ untouched.
+- Slug duplicates: 4 groups, all by design (`README.md`, `_domain.md`, `_book.md`,
+  `GRAPHIFY_SYNC.md`). No real duplicates.
+- **Not checked:** conflicting claims. 4 `open` items already in
+  `~/.claude/claude-memory-compiler/reports/proposals-pending.md`.
+
+## Cross-check and fixes (main session, 2026-11-02 afternoon)
+
+Every claim above was re-checked against its source. Confirmed: 28 name-only / 15 of them never
+used (now computed by `aios-metrics.py`), the 4 delete candidates (name-only, 0 Claude calls, 0 Codex
+reads), 4 `impeccable-*` agents, `Notes/` newest 2026-09-14, 22 seed notes older than 60 d, USER.md
+1,256 chars, the KeystoneOS memory index duplicates, the stale CFB note.
+
+Corrected:
+- **Backup was not RED by the time this report was read.** The 11:31 login run failed because the
+  login plist sets no PATH (gws needs `node`); fixed in `~/.claude/scripts/daily-backup-login.sh`. The
+  12:00 run uploaded all snapshots to Drive (12:02-12:03); only its receipt failed, because a test in
+  the main session ran gws under `env -i`, which made gws 0.22 delete its login. Eric logged in again.
+  The 12:32 run ended **OK, 0 errors, Drive receipt verified via gws**. "Nothing reached Drive today"
+  was wrong. Next build 1 is done.
+- **CFB cadence: three sources disagreed**, not one. KeystoneOS note said Wednesdays only; the DEV
+  note said Monday-anchored with a self-pointing "see Cadence below"; the skill says ideally Wednesday,
+  Thu/Fri OK until a Big 12 kickoff. Both notes now state the skill's rule; the KeystoneOS note points
+  at the fuller DEV note.
+- **`articulation-skill` is referenced** by `~/DEV/WORKFLOW.md` line 108 ("Explaining it to
+  non-technical staff"). Deleting it means editing that row too.
+- Global `MEMORY.md` is 1,865 chars now (1,894 earlier in the day).
+
+New finding (open): the audit session itself (`15d95b4f`, launched as `claude "audit my AI OS"` in
+Terminal) wrote no main transcript `.jsonl`, only a subagent file, so `transcript-capture.js`
+logged `transcript_path does not exist` twice (12:48, 12:52). The callers line shows a normal
+interactive session, so the 2026-10-23 guess ("hidden sessions") was incomplete. Not fixed; the
+session's content will not reach memory.
+
+Fixed in this pass: `aios-metrics.py` prints `name_only` and `name_only_never_used` (the trend table
+is unchanged; the strict Codex-read count is not added yet); KeystoneOS `MEMORY.md` deduped (39 → 23
+lines, 17 notes, each indexed once); both CFB notes corrected.
+
+## Two next builds
+
+1. **Fix the backup upload (today).** Two backup jobs fail on `gws` upload, so nothing reached
+   Drive today. Start: `/claude-stack-doctor` (backup layer).
+2. **Decide the 28 name-only skills, then teach the metric about it.** Delete the 4 generic
+   candidates (ArXiv, Science, ISA, articulation-skill); for the rest, either restore the
+   description or accept "call by name only". Then add a `name_only_never_used` key and the
+   strict Codex-read count to `scripts/aios-metrics.py` so `never_used` stops reading as bloat.
+   Start: answer the Decision Desk item.
+# AIOS Audit — 2026-11-02 (rerun)
+
+Trigger: Eric, "audit my AI OS", a rerun to test the updated `aios-audit` skill (commits `4df0d89`,
+`2183ebb`). Every `rot.md` layer was treated as due, including the ones stamped today.
+Baseline: `docs/audits/aios-audit-2026-11-02.md` (not changed by this run).
+Mode: read-only. This run changed no skill, memory, note or setting. It wrote this report, the
+`Last audited` column of `rot.md`, Decision Desk cards (batch `2026-11-02-aios-rerun`) and one STATUS line.
+
+## Layer status
+
+| Layer | Result | Verdict |
+|---|---|---|
+| Identity | audited (partial: 75 daily logs since 08-04) | GREEN |
+| Substrate | audited (router paths + skill paths) | YELLOW: 4 stale or missing pointers |
+| Skills | audited | YELLOW: `project-triage` is dead weight; metrics gap |
+| Agents | audited | GREEN |
+| Rules | audited | YELLOW: 2 repeated corrections are not rules yet |
+| Hooks | audited (stack-doctor hooks scope + wiring check) | YELLOW: transcript capture misses 2 sessions |
+| Memory (agent) | audited (all 22 Tier A folders) | YELLOW: 13 indexes list notes twice; 5 Windows-era notes read as current |
+| Memory (vault notes) | audited (partial) | YELLOW: 1 duplicate paper, 22 old seeds |
+| Data feeds | audited | GREEN |
+| Vault | audited (partial, score only) | 75 (Cadence 0) |
+| Context posture | **not run**: `doctor-plus` cannot be called by the model | `unknown` for this run |
+
+## Layout invariants — all GREEN
+
+`aios-metrics.py` ran clean at 13:0x (rc 0, no error values):
+`tracked_symlinks_in_canonical=0`, `pool_view_drift=0`, `codex_view_drift=0`, `pool_dangling=0`,
+`codex_dangling=0`, `portability_failures=0`, `hooks_codex_is_link=1`.
+`skill-portability-check.py`: `checked 42 skills, 0 failing, 42 portable`.
+Info: 14 third-party links in canonical; 111 pool / 12 codex third-party installs; `roster_tokens_est=5822`.
+
+## Skills
+
+Metrics: `canonical_skills=42`, `never_used=19`, `name_only=28`, `name_only_never_used=15`,
+`usage_scope=claude_code_transcripts_only`, `usage_unreadable_transcripts=1` (1 transcript could not be
+read, so a never-used list may hold one skill too many).
+
+`--never-used` gives the same 19 as the baseline:
+- **name-only (15):** ArXiv, ISA, Science, articulation-skill, brain-audit, capture-insight,
+  five-slides-generator, improve-system, ingest-resource, library-advisor, library-review,
+  pbir-report-builder, pp-catapult-openfield-connect, pp-zotero-research-library, project-triage.
+  These show Claude no description. Zero use reflects the setting, not the skill.
+- **shown (4):** graphify, html-to-pdf, meeting-prep, research-in-5.
+
+Used once or twice (scripted from `aios-metrics.py` internals; the script has no mode for it):
+decision-audit 1, fireflies-intake 1, impeccable 1, interview-me 1 (name-only),
+sports-science-research-grounding 1, where-was-i 1, ingest-book 2, new-project 2, session-miner 2.
+
+**Codex reads** (`--codex-reads`, shell reads only): 0 for all 19 never-used skills and for the
+once-used ones, except **fireflies-intake = 1** (session `rollout-2026-10-30T16-40-47`, a
+`cat -n …/fireflies-intake/SKILL.md`). Control: closeout 9, meeting-sync 2.
+
+**Crutch test.** The baseline verdicts stand, with one change (`project-triage`):
+
+| Skill | Verdict | Evidence this run |
+|---|---|---|
+| ArXiv, Science, ISA, articulation-skill | DELETE candidates | 0 Claude, 0 Codex. Pointers: `~/DEV/WORKFLOW.md:108` (articulation-skill), `~/DEV/WORKFLOW.md:117` (`/ISA`). Card already open (`2026-11-02-generic-skills`). |
+| **project-triage** | **DELETE (retire)** | 0 Claude, 0 Codex. Its output, `~/DEV/project-triage/YYYY-MM-DD.html`, was last written **2026-08-18**. The live board (`board.py`, `/project`) replaced it. Its triggers ("morning review", "what's open in DEV") overlap `where-was-i` and `startup`. Pointers the delete breaks: `~/.claude/skills/project/SKILL.md:8` ("use project-triage"), `~/DEV/COMMANDS.md:405` (skill button) and `:434` ("Weekly, DEV/ triage HTML dashboard"). |
+| brain-audit, improve-system | KEEP | rot.md delegates; ran in this audit. |
+| capture-insight, ingest-resource, five-slides-generator, research-in-5, meeting-prep, html-to-pdf | KEEP | Eric's formats and routines. |
+| library-advisor, library-review, pp-zotero-research-library | KEEP | Tacit library/Zotero knowledge. |
+| pp-catapult-openfield-connect | KEEP | Catapult API conventions. |
+| pbir-report-builder | SEASONAL | Judge at the next Power BI build. |
+| graphify | KEEP | Third-party core with local edits; install trap. |
+| once/twice-used nine | KEEP | Each holds one of Eric's routines. |
+
+**Overlap.** The baseline named three overlap groups. Two are already handled: library-advisor,
+library-review and ingest-book each point at the others with a `Do not use … (use X)` clause, and so do
+pp-zotero-research-library and sports-science-research-grounding. One small trigger clash is left:
+pp-zotero lists "what does my library say about" and library-advisor lists "what would my library say
+about…". "My library" means Zotero in one and the book library in the other. Low; a one-word trigger edit
+fixes it. The third group (`project-triage` vs `project`) is the retire card above.
+
+**Parity.** 0 canonical skills set `"off"` in `skillOverrides` (39 `"off"` keys, all plugin or
+third-party). 28 canonical are `"name-only"`. `doctor-plus` is name-only **and**
+`disable-model-invocation: true`; see Context posture.
+
+**Promotion.** 2 project skills (`aios-audit`, `os-audit`), KeystoneOS only. No case.
+
+**Skill gaps found in `aios-audit` itself** (this run tests the skill):
+1. Step 5 asks for a crutch test on once-used skills, but `aios-metrics.py` prints only the count
+   (`skills_used_once=21`, all skills incl. third-party), not the names. I scripted it.
+2. `aios-metrics.py --help` runs the full metric instead of printing usage.
+3. Step 4 delegates Context posture to `doctor-plus`, which the model cannot invoke (see below).
+
+## Agents
+
+4 agents, all `impeccable-*`, `model: inherit`. Each is referenced once in `~/.claude/skills/impeccable/`.
+1 spawn in Claude transcripts. GREEN, KEEP while `impeccable` stays.
+
+## Rules
+
+Scope: last 7 days, 97 Claude session files (392 real user messages after removing memory-flush
+prompts) and 59 Codex session files (counted, user messages not read).
+
+No `~/.claude/CLAUDE.md` rule was contradicted. Two corrections repeated twice or more are not rules yet:
+
+1. **Commands handed to Eric failed when pasted (2×).** 2026-11-02 02:46 (`aae53841`): "I ran the command
+   in the terminal and it said there was not such file or directory". The command was
+   `gps_report/.venv/bin/python analysis/pl_bands/period_view.py`, a path that works only from inside the
+   repo. 2026-10-31 21:33 (`3218743c`): "ran the command and it said parse error". The command held a
+   `<words>` placeholder, which zsh reads as a redirect. Proposed rule: a command handed to Eric must run
+   when pasted from any folder: absolute paths, no `<placeholders>`.
+2. **"Use writing-for-agents" when auditing a skill (3×).** 2026-10-26 01:23 and 04:19 (`acc5fc1e`),
+   2026-10-29 13:36 (`053da610`). Only `improve-system` mentions it. Proposed rule: auditing or improving a
+   skill → use `mattpocock-skills:writing-for-agents`.
+
+Also seen (no action): Eric often reports that a command he was handed is running in the terminal (4×).
+That fits today's Ghostty rule in `machine.md`.
+
+## Hooks
+
+Wiring: `~/.claude/settings.json` has 11 hook commands, `~/.codex/hooks.json` 9. Every path they name
+exists. All 8 `.js` hooks pass `node --check`. `hooks_codex_is_link=1`. (rot.md's "13 wired hooks" is old.)
+
+`stack-check.ps1` (hooks-scope run, read-only), newest verdict 13:0x:
+`2 issue(s): task:com.keystone.dailybackup-login, errors-log`.
+
+- `task:com.keystone.dailybackup-login` — **not RED.** Newest evidence: `pgrep -fl daily-backup` shows no
+  run. The login log's newest line is `2026-11-02 11:50:12 ===== daily-backup end: ERROR (10 errors) =====`,
+  from before the PATH fix (`~/.claude` commit at 12:07:51). The main job's newest lines:
+  `2026-11-02 12:51:54 ===== daily-backup end: OK (0 errors) =====` and
+  `2026-11-02 13:00:05 gate skip: already OK today`. Cloud check: "Google's servers have the latest backup
+  receipt (0h old)". The `exit 1` is the old 11:50 run. It clears at the next login run; not yet proven.
+- `errors-log` — **open, and wider than the baseline said.** `.errors.log` holds 11 lines:
+  1 monthly aios nudge (handled by this audit), 1 stack-doctor weekly line, and **9
+  `transcript_path does not exist` lines**: 8 for session `15d95b4f` (the baseline audit session,
+  18:48Z to 19:03:35Z, so it was still going while this run started) and **1 for a second session,
+  `0c8c7095`** (`-Users-kristinarash-DEV`, 18:56:23Z). Neither has a `.jsonl` on disk. This session
+  (`516a6136`, also `CLAUDE_CODE_CHILD_SESSION=1`) does have one, so "child session" alone does not
+  explain it. Content of those sessions will not reach memory. [data loss]
+
+## Memory (agent)
+
+Scope: all 22 `~/.claude/projects/*/memory/` folders (186 notes) + `global-memory/`.
+
+- Index lines → files: **0 broken.** Notes missing from their index: **0.**
+- **Indexed more than once: 74 entries in 13 indexes.** Same pattern the baseline fixed in KeystoneOS:
+  each note listed once by title and once by filename. Worst: `-Users-kristinarash` (15),
+  `-Users-kristinarash-DEV-Football-FaceComps` (14), `c--Users-eric-rash-Desktop-DEV-Football-FaceComps` (14).
+  Example: `-Users-kristinarash-DEV-Travel-Map/memory/MEMORY.md` lines 5 and 12 both point at
+  `user_role.md`. [bloat]
+- Caps: `global-memory/MEMORY.md` 1,894 / 2,500 chars; `USER.md` 1,256 / 1,375. OK.
+- **Time-dimensioned facts, KeystoneOS index (auto-loaded in every KeystoneOS session).** 5 of 17 notes
+  describe the retired Windows machine as current. Cross-checked against `~/.claude/machine.md` (Mac
+  primary; Windows desktop-app only since 10-21), `docs/STATUS.md` (OneDrive backup destination removed
+  10-31) and `data/projects.json` (morning_briefing archived):
+  - `project-drive-topology.md`: "three homes", `C:\Users\eric_rash\Desktop\DEV`, OneDrive, `D:\`. machine.md
+    says primary storage is Google Drive. [clash]
+  - `project-backup-coverage.md`: "KeystoneOS-DailyBackup task (06:15) … to OneDrive". Now launchd
+    `com.keystone.dailybackup`, hourly 12-17, Google Drive. [poisoning]
+  - `project-msys-bash-flakiness.md`: Git Bash fix by a Windows scheduled task. Windows only. [poisoning]
+  - `project-morning-briefing-pipeline.md`: `C:\…\morning-briefing`, Task Scheduler 07:20. Archived. [poisoning]
+  - `project-skill-audit-2026-07.md`: "122 skills … 11 dead-weight candidates open". Now 42 canonical;
+    `aios-audit` owns this. [poisoning]
+  Not scanned for time-dimensioned facts: the other 21 folders.
+
+## Identity
+
+Scope: `USER.md` facts (role, children, career target, machines) grepped across the 75 compiled daily
+logs since 2026-08-04. Full session text was not read. No contradiction found. Note: the children's ages
+are dated "(9/2026)" and will drift; that is fine while the date stays on the line.
+
+## Substrate (os-audit Check 1, read-only)
+
+587 backtick paths checked in `~/.claude/CLAUDE.md`, `~/.claude/machine.md`, KeystoneOS `AGENTS.md` and
+`~/DEV/*.md`, plus 86 absolute paths in owned skills. After removing slash commands, repo names and paths
+that resolve under a project, these are left:
+
+- `~/DEV/COMMANDS.md:304` says the Playwright browser is in `~/Library/Caches/ms-playwright/chromium-1234`,
+  "Nothing to download". That folder is gone; `chromium-1243` and `chromium-1248` are there. [poisoning]
+- `~/DEV/WORKFLOW.md:243` lists as a "known stale spot": "`~/DEV/CLAUDE.md` still says `~/Desktop/DEV` on
+  Windows". It no longer does (`grep` finds no match). The stale note is now the stale fact. [poisoning]
+- `~/DEV/Football/PFF_Position_Reports/` is an active repo (first commit 2026-10-22, last 2026-11-02
+  12:28) that no router names. A fresh session will not find it. [confusion]
+- `~/DEV/_to_delete/` (132 KB, `2026-10-29_Wilhelm_Brody_RTP_pre-repair`) is unmapped. Low. [confusion]
+- Windows `~/Desktop/DEV` paths in `where-was-i`, `research-in-5` and `project-triage` are all labelled
+  "Windows". Not findings.
+
+## Data feeds (os-audit Check 3, read-only)
+
+Newest log line for each job, read 13:07; `pgrep` showed no pull or backup running.
+
+| Feed | Newest evidence | Cadence | Verdict |
+|---|---|---|---|
+| GPS | `[2026-11-02T10:06:37-0600] gps pull end exit=0` | daily | FRESH |
+| Perch | `[2026-11-02T10:07:11-0600] perch pull end exit=0` | daily | FRESH |
+| VALD | `[2026-11-02T10:11:06-0600] vald pull end exit=0` | daily | FRESH |
+| PFF | `[2026-10-31T16:13:16-0500] pff weekly pull end exit=0` (weeks 4-8, 0 failed) | Wed 10:20 | FRESH; next 11-04 |
+| Fireflies | 4 real meetings 10-26 to 10-29, all in `SecondBrain/Inbox/meetings/` | per meeting | FRESH |
+| CFB forecast | `weekly_forecast_log.csv` captured 2026-10-30 | weekly (Wed ideal) | FRESH; next 11-04 |
+| Zotero | newest item 2026-10-19 15:13 | on demand | ON-DEMAND |
+| Morning cadence | `[06:00:46] job 'morning-cadence' -> ok (exit 0, 40s)` | daily | FRESH |
+
+Knowledge current through **2026-11-02**.
+
+Fireflies notes:
+- The 06:00 generic-title hold works: no generic-named note dated 10-30 or later (STATUS "Next" item 1 can
+  close).
+- "Oct 22, 02:30 PM" (`01M5JHFQXF3NJ5YSSAPDCN81EQ`) is not in the vault. It lasted 0.99 min and is not
+  PROCESSED, so `--processed-only` skips it. Not a miss.
+- The 10-26 meeting is now titled `SA_Leadership_10282026` in Fireflies, but the vault note is still
+  `2026-10-26_Oct_26_1128_AM.md` (exported 10-28 before the rename). Old name in the vault. [clash, low]
+
+## Vault (brain-audit, read-only, no trend row)
+
+`measure.sh`: Notes 25, newest 2026-09-14 (49 d); Drafts 94 d; Knowledge 2 d; Projects 2 d; last
+interview 2026-09-14; last meeting sync 2026-10-30; ledger 2026-10-31; 92 Tier A; portfolio 10-31;
+`dailybackup-login exit=1` (old 11:50 run, see Hooks); `errors_log_lines: 11`.
+
+| C | Score | Evidence |
+|---|---|---|
+| Context | 25 | USER/MEMORY under cap, 92 Tier A, Knowledge 2 d |
+| Connections | 25 | meeting sync 3 d, portfolio 2 d, ledger 2 d |
+| Capabilities | 25 | Rubric: "audit-driven builds shipped since last run". Since the last trend row (09-07): GPS pull (09-13 audit), backup PATH fix and `aios-metrics` modes (today). |
+| Cadence | 0 | `Notes/` 49 d (> 45) |
+| **Total** | **75** | |
+
+The baseline gave Capabilities 13 ("judged, not measured"). The 12-point rise is a scoring call on the
+same evidence, not a change in the vault. The headline is the same: feeds alive, synthesis frozen.
+
+## Memory (vault notes) (improve-system, read-only; Step 0 skipped; ledger untouched)
+
+Scope: `Notes/`, `Knowledge/`, `Projects/`, 1,985 notes.
+- Stale seeds > 60 d: **22** (oldest `Notes/planning-windows-compound.md`, 163 d). Card already open.
+- Stale active `Project_*`: 0.
+- Slug duplicates: 4 groups, all by design (`README.md`, `_domain.md` ×5, `_book.md` ×27, `GRAPHIFY_SYNC.md` ×6).
+- **Real duplicate:** `Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-…md` is a
+  696-byte `reference-stub` of the full brief `krystofiak-2024-injection-of-amniotic-membrane-…md` (same
+  paper, author parsed as "j"). Archive the stub. [clash]
+- Near-duplicate: `Projects/Applied-Performance-JD-2026/JD-response-email-draft.md`, `-v2-humanized`,
+  `-v3-articulated`. The JD was accepted 7/17; v1 and v2 are archive candidates. Low.
+- Conflicting claims: checked for the 7 title-similar pairs only (Jaccard ≥ 0.6). The one domain pair
+  (Bondarchuk's four exercise classes, Moyer note vs Bondarchuk book note) links both ways and does not
+  conflict. Tag-wide conflict scan not done.
+- Ledger `proposals-pending.md`: 0 open items (the baseline listed 4).
+
+## Context posture — not run
+
+`doctor-plus` has `disable-model-invocation: true`. The Skill tool refused it:
+"cannot be used with Skill tool due to disable-model-invocation". So the `rot.md` delegate for this
+layer can never run inside `aios-audit`. The row keeps its 2026-10-11 date. Eric can run `/doctor-plus`
+himself, or the flag can go (card).
+
+## Decision Desk (batch `2026-11-02-aios-rerun`, new cards only)
+
+The 3 baseline cards (`generic-skills`, `name-only-rest`, `seed-notes`) are still open and unanswered;
+not re-seeded. New:
+1. Retire `project-triage` and fix its 3 pointers.
+2. Dedupe the 13 Tier A indexes (74 double entries).
+3. Mark the 5 Windows-era KeystoneOS notes as history.
+4. Add the rule: handed-over commands run from any folder.
+5. Add the rule: skill audits use `writing-for-agents`.
+6. Let `aios-audit` call `doctor-plus`.
+7. Four small fixes: COMMANDS.md browser line, WORKFLOW.md stale note, router row for
+   PFF_Position_Reports, archive the j-2024 stub.
+
+## Two next builds
+
+1. **Find why two sessions saved no transcript.** `15d95b4f` and `0c8c7095` have no `.jsonl`, so their
+   work never reaches memory. This is data loss, and it happened twice today. Start:
+   `/mattpocock-skills:diagnosing-bugs` "sessions 15d95b4f and 0c8c7095 wrote no transcript .jsonl;
+   transcript-capture.js logs transcript_path does not exist".
+2. **Close the three skill gaps this rerun found.** Add `--once-used` and a real `--help` to
+   `scripts/aios-metrics.py`, and make Context posture runnable inside the audit (card 6). Start:
+   "add --once-used and --help to KeystoneOS/scripts/aios-metrics.py, with a test".
+
+## Compared with the baseline
+
+**Same:** every layout invariant 0; 42/42 portable; never-used 19 with the same 15/4 split; the 4
+generic DELETE candidates; 22 old seeds; `Notes/` frozen since 09-14; agents OK; all feeds fresh.
+
+**The new skill rules changed these verdicts:**
+- **Newest evidence:** the backup is not RED. The baseline's first pass called it RED from older runs and
+  had to correct itself in a later cross-check. This run quoted the 12:51 OK line and the 13:00 gate skip up
+  front, and named the login job's `exit 1` as a pre-fix leftover.
+- **Cross-reference:** the 5 Windows-era KeystoneOS notes were checked against `machine.md`, STATUS and
+  `projects.json` before being called stale. The baseline skipped this layer (green by date).
+- **Pointer check before DELETE:** found the 3 pointers to `project-triage` and a second WORKFLOW.md
+  pointer (`/ISA`, line 117) the baseline did not name. That one touches the open generic-skills card.
+
+**The baseline got wrong:**
+- "0 real Codex reads for all 25" was wrong for `fireflies-intake`: a `cat -n` read on 10-30, before the
+  baseline, which even the baseline's own grep finds. Verdict unchanged (KEEP).
+- Global `MEMORY.md` is 1,894 chars (`wc -m`), not the 1,865 the baseline's cross-check gave.
+- The transcript-capture miss is not one session: a second one (`0c8c7095`) failed, and `15d95b4f` kept
+  failing until 19:03Z.
+
+**New in the rerun (not in the baseline):** `project-triage` dead since 08-18; 74 double index entries in
+13 other Tier A folders; 2 repeated corrections not yet rules; 4 stale router items; the j-2024 duplicate;
+`doctor-plus` unreachable; 3 gaps in the `aios-audit` skill.
+
+**Resolved since the baseline:** two of the three overlap groups already have sharp `Do not use` clauses
+on both sides (no card needed); the proposals ledger has 0 open items.
+
+**Not compared:** Context posture (not run either time).
+---
+name: aios-audit
+description: >-
+  Audit the whole AI operating system across decay tiers - skills, agents,
+  hooks, rules, memory, and cross-harness parity between Claude Code, Codex,
+  and Pi - then propose exactly two next builds. Use when the user says
+  "/aios-audit", "audit my system", "audit my AI OS", "audit the bloat",
+  "is my setup rotting", "what should I cut", "are my skills portable",
+  "monthly skill audit", or when rot.md shows a layer past its audit date.
+  Do not use for project data drift, routing, or index freshness - use
+  os-audit. Do not use for launchd, venv, or backup health - use
+  claude-stack-doctor. Do not use for SecondBrain note rot - use
+  improve-system or brain-audit.
+metadata:
+  short-description: Decay-tier audit of the AI OS; delegates to the five layer-specific audit skills.
+argument-hint: "[optional: a layer name from rot.md]"
+allowed-tools: Read, Bash, Grep, Glob, Agent
+---
+
+# AIOS Audit — is the harness itself still true?
+
+Five audit skills already exist, and each owns one layer. This skill owns the
+layer none of them touch: **the harness** — skill roster, agents, hooks, rules,
+agent memory, and parity between Claude Code, Codex, and Pi. For every other
+layer it **delegates** and leaves the method to that layer's owner.
+
+| Delegate | Owns |
+|---|---|
+| `os-audit` (project) | project data: routing, index truth, freshness, duplication |
+| `brain-audit` | SecondBrain as a system — the four C's |
+| `improve-system` | note-level rot: stale seeds, duplicates, conflicts |
+| `claude-stack-doctor` | automation plumbing: launchd, venvs, memsearch, backup freshness |
+| `doctor-plus` | context-engineering posture of the workspace |
+
+If `$ARGUMENTS` names one layer from `rot.md`, audit only that layer.
+
+**Read-only.** The audit writes its report, the `Last audited` column of
+`~/DEV/KeystoneOS/docs/rot.md`, and one Decision Desk card per proposal, and commits a trend
+row the monthly job left. Skills, memory,
+config and notes stay exactly as found: every change is a proposal Eric approves first.
+
+**Every finding is fresh and cross-checked.** Two rules bind every step:
+
+- **Newest evidence.** Every RED rests on a check run this session. Where a job or log
+  exists, read its newest line, check whether a run is in progress (`pgrep -fl <job>`), and
+  quote that line with its time in the report. (2026-11-02: the backup was reported RED from its 12:23 run while a
+  12:32 run was going; that run ended OK.)
+- **Cross-reference.** A fact usually lives in more than one place (a skill, a Tier A note
+  in another project folder, a router, a script). Before reporting one copy stale, grep the
+  topic across `~/.claude/skills/*/SKILL.md`, `~/.claude/projects/*/memory/`, `~/DEV/*.md`
+  and the owning script, and report every copy that disagrees. The script or skill that
+  actually runs is the authority.
+
+## Steps
+
+1. **Read `~/DEV/KeystoneOS/docs/rot.md`.** For each layer, compute days since `Last
+   audited`. A layer past due or `unknown` is audited this run; a layer inside its window is
+   reported green and skipped. Read the delegation contract and layout invariants there.
+   *Done when* every layer is marked due or green.
+
+2. **Run the metrics:** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py`. Capture every
+   `key=value` line. A stack trace, or a value like `error`, `git_error`, `no_manifest` or
+   `error_rc…`, is itself a RED finding; report it rather than a guessed number.
+
+3. **Assert the layout invariants.**
+
+   | Key | Must be | If not |
+   |---|---|---|
+   | `tracked_symlinks_in_canonical` | `0` | RED — a link was committed; Windows gets a dead file |
+   | `pool_view_drift`, `codex_view_drift` | `0` | RED — someone edited a generated view instead of `~/.claude/skills/` |
+   | `pool_dangling`, `codex_dangling` | `0` | RED — a deleted canonical skill left an abandoned link |
+   | `portability_failures` | `0` | RED — see Parity in step 5 |
+   | `hooks_codex_is_link` | `1` | RED — `~/.codex/hooks` is a real folder again (the two-copies trap) |
+
+   Information, never findings: `third_party_links_in_canonical`, `pool_third_party`,
+   `codex_third_party`.
+
+4. **Delegate each due layer `rot.md` gives to another skill.** Invoke that owner with
+   the scope you need and the words *report findings only; apply nothing, write no ledger,
+   create no files*. `improve-system` applies approved proposals in its own Step 0 and
+   `brain-audit` appends to its trend table: suppress both by name. Fold each delegate's
+   findings under its layer. A delegate that covered less than its row claims gets a date
+   with a scope note, or the row stays `unknown`.
+
+   **Memory (agent)** has no delegate; audit it directly with `rot.md`'s check, and
+   cross-reference every stale or time-dimensioned fact (rule above) before reporting it.
+
+5. **Audit the harness layers directly** (Skills, Agents, Rules, and the Hooks check in step 3),
+   each only when it is due or named in `$ARGUMENTS`.
+   - **Bloat.** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py --never-used` names each
+     never-used canonical skill and marks it `name-only` or `shown` (scope:
+     `usage_scope=claude_code_transcripts_only`). Report the two groups apart: a `name-only`
+     skill shows Claude no description, so it fires only when called by name, and its zero use
+     reflects the setting, not the skill. If `usage_unreadable_transcripts` is above 0, report
+     the count: usage in those files is missing, so the list may be too long.
+   - **Codex use.** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py --codex-reads <skill> …`
+     counts Codex sessions that read each skill's `SKILL.md` with a shell command (every
+     Codex session also lists every skill's path, which it skips). It sees shell reads only,
+     so a 0 is strong evidence, not proof.
+   - **Crutch test.** For each never-used and once-used skill, answer `rot.md`'s question,
+     *would the current model do this fine without it?*, with one line of reasoning:
+     DELETE, KEEP (tacit knowledge the model cannot know), or SEASONAL. A DELETE needs all
+     three: 0 Claude calls, 0 Codex reads, and a pointer check
+     (`grep -rnw --exclude-dir=audits '<skill>' ~/.claude/skills/*/SKILL.md
+     ~/DEV/*/.claude/skills/*/SKILL.md ~/.claude/CLAUDE.md ~/DEV/*.md ~/DEV/*/AGENTS.md
+     ~/DEV/*/CLAUDE.md ~/DEV/KeystoneOS/docs ~/.claude/projects/*/memory`).
+     A skill, router row or CLAUDE.md line that sends work to it is a pointer the delete
+     breaks: name each one and its fix. A dated memory or audit mention is history.
+   - **Overlap.** Skills whose descriptions claim the same trigger space: recommend a merge,
+     or a sharper `Do not use … (use X)` clause on both.
+   - **Parity.** Run `python3 ~/DEV/KeystoneOS/scripts/skill-portability-check.py`; every
+     failure is a finding. Then list canonical skills set `"off"` in `~/.claude/settings.json`
+     `skillOverrides` (hidden in Claude Code, live in Codex and Pi): each needs on, or retire.
+   - **Promotion.** Project skills used from 2+ project folders are promotion candidates.
+   - **Rules.** Diff `~/.claude/CLAUDE.md` against the last 7 days of sessions: rules
+     contradicted by what happened, and corrections Eric repeated twice that are not yet rules.
+   - **Agents.** Count `~/.claude/agents/*.md`; for each, check it is referenced and wired.
+     `agents=0` is one line: "no agents defined".
+
+   *Done when* every due layer has a section with its evidence.
+
+6. **Write and commit the report.** `~/DEV/KeystoneOS/docs/audits/aios-audit-YYYY-MM-DD.md`,
+   one section per layer (a green-skipped layer gets one line). Update `Last audited` in
+   `rot.md` only for layers whose check actually ran and produced output. Commit the report
+   and `rot.md` by path as soon as they are written; if `scripts/aios-audit-cron.sh` left an
+   uncommitted trend row in `docs/audits/aios-trend.md` (that script is its only writer),
+   commit it in the same commit.
+
+7. **Put every decision on the Decision Desk.** One card per proposal Eric must approve
+   (each DELETE, each on-or-retire, each merge), through `ArtifactData` on the standing
+   page; fields and link: Tier A `feedback_decision-desk.md` in
+   `~/.claude/projects/-Users-kristinarash-DEV/memory/`. Two options at most, Claude's pick
+   marked, the pointer check in the context.
+
+8. **End with exactly two proposed next builds,** ranked, each with the one command or
+   sentence that starts it.
+
+**Done when** the report and `rot.md` are committed, each proposal is a Decision Desk card,
+every RED quotes its newest evidence line, and the reply names the two next builds.
+
+## Examples
+
+**Monthly nudge**
+```
+User: "audit my AI OS"
+→ rot.md: Skills and Rules past due, Hooks inside its window
+→ metrics: all invariants 0; never_used=19, name_only_never_used=15
+→ Skills and Rules audited here; Hooks green, skipped
+→ report, 2 Decision Desk cards, 2 next builds
+```
+
+**One layer**
+```
+User: "/aios-audit Memory (agent)"
+→ audits only the agent-memory stores directly
+→ stamps that one row in rot.md; every other row untouched
+```
+
+## Gotchas
+
+- **Linter green is not parity.** `skill-portability-check.py` reads frontmatter only. A
+  skill set `"off"` in `skillOverrides` passes it and never fires in Claude Code, while Codex
+  (which ignores that file) loads it. Found 2026-09-12: 12 canonical skills.
+- **Views are links into canonical.** Anything that writes into `~/.agents/skills/<owned>/`
+  by path writes canonical. `graphify install --platform agents` does exactly that and
+  overwrites the Claude variant: upgrade graphify with `--platform claude` only.
+- **Concurrent sessions commit your work.** `closeout` in another session sweeps every
+  uncommitted change in the repos it visits; step 6 commits early for that reason.
+- **Description length has a budget.** Claude Code caps the combined skill description size;
+  keep a recommended description near 650 characters.
+- **`dcg` blocks some shell shapes** (`rm -rf` inside heredocs, `$VAR` redirects, `git`
+  inside command substitution). Use Python `subprocess` or literal paths.
+
+ succeeded in 0ms:
+# Shell / Environment (macOS)
+
+- **Terminal app: Ghostty** (Eric, 2026-11-02; `/Applications/Ghostty.app`, 1.4.0). Hand Eric commands to paste in Ghostty. To start a new Claude session or a long job in a window, run `~/.claude/scripts/new-session.sh <dir> <cmd> [args]` (e.g. `… ~/DEV/KeystoneOS claude "audit my AI OS"`): it opens Ghostty with the parent's CLAUDE* variables removed. A plain `open` from inside Claude Code passes them on, and the new session saves no transcript (Tier A `child-session-env-leak`). Exception: `com.keystone.clouddrivepush` stays on Terminal, because macOS grants Drive file access to Terminal (Tier A `cloud-push-launchd-blocked`).
+- zsh/bash is the native surface on this machine. PowerShell 7 (`pwsh`, `/opt/homebrew/bin/pwsh`) is installed only to run the KeystoneOS `.ps1` jobs natively.
+- **The tool-path list has one home: `~/.claude/TOOLPATHS.md`.** Read that file when you need a path. Only the traps below are kept, because acting on them wrongly is expensive.
+- **Verify, don't trust any list.** `which -a <tool>` is authoritative. To read PATH honestly, scrub the environment first:
+  `env -i HOME="$HOME" USER="$USER" TERM=xterm SHELL=/bin/zsh /bin/zsh -lic 'echo $PATH'`
+- Traps:
+  - Python is PEP 668-managed. Use venvs or `uv`, never `pip install` globally.
+  - `uv` is a standalone install at `~/.local/bin/uv`, **not** Homebrew. Claude Code hooks call `$HOME/.local/bin/uv`; do not delete or relocate it.
+  - `timeout` is NOT installed (no GNU coreutils). Don't use it in scripts.
+  - Homebrew owns `/opt/homebrew/bin`. `/usr/local/bin` holds only app CLI links (`code`, `tailscale`); keep them, add nothing else.
+  - Secrets live in the macOS Keychain, not in `~/.zshrc`.
+- DEV projects live at `~/DEV` (not `~/Desktop/DEV`). Workspace map: `~/DEV/CLAUDE.md`.
+- Primary storage drive (documents, data, deliverables): `~/Library/CloudStorage/GoogleDrive-eric.rash11@gmail.com/My Drive/00_Primary_Storage_Drive`.
+- Paths that differ from Windows:
+  - SecondBrain vault: `~/SecondBrain` (Windows: `~/Desktop/SecondBrain`).
+  - Workspace memory (Tier A for `DEV`): `~/.claude/projects/-Users-kristinarash-DEV/memory/`.
+  - Printing-press CLIs: `~/go/bin/`.
+# Machine
+
+Machine-specific shell, paths, and traps live in `~/.claude/machine.md` (gitignored; copy `machine.macos.md` or `machine.windows.md` to `machine.md` on a new machine). It is imported below.
+
+@machine.md
+
+Projects sync through GitHub (`erash11`), documents through Google Drive.
+
+**Session routine.** When working inside a project repo, follow the Session routine in its `AGENTS.md`: `git pull` and read `docs/STATUS.md` at the start; update `STATUS.md`, commit, and `git push` at the end. This keeps the cloud sessions and any other machine in step.
+
+# Workflow Expectations
+
+- When asked to **create, merge, or consolidate an artifact** (calendar, deck, doc), finish with the produced file in hand. Check what exists first, then build the file even when a similar one already exists.
+- **Saving, moving, or backing up a file** → read `~/.claude/STORAGE.md` first. It says where each kind of file lives.
+- When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
+- Skills are tools: invoke one when it clearly fits the task.
+- **Decisions for Eric go on the Decision Desk** (Eric, 2026-11-02): https://claude.ai/artifact/SKUir7NZtM8NN5gwohEn3u. Seed each one with ArtifactData (2 options max, Claude's pick marked), read his clicks back from `answers`, and still list them in one line each in chat with the link. Format and fields: Tier A `feedback_decision-desk.md`. One standing page; never make a new one.
+- **Writing code: climb the reuse ladder** and stop at the first rung that fully works: (1) does it need to exist at all; (2) already in this codebase, used the way the surrounding code uses it; (3) standard library or platform feature; (4) an installed dependency; (5) one line a reader gets at a glance; (6) only then, the minimum new code.
+  - Read the code the change touches first, and finish every caller, test and fixture it breaks. Validation at trust boundaries, error handling that prevents data loss, and security stay in.
+  - New logic with a branch, loop, parser, money or security leaves one small test or assert.
+  - A shortcut with a known limit gets a comment: `shortcut: <the limit>, <when to upgrade>`.
+  - End a coding reply with one or two lines: what was skipped or not checked, and any risk Eric must know. (Adapted from ponytail, 2026-10-20.)
+- **Non-code work: decision rules** (Eric's answers, 2026-10-22):
+  - Staff-facing writing: action first, clarity over polish, one page.
+  - Coach reports and dashboards: open with the decision the report supports, then only the data for it.
+  - Tools for staff: build on what Baylor already runs (Teams, Box, Excel, Teamworks).
+  - Fast vs. thorough: thorough and checked for admin and supervisors; a small version first for coaches and Eric's own tools.
+  - When Eric hands over a solution (from a video, or a named tool), restate the goal it serves, keep his idea on the table, and name a better fit if one exists before building.
+
+# Session Startup
+
+The `keystone-unified-snapshot.js` SessionStart hook injects `global-memory/USER.md`, `global-memory/MEMORY.md`, a summary of `transcripts/.errors.log` (only when non-empty), and a pointer to the KeystoneOS snapshot. Work from the injected copy.
+
+- If hook failures appear, surface them once on the first response, then continue. Entries mean a hook or scheduled job failed.
+- If a **"SessionStart hook could not read a required memory file"** block appears, say so on the first response.
+- **If no `## User profile` block is in context at session start, the hook did not fire.** Say so, then read `USER.md`, `MEMORY.md` and `transcripts/.errors.log` by hand.
+- The injection is a frozen snapshot: mid-session writes take effect next session. Load anything further only when a question needs it.
+
+# Memory — routing only
+
+The two-tier memory system (`~/.claude/global-memory/` and `~/.claude/projects/<slug>/memory/`) is owned by the **`memory-write` skill**, which holds the tier rules, character caps, slug rules, write steps, retrieval ladder, and daily-compiled-log rules.
+
+The active project's Tier A memory (`~/.claude/projects/<slug>/memory/`, indexed by its `MEMORY.md`) is **auto-injected by the harness** each session. recall.py reads every Tier A folder, so they stay recallable across projects.
+
+- Writing a fact — "remember this", "note that", "save this", "forget about" → `Skill("memory-write")`
+- Recalling past context — "did we already…?", "what did we decide about X" → `Skill("memory-write")`, Recall section
+- Daily compiled logs at `~/.claude/claude-memory-compiler/daily/` are written only by `claude-memory-compiler`. Read one only when a question needs that day.
+- **Slugs are path-based** (Mac `-Users-kristinarash-DEV-<X>`). Tier A is not auto-injected in cloud sessions or on another machine; memsearch still finds it. Durable project facts belong in the repo's `docs/` so every session sees them.
+
+---
+
+Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Skill tool, so it spells out the memory rules). Keep them as separate files; the memory procedure's one home is the `memory-write` skill.
+
+ succeeded in 0ms:
+[2026-11-01] aios-audit due - run "audit my AI OS" in ~/DEV/KeystoneOS (uncommitted trend row waiting)
+[2026-11-02T10:30:24.4101430-06:00] stack-doctor weekly: 1 issue(s): errors-log — details in ~/.claude/skills/claude-stack-doctor/scripts/last-weekly-run.log; run /claude-stack-doctor to fix
+[2026-11-02T18:48:32.272Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T18:52:47.318Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T18:54:32.870Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T18:56:23.970Z] transcript_path does not exist: {"session_id":"0c8c7095-a29b-42b0-b424-16bb1208480e","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/0c8c7095-a29b-42b0-b424-16bb1208480e.jsonl","cwd":"/Users/kristinar entrypoint=cli callers=["claude --dangerously-skip-permissions","-zsh","login -pf kristinarash"]
+[2026-11-02T18:58:57.981Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T19:00:52.296Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T19:02:28.690Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T19:02:44.269Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+[2026-11-02T19:03:35.648Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse
+exec
+/bin/zsh -lc 'git status --short && git log -6 --oneline && cat docs/STATUS.md' in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+423e1ba STATUS: aios-audit rerun 2026-11-02
+8160c5f aios-audit 2026-11-02 rerun: report + rot.md receipts (Context posture not run)
+2183ebb aios-audit: Codex review fixes; aios-metrics --never-used and --codex-reads (quote-aware, tested)
+4df0d89 aios-audit skill: newest-evidence and cross-reference rules, real Codex reads, name-only split, pointer check before DELETE, Decision Desk step, run-order steps, done line
+94e1525 aios-audit 2026-11-02: cross-check, name_only metrics, corrections
+e7116ee aios-audit 2026-11-02: report + rot.md receipts
+# STATUS
+
+Read this first. Update it before ending every session.
+
+Last updated 2026-11-02 (Mac, aios-audit rerun). Evidence for every claim below is in
+`docs/audits/2026-09-12-gate-a-approval.md`.
+
+## Current state
+- 2026-11-02 (Mac, aios-audit rerun, read-only): `docs/audits/aios-audit-2026-11-02-rerun.md` (baseline untouched). Invariants all 0; backup OK (12:51); feeds fresh. New: `project-triage` dead since 08-18; 74 double lines in 13 Tier A indexes; 5 Windows-era KeystoneOS notes; 2 repeated corrections not yet rules; transcript capture missed 2 sessions (`15d95b4f`, `0c8c7095`); `doctor-plus` cannot be called by the audit, so Context posture stays 2026-10-11. 7 new Decision Desk cards, batch `2026-11-02-aios-rerun`. The 06:00 generic-meeting hold check (Next item 1) passed: no generic note dated 10-30 or later.
+- 2026-10-31: touched by the Front Burner session (project-triage `docs/plans/2026-10-31-front-burner-self-maintaining.md`): `scripts/ritual-check.ps1`, `tests/keystone-ritual-forecast-capture.ps1`, new `tests/keystone-ritual-front-burner.ps1`. Recorded at closeout of the skill-audit session; that session owns the details.
+- 2026-10-30 (Mac, meeting-sync audit): the 06:00 `morning-cadence` meeting export (`Invoke-MeetingSync`) no longer exports meetings with generic titles. It used a narrow pattern that missed Fireflies' default `Oct 29, 09:22 AM`, so three date-titled notes (10-26, 10-29 ×2) reached the vault with useless names and no Jev tag. New `Test-GenericMeetingTitle` follows the name-meetings REFERENCE list (fail-open: an error exports); skipped meetings stay out of `.sync-state.json` for the meeting-sync skill to rename and export (weekly-review or `/fireflies-intake`). Trade: until then they are not in the vault. Codex review follow-up: a generic meeting is held only for its first 7 days (`Test-HoldGenericMeeting`), then exported as it is, so it cannot age out of the 14-day find window; `find` dropped `--agent` (its `--compact` hid `dateString`); date+time-only titles now count as generic. Test: `tests/keystone-meeting-sync-generic.ps1` (26 cases pass). Flag, not fixed: the job and the skill's `sync.py` are two exporters on one ledger with different headers; folding the job into `sync.py` is off-season work. `tests/keystone-meeting-sync.ps1` part 2 uses Windows `.cmd` fakes and would call the real CLI on the Mac.
+- 2026-10-30 (Mac, Antigravity): `scripts/agy-sync.ps1` now extracts assistant responses (`PLANNER_RESPONSE` with `content`) from `brain/<id>/.system_generated/logs/transcript_full.jsonl` (or `transcript.jsonl`) via `Get-AgyAssistantResponses` and includes them in both `outputs/agy/conversations/<id>.md` and the memory-compiler flush context. `docs/agy-memory-bridge.md` and `tests/agy-sync.ps1` updated; test passes (`agy-sync tests passed`).
+- 2026-10-24 (Mac, holdover leftovers): Removed the dead Codex PowerShell hook layer (`scripts/codex-hooks/*.ps1`, `install-codex-hooks.ps1`, 5 Windows tests; nothing called them); `docs/codex-memory-bridge.md` now lists what `~/.codex/hooks.json` runs. Windows paths in README, connections, `context/user.md`, `standing-rules.md`, `memory/README.md` are now Mac paths. `jobs.json`: morning-cadence is `daily` like its plist (Saturday is game day) and `taskName` holds the launchd labels; reconcile `-DryRun -Json` is all skip. The 10 stale GitHub branches are deleted, each kept as an `archive/<branch>` tag; their unique docs are on main (5 Windows-era plans under `docs/superpowers/plans/archive/`, bannered as not open work; the ticket-03 07-18 paragraph). Still open: the Mac memsearch lock pair (`~/.claude/hooks/memsearch-sync.js` + `~/.claude/scripts/daily-backup.ps1`) has no test now; `~/.codex/memories` does not exist but `data/memory-sources.json` lists it; the `standing-rules.md` "PowerShell over Bash" rule is Windows-era.
+- 2026-10-24 (Mac, hygiene): `data/jobs.json` now has a row for all 15 loaded `com.keystone` jobs (field `launchd`). The 11 new rows are inventory only (`reconcile: false`, no `timeoutMinutes`); reconcile `-DryRun -Json` gives 14 decisions, all `skip`. `run-job.ps1` refuses inventory rows (new `tests/run-job-inventory-row.ps1`). `data/projects.json`: no dead or Drive `canonicalPath` left. `cmj_traffic_light` points at `~/DEV/cmj-traffic-light`. `ai_analyst`, `FootballWeightTargetTool` and `morning_briefing` point at their `~/DEV/_ARCHIVE/` copies (first two now "Archived 2026-10-03"). `token_dashboard` is pruned (deleted 10-03, never ours). Their briefs are in `projects/retired/`. `data/discovery-roots.json` excludes `_DRIVE`: before this, `health`/`heal`/`context` on a dead path walked into the Drive mount through the `~/DEV/_DRIVE` symlink. Still open: `morning-cadence` is `weekdays` here but daily in the plist; `tests/keystone-reconcile.ps1` stops at line 165 on macOS (`-WindowStyle`); `projects/registry.md` still shows Windows paths; `cmj_traffic_light` is "done" in portfolio.json but "Active candidate" here; 14 `obsidianGraphPath` targets do not exist yet (graphsync targets, guarded by `Test-Path`).
+- 2026-10-23 (Mac, night, Windows holdover fixes): meeting-sync reads `FIREFLIES_API_KEY` from the Keychain under launchd (dead on every scheduled run since 08-06) and reports failures to `.errors.log`; `jobs.json` morning-cadence successProbe regex restored; the six live plists are in `ops/` and AGENTS.md documents install/rebuild; the 5 Task Scheduler installers are removed. Still open: `jobs.json` lists 3 jobs and says morning-cadence is `weekdays` while the plist runs daily; `scripts/codex-hooks/*.ps1` and 5 Windows-bound tests are dead on the Mac but tied into `docs/codex-memory-bridge.md`.
+- 2026-10-23 (Mac, evening, recall work): `data/memory-index-paths.json` now also lists vault `Inbox`, `Notes`, `Drafts`, `audits` (17 paths). Overlap with `Inbox/meetings` is safe (memsearch's scanner dedups by resolved path); adding roots cannot delete (index() prunes only inside the roots it gets). Indexed 19:25 by the hook worker with the full set; `memsearch search` now returns `SecondBrain/Notes/` hits; 49,190 chunks. First search is now `~/.claude/scripts/recall.py` (memsearch is the NO MATCH fallback): `~/DEV/docs/handoffs/2026-10-23-recall-py.md`.
+- 2026-10-23 (Mac, audit fix): `data/jobs.json` lists 3 jobs (morning-cadence, daily-backup, stack-doctor) while launchd has 14 `com.keystone` agents loaded. Left for later: reconcile reads `jobs.json`, so regenerating it could start make-up runs. (Done 2026-10-24, see above.)
+- 2026-10-22 (Mac, system audit): `data/jobs.json` daily-backup moved to `at 12:00`, makeup window 12:00-20:00, to match launchd (hourly 12-17 through the AC-only gate `~/.claude/scripts/daily-backup-login.sh`). Audit noted this registry knows 3 jobs while launchd runs 16. Handoff: `~/DEV/docs/handoffs/2026-10-22-system-audit-and-fixes.md`.
+- 2026-10-11 (Mac, 17:28): memory index rebuild finished (PID 26972 exited after about 3.5 h). `~/.memsearch/milvus.db` opens and reports 40,119 chunks. Not yet confirmed by a backup run: the newest `daily-backup` log entry is still the 12:09 error. The old file is kept as `~/.memsearch/milvus.db.broken-2026-10-11`.
+- 2026-10-11 (Mac closeout): hook health check. gps-pull, claude-files-digest and the memory-compiler flush are healthy again (latest runs pass). **Still failing:** `daily-backup` memsearch step. The local Milvus Lite index file is too old for Milvus Lite 3.x (`RuntimeError` in `memsearch/store.py`), so the full-set index rebuild fails every night. The SSD and Drive copies still verify. `memsearch-sync` shows "index busy (lock held)", streak 4 of 6. The compiler backlog (5 logs, 10/8) is unverified.
+- 2026-10-03 (evening, Windows): `scripts/morning-cadence.ps1` no longer runs project-triage `render.py` (retired with the static dashboard and `pulse.md`; the live board replaced them). The snapshot's Front Burner section is now omitted by design.
+- **2026-09-24 (Windows): Windows is the daytime machine, the Mac the evening one.** (Historical: Windows retired 10-14, desktop-app only since 10-21.) Two changes follow. First, the ritual nudges move to Windows: `ritual-check.ps1` has a `msg.exe` branch again, and its path defaults now follow the OS, because Mac-only paths made every ritual read "never run" on Windows. Enable `KeystoneOS-Rituals` on Windows and boot out `com.keystone.rituals` on the Mac. Second, `daily-backup` in `data/jobs.json` moves to 21:00 (makeup window 21:00-23:59), so the 07:00 reconcile no longer re-runs it. The CRASHBOX SSD layer only captures if the drive is attached at 21:00.
+  **Mac half done 2026-09-24 (evening):** `com.keystone.rituals` booted out and `launchctl disable`d (stays off after reboot); `com.keystone.dailybackup` plist Hour 9 → 21 and reloaded (`launchctl print` shows Hour 21). Old plist kept as `~/Library/LaunchAgents/com.keystone.dailybackup.plist.bak-2026-09-24`.
+  **2026-10-03 (Windows): Eric's call, keep `KeystoneOS-Rituals` OFF.** Checked: the task is Disabled (last run 2026-08-12). With the Mac job also off, no machine runs the ritual nudges. That is intended. To turn them back on later: `Enable-ScheduledTask -TaskName 'KeystoneOS-Rituals'`.
+- **2026-09-14: `ritual-check.ps1` gained a `slate` ritual.** It runs `~/DEV/project-triage/portfolio.py slate-check --json` (job-lane prioritization rules: cap, charters, dated steps, OKR checkpoints) and reports DUE, never OK, if the check cannot run. Tests: `tests/keystone-ritual-slate.ps1`; `keystone-ritual-forecast-capture.ps1` now expects 5 rituals.
+- **2026-09-14: Friday ritual runs also write `SecondBrain/Inbox/weekly-slate/YYYY-MM-DD.md`** via `portfolio.py week-report` (DUE if it cannot write). Handoff: `~/DEV/project-triage/docs/handoffs/2026-09-14-prioritization-system.md`.
+- The dominant thread is the **harness-agnostic AIOS plan**:
+  `docs/superpowers/plans/2026-09-12-harness-agnostic-aios.md` (approved; do not edit —
+  its SHA-256 `71b5242e…` binds the approval). Goal: every skill Eric owns loads
+  identically in Claude Code, Codex and Pi from one versioned canonical folder, plus a
+  recurring audit that keeps the AIOS from rotting.
+- Architecture: `~/.claude/skills/` (repo `erash11/claude-skills`) is canonical and holds
+  real directories only. `~/.agents/skills/` and `~/.codex/skills/` are generated views
+  rebuilt per machine by `sync-to-codex.sh` / `.ps1` — symlinks on Mac, copies on Windows.
+- **Tasks 1–7 done.** Task 8 (Pi trial) **DROPPED by Eric 2026-10-02** (`decisions/log.md`).
+  AIOS is closed apart from the monthly audit, which ran clean 2026-10-01.
+- **Roster resolved 2026-09-13 (Option B):** the 7 owned skills are on again in Claude Code
+  (`~/.claude` commit `21c686d`). Checker: 42/42 portable.
+- **First `aios-audit` ran 2026-09-13:** `docs/audits/aios-audit-2026-09-13.md`. Two RED:
+  the Codex snapshot hook is a stale copy, and the GPS feed looks frozen since 2026-08-01.
+- **Gate B** (2 rounds), **Gate C** (2 rounds) and two final Codex verification rounds
+  (3 and 4, `gpt-5.6-terra`) ran on 2026-09-12/13. Every code finding is fixed: C-01 exec
+  bits, C-02 atomic stale-lock reclaim, C-03 usage metrics scoped to Claude transcripts,
+  IR-01 list/map names rejected, IR-03 implicit null/boolean/number/timestamp rejected,
+  IR-04/IR-05 exact YAML grammars (`0008` kept as a number on purpose: YAML 1.2 core).
+  Round 5 (last) returned REVISE on `62fbb72` with IR-06/IR-07; host checks show both hold only
+  for the npm `yaml` library's 1.1 mode, not PyYAML or YAML 1.2 core. **Eric accepted the
+  checker as is (2026-09-13):** the contract is PyYAML + YAML 1.2 core. Closed.
+- **Audit build 1 done (2026-09-13):** Codex snapshot hook synced to the 98-line copy;
+  `memory-write` and `project_backup-sync-system.md` now say both machines are active
+  (`~/.claude/skills` `cd86eff`, `~/.claude` `532a0d3`).
+- Monthly metrics run on launchd `com.keystone.aiosaudit` (day 1, 14:00). It writes a row
+  to `docs/audits/aios-trend.md` and a nudge; it never commits.
+- `portability_failures=0` since the roster decision (2026-09-13). Every layout invariant is 0.
+
+## Next
+- Check the first 06:00 meeting export after `bf1250d` (10-31): `grep -E 'Skipped \(generic|Exported with a generic|New exports' outputs/morning/cadence.log | tail -5`. A generic-named note dated 10-30 or later in `~/SecondBrain/Inbox/meetings/` means the hold failed.
+- ~~Confirm the memory index; delete `~/.memsearch/milvus.db.broken-2026-10-11`.~~ **Closed 2026-10-25:** the broken file is gone and the 10-25 12:00 backup logged `INDEX full set ... exit 0` and `RECALL OK`. Never run `memsearch index` on a partial path set; that deletes the rest of the index (see `project_memsearch-index-is-destructive.md`).
+- ~~Windows: confirm `KeystoneOS-Rituals` is enabled; backup manifest: add `RunningTheRoom`.~~
+  **Closed 2026-10-03.** Rituals stay off on purpose (see Current state). `RunningTheRoom` is already
+  in `~/.claude/scripts/backup-manifest.json` (ssd + github).
+- **Audit build 2 (GPS):** option A approved 2026-09-13 — `docs/audits/2026-09-13-gps-locations.md`.
+  Auburn JSON moved to GD and untracked (done). Three old copies proven duplicate; Eric deletes
+  them by hand (the permission guard blocked Claude). **Regular pull built and live 2026-09-13:**
+  DB backfilled to 2026-09-12 (713 sessions), launchd `com.keystone.gpspull` at 06:30, alerts to
+  `.errors.log`. Details: `~/DEV/DataBase_GPS_Reporting/docs/STATUS.md`. Storage rule: Google Drive
+  only; OneDrive dropped.
+- Other audit proposals (vault note rot, double `dcg` registration, stale router counts,
+  `measure.sh` sort bug): see `docs/audits/aios-audit-2026-09-13.md`.
+
+## Open questions
+- ANSWERED 2026-10-11: option 1 (move the old Milvus Lite `.db` aside, rebuild the full 13-path index). The rebuild finished; tonight's backup run confirms it.
+- ANSWERED 2026-11-02 (Eric, Decision Desk): the Windows `Refresh_All_Data` GPS step is closed; the laptop is retired from automation, so it no longer runs. Still open: the three old GPS copies (audit item 3) are not on the Mac: GD `01_PROJECTS/_ACTIVE/2026-03-10_DataBase_GPS_Reporting` and two Baylor OneDrive `_MIGRATED_to_GoogleDrive` folders. Deleting them stays Eric's hand step.
+- ANSWERED 2026-10-31: Backup manifest still routes to OneDrive `Backups/DEV-NonRepo`? Removed 2026-10-31: the destination and its 29 path entries were dropped from `~/.claude/scripts/backup-manifest.json`; `daily-backup.ps1` already skips a missing baylor destination.
+
+## Gotchas
+- Never commit a symlink into `~/.claude/skills/`. Windows pulls that repo and an absolute
+  Mac symlink arrives unusable. A pre-commit hook refuses it.
+- Hooks and sync scripts exist in two copies (`~/.claude/hooks/`, `~/.codex/hooks/`; `.sh`
+  and `.ps1`). Any change patches both.
+- Never run `graphify install --platform agents`: the views link into canonical, so it
+  overwrites the Claude variant. Use `--platform claude` only.
+- `never_used` in the metrics is **Claude Code evidence only**. Check `~/.codex/sessions`
+  before recommending any deletion.
+- `claude -p --disallowedTools Bash` does not block the context-mode MCP shell tools.
+- A concurrent `closeout` commits whatever is uncommitted. Commit at each verified step.
+- **Never commit to a repo while a `claudex-loop` inspection of it is running.** The runner
+  snapshots the tree and marks the run `failed` ("Code changed during inspection").
+  Happened in round 5 on 2026-09-13.
+- `dcg` blocks: `rm -rf` in heredocs, `mv` and `>` redirects on home paths, `git` inside
+  command substitution. Use the Write tool plus a Python file that does the I/O.
+- Never point Pi at `~/DEV` — it ships no sandbox and no approval prompts, by design.
+- Never let any harness near `DexaProject` (identifiable athlete health data, on Google
+  Drive, not in `~/DEV`).
+- Plugin skills (`superpowers`, `mattpocock-skills`) are vendored and out of scope.
+- On the Mac: `timeout` is not installed and Python is PEP 668-managed (stdlib `python3`
+  or `uv`, never global `pip install`).
+- No success claim without pasted command output.
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+2026-11-02T19:17:41.185288Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.context7.com/.well-known/oauth-protected-resource/mcp\"" })
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'nl -ba .claude/skills/aios-audit/SKILL.md' in /Users/kristinarash/DEV/KeystoneOS
+exec
+/bin/zsh -lc 'nl -ba docs/audits/aios-audit-2026-11-02.md | tail -100' in /Users/kristinarash/DEV/KeystoneOS
+exec
+/bin/zsh -lc 'nl -ba docs/audits/aios-audit-2026-11-02-rerun.md' in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+     1	# AIOS Audit — 2026-11-02 (rerun)
+     2	
+     3	Trigger: Eric, "audit my AI OS", a rerun to test the updated `aios-audit` skill (commits `4df0d89`,
+     4	`2183ebb`). Every `rot.md` layer was treated as due, including the ones stamped today.
+     5	Baseline: `docs/audits/aios-audit-2026-11-02.md` (not changed by this run).
+     6	Mode: read-only. This run changed no skill, memory, note or setting. It wrote this report, the
+     7	`Last audited` column of `rot.md`, Decision Desk cards (batch `2026-11-02-aios-rerun`) and one STATUS line.
+     8	
+     9	## Layer status
+    10	
+    11	| Layer | Result | Verdict |
+    12	|---|---|---|
+    13	| Identity | audited (partial: 75 daily logs since 08-04) | GREEN |
+    14	| Substrate | audited (router paths + skill paths) | YELLOW: 4 stale or missing pointers |
+    15	| Skills | audited | YELLOW: `project-triage` is dead weight; metrics gap |
+    16	| Agents | audited | GREEN |
+    17	| Rules | audited | YELLOW: 2 repeated corrections are not rules yet |
+    18	| Hooks | audited (stack-doctor hooks scope + wiring check) | YELLOW: transcript capture misses 2 sessions |
+    19	| Memory (agent) | audited (all 22 Tier A folders) | YELLOW: 13 indexes list notes twice; 5 Windows-era notes read as current |
+    20	| Memory (vault notes) | audited (partial) | YELLOW: 1 duplicate paper, 22 old seeds |
+    21	| Data feeds | audited | GREEN |
+    22	| Vault | audited (partial, score only) | 75 (Cadence 0) |
+    23	| Context posture | **not run**: `doctor-plus` cannot be called by the model | `unknown` for this run |
+    24	
+    25	## Layout invariants — all GREEN
+    26	
+    27	`aios-metrics.py` ran clean at 13:0x (rc 0, no error values):
+    28	`tracked_symlinks_in_canonical=0`, `pool_view_drift=0`, `codex_view_drift=0`, `pool_dangling=0`,
+    29	`codex_dangling=0`, `portability_failures=0`, `hooks_codex_is_link=1`.
+    30	`skill-portability-check.py`: `checked 42 skills, 0 failing, 42 portable`.
+    31	Info: 14 third-party links in canonical; 111 pool / 12 codex third-party installs; `roster_tokens_est=5822`.
+    32	
+    33	## Skills
+    34	
+    35	Metrics: `canonical_skills=42`, `never_used=19`, `name_only=28`, `name_only_never_used=15`,
+    36	`usage_scope=claude_code_transcripts_only`, `usage_unreadable_transcripts=1` (1 transcript could not be
+    37	read, so a never-used list may hold one skill too many).
+    38	
+    39	`--never-used` gives the same 19 as the baseline:
+    40	- **name-only (15):** ArXiv, ISA, Science, articulation-skill, brain-audit, capture-insight,
+    41	  five-slides-generator, improve-system, ingest-resource, library-advisor, library-review,
+    42	  pbir-report-builder, pp-catapult-openfield-connect, pp-zotero-research-library, project-triage.
+    43	  These show Claude no description. Zero use reflects the setting, not the skill.
+    44	- **shown (4):** graphify, html-to-pdf, meeting-prep, research-in-5.
+    45	
+    46	Used once or twice (scripted from `aios-metrics.py` internals; the script has no mode for it):
+    47	decision-audit 1, fireflies-intake 1, impeccable 1, interview-me 1 (name-only),
+    48	sports-science-research-grounding 1, where-was-i 1, ingest-book 2, new-project 2, session-miner 2.
+    49	
+    50	**Codex reads** (`--codex-reads`, shell reads only): 0 for all 19 never-used skills and for the
+    51	once-used ones, except **fireflies-intake = 1** (session `rollout-2026-10-30T16-40-47`, a
+    52	`cat -n …/fireflies-intake/SKILL.md`). Control: closeout 9, meeting-sync 2.
+    53	
+    54	**Crutch test.** The baseline verdicts stand, with one change (`project-triage`):
+    55	
+    56	| Skill | Verdict | Evidence this run |
+    57	|---|---|---|
+    58	| ArXiv, Science, ISA, articulation-skill | DELETE candidates | 0 Claude, 0 Codex. Pointers: `~/DEV/WORKFLOW.md:108` (articulation-skill), `~/DEV/WORKFLOW.md:117` (`/ISA`). Card already open (`2026-11-02-generic-skills`). |
+    59	| **project-triage** | **DELETE (retire)** | 0 Claude, 0 Codex. Its output, `~/DEV/project-triage/YYYY-MM-DD.html`, was last written **2026-08-18**. The live board (`board.py`, `/project`) replaced it. Its triggers ("morning review", "what's open in DEV") overlap `where-was-i` and `startup`. Pointers the delete breaks: `~/.claude/skills/project/SKILL.md:8` ("use project-triage"), `~/DEV/COMMANDS.md:405` (skill button) and `:434` ("Weekly, DEV/ triage HTML dashboard"). |
+    60	| brain-audit, improve-system | KEEP | rot.md delegates; ran in this audit. |
+    61	| capture-insight, ingest-resource, five-slides-generator, research-in-5, meeting-prep, html-to-pdf | KEEP | Eric's formats and routines. |
+    62	| library-advisor, library-review, pp-zotero-research-library | KEEP | Tacit library/Zotero knowledge. |
+    63	| pp-catapult-openfield-connect | KEEP | Catapult API conventions. |
+    64	| pbir-report-builder | SEASONAL | Judge at the next Power BI build. |
+    65	| graphify | KEEP | Third-party core with local edits; install trap. |
+    66	| once/twice-used nine | KEEP | Each holds one of Eric's routines. |
+    67	
+    68	**Overlap.** The baseline named three overlap groups. Two are already handled: library-advisor,
+    69	library-review and ingest-book each point at the others with a `Do not use … (use X)` clause, and so do
+    70	pp-zotero-research-library and sports-science-research-grounding. One small trigger clash is left:
+    71	pp-zotero lists "what does my library say about" and library-advisor lists "what would my library say
+    72	about…". "My library" means Zotero in one and the book library in the other. Low; a one-word trigger edit
+    73	fixes it. The third group (`project-triage` vs `project`) is the retire card above.
+    74	
+    75	**Parity.** 0 canonical skills set `"off"` in `skillOverrides` (39 `"off"` keys, all plugin or
+    76	third-party). 28 canonical are `"name-only"`. `doctor-plus` is name-only **and**
+    77	`disable-model-invocation: true`; see Context posture.
+    78	
+    79	**Promotion.** 2 project skills (`aios-audit`, `os-audit`), KeystoneOS only. No case.
+    80	
+    81	**Skill gaps found in `aios-audit` itself** (this run tests the skill):
+    82	1. Step 5 asks for a crutch test on once-used skills, but `aios-metrics.py` prints only the count
+    83	   (`skills_used_once=21`, all skills incl. third-party), not the names. I scripted it.
+    84	2. `aios-metrics.py --help` runs the full metric instead of printing usage.
+    85	3. Step 4 delegates Context posture to `doctor-plus`, which the model cannot invoke (see below).
+    86	
+    87	## Agents
+    88	
+    89	4 agents, all `impeccable-*`, `model: inherit`. Each is referenced once in `~/.claude/skills/impeccable/`.
+    90	1 spawn in Claude transcripts. GREEN, KEEP while `impeccable` stays.
+    91	
+    92	## Rules
+    93	
+    94	Scope: last 7 days, 97 Claude session files (392 real user messages after removing memory-flush
+    95	prompts) and 59 Codex session files (counted, user messages not read).
+    96	
+    97	No `~/.claude/CLAUDE.md` rule was contradicted. Two corrections repeated twice or more are not rules yet:
+    98	
+    99	1. **Commands handed to Eric failed when pasted (2×).** 2026-11-02 02:46 (`aae53841`): "I ran the command
+   100	   in the terminal and it said there was not such file or directory". The command was
+   101	   `gps_report/.venv/bin/python analysis/pl_bands/period_view.py`, a path that works only from inside the
+   102	   repo. 2026-10-31 21:33 (`3218743c`): "ran the command and it said parse error". The command held a
+   103	   `<words>` placeholder, which zsh reads as a redirect. Proposed rule: a command handed to Eric must run
+   104	   when pasted from any folder: absolute paths, no `<placeholders>`.
+   105	2. **"Use writing-for-agents" when auditing a skill (3×).** 2026-10-26 01:23 and 04:19 (`acc5fc1e`),
+   106	   2026-10-29 13:36 (`053da610`). Only `improve-system` mentions it. Proposed rule: auditing or improving a
+   107	   skill → use `mattpocock-skills:writing-for-agents`.
+   108	
+   109	Also seen (no action): Eric often reports that a command he was handed is running in the terminal (4×).
+   110	That fits today's Ghostty rule in `machine.md`.
+   111	
+   112	## Hooks
+   113	
+   114	Wiring: `~/.claude/settings.json` has 11 hook commands, `~/.codex/hooks.json` 9. Every path they name
+   115	exists. All 8 `.js` hooks pass `node --check`. `hooks_codex_is_link=1`. (rot.md's "13 wired hooks" is old.)
+   116	
+   117	`stack-check.ps1` (hooks-scope run, read-only), newest verdict 13:0x:
+   118	`2 issue(s): task:com.keystone.dailybackup-login, errors-log`.
+   119	
+   120	- `task:com.keystone.dailybackup-login` — **not RED.** Newest evidence: `pgrep -fl daily-backup` shows no
+   121	  run. The login log's newest line is `2026-11-02 11:50:12 ===== daily-backup end: ERROR (10 errors) =====`,
+   122	  from before the PATH fix (`~/.claude` commit at 12:07:51). The main job's newest lines:
+   123	  `2026-11-02 12:51:54 ===== daily-backup end: OK (0 errors) =====` and
+   124	  `2026-11-02 13:00:05 gate skip: already OK today`. Cloud check: "Google's servers have the latest backup
+   125	  receipt (0h old)". The `exit 1` is the old 11:50 run. It clears at the next login run; not yet proven.
+   126	- `errors-log` — **open, and wider than the baseline said.** `.errors.log` holds 11 lines:
+   127	  1 monthly aios nudge (handled by this audit), 1 stack-doctor weekly line, and **9
+   128	  `transcript_path does not exist` lines**: 8 for session `15d95b4f` (the baseline audit session,
+   129	  18:48Z to 19:03:35Z, so it was still going while this run started) and **1 for a second session,
+   130	  `0c8c7095`** (`-Users-kristinarash-DEV`, 18:56:23Z). Neither has a `.jsonl` on disk. This session
+   131	  (`516a6136`, also `CLAUDE_CODE_CHILD_SESSION=1`) does have one, so "child session" alone does not
+   132	  explain it. Content of those sessions will not reach memory. [data loss]
+   133	
+   134	## Memory (agent)
+   135	
+   136	Scope: all 22 `~/.claude/projects/*/memory/` folders (186 notes) + `global-memory/`.
+   137	
+   138	- Index lines → files: **0 broken.** Notes missing from their index: **0.**
+   139	- **Indexed more than once: 74 entries in 13 indexes.** Same pattern the baseline fixed in KeystoneOS:
+   140	  each note listed once by title and once by filename. Worst: `-Users-kristinarash` (15),
+   141	  `-Users-kristinarash-DEV-Football-FaceComps` (14), `c--Users-eric-rash-Desktop-DEV-Football-FaceComps` (14).
+   142	  Example: `-Users-kristinarash-DEV-Travel-Map/memory/MEMORY.md` lines 5 and 12 both point at
+   143	  `user_role.md`. [bloat]
+   144	- Caps: `global-memory/MEMORY.md` 1,894 / 2,500 chars; `USER.md` 1,256 / 1,375. OK.
+   145	- **Time-dimensioned facts, KeystoneOS index (auto-loaded in every KeystoneOS session).** 5 of 17 notes
+   146	  describe the retired Windows machine as current. Cross-checked against `~/.claude/machine.md` (Mac
+   147	  primary; Windows desktop-app only since 10-21), `docs/STATUS.md` (OneDrive backup destination removed
+   148	  10-31) and `data/projects.json` (morning_briefing archived):
+   149	  - `project-drive-topology.md`: "three homes", `C:\Users\eric_rash\Desktop\DEV`, OneDrive, `D:\`. machine.md
+   150	    says primary storage is Google Drive. [clash]
+   151	  - `project-backup-coverage.md`: "KeystoneOS-DailyBackup task (06:15) … to OneDrive". Now launchd
+   152	    `com.keystone.dailybackup`, hourly 12-17, Google Drive. [poisoning]
+   153	  - `project-msys-bash-flakiness.md`: Git Bash fix by a Windows scheduled task. Windows only. [poisoning]
+   154	  - `project-morning-briefing-pipeline.md`: `C:\…\morning-briefing`, Task Scheduler 07:20. Archived. [poisoning]
+   155	  - `project-skill-audit-2026-07.md`: "122 skills … 11 dead-weight candidates open". Now 42 canonical;
+   156	    `aios-audit` owns this. [poisoning]
+   157	  Not scanned for time-dimensioned facts: the other 21 folders.
+   158	
+   159	## Identity
+   160	
+   161	Scope: `USER.md` facts (role, children, career target, machines) grepped across the 75 compiled daily
+   162	logs since 2026-08-04. Full session text was not read. No contradiction found. Note: the children's ages
+   163	are dated "(9/2026)" and will drift; that is fine while the date stays on the line.
+   164	
+   165	## Substrate (os-audit Check 1, read-only)
+   166	
+   167	587 backtick paths checked in `~/.claude/CLAUDE.md`, `~/.claude/machine.md`, KeystoneOS `AGENTS.md` and
+   168	`~/DEV/*.md`, plus 86 absolute paths in owned skills. After removing slash commands, repo names and paths
+   169	that resolve under a project, these are left:
+   170	
+   171	- `~/DEV/COMMANDS.md:304` says the Playwright browser is in `~/Library/Caches/ms-playwright/chromium-1234`,
+   172	  "Nothing to download". That folder is gone; `chromium-1243` and `chromium-1248` are there. [poisoning]
+   173	- `~/DEV/WORKFLOW.md:243` lists as a "known stale spot": "`~/DEV/CLAUDE.md` still says `~/Desktop/DEV` on
+   174	  Windows". It no longer does (`grep` finds no match). The stale note is now the stale fact. [poisoning]
+   175	- `~/DEV/Football/PFF_Position_Reports/` is an active repo (first commit 2026-10-22, last 2026-11-02
+   176	  12:28) that no router names. A fresh session will not find it. [confusion]
+   177	- `~/DEV/_to_delete/` (132 KB, `2026-10-29_Wilhelm_Brody_RTP_pre-repair`) is unmapped. Low. [confusion]
+   178	- Windows `~/Desktop/DEV` paths in `where-was-i`, `research-in-5` and `project-triage` are all labelled
+   179	  "Windows". Not findings.
+   180	
+   181	## Data feeds (os-audit Check 3, read-only)
+   182	
+   183	Newest log line for each job, read 13:07; `pgrep` showed no pull or backup running.
+   184	
+   185	| Feed | Newest evidence | Cadence | Verdict |
+   186	|---|---|---|---|
+   187	| GPS | `[2026-11-02T10:06:37-0600] gps pull end exit=0` | daily | FRESH |
+   188	| Perch | `[2026-11-02T10:07:11-0600] perch pull end exit=0` | daily | FRESH |
+   189	| VALD | `[2026-11-02T10:11:06-0600] vald pull end exit=0` | daily | FRESH |
+   190	| PFF | `[2026-10-31T16:13:16-0500] pff weekly pull end exit=0` (weeks 4-8, 0 failed) | Wed 10:20 | FRESH; next 11-04 |
+   191	| Fireflies | 4 real meetings 10-26 to 10-29, all in `SecondBrain/Inbox/meetings/` | per meeting | FRESH |
+   192	| CFB forecast | `weekly_forecast_log.csv` captured 2026-10-30 | weekly (Wed ideal) | FRESH; next 11-04 |
+   193	| Zotero | newest item 2026-10-19 15:13 | on demand | ON-DEMAND |
+   194	| Morning cadence | `[06:00:46] job 'morning-cadence' -> ok (exit 0, 40s)` | daily | FRESH |
+   195	
+   196	Knowledge current through **2026-11-02**.
+   197	
+   198	Fireflies notes:
+   199	- The 06:00 generic-title hold works: no generic-named note dated 10-30 or later (STATUS "Next" item 1 can
+   200	  close).
+   201	- "Oct 22, 02:30 PM" (`01M5JHFQXF3NJ5YSSAPDCN81EQ`) is not in the vault. It lasted 0.99 min and is not
+   202	  PROCESSED, so `--processed-only` skips it. Not a miss.
+   203	- The 10-26 meeting is now titled `SA_Leadership_10282026` in Fireflies, but the vault note is still
+   204	  `2026-10-26_Oct_26_1128_AM.md` (exported 10-28 before the rename). Old name in the vault. [clash, low]
+   205	
+   206	## Vault (brain-audit, read-only, no trend row)
+   207	
+   208	`measure.sh`: Notes 25, newest 2026-09-14 (49 d); Drafts 94 d; Knowledge 2 d; Projects 2 d; last
+   209	interview 2026-09-14; last meeting sync 2026-10-30; ledger 2026-10-31; 92 Tier A; portfolio 10-31;
+   210	`dailybackup-login exit=1` (old 11:50 run, see Hooks); `errors_log_lines: 11`.
+   211	
+   212	| C | Score | Evidence |
+   213	|---|---|---|
+   214	| Context | 25 | USER/MEMORY under cap, 92 Tier A, Knowledge 2 d |
+   215	| Connections | 25 | meeting sync 3 d, portfolio 2 d, ledger 2 d |
+   216	| Capabilities | 25 | Rubric: "audit-driven builds shipped since last run". Since the last trend row (09-07): GPS pull (09-13 audit), backup PATH fix and `aios-metrics` modes (today). |
+   217	| Cadence | 0 | `Notes/` 49 d (> 45) |
+   218	| **Total** | **75** | |
+   219	
+   220	The baseline gave Capabilities 13 ("judged, not measured"). The 12-point rise is a scoring call on the
+   221	same evidence, not a change in the vault. The headline is the same: feeds alive, synthesis frozen.
+   222	
+   223	## Memory (vault notes) (improve-system, read-only; Step 0 skipped; ledger untouched)
+   224	
+   225	Scope: `Notes/`, `Knowledge/`, `Projects/`, 1,985 notes.
+   226	- Stale seeds > 60 d: **22** (oldest `Notes/planning-windows-compound.md`, 163 d). Card already open.
+   227	- Stale active `Project_*`: 0.
+   228	- Slug duplicates: 4 groups, all by design (`README.md`, `_domain.md` ×5, `_book.md` ×27, `GRAPHIFY_SYNC.md` ×6).
+   229	- **Real duplicate:** `Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-…md` is a
+   230	  696-byte `reference-stub` of the full brief `krystofiak-2024-injection-of-amniotic-membrane-…md` (same
+   231	  paper, author parsed as "j"). Archive the stub. [clash]
+   232	- Near-duplicate: `Projects/Applied-Performance-JD-2026/JD-response-email-draft.md`, `-v2-humanized`,
+   233	  `-v3-articulated`. The JD was accepted 7/17; v1 and v2 are archive candidates. Low.
+   234	- Conflicting claims: checked for the 7 title-similar pairs only (Jaccard ≥ 0.6). The one domain pair
+   235	  (Bondarchuk's four exercise classes, Moyer note vs Bondarchuk book note) links both ways and does not
+   236	  conflict. Tag-wide conflict scan not done.
+   237	- Ledger `proposals-pending.md`: 0 open items (the baseline listed 4).
+   238	
+   239	## Context posture — not run
+   240	
+   241	`doctor-plus` has `disable-model-invocation: true`. The Skill tool refused it:
+   242	"cannot be used with Skill tool due to disable-model-invocation". So the `rot.md` delegate for this
+   243	layer can never run inside `aios-audit`. The row keeps its 2026-10-11 date. Eric can run `/doctor-plus`
+   244	himself, or the flag can go (card).
+   245	
+   246	## Decision Desk (batch `2026-11-02-aios-rerun`, new cards only)
+   247	
+   248	The 3 baseline cards (`generic-skills`, `name-only-rest`, `seed-notes`) are still open and unanswered;
+   249	not re-seeded. New:
+   250	1. Retire `project-triage` and fix its 3 pointers.
+   251	2. Dedupe the 13 Tier A indexes (74 double entries).
+   252	3. Mark the 5 Windows-era KeystoneOS notes as history.
+   253	4. Add the rule: handed-over commands run from any folder.
+   254	5. Add the rule: skill audits use `writing-for-agents`.
+   255	6. Let `aios-audit` call `doctor-plus`.
+   256	7. Four small fixes: COMMANDS.md browser line, WORKFLOW.md stale note, router row for
+   257	   PFF_Position_Reports, archive the j-2024 stub.
+   258	
+   259	## Two next builds
+   260	
+   261	1. **Find why two sessions saved no transcript.** `15d95b4f` and `0c8c7095` have no `.jsonl`, so their
+   262	   work never reaches memory. This is data loss, and it happened twice today. Start:
+   263	   `/mattpocock-skills:diagnosing-bugs` "sessions 15d95b4f and 0c8c7095 wrote no transcript .jsonl;
+   264	   transcript-capture.js logs transcript_path does not exist".
+   265	2. **Close the three skill gaps this rerun found.** Add `--once-used` and a real `--help` to
+   266	   `scripts/aios-metrics.py`, and make Context posture runnable inside the audit (card 6). Start:
+   267	   "add --once-used and --help to KeystoneOS/scripts/aios-metrics.py, with a test".
+   268	
+   269	## Compared with the baseline
+   270	
+   271	**Same:** every layout invariant 0; 42/42 portable; never-used 19 with the same 15/4 split; the 4
+   272	generic DELETE candidates; 22 old seeds; `Notes/` frozen since 09-14; agents OK; all feeds fresh.
+   273	
+   274	**The new skill rules changed these verdicts:**
+   275	- **Newest evidence:** the backup is not RED. The baseline's first pass called it RED from older runs and
+   276	  had to correct itself in a later cross-check. This run quoted the 12:51 OK line and the 13:00 gate skip up
+   277	  front, and named the login job's `exit 1` as a pre-fix leftover.
+   278	- **Cross-reference:** the 5 Windows-era KeystoneOS notes were checked against `machine.md`, STATUS and
+   279	  `projects.json` before being called stale. The baseline skipped this layer (green by date).
+   280	- **Pointer check before DELETE:** found the 3 pointers to `project-triage` and a second WORKFLOW.md
+   281	  pointer (`/ISA`, line 117) the baseline did not name. That one touches the open generic-skills card.
+   282	
+   283	**The baseline got wrong:**
+   284	- "0 real Codex reads for all 25" was wrong for `fireflies-intake`: a `cat -n` read on 10-30, before the
+   285	  baseline, which even the baseline's own grep finds. Verdict unchanged (KEEP).
+   286	- Global `MEMORY.md` is 1,894 chars (`wc -m`), not the 1,865 the baseline's cross-check gave.
+   287	- The transcript-capture miss is not one session: a second one (`0c8c7095`) failed, and `15d95b4f` kept
+   288	  failing until 19:03Z.
+   289	
+   290	**New in the rerun (not in the baseline):** `project-triage` dead since 08-18; 74 double index entries in
+   291	13 other Tier A folders; 2 repeated corrections not yet rules; 4 stale router items; the j-2024 duplicate;
+   292	`doctor-plus` unreachable; 3 gaps in the `aios-audit` skill.
+   293	
+   294	**Resolved since the baseline:** two of the three overlap groups already have sharp `Do not use` clauses
+   295	on both sides (no card needed); the proposals ledger has 0 open items.
+   296	
+   297	**Not compared:** Context posture (not run either time).
+
+ succeeded in 0ms:
+    93	Last 7 days: 92 Claude session files, 58 Codex session files (12 real user messages).
+    94	No correction repeated twice. No `~/.claude/CLAUDE.md` rule contradicted by what happened.
+    95	Today's `machine.md` Ghostty line is a new rule, not a conflict. Verdict: GREEN.
+    96	
+    97	## Hooks
+    98	
+    99	Skipped (green). `hooks_codex_is_link=1`. Note: `hooks_claude=8` counts files; rot.md's
+   100	"13 wired hooks" counts settings entries. Not a finding.
+   101	
+   102	## Memory (agent) — observation only (layer green)
+   103	
+   104	- `~/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/MEMORY.md` lists most
+   105	  memories twice (once by title, once by filename). Index bloat. [bloat]
+   106	- `project-cfb-forecast-capture.md` says "Wednesdays only". The skill now allows Thu/Fri if no
+   107	  Big 12 game has kicked off, and captures ran Fri 10-23 and Fri 10-30. Stale memory. [clash]
+   108	- `global-memory/MEMORY.md` 1,894 / 2,500 chars; `USER.md` 1,256 / 1,375. Under cap.
+   109	
+   110	## Data feeds (os-audit Check 3, read-only)
+   111	
+   112	| Feed | Raw | Ingested | Cadence | Verdict |
+   113	|---|---|---|---|---|
+   114	| GPS (gpspull) | 2026-11-02 10:06, exit 0 | Drive snapshot written | daily | FRESH |
+   115	| Perch | 2026-11-02 10:07, exit 0 | Drive snapshot written | daily | FRESH (10-28 network retries, recovered) |
+   116	| VALD | 2026-11-02 10:11, exit 0 | Drive snapshot written | daily | FRESH (10-28 DNS error, recovered) |
+   117	| PFF | 2026-10-31, exit 0, weeks 4–8 caught up | pff.db | weekly | FRESH |
+   118	| Fireflies | 3 meetings 10-28/29, PROCESSED | all 3 in `SecondBrain/Inbox/meetings/` | per meeting | FRESH |
+   119	| CFB forecast | 2026-10-30 snapshots | archive commit 2026-10-30 | weekly | FRESH |
+   120	| Zotero | last item added 2026-10-19 | — | on demand | ON-DEMAND |
+   121	
+   122	Knowledge current through: **2026-11-02** (raw and ingested agree).
+   123	
+   124	**Out of scope, but RED — hand to `claude-stack-doctor`:** both `com.keystone.dailybackup`
+   125	and `com.keystone.dailybackup-login` exit 1 today. Every `SNAP-GWS` upload failed
+   126	(`gws upload failed`) and `RECEIPT drive : FAILED - gws did not confirm sentinel upload`.
+   127	Last good runs 10-31 and 11-01. Likely `gws` auth. Log: `~/.claude/scripts/logs/daily-backup*.out`.
+   128	
+   129	## Vault (brain-audit, read-only, no trend row written)
+   130	
+   131	| C | Score | Evidence |
+   132	|---|---|---|
+   133	| Context | 25 | USER/MEMORY under cap, 91 Tier A, `Knowledge/` 2 d |
+   134	| Connections | 25 | meeting_sync 3 d, portfolio 2 d, ledger 2 d |
+   135	| Capabilities | 13 | skills exist; usage low, many hidden by name-only (judged, not measured) |
+   136	| Cadence | 0 | `Notes/` 49 d stale (> 45) **and** two backup jobs exit 1 |
+   137	| **Total** | **63** | baseline 67 on 2026-09-07 |
+   138	
+   139	Headline: same disease as July and September. Feeds alive; synthesis frozen.
+   140	`Notes/` newest 2026-09-14, last interview 2026-09-14, `Drafts/` 94 d.
+   141	
+   142	## Memory (vault notes) (improve-system scope, read-only, ledger not touched)
+   143	
+   144	- 22 `status: seed` notes untouched > 60 d (oldest: `Notes/planning-windows-compound.md`, 163 d).
+   145	  Proposed action: one pass to promote or archive.
+   146	- 0 `Project_*.md` notes that read active and sit 30 d+ untouched.
+   147	- Slug duplicates: 4 groups, all by design (`README.md`, `_domain.md`, `_book.md`,
+   148	  `GRAPHIFY_SYNC.md`). No real duplicates.
+   149	- **Not checked:** conflicting claims. 4 `open` items already in
+   150	  `~/.claude/claude-memory-compiler/reports/proposals-pending.md`.
+   151	
+   152	## Cross-check and fixes (main session, 2026-11-02 afternoon)
+   153	
+   154	Every claim above was re-checked against its source. Confirmed: 28 name-only / 15 of them never
+   155	used (now computed by `aios-metrics.py`), the 4 delete candidates (name-only, 0 Claude calls, 0 Codex
+   156	reads), 4 `impeccable-*` agents, `Notes/` newest 2026-09-14, 22 seed notes older than 60 d, USER.md
+   157	1,256 chars, the KeystoneOS memory index duplicates, the stale CFB note.
+   158	
+   159	Corrected:
+   160	- **Backup was not RED by the time this report was read.** The 11:31 login run failed because the
+   161	  login plist sets no PATH (gws needs `node`); fixed in `~/.claude/scripts/daily-backup-login.sh`. The
+   162	  12:00 run uploaded all snapshots to Drive (12:02-12:03); only its receipt failed, because a test in
+   163	  the main session ran gws under `env -i`, which made gws 0.22 delete its login. Eric logged in again.
+   164	  The 12:32 run ended **OK, 0 errors, Drive receipt verified via gws**. "Nothing reached Drive today"
+   165	  was wrong. Next build 1 is done.
+   166	- **CFB cadence: three sources disagreed**, not one. KeystoneOS note said Wednesdays only; the DEV
+   167	  note said Monday-anchored with a self-pointing "see Cadence below"; the skill says ideally Wednesday,
+   168	  Thu/Fri OK until a Big 12 kickoff. Both notes now state the skill's rule; the KeystoneOS note points
+   169	  at the fuller DEV note.
+   170	- **`articulation-skill` is referenced** by `~/DEV/WORKFLOW.md` line 108 ("Explaining it to
+   171	  non-technical staff"). Deleting it means editing that row too.
+   172	- Global `MEMORY.md` is 1,865 chars now (1,894 earlier in the day).
+   173	
+   174	New finding (open): the audit session itself (`15d95b4f`, launched as `claude "audit my AI OS"` in
+   175	Terminal) wrote no main transcript `.jsonl`, only a subagent file, so `transcript-capture.js`
+   176	logged `transcript_path does not exist` twice (12:48, 12:52). The callers line shows a normal
+   177	interactive session, so the 2026-10-23 guess ("hidden sessions") was incomplete. Not fixed; the
+   178	session's content will not reach memory.
+   179	
+   180	Fixed in this pass: `aios-metrics.py` prints `name_only` and `name_only_never_used` (the trend table
+   181	is unchanged; the strict Codex-read count is not added yet); KeystoneOS `MEMORY.md` deduped (39 → 23
+   182	lines, 17 notes, each indexed once); both CFB notes corrected.
+   183	
+   184	## Two next builds
+   185	
+   186	1. **Fix the backup upload (today).** Two backup jobs fail on `gws` upload, so nothing reached
+   187	   Drive today. Start: `/claude-stack-doctor` (backup layer).
+   188	2. **Decide the 28 name-only skills, then teach the metric about it.** Delete the 4 generic
+   189	   candidates (ArXiv, Science, ISA, articulation-skill); for the rest, either restore the
+   190	   description or accept "call by name only". Then add a `name_only_never_used` key and the
+   191	   strict Codex-read count to `scripts/aios-metrics.py` so `never_used` stops reading as bloat.
+   192	   Start: answer the Decision Desk item.
+
+ succeeded in 0ms:
+     1	---
+     2	name: aios-audit
+     3	description: >-
+     4	  Audit the whole AI operating system across decay tiers - skills, agents,
+     5	  hooks, rules, memory, and cross-harness parity between Claude Code, Codex,
+     6	  and Pi - then propose exactly two next builds. Use when the user says
+     7	  "/aios-audit", "audit my system", "audit my AI OS", "audit the bloat",
+     8	  "is my setup rotting", "what should I cut", "are my skills portable",
+     9	  "monthly skill audit", or when rot.md shows a layer past its audit date.
+    10	  Do not use for project data drift, routing, or index freshness - use
+    11	  os-audit. Do not use for launchd, venv, or backup health - use
+    12	  claude-stack-doctor. Do not use for SecondBrain note rot - use
+    13	  improve-system or brain-audit.
+    14	metadata:
+    15	  short-description: Decay-tier audit of the AI OS; delegates to the five layer-specific audit skills.
+    16	argument-hint: "[optional: a layer name from rot.md]"
+    17	allowed-tools: Read, Bash, Grep, Glob, Agent
+    18	---
+    19	
+    20	# AIOS Audit — is the harness itself still true?
+    21	
+    22	Five audit skills already exist, and each owns one layer. This skill owns the
+    23	layer none of them touch: **the harness** — skill roster, agents, hooks, rules,
+    24	agent memory, and parity between Claude Code, Codex, and Pi. For every other
+    25	layer it **delegates** and leaves the method to that layer's owner.
+    26	
+    27	| Delegate | Owns |
+    28	|---|---|
+    29	| `os-audit` (project) | project data: routing, index truth, freshness, duplication |
+    30	| `brain-audit` | SecondBrain as a system — the four C's |
+    31	| `improve-system` | note-level rot: stale seeds, duplicates, conflicts |
+    32	| `claude-stack-doctor` | automation plumbing: launchd, venvs, memsearch, backup freshness |
+    33	| `doctor-plus` | context-engineering posture of the workspace |
+    34	
+    35	If `$ARGUMENTS` names one layer from `rot.md`, audit only that layer.
+    36	
+    37	**Read-only.** The audit writes its report, the `Last audited` column of
+    38	`~/DEV/KeystoneOS/docs/rot.md`, and one Decision Desk card per proposal, and commits a trend
+    39	row the monthly job left. Skills, memory,
+    40	config and notes stay exactly as found: every change is a proposal Eric approves first.
+    41	
+    42	**Every finding is fresh and cross-checked.** Two rules bind every step:
+    43	
+    44	- **Newest evidence.** Every RED rests on a check run this session. Where a job or log
+    45	  exists, read its newest line, check whether a run is in progress (`pgrep -fl <job>`), and
+    46	  quote that line with its time in the report. (2026-11-02: the backup was reported RED from its 12:23 run while a
+    47	  12:32 run was going; that run ended OK.)
+    48	- **Cross-reference.** A fact usually lives in more than one place (a skill, a Tier A note
+    49	  in another project folder, a router, a script). Before reporting one copy stale, grep the
+    50	  topic across `~/.claude/skills/*/SKILL.md`, `~/.claude/projects/*/memory/`, `~/DEV/*.md`
+    51	  and the owning script, and report every copy that disagrees. The script or skill that
+    52	  actually runs is the authority.
+    53	
+    54	## Steps
+    55	
+    56	1. **Read `~/DEV/KeystoneOS/docs/rot.md`.** For each layer, compute days since `Last
+    57	   audited`. A layer past due or `unknown` is audited this run; a layer inside its window is
+    58	   reported green and skipped. Read the delegation contract and layout invariants there.
+    59	   *Done when* every layer is marked due or green.
+    60	
+    61	2. **Run the metrics:** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py`. Capture every
+    62	   `key=value` line. A stack trace, or a value like `error`, `git_error`, `no_manifest` or
+    63	   `error_rc…`, is itself a RED finding; report it rather than a guessed number.
+    64	
+    65	3. **Assert the layout invariants.**
+    66	
+    67	   | Key | Must be | If not |
+    68	   |---|---|---|
+    69	   | `tracked_symlinks_in_canonical` | `0` | RED — a link was committed; Windows gets a dead file |
+    70	   | `pool_view_drift`, `codex_view_drift` | `0` | RED — someone edited a generated view instead of `~/.claude/skills/` |
+    71	   | `pool_dangling`, `codex_dangling` | `0` | RED — a deleted canonical skill left an abandoned link |
+    72	   | `portability_failures` | `0` | RED — see Parity in step 5 |
+    73	   | `hooks_codex_is_link` | `1` | RED — `~/.codex/hooks` is a real folder again (the two-copies trap) |
+    74	
+    75	   Information, never findings: `third_party_links_in_canonical`, `pool_third_party`,
+    76	   `codex_third_party`.
+    77	
+    78	4. **Delegate each due layer `rot.md` gives to another skill.** Invoke that owner with
+    79	   the scope you need and the words *report findings only; apply nothing, write no ledger,
+    80	   create no files*. `improve-system` applies approved proposals in its own Step 0 and
+    81	   `brain-audit` appends to its trend table: suppress both by name. Fold each delegate's
+    82	   findings under its layer. A delegate that covered less than its row claims gets a date
+    83	   with a scope note, or the row stays `unknown`.
+    84	
+    85	   **Memory (agent)** has no delegate; audit it directly with `rot.md`'s check, and
+    86	   cross-reference every stale or time-dimensioned fact (rule above) before reporting it.
+    87	
+    88	5. **Audit the harness layers directly** (Skills, Agents, Rules, and the Hooks check in step 3),
+    89	   each only when it is due or named in `$ARGUMENTS`.
+    90	   - **Bloat.** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py --never-used` names each
+    91	     never-used canonical skill and marks it `name-only` or `shown` (scope:
+    92	     `usage_scope=claude_code_transcripts_only`). Report the two groups apart: a `name-only`
+    93	     skill shows Claude no description, so it fires only when called by name, and its zero use
+    94	     reflects the setting, not the skill. If `usage_unreadable_transcripts` is above 0, report
+    95	     the count: usage in those files is missing, so the list may be too long.
+    96	   - **Codex use.** `python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py --codex-reads <skill> …`
+    97	     counts Codex sessions that read each skill's `SKILL.md` with a shell command (every
+    98	     Codex session also lists every skill's path, which it skips). It sees shell reads only,
+    99	     so a 0 is strong evidence, not proof.
+   100	   - **Crutch test.** For each never-used and once-used skill, answer `rot.md`'s question,
+   101	     *would the current model do this fine without it?*, with one line of reasoning:
+   102	     DELETE, KEEP (tacit knowledge the model cannot know), or SEASONAL. A DELETE needs all
+   103	     three: 0 Claude calls, 0 Codex reads, and a pointer check
+   104	     (`grep -rnw --exclude-dir=audits '<skill>' ~/.claude/skills/*/SKILL.md
+   105	     ~/DEV/*/.claude/skills/*/SKILL.md ~/.claude/CLAUDE.md ~/DEV/*.md ~/DEV/*/AGENTS.md
+   106	     ~/DEV/*/CLAUDE.md ~/DEV/KeystoneOS/docs ~/.claude/projects/*/memory`).
+   107	     A skill, router row or CLAUDE.md line that sends work to it is a pointer the delete
+   108	     breaks: name each one and its fix. A dated memory or audit mention is history.
+   109	   - **Overlap.** Skills whose descriptions claim the same trigger space: recommend a merge,
+   110	     or a sharper `Do not use … (use X)` clause on both.
+   111	   - **Parity.** Run `python3 ~/DEV/KeystoneOS/scripts/skill-portability-check.py`; every
+   112	     failure is a finding. Then list canonical skills set `"off"` in `~/.claude/settings.json`
+   113	     `skillOverrides` (hidden in Claude Code, live in Codex and Pi): each needs on, or retire.
+   114	   - **Promotion.** Project skills used from 2+ project folders are promotion candidates.
+   115	   - **Rules.** Diff `~/.claude/CLAUDE.md` against the last 7 days of sessions: rules
+   116	     contradicted by what happened, and corrections Eric repeated twice that are not yet rules.
+   117	   - **Agents.** Count `~/.claude/agents/*.md`; for each, check it is referenced and wired.
+   118	     `agents=0` is one line: "no agents defined".
+   119	
+   120	   *Done when* every due layer has a section with its evidence.
+   121	
+   122	6. **Write and commit the report.** `~/DEV/KeystoneOS/docs/audits/aios-audit-YYYY-MM-DD.md`,
+   123	   one section per layer (a green-skipped layer gets one line). Update `Last audited` in
+   124	   `rot.md` only for layers whose check actually ran and produced output. Commit the report
+   125	   and `rot.md` by path as soon as they are written; if `scripts/aios-audit-cron.sh` left an
+   126	   uncommitted trend row in `docs/audits/aios-trend.md` (that script is its only writer),
+   127	   commit it in the same commit.
+   128	
+   129	7. **Put every decision on the Decision Desk.** One card per proposal Eric must approve
+   130	   (each DELETE, each on-or-retire, each merge), through `ArtifactData` on the standing
+   131	   page; fields and link: Tier A `feedback_decision-desk.md` in
+   132	   `~/.claude/projects/-Users-kristinarash-DEV/memory/`. Two options at most, Claude's pick
+   133	   marked, the pointer check in the context.
+   134	
+   135	8. **End with exactly two proposed next builds,** ranked, each with the one command or
+   136	   sentence that starts it.
+   137	
+   138	**Done when** the report and `rot.md` are committed, each proposal is a Decision Desk card,
+   139	every RED quotes its newest evidence line, and the reply names the two next builds.
+   140	
+   141	## Examples
+   142	
+   143	**Monthly nudge**
+   144	```
+   145	User: "audit my AI OS"
+   146	→ rot.md: Skills and Rules past due, Hooks inside its window
+   147	→ metrics: all invariants 0; never_used=19, name_only_never_used=15
+   148	→ Skills and Rules audited here; Hooks green, skipped
+   149	→ report, 2 Decision Desk cards, 2 next builds
+   150	```
+   151	
+   152	**One layer**
+   153	```
+   154	User: "/aios-audit Memory (agent)"
+   155	→ audits only the agent-memory stores directly
+   156	→ stamps that one row in rot.md; every other row untouched
+   157	```
+   158	
+   159	## Gotchas
+   160	
+   161	- **Linter green is not parity.** `skill-portability-check.py` reads frontmatter only. A
+   162	  skill set `"off"` in `skillOverrides` passes it and never fires in Claude Code, while Codex
+   163	  (which ignores that file) loads it. Found 2026-09-12: 12 canonical skills.
+   164	- **Views are links into canonical.** Anything that writes into `~/.agents/skills/<owned>/`
+   165	  by path writes canonical. `graphify install --platform agents` does exactly that and
+   166	  overwrites the Claude variant: upgrade graphify with `--platform claude` only.
+   167	- **Concurrent sessions commit your work.** `closeout` in another session sweeps every
+   168	  uncommitted change in the repos it visits; step 6 commits early for that reason.
+   169	- **Description length has a budget.** Claude Code caps the combined skill description size;
+   170	  keep a recommended description near 650 characters.
+   171	- **`dcg` blocks some shell shapes** (`rm -rf` inside heredocs, `$VAR` redirects, `git`
+   172	  inside command substitution). Use Python `subprocess` or literal paths.
+
+exec
+/bin/zsh -lc 'git show --stat 8160c5f && git status --short && wc -cm ~/.claude/global-memory/MEMORY.md' in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+commit 8160c5f9630581a20a7178fec1ec9ae62c3231a4
+Author: Eric Rash <eric.rash11@gmail.com>
+Date:   Mon Nov 2 13:15:26 2026 -0600
+
+    aios-audit 2026-11-02 rerun: report + rot.md receipts (Context posture not run)
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_0195ZD7uD5VSB51mYTtHZbuh
+
+ docs/audits/aios-audit-2026-11-02-rerun.md | 297 +++++++++++++++++++++++++++++
+ docs/rot.md                                |  20 +-
+ 2 files changed, 307 insertions(+), 10 deletions(-)
+    1865 /Users/kristinarash/.claude/global-memory/MEMORY.md
+
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+codex
+The rerun found more than the first report. I will now check its counts and file links.
+
+The log has 9 missing-transcript entries for 2 sessions. It also has 1 audit reminder and 1 weekly check notice.
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PreToolUse Failed
+hook: PostToolUse
+exec
+/bin/zsh -lc 'for f in project-drive-topology.md project-backup-coverage.md project-msys-bash-flakiness.md project-morning-briefing-pipeline.md project-skill-audit-2026-07.md; do nl -ba ~/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/$f | head -35; done' in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+     1	---
+     2	name: drive-topology
+     3	description: "Where Eric's projects and knowledge actually live — three homes, which is canonical, which to ignore"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: bc24c455-0908-4973-9f2c-eca4d41091f1
+     8	  modified: 2026-07-24T02:50:30.492Z
+     9	---
+    10	
+    11	Eric's projects and knowledge live in **three homes**. Know this before searching, registering, or "consolidating" anything — don't re-discover it, and don't propose moving files into one folder (settled: federation, not a monorepo — see KeystoneOS `decisions/log.md` 2026-06-12).
+    12	
+    13	1. **`C:\Users\eric_rash\Desktop\DEV`** — active **code** projects. Each is its own git repo → personal GitHub (`github.com/erash11`). **Canonical.** This is what the cockpit's project lanes track.
+    14	
+    15	2. **`C:\Users\eric_rash\OneDrive - Baylor University\00_Primary_Storage_Drive`** — the **Baylor Applied Performance work knowledge-base**. Johnny-Decimal organized (`01_ACTIVE_PROJECTS`, `02_BAIR_RESEARCH`, `03_SPORTS_PROGRAMS`, `05_DATA_SYSTEMS`, `09_PROFESSIONAL_DEVELOPMENT`, …). Mostly docs/data/research, **not** code. Some folders are **shared with colleagues** (Grigus, Holcomb, Tademy) — institutional/work files, so do NOT copy them into DEV or personal GitHub. Registered in KeystoneOS as a memory source (`baylor_workdrive`) and a discovery root (active projects under `01_ACTIVE_PROJECTS\01_ONGOING`).
+    16	
+    17	3. **`D:\_2026_ClaudeProjects\`** — a **STALE March-2026 backup**. Same git remotes as DEV but behind (e.g. ForcePlate DEV 55 commits vs D: 51). **Ignore it** — never register it, never let self-heal relocate a project onto it. Everything in it is either live in DEV or recoverable from GitHub.
+    18	
+    19	Cloud accounts (verified 2026-07-23): **personal OneDrive is NOT signed in** — `C:\Users\eric_rash\OneDrive` is a dead local folder, never route backups or syncs there. The working personal cloud is **Google Drive for Desktop (gmail) at `G:\My Drive`** — home of the daily personal-context backup (`Backups\Machine`) and the RESTORE.md mirror; see [[backup-coverage]].
+    20	
+    21	Related: [[auto-commit-push]]. Command-center + cockpit + knowledge-ingestion work that established this lives in KeystoneOS `decisions/log.md`, `docs/superpowers/specs/2026-06-12-*`, and `knowledge/baylor-01-ongoing/`.
+     1	---
+     2	name: backup-coverage
+     3	description: "System audit 7/23 + Phase 1 backup remediation done; what's backed up where, and what Phase 2/3 still owe"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: b734e95c-9533-47fa-ad81-aff915fa359a
+     8	  modified: 2026-07-25T00:00:14.385Z
+     9	---
+    10	
+    11	System audit 2026-07-23 found capture healthy but durability broken; Phase 1 remediation executed same day (pre-approved by Eric).
+    12	
+    13	**Now remote-backed (all private GitHub repos under erash11):**
+    14	- SecondBrain (212 outstanding files committed+pushed 7/23)
+    15	- claude-global-memory (~\.claude\global-memory)
+    16	- claude-skills (~\.claude\skills)
+    17	- dotclaude (~\.claude config: settings, hooks, agents, keybindings, skills-archive/audit — whitelist .gitignore; .credentials.json and token-dashboard.db deliberately excluded; new config files must be added to the whitelist or they silently won't back up)
+    18	- morning-briefing, ZoteroInjestion (repos existed, remotes created)
+    19	- claude-memory-compiler → forked to erash11 (origin=fork, upstream=coleam00); the 4 local patch commits (flush retry, uv.lock, errors.log escalation) pushed. Fork is PUBLIC (inherits upstream) — code only, daily logs untracked, verified safe 7/23.
+    20	- ForcePlate + Risk_Stratification fast-forwarded to their PR #1 merges; DataBase_GPS pushed.
+    21	
+    22	**Phase 2 DONE (7/23, pre-approved):** scheduled task `KeystoneOS-DailyBackup` (daily 06:15, verified live via scheduler run) executes `~\.claude\scripts\daily-backup.ps1`: auto-commits+pushes the 4 memory repos (SecondBrain, dotclaude, claude-skills, claude-global-memory; refuses to merge diverged repos — escalates to .errors.log) and robocopy /MIR snapshots: personal context (~\.claude\projects, ~\.codex memories/sessions/agents/sqlite, ~\.gemini) → personal GOOGLE DRIVE `G:\My Drive\Backups\Machine` (verified 433 MB / 2,305 files 7/23); non-repo DEV folders (~1.9 GB) → Baylor OneDrive `Backups\DEV-NonRepo`. Sensitivity split is deliberate: personal context never on employer storage. KEY DISCOVERY 7/23: personal OneDrive account is NOT signed in on this machine — C:\Users\eric_rash\OneDrive is a dead local folder; Google Drive for Desktop (gmail) is the working personal cloud. RESTORE.md is human-facing (new-machine + Windows→Mac scenarios), mirrored daily to G:\My Drive\Backups\RESTORE.md; canonical at github.com/erash11/dotclaude. gws CLI reinstalled 7/23; re-authed 7/24 with FULL drive scope (read/write, Eric's explicit request) + calendar.readonly on eric.rash11@gmail.com — write round-trip verified (create+delete via API); note gws --upload only accepts files under the cwd; cloud-side backup verification is LIVE in stack-doctor (backup-cloud-* codes): queries RESTORE.md's Drive-side modifiedTime via gws as a DriveFS sync heartbeat. gws gotchas (documented in stack-doctor SKILL.md): `-s drive` shorthand grants NO scopes (v0.22.5 bug — use explicit full scope URLs), and after re-auth delete `~\.config\gws\token_cache.json` or the stale token 403s. memsearch ETIMEDOUT recurred 7/24 PM → chronic, redesigned: the 06:15 backup task now runs an UNCAPPED full reindex (all 5 hook paths, task limit raised to 2h) and resets the hook's timeout-streak counter; hook alarm threshold raised 3→6. Root cause: heavy-day backlogs + SecondBrain library first-index is an HOURS-scale ONNX embedding job — converges incrementally across nights; searches work meanwhile, newest content just lags until indexed. Gotcha: killing a backgrounded shell orphans its memsearch/python children (found one with 81 CPU-min still running — always check Get-Process memsearch after killed tasks). Cloud-check timezone bug fixed same day (UTC-normalize; had shown -4h ages). Stack doctor gained backup-* issue codes + KeystoneOS-DailyBackup task check. RESTORE.md runbook lives in dotclaude (first repo cloned on new machine). Decision recorded: KeystoneOS PR #16 (draft). Eric's call 7/23: no mono-repo, no git-for-everything — git for evolving code/text, snapshots for data.
+    23	
+    24	**Phase 3 open:** Baylor workdrive PDF/Office extraction (biggest knowledge-access gap), memory-system map page in KeystoneOS. Full audit report: delivered 7/23 (job b734e95c).
+    25	
+    26	Related: [[drive-topology]], [[auto-commit-push]]
+     1	---
+     2	name: msys-bash-flakiness
+     3	description: "Root cause + fix for intermittent Git Bash 'add_item errno 1' failures and silent bash exit-1s — MSYS shared-region init times out under heavy load; KeystoneOS-MsysKeepAlive task holds the region warm"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: 010026e9-e4eb-489e-a5f3-954f81b046be
+     8	  modified: 2026-07-25T22:19:57.484Z
+     9	---
+    10	
+    11	**Git Bash's intermittent failures on this machine are load-induced MSYS shared-memory init timeouts — fixed 2026-07-25 by the `KeystoneOS-MsysKeepAlive` scheduled task.**
+    12	
+    13	Symptom: `bash.exe: *** fatal error - add_item ("\??\C:\Program Files\Git", "/", ...) failed, errno 1`, and more generally bash exiting 1 with empty output (the long-standing "Bash frequently fails silently" note in CLAUDE.md). Non-blocking: the underlying git command usually succeeded; Claude Code hooks (spawned via Git Bash) report failure.
+    14	
+    15	Mechanism (msys2-users list): the MSYS mount table lives in a shared-memory region initialized once by the first MSYS process and destroyed when the last exits. A spinlock guarding init times out (~15 s). Under heavy load (e.g. two 9 GB R fits with <1 GB free RAM), the first bash after a quiet gap can't finish init in time → every concurrent/next spawn fails.
+    16	
+    17	Proof: 0/50 spawn failures idle; **5/30 failures under CPU starvation; 0/30 under the same starvation with a keep-alive bash holding the region**.
+    18	
+    19	Fix: scheduled task `KeystoneOS-MsysKeepAlive` (logon trigger, hidden, no time limit) runs `"C:\Program Files\Git\bin\bash.exe" -c "exec sleep infinity"` so the region never needs re-init. If bash flakiness returns, first check that this task/process is alive. Not a username-with-period issue (that's a different known MSYS bug) — single msys-2.0.dll on disk, runtime 3.6.7, Git 2.54.
+    20	
+    21	Related: [[speedprofiling-data-gotchas]] (the same load bursts silently OOM-killed concurrent R runs — one pipeline run at a time).
+     1	---
+     2	name: morning-briefing-pipeline
+     3	description: "morning-briefing pipeline architecture, on-ramp integration, and the 6-day silent-outage incident (2026-06-17)"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: edb9fb24-d71a-4337-9d52-a2f61c01fbc3
+     8	---
+     9	
+    10	`C:\Users\eric_rash\Desktop\DEV\morning-briefing`: `run.py` orchestrator → `morning_briefing/` package (config.py, deliver.py, sources/, carryover.py, synthesize.py) → Windows Task Scheduler at 07:20 weekdays via `scripts/run_with_logging.cmd`.
+    11	
+    12	**Incident (2026-06-17):** the briefing's `.venv` pointed at a Python install deleted by a Python Install Manager migration (old path `C:\Python314`). The scheduled task failed *silently* every weekday from 6/12–6/17 (last successful send 6/11 09:00:34) — no error surfaced to Eric because the failure email path itself depends on the broken venv. Fixed by rebuilding `.venv` against the current interpreter `C:\Users\eric_rash\AppData\Local\Python\pythoncore-3.14-64\python.exe` and reinstalling deps from `pyproject.toml` directly (NOT `pip install -e .` — that fails with a flat-layout multi-package discovery error because `logs/`, `secrets/`, `morning_briefing/` all get discovered as top-level packages; worked around, not fixed, since the package doesn't need installing — script dir is on `sys.path`). Verified via `--dry-run --force`.
+    13	
+    14	**Lesson:** after any Python Install Manager migration, check venvs built against the old interpreter path across *all* projects, not just the one being actively worked — this one broke and stayed broken for 6 days with zero visible signal. General pattern, not morning-briefing-specific.
+    15	
+    16	**On-ramp integration (2026-06-17, commit `edc06e4`):** folded the old standalone `onramp.sh` (manual run, never wired to email) into `run.py` — new module `morning_briefing/onramp.py` renders a "▸ ON-RAMP" section (today's calendar + OKR big rocks parsed from `SCOREBOARD.md`) prepended via `config.toml`'s `[onramp]` block. Calendar fetch uses the `gws` CLI. The calendar scope gap (was 403 `insufficientPermissions`) was **resolved 2026-06-22**: re-authed via `gws auth login --scopes https://www.googleapis.com/auth/calendar.readonly,https://www.googleapis.com/auth/cloud-platform` (union form — preserves the existing `cloud-platform` scope; a bare `--services calendar` would have narrowed and dropped it). gws now has 7 scopes incl. `calendar.readonly`; live `gws calendar events list` on `primary` returns 200/owner. Note: `gws auth login` must run in a real interactive terminal — the Claude `!` in-session shell is non-interactive and can't launch the browser or hold the loopback redirect.
+    17	
+    18	Related: [[auto-commit-push]] (this repo has no `origin` remote configured, so push isn't applicable here — commit only).
+     1	---
+     2	name: skill-audit-2026-07
+     3	description: "2026-07-13 full audit of ~/.claude/skills — 9 skills fixed, 3 removed, archive location for removed skills"
+     4	metadata: 
+     5	  node_type: memory
+     6	  type: project
+     7	  originSessionId: b43a1942-bb40-417d-8969-1fa74e776c87
+     8	---
+     9	
+    10	On 2026-07-13 all 122 skills in `~/.claude/skills/` were audited and cleaned up:
+    11	
+    12	- Rewritten descriptions: pp-recipe-goat, graphify (also renamed from `graphify-windows`), diagram-generator, pp-catapult-openfield-connect, pp-fireflies, web-scraping (narrowed to Exa; firecrawl suite owns scrape/crawl), everything-search, frontend-slides (absorbed slide-deck-generator's triggers + component library).
+    13	- Body rewritten: research-assistant (routing, save-path convention `research/<slug>-<date>.md`, non-blocking scope, hard cases).
+    14	- Trigger bugs fixed: fable-mode ("Nate"→"the user"), process-interviewer (bare "interview me" collided with the interview-me daily ritual).
+    15	- Deleted: `diagnose` (superseded by diagnosing-bugs), `slide-deck-generator` (merged into frontend-slides).
+    16	- Archived, not deleted: `FireFlies_to_Obsidian` → `~/.claude/skills-archive/` (contains unique Fireflies→Obsidian .py scripts; live job is done by meeting-sync).
+    17	
+    18	**Why:** duplicate/colliding trigger descriptions made skill loading a lottery; several descriptions were truncated by a generator bug.
+    19	**How to apply:** removed-skill contents live in `~/.claude/skills-archive/`. Known remaining debt: graphify SKILL.md is 1,194 lines (should move step code to references/); 11 dead-weight candidates (8 firecrawl sales/marketing + 3 starter-* brand skills) kept pending Eric's call.
+    20	
+    21	Third wave 2026-07-13 (bucket-taxonomy pass, same session as wave 1): built `claude-stack-doctor` (verification skill + scripts/stack-check.ps1 — checks the 3 scheduled tasks, 2 venvs, memsearch, flush pipeline; its first run caught the live KeystoneOS Morning failure → root cause: rg.exe missing from Task Scheduler PATH → fixed in KeystoneOS PR #2, branch worktree-fix-cadence-rg-path) and `html-to-pdf` (headless-Chrome utility, tested). Split improve-system's 5 modes: improve-system → vault Audit only; new `session-miner` (historical review) + `capture-insight` (experience capture); Skill Review folded into write-a-skill; Foundation retired to starter-* skills. process-interviewer now hands specs to write-a-skill instead of auto-building (also removed its dead references/skill-output-template.md pointer). Queued skill builds, in priority order: followup-chaser (orchestration), pp-vald (enrichment; VALD /tests pages by modifiedFromUtc gotcha), athlete-case-file (orchestration, depends on pp-vald), drive-janitor.
+    22	
+    23	Second pass 2026-07-13 (same day, structural lens — scripts/assets/config/AskUserQuestion/argument-hint): full report at `~/.claude/skills-audit/structural-audit-2026-07-13.md`.
+    24	
+    25	Fixes applied 2026-07-14 (Claude session, after Codex's third wave): all 7 broken skills repaired — session-handoff Nate-paths → %USERPROFILE%; pp-catapult 17 bare `catapult-pp-cli` → `catapult-openfield-connect-pp-cli`; everything-search rewritten around `es.exe` (Everything GUI installed at `C:\Program Files (x86)\Everything\`, es.exe CLI needs one-time download — skill documents it); pbir-report-builder + decision-toolkit phantom-file sections replaced with honest self-contained instructions; five-slides-generator Steps 5–8 rewritten for Windows (scratch dir in $env:TEMP, PowerPoint COM slide-PNG QA since no LibreOffice, Desktop delivery) incl. reference templates. Also: interview-me stale slug → delegates to memory-write; fact-checker got a mandatory live-research step; roast Task→Agent; firecrawl dead links (firecrawl-cli → firecrawl, firecrawl-build hub → installed siblings); contribute-catalog three pin aligned to 0.181.2; **Codex's gate-appending pass had duplicated its sections in 8 files** (session-handoff, fact-checker, articulation-skill, design-academy-skill, diagram-generator, humanizer, research-assistant, starter-design-tokens, starter-voice-profile) — all deduped; argument-hint added to 29 skills (now 43/126; nested quotes break YAML frontmatter — graphify bit this).
+    26	
+    27	Autonomous wave completed 2026-07-14 (5 parallel subagents, all verified): `_shared/config.json` created (vault paths + keystone block) and 15 skills pointed at it; graphify refactored 47KB→14KB SKILL.md + 16 py_compile-clean scripts/ + config.json + references/ + assets/extraction-prompt.md (NOTE: pip package is `graphifyy` (double-y) providing module `graphify` — intentional, not a typo); firecrawl 15 deliverable templates → assets/ + shared Failure Handling section + AskUserQuestion adapter note; meeting-sync got scripts/sync.py (ports KeystoneOS c5b1208 directory-diff export detection, atomic state writes, JSON stdout) + assets/meeting-header.md; name-meetings/fireflies-intake unattended-mode contract (HIGH-confidence auto-apply, rest → review[] array) + auth story aligned to real doctor JSON output (`auth: configured` — both old string checks were wrong); AskUserQuestion adopted in ~14 skills; hyperframes-cli capture/snapshot/publish documented with flags verified via `npx hyperframes@0.7.57 --help`.
+    28	
+    29	Consolidation decisions executed 2026-07-14 (Eric pre-approved judgment calls; constraints: Pocock content as-written, plugin wins over local duplicates): 22 local folders archived to `~/.claude/skills-archive/pocock-local-2026-07-14/` — the 21 duplicates of mattpocock-skills plugin v1.2.0 (manifest registers 22 skills; only resolving-merge-conflicts had no local copy) plus to-issues (older subset of plugin's to-tickets). Skill count 126→104. Side effect: archiving local code-review un-shadowed the built-in /code-review. Note: local customizations (argument-hints, AskUserQuestion edits) on those 21 went to the archive with them — plugin versions are vanilla by design. Kept: to-prd (distinct "PRD" vocabulary, explicit-invoke only, no plugin equivalent), zoom-out, watch (not in plugin). Handoff triplication resolved by boundary, not deletion: closeout Step 4 = canonical durable handoff (docs/handoffs/); session-handoff = chat-only pre-/clear (boundary lines added to both); plugin handoff untouched. interview-me's weekly-synthesis mode removed — now defers to weekly-review by name.
+    30	
+    31	Follow-up candidates: hyperframes-cli has ~12 more undocumented commands (check, beats, keyframes, grade-compare, compare, present, cloud, lambda, cloudrun, add, catalog, auth).
+
+hook: PostToolUse
+exec
+/bin/zsh -lc "rg -n 'project-triage|chromium-1234|stale spot|Desktop/DEV|PFF_Position_Reports' ~/.claude/skills/project/SKILL.md ~/DEV/COMMANDS.md ~/DEV/WORKFLOW.md ~/DEV/CLAUDE.md" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/.claude/skills/project/SKILL.md:8:  (use project-triage) or to scaffold a new repo (use new-project).
+/Users/kristinarash/.claude/skills/project/SKILL.md:13:Drives the `project-triage` CLI. The registry, `portfolio.json`, is the single
+/Users/kristinarash/.claude/skills/project/SKILL.md:20:  On the Mac that is `~/DEV/project-triage`: start each Bash call with
+/Users/kristinarash/.claude/skills/project/SKILL.md:21:  `PT=~/DEV/project-triage` (the shell does not keep it between calls).
+/Users/kristinarash/DEV/WORKFLOW.md:115:| "Where did that save?" | `python3 ~/DEV/project-triage/landed.py show --days 1` |
+/Users/kristinarash/DEV/WORKFLOW.md:239:| `landed.py show --days 1` | Everything that landed today (`~/DEV/project-triage/landed.py`). |
+/Users/kristinarash/DEV/WORKFLOW.md:242:## Known stale spots (not fixed here)
+/Users/kristinarash/DEV/WORKFLOW.md:244:- `~/DEV/CLAUDE.md` still says "`~/Desktop/DEV` on Windows."
+/Users/kristinarash/DEV/COMMANDS.md:35:| Command Centre server | **Retired 2026-10-03**; its agent keeps running until `project-triage/docs/inventory/mac_archive_pass.sh --go` runs on the Mac (pending on 10-03). Use `pm` | — |
+/Users/kristinarash/DEV/COMMANDS.md:304:  in `~/Library/Caches/ms-playwright/chromium-1234`, marked `INSTALLATION_COMPLETE`.
+/Users/kristinarash/DEV/COMMANDS.md:348:`project-triage/docs/inventory/mac_archive_pass.sh`. The project board below is the front door.
+/Users/kristinarash/DEV/COMMANDS.md:357:terminal. Long form: `python3 ~/DEV/project-triage/board.py --background`
+/Users/kristinarash/DEV/COMMANDS.md:358:(Windows: `python`, `~/Desktop/DEV`). Flags: `--port N`, `--no-open`.
+/Users/kristinarash/DEV/COMMANDS.md:405:/Users/kristinarash/.claude/scripts/skill-button.sh project-triage
+/Users/kristinarash/DEV/COMMANDS.md:434:| `/project-triage` | Weekly | DEV/ triage HTML dashboard |
+
+exec
+/bin/zsh -lc "rg -n 'project-triage|Science|articulation-skill|\\bISA\\b|ArXiv' ~/.claude/skills/*/SKILL.md ~/DEV/*.md ~/DEV/KeystoneOS/docs/rot.md ~/.claude/projects/*/memory/MEMORY.md | head -90" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/.claude/skills/articulation-skill/SKILL.md:2:name: articulation-skill
+/Users/kristinarash/.claude/skills/ArXiv/SKILL.md:2:name: ArXiv
+/Users/kristinarash/.claude/skills/ArXiv/SKILL.md:7:# ArXiv
+/Users/kristinarash/.claude/skills/Science/SKILL.md:2:name: Science
+/Users/kristinarash/.claude/skills/Science/SKILL.md:7:# Science - The Universal Algorithm
+/Users/kristinarash/.claude/skills/Science/SKILL.md:46:**Output when executing:** `Running the **WorkflowName** workflow in the **Science** skill to ACTION...`
+/Users/kristinarash/.claude/skills/Science/SKILL.md:74:| `Protocol.md` | How skills implement Science |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:2:name: ISA
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:3:description: "Scaffold, interview, score, reconcile, seed, or append to an Ideal State Artifact (ISA): the twelve-section document that defines \"done\" for a project, task, app, or work session as testable criteria (ISCs). Use when the user says ISA, ISC, ideal state, ideal state criteria, project specification, hill-climb, or articulating done. Auto-invoked by Algorithm at OBSERVE. Do not use for creating new skills (use anthropic-skills:skill-creator)."
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:7:# ISA — Ideal State Artifact
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:11:The ISA is the single document that articulates "done" for any thing whose ideal state we are pursuing — a project, an application, a library, infrastructure, a work session, an art piece, a strategic decision. It serves five identities at once: ideal state articulation, test harness, build verification, done condition, system of record. This skill owns the canonical template, the workflows that generate and refine ISAs, and the example library.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:15:Most work starts without a written, testable definition of what finished looks like, so "done" drifts — the goal in your head at the start isn't the goal you settle for at the end, and there's no record of which one was right. Criteria stay vague enough that anything passes, decisions and dead ends get forgotten and re-litigated, and when work spans multiple sessions or multiple agents there's no shared source of truth for what's been verified. The ISA fixes "done" as a hard-to-vary explanation with atomic, probe-able criteria, a stable-ID structure that survives edits, and an audit trail of what was conjectured, refuted, and learned.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:19:The ISA is a single document with a locked twelve-section body. A tier completeness gate decides which sections are required at which effort level, and five workflows generate, deepen, score, and reconcile the artifact across sessions and agents.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:25:Every ISA may have up to twelve body sections. The tier completeness gate decides which are required at which effort tier; sections never appear empty. **Order is fixed**.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:71:**Project ISA override:** any `<project>/ISA.md` requires E3+ structure regardless of the active task's tier. The project file is the long-lived source of truth; one transient E1 task must not downgrade it.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:83:| "scaffold", "create", "generate", "new ISA from this prompt", "extract feature as ephemeral" | **Scaffold** | `Workflows/Scaffold.md` |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:84:| "interview me", "fill in the ISA", "deepen", "ask me questions" | **Interview** | `Workflows/Interview.md` |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:85:| "check", "audit", "score this ISA", "is it complete?" | **CheckCompleteness** | `Workflows/CheckCompleteness.md` |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:87:| "seed", "bootstrap from this repo", "draft an ISA from existing code" | **Seed** | `Workflows/Seed.md` |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:93:Running the **WorkflowName** workflow in the **ISA** skill to ACTION...
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:100:The highest-information-density part of this skill. Each entry captures a non-obvious failure mode that has bitten real ISA work.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:103:- **Ephemeral files are derived views, never sources of truth.** Scaffold's `--ephemeral` mode produces a slice of the master ISA at `_ephemeral/<feature>.md`, in the master ISA's folder. Workers operate against that slice; Reconcile merges back. Hand-editing master content from an ephemeral file is policy-forbidden — the master is what persists; the ephemeral is what gets archived.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:105:- **Project ISAs upgrade tier to `max(declared, E3)` regardless of the active task's tier.** A `<project>/ISA.md` is the long-lived system of record for a thing with persistent identity. One transient E1 task on the project must NOT downgrade the structural minimum. CheckCompleteness applies this override automatically.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:118:The `Examples/` directory holds twelve reference ISAs spanning the tier (E1–E5) × domain (code / art / design / ops / marketplace / enterprise) matrix. Always start by reading the canonical showpiece before scaffolding a new ISA — copy its section headers, then populate. Pick the example closest to your domain + scale as a template.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:154:| `Examples/e2-rotate-credential.md` | E2 | Rotate a production deploy credential in CI. Demonstrates the ISA primitive applied to ops/runbook work. 16 ISCs. |
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:177:Skill("ISA", "extract feature <name> as ephemeral file")
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:180:`Scaffold` (with `--ephemeral` mode) produces a derived view at `_ephemeral/<feature>.md` (in the master ISA's folder) containing only the slice relevant to that feature: the Vision and Goal as read-only context, the relevant Constraints, the ISCs in the feature's `satisfies:` list with stable IDs, the matching Test Strategy entries, and an empty Verification section.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:184:**Ephemeral files are derived views. They are never sources of truth. They are never hand-edited as policy. The master ISA is what persists.**
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:190:The Algorithm at OBSERVE invokes this skill to scaffold or read an ISA. The skill does not run the Algorithm — it owns the artifact the Algorithm operates on.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:192:- OBSERVE: `Skill("ISA", "scaffold from prompt at tier T")` → returns populated ISA at canonical location.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:193:- OBSERVE: `Skill("ISA", "check completeness of <path> at tier T")` → pass/fail + gap report.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:194:- PLAN: `Skill("ISA", "extract feature <name> as ephemeral file")` → ephemeral excerpt.
+/Users/kristinarash/.claude/skills/ISA/SKILL.md:195:- LEARN: `Skill("ISA", "reconcile <ephemeral-path> → <master-path>")` → deterministic merge.
+/Users/kristinarash/.claude/skills/decision-audit/SKILL.md:81:| Project status (done, parked, paused) | `project-triage/portfolio.json` via `python portfolio.py add-update <name> "<note>"`; status changes via `portfolio.load_registry`/`save_registry` (no CLI verb). Separate commit, subject `data: ...`. |
+/Users/kristinarash/.claude/skills/five-slides-generator/SKILL.md:77:| Sport Science / Technology | Navy + Cyan, Charcoal + Electric Teal |
+/Users/kristinarash/.claude/skills/five-slides-generator/SKILL.md:200:- Cross-functional framing: each slide should give S&C, AT, Nutrition, Mental Health, and Sport Science a reason to care
+/Users/kristinarash/.claude/skills/closeout/SKILL.md:49:0. **Front Burner checks** (plan `project-triage/docs/plans/2026-10-31-front-burner-self-maintaining.md`):
+/Users/kristinarash/.claude/skills/closeout/SKILL.md:182:- **Registry edits first, alone.** In project-triage, if `git status --porcelain portfolio.json`
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:2:name: project-triage
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:6:  triage", "/project-triage", "run my project review", "dev dashboard", "what's open in
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:19:- **Skill dir:** `~/.claude/skills/project-triage/`
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:22:- **Output dir:** `<scan-root>/project-triage/`
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:24:- **Curation file:** `<scan-root>/project-triage/.curation.json`
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:31:Glob `DEV/project-triage/*.html`. If today's date file exists, ask:
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:46:python "$HOME/.claude/skills/project-triage/triage.py" --open
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:59:> Today's triage at `DEV/project-triage/<date>.html` · N projects · no drift.
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:104:python "$HOME/.claude/skills/project-triage/triage.py"
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:110:- File: `DEV/project-triage/<date>.html`
+/Users/kristinarash/.claude/skills/project-triage/SKILL.md:134:- **`~/DEV/project-triage/` is a separate repo** that carries its own similarly-named scripts and a scheduled `dashboard.html`. Changes to this skill do not touch it.
+/Users/kristinarash/.claude/skills/project/SKILL.md:8:  (use project-triage) or to scaffold a new repo (use new-project).
+/Users/kristinarash/.claude/skills/project/SKILL.md:13:Drives the `project-triage` CLI. The registry, `portfolio.json`, is the single
+/Users/kristinarash/.claude/skills/project/SKILL.md:20:  On the Mac that is `~/DEV/project-triage`: start each Bash call with
+/Users/kristinarash/.claude/skills/project/SKILL.md:21:  `PT=~/DEV/project-triage` (the shell does not keep it between calls).
+/Users/kristinarash/.claude/skills/startup/SKILL.md:26:other session's edits. Start it when project-triage came through Step 1 clean: no `FAIL` line for
+/Users/kristinarash/.claude/skills/startup/SKILL.md:31:`python3 ~/DEV/project-triage/board.py --background` (Windows: the same file under the DEV root, with `python`)
+/Users/kristinarash/.claude/skills/startup/SKILL.md:34:report. Not clean: report `board: not started, project-triage pull unresolved` and name the
+/Users/kristinarash/.claude/skills/startup/SKILL.md:45:   repos are not picks: `~/DEV` itself, the `~/.claude` repos, `KeystoneOS`, `project-triage`,
+/Users/kristinarash/DEV/COMMANDS.md:35:| Command Centre server | **Retired 2026-10-03**; its agent keeps running until `project-triage/docs/inventory/mac_archive_pass.sh --go` runs on the Mac (pending on 10-03). Use `pm` | — |
+/Users/kristinarash/DEV/COMMANDS.md:348:`project-triage/docs/inventory/mac_archive_pass.sh`. The project board below is the front door.
+/Users/kristinarash/DEV/COMMANDS.md:357:terminal. Long form: `python3 ~/DEV/project-triage/board.py --background`
+/Users/kristinarash/DEV/COMMANDS.md:405:/Users/kristinarash/.claude/scripts/skill-button.sh project-triage
+/Users/kristinarash/DEV/COMMANDS.md:434:| `/project-triage` | Weekly | DEV/ triage HTML dashboard |
+/Users/kristinarash/DEV/PROGRAM.md:64:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/PROGRAM.md:66:`CPSS_BaylorSportScience_Curriculum` → Intern_Curriculum; `Education_Content_Agent` → Education_Curriculum; `SoftwareTech_Mgmt_Framework` → SoftwareTech_Review; `Sport_Tech_Vetting` → SoftwareTech_Review; `OKRs_2026-27`.
+/Users/kristinarash/.claude/skills/sports-science-research-grounding/SKILL.md:13:# Sports Science Research Grounding
+/Users/kristinarash/DEV/RESEARCH.md:10:| `SportScienceResearchRepo/` | Main research repo. Has `CONTEXT.md`, a spec sheet, and an `index.html` micro-app → own `CLAUDE.md` |
+/Users/kristinarash/DEV/PLATFORM.md:11:| `project-triage/` | The registry (`portfolio.json`) and the live project board (`pm` / `/pm` → `board.py`): resume cards, focus view, slate cap, 7-day rule, Friday sweep, crosswalk drift, landed ledger. Static `dashboard.html` retired 2026-10-03. |
+/Users/kristinarash/DEV/PLATFORM.md:74:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/DEV/PERFORMANCE.md:46:| `SportScience_Benchmarking/` | Sport-science benchmarking. Repo `erash11/SportScience_Benchmarking`. |
+/Users/kristinarash/DEV/PERFORMANCE.md:56:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+/Users/kristinarash/.claude/projects/-Users-kristinarash/memory/MEMORY.md:16:- [Sport Science Symposium 2026](reference_sportsci-symposium-2026.md) — 8 talks recorded 5/30; mineable themes + speakers for essays and OKR R&D
+/Users/kristinarash/.claude/projects/-Users-kristinarash/memory/MEMORY.md:33:- [reference_sportsci-symposium-2026.md](reference_sportsci-symposium-2026.md) — Sport Science Symposium 2026-05-30 — 8 talks Eric recorded; mineable themes + speakers for essays/OKR R&D
+/Users/kristinarash/DEV/WORKFLOW.md:108:| Explaining it to non-technical staff | `articulation-skill` |
+/Users/kristinarash/DEV/WORKFLOW.md:115:| "Where did that save?" | `python3 ~/DEV/project-triage/landed.py show --days 1` |
+/Users/kristinarash/DEV/WORKFLOW.md:117:| What *done* means for a project | `/ISA` |
+/Users/kristinarash/DEV/WORKFLOW.md:239:| `landed.py show --days 1` | Everything that landed today (`~/DEV/project-triage/landed.py`). |
+/Users/kristinarash/.claude/skills/weekly-review/SKILL.md:58:- **Sweep**: `python3 $PT/portfolio.py sweep-decide <name> revive|keep|archive [--next-action "<step>"] [--receiver "<who>"]`. A revive refused for the cap or a missing receiver goes back to Eric; the receiver is always his words. Rows he leaves undecided return next week on their own. Commit the registry in project-triage as `data: sweep <YYYY-MM-DD>` and push.
+/Users/kristinarash/DEV/FOOTBALL.md:54:Read-only on GitHub. Local copies sit in `~/DEV_archive_hold/2026-10-03/` until ~2026-11-02. Records: `project-triage/portfolio.json`.
+
+hook: PostToolUse
+hook: PostToolUse
+exec
+/bin/zsh -lc "find ~/DEV/project-triage -maxdepth 1 -name '????-??-??.html' -print | sort | tail -5; ls -d ~/Library/Caches/ms-playwright/chromium-*; rg -n 'disable-model-invocation' ~/.claude/skills/doctor-plus/SKILL.md; rg -n 'PFF_Position_Reports' ~/DEV/*.md; git -C ~/DEV/Football/PFF_Position_Reports log -1 --format='%ci %s'" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/DEV/project-triage/2026-05-22.html
+/Users/kristinarash/DEV/project-triage/2026-08-15.html
+/Users/kristinarash/DEV/project-triage/2026-08-17.html
+/Users/kristinarash/DEV/project-triage/2026-08-18.html
+/Users/kristinarash/Library/Caches/ms-playwright/chromium-1243
+/Users/kristinarash/Library/Caches/ms-playwright/chromium-1248
+4:disable-model-invocation: true
+2026-11-02 12:28:14 -0600 STATUS: receiver id is team code + jersey; roster has no jerseys (Decision Desk 2026-11-02)
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc 'git show 4df0d89''^:.claude/skills/aios-audit/SKILL.md | nl -ba | sed -n '"'25,125p'" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+    25	layer it **delegates**; it never re-implements another audit.
+    26	
+    27	| Delegate | Owns |
+    28	|---|---|
+    29	| `os-audit` (project) | project data: routing, index truth, freshness, duplication |
+    30	| `brain-audit` | SecondBrain as a system — the four C's |
+    31	| `improve-system` | note-level rot: stale seeds, duplicates, conflicts |
+    32	| `claude-stack-doctor` | automation plumbing: launchd, venvs, memsearch, backup freshness |
+    33	| `doctor-plus` | context-engineering posture of the workspace |
+    34	
+    35	If `$ARGUMENTS` names one layer from `rot.md`, audit only that layer.
+    36	
+    37	## 1. Read-only
+    38	
+    39	The only writes are the report file and the `Last audited` column of
+    40	`~/DEV/KeystoneOS/docs/rot.md`. **Never delete, archive, disable, or edit a skill during the
+    41	audit.** Propose, then wait for approval. A deletion proposal that turns out wrong
+    42	is cheap; a deletion is not.
+    43	
+    44	## 2. Step 0 — read `~/DEV/KeystoneOS/docs/rot.md`
+    45	
+    46	For each layer, compute days since `Last audited`. A layer that is **past due or
+    47	`unknown`** is audited this run. A layer inside its window is reported green and
+    48	skipped — that is what keeps a monthly run cheap. Read the delegation contract and
+    49	the layout invariants in `rot.md` before going further; they bind every step below.
+    50	
+    51	## 3. Step 1 — run the metrics
+    52	
+    53	```bash
+    54	python3 ~/DEV/KeystoneOS/scripts/aios-metrics.py
+    55	```
+    56	
+    57	Capture every `key=value` line. Any stack trace, or a value like `git_error`,
+    58	`no_manifest` or `error_rc…`, is itself a RED finding — do not guess the number.
+    59	
+    60	## 4. Step 2 — assert the layout invariants
+    61	
+    62	| Key | Must be | If not |
+    63	|---|---|---|
+    64	| `tracked_symlinks_in_canonical` | `0` | RED — a link was committed; Windows gets a dead file |
+    65	| `pool_view_drift`, `codex_view_drift` | `0` | RED — someone edited a generated view instead of `~/.claude/skills/` |
+    66	| `pool_dangling`, `codex_dangling` | `0` | RED — a deleted canonical skill left an abandoned link |
+    67	| `portability_failures` | `0` | RED — see the parity check in Step 4 |
+    68	
+    69	Information, never findings: `third_party_links_in_canonical` (changes with every
+    70	install), `pool_third_party`, `codex_third_party` (deliberately preserved installs).
+    71	
+    72	## 5. Step 3 — delegate under the contract
+    73	
+    74	For each due layer, invoke the owner named in `rot.md`, **read-only**:
+    75	
+    76	- Say it plainly in the invocation: *report findings only; apply nothing, write no
+    77	  ledger, create no files.*
+    78	- `improve-system` applies previously approved proposals in its own Step 0 —
+    79	  suppress that explicitly. `brain-audit` appends to its own trend table — suppress
+    80	  that too, or leave the Vault layer `unknown`.
+    81	- Name the scope you need. Fold the delegate's findings under that layer's heading.
+    82	- A receipt covers only what was checked. If the delegate covered less than its
+    83	  row claims, write the date **with a scope note**, or leave the row `unknown`.
+    84	  Never stamp a date because a delegate exited cleanly.
+    85	
+    86	The Memory (agent) layer has no delegate — audit it directly: every `MEMORY.md`
+    87	index line resolves to a file; every memory file appears in its index;
+    88	`~/.claude/global-memory/MEMORY.md` is under 2,500 chars; flag time-dimensioned
+    89	facts (counters, "still open", past-tense futures).
+    90	
+    91	## 6. Step 4 — the harness layer, audited directly
+    92	
+    93	- **Bloat.** List every canonical skill never invoked in Claude Code transcripts
+    94	  (`never_used` from the metrics; name them). Its scope is
+    95	  `usage_scope=claude_code_transcripts_only`: Codex and Pi use is not counted.
+    96	  If `usage_unreadable_transcripts` is above 0, say so — the list may be too long.
+    97	- **Crutch test.** For each never-used and once-used skill, answer the `rot.md`
+    98	  question — *would the current model do this fine without it?* Recommend
+    99	  DELETE, KEEP (tacit knowledge the model cannot know), or SEASONAL. One line of
+   100	  reasoning each. **Never recommend DELETE on `never_used` alone** — it is
+   101	  Claude-only evidence. First check Codex:
+   102	  `grep -rl "<skill>/SKILL.md" ~/.codex/sessions | wc -l`. A non-zero count means
+   103	  the skill may be in use there; report the count. A match can also be a bulk
+   104	  scan of the skills folder, so read one hit before calling it real use.
+   105	- **Overlap.** Skills whose descriptions claim the same trigger space. Recommend
+   106	  a merge, or a sharper `Do not use … (use X)` clause on both.
+   107	- **Parity.** Run `python3 ~/DEV/KeystoneOS/scripts/skill-portability-check.py`;
+   108	  every failure is a finding. Then check config-level parity, which the linter
+   109	  cannot see: list canonical skills set `"off"` in `~/.claude/settings.json`
+   110	  `skillOverrides`. Those are hidden in Claude Code but live in Codex and Pi.
+   111	  Each one needs a decision: switch it back on, or retire it from canonical.
+   112	- **Promotion.** Global skills used in fewer than 2 projects — demotion
+   113	  candidates. Project skills used in 2+ projects — promotion candidates.
+   114	- **Rules.** Diff `~/.claude/CLAUDE.md` against the last 7 days of sessions.
+   115	  Report rules contradicted by what actually happened, and corrections the user
+   116	  repeated twice that are not yet rules.
+   117	- **Hooks.** `hooks_codex_is_link` must be `1`: since 2026-10-24 `~/.codex/hooks` is a symlink to
+   118	  the whole `~/.claude/hooks` folder, so `hooks_codex` equals `hooks_claude`. `0` means a real
+   119	  folder is back (the two-copies trap): RED.
+   120	- **Agents.** If `agents=0`, report "no agents defined" and skip. Do not invent a finding.
+   121	
+   122	## 7. Step 5 — write the report
+   123	
+   124	Write `~/DEV/KeystoneOS/docs/audits/aios-audit-YYYY-MM-DD.md` with one section per
+   125	layer (green-skipped layers get one line). Update `Last audited` in
+
+exec
+/bin/zsh -lc "find ~/SecondBrain/Knowledge/library/research-papers -iname '*2024*injection*amniotic*' -print; nl -ba ~/.claude/skills/project-triage/SKILL.md | sed -n '24,52p'; nl -ba ~/DEV/COMMANDS.md | sed -n '295,308p'; nl -ba ~/DEV/WORKFLOW.md | sed -n '240,246p'; nl -ba docs/rot.md | head -80" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md
+    24	- **Curation file:** `<scan-root>/project-triage/.curation.json`
+    25	- **Python:** `python` on Windows; `python3` on macOS
+    26	
+    27	## Flow
+    28	
+    29	### 1. Check whether today's already been generated
+    30	
+    31	Glob `DEV/project-triage/*.html`. If today's date file exists, ask:
+    32	> Today's triage already exists. Regenerate, or open the existing file?
+    33	
+    34	If "open existing," just `start` it in the browser and exit.
+    35	
+    36	### 2. Check for a missed yesterday
+    37	
+    38	If today's file doesn't exist *and* yesterday's also doesn't exist, this is the morning-after case. Offer:
+    39	> Yesterday's triage was never generated. Want me to backfill it first, then run today's? (recommended)
+    40	
+    41	If yes, run with `--date <yesterday>` first, then today's.
+    42	
+    43	### 3. Generate the report
+    44	
+    45	```bash
+    46	python "$HOME/.claude/skills/project-triage/triage.py" --open
+    47	```
+    48	
+    49	Pass `--date YYYY-MM-DD` for a backfill. The `--open` flag launches the default browser when generation succeeds.
+    50	
+    51	### 4. Read the drift output
+    52	
+   295	```
+   296	
+   297	**Trap 1 — playwright is not installed.** `weekly_capture.py` imports `playwright`, and no Python
+   298	on this machine has it. Plain `python3 weekly_capture.py` fails with `ModuleNotFoundError`.
+   299	The `uv run --with playwright` form above fetches it for that one run.
+   300	
+   301	Tested end to end 2026-09-02, all green:
+   302	- `uv run --with playwright` resolves in about 12ms and the script's `--help` runs.
+   303	- The browser is already cached and matches: Chrome for Testing 151.0.7922.34 (chromium v1234)
+   304	  in `~/Library/Caches/ms-playwright/chromium-1234`, marked `INSTALLATION_COMPLETE`.
+   305	- Nothing to download. If that ever changes, run
+   306	  `uv run --with playwright python -m playwright install chromium` first.
+   307	
+   308	**The `forecast-capture` skill was patched 2026-09-02** to use this same `uv run` form, so
+   240	| `pm` | The project board (shell function in `~/.zshrc`). |
+   241	
+   242	## Known stale spots (not fixed here)
+   243	
+   244	- `~/DEV/CLAUDE.md` still says "`~/Desktop/DEV` on Windows."
+   245	- KeystoneOS `workflows/` routines (June/July) predate startup and closeout — history only.
+     1	# rot.md — how fast each AIOS layer goes stale
+     2	
+     3	Audit each layer on its own clock, not all at once. `aios-audit` reads this
+     4	file: any layer past due, or marked `unknown`, is a finding.
+     5	
+     6	**A date here is a receipt, not an intention.** Write one only after that
+     7	layer's check in the last column has actually run and produced output.
+     8	
+     9	| Layer | Where it lives | Rots | Audit every | Last audited | Owner | Concrete check |
+    10	|---|---|---|---|---|---|---|
+    11	| Identity | `global-memory/USER.md` | very slow | 3 months | 2026-11-02 (partial: USER.md facts grepped across 75 daily logs since 08-04; full session text not read) | memory-write | Read USER.md; flag any role, family, or career fact contradicted by the last 90 days of sessions. |
+    12	| Substrate | `~/.claude/CLAUDE.md`, `AGENTS.md`, `~/DEV/*.md` routers | slow | 3 months | 2026-11-02 (router paths in ~/.claude/CLAUDE.md, machine.md, AGENTS.md, ~/DEV/*.md + absolute paths in owned skills; project CLAUDE.md internals not checked) | os-audit | Delegate to `os-audit` Check 1 (routing integrity). |
+    13	| Skills | `~/.claude/skills/` | fast | 1 month | 2026-11-02 rerun (metrics, portability 42/42, never/once-used, crutch test with pointer check, Codex reads, skillOverrides; once-used list scripted by hand) | aios-audit | `skill-portability-check.py` + never-used list + the crutch test below. |
+    14	| Agents | `~/.claude/agents/` | fast | 1 month | 2026-11-02 rerun (4 impeccable-*, model inherit, each referenced in skills/impeccable/; 1 spawn) | aios-audit | Count `*.md`. 4 exist on 2026-10-24 (the `impeccable-*` set); audit them. |
+    15	| Rules | `~/.claude/CLAUDE.md` behaviour rules, output styles | fastest | 1 week | 2026-11-02 rerun (7 days: 97 Claude files, 392 user messages; 59 Codex files counted, not read; 2 repeated corrections) | aios-audit | Diff CLAUDE.md against the last 7 days of sessions: any rule contradicted by what actually happened, and any correction the user repeated twice that is not yet a rule. |
+    16	| Hooks | `~/.claude/hooks/`, `~/.codex/hooks/` | slow | 6 months | 2026-11-02 (11 Claude + 9 Codex hook commands resolve, 8 .js parse, hooks_codex_is_link=1; stack-check: login exit 1 pre-fix, errors-log transcript misses) | claude-stack-doctor | Delegate. Also check `hooks_codex_is_link` = 1 in `aios-metrics.py` (`hook-two-copies-trap`). |
+    17	| Memory (agent) | `~/.claude/projects/*/memory/`, `global-memory/` | medium | 1 month | 2026-11-02 (22 Tier A folders, 186 notes: 0 broken, 0 unindexed, 74 double entries in 13 indexes; caps OK; time-dimensioned scan KeystoneOS index only) | **aios-audit itself** | Audited directly — see the delegation contract below. `improve-system` does NOT cover these stores. Check: every `MEMORY.md` index line resolves to a file; every memory file appears in its index exactly once; `global-memory/MEMORY.md` is under its 2,500-char cap; flag time-dimensioned facts (counters, "still open", past-tense futures). |
+    18	| Memory (vault notes) | `~/SecondBrain/` notes | medium | 1 month | 2026-11-02 rerun (partial: seeds, Project_*, slug dupes; conflicts checked for 7 title-similar pairs only; ledger untouched) | improve-system | Delegate — but read-only, per the contract below. |
+    19	| Data feeds | Fireflies, GPS, CFBD, Zotero | varies | 1 week | 2026-11-02 rerun (GPS, Perch, VALD, PFF, Fireflies, CFB, Zotero, morning cadence: newest log lines quoted; Drive-side contents not checked) | os-audit | Delegate to `os-audit` Check 3 (freshness). |
+    20	| Vault | `~/SecondBrain/` | medium | 1 month | 2026-11-02 rerun (partial: measure.sh + score 75; no _trend.md row, per read-only contract) | brain-audit | Delegate to `brain-audit` (four C's score). |
+    21	| Context posture | workspace-wide | medium | 3 months | 2026-10-11 (doctor-plus six shifts, 3 flags fixed; /doctor not run) | doctor-plus | Delegate to `doctor-plus`. |
+    22	
+    23	## The question that governs a skill's fate
+    24	
+    25	Not "how often did I run it?" but **"would the current model do this fine
+    26	without the skill?"** If yes, the skill is a crutch that now limits the model.
+    27	Delete it. Keep only skills carrying tacit knowledge the model cannot know:
+    28	force-plate thresholds, GPS conventions, Baylor reporting norms, Eric's own
+    29	routines.
+    30	
+    31	Seasonal skills (`forecast-capture`, `ingest-book`) are exempt from low-use
+    32	pressure. Judge them in season.
+    33	
+    34	## Delegation contract (R2-09)
+    35	
+    36	A delegate is invoked **read-only**, for a **named scope**, and its receipt is
+    37	written **only** for the scope it actually covered.
+    38	
+    39	1. **Read-only.** Before invoking a delegate, instruct it explicitly: report
+    40	   findings, apply nothing, write no ledger, create no files. Several delegates
+    41	   (`improve-system` among them) begin by applying previously approved proposals
+    42	   — that must be suppressed. `aios-audit` writes only its own report, the
+    43	   `Last audited` column, and Decision Desk cards for its proposals.
+    44	2. **Scope must be verified, not assumed.** A delegate's actual coverage is what
+    45	   its body scans, not what this table wishes it scanned. `improve-system` scans
+    46	   `~/SecondBrain/` — Notes, Knowledge, Projects. It does **not** touch
+    47	   `~/.claude/projects/*/memory/` or `global-memory/`. Those are audited by
+    48	   `aios-audit` directly.
+    49	3. **A receipt covers only what was checked.** If a delegate returns findings for
+    50	   a narrower scope than its row claims, write the date **and** a scope note, or
+    51	   leave the row `unknown`. Never stamp a date because a delegate exited cleanly.
+    52	
+    53	## Layout invariants the audit must assert
+    54	
+    55	- `~/.claude/skills/` is canonical, is a git repo, and contains **no TRACKED symlinks**
+    56	  (`git ls-files -s` shows no mode 120000). On-disk links to third-party skills are
+    57	  expected; they are listed in the per-machine `.git/info/exclude` (never the tracked
+    58	  `.gitignore`), and a pre-commit hook refuses to commit one. What must never happen is
+    59	  committing a link, because Windows pulls this repo and a Mac link is dead there.
+    60	- `~/.agents/skills/` and `~/.codex/skills/` are **generated views**. Each carries
+    61	  a `.generated-by-sync-to-codex` manifest. Every entry **in the manifest** must be
+    62	  a symlink on Mac (a copy on Windows); wrong representation is drift.
+    63	- Entries **not** in the manifest are third-party installs (`npx skills add`).
+    64	  They are counted and reported, **never** flagged as errors and never pruned.
+    65	- Support directories (`_shared/`) have no SKILL.md and must never be pruned.
+    66	
+    67	## Direction of travel
+    68	
+    69	**Fewer skills, stricter rules.** Skills get deleted; rules get sharpened.
+    70	
+    71	## Cadence
+    72	
+    73	Monthly metrics: launchd `com.keystone.aiosaudit`, day 1 at 14:00.
+    74	It writes a trend row and a nudge. It does not commit and does not push.
+    75	The agentic audit is run by hand: "audit my AI OS" in `~/DEV/KeystoneOS`.
+
+hook: PostToolUse
+hook: PostToolUse
+exec
+/bin/zsh -lc "find ~/.claude/projects -name '15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl' -o -name '0c8c7095-a29b-42b0-b424-16bb1208480e.jsonl'; rg -n '0c8c7095|15d95b4f' ~/.claude/global-memory/transcripts/.errors.log" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+3:[2026-11-02T18:48:32.272Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+4:[2026-11-02T18:52:47.318Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+5:[2026-11-02T18:54:32.870Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+6:[2026-11-02T18:56:23.970Z] transcript_path does not exist: {"session_id":"0c8c7095-a29b-42b0-b424-16bb1208480e","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/0c8c7095-a29b-42b0-b424-16bb1208480e.jsonl","cwd":"/Users/kristinar entrypoint=cli callers=["claude --dangerously-skip-permissions","-zsh","login -pf kristinarash"]
+7:[2026-11-02T18:58:57.981Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+8:[2026-11-02T19:00:52.296Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+9:[2026-11-02T19:02:28.690Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+10:[2026-11-02T19:02:44.269Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+11:[2026-11-02T19:03:35.648Z] transcript_path does not exist: {"session_id":"15d95b4f-38c1-47b0-acf1-e8ef52876e76","transcript_path":"/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/15d95b4f-38c1-47b0-acf1-e8ef52876e76.jsonl","cwd":"/User entrypoint=cli callers=["/Users/kristinarash/.local/bin/claude audit my AI OS","-zsh","login -pf kristinarash"]
+
+exec
+/bin/zsh -lc "python3 -c 'from pathlib import Path; import re,collections; ps=list((Path.home()/\".claude/projects\").glob(\"*/memory/MEMORY.md\")); ds=[(p,{n for n,c in collections.Counter(n for l in p.read_text().splitlines() for n in set(re.findall(r\"[\\w.-]+\\.md\",l)) if n"'!="MEMORY.md" and (p.parent/n).is_file()).items() if c>=2}) for p in ps]; print("duplicate notes:",sum(len(d) for p,d in ds),"indexes:",sum(bool(d) for p,d in ds)); print("'"\\n\".join(str((p.parent.parent.name,len(d))) for p,d in ds if d)); s=(Path.home()/\".claude/global-memory/MEMORY.md\").read_text(); print(\"characters:\",len(s),\"bytes:\",len(s.encode()))'" in /Users/kristinarash/DEV/KeystoneOS
+hook: PostToolUse
+exec
+/bin/zsh -lc 'python3 scripts/aios-metrics.py --codex-reads fireflies-intake' in /Users/kristinarash/DEV/KeystoneOS
+hook: PostToolUse
+ succeeded in 4ms:
+duplicate notes: 74 indexes: 13
+('-Users-kristinarash-DEV-reMarkale-extract', 1)
+('-Users-kristinarash-DEV-Risk-Stratification-Engine', 3)
+('-Users-kristinarash-DEV-DataBase-GPS-Reporting', 2)
+('-Users-kristinarash-DEV-Travel-Map', 4)
+('c--Users-eric-rash-Desktop-DEV-Football-FaceComps', 14)
+('-Users-kristinarash-DEV-AgentAssist', 3)
+('-Users-kristinarash-DEV-PlayerProfiles-FB-03-28-2026', 5)
+('-Users-kristinarash', 15)
+('-Users-kristinarash-DEV-CLI-Dev', 5)
+('-Users-kristinarash-DEV-Football-SpringPlayerEvals-SymAnalysis', 1)
+('-Users-kristinarash-DEV-Football-Tezino-CampPrep', 2)
+('-Users-kristinarash-DEV-Football-FaceComps', 14)
+('c--Users-eric-rash-Desktop-DEV-PlayerProfiles-FB-03-28-2026', 5)
+characters: 1865 bytes: 1894
+
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+ succeeded in 432ms:
+fireflies-intake	2
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+hook: PreToolUse Completed
+hook: PreToolUse Failed
+exec
+/bin/zsh -lc "ls -ld ~/DEV/_to_delete; du -sk ~/DEV/_to_delete; rg -n 'what (does|would) my library say|Do not use' ~/.claude/skills/{pp-zotero-research-library,library-advisor,library-review,ingest-book,sports-science-research-grounding}/SKILL.md" in /Users/kristinarash/DEV/KeystoneOS
+exec
+/bin/zsh -lc "rg -n 'title:|doi:|reference-stub|Krystofiak|[Ii]njection of [Aa]mniotic' ~/SecondBrain/Knowledge/library/research-papers/{j,krystofiak}-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md | cut -c 1-250" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:11:doi: "10.2147/ORR.S485520"
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:19:# Krystofiak 2024 — AM/UC injection after muscle and ligament tears in 
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:22:> Krystofiak, J. (2024). Injection of amniotic membrane and umbilical c
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:3:status: reference-stub
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:8:doi: ""
+/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:13:# Injection of Amniotic Membrane and Umbilical Cord Particulate for Muscle and L
+
+ succeeded in 0ms:
+drwxr-xr-x@ 3 kristinarash  staff  96 Oct 29 16:32 /Users/kristinarash/DEV/_to_delete
+132	/Users/kristinarash/DEV/_to_delete
+/Users/kristinarash/.claude/skills/ingest-book/SKILL.md:7:  "/ingest-book", or points at a book file for the advisor system. Do not use for
+/Users/kristinarash/.claude/skills/library-review/SKILL.md:7:  advisor", or after a batch of ingestion. Do not use to ask the library a question (use
+/Users/kristinarash/.claude/skills/library-advisor/SKILL.md:6:  advisor", "/library-advisor <domain> <question>", "what would my library say about…",
+/Users/kristinarash/.claude/skills/library-advisor/SKILL.md:9:  command. Do not use to review a domain for gaps or missing coverage, as in "review my
+/Users/kristinarash/.claude/skills/sports-science-research-grounding/SKILL.md:9:  during bounded batch work. Do not use for sports scores or schedules (use pp-espn) or
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:6:  says `search my Zotero library`, `what does my library say about`, `find papers
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:8:  citation for`, `use zotero-research-library`, `run zotero cli`. Do not use for a
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:55:Do not use this CLI for:
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:56:- Do not use this CLI to create, modify, or delete items in Zotero — it is read-only against the API
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:57:- Do not use it for PDF download or attachment file retrieval; it indexes extracted text only
+/Users/kristinarash/.claude/skills/pp-zotero-research-library/SKILL.md:58:- Do not use it for open-web literature search — it covers the user's own library
+
+exec
+/bin/zsh -lc "rg -n 'I ran the command in the terminal and it said there was not such file or directory|ran the command and it said parse error|writing-for-agents' ~/.claude/projects --glob '*aae53841*.jsonl' --glob '*3218743c*.jsonl' --glob '*acc5fc1e*.jsonl' --glob '*053da610*.jsonl' -l" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/aae53841-d2ef-48bc-b23c-b7374ca1a573.jsonl
+/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/3218743c-a08b-46a7-93be-112fe534438b.jsonl
+/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/053da610-14fa-4a93-8a33-1f40b815acc6.jsonl
+/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV/acc5fc1e-65c0-45c4-8b6e-ee6b521bf753.jsonl
+
+hook: PostToolUse
+hook: PostToolUse
+hook: PostToolUse
+exec
+/bin/zsh -lc "rg -n 'once.used|argparse|--help|codex.reads' scripts/aios-metrics.py | head -30; rg -n 'open' ~/.claude/claude-memory-compiler/reports/proposals-pending.md | head -12; git status --short" in /Users/kristinarash/DEV/KeystoneOS
+ succeeded in 0ms:
+228:def codex_reads(skill):
+244:if len(sys.argv) > 2 and sys.argv[1] == "--codex-reads":
+246:        print(f"{s}\t{codex_reads(s)}")
+9:approval gate: nothing here is applied because it is written here. `open` means
+16:1. **Read this file before proposing anything.** Re-list every `open` item alongside
+19:3. Append genuinely new findings as `open`. Deduplicate against what is already here —
+32:- status: open | approved | rejected | applied
+
+hook: PostToolUse
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+hook: PostToolUse Failed
+codex
+1. **Most new findings check out.**
+
+   - The last dated `project-triage` HTML file is `2026-08-18.html`. The three links named in the report exist: [project/SKILL.md:8](/Users/kristinarash/.claude/skills/project/SKILL.md:8), [COMMANDS.md:405](/Users/kristinarash/DEV/COMMANDS.md:405), and [COMMANDS.md:434](/Users/kristinarash/DEV/COMMANDS.md:434). This supports retirement of the **skill**. It does not prove that the separate project-triage project is dead.
+   - I counted **74 notes listed on two or more lines, across 13 indexes**. The rerun is right.
+   - The five KeystoneOS notes contain the old claims. Four describe old Windows paths or jobs as current. The fifth records a dated 2026 audit, but also says 11 candidates remain open. That last claim needs a current check. See [skill-audit note:19](/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/project-skill-audit-2026-07.md:19).
+   - The Playwright path is gone. The stale line remains at [COMMANDS.md:304](/Users/kristinarash/DEV/COMMANDS.md:304). The stale-note claim remains at [WORKFLOW.md:244](/Users/kristinarash/DEV/WORKFLOW.md:244), but the named text is absent from `CLAUDE.md`.
+   - `PFF_Position_Reports` is absent from `~/DEV/*.md`. Its repo has a November 2 commit. That proves the missing router entry. It does not prove a new session cannot find the repo by another route.
+   - `doctor-plus` has `disable-model-invocation: true` at [SKILL.md:4](/Users/kristinarash/.claude/skills/doctor-plus/SKILL.md:4). The report records a refused call.
+   - The two paper files name the same paper. One is a reference stub. See [stub:3](/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:3) and [full note:19](/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:19). `_to_delete` also exists and is 132 KB.
+   - I found the session files for both command corrections and the writing-for-agents requests. I did not independently verify the full context or whether each request should become a rule.
+   - The two library trigger phrases overlap. The three skill gaps are supported by the script and skill. I did not check every feed or every overlap claim.
+
+2. **The rerun is right on two corrections. The baseline is right on the character count.**
+
+   - `fireflies-intake`: the baseline’s zero-read claim was wrong. The read-count command now returns **2**. The rerun’s **1** was its count at the time.
+   - Memory size: I measured **1,865 characters** and **1,894 bytes**. The rerun called the byte count a character count. The baseline’s later correction was right. See [baseline:172](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02.md:172).
+   - The error log names the second session, `0c8c7095`. I found no main transcript file for either session. The rerun is right that two sessions had missing-transcript errors. The cause and full extent of lost content remain unproven.
+
+3. **The rerun missed or overstated these points.**
+
+   - It said the memory file had 1,894 characters. That is its byte count. **Step 4**, the direct agent-memory check, should measure characters.
+   - It did not read the 59 Codex session files for the rules check. It could not support the broad “no rule was contradicted” claim. **Step 5, Rules** requires a check of the last seven days of sessions. See [rerun:94](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:94).
+   - It checked time-sensitive facts in only one of 22 memory folders. It disclosed that limit, but other stale facts could remain. **Step 4** requires the agent-memory check.
+   - It treated the July skill-audit note as wholly current Windows advice. Much of it is clearly dated history. The open-candidates line still needs review. The **cross-reference rule** should separate history from current claims.
+
+4. **The rerun followed the skill only in part.**
+
+   - **Read-only:** The report says it changed no skills, memory, notes, or settings. It also says it wrote a STATUS line. That line was outside the skill’s stated write list. I cannot prove from the report alone that no other files changed.
+   - **Newest evidence:** The skill requires quotes for **RED**, not every YELLOW. The rerun has no current RED verdict. Several YELLOW findings lack a newest evidence quote, including the index count. So the requested RED-or-YELLOW standard was not met.
+   - **Delete pointers:** It named pointers for `project-triage`, `ISA`, and `articulation-skill`. It did not show a separate completed pointer check and fix for each of the four generic delete candidates. See [rerun:58](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:58) and [skill:100](/Users/kristinarash/DEV/KeystoneOS/.claude/skills/aios-audit/SKILL.md:100).
+   - **Decision Desk:** The report lists seven new cards, including one card that groups four fixes. I could not independently inspect the cards or their options. I cannot confirm that every proposal has its own card.
+   - **Two builds:** Yes. The report lists exactly two at [rerun:259](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:259). I did not verify the final chat reply.
+   - **Commit:** Yes. `git show --stat 8160c5f` shows both the rerun report and `docs/rot.md` in the commit.
+
+5. **Yes, the rewritten skill is better.** It found more stale items, checked delete pointers, and used newer backup evidence. It still needs three changes:
+
+   1. **Measure characters and bytes separately.** This would prevent the `MEMORY.md` count error.
+   2. **Require a coverage receipt for each check.** State which sessions and memory folders were read. This would prevent broad claims from partial checks.
+   3. **Require one result per proposed deletion.** Record the search, each live pointer, and its fix. This would make the four generic deletion proposals reviewable.
+
+I changed no files. No action is needed from you now.
+hook: Stop
+hook: Stop
+hook: Stop
+hook: Stop Completed
+hook: Stop Completed
+hook: Stop Failed
+tokens used
+87,966
+1. **Most new findings check out.**
+
+   - The last dated `project-triage` HTML file is `2026-08-18.html`. The three links named in the report exist: [project/SKILL.md:8](/Users/kristinarash/.claude/skills/project/SKILL.md:8), [COMMANDS.md:405](/Users/kristinarash/DEV/COMMANDS.md:405), and [COMMANDS.md:434](/Users/kristinarash/DEV/COMMANDS.md:434). This supports retirement of the **skill**. It does not prove that the separate project-triage project is dead.
+   - I counted **74 notes listed on two or more lines, across 13 indexes**. The rerun is right.
+   - The five KeystoneOS notes contain the old claims. Four describe old Windows paths or jobs as current. The fifth records a dated 2026 audit, but also says 11 candidates remain open. That last claim needs a current check. See [skill-audit note:19](/Users/kristinarash/.claude/projects/-Users-kristinarash-DEV-KeystoneOS/memory/project-skill-audit-2026-07.md:19).
+   - The Playwright path is gone. The stale line remains at [COMMANDS.md:304](/Users/kristinarash/DEV/COMMANDS.md:304). The stale-note claim remains at [WORKFLOW.md:244](/Users/kristinarash/DEV/WORKFLOW.md:244), but the named text is absent from `CLAUDE.md`.
+   - `PFF_Position_Reports` is absent from `~/DEV/*.md`. Its repo has a November 2 commit. That proves the missing router entry. It does not prove a new session cannot find the repo by another route.
+   - `doctor-plus` has `disable-model-invocation: true` at [SKILL.md:4](/Users/kristinarash/.claude/skills/doctor-plus/SKILL.md:4). The report records a refused call.
+   - The two paper files name the same paper. One is a reference stub. See [stub:3](/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/j-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:3) and [full note:19](/Users/kristinarash/SecondBrain/Knowledge/library/research-papers/krystofiak-2024-injection-of-amniotic-membrane-and-umbilical-cord-particulate-for-muscle-and-ligament-tear.md:19). `_to_delete` also exists and is 132 KB.
+   - I found the session files for both command corrections and the writing-for-agents requests. I did not independently verify the full context or whether each request should become a rule.
+   - The two library trigger phrases overlap. The three skill gaps are supported by the script and skill. I did not check every feed or every overlap claim.
+
+2. **The rerun is right on two corrections. The baseline is right on the character count.**
+
+   - `fireflies-intake`: the baseline’s zero-read claim was wrong. The read-count command now returns **2**. The rerun’s **1** was its count at the time.
+   - Memory size: I measured **1,865 characters** and **1,894 bytes**. The rerun called the byte count a character count. The baseline’s later correction was right. See [baseline:172](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02.md:172).
+   - The error log names the second session, `0c8c7095`. I found no main transcript file for either session. The rerun is right that two sessions had missing-transcript errors. The cause and full extent of lost content remain unproven.
+
+3. **The rerun missed or overstated these points.**
+
+   - It said the memory file had 1,894 characters. That is its byte count. **Step 4**, the direct agent-memory check, should measure characters.
+   - It did not read the 59 Codex session files for the rules check. It could not support the broad “no rule was contradicted” claim. **Step 5, Rules** requires a check of the last seven days of sessions. See [rerun:94](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:94).
+   - It checked time-sensitive facts in only one of 22 memory folders. It disclosed that limit, but other stale facts could remain. **Step 4** requires the agent-memory check.
+   - It treated the July skill-audit note as wholly current Windows advice. Much of it is clearly dated history. The open-candidates line still needs review. The **cross-reference rule** should separate history from current claims.
+
+4. **The rerun followed the skill only in part.**
+
+   - **Read-only:** The report says it changed no skills, memory, notes, or settings. It also says it wrote a STATUS line. That line was outside the skill’s stated write list. I cannot prove from the report alone that no other files changed.
+   - **Newest evidence:** The skill requires quotes for **RED**, not every YELLOW. The rerun has no current RED verdict. Several YELLOW findings lack a newest evidence quote, including the index count. So the requested RED-or-YELLOW standard was not met.
+   - **Delete pointers:** It named pointers for `project-triage`, `ISA`, and `articulation-skill`. It did not show a separate completed pointer check and fix for each of the four generic delete candidates. See [rerun:58](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:58) and [skill:100](/Users/kristinarash/DEV/KeystoneOS/.claude/skills/aios-audit/SKILL.md:100).
+   - **Decision Desk:** The report lists seven new cards, including one card that groups four fixes. I could not independently inspect the cards or their options. I cannot confirm that every proposal has its own card.
+   - **Two builds:** Yes. The report lists exactly two at [rerun:259](/Users/kristinarash/DEV/KeystoneOS/docs/audits/aios-audit-2026-11-02-rerun.md:259). I did not verify the final chat reply.
+   - **Commit:** Yes. `git show --stat 8160c5f` shows both the rerun report and `docs/rot.md` in the commit.
+
+5. **Yes, the rewritten skill is better.** It found more stale items, checked delete pointers, and used newer backup evidence. It still needs three changes:
+
+   1. **Measure characters and bytes separately.** This would prevent the `MEMORY.md` count error.
+   2. **Require a coverage receipt for each check.** State which sessions and memory folders were read. This would prevent broad claims from partial checks.
+   3. **Require one result per proposed deletion.** Record the search, each live pointer, and its fix. This would make the four generic deletion proposals reviewable.
+
+I changed no files. No action is needed from you now.
