@@ -8,7 +8,7 @@ metadata:
   modified: 2026-08-16T18:37:34.242Z
 ---
 
-S2 Cognition analysis lives at `~/DEV/S2_Evaluation` (private repo `erash11/S2_Evaluation`). V1 shipped 2026-08-16 with a **null finding**: no offensive lineman is cognitively atypical once the flagging threshold is calibrated against a null model.
+S2 Cognition analysis lives at `~/DEV/Performance/S2_Evaluation` (private repo `erash11/S2_Evaluation`). V1 shipped 2026-08-16 with a **null finding**: no offensive lineman is cognitively atypical once the flagging threshold is calibrated against a null model.
 
 **Vendor data traps** (learned the hard way, not documented by S2):
 

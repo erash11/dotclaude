@@ -7,7 +7,7 @@ metadata:
   originSessionId: 9aab76d1-8b11-48f6-9c4d-e8b8eb2daa0e
 ---
 
-Single consolidated one-page brief giving 2–3 recommendations per Baylor varsity program for better utilizing Applied Performance services. Saved at `C:\Users\eric_rash\Desktop\DEV\AppliedUtilization\Applied_Performance_Utilization_Brief.md` (created 2026-06-14; path corrected 2026-06-18 — not at DEV root as previously recorded).
+Single consolidated one-page brief giving 2–3 recommendations per Baylor varsity program for better utilizing Applied Performance services. Saved at `C:\Users\eric_rash\Desktop\DEV\Performance\AppliedUtilization\Applied_Performance_Utilization_Brief.md` (created 2026-06-14; path corrected 2026-06-18 — not at DEV root as previously recorded).
 
 Grounded in the AppPerformance capability menu extracted from the `knowledge/baylor-01-ongoing` graph: Force-Plate/RTP reporting (ForceDecks CMJ/SL-CMJ; Output/Driver/Strategy/Asymmetry; RTP gates ≥80% reconstruction / ≥90% reintegration), Performance Technology rollout (GPS/wearables, DXA, wellness apps under NCAA SSI consent + data-governance), assessment protocols (SFMA, Nordic, DXA), Performance Education (Performance School = staff, Performance Academy = athletes), and B.A.I.R. applied research (resisted-sprint, heavy load past ~20.7% body mass).
 

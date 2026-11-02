@@ -164,7 +164,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/AMS_Mini",
+   "path": "DEV/Performance/AMS_Mini",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -175,7 +175,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/AT_Utilization_Benchmarks",
+   "path": "DEV/Performance/AT_Utilization_Benchmarks",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -211,7 +211,7 @@
   },
 
   {
-   "path": "DEV/AppliedUtilization",
+   "path": "DEV/Performance/AppliedUtilization",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -222,7 +222,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Ath_Medicine",
+   "path": "DEV/Performance/Ath_Medicine",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -268,7 +268,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Baseball_PerformanceProfiles",
+   "path": "DEV/Performance/Baseball_PerformanceProfiles",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -371,7 +371,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/CATES",
+   "path": "DEV/Performance/CATES",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/CATES.git",
@@ -427,7 +427,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/COG_S2_Position_Reports",
+   "path": "DEV/Performance/COG_S2_Position_Reports",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -449,7 +449,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Catapult_API",
+   "path": "DEV/Performance/Catapult_API",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -460,7 +460,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Cheer_Programming",
+   "path": "DEV/Performance/Cheer_Programming",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Cheer_Programming.git",
@@ -647,7 +647,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Injury_Surveillance",
+   "path": "DEV/Performance/Injury_Surveillance",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Injury_Surveillance.git",
@@ -685,7 +685,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Kinexon_Volleyball",
+   "path": "DEV/Performance/Kinexon_Volleyball",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Kinexon_Volleyball.git",
@@ -862,7 +862,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/PracticeIntensity",
+   "path": "DEV/Performance/PracticeIntensity",
    "class": "institutional",
    "isRepo": false,
    "remote": null,
@@ -944,7 +944,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/Risk_Stratification_Engine",
+   "path": "DEV/Performance/Risk_Stratification_Engine",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Risk_Stratification_Engine.git",
@@ -956,7 +956,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/S2_Evaluation",
+   "path": "DEV/Performance/S2_Evaluation",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/S2_Evaluation.git",
@@ -979,7 +979,7 @@
    "captureWorkingTree": false
   },
   {
-   "path": "DEV/SPC_Report",
+   "path": "DEV/Performance/SPC_Report",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/SPC_Report.git",
@@ -1028,7 +1028,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/SportScience_Benchmarking",
+   "path": "DEV/Performance/SportScience_Benchmarking",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/SportScience_Benchmarking.git",
@@ -1169,7 +1169,7 @@
 
 
   {
-   "path": "DEV/Volleyball_GRID",
+   "path": "DEV/Performance/Volleyball_GRID",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Volleyball_GRID.git",
@@ -1206,7 +1206,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Wilhelm_Brody_RTP",
+   "path": "DEV/Performance/Wilhelm_Brody_RTP",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/Wilhelm_Brody_RTP.git",
@@ -1300,7 +1300,7 @@
   },
 
   {
-   "path": "DEV/cmj-traffic-light",
+   "path": "DEV/Performance/cmj-traffic-light",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/cmj-traffic-light.git",
@@ -1465,7 +1465,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/RTP_ProgressReport",
+   "path": "DEV/Performance/RTP_ProgressReport",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/RTP_ProgressReport.git",
@@ -1501,7 +1501,7 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/VALD_Release",
+   "path": "DEV/Performance/VALD_Release",
    "class": "personal",
    "isRepo": true,
    "remote": "https://github.com/erash11/VALD_Release.git",
@@ -1625,7 +1625,7 @@
    "note": "2026-10-14: the space-named twin DEV/Linda Projects was parked at ~/_PARKED_COPIES/DEV-twin-checkouts (identical content, HEAD 031f96a). Its entry's history: Holds I-983 material: 02_SupervisorPlan_I983_CONFIDENTIAL.md, source/I983_page3.png, source/I983_page5.png. The 2026-08-19 entry routed this SSD-only and deliberately off github. Superseded: on 2026-09-09 the folder was put under git and pushed to the PRIVATE repo erash11/Linda_Projects (commit 031f96a), and on 2026-09-19 Eric confirmed private GitHub is acceptable and asked for this entry to match reality. KEEP THAT REPO PRIVATE. Folder name uses a space, the GitHub repo uses an underscore; that mismatch made /dev-sync clone a redundant DEV/Linda_Projects on 2026-09-19. Class left as 'personal' - no script reads it; Eric has still not classified it."
   },
   {
-   "path": "DEV/BayCap",
+   "path": "DEV/Performance/BayCap",
    "class": "institutional",
    "isRepo": true,
    "remote": "https://github.com/erash11/BayCap.git",

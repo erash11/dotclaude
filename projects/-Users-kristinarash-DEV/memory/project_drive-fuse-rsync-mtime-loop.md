@@ -26,6 +26,6 @@ Reproduced: two 8-byte files, same size, content differing, mtimes 3s apart → 
 
 **How to apply:** when adding a new `Snapshot` call, ask whether the source can change without changing size. Databases, fixed-width records, and image/binary formats with in-place headers all can — give those `--checksum`. Logs and transcripts cannot — leave them on the window.
 
-**One-way copy of new files into Drive: use `--ignore-existing`, never `--update` (2026-10-02).** `rsync -a --update` from `~/DEV/S2_Evaluation/data/` into the Drive mount hung 11 min, with nothing copied. `--update` did not skip files already on Drive, because Drive's mtimes are its own. The receiving child was blocked reading an existing Drive file. `--ignore-existing` copied the 2 missing files at once. macOS rsync is openrsync: its receiving child shows as `rsync --server`, so `pgrep -f "rsync -a ..."` misses it. Stop a hung run with TaskStop, not `kill`.
+**One-way copy of new files into Drive: use `--ignore-existing`, never `--update` (2026-10-02).** `rsync -a --update` from `~/DEV/Performance/S2_Evaluation/data/` into the Drive mount hung 11 min, with nothing copied. `--update` did not skip files already on Drive, because Drive's mtimes are its own. The receiving child was blocked reading an existing Drive file. `--ignore-existing` copied the 2 missing files at once. macOS rsync is openrsync: its receiving child shows as `rsync --server`, so `pgrep -f "rsync -a ..."` misses it. Stop a hung run with TaskStop, not `kill`.
 
 Related: [[backup-sync-system]]
