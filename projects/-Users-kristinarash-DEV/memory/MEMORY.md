@@ -8,7 +8,7 @@ Never put memory content here — the file itself holds the facts.
 - [Status report sourcing](project_status-report-sourcing.md) — building the status report
 - [Fireflies CLI on Mac](project_fireflies-cli-broken-on-mac.md) — Fireflies CLI errors or renames
 - [gws Google Forms API](project_gws-forms-api.md) — creating or editing a Google Form
-- [gws CLI default](feedback_gws-cli-default.md) — any Google API work: use gws, never exported tokens; ~2.5 s/call; download/upload/fullText traps
+- [gws CLI default](feedback_gws-cli-default.md) — any Google API work: use gws, never exported tokens, never under env -i (deletes the login); ~2.5 s/call; download/upload/fullText traps
 - [Kenny Boyd doc review](project_kenny-boyd-doc-review-preferences.md) — writing a review doc for Kenny
 - [Kenny Boyd writing voice](project_kenny-boyd-writing-voice.md) — writing to, for, or like Kenny; SAS Leadership meeting
 - [Terminal Fluency workspace](project_terminal-fluency-workspace.md) — resuming Terminal Fluency
@@ -91,3 +91,4 @@ Never put memory content here — the file itself holds the facts.
 - [Skill audit model](feedback_skill-audit-model.md) — before spawning an agent for a skill audit or similar review work
 - [Text eric imessage](reference_text-eric-imessage.md) — any long run (30+ min or background job) finishes or fails: text Eric unasked; or he asks to be texted
 - [Catapult not health data](feedback_catapult-not-health-data.md) — before treating any Catapult, GPS or tracking file as health data
+- [Decision desk](feedback_decision-desk.md) — before asking Eric any decision; startup decisions list; reading his answers back
