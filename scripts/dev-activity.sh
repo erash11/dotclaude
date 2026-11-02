@@ -21,7 +21,7 @@ DEV="$HOME/DEV"
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
 
-for root in "$DEV" "$DEV/Football" "$DEV/SpecialRequests"; do
+for root in "$DEV" "$DEV/Football" "$DEV/SpecialRequests" "$DEV/Personal" "$DEV/Program" "$DEV/Research" "$DEV/Performance" "$DEV/Platform"; do   # Areas: plan Task 4
   [ -d "$root" ] || continue
   for p in "$root"/*/; do
     [ -d "$p/.git" ] || continue

@@ -32,7 +32,7 @@ link_agents "$HOME/.claude/AGENTS.md" "$HOME/.codex/AGENTS.md" || true
 LINKED=()
 for root in "$HOME/DEV" "$HOME/projects"; do
   [ -d "$root" ] || continue
-  for repo in "$root"/*/; do
+  for repo in "$root"/*/ "$root"/Personal/*/ "$root"/Program/*/ "$root"/Research/*/ "$root"/Performance/*/ "$root"/Platform/*/; do   # Areas: plan Task 4
     [ -d "$repo.git" ] && [ -f "${repo}CLAUDE.md" ] || continue
     if (cd "$repo" && link_agents "CLAUDE.md" "AGENTS.md"); then
       LINKED+=("$repo")

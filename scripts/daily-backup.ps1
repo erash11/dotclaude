@@ -733,7 +733,15 @@ if ($Manifest) {
     # storage drive, which is a backup DESTINATION, not a source - declaring it
     # in the manifest would rsync Drive into the SSD backup (and isRepo:false
     # snapshots unconditionally, ignoring destinations[]).
-    $onDisk = @(Get-ChildItem $DevRoot -Directory | Where-Object { $_.Name -notmatch '^\.' -and -not $_.LinkType } | Select-Object -ExpandProperty Name)
+    # Area folders (FILE-ORGANIZATION-PLAN Task 4) are containers: their repos are declared as DEV/<Area>/<Repo>.
+    $areas = @('Personal', 'Program', 'Research', 'Performance', 'Platform')
+    $top = @(Get-ChildItem $DevRoot -Directory | Where-Object { $_.Name -notmatch '^\.' -and -not $_.LinkType })
+    $onDisk = @(foreach ($d in $top) {
+        if ($areas -contains $d.Name) {
+            Get-ChildItem $d.FullName -Directory | Where-Object { $_.Name -notmatch '^\.' -and -not $_.LinkType } |
+                ForEach-Object { "$($d.Name)/$($_.Name)" }
+        } else { $d.Name }
+    })
     $unmanaged = @($onDisk | Where-Object { $declared -notcontains $_ })
     if ($unmanaged.Count -gt 0) {
         $Errors.Add("manifest-unmanaged:$($unmanaged -join '|')")

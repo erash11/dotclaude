@@ -109,7 +109,8 @@ def git(repo: Path, *args: str, timeout: int = 60) -> str:
 
 def repos() -> list[Path]:
     found = []
-    for parent in (DEV, DEV / "Football", DEV / "SpecialRequests"):
+    areas = ("Personal", "Program", "Research", "Performance", "Platform")   # FILE-ORGANIZATION-PLAN Task 4
+    for parent in (DEV, DEV / "Football", DEV / "SpecialRequests", *(DEV / a for a in areas)):
         if parent.is_dir():
             found += [p for p in parent.iterdir() if (p / ".git").exists()]
     found += [HOME / ".claude", HOME / ".claude" / "skills", HOME / ".claude" / "global-memory",

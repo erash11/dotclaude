@@ -33,7 +33,10 @@ mirror() {  # $1 = source docs dir, $2 = destination
     --include='*/' --include='*.md' --exclude='*' "$1/" "$2/"
 }
 
-for r in "$DEV"/*/ "$DEV"/Football/*/; do
+# Area folders (FILE-ORGANIZATION-PLAN Task 4) hold repos one level down, like Football/. An Area folder itself
+# has no docs/ and is skipped by skip(); a missing Area's glob stays literal and fails the -d test.
+for r in "$DEV"/*/ "$DEV"/Football/*/ "$DEV"/Personal/*/ "$DEV"/Program/*/ "$DEV"/Research/*/ \
+         "$DEV"/Performance/*/ "$DEV"/Platform/*/; do
   [ -d "$r" ] || continue
   r=${r%/}; name=$(basename "$r")
   skip "$r" "$name" && continue
