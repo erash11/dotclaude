@@ -29,4 +29,7 @@ pgrep -f "pwsh.*daily-backup[.]ps1" >/dev/null && skip "a backup is already runn
 STARTS=$(grep -c "^$TODAY .*daily-backup start (DryRun=False)" "$LOG" 2>/dev/null)
 [ "${STARTS:-0}" -ge 2 ] && skip "2 tries already today"
 
+# The login plist sets no PATH, so gws (#!/usr/bin/env node) failed with exit 127 on 2026-11-02.
+# Same PATH as com.keystone.dailybackup.plist.
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$HOME/.local/bin:$HOME/go/bin"
 exec /usr/bin/caffeinate -i -s /opt/homebrew/bin/pwsh -NoProfile -File "$HOME/.claude/scripts/daily-backup.ps1"
