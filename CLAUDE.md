@@ -55,4 +55,4 @@ Maintainer note: `AGENTS.md` diverges from this file on purpose (Codex has no Sk
 
 ## Repo changes
 
-Before working in any repo, check ~/DEV/REPO_CHANGES.md for archives, renames, or merges and their undo commands.
+Before working in any repo, read ~/DEV/REPO_CHANGES_GUIDE.md (plain summary: renames, archives, the forecast archive merge, what was left alone, rules, and how to undo). ~/DEV/REPO_CHANGES.md is the full log with the exact undo command for each change. GitHub names changed but local folder names did not. Run `git remote -v` before pushing, never push to an archived repo, and log every new change in REPO_CHANGES.md with its undo before making it.

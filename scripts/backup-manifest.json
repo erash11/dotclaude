@@ -201,7 +201,7 @@
    "path": "DEV/Program/AppliedNewsletter_2026",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/AppliedNewsletter_2026.git",
+   "remote": "https://github.com/erash11/fp-appliednewsletter-2026.git",
    "destinations": [
     "ssd",
     "github"
@@ -236,7 +236,7 @@
    "path": "DEV/Program/BAIR_Steering_Committee",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/BAIR_Steering_Committee.git",
+   "remote": "https://github.com/erash11/admin-bair-steering-committee.git",
    "destinations": [
     "ssd",
     "github"
@@ -374,7 +374,7 @@
    "path": "DEV/Performance/CATES",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/CATES.git",
+   "remote": "https://github.com/erash11/misc-cates.git",
    "destinations": [
     "ssd",
     "github"
@@ -393,15 +393,6 @@
    ],
    "captureOrphans": true,
    "captureWorkingTree": true
-  },
-  {
-   "path": "DEV/CFB_Forecast_Archive",
-   "class": "personal",
-   "isRepo": false,
-   "destinations": [
-    "ssd"
-   ],
-   "note": "Read-only copies of weekly CFB Victory Model forecast freezes. Source of truth is DEV/CFB_Victory_Model/data/."
   },
   {
    "path": "DEV/CFB_Victory_Model",
@@ -509,7 +500,7 @@
    "path": "DEV/Program/Department_Audits",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Department_Audits.git",
+   "remote": "https://github.com/erash11/admin-department-audits.git",
    "destinations": [
     "ssd",
     "github"
@@ -521,7 +512,7 @@
    "path": "DEV/Program/Education_Alignment_Initiative",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Education_Alignment_Initiative.git",
+   "remote": "https://github.com/erash11/admin-education-alignment-initiative.git",
    "destinations": [
     "ssd",
     "github"
@@ -578,7 +569,7 @@
    "path": "DEV/Football_GRID",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Football_GRID.git",
+   "remote": "https://github.com/erash11/fb-grid.git",
    "destinations": [
     "ssd",
     "github"
@@ -650,7 +641,7 @@
    "path": "DEV/Performance/Injury_Surveillance",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Injury_Surveillance.git",
+   "remote": "https://github.com/erash11/fp-injury-surveillance.git",
    "destinations": [
     "ssd",
     "github"
@@ -662,7 +653,7 @@
    "path": "DEV/Intern_Curriculum",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Intern_Curriculum.git",
+   "remote": "https://github.com/erash11/admin-intern-curriculum.git",
    "destinations": [
     "ssd",
     "github"
@@ -688,7 +679,7 @@
    "path": "DEV/Performance/Kinexon_Volleyball",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Kinexon_Volleyball.git",
+   "remote": "https://github.com/erash11/vb-kinexon-volleyball.git",
    "destinations": [
     "ssd",
     "github"
@@ -792,7 +783,7 @@
    "path": "DEV/Program/Performance_Playbook",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Performance_Playbook.git",
+   "remote": "https://github.com/erash11/admin-performance-playbook.git",
    "destinations": [
     "ssd",
     "github"
@@ -804,7 +795,7 @@
    "path": "DEV/PlayCalls_SuccessRate_EPA",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/PlayCalls_SuccessRate_EPA.git",
+   "remote": "https://github.com/erash11/fb-playcalls-successrate-epa.git",
    "destinations": [
     "ssd",
     "github"
@@ -829,7 +820,7 @@
    "path": "DEV/Portfolio",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Portfolio.git",
+   "remote": "https://github.com/erash11/admin-portfolio.git",
    "destinations": [
     "ssd",
     "github"
@@ -924,7 +915,7 @@
    "path": "DEV/RTP_WorkingGroup",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/RTP_WorkingGroup.git",
+   "remote": "https://github.com/erash11/fp-rtp-workinggroup.git",
    "destinations": [
     "ssd",
     "github"
@@ -947,7 +938,7 @@
    "path": "DEV/Performance/Risk_Stratification_Engine",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Risk_Stratification_Engine.git",
+   "remote": "https://github.com/erash11/fp-risk-stratification-engine.git",
    "destinations": [
     "ssd",
     "github"
@@ -959,7 +950,7 @@
    "path": "DEV/Performance/S2_Evaluation",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/S2_Evaluation.git",
+   "remote": "https://github.com/erash11/fp-s2-evaluation.git",
    "destinations": [
     "ssd",
     "github"
@@ -994,7 +985,7 @@
    "path": "DEV/Personal/SignalPlays",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/SignalPlays.git",
+   "remote": "https://github.com/erash11/fb-signalplays.git",
    "destinations": [
     "ssd",
     "github"
@@ -1019,7 +1010,7 @@
    "path": "DEV/Research/SportScienceResearchRepo",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/SportScienceResearchRepo.git",
+   "remote": "https://github.com/erash11/admin-sportscienceresearchrepo.git",
    "destinations": [
     "ssd",
     "github"
@@ -1031,7 +1022,7 @@
    "path": "DEV/Performance/SportScience_Benchmarking",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/SportScience_Benchmarking.git",
+   "remote": "https://github.com/erash11/admin-sportscience-benchmarking.git",
    "destinations": [
     "ssd",
     "github"
@@ -1066,7 +1057,7 @@
    "path": "DEV/Research/TOS_Evidence_Brief",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/TOS_Evidence_Brief.git",
+   "remote": "https://github.com/erash11/fp-tos-evidence-brief.git",
    "destinations": [
     "ssd",
     "github"
@@ -1090,7 +1081,7 @@
    "path": "DEV/TackleAnalytics",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/TackleAnalytics.git",
+   "remote": "https://github.com/erash11/fb-tackleanalytics.git",
    "destinations": [
     "ssd",
     "github"
@@ -1158,7 +1149,7 @@
    "path": "DEV/Personal/Travel_Map",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Travel_Map.git",
+   "remote": "https://github.com/erash11/admin-travel-map.git",
    "destinations": [
     "ssd",
     "github"
@@ -1172,7 +1163,7 @@
    "path": "DEV/Performance/Volleyball_GRID",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Volleyball_GRID.git",
+   "remote": "https://github.com/erash11/vb-grid.git",
    "destinations": [
     "ssd",
     "github"
@@ -1197,7 +1188,7 @@
    "path": "DEV/Weekly_Matchups_2026",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Weekly_Matchups_2026.git",
+   "remote": "https://github.com/erash11/fb-weekly-matchups-2026.git",
    "destinations": [
     "ssd",
     "github"
@@ -1221,7 +1212,7 @@
    "path": "DEV/Research/ZoteroInjestion",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/ZoteroInjestion.git",
+   "remote": "https://github.com/erash11/tool-zoteroinjestion.git",
    "destinations": [
     "ssd",
     "github"
@@ -1279,7 +1270,7 @@
    "path": "DEV/agent-skills",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/agent-skills.git",
+   "remote": "https://github.com/erash11/tool-agent-skills.git",
    "destinations": [
     "ssd",
     "github"
@@ -1303,7 +1294,7 @@
    "path": "DEV/Performance/cmj-traffic-light",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/cmj-traffic-light.git",
+   "remote": "https://github.com/erash11/fp-cmj-traffic-light.git",
    "destinations": [
     "ssd",
     "github"
@@ -1444,7 +1435,7 @@
    "path": "DEV/PP_Recruiting",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/PP_Recruiting.git",
+   "remote": "https://github.com/erash11/fb-pp-recruiting.git",
    "destinations": [
     "ssd",
     "github"
@@ -1468,7 +1459,7 @@
    "path": "DEV/Performance/RTP_ProgressReport",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/RTP_ProgressReport.git",
+   "remote": "https://github.com/erash11/fp-rtp-progressreport.git",
    "destinations": [
     "ssd",
     "github"
@@ -1492,7 +1483,7 @@
    "path": "DEV/VALD_Performance",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/VALD_Performance.git",
+   "remote": "https://github.com/erash11/fp-vald-performance.git",
    "destinations": [
     "ssd",
     "github"
@@ -1504,7 +1495,7 @@
    "path": "DEV/Performance/VALD_Release",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/VALD_Release.git",
+   "remote": "https://github.com/erash11/fp-vald-release.git",
    "destinations": [
     "ssd",
     "github"
@@ -1516,7 +1507,7 @@
    "path": "DEV/Research/Weekly_Research_Review",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Weekly_Research_Review.git",
+   "remote": "https://github.com/erash11/admin-weekly-research-review.git",
    "destinations": [
     "ssd",
     "github"
@@ -1540,7 +1531,7 @@
    "path": "DEV/Program/RunningTheRoom",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/RunningTheRoom.git",
+   "remote": "https://github.com/erash11/admin-runningtheroom.git",
    "destinations": [
     "ssd",
     "github"
@@ -1552,7 +1543,7 @@
    "path": "DEV/Research/42Analytics",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/42Analytics.git",
+   "remote": "https://github.com/erash11/fb-42analytics.git",
    "destinations": [
     "ssd",
     "github"
@@ -1565,7 +1556,7 @@
    "path": "DEV/Program/SoftwareTech_Review",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/SoftwareTech_Review.git",
+   "remote": "https://github.com/erash11/admin-softwaretech-review.git",
    "destinations": [
     "ssd",
     "github"
@@ -1628,7 +1619,7 @@
    "path": "DEV/Performance/BayCap",
    "class": "institutional",
    "isRepo": true,
-   "remote": "https://github.com/erash11/BayCap.git",
+   "remote": "https://github.com/erash11/fp-baycap.git",
    "destinations": [
     "ssd",
     "github"
@@ -1640,7 +1631,7 @@
    "path": "DEV/Cloudroom_Learning",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Cloudroom_Learning.git",
+   "remote": "https://github.com/erash11/tool-cloudroom-learning.git",
    "destinations": [
     "ssd",
     "github"
@@ -1652,7 +1643,7 @@
    "path": "DEV/Personal/MacEverything",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/MacEverything.git",
+   "remote": "https://github.com/erash11/tool-maceverything.git",
    "destinations": [
     "ssd",
     "github"
@@ -1664,7 +1655,7 @@
    "path": "DEV/drive-tools",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/drive-tools.git",
+   "remote": "https://github.com/erash11/tool-drive-tools.git",
    "destinations": [
     "ssd",
     "github"
