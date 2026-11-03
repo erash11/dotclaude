@@ -1,0 +1,625 @@
+     1	import Foundation
+     2	
+     3	/// A parsed search. Groups are ANDed; the alternatives inside a group are ORed.
+     4	public struct Query {
+     5	    public var groups: [[Term]]
+     6	
+     7	    public init(groups: [[Term]]) { self.groups = groups }
+     8	
+     9	    public enum Term: Equatable {
+    10	        case contains([UInt8], negated: Bool)          // lowercase bytes, matched against the name
+    11	        case pathContains([UInt8], negated: Bool)      // lowercase bytes, matched against the full path
+    12	        case glob([UInt8], negated: Bool)              // lowercase wildcard pattern, whole name
+    13	        case regex(String, negated: Bool)
+    14	        case ext([[UInt8]], negated: Bool)             // ".pdf" style lowercase suffixes
+    15	        case size(Comparison, Int64, negated: Bool)
+    16	        case modified(Comparison, Int64, Int64, negated: Bool) // [start, end) seconds since 1970
+    17	        case filesOnly
+    18	        case foldersOnly
+    19	        /// Temp and generated files, and everything inside temp folders (see TempFiles).
+    20	        case temp(negated: Bool)
+    21	    }
+    22	
+    23	    public enum Comparison: Equatable { case less, lessOrEqual, greater, greaterOrEqual, equal }
+    24	
+    25	    public var isEmpty: Bool { groups.isEmpty }
+    26	
+    27	    /// Parses Everything-style syntax: `foo bar`, `"exact phrase"`, `a | b`, `!skip`, `*.pdf`,
+    28	    /// `ext:pdf;docx`, `path:Football`, `drive:Work`, `size:>1gb`, `dm:today`, `regex:^IMG_\d+`,
+    29	    /// `file:`, `folder:`.
+    30	    public static func parse(_ text: String, now: Date = Date(), calendar: Calendar = .current) -> Query {
+    31	        var groups: [[Term]] = []
+    32	        var joinNext = false
+    33	        for token in tokenize(text) {
+    34	            if token == "|" {
+    35	                joinNext = !groups.isEmpty
+    36	                continue
+    37	            }
+    38	            guard let term = parseTerm(token, now: now, calendar: calendar) else { continue }
+    39	            if joinNext, !groups.isEmpty {
+    40	                groups[groups.count - 1].append(term)
+    41	            } else {
+    42	                groups.append([term])
+    43	            }
+    44	            joinNext = false
+    45	        }
+    46	        return Query(groups: groups)
+    47	    }
+    48	
+    49	    static func tokenize(_ text: String) -> [String] {
+    50	        var tokens: [String] = []
+    51	        var current = ""
+    52	        var inQuotes = false
+    53	        for ch in text {
+    54	            if ch == "\"" {
+    55	                inQuotes.toggle()
+    56	                continue
+    57	            }
+    58	            if !inQuotes && (ch == " " || ch == "\t" || ch == "\n") {
+    59	                if !current.isEmpty { tokens.append(current); current = "" }
+    60	                continue
+    61	            }
+    62	            // "|" separates alternatives, except inside a regex: term, where it is alternation.
+    63	            if !inQuotes && ch == "|" && !current.lowercased().drop(while: { $0 == "!" }).hasPrefix("regex:") {
+    64	                if !current.isEmpty { tokens.append(current); current = "" }
+    65	                tokens.append("|")
+    66	                continue
+    67	            }
+    68	            current.append(ch)
+    69	        }
+    70	        if !current.isEmpty { tokens.append(current) }
+    71	        return tokens
+    72	    }
+    73	
+    74	    static func parseTerm(_ raw: String, now: Date, calendar: Calendar) -> Term? {
+    75	        var token = raw
+    76	        var negated = false
+    77	        if token.hasPrefix("!") && token.count > 1 {
+    78	            negated = true
+    79	            token.removeFirst()
+    80	        }
+    81	        let lower = FileIndex.searchForm(token)
+    82	
+    83	        // "!file:" means folders and "!folder:" means files.
+    84	        if lower == "file:" { return negated ? .foldersOnly : .filesOnly }
+    85	        if lower == "folder:" { return negated ? .filesOnly : .foldersOnly }
+    86	        if lower == "temp:" { return .temp(negated: negated) }
+    87	        if let filter = FileFilter.forKeyword(lower), let list = FileFilter.extensions[filter] {
+    88	            return .ext(list.map { Array(("." + $0).utf8) }, negated: negated)
+    89	        }
+    90	        if lower.hasPrefix("ext:") {
+    91	            let exts = lower.dropFirst(4).split(separator: ";").map { Array(("." + $0).utf8) }
+    92	            return exts.isEmpty ? nil : .ext(exts, negated: negated)
+    93	        }
+    94	        if lower.hasPrefix("drive:") {
+    95	            // drive:CRASHBOX means everything under /Volumes/CRASHBOX.
+    96	            let name = lower.dropFirst(6).trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    97	            return name.isEmpty ? nil : .pathContains(Array("/volumes/\(name)/".utf8), negated: negated)
+    98	        }
+    99	        if lower.hasPrefix("path:") {
+   100	            let value = String(lower.dropFirst(5))
+   101	            return value.isEmpty ? nil : .pathContains(Array(value.utf8), negated: negated)
+   102	        }
+   103	        if lower.hasPrefix("regex:") {
+   104	            let pattern = String(token.dropFirst(6))
+   105	            return pattern.isEmpty ? nil : .regex(pattern, negated: negated)
+   106	        }
+   107	        if lower.hasPrefix("size:") {
+   108	            let (cmp, rest) = comparison(String(lower.dropFirst(5)))
+   109	            guard let bytes = parseSize(rest) else { return nil }
+   110	            return .size(cmp, bytes, negated: negated)
+   111	        }
+   112	        if lower.hasPrefix("dm:") {
+   113	            let (cmp, rest) = comparison(String(lower.dropFirst(3)))
+   114	            guard let (start, end) = parseDay(rest, now: now, calendar: calendar) else { return nil }
+   115	            return .modified(cmp, start, end, negated: negated)
+   116	        }
+   117	        if lower.contains("*") || lower.contains("?") {
+   118	            return .glob(Array(lower.utf8), negated: negated)
+   119	        }
+   120	        if lower.contains("/") {
+   121	            return .pathContains(Array(lower.utf8), negated: negated)
+   122	        }
+   123	        return .contains(Array(lower.utf8), negated: negated)
+   124	    }
+   125	
+   126	    static func comparison(_ s: String) -> (Comparison, String) {
+   127	        if s.hasPrefix(">=") { return (.greaterOrEqual, String(s.dropFirst(2))) }
+   128	        if s.hasPrefix("<=") { return (.lessOrEqual, String(s.dropFirst(2))) }
+   129	        if s.hasPrefix(">") { return (.greater, String(s.dropFirst())) }
+   130	        if s.hasPrefix("<") { return (.less, String(s.dropFirst())) }
+   131	        if s.hasPrefix("=") { return (.equal, String(s.dropFirst())) }
+   132	        return (.equal, s)
+   133	    }
+   134	
+   135	    static func parseSize(_ s: String) -> Int64? {
+   136	        let units: [(String, Int64)] = [("tb", 1 << 40), ("gb", 1 << 30), ("mb", 1 << 20), ("kb", 1 << 10), ("b", 1)]
+   137	        for (suffix, mult) in units where s.hasSuffix(suffix) {
+   138	            guard let n = Double(s.dropLast(suffix.count)) else { return nil }
+   139	            let bytes = n * Double(mult)
+   140	            // Double(_:) accepts "nan", "inf" and 1e999; converting those to Int64 would trap.
+   141	            guard bytes.isFinite, bytes >= 0, bytes < 9.2e18 else { return nil }
+   142	            return Int64(bytes)
+   143	        }
+   144	        return Int64(s)
+   145	    }
+   146	
+   147	    /// Returns the [start, end) of the day or range named by `s`.
+   148	    static func parseDay(_ s: String, now: Date, calendar: Calendar) -> (Int64, Int64)? {
+   149	        let today = calendar.startOfDay(for: now)
+   150	        func secs(_ d: Date) -> Int64 { Int64(d.timeIntervalSince1970) }
+   151	        switch s {
+   152	        case "today":
+   153	            return (secs(today), secs(calendar.date(byAdding: .day, value: 1, to: today)!))
+   154	        case "yesterday":
+   155	            return (secs(calendar.date(byAdding: .day, value: -1, to: today)!), secs(today))
+   156	        case "thisweek", "last7days":
+   157	            return (secs(calendar.date(byAdding: .day, value: -6, to: today)!),
+   158	                    secs(calendar.date(byAdding: .day, value: 1, to: today)!))
+   159	        default:
+   160	            let parts = s.split(separator: "-").compactMap { Int($0) }
+   161	            guard parts.count == 3,
+   162	                  let day = calendar.date(from: DateComponents(year: parts[0], month: parts[1], day: parts[2]))
+   163	            else { return nil }
+   164	            return (secs(day), secs(calendar.date(byAdding: .day, value: 1, to: day)!))
+   165	        }
+   166	    }
+   167	}
+     1	import Foundation
+     2	
+     3	public enum SortKey: String, Codable {
+     4	    case name, path, size, modified
+     5	}
+     6	
+     7	public struct SearchOptions {
+     8	    public var limit: Int
+     9	    public var offset: Int
+    10	    public var sort: SortKey
+    11	    public var descending: Bool
+    12	
+    13	    public init(limit: Int = 100, offset: Int = 0, sort: SortKey = .name, descending: Bool = false) {
+    14	        self.limit = limit
+    15	        self.offset = offset
+    16	        self.sort = sort
+    17	        self.descending = descending
+    18	    }
+    19	}
+    20	
+    21	public struct SearchHit: Codable, Equatable {
+    22	    public var path: String
+    23	    public var name: String
+    24	    public var isDirectory: Bool
+    25	    public var size: Int64
+    26	    public var modified: Int64
+    27	}
+    28	
+    29	public struct SearchResult: Codable {
+    30	    public var total: Int
+    31	    public var hits: [SearchHit]
+    32	    public var milliseconds: Double
+    33	}
+    34	
+    35	// MARK: - Compiled query
+    36	
+    37	/// A query flattened into plain values, so the per-record loop does no reference counting.
+    38	struct CompiledQuery {
+    39	    struct Term {
+    40	        var kind: UInt8      // see Kind
+    41	        var negated: Bool
+    42	        var start: Int       // byte offset into `bytes`, slot index (ext) or regex index
+    43	        var length: Int      // byte length, or slot count (ext)
+    44	        var cmp: UInt8
+    45	        var a: Int64
+    46	        var b: Int64
+    47	    }
+    48	
+    49	    enum Kind {
+    50	        static let contains: UInt8 = 0, path: UInt8 = 1, glob: UInt8 = 2, regex: UInt8 = 3, ext: UInt8 = 4
+    51	        static let size: UInt8 = 5, modified: UInt8 = 6, files: UInt8 = 7, folders: UInt8 = 8
+    52	        static let temp: UInt8 = 9
+    53	    }
+    54	
+    55	    var terms: [Term] = []
+    56	    var groupStart: [Int] = []
+    57	    var groupCount: [Int] = []
+    58	    var bytes: [UInt8] = []
+    59	    var slotStart: [Int] = []
+    60	    var slotLength: [Int] = []
+    61	    var regexes: [NSRegularExpression?] = []
+    62	    /// Same patterns compiled to run over newline-joined names; nil when not line-safe.
+    63	    var lineRegexes: [NSRegularExpression?] = []
+    64	    /// Per regex: the required literal's offset and length in `bytes` (length 0 when none).
+    65	    var regexLiteralStart: [Int] = []
+    66	    var regexLiteralLength: [Int] = []
+    67	    /// Index into `terms` of each path: term; its PathTable is built per scan.
+    68	    var pathTerms: [Int] = []
+    69	    var hasRegex = false
+    70	    var hasTemp = false
+    71	
+    72	    init(_ query: Query) {
+    73	        for group in query.groups {
+    74	            groupStart.append(terms.count)
+    75	            groupCount.append(group.count)
+    76	            for term in group { terms.append(compile(term)) }
+    77	        }
+    78	    }
+    79	
+    80	    private mutating func addBytes(_ b: [UInt8]) -> Int {
+    81	        let start = bytes.count
+    82	        bytes.append(contentsOf: b)
+    83	        return start
+    84	    }
+    85	
+    86	    private static func cmpCode(_ c: Query.Comparison) -> UInt8 {
+    87	        switch c {
+    88	        case .less: return 0
+    89	        case .lessOrEqual: return 1
+    90	        case .greater: return 2
+    91	        case .greaterOrEqual: return 3
+    92	        case .equal: return 4
+    93	        }
+    94	    }
+    95	
+    96	    private mutating func compile(_ term: Query.Term) -> Term {
+    97	        var t = Term(kind: 0, negated: false, start: 0, length: 0, cmp: 0, a: 0, b: 0)
+    98	        switch term {
+    99	        case let .contains(n, neg):
+   100	            t.kind = Kind.contains; t.negated = neg; t.start = addBytes(n); t.length = n.count
+   101	        case let .pathContains(n, neg):
+   102	            t.kind = Kind.path; t.negated = neg; t.start = addBytes(n); t.length = n.count
+   103	            t.b = Int64(pathTerms.count) // which PathTable
+   104	            pathTerms.append(terms.count)
+   105	        case let .glob(n, neg):
+   106	            t.kind = Kind.glob; t.negated = neg; t.start = addBytes(n); t.length = n.count
+   107	        case let .regex(pattern, neg):
+   108	            t.kind = Kind.regex; t.negated = neg; t.start = regexes.count
+   109	            regexes.append(try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]))
+   110	            lineRegexes.append(RegexSupport.isLineSafe(pattern)
+   111	                ? try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive, .anchorsMatchLines])
+   112	                : nil)
+   113	            hasRegex = true
+   114	            // A literal every match must contain lets most names skip the regex engine.
+   115	            if let literal = RegexSupport.requiredLiteral(pattern) {
+   116	                let lit = Array(literal.utf8)
+   117	                t.a = Int64(addBytes(lit))
+   118	                t.b = Int64(lit.count)
+   119	            }
+   120	            regexLiteralStart.append(Int(t.a))
+   121	            regexLiteralLength.append(Int(t.b))
+   122	        case let .ext(list, neg):
+   123	            t.kind = Kind.ext; t.negated = neg; t.start = slotStart.count; t.length = list.count
+   124	            for suffix in list {
+   125	                slotStart.append(addBytes(suffix))
+   126	                slotLength.append(suffix.count)
+   127	            }
+   128	        case let .size(cmp, value, neg):
+   129	            t.kind = Kind.size; t.negated = neg; t.cmp = CompiledQuery.cmpCode(cmp); t.a = value
+   130	        case let .modified(cmp, start, end, neg):
+   131	            t.kind = Kind.modified; t.negated = neg; t.cmp = CompiledQuery.cmpCode(cmp); t.a = start; t.b = end
+   132	        case .filesOnly:
+   133	            t.kind = Kind.files
+   134	        case .foldersOnly:
+   135	            t.kind = Kind.folders
+   136	        case let .temp(neg):
+   137	            t.kind = Kind.temp; t.negated = neg
+   138	            hasTemp = true
+   139	        }
+   140	        return t
+   141	    }
+   142	}
+   143	
+   144	// MARK: - Search
+   145	
+   146	extension FileIndex {
+   147	    /// Runs `query` across every live record, split over all CPU cores.
+   148	    public func search(_ query: Query, options: SearchOptions = SearchOptions()) -> SearchResult {
+   149	        let started = DispatchTime.now().uptimeNanoseconds
+   150	        let matched = matchingIdsInIdOrder(query)
+   151	        let total = matched.count
+   152	        let offset = min(max(options.offset, 0), total)
+   153	        let limit = max(options.limit, 0)
+   154	        let end = limit >= total - offset ? total : offset + limit
+   155	
+   156	        let page: [Int32]
+   157	        switch options.sort {
+   158	        case .name:
+   159	            page = Array(nameOrdered(matched, first: end, descending: options.descending)[offset..<end])
+   160	        case .path:
+   161	            let paths = matched.map { path(of: $0).lowercased() }
+   162	            var idx = Array(0..<matched.count)
+   163	            idx.sort { options.descending ? paths[$0] > paths[$1] : paths[$0] < paths[$1] }
+   164	            page = idx[offset..<end].map { matched[$0] }
+   165	        case .size, .modified:
+   166	            let bySize = options.sort == .size
+   167	            var sorted = matched
+   168	            sorted.sort {
+   169	                let ra = records[Int($0)], rb = records[Int($1)]
+   170	                let a = bySize ? ra.size : ra.modified, b = bySize ? rb.size : rb.modified
+   171	                return options.descending ? a > b : a < b
+   172	            }
+   173	            page = Array(sorted[offset..<end])
+   174	        }
+   175	
+   176	        let hits = page.map { id -> SearchHit in
+   177	            let r = records[Int(id)]
+   178	            return SearchHit(path: path(of: id), name: name(of: id), isDirectory: r.isDirectory,
+   179	                             size: r.size, modified: r.modified)
+   180	        }
+   181	        let ms = Double(DispatchTime.now().uptimeNanoseconds - started) / 1_000_000
+   182	        return SearchResult(total: total, hits: hits, milliseconds: ms)
+   183	    }
+   184	
+   185	    /// Ids of live records matching `query`, in name order.
+   186	    public func matchingIds(_ query: Query) -> [Int32] {
+   187	        let ids = matchingIdsInIdOrder(query)
+   188	        return nameOrdered(ids, first: ids.count, descending: false)
+   189	    }
+   190	
+   191	    /// The first `first` of `ids` in name order. Uses each id's rank in the presorted `order`
+   192	    /// (a bitmap walk, no comparisons) and merges in ids added since the last sort.
+   193	    func nameOrdered(_ ids: [Int32], first: Int, descending: Bool) -> [Int32] {
+   194	        if first == 0 { return [] }
+   195	        var unranked: [Int32] = []
+   196	        var bits = [UInt64](repeating: 0, count: (order.count + 63) / 64)
+   197	        for id in ids {
+   198	            let rk = rank[Int(id)]
+   199	            if rk >= 0 {
+   200	                bits[Int(rk) >> 6] |= 1 << UInt64(rk & 63)
+   201	            } else {
+   202	                unranked.append(id)
+   203	            }
+   204	        }
+   205	        var ranked: [Int32] = []
+   206	        ranked.reserveCapacity(min(first, ids.count))
+   207	        if descending {
+   208	            var w = bits.count - 1
+   209	            while w >= 0 && ranked.count < first {
+   210	                var word = bits[w]
+   211	                while word != 0 && ranked.count < first {
+   212	                    let bit = 63 - word.leadingZeroBitCount
+   213	                    ranked.append(order[w * 64 + bit])
+   214	                    word &= ~(UInt64(1) << UInt64(bit))
+   215	                }
+   216	                w -= 1
+   217	            }
+   218	        } else {
+   219	            var w = 0
+   220	            while w < bits.count && ranked.count < first {
+   221	                var word = bits[w]
+   222	                while word != 0 && ranked.count < first {
+   223	                    let bit = word.trailingZeroBitCount
+   224	                    ranked.append(order[w * 64 + bit])
+   225	                    word &= word - 1
+   226	                }
+   227	                w += 1
+   228	            }
+   229	        }
+   230	        if unranked.isEmpty { return ranked }
+   231	        unranked.sort(by: lowerBytesLess)
+   232	        if descending { unranked.reverse() }
+   233	        var out: [Int32] = []
+   234	        out.reserveCapacity(min(first, ranked.count + unranked.count))
+   235	        var i = 0, j = 0
+   236	        while out.count < first && (i < ranked.count || j < unranked.count) {
+   237	            let takeUnranked: Bool
+   238	            if i >= ranked.count {
+   239	                takeUnranked = true
+   240	            } else if j >= unranked.count {
+   241	                takeUnranked = false
+   242	            } else {
+   243	                takeUnranked = descending ? lowerBytesLess(ranked[i], unranked[j])
+   244	                                          : lowerBytesLess(unranked[j], ranked[i])
+   245	            }
+   246	            if takeUnranked { out.append(unranked[j]); j += 1 } else { out.append(ranked[i]); i += 1 }
+   247	        }
+   248	        return out
+   249	    }
+   250	
+   251	    /// Scans records in memory order (sequential reads), split into chunks across cores.
+   252	    func matchingIdsInIdOrder(_ query: Query) -> [Int32] {
+   253	        let compiled = CompiledQuery(query)
+   254	        let count = records.count
+   255	        if count == 0 { return [] }
+   256	        let cores = ProcessInfo.processInfo.activeProcessorCount
+   257	        let chunkCount = max(1, min(cores * 4, (count + 16_383) / 16_384))
+   258	        let chunkSize = (count + chunkCount - 1) / chunkCount
+   259	        var partial = [[Int32]](repeating: [], count: chunkCount)
+   260	        let temp = compiled.hasTemp ? tempMask() : []
+   261	
+   262	        records.withUnsafeBufferPointer { recs in
+   263	        lowerNames.withUnsafeBufferPointer { lower in
+   264	        compiled.terms.withUnsafeBufferPointer { terms in
+   265	        compiled.bytes.withUnsafeBufferPointer { qbytes in
+   266	        compiled.slotStart.withUnsafeBufferPointer { slotStart in
+   267	        compiled.slotLength.withUnsafeBufferPointer { slotLength in
+   268	        compiled.groupStart.withUnsafeBufferPointer { groupStart in
+   269	        compiled.groupCount.withUnsafeBufferPointer { groupCount in
+   270	        temp.withUnsafeBufferPointer { tempMask in
+   271	        partial.withUnsafeMutableBufferPointer { out in
+   272	            // One table per path: term, built in a single pass before the parallel scan.
+   273	            let tables = compiled.pathTerms.map { k in
+   274	                PathTable(needle: qbytes, nStart: terms[k].start, n: terms[k].length, recs: recs, lower: lower)
+   275	            }
+   276	            let views = tables.map(\.view)
+   277	            views.withUnsafeBufferPointer { pathViews in
+   278	            let ctx = MatchContext(recs: recs, lower: lower, terms: terms, qbytes: qbytes,
+   279	                                   slotStart: slotStart, slotLength: slotLength,
+   280	                                   groupStart: groupStart, groupCount: groupCount,
+   281	                                   regexes: compiled.regexes, pathViews: pathViews, temp: tempMask)
+   282	            DispatchQueue.concurrentPerform(iterations: chunkCount) { chunk in
+   283	                let lo = chunk * chunkSize
+   284	                let hi = min(lo + chunkSize, count)
+   285	                if lo >= hi { return }
+   286	                var found: [Int32] = []
+   287	                // Regex terms run once over the chunk's names joined by newlines; the result
+   288	                // says, per name, match / no match / unknown (then matched on its own).
+   289	                let regexHits = compiled.hasRegex
+   290	                    ? RegexSupport.chunkHits(lineRegexes: compiled.lineRegexes,
+   291	                                             literalStart: compiled.regexLiteralStart,
+   292	                                             literalLength: compiled.regexLiteralLength, qbytes: qbytes,
+   293	                                             recs: recs, lower: lower, lo: lo, hi: hi)
+   294	                    : []
+   295	                regexHits.withUnsafeBufferPointer { hits in
+   296	                    for id in lo..<hi {
+   297	                        let r = recs[id]
+   298	                        if r.flags & 2 != 0 { continue }
+   299	                        if ctx.matches(r, id: id, local: id - lo, chunkLength: hi - lo, regexHits: hits) {
+   300	                            found.append(Int32(id))
+   301	                        }
+   302	                    }
+   303	                }
+   304	                out[chunk] = found
+   305	            }
+   306	            }
+   307	            withExtendedLifetime(tables) {}
+   308	        }}}}}}}}}}
+   309	        return partial.flatMap { $0 }
+   310	    }
+   311	}
+   312	
+   313	/// Everything the per-record test reads, as unsafe buffers.
+   314	struct MatchContext {
+   315	    let recs: UnsafeBufferPointer<Record>
+   316	    let lower: UnsafeBufferPointer<UInt8>
+   317	    let terms: UnsafeBufferPointer<CompiledQuery.Term>
+   318	    let qbytes: UnsafeBufferPointer<UInt8>
+   319	    let slotStart: UnsafeBufferPointer<Int>
+   320	    let slotLength: UnsafeBufferPointer<Int>
+   321	    let groupStart: UnsafeBufferPointer<Int>
+   322	    let groupCount: UnsafeBufferPointer<Int>
+   323	    let regexes: [NSRegularExpression?]
+   324	    let pathViews: UnsafeBufferPointer<PathTable.View>
+   325	    /// tempMask() for queries with temp:, else empty.
+   326	    let temp: UnsafeBufferPointer<UInt8>
+   327	
+   328	    @inline(__always)
+   329	    func compare(_ v: Int64, _ cmp: UInt8, _ target: Int64) -> Bool {
+   330	        switch cmp {
+   331	        case 0: return v < target
+   332	        case 1: return v <= target
+   333	        case 2: return v > target
+   334	        case 3: return v >= target
+   335	        default: return v == target
+   336	        }
+   337	    }
+   338	
+   339	    func matches(_ r: Record, id: Int, local: Int, chunkLength: Int, regexHits: UnsafeBufferPointer<Int8>) -> Bool {
+   340	        let start = Int(r.lowerStart), len = Int(r.lowerLength)
+   341	        let groups = groupStart.count
+   342	        var g = 0
+   343	        while g < groups {
+   344	            let first = groupStart[g], n = groupCount[g]
+   345	            var any = false
+   346	            var k = first
+   347	            while k < first + n {
+   348	                let t = terms[k]
+   349	                var hit: Bool
+   350	                switch t.kind {
+   351	                case CompiledQuery.Kind.contains:
+   352	                    hit = containsBytes(lower, start, len, qbytes, t.start, t.length)
+   353	                case CompiledQuery.Kind.glob:
+   354	                    hit = globBytes(lower, start, len, qbytes, t.start, t.length)
+   355	                case CompiledQuery.Kind.ext:
+   356	                    hit = false
+   357	                    for s in t.start..<t.start + t.length
+   358	                    where suffixBytes(lower, start, len, qbytes, slotStart[s], slotLength[s]) {
+   359	                        hit = true
+   360	                        break
+   361	                    }
+   362	                case CompiledQuery.Kind.path:
+   363	                    hit = pathViews[Int(t.b)].matches(r, start: start, len: len, needle: qbytes,
+   364	                                                       nStart: t.start, lower: lower)
+   365	                case CompiledQuery.Kind.regex:
+   366	                    let known: Int8 = regexHits.isEmpty ? -1 : regexHits[t.start * chunkLength + local]
+   367	                    if known >= 0 {
+   368	                        hit = known == 1
+   369	                    } else if t.b > 0 && !containsBytes(lower, start, len, qbytes, Int(t.a), Int(t.b)) {
+   370	                        hit = false // lacks a literal every match needs
+   371	                    } else if let re = regexes[t.start] {
+   372	                        let s = String(decoding: UnsafeBufferPointer(rebasing: lower[start..<start + len]), as: UTF8.self)
+   373	                        hit = re.firstMatch(in: s, range: NSRange(s.startIndex..., in: s)) != nil
+   374	                    } else {
+   375	                        hit = false
+   376	                    }
+   377	                case CompiledQuery.Kind.size:
+   378	                    hit = r.flags & 1 == 0 && compare(r.size, t.cmp, t.a)
+   379	                case CompiledQuery.Kind.modified:
+   380	                    switch t.cmp {
+   381	                    case 4: hit = r.modified >= t.a && r.modified < t.b
+   382	                    case 2: hit = r.modified >= t.b
+   383	                    case 3: hit = r.modified >= t.a
+   384	                    case 0: hit = r.modified < t.a
+   385	                    default: hit = r.modified < t.b
+   386	                    }
+   387	                case CompiledQuery.Kind.files:
+   388	                    hit = r.flags & 1 == 0
+   389	                case CompiledQuery.Kind.temp:
+   390	                    hit = temp[id] != 0
+   391	                default:
+   392	                    hit = r.flags & 1 != 0
+   393	                }
+   394	                if t.negated { hit = !hit }
+   395	                if hit { any = true; break }
+   396	                k += 1
+   397	            }
+   398	            if !any { return false }
+   399	            g += 1
+   400	        }
+   401	        return true
+   402	    }
+   403	}
+   404	
+   405	// MARK: - Byte matching
+   406	
+   407	@inline(__always)
+   408	func containsBytes(_ hay: UnsafeBufferPointer<UInt8>, _ start: Int, _ len: Int,
+   409	                   _ needle: UnsafeBufferPointer<UInt8>, _ nStart: Int, _ n: Int) -> Bool {
+   410	    if n == 0 { return true }
+   411	    if n > len { return false }
+   412	    let first = needle[nStart]
+   413	    var i = start
+   414	    let last = start + len - n
+   415	    while i <= last {
+   416	        if hay[i] == first {
+   417	            var j = 1
+   418	            while j < n && hay[i + j] == needle[nStart + j] { j += 1 }
+   419	            if j == n { return true }
+   420	        }
+   421	        i += 1
+   422	    }
+   423	    return false
+   424	}
+   425	
+   426	/// Matches `*` and `?` against the whole name.
+   427	func globBytes(_ hay: UnsafeBufferPointer<UInt8>, _ start: Int, _ len: Int,
+   428	               _ pattern: UnsafeBufferPointer<UInt8>, _ pStart: Int, _ pLen: Int) -> Bool {
+   429	    let star = UInt8(ascii: "*"), question = UInt8(ascii: "?")
+   430	    var s = 0, p = 0
+   431	    var starP = -1, starS = 0
+   432	    while s < len {
+   433	        if p < pLen && (pattern[pStart + p] == question || pattern[pStart + p] == hay[start + s]) {
+   434	            s += 1; p += 1
+   435	        } else if p < pLen && pattern[pStart + p] == star {
+   436	            starP = p; starS = s; p += 1
+   437	        } else if starP >= 0 {
+   438	            p = starP + 1; starS += 1; s = starS
+   439	        } else {
+   440	            return false
+   441	        }
+   442	    }
+   443	    while p < pLen && pattern[pStart + p] == star { p += 1 }
+   444	    return p == pLen
+   445	}
+   446	
+   447	@inline(__always)
+   448	func suffixBytes(_ hay: UnsafeBufferPointer<UInt8>, _ start: Int, _ len: Int,
+   449	                 _ suffix: UnsafeBufferPointer<UInt8>, _ sStart: Int, _ n: Int) -> Bool {
+   450	    if n > len { return false }
+   451	    let off = start + len - n
+   452	    var i = 0
+   453	    while i < n {
+   454	        if hay[off + i] != suffix[sStart + i] { return false }
+   455	        i += 1
+   456	    }
+   457	    return true
+   458	}
