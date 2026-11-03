@@ -94,3 +94,4 @@ Never put memory content here — the file itself holds the facts.
 - [Decision desk](feedback_decision-desk.md) — before asking Eric any decision; startup decisions list; reading his answers back
 - [Child session env leak](project_child-session-env-leak.md) — before opening a new Claude session from a session; 'transcript_path does not exist' in .errors.log
 - [Codex second review](feedback_codex-second-review.md) — after writing or changing any code or script
+- [Codex review worktree trap](project_codex-review-agent-worktree-trap.md) — codex-review stops on '.claude/worktrees' in the repo; run from a detached worktree
