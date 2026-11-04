@@ -148,7 +148,11 @@
     "starter-icp-positioning": "off",
     "starter-voice-profile": "off",
     "watch": "off",
-    "articulation-skill": "name-only"
+    "articulation-skill": "name-only",
+    "pp-espn": "name-only",
+    "pp-fireflies": "name-only",
+    "graphify": "name-only",
+    "html-to-pdf": "name-only"
   },
   "hooks": {
     "SessionStart": [
