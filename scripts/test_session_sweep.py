@@ -48,3 +48,30 @@ sh(root, "git", "checkout", "-q", jsonl)
 sh(root, "git", "branch", "--unset-upstream")
 assert u("abcd1234", root) == "~/.claude has no upstream"
 print("test_session_sweep: all checks passed")
+
+# --delete: rm each SAFE id, skip one that went active, report failures
+class R:
+    def __init__(self, code, out=""):
+        self.returncode, self.stdout, self.stderr = code, out, ""
+calls = []
+def fake_run(cmd, **kw):
+    calls.append(cmd)
+    if cmd[2] == "gone":
+        raise FileNotFoundError("claude not found")
+    return R(1, "has unpushed work") if cmd[2] == "bad" else R(0)
+rows = [("2026-11-01", "good", "a", []), ("2026-11-02", "bad", "b", []),
+        ("2026-11-03", "busy", "c", []), ("2026-11-04", "gone", "d", [])]
+out = s.delete_safe(rows, run=fake_run, idle=lambda d: d != "busy")
+assert calls == [["claude", "rm", "good"], ["claude", "rm", "bad"], ["claude", "rm", "gone"]], calls
+assert out == (["good"], ["bad", "gone"], ["busy"]), out
+jobs = os.path.join(tmp, "jobs")
+os.makedirs(os.path.join(jobs, "w"))
+open(os.path.join(jobs, "w", "state.json"), "w").write('{"state": "working"}')
+assert s.still_idle("w", jobs) is False
+assert s.still_idle("missing", jobs) is False
+for bad in ("null", "[]", "{}", '{"state": 3}', "not json"):
+    open(os.path.join(jobs, "w", "state.json"), "w").write(bad)
+    assert s.still_idle("w", jobs) is False, bad
+open(os.path.join(jobs, "w", "state.json"), "w").write('{"state": "done"}')
+assert s.still_idle("w", jobs) is True
+print("test_session_sweep: delete checks passed")

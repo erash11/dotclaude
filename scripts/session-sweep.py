@@ -9,11 +9,14 @@ owns a git worktree that still exists. Also lists every repo under DEV with unco
 unpushed work, since deleting a session never deletes the repo but the work there
 is unfinished.
 
-Read-only. It never deletes anything.
+Read-only by default. With --delete it runs `claude rm <id>` on each SAFE
+session (claude rm itself refuses a session whose worktree has unpushed work).
 
 Usage:
-    python ~/.claude/scripts/session-sweep.py
+    python ~/.claude/scripts/session-sweep.py            # list only
+    python ~/.claude/scripts/session-sweep.py --delete   # list, then delete the SAFE ones
 """
+import argparse
 import glob
 import json
 import os
@@ -84,6 +87,34 @@ def sessions():
     return keep, delete
 
 
+def still_idle(sid, jobs=JOBS):
+    """Re-read state just before deleting: a SAFE session may have restarted since the scan."""
+    try:
+        s = json.load(open(os.path.join(jobs, sid, "state.json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    state = s.get("state") if isinstance(s, dict) else None
+    return isinstance(state, str) and state not in ("working", "blocked")
+
+
+def delete_safe(rows, run=subprocess.run, idle=still_idle):
+    """Run `claude rm` on each SAFE row. Returns (deleted, failed, skipped) id lists."""
+    deleted, failed, skipped = [], [], []
+    for _, d, name, _ in sorted(rows):
+        if not idle(d):
+            print(f"  SKIP    {d}  {name}  <- active again, or state.json unreadable")
+            skipped.append(d)
+            continue
+        try:
+            r = run(["claude", "rm", d], capture_output=True, text=True)
+            ok, msg = r.returncode == 0, ((r.stdout or "") + (r.stderr or "")).strip().splitlines()
+        except OSError as e:  # claude missing from PATH or not runnable
+            ok, msg = False, [str(e)]
+        print(f"  {'DELETED' if ok else 'FAILED '} {d}  {name}" + ("" if ok or not msg else f"  <- {msg[-1]}"))
+        (deleted if ok else failed).append(d)
+    return deleted, failed, skipped
+
+
 def repo_flags(repo):
     flags = []
     if git(repo, "status", "--porcelain"):
@@ -107,6 +138,9 @@ def repos():
 
 
 def main():
+    ap = argparse.ArgumentParser(description="List (and optionally delete) background sessions.")
+    ap.add_argument("--delete", action="store_true", help="run `claude rm` on each SAFE session")
+    args = ap.parse_args()
     keep, delete = sessions()
     print(f"KEEP ({len(keep)})")
     for when, d, name, why in sorted(keep, reverse=True):
@@ -118,7 +152,13 @@ def main():
     print(f"\nREPOS WITH UNSAVED WORK ({len(dirty)}) — finish these with /closeout, not by keeping sessions")
     for repo, flags in dirty:
         print(f"  {os.path.relpath(repo, HOME)}: {', '.join(flags)}")
+    if args.delete and delete:
+        print(f"\nDELETING {len(delete)} SAFE session(s)")
+        deleted, failed, skipped = delete_safe(delete)
+        print(f"Done: {len(deleted)} deleted, {len(failed)} failed, {len(skipped)} skipped.")
+        return 1 if failed else 0
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

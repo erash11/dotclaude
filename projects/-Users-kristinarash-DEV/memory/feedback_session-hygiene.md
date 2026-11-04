@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 25377000-859e-4d10-9d38-5e91339a12d3
-  modified: 2026-10-31T18:53:40.379Z
+  modified: 2026-11-04T23:44:38.395Z
 ---
 
 Sessions are scratchpads; the repo (commits + `docs/STATUS.md` `## Next`) is the record.
@@ -16,7 +16,7 @@ Agreed 2026-10-02 after 79 sessions piled up on the home screen.
   and pushed in `~/.claude` (replaced the 24 h rule 2026-10-31; `claude rm` keeps the
   transcript file), or while its `jobs/<id>/tmp/` holds a git worktree.
 - `python ~/.claude/scripts/session-sweep.py` prints KEEP / SAFE TO DELETE / repos with
-  unsaved work. Read-only.
+  unsaved work. Read-only; `--delete` (added 2026-11-04) also runs `claude rm` on each SAFE id.
 - **Start the day** with `python ~/.claude/scripts/where-was-i.py` (first `## Next` item
   per project, newest first; `--days N`, `--all`), then pick ONE thread.
 - **Max 5 active threads** in global MEMORY.md; park one to add one. Parked NEXTs live in
@@ -26,6 +26,6 @@ Agreed 2026-10-02 after 79 sessions piled up on the home screen.
 
 **Why:** Eric works on many projects in a day and lost track of where each stopped.
 **How to apply:** on "what was I doing" / "where did I leave off" run where-was-i; on
-"clean up sessions" run session-sweep, then delete each SAFE id with `claude rm <id>`
-(supported CLI; it refuses if the session's worktree has unpushed work). Never `rm` the
+"clean up sessions" run `session-sweep.py --delete` (it calls `claude rm <id>` on each
+SAFE id; claude rm refuses if the session's worktree has unpushed work). Never `rm` the
 `~/.claude/jobs/` folders by hand. See [[post-merge-cleanup]].
