@@ -614,10 +614,10 @@
    "captureWorkingTree": true
   },
   {
-   "path": "DEV/Gemini_Projects",
+   "path": "DEV/Football/Gemini_Projects",
    "class": "personal",
    "isRepo": true,
-   "remote": "https://github.com/erash11/Gemini_Projects.git",
+   "remote": "https://github.com/erash11/fp-cmj-fatigue-decision-tree.git",
    "destinations": [
     "ssd",
     "github"

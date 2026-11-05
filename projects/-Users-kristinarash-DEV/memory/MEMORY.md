@@ -96,3 +96,5 @@ Never put memory content here — the file itself holds the facts.
 - [Codex second review](feedback_codex-second-review.md) — after writing or changing any code or script
 - [Codex review worktree trap](project_codex-review-agent-worktree-trap.md) — codex-review stops on '.claude/worktrees' in the repo; run from a detached worktree
 - [Synthetic keystrokes frontmost](feedback_synthetic-keystrokes-frontmost.md) — before any UI test that sends key presses; testing MacEverything's panel
+- [Word docs only](feedback_word-docs-only.md) — before building, exporting or uploading any document deliverable
+- [Drive move close files](feedback_drive-move-close-files.md) — before any Drive move, rename or folder reorg

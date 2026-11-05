@@ -36,3 +36,5 @@ readlink ~/.codex/hooks        # must print /Users/kristinarash/.claude/hooks
 Hook *failures* surface at session start via `.errors.log` — see
 [[keystoneos-verification-habits]] for what a clean exit code does and does not
 prove, and [[backup-sync-system]] for the ledger rule on that log.
+
+**Reload (tested 2026-11-05, Claude Code 2.1.318):** a running session picks up hook settings changes with no restart. A PreToolUse hook added to `~/DEV/.claude/settings.local.json` fired on the next tool call; removing it stopped it on the next call. So a "reverted" hook patch is not a stale-session effect: look for the second copy.
