@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 6a709501-394d-4811-8fbb-8fec24f5d7dd
-  modified: 2026-11-02T20:07:36.237Z
+  modified: 2026-11-07T01:01:56.720Z
 ---
 
 **Outlook calendar on the Mac: Outlook on the web via Claude in Chrome (works, 2026-11-02).** Eric's Chrome is signed in to the Baylor account ("Calendar - Rash, Eric - Outlook"). Open a new tab at `https://outlook.office.com/calendar/view/day/YYYY/M/D` (it redirects to `outlook.cloud.microsoft`, work-week view). Read events with the `find` tool: each event button's label holds title, time and date; clicking one opens a preview with attendees (Escape closes it). Read only by default: creating, editing or answering an Outlook event sends mail as Eric, so ask first. First use: found the Chris Ruf check-in ("HOLD: Eric Rash Check in/Updates", Wed 11/04 11:30) and copied it to his Google calendar. Google Calendar (personal gmail) has none of his Baylor meetings.
@@ -22,6 +22,8 @@ or Teams route on the Mac. Any secret for one (a webhook URL) goes in the Keycha
 
 **Mac Office export trap (2026-10-24 PowerPoint, 2026-10-29 Word).** Word and PowerPoint are sandboxed. When a script makes them save to a folder outside their container, they stall behind a hidden permission dialog. Word froze twice on 10-29 and needed a force-quit. Fix: export into the app's own folder, then move the file out with the shell:
 `~/Library/Containers/com.microsoft.Word/Data/tmp/` or `~/Library/Containers/com.microsoft.Powerpoint/Data/tmp/` (five-slides-generator Step 6 uses the PowerPoint one).
+
+**Excel render check on the Mac (works, 2026-11-06, Gemini_Projects CMJ workbook).** `osascript`: `open workbook workbook file name "<abs>.xlsx"`, `save workbook as wb filename "<abs>.pdf" file format PDF file format`, `close wb saving no`, inside `with timeout of 90 seconds`; then `pdftoppm` to look. The first `open` from a new folder hangs (-1712) behind Excel's "Grant File Access" dialog until Eric clicks it; after that, saving straight to the repo `outputs/` folder works. Quick Look draws no pictures, so it is no render check. Mac Excel quirks found: columns ~20% wider than the Windows width*7+5 rule (fit-to-width scales differ by OS: use a fixed print scale), and pictures ~12% taller than the row-height math.
 
 Verified 2026-10-03 on the Baylor Windows laptop. Eric ran the tests himself; all passed.
 

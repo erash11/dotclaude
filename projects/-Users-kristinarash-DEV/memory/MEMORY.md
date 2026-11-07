@@ -64,7 +64,7 @@ Never put memory content here — the file itself holds the facts.
 - [Box access via Box Drive](project_box-access-via-box-drive.md) — any Box request: Baylor blocks the MCP/connector; Box Drive was the Windows route, not yet on the Mac
 - [42Analytics YouTube pipeline](project_42analytics-youtube-pipeline.md) — YouTube channel to Flint; caption 429s, subagent summary.md block, empty Jev key
 - [Session hygiene](feedback_session-hygiene.md) — deleting sessions, "where was I", starting the day
-- [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint; reading Eric's Outlook/Baylor calendar (web, via Chrome); Word/PowerPoint freezes on export
+- [M365 agent access](project_m365-agent-access.md) — automating Teams, Outlook, Excel, Word or PowerPoint; reading Eric's Outlook/Baylor calendar (web, via Chrome); Word/PowerPoint freezes on export; Excel-to-PDF render check (Grant File Access first)
 - [Harness time budget](feedback_harness-time-budget.md) — before any hook/skill/memory/system fix; system work is done as it comes up, no Friday slot
 - [Defer to Pocock skills](feedback_defer-to-mattpocock-skills.md) — debugging, TDD, grilling, PR body, skill/CLAUDE.md edits: use mattpocock-skills first
 - [Work laptop retired](project_work-laptop-hands-off.md) — anything Windows, Docker, Milvus standalone, or two-machine sync
